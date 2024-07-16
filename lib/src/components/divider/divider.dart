@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/components/divider/divider.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 export 'divider_style.dart';
 

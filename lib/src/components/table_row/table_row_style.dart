@@ -1,4 +1,4 @@
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiTableRowTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTableRowColorTheme colors;

@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/table/table_column_builder.dart';
-import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/table/table_column_builder.dart';
+import 'package:impaktfull_ui_2/src/components/table/table_column_config.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 export 'table_header_style.dart';
 

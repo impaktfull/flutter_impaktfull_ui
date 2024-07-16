@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/table/table_column_config.dart';
 
 class TableColumnBuilder extends StatelessWidget {
   final List<TableColumnConfig> config;

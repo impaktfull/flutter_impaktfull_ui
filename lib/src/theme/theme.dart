@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/badge/badge_style.dart';
-import 'package:impaktfull_ui/src/components/button/button.dart';
-import 'package:impaktfull_ui/src/components/card/card.dart';
-import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
-import 'package:impaktfull_ui/src/components/divider/divider.dart';
-import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart';
-import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
-import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui/src/components/table/table.dart';
-import 'package:impaktfull_ui/src/components/table_header/table_header.dart';
-import 'package:impaktfull_ui/src/components/table_header_item/table_header_item.dart';
-import 'package:impaktfull_ui/src/components/table_row/table_row.dart';
-import 'package:impaktfull_ui/src/components/table_row_item/table_row_item.dart';
+import 'package:impaktfull_ui_2/src/components/badge/badge_style.dart';
+import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui_2/src/components/card/card.dart';
+import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
+import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
+import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
+import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
+import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/table/table.dart';
+import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
+import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
+import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
+import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
 
 class ImpaktfullUiTheme {
   final ImpaktfullUiColorTheme colors;
