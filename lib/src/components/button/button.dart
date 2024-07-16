@@ -55,7 +55,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                   width: 1,
                   strokeAlign: BorderSide.strokeAlignInside,
                 ),
-          onTap: widget.onTap == null || widget.onAsyncTap == null ? null : _onTap,
+          onTap: widget.onTap == null && widget.onAsyncTap == null ? null : _onTap,
           child: Padding(
             padding: _getPadding(componentTheme),
             child: ImpaktfullUiAutoLayout.horizontal(
