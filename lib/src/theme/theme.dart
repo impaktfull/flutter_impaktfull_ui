@@ -30,10 +30,20 @@ class ImpaktfullUiTheme {
     required this.components,
   });
 
-  static ImpaktfullUiTheme getDefault() {
+  static ImpaktfullUiTheme getDefault() => byColor(
+        primary: const Color(0xFF7d64f2),
+        secondary: const Color(0xFF7d64f2),
+        borderRadius: BorderRadius.circular(8),
+      );
+
+  static ImpaktfullUiTheme byColor({
+    required Color primary,
+    required Color secondary,
+    required BorderRadius borderRadius,
+  }) {
     final colors = ImpaktfullUiColorTheme(
-      primary: const Color(0xFF7d64f2),
-      secondary: const Color(0xFF7d64f2),
+      primary: primary,
+      secondary: secondary,
       tertiary: const Color(0xFF475467),
       canvas: const Color(0xFFF9FAFB),
       card: const Color(0xFFFFFFFF),
@@ -47,9 +57,8 @@ class ImpaktfullUiTheme {
       error: const Color(0xFFB42318),
       success: const Color(0xFF067647),
     );
-    const defaultBorderRadius = 8.0;
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadius: BorderRadius.circular(defaultBorderRadius),
+      borderRadius: borderRadius,
     );
     final textStyles = ImpaktfullUiTextStylesTheme(
       onCanvas: ImpaktfullUiTextStyleTheme.getByColor(colors.text),
@@ -182,9 +191,10 @@ class ImpaktfullUiTheme {
           colors: ImpaktfullUiTableHeaderColorTheme(
             background: colors.header,
           ),
-          dimens: const ImpaktfullUiTableHeaderDimensTheme(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(defaultBorderRadius),
+          dimens: ImpaktfullUiTableHeaderDimensTheme(
+            borderRadius: BorderRadius.only(
+              topLeft: borderRadius.topLeft,
+              topRight: borderRadius.topRight,
             ),
           ),
         ),
