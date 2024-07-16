@@ -55,7 +55,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                   width: 1,
                   strokeAlign: BorderSide.strokeAlignInside,
                 ),
-          onTap: _onTap,
+          onTap: widget.onTap == null || widget.onAsyncTap == null ? null : _onTap,
           child: Padding(
             padding: _getPadding(componentTheme),
             child: ImpaktfullUiAutoLayout.horizontal(
@@ -184,5 +184,11 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
     }
   }
 
-  void _onTap() => widget.onTap?.call();
+  Future<void> _onTap() async {
+    if (widget.onAsyncTap != null) {
+      widget.onAsyncTap?.call();
+    } else if (widget.onTap != null) {
+      widget.onTap?.call();
+    }
+  }
 }
