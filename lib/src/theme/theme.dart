@@ -31,18 +31,18 @@ class ImpaktfullUiTheme {
   });
 
   static ImpaktfullUiTheme getDefault() => byColor(
-        primary: const Color(0xFF7d64f2),
+        accent: const Color(0xFF7d64f2),
         secondary: const Color(0xFF7d64f2),
         borderRadius: BorderRadius.circular(8),
       );
 
   static ImpaktfullUiTheme byColor({
-    required Color primary,
+    required Color accent,
     required Color secondary,
     required BorderRadius borderRadius,
   }) {
     final colors = ImpaktfullUiColorTheme(
-      primary: primary,
+      accent: accent,
       secondary: secondary,
       tertiary: const Color(0xFF475467),
       canvas: const Color(0xFFF9FAFB),
@@ -62,11 +62,11 @@ class ImpaktfullUiTheme {
     );
     final textStyles = ImpaktfullUiTextStylesTheme(
       onCanvas: ImpaktfullUiTextStyleTheme.getByColor(colors.text),
-      onCanvasPrimary: ImpaktfullUiTextStyleTheme.getByColor(colors.primary),
+      onCanvasPrimary: ImpaktfullUiTextStyleTheme.getByColor(colors.accent),
       onCanvasSecondary: ImpaktfullUiTextStyleTheme.getByColor(colors.secondary),
       onCanvasTertiary: ImpaktfullUiTextStyleTheme.getByColor(colors.tertiary),
       onCard: ImpaktfullUiTextStyleTheme.getByColor(colors.text),
-      onCardPrimary: ImpaktfullUiTextStyleTheme.getByColor(colors.primary),
+      onCardPrimary: ImpaktfullUiTextStyleTheme.getByColor(colors.accent),
       onCardSecondary: ImpaktfullUiTextStyleTheme.getByColor(colors.secondary),
       onCardTertiary: ImpaktfullUiTextStyleTheme.getByColor(colors.tertiary),
       onPrimary: ImpaktfullUiTextStyleTheme.getByColor(colors.card),
@@ -125,8 +125,8 @@ class ImpaktfullUiTheme {
         ),
         button: ImpaktfullUiButtonTheme(
           colors: ImpaktfullUiButtonColorTheme(
-            primary: colors.primary,
-            primaryBorder: colors.primary,
+            primary: colors.accent,
+            primaryBorder: colors.accent,
             secondary: colors.card,
             secondaryBorder: colors.border,
             tertiary: null,
@@ -157,7 +157,7 @@ class ImpaktfullUiTheme {
         horizontalTab: ImpaktfullUiHorizontalTabTheme(
           colors: ImpaktfullUiHorizontalTabColorTheme(
             backgroundUnSelectedTab: colors.card,
-            backgroundSelectedTab: colors.primary.withOpacity(0.33),
+            backgroundSelectedTab: colors.accent.withOpacity(0.33),
           ),
           dimens: ImpaktfullUiHorizontalTabDimensTheme(
             borderRadius: dimens.borderRadius,
@@ -273,7 +273,7 @@ class ImpaktfullUiTheme {
 }
 
 class ImpaktfullUiColorTheme {
-  final Color primary;
+  final Color accent;
   final Color secondary;
   final Color tertiary;
   final Color canvas;
@@ -289,7 +289,7 @@ class ImpaktfullUiColorTheme {
   final Color success;
 
   const ImpaktfullUiColorTheme({
-    required this.primary,
+    required this.accent,
     required this.secondary,
     required this.tertiary,
     required this.canvas,

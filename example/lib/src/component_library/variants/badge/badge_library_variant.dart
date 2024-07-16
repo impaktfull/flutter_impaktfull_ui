@@ -69,7 +69,7 @@ class BadgeVariant extends ComponentLibraryVariant<BadgeLibraryVariantInputs> {
               width: 6,
               height: 6,
               decoration: BoxDecoration(
-                color: ImpaktfullUiTheme.of(context).colors.primary,
+                color: ImpaktfullUiTheme.of(context).colors.accent,
                 shape: BoxShape.circle,
               ),
             ),

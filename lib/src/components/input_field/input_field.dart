@@ -13,6 +13,8 @@ class ImpaktfullUiInputField extends StatefulWidget {
   final String? value;
   final ValueChanged<String> onChanged;
   final TextEditingController? controller;
+  final bool obscureText;
+  final TextInputAction textInputAction;
   final ImpaktfullUiInputFieldTheme? theme;
 
   const ImpaktfullUiInputField({
@@ -22,6 +24,8 @@ class ImpaktfullUiInputField extends StatefulWidget {
     this.hint,
     this.label,
     this.controller,
+    this.obscureText = false,
+    this.textInputAction = TextInputAction.done,
     this.theme,
     super.key,
   });
@@ -91,6 +95,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                     scrollPadding: EdgeInsets.zero,
                     style: componentTheme.textStyles.text,
                     onChanged: widget.onChanged,
+                    obscureText: widget.obscureText,
+                    textInputAction: widget.textInputAction,
                     decoration: InputDecoration(
                       isDense: true,
                       hintText: widget.hint,

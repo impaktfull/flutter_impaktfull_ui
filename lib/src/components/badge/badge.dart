@@ -101,7 +101,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
   Color _getColor(ImpaktfullUiTheme theme) {
     switch (widget.type) {
       case ImpaktfullUiBadgeType.primary:
-        return theme.colors.primary;
+        return theme.colors.accent;
       case ImpaktfullUiBadgeType.secondary:
         return theme.colors.secondary;
       case ImpaktfullUiBadgeType.neutral:
