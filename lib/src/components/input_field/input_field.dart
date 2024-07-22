@@ -48,7 +48,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   @override
   void didUpdateWidget(covariant ImpaktfullUiInputField oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.value != oldWidget.value) {
+    if (_controller.text != widget.value) {
       _controller.text = widget.value ?? '';
     }
   }
@@ -76,7 +76,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
             ),
           ],
           ImpaktfullUiCard(
+            cursor: SystemMouseCursors.text,
             onTap: _onTap,
+            onFocus: _onFocus,
             child: ImpaktfullUiAutoLayout.horizontal(
               crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 8,
@@ -120,5 +122,17 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     );
   }
 
-  void _onTap() => _focusNode.requestFocus();
+  void _onTap() {
+    _focusNode.requestFocus();
+    // Hack to make sure the cursor is at the end of the text
+    WidgetsBinding.instance.addPostFrameCallback((d) {
+      if (!mounted) return;
+      _controller.selection = TextSelection(
+        baseOffset: _controller.text.length,
+        extentOffset: _controller.text.length,
+      );
+    });
+  }
+
+  void _onFocus() => _focusNode.requestFocus();
 }

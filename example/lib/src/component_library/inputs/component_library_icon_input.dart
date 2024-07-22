@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_example/src/component_library/component_library.dart';
+import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 
 class ComponentLibraryIconInput extends ComponentLibraryInputItem<IconData> {
   final icons = [

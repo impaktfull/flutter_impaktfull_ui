@@ -3,19 +3,23 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 
 class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final VoidCallback? onTap;
+  final VoidCallback? onFocus;
   final Widget child;
   final BorderRadius? borderRadius;
   final Color? color;
   final BoxBorder? border;
+  final MouseCursor cursor;
   final List<BoxShadow> shadow;
   final bool canRequestFocus;
 
   const ImpaktfullUiTouchFeedback({
     required this.onTap,
     required this.child,
+    this.onFocus,
     this.borderRadius,
     this.color,
     this.border,
+    this.cursor = SystemMouseCursors.click,
     this.canRequestFocus = true,
     this.shadow = const [],
     super.key,
@@ -52,6 +56,8 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
             child: InkWell(
               borderRadius: borderRadius,
               onTap: onTap,
+              mouseCursor: cursor,
+              onFocusChange: _onFocusChanged,
               focusColor: Colors.transparent,
               splashFactory: NoSplash.splashFactory,
               child: ColoredBox(
@@ -63,5 +69,11 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onFocusChanged(bool value) {
+    if (value) {
+      onFocus?.call();
+    }
   }
 }

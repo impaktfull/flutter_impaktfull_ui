@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui_2/src/theme/component_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiComponentThemeBuidler<T extends ImpaktfullUiComponentTheme> extends StatelessWidget {
@@ -14,7 +15,7 @@ class ImpaktfullUiComponentThemeBuidler<T extends ImpaktfullUiComponentTheme> ex
   @override
   Widget build(BuildContext context) {
     final theme = ImpaktfullUiTheme.of(context);
-    final componentTheme = overrideComponentTheme ?? ImpaktfullUiTheme.getComponentTheme<T>(context);
+    final componentTheme = overrideComponentTheme ?? ImpaktfullUiComponentsTheme.of<T>(context);
     return builder(context, theme, componentTheme);
   }
 }

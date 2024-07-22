@@ -13,6 +13,7 @@ class ImpaktfullUiButton extends StatefulWidget {
   final String? title;
   final IconData? trailingIcon;
   final bool isLoading;
+  final bool fullWidth;
   final VoidCallback? onAsyncTap;
   final VoidCallback? onTap;
   final ImpaktfullUiButtonTheme? theme;
@@ -23,6 +24,7 @@ class ImpaktfullUiButton extends StatefulWidget {
     this.size = ImpaktfullUiButtonSize.medium,
     this.leadingIcon,
     this.trailingIcon,
+    this.fullWidth = false,
     this.isLoading = false,
     this.onTap,
     this.onAsyncTap,
@@ -59,7 +61,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
           child: Padding(
             padding: _getPadding(componentTheme),
             child: ImpaktfullUiAutoLayout.horizontal(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 4,
               children: [
@@ -73,6 +75,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                 if (widget.title != null) ...[
                   Text(
                     widget.title!,
+                    textAlign: TextAlign.center,
                     style: _getTextStyle(theme),
                   ),
                 ],

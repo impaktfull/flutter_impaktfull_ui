@@ -1,0 +1,101 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme_configurator.dart';
+import 'package:snacky/snacky.dart';
+
+class ImpaktfullUiApp extends StatelessWidget {
+  final String title;
+  final Widget? home;
+  final SnackyController? snackyController;
+  final SnackyBuilder? snackyBuilder;
+  final ImpaktfullUiTheme? impaktfullUiTheme;
+  final ThemeData? materialLightTheme;
+  final ThemeData? materialDarkTheme;
+  final Locale? locale;
+  final Iterable<Locale> supportedLocales;
+  final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
+  final List<NavigatorObserver> navigatorObservers;
+  final GlobalKey<NavigatorState>? navigatorKey;
+  final String? initialRoute;
+  final RouteFactory? onGenerateRoute;
+  final Widget Function(BuildContext context, Widget app)? builder;
+  final TargetPlatform? targetPlatform;
+  final bool showDebugFlag;
+
+  const ImpaktfullUiApp({
+    required this.title,
+    this.home,
+    this.snackyController,
+    this.snackyBuilder,
+    this.impaktfullUiTheme,
+    this.materialLightTheme,
+    this.materialDarkTheme,
+    this.locale,
+    this.supportedLocales = const <Locale>[Locale('en')],
+    this.localizationsDelegates,
+    this.navigatorKey,
+    this.initialRoute,
+    this.onGenerateRoute,
+    this.navigatorObservers = const <NavigatorObserver>[],
+    this.builder,
+    this.targetPlatform,
+    this.showDebugFlag = kDebugMode,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    setImpaktfullUiTheme(impaktfullUiTheme);
+    setImpaktfullUiLocale(locale);
+    return ImpaktfullUiSnackyConfigurator(
+      locale: locale,
+      snackyController: snackyController,
+      snackyBuilder: snackyBuilder,
+      app: Builder(
+        builder: (context) {
+          final app = MaterialApp(
+            title: title,
+            home: home,
+            debugShowCheckedModeBanner: showDebugFlag,
+            locale: locale,
+            theme: (materialLightTheme ?? Theme.of(context)).removeUnwantedBehavior(
+              targetPlatform: targetPlatform,
+            ),
+            darkTheme: (materialLightTheme ?? Theme.of(context)).removeUnwantedBehavior(
+              targetPlatform: targetPlatform,
+            ),
+            supportedLocales: supportedLocales,
+            localizationsDelegates: localizationsDelegates,
+            navigatorKey: navigatorKey,
+            initialRoute: initialRoute,
+            onGenerateRoute: onGenerateRoute,
+            navigatorObservers: [
+              SnackyNavigationObserver(),
+              ...navigatorObservers,
+            ],
+          );
+          return builder?.call(context, app) ?? app;
+        },
+      ),
+    );
+  }
+}
+
+extension ThemeDataExtension on ThemeData {
+  ThemeData removeUnwantedBehavior({
+    required TargetPlatform? targetPlatform,
+  }) =>
+      copyWith(
+        platform: targetPlatform,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.android: ZoomPageTransitionsBuilder(
+              allowEnterRouteSnapshotting: false,
+            ),
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          },
+        ),
+      );
+}

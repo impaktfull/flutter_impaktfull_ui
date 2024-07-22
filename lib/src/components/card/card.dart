@@ -7,11 +7,15 @@ export 'card_style.dart';
 class ImpaktfullUiCard extends StatefulWidget {
   final Widget child;
   final VoidCallback? onTap;
+  final MouseCursor cursor;
+  final VoidCallback? onFocus;
   final ImpaktfullUiCardTheme? theme;
 
   const ImpaktfullUiCard({
     required this.child,
+    this.cursor = MouseCursor.defer,
     this.onTap,
+    this.onFocus,
     this.theme,
     super.key,
   });
@@ -46,7 +50,9 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         ),
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: false,
+          cursor: widget.cursor,
           onTap: widget.onTap,
+          onFocus: widget.onFocus,
           borderRadius: componentTheme.dimens.borderRadius,
           child: Padding(
             padding: componentTheme.dimens.padding,
