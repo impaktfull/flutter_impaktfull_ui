@@ -123,33 +123,6 @@ class $className extends StatelessWidget with ComponentDescriptorMixin {
   String describe() => _describeInstance(this);
 }""";
   componentFile.writeAsStringSync(componentFileContent);
-
-  // Component file
-  final componentDescriptorFile = File(join(dir.path, '${lowercaseComponentName}.dart'));
-
-  final componentDescriptorFileContent = """import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/$lowercaseComponentName/${lowercaseComponentName}_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-
-export '${lowercaseComponentName}_style.dart';
-
-class $className extends StatelessWidget {
-  final ${className}Theme? theme;
-
-  const ${className}({
-    this.theme,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<${className}Theme>(
-      overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => Container(),
-    );
-  }
-}""";
-  componentDescriptorFile.writeAsStringSync(componentDescriptorFileContent);
 }
 
 Future<void> createWidgetLibrary({
