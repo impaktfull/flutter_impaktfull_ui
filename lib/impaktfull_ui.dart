@@ -4,13 +4,16 @@ export 'src/components/auto_layout/auto_layout.dart';
 export 'src/components/button/button.dart';
 export 'src/components/badge/badge.dart';
 export 'src/components/card/card.dart';
+export 'src/components/checkbox/checkbox.dart';
 export 'src/components/cms_header/cms_header.dart';
 export 'src/components/divider/divider.dart';
+export 'src/components/dropdown/dropdown.dart';
 export 'src/components/horizontal_tab/horizontal_tab.dart';
 export 'src/components/horizontal_tabs/horizontal_tabs.dart';
 export 'src/components/input_field/input_field.dart';
 export 'src/components/list_view/list_view.dart';
 export 'src/components/loading_indicator/loading_indicator.dart';
+export 'src/components/modal/modal.dart';
 export 'src/components/refresh_indicator/refresh_indicator.dart';
 export 'src/components/table/table.dart';
 export 'src/components/table_row/table_row.dart';
@@ -21,3 +24,5 @@ export 'src/components/touch_feedback/touch_feedback.dart';
 // Theme
 export 'src/theme/theme.dart';
 export 'src/components/theme/theme_builder.dart';
+// Widget Library
+export 'src/util/descriptor/component_descriptor_mixin.dart';

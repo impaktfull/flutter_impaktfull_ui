@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_example/src/navigator/page_route/native_page_route_builder.dart';
 import 'package:impaktfull_ui_example/src/screen/components/components_library_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
 
@@ -18,14 +19,9 @@ class HomeScreen extends StatelessWidget {
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
             title: 'Components',
+            fullWidth: true,
             onTap: () =>
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ComponentsLibraryScreen())),
-          ),
-          ImpaktfullUiButton(
-            type: ImpaktfullUiButtonType.primary,
-            title: 'Examples',
-            onTap: () =>
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ComponentsLibraryScreen())),
+                Navigator.of(context).push(NativePageRoute(builder: (context) => const ComponentsLibraryScreen())),
           ),
         ],
       ),

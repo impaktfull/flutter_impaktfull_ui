@@ -11,6 +11,9 @@ class ImpaktfullUiTableHeaderItemTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
     required this.textStyles,
   });
+
+  static ImpaktfullUiTableHeaderItemTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.tableHeaderItem;
 }
 
 class ImpaktfullUiTableHeaderItemColorTheme {

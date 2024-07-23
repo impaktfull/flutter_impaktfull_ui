@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/navigator/page_route/native_page_route_builder.dart';
 import 'package:impaktfull_ui_example/src/screen/components/components_library_item_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
 
@@ -27,6 +28,7 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
           return ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
             title: value.title,
+            fullWidth: true,
             onTap: () => _onItemTapped(value),
           );
         },
@@ -36,5 +38,5 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   }
 
   void _onItemTapped(ComponentLibraryItem value) =>
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ComponentsLibraryItemScreen(item: value)));
+      Navigator.of(context).push(NativePageRoute(builder: (context) => ComponentsLibraryItemScreen(item: value)));
 }

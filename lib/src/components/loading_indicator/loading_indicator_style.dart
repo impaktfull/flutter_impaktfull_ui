@@ -9,6 +9,9 @@ class ImpaktfullUiLoadingIndicatorTheme extends ImpaktfullUiComponentTheme {
     required this.colors,
     required this.assets,
   });
+
+  static ImpaktfullUiLoadingIndicatorTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.loadingIndicator;
 }
 
 class ImpaktfullUiLoadingIndicatorColorTheme {

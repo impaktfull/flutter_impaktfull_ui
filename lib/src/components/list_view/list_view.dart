@@ -7,8 +7,13 @@ import 'package:impaktfull_ui_2/src/components/list_view/list_view_style.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
-class ImpaktfullUiListView<T> extends StatefulWidget {
+export 'list_view_style.dart';
+
+part 'list_view.describe.dart';
+
+class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMixin {
   final Widget? child;
   final List<Widget>? children;
   final List<T>? items;
@@ -23,7 +28,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget {
   final ImpaktfullUiListViewTheme? theme;
 
   const ImpaktfullUiListView({
-    required this.children,
+    required List<Widget> this.children,
     this.isLoading = false,
     this.spacing = 0,
     this.onRefresh,
@@ -38,8 +43,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget {
         refreshBtnLabel = null;
 
   const ImpaktfullUiListView.builder({
-    required this.items,
-    required this.itemBuilder,
+    required List<T> this.items,
+    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
     required String this.noDataLabel,
     this.spacing = 0,
     this.isLoading = false,
@@ -53,8 +58,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget {
         children = null;
 
   const ImpaktfullUiListView.separated({
-    required this.items,
-    required this.itemBuilder,
+    required List<T> this.items,
+    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
     required String this.noDataLabel,
     this.isLoading = false,
     this.refreshBtnLabel,
@@ -69,7 +74,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget {
         separated = true;
 
   const ImpaktfullUiListView.child({
-    required this.child,
+    required Widget this.child,
     this.isLoading = false,
     this.refreshBtnLabel,
     this.onRefresh,
@@ -86,6 +91,9 @@ class ImpaktfullUiListView<T> extends StatefulWidget {
 
   @override
   State<ImpaktfullUiListView<T>> createState() => _ImpaktfullUiListViewState<T>();
+
+  @override
+  String describe() => _describeInstance(this);
 }
 
 class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {

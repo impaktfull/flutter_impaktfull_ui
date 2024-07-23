@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge_style.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
+import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
+import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
@@ -16,7 +18,7 @@ import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
-import 'package:impaktfull_ui_2/src/theme/component_theme.dart';
+import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class DefaultTheme {
@@ -24,6 +26,7 @@ class DefaultTheme {
     required Color accent,
     required Color secondary,
     required BorderRadius borderRadius,
+    required BorderRadius borderRadiusSmall,
     String package = 'impaktfull_ui_2',
   }) {
     final colors = ImpaktfullUiColorTheme(
@@ -36,15 +39,16 @@ class DefaultTheme {
       border: Colors.grey.withOpacity(0.2),
       shadow: const Color(0xFF101828),
       text: const Color(0xFF344054),
-      textOnPrimary: const Color(0xFFFFFFFF),
+      textOnAccent: const Color(0xFFFFFFFF),
       textOnSecondary: const Color(0xFF344054),
       warning: const Color(0xFFB54708),
       error: const Color(0xFFB42318),
-      info: Color.fromARGB(255, 33, 94, 208),
+      info: const Color(0xFF1C90D4),
       success: const Color(0xFF067647),
     );
     final dimens = ImpaktfullUiDimensTheme(
       borderRadius: borderRadius,
+      borderRadiusSmall: borderRadiusSmall,
     );
     const fontFamilyDisplay = 'Ubuntu';
     const fontFamilyText = 'Geologica';
@@ -100,50 +104,20 @@ class DefaultTheme {
         fontFamilyText: fontFamilyText,
       ),
     );
+    final shadows = ImpaktfullUiShadowsTheme.getDefault(
+      shadowBase: colors.shadow,
+    );
+    final assets = ImpaktfullUiAssetTheme.getDefault(
+      package: package,
+    );
+    final duration = ImpaktfullUiDurationTheme.getDefault();
     return ImpaktfullUiTheme(
+      assets: assets,
       colors: colors,
       textStyles: textStyles,
       dimens: dimens,
-      shadows: ImpaktfullUiShadowsTheme(
-        extraSmall: [
-          BoxShadow(
-            color: colors.shadow.withOpacity(0.05),
-            offset: const Offset(0, 1),
-            blurRadius: 2,
-          ),
-        ],
-        small: [
-          BoxShadow(
-            color: colors.shadow.withOpacity(0.01),
-            offset: const Offset(0, 1),
-            blurRadius: 3,
-          ),
-        ],
-        medium: [
-          BoxShadow(
-            color: colors.shadow.withOpacity(0.01),
-            offset: const Offset(0, 4),
-            blurRadius: 8,
-            spreadRadius: -2,
-          ),
-        ],
-        large: [
-          BoxShadow(
-            color: colors.shadow.withOpacity(0.08),
-            offset: const Offset(1, 12),
-            spreadRadius: -4,
-            blurRadius: 16,
-          ),
-        ],
-        extraLarge: [
-          BoxShadow(
-            color: colors.shadow.withOpacity(0.08),
-            offset: const Offset(0, 20),
-            blurRadius: 25,
-            spreadRadius: -4,
-          ),
-        ],
-      ),
+      durations: duration,
+      shadows: shadows,
       components: ImpaktfullUiComponentsTheme(
         badge: ImpaktfullUiBadgeTheme(
           colors: const ImpaktfullUiBadgeColorTheme(),
@@ -175,7 +149,18 @@ class DefaultTheme {
             padding: const EdgeInsets.all(16),
           ),
         ),
-        cmsHeaders: ImpaktfullUiCmsHeaderTheme(
+        checkbox: ImpaktfullUiCheckboxTheme(
+          colors: ImpaktfullUiCheckboxColorTheme(
+            activeColor: colors.accent,
+            inactiveColor: colors.card,
+            checkMarkColor: colors.textOnAccent,
+            backgroundColor: colors.card,
+          ),
+          dimens: ImpaktfullUiCheckboxDimensTheme(
+            borderRadius: dimens.borderRadiusSmall,
+          ),
+        ),
+        cmsHeader: ImpaktfullUiCmsHeaderTheme(
           colors: ImpaktfullUiCmsHeaderColorTheme(
             background: colors.card,
             border: colors.border,
@@ -186,6 +171,16 @@ class DefaultTheme {
           colors: ImpaktfullUiDividerColorTheme(
             color: colors.border,
           ),
+        ),
+        dropdown: ImpaktfullUiDropdownTheme(
+          colors: ImpaktfullUiDropdownColorTheme(
+            menuBackground: colors.card,
+            menuBorder: colors.border,
+          ),
+          shadows: ImpaktfullUiDropdownShadowTheme(
+            menuShadow: shadows.medium,
+          ),
+          dimens: const ImpaktfullUiDropdownDimensTheme(),
         ),
         horizontalTab: ImpaktfullUiHorizontalTabTheme(
           colors: ImpaktfullUiHorizontalTabColorTheme(
@@ -210,13 +205,17 @@ class DefaultTheme {
           colors: ImpaktfullUiInputFieldColorTheme(
             background: colors.card,
             border: colors.border,
+            cursor: colors.accent,
+            selection: colors.accent.withOpacity(0.3),
+            selectionHandle: colors.accent,
           ),
           dimens: ImpaktfullUiInputFieldDimensTheme(
             borderRadius: dimens.borderRadius,
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            hint: textStyles.onCardSecondary.text.medium,
+            hint: textStyles.onCardSecondary.text.medium
+                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
             label: textStyles.onCard.text.small.medium,
           ),
         ),
@@ -232,11 +231,7 @@ class DefaultTheme {
         loadingIndicator: ImpaktfullUiLoadingIndicatorTheme(
           colors: ImpaktfullUiLoadingIndicatorColorTheme(color: colors.accent),
           assets: ImpaktfullUiLoadingIndicatorAssetTheme(
-            lottie: _getAssetForPackage(
-              directory: 'lottie',
-              assetFileName: 'loading.json',
-              package: package,
-            ),
+            lottie: assets.lotties.loading,
           ),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
@@ -297,22 +292,4 @@ class DefaultTheme {
       ),
     );
   }
-}
-
-String _getAssetForPackage({
-  required String assetFileName,
-  String? directory,
-  String? package,
-}) {
-  var fullAssetPath = directory ?? '';
-  if (fullAssetPath.isNotEmpty) {
-    fullAssetPath += "/";
-  }
-  fullAssetPath += assetFileName;
-  fullAssetPath = 'assets/$fullAssetPath';
-
-  if (package == null) {
-    return fullAssetPath;
-  }
-  return 'packages/$package/$fullAssetPath';
 }

@@ -9,6 +9,8 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
     required this.colors,
     required this.dimens,
   });
+
+  static ImpaktfullUiButtonTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.button;
 }
 
 class ImpaktfullUiButtonColorTheme {

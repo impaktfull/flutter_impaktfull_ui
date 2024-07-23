@@ -3,9 +3,11 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_icon_input.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_string_input.dart';
-import 'package:impaktfull_ui_example/src/component_library/components/buttons/buttons_library_variant.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/button/button_type_library_variant.dart';
 
-class ButtonsLibraryItem extends ComponentLibraryItem {
+class ButtonLibraryItem extends ComponentLibraryItem {
+  const ButtonLibraryItem();
+
   @override
   String get title => 'ImpaktfullUiButton';
 
@@ -13,14 +15,14 @@ class ButtonsLibraryItem extends ComponentLibraryItem {
   List<ComponentLibraryVariant> getComponentVariants() {
     return [
       for (final type in ImpaktfullUiButtonType.values) ...[
-        ButtonTypeVariant(type: type),
+        ButtonTypeLibraryVariant(type: type),
       ]
     ];
   }
 }
 
-class ButtonsLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput title = ComponentLibraryStringInput('Title');
+class ButtonLibraryInputs extends ComponentLibraryInputs {
+  final ComponentLibraryStringInput title = ComponentLibraryStringInput('Title', initialValue: "{button_value}");
   final ComponentLibraryIconInput leadingIcon = ComponentLibraryIconInput('Leading icon');
   final ComponentLibraryIconInput trailingIcon = ComponentLibraryIconInput('TrailingIcon icon');
 

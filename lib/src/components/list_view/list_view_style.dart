@@ -9,6 +9,8 @@ class ImpaktfullUiListViewTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
     required this.textStyles,
   });
+
+  static ImpaktfullUiListViewTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.listView;
 }
 
 class ImpaktfullUiListViewTextStylesTheme {

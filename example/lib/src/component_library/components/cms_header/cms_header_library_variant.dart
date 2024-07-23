@@ -13,8 +13,8 @@ class CmsHeaderVariant extends ComponentLibraryVariant<CmsHeaderLibraryVariantIn
   List<Widget> build(BuildContext context, CmsHeaderLibraryVariantInputs inputs) {
     return [
       ImpaktfullUiCmsHeader(
-        title: inputs.title.value ?? '{cms header title}',
-        subtitle: inputs.subtitle.value ?? '{a longer cms header subtitle}',
+        title: inputs.title.value ?? '{fallback title}',
+        subtitle: inputs.subtitle.value,
         badge: inputs.badge.value,
         actions: [
           ImpaktfullUiButton(
@@ -26,8 +26,8 @@ class CmsHeaderVariant extends ComponentLibraryVariant<CmsHeaderLibraryVariantIn
         ],
       ),
       ImpaktfullUiCmsHeader(
-        title: inputs.title.value ?? '{cms header title}',
-        subtitle: inputs.subtitle.value ?? '{a longer cms header subtitle}',
+        title: inputs.title.value ?? '{fallback title}',
+        subtitle: inputs.subtitle.value,
         badge: inputs.badge.value,
         actions: [
           ImpaktfullUiButton(

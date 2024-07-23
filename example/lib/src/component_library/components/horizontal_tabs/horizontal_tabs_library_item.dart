@@ -4,6 +4,8 @@ import 'package:impaktfull_ui_example/src/component_library/inputs/component_lib
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_variant.dart';
 
 class HorizontalTabsLibraryItem extends ComponentLibraryItem {
+  const HorizontalTabsLibraryItem();
+
   @override
   String get title => 'ImpaktfullUiHorizontalTabs';
 

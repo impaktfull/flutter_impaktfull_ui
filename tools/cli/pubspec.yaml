@@ -1,0 +1,11 @@
+name: widget_library_cli
+description: "A cli to simplify the creation of the widget library"
+version: 0.0.1
+
+environment:
+  sdk: ">=3.4.1 <4.0.0"
+
+dependencies:
+  path: ^1.9.0
+
+dev_dependencies:

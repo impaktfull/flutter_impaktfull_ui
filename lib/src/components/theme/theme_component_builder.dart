@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/component_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiComponentThemeBuidler<T extends ImpaktfullUiComponentTheme> extends StatelessWidget {

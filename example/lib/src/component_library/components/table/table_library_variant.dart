@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/table/table_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
 class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
   TableVariant();
@@ -12,7 +13,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
   @override
   List<Widget> build(BuildContext context, TableLibraryVariantInputs inputs) {
     return [
-      SizedBox(
+      ComponentsLibraryVariantDescriptor(
         height: 400,
         child: ImpaktfullUiTable(
           titles: const [

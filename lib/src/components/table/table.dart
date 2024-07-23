@@ -7,10 +7,13 @@ import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'table_style.dart';
 
-class ImpaktfullUiTable extends StatelessWidget {
+part 'table.describe.dart';
+
+class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
   final List<TableColumnConfig> columnConfig;
   final List<ImpaktfullUiTableHeaderItem> titles;
   final List<ImpaktfullUiTableRow> content;
@@ -64,6 +67,9 @@ class ImpaktfullUiTable extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  String describe() => _describeInstance(this);
 }
 
 class _TableContainer extends StatelessWidget {

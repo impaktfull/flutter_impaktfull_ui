@@ -1,10 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'divider_style.dart';
+part 'divider.describe.dart';
 
-class ImpaktfullUiDivider extends StatelessWidget {
+class ImpaktfullUiDivider extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiDividerTheme? theme;
 
   const ImpaktfullUiDivider({
@@ -23,4 +25,7 @@ class ImpaktfullUiDivider extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  String describe() => _describeInstance(this);
 }

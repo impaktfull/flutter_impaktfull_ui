@@ -5,6 +5,8 @@ import 'package:impaktfull_ui_example/src/component_library/inputs/component_lib
 import 'package:impaktfull_ui_example/src/component_library/components/input_field/input_field_library_variant.dart';
 
 class InputFieldLibraryItem extends ComponentLibraryItem {
+  const InputFieldLibraryItem();
+
   @override
   String get title => 'ImpaktfullUiInputFIeld';
 

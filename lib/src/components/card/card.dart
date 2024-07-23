@@ -1,10 +1,14 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/card/card_style.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'card_style.dart';
 
-class ImpaktfullUiCard extends StatefulWidget {
+part 'card.describe.dart';
+
+class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
   final Widget child;
   final VoidCallback? onTap;
   final MouseCursor cursor;
@@ -22,6 +26,9 @@ class ImpaktfullUiCard extends StatefulWidget {
 
   @override
   State<ImpaktfullUiCard> createState() => _ImpaktfullUiCardState();
+
+  @override
+  String describe() => _describeInstance(this);
 }
 
 class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
@@ -50,7 +57,7 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         ),
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: false,
-          cursor: widget.cursor,
+          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer ? SystemMouseCursors.click : widget.cursor,
           onTap: widget.onTap,
           onFocus: widget.onFocus,
           borderRadius: componentTheme.dimens.borderRadius,

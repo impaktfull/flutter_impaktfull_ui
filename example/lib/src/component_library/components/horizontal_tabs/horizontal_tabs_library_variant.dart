@@ -14,7 +14,7 @@ class HorizontalTabsVariant extends ComponentLibraryVariant<HorizontalTabsLibrar
     return [
       ImpaktfullUiHorizontalTabs(
         selectedValue: inputs.selectedIndex.value,
-        onTabSelected: (value) => inputs.selectedIndex.updateState(value),
+        onTabSelected: inputs.selectedIndex.updateState,
         tabs: [
           ImpaktfullUiHorizontalTabConfig(
             label: 'Tab 1',

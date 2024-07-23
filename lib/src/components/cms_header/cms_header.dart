@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
+import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui_2/src/components/cms_header/cms_header_style.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'cms_header_style.dart';
 
-class ImpaktfullUiCmsHeader extends StatefulWidget {
+part 'cms_header.describe.dart';
+
+class ImpaktfullUiCmsHeader extends StatefulWidget with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
   final List<ImpaktfullUiButton> actions;
-  final ImpaktfullUiCardTheme? theme;
+  final ImpaktfullUiCmsHeaderTheme? theme;
   final String? badge;
   final Widget? bottom;
 
@@ -26,12 +33,15 @@ class ImpaktfullUiCmsHeader extends StatefulWidget {
 
   @override
   State<ImpaktfullUiCmsHeader> createState() => _ImpaktfullUiCmsHeaderState();
+
+  @override
+  String describe() => _describeInstance(this);
 }
 
 class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCardTheme>(
+    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCmsHeaderTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, theme, componentTheme) => Container(
         decoration: BoxDecoration(

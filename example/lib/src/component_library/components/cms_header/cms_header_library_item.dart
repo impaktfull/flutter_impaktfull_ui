@@ -5,6 +5,8 @@ import 'package:impaktfull_ui_example/src/component_library/inputs/component_lib
 import 'package:impaktfull_ui_example/src/component_library/components/cms_header/cms_header_library_variant.dart';
 
 class CmsHeaderLibraryItem extends ComponentLibraryItem {
+  const CmsHeaderLibraryItem();
+
   @override
   String get title => 'ImpaktfullUiCmsHeader';
 
@@ -17,8 +19,8 @@ class CmsHeaderLibraryItem extends ComponentLibraryItem {
 }
 
 class CmsHeaderLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput title = ComponentLibraryStringInput('Title');
-  final ComponentLibraryStringInput subtitle = ComponentLibraryStringInput('Subtitle');
+  final ComponentLibraryStringInput title = ComponentLibraryStringInput('Title', initialValue: '{title}');
+  final ComponentLibraryStringInput subtitle = ComponentLibraryStringInput('Subtitle', initialValue: '{subtitle}');
   final ComponentLibraryStringInput badge = ComponentLibraryStringInput('Badge');
   final ComponentLibraryIntInput selectedTab = ComponentLibraryIntInput('Tab index', initialValue: 0);
 

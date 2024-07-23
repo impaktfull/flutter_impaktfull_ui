@@ -1,0 +1,3 @@
+mixin ComponentDescriptorMixin {
+  String describe();
+}

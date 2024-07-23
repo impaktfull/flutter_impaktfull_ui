@@ -11,14 +11,23 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
     required this.textStyles,
   });
+
+  static ImpaktfullUiInputFieldTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.inputField;
 }
 
 class ImpaktfullUiInputFieldColorTheme {
   final Color background;
   final Color border;
+  final Color cursor;
+  final Color selection;
+  final Color selectionHandle;
+
   const ImpaktfullUiInputFieldColorTheme({
     required this.background,
     required this.border,
+    required this.cursor,
+    required this.selection,
+    required this.selectionHandle,
   });
 }
 

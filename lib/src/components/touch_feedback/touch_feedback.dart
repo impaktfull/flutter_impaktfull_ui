@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_builder.dart';
+
+import '../../util/device_util/device_util.dart';
 
 class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final VoidCallback? onTap;
@@ -53,17 +55,12 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
                   ),
             borderRadius: border == null ? borderRadius : null,
             color: color ?? Colors.transparent,
-            child: InkWell(
+            child: _PlatformTouchFeedback(
               borderRadius: borderRadius,
               onTap: onTap,
-              mouseCursor: cursor,
-              onFocusChange: _onFocusChanged,
-              focusColor: Colors.transparent,
-              splashFactory: NoSplash.splashFactory,
-              child: ColoredBox(
-                color: Colors.transparent,
-                child: child,
-              ),
+              cursor: cursor,
+              onFocusChanged: _onFocusChanged,
+              child: child,
             ),
           ),
         ),
@@ -75,5 +72,72 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     if (value) {
       onFocus?.call();
     }
+  }
+}
+
+class _PlatformTouchFeedback extends StatefulWidget {
+  final Widget child;
+  final BorderRadius? borderRadius;
+  final VoidCallback? onTap;
+  final MouseCursor cursor;
+  final ValueChanged<bool> onFocusChanged;
+
+  const _PlatformTouchFeedback({
+    required this.child,
+    required this.borderRadius,
+    required this.onTap,
+    required this.cursor,
+    required this.onFocusChanged,
+  });
+
+  @override
+  State<_PlatformTouchFeedback> createState() => _PlatformTouchFeedbackState();
+}
+
+class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
+  late final FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (isMobileWeb()) {
+      return MouseRegion(
+        cursor: widget.cursor,
+        child: GestureDetector(
+          onTap: widget.onTap,
+          child: Focus(
+            focusNode: _focusNode,
+            onFocusChange: widget.onFocusChanged,
+            child: ColoredBox(
+              color: Colors.transparent,
+              child: widget.child,
+            ),
+          ),
+        ),
+      );
+    }
+    return InkWell(
+      borderRadius: widget.borderRadius,
+      onTap: widget.onTap,
+      mouseCursor: widget.cursor,
+      onFocusChange: widget.onFocusChanged,
+      focusColor: Colors.transparent,
+      splashFactory: NoSplash.splashFactory,
+      child: ColoredBox(
+        color: Colors.transparent,
+        child: widget.child,
+      ),
+    );
   }
 }

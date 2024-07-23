@@ -18,6 +18,13 @@ class CardVariant extends ComponentLibraryVariant<CardLibraryVariantInputs> {
           width: 200,
         ),
       ),
+      ImpaktfullUiCard(
+        child: const SizedBox(
+          height: 200,
+          width: 200,
+        ),
+        onTap: () {},
+      ),
     ];
   }
 

@@ -11,6 +11,9 @@ class ImpaktfullUiTableRowItemTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
     required this.textStyles,
   });
+
+  static ImpaktfullUiTableRowItemTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.tableRowItem;
 }
 
 class ImpaktfullUiTableRowItemColorTheme {

@@ -6,7 +6,9 @@ export 'badge_style.dart';
 export 'badge_type.dart';
 export 'badge_size.dart';
 
-class ImpaktfullUiBadge extends StatefulWidget {
+part 'badge.describe.dart';
+
+class ImpaktfullUiBadge extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiBadgeType type;
   final ImpaktfullUiBadgeSize size;
   final String? label;
@@ -30,6 +32,9 @@ class ImpaktfullUiBadge extends StatefulWidget {
 
   @override
   State<ImpaktfullUiBadge> createState() => _ImpaktfullUiBadgeState();
+
+  @override
+  String describe() => _describe(this);
 }
 
 class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {

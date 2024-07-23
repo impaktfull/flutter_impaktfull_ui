@@ -3,6 +3,7 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 export 'horizontal_tab_style.dart';
+part 'horizontal_tab.describe.dart';
 
 class ImpaktfullUiHorizontalTabConfig<T> {
   final String label;
@@ -18,7 +19,7 @@ class ImpaktfullUiHorizontalTabConfig<T> {
   });
 }
 
-class ImpaktfullUiHorizontalTab extends StatelessWidget {
+class ImpaktfullUiHorizontalTab extends StatelessWidget with ComponentDescriptorMixin {
   final String label;
   final String? badge;
   final ImpaktfullUiBadgeType? badgeType;
@@ -71,4 +72,7 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  String describe() => _describeInstance(this);
 }

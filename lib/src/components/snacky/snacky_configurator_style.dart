@@ -11,6 +11,9 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
     required this.textStyles,
   });
+
+  static ImpaktfullUiSnackyConfiguratorTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.snackyConfigurator;
 }
 
 class ImpaktfullUiSnackyConfiguratorColorTheme {

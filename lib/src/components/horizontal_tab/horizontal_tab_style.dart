@@ -11,6 +11,9 @@ class ImpaktfullUiHorizontalTabTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
     required this.textStyles,
   });
+
+  static ImpaktfullUiHorizontalTabTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.horizontalTab;
 }
 
 class ImpaktfullUiHorizontalTabColorTheme {

@@ -3,9 +3,10 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_icon_input.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_string_input.dart';
-import 'package:impaktfull_ui_example/src/component_library/components/badge/badge_library_variant.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/badge/badge_type_library_variant.dart';
 
 class BadgeLibraryItem extends ComponentLibraryItem {
+  const BadgeLibraryItem();
   @override
   String get title => 'ImpaktfullUiBadge';
 
@@ -13,7 +14,7 @@ class BadgeLibraryItem extends ComponentLibraryItem {
   List<ComponentLibraryVariant> getComponentVariants() {
     return [
       for (final type in ImpaktfullUiBadgeType.values) ...[
-        BadgeVariant(type),
+        BadgeTypeLibraryVariant(type),
       ],
     ];
   }

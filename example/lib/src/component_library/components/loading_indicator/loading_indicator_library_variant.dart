@@ -13,8 +13,18 @@ class LoadingIndicatorVariant extends ComponentLibraryVariant<LoadingIndicatorLi
   List<Widget> build(BuildContext context, LoadingIndicatorLibraryVariantInputs inputs) {
     return [
       const ImpaktfullUiLoadingIndicator(),
+      ImpaktfullUiLoadingIndicator(
+        color: ImpaktfullUiTheme.of(context).colors.accent,
+      ),
       const ImpaktfullUiLoadingIndicator(
         theme: ImpaktfullUiLoadingIndicatorTheme(
+          colors: ImpaktfullUiLoadingIndicatorColorTheme(color: Colors.black),
+          assets: ImpaktfullUiLoadingIndicatorAssetTheme(lottie: null),
+        ),
+      ),
+      ImpaktfullUiLoadingIndicator(
+        color: ImpaktfullUiTheme.of(context).colors.accent,
+        theme: const ImpaktfullUiLoadingIndicatorTheme(
           colors: ImpaktfullUiLoadingIndicatorColorTheme(color: Colors.black),
           assets: ImpaktfullUiLoadingIndicatorAssetTheme(lottie: null),
         ),

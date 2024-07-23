@@ -7,6 +7,8 @@ class ImpaktfullUiRefreshIndicatorTheme extends ImpaktfullUiComponentTheme {
   const ImpaktfullUiRefreshIndicatorTheme({
     required this.colors,
   });
+
+  static ImpaktfullUiRefreshIndicatorTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.refreshIndicator;
 }
 
 class ImpaktfullUiRefreshIndicatorColorTheme {

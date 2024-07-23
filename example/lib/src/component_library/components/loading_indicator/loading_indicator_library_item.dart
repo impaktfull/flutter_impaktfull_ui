@@ -3,6 +3,8 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
 class LoadingIndicatorLibraryItem extends ComponentLibraryItem {
+  const LoadingIndicatorLibraryItem();
+
   @override
   String get title => 'ImpaktfullUiLoadingIndicator';
 
