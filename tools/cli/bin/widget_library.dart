@@ -84,7 +84,7 @@ class ${className}DimensTheme {
 
   final describeFileContent = """part of '${lowercaseComponentName}.dart';
 
-String _describeInstance(${componentName} instance) {
+String _describeInstance(${className} instance) {
   final sb = StringBuffer();
   return sb.toString();
 }""";
