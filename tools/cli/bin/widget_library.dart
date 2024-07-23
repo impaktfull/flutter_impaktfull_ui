@@ -62,7 +62,7 @@ class ${className}Theme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
-  static ${componentName}Theme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.${lowercaseComponentName};
+  static ${className}Theme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.${lowercaseComponentName};
 }
 
 class ${className}ColorTheme {
