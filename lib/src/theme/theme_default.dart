@@ -11,6 +11,7 @@ import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.d
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view_style.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator_style.dart';
+import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator_style.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
@@ -233,6 +234,11 @@ class DefaultTheme {
           assets: ImpaktfullUiLoadingIndicatorAssetTheme(
             lottie: assets.lotties.loading,
           ),
+        ),
+        modal: const ImpaktfullUiModalTheme(
+          colors: ImpaktfullUiModalColorTheme(),
+          textStyles: ImpaktfullUiModalTextStyleTheme(),
+          dimens: ImpaktfullUiModalDimensTheme(),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
           colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),

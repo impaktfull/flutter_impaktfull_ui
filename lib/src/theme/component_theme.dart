@@ -11,6 +11,7 @@ import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.d
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view_style.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator_style.dart';
+import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator_style.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
@@ -36,6 +37,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiInputFieldTheme inputField;
   final ImpaktfullUiListViewTheme listView;
   final ImpaktfullUiLoadingIndicatorTheme loadingIndicator;
+  final ImpaktfullUiModalTheme modal;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
   final ImpaktfullUiSnackyConfiguratorTheme snackyConfigurator;
   final ImpaktfullUiTableTheme table;
@@ -57,6 +59,7 @@ class ImpaktfullUiComponentsTheme {
     required this.inputField,
     required this.listView,
     required this.loadingIndicator,
+    required this.modal,
     required this.refreshIndicator,
     required this.snackyConfigurator,
     required this.tableHeader,
@@ -79,6 +82,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiInputFieldTheme? inputField,
     ImpaktfullUiListViewTheme? listView,
     ImpaktfullUiLoadingIndicatorTheme? loadingIndicator,
+    ImpaktfullUiModalTheme? modal,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
     ImpaktfullUiSnackyConfiguratorTheme? snackyConfigurator,
     ImpaktfullUiTableTheme? table,
@@ -100,6 +104,7 @@ class ImpaktfullUiComponentsTheme {
         inputField: inputField ?? this.inputField,
         listView: listView ?? this.listView,
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
+        modal: modal ?? this.modal,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         table: table ?? this.table,
@@ -134,6 +139,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiListViewTheme.of(context) as T;
     } else if (T == ImpaktfullUiLoadingIndicatorTheme) {
       return ImpaktfullUiLoadingIndicatorTheme.of(context) as T;
+    } else if (T == ImpaktfullUiModalTheme) {
+      return ImpaktfullUiModalTheme.of(context) as T;
     } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiSnackyConfiguratorTheme) {

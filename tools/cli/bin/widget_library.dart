@@ -48,7 +48,8 @@ Future<void> createComponent({
   final lowercaseComponentName = componentName.toLowerCase();
   final styleFile = File(join(dir.path, '${lowercaseComponentName}_style.dart'));
 
-  final styleFileContent = """import 'package:impaktfull_ui_2/src/theme/theme.dart';
+  final styleFileContent = """import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ${className}Theme extends ImpaktfullUiComponentTheme {
   final ${className}ColorTheme colors;
@@ -60,6 +61,8 @@ class ${className}Theme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
     required this.dimens,
   });
+
+  static ${componentName}Theme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.${lowercaseComponentName};
 }
 
 class ${className}ColorTheme {
