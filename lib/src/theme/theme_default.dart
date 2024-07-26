@@ -181,7 +181,9 @@ class DefaultTheme {
           shadows: ImpaktfullUiDropdownShadowTheme(
             menuShadow: shadows.medium,
           ),
-          dimens: const ImpaktfullUiDropdownDimensTheme(),
+          dimens: ImpaktfullUiDropdownDimensTheme(
+            borderRadius: dimens.borderRadius,
+          ),
         ),
         horizontalTab: ImpaktfullUiHorizontalTabTheme(
           colors: ImpaktfullUiHorizontalTabColorTheme(

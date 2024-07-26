@@ -5,12 +5,14 @@ class ImpaktfullUiDropdownMenu extends StatelessWidget {
   final double? width;
   final double? height;
   final Widget child;
+  final BorderRadius borderRadius;
   final ImpaktfullUiDropdownTheme theme;
 
   const ImpaktfullUiDropdownMenu({
     required this.child,
     required this.theme,
     required this.height,
+    required this.borderRadius,
     this.width,
     super.key,
   });
@@ -27,11 +29,14 @@ class ImpaktfullUiDropdownMenu extends StatelessWidget {
             width: 1,
             color: theme.colors.menuBorder,
           ),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: borderRadius,
         ),
         shadows: theme.shadows.menuShadow,
       ),
-      child: child,
+      child: ClipRRect(
+        borderRadius: borderRadius,
+        child: child,
+      ),
     );
   }
 }

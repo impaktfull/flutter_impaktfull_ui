@@ -24,6 +24,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
   final String? noDataLabel;
   final String? refreshBtnLabel;
   final bool isLoading;
+  final bool shrinkWrap;
   final AsyncCallback? onRefresh;
   final ImpaktfullUiListViewTheme? theme;
 
@@ -33,6 +34,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
     this.spacing = 0,
     this.onRefresh,
     this.padding = EdgeInsets.zero,
+    this.shrinkWrap = false,
     this.theme,
     super.key,
   })  : itemBuilder = null,
@@ -51,6 +53,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
     this.refreshBtnLabel,
     this.onRefresh,
     this.padding = EdgeInsets.zero,
+    this.shrinkWrap = false,
     this.theme,
     super.key,
   })  : separated = false,
@@ -65,6 +68,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
     this.refreshBtnLabel,
     this.onRefresh,
     this.padding = EdgeInsets.zero,
+    this.shrinkWrap = false,
     this.theme,
     super.key,
     required,
@@ -79,6 +83,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
     this.refreshBtnLabel,
     this.onRefresh,
     this.padding = EdgeInsets.zero,
+    this.shrinkWrap = false,
     this.theme,
     super.key,
     required,
@@ -113,6 +118,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             onRefresh: widget.onRefresh,
             child: ListView(
               padding: padding,
+              shrinkWrap: widget.shrinkWrap,
               children: [
                 ImpaktfullUiAutoLayout.vertical(
                   spacing: widget.spacing,
@@ -128,6 +134,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             onRefresh: widget.onRefresh,
             child: ListView(
               padding: padding,
+              shrinkWrap: widget.shrinkWrap,
               children: [
                 widget.child!,
               ],
@@ -182,6 +189,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                 widget.items![index],
                 index,
               ),
+              shrinkWrap: widget.shrinkWrap,
               separatorBuilder: (context, index) => const ImpaktfullUiDivider(),
               itemCount: widget.items!.length,
             ),
@@ -196,6 +204,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               widget.items![index],
               index,
             ),
+            shrinkWrap: widget.shrinkWrap,
             separatorBuilder: (context, index) => SizedBox(height: widget.spacing),
             itemCount: widget.items!.length,
           ),

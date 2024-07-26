@@ -19,22 +19,34 @@ enum ImpaktfullUiAlignment {
   const ImpaktfullUiAlignment(this._alignment);
 }
 
+class ImpaktfullUiDropdownItem<T> {
+  final String label;
+  final T value;
+
+  const ImpaktfullUiDropdownItem({
+    required this.label,
+    required this.value,
+  });
+}
+
 class ImpaktfullUiDropdown<T> extends StatefulWidget with ComponentDescriptorMixin {
   final double? childWidth;
   final double? height;
   final Widget? child;
-  final Widget? button;
-  final List<T>? items;
-  final Widget Function(BuildContext context, T item, int index)? itemBuilder;
+  final WidgetBuilder? button;
+  final List<ImpaktfullUiDropdownItem<T>>? items;
+  final Widget Function(BuildContext context, ImpaktfullUiDropdownItem<T> item, int index)? itemBuilder;
   final String? noDataLabel;
   final ImpaktfullUiAlignment alignment;
   final ImpaktfullUiDropdownTheme? theme;
+  final ImpaktfullUiDropdownController? controller;
 
   const ImpaktfullUiDropdown({
     required Widget this.child,
+    this.controller,
     this.button,
     this.childWidth,
-    this.alignment = ImpaktfullUiAlignment.bottomLeft,
+    this.alignment = ImpaktfullUiAlignment.bottomCenter,
     this.height = 300,
     this.theme,
     super.key,
@@ -43,12 +55,13 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget with ComponentDescriptorMix
         noDataLabel = null;
 
   const ImpaktfullUiDropdown.builder({
-    required List<T> this.items,
-    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
-    required this.noDataLabel,
+    required List<ImpaktfullUiDropdownItem<T>> this.items,
+    required this.itemBuilder,
+    required String this.noDataLabel,
+    this.controller,
     this.button,
     this.childWidth,
-    this.alignment = ImpaktfullUiAlignment.bottomLeft,
+    this.alignment = ImpaktfullUiAlignment.bottomCenter,
     this.height = 300,
     this.theme,
     super.key,
@@ -58,10 +71,12 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget with ComponentDescriptorMix
   String describe() => _describeInstance(this);
 
   @override
-  State<ImpaktfullUiDropdown> createState() => _ImpaktfullUiDropdownState();
+  State<ImpaktfullUiDropdown<T>> createState() => _ImpaktfullUiDropdownState<T>();
 }
 
-class _ImpaktfullUiDropdownState extends State<ImpaktfullUiDropdown> with SingleTickerProviderStateMixin {
+class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
+    with SingleTickerProviderStateMixin
+    implements ImpaktfullUiDropdownControllerListener {
   static OverlayPortalController? _globalToolTipController;
 
   final _link = LayerLink();
@@ -69,9 +84,11 @@ class _ImpaktfullUiDropdownState extends State<ImpaktfullUiDropdown> with Single
   late AnimationController _animationController;
   late Animation<double> _curvedAnimation;
   double? _buttonWidth;
+
   @override
   void initState() {
     super.initState();
+    widget.controller?._listener = this;
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 200),
       reverseDuration: const Duration(milliseconds: 200),
@@ -86,6 +103,7 @@ class _ImpaktfullUiDropdownState extends State<ImpaktfullUiDropdown> with Single
 
   @override
   void dispose() {
+    widget.controller?._listener = null;
     _animationController.dispose();
     _hide();
     super.dispose();
@@ -120,13 +138,15 @@ class _ImpaktfullUiDropdownState extends State<ImpaktfullUiDropdown> with Single
                           width: width,
                           height: widget.height,
                           theme: componentTheme,
+                          borderRadius: componentTheme.dimens.borderRadius,
                           child: Builder(
                             builder: (context) {
                               if (widget.child != null) return widget.child!;
-                              return ImpaktfullUiListView.builder(
+                              return ImpaktfullUiListView<ImpaktfullUiDropdownItem<T>>.builder(
                                 items: widget.items!,
                                 itemBuilder: widget.itemBuilder!,
                                 noDataLabel: widget.noDataLabel!,
+                                shrinkWrap: true,
                               );
                             },
                           ),
@@ -140,7 +160,7 @@ class _ImpaktfullUiDropdownState extends State<ImpaktfullUiDropdown> with Single
             child: LayoutBuilder(
               builder: (context, constraints) {
                 _updateButtonWidth(constraints.maxWidth);
-                if (widget.button != null) return widget.button!;
+                if (widget.button != null) return widget.button!(context);
                 return ImpaktfullUiButton(
                   onTap: _onTapButton,
                   type: ImpaktfullUiButtonType.secondaryGrey,
@@ -165,18 +185,23 @@ class _ImpaktfullUiDropdownState extends State<ImpaktfullUiDropdown> with Single
     setState(() {});
   }
 
+  Future<void> _open() async {
+    _animationController.forward();
+    _globalToolTipController = _tooltipController;
+    _globalToolTipController?.show();
+    setState(() {});
+  }
+
   Future<void> _onTapButton() async {
     _setButtonWidth(context.size!.width);
     if (_globalToolTipController == _tooltipController) {
       await _animationController.reverse();
       _globalToolTipController?.hide();
       _globalToolTipController = null;
+      setState(() {});
     } else {
-      _animationController.forward();
-      _globalToolTipController = _tooltipController;
-      _globalToolTipController?.show();
+      _open();
     }
-    setState(() {});
   }
 
   Offset _getTranslateOffset(double width) {
@@ -200,4 +225,29 @@ class _ImpaktfullUiDropdownState extends State<ImpaktfullUiDropdown> with Single
       _setButtonWidth(width);
     });
   }
+
+  @override
+  bool get isOpen => _tooltipController.isShowing;
+
+  @override
+  Future<void> closeDropdown() async => _hide();
+
+  @override
+  Future<void> openDropdown() async => _open();
+}
+
+class ImpaktfullUiDropdownController {
+  ImpaktfullUiDropdownControllerListener? _listener;
+  bool get isOpen => _listener?.isOpen ?? false;
+  Future<void> close() async => _listener?.closeDropdown();
+
+  Future<void> open() async => _listener?.openDropdown();
+}
+
+abstract class ImpaktfullUiDropdownControllerListener {
+  bool get isOpen;
+
+  Future<void> closeDropdown();
+
+  Future<void> openDropdown();
 }

@@ -33,5 +33,9 @@ class ImpaktfullUiDropdownShadowTheme {
 }
 
 class ImpaktfullUiDropdownDimensTheme {
-  const ImpaktfullUiDropdownDimensTheme();
+  final BorderRadius borderRadius;
+
+  const ImpaktfullUiDropdownDimensTheme({
+    required this.borderRadius,
+  });
 }
