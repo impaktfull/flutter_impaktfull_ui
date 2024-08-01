@@ -237,10 +237,22 @@ class DefaultTheme {
             lottie: assets.lotties.loading,
           ),
         ),
-        modal: const ImpaktfullUiModalTheme(
-          colors: ImpaktfullUiModalColorTheme(),
-          textStyles: ImpaktfullUiModalTextStyleTheme(),
-          dimens: ImpaktfullUiModalDimensTheme(),
+        modal: ImpaktfullUiModalTheme(
+          colors: ImpaktfullUiModalColorTheme(
+            background: colors.card,
+            closeIcon: colors.text,
+            leadingHeaderIcon: colors.accent,
+          ),
+          textStyles: ImpaktfullUiModalTextStyleTheme(
+            title: textStyles.onCanvas.display.small.semiBold,
+            subtitle: textStyles.onCanvas.text.small,
+          ),
+          dimens: ImpaktfullUiModalDimensTheme(
+            borderRadius: dimens.borderRadius,
+            padding: const EdgeInsets.all(16),
+            closeIconButtonPadding: const EdgeInsets.all(4),
+            leadingIconPadding: const EdgeInsets.all(8),
+          ),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
           colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),

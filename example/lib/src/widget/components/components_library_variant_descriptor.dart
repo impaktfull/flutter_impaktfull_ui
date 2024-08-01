@@ -21,7 +21,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
   Widget build(BuildContext context) {
     final child = this.child;
     var text = title;
-    if (child is ComponentDescriptorMixin) {
+    if (text == null && child is ComponentDescriptorMixin) {
       text = (child as ComponentDescriptorMixin).describe();
     }
     return ImpaktfullUiAutoLayout.vertical(

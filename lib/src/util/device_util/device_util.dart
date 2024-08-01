@@ -2,3 +2,4 @@ import 'device_util.dart' if (dart.library.html) 'device_util_web.dart' if (dart
     as platform;
 
 bool isMobileWeb() => platform.isMobileWeb();
+bool isApple() => platform.isApple();

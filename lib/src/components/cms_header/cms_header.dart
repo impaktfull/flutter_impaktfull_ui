@@ -3,8 +3,8 @@ import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header_style.dart';
+import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'cms_header_style.dart';
@@ -69,16 +69,9 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   if (widget.onBackTapped != null) ...[
-                    ImpaktfullUiTouchFeedback(
-                      borderRadius: BorderRadius.circular(9999),
-                      onTap: widget.onBackTapped,
-                      child: const Padding(
-                        padding: EdgeInsets.all(12),
-                        child: Icon(
-                          Icons.arrow_back,
-                          size: 16,
-                        ),
-                      ),
+                    ImpaktfullUiIconButton(
+                      onTap: widget.onBackTapped!,
+                      icon: Icons.arrow_back,
                     ),
                     const SizedBox(width: 8),
                   ],

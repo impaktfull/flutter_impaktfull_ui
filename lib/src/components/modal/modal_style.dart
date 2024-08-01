@@ -16,13 +16,36 @@ class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiModalColorTheme {
-  const ImpaktfullUiModalColorTheme();
+  final Color background;
+  final Color closeIcon;
+  final Color leadingHeaderIcon;
+
+  const ImpaktfullUiModalColorTheme({
+    required this.background,
+    required this.closeIcon,
+    required this.leadingHeaderIcon,
+  });
 }
 
 class ImpaktfullUiModalTextStyleTheme {
-  const ImpaktfullUiModalTextStyleTheme();
+  final TextStyle title;
+  final TextStyle subtitle;
+  const ImpaktfullUiModalTextStyleTheme({
+    required this.title,
+    required this.subtitle,
+  });
 }
 
 class ImpaktfullUiModalDimensTheme {
-  const ImpaktfullUiModalDimensTheme();
+  final BorderRadius borderRadius;
+  final EdgeInsetsGeometry closeIconButtonPadding;
+  final EdgeInsetsGeometry leadingIconPadding;
+  final EdgeInsetsGeometry padding;
+
+  const ImpaktfullUiModalDimensTheme({
+    required this.borderRadius,
+    required this.closeIconButtonPadding,
+    required this.leadingIconPadding,
+    required this.padding,
+  });
 }

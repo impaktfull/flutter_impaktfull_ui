@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ImpaktfullUiAssetTheme {
   final ImpaktfullUiIconTheme icons;
@@ -30,8 +31,10 @@ class ImpaktfullUiAssetTheme {
   }) =>
       ImpaktfullUiAssetTheme(
         icons: icons ??
-            const ImpaktfullUiIconTheme(
-              check: Icons.check,
+            ImpaktfullUiIconTheme(
+              check: PhosphorIcons.check(),
+              arrowBack: PhosphorIcons.arrowLeft(),
+              close: PhosphorIcons.x(),
             ),
         images: images ??
             ImpaktfullUiImageTheme(
@@ -85,17 +88,25 @@ class ImpaktfullUiAssetTheme {
 }
 
 class ImpaktfullUiIconTheme {
+  final IconData arrowBack;
   final IconData check;
+  final IconData close;
 
   const ImpaktfullUiIconTheme({
+    required this.arrowBack,
     required this.check,
+    required this.close,
   });
 
   ImpaktfullUiIconTheme copyWith({
+    IconData? arrowBack,
     IconData? check,
+    IconData? close,
   }) =>
       ImpaktfullUiIconTheme(
+        arrowBack: arrowBack ?? this.arrowBack,
         check: check ?? this.check,
+        close: close ?? this.close,
       );
 }
 

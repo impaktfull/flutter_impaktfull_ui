@@ -13,3 +13,5 @@ bool isMobileWeb() {
   }
   return false;
 }
+
+bool isApple() => false;
