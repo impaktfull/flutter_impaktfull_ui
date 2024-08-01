@@ -46,6 +46,7 @@ class DefaultTheme {
       error: const Color(0xFFB42318),
       info: const Color(0xFF1C90D4),
       success: const Color(0xFF067647),
+      destructive: const Color(0xFFB42318),
     );
     final dimens = ImpaktfullUiDimensTheme(
       borderRadius: borderRadius,
@@ -94,6 +95,11 @@ class DefaultTheme {
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
+      onCardDestructive: ImpaktfullUiTextStyleTheme.getByColor(
+        color: colors.destructive,
+        fontFamilyDisplay: fontFamilyDisplay,
+        fontFamilyText: fontFamilyText,
+      ),
       onPrimary: ImpaktfullUiTextStyleTheme.getByColor(
         color: colors.card,
         fontFamilyDisplay: fontFamilyDisplay,
@@ -101,6 +107,11 @@ class DefaultTheme {
       ),
       onSecondary: ImpaktfullUiTextStyleTheme.getByColor(
         color: colors.text,
+        fontFamilyDisplay: fontFamilyDisplay,
+        fontFamilyText: fontFamilyText,
+      ),
+      onDestructive: ImpaktfullUiTextStyleTheme.getByColor(
+        color: colors.card,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
@@ -134,6 +145,8 @@ class DefaultTheme {
             secondaryBorder: colors.border,
             tertiary: null,
             tertiaryBorder: null,
+            destructive: colors.destructive,
+            destructiveBorder: colors.destructive,
           ),
           dimens: ImpaktfullUiButtonDimensTheme(
             borderRadius: dimens.borderRadius,

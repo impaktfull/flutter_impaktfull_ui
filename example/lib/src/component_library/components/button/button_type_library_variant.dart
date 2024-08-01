@@ -53,6 +53,13 @@ class ButtonTypeLibraryVariant extends ComponentLibraryVariant<ButtonsLibraryPri
               ),
             ],
           ],
+          ImpaktfullUiButton(
+            type: type,
+            size: size,
+            fullWidth: fullWidth,
+            leadingIcon: inputs.leadingIcon.value ?? Icons.add,
+            onAsyncTap: () async => Future.delayed(const Duration(seconds: 3)),
+          ),
         ],
       ],
     ];

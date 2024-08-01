@@ -152,10 +152,16 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
         return colors.secondary;
       case ImpaktfullUiButtonType.secondaryGrey:
         return colors.secondary;
+      case ImpaktfullUiButtonType.destructivePrimary:
+        return colors.destructive;
+      case ImpaktfullUiButtonType.destructiveSecondary:
+        return colors.secondary;
       case ImpaktfullUiButtonType.tertiary:
       case ImpaktfullUiButtonType.tertiaryGrey:
       case ImpaktfullUiButtonType.link:
       case ImpaktfullUiButtonType.linkGrey:
+      case ImpaktfullUiButtonType.destructiveTertiary:
+      case ImpaktfullUiButtonType.destructiveLink:
         return null;
     }
   }
@@ -169,10 +175,15 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
         return colors.secondaryBorder;
       case ImpaktfullUiButtonType.secondaryGrey:
         return colors.secondaryBorder;
+      case ImpaktfullUiButtonType.destructivePrimary:
+      case ImpaktfullUiButtonType.destructiveSecondary:
+        return colors.destructiveBorder;
       case ImpaktfullUiButtonType.tertiary:
       case ImpaktfullUiButtonType.tertiaryGrey:
       case ImpaktfullUiButtonType.link:
       case ImpaktfullUiButtonType.linkGrey:
+      case ImpaktfullUiButtonType.destructiveTertiary:
+      case ImpaktfullUiButtonType.destructiveLink:
         return null;
     }
   }
@@ -215,6 +226,12 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
       case ImpaktfullUiButtonType.tertiaryGrey:
       case ImpaktfullUiButtonType.linkGrey:
         return _getTextStyleBySize(theme.textStyles.onCard);
+      case ImpaktfullUiButtonType.destructivePrimary:
+        return _getTextStyleBySize(theme.textStyles.onDestructive);
+      case ImpaktfullUiButtonType.destructiveSecondary:
+      case ImpaktfullUiButtonType.destructiveTertiary:
+      case ImpaktfullUiButtonType.destructiveLink:
+        return _getTextStyleBySize(theme.textStyles.onCardDestructive);
     }
   }
 
@@ -240,12 +257,16 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
       case ImpaktfullUiButtonType.tertiary:
       case ImpaktfullUiButtonType.secondaryGrey:
       case ImpaktfullUiButtonType.tertiaryGrey:
+      case ImpaktfullUiButtonType.destructivePrimary:
+      case ImpaktfullUiButtonType.destructiveSecondary:
+      case ImpaktfullUiButtonType.destructiveTertiary:
         return EdgeInsets.symmetric(
           horizontal: widget.size.horizontalPadding,
           vertical: widget.size.verticalPadding,
         );
       case ImpaktfullUiButtonType.link:
       case ImpaktfullUiButtonType.linkGrey:
+      case ImpaktfullUiButtonType.destructiveLink:
         return const EdgeInsets.symmetric(horizontal: 4);
     }
   }

@@ -6,4 +6,8 @@ enum ImpaktfullUiButtonType {
   tertiaryGrey,
   link,
   linkGrey,
+  destructivePrimary,
+  destructiveSecondary,
+  destructiveTertiary,
+  destructiveLink,
 }

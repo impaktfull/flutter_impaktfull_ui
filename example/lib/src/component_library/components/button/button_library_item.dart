@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
@@ -22,9 +23,18 @@ class ButtonLibraryItem extends ComponentLibraryItem {
 }
 
 class ButtonLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput title = ComponentLibraryStringInput('Title', initialValue: "{button_value}");
-  final ComponentLibraryIconInput leadingIcon = ComponentLibraryIconInput('Leading icon');
-  final ComponentLibraryIconInput trailingIcon = ComponentLibraryIconInput('TrailingIcon icon');
+  final ComponentLibraryStringInput title = ComponentLibraryStringInput(
+    'Title',
+    initialValue: "{button_value}",
+  );
+  final ComponentLibraryIconInput leadingIcon = ComponentLibraryIconInput(
+    'Leading icon',
+    initialValue: Icons.add,
+  );
+  final ComponentLibraryIconInput trailingIcon = ComponentLibraryIconInput(
+    'TrailingIcon icon',
+    initialValue: Icons.add,
+  );
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

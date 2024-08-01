@@ -186,6 +186,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
   }
 
   Future<void> _open() async {
+    _setButtonWidth(context.size!.width);
     _animationController.forward();
     _globalToolTipController = _tooltipController;
     _globalToolTipController?.show();

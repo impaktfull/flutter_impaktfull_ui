@@ -22,12 +22,12 @@ class ModalLibraryVariant extends ComponentLibraryVariant<ModalLibraryPrimaryInp
               child: ImpaktfullUiButton(
                 type: ImpaktfullUiButtonType.primary,
                 title: 'Show modal',
-                onTap: () => ImpaktfullUiModal.show(
+                onTap: () => ImpaktfullUiModal.showSimple(
                   context: context,
                   headerChildLocation: headerChildLocation,
                   headerIcon: Icons.people,
                   title: 'Title',
-                  subtitle: 'Subtitle',
+                  subtitle: 'This is quite a long subtitle that should wrap to the next line',
                   hasBlurredBackground: hasBlurredBackground,
                   onCloseTapped: () async => true,
                   child: ImpaktfullUiAutoLayout.vertical(

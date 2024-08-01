@@ -16,6 +16,7 @@ class ImpaktfullUiColorTheme {
   final Color error;
   final Color info;
   final Color success;
+  final Color destructive;
 
   const ImpaktfullUiColorTheme({
     required this.accent,
@@ -33,6 +34,7 @@ class ImpaktfullUiColorTheme {
     required this.error,
     required this.info,
     required this.success,
+    required this.destructive,
   });
 
   ImpaktfullUiColorTheme copyWith({
@@ -51,6 +53,7 @@ class ImpaktfullUiColorTheme {
     Color? error,
     Color? info,
     Color? success,
+    Color? destructive,
   }) =>
       ImpaktfullUiColorTheme(
         accent: accent ?? this.accent,
@@ -68,5 +71,6 @@ class ImpaktfullUiColorTheme {
         error: error ?? this.error,
         info: info ?? this.info,
         success: success ?? this.success,
+        destructive: destructive ?? this.destructive,
       );
 }

@@ -9,8 +9,10 @@ class ImpaktfullUiTextStylesTheme {
   final ImpaktfullUiTextStyleTheme onCardPrimary;
   final ImpaktfullUiTextStyleTheme onCardSecondary;
   final ImpaktfullUiTextStyleTheme onCardTertiary;
+  final ImpaktfullUiTextStyleTheme onCardDestructive;
   final ImpaktfullUiTextStyleTheme onPrimary;
   final ImpaktfullUiTextStyleTheme onSecondary;
+  final ImpaktfullUiTextStyleTheme onDestructive;
 
   const ImpaktfullUiTextStylesTheme({
     required this.onCanvas,
@@ -21,8 +23,10 @@ class ImpaktfullUiTextStylesTheme {
     required this.onCardPrimary,
     required this.onCardSecondary,
     required this.onCardTertiary,
+    required this.onCardDestructive,
     required this.onPrimary,
     required this.onSecondary,
+    required this.onDestructive,
   });
 
   ImpaktfullUiTextStylesTheme copyWith({
@@ -34,8 +38,10 @@ class ImpaktfullUiTextStylesTheme {
     ImpaktfullUiTextStyleTheme? onCardPrimary,
     ImpaktfullUiTextStyleTheme? onCardSecondary,
     ImpaktfullUiTextStyleTheme? onCardTertiary,
+    ImpaktfullUiTextStyleTheme? onCardDestructive,
     ImpaktfullUiTextStyleTheme? onPrimary,
     ImpaktfullUiTextStyleTheme? onSecondary,
+    ImpaktfullUiTextStyleTheme? onDestructive,
   }) =>
       ImpaktfullUiTextStylesTheme(
         onCanvas: onCanvas ?? this.onCanvas,
@@ -46,8 +52,10 @@ class ImpaktfullUiTextStylesTheme {
         onCardPrimary: onCardPrimary ?? this.onCardPrimary,
         onCardSecondary: onCardSecondary ?? this.onCardSecondary,
         onCardTertiary: onCardTertiary ?? this.onCardTertiary,
+        onCardDestructive: onCardDestructive ?? this.onCardDestructive,
         onPrimary: onPrimary ?? this.onPrimary,
         onSecondary: onSecondary ?? this.onSecondary,
+        onDestructive: onDestructive ?? this.onDestructive,
       );
 }
 

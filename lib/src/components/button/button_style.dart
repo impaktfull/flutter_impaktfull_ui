@@ -20,6 +20,8 @@ class ImpaktfullUiButtonColorTheme {
   final Color secondaryBorder;
   final Color? tertiary;
   final Color? tertiaryBorder;
+  final Color? destructive;
+  final Color? destructiveBorder;
 
   const ImpaktfullUiButtonColorTheme({
     required this.primary,
@@ -28,6 +30,8 @@ class ImpaktfullUiButtonColorTheme {
     required this.secondaryBorder,
     required this.tertiary,
     required this.tertiaryBorder,
+    required this.destructive,
+    required this.destructiveBorder,
   });
 }
 
