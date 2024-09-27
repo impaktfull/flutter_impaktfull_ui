@@ -18,7 +18,11 @@ class CheckboxLibraryItem extends ComponentLibraryItem {
 }
 
 class CheckboxLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryBoolInput value = ComponentLibraryBoolInput('Value', initialValue: false);
+  final ComponentLibraryBoolInput value = ComponentLibraryBoolInput(
+    'Value',
+    initialValue: true,
+    allowNull: true,
+  );
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

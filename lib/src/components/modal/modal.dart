@@ -19,7 +19,7 @@ enum ImpaktfullUiModalHeaderChildLocation {
 
 class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiModalTheme? theme;
-  final ImpaktfullUiModalHeaderChildLocation headerChildLocation;
+  final ImpaktfullUiModalHeaderChildLocation? headerChildLocation;
   final IconData? headerIcon;
   final Widget? headerChild;
   final String? title;
@@ -29,10 +29,11 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   final Widget? child;
   final List<Widget> actions;
   final bool isDismissible;
+  final bool showDividers;
   final double width;
 
   const ImpaktfullUiModal({
-    this.headerChildLocation = ImpaktfullUiModalHeaderChildLocation.leading,
+    this.headerChildLocation,
     this.headerIcon,
     this.headerChild,
     this.title,
@@ -42,6 +43,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     this.child,
     this.actions = const [],
     this.isDismissible = true,
+    this.showDividers = false,
     this.width = 400,
     this.theme,
     super.key,
@@ -63,7 +65,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
 
   static Future<T?> showSimple<T>({
     required BuildContext context,
-    ImpaktfullUiModalHeaderChildLocation headerChildLocation = ImpaktfullUiModalHeaderChildLocation.leading,
+    ImpaktfullUiModalHeaderChildLocation? headerChildLocation,
     IconData? headerIcon,
     Widget? headerChild,
     String? title,
@@ -73,6 +75,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     Future<bool> Function()? onCloseTapped,
     bool isDismissible = true,
     bool hasBlurredBackground = false,
+    bool showDividers = false,
     bool rootNavigator = false,
     double width = 400,
   }) {
@@ -85,6 +88,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
       actions: actions,
       onCloseTapped: onCloseTapped,
       isDismissible: isDismissible,
+      showDividers: showDividers,
       width: width,
       child: child,
     );
@@ -204,7 +208,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                               ],
                             ],
                           ),
-                          if (title != null) ...[
+                          if (showDividers && title != null) ...[
                             const ImpaktfullUiDivider(),
                           ],
                           if (child != null) ...[
@@ -213,7 +217,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                               child: child!,
                             ),
                           ],
-                          if (child != null || title != null) ...[
+                          if (showDividers && (child != null || title != null)) ...[
                             const ImpaktfullUiDivider(),
                           ],
                           if (actions.isNotEmpty) ...[

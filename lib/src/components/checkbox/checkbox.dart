@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox_style.dart';
+import 'package:impaktfull_ui_2/src/components/checkbox/checkbox_type.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
@@ -9,24 +10,37 @@ export 'checkbox_style.dart';
 part 'checkbox.describe.dart';
 
 class ImpaktfullUiCheckBox extends StatelessWidget with ComponentDescriptorMixin {
-  final bool value;
-  final ValueChanged<bool> onChanged;
+  final CheckboxType type;
+  final bool? value;
+  final ValueChanged<bool>? onChanged;
+  final ValueChanged<bool?>? onChangedInterpediate;
   final ImpaktfullUiCheckboxTheme? theme;
 
   const ImpaktfullUiCheckBox({
-    required this.value,
+    required bool this.value,
     required this.onChanged,
     this.theme,
     super.key,
-  });
+  })  : type = CheckboxType.normal,
+        onChangedInterpediate = null;
+
+  const ImpaktfullUiCheckBox.indermediate({
+    required this.value,
+    required ValueChanged<bool?> onChanged,
+    this.theme,
+    super.key,
+  })  : onChangedInterpediate = onChanged,
+        onChanged = null,
+        type = CheckboxType.indeterminate;
 
   @override
   Widget build(BuildContext context) {
+    final isSelected = value == null || value == true;
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCheckboxTheme>(
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) => Center(
         child: ImpaktfullUiTouchFeedback(
-          onTap: () => onChanged(!value),
+          onTap: _onTap,
           borderRadius: componentTheme.dimens.borderRadius,
           color: _getBackgroundColor(componentTheme),
           child: SizedBox(
@@ -39,7 +53,7 @@ class ImpaktfullUiCheckBox extends StatelessWidget with ComponentDescriptorMixin
                     decoration: BoxDecoration(
                       borderRadius: componentTheme.dimens.borderRadius,
                       border: Border.all(
-                        color: componentTheme.colors.activeColor,
+                        color: componentTheme.colors.borderColor,
                         width: 1,
                       ),
                     ),
@@ -49,7 +63,7 @@ class ImpaktfullUiCheckBox extends StatelessWidget with ComponentDescriptorMixin
                   child: AnimatedOpacity(
                     duration: theme.durations.short,
                     curve: Curves.easeInOut,
-                    opacity: value ? 1 : 0,
+                    opacity: isSelected ? 1 : 0,
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: componentTheme.dimens.borderRadius,
@@ -61,20 +75,32 @@ class ImpaktfullUiCheckBox extends StatelessWidget with ComponentDescriptorMixin
                     ),
                   ),
                 ),
-                Positioned.fill(
-                  child: AnimatedOpacity(
-                    duration: theme.durations.short,
-                    curve: Curves.easeInOut,
-                    opacity: value ? 1 : 0,
+                if (value == true) ...[
+                  Positioned.fill(
+                    child: AnimatedOpacity(
+                      duration: theme.durations.short,
+                      curve: Curves.easeInOut,
+                      opacity: isSelected ? 1 : 0,
+                      child: Center(
+                        child: Icon(
+                          theme.assets.icons.check,
+                          color: componentTheme.colors.checkMarkColor,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ] else if (type == CheckboxType.indeterminate && value == null) ...[
+                  Positioned.fill(
                     child: Center(
                       child: Icon(
-                        theme.assets.icons.check,
+                        theme.assets.icons.minus,
                         color: componentTheme.colors.checkMarkColor,
                         size: 20,
                       ),
                     ),
                   ),
-                ),
+                ],
               ],
             ),
           ),
@@ -84,10 +110,33 @@ class ImpaktfullUiCheckBox extends StatelessWidget with ComponentDescriptorMixin
   }
 
   Color _getBackgroundColor(ImpaktfullUiCheckboxTheme theme) {
-    if (value) return theme.colors.activeColor;
+    final isSelected = value == null || value == true;
+    if (isSelected) return theme.colors.activeColor;
     return theme.colors.backgroundColor;
   }
 
   @override
   String describe() => _describeInstance(this);
+
+  void _onTap() {
+    if (value == true) {
+      if (type == CheckboxType.indeterminate) {
+        onChangedInterpediate!(null);
+      } else {
+        _onChanged(false);
+      }
+    } else if (value == false) {
+      _onChanged(true);
+    } else {
+      _onChanged(false);
+    }
+  }
+
+  void _onChanged(bool value) {
+    if (onChanged != null) {
+      onChanged?.call(value);
+    } else if (onChangedInterpediate != null) {
+      onChangedInterpediate?.call(value);
+    }
+  }
 }

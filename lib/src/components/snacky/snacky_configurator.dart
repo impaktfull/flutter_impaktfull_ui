@@ -40,6 +40,8 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
                   case SnackyType.warning:
                     return Color.lerp(componentTheme.colors.warning, Colors.white, 0.8) ??
                         componentTheme.colors.warning;
+                  case SnackyType.branded:
+                    return Color.lerp(componentTheme.colors.brand, Colors.white, 0.8) ?? componentTheme.colors.brand;
                 }
               },
               borderBuilder: (snacky) {
@@ -63,6 +65,11 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
                   case SnackyType.warning:
                     return Border.all(
                       color: componentTheme.colors.warning,
+                      width: width,
+                    );
+                  case SnackyType.branded:
+                    return Border.all(
+                      color: componentTheme.colors.brand,
                       width: width,
                     );
                 }

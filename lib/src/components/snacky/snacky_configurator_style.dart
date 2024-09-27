@@ -17,12 +17,14 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiSnackyConfiguratorColorTheme {
+  final Color brand;
   final Color error;
   final Color info;
   final Color warning;
   final Color success;
 
   const ImpaktfullUiSnackyConfiguratorColorTheme({
+    required this.brand,
     required this.error,
     required this.info,
     required this.warning,

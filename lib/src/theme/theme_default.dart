@@ -167,6 +167,7 @@ class DefaultTheme {
         ),
         checkbox: ImpaktfullUiCheckboxTheme(
           colors: ImpaktfullUiCheckboxColorTheme(
+            borderColor: colors.border,
             activeColor: colors.accent,
             inactiveColor: colors.card,
             checkMarkColor: colors.textOnAccent,
@@ -274,6 +275,7 @@ class DefaultTheme {
         ),
         snackyConfigurator: ImpaktfullUiSnackyConfiguratorTheme(
           colors: ImpaktfullUiSnackyConfiguratorColorTheme(
+            brand: colors.accent,
             error: colors.error,
             info: colors.info,
             warning: colors.warning,

@@ -13,45 +13,44 @@ class ModalLibraryVariant extends ComponentLibraryVariant<ModalLibraryPrimaryInp
   @override
   List<Widget> build(BuildContext context, ModalLibraryPrimaryInputs inputs) {
     return [
-      for (final hasBlurredBackground in [false, true]) ...[
-        for (final headerChildLocation in ImpaktfullUiModalHeaderChildLocation.values) ...[
-          for (final amountOfActions in [1, 2, 3]) ...[
-            ComponentsLibraryVariantDescriptor(
-              title:
-                  'hasBlurredBackground: $hasBlurredBackground | headerChildLocation: $headerChildLocation | amountOfActions: $amountOfActions',
-              child: ImpaktfullUiButton(
-                type: ImpaktfullUiButtonType.primary,
-                title: 'Show modal',
-                onTap: () => ImpaktfullUiModal.showSimple(
-                  context: context,
-                  headerChildLocation: headerChildLocation,
-                  headerIcon: Icons.people,
-                  title: 'Title',
-                  subtitle: 'This is quite a long subtitle that should wrap to the next line',
-                  hasBlurredBackground: hasBlurredBackground,
-                  onCloseTapped: () async => true,
-                  child: ImpaktfullUiAutoLayout.vertical(
-                    children: [
-                      Text(
-                        'Testing',
-                        style: ImpaktfullUiTheme.of(context).textStyles.onCanvas.text.medium,
-                      ),
-                    ],
+      for (final headerChildLocation in [
+        null,
+        ...ImpaktfullUiModalHeaderChildLocation.values,
+      ]) ...[
+        ComponentsLibraryVariantDescriptor(
+          title: 'headerChildLocation: $headerChildLocation',
+          child: ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.primary,
+            title: 'Show modal',
+            onTap: () => ImpaktfullUiModal.showSimple(
+              context: context,
+              headerChildLocation: headerChildLocation,
+              headerIcon: Icons.people,
+              title: 'Title',
+              subtitle: 'This is quite a long subtitle that should wrap to the next line',
+              hasBlurredBackground: inputs.showBackgroundBlur.value ?? false,
+              showDividers: inputs.showDividers.value ?? false,
+              onCloseTapped: () async => true,
+              child: ImpaktfullUiAutoLayout.vertical(
+                children: [
+                  Text(
+                    'Testing',
+                    style: ImpaktfullUiTheme.of(context).textStyles.onCanvas.text.medium,
                   ),
-                  actions: [
-                    for (final index in List.generate(amountOfActions, (index) => index)) ...[
-                      ImpaktfullUiButton(
-                        type: ImpaktfullUiButtonType.values[index % ImpaktfullUiButtonType.values.length],
-                        title: 'Action $index',
-                        onTap: () => Navigator.of(context).pop(),
-                      ),
-                    ],
-                  ],
-                ),
+                ],
               ),
+              actions: [
+                for (final index in List.generate(inputs.amountOfActions.value ?? 1, (index) => index)) ...[
+                  ImpaktfullUiButton(
+                    type: ImpaktfullUiButtonType.values[index % ImpaktfullUiButtonType.values.length],
+                    title: 'Action $index',
+                    onTap: () => Navigator.of(context).pop(),
+                  ),
+                ],
+              ],
             ),
-          ],
-        ],
+          ),
+        ),
       ],
     ];
   }

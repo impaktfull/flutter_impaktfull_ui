@@ -26,8 +26,10 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
         child: ImpaktfullUiTable(
           columnConfig: columnConfig,
           titles: [
-            ImpaktfullUiTableHeaderItem(
+            ImpaktfullUiTableHeaderItem.checkbox(
               title: 'Title 1',
+              isSelected: inputs.selectedAll.value,
+              onChanged: inputs.selectedAll.updateState,
               onTap: () => inputs.sortOnTitle1.toggle(),
               ascending: inputs.sortOnTitle1.value,
             ),
@@ -41,7 +43,9 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
               ImpaktfullUiTableRow(
                 columnConfig: columnConfig,
                 columns: [
-                  ImpaktfullUiTableRowItem.text(
+                  ImpaktfullUiTableRowItem.checkbox(
+                    isSelected: inputs.selectedAll.value == true ? true : i == inputs.selectedIndex.value,
+                    onChanged: (value) => inputs.selectedIndex.toggle(i),
                     title: 'Value: $i',
                     onTap: () {},
                   ),
@@ -64,7 +68,17 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                           icon: PhosphorIcons.pencilSimple(),
                         ),
                         ImpaktfullUiIconButton(
-                          onTap: () {},
+                          onTap: () {
+                            SnackyController.instance.showMessage(
+                              (context) {
+                                final location = context.isLargeScreen ? SnackyLocation.topEnd : SnackyLocation.top;
+                                return Snacky(
+                                  title: 'Delete',
+                                  location: location,
+                                );
+                              },
+                            );
+                          },
                           size: 20,
                           icon: PhosphorIcons.trash(),
                         ),

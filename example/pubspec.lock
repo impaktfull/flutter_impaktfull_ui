@@ -203,10 +203,10 @@ packages:
     dependency: transitive
     description:
       name: snacky
-      sha256: e471d12d891975bf96ae93d1c8c80ce0272fa9cf4e3952f8f04b0aefa82b69b2
+      sha256: "5d34d749786331c43acab6c66bd6ffc4c3744706c1f0ef44175bc27afcf810ae"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.14"
+    version: "0.2.4"
   source_span:
     dependency: transitive
     description:

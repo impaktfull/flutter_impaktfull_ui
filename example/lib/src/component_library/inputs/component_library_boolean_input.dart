@@ -30,17 +30,15 @@ class ComponentLibraryBoolInput extends ComponentLibraryInputItem<bool> {
 
   @override
   Widget build(BuildContext context) {
-    String stringValue;
-    if (value == true) {
-      stringValue = '1';
-    } else if (value == false) {
-      stringValue = '0';
-    } else {
-      stringValue = '';
+    if (allowNull) {
+      return ImpaktfullUiCheckBox.indermediate(
+        value: value,
+        onChanged: updateState,
+      );
     }
-    return ImpaktfullUiInputField(
-      value: stringValue,
-      onChanged: (value) => updateState(value == '1'),
+    return ImpaktfullUiCheckBox(
+      value: value ?? false,
+      onChanged: updateState,
     );
   }
 }

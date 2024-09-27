@@ -34,6 +34,7 @@ class ImpaktfullUiAssetTheme {
             ImpaktfullUiIconTheme(
               check: PhosphorIcons.check(),
               arrowBack: PhosphorIcons.arrowLeft(),
+              minus: PhosphorIcons.minus(),
               close: PhosphorIcons.x(),
             ),
         images: images ??
@@ -90,22 +91,26 @@ class ImpaktfullUiAssetTheme {
 class ImpaktfullUiIconTheme {
   final IconData arrowBack;
   final IconData check;
+  final IconData minus;
   final IconData close;
 
   const ImpaktfullUiIconTheme({
     required this.arrowBack,
     required this.check,
+    required this.minus,
     required this.close,
   });
 
   ImpaktfullUiIconTheme copyWith({
     IconData? arrowBack,
     IconData? check,
+    IconData? minus,
     IconData? close,
   }) =>
       ImpaktfullUiIconTheme(
         arrowBack: arrowBack ?? this.arrowBack,
         check: check ?? this.check,
+        minus: minus ?? this.minus,
         close: close ?? this.close,
       );
 }

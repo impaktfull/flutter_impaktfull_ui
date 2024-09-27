@@ -1,0 +1,4 @@
+enum ImpaktfullUiTableHeaderItemType {
+  text,
+  checkbox,
+}

@@ -11,20 +11,46 @@ class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
   });
 
   static ImpaktfullUiCheckboxTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.checkbox;
+
+  ImpaktfullUiCheckboxTheme copyWith({
+    ImpaktfullUiCheckboxColorTheme? colors,
+    ImpaktfullUiCheckboxDimensTheme? dimens,
+  }) =>
+      ImpaktfullUiCheckboxTheme(
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+      );
 }
 
 class ImpaktfullUiCheckboxColorTheme {
+  final Color borderColor;
   final Color activeColor;
   final Color inactiveColor;
   final Color checkMarkColor;
   final Color backgroundColor;
 
   const ImpaktfullUiCheckboxColorTheme({
+    required this.borderColor,
     required this.activeColor,
     required this.inactiveColor,
     required this.checkMarkColor,
     required this.backgroundColor,
   });
+
+  ImpaktfullUiCheckboxColorTheme copyWith({
+    Color? borderColor,
+    Color? activeColor,
+    Color? inactiveColor,
+    Color? checkMarkColor,
+    Color? backgroundColor,
+  }) =>
+      ImpaktfullUiCheckboxColorTheme(
+        borderColor: borderColor ?? this.borderColor,
+        activeColor: activeColor ?? this.activeColor,
+        inactiveColor: inactiveColor ?? this.inactiveColor,
+        checkMarkColor: checkMarkColor ?? this.checkMarkColor,
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+      );
 }
 
 class ImpaktfullUiCheckboxDimensTheme {
@@ -33,4 +59,11 @@ class ImpaktfullUiCheckboxDimensTheme {
   const ImpaktfullUiCheckboxDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiCheckboxDimensTheme copyWith({
+    BorderRadius? borderRadius,
+  }) =>
+      ImpaktfullUiCheckboxDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }

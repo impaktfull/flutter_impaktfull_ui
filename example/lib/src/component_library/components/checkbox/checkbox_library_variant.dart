@@ -16,6 +16,10 @@ class CheckboxLibraryVariant extends ComponentLibraryVariant<CheckboxLibraryPrim
         value: inputs.value.value ?? false,
         onChanged: inputs.value.updateState,
       ),
+      ImpaktfullUiCheckBox.indermediate(
+        value: inputs.value.value,
+        onChanged: (value) => inputs.value.toggle(),
+      ),
     ];
   }
 

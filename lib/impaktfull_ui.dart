@@ -28,3 +28,7 @@ export 'src/theme/theme.dart';
 export 'src/components/theme/theme_builder.dart';
 // Widget Library
 export 'src/util/descriptor/component_descriptor_mixin.dart';
+// Util
+export 'src/util/responsive/responsive_extension.dart';
+// External packages
+export 'package:snacky/snacky.dart';

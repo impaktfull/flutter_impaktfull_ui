@@ -1,0 +1,4 @@
+enum CheckboxType {
+  normal,
+  indeterminate,
+}
