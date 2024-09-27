@@ -28,6 +28,7 @@ class DefaultTheme {
     required Color secondary,
     required BorderRadius borderRadius,
     required BorderRadius borderRadiusSmall,
+    required BorderRadius borderRadiusLarge,
     String package = 'impaktfull_ui_2',
   }) {
     final colors = ImpaktfullUiColorTheme(
@@ -49,8 +50,9 @@ class DefaultTheme {
       destructive: const Color(0xFFB42318),
     );
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadius: borderRadius,
       borderRadiusSmall: borderRadiusSmall,
+      borderRadius: borderRadius,
+      borderRadiusLarge: borderRadiusSmall,
     );
     const fontFamilyDisplay = 'Ubuntu';
     const fontFamilyText = 'Geologica';

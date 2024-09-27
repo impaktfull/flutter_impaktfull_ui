@@ -42,6 +42,7 @@ class ImpaktfullUiTheme {
     required Color secondary,
     required BorderRadius borderRadius,
     required BorderRadius borderRadiusSmall,
+    required BorderRadius borderRadiusLarge,
     String package = 'impaktfull_ui_2',
   }) =>
       DefaultTheme.withMinimalChanges(
@@ -49,13 +50,15 @@ class ImpaktfullUiTheme {
         secondary: secondary,
         borderRadius: borderRadius,
         borderRadiusSmall: borderRadiusSmall,
+        borderRadiusLarge: borderRadiusLarge,
       );
 
   static ImpaktfullUiTheme getDefault() => DefaultTheme.withMinimalChanges(
         accent: const Color(0xFF7d64f2),
         secondary: const Color(0xFF7d64f2),
+        borderRadiusSmall: BorderRadius.circular(6),
         borderRadius: BorderRadius.circular(8),
-        borderRadiusSmall: BorderRadius.circular(4),
+        borderRadiusLarge: BorderRadius.circular(12),
       );
 
   static ImpaktfullUiTheme of(BuildContext context) => theme;

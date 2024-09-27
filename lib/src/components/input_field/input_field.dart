@@ -87,6 +87,10 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
             cursor: SystemMouseCursors.text,
             onTap: _onTap,
             onFocus: _onFocus,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
             child: ImpaktfullUiAutoLayout.horizontal(
               crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 8,
@@ -101,11 +105,12 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                 Expanded(
                   child: Theme(
                     data: Theme.of(context).copyWith(
-                        textSelectionTheme: TextSelectionThemeData(
-                      cursorColor: componentTheme.colors.cursor,
-                      selectionColor: componentTheme.colors.selection,
-                      selectionHandleColor: componentTheme.colors.selectionHandle,
-                    )),
+                      textSelectionTheme: TextSelectionThemeData(
+                        cursorColor: componentTheme.colors.cursor,
+                        selectionColor: componentTheme.colors.selection,
+                        selectionHandleColor: componentTheme.colors.selectionHandle,
+                      ),
+                    ),
                     child: TextField(
                       focusNode: _focusNode,
                       controller: _controller,
@@ -121,7 +126,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                         hintText: widget.hint,
                         focusColor: Colors.transparent,
                         hintStyle: componentTheme.textStyles.hint,
-                        border: OutlineInputBorder(borderRadius: componentTheme.dimens.borderRadius),
+                        border: OutlineInputBorder(
+                          borderRadius: componentTheme.dimens.borderRadius,
+                        ),
                         errorBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,

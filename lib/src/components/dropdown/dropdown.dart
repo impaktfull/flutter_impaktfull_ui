@@ -115,7 +115,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDropdownTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, theme, componentTheme) => PopScope(
-        onPopInvoked: (didPop) => _tooltipController.hide(),
+        onPopInvokedWithResult: (didPop, result) => _tooltipController.hide(),
         child: CompositedTransformTarget(
           link: _link,
           child: OverlayPortal(

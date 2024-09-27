@@ -13,6 +13,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
   final VoidCallback? onTap;
   final MouseCursor cursor;
   final VoidCallback? onFocus;
+  final EdgeInsets? padding;
   final ImpaktfullUiCardTheme? theme;
 
   const ImpaktfullUiCard({
@@ -20,6 +21,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
     this.cursor = MouseCursor.defer,
     this.onTap,
     this.onFocus,
+    this.padding,
     this.theme,
     super.key,
   });
@@ -62,7 +64,7 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
           onFocus: widget.onFocus,
           borderRadius: componentTheme.dimens.borderRadius,
           child: Padding(
-            padding: componentTheme.dimens.padding,
+            padding: widget.padding ?? componentTheme.dimens.padding,
             child: widget.child,
           ),
         ),
