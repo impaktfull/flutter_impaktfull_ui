@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item_type.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
 
 export 'table_row_item_style.dart';
 
@@ -63,7 +63,12 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableRowItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) {
-        if (builder != null) return builder!(context, componentTheme);
+        if (builder != null) {
+          return Padding(
+            padding: const EdgeInsetsDirectional.only(end: 8),
+            child: builder!(context, componentTheme),
+          );
+        }
         if (type == ImpaktfullUiTableRowItemType.badge) {
           return Padding(
             padding: padding,

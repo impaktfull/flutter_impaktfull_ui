@@ -18,7 +18,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
       TableColumnConfig(flex: 1),
       TableColumnConfig(flex: 1),
       TableColumnConfig(flex: 1),
-      TableColumnConfig.fixedSize(size: (44 * 3) + (4 * 2)),
+      TableColumnConfig.fixedSize(size: 44 * 3),
     ];
     return [
       ComponentsLibraryVariantDescriptor(

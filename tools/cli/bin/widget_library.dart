@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'dart:io';
 
 import 'package:path/path.dart';
@@ -62,7 +63,7 @@ class ${className}Theme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
-  static ${className}Theme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.${lowercaseComponentName};
+  static ${className}Theme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.$lowercaseComponentName;
 }
 
 class ${className}ColorTheme {
@@ -80,11 +81,11 @@ class ${className}DimensTheme {
 
   styleFile.writeAsStringSync(styleFileContent);
   //Create describe file
-  final describeFile = File(join(dir.path, '${lowercaseComponentName}.describe.dart'));
+  final describeFile = File(join(dir.path, '$lowercaseComponentName.describe.dart'));
 
-  final describeFileContent = """part of '${lowercaseComponentName}.dart';
+  final describeFileContent = """part of '$lowercaseComponentName.dart';
 
-String _describeInstance(${className} instance) {
+String _describeInstance($className instance) {
   final sb = StringBuffer();
   return sb.toString();
 }""";
@@ -92,7 +93,7 @@ String _describeInstance(${className} instance) {
   describeFile.writeAsStringSync(describeFileContent);
 
   // Component file
-  final componentFile = File(join(dir.path, '${lowercaseComponentName}.dart'));
+  final componentFile = File(join(dir.path, '$lowercaseComponentName.dart'));
 
   final componentFileContent = """import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/$lowercaseComponentName/${lowercaseComponentName}_style.dart';
@@ -101,12 +102,12 @@ import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.d
 
 export '${lowercaseComponentName}_style.dart';
 
-part '${lowercaseComponentName}.describe.dart';
+part '$lowercaseComponentName.describe.dart';
 
 class $className extends StatelessWidget with ComponentDescriptorMixin {
   final ${className}Theme? theme;
 
-  const ${className}({
+  const $className({
     this.theme,
     super.key,
   });
@@ -142,7 +143,7 @@ Future<void> createWidgetLibrary({
   final libraryItemFile = File(join(dir.path, '${lowerCaseComponentName}_library_item.dart'));
 
   final libaryItemFileContent =
-      """import 'package:impaktfull_ui_example/src/component_library/components/${lowerCaseComponentName}/${lowerCaseComponentName}_library_variant.dart';
+      """import 'package:impaktfull_ui_example/src/component_library/components/$lowerCaseComponentName/${lowerCaseComponentName}_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
@@ -150,7 +151,7 @@ class ${componentName}LibraryItem extends ComponentLibraryItem {
   const ${componentName}LibraryItem();
 
   @override
-  String get title => '${componentClassName}';
+  String get title => '$componentClassName';
 
   @override
   List<ComponentLibraryVariant> getComponentVariants() {
@@ -174,7 +175,7 @@ class ${componentName}LibraryInputs extends ComponentLibraryInputs {
 
   final componentFileContent = """import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_example/src/component_library/components/${lowerCaseComponentName}/${lowerCaseComponentName}_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/$lowerCaseComponentName/${lowerCaseComponentName}_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
 class ${componentName}LibraryVariant extends ComponentLibraryVariant<${componentName}LibraryPrimaryInputs> {
@@ -186,7 +187,7 @@ class ${componentName}LibraryVariant extends ComponentLibraryVariant<${component
   @override
   List<Widget> build(BuildContext context, ${componentName}LibraryPrimaryInputs inputs) {
     return [
-      const ${componentClassName}(),
+      const $componentClassName(),
     ];
   }
 

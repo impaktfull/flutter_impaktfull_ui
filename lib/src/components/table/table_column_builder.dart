@@ -20,28 +20,30 @@ class TableColumnBuilder extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           for (var i = 0; i < children.length; ++i) ...[
-            _buildItem(
-              i > config.length - 1 ? const TableColumnConfig(flex: 1) : config[i],
-              children[i],
-            ),
+            _buildItem(i),
           ],
         ],
       ),
     );
   }
 
-  Widget _buildItem(TableColumnConfig config, Widget child) {
-    if (config.flex != null) {
+  Widget _buildItem(int i) {
+    final tableColumnConfig = i > config.length - 1 ? const TableColumnConfig(flex: 1) : config[i];
+    final child = children[i];
+    if (tableColumnConfig.flex != null) {
       return Expanded(
-        flex: config.flex!,
+        flex: tableColumnConfig.flex!,
         child: child,
       );
     }
-    if (config.minWidth != null && config.maxWidth != null) {
+    final isLast = i == children.length - 1;
+
+    if (tableColumnConfig.minWidth != null && tableColumnConfig.maxWidth != null) {
+      final extraSize = isLast ? 8 : 0;
       return ConstrainedBox(
         constraints: BoxConstraints(
-          minWidth: config.minWidth!,
-          maxWidth: config.maxWidth!,
+          minWidth: tableColumnConfig.minWidth! + extraSize,
+          maxWidth: tableColumnConfig.maxWidth! + extraSize,
         ),
         child: child,
       );
