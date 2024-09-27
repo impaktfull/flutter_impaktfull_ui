@@ -11,7 +11,7 @@ class InputFieldVariant extends ComponentLibraryVariant<InputFieldLibraryVariant
 
   @override
   List<Widget> build(BuildContext context, InputFieldLibraryVariantInputs inputs) {
-    final label = inputs.label.value ?? '{label}';
+    final label = inputs.label.value;
     final hint = inputs.hint.value ?? '{hint}';
     final value = inputs.value.value;
     final leadingIcon = inputs.leadingIcon.value;

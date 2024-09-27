@@ -5,10 +5,15 @@ part 'icon_button.describe.dart';
 
 class ImpaktfullUiIconButton extends StatelessWidget with ComponentDescriptorMixin {
   final VoidCallback onTap;
+  final Color? color;
   final IconData icon;
+  final double size;
+
   const ImpaktfullUiIconButton({
     required this.onTap,
     required this.icon,
+    this.color,
+    this.size = 16,
     super.key,
   });
 
@@ -21,7 +26,8 @@ class ImpaktfullUiIconButton extends StatelessWidget with ComponentDescriptorMix
         padding: const EdgeInsets.all(12),
         child: Icon(
           icon,
-          size: 16,
+          color: color,
+          size: size,
         ),
       ),
     );

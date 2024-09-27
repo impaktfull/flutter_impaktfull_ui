@@ -1,19 +1,14 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/table/table_column_config.dart';
 
 class TableColumnBuilder extends StatelessWidget {
   final List<TableColumnConfig> config;
   final List<Widget> children;
-  final EdgeInsets padding;
 
   const TableColumnBuilder({
     required this.config,
     required this.children,
-    this.padding = const EdgeInsets.symmetric(
-      horizontal: 16,
-      vertical: 8,
-    ),
     super.key,
   });
 
@@ -27,10 +22,7 @@ class TableColumnBuilder extends StatelessWidget {
           for (var i = 0; i < children.length; ++i) ...[
             _buildItem(
               i > config.length - 1 ? const TableColumnConfig(flex: 1) : config[i],
-              Padding(
-                padding: padding,
-                child: children[i],
-              ),
+              children[i],
             ),
           ],
         ],
@@ -51,6 +43,7 @@ class TableColumnBuilder extends StatelessWidget {
           minWidth: config.minWidth!,
           maxWidth: config.maxWidth!,
         ),
+        child: child,
       );
     }
     return child;

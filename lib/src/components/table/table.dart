@@ -31,37 +31,40 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => Container(
-        decoration: BoxDecoration(
-          color: componentTheme.colors.background,
-          borderRadius: componentTheme.dimens.borderRadius,
-          border: componentTheme.colors.border == null
-              ? null
-              : Border.all(
-                  color: componentTheme.colors.border!,
-                  strokeAlign: BorderSide.strokeAlignInside,
-                  width: 1,
+      builder: (context, theme, componentTheme) => ClipRRect(
+        borderRadius: componentTheme.dimens.borderRadius,
+        child: Container(
+          decoration: BoxDecoration(
+            color: componentTheme.colors.background,
+            borderRadius: componentTheme.dimens.borderRadius,
+            border: componentTheme.colors.border == null
+                ? null
+                : Border.all(
+                    color: componentTheme.colors.border!,
+                    strokeAlign: BorderSide.strokeAlignInside,
+                    width: 1,
+                  ),
+          ),
+          child: _TableContainer(
+            columnConfig: columnConfig,
+            amountOfColumns: titles.length,
+            borderRadius: componentTheme.dimens.borderRadius,
+            child: ImpaktfullUiAutoLayout.vertical(
+              children: [
+                ImpaktfullUiTableHeader(
+                  titles: titles,
+                  columnConfig: columnConfig,
                 ),
-        ),
-        child: _TableContainer(
-          columnConfig: columnConfig,
-          amountOfColumns: titles.length,
-          borderRadius: componentTheme.dimens.borderRadius,
-          child: ImpaktfullUiAutoLayout.vertical(
-            children: [
-              ImpaktfullUiTableHeader(
-                titles: titles,
-                columnConfig: columnConfig,
-              ),
-              const ImpaktfullUiDivider(),
-              Expanded(
-                child: ListView.separated(
-                  itemCount: content.length,
-                  itemBuilder: (context, index) => content[index],
-                  separatorBuilder: (contex, index) => const ImpaktfullUiDivider(),
+                const ImpaktfullUiDivider(),
+                Expanded(
+                  child: ListView.separated(
+                    itemCount: content.length,
+                    itemBuilder: (context, index) => content[index],
+                    separatorBuilder: (contex, index) => const ImpaktfullUiDivider(),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -88,26 +91,28 @@ class _TableContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final minWidth = _getMinWidth();
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth > minWidth) {
-        return child;
-      }
-      return ClipRRect(
-        borderRadius: borderRadius,
-        child: SizedBox(
-          height: constraints.maxHeight,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              SizedBox(
-                width: minWidth,
-                child: child,
-              ),
-            ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth > minWidth) {
+          return child;
+        }
+        return ClipRRect(
+          borderRadius: borderRadius,
+          child: SizedBox(
+            height: constraints.maxHeight,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                SizedBox(
+                  width: minWidth,
+                  child: child,
+                ),
+              ],
+            ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 
   double _getMinWidth() {
