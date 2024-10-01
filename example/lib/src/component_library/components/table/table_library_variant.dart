@@ -57,7 +57,14 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         ImpaktfullUiIconButton(
-                          onTap: () {},
+                          onTap: () => SnackyController.instance.showMessage(
+                            (context) => Snacky(
+                              title: 'Verified!',
+                              subtitle: 'You verified `Value $i`',
+                              type: SnackyType.success,
+                              canBeClosed: true,
+                            ),
+                          ),
                           size: 20,
                           color: Colors.green,
                           asset: ImpaktfullUiAsset.icon(PhosphorIcons.sealCheck()),
