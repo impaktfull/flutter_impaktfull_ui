@@ -21,7 +21,7 @@ class RefreshIndicatorLibraryVariant extends ComponentLibraryVariant<RefreshIndi
             children: [
               Container(
                 height: 1000,
-                color: Colors.amber,
+                color: ImpaktfullUiTheme.of(context).colors.accent,
               ),
             ],
           ),

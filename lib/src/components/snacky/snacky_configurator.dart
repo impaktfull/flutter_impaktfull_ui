@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/snacky/snacky_builder.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:snacky/snacky.dart';
@@ -25,65 +26,41 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSnackyConfiguratorTheme>(
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) {
-        final snackyBuilder = this.snackyBuilder ??
-            SimpleSnackyBuilder(
-              borderRadius: componentTheme.dimens.borderRadius,
-              colorBuilder: (snacky) {
-                switch (snacky.type) {
-                  case SnackyType.error:
-                    return Color.lerp(componentTheme.colors.error, Colors.white, 0.8) ?? componentTheme.colors.error;
-                  case SnackyType.info:
-                    return Color.lerp(componentTheme.colors.info, Colors.white, 0.8) ?? componentTheme.colors.info;
-                  case SnackyType.success:
-                    return Color.lerp(componentTheme.colors.success, Colors.white, 0.8) ??
-                        componentTheme.colors.success;
-                  case SnackyType.warning:
-                    return Color.lerp(componentTheme.colors.warning, Colors.white, 0.8) ??
-                        componentTheme.colors.warning;
-                  case SnackyType.branded:
-                    return Color.lerp(componentTheme.colors.brand, Colors.white, 0.8) ?? componentTheme.colors.brand;
-                }
-              },
-              borderBuilder: (snacky) {
-                const width = 1.0;
-                switch (snacky.type) {
-                  case SnackyType.error:
-                    return Border.all(
-                      color: componentTheme.colors.error,
-                      width: width,
-                    );
-                  case SnackyType.info:
-                    return Border.all(
-                      color: componentTheme.colors.info,
-                      width: width,
-                    );
-                  case SnackyType.success:
-                    return Border.all(
-                      color: componentTheme.colors.success,
-                      width: width,
-                    );
-                  case SnackyType.warning:
-                    return Border.all(
-                      color: componentTheme.colors.warning,
-                      width: width,
-                    );
-                  case SnackyType.branded:
-                    return Border.all(
-                      color: componentTheme.colors.brand,
-                      width: width,
-                    );
-                }
-              },
-            );
         final languageCode = locale?.languageCode;
+        final textDirection = languageCode == null
+            ? TextDirection.ltr
+            : intl.Bidi.isRtlLanguage(languageCode)
+                ? TextDirection.rtl
+                : TextDirection.ltr;
+        final snackyBuilder = this.snackyBuilder ?? const ImpaktfullSnackyBuilder();
+
         return SnackyConfiguratorWidget(
-          textDirection: languageCode == null
-              ? TextDirection.ltr
-              : intl.Bidi.isRtlLanguage(languageCode)
-                  ? TextDirection.rtl
-                  : TextDirection.ltr,
           snackyController: snackyController,
           snackyBuilder: snackyBuilder,
+          textDirection: textDirection,
+          layoutConfig: const SnackyLayoutConfig(
+            breakpoints: [
+              SnackyLayoutBreakpointConfig(
+                minWidth: 0,
+                maxWidth: 600,
+                snackyMaxWidth: double.infinity,
+                snackyLocation: SnackyLocation.top,
+              ),
+              SnackyLayoutBreakpointConfig(
+                minWidth: 600,
+                maxWidth: 900,
+                snackyMaxWidth: 300,
+                snackyLocation: SnackyLocation.topEnd,
+              ),
+              SnackyLayoutBreakpointConfig(
+                minWidth: 900,
+                maxWidth: double.infinity,
+                snackyPercentage: 0.33,
+                snackyMaxWidth: 600,
+                snackyLocation: SnackyLocation.topEnd,
+              ),
+            ],
+          ),
           app: app,
         );
       },

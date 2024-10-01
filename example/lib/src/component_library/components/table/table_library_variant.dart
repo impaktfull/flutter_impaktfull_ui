@@ -63,22 +63,26 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                           icon: PhosphorIcons.sealCheck(),
                         ),
                         ImpaktfullUiIconButton(
-                          onTap: () {},
+                          onTap: () => SnackyController.instance.showMessage(
+                            (context) => const Snacky(
+                              title: 'Edit disabled',
+                              subtitle: 'Edit is temporary disabled',
+                              type: SnackyType.warning,
+                              canBeClosed: true,
+                            ),
+                          ),
                           size: 20,
                           icon: PhosphorIcons.pencilSimple(),
                         ),
                         ImpaktfullUiIconButton(
-                          onTap: () {
-                            SnackyController.instance.showMessage(
-                              (context) {
-                                final location = context.isLargeScreen ? SnackyLocation.topEnd : SnackyLocation.top;
-                                return Snacky(
-                                  title: 'Delete',
-                                  location: location,
-                                );
-                              },
-                            );
-                          },
+                          onTap: () => SnackyController.instance.showMessage(
+                            (context) => const Snacky(
+                              title: 'Failed to delete',
+                              subtitle: 'It is not possible to delete this item',
+                              type: SnackyType.error,
+                              canBeClosed: true,
+                            ),
+                          ),
                           size: 20,
                           icon: PhosphorIcons.trash(),
                         ),

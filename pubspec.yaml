@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   lottie: ^3.0.0
-  snacky: ^0.2.4
+  snacky: ^0.4.0
   phosphor_flutter: ^2.1.0
 
 dev_dependencies:
