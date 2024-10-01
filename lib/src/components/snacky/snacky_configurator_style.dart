@@ -52,6 +52,8 @@ class ImpaktfullUiSnackyConfiguratorDimensTheme {
 }
 
 class ImpaktfullUiSnackyConfiguratorAssetsTheme {
+  final ImpaktfullUiAsset? close;
+  final ImpaktfullUiAsset? chevronRight;
   final ImpaktfullUiAsset? success;
   final ImpaktfullUiAsset? error;
   final ImpaktfullUiAsset? warning;
@@ -59,6 +61,8 @@ class ImpaktfullUiSnackyConfiguratorAssetsTheme {
   final ImpaktfullUiAsset? branded;
 
   const ImpaktfullUiSnackyConfiguratorAssetsTheme({
+    required this.close,
+    required this.chevronRight,
     required this.success,
     required this.error,
     required this.warning,

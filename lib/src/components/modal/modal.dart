@@ -203,7 +203,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                     padding: componentTheme.dimens.closeIconButtonPadding,
                                     child: ImpaktfullUiIconButton(
                                       onTap: () => _onCloseTapped(context),
-                                      asset: theme.assets.icons.close,
+                                      asset: componentTheme.assets.close,
                                     ),
                                   ),
                                 ),

@@ -32,7 +32,10 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
             : intl.Bidi.isRtlLanguage(languageCode)
                 ? TextDirection.rtl
                 : TextDirection.ltr;
-        final snackyBuilder = this.snackyBuilder ?? const ImpaktfullSnackyBuilder();
+        final snackyBuilder = this.snackyBuilder ??
+            ImpaktfullSnackyBuilder(
+              componentTheme: componentTheme,
+            );
 
         return SnackyConfiguratorWidget(
           snackyController: snackyController,

@@ -85,8 +85,8 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                   onTap: widget.onCloseTap!,
                   child: Padding(
                     padding: const EdgeInsets.all(2),
-                    child: Icon(
-                      Icons.close,
+                    child: ImpaktfullUiAssetWidget(
+                      asset: componentTheme.assets.close,
                       size: 16,
                       color: color.withOpacity(0.66),
                     ),

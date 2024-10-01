@@ -1,15 +1,18 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui_2/src/models/asset_models.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiModalColorTheme colors;
   final ImpaktfullUiModalTextStyleTheme textStyles;
   final ImpaktfullUiModalDimensTheme dimens;
+  final ImpaktfullUiModalAssetsTheme assets;
 
   const ImpaktfullUiModalTheme({
     required this.colors,
     required this.textStyles,
     required this.dimens,
+    required this.assets,
   });
 
   static ImpaktfullUiModalTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.modal;
@@ -47,5 +50,13 @@ class ImpaktfullUiModalDimensTheme {
     required this.closeIconButtonPadding,
     required this.leadingIconPadding,
     required this.padding,
+  });
+}
+
+class ImpaktfullUiModalAssetsTheme {
+  final ImpaktfullUiAsset close;
+
+  const ImpaktfullUiModalAssetsTheme({
+    required this.close,
   });
 }

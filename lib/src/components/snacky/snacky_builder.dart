@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
+import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:snacky/snacky.dart';
 
 enum ImpaktfullSnackyTextType {
   title,
@@ -13,6 +14,7 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
   final BorderRadius? borderRadius;
   final EdgeInsets margin;
   final EdgeInsets padding;
+  final ImpaktfullUiSnackyConfiguratorTheme componentTheme;
   final Color Function(BuildContext, Snacky)? backgroundColorBuilder;
   final Color Function(BuildContext, Snacky)? iconColorBuilder;
   final ImpaktfullUiAsset? Function(BuildContext, Snacky)? iconBuilder;
@@ -20,6 +22,7 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
   final TextStyle Function(Snacky, ImpaktfullSnackyTextType)? textStyleBuilder;
 
   const ImpaktfullSnackyBuilder({
+    required this.componentTheme,
     this.backgroundColorBuilder,
     this.iconColorBuilder,
     this.iconBuilder,
@@ -39,17 +42,16 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
     CancelableSnacky cancelableSnacky,
     SnackyController snackyController,
   ) {
-    final theme = ImpaktfullUiSnackyConfiguratorTheme.of(context);
     final snacky = cancelableSnacky.snacky;
-    final customBuilder = snacky.builder;
-    final borderRadius = this.borderRadius ?? theme.dimens.borderRadius;
+    final builder = snacky.builder;
+    final borderRadius = this.borderRadius ?? componentTheme.dimens.borderRadius;
     return BaseSnackyWidget(
       cancelableSnacky: cancelableSnacky,
       snackyController: snackyController,
       margin: margin,
       borderRadius: borderRadius,
       layoutConfig: layoutConfig,
-      customBuilder: customBuilder ??
+      customBuilder: builder ??
           (context, cancelableSnacky) => Container(
                 width: layoutConfig.getSnackyWidth(context),
                 decoration: BoxDecoration(
@@ -121,8 +123,8 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
                         onTap: () => cancelableSnacky.cancel(),
                         child: Padding(
                           padding: const EdgeInsets.all(8),
-                          child: Icon(
-                            Icons.close,
+                          child: ImpaktfullUiAssetWidget(
+                            asset: componentTheme.assets.close,
                             color: _getTextStyle(snacky, ImpaktfullSnackyTextType.title).color,
                           ),
                         ),
@@ -130,8 +132,8 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
                       const SizedBox(width: 8),
                     ] else if (snacky.onTap != null) ...[
                       const SizedBox(width: 8),
-                      Icon(
-                        Icons.keyboard_arrow_right,
+                      ImpaktfullUiAssetWidget(
+                        asset: componentTheme.assets.chevronRight,
                         color: _getTextStyle(snacky, ImpaktfullSnackyTextType.title).color,
                       ),
                       const SizedBox(width: 16),

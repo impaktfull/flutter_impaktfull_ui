@@ -36,6 +36,13 @@ class ImpaktfullUiAssetTheme {
               arrowBack: ImpaktfullUiAsset.icon(PhosphorIcons.arrowLeft()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
               close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
+              dropUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
+              dropDown: ImpaktfullUiAsset.icon(PhosphorIcons.caretDown()),
+              chevronRight: ImpaktfullUiAsset.icon(PhosphorIcons.caretRight()),
+              success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
+              error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
+              warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
+              info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
             ),
         images: images ??
             ImpaktfullUiImageTheme(
@@ -108,12 +115,26 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset check;
   final ImpaktfullUiAsset minus;
   final ImpaktfullUiAsset close;
+  final ImpaktfullUiAsset dropUp;
+  final ImpaktfullUiAsset dropDown;
+  final ImpaktfullUiAsset chevronRight;
+  final ImpaktfullUiAsset success;
+  final ImpaktfullUiAsset error;
+  final ImpaktfullUiAsset warning;
+  final ImpaktfullUiAsset info;
 
   const ImpaktfullUiIconTheme({
     required this.arrowBack,
     required this.check,
     required this.minus,
     required this.close,
+    required this.dropUp,
+    required this.dropDown,
+    required this.chevronRight,
+    required this.success,
+    required this.error,
+    required this.warning,
+    required this.info,
   });
 
   ImpaktfullUiIconTheme copyWith({
@@ -121,12 +142,26 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? check,
     ImpaktfullUiAsset? minus,
     ImpaktfullUiAsset? close,
+    ImpaktfullUiAsset? dropUp,
+    ImpaktfullUiAsset? dropDown,
+    ImpaktfullUiAsset? chevronRight,
+    ImpaktfullUiAsset? success,
+    ImpaktfullUiAsset? error,
+    ImpaktfullUiAsset? warning,
+    ImpaktfullUiAsset? info,
   }) =>
       ImpaktfullUiIconTheme(
         arrowBack: arrowBack ?? this.arrowBack,
         check: check ?? this.check,
         minus: minus ?? this.minus,
         close: close ?? this.close,
+        dropUp: dropUp ?? this.dropUp,
+        dropDown: dropDown ?? this.dropDown,
+        chevronRight: chevronRight ?? this.chevronRight,
+        success: success ?? this.success,
+        error: error ?? this.error,
+        warning: warning ?? this.warning,
+        info: info ?? this.info,
       );
 }
 

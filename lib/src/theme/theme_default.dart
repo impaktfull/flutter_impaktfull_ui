@@ -140,6 +140,9 @@ class DefaultTheme {
           dimens: ImpaktfullUiBadgeDimensTheme(
             borderRadius: BorderRadius.circular(999),
           ),
+          assets: ImpaktfullUiBadgeAssetsTheme(
+            close: assets.icons.close,
+          ),
         ),
         button: ImpaktfullUiButtonTheme(
           colors: ImpaktfullUiButtonColorTheme(
@@ -208,6 +211,10 @@ class DefaultTheme {
           ),
           dimens: ImpaktfullUiDropdownDimensTheme(
             borderRadius: dimens.borderRadius,
+          ),
+          assets: ImpaktfullUiDropdownAssetsTheme(
+            dropUp: assets.icons.dropUp,
+            dropDown: assets.icons.dropDown,
           ),
         ),
         horizontalTab: ImpaktfullUiHorizontalTabTheme(
@@ -278,6 +285,9 @@ class DefaultTheme {
             closeIconButtonPadding: const EdgeInsets.all(4),
             leadingIconPadding: const EdgeInsets.all(8),
           ),
+          assets: ImpaktfullUiModalAssetsTheme(
+            close: assets.icons.close,
+          ),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
           colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
@@ -297,10 +307,12 @@ class DefaultTheme {
           ),
           textStyles: const ImpaktfullUiSnackyConfiguratorTextStylesTheme(),
           assets: ImpaktfullUiSnackyConfiguratorAssetsTheme(
-            success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
-            error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
-            warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
-            info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
+            close: assets.icons.close,
+            chevronRight: assets.icons.chevronRight,
+            success: assets.icons.success,
+            error: assets.icons.error,
+            warning: assets.icons.warning,
+            info: assets.icons.info,
             branded: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
           ),
         ),

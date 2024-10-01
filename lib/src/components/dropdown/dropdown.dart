@@ -4,7 +4,6 @@ import 'package:impaktfull_ui_2/src/components/dropdown/dropdown_menu.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown_style.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/models/asset_models.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'dropdown_style.dart';
@@ -165,8 +164,8 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                 return ImpaktfullUiButton(
                   onTap: _onTapButton,
                   type: ImpaktfullUiButtonType.secondaryGrey,
-                  trailingIcon: ImpaktfullUiAsset.icon(
-                      _tooltipController.isShowing ? Icons.arrow_drop_up : Icons.arrow_drop_down),
+                  trailingIcon:
+                      _tooltipController.isShowing ? componentTheme.assets.dropUp : componentTheme.assets.dropDown,
                   title: 'Button Text',
                 );
               },
