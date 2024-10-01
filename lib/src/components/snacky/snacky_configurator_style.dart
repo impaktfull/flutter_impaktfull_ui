@@ -1,15 +1,18 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui_2/src/models/asset_models.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSnackyConfiguratorColorTheme colors;
   final ImpaktfullUiSnackyConfiguratorTextStylesTheme textStyles;
   final ImpaktfullUiSnackyConfiguratorDimensTheme dimens;
+  final ImpaktfullUiSnackyConfiguratorAssetsTheme assets;
 
   const ImpaktfullUiSnackyConfiguratorTheme({
     required this.colors,
     required this.dimens,
     required this.textStyles,
+    required this.assets,
   });
 
   static ImpaktfullUiSnackyConfiguratorTheme of(BuildContext context) =>
@@ -17,6 +20,8 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiSnackyConfiguratorColorTheme {
+  final Color background;
+  final Color? border;
   final Color brand;
   final Color error;
   final Color info;
@@ -24,6 +29,8 @@ class ImpaktfullUiSnackyConfiguratorColorTheme {
   final Color success;
 
   const ImpaktfullUiSnackyConfiguratorColorTheme({
+    required this.background,
+    required this.border,
     required this.brand,
     required this.error,
     required this.info,
@@ -41,5 +48,21 @@ class ImpaktfullUiSnackyConfiguratorDimensTheme {
 
   const ImpaktfullUiSnackyConfiguratorDimensTheme({
     required this.borderRadius,
+  });
+}
+
+class ImpaktfullUiSnackyConfiguratorAssetsTheme {
+  final ImpaktfullUiAsset? success;
+  final ImpaktfullUiAsset? error;
+  final ImpaktfullUiAsset? warning;
+  final ImpaktfullUiAsset? info;
+  final ImpaktfullUiAsset? branded;
+
+  const ImpaktfullUiSnackyConfiguratorAssetsTheme({
+    required this.success,
+    required this.error,
+    required this.warning,
+    required this.info,
+    required this.branded,
   });
 }

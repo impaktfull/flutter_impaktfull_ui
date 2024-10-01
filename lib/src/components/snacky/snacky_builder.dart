@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:impaktfull_ui_2/src/models/asset_models.dart';
 
 enum ImpaktfullSnackyTextType {
   title,
@@ -12,12 +13,16 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
   final BorderRadius? borderRadius;
   final EdgeInsets margin;
   final EdgeInsets padding;
-  final Color Function(Snacky)? colorBuilder;
-  final BoxBorder Function(Snacky)? borderBuilder;
+  final Color Function(BuildContext, Snacky)? backgroundColorBuilder;
+  final Color Function(BuildContext, Snacky)? iconColorBuilder;
+  final ImpaktfullUiAsset? Function(BuildContext, Snacky)? iconBuilder;
+  final BoxBorder? Function(Snacky)? borderBuilder;
   final TextStyle Function(Snacky, ImpaktfullSnackyTextType)? textStyleBuilder;
 
   const ImpaktfullSnackyBuilder({
-    this.colorBuilder,
+    this.backgroundColorBuilder,
+    this.iconColorBuilder,
+    this.iconBuilder,
     this.borderBuilder,
     this.textStyleBuilder,
     this.margin = const EdgeInsets.all(16),
@@ -48,8 +53,8 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
           (context, cancelableSnacky) => Container(
                 width: layoutConfig.getSnackyWidth(context),
                 decoration: BoxDecoration(
-                  color: _getColor(snacky),
-                  border: _getBorder(snacky),
+                  color: _getColor(context, snacky),
+                  border: _getBorder(context, snacky),
                   borderRadius: borderRadius,
                   boxShadow: const [
                     BoxShadow(
@@ -65,10 +70,14 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
                       snacky.leadingWidgetBuilder!.call(context, cancelableSnacky),
                       const SizedBox(width: 8),
                     ] else ...[
-                      Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: _getLeaderWidget(snacky),
-                      ),
+                      Builder(builder: (context) {
+                        final leadinIcon = _getLeaderWidget(context, snacky);
+                        if (leadinIcon == null) return const SizedBox(width: 16);
+                        return Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: leadinIcon,
+                        );
+                      }),
                     ],
                     Expanded(
                       child: Padding(
@@ -135,35 +144,44 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
     );
   }
 
-  Color _getColor(Snacky snacky) {
-    if (colorBuilder != null) {
-      return colorBuilder!.call(snacky);
+  Color _getColor(BuildContext context, Snacky snacky) {
+    if (backgroundColorBuilder != null) {
+      return backgroundColorBuilder!.call(context, snacky);
     }
-    return Colors.white;
+    final theme = ImpaktfullUiSnackyConfiguratorTheme.of(context);
+    return theme.colors.background;
   }
 
-  BoxBorder _getBorder(Snacky snacky) {
+  BoxBorder? _getBorder(BuildContext context, Snacky snacky) {
     if (borderBuilder != null) {
       return borderBuilder!.call(snacky);
     }
+    final theme = ImpaktfullUiSnackyConfiguratorTheme.of(context);
+    final borderColor = theme.colors.border;
+    if (borderColor == null) return null;
     return Border.all(
-      color: const Color.fromARGB(255, 215, 215, 215),
+      color: borderColor,
       width: 1,
     );
   }
 
-  Color _getSnackyTypeColor(Snacky snacky) {
+  Color _getSnackyTypeColor(BuildContext context, Snacky snacky) {
+    if (iconColorBuilder != null) {
+      return iconColorBuilder!.call(context, snacky);
+    }
+
+    final theme = ImpaktfullUiSnackyConfiguratorTheme.of(context);
     switch (snacky.type) {
       case SnackyType.success:
-        return Colors.green;
+        return theme.colors.success;
       case SnackyType.error:
-        return Colors.red;
+        return theme.colors.error;
       case SnackyType.warning:
-        return Colors.orange;
+        return theme.colors.warning;
       case SnackyType.info:
-        return Colors.blue;
+        return theme.colors.info;
       case SnackyType.branded:
-        return ImpaktfullUiTheme.defaultAccent;
+        return theme.colors.brand;
     }
   }
 
@@ -179,32 +197,32 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
     }
   }
 
-  IconData _getIcon(Snacky snacky) {
+  ImpaktfullUiAsset? _getIcon(BuildContext context, Snacky snacky) {
+    if (iconBuilder != null) {
+      return iconBuilder!.call(context, snacky);
+    }
+    final theme = ImpaktfullUiSnackyConfiguratorTheme.of(context);
     switch (snacky.type) {
       case SnackyType.success:
-        return PhosphorIcons.checkCircle();
+        return theme.assets.success;
       case SnackyType.error:
-        return Icons.error;
+        return theme.assets.error;
       case SnackyType.warning:
-        return Icons.error;
+        return theme.assets.warning;
       case SnackyType.info:
-        return Icons.info;
+        return theme.assets.info;
       case SnackyType.branded:
-        return Icons.info;
+        return theme.assets.branded;
     }
   }
 
-  Widget _getLeaderWidget(Snacky snacky) {
-    return Container(
-      decoration: BoxDecoration(
-        color: _getSnackyTypeColor(snacky),
-        shape: BoxShape.circle,
-      ),
-      child: Icon(
-        _getIcon(snacky),
-        color: Colors.white,
-        size: 24,
-      ),
+  Widget? _getLeaderWidget(BuildContext context, Snacky snacky) {
+    final color = _getSnackyTypeColor(context, snacky);
+    final asset = _getIcon(context, snacky);
+    if (asset == null) return null;
+    return ImpaktfullUiAssetWidget(
+      asset: asset,
+      color: color,
     );
   }
 }

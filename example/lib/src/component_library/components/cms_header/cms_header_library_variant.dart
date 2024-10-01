@@ -19,7 +19,7 @@ class CmsHeaderVariant extends ComponentLibraryVariant<CmsHeaderLibraryVariantIn
         actions: [
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
-            leadingIcon: Icons.add,
+            leadingIcon: const ImpaktfullUiAsset.icon(Icons.add),
             title: 'Add',
             onTap: () {},
           ),
@@ -32,12 +32,12 @@ class CmsHeaderVariant extends ComponentLibraryVariant<CmsHeaderLibraryVariantIn
         actions: [
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.secondary,
-            leadingIcon: Icons.logout,
+            leadingIcon: const ImpaktfullUiAsset.icon(Icons.logout),
             onTap: () {},
           ),
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
-            leadingIcon: Icons.download,
+            leadingIcon: const ImpaktfullUiAsset.icon(Icons.download),
             title: 'Download',
             onTap: () {},
           ),

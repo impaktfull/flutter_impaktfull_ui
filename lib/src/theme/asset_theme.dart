@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/models/asset_models.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ImpaktfullUiAssetTheme {
@@ -32,10 +32,10 @@ class ImpaktfullUiAssetTheme {
       ImpaktfullUiAssetTheme(
         icons: icons ??
             ImpaktfullUiIconTheme(
-              check: PhosphorIcons.check(),
-              arrowBack: PhosphorIcons.arrowLeft(),
-              minus: PhosphorIcons.minus(),
-              close: PhosphorIcons.x(),
+              check: ImpaktfullUiAsset.icon(PhosphorIcons.check()),
+              arrowBack: ImpaktfullUiAsset.icon(PhosphorIcons.arrowLeft()),
+              minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
+              close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
             ),
         images: images ??
             ImpaktfullUiImageTheme(
@@ -57,42 +57,57 @@ class ImpaktfullUiAssetTheme {
             ),
       );
 
-  static String getAssetForPackage({
-    required String assetFileName,
+  static String _getFullAssetDirectory({
     String? directory,
-    String? package,
   }) {
     var fullAssetPath = directory ?? '';
     if (fullAssetPath.isNotEmpty) {
       fullAssetPath += "/";
     }
-    fullAssetPath += assetFileName;
-    fullAssetPath = 'assets/$fullAssetPath';
-
-    if (package == null) {
-      return fullAssetPath;
-    }
-    return 'packages/$package/$fullAssetPath';
+    return 'assets/$fullAssetPath';
   }
 
-  static String getImageAssetForPackage({
+  static ImpaktfullUiAsset getImageAssetForPackage({
     required String assetFileName,
     String? package,
-  }) =>
-      getAssetForPackage(assetFileName: assetFileName, package: package, directory: 'images');
+  }) {
+    final directory = _getFullAssetDirectory(
+      directory: 'images',
+    );
+    if (assetFileName.endsWith('.svg')) {
+      return ImpaktfullUiAsset.svg(
+        assetFileName,
+        directory: directory,
+        package: package,
+      );
+    }
+    return ImpaktfullUiAsset.pixel(
+      assetFileName,
+      directory: directory,
+      package: package,
+    );
+  }
 
-  static String getLottieAssetForPackage({
+  static ImpaktfullUiAsset getLottieAssetForPackage({
     required String assetFileName,
     String? package,
-  }) =>
-      getAssetForPackage(assetFileName: assetFileName, package: package, directory: 'lottie');
+  }) {
+    final directory = _getFullAssetDirectory(
+      directory: 'lottie',
+    );
+    return ImpaktfullUiAsset.lottie(
+      assetFileName,
+      directory: directory,
+      package: package,
+    );
+  }
 }
 
 class ImpaktfullUiIconTheme {
-  final IconData arrowBack;
-  final IconData check;
-  final IconData minus;
-  final IconData close;
+  final ImpaktfullUiAsset arrowBack;
+  final ImpaktfullUiAsset check;
+  final ImpaktfullUiAsset minus;
+  final ImpaktfullUiAsset close;
 
   const ImpaktfullUiIconTheme({
     required this.arrowBack,
@@ -102,10 +117,10 @@ class ImpaktfullUiIconTheme {
   });
 
   ImpaktfullUiIconTheme copyWith({
-    IconData? arrowBack,
-    IconData? check,
-    IconData? minus,
-    IconData? close,
+    ImpaktfullUiAsset? arrowBack,
+    ImpaktfullUiAsset? check,
+    ImpaktfullUiAsset? minus,
+    ImpaktfullUiAsset? close,
   }) =>
       ImpaktfullUiIconTheme(
         arrowBack: arrowBack ?? this.arrowBack,
@@ -116,8 +131,8 @@ class ImpaktfullUiIconTheme {
 }
 
 class ImpaktfullUiImageTheme {
-  final String logo;
-  final String splashLogo;
+  final ImpaktfullUiAsset logo;
+  final ImpaktfullUiAsset splashLogo;
 
   const ImpaktfullUiImageTheme({
     required this.logo,
@@ -125,8 +140,8 @@ class ImpaktfullUiImageTheme {
   });
 
   ImpaktfullUiImageTheme copyWith({
-    String? logo,
-    String? splashLogo,
+    ImpaktfullUiAsset? logo,
+    ImpaktfullUiAsset? splashLogo,
   }) =>
       ImpaktfullUiImageTheme(
         logo: logo ?? this.logo,
@@ -135,14 +150,14 @@ class ImpaktfullUiImageTheme {
 }
 
 class ImpaktfullUiLottieTheme {
-  final String loading;
+  final ImpaktfullUiAsset loading;
 
   const ImpaktfullUiLottieTheme({
     required this.loading,
   });
 
   ImpaktfullUiLottieTheme copyWith({
-    String? loading,
+    ImpaktfullUiAsset? loading,
   }) =>
       ImpaktfullUiLottieTheme(
         loading: loading ?? this.loading,

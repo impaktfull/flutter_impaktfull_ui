@@ -11,6 +11,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/list_view
 import 'package:impaktfull_ui_example/src/component_library/components/loading_indicator/loading_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/modal/modal_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/refreshindicator/refreshindicator_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/snacky/snacky_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/table/table_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
@@ -27,8 +28,9 @@ class ComponentLibrary {
     const InputFieldLibraryItem(),
     const ListViewLibraryItem(),
     const LoadingIndicatorLibraryItem(),
-    const RefreshIndicatorLibraryItem(),
     const ModalLibraryItem(),
+    const RefreshIndicatorLibraryItem(),
+    const SnackyLibraryItem(),
     const TableLibraryItem(),
   ];
 }

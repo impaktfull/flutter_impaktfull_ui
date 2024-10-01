@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal_style.dart';
 import 'package:impaktfull_ui_2/src/components/modal/routes/default_modal_route.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/models/asset_models.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'modal_style.dart';
@@ -20,7 +22,7 @@ enum ImpaktfullUiModalHeaderChildLocation {
 class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiModalTheme? theme;
   final ImpaktfullUiModalHeaderChildLocation? headerChildLocation;
-  final IconData? headerIcon;
+  final ImpaktfullUiAsset? headerIcon;
   final Widget? headerChild;
   final String? title;
   final String? subtitle;
@@ -66,7 +68,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   static Future<T?> showSimple<T>({
     required BuildContext context,
     ImpaktfullUiModalHeaderChildLocation? headerChildLocation,
-    IconData? headerIcon,
+    ImpaktfullUiAsset? headerIcon,
     Widget? headerChild,
     String? title,
     String? subtitle,
@@ -133,8 +135,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                         borderRadius: componentTheme.dimens.borderRadius,
                       ),
                       padding: componentTheme.dimens.leadingIconPadding,
-                      child: Icon(
-                        headerIcon!,
+                      child: ImpaktfullUiAssetWidget(
+                        asset: headerIcon!,
                         color: componentTheme.colors.leadingHeaderIcon,
                       ),
                     ),
@@ -201,7 +203,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                     padding: componentTheme.dimens.closeIconButtonPadding,
                                     child: ImpaktfullUiIconButton(
                                       onTap: () => _onCloseTapped(context),
-                                      icon: theme.assets.icons.close,
+                                      asset: theme.assets.icons.close,
                                     ),
                                   ),
                                 ),

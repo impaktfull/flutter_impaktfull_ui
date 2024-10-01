@@ -17,7 +17,7 @@ class InputFieldVariant extends ComponentLibraryVariant<InputFieldLibraryVariant
     final leadingIcon = inputs.leadingIcon.value;
     return [
       ImpaktfullUiInputField(
-        leadingIcon: leadingIcon,
+        leadingIcon: leadingIcon == null ? null : ImpaktfullUiAsset.icon(leadingIcon),
         label: label,
         hint: hint,
         value: value,

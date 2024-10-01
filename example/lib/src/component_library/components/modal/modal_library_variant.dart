@@ -25,7 +25,7 @@ class ModalLibraryVariant extends ComponentLibraryVariant<ModalLibraryPrimaryInp
             onTap: () => ImpaktfullUiModal.showSimple(
               context: context,
               headerChildLocation: headerChildLocation,
-              headerIcon: Icons.people,
+              headerIcon: const ImpaktfullUiAsset.icon(Icons.people),
               title: 'Title',
               subtitle: 'This is quite a long subtitle that should wrap to the next line',
               hasBlurredBackground: inputs.showBackgroundBlur.value ?? false,

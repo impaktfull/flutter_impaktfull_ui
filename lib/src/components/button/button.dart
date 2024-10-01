@@ -12,10 +12,10 @@ part 'button.describe.dart';
 class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiButtonType type;
   final ImpaktfullUiButtonSize size;
-  final IconData? leadingIcon;
+  final ImpaktfullUiAsset? leadingIcon;
   final Widget? leadingChild;
   final String? title;
-  final IconData? trailingIcon;
+  final ImpaktfullUiAsset? trailingIcon;
   final Widget? trailingChild;
   final bool isLoading;
   final bool fullWidth;
@@ -87,8 +87,8 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                         widget.leadingChild!,
                       ],
                       if (widget.leadingIcon != null) ...[
-                        Icon(
-                          widget.leadingIcon,
+                        ImpaktfullUiAssetWidget(
+                          asset: widget.leadingIcon,
                           color: color,
                           size: iconSize,
                         ),
@@ -104,8 +104,8 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                         ),
                       ],
                       if (widget.trailingIcon != null) ...[
-                        Icon(
-                          widget.trailingIcon,
+                        ImpaktfullUiAssetWidget(
+                          asset: widget.trailingIcon,
                           color: color,
                           size: iconSize,
                         ),

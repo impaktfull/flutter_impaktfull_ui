@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 part 'icon_button.describe.dart';
 
 class ImpaktfullUiIconButton extends StatelessWidget with ComponentDescriptorMixin {
   final VoidCallback onTap;
   final Color? color;
-  final IconData icon;
+  final ImpaktfullUiAsset asset;
   final double size;
 
   const ImpaktfullUiIconButton({
     required this.onTap,
-    required this.icon,
+    required this.asset,
     this.color,
     this.size = 16,
     super.key,
@@ -24,8 +27,8 @@ class ImpaktfullUiIconButton extends StatelessWidget with ComponentDescriptorMix
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(12),
-        child: Icon(
-          icon,
+        child: ImpaktfullUiAssetWidget(
+          asset: asset,
           color: color,
           size: size,
         ),

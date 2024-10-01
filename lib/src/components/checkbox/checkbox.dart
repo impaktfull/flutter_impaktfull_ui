@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox_style.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox_type.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
@@ -82,8 +83,8 @@ class ImpaktfullUiCheckBox extends StatelessWidget with ComponentDescriptorMixin
                       curve: Curves.easeInOut,
                       opacity: isSelected ? 1 : 0,
                       child: Center(
-                        child: Icon(
-                          theme.assets.icons.check,
+                        child: ImpaktfullUiAssetWidget(
+                          asset: componentTheme.assets.check,
                           color: componentTheme.colors.checkMarkColor,
                           size: 20,
                         ),
@@ -93,8 +94,8 @@ class ImpaktfullUiCheckBox extends StatelessWidget with ComponentDescriptorMixin
                 ] else if (type == CheckboxType.indeterminate && value == null) ...[
                   Positioned.fill(
                     child: Center(
-                      child: Icon(
-                        theme.assets.icons.minus,
+                      child: ImpaktfullUiAssetWidget(
+                        asset: componentTheme.assets.indermediate,
                         color: componentTheme.colors.checkMarkColor,
                         size: 20,
                       ),

@@ -60,7 +60,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                           onTap: () {},
                           size: 20,
                           color: Colors.green,
-                          icon: PhosphorIcons.sealCheck(),
+                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.sealCheck()),
                         ),
                         ImpaktfullUiIconButton(
                           onTap: () => SnackyController.instance.showMessage(
@@ -72,7 +72,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                             ),
                           ),
                           size: 20,
-                          icon: PhosphorIcons.pencilSimple(),
+                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
                         ),
                         ImpaktfullUiIconButton(
                           onTap: () => SnackyController.instance.showMessage(
@@ -84,7 +84,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                             ),
                           ),
                           size: 20,
-                          icon: PhosphorIcons.trash(),
+                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
                         ),
                       ],
                     ),

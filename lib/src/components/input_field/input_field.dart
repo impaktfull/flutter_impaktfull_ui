@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/models/asset_models.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'input_field_style.dart';
@@ -12,7 +14,7 @@ part 'input_field.describe.dart';
 class ImpaktfullUiInputField extends StatefulWidget with ComponentDescriptorMixin {
   final String? label;
   final String? hint;
-  final IconData? leadingIcon;
+  final ImpaktfullUiAsset? leadingIcon;
   final String? value;
   final ValueChanged<String> onChanged;
   final TextEditingController? controller;
@@ -96,8 +98,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
               spacing: 8,
               children: [
                 if (widget.leadingIcon != null) ...[
-                  Icon(
-                    widget.leadingIcon,
+                  ImpaktfullUiAssetWidget(
+                    asset: widget.leadingIcon,
                     size: 20,
                     color: componentTheme.textStyles.text.color,
                   ),

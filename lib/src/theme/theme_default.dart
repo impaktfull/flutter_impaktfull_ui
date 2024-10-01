@@ -19,8 +19,10 @@ import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
+import 'package:impaktfull_ui_2/src/models/asset_models.dart';
 import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class DefaultTheme {
   static ImpaktfullUiTheme withMinimalChanges({
@@ -176,6 +178,10 @@ class DefaultTheme {
           dimens: ImpaktfullUiCheckboxDimensTheme(
             borderRadius: dimens.borderRadiusSmall,
           ),
+          assets: ImpaktfullUiCheckboxAssetsTheme(
+            check: assets.icons.check,
+            indermediate: assets.icons.minus,
+          ),
         ),
         cmsHeader: ImpaktfullUiCmsHeaderTheme(
           colors: ImpaktfullUiCmsHeaderColorTheme(
@@ -183,6 +189,9 @@ class DefaultTheme {
             border: colors.border,
           ),
           dimens: const ImpaktfullUiCmsHeaderDimensTheme(),
+          assets: ImpaktfullUiCmsHeaderAssetsTheme(
+            back: assets.icons.arrowBack,
+          ),
         ),
         divider: ImpaktfullUiDividerTheme(
           colors: ImpaktfullUiDividerColorTheme(
@@ -275,6 +284,8 @@ class DefaultTheme {
         ),
         snackyConfigurator: ImpaktfullUiSnackyConfiguratorTheme(
           colors: ImpaktfullUiSnackyConfiguratorColorTheme(
+            background: colors.card,
+            border: colors.border,
             brand: colors.accent,
             error: colors.error,
             info: colors.info,
@@ -285,6 +296,13 @@ class DefaultTheme {
             borderRadius: borderRadius,
           ),
           textStyles: const ImpaktfullUiSnackyConfiguratorTextStylesTheme(),
+          assets: ImpaktfullUiSnackyConfiguratorAssetsTheme(
+            success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
+            error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
+            warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
+            info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
+            branded: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
+          ),
         ),
         tableHeader: ImpaktfullUiTableHeaderTheme(
           colors: ImpaktfullUiTableHeaderColorTheme(

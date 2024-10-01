@@ -142,6 +142,13 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
         color: color.withOpacity(0.66),
       );
     }
+    if (widget is ImpaktfullUiAssetWidget) {
+      return ImpaktfullUiAssetWidget(
+        asset: widget.asset,
+        size: this.widget.size.widgetSize,
+        color: color.withOpacity(0.66),
+      );
+    }
     return SizedBox(
       width: this.widget.size.widgetSize,
       height: this.widget.size.widgetSize,

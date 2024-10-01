@@ -71,7 +71,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                   if (widget.onBackTapped != null) ...[
                     ImpaktfullUiIconButton(
                       onTap: widget.onBackTapped!,
-                      icon: Icons.arrow_back,
+                      asset: componentTheme.assets.back,
                     ),
                     const SizedBox(width: 8),
                   ],
