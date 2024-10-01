@@ -17,7 +17,7 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
   final EdgeInsets? padding;
   final ImpaktfullUiTableHeaderItemTheme? theme;
   final bool? isSelected;
-  final ValueChanged<bool>? onChanged;
+  final ValueChanged<bool?>? onChanged;
 
   const ImpaktfullUiTableHeaderItem({
     this.title,
@@ -62,8 +62,8 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
               spacing: 8,
               children: [
                 if (type == ImpaktfullUiTableHeaderItemType.checkbox) ...[
-                  ImpaktfullUiCheckBox(
-                    value: isSelected ?? false,
+                  ImpaktfullUiCheckBox.indermediate(
+                    value: isSelected,
                     onChanged: onChanged!,
                   ),
                 ],

@@ -23,7 +23,10 @@ class TableLibraryInputs extends ComponentLibraryInputs {
     'Sorted on Title 1',
     allowNull: true,
   );
-  final ComponentLibraryBoolInput selectedAll = ComponentLibraryBoolInput('Select all');
+  final ComponentLibraryBoolInput selectedAll = ComponentLibraryBoolInput(
+    'Select all',
+    allowNull: true,
+  );
   final ComponentLibraryIntInput selectedIndex = ComponentLibraryIntInput('Selected index');
 
   @override

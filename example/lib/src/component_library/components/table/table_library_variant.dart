@@ -29,7 +29,12 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
             ImpaktfullUiTableHeaderItem.checkbox(
               title: 'Title 1',
               isSelected: inputs.selectedAll.value,
-              onChanged: inputs.selectedAll.updateState,
+              onChanged: (value) {
+                inputs.selectedAll.updateState(value);
+                if (inputs.selectedAll.value == false) {
+                  inputs.selectedIndex.updateState(null);
+                }
+              },
               onTap: () => inputs.sortOnTitle1.toggle(),
               ascending: inputs.sortOnTitle1.value,
             ),
@@ -45,7 +50,15 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                 columns: [
                   ImpaktfullUiTableRowItem.checkbox(
                     isSelected: inputs.selectedAll.value == true ? true : i == inputs.selectedIndex.value,
-                    onChanged: (value) => inputs.selectedIndex.toggle(i),
+                    onChanged: (value) {
+                      inputs.selectedIndex.toggle(i);
+
+                      if (inputs.selectedIndex.value != null) {
+                        inputs.selectedAll.updateState(null);
+                      } else {
+                        inputs.selectedAll.updateState(false);
+                      }
+                    },
                     title: 'Value: $i',
                     onTap: () {},
                   ),

@@ -121,15 +121,9 @@ class ImpaktfullUiCheckBox extends StatelessWidget with ComponentDescriptorMixin
 
   void _onTap() {
     if (value == true) {
-      if (type == CheckboxType.indeterminate) {
-        onChangedInterpediate!(null);
-      } else {
-        _onChanged(false);
-      }
-    } else if (value == false) {
-      _onChanged(true);
-    } else {
       _onChanged(false);
+    } else {
+      _onChanged(true);
     }
   }
 
