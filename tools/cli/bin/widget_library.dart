@@ -95,8 +95,9 @@ class ${className}TextStyleTheme {
   final describeFileContent = """part of '$lowercaseComponentName.dart';
 
 String _describeInstance(BuildContext context, $className instance) {
-  final sb = StringBuffer();
-  return sb.toString();
+  final descriptor = ComponentDescriptor();
+  descriptor.add('theme', instance.theme);
+  return descriptor.describe();
 }""";
 
   describeFile.writeAsStringSync(describeFileContent);
