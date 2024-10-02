@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/badge/badge_style.dart';
+import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
-import 'package:impaktfull_ui_2/src/components/dropdown/dropdown_style.dart';
+import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view_style.dart';
-import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator_style.dart';
+import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
-import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator_style.dart';
-import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
-import 'package:impaktfull_ui_2/src/components/switch/switch_style.dart';
+import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
+import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
+import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
 import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
@@ -39,6 +40,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiListViewTheme listView;
   final ImpaktfullUiLoadingIndicatorTheme loadingIndicator;
   final ImpaktfullUiModalTheme modal;
+  final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
   final ImpaktfullUiSnackyConfiguratorTheme snackyConfigurator;
   final ImpaktfullUiSwitchTheme switchTheme;
@@ -62,6 +64,7 @@ class ImpaktfullUiComponentsTheme {
     required this.listView,
     required this.loadingIndicator,
     required this.modal,
+    required this.notification,
     required this.refreshIndicator,
     required this.snackyConfigurator,
     required this.switchTheme,
@@ -86,6 +89,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiListViewTheme? listView,
     ImpaktfullUiLoadingIndicatorTheme? loadingIndicator,
     ImpaktfullUiModalTheme? modal,
+    ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
     ImpaktfullUiSnackyConfiguratorTheme? snackyConfigurator,
     ImpaktfullUiSwitchTheme? switchTheme,
@@ -109,6 +113,7 @@ class ImpaktfullUiComponentsTheme {
         listView: listView ?? this.listView,
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
         modal: modal ?? this.modal,
+        notification: notification ?? this.notification,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
@@ -146,6 +151,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiLoadingIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiModalTheme) {
       return ImpaktfullUiModalTheme.of(context) as T;
+    } else if (T == ImpaktfullUiNotificationTheme) {
+      return ImpaktfullUiNotificationTheme.of(context) as T;
     } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiSnackyConfiguratorTheme) {

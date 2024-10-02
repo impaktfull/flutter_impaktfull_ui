@@ -6,6 +6,7 @@ class ComponentLibraryStringInput extends ComponentLibraryInputItem<String> {
   ComponentLibraryStringInput(
     super.label, {
     super.initialValue,
+    super.extraInfo,
   });
 
   @override

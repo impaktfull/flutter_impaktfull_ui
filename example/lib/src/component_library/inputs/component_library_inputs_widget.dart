@@ -30,16 +30,7 @@ class _ComponentsLibraryInputsWidgetState
     if (inputs.isEmpty) return const SizedBox();
     return Expanded(
       child: ImpaktfullUiThemeBuidler(
-        builder: (context, theme) => Container(
-          decoration: BoxDecoration(
-            color: theme.colors.card,
-            border: Border(
-              top: BorderSide(
-                color: theme.colors.border,
-                width: 2,
-              ),
-            ),
-          ),
+        builder: (context, theme) => ImpaktfullUiCard(
           child: ListView.builder(
             padding: const EdgeInsets.all(16),
             itemCount: inputs.length,
@@ -53,6 +44,14 @@ class _ComponentsLibraryInputsWidgetState
                     input.label,
                     style: theme.textStyles.onCard.text.medium,
                   ),
+                  if (input.extraInfo != null) ...[
+                    Text(
+                      input.extraInfo!,
+                      style:
+                          theme.textStyles.onCardTertiary.text.extraSmall.light,
+                    ),
+                  ],
+                  const SizedBox(height: 4),
                   input.build(context),
                   const SizedBox(height: 16),
                 ],

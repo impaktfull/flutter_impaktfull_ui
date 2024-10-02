@@ -9,6 +9,7 @@ class ComponentLibraryIntInput extends ComponentLibraryInputItem<int> {
   ComponentLibraryIntInput(
     super.label, {
     super.initialValue,
+    super.extraInfo,
     this.min,
     this.max,
   });

@@ -11,6 +11,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/input_fie
 import 'package:impaktfull_ui_example/src/component_library/components/list_view/list_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_indicator/loading_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/modal/modal_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/notification/notification_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/refreshindicator/refreshindicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/snacky/snacky_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/switch/switch_library_item.dart';
@@ -32,6 +33,7 @@ class ComponentLibrary {
     const ListViewLibraryItem(),
     const LoadingIndicatorLibraryItem(),
     const ModalLibraryItem(),
+    const NotificationLibraryItem(),
     const RefreshIndicatorLibraryItem(),
     const SnackyLibraryItem(),
     const SwitchLibraryItem(),

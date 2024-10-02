@@ -7,6 +7,7 @@ class ComponentLibraryBoolInput extends ComponentLibraryInputItem<bool> {
   ComponentLibraryBoolInput(
     super.label, {
     super.initialValue,
+    super.extraInfo,
     this.allowNull = false,
   });
 

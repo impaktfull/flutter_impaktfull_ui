@@ -13,6 +13,7 @@ class ComponentLibraryIconInput extends ComponentLibraryInputItem<IconData> {
   ComponentLibraryIconInput(
     super.label, {
     super.initialValue,
+    super.extraInfo,
   });
 
   @override

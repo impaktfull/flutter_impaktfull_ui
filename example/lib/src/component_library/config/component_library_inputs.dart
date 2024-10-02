@@ -24,11 +24,13 @@ abstract class ComponentLibraryInputItem<T> {
   T? _value;
   T? get value => _value;
   final String label;
+  final String? extraInfo;
   final _listeners = <VoidCallback>{};
 
   ComponentLibraryInputItem(
     this.label, {
     T? initialValue,
+    this.extraInfo,
   }) : _value = initialValue;
 
   Widget build(BuildContext context);

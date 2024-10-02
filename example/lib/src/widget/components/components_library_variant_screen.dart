@@ -48,7 +48,6 @@ class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
               items: widgets,
               itemBuilder: (context, item, index) =>
                   ComponentsLibraryVariantDescriptor(
-                alignment: Alignment.centerLeft,
                 child: item,
               ),
               noDataLabel: 'No widgets for ${widget.variant.runtimeType}',

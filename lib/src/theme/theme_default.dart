@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/badge/badge_style.dart';
+import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
@@ -9,11 +9,12 @@ import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view_style.dart';
-import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator_style.dart';
+import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
-import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator_style.dart';
-import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
+import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
+import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
 import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
@@ -256,8 +257,9 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            hint: textStyles.onCardSecondary.text.medium
-                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
+            hint: textStyles.onCardSecondary.text.medium.copyWith(
+                color: textStyles.onCardTertiary.text.medium.color
+                    ?.withOpacity(0.5)),
             label: textStyles.onCard.text.small.medium,
           ),
         ),
@@ -296,8 +298,36 @@ class DefaultTheme {
             close: assets.icons.close,
           ),
         ),
+        notification: ImpaktfullUiNotificationTheme(
+          colors: ImpaktfullUiNotificationColorTheme(
+            background: colors.card,
+            border: colors.border,
+            branded: colors.accent,
+            error: colors.error,
+            info: colors.info,
+            success: colors.success,
+            warning: colors.warning,
+          ),
+          textStyles: ImpaktfullUiNotificationTextStyleTheme(
+            title: textStyles.onCard.text.medium.bold,
+            subtitle: textStyles.onCard.text.small,
+          ),
+          dimens: ImpaktfullUiNotificationDimensTheme(
+            borderRadius: dimens.borderRadius,
+          ),
+          assets: ImpaktfullUiNotificationAssetsTheme(
+            branded: assets.icons.confetti,
+            chevronRight: assets.icons.chevronRight,
+            close: assets.icons.close,
+            error: assets.icons.error,
+            info: assets.icons.info,
+            success: assets.icons.success,
+            warning: assets.icons.warning,
+          ),
+        ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(
+              loadingIndicator: colors.accent),
         ),
         snackyConfigurator: ImpaktfullUiSnackyConfiguratorTheme(
           colors: ImpaktfullUiSnackyConfiguratorColorTheme(

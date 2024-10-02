@@ -5,6 +5,8 @@ import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dar
 import 'package:snacky/snacky.dart';
 import 'package:intl/intl.dart' as intl;
 
+export 'snacky_configurator_style.dart';
+
 class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
   final Widget app;
   final SnackyController? snackyController;

@@ -41,12 +41,14 @@ class ImpaktfullUiAssetTheme {
               chevronUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
               circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle()),
               close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
+              confetti: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
               delete: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
               error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
               edit: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
-              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
+              lineVertical:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
               search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
@@ -130,6 +132,7 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset chevronUp;
   final ImpaktfullUiAsset circle;
   final ImpaktfullUiAsset close;
+  final ImpaktfullUiAsset confetti;
   final ImpaktfullUiAsset delete;
   final ImpaktfullUiAsset edit;
   final ImpaktfullUiAsset error;
@@ -153,6 +156,7 @@ class ImpaktfullUiIconTheme {
     required this.chevronUp,
     required this.circle,
     required this.close,
+    required this.confetti,
     required this.delete,
     required this.edit,
     required this.error,
@@ -177,6 +181,7 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? chevronUp,
     ImpaktfullUiAsset? circle,
     ImpaktfullUiAsset? close,
+    ImpaktfullUiAsset? confetti,
     ImpaktfullUiAsset? delete,
     ImpaktfullUiAsset? error,
     ImpaktfullUiAsset? edit,
@@ -200,6 +205,7 @@ class ImpaktfullUiIconTheme {
         chevronUp: chevronUp ?? this.chevronUp,
         circle: circle ?? this.circle,
         close: close ?? this.close,
+        confetti: confetti ?? this.confetti,
         delete: delete ?? this.delete,
         edit: edit ?? this.edit,
         error: error ?? this.error,

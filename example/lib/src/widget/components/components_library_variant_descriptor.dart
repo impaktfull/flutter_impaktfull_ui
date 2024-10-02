@@ -6,11 +6,9 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
   final Widget child;
   final double? width;
   final double? height;
-  final Alignment alignment;
 
   const ComponentsLibraryVariantDescriptor({
     required this.child,
-    this.alignment = Alignment.center,
     this.title,
     this.width,
     this.height,
@@ -41,10 +39,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
         SizedBox(
           width: width,
           height: height,
-          child: Align(
-            alignment: alignment,
-            child: child,
-          ),
+          child: child,
         ),
       ],
     );
