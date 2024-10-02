@@ -21,7 +21,7 @@ class NotificationBadgeLibraryItem extends ComponentLibraryItem {
 class NotificationBadgeLibraryInputs extends ComponentLibraryInputs {
   final ComponentLibraryBoolInput show = ComponentLibraryBoolInput(
     'Show',
-    initialValue: false,
+    initialValue: true,
   );
   final ComponentLibraryStringInput badgeText =
       ComponentLibraryStringInput('Badge text');

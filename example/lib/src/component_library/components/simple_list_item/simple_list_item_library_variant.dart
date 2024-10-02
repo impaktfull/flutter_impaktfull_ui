@@ -15,8 +15,14 @@ class SimpleListItemLibraryVariant
       BuildContext context, SimpleListItemLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiSimpleListItem(
-        title: 'Title',
-        subtitle: 'Title',
+        title: 'Settings',
+        subtitle: 'Change all your settings here',
+        leadingWidgetBuilder: (context) => ImpaktfullUiAssetWidget(
+          asset: theme.assets.icons.settings,
+        ),
+        trailingWidgetBuilder: (context) => ImpaktfullUiAssetWidget(
+          asset: theme.assets.icons.chevronRight,
+        ),
         onTap: () {
           ImpaktfullUiNotification.show(
             title: 'Callback',

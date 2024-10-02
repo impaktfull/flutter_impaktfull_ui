@@ -15,7 +15,7 @@ class IconButtonTypeLibraryVariant
       BuildContext context, IconButtonLibraryVariantInputs inputs) {
     return [
       ImpaktfullUiIconButton(
-        onTap: () {},
+        onTap: () => ImpaktfullUiNotification.show(title: 'IconButton tapped'),
         asset: ImpaktfullUiAsset.icon(inputs.icon.value!),
         tooltip: inputs.tooltip.value,
       ),
