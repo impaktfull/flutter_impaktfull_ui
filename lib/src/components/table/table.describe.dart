@@ -1,10 +1,10 @@
 part of 'table.dart';
 
 String _describeInstance(BuildContext context, ImpaktfullUiTable instance) {
-  final sb = StringBuffer();
-  sb.write("columnConfig: ${instance.columnConfig} / ");
-  sb.write("titles: ${instance.titles.length} / ");
-  sb.write("content: ${instance.content.length} / ");
-  if (instance.theme != null) sb.write("theme: ${instance.theme} / ");
-  return sb.toString();
+  final descriptor = ComponentDescriptor();
+  descriptor.add('columnConfig', instance.columnConfig);
+  descriptor.add('titles', instance.titles);
+  descriptor.add('content', instance.content);
+  descriptor.add('theme', instance.theme);
+  return descriptor.describe();
 }

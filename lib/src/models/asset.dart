@@ -59,7 +59,7 @@ class ImpaktfullUiAsset {
     if (pixelAsset != null) return pixelAsset!;
     if (lottieAsset != null) return lottieAsset!;
     if (riveAsset != null) return riveAsset!;
-    return 'Icon: $icon';
+    return icon!.toString();
   }
 
   String? getFullPixelAsset() => _getFullPath(pixelAsset);

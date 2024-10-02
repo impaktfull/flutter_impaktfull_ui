@@ -2,11 +2,11 @@ part of 'horizontal_tab.dart';
 
 String _describeInstance(
     BuildContext context, ImpaktfullUiHorizontalTab instance) {
-  final sb = StringBuffer();
-
-  sb.write("label: ${instance.label}");
-  if (instance.badge != null) sb.write("badge: ${instance.badge}");
-  sb.write("badgeType: ${instance.badgeType}");
-  sb.write("isSelected: ${instance.isSelected}");
-  return sb.toString();
+  final descriptor = ComponentDescriptor();
+  descriptor.add('label', instance.label);
+  descriptor.add('badge', instance.badge);
+  descriptor.add('badgeType', instance.badgeType);
+  descriptor.add('isSelected', instance.isSelected);
+  descriptor.add('theme', instance.theme);
+  return descriptor.describe();
 }

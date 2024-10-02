@@ -1,11 +1,11 @@
 part of 'card.dart';
 
 String _describeInstance(BuildContext context, ImpaktfullUiCard instance) {
-  final sb = StringBuffer();
-  sb.write('child: ${instance.child} / ');
-  sb.write('cursor: ${instance.cursor} / ');
-  if (instance.onTap != null) sb.write('onTap: ${instance.onTap} / ');
-  if (instance.onFocus != null) sb.write('onFocus: ${instance.onFocus} / ');
-  if (instance.theme != null) sb.write('theme: ${instance.theme} /');
-  return sb.toString();
+  final descriptor = ComponentDescriptor();
+  descriptor.add('child', instance.child);
+  descriptor.add('cursor', instance.cursor);
+  descriptor.add('onTap', instance.onTap);
+  descriptor.add('onFocus', instance.onFocus);
+  descriptor.add('theme', instance.theme);
+  return descriptor.describe();
 }

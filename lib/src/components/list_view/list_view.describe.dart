@@ -1,22 +1,18 @@
 part of 'list_view.dart';
 
 String _describeInstance(BuildContext context, ImpaktfullUiListView instance) {
-  final sb = StringBuffer();
-  if (instance.child != null) sb.write("child: ${instance.child} / ");
-  if (instance.children != null) {
-    sb.write("children: ${instance.children?.length} / ");
-  }
-  if (instance.items != null) sb.write("items: ${instance.items?.length} / ");
-  if (instance.itemBuilder != null) {
-    sb.write("itemBuilder: ${instance.itemBuilder}");
-  }
-  sb.write("padding: ${instance.padding}");
-  sb.write("spacing: ${instance.spacing}");
-  sb.write("separated: ${instance.separated}");
-  sb.write("noDataLabel: ${instance.noDataLabel}");
-  sb.write("refreshBtnLabel: ${instance.refreshBtnLabel}");
-  sb.write("isLoading: ${instance.isLoading}");
-  sb.write("onRefresh: ${instance.onRefresh}");
-  if (instance.theme != null) sb.write("theme: ${instance.theme}");
-  return sb.toString();
+  final descriptor = ComponentDescriptor();
+  descriptor.add('child', instance.child);
+  descriptor.add('children', instance.children);
+  descriptor.add('items', instance.items);
+  descriptor.add('itemBuilder', instance.itemBuilder);
+  descriptor.add('padding', instance.padding);
+  descriptor.add('spacing', instance.spacing);
+  descriptor.add('separated', instance.separated);
+  descriptor.add('noDataLabel', instance.noDataLabel);
+  descriptor.add('refreshBtnLabel', instance.refreshBtnLabel);
+  descriptor.add('isLoading', instance.isLoading);
+  descriptor.add('onRefresh', instance.onRefresh);
+  descriptor.add('theme', instance.theme);
+  return descriptor.describe();
 }

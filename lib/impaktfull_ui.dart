@@ -25,6 +25,7 @@ export 'src/components/table_row/table_row.dart';
 export 'src/components/table_row_item/table_row_item.dart';
 export 'src/components/table_header/table_header.dart';
 export 'src/components/table_header_item/table_header_item.dart';
+export 'src/components/tooltip/tooltip.dart';
 export 'src/components/touch_feedback/touch_feedback.dart';
 // Model
 export 'src/models/asset.dart';

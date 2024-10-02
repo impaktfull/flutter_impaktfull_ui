@@ -4,7 +4,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/button/bu
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
 class ButtonTypeLibraryVariant
-    extends ComponentLibraryVariant<ButtonsLibraryPrimaryInputs> {
+    extends ComponentLibraryVariant<ButtonTypeLibraryInputs> {
   final ImpaktfullUiButtonType type;
 
   ButtonTypeLibraryVariant({
@@ -15,7 +15,7 @@ class ButtonTypeLibraryVariant
   String get title => type.name;
 
   @override
-  List<Widget> build(BuildContext context, ButtonsLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, ButtonTypeLibraryInputs inputs) {
     final title = inputs.title.value ?? '{fallback_label}';
     final isFullWidth = [
       false,
@@ -77,7 +77,7 @@ class ButtonTypeLibraryVariant
   }
 
   @override
-  ButtonsLibraryPrimaryInputs inputs() => ButtonsLibraryPrimaryInputs();
+  ButtonTypeLibraryInputs inputs() => ButtonTypeLibraryInputs();
 }
 
-class ButtonsLibraryPrimaryInputs extends ButtonLibraryInputs {}
+class ButtonTypeLibraryInputs extends ButtonLibraryInputs {}

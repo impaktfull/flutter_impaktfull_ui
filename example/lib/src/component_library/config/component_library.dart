@@ -7,6 +7,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/checkbox/
 import 'package:impaktfull_ui_example/src/component_library/components/cms_header/cms_header_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/dropdown/dropdown_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/icon_button/icon_button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/input_field/input_field_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/list_view/list_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_indicator/loading_indicator_library_item.dart';
@@ -16,6 +17,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/refreshin
 import 'package:impaktfull_ui_example/src/component_library/components/snacky/snacky_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/switch/switch_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/table/table_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/tooltip/tooltip_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
 class ComponentLibrary {
@@ -30,6 +32,7 @@ class ComponentLibrary {
     const DropdownLibraryItem(),
     const HorizontalTabsLibraryItem(),
     const InputFieldLibraryItem(),
+    const IconButtonLibraryItem(),
     const ListViewLibraryItem(),
     const LoadingIndicatorLibraryItem(),
     const ModalLibraryItem(),
@@ -38,5 +41,6 @@ class ComponentLibrary {
     const SnackyLibraryItem(),
     const SwitchLibraryItem(),
     const TableLibraryItem(),
+    const TooltipLibraryItem(),
   ];
 }

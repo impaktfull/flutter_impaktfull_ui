@@ -2,12 +2,12 @@ part of 'auto_layout.dart';
 
 String _describeInstance(
     BuildContext context, ImpaktfullUiAutoLayout instance) {
-  final sb = StringBuffer();
-  sb.write('orientation: ${instance.orientation.name} / ');
-  sb.write('mainAxisAlignment: ${instance.mainAxisAlignment.name} / ');
-  sb.write('mainAxisSize: ${instance.mainAxisSize.name} / ');
-  sb.write('crossAxisAlignment: ${instance.crossAxisAlignment.name} / ');
-  sb.write('spacing: ${instance.spacing} / ');
-  sb.write('children: ${instance.children.length} /');
-  return sb.toString();
+  final descriptor = ComponentDescriptor();
+  descriptor.add('orientation', instance.orientation.name);
+  descriptor.add('mainAxisAlignment', instance.mainAxisAlignment.name);
+  descriptor.add('mainAxisSize', instance.mainAxisSize.name);
+  descriptor.add('crossAxisAlignment', instance.crossAxisAlignment.name);
+  descriptor.add('spacing', instance.spacing);
+  descriptor.add('children', instance.children);
+  return descriptor.describe();
 }

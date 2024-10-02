@@ -2,9 +2,9 @@ part of 'loading_indicator.dart';
 
 String _describeInstance(
     BuildContext context, ImpaktfullUiLoadingIndicator instance) {
-  final sb = StringBuffer();
-  sb.write("asset: ${instance.asset}");
-  sb.write("color: ${instance.color}");
-  if (instance.theme != null) sb.write("theme: ${instance.theme}");
-  return sb.toString();
+  final descriptor = ComponentDescriptor();
+  descriptor.add('asset', instance.asset);
+  descriptor.add('color', instance.color);
+  descriptor.add('theme', instance.theme);
+  return descriptor.describe();
 }

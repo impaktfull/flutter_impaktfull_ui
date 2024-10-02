@@ -21,6 +21,7 @@ import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
+import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 
 abstract class ImpaktfullUiComponentTheme {
   const ImpaktfullUiComponentTheme();
@@ -49,6 +50,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiTableHeaderItemTheme tableHeaderItem;
   final ImpaktfullUiTableRowTheme tableRow;
   final ImpaktfullUiTableRowItemTheme tableRowItem;
+  final ImpaktfullUiTooltipTheme tooltip;
 
   ImpaktfullUiComponentsTheme({
     required this.badge,
@@ -73,6 +75,7 @@ class ImpaktfullUiComponentsTheme {
     required this.table,
     required this.tableRow,
     required this.tableRowItem,
+    required this.tooltip,
   });
 
   ImpaktfullUiComponentsTheme copyWith({
@@ -98,6 +101,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiTableHeaderItemTheme? tableHeaderItem,
     ImpaktfullUiTableRowTheme? tableRow,
     ImpaktfullUiTableRowItemTheme? tableRowItem,
+    ImpaktfullUiTooltipTheme? tooltip,
   }) =>
       ImpaktfullUiComponentsTheme(
         badge: badge ?? this.badge,
@@ -122,6 +126,7 @@ class ImpaktfullUiComponentsTheme {
         tableHeaderItem: tableHeaderItem ?? this.tableHeaderItem,
         tableRow: tableRow ?? this.tableRow,
         tableRowItem: tableRowItem ?? this.tableRowItem,
+        tooltip: tooltip ?? this.tooltip,
       );
 
   static T of<T extends ImpaktfullUiComponentTheme>(BuildContext context) {
@@ -169,6 +174,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiTableRowTheme.of(context) as T;
     } else if (T == ImpaktfullUiTableRowItemTheme) {
       return ImpaktfullUiTableRowItemTheme.of(context) as T;
+    } else if (T == ImpaktfullUiTooltipTheme) {
+      return ImpaktfullUiTooltipTheme.of(context) as T;
     } else {
       throw ArgumentError('$T is not configured in the impaktfull ui theme');
     }

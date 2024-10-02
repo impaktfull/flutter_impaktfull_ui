@@ -21,6 +21,7 @@ import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
+import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
@@ -411,6 +412,19 @@ class DefaultTheme {
             title: textStyles.onCanvas.text.small.medium,
             subtitle: textStyles.onCanvas.text.small,
           ),
+        ),
+        tooltip: ImpaktfullUiTooltipTheme(
+          colors: ImpaktfullUiTooltipColorTheme(
+            background: colors.primary,
+          ),
+          textStyles: const ImpaktfullUiTooltipTextStyleTheme(),
+          dimens: ImpaktfullUiTooltipDimensTheme(
+            borderRadius: dimens.borderRadiusSmall,
+          ),
+          durations: ImpaktfullUiTooltipDurationTheme(
+            wait: duration.long,
+          ),
+          assets: const ImpaktfullUiTooltipAssetsTheme(),
         ),
       ),
     );
