@@ -48,15 +48,15 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
                   snacky.canBeClosed ? () => cancelableSnacky.cancel() : null,
               trailingWidgetBuilder: snacky.trailingWidgetBuilder == null
                   ? null
-                  : (context) =>
+                  : (context, config) =>
                       snacky.trailingWidgetBuilder!(context, cancelableSnacky),
               leadingWidgetBuilder: snacky.leadingWidgetBuilder == null
                   ? null
-                  : (context) =>
+                  : (context, config) =>
                       snacky.leadingWidgetBuilder!(context, cancelableSnacky),
-              bottomWidgetBuilder: snacky.bottomWidgetBuilder == null
+              centerWidgetBuilder: snacky.bottomWidgetBuilder == null
                   ? null
-                  : (context) =>
+                  : (context, config) =>
                       snacky.bottomWidgetBuilder!(context, cancelableSnacky),
               type: _getType(snacky),
             );
