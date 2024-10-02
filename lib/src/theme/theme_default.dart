@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_navigation_item/bottom_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
@@ -13,6 +15,7 @@ import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
+import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
@@ -52,11 +55,11 @@ class DefaultTheme {
       text: const Color(0xFF344054),
       textOnAccent: const Color(0xFFFFFFFF),
       textOnSecondary: const Color(0xFF344054),
-      warning: const Color(0xFFB54708),
-      error: const Color(0xFFB42318),
+      warning: const Color(0xFFFFA733),
+      error: const Color(0xFFEB2F21),
       info: const Color(0xFF1C90D4),
-      success: const Color(0xFF067647),
-      destructive: const Color(0xFFB42318),
+      success: const Color(0xFF34B81F),
+      destructive: const Color(0xFFEB2F21),
     );
     final dimens = ImpaktfullUiDimensTheme(
       borderRadiusExtraSmall: borderRadiusExtraSmall,
@@ -151,6 +154,31 @@ class DefaultTheme {
           ),
           assets: ImpaktfullUiBadgeAssetsTheme(
             close: assets.icons.close,
+          ),
+        ),
+        bottomNavigation: ImpaktfullUiBottomNavigationTheme(
+          assets: const ImpaktfullUiBottomNavigationAssetsTheme(),
+          colors: ImpaktfullUiBottomNavigationColorTheme(
+            background: colors.card,
+          ),
+          dimens: const ImpaktfullUiBottomNavigationDimensTheme(),
+          textStyles: const ImpaktfullUiBottomNavigationTextStyleTheme(),
+          shadows: ImpaktfullUiBottomNavigationShadowsTheme(
+            background: shadows.medium,
+          ),
+        ),
+        bottomNavigationItem: ImpaktfullUiBottomNavigationItemTheme(
+          assets: const ImpaktfullUiBottomNavigationItemAssetsTheme(),
+          colors: ImpaktfullUiBottomNavigationItemColorTheme(
+            active: colors.accent,
+            inactive: colors.tertiary,
+            badgeActive: colors.tertiary,
+            badgeInActive: colors.accent,
+          ),
+          dimens: const ImpaktfullUiBottomNavigationItemDimensTheme(),
+          textStyles: ImpaktfullUiBottomNavigationItemTextStyleTheme(
+            activeLabel: textStyles.onCardPrimary.text.small.bold,
+            inActiveLabel: textStyles.onCardTertiary.text.small.bold,
           ),
         ),
         button: ImpaktfullUiButtonTheme(
@@ -258,9 +286,8 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            hint: textStyles.onCardSecondary.text.medium.copyWith(
-                color: textStyles.onCardTertiary.text.medium.color
-                    ?.withOpacity(0.5)),
+            hint: textStyles.onCardSecondary.text.medium
+                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
             label: textStyles.onCard.text.small.medium,
           ),
         ),
@@ -326,9 +353,24 @@ class DefaultTheme {
             warning: assets.icons.warning,
           ),
         ),
+        notificationBadge: ImpaktfullUiNotificationBadgeTheme(
+          assets: const ImpaktfullUiNotificationBadgeAssetsTheme(),
+          colors: ImpaktfullUiNotificationBadgeColorTheme(
+            background: colors.primary,
+            border: colors.card,
+          ),
+          dimens: ImpaktfullUiNotificationBadgeDimensTheme(
+            borderRadius: dimens.borderRadius,
+          ),
+          durations: ImpaktfullUiNotificationBadgeDurationTheme(
+            opacity: duration.short,
+          ),
+          textStyles: ImpaktfullUiNotificationBadgeTextStyleTheme(
+            text: textStyles.onPrimary.text.small,
+          ),
+        ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(
-              loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
         ),
         snackyConfigurator: ImpaktfullUiSnackyConfiguratorTheme(
           colors: ImpaktfullUiSnackyConfiguratorColorTheme(

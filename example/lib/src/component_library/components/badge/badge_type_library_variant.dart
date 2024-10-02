@@ -3,8 +3,7 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/badge/badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class BadgeTypeLibraryVariant
-    extends ComponentLibraryVariant<BadgeLibraryVariantInputs> {
+class BadgeTypeLibraryVariant extends ComponentLibraryVariant<BadgeLibraryVariantInputs> {
   final ImpaktfullUiBadgeType type;
   BadgeTypeLibraryVariant(this.type);
 
@@ -16,11 +15,11 @@ class BadgeTypeLibraryVariant
     final label = inputs.label.value ?? '{badge_label}';
     final leadingIcons = [
       null,
-      inputs.leadingIcon.value ?? Icons.add,
+      inputs.leadingIcon.value,
     ];
     final trailingIcons = [
       null,
-      inputs.trailingIcon.value ?? Icons.add,
+      inputs.trailingIcon.value,
     ];
     return [
       for (final size in ImpaktfullUiBadgeSize.values) ...[

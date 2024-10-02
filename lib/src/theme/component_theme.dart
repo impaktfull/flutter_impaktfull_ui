@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_navigation_item/bottom_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
@@ -13,6 +15,7 @@ import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
+import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
@@ -29,6 +32,8 @@ abstract class ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiBadgeTheme badge;
+  final ImpaktfullUiBottomNavigationTheme bottomNavigation;
+  final ImpaktfullUiBottomNavigationItemTheme bottomNavigationItem;
   final ImpaktfullUiButtonTheme button;
   final ImpaktfullUiCardTheme card;
   final ImpaktfullUiCheckboxTheme checkbox;
@@ -42,6 +47,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiLoadingIndicatorTheme loadingIndicator;
   final ImpaktfullUiModalTheme modal;
   final ImpaktfullUiNotificationTheme notification;
+  final ImpaktfullUiNotificationBadgeTheme notificationBadge;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
   final ImpaktfullUiSnackyConfiguratorTheme snackyConfigurator;
   final ImpaktfullUiSwitchTheme switchTheme;
@@ -54,6 +60,8 @@ class ImpaktfullUiComponentsTheme {
 
   ImpaktfullUiComponentsTheme({
     required this.badge,
+    required this.bottomNavigation,
+    required this.bottomNavigationItem,
     required this.button,
     required this.card,
     required this.checkbox,
@@ -67,6 +75,7 @@ class ImpaktfullUiComponentsTheme {
     required this.loadingIndicator,
     required this.modal,
     required this.notification,
+    required this.notificationBadge,
     required this.refreshIndicator,
     required this.snackyConfigurator,
     required this.switchTheme,
@@ -80,6 +89,8 @@ class ImpaktfullUiComponentsTheme {
 
   ImpaktfullUiComponentsTheme copyWith({
     ImpaktfullUiBadgeTheme? badge,
+    ImpaktfullUiBottomNavigationTheme? bottomNavigation,
+    ImpaktfullUiBottomNavigationItemTheme? bottomNavigationItem,
     ImpaktfullUiButtonTheme? button,
     ImpaktfullUiCardTheme? card,
     ImpaktfullUiCheckboxTheme? checkbox,
@@ -93,6 +104,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiLoadingIndicatorTheme? loadingIndicator,
     ImpaktfullUiModalTheme? modal,
     ImpaktfullUiNotificationTheme? notification,
+    ImpaktfullUiNotificationBadgeTheme? notificationBadge,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
     ImpaktfullUiSnackyConfiguratorTheme? snackyConfigurator,
     ImpaktfullUiSwitchTheme? switchTheme,
@@ -105,6 +117,8 @@ class ImpaktfullUiComponentsTheme {
   }) =>
       ImpaktfullUiComponentsTheme(
         badge: badge ?? this.badge,
+        bottomNavigation: bottomNavigation ?? this.bottomNavigation,
+        bottomNavigationItem: bottomNavigationItem ?? this.bottomNavigationItem,
         button: button ?? this.button,
         card: card ?? this.card,
         checkbox: checkbox ?? this.checkbox,
@@ -118,6 +132,7 @@ class ImpaktfullUiComponentsTheme {
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
         modal: modal ?? this.modal,
         notification: notification ?? this.notification,
+        notificationBadge: notificationBadge ?? this.notificationBadge,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
@@ -132,6 +147,10 @@ class ImpaktfullUiComponentsTheme {
   static T of<T extends ImpaktfullUiComponentTheme>(BuildContext context) {
     if (T == ImpaktfullUiBadgeTheme) {
       return ImpaktfullUiBadgeTheme.of(context) as T;
+    } else if (T == ImpaktfullUiBottomNavigationTheme) {
+      return ImpaktfullUiBottomNavigationTheme.of(context) as T;
+    } else if (T == ImpaktfullUiBottomNavigationItemTheme) {
+      return ImpaktfullUiBottomNavigationItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiButtonTheme) {
       return ImpaktfullUiButtonTheme.of(context) as T;
     } else if (T == ImpaktfullUiCardTheme) {
@@ -158,6 +177,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiModalTheme.of(context) as T;
     } else if (T == ImpaktfullUiNotificationTheme) {
       return ImpaktfullUiNotificationTheme.of(context) as T;
+    } else if (T == ImpaktfullUiNotificationBadgeTheme) {
+      return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
     } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiSnackyConfiguratorTheme) {

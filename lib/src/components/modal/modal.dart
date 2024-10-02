@@ -57,8 +57,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     bool hasBlurredBackground = false,
     bool rootNavigator = false,
   }) =>
-      Navigator.of(context, rootNavigator: rootNavigator)
-          .push<T>(ImpaktfullUiDefaultModalRoute<T>(
+      Navigator.of(context, rootNavigator: rootNavigator).push<T>(ImpaktfullUiDefaultModalRoute<T>(
         context: context,
         builder: builder,
         barrierDismissible: true,
@@ -110,156 +109,143 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
       builder: (context, theme, componentTheme) {
         return GestureDetector(
           onTap: () => Navigator.of(context).pop(),
-          child: Center(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final width = constraints.maxWidth > this.width
-                    ? this.width
-                    : constraints.maxWidth;
-                final actionsOrientation = _getActionsOrientation(width);
-                List<Widget> actions = this.actions;
-                if (actions.isNotEmpty &&
-                    actionsOrientation ==
-                        ImpaktfullUiAutoLayoutOrientation.horizontal) {
-                  actions = actions
-                      .map((action) => Expanded(
-                            child: action,
-                          ))
-                      .toList();
-                }
-                final headerChilderen = [
-                  if (headerChild != null) ...[
-                    headerChild!,
-                  ],
-                  if (headerIcon != null) ...[
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: componentTheme.colors.leadingHeaderIcon
-                              .withOpacity(0.2),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Center(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final width = constraints.maxWidth > this.width ? this.width : constraints.maxWidth;
+                  final actionsOrientation = _getActionsOrientation(width);
+                  List<Widget> actions = this.actions;
+                  if (actions.isNotEmpty && actionsOrientation == ImpaktfullUiAutoLayoutOrientation.horizontal) {
+                    actions = actions
+                        .map((action) => Expanded(
+                              child: action,
+                            ))
+                        .toList();
+                  }
+                  final headerChilderen = [
+                    if (headerChild != null) ...[
+                      headerChild!,
+                    ],
+                    if (headerIcon != null) ...[
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: componentTheme.colors.leadingHeaderIcon.withOpacity(0.2),
+                          ),
+                          borderRadius: componentTheme.dimens.borderRadius,
                         ),
-                        borderRadius: componentTheme.dimens.borderRadius,
+                        padding: componentTheme.dimens.leadingIconPadding,
+                        child: ImpaktfullUiAssetWidget(
+                          asset: headerIcon!,
+                          color: componentTheme.colors.leadingHeaderIcon,
+                        ),
                       ),
-                      padding: componentTheme.dimens.leadingIconPadding,
-                      child: ImpaktfullUiAssetWidget(
-                        asset: headerIcon!,
-                        color: componentTheme.colors.leadingHeaderIcon,
-                      ),
-                    ),
-                  ],
-                ];
-                return GestureDetector(
-                  onTap: () {}, // cancel close event
-                  child: Material(
-                    color: Colors.white,
-                    borderRadius: componentTheme.dimens.borderRadius,
-                    child: SizedBox(
-                      width: width,
-                      child: ImpaktfullUiAutoLayout.vertical(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Stack(
-                            children: [
-                              Padding(
-                                padding: componentTheme.dimens.padding,
-                                child: ImpaktfullUiAutoLayout.horizontal(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  spacing: 16,
-                                  children: [
-                                    if (headerChildLocation ==
-                                            ImpaktfullUiModalHeaderChildLocation
-                                                .leading &&
-                                        headerChilderen.isNotEmpty) ...[
-                                      ...headerChilderen,
-                                    ],
-                                    Expanded(
-                                      child: ImpaktfullUiAutoLayout.vertical(
-                                        mainAxisSize: MainAxisSize.min,
-                                        spacing: 4,
-                                        children: [
-                                          if (headerChildLocation ==
-                                                  ImpaktfullUiModalHeaderChildLocation
-                                                      .top &&
-                                              headerChilderen.isNotEmpty) ...[
-                                            ...headerChilderen,
-                                          ],
-                                          if (title != null) ...[
-                                            Text(
-                                              title!,
-                                              style: componentTheme
-                                                  .textStyles.title,
-                                            ),
-                                            if (subtitle != null) ...[
+                    ],
+                  ];
+                  return GestureDetector(
+                    onTap: () {}, // cancel close event
+                    child: Material(
+                      color: Colors.white,
+                      borderRadius: componentTheme.dimens.borderRadius,
+                      child: SizedBox(
+                        width: width,
+                        child: ImpaktfullUiAutoLayout.vertical(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Stack(
+                              children: [
+                                Padding(
+                                  padding: componentTheme.dimens.padding,
+                                  child: ImpaktfullUiAutoLayout.horizontal(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    spacing: 16,
+                                    children: [
+                                      if (headerChildLocation == ImpaktfullUiModalHeaderChildLocation.leading &&
+                                          headerChilderen.isNotEmpty) ...[
+                                        ...headerChilderen,
+                                      ],
+                                      Expanded(
+                                        child: ImpaktfullUiAutoLayout.vertical(
+                                          mainAxisSize: MainAxisSize.min,
+                                          spacing: 4,
+                                          children: [
+                                            if (headerChildLocation == ImpaktfullUiModalHeaderChildLocation.top &&
+                                                headerChilderen.isNotEmpty) ...[
+                                              ...headerChilderen,
+                                            ],
+                                            if (title != null) ...[
                                               Text(
-                                                subtitle!,
-                                                style: componentTheme
-                                                    .textStyles.subtitle,
+                                                title!,
+                                                style: componentTheme.textStyles.title,
                                               ),
+                                              if (subtitle != null) ...[
+                                                Text(
+                                                  subtitle!,
+                                                  style: componentTheme.textStyles.subtitle,
+                                                ),
+                                              ],
                                             ],
                                           ],
-                                        ],
+                                        ),
+                                      ),
+                                      if (hasClose || onCloseTapped != null) ...[
+                                        const SizedBox(width: 48),
+                                      ],
+                                    ],
+                                  ),
+                                ),
+                                if (hasClose || onCloseTapped != null) ...[
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: Padding(
+                                      padding: componentTheme.dimens.closeIconButtonPadding,
+                                      child: ImpaktfullUiIconButton(
+                                        onTap: () => _onCloseTapped(context),
+                                        asset: componentTheme.assets.close,
                                       ),
                                     ),
-                                    if (hasClose || onCloseTapped != null) ...[
-                                      const SizedBox(width: 48),
-                                    ],
+                                  ),
+                                ],
+                              ],
+                            ),
+                            if (showDividers && title != null) ...[
+                              const ImpaktfullUiDivider(),
+                            ],
+                            if (child != null) ...[
+                              Padding(
+                                padding: componentTheme.dimens.padding,
+                                child: child!,
+                              ),
+                            ],
+                            if (showDividers && (child != null || title != null)) ...[
+                              const ImpaktfullUiDivider(),
+                            ],
+                            if (actions.isNotEmpty) ...[
+                              Padding(
+                                padding: componentTheme.dimens.padding,
+                                child: ImpaktfullUiAutoLayout(
+                                  spacing: 8,
+                                  orientation: actionsOrientation,
+                                  crossAxisAlignment: actionsOrientation == ImpaktfullUiAutoLayoutOrientation.vertical
+                                      ? CrossAxisAlignment.stretch
+                                      : CrossAxisAlignment.start,
+                                  children: [
+                                    ...actions,
                                   ],
                                 ),
                               ),
-                              if (hasClose || onCloseTapped != null) ...[
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: Padding(
-                                    padding: componentTheme
-                                        .dimens.closeIconButtonPadding,
-                                    child: ImpaktfullUiIconButton(
-                                      onTap: () => _onCloseTapped(context),
-                                      asset: componentTheme.assets.close,
-                                    ),
-                                  ),
-                                ),
-                              ],
                             ],
-                          ),
-                          if (showDividers && title != null) ...[
-                            const ImpaktfullUiDivider(),
                           ],
-                          if (child != null) ...[
-                            Padding(
-                              padding: componentTheme.dimens.padding,
-                              child: child!,
-                            ),
-                          ],
-                          if (showDividers &&
-                              (child != null || title != null)) ...[
-                            const ImpaktfullUiDivider(),
-                          ],
-                          if (actions.isNotEmpty) ...[
-                            Padding(
-                              padding: componentTheme.dimens.padding,
-                              child: ImpaktfullUiAutoLayout(
-                                spacing: 8,
-                                orientation: actionsOrientation,
-                                crossAxisAlignment: actionsOrientation ==
-                                        ImpaktfullUiAutoLayoutOrientation
-                                            .vertical
-                                    ? CrossAxisAlignment.stretch
-                                    : CrossAxisAlignment.start,
-                                children: [
-                                  ...actions,
-                                ],
-                              ),
-                            ),
-                          ],
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         );
