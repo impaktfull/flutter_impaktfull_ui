@@ -6,6 +6,7 @@ import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
+import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
@@ -49,7 +50,6 @@ class DefaultTheme {
       tertiary: const Color(0xFF475467),
       canvas: const Color(0xFFF9FAFB),
       card: const Color(0xFFFFFFFF),
-      header: const Color(0xFFF9FAFB),
       border: Colors.grey.withOpacity(0.2),
       shadow: const Color(0xFF101828),
       text: const Color(0xFF344054),
@@ -67,6 +67,7 @@ class DefaultTheme {
       borderRadius: borderRadius,
       borderRadiusLarge: borderRadiusLarge,
       borderRadiusExtraLarge: borderRadiusExtraLarge,
+      borderRadiusCircle: BorderRadius.circular(99999999),
     );
     const fontFamilyDisplay = 'Ubuntu';
     const fontFamilyText = 'Geologica';
@@ -232,6 +233,15 @@ class DefaultTheme {
           assets: ImpaktfullUiCmsHeaderAssetsTheme(
             back: assets.icons.arrowLeft,
           ),
+        ),
+        colorPicker: ImpaktfullUiColorPickerTheme(
+          assets: const ImpaktfullUiColorPickerAssetsTheme(),
+          colors: const ImpaktfullUiColorPickerColorTheme(),
+          dimens: ImpaktfullUiColorPickerDimensTheme(
+            simpleColorPickerItemBorderRadius: dimens.borderRadiusCircle,
+            simpleColorPickerItemSize: 32,
+          ),
+          textStyles: const ImpaktfullUiColorPickerTextStyleTheme(),
         ),
         divider: ImpaktfullUiDividerTheme(
           colors: ImpaktfullUiDividerColorTheme(
@@ -419,7 +429,7 @@ class DefaultTheme {
         ),
         tableHeader: ImpaktfullUiTableHeaderTheme(
           colors: ImpaktfullUiTableHeaderColorTheme(
-            background: colors.header,
+            background: colors.canvas,
           ),
           dimens: ImpaktfullUiTableHeaderDimensTheme(
             borderRadius: BorderRadius.only(

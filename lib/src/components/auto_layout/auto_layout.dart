@@ -16,6 +16,7 @@ class ImpaktfullUiAutoLayout extends StatelessWidget
   final CrossAxisAlignment crossAxisAlignment;
   final List<Widget> children;
   final double spacing;
+  final bool wrap;
 
   const ImpaktfullUiAutoLayout({
     required this.children,
@@ -24,6 +25,7 @@ class ImpaktfullUiAutoLayout extends StatelessWidget
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.spacing = 0,
+    this.wrap = false,
     super.key,
   });
 
@@ -33,6 +35,7 @@ class ImpaktfullUiAutoLayout extends StatelessWidget
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.spacing = 0,
+    this.wrap = false,
     super.key,
   }) : orientation = ImpaktfullUiAutoLayoutOrientation.horizontal;
 
@@ -42,6 +45,7 @@ class ImpaktfullUiAutoLayout extends StatelessWidget
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.spacing = 0,
+    this.wrap = false,
     super.key,
   }) : orientation = ImpaktfullUiAutoLayoutOrientation.vertical;
 
@@ -65,6 +69,13 @@ class ImpaktfullUiAutoLayout extends StatelessWidget
     }
 
     if (orientation == ImpaktfullUiAutoLayoutOrientation.horizontal) {
+      if (wrap) {
+        return Wrap(
+          direction: Axis.horizontal,
+          runSpacing: spacing,
+          children: childerenWithSpacing,
+        );
+      }
       return Row(
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
@@ -72,6 +83,13 @@ class ImpaktfullUiAutoLayout extends StatelessWidget
         children: childerenWithSpacing,
       );
     } else {
+      if (wrap) {
+        return Wrap(
+          direction: Axis.vertical,
+          runSpacing: spacing,
+          children: childerenWithSpacing,
+        );
+      }
       return Column(
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,

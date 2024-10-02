@@ -10,6 +10,8 @@ part 'card.describe.dart';
 
 class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
   final Widget child;
+  final double? width;
+  final double? height;
   final VoidCallback? onTap;
   final MouseCursor cursor;
   final VoidCallback? onFocus;
@@ -18,6 +20,8 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
 
   const ImpaktfullUiCard({
     required this.child,
+    this.width,
+    this.height,
     this.cursor = MouseCursor.defer,
     this.onTap,
     this.onFocus,
@@ -39,6 +43,8 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCardTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, theme, componentTheme) => Container(
+        width: widget.width,
+        height: widget.height,
         decoration: BoxDecoration(
           borderRadius: componentTheme.dimens.borderRadius,
           color: componentTheme.colors.background,

@@ -9,6 +9,7 @@ export 'src/components/badge/badge.dart';
 export 'src/components/card/card.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/cms_header/cms_header.dart';
+export 'src/components/color_picker/color_picker.dart';
 export 'src/components/divider/divider.dart';
 export 'src/components/dropdown/dropdown.dart';
 export 'src/components/horizontal_tab/horizontal_tab.dart';

@@ -6,6 +6,7 @@ class ImpaktfullUiDimensTheme {
   final BorderRadius borderRadius;
   final BorderRadius borderRadiusLarge;
   final BorderRadius borderRadiusExtraLarge;
+  final BorderRadius borderRadiusCircle;
 
   const ImpaktfullUiDimensTheme({
     required this.borderRadiusExtraSmall,
@@ -13,6 +14,7 @@ class ImpaktfullUiDimensTheme {
     required this.borderRadius,
     required this.borderRadiusLarge,
     required this.borderRadiusExtraLarge,
+    required this.borderRadiusCircle,
   });
 
   ImpaktfullUiDimensTheme copyWith({
@@ -21,6 +23,7 @@ class ImpaktfullUiDimensTheme {
     BorderRadius? borderRadius,
     BorderRadius? borderRadiusLarge,
     BorderRadius? borderRadiusExtraLarge,
+    BorderRadius? borderRadiusCircle,
   }) =>
       ImpaktfullUiDimensTheme(
         borderRadiusExtraSmall:
@@ -30,5 +33,6 @@ class ImpaktfullUiDimensTheme {
         borderRadiusLarge: borderRadiusLarge ?? this.borderRadiusLarge,
         borderRadiusExtraLarge:
             borderRadiusExtraLarge ?? this.borderRadiusExtraLarge,
+        borderRadiusCircle: borderRadiusCircle ?? this.borderRadiusCircle,
       );
 }

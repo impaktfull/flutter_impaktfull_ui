@@ -7,6 +7,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/button/bu
 import 'package:impaktfull_ui_example/src/component_library/components/card/card_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/checkbox/checkbox_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/cms_header/cms_header_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/color_picker/color_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/dropdown/dropdown_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/icon_button/icon_button_library_item.dart';
@@ -34,6 +35,7 @@ class ComponentLibrary {
     const CheckboxLibraryItem(),
     const CardLibraryItem(),
     const CmsHeaderLibraryItem(),
+    const ColorPickerLibraryItem(),
     const DropdownLibraryItem(),
     const HorizontalTabsLibraryItem(),
     const InputFieldLibraryItem(),

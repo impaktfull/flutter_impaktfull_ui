@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_builder.dart';
+import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 
 import '../../util/device_util/device_util.dart';
 
@@ -12,6 +13,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final BoxBorder? border;
   final MouseCursor cursor;
   final List<BoxShadow> shadow;
+  final String? toolTip;
   final bool canRequestFocus;
 
   const ImpaktfullUiTouchFeedback({
@@ -21,6 +23,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     this.borderRadius,
     this.color,
     this.border,
+    this.toolTip,
     this.cursor = SystemMouseCursors.click,
     this.canRequestFocus = true,
     this.shadow = const [],
@@ -55,12 +58,15 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
                   ),
             borderRadius: border == null ? borderRadius : null,
             color: color ?? Colors.transparent,
-            child: _PlatformTouchFeedback(
-              borderRadius: borderRadius,
-              onTap: onTap,
-              cursor: cursor,
-              onFocusChanged: _onFocusChanged,
-              child: child,
+            child: ImpaktfullUiTooltip(
+              message: toolTip,
+              child: _PlatformTouchFeedback(
+                borderRadius: borderRadius,
+                onTap: onTap,
+                cursor: cursor,
+                onFocusChanged: _onFocusChanged,
+                child: child,
+              ),
             ),
           ),
         ),
