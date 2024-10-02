@@ -19,10 +19,13 @@ class InputFieldLibraryItem extends ComponentLibraryItem {
 }
 
 class InputLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput label = ComponentLibraryStringInput('Label');
-  final ComponentLibraryIconInput leadingIcon = ComponentLibraryIconInput('Leading icon');
+  final ComponentLibraryStringInput label =
+      ComponentLibraryStringInput('Label');
+  final ComponentLibraryIconInput leadingIcon =
+      ComponentLibraryIconInput('Leading icon');
   final ComponentLibraryStringInput hint = ComponentLibraryStringInput('Hint');
-  final ComponentLibraryStringInput value = ComponentLibraryStringInput('Value');
+  final ComponentLibraryStringInput value =
+      ComponentLibraryStringInput('Value');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

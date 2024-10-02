@@ -1,4 +1,4 @@
-import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ImpaktfullUiAssetTheme {
@@ -32,17 +32,27 @@ class ImpaktfullUiAssetTheme {
       ImpaktfullUiAssetTheme(
         icons: icons ??
             ImpaktfullUiIconTheme(
+              add: ImpaktfullUiAsset.icon(PhosphorIcons.plus()),
+              arrowLeft: ImpaktfullUiAsset.icon(PhosphorIcons.arrowLeft()),
               check: ImpaktfullUiAsset.icon(PhosphorIcons.check()),
-              arrowBack: ImpaktfullUiAsset.icon(PhosphorIcons.arrowLeft()),
-              minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
-              close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
-              dropUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
-              dropDown: ImpaktfullUiAsset.icon(PhosphorIcons.caretDown()),
+              chevronDown: ImpaktfullUiAsset.icon(PhosphorIcons.caretDown()),
+              chevronLeft: ImpaktfullUiAsset.icon(PhosphorIcons.caretLeft()),
               chevronRight: ImpaktfullUiAsset.icon(PhosphorIcons.caretRight()),
-              success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
+              chevronUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
+              circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle()),
+              close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
+              delete: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
               error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
-              warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
+              edit: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
+              home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
+              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
+              list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
+              minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
+              search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
+              settings: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
+              success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
+              warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
             ),
         images: images ??
             ImpaktfullUiImageTheme(
@@ -111,57 +121,97 @@ class ImpaktfullUiAssetTheme {
 }
 
 class ImpaktfullUiIconTheme {
-  final ImpaktfullUiAsset arrowBack;
+  final ImpaktfullUiAsset add;
+  final ImpaktfullUiAsset arrowLeft;
   final ImpaktfullUiAsset check;
-  final ImpaktfullUiAsset minus;
-  final ImpaktfullUiAsset close;
-  final ImpaktfullUiAsset dropUp;
-  final ImpaktfullUiAsset dropDown;
+  final ImpaktfullUiAsset chevronDown;
+  final ImpaktfullUiAsset chevronLeft;
   final ImpaktfullUiAsset chevronRight;
-  final ImpaktfullUiAsset success;
+  final ImpaktfullUiAsset chevronUp;
+  final ImpaktfullUiAsset circle;
+  final ImpaktfullUiAsset close;
+  final ImpaktfullUiAsset delete;
+  final ImpaktfullUiAsset edit;
   final ImpaktfullUiAsset error;
-  final ImpaktfullUiAsset warning;
+  final ImpaktfullUiAsset home;
   final ImpaktfullUiAsset info;
+  final ImpaktfullUiAsset lineVertical;
+  final ImpaktfullUiAsset list;
+  final ImpaktfullUiAsset minus;
+  final ImpaktfullUiAsset search;
+  final ImpaktfullUiAsset settings;
+  final ImpaktfullUiAsset success;
+  final ImpaktfullUiAsset warning;
 
   const ImpaktfullUiIconTheme({
-    required this.arrowBack,
+    required this.add,
+    required this.arrowLeft,
     required this.check,
-    required this.minus,
-    required this.close,
-    required this.dropUp,
-    required this.dropDown,
+    required this.chevronDown,
+    required this.chevronLeft,
     required this.chevronRight,
-    required this.success,
+    required this.chevronUp,
+    required this.circle,
+    required this.close,
+    required this.delete,
+    required this.edit,
     required this.error,
-    required this.warning,
+    required this.home,
     required this.info,
+    required this.lineVertical,
+    required this.list,
+    required this.minus,
+    required this.search,
+    required this.settings,
+    required this.success,
+    required this.warning,
   });
 
   ImpaktfullUiIconTheme copyWith({
-    ImpaktfullUiAsset? arrowBack,
+    ImpaktfullUiAsset? add,
+    ImpaktfullUiAsset? arrowLeft,
     ImpaktfullUiAsset? check,
-    ImpaktfullUiAsset? minus,
-    ImpaktfullUiAsset? close,
-    ImpaktfullUiAsset? dropUp,
-    ImpaktfullUiAsset? dropDown,
+    ImpaktfullUiAsset? chevronDown,
+    ImpaktfullUiAsset? chevronLeft,
     ImpaktfullUiAsset? chevronRight,
-    ImpaktfullUiAsset? success,
+    ImpaktfullUiAsset? chevronUp,
+    ImpaktfullUiAsset? circle,
+    ImpaktfullUiAsset? close,
+    ImpaktfullUiAsset? delete,
     ImpaktfullUiAsset? error,
-    ImpaktfullUiAsset? warning,
+    ImpaktfullUiAsset? edit,
     ImpaktfullUiAsset? info,
+    ImpaktfullUiAsset? home,
+    ImpaktfullUiAsset? lineVertical,
+    ImpaktfullUiAsset? list,
+    ImpaktfullUiAsset? minus,
+    ImpaktfullUiAsset? search,
+    ImpaktfullUiAsset? settings,
+    ImpaktfullUiAsset? success,
+    ImpaktfullUiAsset? warning,
   }) =>
       ImpaktfullUiIconTheme(
-        arrowBack: arrowBack ?? this.arrowBack,
+        add: add ?? this.add,
+        arrowLeft: arrowLeft ?? this.arrowLeft,
         check: check ?? this.check,
-        minus: minus ?? this.minus,
-        close: close ?? this.close,
-        dropUp: dropUp ?? this.dropUp,
-        dropDown: dropDown ?? this.dropDown,
+        chevronDown: chevronDown ?? this.chevronDown,
+        chevronLeft: chevronLeft ?? this.chevronLeft,
         chevronRight: chevronRight ?? this.chevronRight,
-        success: success ?? this.success,
+        chevronUp: chevronUp ?? this.chevronUp,
+        circle: circle ?? this.circle,
+        close: close ?? this.close,
+        delete: delete ?? this.delete,
+        edit: edit ?? this.edit,
         error: error ?? this.error,
-        warning: warning ?? this.warning,
+        home: home ?? this.home,
         info: info ?? this.info,
+        lineVertical: lineVertical ?? this.lineVertical,
+        list: list ?? this.list,
+        minus: minus ?? this.minus,
+        search: search ?? this.search,
+        settings: settings ?? this.settings,
+        success: success ?? this.success,
+        warning: warning ?? this.warning,
       );
 }
 

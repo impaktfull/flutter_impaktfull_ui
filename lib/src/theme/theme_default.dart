@@ -14,26 +14,31 @@ import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicat
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator_style.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
+import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
 import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
-import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class DefaultTheme {
   static ImpaktfullUiTheme withMinimalChanges({
+    required Color primary,
     required Color accent,
     required Color secondary,
-    required BorderRadius borderRadius,
+    required BorderRadius borderRadiusExtraSmall,
     required BorderRadius borderRadiusSmall,
+    required BorderRadius borderRadius,
     required BorderRadius borderRadiusLarge,
+    required BorderRadius borderRadiusExtraLarge,
     String package = 'impaktfull_ui_2',
   }) {
     final colors = ImpaktfullUiColorTheme(
+      primary: primary,
       accent: accent,
       secondary: secondary,
       tertiary: const Color(0xFF475467),
@@ -52,9 +57,11 @@ class DefaultTheme {
       destructive: const Color(0xFFB42318),
     );
     final dimens = ImpaktfullUiDimensTheme(
+      borderRadiusExtraSmall: borderRadiusExtraSmall,
       borderRadiusSmall: borderRadiusSmall,
       borderRadius: borderRadius,
-      borderRadiusLarge: borderRadiusSmall,
+      borderRadiusLarge: borderRadiusLarge,
+      borderRadiusExtraLarge: borderRadiusExtraLarge,
     );
     const fontFamilyDisplay = 'Ubuntu';
     const fontFamilyText = 'Geologica';
@@ -193,7 +200,7 @@ class DefaultTheme {
           ),
           dimens: const ImpaktfullUiCmsHeaderDimensTheme(),
           assets: ImpaktfullUiCmsHeaderAssetsTheme(
-            back: assets.icons.arrowBack,
+            back: assets.icons.arrowLeft,
           ),
         ),
         divider: ImpaktfullUiDividerTheme(
@@ -213,8 +220,8 @@ class DefaultTheme {
             borderRadius: dimens.borderRadius,
           ),
           assets: ImpaktfullUiDropdownAssetsTheme(
-            dropUp: assets.icons.dropUp,
-            dropDown: assets.icons.dropDown,
+            dropUp: assets.icons.chevronUp,
+            dropDown: assets.icons.chevronDown,
           ),
         ),
         horizontalTab: ImpaktfullUiHorizontalTabTheme(
@@ -314,6 +321,25 @@ class DefaultTheme {
             warning: assets.icons.warning,
             info: assets.icons.info,
             branded: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
+          ),
+        ),
+        switchTheme: ImpaktfullUiSwitchTheme(
+          colors: ImpaktfullUiSwitchColorTheme(
+            activeBackgroundColor: colors.accent,
+            inactiveBackgroundColor: colors.border,
+            active: colors.card,
+            inactive: colors.card,
+            border: colors.border,
+          ),
+          textStyles: const ImpaktfullUiSwitchTextStyleTheme(),
+          dimens: ImpaktfullUiSwitchDimensTheme(
+            borderRadius: dimens.borderRadius,
+            thumbBorderRadius: dimens.borderRadiusExtraSmall,
+            borderWidth: 0,
+          ),
+          assets: ImpaktfullUiSwitchAssetsTheme(
+            active: assets.icons.check,
+            inactive: assets.icons.close,
           ),
         ),
         tableHeader: ImpaktfullUiTableHeaderTheme(

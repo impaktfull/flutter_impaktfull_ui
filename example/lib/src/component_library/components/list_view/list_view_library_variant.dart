@@ -5,14 +5,16 @@ import 'package:impaktfull_ui_example/src/component_library/components/list_view
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class ListViewLibraryVariant extends ComponentLibraryVariant<ListViewLibraryPrimaryInputs> {
+class ListViewLibraryVariant
+    extends ComponentLibraryVariant<ListViewLibraryPrimaryInputs> {
   const ListViewLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, ListViewLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, ListViewLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         height: 400,

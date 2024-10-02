@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
@@ -15,7 +15,8 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiDropdownTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.dropdown;
+  static ImpaktfullUiDropdownTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.dropdown;
 }
 
 class ImpaktfullUiDropdownColorTheme {

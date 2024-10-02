@@ -8,7 +8,8 @@ export 'horizontal_tabs_style.dart';
 
 part 'horizontal_tabs.describe.dart';
 
-class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget
+    with ComponentDescriptorMixin {
   final T selectedValue;
   final ValueChanged<T> onTabSelected;
   final List<ImpaktfullUiHorizontalTabConfig> tabs;
@@ -55,5 +56,5 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget with ComponentDescri
   }
 
   @override
-  String describe() => _describeInstance(this);
+  String describe(BuildContext context) => _describeInstance(context, this);
 }

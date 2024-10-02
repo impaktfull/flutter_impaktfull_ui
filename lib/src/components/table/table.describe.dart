@@ -1,6 +1,6 @@
 part of 'table.dart';
 
-String _describeInstance(ImpaktfullUiTable instance) {
+String _describeInstance(BuildContext context, ImpaktfullUiTable instance) {
   final sb = StringBuffer();
   sb.write("columnConfig: ${instance.columnConfig} / ");
   sb.write("titles: ${instance.titles.length} / ");

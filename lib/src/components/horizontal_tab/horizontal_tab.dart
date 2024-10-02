@@ -19,7 +19,8 @@ class ImpaktfullUiHorizontalTabConfig<T> {
   });
 }
 
-class ImpaktfullUiHorizontalTab extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiHorizontalTab extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String label;
   final String? badge;
   final ImpaktfullUiBadgeType? badgeType;
@@ -44,7 +45,9 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget with ComponentDescriptor
       builder: (context, theme, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,
         borderRadius: componentTheme.dimens.borderRadius,
-        color: isSelected ? componentTheme.colors.backgroundSelectedTab : componentTheme.colors.backgroundUnSelectedTab,
+        color: isSelected
+            ? componentTheme.colors.backgroundSelectedTab
+            : componentTheme.colors.backgroundUnSelectedTab,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 12,
@@ -56,12 +59,16 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget with ComponentDescriptor
             children: [
               Text(
                 label,
-                style: isSelected ? componentTheme.textStyles.selected : componentTheme.textStyles.unselected,
+                style: isSelected
+                    ? componentTheme.textStyles.selected
+                    : componentTheme.textStyles.unselected,
               ),
               if (badge != null) ...[
                 const SizedBox(width: 8),
                 ImpaktfullUiBadge(
-                  type: isSelected ? ImpaktfullUiBadgeType.primary : badgeType ?? ImpaktfullUiBadgeType.primary,
+                  type: isSelected
+                      ? ImpaktfullUiBadgeType.primary
+                      : badgeType ?? ImpaktfullUiBadgeType.primary,
                   size: ImpaktfullUiBadgeSize.small,
                   label: badge,
                 ),
@@ -74,5 +81,5 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget with ComponentDescriptor
   }
 
   @override
-  String describe() => _describeInstance(this);
+  String describe(BuildContext context) => _describeInstance(context, this);
 }

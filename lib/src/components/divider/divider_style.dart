@@ -8,7 +8,8 @@ class ImpaktfullUiDividerTheme extends ImpaktfullUiComponentTheme {
     required this.colors,
   });
 
-  static ImpaktfullUiDividerTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.divider;
+  static ImpaktfullUiDividerTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.divider;
 }
 
 class ImpaktfullUiDividerColorTheme {

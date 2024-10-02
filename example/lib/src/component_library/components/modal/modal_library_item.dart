@@ -19,8 +19,10 @@ class ModalLibraryItem extends ComponentLibraryItem {
 }
 
 class ModalLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryBoolInput showDividers = ComponentLibraryBoolInput('Show dividers');
-  final ComponentLibraryBoolInput showBackgroundBlur = ComponentLibraryBoolInput('Show background blur');
+  final ComponentLibraryBoolInput showDividers =
+      ComponentLibraryBoolInput('Show dividers');
+  final ComponentLibraryBoolInput showBackgroundBlur =
+      ComponentLibraryBoolInput('Show background blur');
   final ComponentLibraryIntInput amountOfActions = ComponentLibraryIntInput(
     'Amount of actions',
     initialValue: 1,

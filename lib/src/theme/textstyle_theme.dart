@@ -133,7 +133,8 @@ class ImpaktfullUiTextStyleDisplayTheme {
     String? fontFamily,
   }) {
     return ImpaktfullUiTextStyleDisplayTheme(
-      extraLarge2: TextStyle(fontSize: 72, color: color, fontFamily: fontFamily),
+      extraLarge2:
+          TextStyle(fontSize: 72, color: color, fontFamily: fontFamily),
       extraLarge: TextStyle(fontSize: 60, color: color, fontFamily: fontFamily),
       large: TextStyle(fontSize: 48, color: color, fontFamily: fontFamily),
       medium: TextStyle(fontSize: 30, color: color, fontFamily: fontFamily),
@@ -178,11 +179,13 @@ class ImpaktfullUiTextStyleTextTheme {
     String? fontFamily,
   }) =>
       ImpaktfullUiTextStyleTextTheme(
-        extraLarge: TextStyle(fontSize: 20, color: color, fontFamily: fontFamily),
+        extraLarge:
+            TextStyle(fontSize: 20, color: color, fontFamily: fontFamily),
         large: TextStyle(fontSize: 18, color: color, fontFamily: fontFamily),
         medium: TextStyle(fontSize: 16, color: color, fontFamily: fontFamily),
         small: TextStyle(fontSize: 14, color: color, fontFamily: fontFamily),
-        extraSmall: TextStyle(fontSize: 12, color: color, fontFamily: fontFamily),
+        extraSmall:
+            TextStyle(fontSize: 12, color: color, fontFamily: fontFamily),
       );
 }
 

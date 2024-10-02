@@ -1,6 +1,7 @@
 part of 'horizontal_tabs.dart';
 
-String _describeInstance(ImpaktfullUiHorizontalTabs instance) {
+String _describeInstance(
+    BuildContext context, ImpaktfullUiHorizontalTabs instance) {
   final sb = StringBuffer();
   sb.write("selectedValue: ${instance.selectedValue} / ");
   sb.write("onTabSelected: ${instance.onTabSelected} / ");

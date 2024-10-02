@@ -3,14 +3,16 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class HorizontalTabsVariant extends ComponentLibraryVariant<HorizontalTabsLibraryVariantInputs> {
+class HorizontalTabsVariant
+    extends ComponentLibraryVariant<HorizontalTabsLibraryVariantInputs> {
   HorizontalTabsVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, HorizontalTabsLibraryVariantInputs inputs) {
+  List<Widget> build(
+      BuildContext context, HorizontalTabsLibraryVariantInputs inputs) {
     return [
       ImpaktfullUiHorizontalTabs(
         selectedValue: inputs.selectedIndex.value,
@@ -44,7 +46,8 @@ class HorizontalTabsVariant extends ComponentLibraryVariant<HorizontalTabsLibrar
   }
 
   @override
-  HorizontalTabsLibraryVariantInputs inputs() => HorizontalTabsLibraryVariantInputs();
+  HorizontalTabsLibraryVariantInputs inputs() =>
+      HorizontalTabsLibraryVariantInputs();
 }
 
 class HorizontalTabsLibraryVariantInputs extends HorizontalTabsLibraryInputs {}

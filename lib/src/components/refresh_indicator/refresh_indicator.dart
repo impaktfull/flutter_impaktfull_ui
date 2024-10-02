@@ -7,7 +7,8 @@ import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.d
 export 'refresh_indicator_style.dart';
 part 'refresh_indicator.describe.dart';
 
-class ImpaktfullUiRefreshIndicator extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiRefreshIndicator extends StatelessWidget
+    with ComponentDescriptorMixin {
   final AsyncCallback? onRefresh;
   final ImpaktfullUiRefreshIndicatorTheme? theme;
   final Widget child;
@@ -34,5 +35,5 @@ class ImpaktfullUiRefreshIndicator extends StatelessWidget with ComponentDescrip
   }
 
   @override
-  String describe() => _describeInstance(this);
+  String describe(BuildContext context) => _describeInstance(context, this);
 }

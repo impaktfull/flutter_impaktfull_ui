@@ -12,10 +12,12 @@ class ComponentsLibraryItemScreen extends StatefulWidget {
   });
 
   @override
-  State<ComponentsLibraryItemScreen> createState() => _ComponentsLibraryItemScreenState();
+  State<ComponentsLibraryItemScreen> createState() =>
+      _ComponentsLibraryItemScreenState();
 }
 
-class _ComponentsLibraryItemScreenState extends State<ComponentsLibraryItemScreen> {
+class _ComponentsLibraryItemScreenState
+    extends State<ComponentsLibraryItemScreen> {
   late final List<ComponentLibraryVariant> variants;
   late ComponentLibraryVariant _selectedTab;
 
@@ -36,7 +38,8 @@ class _ComponentsLibraryItemScreenState extends State<ComponentsLibraryItemScree
               selectedValue: _selectedTab,
               tabs: variants
                   .map(
-                    (e) => ImpaktfullUiHorizontalTabConfig(label: e.title, value: e),
+                    (e) => ImpaktfullUiHorizontalTabConfig(
+                        label: e.title, value: e),
                   )
                   .toList(),
               onTabSelected: (value) => setState(() => _selectedTab = value),

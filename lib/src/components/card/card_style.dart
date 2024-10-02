@@ -10,7 +10,8 @@ class ImpaktfullUiCardTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
-  static ImpaktfullUiCardTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.card;
+  static ImpaktfullUiCardTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.card;
 }
 
 class ImpaktfullUiCardColorTheme {

@@ -30,7 +30,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
   State<ImpaktfullUiCard> createState() => _ImpaktfullUiCardState();
 
   @override
-  String describe() => _describeInstance(this);
+  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
@@ -59,7 +59,9 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         ),
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: false,
-          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer ? SystemMouseCursors.click : widget.cursor,
+          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer
+              ? SystemMouseCursors.click
+              : widget.cursor,
           onTap: widget.onTap,
           onFocus: widget.onFocus,
           borderRadius: componentTheme.dimens.borderRadius,

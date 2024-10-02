@@ -3,14 +3,16 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_indicator/loading_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class LoadingIndicatorVariant extends ComponentLibraryVariant<LoadingIndicatorLibraryVariantInputs> {
+class LoadingIndicatorVariant
+    extends ComponentLibraryVariant<LoadingIndicatorLibraryVariantInputs> {
   LoadingIndicatorVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, LoadingIndicatorLibraryVariantInputs inputs) {
+  List<Widget> build(
+      BuildContext context, LoadingIndicatorLibraryVariantInputs inputs) {
     return [
       const ImpaktfullUiLoadingIndicator(),
       ImpaktfullUiLoadingIndicator(
@@ -33,7 +35,9 @@ class LoadingIndicatorVariant extends ComponentLibraryVariant<LoadingIndicatorLi
   }
 
   @override
-  LoadingIndicatorLibraryVariantInputs inputs() => LoadingIndicatorLibraryVariantInputs();
+  LoadingIndicatorLibraryVariantInputs inputs() =>
+      LoadingIndicatorLibraryVariantInputs();
 }
 
-class LoadingIndicatorLibraryVariantInputs extends LoadingIndicatorLibraryInputs {}
+class LoadingIndicatorLibraryVariantInputs
+    extends LoadingIndicatorLibraryInputs {}

@@ -6,7 +6,8 @@ import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.d
 export 'divider_style.dart';
 part 'divider.describe.dart';
 
-class ImpaktfullUiDivider extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiDivider extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiDividerTheme? theme;
 
   const ImpaktfullUiDivider({
@@ -27,5 +28,5 @@ class ImpaktfullUiDivider extends StatelessWidget with ComponentDescriptorMixin 
   }
 
   @override
-  String describe() => _describeInstance(this);
+  String describe(BuildContext context) => _describeInstance(context, this);
 }

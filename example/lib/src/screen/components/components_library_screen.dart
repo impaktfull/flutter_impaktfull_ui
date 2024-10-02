@@ -10,7 +10,8 @@ class ComponentsLibraryScreen extends StatefulWidget {
   const ComponentsLibraryScreen({super.key});
 
   @override
-  State<ComponentsLibraryScreen> createState() => _ComponentsLibraryScreenState();
+  State<ComponentsLibraryScreen> createState() =>
+      _ComponentsLibraryScreenState();
 }
 
 class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
@@ -38,5 +39,6 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   }
 
   void _onItemTapped(ComponentLibraryItem value) =>
-      Navigator.of(context).push(NativePageRoute(builder: (context) => ComponentsLibraryItemScreen(item: value)));
+      Navigator.of(context).push(NativePageRoute(
+          builder: (context) => ComponentsLibraryItemScreen(item: value)));
 }

@@ -4,7 +4,8 @@ import 'package:impaktfull_ui_example/src/component_library/components/snacky/sn
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class SnackyLibraryVariant extends ComponentLibraryVariant<SnackyLibraryPrimaryInputs> {
+class SnackyLibraryVariant
+    extends ComponentLibraryVariant<SnackyLibraryPrimaryInputs> {
   const SnackyLibraryVariant();
 
   @override

@@ -4,14 +4,15 @@ import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'input_field_style.dart';
 
 part 'input_field.describe.dart';
 
-class ImpaktfullUiInputField extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiInputField extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String? label;
   final String? hint;
   final ImpaktfullUiAsset? leadingIcon;
@@ -41,7 +42,7 @@ class ImpaktfullUiInputField extends StatefulWidget with ComponentDescriptorMixi
   State<ImpaktfullUiInputField> createState() => _ImpaktfullUiInputFieldState();
 
   @override
-  String describe() => _describeInstance(this);
+  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
@@ -51,7 +52,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   @override
   void initState() {
     super.initState();
-    _controller = widget.controller ?? TextEditingController(text: widget.value);
+    _controller =
+        widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = FocusNode();
   }
 
@@ -76,7 +78,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiAutoLayout.vertical(
+      builder: (context, theme, componentTheme) =>
+          ImpaktfullUiAutoLayout.vertical(
         spacing: 4,
         children: [
           if (widget.label != null) ...[
@@ -110,7 +113,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                       textSelectionTheme: TextSelectionThemeData(
                         cursorColor: componentTheme.colors.cursor,
                         selectionColor: componentTheme.colors.selection,
-                        selectionHandleColor: componentTheme.colors.selectionHandle,
+                        selectionHandleColor:
+                            componentTheme.colors.selectionHandle,
                       ),
                     ),
                     child: TextField(

@@ -28,7 +28,8 @@ class TableColumnBuilder extends StatelessWidget {
   }
 
   Widget _buildItem(int i) {
-    final tableColumnConfig = i > config.length - 1 ? const TableColumnConfig(flex: 1) : config[i];
+    final tableColumnConfig =
+        i > config.length - 1 ? const TableColumnConfig(flex: 1) : config[i];
     final child = children[i];
     if (tableColumnConfig.flex != null) {
       return Expanded(
@@ -38,7 +39,8 @@ class TableColumnBuilder extends StatelessWidget {
     }
     final isLast = i == children.length - 1;
 
-    if (tableColumnConfig.minWidth != null && tableColumnConfig.maxWidth != null) {
+    if (tableColumnConfig.minWidth != null &&
+        tableColumnConfig.maxWidth != null) {
       final extraSize = isLast ? 8 : 0;
       return ConstrainedBox(
         constraints: BoxConstraints(

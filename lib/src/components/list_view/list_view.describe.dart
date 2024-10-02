@@ -1,11 +1,15 @@
 part of 'list_view.dart';
 
-String _describeInstance(ImpaktfullUiListView instance) {
+String _describeInstance(BuildContext context, ImpaktfullUiListView instance) {
   final sb = StringBuffer();
   if (instance.child != null) sb.write("child: ${instance.child} / ");
-  if (instance.children != null) sb.write("children: ${instance.children?.length} / ");
+  if (instance.children != null) {
+    sb.write("children: ${instance.children?.length} / ");
+  }
   if (instance.items != null) sb.write("items: ${instance.items?.length} / ");
-  if (instance.itemBuilder != null) sb.write("itemBuilder: ${instance.itemBuilder}");
+  if (instance.itemBuilder != null) {
+    sb.write("itemBuilder: ${instance.itemBuilder}");
+  }
   sb.write("padding: ${instance.padding}");
   sb.write("spacing: ${instance.spacing}");
   sb.write("separated: ${instance.separated}");

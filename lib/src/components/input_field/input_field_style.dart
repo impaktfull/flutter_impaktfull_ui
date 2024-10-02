@@ -12,7 +12,8 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiInputFieldTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.inputField;
+  static ImpaktfullUiInputFieldTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.inputField;
 }
 
 class ImpaktfullUiInputFieldColorTheme {

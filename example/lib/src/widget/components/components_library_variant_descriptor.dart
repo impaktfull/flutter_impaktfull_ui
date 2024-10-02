@@ -22,7 +22,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
     final child = this.child;
     var text = title;
     if (text == null && child is ComponentDescriptorMixin) {
-      text = (child as ComponentDescriptorMixin).describe();
+      text = (child as ComponentDescriptorMixin).describe(context);
     }
     return ImpaktfullUiAutoLayout.vertical(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +31,11 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
         if (text != null) ...[
           Text(
             text,
-            style: ImpaktfullUiTheme.of(context).textStyles.onCanvas.text.extraSmall,
+            style: ImpaktfullUiTheme.of(context)
+                .textStyles
+                .onCanvas
+                .text
+                .extraSmall,
           ),
         ],
         SizedBox(

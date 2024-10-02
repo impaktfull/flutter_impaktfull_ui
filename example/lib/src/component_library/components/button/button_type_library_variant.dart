@@ -3,7 +3,8 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/button/button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class ButtonTypeLibraryVariant extends ComponentLibraryVariant<ButtonsLibraryPrimaryInputs> {
+class ButtonTypeLibraryVariant
+    extends ComponentLibraryVariant<ButtonsLibraryPrimaryInputs> {
   final ImpaktfullUiButtonType type;
 
   ButtonTypeLibraryVariant({
@@ -38,8 +39,12 @@ class ButtonTypeLibraryVariant extends ComponentLibraryVariant<ButtonsLibraryPri
                 size: size,
                 title: title,
                 fullWidth: fullWidth,
-                leadingIcon: leadingIcon == null ? null : ImpaktfullUiAsset.icon(leadingIcon),
-                trailingIcon: trailingIcon == null ? null : ImpaktfullUiAsset.icon(trailingIcon),
+                leadingIcon: leadingIcon == null
+                    ? null
+                    : ImpaktfullUiAsset.icon(leadingIcon),
+                trailingIcon: trailingIcon == null
+                    ? null
+                    : ImpaktfullUiAsset.icon(trailingIcon),
                 onTap: () {},
               ),
               ImpaktfullUiButton(
@@ -47,9 +52,14 @@ class ButtonTypeLibraryVariant extends ComponentLibraryVariant<ButtonsLibraryPri
                 size: size,
                 title: title,
                 fullWidth: fullWidth,
-                leadingIcon: leadingIcon == null ? null : ImpaktfullUiAsset.icon(leadingIcon),
-                trailingIcon: trailingIcon == null ? null : ImpaktfullUiAsset.icon(trailingIcon),
-                onAsyncTap: () async => Future.delayed(const Duration(seconds: 3)),
+                leadingIcon: leadingIcon == null
+                    ? null
+                    : ImpaktfullUiAsset.icon(leadingIcon),
+                trailingIcon: trailingIcon == null
+                    ? null
+                    : ImpaktfullUiAsset.icon(trailingIcon),
+                onAsyncTap: () async =>
+                    Future.delayed(const Duration(seconds: 3)),
               ),
             ],
           ],
@@ -57,7 +67,8 @@ class ButtonTypeLibraryVariant extends ComponentLibraryVariant<ButtonsLibraryPri
             type: type,
             size: size,
             fullWidth: fullWidth,
-            leadingIcon: ImpaktfullUiAsset.icon(inputs.leadingIcon.value ?? Icons.add),
+            leadingIcon:
+                ImpaktfullUiAsset.icon(inputs.leadingIcon.value ?? Icons.add),
             onAsyncTap: () async => Future.delayed(const Duration(seconds: 3)),
           ),
         ],

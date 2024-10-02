@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
@@ -13,7 +13,8 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiCmsHeaderTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.cmsHeader;
+  static ImpaktfullUiCmsHeaderTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.cmsHeader;
 }
 
 class ImpaktfullUiCmsHeaderColorTheme {

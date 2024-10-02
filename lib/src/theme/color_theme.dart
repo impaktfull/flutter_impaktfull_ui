@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 class ImpaktfullUiColorTheme {
+  final Color primary;
   final Color accent;
   final Color secondary;
   final Color tertiary;
@@ -19,6 +20,7 @@ class ImpaktfullUiColorTheme {
   final Color destructive;
 
   const ImpaktfullUiColorTheme({
+    required this.primary,
     required this.accent,
     required this.secondary,
     required this.tertiary,
@@ -38,6 +40,7 @@ class ImpaktfullUiColorTheme {
   });
 
   ImpaktfullUiColorTheme copyWith({
+    Color? primary,
     Color? accent,
     Color? secondary,
     Color? tertiary,
@@ -56,6 +59,7 @@ class ImpaktfullUiColorTheme {
     Color? destructive,
   }) =>
       ImpaktfullUiColorTheme(
+        primary: primary ?? this.primary,
         accent: accent ?? this.accent,
         secondary: secondary ?? this.secondary,
         tertiary: tertiary ?? this.tertiary,

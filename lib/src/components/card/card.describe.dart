@@ -1,6 +1,6 @@
 part of 'card.dart';
 
-String _describeInstance(ImpaktfullUiCard instance) {
+String _describeInstance(BuildContext context, ImpaktfullUiCard instance) {
   final sb = StringBuffer();
   sb.write('child: ${instance.child} / ');
   sb.write('cursor: ${instance.cursor} / ');

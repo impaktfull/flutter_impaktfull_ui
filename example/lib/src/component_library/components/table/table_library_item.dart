@@ -27,7 +27,8 @@ class TableLibraryInputs extends ComponentLibraryInputs {
     'Select all',
     allowNull: true,
   );
-  final ComponentLibraryIntInput selectedIndex = ComponentLibraryIntInput('Selected index');
+  final ComponentLibraryIntInput selectedIndex =
+      ComponentLibraryIntInput('Selected index');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

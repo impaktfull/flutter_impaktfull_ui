@@ -20,8 +20,8 @@ class HomeScreen extends StatelessWidget {
             type: ImpaktfullUiButtonType.primary,
             title: 'Components',
             fullWidth: true,
-            onTap: () =>
-                Navigator.of(context).push(NativePageRoute(builder: (context) => const ComponentsLibraryScreen())),
+            onTap: () => Navigator.of(context).push(NativePageRoute(
+                builder: (context) => const ComponentsLibraryScreen())),
           ),
         ],
       ),

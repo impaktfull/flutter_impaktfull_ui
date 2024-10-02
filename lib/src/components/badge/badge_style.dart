@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
@@ -13,7 +13,8 @@ class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiBadgeTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.badge;
+  static ImpaktfullUiBadgeTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.badge;
 }
 
 class ImpaktfullUiBadgeColorTheme {

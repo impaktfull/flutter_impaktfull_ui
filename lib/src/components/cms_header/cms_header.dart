@@ -11,7 +11,8 @@ export 'cms_header_style.dart';
 
 part 'cms_header.describe.dart';
 
-class ImpaktfullUiCmsHeader extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiCmsHeader extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
@@ -35,7 +36,7 @@ class ImpaktfullUiCmsHeader extends StatefulWidget with ComponentDescriptorMixin
   State<ImpaktfullUiCmsHeader> createState() => _ImpaktfullUiCmsHeaderState();
 
   @override
-  String describe() => _describeInstance(this);
+  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {

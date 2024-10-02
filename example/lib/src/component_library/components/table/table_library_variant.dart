@@ -49,7 +49,9 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                 columnConfig: columnConfig,
                 columns: [
                   ImpaktfullUiTableRowItem.checkbox(
-                    isSelected: inputs.selectedAll.value == true ? true : i == inputs.selectedIndex.value,
+                    isSelected: inputs.selectedAll.value == true
+                        ? true
+                        : i == inputs.selectedIndex.value,
                     onChanged: (value) {
                       inputs.selectedIndex.toggle(i);
 
@@ -66,7 +68,8 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                   ImpaktfullUiTableRowItem.badge(title: 'Value: $i'),
                   ImpaktfullUiTableRowItem.text(title: 'Value: $i'),
                   ImpaktfullUiTableRowItem.custom(
-                    builder: (context, theme) => ImpaktfullUiAutoLayout.horizontal(
+                    builder: (context, theme) =>
+                        ImpaktfullUiAutoLayout.horizontal(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         ImpaktfullUiIconButton(
@@ -80,7 +83,8 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                           ),
                           size: 20,
                           color: Colors.green,
-                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.sealCheck()),
+                          asset:
+                              ImpaktfullUiAsset.icon(PhosphorIcons.sealCheck()),
                         ),
                         ImpaktfullUiIconButton(
                           onTap: () => SnackyController.instance.showMessage(
@@ -92,13 +96,15 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                             ),
                           ),
                           size: 20,
-                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
+                          asset: ImpaktfullUiAsset.icon(
+                              PhosphorIcons.pencilSimple()),
                         ),
                         ImpaktfullUiIconButton(
                           onTap: () => SnackyController.instance.showMessage(
                             (context) => const Snacky(
                               title: 'Failed to delete',
-                              subtitle: 'It is not possible to delete this item',
+                              subtitle:
+                                  'It is not possible to delete this item',
                               type: SnackyType.error,
                               canBeClosed: true,
                             ),

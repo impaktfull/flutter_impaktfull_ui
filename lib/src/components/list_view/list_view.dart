@@ -13,7 +13,8 @@ export 'list_view_style.dart';
 
 part 'list_view.describe.dart';
 
-class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiListView<T> extends StatefulWidget
+    with ComponentDescriptorMixin {
   final Widget? child;
   final List<Widget>? children;
   final List<T>? items;
@@ -46,7 +47,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
 
   const ImpaktfullUiListView.builder({
     required List<T> this.items,
-    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
+    required Widget Function(BuildContext context, T item, int index)
+        this.itemBuilder,
     required String this.noDataLabel,
     this.spacing = 0,
     this.isLoading = false,
@@ -62,7 +64,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
 
   const ImpaktfullUiListView.separated({
     required List<T> this.items,
-    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
+    required Widget Function(BuildContext context, T item, int index)
+        this.itemBuilder,
     required String this.noDataLabel,
     this.isLoading = false,
     this.refreshBtnLabel,
@@ -95,10 +98,11 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
         separated = true;
 
   @override
-  State<ImpaktfullUiListView<T>> createState() => _ImpaktfullUiListViewState<T>();
+  State<ImpaktfullUiListView<T>> createState() =>
+      _ImpaktfullUiListViewState<T>();
 
   @override
-  String describe() => _describeInstance(this);
+  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
@@ -146,7 +150,9 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             onRefresh: widget.onRefresh,
             child: LayoutBuilder(
               builder: (context, constraints) => SingleChildScrollView(
-                physics: widget.onRefresh == null ? null : const AlwaysScrollableScrollPhysics(),
+                physics: widget.onRefresh == null
+                    ? null
+                    : const AlwaysScrollableScrollPhysics(),
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   height: constraints.maxHeight,
@@ -160,7 +166,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                         style: componentTheme.textStyles.title,
                         textAlign: TextAlign.center,
                       ),
-                      if (widget.refreshBtnLabel != null && widget.onRefresh != null) ...[
+                      if (widget.refreshBtnLabel != null &&
+                          widget.onRefresh != null) ...[
                         const SizedBox(height: 16),
                         if (_isLoading) ...[
                           const ImpaktfullUiLoadingIndicator(),
@@ -205,7 +212,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               index,
             ),
             shrinkWrap: widget.shrinkWrap,
-            separatorBuilder: (context, index) => SizedBox(height: widget.spacing),
+            separatorBuilder: (context, index) =>
+                SizedBox(height: widget.spacing),
             itemCount: widget.items!.length,
           ),
         );

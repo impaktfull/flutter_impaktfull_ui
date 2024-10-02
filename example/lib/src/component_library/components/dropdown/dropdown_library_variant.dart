@@ -3,14 +3,16 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/dropdown/dropdown_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class DropdownVariant extends ComponentLibraryVariant<DropdownLibraryVariantInputs> {
+class DropdownVariant
+    extends ComponentLibraryVariant<DropdownLibraryVariantInputs> {
   DropdownVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, DropdownLibraryVariantInputs inputs) {
+  List<Widget> build(
+      BuildContext context, DropdownLibraryVariantInputs inputs) {
     final childWidth = [300.0, null];
     return [
       for (final width in childWidth) ...[
@@ -22,7 +24,8 @@ class DropdownVariant extends ComponentLibraryVariant<DropdownLibraryVariantInpu
               alignment: alignment,
               child: ListView(
                 children: [
-                  for (final item in List.generate(100, (e) => e)) Text("Testing: $item"),
+                  for (final item in List.generate(100, (e) => e))
+                    Text("Testing: $item"),
                 ],
               ),
             ),

@@ -21,9 +21,12 @@ class BadgeLibraryItem extends ComponentLibraryItem {
 }
 
 class BadgeLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput label = ComponentLibraryStringInput('Title');
-  final ComponentLibraryIconInput leadingIcon = ComponentLibraryIconInput('Leading icon');
-  final ComponentLibraryIconInput trailingIcon = ComponentLibraryIconInput('TrailingIcon icon');
+  final ComponentLibraryStringInput label =
+      ComponentLibraryStringInput('Title');
+  final ComponentLibraryIconInput leadingIcon =
+      ComponentLibraryIconInput('Leading icon');
+  final ComponentLibraryIconInput trailingIcon =
+      ComponentLibraryIconInput('TrailingIcon icon');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

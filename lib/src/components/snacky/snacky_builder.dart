@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
 import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:snacky/snacky.dart';
 
 enum ImpaktfullSnackyTextType {
@@ -44,7 +44,8 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
   ) {
     final snacky = cancelableSnacky.snacky;
     final builder = snacky.builder;
-    final borderRadius = this.borderRadius ?? componentTheme.dimens.borderRadius;
+    final borderRadius =
+        this.borderRadius ?? componentTheme.dimens.borderRadius;
     return BaseSnackyWidget(
       cancelableSnacky: cancelableSnacky,
       snackyController: snackyController,
@@ -69,17 +70,22 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
                 child: Row(
                   children: [
                     if (snacky.leadingWidgetBuilder != null) ...[
-                      snacky.leadingWidgetBuilder!.call(context, cancelableSnacky),
+                      snacky.leadingWidgetBuilder!
+                          .call(context, cancelableSnacky),
                       const SizedBox(width: 8),
                     ] else ...[
-                      Builder(builder: (context) {
-                        final leadinIcon = _getLeaderWidget(context, snacky);
-                        if (leadinIcon == null) return const SizedBox(width: 16);
-                        return Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: leadinIcon,
-                        );
-                      }),
+                      Builder(
+                        builder: (context) {
+                          final leadinIcon = _getLeaderWidget(context, snacky);
+                          if (leadinIcon == null) {
+                            return const SizedBox(width: 16);
+                          }
+                          return Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: leadinIcon,
+                          );
+                        },
+                      ),
                     ],
                     Expanded(
                       child: Padding(
@@ -106,7 +112,8 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
                               ),
                             ],
                             if (snacky.bottomWidgetBuilder != null) ...[
-                              snacky.bottomWidgetBuilder!(context, cancelableSnacky),
+                              snacky.bottomWidgetBuilder!(
+                                  context, cancelableSnacky),
                             ],
                           ],
                         ),
@@ -114,7 +121,8 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
                     ),
                     if (snacky.trailingWidgetBuilder != null) ...[
                       const SizedBox(width: 8),
-                      snacky.trailingWidgetBuilder!.call(context, cancelableSnacky),
+                      snacky.trailingWidgetBuilder!
+                          .call(context, cancelableSnacky),
                     ],
                     if (snacky.canBeClosed) ...[
                       const SizedBox(width: 8),
@@ -125,7 +133,9 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
                           padding: const EdgeInsets.all(8),
                           child: ImpaktfullUiAssetWidget(
                             asset: componentTheme.assets.close,
-                            color: _getTextStyle(snacky, ImpaktfullSnackyTextType.title).color,
+                            color: _getTextStyle(
+                                    snacky, ImpaktfullSnackyTextType.title)
+                                .color,
                           ),
                         ),
                       ),
@@ -134,7 +144,9 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
                       const SizedBox(width: 8),
                       ImpaktfullUiAssetWidget(
                         asset: componentTheme.assets.chevronRight,
-                        color: _getTextStyle(snacky, ImpaktfullSnackyTextType.title).color,
+                        color: _getTextStyle(
+                                snacky, ImpaktfullSnackyTextType.title)
+                            .color,
                       ),
                       const SizedBox(width: 16),
                     ] else ...[
@@ -193,7 +205,8 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
     }
     switch (textType) {
       case ImpaktfullSnackyTextType.title:
-        return const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold);
+        return const TextStyle(
+            color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold);
       case ImpaktfullSnackyTextType.subtitle:
         return const TextStyle(color: Colors.black, fontSize: 12);
     }

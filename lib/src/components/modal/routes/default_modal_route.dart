@@ -16,7 +16,8 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
     super.anchorPoint,
     super.traversalEdgeBehavior,
   }) : super(
-          pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
+          pageBuilder: (BuildContext buildContext, Animation<double> animation,
+              Animation<double> secondaryAnimation) {
             final Widget pageChild = Builder(builder: builder);
             Widget dialog = themes?.wrap(pageChild) ?? pageChild;
             if (useSafeArea) {
@@ -24,11 +25,13 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
             }
             return dialog;
           },
-          barrierLabel: barrierLabel ?? MaterialLocalizations.of(context).modalBarrierDismissLabel,
+          barrierLabel: barrierLabel ??
+              MaterialLocalizations.of(context).modalBarrierDismissLabel,
           transitionDuration: const Duration(milliseconds: 150),
-          transitionBuilder:
-              (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) =>
-                  _customTransitionBuilder(context, animation, secondaryAnimation, child, hasBlurredBackground),
+          transitionBuilder: (BuildContext context, Animation<double> animation,
+                  Animation<double> secondaryAnimation, Widget child) =>
+              _customTransitionBuilder(context, animation, secondaryAnimation,
+                  child, hasBlurredBackground),
         );
 }
 
@@ -66,7 +69,8 @@ Widget _buildCupertinoDialogTransitions(
   Widget child,
   bool hasBlurredBackground,
 ) {
-  final dialogScaleTween = Tween<double>(begin: 1.3, end: 1.0).chain(CurveTween(curve: Curves.linearToEaseOut));
+  final dialogScaleTween = Tween<double>(begin: 1.3, end: 1.0)
+      .chain(CurveTween(curve: Curves.linearToEaseOut));
   final curvesAnimation = CurvedAnimation(
     parent: animation,
     curve: Curves.easeInOut,

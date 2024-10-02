@@ -20,4 +20,3 @@ class DividerLibraryInputs extends ComponentLibraryInputs {
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [];
 }
-

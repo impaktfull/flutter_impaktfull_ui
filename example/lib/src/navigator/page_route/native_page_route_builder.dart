@@ -8,8 +8,10 @@ class NativePageRoute<T> extends PageRouteBuilder<T> {
     super.settings,
     super.fullscreenDialog,
   }) : super(
-          pageBuilder: (context, animation, secondaryAnimation) => builder(context),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              builder(context),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              child,
           transitionDuration: Duration.zero,
           reverseTransitionDuration: Duration.zero,
         );

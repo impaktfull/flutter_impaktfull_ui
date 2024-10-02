@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/models/asset_models.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:lottie/lottie.dart';
+import 'package:rive/rive.dart' hide Image;
 
-class ImpaktfullUiAssetWidget extends StatelessWidget {
+part 'asset_widget.describe.dart';
+
+class ImpaktfullUiAssetWidget extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? asset;
   final Color? color;
   final double? width;
@@ -22,10 +28,12 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final asset = this.asset;
     if (asset == null) return const SizedBox();
+    final color = this.color;
     final icon = asset.icon;
     final svgAsset = asset.getFullSvgAsset();
     final pixelAsset = asset.getFullPixelAsset();
     final lottieAsset = asset.getFullLottieAsset();
+    final riveAsset = asset.getFullRiveAsset();
     if (icon != null) {
       return Icon(
         icon,
@@ -43,10 +51,10 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
     }
 
     if (svgAsset != null) {
-      // TODO switch to flutter_svg
-      return Image.asset(
+      return SvgPicture.asset(
         svgAsset,
-        color: color,
+        colorFilter:
+            color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
         width: width,
         height: height,
       );
@@ -58,6 +66,18 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
         height: height,
       );
     }
+    if (riveAsset != null) {
+      return SizedBox(
+        width: width,
+        height: height,
+        child: RiveAnimation.asset(
+          riveAsset,
+        ),
+      );
+    }
     throw Exception('No asset provided (or asset type not supported)');
   }
+
+  @override
+  String describe(BuildContext context) => _describeInstance(context, this);
 }

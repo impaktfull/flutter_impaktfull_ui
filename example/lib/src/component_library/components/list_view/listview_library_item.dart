@@ -20,4 +20,3 @@ class ListViewLibraryInputs extends ComponentLibraryInputs {
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [];
 }
-

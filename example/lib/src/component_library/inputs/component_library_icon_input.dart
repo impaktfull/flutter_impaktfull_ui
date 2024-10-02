@@ -6,7 +6,8 @@ import 'package:impaktfull_ui_example/src/component_library/inputs/icons_data/ic
 class ComponentLibraryIconInput extends ComponentLibraryInputItem<IconData> {
   final _controller = ImpaktfullUiDropdownController();
   final items = AllIcons.allFlatIconsAsMap.values
-      .map((e) => ImpaktfullUiDropdownItem(label: e.hashCode.toString(), value: e))
+      .map((e) =>
+          ImpaktfullUiDropdownItem(label: e.hashCode.toString(), value: e))
       .toList();
 
   ComponentLibraryIconInput(

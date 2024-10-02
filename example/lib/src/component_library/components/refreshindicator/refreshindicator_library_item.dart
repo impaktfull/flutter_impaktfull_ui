@@ -20,4 +20,3 @@ class RefreshIndicatorLibraryInputs extends ComponentLibraryInputs {
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [];
 }
-

@@ -1,6 +1,7 @@
 part of 'horizontal_tab.dart';
 
-String _describeInstance(ImpaktfullUiHorizontalTab instance) {
+String _describeInstance(
+    BuildContext context, ImpaktfullUiHorizontalTab instance) {
   final sb = StringBuffer();
 
   sb.write("label: ${instance.label}");

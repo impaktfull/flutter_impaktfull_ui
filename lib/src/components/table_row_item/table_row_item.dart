@@ -120,7 +120,9 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
                     value: isSelected ?? false,
                     onChanged: onChanged!,
                     theme: ImpaktfullUiCheckboxTheme.of(context).copyWith(
-                      colors: ImpaktfullUiCheckboxTheme.of(context).colors.copyWith(),
+                      colors: ImpaktfullUiCheckboxTheme.of(context)
+                          .colors
+                          .copyWith(),
                     ),
                   ),
                 ],

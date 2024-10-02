@@ -20,7 +20,8 @@ class ImpaktfullUiDurationTheme {
         long: long ?? this.long,
       );
 
-  static ImpaktfullUiDurationTheme getDefault() => const ImpaktfullUiDurationTheme(
+  static ImpaktfullUiDurationTheme getDefault() =>
+      const ImpaktfullUiDurationTheme(
         short: Duration(milliseconds: 200),
         medium: Duration(milliseconds: 350),
         long: Duration(milliseconds: 500),

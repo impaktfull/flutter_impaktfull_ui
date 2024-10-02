@@ -1,6 +1,7 @@
 part of 'auto_layout.dart';
 
-String _describeInstance(ImpaktfullUiAutoLayout instance) {
+String _describeInstance(
+    BuildContext context, ImpaktfullUiAutoLayout instance) {
   final sb = StringBuffer();
   sb.write('orientation: ${instance.orientation.name} / ');
   sb.write('mainAxisAlignment: ${instance.mainAxisAlignment.name} / ');

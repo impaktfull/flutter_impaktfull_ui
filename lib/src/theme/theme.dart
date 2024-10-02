@@ -38,27 +38,36 @@ class ImpaktfullUiTheme {
   });
 
   static ImpaktfullUiTheme custom({
+    required Color primary,
     required Color accent,
     required Color secondary,
-    required BorderRadius borderRadius,
+    required BorderRadius borderRadiusExtraSmall,
     required BorderRadius borderRadiusSmall,
+    required BorderRadius borderRadius,
     required BorderRadius borderRadiusLarge,
+    required BorderRadius borderRadiusExtraLarge,
     String package = 'impaktfull_ui_2',
   }) =>
       DefaultTheme.withMinimalChanges(
+        primary: primary,
         accent: accent,
         secondary: secondary,
         borderRadius: borderRadius,
+        borderRadiusExtraSmall: borderRadiusExtraSmall,
         borderRadiusSmall: borderRadiusSmall,
         borderRadiusLarge: borderRadiusLarge,
+        borderRadiusExtraLarge: borderRadiusExtraLarge,
       );
 
   static ImpaktfullUiTheme getDefault() => DefaultTheme.withMinimalChanges(
+        primary: const Color(0xFF1A1A1A),
         accent: const Color(0xFF7d64f2),
         secondary: const Color(0xFF7d64f2),
+        borderRadiusExtraSmall: BorderRadius.circular(4),
         borderRadiusSmall: BorderRadius.circular(6),
         borderRadius: BorderRadius.circular(8),
         borderRadiusLarge: BorderRadius.circular(12),
+        borderRadiusExtraLarge: BorderRadius.circular(16),
       );
 
   static ImpaktfullUiTheme of(BuildContext context) => theme;

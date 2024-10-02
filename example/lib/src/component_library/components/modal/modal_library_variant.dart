@@ -4,7 +4,8 @@ import 'package:impaktfull_ui_example/src/component_library/components/modal/mod
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class ModalLibraryVariant extends ComponentLibraryVariant<ModalLibraryPrimaryInputs> {
+class ModalLibraryVariant
+    extends ComponentLibraryVariant<ModalLibraryPrimaryInputs> {
   const ModalLibraryVariant();
 
   @override
@@ -27,7 +28,8 @@ class ModalLibraryVariant extends ComponentLibraryVariant<ModalLibraryPrimaryInp
               headerChildLocation: headerChildLocation,
               headerIcon: const ImpaktfullUiAsset.icon(Icons.people),
               title: 'Title',
-              subtitle: 'This is quite a long subtitle that should wrap to the next line',
+              subtitle:
+                  'This is quite a long subtitle that should wrap to the next line',
               hasBlurredBackground: inputs.showBackgroundBlur.value ?? false,
               showDividers: inputs.showDividers.value ?? false,
               onCloseTapped: () async => true,
@@ -35,14 +37,20 @@ class ModalLibraryVariant extends ComponentLibraryVariant<ModalLibraryPrimaryInp
                 children: [
                   Text(
                     'Testing',
-                    style: ImpaktfullUiTheme.of(context).textStyles.onCanvas.text.medium,
+                    style: ImpaktfullUiTheme.of(context)
+                        .textStyles
+                        .onCanvas
+                        .text
+                        .medium,
                   ),
                 ],
               ),
               actions: [
-                for (final index in List.generate(inputs.amountOfActions.value ?? 1, (index) => index)) ...[
+                for (final index in List.generate(
+                    inputs.amountOfActions.value ?? 1, (index) => index)) ...[
                   ImpaktfullUiButton(
-                    type: ImpaktfullUiButtonType.values[index % ImpaktfullUiButtonType.values.length],
+                    type: ImpaktfullUiButtonType
+                        .values[index % ImpaktfullUiButtonType.values.length],
                     title: 'Action $index',
                     onTap: () => Navigator.of(context).pop(),
                   ),

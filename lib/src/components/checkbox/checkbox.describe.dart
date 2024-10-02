@@ -1,6 +1,6 @@
 part of 'checkbox.dart';
 
-String _describeInstance(ImpaktfullUiCheckBox instance) {
+String _describeInstance(BuildContext context, ImpaktfullUiCheckBox instance) {
   final sb = StringBuffer();
   sb.write('value: ${instance.value} / ');
   sb.write('onChanged: ${instance.onChanged} / ');

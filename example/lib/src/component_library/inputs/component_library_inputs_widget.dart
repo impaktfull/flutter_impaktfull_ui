@@ -11,10 +11,12 @@ class ComponentsLibraryInputsWidget extends StatefulWidget {
   });
 
   @override
-  State<ComponentsLibraryInputsWidget> createState() => _ComponentsLibraryInputsWidgetState();
+  State<ComponentsLibraryInputsWidget> createState() =>
+      _ComponentsLibraryInputsWidgetState();
 }
 
-class _ComponentsLibraryInputsWidgetState extends State<ComponentsLibraryInputsWidget> {
+class _ComponentsLibraryInputsWidgetState
+    extends State<ComponentsLibraryInputsWidget> {
   late final List<ComponentLibraryInputItem> inputs;
 
   @override

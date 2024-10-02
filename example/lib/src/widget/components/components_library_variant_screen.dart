@@ -5,7 +5,8 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_inputs_widget.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class ComponentsLibraryVariantScreen<T extends ComponentLibraryInputs?> extends StatefulWidget {
+class ComponentsLibraryVariantScreen<T extends ComponentLibraryInputs?>
+    extends StatefulWidget {
   final ComponentLibraryVariant<T> variant;
   const ComponentsLibraryVariantScreen({
     required this.variant,
@@ -13,7 +14,8 @@ class ComponentsLibraryVariantScreen<T extends ComponentLibraryInputs?> extends 
   });
 
   @override
-  State<ComponentsLibraryVariantScreen> createState() => _ComponentsLibraryVariantScreenState<T>();
+  State<ComponentsLibraryVariantScreen> createState() =>
+      _ComponentsLibraryVariantScreenState<T>();
 }
 
 class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
@@ -44,7 +46,8 @@ class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
               padding: const EdgeInsets.all(16),
               spacing: 8,
               items: widgets,
-              itemBuilder: (context, item, index) => ComponentsLibraryVariantDescriptor(
+              itemBuilder: (context, item, index) =>
+                  ComponentsLibraryVariantDescriptor(
                 alignment: Alignment.centerLeft,
                 child: item,
               ),
