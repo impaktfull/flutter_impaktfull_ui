@@ -3,6 +3,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/autolayou
 import 'package:impaktfull_ui_example/src/component_library/components/badge/badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/bottom_navigation/bottom_navigation_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/bottom_navigation_item/bottom_navigation_item_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/bottomsheet/bottomsheet_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/button/button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/card/card_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/checkbox/checkbox_library_item.dart';
@@ -31,6 +32,7 @@ class ComponentLibrary {
     const BadgeLibraryItem(),
     const BottomNavigationLibraryItem(),
     const BottomNavigationItemLibraryItem(),
+    const BottomSheetLibraryItem(),
     const ButtonLibraryItem(),
     const CheckboxLibraryItem(),
     const CardLibraryItem(),

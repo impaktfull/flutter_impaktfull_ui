@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation_item/bottom_navigation_item.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_sheet/bottom_sheet.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
@@ -35,6 +36,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiBadgeTheme badge;
   final ImpaktfullUiBottomNavigationTheme bottomNavigation;
   final ImpaktfullUiBottomNavigationItemTheme bottomNavigationItem;
+  final ImpaktfullUiBottomSheetTheme bottomSheet;
   final ImpaktfullUiButtonTheme button;
   final ImpaktfullUiCardTheme card;
   final ImpaktfullUiCheckboxTheme checkbox;
@@ -64,6 +66,7 @@ class ImpaktfullUiComponentsTheme {
     required this.badge,
     required this.bottomNavigation,
     required this.bottomNavigationItem,
+    required this.bottomSheet,
     required this.button,
     required this.card,
     required this.checkbox,
@@ -94,6 +97,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiBadgeTheme? badge,
     ImpaktfullUiBottomNavigationTheme? bottomNavigation,
     ImpaktfullUiBottomNavigationItemTheme? bottomNavigationItem,
+    ImpaktfullUiBottomSheetTheme? bottomSheet,
     ImpaktfullUiButtonTheme? button,
     ImpaktfullUiCardTheme? card,
     ImpaktfullUiCheckboxTheme? checkbox,
@@ -123,6 +127,7 @@ class ImpaktfullUiComponentsTheme {
         badge: badge ?? this.badge,
         bottomNavigation: bottomNavigation ?? this.bottomNavigation,
         bottomNavigationItem: bottomNavigationItem ?? this.bottomNavigationItem,
+        bottomSheet: bottomSheet ?? this.bottomSheet,
         button: button ?? this.button,
         card: card ?? this.card,
         checkbox: checkbox ?? this.checkbox,
@@ -156,6 +161,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiBottomNavigationTheme.of(context) as T;
     } else if (T == ImpaktfullUiBottomNavigationItemTheme) {
       return ImpaktfullUiBottomNavigationItemTheme.of(context) as T;
+    } else if (T == ImpaktfullUiBottomSheetTheme) {
+      return ImpaktfullUiBottomSheetTheme.of(context) as T;
     } else if (T == ImpaktfullUiButtonTheme) {
       return ImpaktfullUiButtonTheme.of(context) as T;
     } else if (T == ImpaktfullUiCardTheme) {

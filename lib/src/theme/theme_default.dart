@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation_item/bottom_navigation_item.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_sheet/bottom_sheet.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
@@ -180,6 +181,28 @@ class DefaultTheme {
           textStyles: ImpaktfullUiBottomNavigationItemTextStyleTheme(
             activeLabel: textStyles.onCardPrimary.text.small.bold,
             inActiveLabel: textStyles.onCardTertiary.text.small.bold,
+          ),
+        ),
+        bottomSheet: ImpaktfullUiBottomSheetTheme(
+          assets: ImpaktfullUiBottomSheetAssetsTheme(
+            close: assets.icons.close,
+          ),
+          colors: ImpaktfullUiBottomSheetColorTheme(
+            background: colors.card,
+            handle: colors.text,
+          ),
+          dimens: ImpaktfullUiBottomSheetDimensTheme(
+            borderRadius: dimens.borderRadius.copyWith(
+              bottomLeft: Radius.zero,
+              bottomRight: Radius.zero,
+            ),
+            padding: const EdgeInsetsDirectional.all(16),
+            closeIconButtonPadding: const EdgeInsetsDirectional.all(4),
+            handleBorderRadius: dimens.borderRadiusExtraSmall,
+          ),
+          textStyles: ImpaktfullUiBottomSheetTextStyleTheme(
+            title: textStyles.onCanvas.display.small.semiBold,
+            subtitle: textStyles.onCanvas.text.small,
           ),
         ),
         button: ImpaktfullUiButtonTheme(
