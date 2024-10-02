@@ -5,6 +5,7 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/navigator/page_route/native_page_route_builder.dart';
 import 'package:impaktfull_ui_example/src/screen/components/components_library_item_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
+import 'package:impaktfull_ui_example/src/widget/components/component_card.dart';
 
 class ComponentsLibraryScreen extends StatefulWidget {
   const ComponentsLibraryScreen({super.key});
@@ -20,20 +21,22 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   Widget build(BuildContext context) {
     return BaseScreen(
       title: 'Components',
-      builder: (context) => ImpaktfullUiListView.builder(
+      builder: (context) => ImpaktfullUiGridView.builder(
+        crossAxisCount: (context, config) => config.maxWidth ~/ 250,
         padding: const EdgeInsets.all(16),
         items: _componentLibrary.components,
         spacing: 8,
         itemBuilder: (context, item, index) {
           final value = _componentLibrary.components[index];
-          return ImpaktfullUiButton(
-            type: ImpaktfullUiButtonType.primary,
-            title: value.title,
-            fullWidth: true,
+          final fistComponent = value.getComponentVariants().first;
+          final widget =
+              fistComponent.build(context, fistComponent.inputs()).first;
+          return ComponentCard(
+            label: value.title,
             onTap: () => _onItemTapped(value),
+            child: widget,
           );
         },
-        noDataLabel: 'No components configured',
       ),
     );
   }

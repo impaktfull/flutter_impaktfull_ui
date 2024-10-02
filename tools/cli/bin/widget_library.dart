@@ -37,8 +37,9 @@ Future<void> createComponent({
   required String componentName,
   required String className,
 }) async {
+  final snakeCaseComponentName = componentName.pascalToSnakeCase();
   // Create dir
-  final path = join('lib', 'src', 'components', componentName.toLowerCase());
+  final path = join('lib', 'src', 'components', snakeCaseComponentName);
   final dir = Directory(path);
   if (dir.existsSync()) {
     throw Exception('Component already exists');
@@ -46,9 +47,8 @@ Future<void> createComponent({
   dir.createSync(recursive: true);
 
   //Create files
-  final lowercaseComponentName = componentName.toLowerCase();
   final styleFile =
-      File(join(dir.path, '${lowercaseComponentName}_style.dart'));
+      File(join(dir.path, '${snakeCaseComponentName}_style.dart'));
 
   final styleFileContent = """import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
@@ -66,7 +66,7 @@ class ${className}Theme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ${className}Theme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.$lowercaseComponentName;
+  static ${className}Theme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.${componentName.camelToSnakeCase()};
 }
 
 class ${className}AssetsTheme {
@@ -90,9 +90,9 @@ class ${className}TextStyleTheme {
   styleFile.writeAsStringSync(styleFileContent);
   //Create describe file
   final describeFile =
-      File(join(dir.path, '$lowercaseComponentName.describe.dart'));
+      File(join(dir.path, '$snakeCaseComponentName.describe.dart'));
 
-  final describeFileContent = """part of '$lowercaseComponentName.dart';
+  final describeFileContent = """part of '$snakeCaseComponentName.dart';
 
 String _describeInstance(BuildContext context, $className instance) {
   final descriptor = ComponentDescriptor();
@@ -103,16 +103,16 @@ String _describeInstance(BuildContext context, $className instance) {
   describeFile.writeAsStringSync(describeFileContent);
 
   // Component file
-  final componentFile = File(join(dir.path, '$lowercaseComponentName.dart'));
+  final componentFile = File(join(dir.path, '$snakeCaseComponentName.dart'));
 
   final componentFileContent = """import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/$lowercaseComponentName/${lowercaseComponentName}_style.dart';
+import 'package:impaktfull_ui_2/src/components/$snakeCaseComponentName/${snakeCaseComponentName}_style.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
-export '${lowercaseComponentName}_style.dart';
+export '${snakeCaseComponentName}_style.dart';
 
-part '$lowercaseComponentName.describe.dart';
+part '$snakeCaseComponentName.describe.dart';
 
 class $className extends StatelessWidget with ComponentDescriptorMixin {
   final ${className}Theme? theme;
@@ -140,9 +140,10 @@ Future<void> createWidgetLibrary({
   required String componentName,
   required String componentClassName,
 }) async {
+  final snakeCaseComponentName = componentName.pascalToSnakeCase();
   // Create dir
   final path = join('example', 'lib', 'src', 'component_library', 'components',
-      componentName.toLowerCase());
+      snakeCaseComponentName);
   final dir = Directory(path);
   if (dir.existsSync()) {
     throw Exception('Component already exists');
@@ -150,12 +151,11 @@ Future<void> createWidgetLibrary({
   dir.createSync(recursive: true);
 
   // Create files
-  final lowerCaseComponentName = componentName.toLowerCase();
   final libraryItemFile =
-      File(join(dir.path, '${lowerCaseComponentName}_library_item.dart'));
+      File(join(dir.path, '${snakeCaseComponentName}_library_item.dart'));
 
   final libaryItemFileContent =
-      """import 'package:impaktfull_ui_example/src/component_library/components/$lowerCaseComponentName/${lowerCaseComponentName}_library_variant.dart';
+      """import 'package:impaktfull_ui_example/src/component_library/components/$snakeCaseComponentName/${snakeCaseComponentName}_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
@@ -184,11 +184,11 @@ class ${componentName}LibraryInputs extends ComponentLibraryInputs {
 
   // Component file
   final libraryVariantFile =
-      File(join(dir.path, '${lowerCaseComponentName}_library_variant.dart'));
+      File(join(dir.path, '${snakeCaseComponentName}_library_variant.dart'));
 
   final componentFileContent = """import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_example/src/component_library/components/$lowerCaseComponentName/${lowerCaseComponentName}_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/$snakeCaseComponentName/${snakeCaseComponentName}_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
 class ${componentName}LibraryVariant extends ComponentLibraryVariant<${componentName}LibraryPrimaryInputs> {
@@ -211,4 +211,16 @@ class ${componentName}LibraryVariant extends ComponentLibraryVariant<${component
 class ${componentName}LibraryPrimaryInputs extends ${componentName}LibraryInputs {}
 """;
   libraryVariantFile.writeAsStringSync(componentFileContent);
+}
+
+extension StringExtension on String {
+  String pascalToSnakeCase() => replaceAllMapped(
+        RegExp(r'[A-Z]'),
+        (Match match) => '_${match.group(0)!.toLowerCase()}',
+      ).substring(1);
+
+  String camelToSnakeCase() {
+    if (isEmpty) return this;
+    return this[0].toLowerCase() + substring(1);
+  }
 }

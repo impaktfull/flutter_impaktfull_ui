@@ -23,7 +23,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
   const ImpaktfullUiBottomSheet({
     this.title,
     this.subtitle,
-    this.hasClose = false,
+    this.hasClose = true,
     this.onCloseTapped,
     this.child,
     this.showHandle = false,
@@ -56,6 +56,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
     String? subtitle,
     Widget? child,
     List<Widget> actions = const [],
+    bool hasClose = true,
     Future<bool> Function()? onCloseTapped,
     bool rootNavigator = false,
   }) {
@@ -63,6 +64,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
       title: title,
       subtitle: subtitle,
       actions: actions,
+      hasClose: hasClose,
       onCloseTapped: onCloseTapped,
       child: child,
     );
@@ -158,7 +160,13 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
                             padding:
                                 componentTheme.dimens.closeIconButtonPadding,
                             child: ImpaktfullUiIconButton(
-                              onTap: () => onCloseTapped?.call(),
+                              onTap: () {
+                                if (onCloseTapped != null) {
+                                  onCloseTapped!.call();
+                                } else {
+                                  Navigator.of(context).pop();
+                                }
+                              },
                               asset: componentTheme.assets.close,
                             ),
                           ),

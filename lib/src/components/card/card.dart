@@ -71,9 +71,12 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
           onTap: widget.onTap,
           onFocus: widget.onFocus,
           borderRadius: componentTheme.dimens.borderRadius,
-          child: Padding(
-            padding: widget.padding ?? componentTheme.dimens.padding,
-            child: widget.child,
+          child: ClipRRect(
+            borderRadius: componentTheme.dimens.borderRadius,
+            child: Padding(
+              padding: widget.padding ?? componentTheme.dimens.padding,
+              child: widget.child,
+            ),
           ),
         ),
       ),

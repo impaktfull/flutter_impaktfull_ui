@@ -13,11 +13,15 @@ export 'notification_style.dart';
 part 'notification.describe.dart';
 
 enum ImpaktfullUiNotificationType {
-  success,
-  warning,
-  error,
-  info,
-  branded,
+  success(SnackyType.success),
+  warning(SnackyType.warning),
+  error(SnackyType.error),
+  info(SnackyType.info),
+  branded(SnackyType.branded);
+
+  final SnackyType _snackyType;
+
+  const ImpaktfullUiNotificationType(this._snackyType);
 }
 
 enum ImpaktfullUiNotificationAlignment {
@@ -74,11 +78,14 @@ class ImpaktfullUiNotification extends StatelessWidget
   static show({
     required String title,
     String? subtitle,
+    ImpaktfullUiNotificationType type = ImpaktfullUiNotificationType.success,
   }) =>
       SnackyController.instance.showMessage(
         (context) => Snacky(
           title: title,
           subtitle: subtitle,
+          type: type._snackyType,
+          canBeClosed: true,
         ),
       );
 

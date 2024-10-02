@@ -19,13 +19,18 @@ class RefreshIndicatorLibraryVariant
         height: 400,
         child: ImpaktfullUiRefreshIndicator(
           onRefresh: () async => Future.delayed(const Duration(seconds: 3)),
-          child: ImpaktfullUiListView(
-            children: [
-              Container(
-                height: 1000,
-                color: ImpaktfullUiTheme.of(context).colors.accent,
+          child: ImpaktfullUiListView.builder(
+            spacing: 8,
+            items: List.generate(100, (i) => i),
+            itemBuilder: (context, item, index) => Container(
+              color: ImpaktfullUiTheme.of(context).colors.accent,
+              child: Text(
+                item.toString(),
+                style: theme.textStyles.onPrimary.text.large,
+                textAlign: TextAlign.center,
               ),
-            ],
+            ),
+            noDataLabel: 'No values',
           ),
         ),
       ),

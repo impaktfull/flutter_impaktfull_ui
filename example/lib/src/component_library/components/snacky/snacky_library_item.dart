@@ -1,3 +1,4 @@
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/snacky/snacky_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
@@ -11,7 +12,9 @@ class SnackyLibraryItem extends ComponentLibraryItem {
   @override
   List<ComponentLibraryVariant> getComponentVariants() {
     return [
-      const SnackyLibraryVariant(),
+      for (final type in SnackyType.values) ...[
+        SnackyLibraryVariant(type),
+      ],
     ];
   }
 }

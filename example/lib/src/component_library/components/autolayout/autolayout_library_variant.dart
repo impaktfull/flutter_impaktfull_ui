@@ -20,7 +20,7 @@ class AutoLayoutLibraryVariant
     return [
       for (final mainAxisAlignment in MainAxisAlignment.values) ...[
         ComponentsLibraryVariantDescriptor(
-          height: 200,
+          height: 50,
           width: double.infinity,
           child: ImpaktfullUiAutoLayout(
             orientation: orientation,

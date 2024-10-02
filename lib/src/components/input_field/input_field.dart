@@ -80,6 +80,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
       overrideComponentTheme: widget.theme,
       builder: (context, theme, componentTheme) =>
           ImpaktfullUiAutoLayout.vertical(
+        mainAxisSize: MainAxisSize.min,
         spacing: 4,
         children: [
           if (widget.label != null) ...[
@@ -98,6 +99,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
             ),
             child: ImpaktfullUiAutoLayout.horizontal(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               spacing: 8,
               children: [
                 if (widget.leadingIcon != null) ...[

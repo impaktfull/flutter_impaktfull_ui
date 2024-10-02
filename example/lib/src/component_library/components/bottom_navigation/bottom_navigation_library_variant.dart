@@ -38,6 +38,33 @@ class BottomNavigationLibraryVariant
           ),
         ],
       ),
+      ImpaktfullUiBottomNavigation(
+        items: [
+          ImpaktfullUiBottomNavigationItem(
+            asset: theme.assets.icons.home,
+            label: 'Home',
+            showLabel: false,
+            onTap: () => inputs.selectedIndex.updateState(0),
+            isSelected: inputs.selectedIndex.value == 0,
+          ),
+          ImpaktfullUiBottomNavigationItem(
+            asset: theme.assets.icons.search,
+            showLabel: false,
+            label: 'Search',
+            onTap: () => inputs.selectedIndex.updateState(1),
+            isSelected: inputs.selectedIndex.value == 1,
+          ),
+          ImpaktfullUiBottomNavigationItem(
+            asset: theme.assets.icons.settings,
+            label: 'Settings',
+            showLabel: false,
+            onTap: () => inputs.selectedIndex.updateState(2),
+            isSelected: inputs.selectedIndex.value == 2,
+            badgeShow: true,
+            badgeText: '3',
+          ),
+        ],
+      ),
     ];
   }
 

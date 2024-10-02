@@ -10,15 +10,18 @@ import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
@@ -287,6 +290,12 @@ class DefaultTheme {
             dropDown: assets.icons.chevronDown,
           ),
         ),
+        gridView: const ImpaktfullUiGridViewTheme(
+          assets: ImpaktfullUiGridViewAssetsTheme(),
+          colors: ImpaktfullUiGridViewColorTheme(),
+          dimens: ImpaktfullUiGridViewDimensTheme(),
+          textStyles: ImpaktfullUiGridViewTextStyleTheme(),
+        ),
         horizontalTab: ImpaktfullUiHorizontalTabTheme(
           colors: ImpaktfullUiHorizontalTabColorTheme(
             backgroundUnSelectedTab: colors.card,
@@ -324,6 +333,12 @@ class DefaultTheme {
                     ?.withOpacity(0.5)),
             label: textStyles.onCard.text.small.medium,
           ),
+        ),
+        listItem: const ImpaktfullUiListItemTheme(
+          assets: ImpaktfullUiListItemAssetsTheme(),
+          colors: ImpaktfullUiListItemColorTheme(),
+          dimens: ImpaktfullUiListItemDimensTheme(),
+          textStyles: ImpaktfullUiListItemTextStyleTheme(),
         ),
         listView: ImpaktfullUiListViewTheme(
           dimens: ImpaktfullUiListViewDimensTheme(
@@ -406,6 +421,20 @@ class DefaultTheme {
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
           colors: ImpaktfullUiRefreshIndicatorColorTheme(
               loadingIndicator: colors.accent),
+        ),
+        simpleListItem: ImpaktfullUiSimpleListItemTheme(
+          assets: const ImpaktfullUiSimpleListItemAssetsTheme(),
+          colors: ImpaktfullUiSimpleListItemColorTheme(
+            background: colors.card,
+          ),
+          dimens: const ImpaktfullUiSimpleListItemDimensTheme(
+            padding: EdgeInsets.all(16),
+            crossAxisAlignment: CrossAxisAlignment.center,
+          ),
+          textStyles: ImpaktfullUiSimpleListItemTextStyleTheme(
+            title: textStyles.onCard.text.small.medium,
+            subtitle: textStyles.onCard.text.small,
+          ),
         ),
         snackyConfigurator: ImpaktfullUiSnackyConfiguratorTheme(
           colors: ImpaktfullUiSnackyConfiguratorColorTheme(

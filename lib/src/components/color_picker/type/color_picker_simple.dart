@@ -23,6 +23,7 @@ class ImpaktfullUiColorPickerSimple extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiAutoLayout.vertical(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
         if (allowedColors.isNotEmpty) ...[
           ImpaktfullUiAutoLayout.horizontal(

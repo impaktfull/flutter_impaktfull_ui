@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation_style.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
@@ -32,7 +33,7 @@ class ImpaktfullUiBottomNavigation extends StatelessWidget
         ),
         child: SafeArea(
           top: false,
-          child: Row(
+          child: ImpaktfullUiAutoLayout.horizontal(
             children: items,
           ),
         ),

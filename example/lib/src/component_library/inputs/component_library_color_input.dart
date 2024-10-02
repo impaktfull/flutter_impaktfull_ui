@@ -12,11 +12,14 @@ class ComponentLibraryColorInput extends ComponentLibraryInputItem<Color> {
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiCard(
-      width: 200,
-      height: 200,
+      width: double.infinity,
       child: ImpaktfullUiColorPicker(
         selectedColor: value,
         showActiveColor: true,
+        allowedColors: [
+          theme.colors.accent,
+          ...ImpaktfullUiColorPicker.defaultColors,
+        ],
         onColorChanged: updateState,
       ),
     );

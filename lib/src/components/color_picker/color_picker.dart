@@ -33,7 +33,7 @@ class ImpaktfullUiColorPicker extends StatelessWidget
     super.key,
   });
 
-  List<Color> get defaultColors => [
+  static List<Color> get defaultColors => [
         Colors.red,
         Colors.yellow,
         Colors.green,

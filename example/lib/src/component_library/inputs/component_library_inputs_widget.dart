@@ -32,10 +32,11 @@ class _ComponentsLibraryInputsWidgetState
       child: ImpaktfullUiThemeBuidler(
         builder: (context, theme) => ImpaktfullUiCard(
           child: ListView.builder(
+            padding: const EdgeInsets.all(32),
             itemCount: inputs.length,
             itemBuilder: (context, index) {
               final input = inputs[index];
-              return Column(
+              return ImpaktfullUiAutoLayout.vertical(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 16),

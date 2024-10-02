@@ -6,30 +6,31 @@ import 'package:impaktfull_ui_example/src/widget/components/components_library_v
 
 class SnackyLibraryVariant
     extends ComponentLibraryVariant<SnackyLibraryPrimaryInputs> {
-  const SnackyLibraryVariant();
+  final SnackyType type;
+  const SnackyLibraryVariant(
+    this.type,
+  );
 
   @override
-  String get title => 'Default';
+  String get title => type.name;
 
   @override
   List<Widget> build(BuildContext context, SnackyLibraryPrimaryInputs inputs) {
     return [
-      for (final type in SnackyType.values) ...[
-        ComponentsLibraryVariantDescriptor(
-          title: 'Snacky ${type.name}',
-          child: ImpaktfullUiButton(
-            type: ImpaktfullUiButtonType.primary,
-            title: '${type.name} snacky',
-            onTap: () => SnackyController.instance.showMessage(
-              (context) => Snacky(
-                title: type.name,
-                type: type,
-                canBeClosed: true,
-              ),
+      ComponentsLibraryVariantDescriptor(
+        title: 'Snacky ${type.name}',
+        child: ImpaktfullUiButton(
+          type: ImpaktfullUiButtonType.primary,
+          title: 'Show snacky',
+          onTap: () => SnackyController.instance.showMessage(
+            (context) => Snacky(
+              title: type.name,
+              type: type,
+              canBeClosed: true,
             ),
           ),
         ),
-      ],
+      ),
     ];
   }
 

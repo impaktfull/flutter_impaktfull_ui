@@ -18,13 +18,12 @@ class BottomSheetLibraryVariant
       ComponentsLibraryVariantDescriptor(
         child: ImpaktfullUiButton(
           type: ImpaktfullUiButtonType.primary,
-          title: 'Show modal',
+          title: 'Show bottom sheet',
           onTap: () => ImpaktfullUiBottomSheet.showSimple(
             context: context,
             title: 'Title',
             subtitle:
                 'This is quite a long subtitle that should wrap to the next line',
-            onCloseTapped: () async => true,
             child: ImpaktfullUiAutoLayout.vertical(
               children: [
                 Text(

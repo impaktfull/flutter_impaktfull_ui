@@ -39,11 +39,11 @@ class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
   Widget build(BuildContext context) {
     final widgets = widget.variant.build(context, inputs);
     return ImpaktfullUiThemeBuidler(
-      builder: (context, theme) => Column(
+      builder: (context, theme) => ImpaktfullUiAutoLayout.vertical(
         children: [
           Expanded(
             child: ImpaktfullUiListView.builder(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(32),
               spacing: 8,
               items: widgets,
               itemBuilder: (context, item, index) =>

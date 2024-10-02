@@ -10,15 +10,18 @@ import 'package:impaktfull_ui_example/src/component_library/components/checkbox/
 import 'package:impaktfull_ui_example/src/component_library/components/cms_header/cms_header_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/color_picker/color_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/dropdown/dropdown_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/grid_view/grid_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/icon_button/icon_button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/input_field/input_field_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/list_item/listitem_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/list_view/list_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_indicator/loading_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/modal/modal_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification/notification_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification_badge/notification_badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/refreshindicator/refreshindicator_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/simple_list_item/simple_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/snacky/snacky_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/switch/switch_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/table/table_library_item.dart';
@@ -39,15 +42,18 @@ class ComponentLibrary {
     const CmsHeaderLibraryItem(),
     const ColorPickerLibraryItem(),
     const DropdownLibraryItem(),
+    const GridViewLibraryItem(),
     const HorizontalTabsLibraryItem(),
     const InputFieldLibraryItem(),
     const IconButtonLibraryItem(),
+    const ListItemLibraryItem(),
     const ListViewLibraryItem(),
     const LoadingIndicatorLibraryItem(),
     const ModalLibraryItem(),
     const NotificationLibraryItem(),
     const NotificationBadgeLibraryItem(),
     const RefreshIndicatorLibraryItem(),
+    const SimpleListItemLibraryItem(),
     const SnackyLibraryItem(),
     const SwitchLibraryItem(),
     const TableLibraryItem(),

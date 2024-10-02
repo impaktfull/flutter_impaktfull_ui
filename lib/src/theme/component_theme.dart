@@ -10,15 +10,18 @@ import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
@@ -44,15 +47,18 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiColorPickerTheme colorPicker;
   final ImpaktfullUiDividerTheme divider;
   final ImpaktfullUiDropdownTheme dropdown;
+  final ImpaktfullUiGridViewTheme gridView;
   final ImpaktfullUiHorizontalTabTheme horizontalTab;
   final ImpaktfullUiHorizontalTabsTheme horizontalTabs;
   final ImpaktfullUiInputFieldTheme inputField;
+  final ImpaktfullUiListItemTheme listItem;
   final ImpaktfullUiListViewTheme listView;
   final ImpaktfullUiLoadingIndicatorTheme loadingIndicator;
   final ImpaktfullUiModalTheme modal;
   final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
+  final ImpaktfullUiSimpleListItemTheme simpleListItem;
   final ImpaktfullUiSnackyConfiguratorTheme snackyConfigurator;
   final ImpaktfullUiSwitchTheme switchTheme;
   final ImpaktfullUiTableTheme table;
@@ -74,15 +80,18 @@ class ImpaktfullUiComponentsTheme {
     required this.colorPicker,
     required this.divider,
     required this.dropdown,
+    required this.gridView,
     required this.horizontalTab,
     required this.horizontalTabs,
     required this.inputField,
+    required this.listItem,
     required this.listView,
     required this.loadingIndicator,
     required this.modal,
     required this.notification,
     required this.notificationBadge,
     required this.refreshIndicator,
+    required this.simpleListItem,
     required this.snackyConfigurator,
     required this.switchTheme,
     required this.tableHeader,
@@ -105,15 +114,18 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiColorPickerTheme? colorPicker,
     ImpaktfullUiDividerTheme? divider,
     ImpaktfullUiDropdownTheme? dropdown,
+    ImpaktfullUiGridViewTheme? gridView,
     ImpaktfullUiHorizontalTabTheme? horizontalTab,
     ImpaktfullUiHorizontalTabsTheme? horizontalTabs,
     ImpaktfullUiInputFieldTheme? inputField,
+    ImpaktfullUiListItemTheme? listItem,
     ImpaktfullUiListViewTheme? listView,
     ImpaktfullUiLoadingIndicatorTheme? loadingIndicator,
     ImpaktfullUiModalTheme? modal,
     ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
+    ImpaktfullUiSimpleListItemTheme? simpleListItem,
     ImpaktfullUiSnackyConfiguratorTheme? snackyConfigurator,
     ImpaktfullUiSwitchTheme? switchTheme,
     ImpaktfullUiTableTheme? table,
@@ -135,15 +147,18 @@ class ImpaktfullUiComponentsTheme {
         colorPicker: colorPicker ?? this.colorPicker,
         divider: divider ?? this.divider,
         dropdown: dropdown ?? this.dropdown,
+        gridView: gridView ?? this.gridView,
         horizontalTab: horizontalTab ?? this.horizontalTab,
         horizontalTabs: horizontalTabs ?? this.horizontalTabs,
         inputField: inputField ?? this.inputField,
+        listItem: listItem ?? this.listItem,
         listView: listView ?? this.listView,
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
         modal: modal ?? this.modal,
         notification: notification ?? this.notification,
         notificationBadge: notificationBadge ?? this.notificationBadge,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
+        simpleListItem: simpleListItem ?? this.simpleListItem,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
         table: table ?? this.table,
@@ -177,12 +192,16 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiDividerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDropdownTheme) {
       return ImpaktfullUiDropdownTheme.of(context) as T;
+    } else if (T == ImpaktfullUiGridViewTheme) {
+      return ImpaktfullUiGridViewTheme.of(context) as T;
     } else if (T == ImpaktfullUiHorizontalTabTheme) {
       return ImpaktfullUiHorizontalTabTheme.of(context) as T;
     } else if (T == ImpaktfullUiHorizontalTabsTheme) {
       return ImpaktfullUiHorizontalTabsTheme.of(context) as T;
     } else if (T == ImpaktfullUiInputFieldTheme) {
       return ImpaktfullUiInputFieldTheme.of(context) as T;
+    } else if (T == ImpaktfullUiListItemTheme) {
+      return ImpaktfullUiListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiListViewTheme) {
       return ImpaktfullUiListViewTheme.of(context) as T;
     } else if (T == ImpaktfullUiLoadingIndicatorTheme) {
@@ -195,6 +214,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
     } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
+    } else if (T == ImpaktfullUiSimpleListItemTheme) {
+      return ImpaktfullUiSimpleListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiSnackyConfiguratorTheme) {
       return ImpaktfullUiSnackyConfiguratorTheme.of(context) as T;
     } else if (T == ImpaktfullUiSwitchTheme) {

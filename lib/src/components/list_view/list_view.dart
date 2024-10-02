@@ -34,7 +34,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.isLoading = false,
     this.spacing = 0,
     this.onRefresh,
-    this.padding = EdgeInsets.zero,
+    this.padding = EdgeInsetsDirectional.zero,
     this.shrinkWrap = false,
     this.theme,
     super.key,

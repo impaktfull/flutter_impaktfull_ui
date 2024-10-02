@@ -14,12 +14,16 @@ class BottomNavigationItemLibraryVariant
   List<Widget> build(
       BuildContext context, BottomNavigationItemLibraryPrimaryInputs inputs) {
     return [
-      ImpaktfullUiBottomNavigationItem(
-        asset: theme.assets.icons.home,
-        isSelected: inputs.isSelected.value ?? false,
-        onTap: inputs.isSelected.toggle,
-        badgeShow: inputs.badgeShow.value ?? false,
-        badgeText: inputs.badgeText.value,
+      Row(
+        children: [
+          ImpaktfullUiBottomNavigationItem(
+            asset: theme.assets.icons.home,
+            isSelected: inputs.isSelected.value ?? false,
+            onTap: inputs.isSelected.toggle,
+            badgeShow: inputs.badgeShow.value ?? false,
+            badgeText: inputs.badgeText.value,
+          ),
+        ],
       ),
     ];
   }

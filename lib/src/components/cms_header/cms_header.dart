@@ -58,6 +58,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
           boxShadow: theme.shadows.extraSmall,
         ),
         child: ImpaktfullUiAutoLayout.vertical(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: EdgeInsets.only(

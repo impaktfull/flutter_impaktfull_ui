@@ -17,6 +17,7 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget
   final ImpaktfullUiAsset asset;
   final String? label;
   final bool isSelected;
+  final bool showLabel;
   final bool badgeShow;
   final String? badgeText;
   final Color? badgeColor;
@@ -28,6 +29,7 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget
     required this.isSelected,
     this.label,
     this.onTap,
+    this.showLabel = true,
     this.badgeShow = false,
     this.badgeText,
     this.badgeColor,
@@ -42,11 +44,14 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) => Expanded(
         child: ImpaktfullUiTouchFeedback(
+          toolTip: showLabel ? null : label,
           onTap: onTap,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
+            padding: EdgeInsets.symmetric(vertical: showLabel ? 8 : 12),
             child: ImpaktfullUiAutoLayout.vertical(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 ImpaktfullUiNotificationBadge(
                   show: badgeShow,
@@ -62,7 +67,7 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget
                         : componentTheme.colors.inactive,
                   ),
                 ),
-                if (label != null) ...[
+                if (label != null && showLabel) ...[
                   Text(
                     label!,
                     style: _getLabelText(componentTheme),

@@ -24,6 +24,39 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
       ComponentsLibraryVariantDescriptor(
         height: 400,
         child: ImpaktfullUiTable(
+          columnConfig: const [
+            TableColumnConfig(flex: 1),
+            TableColumnConfig(flex: 1),
+          ],
+          titles: [
+            ImpaktfullUiTableHeaderItem(
+              title: 'Title 1',
+              onTap: () => inputs.sortOnTitle1.toggle(),
+              ascending: inputs.sortOnTitle1.value,
+            ),
+            const ImpaktfullUiTableHeaderItem(title: 'Title 2'),
+          ],
+          content: [
+            for (var i = 0; i < 999; i++) ...[
+              ImpaktfullUiTableRow(
+                columnConfig: columnConfig,
+                columns: [
+                  ImpaktfullUiTableRowItem.text(title: 'Value $i'),
+                  ImpaktfullUiTableRowItem.badge(
+                    title: i % 2 == 0 ? 'Paid' : 'Failed',
+                    badgeType: i % 2 == 0
+                        ? ImpaktfullUiBadgeType.success
+                        : ImpaktfullUiBadgeType.error,
+                  ),
+                ],
+              ),
+            ],
+          ],
+        ),
+      ),
+      ComponentsLibraryVariantDescriptor(
+        height: 400,
+        child: ImpaktfullUiTable(
           columnConfig: columnConfig,
           titles: [
             ImpaktfullUiTableHeaderItem.checkbox(
@@ -64,9 +97,9 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                     title: 'Value: $i',
                     onTap: () {},
                   ),
-                  ImpaktfullUiTableRowItem.text(title: 'Value: $i'),
-                  ImpaktfullUiTableRowItem.badge(title: 'Value: $i'),
-                  ImpaktfullUiTableRowItem.text(title: 'Value: $i'),
+                  ImpaktfullUiTableRowItem.text(title: 'Value $i'),
+                  ImpaktfullUiTableRowItem.badge(title: 'Value $i'),
+                  ImpaktfullUiTableRowItem.text(title: 'Value $i'),
                   ImpaktfullUiTableRowItem.custom(
                     builder: (context, theme) =>
                         ImpaktfullUiAutoLayout.horizontal(
