@@ -4,8 +4,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/autolayou
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class AutoLayoutLibraryVariant
-    extends ComponentLibraryVariant<AutoLayoutLibraryPrimaryInputs> {
+class AutoLayoutLibraryVariant extends ComponentLibraryVariant<AutoLayoutLibraryPrimaryInputs> {
   final ImpaktfullUiAutoLayoutOrientation orientation;
   const AutoLayoutLibraryVariant(
     this.orientation,
@@ -15,8 +14,7 @@ class AutoLayoutLibraryVariant
   String get title => orientation.name;
 
   @override
-  List<Widget> build(
-      BuildContext context, AutoLayoutLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, AutoLayoutLibraryPrimaryInputs inputs) {
     return [
       for (final mainAxisAlignment in MainAxisAlignment.values) ...[
         ComponentsLibraryVariantDescriptor(
@@ -24,10 +22,10 @@ class AutoLayoutLibraryVariant
           width: double.infinity,
           child: ImpaktfullUiAutoLayout(
             orientation: orientation,
-            spacing: 8,
+            spacing: 2,
             mainAxisAlignment: mainAxisAlignment,
             children: [
-              for (var i = 0; i < 10; i++) ...[
+              for (var i = 0; i < 4; i++) ...[
                 Container(
                   height: 10,
                   width: 10,
@@ -45,14 +43,14 @@ class AutoLayoutLibraryVariant
         CrossAxisAlignment.center,
       ]) ...[
         ComponentsLibraryVariantDescriptor(
-          height: 200,
+          height: 50,
           width: double.infinity,
           child: ImpaktfullUiAutoLayout(
             orientation: orientation,
-            spacing: 8,
+            spacing: 2,
             crossAxisAlignment: crossAxisAlignment,
             children: [
-              for (var i = 0; i < 10; i++) ...[
+              for (var i = 0; i < 4; i++) ...[
                 Container(
                   height: 10,
                   width: 10,
