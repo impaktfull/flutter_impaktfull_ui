@@ -7,7 +7,8 @@ export 'bottom_navigation_style.dart';
 
 part 'bottom_navigation.describe.dart';
 
-class ImpaktfullUiBottomNavigation extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiBottomNavigation extends StatelessWidget
+    with ComponentDescriptorMixin {
   final List<Widget> items;
   final ImpaktfullUiBottomNavigationTheme? theme;
 
@@ -25,7 +26,8 @@ class ImpaktfullUiBottomNavigation extends StatelessWidget with ComponentDescrip
         decoration: BoxDecoration(
           color: componentTheme.colors.background,
           boxShadow: [
-            if (componentTheme.shadows.background != null) ...componentTheme.shadows.background!,
+            if (componentTheme.shadows.background != null)
+              ...componentTheme.shadows.background!,
           ],
         ),
         child: SafeArea(

@@ -12,7 +12,8 @@ export 'bottom_navigation_item_style.dart';
 
 part 'bottom_navigation_item.describe.dart';
 
-class ImpaktfullUiBottomNavigationItem extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiBottomNavigationItem extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAsset asset;
   final String? label;
   final bool isSelected;
@@ -36,7 +37,8 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget with ComponentDes
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiBottomNavigationItemTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiBottomNavigationItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) => Expanded(
         child: ImpaktfullUiTouchFeedback(
@@ -50,10 +52,14 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget with ComponentDes
                   show: badgeShow,
                   text: badgeText,
                   color: badgeColor ??
-                      (isSelected ? componentTheme.colors.badgeActive : componentTheme.colors.badgeInActive),
+                      (isSelected
+                          ? componentTheme.colors.badgeActive
+                          : componentTheme.colors.badgeInActive),
                   child: ImpaktfullUiAssetWidget(
                     asset: asset,
-                    color: isSelected ? componentTheme.colors.active : componentTheme.colors.inactive,
+                    color: isSelected
+                        ? componentTheme.colors.active
+                        : componentTheme.colors.inactive,
                   ),
                 ),
                 if (label != null) ...[

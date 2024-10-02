@@ -286,8 +286,9 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            hint: textStyles.onCardSecondary.text.medium
-                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
+            hint: textStyles.onCardSecondary.text.medium.copyWith(
+                color: textStyles.onCardTertiary.text.medium.color
+                    ?.withOpacity(0.5)),
             label: textStyles.onCard.text.small.medium,
           ),
         ),
@@ -370,7 +371,8 @@ class DefaultTheme {
           ),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(
+              loadingIndicator: colors.accent),
         ),
         snackyConfigurator: ImpaktfullUiSnackyConfiguratorTheme(
           colors: ImpaktfullUiSnackyConfiguratorColorTheme(

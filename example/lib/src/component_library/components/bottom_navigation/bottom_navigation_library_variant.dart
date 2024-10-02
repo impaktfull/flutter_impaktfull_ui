@@ -3,14 +3,16 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/bottom_navigation/bottom_navigation_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class BottomNavigationLibraryVariant extends ComponentLibraryVariant<BottomNavigationLibraryPrimaryInputs> {
+class BottomNavigationLibraryVariant
+    extends ComponentLibraryVariant<BottomNavigationLibraryPrimaryInputs> {
   const BottomNavigationLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, BottomNavigationLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, BottomNavigationLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiBottomNavigation(
         items: [
@@ -40,7 +42,9 @@ class BottomNavigationLibraryVariant extends ComponentLibraryVariant<BottomNavig
   }
 
   @override
-  BottomNavigationLibraryPrimaryInputs inputs() => BottomNavigationLibraryPrimaryInputs();
+  BottomNavigationLibraryPrimaryInputs inputs() =>
+      BottomNavigationLibraryPrimaryInputs();
 }
 
-class BottomNavigationLibraryPrimaryInputs extends BottomNavigationLibraryInputs {}
+class BottomNavigationLibraryPrimaryInputs
+    extends BottomNavigationLibraryInputs {}

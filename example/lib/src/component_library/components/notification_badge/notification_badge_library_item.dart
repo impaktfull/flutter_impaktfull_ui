@@ -23,7 +23,8 @@ class NotificationBadgeLibraryInputs extends ComponentLibraryInputs {
     'Show',
     initialValue: false,
   );
-  final ComponentLibraryStringInput badgeText = ComponentLibraryStringInput('Badge text');
+  final ComponentLibraryStringInput badgeText =
+      ComponentLibraryStringInput('Badge text');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

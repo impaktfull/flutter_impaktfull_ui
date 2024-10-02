@@ -27,7 +27,8 @@ class BottomNavigationItemLibraryInputs extends ComponentLibraryInputs {
     'Badge show',
     initialValue: false,
   );
-  final ComponentLibraryStringInput badgeText = ComponentLibraryStringInput('Badge text');
+  final ComponentLibraryStringInput badgeText =
+      ComponentLibraryStringInput('Badge text');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

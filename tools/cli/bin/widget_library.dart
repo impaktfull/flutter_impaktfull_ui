@@ -47,7 +47,8 @@ Future<void> createComponent({
 
   //Create files
   final lowercaseComponentName = componentName.toLowerCase();
-  final styleFile = File(join(dir.path, '${lowercaseComponentName}_style.dart'));
+  final styleFile =
+      File(join(dir.path, '${lowercaseComponentName}_style.dart'));
 
   final styleFileContent = """import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
@@ -88,7 +89,8 @@ class ${className}TextStyleTheme {
 
   styleFile.writeAsStringSync(styleFileContent);
   //Create describe file
-  final describeFile = File(join(dir.path, '$lowercaseComponentName.describe.dart'));
+  final describeFile =
+      File(join(dir.path, '$lowercaseComponentName.describe.dart'));
 
   final describeFileContent = """part of '$lowercaseComponentName.dart';
 
@@ -138,7 +140,8 @@ Future<void> createWidgetLibrary({
   required String componentClassName,
 }) async {
   // Create dir
-  final path = join('example', 'lib', 'src', 'component_library', 'components', componentName.toLowerCase());
+  final path = join('example', 'lib', 'src', 'component_library', 'components',
+      componentName.toLowerCase());
   final dir = Directory(path);
   if (dir.existsSync()) {
     throw Exception('Component already exists');
@@ -147,7 +150,8 @@ Future<void> createWidgetLibrary({
 
   // Create files
   final lowerCaseComponentName = componentName.toLowerCase();
-  final libraryItemFile = File(join(dir.path, '${lowerCaseComponentName}_library_item.dart'));
+  final libraryItemFile =
+      File(join(dir.path, '${lowerCaseComponentName}_library_item.dart'));
 
   final libaryItemFileContent =
       """import 'package:impaktfull_ui_example/src/component_library/components/$lowerCaseComponentName/${lowerCaseComponentName}_library_variant.dart';
@@ -178,7 +182,8 @@ class ${componentName}LibraryInputs extends ComponentLibraryInputs {
   libraryItemFile.writeAsStringSync(libaryItemFileContent);
 
   // Component file
-  final libraryVariantFile = File(join(dir.path, '${lowerCaseComponentName}_library_variant.dart'));
+  final libraryVariantFile =
+      File(join(dir.path, '${lowerCaseComponentName}_library_variant.dart'));
 
   final componentFileContent = """import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
