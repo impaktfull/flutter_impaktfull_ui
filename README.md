@@ -1,39 +1,61 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# impaktfull_ui
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+A UI library of Impaktfull.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+[![publish to github pages](https://github.com/impaktfull/flutter_impaktfull_ui_2/actions/workflows/publish_to_githubpages.yaml/badge.svg)](https://github.com/impaktfull/flutter_impaktfull_ui_2/actions/workflows/publish_to_githubpages.yaml/badge.svg)
+[![live_demo](https://img.shields.io/badge/Live%20Demo-Available-7D64F2)](https://example.snacky.opensource.impaktfull.com)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Disclaimer
 
-## Features
+**impaktfull_ui is still in unstable & untested. everything under <1.0.0 should not be used unless you want to test it**
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Purpose
 
-## Getting started
+This UI library was built to have a simple way to build UIs for impaktfull. This will limit the maintenance cost of open-source projects and make it easier to build applications. That way we can focus on building new tools & features instead of bugfixing and maintaining UI changes from Flutter.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- Open-source example projects
+- impaktfull applications
+
+# Demo
+
+[Live Web demo](https://example.impaktfull-ui.opensource.impaktfull.com)
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+<!--[![pub package](https://img.shields.io/pub/v/impaktfull_ui.svg)](https://pub.dartlang.org/packages/impaktfull_ui)-->
 
-```dart
-const like = 'sample';
-```
+### Setup
 
-## Additional information
+- Setup your theme (colors, textStyles, shadows, dimens, assets)
+- Use ImapktfullUiApp
+- Use the components provided in the UI library
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+### Component List
+
+Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other libraries.
+
+- ImpaktfullUiAutoLayout
+
+Many more to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull
+
+### Theming
+
+The provided theme contains the default impaktfull branding. But it is super important for us that the theme is easy to configure and highly configurable. That is why we choose for component based theming.
+
+### Assets
+
+#### Lottie Animations
+
+These icons can be overriden be added to your assets folder to use the default lottie animations. The only thing you need to do extra is override `package` (in your own project)
+
+- assets/lottie/loading.json
+
+#### Icons
+
+# Todo
+
+- [ ] Add tests
+
+## License
+
+You are free to use this library as long as you give credit to impaktfull. You can use it for commercial and non-commercial projects. See the [LICENSE](LICENSE) file for more information.

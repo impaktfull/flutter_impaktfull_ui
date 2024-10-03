@@ -25,6 +25,8 @@ export 'src/components/modal/modal.dart';
 export 'src/components/notification/notification.dart';
 export 'src/components/notification_badge/notification_badge.dart';
 export 'src/components/refresh_indicator/refresh_indicator.dart';
+export 'src/components/sidebar_navigation/sidebar_navigation.dart';
+export 'src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 export 'src/components/simple_list_item/simple_list_item.dart';
 export 'src/components/switch/switch.dart';
 export 'src/components/table/table_column_config.dart';

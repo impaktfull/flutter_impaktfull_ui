@@ -42,10 +42,14 @@ class ImpaktfullUiSimpleListItemDimensTheme {
 
 class ImpaktfullUiSimpleListItemTextStyleTheme {
   final TextStyle title;
+  final TextStyle titleDanger;
   final TextStyle subtitle;
+  final TextStyle subtitleDanger;
 
   const ImpaktfullUiSimpleListItemTextStyleTheme({
     required this.title,
+    required this.titleDanger,
     required this.subtitle,
+    required this.subtitleDanger,
   });
 }

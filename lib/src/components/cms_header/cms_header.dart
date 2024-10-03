@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
-import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header_style.dart';
 import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
@@ -11,12 +10,11 @@ export 'cms_header_style.dart';
 
 part 'cms_header.describe.dart';
 
-class ImpaktfullUiCmsHeader extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiCmsHeader extends StatefulWidget with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
-  final List<ImpaktfullUiButton> actions;
+  final List<Widget> actions;
   final ImpaktfullUiCmsHeaderTheme? theme;
   final String? badge;
   final Widget? bottom;
@@ -74,6 +72,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                     ImpaktfullUiIconButton(
                       onTap: widget.onBackTapped!,
                       asset: componentTheme.assets.back,
+                      color: componentTheme.colors.icon,
                     ),
                     const SizedBox(width: 8),
                   ],

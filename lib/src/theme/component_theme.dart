@@ -21,6 +21,8 @@ import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
+import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
@@ -58,6 +60,8 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
+  final ImpaktfullUiSidebarNavigationTheme sidebarNavigation;
+  final ImpaktfullUiSidebarNavigationItemTheme sidebarNavigationItem;
   final ImpaktfullUiSimpleListItemTheme simpleListItem;
   final ImpaktfullUiSnackyConfiguratorTheme snackyConfigurator;
   final ImpaktfullUiSwitchTheme switchTheme;
@@ -91,6 +95,8 @@ class ImpaktfullUiComponentsTheme {
     required this.notification,
     required this.notificationBadge,
     required this.refreshIndicator,
+    required this.sidebarNavigation,
+    required this.sidebarNavigationItem,
     required this.simpleListItem,
     required this.snackyConfigurator,
     required this.switchTheme,
@@ -125,6 +131,8 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
+    ImpaktfullUiSidebarNavigationTheme? sidebarNavigation,
+    ImpaktfullUiSidebarNavigationItemTheme? sidebarNavigationItem,
     ImpaktfullUiSimpleListItemTheme? simpleListItem,
     ImpaktfullUiSnackyConfiguratorTheme? snackyConfigurator,
     ImpaktfullUiSwitchTheme? switchTheme,
@@ -158,6 +166,8 @@ class ImpaktfullUiComponentsTheme {
         notification: notification ?? this.notification,
         notificationBadge: notificationBadge ?? this.notificationBadge,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
+        sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
+        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
@@ -214,6 +224,10 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
     } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
+    } else if (T == ImpaktfullUiSidebarNavigationTheme) {
+      return ImpaktfullUiSidebarNavigationTheme.of(context) as T;
+    } else if (T == ImpaktfullUiSidebarNavigationItemTheme) {
+      return ImpaktfullUiSidebarNavigationItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiSimpleListItemTheme) {
       return ImpaktfullUiSimpleListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiSnackyConfiguratorTheme) {

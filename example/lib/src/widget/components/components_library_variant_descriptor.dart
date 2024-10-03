@@ -6,12 +6,14 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
   final Widget child;
   final double? width;
   final double? height;
+  final bool wrapWithCard;
 
   const ComponentsLibraryVariantDescriptor({
     required this.child,
     this.title,
     this.width,
     this.height,
+    this.wrapWithCard = false,
     super.key,
   });
 
@@ -29,17 +31,20 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
         if (text != null) ...[
           Text(
             text,
-            style: ImpaktfullUiTheme.of(context)
-                .textStyles
-                .onCanvas
-                .text
-                .extraSmall,
+            style: ImpaktfullUiTheme.of(context).textStyles.onCanvas.text.extraSmall,
           ),
         ],
         SizedBox(
           width: width,
           height: height,
-          child: child,
+          child: Builder(builder: (context) {
+            if (wrapWithCard) {
+              return ImpaktfullUiCard(
+                child: child,
+              );
+            }
+            return child;
+          }),
         ),
       ],
     );

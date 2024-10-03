@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/color_picker/color_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class ColorPickerLibraryVariant
-    extends ComponentLibraryVariant<ColorPickerLibraryPrimaryInputs> {
+class ColorPickerLibraryVariant extends ComponentLibraryVariant<ColorPickerLibraryPrimaryInputs> {
   final ImpaktfullUiColorPickerType type;
   const ColorPickerLibraryVariant(
     this.type,
@@ -14,19 +14,20 @@ class ColorPickerLibraryVariant
   String get title => type.name;
 
   @override
-  List<Widget> build(
-      BuildContext context, ColorPickerLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, ColorPickerLibraryPrimaryInputs inputs) {
     return [
-      ImpaktfullUiCard(
+      ComponentsLibraryVariantDescriptor(
         width: 500,
+        wrapWithCard: true,
         child: ImpaktfullUiColorPicker(
           type: type,
           selectedColor: theme.colors.accent,
           onColorChanged: inputs.color.updateState,
         ),
       ),
-      ImpaktfullUiCard(
+      ComponentsLibraryVariantDescriptor(
         width: 500,
+        wrapWithCard: true,
         child: ImpaktfullUiColorPicker(
           type: type,
           selectedColor: theme.colors.accent,

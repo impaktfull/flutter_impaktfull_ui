@@ -4,8 +4,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/tooltip/t
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class TooltipLibraryVariant
-    extends ComponentLibraryVariant<TooltipLibraryPrimaryInputs> {
+class TooltipLibraryVariant extends ComponentLibraryVariant<TooltipLibraryPrimaryInputs> {
   const TooltipLibraryVariant();
 
   @override
@@ -18,6 +17,7 @@ class TooltipLibraryVariant
         message: 'Confetti icon',
         child: Icon(
           PhosphorIcons.confetti(),
+          color: theme.colors.text,
         ),
       ),
     ];

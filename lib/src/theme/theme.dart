@@ -19,6 +19,7 @@ export 'theme_configurator.dart';
 export 'theme_default.dart';
 
 class ImpaktfullUiTheme {
+  final String? label;
   final ImpaktfullUiAssetTheme assets;
   final ImpaktfullUiColorTheme colors;
   final ImpaktfullUiTextStylesTheme textStyles;
@@ -28,6 +29,7 @@ class ImpaktfullUiTheme {
   final ImpaktfullUiComponentsTheme components;
 
   const ImpaktfullUiTheme({
+    required this.label,
     required this.assets,
     required this.colors,
     required this.textStyles,
@@ -38,20 +40,38 @@ class ImpaktfullUiTheme {
   });
 
   static ImpaktfullUiTheme custom({
+    String? label,
     required Color primary,
     required Color accent,
     required Color secondary,
-    required BorderRadius borderRadiusExtraSmall,
-    required BorderRadius borderRadiusSmall,
-    required BorderRadius borderRadius,
-    required BorderRadius borderRadiusLarge,
-    required BorderRadius borderRadiusExtraLarge,
+    Color? tertiary,
+    Color? canvas,
+    Color? card,
+    Color? border,
+    Color? shadow,
+    Color? text,
+    Color? textOnAccent,
+    Color? textOnSecondary,
+    BorderRadius? borderRadiusExtraSmall,
+    BorderRadius? borderRadiusSmall,
+    BorderRadius? borderRadius,
+    BorderRadius? borderRadiusLarge,
+    BorderRadius? borderRadiusExtraLarge,
     String package = 'impaktfull_ui_2',
   }) =>
       DefaultTheme.withMinimalChanges(
+        label: label,
         primary: primary,
         accent: accent,
         secondary: secondary,
+        tertiary: tertiary,
+        canvas: canvas,
+        card: card,
+        border: border,
+        shadow: shadow,
+        text: text,
+        textOnAccent: textOnAccent,
+        textOnSecondary: textOnSecondary,
         borderRadius: borderRadius,
         borderRadiusExtraSmall: borderRadiusExtraSmall,
         borderRadiusSmall: borderRadiusSmall,
@@ -60,19 +80,16 @@ class ImpaktfullUiTheme {
       );
 
   static ImpaktfullUiTheme getDefault() => DefaultTheme.withMinimalChanges(
+        label: 'Impaktfull Theme',
         primary: const Color(0xFF1A1A1A),
         accent: const Color(0xFF7d64f2),
         secondary: const Color(0xFF7d64f2),
-        borderRadiusExtraSmall: BorderRadius.circular(4),
-        borderRadiusSmall: BorderRadius.circular(6),
-        borderRadius: BorderRadius.circular(8),
-        borderRadiusLarge: BorderRadius.circular(12),
-        borderRadiusExtraLarge: BorderRadius.circular(16),
       );
 
   static ImpaktfullUiTheme of(BuildContext context) => theme;
 
   ImpaktfullUiTheme copyWith({
+    String? label,
     ImpaktfullUiAssetTheme? assets,
     ImpaktfullUiColorTheme? colors,
     ImpaktfullUiTextStylesTheme? textStyles,
@@ -82,6 +99,7 @@ class ImpaktfullUiTheme {
     ImpaktfullUiComponentsTheme? components,
   }) =>
       ImpaktfullUiTheme(
+        label: label ?? this.label,
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         textStyles: textStyles ?? this.textStyles,

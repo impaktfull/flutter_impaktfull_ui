@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item_style.dart';
+import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'simple_list_item_style.dart';
+export 'simple_list_item_type.dart';
 
 part 'simple_list_item.describe.dart';
 
-enum ImpaktfullUiListItemType {
-  neutral,
-  danger,
-}
-
-class ImpaktfullUiSimpleListItem extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSimpleListItem extends StatelessWidget with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final WidgetBuilder? leadingWidgetBuilder;
   final WidgetBuilder? centerWidgetBuilder;
   final WidgetBuilder? trailingWidgetBuilder;
-  final ImpaktfullUiListItemType type;
+  final ImpaktfullUiSimpleListItemType type;
   final VoidCallback? onTap;
   final double spacing;
   final ImpaktfullUiSimpleListItemTheme? theme;
@@ -34,7 +30,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
     this.trailingWidgetBuilder,
     this.onTap,
     this.spacing = 8,
-    this.type = ImpaktfullUiListItemType.neutral,
+    this.type = ImpaktfullUiSimpleListItemType.neutral,
     this.theme,
     super.key,
   });
@@ -47,7 +43,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
     this.trailingWidgetBuilder,
     this.onTap,
     this.spacing = 8,
-    this.type = ImpaktfullUiListItemType.neutral,
+    this.type = ImpaktfullUiSimpleListItemType.neutral,
     this.theme,
     super.key,
   });
@@ -66,7 +62,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
             spacing: spacing,
             children: [
               if (leadingWidgetBuilder != null) ...[
-                leadingWidgetBuilder!(context),
+                _buildCorrectWidget(leadingWidgetBuilder!(context), componentTheme),
               ],
               if (centerWidgetBuilder == null) ...[
                 Expanded(
@@ -76,12 +72,12 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
                     children: [
                       Text(
                         title!,
-                        style: componentTheme.textStyles.title,
+                        style: _getTitleTextStyle(componentTheme),
                       ),
                       if (subtitle != null) ...[
                         Text(
                           subtitle!,
-                          style: componentTheme.textStyles.subtitle,
+                          style: _getSubtitleTextStyle(componentTheme),
                         ),
                       ],
                     ],
@@ -93,7 +89,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
                 ),
               ],
               if (trailingWidgetBuilder != null) ...[
-                trailingWidgetBuilder!(context),
+                _buildCorrectWidget(trailingWidgetBuilder!(context), componentTheme),
               ],
             ],
           ),
@@ -104,4 +100,32 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
+
+  TextStyle _getTitleTextStyle(ImpaktfullUiSimpleListItemTheme componentTheme) {
+    switch (type) {
+      case ImpaktfullUiSimpleListItemType.neutral:
+        return componentTheme.textStyles.title;
+      case ImpaktfullUiSimpleListItemType.danger:
+        return componentTheme.textStyles.titleDanger;
+    }
+  }
+
+  TextStyle _getSubtitleTextStyle(ImpaktfullUiSimpleListItemTheme componentTheme) {
+    switch (type) {
+      case ImpaktfullUiSimpleListItemType.neutral:
+        return componentTheme.textStyles.subtitle;
+      case ImpaktfullUiSimpleListItemType.danger:
+        return componentTheme.textStyles.subtitleDanger;
+    }
+  }
+
+  Widget _buildCorrectWidget(Widget widget, ImpaktfullUiSimpleListItemTheme componentTheme) {
+    if (widget is ImpaktfullUiAssetWidget) {
+      return ImpaktfullUiAssetWidget(
+        asset: widget.asset,
+        color: _getTitleTextStyle(componentTheme).color,
+      );
+    }
+    return widget;
+  }
 }

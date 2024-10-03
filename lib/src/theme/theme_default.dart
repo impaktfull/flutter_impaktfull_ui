@@ -21,6 +21,8 @@ import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
+import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
@@ -40,41 +42,60 @@ class DefaultTheme {
     required Color primary,
     required Color accent,
     required Color secondary,
-    required BorderRadius borderRadiusExtraSmall,
-    required BorderRadius borderRadiusSmall,
-    required BorderRadius borderRadius,
-    required BorderRadius borderRadiusLarge,
-    required BorderRadius borderRadiusExtraLarge,
+    String? label,
+    Color? tertiary,
+    Color? canvas,
+    Color? card,
+    Color? border,
+    Color? shadow,
+    Color? text,
+    Color? textOnPrimary,
+    Color? textOnDestructive,
+    Color? textOnAccent,
+    Color? textOnSecondary,
+    Color? warning,
+    Color? error,
+    Color? success,
+    Color? info,
+    Color? destructive,
+    BorderRadius? borderRadiusExtraSmall,
+    BorderRadius? borderRadiusSmall,
+    BorderRadius? borderRadius,
+    BorderRadius? borderRadiusLarge,
+    BorderRadius? borderRadiusExtraLarge,
+    String fontFamilyDisplay = 'Ubuntu',
+    String fontFamilyText = 'Geologica',
     String package = 'impaktfull_ui_2',
   }) {
     final colors = ImpaktfullUiColorTheme(
       primary: primary,
       accent: accent,
       secondary: secondary,
-      tertiary: const Color(0xFF475467),
-      canvas: const Color(0xFFF9FAFB),
-      card: const Color(0xFFFFFFFF),
-      border: Colors.grey.withOpacity(0.2),
-      shadow: const Color(0xFF101828),
-      text: const Color(0xFF344054),
-      textOnAccent: const Color(0xFFFFFFFF),
-      textOnSecondary: const Color(0xFF344054),
-      warning: const Color(0xFFFFA733),
-      error: const Color(0xFFEB2F21),
-      info: const Color(0xFF1C90D4),
-      success: const Color(0xFF34B81F),
-      destructive: const Color(0xFFEB2F21),
+      tertiary: tertiary ?? const Color(0xFF475467),
+      canvas: canvas ?? const Color(0xFFF9FAFB),
+      card: card ?? const Color(0xFFFFFFFF),
+      border: border ?? Colors.grey.withOpacity(0.2),
+      shadow: shadow ?? const Color(0xFF101828),
+      text: text ?? const Color(0xFF344054),
+      //todo check if color requires white or black if not provided
+      textOnPrimary: textOnPrimary ?? const Color(0xFFFFFFFF),
+      textOnDestructive: textOnDestructive ?? const Color(0xFFFFFFFF),
+      textOnAccent: textOnAccent ?? const Color(0xFFFFFFFF),
+      textOnSecondary: textOnSecondary ?? const Color(0xFF344054),
+      warning: warning ?? const Color(0xFFFFA733),
+      error: error ?? const Color(0xFFEB2F21),
+      info: info ?? const Color(0xFF1C90D4),
+      success: success ?? const Color(0xFF34B81F),
+      destructive: destructive ?? const Color(0xFFBD0D00),
     );
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadiusExtraSmall: borderRadiusExtraSmall,
-      borderRadiusSmall: borderRadiusSmall,
-      borderRadius: borderRadius,
-      borderRadiusLarge: borderRadiusLarge,
-      borderRadiusExtraLarge: borderRadiusExtraLarge,
+      borderRadiusExtraSmall: borderRadiusExtraSmall ?? BorderRadius.circular(4),
+      borderRadiusSmall: borderRadiusSmall ?? BorderRadius.circular(6),
+      borderRadius: borderRadius ?? BorderRadius.circular(8),
+      borderRadiusLarge: borderRadiusLarge ?? BorderRadius.circular(12),
+      borderRadiusExtraLarge: borderRadiusExtraLarge ?? BorderRadius.circular(16),
       borderRadiusCircle: BorderRadius.circular(99999999),
     );
-    const fontFamilyDisplay = 'Ubuntu';
-    const fontFamilyText = 'Geologica';
     final textStyles = ImpaktfullUiTextStylesTheme(
       onCanvas: ImpaktfullUiTextStyleTheme.getByColor(
         color: colors.text,
@@ -122,17 +143,17 @@ class DefaultTheme {
         fontFamilyText: fontFamilyText,
       ),
       onPrimary: ImpaktfullUiTextStyleTheme.getByColor(
-        color: colors.card,
+        color: colors.textOnPrimary,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
       onSecondary: ImpaktfullUiTextStyleTheme.getByColor(
-        color: colors.text,
+        color: colors.textOnSecondary,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
       onDestructive: ImpaktfullUiTextStyleTheme.getByColor(
-        color: colors.card,
+        color: colors.textOnDestructive,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
@@ -145,6 +166,7 @@ class DefaultTheme {
     );
     final duration = ImpaktfullUiDurationTheme.getDefault();
     return ImpaktfullUiTheme(
+      label: label,
       assets: assets,
       colors: colors,
       textStyles: textStyles,
@@ -155,7 +177,7 @@ class DefaultTheme {
         badge: ImpaktfullUiBadgeTheme(
           colors: const ImpaktfullUiBadgeColorTheme(),
           dimens: ImpaktfullUiBadgeDimensTheme(
-            borderRadius: BorderRadius.circular(999),
+            borderRadius: dimens.borderRadiusCircle,
           ),
           assets: ImpaktfullUiBadgeAssetsTheme(
             close: assets.icons.close,
@@ -222,12 +244,19 @@ class DefaultTheme {
           dimens: ImpaktfullUiButtonDimensTheme(
             borderRadius: dimens.borderRadius,
           ),
+          textStyles: ImpaktfullUiButtonTextStylesTheme(
+            primary: textStyles.onPrimary.text.small.bold,
+            alternative: textStyles.onCardPrimary.text.small.bold,
+            grey: textStyles.onCard.text.small.bold,
+            destructivePrimary: textStyles.onDestructive.text.small.bold,
+            destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
+          ),
         ),
         card: ImpaktfullUiCardTheme(
           colors: ImpaktfullUiCardColorTheme(
-            background: Colors.white,
+            background: colors.card,
             border: colors.border,
-            shadow: Colors.black12,
+            shadow: colors.shadow,
           ),
           dimens: ImpaktfullUiCardDimensTheme(
             borderRadius: dimens.borderRadius,
@@ -254,6 +283,7 @@ class DefaultTheme {
           colors: ImpaktfullUiCmsHeaderColorTheme(
             background: colors.card,
             border: colors.border,
+            icon: colors.text,
           ),
           dimens: const ImpaktfullUiCmsHeaderDimensTheme(),
           assets: ImpaktfullUiCmsHeaderAssetsTheme(
@@ -328,21 +358,25 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            hint: textStyles.onCardSecondary.text.medium.copyWith(
-                color: textStyles.onCardTertiary.text.medium.color
-                    ?.withOpacity(0.5)),
+            hint: textStyles.onCardSecondary.text.medium
+                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
             label: textStyles.onCard.text.small.medium,
           ),
         ),
-        listItem: const ImpaktfullUiListItemTheme(
-          assets: ImpaktfullUiListItemAssetsTheme(),
-          colors: ImpaktfullUiListItemColorTheme(),
-          dimens: ImpaktfullUiListItemDimensTheme(),
-          textStyles: ImpaktfullUiListItemTextStyleTheme(),
+        listItem: ImpaktfullUiListItemTheme(
+          assets: ImpaktfullUiListItemAssetsTheme(
+            chevronRight: assets.icons.chevronRight,
+          ),
+          colors: ImpaktfullUiListItemColorTheme(
+            icons: colors.primary,
+            danger: colors.destructive,
+          ),
+          dimens: const ImpaktfullUiListItemDimensTheme(),
+          textStyles: const ImpaktfullUiListItemTextStyleTheme(),
         ),
         listView: ImpaktfullUiListViewTheme(
           dimens: ImpaktfullUiListViewDimensTheme(
-            borderRadius: borderRadius,
+            borderRadius: dimens.borderRadius,
             padding: const EdgeInsets.all(16),
           ),
           textStyles: ImpaktfullUiListViewTextStylesTheme(
@@ -419,8 +453,31 @@ class DefaultTheme {
           ),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(
-              loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
+        ),
+        sidebarNavigation: const ImpaktfullUiSidebarNavigationTheme(
+          assets: ImpaktfullUiSidebarNavigationAssetsTheme(),
+          colors: ImpaktfullUiSidebarNavigationColorTheme(),
+          dimens: ImpaktfullUiSidebarNavigationDimensTheme(),
+          textStyles: ImpaktfullUiSidebarNavigationTextStyleTheme(),
+        ),
+        sidebarNavigationItem: ImpaktfullUiSidebarNavigationItemTheme(
+          assets: ImpaktfullUiSidebarNavigationItemAssetsTheme(
+            chevronUp: assets.icons.chevronUp,
+          ),
+          colors: ImpaktfullUiSidebarNavigationItemColorTheme(
+            background: colors.primary,
+            icon: colors.text,
+          ),
+          dimens: ImpaktfullUiSidebarNavigationItemDimensTheme(
+            borderRadius: dimens.borderRadius,
+          ),
+          durations: ImpaktfullUiSidebarNavigationItemDurationTheme(
+            dropdownRotation: duration.short,
+          ),
+          textStyles: ImpaktfullUiSidebarNavigationItemTextStyleTheme(
+            title: textStyles.onCard.text.medium.medium,
+          ),
         ),
         simpleListItem: ImpaktfullUiSimpleListItemTheme(
           assets: const ImpaktfullUiSimpleListItemAssetsTheme(),
@@ -433,7 +490,9 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiSimpleListItemTextStyleTheme(
             title: textStyles.onCard.text.small.medium,
-            subtitle: textStyles.onCard.text.small,
+            titleDanger: textStyles.onCardDestructive.text.small.medium,
+            subtitle: textStyles.onCard.text.small.light,
+            subtitleDanger: textStyles.onCardDestructive.text.small.light,
           ),
         ),
         snackyConfigurator: ImpaktfullUiSnackyConfiguratorTheme(
@@ -447,7 +506,7 @@ class DefaultTheme {
             success: colors.success,
           ),
           dimens: ImpaktfullUiSnackyConfiguratorDimensTheme(
-            borderRadius: borderRadius,
+            borderRadius: dimens.borderRadius,
           ),
           textStyles: const ImpaktfullUiSnackyConfiguratorTextStylesTheme(),
           assets: ImpaktfullUiSnackyConfiguratorAssetsTheme(
@@ -485,8 +544,8 @@ class DefaultTheme {
           ),
           dimens: ImpaktfullUiTableHeaderDimensTheme(
             borderRadius: BorderRadius.only(
-              topLeft: borderRadius.topLeft,
-              topRight: borderRadius.topRight,
+              topLeft: dimens.borderRadius.topLeft,
+              topRight: dimens.borderRadius.topRight,
             ),
           ),
         ),

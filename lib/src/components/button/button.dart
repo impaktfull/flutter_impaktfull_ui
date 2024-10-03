@@ -56,8 +56,8 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiButtonTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, theme, componentTheme) {
-        final textStyle = _getTextStyle(theme);
-        final color = _getTextStyle(theme)?.color;
+        final textStyle = _getTextStyle(componentTheme);
+        final color = textStyle?.color;
         final backgroundColor = _getBackgroundColor(componentTheme);
         final borderColor = _getBorderColor(componentTheme);
         return ImpaktfullUiTouchFeedback(
@@ -70,8 +70,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                   width: 1,
                   strokeAlign: BorderSide.strokeAlignInside,
                 ),
-          onTap:
-              widget.onTap == null && widget.onAsyncTap == null ? null : _onTap,
+          onTap: widget.onTap == null && widget.onAsyncTap == null ? null : _onTap,
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -80,8 +79,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                 child: Padding(
                   padding: _getPadding(componentTheme),
                   child: ImpaktfullUiAutoLayout.horizontal(
-                    mainAxisSize:
-                        widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
+                    mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     spacing: 4,
                     children: [
@@ -124,8 +122,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                 duration: theme.durations.short,
                 curve: Curves.easeInOut,
                 child: ImpaktfullUiAutoLayout.horizontal(
-                  mainAxisSize:
-                      widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
+                  mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 4,
                   children: [
@@ -133,9 +130,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                       flex: widget.fullWidth ? 1 : 0,
                       child: SizedBox(
                         height: _getLoadingSize(),
-                        child: _isLoading
-                            ? ImpaktfullUiLoadingIndicator(color: color)
-                            : const SizedBox(),
+                        child: _isLoading ? ImpaktfullUiLoadingIndicator(color: color) : const SizedBox(),
                       ),
                     ),
                   ],
@@ -219,39 +214,24 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
     }
   }
 
-  TextStyle? _getTextStyle(ImpaktfullUiTheme theme) {
+  TextStyle? _getTextStyle(ImpaktfullUiButtonTheme theme) {
     switch (widget.type) {
       case ImpaktfullUiButtonType.primary:
-        return _getTextStyleBySize(theme.textStyles.onPrimary);
+        return theme.textStyles.primary;
       case ImpaktfullUiButtonType.secondary:
       case ImpaktfullUiButtonType.tertiary:
       case ImpaktfullUiButtonType.link:
-        return _getTextStyleBySize(theme.textStyles.onCardPrimary);
+        return theme.textStyles.alternative;
       case ImpaktfullUiButtonType.secondaryGrey:
       case ImpaktfullUiButtonType.tertiaryGrey:
       case ImpaktfullUiButtonType.linkGrey:
-        return _getTextStyleBySize(theme.textStyles.onCard);
+        return theme.textStyles.grey;
       case ImpaktfullUiButtonType.destructivePrimary:
-        return _getTextStyleBySize(theme.textStyles.onDestructive);
+        return theme.textStyles.destructivePrimary;
       case ImpaktfullUiButtonType.destructiveSecondary:
       case ImpaktfullUiButtonType.destructiveTertiary:
       case ImpaktfullUiButtonType.destructiveLink:
-        return _getTextStyleBySize(theme.textStyles.onCardDestructive);
-    }
-  }
-
-  TextStyle? _getTextStyleBySize(ImpaktfullUiTextStyleTheme textStyleTheme) {
-    switch (widget.size) {
-      case ImpaktfullUiButtonSize.extraSmall:
-        return textStyleTheme.text.small.bold;
-      case ImpaktfullUiButtonSize.small:
-        return textStyleTheme.text.small.bold;
-      case ImpaktfullUiButtonSize.medium:
-        return textStyleTheme.text.small.bold;
-      case ImpaktfullUiButtonSize.large:
-        return textStyleTheme.text.small.bold;
-      case ImpaktfullUiButtonSize.extraLarge:
-        return textStyleTheme.text.small.bold;
+        return theme.textStyles.destructiveAlternative;
     }
   }
 
