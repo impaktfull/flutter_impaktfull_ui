@@ -3,7 +3,7 @@
 A UI library of Impaktfull.
 
 [![publish to github pages](https://github.com/impaktfull/flutter_impaktfull_ui_2/actions/workflows/publish_to_githubpages.yaml/badge.svg)](https://github.com/impaktfull/flutter_impaktfull_ui_2/actions/workflows/publish_to_githubpages.yaml/badge.svg)
-[![live_demo](https://img.shields.io/badge/Live%20Demo-Available-7D64F2)](https://example.snacky.opensource.impaktfull.com)
+[![live_demo](https://img.shields.io/badge/Live%20Demo-Available-7D64F2)](https://example.impaktfull-ui.opensource.impaktfull.com)
 
 ## Disclaimer
 
