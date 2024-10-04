@@ -26,11 +26,13 @@ class ImpaktfullUiDimensTheme {
     BorderRadiusGeometry? borderRadiusCircle,
   }) =>
       ImpaktfullUiDimensTheme(
-        borderRadiusExtraSmall: borderRadiusExtraSmall ?? this.borderRadiusExtraSmall,
+        borderRadiusExtraSmall:
+            borderRadiusExtraSmall ?? this.borderRadiusExtraSmall,
         borderRadiusSmall: borderRadiusSmall ?? this.borderRadiusSmall,
         borderRadius: borderRadius ?? this.borderRadius,
         borderRadiusLarge: borderRadiusLarge ?? this.borderRadiusLarge,
-        borderRadiusExtraLarge: borderRadiusExtraLarge ?? this.borderRadiusExtraLarge,
+        borderRadiusExtraLarge:
+            borderRadiusExtraLarge ?? this.borderRadiusExtraLarge,
         borderRadiusCircle: borderRadiusCircle ?? this.borderRadiusCircle,
       );
 }

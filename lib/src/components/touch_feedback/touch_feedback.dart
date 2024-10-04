@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/container/container.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_builder.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
@@ -44,30 +45,19 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
       );
     }
     return ImpaktfullUiThemeBuidler(
-      builder: (contex, theme) => ClipRRect(
-        child: Container(
-          decoration: BoxDecoration(
-            boxShadow: shadow,
-          ),
-          child: Material(
-            shape: borderRadius == null || border == null
-                ? null
-                : RoundedRectangleBorder(
-                    borderRadius: borderRadius!,
-                    side: border!.top,
-                  ),
-            borderRadius: border == null ? borderRadius : null,
-            color: color ?? Colors.transparent,
-            child: ImpaktfullUiTooltip(
-              message: toolTip,
-              child: _PlatformTouchFeedback(
-                borderRadius: borderRadius,
-                onTap: onTap,
-                cursor: cursor,
-                onFocusChanged: _onFocusChanged,
-                child: child,
-              ),
-            ),
+      builder: (contex, theme) => ImpaktfullUiContainer(
+        border: border,
+        boxShadow: shadow,
+        borderRadius: borderRadius,
+        color: color ?? Colors.transparent,
+        child: ImpaktfullUiTooltip(
+          message: toolTip,
+          child: _PlatformTouchFeedback(
+            borderRadius: borderRadius,
+            onTap: onTap,
+            cursor: cursor,
+            onFocusChanged: _onFocusChanged,
+            child: child,
           ),
         ),
       ),

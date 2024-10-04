@@ -76,7 +76,7 @@ class DefaultTheme {
       canvas: canvas ?? const Color(0xFFF9FAFB),
       card: card ?? const Color(0xFFFFFFFF),
       border: border ?? Colors.grey.withOpacity(0.2),
-      shadow: shadow ?? const Color(0xFF101828),
+      shadow: shadow ?? const Color(0xFF101828).withOpacity(0.5),
       text: text ?? const Color(0xFF344054),
       //todo check if color requires white or black if not provided
       textOnPrimary: textOnPrimary ?? const Color(0xFFFFFFFF),
@@ -90,11 +90,13 @@ class DefaultTheme {
       destructive: destructive ?? const Color(0xFFBD0D00),
     );
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadiusExtraSmall: borderRadiusExtraSmall ?? BorderRadius.circular(4),
+      borderRadiusExtraSmall:
+          borderRadiusExtraSmall ?? BorderRadius.circular(4),
       borderRadiusSmall: borderRadiusSmall ?? BorderRadius.circular(6),
       borderRadius: borderRadiusSmall ?? BorderRadius.circular(8),
       borderRadiusLarge: borderRadiusLarge ?? BorderRadius.circular(12),
-      borderRadiusExtraLarge: borderRadiusExtraLarge ?? BorderRadius.circular(16),
+      borderRadiusExtraLarge:
+          borderRadiusExtraLarge ?? BorderRadius.circular(16),
       borderRadiusCircle: BorderRadius.circular(99999999),
     );
     final textStyles = ImpaktfullUiTextStylesTheme(
@@ -251,18 +253,21 @@ class DefaultTheme {
             alternative: textStyles.onCardPrimary.text.small.bold,
             grey: textStyles.onCard.text.small.bold,
             destructivePrimary: textStyles.onDestructive.text.small.bold,
-            destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
+            destructiveAlternative:
+                textStyles.onCardDestructive.text.small.bold,
           ),
         ),
         card: ImpaktfullUiCardTheme(
           colors: ImpaktfullUiCardColorTheme(
             background: colors.card,
             border: colors.border,
-            shadow: colors.shadow,
           ),
           dimens: ImpaktfullUiCardDimensTheme(
             borderRadius: dimens.borderRadius,
             padding: const EdgeInsets.all(16),
+          ),
+          shadows: ImpaktfullUiCardShadowsTheme(
+            card: shadows.small,
           ),
         ),
         checkbox: ImpaktfullUiCheckboxTheme(
@@ -360,8 +365,9 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            hint: textStyles.onCardSecondary.text.medium
-                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
+            hint: textStyles.onCardSecondary.text.medium.copyWith(
+                color: textStyles.onCardTertiary.text.medium.color
+                    ?.withOpacity(0.5)),
             label: textStyles.onCard.text.small.medium,
           ),
         ),
@@ -455,7 +461,8 @@ class DefaultTheme {
           ),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(
+              loadingIndicator: colors.accent),
         ),
         sidebarNavigation: const ImpaktfullUiSidebarNavigationTheme(
           assets: ImpaktfullUiSidebarNavigationAssetsTheme(),

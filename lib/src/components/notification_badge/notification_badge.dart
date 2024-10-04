@@ -18,7 +18,8 @@ enum ImpaktfullUiNotificationBadgeLocation {
   const ImpaktfullUiNotificationBadgeLocation(this.alignment);
 }
 
-class ImpaktfullUiNotificationBadge extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiNotificationBadge extends StatelessWidget
+    with ComponentDescriptorMixin {
   final bool show;
   final Color? color;
   final String? text;
@@ -38,7 +39,8 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget with ComponentDescri
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiNotificationBadgeTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiNotificationBadgeTheme>(
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) {
         final showBadge = show || text != null;
@@ -87,7 +89,8 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget with ComponentDescri
                               height: 4,
                               decoration: BoxDecoration(
                                 color: color,
-                                borderRadius: componentTheme.dimens.borderRadius,
+                                borderRadius:
+                                    componentTheme.dimens.borderRadius,
                               ),
                             );
                           }
@@ -113,9 +116,11 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget with ComponentDescri
   }
 
   Size _textWidth(String text, TextStyle style) {
-    final TextPainter textPainter =
-        TextPainter(text: TextSpan(text: text, style: style), maxLines: 1, textDirection: TextDirection.ltr)
-          ..layout(minWidth: 0, maxWidth: double.infinity);
+    final TextPainter textPainter = TextPainter(
+        text: TextSpan(text: text, style: style),
+        maxLines: 1,
+        textDirection: TextDirection.ltr)
+      ..layout(minWidth: 0, maxWidth: double.infinity);
     return textPainter.size;
   }
 
@@ -132,7 +137,9 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget with ComponentDescri
 
   double? _getBottom(double textWidth, double textHeight) {
     final alignment = location.alignment;
-    if (alignment == Alignment.topCenter || alignment == Alignment.topLeft || alignment == Alignment.topRight) {
+    if (alignment == Alignment.topCenter ||
+        alignment == Alignment.topLeft ||
+        alignment == Alignment.topRight) {
       return null;
     }
     if (text == null) return -4;
@@ -141,7 +148,9 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget with ComponentDescri
 
   double? _getRight(double textWidth, double textHeight) {
     final alignment = location.alignment;
-    if (alignment == Alignment.centerLeft || alignment == Alignment.topLeft || alignment == Alignment.bottomLeft) {
+    if (alignment == Alignment.centerLeft ||
+        alignment == Alignment.topLeft ||
+        alignment == Alignment.bottomLeft) {
       return null;
     }
     if (text == null) return -4;
@@ -150,7 +159,9 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget with ComponentDescri
 
   double? _getLeft(double textWidth, double textHeight) {
     final alignment = location.alignment;
-    if (alignment == Alignment.centerRight || alignment == Alignment.topRight || alignment == Alignment.bottomRight) {
+    if (alignment == Alignment.centerRight ||
+        alignment == Alignment.topRight ||
+        alignment == Alignment.bottomRight) {
       return null;
     }
     return -(textWidth / 2);

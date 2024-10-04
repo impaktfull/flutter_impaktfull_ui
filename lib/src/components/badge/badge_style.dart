@@ -13,7 +13,8 @@ class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiBadgeTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.badge;
+  static ImpaktfullUiBadgeTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.badge;
 }
 
 class ImpaktfullUiBadgeColorTheme {

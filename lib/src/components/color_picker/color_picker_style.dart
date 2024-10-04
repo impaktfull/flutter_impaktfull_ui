@@ -14,7 +14,8 @@ class ImpaktfullUiColorPickerTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiColorPickerTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.colorPicker;
+  static ImpaktfullUiColorPickerTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.colorPicker;
 }
 
 class ImpaktfullUiColorPickerAssetsTheme {

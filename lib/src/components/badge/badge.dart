@@ -62,10 +62,12 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
           padding: EdgeInsets.only(
             left: widget.leading == null
                 ? widget.size.horizontalPadding
-                : (widget.size.horizontalPadding / 2) - widget.size.paddingOffset,
+                : (widget.size.horizontalPadding / 2) -
+                    widget.size.paddingOffset,
             right: widget.trailing == null
                 ? widget.size.horizontalPadding
-                : (widget.size.horizontalPadding / 2) - widget.size.paddingOffset,
+                : (widget.size.horizontalPadding / 2) -
+                    widget.size.paddingOffset,
             top: widget.size.verticalPadding,
             bottom: widget.size.verticalPadding,
           ),

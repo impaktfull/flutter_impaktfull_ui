@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/components/card/card_style.dart';
+import 'package:impaktfull_ui_2/src/components/container/container.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
@@ -45,33 +46,28 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCardTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) => Container(
+      builder: (context, theme, componentTheme) => ImpaktfullUiContainer(
         width: widget.width,
         height: widget.height,
-        decoration: BoxDecoration(
-          borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
-          color: componentTheme.colors.background,
-          border: componentTheme.colors.border == null
-              ? null
-              : Border.all(
-                  color: componentTheme.colors.border!,
-                  strokeAlign: BorderSide.strokeAlignOutside,
-                  width: 1,
-                ),
-          boxShadow: [
-            if (componentTheme.colors.shadow != null) ...[
-              BoxShadow(
-                color: componentTheme.colors.shadow!,
+        borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
+        color: componentTheme.colors.background,
+        border: componentTheme.colors.border == null
+            ? null
+            : Border.all(
+                color: componentTheme.colors.border!,
+                strokeAlign: BorderSide.strokeAlignOutside,
+                width: 1,
               ),
-            ]
-          ],
-        ),
+        boxShadow: componentTheme.shadows.card,
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: false,
-          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer ? SystemMouseCursors.click : widget.cursor,
+          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer
+              ? SystemMouseCursors.click
+              : widget.cursor,
           onTap: widget.onTap,
           onFocus: widget.onFocus,
-          borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
+          borderRadius:
+              widget.borderRadius ?? componentTheme.dimens.borderRadius,
           child: ClipRRect(
             borderRadius: componentTheme.dimens.borderRadius,
             child: Padding(

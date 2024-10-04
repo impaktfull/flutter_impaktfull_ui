@@ -45,16 +45,20 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
               subtitle: snacky.subtitle,
               width: layoutConfig.getSnackyWidth(context),
               onTap: snacky.onTap,
-              onCloseTapped: snacky.canBeClosed ? () => cancelableSnacky.cancel() : null,
+              onCloseTapped:
+                  snacky.canBeClosed ? () => cancelableSnacky.cancel() : null,
               trailingWidgetBuilder: snacky.trailingWidgetBuilder == null
                   ? null
-                  : (context, config) => snacky.trailingWidgetBuilder!(context, cancelableSnacky),
+                  : (context, config) =>
+                      snacky.trailingWidgetBuilder!(context, cancelableSnacky),
               leadingWidgetBuilder: snacky.leadingWidgetBuilder == null
                   ? null
-                  : (context, config) => snacky.leadingWidgetBuilder!(context, cancelableSnacky),
+                  : (context, config) =>
+                      snacky.leadingWidgetBuilder!(context, cancelableSnacky),
               centerWidgetBuilder: snacky.bottomWidgetBuilder == null
                   ? null
-                  : (context, config) => snacky.bottomWidgetBuilder!(context, cancelableSnacky),
+                  : (context, config) =>
+                      snacky.bottomWidgetBuilder!(context, cancelableSnacky),
               type: _getType(snacky),
             );
           },

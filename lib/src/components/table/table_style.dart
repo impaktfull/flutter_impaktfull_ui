@@ -10,7 +10,8 @@ class ImpaktfullUiTableTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
-  static ImpaktfullUiTableTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.table;
+  static ImpaktfullUiTableTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.table;
 }
 
 class ImpaktfullUiTableColorTheme {

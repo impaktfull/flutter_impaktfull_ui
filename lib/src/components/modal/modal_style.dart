@@ -15,7 +15,8 @@ class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiModalTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.modal;
+  static ImpaktfullUiModalTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.modal;
 }
 
 class ImpaktfullUiModalColorTheme {

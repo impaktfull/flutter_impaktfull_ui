@@ -16,7 +16,8 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiTooltipTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.tooltip;
+  static ImpaktfullUiTooltipTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.tooltip;
 }
 
 class ImpaktfullUiTooltipColorTheme {
