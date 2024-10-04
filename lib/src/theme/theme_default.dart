@@ -215,6 +215,7 @@ class DefaultTheme {
           colors: ImpaktfullUiBottomSheetColorTheme(
             background: colors.card,
             handle: colors.text,
+            icon: colors.text,
           ),
           dimens: ImpaktfullUiBottomSheetDimensTheme(
             borderRadius: dimens.borderRadius.copyWith(
@@ -466,7 +467,7 @@ class DefaultTheme {
             chevronUp: assets.icons.chevronUp,
           ),
           colors: ImpaktfullUiSidebarNavigationItemColorTheme(
-            background: colors.primary,
+            background: colors.canvas,
             icon: colors.text,
           ),
           dimens: ImpaktfullUiSidebarNavigationItemDimensTheme(

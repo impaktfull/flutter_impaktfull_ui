@@ -18,10 +18,12 @@ dependencies:
   snacky: ^0.5.3
 
 dev_dependencies:
+  alchemist: ^0.10.0
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
 
 flutter:
+  uses-material-design: true
   assets:
     - assets/lottie/

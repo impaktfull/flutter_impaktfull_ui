@@ -19,6 +19,7 @@ class MyAppState extends State<MyApp> {
     return ImpaktfullUiApp(
       title: 'impaktfull ui',
       impaktfullUiTheme: ThemeButton.activeTheme,
+      flavorBannerText: 'Testing',
       // const is disabled here because it would not rebuild when the theme is set again.
       // ignore: prefer_const_constructors
       home: HomeScreen(),

@@ -15,8 +15,7 @@ class ImpaktfullUiBottomSheetTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiBottomSheetTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.bottomSheet;
+  static ImpaktfullUiBottomSheetTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.bottomSheet;
 }
 
 class ImpaktfullUiBottomSheetAssetsTheme {
@@ -30,10 +29,12 @@ class ImpaktfullUiBottomSheetAssetsTheme {
 class ImpaktfullUiBottomSheetColorTheme {
   final Color background;
   final Color handle;
+  final Color icon;
 
   const ImpaktfullUiBottomSheetColorTheme({
     required this.background,
     required this.handle,
+    required this.icon,
   });
 }
 

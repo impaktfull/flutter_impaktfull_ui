@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/app/debug/app_debug_flag.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 import 'package:snacky/snacky.dart';
@@ -22,6 +23,8 @@ class ImpaktfullUiApp extends StatelessWidget {
   final Widget Function(BuildContext context, Widget app)? builder;
   final TargetPlatform? targetPlatform;
   final bool showDebugFlag;
+  final String? flavorBannerText;
+  final Color? flavorBannerColor;
 
   const ImpaktfullUiApp({
     required this.title,
@@ -41,8 +44,13 @@ class ImpaktfullUiApp extends StatelessWidget {
     this.builder,
     this.targetPlatform,
     this.showDebugFlag = kDebugMode,
+    this.flavorBannerText,
+    this.flavorBannerColor,
     super.key,
-  });
+  }) : assert(
+          home != null || onGenerateRoute != null || builder != null,
+          'Either home or onGenerateRoute or builder must be provided',
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -54,28 +62,31 @@ class ImpaktfullUiApp extends StatelessWidget {
       snackyBuilder: snackyBuilder,
       app: Builder(
         builder: (context) {
-          final app = MaterialApp(
-            title: title,
-            home: home,
-            debugShowCheckedModeBanner: showDebugFlag,
-            locale: locale,
-            theme: (materialLightTheme ?? Theme.of(context))
-                .removeUnwantedBehavior(
-              targetPlatform: targetPlatform,
+          final app = AppDebugFlag(
+            showDebugFlag: showDebugFlag,
+            flavorBannerText: flavorBannerText,
+            flavorBannerColor: flavorBannerColor ?? theme.colors.accent,
+            child: MaterialApp(
+              title: title,
+              home: home,
+              debugShowCheckedModeBanner: showDebugFlag,
+              locale: locale,
+              theme: (materialLightTheme ?? Theme.of(context)).removeUnwantedBehavior(
+                targetPlatform: targetPlatform,
+              ),
+              darkTheme: (materialLightTheme ?? Theme.of(context)).removeUnwantedBehavior(
+                targetPlatform: targetPlatform,
+              ),
+              supportedLocales: supportedLocales,
+              localizationsDelegates: localizationsDelegates,
+              navigatorKey: navigatorKey,
+              initialRoute: initialRoute,
+              onGenerateRoute: onGenerateRoute,
+              navigatorObservers: [
+                SnackyNavigationObserver(),
+                ...navigatorObservers,
+              ],
             ),
-            darkTheme: (materialLightTheme ?? Theme.of(context))
-                .removeUnwantedBehavior(
-              targetPlatform: targetPlatform,
-            ),
-            supportedLocales: supportedLocales,
-            localizationsDelegates: localizationsDelegates,
-            navigatorKey: navigatorKey,
-            initialRoute: initialRoute,
-            onGenerateRoute: onGenerateRoute,
-            navigatorObservers: [
-              SnackyNavigationObserver(),
-              ...navigatorObservers,
-            ],
           );
           return builder?.call(context, app) ?? app;
         },

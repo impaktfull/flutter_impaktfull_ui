@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     name: Runs all tests on main
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Clone repository
         uses: actions/checkout@v4

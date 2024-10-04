@@ -21,6 +21,27 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/font/ubuntu/
+    - assets/font/geologica/
     - assets/image/
     - assets/lottie/
     - assets/rive/
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/font/ubuntu/ubuntu_light.ttf
+          weight: 300
+        - asset: assets/font/ubuntu/ubuntu_regular.ttf
+        - asset: assets/font/ubuntu/ubuntu_medium.ttf
+          weight: 600
+        - asset: assets/font/ubuntu/ubuntu_bold.ttf
+          weight: 700
+    - family: Geologica
+      fonts:
+        - asset: assets/font/geologica/geologica-light.ttf
+          weight: 300
+        - asset: assets/font/geologica/geologica-regular.ttf
+        - asset: assets/font/geologica/geologica-medium.ttf
+          weight: 600
+        - asset: assets/font/geologica/geologica-bold.ttf
+          weight: 700
