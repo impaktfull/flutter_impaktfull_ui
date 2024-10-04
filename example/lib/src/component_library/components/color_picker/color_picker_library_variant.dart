@@ -4,7 +4,8 @@ import 'package:impaktfull_ui_example/src/component_library/components/color_pic
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class ColorPickerLibraryVariant extends ComponentLibraryVariant<ColorPickerLibraryPrimaryInputs> {
+class ColorPickerLibraryVariant
+    extends ComponentLibraryVariant<ColorPickerLibraryPrimaryInputs> {
   final ImpaktfullUiColorPickerType type;
   const ColorPickerLibraryVariant(
     this.type,
@@ -14,7 +15,8 @@ class ColorPickerLibraryVariant extends ComponentLibraryVariant<ColorPickerLibra
   String get title => type.name;
 
   @override
-  List<Widget> build(BuildContext context, ColorPickerLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, ColorPickerLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         width: 500,

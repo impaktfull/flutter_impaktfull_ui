@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/screen/home/home_screen.dart';
@@ -19,7 +20,7 @@ class MyAppState extends State<MyApp> {
     return ImpaktfullUiApp(
       title: 'impaktfull ui',
       impaktfullUiTheme: ThemeButton.activeTheme,
-      flavorBannerText: 'Testing',
+      flavorBannerText: kDebugMode ? null : 'Prod',
       // const is disabled here because it would not rebuild when the theme is set again.
       // ignore: prefer_const_constructors
       home: HomeScreen(),

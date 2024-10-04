@@ -26,7 +26,8 @@ class BaseScreen extends StatelessWidget {
           children: [
             ImpaktfullUiCmsHeader(
               title: title,
-              onBackTapped: canGoBack ? () => Navigator.of(context).pop() : null,
+              onBackTapped:
+                  canGoBack ? () => Navigator.of(context).pop() : null,
               actions: actions,
               bottom: headerBottom,
             ),

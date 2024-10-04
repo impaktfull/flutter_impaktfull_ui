@@ -3,7 +3,8 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/simple_list_item/simple_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class SimpleListItemLibraryVariant extends ComponentLibraryVariant<SimpleListItemLibraryPrimaryInputs> {
+class SimpleListItemLibraryVariant
+    extends ComponentLibraryVariant<SimpleListItemLibraryPrimaryInputs> {
   final ImpaktfullUiSimpleListItemType type;
 
   const SimpleListItemLibraryVariant(
@@ -14,7 +15,8 @@ class SimpleListItemLibraryVariant extends ComponentLibraryVariant<SimpleListIte
   String get title => type.name;
 
   @override
-  List<Widget> build(BuildContext context, SimpleListItemLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, SimpleListItemLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiSimpleListItem(
         title: 'Settings',
@@ -37,7 +39,8 @@ class SimpleListItemLibraryVariant extends ComponentLibraryVariant<SimpleListIte
   }
 
   @override
-  SimpleListItemLibraryPrimaryInputs inputs() => SimpleListItemLibraryPrimaryInputs();
+  SimpleListItemLibraryPrimaryInputs inputs() =>
+      SimpleListItemLibraryPrimaryInputs();
 }
 
 class SimpleListItemLibraryPrimaryInputs extends SimpleListItemLibraryInputs {}

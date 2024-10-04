@@ -1,4 +1,3 @@
-
 enum ImpaktfullUiSimpleListItemType {
   neutral,
   danger,

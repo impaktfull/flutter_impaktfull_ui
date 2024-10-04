@@ -14,7 +14,8 @@ class ImpaktfullUiListItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiListItemTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.listItem;
+  static ImpaktfullUiListItemTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.listItem;
 }
 
 class ImpaktfullUiListItemAssetsTheme {

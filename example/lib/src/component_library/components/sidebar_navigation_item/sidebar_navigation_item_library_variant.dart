@@ -4,14 +4,16 @@ import 'package:impaktfull_ui_example/src/component_library/components/sidebar_n
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class SidebarNavigationItemLibraryVariant extends ComponentLibraryVariant<SidebarNavigationItemLibraryPrimaryInputs> {
+class SidebarNavigationItemLibraryVariant
+    extends ComponentLibraryVariant<SidebarNavigationItemLibraryPrimaryInputs> {
   const SidebarNavigationItemLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, SidebarNavigationItemLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, SidebarNavigationItemLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiSidebarNavigationItem(
         leading: theme.assets.icons.home,
@@ -90,7 +92,9 @@ class SidebarNavigationItemLibraryVariant extends ComponentLibraryVariant<Sideba
   }
 
   @override
-  SidebarNavigationItemLibraryPrimaryInputs inputs() => SidebarNavigationItemLibraryPrimaryInputs();
+  SidebarNavigationItemLibraryPrimaryInputs inputs() =>
+      SidebarNavigationItemLibraryPrimaryInputs();
 }
 
-class SidebarNavigationItemLibraryPrimaryInputs extends SidebarNavigationItemLibraryInputs {}
+class SidebarNavigationItemLibraryPrimaryInputs
+    extends SidebarNavigationItemLibraryInputs {}

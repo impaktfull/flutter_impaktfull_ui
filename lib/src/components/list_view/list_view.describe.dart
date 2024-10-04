@@ -1,6 +1,7 @@
 part of 'list_view.dart';
 
-String _describeInstance<T>(BuildContext context, ImpaktfullUiListView<T> instance) {
+String _describeInstance<T>(
+    BuildContext context, ImpaktfullUiListView<T> instance) {
   final descriptor = ComponentDescriptor();
   descriptor.add('child', instance.child);
   descriptor.add('children', instance.children);

@@ -13,7 +13,8 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiCmsHeaderTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.cmsHeader;
+  static ImpaktfullUiCmsHeaderTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.cmsHeader;
 }
 
 class ImpaktfullUiCmsHeaderColorTheme {

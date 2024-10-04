@@ -71,10 +71,12 @@ class ImpaktfullUiApp extends StatelessWidget {
               home: home,
               debugShowCheckedModeBanner: showDebugFlag,
               locale: locale,
-              theme: (materialLightTheme ?? Theme.of(context)).removeUnwantedBehavior(
+              theme: (materialLightTheme ?? Theme.of(context))
+                  .removeUnwantedBehavior(
                 targetPlatform: targetPlatform,
               ),
-              darkTheme: (materialLightTheme ?? Theme.of(context)).removeUnwantedBehavior(
+              darkTheme: (materialLightTheme ?? Theme.of(context))
+                  .removeUnwantedBehavior(
                 targetPlatform: targetPlatform,
               ),
               supportedLocales: supportedLocales,

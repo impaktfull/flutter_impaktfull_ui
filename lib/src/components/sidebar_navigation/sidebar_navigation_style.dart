@@ -14,7 +14,8 @@ class ImpaktfullUiSidebarNavigationTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiSidebarNavigationTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.sidebarNavigation;
+  static ImpaktfullUiSidebarNavigationTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.sidebarNavigation;
 }
 
 class ImpaktfullUiSidebarNavigationAssetsTheme {
@@ -28,7 +29,6 @@ class ImpaktfullUiSidebarNavigationColorTheme {
 class ImpaktfullUiSidebarNavigationDimensTheme {
   const ImpaktfullUiSidebarNavigationDimensTheme();
 }
-
 
 class ImpaktfullUiSidebarNavigationTextStyleTheme {
   const ImpaktfullUiSidebarNavigationTextStyleTheme();

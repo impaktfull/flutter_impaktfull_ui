@@ -7,7 +7,8 @@ export 'sidebar_navigation_style.dart';
 
 part 'sidebar_navigation.describe.dart';
 
-class ImpaktfullUiSidebarNavigation extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSidebarNavigation extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiSidebarNavigationTheme? theme;
 
   const ImpaktfullUiSidebarNavigation({
@@ -17,7 +18,8 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget with ComponentDescri
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSidebarNavigationTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiSidebarNavigationTheme>(
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) => Container(),
     );

@@ -8,7 +8,8 @@ export 'list_item_type.dart';
 
 part 'list_item.describe.dart';
 
-class ImpaktfullUiListItem extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiListItem extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final ImpaktfullUiAsset? leading;

@@ -20,4 +20,3 @@ class SidebarNavigationLibraryInputs extends ComponentLibraryInputs {
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [];
 }
-

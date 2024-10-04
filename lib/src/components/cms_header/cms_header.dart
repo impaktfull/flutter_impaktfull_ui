@@ -10,7 +10,8 @@ export 'cms_header_style.dart';
 
 part 'cms_header.describe.dart';
 
-class ImpaktfullUiCmsHeader extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiCmsHeader extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
