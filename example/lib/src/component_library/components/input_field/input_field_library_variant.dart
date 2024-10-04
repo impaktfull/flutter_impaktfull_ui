@@ -27,6 +27,7 @@ class InputFieldVariant
         onChanged: inputs.value.updateState,
         trailingAction: ImpaktfullUiInputFieldAction(
           label: 'Copy',
+          asset: theme.assets.icons.copy,
           onTap: () => ImpaktfullUiNotification.show(
             title: 'Copied to clipboard',
           ),

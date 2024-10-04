@@ -42,13 +42,13 @@ class ImpaktfullUiAssetTheme {
               circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle()),
               close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
               confetti: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
+              copy: ImpaktfullUiAsset.icon(PhosphorIcons.copy()),
               delete: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
-              error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
               edit: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
+              error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
-              lineVertical:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
+              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
               search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
@@ -133,6 +133,7 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset circle;
   final ImpaktfullUiAsset close;
   final ImpaktfullUiAsset confetti;
+  final ImpaktfullUiAsset copy;
   final ImpaktfullUiAsset delete;
   final ImpaktfullUiAsset edit;
   final ImpaktfullUiAsset error;
@@ -157,6 +158,7 @@ class ImpaktfullUiIconTheme {
     required this.circle,
     required this.close,
     required this.confetti,
+    required this.copy,
     required this.delete,
     required this.edit,
     required this.error,
@@ -182,11 +184,12 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? circle,
     ImpaktfullUiAsset? close,
     ImpaktfullUiAsset? confetti,
+    ImpaktfullUiAsset? copy,
     ImpaktfullUiAsset? delete,
-    ImpaktfullUiAsset? error,
     ImpaktfullUiAsset? edit,
-    ImpaktfullUiAsset? info,
+    ImpaktfullUiAsset? error,
     ImpaktfullUiAsset? home,
+    ImpaktfullUiAsset? info,
     ImpaktfullUiAsset? lineVertical,
     ImpaktfullUiAsset? list,
     ImpaktfullUiAsset? minus,
@@ -206,6 +209,7 @@ class ImpaktfullUiIconTheme {
         circle: circle ?? this.circle,
         close: close ?? this.close,
         confetti: confetti ?? this.confetti,
+        copy: copy ?? this.copy,
         delete: delete ?? this.delete,
         edit: edit ?? this.edit,
         error: error ?? this.error,

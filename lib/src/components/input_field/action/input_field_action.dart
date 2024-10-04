@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
@@ -29,18 +30,23 @@ class ImpaktfullUiInputFieldAction extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Align(
         alignment: Alignment.center,
-        child: Builder(
-          builder: (context) {
-            if (label != null) {
-              return Text(
+        child: ImpaktfullUiAutoLayout.horizontal(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 4,
+          children: [
+            if (asset != null) ...[
+              ImpaktfullUiAssetWidget(
+                asset: asset!,
+                color: theme.textStyles.onCard.text.small.color,
+              ),
+            ],
+            if (label != null) ...[
+              Text(
                 label!,
                 style: theme.textStyles.onCard.text.small,
-              );
-            }
-            return ImpaktfullUiAssetWidget(
-              asset: asset!,
-            );
-          },
+              ),
+            ],
+          ],
         ),
       ),
     );
