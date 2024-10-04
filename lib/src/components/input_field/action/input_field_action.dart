@@ -32,6 +32,7 @@ class ImpaktfullUiInputFieldAction extends StatelessWidget {
         alignment: Alignment.center,
         child: ImpaktfullUiAutoLayout.horizontal(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           spacing: 4,
           children: [
             if (asset != null) ...[
