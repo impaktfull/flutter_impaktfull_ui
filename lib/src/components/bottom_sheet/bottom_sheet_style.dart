@@ -15,8 +15,7 @@ class ImpaktfullUiBottomSheetTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiBottomSheetTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.bottomSheet;
+  static ImpaktfullUiBottomSheetTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.bottomSheet;
 }
 
 class ImpaktfullUiBottomSheetAssetsTheme {
@@ -42,8 +41,8 @@ class ImpaktfullUiBottomSheetColorTheme {
 class ImpaktfullUiBottomSheetDimensTheme {
   final EdgeInsetsDirectional closeIconButtonPadding;
   final EdgeInsetsDirectional padding;
-  final BorderRadius borderRadius;
-  final BorderRadius handleBorderRadius;
+  final BorderRadiusGeometry borderRadius;
+  final BorderRadiusGeometry handleBorderRadius;
 
   const ImpaktfullUiBottomSheetDimensTheme({
     required this.closeIconButtonPadding,

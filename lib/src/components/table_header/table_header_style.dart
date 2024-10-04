@@ -10,8 +10,7 @@ class ImpaktfullUiTableHeaderTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
-  static ImpaktfullUiTableHeaderTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.tableHeader;
+  static ImpaktfullUiTableHeaderTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.tableHeader;
 }
 
 class ImpaktfullUiTableHeaderColorTheme {
@@ -23,7 +22,7 @@ class ImpaktfullUiTableHeaderColorTheme {
 }
 
 class ImpaktfullUiTableHeaderDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
   const ImpaktfullUiTableHeaderDimensTheme({
     required this.borderRadius,
   });

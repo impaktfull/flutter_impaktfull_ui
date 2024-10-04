@@ -6,8 +6,7 @@ import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.d
 
 part 'icon_button.describe.dart';
 
-class ImpaktfullUiIconButton extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiIconButton extends StatelessWidget with ComponentDescriptorMixin {
   final VoidCallback onTap;
   final Color? color;
   final ImpaktfullUiAsset asset;
@@ -25,6 +24,7 @@ class ImpaktfullUiIconButton extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+    //todo add theming
     return ImpaktfullUiTouchFeedback(
       toolTip: tooltip,
       borderRadius: BorderRadius.circular(9999),

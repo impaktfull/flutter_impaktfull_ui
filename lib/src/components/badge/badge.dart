@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'badge_style.dart';
 export 'badge_type.dart';
@@ -57,12 +62,10 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
           padding: EdgeInsets.only(
             left: widget.leading == null
                 ? widget.size.horizontalPadding
-                : (widget.size.horizontalPadding / 2) -
-                    widget.size.paddingOffset,
+                : (widget.size.horizontalPadding / 2) - widget.size.paddingOffset,
             right: widget.trailing == null
                 ? widget.size.horizontalPadding
-                : (widget.size.horizontalPadding / 2) -
-                    widget.size.paddingOffset,
+                : (widget.size.horizontalPadding / 2) - widget.size.paddingOffset,
             top: widget.size.verticalPadding,
             bottom: widget.size.verticalPadding,
           ),

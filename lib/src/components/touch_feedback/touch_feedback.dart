@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_builder.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
-
-import '../../util/device_util/device_util.dart';
+import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
+import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
 
 class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final VoidCallback? onTap;
   final VoidCallback? onFocus;
   final Widget child;
-  final BorderRadius? borderRadius;
+  final BorderRadiusGeometry? borderRadius;
   final Color? color;
   final BoxBorder? border;
   final MouseCursor cursor;
@@ -83,7 +83,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
 
 class _PlatformTouchFeedback extends StatefulWidget {
   final Widget child;
-  final BorderRadius? borderRadius;
+  final BorderRadiusGeometry? borderRadius;
   final VoidCallback? onTap;
   final MouseCursor cursor;
   final ValueChanged<bool> onFocusChanged;
@@ -134,7 +134,7 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
       );
     }
     return InkWell(
-      borderRadius: widget.borderRadius,
+      borderRadius: widget.borderRadius?.value,
       onTap: widget.onTap,
       mouseCursor: widget.cursor,
       onFocusChange: widget.onFocusChanged,

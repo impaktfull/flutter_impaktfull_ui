@@ -12,8 +12,7 @@ export 'sidebar_navigation_item_style.dart';
 
 part 'sidebar_navigation_item.describe.dart';
 
-class ImpaktfullUiSidebarNavigationItem extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSidebarNavigationItem extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? leading;
   final String title;
   final List<Widget> items;
@@ -32,24 +31,20 @@ class ImpaktfullUiSidebarNavigationItem extends StatefulWidget
   });
 
   @override
-  State<ImpaktfullUiSidebarNavigationItem> createState() =>
-      _ImpaktfullUiSidebarNavigationItemState();
+  State<ImpaktfullUiSidebarNavigationItem> createState() => _ImpaktfullUiSidebarNavigationItemState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiSidebarNavigationItemState
-    extends State<ImpaktfullUiSidebarNavigationItem> {
+class _ImpaktfullUiSidebarNavigationItemState extends State<ImpaktfullUiSidebarNavigationItem> {
   var _expanded = false;
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
-        ImpaktfullUiSidebarNavigationItemTheme>(
+    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSidebarNavigationItemTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) =>
-          ImpaktfullUiAutoLayout.vertical(
+      builder: (context, theme, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         spacing: 8,

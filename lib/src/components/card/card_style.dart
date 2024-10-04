@@ -10,8 +10,7 @@ class ImpaktfullUiCardTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
-  static ImpaktfullUiCardTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.card;
+  static ImpaktfullUiCardTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.card;
 }
 
 class ImpaktfullUiCardColorTheme {
@@ -27,7 +26,7 @@ class ImpaktfullUiCardColorTheme {
 }
 
 class ImpaktfullUiCardDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
   final EdgeInsets padding;
 
   const ImpaktfullUiCardDimensTheme({

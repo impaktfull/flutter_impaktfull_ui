@@ -29,16 +29,13 @@ class ImpaktfullUiDropdownItem<T> {
   });
 }
 
-class ImpaktfullUiDropdown<T> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiDropdown<T> extends StatefulWidget with ComponentDescriptorMixin {
   final double? childWidth;
   final double? height;
   final Widget? child;
   final WidgetBuilder? button;
   final List<ImpaktfullUiDropdownItem<T>>? items;
-  final Widget Function(
-          BuildContext context, ImpaktfullUiDropdownItem<T> item, int index)?
-      itemBuilder;
+  final Widget Function(BuildContext context, ImpaktfullUiDropdownItem<T> item, int index)? itemBuilder;
   final String? noDataLabel;
   final ImpaktfullUiAlignment alignment;
   final ImpaktfullUiDropdownTheme? theme;
@@ -74,8 +71,7 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget
   String describe(BuildContext context) => _describeInstance(context, this);
 
   @override
-  State<ImpaktfullUiDropdown<T>> createState() =>
-      _ImpaktfullUiDropdownState<T>();
+  State<ImpaktfullUiDropdown<T>> createState() => _ImpaktfullUiDropdownState<T>();
 }
 
 class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
@@ -146,8 +142,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                           child: Builder(
                             builder: (context) {
                               if (widget.child != null) return widget.child!;
-                              return ImpaktfullUiListView<
-                                  ImpaktfullUiDropdownItem<T>>.builder(
+                              return ImpaktfullUiListView<ImpaktfullUiDropdownItem<T>>.builder(
                                 items: widget.items!,
                                 itemBuilder: widget.itemBuilder!,
                                 noDataLabel: widget.noDataLabel!,
@@ -169,9 +164,8 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                 return ImpaktfullUiButton(
                   onTap: _onTapButton,
                   type: ImpaktfullUiButtonType.secondaryGrey,
-                  trailingIcon: _tooltipController.isShowing
-                      ? componentTheme.assets.dropUp
-                      : componentTheme.assets.dropDown,
+                  trailingIcon:
+                      _tooltipController.isShowing ? componentTheme.assets.dropUp : componentTheme.assets.dropDown,
                   title: 'Button Text',
                 );
               },

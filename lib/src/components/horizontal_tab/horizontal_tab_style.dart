@@ -37,7 +37,7 @@ class ImpaktfullUiHorizontalTabTextStylesTheme {
 }
 
 class ImpaktfullUiHorizontalTabDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
   const ImpaktfullUiHorizontalTabDimensTheme({
     required this.borderRadius,
   });

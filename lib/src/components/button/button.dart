@@ -1,7 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'button_type.dart';
 export 'button_style.dart';
@@ -70,8 +76,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                   width: 1,
                   strokeAlign: BorderSide.strokeAlignInside,
                 ),
-          onTap:
-              widget.onTap == null && widget.onAsyncTap == null ? null : _onTap,
+          onTap: widget.onTap == null && widget.onAsyncTap == null ? null : _onTap,
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -80,8 +85,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                 child: Padding(
                   padding: _getPadding(componentTheme),
                   child: ImpaktfullUiAutoLayout.horizontal(
-                    mainAxisSize:
-                        widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
+                    mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     spacing: 4,
                     children: [
@@ -124,8 +128,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                 duration: theme.durations.short,
                 curve: Curves.easeInOut,
                 child: ImpaktfullUiAutoLayout.horizontal(
-                  mainAxisSize:
-                      widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
+                  mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 4,
                   children: [
@@ -133,9 +136,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                       flex: widget.fullWidth ? 1 : 0,
                       child: SizedBox(
                         height: _getLoadingSize(),
-                        child: _isLoading
-                            ? ImpaktfullUiLoadingIndicator(color: color)
-                            : const SizedBox(),
+                        child: _isLoading ? ImpaktfullUiLoadingIndicator(color: color) : const SizedBox(),
                       ),
                     ),
                   ],

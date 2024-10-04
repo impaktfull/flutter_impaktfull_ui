@@ -15,8 +15,7 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiSwitchTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.switchTheme;
+  static ImpaktfullUiSwitchTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.switchTheme;
 }
 
 class ImpaktfullUiSwitchColorTheme {
@@ -40,8 +39,8 @@ class ImpaktfullUiSwitchTextStyleTheme {
 }
 
 class ImpaktfullUiSwitchDimensTheme {
-  final BorderRadius? borderRadius;
-  final BorderRadius? thumbBorderRadius;
+  final BorderRadiusGeometry? borderRadius;
+  final BorderRadiusGeometry? thumbBorderRadius;
   final double? borderWidth;
   const ImpaktfullUiSwitchDimensTheme({
     this.borderRadius,

@@ -51,7 +51,7 @@ class ImpaktfullUiNotificationTextStyleTheme {
 }
 
 class ImpaktfullUiNotificationDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
 
   const ImpaktfullUiNotificationDimensTheme({
     required this.borderRadius,

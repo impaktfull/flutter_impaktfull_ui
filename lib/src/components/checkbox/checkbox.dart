@@ -10,8 +10,7 @@ export 'checkbox_style.dart';
 
 part 'checkbox.describe.dart';
 
-class ImpaktfullUiCheckBox extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiCheckBox extends StatelessWidget with ComponentDescriptorMixin {
   final CheckboxType type;
   final bool? value;
   final ValueChanged<bool>? onChanged;
@@ -92,8 +91,7 @@ class ImpaktfullUiCheckBox extends StatelessWidget
                       ),
                     ),
                   ),
-                ] else if (type == CheckboxType.indeterminate &&
-                    value == null) ...[
+                ] else if (type == CheckboxType.indeterminate && value == null) ...[
                   Positioned.fill(
                     child: Center(
                       child: ImpaktfullUiAssetWidget(

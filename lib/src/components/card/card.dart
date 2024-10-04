@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/components/card/card_style.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
@@ -16,6 +17,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
   final MouseCursor cursor;
   final VoidCallback? onFocus;
   final EdgeInsets? padding;
+  final BorderRadiusGeometry? borderRadius;
   final ImpaktfullUiCardTheme? theme;
 
   const ImpaktfullUiCard({
@@ -26,6 +28,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
     this.onTap,
     this.onFocus,
     this.padding,
+    this.borderRadius,
     this.theme,
     super.key,
   });
@@ -46,13 +49,13 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         width: widget.width,
         height: widget.height,
         decoration: BoxDecoration(
-          borderRadius: componentTheme.dimens.borderRadius,
+          borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
           color: componentTheme.colors.background,
           border: componentTheme.colors.border == null
               ? null
               : Border.all(
                   color: componentTheme.colors.border!,
-                  strokeAlign: BorderSide.strokeAlignInside,
+                  strokeAlign: BorderSide.strokeAlignOutside,
                   width: 1,
                 ),
           boxShadow: [
@@ -65,12 +68,10 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         ),
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: false,
-          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer
-              ? SystemMouseCursors.click
-              : widget.cursor,
+          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer ? SystemMouseCursors.click : widget.cursor,
           onTap: widget.onTap,
           onFocus: widget.onFocus,
-          borderRadius: componentTheme.dimens.borderRadius,
+          borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
           child: ClipRRect(
             borderRadius: componentTheme.dimens.borderRadius,
             child: Padding(

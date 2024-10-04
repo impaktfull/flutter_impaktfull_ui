@@ -35,6 +35,7 @@ import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class DefaultTheme {
@@ -58,11 +59,11 @@ class DefaultTheme {
     Color? success,
     Color? info,
     Color? destructive,
-    BorderRadius? borderRadiusExtraSmall,
-    BorderRadius? borderRadiusSmall,
-    BorderRadius? borderRadius,
-    BorderRadius? borderRadiusLarge,
-    BorderRadius? borderRadiusExtraLarge,
+    BorderRadiusGeometry? borderRadiusExtraSmall,
+    BorderRadiusGeometry? borderRadiusSmall,
+    BorderRadiusGeometry? borderRadius,
+    BorderRadiusGeometry? borderRadiusLarge,
+    BorderRadiusGeometry? borderRadiusExtraLarge,
     String fontFamilyDisplay = 'Ubuntu',
     String fontFamilyText = 'Geologica',
     String package = 'impaktfull_ui_2',
@@ -89,13 +90,11 @@ class DefaultTheme {
       destructive: destructive ?? const Color(0xFFBD0D00),
     );
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadiusExtraSmall:
-          borderRadiusExtraSmall ?? BorderRadius.circular(4),
+      borderRadiusExtraSmall: borderRadiusExtraSmall ?? BorderRadius.circular(4),
       borderRadiusSmall: borderRadiusSmall ?? BorderRadius.circular(6),
-      borderRadius: borderRadius ?? BorderRadius.circular(8),
+      borderRadius: borderRadiusSmall ?? BorderRadius.circular(8),
       borderRadiusLarge: borderRadiusLarge ?? BorderRadius.circular(12),
-      borderRadiusExtraLarge:
-          borderRadiusExtraLarge ?? BorderRadius.circular(16),
+      borderRadiusExtraLarge: borderRadiusExtraLarge ?? BorderRadius.circular(16),
       borderRadiusCircle: BorderRadius.circular(99999999),
     );
     final textStyles = ImpaktfullUiTextStylesTheme(
@@ -221,8 +220,8 @@ class DefaultTheme {
           ),
           dimens: ImpaktfullUiBottomSheetDimensTheme(
             borderRadius: dimens.borderRadius.copyWith(
-              bottomLeft: Radius.zero,
-              bottomRight: Radius.zero,
+              bottomStart: Radius.zero,
+              bottomEnd: Radius.zero,
             ),
             padding: const EdgeInsetsDirectional.all(16),
             closeIconButtonPadding: const EdgeInsetsDirectional.all(4),
@@ -252,8 +251,7 @@ class DefaultTheme {
             alternative: textStyles.onCardPrimary.text.small.bold,
             grey: textStyles.onCard.text.small.bold,
             destructivePrimary: textStyles.onDestructive.text.small.bold,
-            destructiveAlternative:
-                textStyles.onCardDestructive.text.small.bold,
+            destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
           ),
         ),
         card: ImpaktfullUiCardTheme(
@@ -362,9 +360,8 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            hint: textStyles.onCardSecondary.text.medium.copyWith(
-                color: textStyles.onCardTertiary.text.medium.color
-                    ?.withOpacity(0.5)),
+            hint: textStyles.onCardSecondary.text.medium
+                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
             label: textStyles.onCard.text.small.medium,
           ),
         ),
@@ -458,8 +455,7 @@ class DefaultTheme {
           ),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(
-              loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
         ),
         sidebarNavigation: const ImpaktfullUiSidebarNavigationTheme(
           assets: ImpaktfullUiSidebarNavigationAssetsTheme(),
@@ -549,9 +545,9 @@ class DefaultTheme {
             background: colors.canvas,
           ),
           dimens: ImpaktfullUiTableHeaderDimensTheme(
-            borderRadius: BorderRadius.only(
-              topLeft: dimens.borderRadius.topLeft,
-              topRight: dimens.borderRadius.topRight,
+            borderRadius: BorderRadiusDirectional.only(
+              topStart: dimens.borderRadius.topStart,
+              topEnd: dimens.borderRadius.topEnd,
             ),
           ),
         ),

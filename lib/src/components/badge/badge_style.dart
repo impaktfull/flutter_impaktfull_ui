@@ -13,8 +13,7 @@ class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiBadgeTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.badge;
+  static ImpaktfullUiBadgeTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.badge;
 }
 
 class ImpaktfullUiBadgeColorTheme {
@@ -22,7 +21,7 @@ class ImpaktfullUiBadgeColorTheme {
 }
 
 class ImpaktfullUiBadgeDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
 
   const ImpaktfullUiBadgeDimensTheme({
     required this.borderRadius,

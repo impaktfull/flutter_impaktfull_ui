@@ -52,11 +52,11 @@ class ImpaktfullUiTheme {
     Color? text,
     Color? textOnAccent,
     Color? textOnSecondary,
-    BorderRadius? borderRadiusExtraSmall,
-    BorderRadius? borderRadiusSmall,
-    BorderRadius? borderRadius,
-    BorderRadius? borderRadiusLarge,
-    BorderRadius? borderRadiusExtraLarge,
+    BorderRadiusGeometry? borderRadiusExtraSmall,
+    BorderRadiusGeometry? borderRadiusSmall,
+    BorderRadiusGeometry? borderRadius,
+    BorderRadiusGeometry? borderRadiusLarge,
+    BorderRadiusGeometry? borderRadiusExtraLarge,
     String package = 'impaktfull_ui_2',
   }) =>
       DefaultTheme.withMinimalChanges(

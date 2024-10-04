@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiListItemTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiListItemAssetsTheme assets;

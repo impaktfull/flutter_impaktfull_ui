@@ -40,21 +40,16 @@ class ImpaktfullUiNotificationTypeConfig {
   });
 }
 
-class ImpaktfullUiNotification extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiNotification extends StatelessWidget with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final double? width;
   final VoidCallback? onCloseTapped;
   final VoidCallback? onTap;
-  final Widget Function(BuildContext, ImpaktfullUiNotificationTypeConfig)?
-      leadingWidgetBuilder;
-  final Widget Function(BuildContext, ImpaktfullUiNotificationTypeConfig)?
-      trailingWidgetBuilder;
-  final Widget Function(BuildContext, ImpaktfullUiNotificationTypeConfig)?
-      centerWidgetBuilder;
-  final Widget Function(BuildContext, ImpaktfullUiNotificationTypeConfig)?
-      bottomWidgetBuilder;
+  final Widget Function(BuildContext, ImpaktfullUiNotificationTypeConfig)? leadingWidgetBuilder;
+  final Widget Function(BuildContext, ImpaktfullUiNotificationTypeConfig)? trailingWidgetBuilder;
+  final Widget Function(BuildContext, ImpaktfullUiNotificationTypeConfig)? centerWidgetBuilder;
+  final Widget Function(BuildContext, ImpaktfullUiNotificationTypeConfig)? bottomWidgetBuilder;
   final ImpaktfullUiNotificationType type;
   final ImpaktfullUiNotificationAlignment alignment;
   final ImpaktfullUiNotificationTheme? theme;
@@ -177,12 +172,8 @@ class ImpaktfullUiNotification extends StatelessWidget
                       const SizedBox(width: 8),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: crossAxisAlignment == CrossAxisAlignment.start
-                              ? 8
-                              : 0,
-                          bottom: crossAxisAlignment == CrossAxisAlignment.end
-                              ? 8
-                              : 0,
+                          top: crossAxisAlignment == CrossAxisAlignment.start ? 8 : 0,
+                          bottom: crossAxisAlignment == CrossAxisAlignment.end ? 8 : 0,
                         ),
                         child: ImpaktfullUiIconButton(
                           onTap: onCloseTapped!,
@@ -228,8 +219,7 @@ class ImpaktfullUiNotification extends StatelessWidget
     );
   }
 
-  ImpaktfullUiNotificationTypeConfig _getNotificationTypeConfig(
-      ImpaktfullUiNotificationTheme theme) {
+  ImpaktfullUiNotificationTypeConfig _getNotificationTypeConfig(ImpaktfullUiNotificationTheme theme) {
     return ImpaktfullUiNotificationTypeConfig(
       color: _getNotificationTypeColor(theme),
       asset: _getNotificationTypeIcon(theme),
@@ -251,8 +241,7 @@ class ImpaktfullUiNotification extends StatelessWidget
     }
   }
 
-  ImpaktfullUiAsset? _getNotificationTypeIcon(
-      ImpaktfullUiNotificationTheme theme) {
+  ImpaktfullUiAsset? _getNotificationTypeIcon(ImpaktfullUiNotificationTheme theme) {
     switch (type) {
       case ImpaktfullUiNotificationType.success:
         return theme.assets.success;

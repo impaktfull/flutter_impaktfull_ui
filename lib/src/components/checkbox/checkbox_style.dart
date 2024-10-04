@@ -13,8 +13,7 @@ class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiCheckboxTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.checkbox;
+  static ImpaktfullUiCheckboxTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.checkbox;
 
   ImpaktfullUiCheckboxTheme copyWith({
     ImpaktfullUiCheckboxColorTheme? colors,
@@ -60,14 +59,14 @@ class ImpaktfullUiCheckboxColorTheme {
 }
 
 class ImpaktfullUiCheckboxDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
 
   const ImpaktfullUiCheckboxDimensTheme({
     required this.borderRadius,
   });
 
   ImpaktfullUiCheckboxDimensTheme copyWith({
-    BorderRadius? borderRadius,
+    BorderRadiusGeometry? borderRadius,
   }) =>
       ImpaktfullUiCheckboxDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,

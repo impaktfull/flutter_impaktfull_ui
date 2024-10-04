@@ -33,8 +33,7 @@ class ImpaktfullUiColorPickerSimple extends StatelessWidget {
               for (final allowedColor in allowedColors) ...[
                 ImpaktfullUiTouchFeedback(
                   color: allowedColor,
-                  borderRadius:
-                      componentTheme.dimens.simpleColorPickerItemBorderRadius,
+                  borderRadius: componentTheme.dimens.simpleColorPickerItemBorderRadius,
                   onTap: () => onColorChanged?.call(allowedColor),
                   toolTip: allowedColor.toString(),
                   child: SizedBox(
@@ -53,8 +52,7 @@ class ImpaktfullUiColorPickerSimple extends StatelessWidget {
             height: componentTheme.dimens.simpleColorPickerItemSize,
             decoration: BoxDecoration(
               color: selectedColor!,
-              borderRadius:
-                  componentTheme.dimens.simpleColorPickerItemBorderRadius,
+              borderRadius: componentTheme.dimens.simpleColorPickerItemBorderRadius,
             ),
           ),
         ],

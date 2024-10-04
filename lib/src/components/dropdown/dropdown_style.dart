@@ -15,8 +15,7 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiDropdownTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.dropdown;
+  static ImpaktfullUiDropdownTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.dropdown;
 }
 
 class ImpaktfullUiDropdownColorTheme {
@@ -37,7 +36,7 @@ class ImpaktfullUiDropdownShadowTheme {
 }
 
 class ImpaktfullUiDropdownDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
 
   const ImpaktfullUiDropdownDimensTheme({
     required this.borderRadius,

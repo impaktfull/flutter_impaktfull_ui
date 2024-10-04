@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 
 class ImpaktfullUiDropdownMenu extends StatelessWidget {
   final double? width;
   final double? height;
   final Widget child;
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
   final ImpaktfullUiDropdownTheme theme;
 
   const ImpaktfullUiDropdownMenu({

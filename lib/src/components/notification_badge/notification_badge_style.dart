@@ -25,7 +25,7 @@ class ImpaktfullUiNotificationBadgeAssetsTheme {
 }
 
 class ImpaktfullUiNotificationBadgeDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
 
   const ImpaktfullUiNotificationBadgeDimensTheme({
     required this.borderRadius,

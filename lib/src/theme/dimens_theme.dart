@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ImpaktfullUiDimensTheme {
-  final BorderRadius borderRadiusExtraSmall;
-  final BorderRadius borderRadiusSmall;
-  final BorderRadius borderRadius;
-  final BorderRadius borderRadiusLarge;
-  final BorderRadius borderRadiusExtraLarge;
-  final BorderRadius borderRadiusCircle;
+  final BorderRadiusGeometry borderRadiusExtraSmall;
+  final BorderRadiusGeometry borderRadiusSmall;
+  final BorderRadiusGeometry borderRadius;
+  final BorderRadiusGeometry borderRadiusLarge;
+  final BorderRadiusGeometry borderRadiusExtraLarge;
+  final BorderRadiusGeometry borderRadiusCircle;
 
   const ImpaktfullUiDimensTheme({
     required this.borderRadiusExtraSmall,
@@ -18,21 +18,19 @@ class ImpaktfullUiDimensTheme {
   });
 
   ImpaktfullUiDimensTheme copyWith({
-    BorderRadius? borderRadiusExtraSmall,
-    BorderRadius? borderRadiusSmall,
-    BorderRadius? borderRadius,
-    BorderRadius? borderRadiusLarge,
-    BorderRadius? borderRadiusExtraLarge,
-    BorderRadius? borderRadiusCircle,
+    BorderRadiusGeometry? borderRadiusExtraSmall,
+    BorderRadiusGeometry? borderRadiusSmall,
+    BorderRadiusGeometry? borderRadius,
+    BorderRadiusGeometry? borderRadiusLarge,
+    BorderRadiusGeometry? borderRadiusExtraLarge,
+    BorderRadiusGeometry? borderRadiusCircle,
   }) =>
       ImpaktfullUiDimensTheme(
-        borderRadiusExtraSmall:
-            borderRadiusExtraSmall ?? this.borderRadiusExtraSmall,
+        borderRadiusExtraSmall: borderRadiusExtraSmall ?? this.borderRadiusExtraSmall,
         borderRadiusSmall: borderRadiusSmall ?? this.borderRadiusSmall,
         borderRadius: borderRadius ?? this.borderRadius,
         borderRadiusLarge: borderRadiusLarge ?? this.borderRadiusLarge,
-        borderRadiusExtraLarge:
-            borderRadiusExtraLarge ?? this.borderRadiusExtraLarge,
+        borderRadiusExtraLarge: borderRadiusExtraLarge ?? this.borderRadiusExtraLarge,
         borderRadiusCircle: borderRadiusCircle ?? this.borderRadiusCircle,
       );
 }

@@ -44,7 +44,7 @@ class ImpaktfullUiSnackyConfiguratorTextStylesTheme {
 }
 
 class ImpaktfullUiSnackyConfiguratorDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
 
   const ImpaktfullUiSnackyConfiguratorDimensTheme({
     required this.borderRadius,

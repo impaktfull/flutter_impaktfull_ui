@@ -16,8 +16,7 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiTooltipTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.tooltip;
+  static ImpaktfullUiTooltipTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.tooltip;
 }
 
 class ImpaktfullUiTooltipColorTheme {
@@ -33,7 +32,7 @@ class ImpaktfullUiTooltipTextStyleTheme {
 }
 
 class ImpaktfullUiTooltipDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
 
   const ImpaktfullUiTooltipDimensTheme({
     required this.borderRadius,

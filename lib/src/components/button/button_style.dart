@@ -12,8 +12,7 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiButtonTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.button;
+  static ImpaktfullUiButtonTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.button;
 }
 
 class ImpaktfullUiButtonColorTheme {
@@ -39,7 +38,7 @@ class ImpaktfullUiButtonColorTheme {
 }
 
 class ImpaktfullUiButtonDimensTheme {
-  final BorderRadius borderRadius;
+  final BorderRadiusGeometry borderRadius;
 
   const ImpaktfullUiButtonDimensTheme({
     required this.borderRadius,

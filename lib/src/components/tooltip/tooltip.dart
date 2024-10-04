@@ -7,8 +7,7 @@ export 'tooltip_style.dart';
 
 part 'tooltip.describe.dart';
 
-class ImpaktfullUiTooltip extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiTooltip extends StatelessWidget with ComponentDescriptorMixin {
   final String? message;
   final Widget child;
   final ImpaktfullUiTooltipTheme? theme;

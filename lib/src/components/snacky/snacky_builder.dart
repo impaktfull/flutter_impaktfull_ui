@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
+import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
 import 'package:snacky/snacky.dart';
 
 enum ImpaktfullSnackyTextType {
@@ -35,7 +36,7 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
       cancelableSnacky: cancelableSnacky,
       snackyController: snackyController,
       margin: margin,
-      borderRadius: borderRadius,
+      borderRadius: borderRadius.value, //todo fix in snacky
       layoutConfig: layoutConfig,
       customBuilder: builder ??
           (context, cancelableSnacky) {
@@ -44,20 +45,16 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
               subtitle: snacky.subtitle,
               width: layoutConfig.getSnackyWidth(context),
               onTap: snacky.onTap,
-              onCloseTapped:
-                  snacky.canBeClosed ? () => cancelableSnacky.cancel() : null,
+              onCloseTapped: snacky.canBeClosed ? () => cancelableSnacky.cancel() : null,
               trailingWidgetBuilder: snacky.trailingWidgetBuilder == null
                   ? null
-                  : (context, config) =>
-                      snacky.trailingWidgetBuilder!(context, cancelableSnacky),
+                  : (context, config) => snacky.trailingWidgetBuilder!(context, cancelableSnacky),
               leadingWidgetBuilder: snacky.leadingWidgetBuilder == null
                   ? null
-                  : (context, config) =>
-                      snacky.leadingWidgetBuilder!(context, cancelableSnacky),
+                  : (context, config) => snacky.leadingWidgetBuilder!(context, cancelableSnacky),
               centerWidgetBuilder: snacky.bottomWidgetBuilder == null
                   ? null
-                  : (context, config) =>
-                      snacky.bottomWidgetBuilder!(context, cancelableSnacky),
+                  : (context, config) => snacky.bottomWidgetBuilder!(context, cancelableSnacky),
               type: _getType(snacky),
             );
           },

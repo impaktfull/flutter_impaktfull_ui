@@ -9,8 +9,7 @@ export 'bottom_sheet_style.dart';
 
 part 'bottom_sheet.describe.dart';
 
-class ImpaktfullUiBottomSheet extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiBottomSheet extends StatelessWidget with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final bool hasClose;
@@ -86,9 +85,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
             final width = constraints.maxWidth;
             final actionsOrientation = _getActionsOrientation(width);
             List<Widget> actions = this.actions;
-            if (actions.isNotEmpty &&
-                actionsOrientation ==
-                    ImpaktfullUiAutoLayoutOrientation.horizontal) {
+            if (actions.isNotEmpty && actionsOrientation == ImpaktfullUiAutoLayoutOrientation.horizontal) {
               actions = actions
                   .map((action) => Expanded(
                         child: action,
@@ -110,8 +107,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
                             margin: const EdgeInsets.only(top: 8),
                             decoration: BoxDecoration(
                               color: componentTheme.colors.handle,
-                              borderRadius:
-                                  componentTheme.dimens.handleBorderRadius,
+                              borderRadius: componentTheme.dimens.handleBorderRadius,
                             ),
                             height: 4,
                             width: 50,
@@ -139,8 +135,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
                                     if (subtitle != null) ...[
                                       Text(
                                         subtitle!,
-                                        style:
-                                            componentTheme.textStyles.subtitle,
+                                        style: componentTheme.textStyles.subtitle,
                                       ),
                                     ],
                                   ],
@@ -157,8 +152,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
                         Align(
                           alignment: AlignmentDirectional.topEnd,
                           child: Padding(
-                            padding:
-                                componentTheme.dimens.closeIconButtonPadding,
+                            padding: componentTheme.dimens.closeIconButtonPadding,
                             child: ImpaktfullUiIconButton(
                               onTap: () {
                                 if (onCloseTapped != null) {
@@ -187,8 +181,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
                       child: ImpaktfullUiAutoLayout(
                         spacing: 8,
                         orientation: actionsOrientation,
-                        crossAxisAlignment: actionsOrientation ==
-                                ImpaktfullUiAutoLayoutOrientation.vertical
+                        crossAxisAlignment: actionsOrientation == ImpaktfullUiAutoLayoutOrientation.vertical
                             ? CrossAxisAlignment.stretch
                             : CrossAxisAlignment.start,
                         children: [
