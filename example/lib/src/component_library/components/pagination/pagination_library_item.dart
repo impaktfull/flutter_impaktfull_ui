@@ -21,14 +21,17 @@ class PaginationLibraryInputs extends ComponentLibraryInputs {
   final ComponentLibraryIntInput page = ComponentLibraryIntInput(
     'Page',
     initialValue: 1,
+    min: 1,
   );
   final ComponentLibraryIntInput amountOfItems = ComponentLibraryIntInput(
     'amountOfItems',
     initialValue: 55,
+    min: 1,
   );
   final ComponentLibraryIntInput itemsPerPage = ComponentLibraryIntInput(
     'itemsPerPage',
     initialValue: 10,
+    min: 1,
   );
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

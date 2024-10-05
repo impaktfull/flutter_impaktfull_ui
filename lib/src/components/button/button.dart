@@ -88,7 +88,9 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                   child: Padding(
                     padding: _getPadding(componentTheme),
                     child: ImpaktfullUiAutoLayout.horizontal(
-                      mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
+                      mainAxisSize: widget.fullWidth
+                          ? MainAxisSize.max
+                          : MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       spacing: 4,
                       children: [
@@ -131,7 +133,8 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                   duration: theme.durations.short,
                   curve: Curves.easeInOut,
                   child: ImpaktfullUiAutoLayout.horizontal(
-                    mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
+                    mainAxisSize:
+                        widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     spacing: 4,
                     children: [
@@ -139,7 +142,9 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                         flex: widget.fullWidth ? 1 : 0,
                         child: SizedBox(
                           height: _getLoadingSize(),
-                          child: _isLoading ? ImpaktfullUiLoadingIndicator(color: color) : const SizedBox(),
+                          child: _isLoading
+                              ? ImpaktfullUiLoadingIndicator(color: color)
+                              : const SizedBox(),
                         ),
                       ),
                     ],

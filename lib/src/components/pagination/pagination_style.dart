@@ -15,7 +15,8 @@ class ImpaktfullUiPaginationTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiPaginationTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.pagination;
+  static ImpaktfullUiPaginationTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.pagination;
 }
 
 class ImpaktfullUiPaginationAssetsTheme {

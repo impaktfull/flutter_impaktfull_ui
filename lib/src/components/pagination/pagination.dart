@@ -9,7 +9,8 @@ export 'pagination_style.dart';
 
 part 'pagination.describe.dart';
 
-class ImpaktfullUiPagination extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiPagination extends StatelessWidget
+    with ComponentDescriptorMixin {
   final int page;
   final int itemsPerPage;
   final int amountOfItems;
@@ -17,7 +18,7 @@ class ImpaktfullUiPagination extends StatelessWidget with ComponentDescriptorMix
   final ImpaktfullUiPaginationTheme? theme;
 
   int get amountOfPages => (amountOfItems / itemsPerPage).ceil();
-  bool get isFinalPage => page == amountOfPages;
+  bool get isFinalPage => page >= amountOfPages;
 
   const ImpaktfullUiPagination({
     required this.page,
@@ -32,7 +33,8 @@ class ImpaktfullUiPagination extends StatelessWidget with ComponentDescriptorMix
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiPaginationTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
+      builder: (context, theme, componentTheme) =>
+          ImpaktfullUiAutoLayout.horizontal(
         spacing: 8,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

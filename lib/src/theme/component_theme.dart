@@ -182,7 +182,8 @@ class ImpaktfullUiComponentsTheme {
         pagination: pagination ?? this.pagination,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
-        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
+        sidebarNavigationItem:
+            sidebarNavigationItem ?? this.sidebarNavigationItem,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
@@ -243,7 +244,7 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
     } else if (T == ImpaktfullUiPaginationTheme) {
       return ImpaktfullUiPaginationTheme.of(context) as T;
-    }  else if (T == ImpaktfullUiRefreshIndicatorTheme) {
+    } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiSidebarNavigationTheme) {
       return ImpaktfullUiSidebarNavigationTheme.of(context) as T;
