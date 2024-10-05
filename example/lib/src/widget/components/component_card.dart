@@ -31,12 +31,25 @@ class ComponentCard extends StatelessWidget {
               width: double.infinity,
               height: double.infinity,
               color: theme.colors.canvas,
-              padding: const EdgeInsets.all(16),
               alignment: Alignment.center,
               child: IgnorePointer(
                 child: Focus(
                   descendantsAreFocusable: false,
-                  child: correctChild,
+                  child: ClipRect(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: LayoutBuilder(
+                        builder: (context, constraints) => OverflowBox(
+                          alignment: Alignment.center,
+                          minWidth: 0.0,
+                          minHeight: 0.0,
+                          maxWidth: constraints.maxWidth,
+                          maxHeight: constraints.maxHeight + 500,
+                          child: correctChild,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),

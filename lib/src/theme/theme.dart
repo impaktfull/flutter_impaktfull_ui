@@ -19,6 +19,8 @@ export 'theme_configurator.dart';
 export 'theme_default.dart';
 
 class ImpaktfullUiTheme {
+  static const _packageName = 'impaktfull_ui_2';
+
   final String? label;
   final ImpaktfullUiAssetTheme assets;
   final ImpaktfullUiColorTheme colors;
@@ -57,7 +59,8 @@ class ImpaktfullUiTheme {
     BorderRadiusGeometry? borderRadius,
     BorderRadiusGeometry? borderRadiusLarge,
     BorderRadiusGeometry? borderRadiusExtraLarge,
-    String package = 'impaktfull_ui_2',
+    String? package = _packageName,
+    String? assetSuffix,
   }) =>
       DefaultTheme.withMinimalChanges(
         label: label,
@@ -77,13 +80,20 @@ class ImpaktfullUiTheme {
         borderRadiusSmall: borderRadiusSmall,
         borderRadiusLarge: borderRadiusLarge,
         borderRadiusExtraLarge: borderRadiusExtraLarge,
+        package: package,
+        assetSuffix: assetSuffix,
       );
 
-  static ImpaktfullUiTheme getDefault() => DefaultTheme.withMinimalChanges(
+  static ImpaktfullUiTheme getDefault({
+    String? package = _packageName,
+    String? assetSuffix,
+  }) =>
+      DefaultTheme.withMinimalChanges(
         label: 'Impaktfull Theme',
         primary: const Color(0xFF1A1A1A),
         accent: const Color(0xFF7d64f2),
         secondary: const Color(0xFF7d64f2),
+        package: package,
       );
 
   static ImpaktfullUiTheme of(BuildContext context) => theme;

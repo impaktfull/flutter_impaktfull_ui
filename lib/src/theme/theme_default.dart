@@ -19,6 +19,7 @@ import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
+import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
@@ -67,7 +68,8 @@ class DefaultTheme {
     BorderRadiusGeometry? borderRadiusExtraLarge,
     String fontFamilyDisplay = 'Ubuntu',
     String fontFamilyText = 'Geologica',
-    String package = 'impaktfull_ui_2',
+    String? package,
+    String? assetSuffix,
   }) {
     final colors = ImpaktfullUiColorTheme(
       primary: primary,
@@ -91,13 +93,11 @@ class DefaultTheme {
       destructive: destructive ?? const Color(0xFFBD0D00),
     );
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadiusExtraSmall:
-          borderRadiusExtraSmall ?? BorderRadius.circular(4),
+      borderRadiusExtraSmall: borderRadiusExtraSmall ?? BorderRadius.circular(4),
       borderRadiusSmall: borderRadiusSmall ?? BorderRadius.circular(6),
       borderRadius: borderRadiusSmall ?? BorderRadius.circular(8),
       borderRadiusLarge: borderRadiusLarge ?? BorderRadius.circular(12),
-      borderRadiusExtraLarge:
-          borderRadiusExtraLarge ?? BorderRadius.circular(16),
+      borderRadiusExtraLarge: borderRadiusExtraLarge ?? BorderRadius.circular(16),
       borderRadiusCircle: BorderRadius.circular(99999999),
     );
     final textStyles = ImpaktfullUiTextStylesTheme(
@@ -167,6 +167,7 @@ class DefaultTheme {
     );
     final assets = ImpaktfullUiAssetTheme.getDefault(
       package: package,
+      assetSuffix: assetSuffix,
     );
     final duration = ImpaktfullUiDurationTheme.getDefault();
     return ImpaktfullUiTheme(
@@ -254,8 +255,7 @@ class DefaultTheme {
             alternative: textStyles.onCardPrimary.text.small.bold,
             grey: textStyles.onCard.text.small.bold,
             destructivePrimary: textStyles.onDestructive.text.small.bold,
-            destructiveAlternative:
-                textStyles.onCardDestructive.text.small.bold,
+            destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
           ),
         ),
         card: ImpaktfullUiCardTheme(
@@ -374,9 +374,8 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            hint: textStyles.onCardSecondary.text.medium.copyWith(
-                color: textStyles.onCardTertiary.text.medium.color
-                    ?.withOpacity(0.5)),
+            hint: textStyles.onCardSecondary.text.medium
+                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
             label: textStyles.onCard.text.small.medium,
           ),
         ),
@@ -426,6 +425,12 @@ class DefaultTheme {
             close: assets.icons.close,
           ),
         ),
+        networkImage: const ImpaktfullUiNetworkImageTheme(
+          assets: ImpaktfullUiNetworkImageAssetsTheme(),
+          colors: ImpaktfullUiNetworkImageColorTheme(),
+          dimens: ImpaktfullUiNetworkImageDimensTheme(),
+          textStyles: ImpaktfullUiNetworkImageTextStyleTheme(),
+        ),
         notification: ImpaktfullUiNotificationTheme(
           colors: ImpaktfullUiNotificationColorTheme(
             background: colors.card,
@@ -470,14 +475,17 @@ class DefaultTheme {
           ),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(
-              loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
         ),
-        sidebarNavigation: const ImpaktfullUiSidebarNavigationTheme(
-          assets: ImpaktfullUiSidebarNavigationAssetsTheme(),
-          colors: ImpaktfullUiSidebarNavigationColorTheme(),
-          dimens: ImpaktfullUiSidebarNavigationDimensTheme(),
-          textStyles: ImpaktfullUiSidebarNavigationTextStyleTheme(),
+        sidebarNavigation: ImpaktfullUiSidebarNavigationTheme(
+          assets: const ImpaktfullUiSidebarNavigationAssetsTheme(),
+          colors: ImpaktfullUiSidebarNavigationColorTheme(
+            backgroundColor: colors.card,
+          ),
+          dimens: const ImpaktfullUiSidebarNavigationDimensTheme(
+            padding: EdgeInsetsDirectional.all(16),
+          ),
+          textStyles: const ImpaktfullUiSidebarNavigationTextStyleTheme(),
         ),
         sidebarNavigationItem: ImpaktfullUiSidebarNavigationItemTheme(
           assets: ImpaktfullUiSidebarNavigationItemAssetsTheme(
@@ -489,6 +497,9 @@ class DefaultTheme {
           ),
           dimens: ImpaktfullUiSidebarNavigationItemDimensTheme(
             borderRadius: dimens.borderRadius,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+            ),
           ),
           durations: ImpaktfullUiSidebarNavigationItemDurationTheme(
             dropdownRotation: duration.short,
@@ -504,6 +515,7 @@ class DefaultTheme {
           ),
           dimens: const ImpaktfullUiSimpleListItemDimensTheme(
             padding: EdgeInsets.all(16),
+            borderRadius: BorderRadius.zero,
             crossAxisAlignment: CrossAxisAlignment.center,
           ),
           textStyles: ImpaktfullUiSimpleListItemTextStyleTheme(

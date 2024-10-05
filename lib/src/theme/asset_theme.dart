@@ -24,7 +24,8 @@ class ImpaktfullUiAssetTheme {
       );
 
   static ImpaktfullUiAssetTheme getDefault({
-    String? package = 'impaktfull_ui_2',
+    String? package,
+    String? assetSuffix,
     ImpaktfullUiIconTheme? icons,
     ImpaktfullUiImageTheme? images,
     ImpaktfullUiLottieTheme? lotties,
@@ -48,9 +49,9 @@ class ImpaktfullUiAssetTheme {
               error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
-              lineVertical:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
+              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
+              logout: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
               search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
               settings: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
@@ -60,19 +61,22 @@ class ImpaktfullUiAssetTheme {
         images: images ??
             ImpaktfullUiImageTheme(
               logo: getImageAssetForPackage(
-                package: package,
                 assetFileName: 'logo.svg',
+                package: package,
+                assetSuffix: assetSuffix,
               ),
               splashLogo: getImageAssetForPackage(
-                package: package,
                 assetFileName: 'splash_logo.svg',
+                package: package,
+                assetSuffix: assetSuffix,
               ),
             ),
         lotties: lotties ??
             ImpaktfullUiLottieTheme(
               loading: getLottieAssetForPackage(
-                package: package,
                 assetFileName: 'loading.json',
+                package: package,
+                assetSuffix: assetSuffix,
               ),
             ),
       );
@@ -90,6 +94,7 @@ class ImpaktfullUiAssetTheme {
   static ImpaktfullUiAsset getImageAssetForPackage({
     required String assetFileName,
     String? package,
+    String? assetSuffix,
   }) {
     final directory = _getFullAssetDirectory(
       directory: 'images',
@@ -111,12 +116,14 @@ class ImpaktfullUiAssetTheme {
   static ImpaktfullUiAsset getLottieAssetForPackage({
     required String assetFileName,
     String? package,
+    String? assetSuffix,
   }) {
     final directory = _getFullAssetDirectory(
       directory: 'lottie',
     );
     return ImpaktfullUiAsset.lottie(
       assetFileName,
+      suffix: assetSuffix,
       directory: directory,
       package: package,
     );
@@ -142,6 +149,7 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset info;
   final ImpaktfullUiAsset lineVertical;
   final ImpaktfullUiAsset list;
+  final ImpaktfullUiAsset logout;
   final ImpaktfullUiAsset minus;
   final ImpaktfullUiAsset search;
   final ImpaktfullUiAsset settings;
@@ -167,6 +175,7 @@ class ImpaktfullUiIconTheme {
     required this.info,
     required this.lineVertical,
     required this.list,
+    required this.logout,
     required this.minus,
     required this.search,
     required this.settings,
@@ -193,6 +202,7 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? info,
     ImpaktfullUiAsset? lineVertical,
     ImpaktfullUiAsset? list,
+    ImpaktfullUiAsset? logout,
     ImpaktfullUiAsset? minus,
     ImpaktfullUiAsset? search,
     ImpaktfullUiAsset? settings,
@@ -218,6 +228,7 @@ class ImpaktfullUiIconTheme {
         info: info ?? this.info,
         lineVertical: lineVertical ?? this.lineVertical,
         list: list ?? this.list,
+        logout: logout ?? this.logout,
         minus: minus ?? this.minus,
         search: search ?? this.search,
         settings: settings ?? this.settings,

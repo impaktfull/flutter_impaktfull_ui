@@ -15,7 +15,9 @@ class _ThemeButtonState extends State<ThemeButton> {
   var _selectedThemeIndex = 0;
 
   static final _themes = [
-    ImpaktfullUiTheme.getDefault(),
+    ImpaktfullUiTheme.getDefault(
+      package: null,
+    ),
     ImpaktfullUiTheme.custom(
       label: 'Impaktfull Dark Theme',
       primary: const Color(0xFF1A1A1A),
@@ -26,12 +28,15 @@ class _ThemeButtonState extends State<ThemeButton> {
       text: const Color(0xFFFFFFFF),
       textOnAccent: const Color(0xFFFFFFFF),
       textOnSecondary: const Color(0xFFFFFFFF),
+      package: null,
+      assetSuffix: 'theme_dark',
     ),
     ImpaktfullUiTheme.custom(
       label: 'Blue theme',
       primary: const Color.fromARGB(255, 255, 255, 255),
       accent: const Color.fromARGB(255, 23, 121, 206),
       secondary: const Color.fromARGB(255, 23, 121, 206),
+      package: null,
     ),
   ];
 

@@ -11,8 +11,7 @@ export 'simple_list_item_type.dart';
 
 part 'simple_list_item.describe.dart';
 
-class ImpaktfullUiSimpleListItem extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSimpleListItem extends StatelessWidget with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final WidgetBuilder? leadingWidgetBuilder;
@@ -20,6 +19,8 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
   final WidgetBuilder? trailingWidgetBuilder;
   final ImpaktfullUiSimpleListItemType type;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry? padding;
+  final BorderRadiusGeometry? borderRadius;
   final double spacing;
   final ImpaktfullUiSimpleListItemTheme? theme;
 
@@ -31,6 +32,8 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
     this.trailingWidgetBuilder,
     this.onTap,
     this.spacing = 8,
+    this.padding,
+    this.borderRadius,
     this.type = ImpaktfullUiSimpleListItemType.neutral,
     this.theme,
     super.key,
@@ -44,6 +47,8 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
     this.trailingWidgetBuilder,
     this.onTap,
     this.spacing = 8,
+    this.padding,
+    this.borderRadius,
     this.type = ImpaktfullUiSimpleListItemType.neutral,
     this.theme,
     super.key,
@@ -56,15 +61,15 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
       builder: (context, theme, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,
         color: componentTheme.colors.background,
+        borderRadius: borderRadius ?? componentTheme.dimens.borderRadius,
         child: Padding(
-          padding: componentTheme.dimens.padding,
+          padding: padding ?? componentTheme.dimens.padding,
           child: ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: componentTheme.dimens.crossAxisAlignment,
             spacing: spacing,
             children: [
               if (leadingWidgetBuilder != null) ...[
-                _buildCorrectWidget(
-                    leadingWidgetBuilder!(context), componentTheme),
+                _buildCorrectWidget(leadingWidgetBuilder!(context), componentTheme),
               ],
               if (centerWidgetBuilder == null) ...[
                 Expanded(
@@ -91,8 +96,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
                 ),
               ],
               if (trailingWidgetBuilder != null) ...[
-                _buildCorrectWidget(
-                    trailingWidgetBuilder!(context), componentTheme),
+                _buildCorrectWidget(trailingWidgetBuilder!(context), componentTheme),
               ],
             ],
           ),
@@ -113,8 +117,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
     }
   }
 
-  TextStyle _getSubtitleTextStyle(
-      ImpaktfullUiSimpleListItemTheme componentTheme) {
+  TextStyle _getSubtitleTextStyle(ImpaktfullUiSimpleListItemTheme componentTheme) {
     switch (type) {
       case ImpaktfullUiSimpleListItemType.neutral:
         return componentTheme.textStyles.subtitle;
@@ -123,8 +126,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
     }
   }
 
-  Widget _buildCorrectWidget(
-      Widget widget, ImpaktfullUiSimpleListItemTheme componentTheme) {
+  Widget _buildCorrectWidget(Widget widget, ImpaktfullUiSimpleListItemTheme componentTheme) {
     if (widget is ImpaktfullUiAssetWidget) {
       return ImpaktfullUiAssetWidget(
         asset: widget.asset,

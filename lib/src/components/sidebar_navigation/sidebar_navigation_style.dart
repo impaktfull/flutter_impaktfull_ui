@@ -23,11 +23,19 @@ class ImpaktfullUiSidebarNavigationAssetsTheme {
 }
 
 class ImpaktfullUiSidebarNavigationColorTheme {
-  const ImpaktfullUiSidebarNavigationColorTheme();
+  final Color backgroundColor;
+
+  const ImpaktfullUiSidebarNavigationColorTheme({
+    required this.backgroundColor,
+  });
 }
 
 class ImpaktfullUiSidebarNavigationDimensTheme {
-  const ImpaktfullUiSidebarNavigationDimensTheme();
+  final EdgeInsetsGeometry padding;
+
+  const ImpaktfullUiSidebarNavigationDimensTheme({
+    required this.padding,
+  });
 }
 
 class ImpaktfullUiSidebarNavigationTextStyleTheme {

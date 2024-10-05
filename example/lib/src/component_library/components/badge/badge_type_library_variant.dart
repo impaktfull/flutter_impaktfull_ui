@@ -3,8 +3,7 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/badge/badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class BadgeTypeLibraryVariant
-    extends ComponentLibraryVariant<BadgeLibraryVariantInputs> {
+class BadgeTypeLibraryVariant extends ComponentLibraryVariant<BadgeLibraryVariantInputs> {
   final ImpaktfullUiBadgeType type;
   BadgeTypeLibraryVariant(this.type);
 
@@ -39,16 +38,16 @@ class BadgeTypeLibraryVariant
           type: type,
           size: size,
           label: label,
-          leading: ClipOval(
-            child: Image.network('https://picsum.photos/300/300'),
+          leading: const ClipOval(
+            child: ImpaktfullUiNetworkImage.random(),
           ),
         ),
         ImpaktfullUiBadge(
           type: type,
           size: size,
           label: label,
-          trailing: ClipOval(
-            child: Image.network('https://picsum.photos/300/300'),
+          trailing: const ClipOval(
+            child: ImpaktfullUiNetworkImage.random(),
           ),
         ),
         ImpaktfullUiBadge(
@@ -56,8 +55,8 @@ class BadgeTypeLibraryVariant
           size: size,
           label: label,
           onCloseTap: () {},
-          trailing: ClipOval(
-            child: Image.network('https://picsum.photos/300/300'),
+          trailing: const ClipOval(
+            child: ImpaktfullUiNetworkImage.random(),
           ),
         ),
         ImpaktfullUiBadge(

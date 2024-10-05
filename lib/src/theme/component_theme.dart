@@ -19,6 +19,7 @@ import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
+import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
@@ -59,6 +60,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiListViewTheme listView;
   final ImpaktfullUiLoadingIndicatorTheme loadingIndicator;
   final ImpaktfullUiModalTheme modal;
+  final ImpaktfullUiNetworkImageTheme networkImage;
   final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
@@ -95,6 +97,7 @@ class ImpaktfullUiComponentsTheme {
     required this.listView,
     required this.loadingIndicator,
     required this.modal,
+    required this.networkImage,
     required this.notification,
     required this.notificationBadge,
     required this.refreshIndicator,
@@ -132,6 +135,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiListViewTheme? listView,
     ImpaktfullUiLoadingIndicatorTheme? loadingIndicator,
     ImpaktfullUiModalTheme? modal,
+    ImpaktfullUiNetworkImageTheme? networkImage,
     ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
@@ -168,12 +172,12 @@ class ImpaktfullUiComponentsTheme {
         listView: listView ?? this.listView,
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
         modal: modal ?? this.modal,
+        networkImage: networkImage ?? this.networkImage,
         notification: notification ?? this.notification,
         notificationBadge: notificationBadge ?? this.notificationBadge,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
-        sidebarNavigationItem:
-            sidebarNavigationItem ?? this.sidebarNavigationItem,
+        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
@@ -226,6 +230,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiLoadingIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiModalTheme) {
       return ImpaktfullUiModalTheme.of(context) as T;
+    } else if (T == ImpaktfullUiNetworkImageTheme) {
+      return ImpaktfullUiNetworkImageTheme.of(context) as T;
     } else if (T == ImpaktfullUiNotificationTheme) {
       return ImpaktfullUiNotificationTheme.of(context) as T;
     } else if (T == ImpaktfullUiNotificationBadgeTheme) {

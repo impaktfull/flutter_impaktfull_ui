@@ -31,11 +31,13 @@ class ImpaktfullUiSimpleListItemColorTheme {
 }
 
 class ImpaktfullUiSimpleListItemDimensTheme {
-  final EdgeInsets padding;
+  final EdgeInsetsGeometry padding;
+  final BorderRadiusGeometry borderRadius;
   final CrossAxisAlignment crossAxisAlignment;
 
   const ImpaktfullUiSimpleListItemDimensTheme({
     required this.padding,
+    required this.borderRadius,
     required this.crossAxisAlignment,
   });
 }

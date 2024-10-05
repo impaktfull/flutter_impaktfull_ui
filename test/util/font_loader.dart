@@ -53,7 +53,7 @@ class ImpaktfullUiTestFontLoader {
   Future<void> loadFontForTextStyle(TextStyle textStyle) async {
     final font = textStyle.fontFamily?.toLowerCase();
     if (font == null) return;
-    var fullPath = 'test/assets/font/$font/$font';
+    var fullPath = 'test/assets/fonts/$font/$font';
     final fontWeight = textStyle.fontWeight;
     if (fontWeight == FontWeight.w300) {
       fullPath += '_light';
@@ -66,8 +66,7 @@ class ImpaktfullUiTestFontLoader {
     } else if (fontWeight == FontWeight.w700) {
       fullPath += '_bold';
     } else {
-      throw Exception(
-          'Font weight not supported (create your own font loader ${textStyle.fontWeight})');
+      throw Exception('Font weight not supported (create your own font loader ${textStyle.fontWeight})');
     }
     fullPath += '.ttf';
     if (loadedFont.contains(fullPath)) return;

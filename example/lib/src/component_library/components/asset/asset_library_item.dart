@@ -14,9 +14,9 @@ class AssetLibraryItem extends ComponentLibraryItem {
   List<ComponentLibraryVariant> getComponentVariants() {
     final assets = [
       ImpaktfullUiAsset.icon(PhosphorIcons.heart(PhosphorIconsStyle.fill)),
-      const ImpaktfullUiAsset.svg('heart.svg', directory: 'assets/image'),
-      const ImpaktfullUiAsset.pixel('heart.webp', directory: 'assets/image'),
-      const ImpaktfullUiAsset.pixel('heart.png', directory: 'assets/image'),
+      const ImpaktfullUiAsset.svg('heart.svg', directory: 'assets/images'),
+      const ImpaktfullUiAsset.pixel('heart.webp', directory: 'assets/images'),
+      const ImpaktfullUiAsset.pixel('heart.png', directory: 'assets/imagess'),
       const ImpaktfullUiAsset.rive('heart.riv', directory: 'assets/rive'),
       const ImpaktfullUiAsset.lottie('heart.json', directory: 'assets/lottie'),
     ];

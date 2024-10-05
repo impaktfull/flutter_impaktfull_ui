@@ -7,12 +7,14 @@ class ImpaktfullUiAsset {
   final String? riveAsset;
   final IconData? icon;
   final String? directory;
+  final String? suffix;
   final String? package;
 
   const ImpaktfullUiAsset.svg(
     String this.svgAsset, {
     this.directory,
     this.package,
+    this.suffix,
   })  : pixelAsset = null,
         lottieAsset = null,
         icon = null,
@@ -22,6 +24,7 @@ class ImpaktfullUiAsset {
     String this.pixelAsset, {
     this.directory,
     this.package,
+    this.suffix,
   })  : svgAsset = null,
         lottieAsset = null,
         icon = null,
@@ -34,12 +37,14 @@ class ImpaktfullUiAsset {
         svgAsset = null,
         riveAsset = null,
         package = null,
-        directory = null;
+        directory = null,
+        suffix = null;
 
   const ImpaktfullUiAsset.lottie(
     String this.lottieAsset, {
     this.directory,
     this.package,
+    this.suffix,
   })  : pixelAsset = null,
         svgAsset = null,
         icon = null,
@@ -49,6 +54,7 @@ class ImpaktfullUiAsset {
     String this.riveAsset, {
     this.directory,
     this.package,
+    this.suffix,
   })  : pixelAsset = null,
         svgAsset = null,
         icon = null,
@@ -77,9 +83,19 @@ class ImpaktfullUiAsset {
       path += 'packages/$package/';
     }
     if (directory != null) {
-      path += '$directory/';
+      path += '$directory';
+    }
+    if (!path.endsWith('/')) {
+      path += '/';
     }
     path += asset;
+    if (suffix != null) {
+      final parts = path.split('.');
+      if (parts.length != 1) {
+        final extension = '.${parts.last}';
+        path = path.replaceAll(extension, '_$suffix$extension');
+      }
+    }
     return path;
   }
 }

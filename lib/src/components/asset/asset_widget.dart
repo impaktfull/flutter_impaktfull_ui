@@ -7,8 +7,7 @@ import 'package:rive/rive.dart' hide Image;
 
 part 'asset_widget.describe.dart';
 
-class ImpaktfullUiAssetWidget extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiAssetWidget extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? asset;
   final Color? color;
   final double? width;
@@ -47,16 +46,17 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
         color: color,
         width: width,
         height: height,
+        package: asset.package,
       );
     }
 
     if (svgAsset != null) {
       return SvgPicture.asset(
         svgAsset,
-        colorFilter:
-            color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+        colorFilter: color == null ? null : ColorFilter.mode(color, BlendMode.srcIn),
         width: width,
         height: height,
+        package: asset.package,
       );
     }
     if (lottieAsset != null) {
@@ -64,6 +64,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
         lottieAsset,
         width: width,
         height: height,
+        package: asset.package,
       );
     }
     if (riveAsset != null) {
