@@ -18,6 +18,26 @@ void main() {
               type: type,
               title: 'Button',
               size: size,
+              onTap: () {},
+            ),
+          ),
+        ],
+      ],
+    ],
+  );
+
+  runComponentTest(
+    fileName: 'impaktfull_ui_button_disabled',
+    columns: 5,
+    goldenTests: () => [
+      for (final type in ImpaktfullUiButtonType.values) ...[
+        for (final size in ImpaktfullUiButtonSize.values) ...[
+          GoldenTest(
+            child: ImpaktfullUiButton(
+              type: type,
+              title: 'Button',
+              size: size,
+              onTap: null,
             ),
           ),
         ],
