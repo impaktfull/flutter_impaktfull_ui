@@ -38,7 +38,9 @@ class ComponentCard extends StatelessWidget {
                   child: ClipRect(
                     child: Padding(
                       padding: const EdgeInsets.all(16),
-                      child: correctChild,
+                      child: Center(
+                        child: correctChild,
+                      ),
                     ),
                   ),
                 ),
