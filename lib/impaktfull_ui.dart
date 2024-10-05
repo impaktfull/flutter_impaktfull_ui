@@ -27,6 +27,7 @@ export 'src/components/modal/modal.dart';
 export 'src/components/network_image/network_image.dart';
 export 'src/components/notification/notification.dart';
 export 'src/components/notification_badge/notification_badge.dart';
+export 'src/components/pagination/pagination.dart';
 export 'src/components/refresh_indicator/refresh_indicator.dart';
 export 'src/components/sidebar_navigation/sidebar_navigation.dart';
 export 'src/components/sidebar_navigation_item/sidebar_navigation_item.dart';

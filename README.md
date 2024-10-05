@@ -67,6 +67,8 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiNetworkImage
 - ImpaktfullUiNotification
 - ImpaktfullUiNotificationBadge
+- ImpaktfullUiPagination
+- ImpaktfullUiRefreshIndicator
 - ImpaktfullUiSideNavigation
   - ImpaktfullUiSideNavigationItem
 - ImpaktfullUiSnackyConfigurator
@@ -84,21 +86,20 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 
 Many more to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull
 
-- ImpaktfullDatePicker
-- ImpaktfullDateTimePicker
-- ImpaktfullDateTimePickerDialog
-- ImpaktfullDateTimeRangePicker
-- ImpaktfullListItemTitle
-- ImpaktfullNavBar
-- ImpaktfullPagination
-- ImpaktfullRadioButtonListItem
-- ImpaktfullScreen
-- ImpaktfullSelectableListItem
-- ImpaktfullSeparatedColumn
-- ImpaktfullSwitchListItem
-- ImpaktfullTabBar
-- ImpaktfullTabBarItem
-- ImpaktfullTimePicker
+- ImpaktfullUiDatePicker
+- ImpaktfullUiDateTimePicker
+- ImpaktfullUiDateTimePickerDialog
+- ImpaktfullUiDateTimeRangePicker
+- ImpaktfullUiListItemTitle
+- ImpaktfullUiNavBar
+- ImpaktfullUiRadioButtonListItem
+- ImpaktfullUiScreen
+- ImpaktfullUiSelectableListItem
+- ImpaktfullUiSeparatedColumn
+- ImpaktfullUiSwitchListItem
+- ImpaktfullUiTabBar
+- ImpaktfullUiTabBarItem
+- ImpaktfullUiTimePicker
 
 ### Theming
 
@@ -125,6 +126,9 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 - add
 - arrowLeft
+- arrowRight
+- arrowUp
+- arrowDown
 - check
 - chevronDown
 - chevronLeft

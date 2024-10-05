@@ -34,13 +34,11 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (onTap == null) {
-      return Container(
-        decoration: BoxDecoration(
-          borderRadius: borderRadius,
-          border: border,
-          color: color ?? Colors.transparent,
-          boxShadow: shadow,
-        ),
+      return ImpaktfullUiContainer(
+        border: border,
+        boxShadow: shadow,
+        borderRadius: borderRadius,
+        color: color ?? Colors.transparent,
         child: child,
       );
     }

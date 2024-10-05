@@ -21,6 +21,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/loading_i
 import 'package:impaktfull_ui_example/src/component_library/components/modal/modal_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification/notification_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification_badge/notification_badge_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/pagination/pagination_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/refreshindicator/refreshindicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/sidebar_navigation/sidebar_navigation_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/simple_list_item/simple_list_item_library_item.dart';
@@ -57,6 +58,7 @@ class ComponentLibrary {
     const ModalLibraryItem(),
     const NotificationLibraryItem(),
     const NotificationBadgeLibraryItem(),
+    const PaginationLibraryItem(),
     const RefreshIndicatorLibraryItem(),
     const SidebarNavigationLibraryItem(),
     const SidebarNavigationItemLibraryItem(),

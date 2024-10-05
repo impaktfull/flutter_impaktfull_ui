@@ -22,6 +22,7 @@ import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
+import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
@@ -63,6 +64,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiNetworkImageTheme networkImage;
   final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
+  final ImpaktfullUiPaginationTheme pagination;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
   final ImpaktfullUiSidebarNavigationTheme sidebarNavigation;
   final ImpaktfullUiSidebarNavigationItemTheme sidebarNavigationItem;
@@ -100,6 +102,7 @@ class ImpaktfullUiComponentsTheme {
     required this.networkImage,
     required this.notification,
     required this.notificationBadge,
+    required this.pagination,
     required this.refreshIndicator,
     required this.sidebarNavigation,
     required this.sidebarNavigationItem,
@@ -138,6 +141,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiNetworkImageTheme? networkImage,
     ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
+    ImpaktfullUiPaginationTheme? pagination,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
     ImpaktfullUiSidebarNavigationTheme? sidebarNavigation,
     ImpaktfullUiSidebarNavigationItemTheme? sidebarNavigationItem,
@@ -175,10 +179,10 @@ class ImpaktfullUiComponentsTheme {
         networkImage: networkImage ?? this.networkImage,
         notification: notification ?? this.notification,
         notificationBadge: notificationBadge ?? this.notificationBadge,
+        pagination: pagination ?? this.pagination,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
-        sidebarNavigationItem:
-            sidebarNavigationItem ?? this.sidebarNavigationItem,
+        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
@@ -237,7 +241,9 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiNotificationTheme.of(context) as T;
     } else if (T == ImpaktfullUiNotificationBadgeTheme) {
       return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
-    } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
+    } else if (T == ImpaktfullUiPaginationTheme) {
+      return ImpaktfullUiPaginationTheme.of(context) as T;
+    }  else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiSidebarNavigationTheme) {
       return ImpaktfullUiSidebarNavigationTheme.of(context) as T;

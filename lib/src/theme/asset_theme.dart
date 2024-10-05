@@ -35,6 +35,9 @@ class ImpaktfullUiAssetTheme {
             ImpaktfullUiIconTheme(
               add: ImpaktfullUiAsset.icon(PhosphorIcons.plus()),
               arrowLeft: ImpaktfullUiAsset.icon(PhosphorIcons.arrowLeft()),
+              arrowRight: ImpaktfullUiAsset.icon(PhosphorIcons.arrowRight()),
+              arrowUp: ImpaktfullUiAsset.icon(PhosphorIcons.arrowUp()),
+              arrowDown: ImpaktfullUiAsset.icon(PhosphorIcons.arrowDown()),
               check: ImpaktfullUiAsset.icon(PhosphorIcons.check()),
               chevronDown: ImpaktfullUiAsset.icon(PhosphorIcons.caretDown()),
               chevronLeft: ImpaktfullUiAsset.icon(PhosphorIcons.caretLeft()),
@@ -49,8 +52,7 @@ class ImpaktfullUiAssetTheme {
               error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
-              lineVertical:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
+              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
               logout: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
@@ -134,6 +136,9 @@ class ImpaktfullUiAssetTheme {
 class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset add;
   final ImpaktfullUiAsset arrowLeft;
+  final ImpaktfullUiAsset arrowRight;
+  final ImpaktfullUiAsset arrowUp;
+  final ImpaktfullUiAsset arrowDown;
   final ImpaktfullUiAsset check;
   final ImpaktfullUiAsset chevronDown;
   final ImpaktfullUiAsset chevronLeft;
@@ -160,6 +165,9 @@ class ImpaktfullUiIconTheme {
   const ImpaktfullUiIconTheme({
     required this.add,
     required this.arrowLeft,
+    required this.arrowRight,
+    required this.arrowUp,
+    required this.arrowDown,
     required this.check,
     required this.chevronDown,
     required this.chevronLeft,
@@ -187,6 +195,9 @@ class ImpaktfullUiIconTheme {
   ImpaktfullUiIconTheme copyWith({
     ImpaktfullUiAsset? add,
     ImpaktfullUiAsset? arrowLeft,
+    ImpaktfullUiAsset? arrowRight,
+    ImpaktfullUiAsset? arrowUp,
+    ImpaktfullUiAsset? arrowDown,
     ImpaktfullUiAsset? check,
     ImpaktfullUiAsset? chevronDown,
     ImpaktfullUiAsset? chevronLeft,
@@ -213,6 +224,9 @@ class ImpaktfullUiIconTheme {
       ImpaktfullUiIconTheme(
         add: add ?? this.add,
         arrowLeft: arrowLeft ?? this.arrowLeft,
+        arrowRight: arrowRight ?? this.arrowRight,
+        arrowUp: arrowUp ?? this.arrowUp,
+        arrowDown: arrowDown ?? this.arrowDown,
         check: check ?? this.check,
         chevronDown: chevronDown ?? this.chevronDown,
         chevronLeft: chevronLeft ?? this.chevronLeft,

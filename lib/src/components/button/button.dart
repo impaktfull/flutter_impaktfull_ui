@@ -58,96 +58,95 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
   bool get hasOnTap => widget.onTap != null || widget.onAsyncTap != null;
   @override
   Widget build(BuildContext context) {
-    final iconSize = _getIconSize();
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiButtonTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, theme, componentTheme) {
+        final iconSize = _getIconSize();
         final textStyle = _getTextStyle(componentTheme);
         final color = textStyle?.color;
         final backgroundColor = _getBackgroundColor(componentTheme);
         final borderColor = _getBorderColor(componentTheme);
-        return ImpaktfullUiTouchFeedback(
-          color: backgroundColor,
-          borderRadius: componentTheme.dimens.borderRadius,
-          border: borderColor == null
-              ? null
-              : Border.all(
-                  color: borderColor,
-                  width: 1,
-                  strokeAlign: BorderSide.strokeAlignInside,
+        final isClickable = widget.onTap != null || widget.onAsyncTap != null;
+        return Opacity(
+          opacity: isClickable ? 1 : 0.5,
+          child: ImpaktfullUiTouchFeedback(
+            color: backgroundColor,
+            borderRadius: componentTheme.dimens.borderRadius,
+            border: borderColor == null
+                ? null
+                : Border.all(
+                    color: borderColor,
+                    width: 1,
+                    strokeAlign: BorderSide.strokeAlignInside,
+                  ),
+            onTap: isClickable ? _onTap : null,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Opacity(
+                  opacity: _isLoading ? 0 : 1,
+                  child: Padding(
+                    padding: _getPadding(componentTheme),
+                    child: ImpaktfullUiAutoLayout.horizontal(
+                      mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      spacing: 4,
+                      children: [
+                        if (widget.leadingChild != null) ...[
+                          widget.leadingChild!,
+                        ],
+                        if (widget.leadingIcon != null) ...[
+                          ImpaktfullUiAssetWidget(
+                            asset: widget.leadingIcon,
+                            color: color,
+                            size: iconSize,
+                          ),
+                        ],
+                        if (widget.title != null) ...[
+                          Expanded(
+                            flex: widget.fullWidth ? 1 : 0,
+                            child: Text(
+                              widget.title!,
+                              textAlign: TextAlign.center,
+                              style: textStyle,
+                            ),
+                          ),
+                        ],
+                        if (widget.trailingIcon != null) ...[
+                          ImpaktfullUiAssetWidget(
+                            asset: widget.trailingIcon,
+                            color: color,
+                            size: iconSize,
+                          ),
+                        ],
+                        if (widget.trailingChild != null) ...[
+                          widget.trailingChild!,
+                        ],
+                      ],
+                    ),
+                  ),
                 ),
-          onTap:
-              widget.onTap == null && widget.onAsyncTap == null ? null : _onTap,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Opacity(
-                opacity: _isLoading ? 0 : 1,
-                child: Padding(
-                  padding: _getPadding(componentTheme),
+                AnimatedOpacity(
+                  opacity: _isLoading ? 1 : 0,
+                  duration: theme.durations.short,
+                  curve: Curves.easeInOut,
                   child: ImpaktfullUiAutoLayout.horizontal(
-                    mainAxisSize:
-                        widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
+                    mainAxisSize: widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     spacing: 4,
                     children: [
-                      if (widget.leadingChild != null) ...[
-                        widget.leadingChild!,
-                      ],
-                      if (widget.leadingIcon != null) ...[
-                        ImpaktfullUiAssetWidget(
-                          asset: widget.leadingIcon,
-                          color: color,
-                          size: iconSize,
+                      Expanded(
+                        flex: widget.fullWidth ? 1 : 0,
+                        child: SizedBox(
+                          height: _getLoadingSize(),
+                          child: _isLoading ? ImpaktfullUiLoadingIndicator(color: color) : const SizedBox(),
                         ),
-                      ],
-                      if (widget.title != null) ...[
-                        Expanded(
-                          flex: widget.fullWidth ? 1 : 0,
-                          child: Text(
-                            widget.title!,
-                            textAlign: TextAlign.center,
-                            style: textStyle,
-                          ),
-                        ),
-                      ],
-                      if (widget.trailingIcon != null) ...[
-                        ImpaktfullUiAssetWidget(
-                          asset: widget.trailingIcon,
-                          color: color,
-                          size: iconSize,
-                        ),
-                      ],
-                      if (widget.trailingChild != null) ...[
-                        widget.trailingChild!,
-                      ],
+                      ),
                     ],
                   ),
                 ),
-              ),
-              AnimatedOpacity(
-                opacity: _isLoading ? 1 : 0,
-                duration: theme.durations.short,
-                curve: Curves.easeInOut,
-                child: ImpaktfullUiAutoLayout.horizontal(
-                  mainAxisSize:
-                      widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 4,
-                  children: [
-                    Expanded(
-                      flex: widget.fullWidth ? 1 : 0,
-                      child: SizedBox(
-                        height: _getLoadingSize(),
-                        child: _isLoading
-                            ? ImpaktfullUiLoadingIndicator(color: color)
-                            : const SizedBox(),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
