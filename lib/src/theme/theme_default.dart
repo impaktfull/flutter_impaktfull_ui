@@ -8,6 +8,7 @@ import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
+import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
@@ -305,6 +306,14 @@ class DefaultTheme {
             simpleColorPickerItemSize: 32,
           ),
           textStyles: const ImpaktfullUiColorPickerTextStyleTheme(),
+        ),
+        commandMenu: ImpaktfullUiCommandMenuTheme(
+          assets: const ImpaktfullUiCommandMenuAssetsTheme(),
+          colors: const ImpaktfullUiCommandMenuColorTheme(),
+          dimens: ImpaktfullUiCommandMenuDimensTheme(
+            windowBorderRadius: dimens.borderRadiusLarge,
+          ),
+          textStyles: const ImpaktfullUiCommandMenuTextStyleTheme(),
         ),
         divider: ImpaktfullUiDividerTheme(
           colors: ImpaktfullUiDividerColorTheme(

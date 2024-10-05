@@ -8,6 +8,7 @@ import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
+import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
@@ -47,6 +48,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiCheckboxTheme checkbox;
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
+  final ImpaktfullUiCommandMenuTheme commandMenu;
   final ImpaktfullUiDividerTheme divider;
   final ImpaktfullUiDropdownTheme dropdown;
   final ImpaktfullUiGridViewTheme gridView;
@@ -82,6 +84,7 @@ class ImpaktfullUiComponentsTheme {
     required this.checkbox,
     required this.cmsHeader,
     required this.colorPicker,
+    required this.commandMenu,
     required this.divider,
     required this.dropdown,
     required this.gridView,
@@ -118,6 +121,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCheckboxTheme? checkbox,
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
+    ImpaktfullUiCommandMenuTheme? commandMenu,
     ImpaktfullUiDividerTheme? divider,
     ImpaktfullUiDropdownTheme? dropdown,
     ImpaktfullUiGridViewTheme? gridView,
@@ -153,6 +157,7 @@ class ImpaktfullUiComponentsTheme {
         checkbox: checkbox ?? this.checkbox,
         cmsHeader: cmsHeader ?? this.cmsHeader,
         colorPicker: colorPicker ?? this.colorPicker,
+        commandMenu: commandMenu ?? this.commandMenu,
         divider: divider ?? this.divider,
         dropdown: dropdown ?? this.dropdown,
         gridView: gridView ?? this.gridView,
@@ -199,6 +204,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiCmsHeaderTheme.of(context) as T;
     } else if (T == ImpaktfullUiColorPickerTheme) {
       return ImpaktfullUiColorPickerTheme.of(context) as T;
+    } else if (T == ImpaktfullUiCommandMenuTheme) {
+      return ImpaktfullUiCommandMenuTheme.of(context) as T;
     } else if (T == ImpaktfullUiDividerTheme) {
       return ImpaktfullUiDividerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDropdownTheme) {

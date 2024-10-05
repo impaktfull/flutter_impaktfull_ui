@@ -11,6 +11,8 @@ export 'src/components/card/card.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/cms_header/cms_header.dart';
 export 'src/components/color_picker/color_picker.dart';
+export 'src/components/command_menu/command_menu.dart';
+export 'src/components/command_menu/command_menu_window.dart';
 export 'src/components/divider/divider.dart';
 export 'src/components/dropdown/dropdown.dart';
 export 'src/components/grid_view/grid_view.dart';

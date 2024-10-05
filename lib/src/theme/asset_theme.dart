@@ -48,7 +48,8 @@ class ImpaktfullUiAssetTheme {
               error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
-              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
+              lineVertical:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
               search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),

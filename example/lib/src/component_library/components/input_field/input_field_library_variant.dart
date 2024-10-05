@@ -17,6 +17,7 @@ class InputFieldVariant
     final hint = inputs.hint.value ?? '{hint}';
     final value = inputs.value.value;
     final leadingIcon = inputs.leadingIcon.value;
+    final showTrailingAction = inputs.showTrailingAction.value ?? false;
     return [
       ImpaktfullUiInputField(
         leadingIcon:
@@ -25,13 +26,15 @@ class InputFieldVariant
         hint: hint,
         value: value,
         onChanged: inputs.value.updateState,
-        trailingAction: ImpaktfullUiInputFieldAction(
-          label: 'Copy',
-          asset: theme.assets.icons.copy,
-          onTap: () => ImpaktfullUiNotification.show(
-            title: 'Copied to clipboard',
-          ),
-        ),
+        trailingAction: showTrailingAction
+            ? ImpaktfullUiInputFieldAction(
+                label: 'Copy',
+                asset: theme.assets.icons.copy,
+                onTap: () => ImpaktfullUiNotification.show(
+                  title: 'Copied to clipboard',
+                ),
+              )
+            : null,
       ),
     ];
   }

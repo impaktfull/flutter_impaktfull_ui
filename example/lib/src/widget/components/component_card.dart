@@ -34,7 +34,10 @@ class ComponentCard extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               alignment: Alignment.center,
               child: IgnorePointer(
-                child: correctChild,
+                child: Focus(
+                  descendantsAreFocusable: false,
+                  child: correctChild,
+                ),
               ),
             ),
           ),

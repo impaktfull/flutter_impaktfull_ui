@@ -9,6 +9,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/card/card
 import 'package:impaktfull_ui_example/src/component_library/components/checkbox/checkbox_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/cms_header/cms_header_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/color_picker/color_picker_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/command_menu/command_menu_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/dropdown/dropdown_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/grid_view/grid_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_item.dart';
@@ -44,6 +45,7 @@ class ComponentLibrary {
     const CardLibraryItem(),
     const CmsHeaderLibraryItem(),
     const ColorPickerLibraryItem(),
+    const CommandMenuLibraryItem(),
     const DropdownLibraryItem(),
     const GridViewLibraryItem(),
     const HorizontalTabsLibraryItem(),

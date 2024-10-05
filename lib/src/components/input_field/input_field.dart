@@ -21,6 +21,9 @@ class ImpaktfullUiInputField extends StatefulWidget
   final String? value;
   final ValueChanged<String> onChanged;
   final TextEditingController? controller;
+  final bool autofocus;
+  final FocusNode? focusNode;
+  final ValueChanged<bool>? onFocusChanged;
   final bool obscureText;
   final TextInputType textInputType;
   final TextInputAction textInputAction;
@@ -34,6 +37,9 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.hint,
     this.label,
     this.controller,
+    this.focusNode,
+    this.onFocusChanged,
+    this.autofocus = false,
     this.obscureText = false,
     this.textInputType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
@@ -57,13 +63,19 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     super.initState();
     _controller =
         widget.controller ?? TextEditingController(text: widget.value);
-    _focusNode = FocusNode();
+    _focusNode = widget.focusNode ?? FocusNode();
+    _focusNode.addListener(_onFocusChanged);
+    if (widget.autofocus) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _focusNode.requestFocus();
+      });
+    }
   }
 
   @override
   void didUpdateWidget(covariant ImpaktfullUiInputField oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (_controller.text != widget.value) {
+    if (oldWidget.value != widget.value && _controller.text != widget.value) {
       _controller.text = widget.value ?? '';
     }
   }
@@ -73,12 +85,16 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     if (widget.controller == null) {
       _controller.dispose();
     }
-    _focusNode.dispose();
+    _focusNode.removeListener(_onFocusChanged);
+    if (widget.focusNode == null) {
+      _focusNode.dispose();
+    }
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final trailingAction = widget.trailingAction;
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, theme, componentTheme) =>
@@ -111,6 +127,12 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                       topStart: componentTheme.dimens.borderRadius.topStart,
                       bottomStart:
                           componentTheme.dimens.borderRadius.bottomStart,
+                      topEnd: trailingAction == null
+                          ? componentTheme.dimens.borderRadius.topEnd
+                          : Radius.zero,
+                      bottomEnd: trailingAction == null
+                          ? componentTheme.dimens.borderRadius.bottomEnd
+                          : Radius.zero,
                     ),
                     child: ImpaktfullUiAutoLayout.horizontal(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -167,8 +189,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                     ),
                   ),
                 ),
-                if (widget.trailingAction != null) ...[
-                  widget.trailingAction!,
+                if (trailingAction != null) ...[
+                  trailingAction,
                 ],
               ],
             ),
@@ -191,4 +213,6 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   }
 
   void _onFocus() => _focusNode.requestFocus();
+
+  void _onFocusChanged() => widget.onFocusChanged?.call(_focusNode.hasFocus);
 }

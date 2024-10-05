@@ -17,7 +17,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
   final VoidCallback? onTap;
   final MouseCursor cursor;
   final VoidCallback? onFocus;
-  final EdgeInsets? padding;
+  final EdgeInsetsGeometry? padding;
   final BorderRadiusGeometry? borderRadius;
   final ImpaktfullUiCardTheme? theme;
 
