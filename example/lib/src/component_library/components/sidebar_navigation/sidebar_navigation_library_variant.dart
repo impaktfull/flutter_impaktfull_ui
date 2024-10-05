@@ -5,16 +5,14 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class SidebarNavigationLibraryVariant
-    extends ComponentLibraryVariant<SidebarNavigationLibraryPrimaryInputs> {
+class SidebarNavigationLibraryVariant extends ComponentLibraryVariant<SidebarNavigationLibraryPrimaryInputs> {
   const SidebarNavigationLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(
-      BuildContext context, SidebarNavigationLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, SidebarNavigationLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         height: 250,
@@ -54,14 +52,23 @@ class SidebarNavigationLibraryVariant
             ImpaktfullUiSidebarNavigationItem(
               leading: theme.assets.icons.home,
               title: 'Home',
+              items: [
+                ImpaktfullUiSidebarNavigationItem(
+                  leading: theme.assets.icons.confetti,
+                  title: 'Projects',
+                ),
+                ImpaktfullUiSidebarNavigationItem(
+                  leading: theme.assets.icons.confetti,
+                  title: 'Apps',
+                ),
+              ],
             ),
             ImpaktfullUiSidebarNavigationItem(
               leading: theme.assets.icons.search,
               title: 'Search',
             ),
           ],
-          secondaryItems: List.generate(
-                  inputs.amountOfSecondaryItems.value ?? 0, (index) => index)
+          secondaryItems: List.generate(inputs.amountOfSecondaryItems.value ?? 0, (index) => index)
               .map(
                 (index) => ImpaktfullUiSidebarNavigationItem(
                   leading: theme.assets.icons.confetti,
@@ -95,9 +102,7 @@ class SidebarNavigationLibraryVariant
                   ),
                 ),
                 trailingWidgetBuilder: (context) => const SizedBox(width: 40),
-                borderRadius: ImpaktfullUiSidebarNavigationItemTheme.of(context)
-                    .dimens
-                    .borderRadius,
+                borderRadius: ImpaktfullUiSidebarNavigationItemTheme.of(context).dimens.borderRadius,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 8,
@@ -113,8 +118,7 @@ class SidebarNavigationLibraryVariant
                 textDirection: Directionality.of(context),
                 child: ImpaktfullUiIconButton(
                   asset: theme.assets.icons.logout,
-                  onTap: () =>
-                      ImpaktfullUiNotification.show(title: 'Logout tapped'),
+                  onTap: () => ImpaktfullUiNotification.show(title: 'Logout tapped'),
                 ),
               ),
             ],
@@ -125,9 +129,7 @@ class SidebarNavigationLibraryVariant
   }
 
   @override
-  SidebarNavigationLibraryPrimaryInputs inputs() =>
-      SidebarNavigationLibraryPrimaryInputs();
+  SidebarNavigationLibraryPrimaryInputs inputs() => SidebarNavigationLibraryPrimaryInputs();
 }
 
-class SidebarNavigationLibraryPrimaryInputs
-    extends SidebarNavigationLibraryInputs {}
+class SidebarNavigationLibraryPrimaryInputs extends SidebarNavigationLibraryInputs {}
