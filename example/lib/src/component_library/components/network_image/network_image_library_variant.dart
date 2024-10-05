@@ -4,14 +4,16 @@ import 'package:impaktfull_ui_example/src/component_library/components/network_i
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
 
-class NetworkImageLibraryVariant extends ComponentLibraryVariant<NetworkImageLibraryPrimaryInputs> {
+class NetworkImageLibraryVariant
+    extends ComponentLibraryVariant<NetworkImageLibraryPrimaryInputs> {
   const NetworkImageLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, NetworkImageLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, NetworkImageLibraryPrimaryInputs inputs) {
     return [
       const ImpaktfullUiNetworkImage(
         url: NetworkImages.profilePicture,
@@ -20,7 +22,8 @@ class NetworkImageLibraryVariant extends ComponentLibraryVariant<NetworkImageLib
   }
 
   @override
-  NetworkImageLibraryPrimaryInputs inputs() => NetworkImageLibraryPrimaryInputs();
+  NetworkImageLibraryPrimaryInputs inputs() =>
+      NetworkImageLibraryPrimaryInputs();
 }
 
 class NetworkImageLibraryPrimaryInputs extends NetworkImageLibraryInputs {}

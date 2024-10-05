@@ -24,9 +24,11 @@ class ImpaktfullUiSidebarNavigationAssetsTheme {
 
 class ImpaktfullUiSidebarNavigationColorTheme {
   final Color backgroundColor;
+  final Color border;
 
   const ImpaktfullUiSidebarNavigationColorTheme({
     required this.backgroundColor,
+    required this.border,
   });
 }
 

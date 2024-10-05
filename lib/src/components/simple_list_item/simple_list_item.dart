@@ -11,7 +11,8 @@ export 'simple_list_item_type.dart';
 
 part 'simple_list_item.describe.dart';
 
-class ImpaktfullUiSimpleListItem extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSimpleListItem extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final WidgetBuilder? leadingWidgetBuilder;
@@ -69,7 +70,8 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget with ComponentDescripto
             spacing: spacing,
             children: [
               if (leadingWidgetBuilder != null) ...[
-                _buildCorrectWidget(leadingWidgetBuilder!(context), componentTheme),
+                _buildCorrectWidget(
+                    leadingWidgetBuilder!(context), componentTheme),
               ],
               if (centerWidgetBuilder == null) ...[
                 Expanded(
@@ -96,7 +98,8 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget with ComponentDescripto
                 ),
               ],
               if (trailingWidgetBuilder != null) ...[
-                _buildCorrectWidget(trailingWidgetBuilder!(context), componentTheme),
+                _buildCorrectWidget(
+                    trailingWidgetBuilder!(context), componentTheme),
               ],
             ],
           ),
@@ -117,7 +120,8 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget with ComponentDescripto
     }
   }
 
-  TextStyle _getSubtitleTextStyle(ImpaktfullUiSimpleListItemTheme componentTheme) {
+  TextStyle _getSubtitleTextStyle(
+      ImpaktfullUiSimpleListItemTheme componentTheme) {
     switch (type) {
       case ImpaktfullUiSimpleListItemType.neutral:
         return componentTheme.textStyles.subtitle;
@@ -126,7 +130,8 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget with ComponentDescripto
     }
   }
 
-  Widget _buildCorrectWidget(Widget widget, ImpaktfullUiSimpleListItemTheme componentTheme) {
+  Widget _buildCorrectWidget(
+      Widget widget, ImpaktfullUiSimpleListItemTheme componentTheme) {
     if (widget is ImpaktfullUiAssetWidget) {
       return ImpaktfullUiAssetWidget(
         asset: widget.asset,

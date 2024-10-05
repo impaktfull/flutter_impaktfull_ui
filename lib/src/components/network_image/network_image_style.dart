@@ -14,7 +14,8 @@ class ImpaktfullUiNetworkImageTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiNetworkImageTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.networkImage;
+  static ImpaktfullUiNetworkImageTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.networkImage;
 }
 
 class ImpaktfullUiNetworkImageAssetsTheme {
@@ -28,7 +29,6 @@ class ImpaktfullUiNetworkImageColorTheme {
 class ImpaktfullUiNetworkImageDimensTheme {
   const ImpaktfullUiNetworkImageDimensTheme();
 }
-
 
 class ImpaktfullUiNetworkImageTextStyleTheme {
   const ImpaktfullUiNetworkImageTextStyleTheme();

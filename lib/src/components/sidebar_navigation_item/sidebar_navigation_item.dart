@@ -12,7 +12,8 @@ export 'sidebar_navigation_item_style.dart';
 
 part 'sidebar_navigation_item.describe.dart';
 
-class ImpaktfullUiSidebarNavigationItem extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSidebarNavigationItem extends StatefulWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? leading;
   final String title;
   final List<Widget> items;
@@ -31,78 +32,86 @@ class ImpaktfullUiSidebarNavigationItem extends StatefulWidget with ComponentDes
   });
 
   @override
-  State<ImpaktfullUiSidebarNavigationItem> createState() => _ImpaktfullUiSidebarNavigationItemState();
+  State<ImpaktfullUiSidebarNavigationItem> createState() =>
+      _ImpaktfullUiSidebarNavigationItemState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiSidebarNavigationItemState extends State<ImpaktfullUiSidebarNavigationItem> {
+class _ImpaktfullUiSidebarNavigationItemState
+    extends State<ImpaktfullUiSidebarNavigationItem> {
   var _expanded = false;
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSidebarNavigationItemTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiSidebarNavigationItemTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiAutoLayout.vertical(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 8,
-        children: [
-          ImpaktfullUiTouchFeedback(
-            onTap: _onTap,
-            color: widget.isSelected ? componentTheme.colors.background : null,
-            borderRadius: componentTheme.dimens.borderRadius,
-            child: Padding(
-              padding: componentTheme.dimens.padding,
-              child: ImpaktfullUiAutoLayout.horizontal(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 12,
-                children: [
-                  if (widget.leading != null) ...[
-                    ImpaktfullUiAssetWidget(
-                      asset: widget.leading,
-                      color: componentTheme.colors.icon,
-                    ),
-                  ],
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 12,
-                      ),
-                      child: Text(
-                        widget.title,
-                        style: componentTheme.textStyles.title,
-                      ),
-                    ),
-                  ),
-                  if (widget.items.isNotEmpty) ...[
-                    AnimatedRotation(
-                      turns: _expanded ? 0.5 : 0,
-                      duration: componentTheme.durations.dropdownRotation,
-                      child: ImpaktfullUiIconButton(
-                        asset: componentTheme.assets.chevronUp,
+      builder: (context, theme, componentTheme) {
+        return ImpaktfullUiAutoLayout.vertical(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          spacing: 8,
+          children: [
+            ImpaktfullUiTouchFeedback(
+              onTap: _onTap,
+              color:
+                  widget.isSelected ? componentTheme.colors.background : null,
+              borderRadius: componentTheme.dimens.borderRadius,
+              child: Padding(
+                padding: widget.items.isEmpty
+                    ? componentTheme.dimens.padding
+                    : componentTheme.dimens.paddingWithSubItems,
+                child: ImpaktfullUiAutoLayout.horizontal(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  spacing: 12,
+                  children: [
+                    if (widget.leading != null) ...[
+                      ImpaktfullUiAssetWidget(
+                        asset: widget.leading,
                         color: componentTheme.colors.icon,
-                        onTap: _onExpandedTapped,
+                      ),
+                    ],
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 12,
+                        ),
+                        child: Text(
+                          widget.title,
+                          style: componentTheme.textStyles.title,
+                        ),
                       ),
                     ),
+                    if (widget.items.isNotEmpty) ...[
+                      AnimatedRotation(
+                        turns: _expanded ? 0.5 : 0,
+                        duration: componentTheme.durations.dropdownRotation,
+                        child: ImpaktfullUiIconButton(
+                          asset: componentTheme.assets.chevronUp,
+                          color: componentTheme.colors.icon,
+                          onTap: _onExpandedTapped,
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
-          ),
-          if (widget.items.isNotEmpty && _expanded) ...[
-            Padding(
-              padding: const EdgeInsetsDirectional.only(start: 16),
-              child: ImpaktfullUiAutoLayout.vertical(
-                mainAxisSize: MainAxisSize.min,
-                spacing: 8,
-                children: widget.items,
+            if (widget.items.isNotEmpty && _expanded) ...[
+              Padding(
+                padding: const EdgeInsetsDirectional.only(start: 16),
+                child: ImpaktfullUiAutoLayout.vertical(
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: 8,
+                  children: widget.items,
+                ),
               ),
-            ),
+            ],
           ],
-        ],
-      ),
+        );
+      },
     );
   }
 

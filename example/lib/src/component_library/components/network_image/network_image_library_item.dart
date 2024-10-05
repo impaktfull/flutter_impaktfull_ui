@@ -20,4 +20,3 @@ class NetworkImageLibraryInputs extends ComponentLibraryInputs {
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [];
 }
-

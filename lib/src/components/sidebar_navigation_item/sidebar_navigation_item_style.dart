@@ -2,7 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
-class ImpaktfullUiSidebarNavigationItemTheme extends ImpaktfullUiComponentTheme {
+class ImpaktfullUiSidebarNavigationItemTheme
+    extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSidebarNavigationItemAssetsTheme assets;
   final ImpaktfullUiSidebarNavigationItemColorTheme colors;
   final ImpaktfullUiSidebarNavigationItemDimensTheme dimens;
@@ -41,10 +42,12 @@ class ImpaktfullUiSidebarNavigationItemColorTheme {
 class ImpaktfullUiSidebarNavigationItemDimensTheme {
   final BorderRadiusGeometry borderRadius;
   final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry paddingWithSubItems;
 
   const ImpaktfullUiSidebarNavigationItemDimensTheme({
     required this.borderRadius,
     required this.padding,
+    required this.paddingWithSubItems,
   });
 }
 

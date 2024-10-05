@@ -7,16 +7,21 @@ import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_naviga
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/util/extension/edge_insets_geometry_extension.dart';
 
 export 'sidebar_navigation_style.dart';
 
 part 'sidebar_navigation.describe.dart';
 
-class ImpaktfullUiSidebarNavigation extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSidebarNavigation extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? asset;
   final Widget? header;
   final Widget? content;
+  final double? width;
   final List<Widget> items;
+  final List<Widget> secondaryItems;
+  final Widget? secondaryContent;
   final List<Widget> footerItems;
   final Widget? footer;
   final ImpaktfullUiSidebarNavigationTheme? theme;
@@ -25,7 +30,10 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget with ComponentDescri
     this.asset,
     this.header,
     this.content,
+    this.width = 350,
     this.items = const [],
+    this.secondaryContent,
+    this.secondaryItems = const [],
     this.footerItems = const [],
     this.footer,
     this.theme,
@@ -34,50 +42,115 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget with ComponentDescri
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSidebarNavigationTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiSidebarNavigationTheme>(
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) {
         final hasHeader = asset != null || header != null;
+        final hasFooter = footer != null;
+        final hasFooterItems = footerItems.isNotEmpty;
         return Container(
           color: componentTheme.colors.backgroundColor,
-          padding: componentTheme.dimens.padding,
-          child: ImpaktfullUiAutoLayout.vertical(
-            spacing: 8,
+          child: ImpaktfullUiAutoLayout.horizontal(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              if (hasHeader) ...[
-                ImpaktfullUiAutoLayout.vertical(
+              SizedBox(
+                width: width,
+                child: ImpaktfullUiAutoLayout.vertical(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   spacing: 8,
                   children: [
-                    if (asset != null) ...[
-                      const SizedBox(height: 10),
-                      ImpaktfullUiAssetWidget(
-                        asset: asset!,
-                        height: 40,
+                    if (hasHeader) ...[
+                      Padding(
+                        padding: EdgeInsetsDirectional.only(
+                          start: componentTheme.dimens.padding.start,
+                          end: componentTheme.dimens.padding.end,
+                          top: componentTheme.dimens.padding.top,
+                          bottom: 32,
+                        ),
+                        child: ImpaktfullUiAutoLayout.vertical(
+                          spacing: 8,
+                          children: [
+                            if (asset != null) ...[
+                              const SizedBox(height: 10),
+                              ConstrainedBox(
+                                constraints: const BoxConstraints(
+                                  maxWidth: 150,
+                                  maxHeight: 40,
+                                ),
+                                child: ImpaktfullUiAssetWidget(
+                                  asset: asset!,
+                                ),
+                              ),
+                            ],
+                            if (header != null) ...[
+                              header!,
+                            ],
+                          ],
+                        ),
                       ),
                     ],
-                    if (header != null) ...[
-                      header!,
+                    if (content != null) ...[
+                      content!
+                    ] else ...[
+                      if (items.isNotEmpty) ...[
+                        Expanded(
+                          child: ImpaktfullUiListView(
+                            spacing: 8,
+                            padding: EdgeInsetsDirectional.only(
+                              start: componentTheme.dimens.padding.start,
+                              end: componentTheme.dimens.padding.end,
+                              top: hasHeader
+                                  ? 0
+                                  : componentTheme.dimens.padding.top,
+                              bottom: hasFooter || hasFooterItems
+                                  ? 0
+                                  : componentTheme.dimens.padding.bottom,
+                            ),
+                            children: items,
+                          ),
+                        ),
+                      ],
+                      ...footerItems,
+                    ],
+                    if (footer != null) ...[
+                      Padding(
+                        padding: EdgeInsetsDirectional.only(
+                          start: componentTheme.dimens.padding.start,
+                          end: componentTheme.dimens.padding.end,
+                          top: componentTheme.dimens.padding.top,
+                          bottom: componentTheme.dimens.padding.bottom,
+                        ),
+                        child: ImpaktfullUiAutoLayout.vertical(
+                          spacing: 8,
+                          children: [
+                            const ImpaktfullUiDivider(),
+                            footer!,
+                          ],
+                        ),
+                      ),
                     ],
                   ],
                 ),
-                const SizedBox(height: 16),
-              ],
-              if (content != null) ...[
-                content!
-              ] else ...[
-                if (items.isNotEmpty) ...[
-                  Expanded(
+              ),
+              if (secondaryContent != null || secondaryItems.isNotEmpty) ...[
+                Container(
+                  color: componentTheme.colors.border,
+                  width: 1,
+                  height: double.infinity,
+                ),
+                if (secondaryContent != null) ...[
+                  secondaryContent!,
+                ] else ...[
+                  SizedBox(
+                    width: 300,
                     child: ImpaktfullUiListView(
                       spacing: 8,
-                      children: items,
+                      padding: componentTheme.dimens.padding,
+                      children: secondaryItems,
                     ),
                   ),
                 ],
-                ...footerItems,
-                const ImpaktfullUiDivider(),
-              ],
-              if (footer != null) ...[
-                footer!,
               ],
             ],
           ),

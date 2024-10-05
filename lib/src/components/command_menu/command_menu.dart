@@ -8,11 +8,14 @@ export 'command_menu_style.dart';
 
 part 'command_menu.describe.dart';
 
-class ImpaktfullUiCommandMenu extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiCommandMenu extends StatefulWidget
+    with ComponentDescriptorMixin {
   final ShortcutActivator? shortcutActivator;
   final Widget child;
-  final Widget Function(BuildContext context, ImpaktfullUiCommandMenuTheme theme, CommanderController controller)
-      builder;
+  final Widget Function(
+      BuildContext context,
+      ImpaktfullUiCommandMenuTheme theme,
+      CommanderController controller) builder;
   final ImpaktfullUiCommandMenuTheme? theme;
 
   const ImpaktfullUiCommandMenu({
@@ -24,7 +27,8 @@ class ImpaktfullUiCommandMenu extends StatefulWidget with ComponentDescriptorMix
   });
 
   @override
-  State<ImpaktfullUiCommandMenu> createState() => _ImpaktfullUiCommandMenuState();
+  State<ImpaktfullUiCommandMenu> createState() =>
+      _ImpaktfullUiCommandMenuState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
@@ -47,7 +51,8 @@ class _ImpaktfullUiCommandMenuState extends State<ImpaktfullUiCommandMenu> {
             bindings: <ShortcutActivator, VoidCallback>{
               shortcutActivator: () => _commanderController.hide(),
             },
-            child: widget.builder(context, componentTheme, _commanderController),
+            child:
+                widget.builder(context, componentTheme, _commanderController),
           ),
           child: widget.child,
         );

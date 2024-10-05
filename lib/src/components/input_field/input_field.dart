@@ -9,6 +9,7 @@ import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.d
 import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
 
 export 'input_field_style.dart';
+export 'action/input_field_action.dart';
 
 part 'input_field.describe.dart';
 

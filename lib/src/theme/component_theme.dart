@@ -177,7 +177,8 @@ class ImpaktfullUiComponentsTheme {
         notificationBadge: notificationBadge ?? this.notificationBadge,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
-        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
+        sidebarNavigationItem:
+            sidebarNavigationItem ?? this.sidebarNavigationItem,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,

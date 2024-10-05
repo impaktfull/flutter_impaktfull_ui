@@ -7,7 +7,8 @@ export 'network_image_style.dart';
 
 part 'network_image.describe.dart';
 
-class ImpaktfullUiNetworkImage extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiNetworkImage extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String url;
   final double? height;
   final double? width;
@@ -35,7 +36,8 @@ class ImpaktfullUiNetworkImage extends StatelessWidget with ComponentDescriptorM
       builder: (context, theme, componentTheme) {
         String fullUrl = url;
         if (url.startsWith('https://picsum.photos')) {
-          fullUrl = 'https://picsum.photos/${(width ?? 300).toInt()}/${(height ?? 300).toInt()}';
+          fullUrl =
+              'https://picsum.photos/${(width ?? 300).toInt()}/${(height ?? 300).toInt()}';
         }
         return Image.network(
           fullUrl,

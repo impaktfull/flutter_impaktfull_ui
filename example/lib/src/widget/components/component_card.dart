@@ -38,16 +38,7 @@ class ComponentCard extends StatelessWidget {
                   child: ClipRect(
                     child: Padding(
                       padding: const EdgeInsets.all(16),
-                      child: LayoutBuilder(
-                        builder: (context, constraints) => OverflowBox(
-                          alignment: Alignment.center,
-                          minWidth: 0.0,
-                          minHeight: 0.0,
-                          maxWidth: constraints.maxWidth,
-                          maxHeight: constraints.maxHeight + 500,
-                          child: correctChild,
-                        ),
-                      ),
+                      child: correctChild,
                     ),
                   ),
                 ),
