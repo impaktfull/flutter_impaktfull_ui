@@ -35,9 +35,70 @@ This UI library was built to have a simple way to build UIs for impaktfull. This
 
 Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other libraries.
 
+- ImpaktfullUiApp
+- ImpaktfullUiAssetWidget
+  - ImpaktfullUiAsset.icon
+  - ImpaktfullUiAsset.svg
+  - ImpaktfullUiAsset.image
+  - ImpaktfullUiAsset.lottie
+  - ImpaktfullUiAsset.rive
 - ImpaktfullUiAutoLayout
+- ImpaktfullUiBadge
+- ImpaktfullUiBottomNavigation
+  - ImpaktfullUiBottomNavigationItem
+- ImpaktfullUiBottomSheet
+- ImpaktfullUiButton
+- ImpaktfullUiCheckBox
+- ImpaktfullUiCmsHeader
+- ImpaktfullUiColorPicker
+- ImpaktfullUiCommandMenu
+  - ImpaktfullUiCommandMenu
+- ImpaktfullUiDivider
+- ImpaktfullUiDropdown
+- ImpaktfullUiGridView
+- ImpaktfullUiHorizontalTabs
+  - ImpaktfullUiHorizontalTab
+- ImpaktfullUiIconButton
+- ImpaktfullUiInputField
+- ImpaktfullUiListItem
+  - ImpaktfullUiSimpleListItem
+- ImpaktfullUiLoadingIndicator
+- ImpaktfullUiModal
+- ImpaktfullUiNetworkImage
+- ImpaktfullUiNotification
+- ImpaktfullUiNotificationBadge
+- ImpaktfullUiSideNavigation
+  - ImpaktfullUiSideNavigationItem
+- ImpaktfullUiSnackyConfigurator
+- ImpaktfullUiSwitch
+- ImpaktfullUiTable
+  - ImpaktfullUiTableHeader
+    - ImpaktfullUiTableHeaderItem
+  - ImpaktfullUiTableRow
+    - ImpaktfullUiTableRowItem
+- ImpaktfullUiTheme
+- ImpaktfullUiTooltip
+- ImpaktfullUiTouchFeedback
+
+#### Todo
 
 Many more to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull
+
+- ImpaktfullDatePicker
+- ImpaktfullDateTimePicker
+- ImpaktfullDateTimePickerDialog
+- ImpaktfullDateTimeRangePicker
+- ImpaktfullListItemTitle
+- ImpaktfullNavBar
+- ImpaktfullPagination
+- ImpaktfullRadioButtonListItem
+- ImpaktfullScreen
+- ImpaktfullSelectableListItem
+- ImpaktfullSeparatedColumn
+- ImpaktfullSwitchListItem
+- ImpaktfullTabBar
+- ImpaktfullTabBarItem
+- ImpaktfullTimePicker
 
 ### Theming
 
@@ -45,18 +106,53 @@ The provided theme contains the default impaktfull branding. But it is super imp
 
 ### Assets
 
+#### Images
+
+These images animations can be overriden by adding your own files to your assets folder. The only thing you need to do extra is override `package` (in your own project)
+
+- asssets/images/logo.svg
+- asssets/images/splash_logo.svg
+
 #### Lottie Animations
 
-These icons can be overriden be added to your assets folder to use the default lottie animations. The only thing you need to do extra is override `package` (in your own project)
+These lottie animations can be overriden by adding your own files to your assets folder. The only thing you need to do extra is override `package` (in your own project)
 
 - assets/lottie/loading.json
 
 #### Icons
 
+These icons can be overriden in the theme itself. By adding your own IconData.
+
+- add
+- arrowLeft
+- check
+- chevronDown
+- chevronLeft
+- chevronRight
+- chevronUp
+- circle
+- close
+- confetti
+- copy
+- delete
+- edit
+- error
+- home
+- info
+- lineVertical
+- list
+- logout
+- minus
+- search
+- settings
+- success
+- warning
+
 # Todo
 
 - [ ] Add tests
+- [ ] Add extra components
 
-## License
+# License
 
 You are free to use this library as long as you give credit to impaktfull. You can use it for commercial and non-commercial projects. See the [LICENSE](LICENSE) file for more information.
