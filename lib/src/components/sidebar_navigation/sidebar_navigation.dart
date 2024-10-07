@@ -111,9 +111,8 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
                           ),
                         ),
                       ],
-                      ...footerItems,
                     ],
-                    if (footer != null) ...[
+                    if (footer != null || footerItems.isNotEmpty) ...[
                       Padding(
                         padding: EdgeInsetsDirectional.only(
                           start: componentTheme.dimens.padding.start,
@@ -124,8 +123,11 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
                         child: ImpaktfullUiAutoLayout.vertical(
                           spacing: 8,
                           children: [
-                            const ImpaktfullUiDivider(),
-                            footer!,
+                            ...footerItems,
+                            if (footer != null) ...[
+                              const ImpaktfullUiDivider(),
+                              footer!,
+                            ],
                           ],
                         ),
                       ),
