@@ -35,6 +35,7 @@ export 'src/components/sidebar_navigation/sidebar_navigation.dart';
 export 'src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 export 'src/components/simple_list_item/simple_list_item.dart';
 export 'src/components/switch/switch.dart';
+export 'src/components/switch_list_item/switch_list_item.dart';
 export 'src/components/table/table_column_config.dart';
 export 'src/components/table/table.dart';
 export 'src/components/table_row/table_row.dart';

@@ -31,6 +31,7 @@ import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_n
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
+import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
 import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
@@ -644,6 +645,14 @@ class DefaultTheme {
             active: assets.icons.check,
             inactive: assets.icons.close,
           ),
+        ),
+        switchListItem: ImpaktfullUiSwitchListItemTheme(
+          assets: const ImpaktfullUiSwitchListItemAssetsTheme(),
+          colors: ImpaktfullUiSwitchListItemColorTheme(
+            icons: colors.primary,
+          ),
+          dimens: const ImpaktfullUiSwitchListItemDimensTheme(),
+          textStyles: const ImpaktfullUiSwitchListItemTextStyleTheme(),
         ),
         tableHeader: ImpaktfullUiTableHeaderTheme(
           colors: ImpaktfullUiTableHeaderColorTheme(
