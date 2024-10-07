@@ -16,6 +16,7 @@ export 'src/components/command_menu/command_menu.dart';
 export 'src/components/command_menu/command_menu_window.dart';
 export 'src/components/divider/divider.dart';
 export 'src/components/dropdown/dropdown.dart';
+export 'src/components/fluid_padding/fluid_padding.dart';
 export 'src/components/grid_view/grid_view.dart';
 export 'src/components/horizontal_tab/horizontal_tab.dart';
 export 'src/components/horizontal_tabs/horizontal_tabs.dart';

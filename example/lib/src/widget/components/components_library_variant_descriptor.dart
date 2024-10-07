@@ -6,6 +6,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
   final Widget child;
   final double? width;
   final double? height;
+  final Color? color;
   final bool wrapWithCard;
 
   const ComponentsLibraryVariantDescriptor({
@@ -14,6 +15,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
     this.width,
     this.height,
     this.wrapWithCard = false,
+    this.color,
     super.key,
   });
 
@@ -38,7 +40,8 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
                 .extraSmall,
           ),
         ],
-        SizedBox(
+        Container(
+          color: color,
           width: width,
           height: height,
           child: Builder(builder: (context) {

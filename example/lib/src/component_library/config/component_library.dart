@@ -12,6 +12,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/cms_heade
 import 'package:impaktfull_ui_example/src/component_library/components/color_picker/color_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/command_menu/command_menu_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/dropdown/dropdown_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/fluid_padding/fluid_padding_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/grid_view/grid_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/icon_button/icon_button_library_item.dart';
@@ -50,6 +51,7 @@ class ComponentLibrary {
     const ColorPickerLibraryItem(),
     const CommandMenuLibraryItem(),
     const DropdownLibraryItem(),
+    const FluidPaddingLibraryItem(),
     const GridViewLibraryItem(),
     const HorizontalTabsLibraryItem(),
     const InputFieldLibraryItem(),

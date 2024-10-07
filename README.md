@@ -43,6 +43,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiAsset.lottie
   - ImpaktfullUiAsset.rive
 - ImpaktfullUiAutoLayout
+- ImpaktfullUiAvatar
 - ImpaktfullUiBadge
 - ImpaktfullUiBottomNavigation
   - ImpaktfullUiBottomNavigationItem
@@ -55,6 +56,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiCommandMenu
 - ImpaktfullUiDivider
 - ImpaktfullUiDropdown
+- ImpaktfullUiFluidPadding
 - ImpaktfullUiGridView
 - ImpaktfullUiHorizontalTabs
   - ImpaktfullUiHorizontalTab

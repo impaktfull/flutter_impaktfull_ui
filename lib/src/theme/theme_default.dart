@@ -12,6 +12,7 @@ import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
@@ -354,6 +355,47 @@ class DefaultTheme {
             dropUp: assets.icons.chevronUp,
             dropDown: assets.icons.chevronDown,
           ),
+        ),
+        fluidPadding: const ImpaktfullUiFluidPaddingTheme(
+          assets: ImpaktfullUiFluidPaddingAssetsTheme(),
+          colors: ImpaktfullUiFluidPaddingColorTheme(),
+          dimens: ImpaktfullUiFluidPaddingDimensTheme(
+            breakPoints: [
+              ImpaktfullUiFluidPaddingBreakPoint(
+                label: 'Mobile',
+                maxWidth: 600,
+                padding: 16,
+              ),
+              ImpaktfullUiFluidPaddingBreakPoint(
+                label: 'Tablet',
+                minWidth: 600,
+                maxWidth: 1024,
+                paddingMin: 16,
+                paddingMax: 64,
+              ),
+              ImpaktfullUiFluidPaddingBreakPoint(
+                label: 'Desktop',
+                minWidth: 1024,
+                maxWidth: 1400,
+                paddingMin: 64,
+                paddingMax: 128,
+              ),
+              ImpaktfullUiFluidPaddingBreakPoint(
+                label: 'Large Desktop',
+                minWidth: 1400,
+                maxWidth: 2000,
+                paddingMin: 128,
+                paddingMax: 256,
+              ),
+              ImpaktfullUiFluidPaddingBreakPoint(
+                label: 'Ultra Wide Desktop',
+                minWidth: 2000,
+                paddingMin: 256,
+                paddingMax: 512,
+              ),
+            ],
+          ),
+          textStyles: ImpaktfullUiFluidPaddingTextStyleTheme(),
         ),
         gridView: const ImpaktfullUiGridViewTheme(
           assets: ImpaktfullUiGridViewAssetsTheme(),

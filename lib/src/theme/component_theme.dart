@@ -12,6 +12,7 @@ import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
@@ -55,6 +56,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiCommandMenuTheme commandMenu;
   final ImpaktfullUiDividerTheme divider;
   final ImpaktfullUiDropdownTheme dropdown;
+  final ImpaktfullUiFluidPaddingTheme fluidPadding;
   final ImpaktfullUiGridViewTheme gridView;
   final ImpaktfullUiHorizontalTabTheme horizontalTab;
   final ImpaktfullUiHorizontalTabsTheme horizontalTabs;
@@ -94,6 +96,7 @@ class ImpaktfullUiComponentsTheme {
     required this.commandMenu,
     required this.divider,
     required this.dropdown,
+    required this.fluidPadding,
     required this.gridView,
     required this.horizontalTab,
     required this.horizontalTabs,
@@ -134,6 +137,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCommandMenuTheme? commandMenu,
     ImpaktfullUiDividerTheme? divider,
     ImpaktfullUiDropdownTheme? dropdown,
+    ImpaktfullUiFluidPaddingTheme? fluidPadding,
     ImpaktfullUiGridViewTheme? gridView,
     ImpaktfullUiHorizontalTabTheme? horizontalTab,
     ImpaktfullUiHorizontalTabsTheme? horizontalTabs,
@@ -173,6 +177,7 @@ class ImpaktfullUiComponentsTheme {
         commandMenu: commandMenu ?? this.commandMenu,
         divider: divider ?? this.divider,
         dropdown: dropdown ?? this.dropdown,
+        fluidPadding: fluidPadding ?? this.fluidPadding,
         gridView: gridView ?? this.gridView,
         horizontalTab: horizontalTab ?? this.horizontalTab,
         horizontalTabs: horizontalTabs ?? this.horizontalTabs,
@@ -227,6 +232,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiDividerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDropdownTheme) {
       return ImpaktfullUiDropdownTheme.of(context) as T;
+    } else if (T == ImpaktfullUiFluidPaddingTheme) {
+      return ImpaktfullUiFluidPaddingTheme.of(context) as T;
     } else if (T == ImpaktfullUiGridViewTheme) {
       return ImpaktfullUiGridViewTheme.of(context) as T;
     } else if (T == ImpaktfullUiHorizontalTabTheme) {
