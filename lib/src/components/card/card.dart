@@ -57,10 +57,13 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         boxShadow: componentTheme.shadows.card,
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: false,
-          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer ? SystemMouseCursors.click : widget.cursor,
+          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer
+              ? SystemMouseCursors.click
+              : widget.cursor,
           onTap: widget.onTap,
           onFocus: widget.onFocus,
-          borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
+          borderRadius:
+              widget.borderRadius ?? componentTheme.dimens.borderRadius,
           child: ClipRRect(
             borderRadius: componentTheme.dimens.borderRadius,
             child: Padding(
@@ -83,7 +86,9 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
     }
     if (componentTheme.colors.border != null) {
       return Border.all(
-        color: widget.error ? componentTheme.colors.borderError! : componentTheme.colors.border!,
+        color: widget.error
+            ? componentTheme.colors.borderError!
+            : componentTheme.colors.border!,
         strokeAlign: BorderSide.strokeAlignOutside,
         width: 1,
       );

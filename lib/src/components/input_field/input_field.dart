@@ -13,7 +13,8 @@ export 'action/input_field_action.dart';
 
 part 'input_field.describe.dart';
 
-class ImpaktfullUiInputField extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiInputField extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String? label;
   final String? placeholder;
   final String? hint;
@@ -65,7 +66,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   @override
   void initState() {
     super.initState();
-    _controller = widget.controller ?? TextEditingController(text: widget.value);
+    _controller =
+        widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(_onFocusChanged);
     if (widget.autofocus) {
@@ -100,7 +102,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     final trailingAction = widget.trailingAction;
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiAutoLayout.vertical(
+      builder: (context, theme, componentTheme) =>
+          ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
         spacing: 4,
         children: [
@@ -128,9 +131,14 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                     ),
                     borderRadius: BorderRadiusDirectional.only(
                       topStart: componentTheme.dimens.borderRadius.topStart,
-                      bottomStart: componentTheme.dimens.borderRadius.bottomStart,
-                      topEnd: trailingAction == null ? componentTheme.dimens.borderRadius.topEnd : Radius.zero,
-                      bottomEnd: trailingAction == null ? componentTheme.dimens.borderRadius.bottomEnd : Radius.zero,
+                      bottomStart:
+                          componentTheme.dimens.borderRadius.bottomStart,
+                      topEnd: trailingAction == null
+                          ? componentTheme.dimens.borderRadius.topEnd
+                          : Radius.zero,
+                      bottomEnd: trailingAction == null
+                          ? componentTheme.dimens.borderRadius.bottomEnd
+                          : Radius.zero,
                     ),
                     child: ImpaktfullUiAutoLayout.horizontal(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -150,7 +158,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                               textSelectionTheme: TextSelectionThemeData(
                                 cursorColor: componentTheme.colors.cursor,
                                 selectionColor: componentTheme.colors.selection,
-                                selectionHandleColor: componentTheme.colors.selectionHandle,
+                                selectionHandleColor:
+                                    componentTheme.colors.selectionHandle,
                               ),
                             ),
                             child: TextField(
@@ -167,9 +176,11 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                 isDense: true,
                                 hintText: widget.placeholder,
                                 focusColor: Colors.transparent,
-                                hintStyle: componentTheme.textStyles.placeholder,
+                                hintStyle:
+                                    componentTheme.textStyles.placeholder,
                                 border: OutlineInputBorder(
-                                  borderRadius: componentTheme.dimens.borderRadius.value,
+                                  borderRadius:
+                                      componentTheme.dimens.borderRadius.value,
                                 ),
                                 errorBorder: InputBorder.none,
                                 enabledBorder: InputBorder.none,

@@ -3,14 +3,16 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/input_field/input_field_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class InputFieldVariant extends ComponentLibraryVariant<InputFieldLibraryVariantInputs> {
+class InputFieldVariant
+    extends ComponentLibraryVariant<InputFieldLibraryVariantInputs> {
   InputFieldVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, InputFieldLibraryVariantInputs inputs) {
+  List<Widget> build(
+      BuildContext context, InputFieldLibraryVariantInputs inputs) {
     final label = inputs.label.value;
     final hint = inputs.hint.value;
     final placholder = inputs.placholder.value;
@@ -20,7 +22,8 @@ class InputFieldVariant extends ComponentLibraryVariant<InputFieldLibraryVariant
     final showTrailingAction = inputs.showTrailingAction.value ?? false;
     return [
       ImpaktfullUiInputField(
-        leadingIcon: leadingIcon == null ? null : ImpaktfullUiAsset.icon(leadingIcon),
+        leadingIcon:
+            leadingIcon == null ? null : ImpaktfullUiAsset.icon(leadingIcon),
         label: label,
         placeholder: placholder,
         hint: hint,
