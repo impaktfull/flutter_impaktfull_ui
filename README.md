@@ -1,6 +1,6 @@
 # impaktfull_ui
 
-A UI library of Impaktfull.
+A UI library of impaktfull.
 
 [![test](https://github.com/impaktfull/flutter_impaktfull_ui_2/actions/workflows/test.yaml/badge.svg)](https://github.com/impaktfull/flutter_impaktfull_ui_2/actions/workflows/test.yaml/badge.svg)
 [![publish to github pages](https://github.com/impaktfull/flutter_impaktfull_ui_2/actions/workflows/publish_to_githubpages.yaml/badge.svg)](https://github.com/impaktfull/flutter_impaktfull_ui_2/actions/workflows/publish_to_githubpages.yaml/badge.svg)
