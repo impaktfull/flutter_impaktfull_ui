@@ -19,8 +19,8 @@ class SimpleListItemLibraryVariant
       BuildContext context, SimpleListItemLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiSimpleListItem(
-        title: 'Settings',
-        subtitle: 'Change all your settings here',
+        title: inputs.title.value ?? '',
+        subtitle: inputs.subtitle.value ?? '',
         type: type,
         leadingWidgetBuilder: (context) => ImpaktfullUiAssetWidget(
           asset: theme.assets.icons.settings,
