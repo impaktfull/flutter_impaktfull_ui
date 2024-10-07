@@ -25,6 +25,8 @@ import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart'
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
+import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
+import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
@@ -70,6 +72,8 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
   final ImpaktfullUiPaginationTheme pagination;
+  final ImpaktfullUiRadioButtonTheme radioButton;
+  final ImpaktfullUiRadioButtonListItemTheme radioButtonListItem;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
   final ImpaktfullUiSidebarNavigationTheme sidebarNavigation;
   final ImpaktfullUiSidebarNavigationItemTheme sidebarNavigationItem;
@@ -111,6 +115,8 @@ class ImpaktfullUiComponentsTheme {
     required this.notification,
     required this.notificationBadge,
     required this.pagination,
+    required this.radioButton,
+    required this.radioButtonListItem,
     required this.refreshIndicator,
     required this.sidebarNavigation,
     required this.sidebarNavigationItem,
@@ -153,6 +159,8 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
     ImpaktfullUiPaginationTheme? pagination,
+    ImpaktfullUiRadioButtonTheme? radioButton,
+    ImpaktfullUiRadioButtonListItemTheme? radioButtonListItem,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
     ImpaktfullUiSidebarNavigationTheme? sidebarNavigation,
     ImpaktfullUiSidebarNavigationItemTheme? sidebarNavigationItem,
@@ -194,6 +202,8 @@ class ImpaktfullUiComponentsTheme {
         notification: notification ?? this.notification,
         notificationBadge: notificationBadge ?? this.notificationBadge,
         pagination: pagination ?? this.pagination,
+        radioButton: radioButton ?? this.radioButton,
+        radioButtonListItem: radioButtonListItem ?? this.radioButtonListItem,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
         sidebarNavigationItem:
@@ -263,6 +273,10 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
     } else if (T == ImpaktfullUiPaginationTheme) {
       return ImpaktfullUiPaginationTheme.of(context) as T;
+    } else if (T == ImpaktfullUiRadioButtonTheme) {
+      return ImpaktfullUiRadioButtonTheme.of(context) as T;
+    } else if (T == ImpaktfullUiRadioButtonListItemTheme) {
+      return ImpaktfullUiRadioButtonListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiSidebarNavigationTheme) {

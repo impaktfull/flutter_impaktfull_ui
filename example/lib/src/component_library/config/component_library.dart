@@ -24,6 +24,8 @@ import 'package:impaktfull_ui_example/src/component_library/components/modal/mod
 import 'package:impaktfull_ui_example/src/component_library/components/notification/notification_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification_badge/notification_badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/pagination/pagination_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/radio_button/radio_button_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/radio_button_list_item/radio_button_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/refreshindicator/refreshindicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/sidebar_navigation/sidebar_navigation_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/simple_list_item/simple_list_item_library_item.dart';
@@ -64,6 +66,8 @@ class ComponentLibrary {
     const NotificationLibraryItem(),
     const NotificationBadgeLibraryItem(),
     const PaginationLibraryItem(),
+    const RadioButtonLibraryItem(),
+    const RadioButtonListItemLibraryItem(),
     const RefreshIndicatorLibraryItem(),
     const SidebarNavigationLibraryItem(),
     const SidebarNavigationItemLibraryItem(),
