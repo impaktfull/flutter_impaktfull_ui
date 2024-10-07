@@ -3,14 +3,16 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/cms_header/cms_header_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class CmsHeaderVariant extends ComponentLibraryVariant<CmsHeaderLibraryVariantInputs> {
+class CmsHeaderVariant
+    extends ComponentLibraryVariant<CmsHeaderLibraryVariantInputs> {
   CmsHeaderVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, CmsHeaderLibraryVariantInputs inputs) {
+  List<Widget> build(
+      BuildContext context, CmsHeaderLibraryVariantInputs inputs) {
     return [
       ImpaktfullUiCmsHeader(
         title: inputs.title.value ?? '{fallback title}',
