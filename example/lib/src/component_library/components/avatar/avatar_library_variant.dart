@@ -4,8 +4,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/avatar/av
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
 
-class AvatarLibraryVariant
-    extends ComponentLibraryVariant<AvatarLibraryPrimaryInputs> {
+class AvatarLibraryVariant extends ComponentLibraryVariant<AvatarLibraryPrimaryInputs> {
   const AvatarLibraryVariant();
 
   @override
@@ -20,8 +19,7 @@ class AvatarLibraryVariant
       ),
       ImpaktfullUiAvatar(
         url: null,
-        onTap: () =>
-            ImpaktfullUiNotification.show(title: 'Empty Avatar tapped'),
+        onTap: () => ImpaktfullUiNotification.show(title: 'Empty Avatar tapped'),
       ),
     ];
   }

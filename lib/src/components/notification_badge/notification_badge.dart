@@ -18,8 +18,9 @@ enum ImpaktfullUiNotificationBadgeLocation {
   const ImpaktfullUiNotificationBadgeLocation(this.alignment);
 }
 
-class ImpaktfullUiNotificationBadge extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiNotificationBadge extends StatelessWidget with ComponentDescriptorMixin {
+  static const dotSize = 4.0;
+
   final bool show;
   final Color? color;
   final String? text;
@@ -39,8 +40,7 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
-        ImpaktfullUiNotificationBadgeTheme>(
+    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiNotificationBadgeTheme>(
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) {
         final showBadge = show || text != null;
@@ -49,121 +49,111 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget
         final textSize = _textWidth(text ?? '', textStyle);
         final textWidth = textSize.width + 12;
         final textHeight = textSize.height;
-        return Center(
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              child,
-              Positioned(
-                top: _getTop(textWidth, textHeight),
-                bottom: _getBottom(textWidth, textHeight),
-                right: _getRight(textWidth, textHeight),
-                left: _getLeft(textWidth, textHeight),
-                child: AnimatedOpacity(
-                  opacity: showBadge ? 1 : 0,
-                  duration: componentTheme.durations.opacity,
-                  child: Transform.scale(
-                    scale: 0.75,
-                    child: Container(
-                      constraints: const BoxConstraints(
-                        minWidth: 16,
-                        minHeight: 16,
-                      ),
-                      decoration: BoxDecoration(
-                        color: color,
-                        borderRadius: componentTheme.dimens.borderRadius,
-                        border: componentTheme.colors.border == null
-                            ? null
-                            : Border.all(
-                                color: componentTheme.colors.border!,
-                                width: 2,
-                                strokeAlign: BorderSide.strokeAlignOutside,
-                              ),
-                      ),
-                      alignment: Alignment.center,
-                      child: Builder(
-                        builder: (context) {
-                          if (text == null) {
-                            return Container(
-                              width: 4,
-                              height: 4,
-                              decoration: BoxDecoration(
-                                color: color,
-                                borderRadius:
-                                    componentTheme.dimens.borderRadius,
-                              ),
-                            );
-                          }
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            child: Text(
-                              text ?? '',
-                              style: componentTheme.textStyles.text,
-                              textAlign: TextAlign.center,
+        return Stack(
+          clipBehavior: Clip.none,
+          children: [
+            child,
+            Positioned(
+              top: _getTop(dotSize, textWidth, textHeight),
+              bottom: _getBottom(dotSize, textWidth, textHeight),
+              right: _getRight(dotSize, textWidth, textHeight),
+              left: _getLeft(dotSize, textWidth, textHeight),
+              child: AnimatedOpacity(
+                opacity: showBadge ? 1 : 0,
+                duration: componentTheme.durations.opacity,
+                child: Transform.scale(
+                  scale: 0.75,
+                  child: Container(
+                    constraints: const BoxConstraints(
+                      minWidth: 16,
+                      minHeight: 16,
+                    ),
+                    decoration: BoxDecoration(
+                      color: color,
+                      borderRadius: componentTheme.dimens.borderRadius,
+                      border: componentTheme.colors.border == null
+                          ? null
+                          : Border.all(
+                              color: componentTheme.colors.border!,
+                              width: 2,
+                              strokeAlign: BorderSide.strokeAlignOutside,
+                            ),
+                    ),
+                    alignment: Alignment.center,
+                    child: Builder(
+                      builder: (context) {
+                        if (text == null) {
+                          return Container(
+                            width: dotSize,
+                            height: dotSize,
+                            decoration: BoxDecoration(
+                              color: color,
+                              borderRadius: componentTheme.dimens.borderRadius,
                             ),
                           );
-                        },
-                      ),
+                        }
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text(
+                            text ?? '',
+                            style: componentTheme.textStyles.text,
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );
   }
 
   Size _textWidth(String text, TextStyle style) {
-    final TextPainter textPainter = TextPainter(
-        text: TextSpan(text: text, style: style),
-        maxLines: 1,
-        textDirection: TextDirection.ltr)
-      ..layout(minWidth: 0, maxWidth: double.infinity);
+    final TextPainter textPainter =
+        TextPainter(text: TextSpan(text: text, style: style), maxLines: 1, textDirection: TextDirection.ltr)
+          ..layout(minWidth: 0, maxWidth: double.infinity);
     return textPainter.size;
   }
 
-  double? _getTop(double textWidth, double textHeight) {
+  double? _getTop(double dotSize, double textWidth, double textHeight) {
     final alignment = location.alignment;
     if (alignment == Alignment.bottomCenter ||
         alignment == Alignment.bottomLeft ||
         alignment == Alignment.bottomRight) {
       return null;
     }
-    if (text == null) return -4;
+    if (text == null) return -(dotSize / 2);
     return -(textHeight / 2);
   }
 
-  double? _getBottom(double textWidth, double textHeight) {
+  double? _getBottom(double dotSize, double textWidth, double textHeight) {
     final alignment = location.alignment;
-    if (alignment == Alignment.topCenter ||
-        alignment == Alignment.topLeft ||
-        alignment == Alignment.topRight) {
+    if (alignment == Alignment.topCenter || alignment == Alignment.topLeft || alignment == Alignment.topRight) {
       return null;
     }
-    if (text == null) return -4;
+    if (text == null) return -(dotSize / 2);
     return -(textHeight / 2);
   }
 
-  double? _getRight(double textWidth, double textHeight) {
+  double? _getRight(double dotSize, double textWidth, double textHeight) {
     final alignment = location.alignment;
-    if (alignment == Alignment.centerLeft ||
-        alignment == Alignment.topLeft ||
-        alignment == Alignment.bottomLeft) {
+    if (alignment == Alignment.centerLeft || alignment == Alignment.topLeft || alignment == Alignment.bottomLeft) {
       return null;
     }
-    if (text == null) return -4;
+    if (text == null) return -(dotSize / 2);
     return -(textWidth / 2);
   }
 
-  double? _getLeft(double textWidth, double textHeight) {
+  double? _getLeft(double dotSize, double textWidth, double textHeight) {
     final alignment = location.alignment;
-    if (alignment == Alignment.centerRight ||
-        alignment == Alignment.topRight ||
-        alignment == Alignment.bottomRight) {
+    if (alignment == Alignment.centerRight || alignment == Alignment.topRight || alignment == Alignment.bottomRight) {
       return null;
     }
+    if (text == null) return -(dotSize / 2);
     return -(textWidth / 2);
   }
 

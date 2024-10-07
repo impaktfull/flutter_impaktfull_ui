@@ -41,6 +41,12 @@ class ImpaktfullUiAvatar extends StatelessWidget with ComponentDescriptorMixin {
           children: [
             Container(
               decoration: BoxDecoration(
+                borderRadius: componentTheme.dimens.borderRadius,
+                color: componentTheme.colors.background,
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
                 border: Border.all(
                   color: componentTheme.colors.border,
                   width: 1,
@@ -48,23 +54,33 @@ class ImpaktfullUiAvatar extends StatelessWidget with ComponentDescriptorMixin {
                 borderRadius: componentTheme.dimens.borderRadius,
                 color: componentTheme.colors.background,
               ),
-              child: ClipRRect(
+            ),
+            Positioned.fill(
+              child: ImpaktfullUiAssetWidget(
+                asset: placeholderAsset ?? componentTheme.assets.placeholder,
+                color: componentTheme.colors.placeholder,
+                size: width / 2,
+              ),
+            ),
+            if (url != null) ...[
+              Positioned.fill(
+                child: ClipRRect(
+                  borderRadius: componentTheme.dimens.borderRadius,
+                  child: Builder(
+                    builder: (context) => ImpaktfullUiNetworkImage(
+                      url: url!,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: componentTheme.colors.border,
+                  width: 1,
+                ),
                 borderRadius: componentTheme.dimens.borderRadius,
-                child: Builder(builder: (context) {
-                  if (url == null) {
-                    return Center(
-                      child: ImpaktfullUiAssetWidget(
-                        asset: placeholderAsset ??
-                            componentTheme.assets.placeholder,
-                        color: componentTheme.colors.placeholder,
-                        size: width / 2,
-                      ),
-                    );
-                  }
-                  return ImpaktfullUiNetworkImage(
-                    url: url!,
-                  );
-                }),
               ),
             ),
             if (onTap != null) ...[
