@@ -16,12 +16,14 @@ class ImpaktfullUiCommandMenu extends StatefulWidget
       BuildContext context,
       ImpaktfullUiCommandMenuTheme theme,
       CommanderController controller) builder;
+  final bool autofocus;
   final ImpaktfullUiCommandMenuTheme? theme;
 
   const ImpaktfullUiCommandMenu({
     required this.child,
     required this.builder,
     this.shortcutActivator,
+    this.autofocus = false,
     this.theme,
     super.key,
   });
@@ -54,7 +56,10 @@ class _ImpaktfullUiCommandMenuState extends State<ImpaktfullUiCommandMenu> {
             child:
                 widget.builder(context, componentTheme, _commanderController),
           ),
-          child: widget.child,
+          child: Focus(
+            autofocus: widget.autofocus,
+            child: widget.child,
+          ),
         );
       },
     );

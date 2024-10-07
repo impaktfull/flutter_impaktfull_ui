@@ -9,6 +9,7 @@ import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 class CommandMenuWindow extends StatefulWidget {
+  final String? value;
   final ValueChanged<String> onInputChanged;
   final VoidCallback onCloseWindow;
   final bool hasBlurredBackground;
@@ -20,6 +21,7 @@ class CommandMenuWindow extends StatefulWidget {
   const CommandMenuWindow({
     required this.onInputChanged,
     required this.onCloseWindow,
+    this.value,
     this.bottomBuilder,
     this.padding = const EdgeInsets.all(16),
     this.marginInputField = EdgeInsets.zero,
@@ -33,8 +35,14 @@ class CommandMenuWindow extends StatefulWidget {
 }
 
 class _CommandMenuWindowState extends State<CommandMenuWindow> {
-  final _textEditingController = TextEditingController();
+  late final TextEditingController _textEditingController;
   final _foucsNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _textEditingController = TextEditingController(text: widget.value ?? '');
+  }
 
   @override
   void dispose() {

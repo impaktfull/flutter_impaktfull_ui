@@ -28,6 +28,7 @@ import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item_style.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
@@ -577,6 +578,21 @@ class DefaultTheme {
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
           colors: ImpaktfullUiRefreshIndicatorColorTheme(
               loadingIndicator: colors.accent),
+        ),
+        selectableListItem: ImpaktfullUiSelectableListItemTheme(
+          assets: ImpaktfullUiSelectableListItemAssetsTheme(
+            check: assets.icons.check,
+          ),
+          colors: ImpaktfullUiSelectableListItemColorTheme(
+            icons: colors.primary,
+            selected: colors.accent,
+            unselected: Colors.transparent,
+          ),
+          dimens: const ImpaktfullUiSelectableListItemDimensTheme(),
+          durations: ImpaktfullUiSelectableListItemDurationsTheme(
+            color: duration.short,
+          ),
+          textStyles: const ImpaktfullUiSelectableListItemTextStyleTheme(),
         ),
         sidebarNavigation: ImpaktfullUiSidebarNavigationTheme(
           assets: const ImpaktfullUiSidebarNavigationAssetsTheme(),

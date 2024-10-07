@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
@@ -17,26 +18,44 @@ class ComponentsLibraryScreen extends StatefulWidget {
 
 class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   final _componentLibrary = ComponentLibrary();
+  var _searchQuery = '';
+
   @override
   Widget build(BuildContext context) {
-    return BaseScreen(
-      title: 'Components',
-      builder: (context) => ImpaktfullUiGridView.builder(
-        crossAxisCount: (context, config) => config.maxWidth ~/ 250,
-        padding: const EdgeInsets.all(16),
-        items: _componentLibrary.components,
-        spacing: 8,
-        itemBuilder: (context, item, index) {
-          final value = _componentLibrary.components[index];
-          final fistComponent = value.getComponentVariants().first;
-          final widget =
-              fistComponent.build(context, fistComponent.inputs()).first;
-          return ComponentCard(
-            label: value.title,
-            onTap: () => _onItemTapped(value),
-            child: widget,
-          );
-        },
+    final filteredComponents = _componentLibrary.components
+        .where(
+            (e) => e.title.toLowerCase().contains(_searchQuery.toLowerCase()))
+        .toList();
+    return ImpaktfullUiCommandMenu(
+      shortcutActivator: const SingleActivator(
+        LogicalKeyboardKey.keyF,
+        meta: true,
+      ),
+      autofocus: true,
+      builder: (BuildContext context, theme, controller) => CommandMenuWindow(
+        value: _searchQuery,
+        onInputChanged: _onChanged,
+        onCloseWindow: () => controller.hide(),
+      ),
+      child: BaseScreen(
+        title: 'Components',
+        builder: (context) => ImpaktfullUiGridView.builder(
+          crossAxisCount: (context, config) => config.maxWidth ~/ 250,
+          padding: const EdgeInsets.all(16),
+          items: filteredComponents,
+          spacing: 8,
+          itemBuilder: (context, item, index) {
+            final value = filteredComponents[index];
+            final fistComponent = value.getComponentVariants().first;
+            final widget =
+                fistComponent.build(context, fistComponent.inputs()).first;
+            return ComponentCard(
+              label: value.title,
+              onTap: () => _onItemTapped(value),
+              child: widget,
+            );
+          },
+        ),
       ),
     );
   }
@@ -44,4 +63,10 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   void _onItemTapped(ComponentLibraryItem value) =>
       Navigator.of(context).push(NativePageRoute(
           builder: (context) => ComponentsLibraryItemScreen(item: value)));
+
+  void _onChanged(String value) {
+    setState(() {
+      _searchQuery = value;
+    });
+  }
 }
