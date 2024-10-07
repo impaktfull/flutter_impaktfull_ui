@@ -14,7 +14,8 @@ class ImpaktfullUiRadioButtonTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiRadioButtonTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.radioButton;
+  static ImpaktfullUiRadioButtonTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.radioButton;
 }
 
 class ImpaktfullUiRadioButtonAssetsTheme {
