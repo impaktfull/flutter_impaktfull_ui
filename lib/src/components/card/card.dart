@@ -19,6 +19,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
   final VoidCallback? onFocus;
   final EdgeInsetsGeometry? padding;
   final BorderRadiusGeometry? borderRadius;
+  final bool error;
   final ImpaktfullUiCardTheme? theme;
 
   const ImpaktfullUiCard({
@@ -30,6 +31,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
     this.onFocus,
     this.padding,
     this.borderRadius,
+    this.error = false,
     this.theme,
     super.key,
   });
@@ -51,23 +53,14 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         height: widget.height,
         borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
         color: componentTheme.colors.background,
-        border: componentTheme.colors.border == null
-            ? null
-            : Border.all(
-                color: componentTheme.colors.border!,
-                strokeAlign: BorderSide.strokeAlignOutside,
-                width: 1,
-              ),
+        border: _getBorder(componentTheme),
         boxShadow: componentTheme.shadows.card,
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: false,
-          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer
-              ? SystemMouseCursors.click
-              : widget.cursor,
+          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer ? SystemMouseCursors.click : widget.cursor,
           onTap: widget.onTap,
           onFocus: widget.onFocus,
-          borderRadius:
-              widget.borderRadius ?? componentTheme.dimens.borderRadius,
+          borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
           child: ClipRRect(
             borderRadius: componentTheme.dimens.borderRadius,
             child: Padding(
@@ -78,5 +71,23 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         ),
       ),
     );
+  }
+
+  BoxBorder? _getBorder(ImpaktfullUiCardTheme componentTheme) {
+    if (widget.error && componentTheme.colors.borderError != null) {
+      return Border.all(
+        color: componentTheme.colors.borderError!,
+        strokeAlign: BorderSide.strokeAlignOutside,
+        width: 1,
+      );
+    }
+    if (componentTheme.colors.border != null) {
+      return Border.all(
+        color: widget.error ? componentTheme.colors.borderError! : componentTheme.colors.border!,
+        strokeAlign: BorderSide.strokeAlignOutside,
+        width: 1,
+      );
+    }
+    return null;
   }
 }

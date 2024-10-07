@@ -12,17 +12,18 @@ class ImpaktfullUiCardTheme extends ImpaktfullUiComponentTheme {
     required this.shadows,
   });
 
-  static ImpaktfullUiCardTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.card;
+  static ImpaktfullUiCardTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.card;
 }
 
 class ImpaktfullUiCardColorTheme {
   final Color background;
   final Color? border;
+  final Color? borderError;
 
   const ImpaktfullUiCardColorTheme({
     required this.background,
     required this.border,
+    required this.borderError,
   });
 }
 

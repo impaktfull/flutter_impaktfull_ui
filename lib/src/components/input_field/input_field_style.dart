@@ -22,10 +22,12 @@ class ImpaktfullUiInputFieldColorTheme {
   final Color cursor;
   final Color selection;
   final Color selectionHandle;
+  final Color borderError;
 
   const ImpaktfullUiInputFieldColorTheme({
     required this.background,
     required this.border,
+    required this.borderError,
     required this.cursor,
     required this.selection,
     required this.selectionHandle,
@@ -35,12 +37,16 @@ class ImpaktfullUiInputFieldColorTheme {
 class ImpaktfullUiInputFieldTextStylesTheme {
   final TextStyle label;
   final TextStyle text;
+  final TextStyle placeholder;
   final TextStyle hint;
+  final TextStyle error;
 
   const ImpaktfullUiInputFieldTextStylesTheme({
     required this.label,
     required this.text,
+    required this.placeholder,
     required this.hint,
+    required this.error,
   });
 }
 

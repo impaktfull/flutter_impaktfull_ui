@@ -13,10 +13,11 @@ export 'action/input_field_action.dart';
 
 part 'input_field.describe.dart';
 
-class ImpaktfullUiInputField extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiInputField extends StatefulWidget with ComponentDescriptorMixin {
   final String? label;
+  final String? placeholder;
   final String? hint;
+  final String? error;
   final ImpaktfullUiAsset? leadingIcon;
   final Widget? trailingAction;
   final String? value;
@@ -35,7 +36,9 @@ class ImpaktfullUiInputField extends StatefulWidget
     required this.onChanged,
     this.leadingIcon,
     this.trailingAction,
+    this.placeholder,
     this.hint,
+    this.error,
     this.label,
     this.controller,
     this.focusNode,
@@ -62,8 +65,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   @override
   void initState() {
     super.initState();
-    _controller =
-        widget.controller ?? TextEditingController(text: widget.value);
+    _controller = widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(_onFocusChanged);
     if (widget.autofocus) {
@@ -98,8 +100,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     final trailingAction = widget.trailingAction;
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) =>
-          ImpaktfullUiAutoLayout.vertical(
+      builder: (context, theme, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
         spacing: 4,
         children: [
@@ -118,6 +119,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                 Expanded(
                   child: ImpaktfullUiCard(
                     cursor: SystemMouseCursors.text,
+                    error: widget.error != null && widget.error!.isNotEmpty,
                     onTap: _onTap,
                     onFocus: _onFocus,
                     padding: const EdgeInsets.symmetric(
@@ -126,14 +128,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                     ),
                     borderRadius: BorderRadiusDirectional.only(
                       topStart: componentTheme.dimens.borderRadius.topStart,
-                      bottomStart:
-                          componentTheme.dimens.borderRadius.bottomStart,
-                      topEnd: trailingAction == null
-                          ? componentTheme.dimens.borderRadius.topEnd
-                          : Radius.zero,
-                      bottomEnd: trailingAction == null
-                          ? componentTheme.dimens.borderRadius.bottomEnd
-                          : Radius.zero,
+                      bottomStart: componentTheme.dimens.borderRadius.bottomStart,
+                      topEnd: trailingAction == null ? componentTheme.dimens.borderRadius.topEnd : Radius.zero,
+                      bottomEnd: trailingAction == null ? componentTheme.dimens.borderRadius.bottomEnd : Radius.zero,
                     ),
                     child: ImpaktfullUiAutoLayout.horizontal(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -153,8 +150,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                               textSelectionTheme: TextSelectionThemeData(
                                 cursorColor: componentTheme.colors.cursor,
                                 selectionColor: componentTheme.colors.selection,
-                                selectionHandleColor:
-                                    componentTheme.colors.selectionHandle,
+                                selectionHandleColor: componentTheme.colors.selectionHandle,
                               ),
                             ),
                             child: TextField(
@@ -169,12 +165,11 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                               keyboardType: widget.textInputType,
                               decoration: InputDecoration(
                                 isDense: true,
-                                hintText: widget.hint,
+                                hintText: widget.placeholder,
                                 focusColor: Colors.transparent,
-                                hintStyle: componentTheme.textStyles.hint,
+                                hintStyle: componentTheme.textStyles.placeholder,
                                 border: OutlineInputBorder(
-                                  borderRadius:
-                                      componentTheme.dimens.borderRadius.value,
+                                  borderRadius: componentTheme.dimens.borderRadius.value,
                                 ),
                                 errorBorder: InputBorder.none,
                                 enabledBorder: InputBorder.none,
@@ -196,6 +191,17 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
               ],
             ),
           ),
+          if (widget.error != null) ...[
+            Text(
+              widget.error ?? '',
+              style: componentTheme.textStyles.error,
+            ),
+          ] else if (widget.hint != null) ...[
+            Text(
+              widget.hint ?? '',
+              style: componentTheme.textStyles.hint,
+            ),
+          ]
         ],
       ),
     );
