@@ -8,8 +8,7 @@ export 'radio_button_style.dart';
 
 part 'radio_button.describe.dart';
 
-class ImpaktfullUiRadioButton<T> extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiRadioButton<T> extends StatelessWidget with ComponentDescriptorMixin {
   final T value;
   final T groupValue;
   final ValueChanged<T>? onChanged;
@@ -34,9 +33,7 @@ class ImpaktfullUiRadioButton<T> extends StatelessWidget
         height: 20,
         child: ImpaktfullUiTouchFeedback(
           borderRadius: componentTheme.dimens.borderRadius,
-          color: isSelected
-              ? componentTheme.colors.selected
-              : componentTheme.colors.unselected,
+          color: isSelected ? componentTheme.colors.selected : componentTheme.colors.unselected,
           border: Border.all(
             color: componentTheme.colors.border,
             width: 1,
@@ -47,7 +44,9 @@ class ImpaktfullUiRadioButton<T> extends StatelessWidget
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: componentTheme.dimens.borderRadius,
-                color: componentTheme.colors.unselected,
+                color: isSelected
+                    ? componentTheme.colors.centerSelectedBackground
+                    : componentTheme.colors.centerUnSelectedBackground,
               ),
             ),
           ),

@@ -14,8 +14,7 @@ class ImpaktfullUiRadioButtonTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiRadioButtonTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.radioButton;
+  static ImpaktfullUiRadioButtonTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.radioButton;
 }
 
 class ImpaktfullUiRadioButtonAssetsTheme {
@@ -26,10 +25,14 @@ class ImpaktfullUiRadioButtonColorTheme {
   final Color selected;
   final Color unselected;
   final Color border;
+  final Color centerSelectedBackground;
+  final Color centerUnSelectedBackground;
   const ImpaktfullUiRadioButtonColorTheme({
     required this.selected,
     required this.unselected,
     required this.border,
+    required this.centerSelectedBackground,
+    required this.centerUnSelectedBackground,
   });
 }
 
