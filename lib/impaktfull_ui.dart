@@ -2,6 +2,7 @@
 export 'src/components/app/app.dart';
 export 'src/components/asset/asset_widget.dart';
 export 'src/components/auto_layout/auto_layout.dart';
+export 'src/components/avatar/avatar.dart';
 export 'src/components/button/button.dart';
 export 'src/components/bottom_navigation/bottom_navigation.dart';
 export 'src/components/bottom_navigation_item/bottom_navigation_item.dart';

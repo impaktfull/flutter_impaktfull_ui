@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/avatar/avatar.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation_item/bottom_navigation_item.dart';
@@ -182,6 +183,20 @@ class DefaultTheme {
       durations: duration,
       shadows: shadows,
       components: ImpaktfullUiComponentsTheme(
+        avatar: ImpaktfullUiAvatarTheme(
+          assets: ImpaktfullUiAvatarAssetsTheme(
+            placeholder: assets.icons.user,
+          ),
+          colors: ImpaktfullUiAvatarColorTheme(
+            border: colors.border,
+            background: colors.canvas,
+            placeholder: colors.text,
+          ),
+          dimens: ImpaktfullUiAvatarDimensTheme(
+            borderRadius: dimens.borderRadiusCircle,
+          ),
+          textStyles: const ImpaktfullUiAvatarTextStyleTheme(),
+        ),
         badge: ImpaktfullUiBadgeTheme(
           colors: const ImpaktfullUiBadgeColorTheme(),
           dimens: ImpaktfullUiBadgeDimensTheme(

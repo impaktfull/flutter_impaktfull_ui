@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
@@ -35,6 +37,16 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
     final lottieAsset = asset.getFullLottieAsset();
     final riveAsset = asset.getFullRiveAsset();
     if (icon != null) {
+      double? size = this.size;
+      if (size == null) {
+        if (width != null && height != null) {
+          size = max(width!, height!);
+        } else if (width != null) {
+          size = width;
+        } else if (height != null) {
+          size = height;
+        }
+      }
       return Icon(
         icon,
         color: color,

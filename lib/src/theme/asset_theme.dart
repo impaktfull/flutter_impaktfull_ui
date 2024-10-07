@@ -60,6 +60,7 @@ class ImpaktfullUiAssetTheme {
               search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
               settings: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
               success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
+              user: ImpaktfullUiAsset.icon(PhosphorIcons.user()),
               warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
             ),
         images: images ??
@@ -158,6 +159,7 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset list;
   final ImpaktfullUiAsset logout;
   final ImpaktfullUiAsset minus;
+  final ImpaktfullUiAsset user;
   final ImpaktfullUiAsset search;
   final ImpaktfullUiAsset settings;
   final ImpaktfullUiAsset success;
@@ -190,6 +192,7 @@ class ImpaktfullUiIconTheme {
     required this.search,
     required this.settings,
     required this.success,
+    required this.user,
     required this.warning,
   });
 
@@ -220,6 +223,7 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? search,
     ImpaktfullUiAsset? settings,
     ImpaktfullUiAsset? success,
+    ImpaktfullUiAsset? user,
     ImpaktfullUiAsset? warning,
   }) =>
       ImpaktfullUiIconTheme(
@@ -249,6 +253,7 @@ class ImpaktfullUiIconTheme {
         search: search ?? this.search,
         settings: settings ?? this.settings,
         success: success ?? this.success,
+        user: user ?? this.user,
         warning: warning ?? this.warning,
       );
 }

@@ -1,5 +1,6 @@
 import 'package:impaktfull_ui_example/src/component_library/components/asset/asset_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/autolayout/autolayout_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/avatar/avatar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/badge/badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/bottom_navigation/bottom_navigation_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/bottom_navigation_item/bottom_navigation_item_library_item.dart';
@@ -37,6 +38,7 @@ class ComponentLibrary {
   final List<ComponentLibraryItem> components = [
     const AssetLibraryItem(),
     const AutoLayoutLibraryItem(),
+    const AvatarLibraryItem(),
     const BadgeLibraryItem(),
     const BottomNavigationLibraryItem(),
     const BottomNavigationItemLibraryItem(),

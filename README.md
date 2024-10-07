@@ -150,6 +150,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - search
 - settings
 - success
+- user
 - warning
 
 # Todo

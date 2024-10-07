@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/avatar/avatar_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/util/network_images.dart';
+
+class AvatarLibraryVariant
+    extends ComponentLibraryVariant<AvatarLibraryPrimaryInputs> {
+  const AvatarLibraryVariant();
+
+  @override
+  String get title => 'Default';
+
+  @override
+  List<Widget> build(BuildContext context, AvatarLibraryPrimaryInputs inputs) {
+    return [
+      ImpaktfullUiAvatar(
+        url: NetworkImages.profilePicture,
+        width: 40,
+        height: 40,
+        onTap: () => ImpaktfullUiNotification.show(title: 'Avatar tapped'),
+      ),
+      ImpaktfullUiAvatar(
+        url: null,
+        width: 40,
+        height: 40,
+        onTap: () =>
+            ImpaktfullUiNotification.show(title: 'Empty Avatar tapped'),
+      ),
+    ];
+  }
+
+  @override
+  AvatarLibraryPrimaryInputs inputs() => AvatarLibraryPrimaryInputs();
+}
+
+class AvatarLibraryPrimaryInputs extends AvatarLibraryInputs {}

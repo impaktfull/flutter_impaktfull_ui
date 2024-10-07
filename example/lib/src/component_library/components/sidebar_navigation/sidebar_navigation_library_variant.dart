@@ -88,21 +88,8 @@ class SidebarNavigationLibraryVariant
           footer: Stack(
             children: [
               ImpaktfullUiSimpleListItem(
-                leadingWidgetBuilder: (context) => Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: theme.colors.border,
-                      width: 1,
-                    ),
-                  ),
-                  width: 40,
-                  height: 40,
-                  child: const ClipOval(
-                    child: ImpaktfullUiNetworkImage(
-                      url: NetworkImages.profilePicture,
-                    ),
-                  ),
+                leadingWidgetBuilder: (context) => const ImpaktfullUiAvatar(
+                  url: NetworkImages.profilePicture,
                 ),
                 trailingWidgetBuilder: (context) => const SizedBox(width: 40),
                 borderRadius: ImpaktfullUiSidebarNavigationItemTheme.of(context)
