@@ -31,6 +31,7 @@ class _ComponentsLibraryInputsWidgetState
     return Expanded(
       child: ImpaktfullUiThemeBuidler(
         builder: (context, theme) => ImpaktfullUiCard(
+          padding: EdgeInsets.zero,
           child: ListView.builder(
             padding: const EdgeInsets.all(32),
             itemCount: inputs.length,

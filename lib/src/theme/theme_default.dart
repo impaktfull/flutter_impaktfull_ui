@@ -10,6 +10,7 @@ import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
+import 'package:impaktfull_ui_2/src/components/date_picker/date_picker_style.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
@@ -45,6 +46,7 @@ import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class DefaultTheme {
@@ -339,6 +341,35 @@ class DefaultTheme {
             windowBorderRadius: dimens.borderRadiusLarge,
           ),
           textStyles: const ImpaktfullUiCommandMenuTextStyleTheme(),
+        ),
+        datePicker: ImpaktfullUiDatePickerTheme(
+          assets: ImpaktfullUiDatePickerAssetsTheme(
+            arrowLeft: assets.icons.arrowLeft,
+            arrowRight: assets.icons.arrowRight,
+          ),
+          colors: ImpaktfullUiDatePickerColorTheme(
+            selected: colors.accent,
+            inRange: colors.accent.withOpacity(0.33),
+          ),
+          dimens: ImpaktfullUiDatePickerDimensTheme(
+            borderRadius: dimens.borderRadius,
+            borderRadiusRangeStart: dimens.borderRadius.copyWith(
+              topEnd: Radius.zero,
+              bottomEnd: Radius.zero,
+            ),
+            borderRadiusRangeEnd: dimens.borderRadius.copyWith(
+              topStart: Radius.zero,
+              bottomStart: Radius.zero,
+            ),
+            borderRadiusRangeBetween: BorderRadius.zero,
+          ),
+          textStyles: ImpaktfullUiDatePickerTextStyleTheme(
+            headerTitle: textStyles.onCard.text.small.semiBold,
+            weekday: textStyles.onCard.text.small.medium,
+            cellInActive: textStyles.onCardTertiary.text.small.withOpacity(0.5),
+            cell: textStyles.onCard.text.small,
+            cellSelected: textStyles.onPrimary.text.small.semiBold,
+          ),
         ),
         divider: ImpaktfullUiDividerTheme(
           colors: ImpaktfullUiDividerColorTheme(

@@ -7,6 +7,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? color;
+  final EdgeInsetsGeometry? padding;
   final bool wrapWithCard;
 
   const ComponentsLibraryVariantDescriptor({
@@ -14,6 +15,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
     this.title,
     this.width,
     this.height,
+    this.padding,
     this.wrapWithCard = false,
     this.color,
     super.key,
@@ -47,6 +49,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
           child: Builder(builder: (context) {
             if (wrapWithCard) {
               return ImpaktfullUiCard(
+                padding: padding,
                 child: child,
               );
             }

@@ -16,7 +16,7 @@ class AssetLibraryItem extends ComponentLibraryItem {
       ImpaktfullUiAsset.icon(PhosphorIcons.heart(PhosphorIconsStyle.fill)),
       const ImpaktfullUiAsset.svg('heart.svg', directory: 'assets/images'),
       const ImpaktfullUiAsset.pixel('heart.webp', directory: 'assets/images'),
-      const ImpaktfullUiAsset.pixel('heart.png', directory: 'assets/imagess'),
+      const ImpaktfullUiAsset.pixel('heart.png', directory: 'assets/images'),
       const ImpaktfullUiAsset.rive('heart.riv', directory: 'assets/rive'),
       const ImpaktfullUiAsset.lottie('heart.json', directory: 'assets/lottie'),
     ];

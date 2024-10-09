@@ -54,7 +54,7 @@ class CommandMenuLibraryVariant
             child: Center(
               child: ImpaktfullUiInputField(
                 value: '',
-                hint:
+                placeholder:
                     'If you are inside this input field, you can use the keyboard shortcut to open the command menu (cmd +k or win +)',
                 onChanged: (value) {},
               ),

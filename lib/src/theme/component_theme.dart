@@ -10,6 +10,7 @@ import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
+import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
@@ -58,6 +59,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
   final ImpaktfullUiCommandMenuTheme commandMenu;
+  final ImpaktfullUiDatePickerTheme datePicker;
   final ImpaktfullUiDividerTheme divider;
   final ImpaktfullUiDropdownTheme dropdown;
   final ImpaktfullUiFluidPaddingTheme fluidPadding;
@@ -102,6 +104,7 @@ class ImpaktfullUiComponentsTheme {
     required this.cmsHeader,
     required this.colorPicker,
     required this.commandMenu,
+    required this.datePicker,
     required this.divider,
     required this.dropdown,
     required this.fluidPadding,
@@ -147,6 +150,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
     ImpaktfullUiCommandMenuTheme? commandMenu,
+    ImpaktfullUiDatePickerTheme? datePicker,
     ImpaktfullUiDividerTheme? divider,
     ImpaktfullUiDropdownTheme? dropdown,
     ImpaktfullUiFluidPaddingTheme? fluidPadding,
@@ -191,6 +195,7 @@ class ImpaktfullUiComponentsTheme {
         cmsHeader: cmsHeader ?? this.cmsHeader,
         colorPicker: colorPicker ?? this.colorPicker,
         commandMenu: commandMenu ?? this.commandMenu,
+        datePicker: datePicker ?? this.datePicker,
         divider: divider ?? this.divider,
         dropdown: dropdown ?? this.dropdown,
         fluidPadding: fluidPadding ?? this.fluidPadding,
@@ -248,6 +253,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiColorPickerTheme.of(context) as T;
     } else if (T == ImpaktfullUiCommandMenuTheme) {
       return ImpaktfullUiCommandMenuTheme.of(context) as T;
+    } else if (T == ImpaktfullUiDatePickerTheme) {
+      return ImpaktfullUiDatePickerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDividerTheme) {
       return ImpaktfullUiDividerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDropdownTheme) {

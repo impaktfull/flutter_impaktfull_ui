@@ -54,6 +54,8 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiColorPicker
 - ImpaktfullUiCommandMenu
   - ImpaktfullUiCommandMenu
+- ImpaktfullUiDatePicker
+  - ImpaktfullUiDatePicker.range
 - ImpaktfullUiDivider
 - ImpaktfullUiDropdown
 - ImpaktfullUiFluidPadding
@@ -92,10 +94,8 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 
 Many more to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull
 
-- ImpaktfullUiDatePicker
 - ImpaktfullUiDateTimePicker
 - ImpaktfullUiDateTimePickerDialog
-- ImpaktfullUiDateTimeRangePicker
 - ImpaktfullUiListItemTitle
 - ImpaktfullUiNavBar
 - ImpaktfullUiScreen

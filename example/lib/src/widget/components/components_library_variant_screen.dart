@@ -8,8 +8,10 @@ import 'package:impaktfull_ui_example/src/widget/components/components_library_v
 class ComponentsLibraryVariantScreen<T extends ComponentLibraryInputs?>
     extends StatefulWidget {
   final ComponentLibraryVariant<T> variant;
+  final bool showInputs;
   const ComponentsLibraryVariantScreen({
     required this.variant,
+    required this.showInputs,
     super.key,
   });
 
@@ -53,9 +55,11 @@ class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
               noDataLabel: 'No widgets for ${widget.variant.runtimeType}',
             ),
           ),
-          ComponentsLibraryInputsWidget(
-            inputs: inputs!,
-          ),
+          if (widget.showInputs) ...[
+            ComponentsLibraryInputsWidget(
+              inputs: inputs!,
+            ),
+          ],
         ],
       ),
     );

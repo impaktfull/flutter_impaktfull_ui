@@ -1,0 +1,4 @@
+enum ImpaktfullUiDatePickerType {
+  single,
+  range,
+}

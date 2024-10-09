@@ -20,6 +20,7 @@ class _ComponentsLibraryItemScreenState
     extends State<ComponentsLibraryItemScreen> {
   late final List<ComponentLibraryVariant> variants;
   late ComponentLibraryVariant _selectedTab;
+  var _showEdits = false;
 
   @override
   void initState() {
@@ -44,9 +45,23 @@ class _ComponentsLibraryItemScreenState
                   .toList(),
               onTabSelected: (value) => setState(() => _selectedTab = value),
             ),
+      actions: [
+        ImpaktfullUiIconButton(
+          onTap: _onEditTapped,
+          color: _showEdits ? theme.colors.accent : theme.colors.primary,
+          asset: theme.assets.icons.edit,
+        ),
+      ],
       builder: (context) => ComponentsLibraryVariantScreen(
         variant: _selectedTab,
+        showInputs: _showEdits,
       ),
     );
+  }
+
+  void _onEditTapped() {
+    setState(() {
+      _showEdits = !_showEdits;
+    });
   }
 }
