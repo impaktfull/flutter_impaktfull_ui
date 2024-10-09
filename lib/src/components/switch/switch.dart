@@ -47,7 +47,7 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
                 border: borderWidth == null
                     ? null
                     : Border.all(
-                        color: color,
+                        color: componentTheme.colors.border,
                         width: borderWidth,
                       ),
               ),
@@ -68,6 +68,12 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
                   decoration: BoxDecoration(
                     color: color,
                     borderRadius: componentTheme.dimens.thumbBorderRadius,
+                    border: borderWidth == null
+                        ? null
+                        : Border.all(
+                            color: componentTheme.colors.border,
+                            width: borderWidth,
+                          ),
                   ),
                   alignment: Alignment.center,
                   child: Stack(
