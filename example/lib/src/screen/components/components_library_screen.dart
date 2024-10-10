@@ -18,11 +18,7 @@ class ComponentsLibraryScreen extends StatefulWidget {
 
 class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   final _componentLibrary = ComponentLibrary();
-  final _fixedSearchQuery = [
-    'NavBar',
-    'Screen',
-    'FloatingActionButton',
-  ];
+  final _fixedSearchQuery = [];
   var _searchQuery = '';
 
   @override
