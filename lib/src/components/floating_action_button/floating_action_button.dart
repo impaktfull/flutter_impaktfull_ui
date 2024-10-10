@@ -11,7 +11,8 @@ export 'floating_action_button_style.dart';
 
 part 'floating_action_button.describe.dart';
 
-class ImpaktfullUiFloatingActionButton extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiFloatingActionButton extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAsset asset;
   final String? label;
   final String? toolTip;
@@ -29,12 +30,15 @@ class ImpaktfullUiFloatingActionButton extends StatelessWidget with ComponentDes
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiFloatingActionButtonTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiFloatingActionButtonTheme>(
       overrideComponentTheme: theme,
       builder: (context, theme, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,
         toolTip: toolTip,
-        color: onTap == null ? componentTheme.colors.backgroundDisabled : componentTheme.colors.background,
+        color: onTap == null
+            ? componentTheme.colors.backgroundDisabled
+            : componentTheme.colors.background,
         borderRadius: componentTheme.dimens.borderRadius,
         child: Padding(
           padding: const EdgeInsets.all(12),
