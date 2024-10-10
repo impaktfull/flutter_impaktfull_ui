@@ -30,6 +30,7 @@ import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart'
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
+import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator_style.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
@@ -44,7 +45,7 @@ import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/tab_bar/tab_bar.dart';
-import 'package:impaktfull_ui_2/src/components/tab_bar_item/tab_bar_item_style.dart';
+import 'package:impaktfull_ui_2/src/components/tab_bar_item/tab_bar_item.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
 import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
@@ -88,6 +89,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
   final ImpaktfullUiPaginationTheme pagination;
+  final ImpaktfullUiProgressIndicatorTheme progressIndicator;
   final ImpaktfullUiRadioButtonTheme radioButton;
   final ImpaktfullUiRadioButtonListItemTheme radioButtonListItem;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
@@ -142,6 +144,7 @@ class ImpaktfullUiComponentsTheme {
     required this.notification,
     required this.notificationBadge,
     required this.pagination,
+    required this.progressIndicator,
     required this.radioButton,
     required this.radioButtonListItem,
     required this.refreshIndicator,
@@ -197,6 +200,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
     ImpaktfullUiPaginationTheme? pagination,
+    ImpaktfullUiProgressIndicatorTheme? progressIndicator,
     ImpaktfullUiRadioButtonTheme? radioButton,
     ImpaktfullUiRadioButtonListItemTheme? radioButtonListItem,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
@@ -251,6 +255,7 @@ class ImpaktfullUiComponentsTheme {
         notification: notification ?? this.notification,
         notificationBadge: notificationBadge ?? this.notificationBadge,
         pagination: pagination ?? this.pagination,
+        progressIndicator: progressIndicator ?? this.progressIndicator,
         radioButton: radioButton ?? this.radioButton,
         radioButtonListItem: radioButtonListItem ?? this.radioButtonListItem,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
@@ -336,6 +341,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiNotificationTheme.of(context) as T;
     } else if (T == ImpaktfullUiNotificationBadgeTheme) {
       return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
+    } else if (T == ImpaktfullUiProgressIndicatorTheme) {
+      return ImpaktfullUiProgressIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiPaginationTheme) {
       return ImpaktfullUiPaginationTheme.of(context) as T;
     } else if (T == ImpaktfullUiRadioButtonTheme) {

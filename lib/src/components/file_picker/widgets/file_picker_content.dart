@@ -6,6 +6,7 @@ import 'package:impaktfull_ui_2/src/components/file_picker/file_picker.dart';
 import 'package:impaktfull_ui_2/src/components/file_picker/model/file_picker_progress_type.dart';
 import 'package:impaktfull_ui_2/src/components/file_picker/util/size_calculation_util.dart';
 import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
+import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator.dart';
 
 class ImpaktfullUiFilePickerContent extends StatelessWidget {
   final ImpaktfullUiFilePickerData data;
@@ -45,42 +46,67 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
               ],
               Expanded(
                 child: ImpaktfullUiAutoLayout.vertical(
+                  spacing: 8,
                   children: [
-                    Text(
-                      data.title,
-                      style: componentTheme.textStyles.title,
-                    ),
-                    Text.rich(
-                      style: componentTheme.textStyles.subtitle,
-                      TextSpan(
-                        children: [
-                          if (data.size != null) ...[
-                            TextSpan(
-                                text: FileSizeCalculationUtil.calculateFileSize(
-                                    data.size)),
-                          ],
-                          if (data.size != null && progressType.showText) ...[
-                            const TextSpan(text: ' - '),
-                          ],
-                          if (progressType.showText) ...[
-                            TextSpan(text: '${data.progress * 100}%'),
-                          ]
+                    ImpaktfullUiAutoLayout.horizontal(
+                      children: [
+                        Expanded(
+                          child: ImpaktfullUiAutoLayout.vertical(
+                            children: [
+                              Text(
+                                data.title,
+                                style: componentTheme.textStyles.title,
+                              ),
+                              if (onRetryTapped == null) ...[
+                                Text.rich(
+                                  style: componentTheme.textStyles.subtitle,
+                                  TextSpan(
+                                    children: [
+                                      if (data.size != null) ...[
+                                        TextSpan(
+                                            text: FileSizeCalculationUtil
+                                                .calculateFileSize(data.size)),
+                                      ],
+                                      if (data.size != null &&
+                                          progressType.textProgressOnly) ...[
+                                        const TextSpan(text: ' - '),
+                                      ],
+                                      if (progressType.textProgressOnly) ...[
+                                        TextSpan(
+                                            text: '${data.progress * 100}%'),
+                                      ]
+                                    ],
+                                  ),
+                                ),
+                              ] else ...[
+                                Text(
+                                  'Failed to upload, please try again later',
+                                  style: componentTheme.textStyles.subtitle,
+                                ),
+                                ImpaktfullUiButton(
+                                  type: ImpaktfullUiButtonType.linkGrey,
+                                  title: 'Retry',
+                                  onTap: onRetryTapped,
+                                ),
+                              ]
+                            ],
+                          ),
+                        ),
+                        if (onDeleteTapped != null) ...[
+                          const SizedBox(width: 12),
                         ],
-                      ),
+                      ],
                     ),
-                    if (onRetryTapped != null) ...[
-                      ImpaktfullUiButton(
-                        type: ImpaktfullUiButtonType.linkGrey,
-                        title: 'Retry',
-                        onTap: onRetryTapped,
+                    if (onRetryTapped == null && progressType.showLine) ...[
+                      ImpaktfullUiProgressIndicator(
+                        value: data.progress,
+                        showText: progressType.showText,
+                        type: ImpaktfullUiProgressIndicatorType.line,
                       ),
-                    ],
+                    ]
                   ],
                 ),
               ),
-              if (onDeleteTapped != null) ...[
-                const SizedBox(width: 12),
-              ],
             ],
           ),
         ),

@@ -30,6 +30,7 @@ import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart'
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
+import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator_style.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
@@ -684,6 +685,24 @@ class DefaultTheme {
           dimens: const ImpaktfullUiPaginationDimensTheme(),
           textStyles: ImpaktfullUiPaginationTextStyleTheme(
             text: textStyles.onCard.text.small,
+          ),
+        ),
+        progressIndicator: ImpaktfullUiProgressIndicatorTheme(
+          assets: const ImpaktfullUiProgressIndicatorAssetsTheme(),
+          colors: ImpaktfullUiProgressIndicatorColorTheme(
+            background: colors.canvas,
+            foreground: colors.accent,
+            border: colors.border,
+          ),
+          dimens: ImpaktfullUiProgressIndicatorDimensTheme(
+            height: 8,
+            borderRadius: dimens.borderRadiusExtraSmall,
+          ),
+          durations: ImpaktfullUiProgressIndicatorDurationsTheme(
+            progress: durations.short,
+          ),
+          textStyles: ImpaktfullUiProgressIndicatorTextStyleTheme(
+            text: textStyles.onCard.text.small.medium,
           ),
         ),
         radioButton: ImpaktfullUiRadioButtonTheme(

@@ -34,7 +34,7 @@ class ImpaktfullUiFilePicker extends StatelessWidget
     this.onRetryTapped,
     this.onDeleteTapped,
     this.leadingBuilder,
-    this.progressType = ImpaktfullUiFilePickerProgressType.progressBarWithText,
+    this.progressType = ImpaktfullUiFilePickerProgressType.progressLineWithText,
     this.theme,
     super.key,
   });

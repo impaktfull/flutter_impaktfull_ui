@@ -30,6 +30,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/nav_bar/n
 import 'package:impaktfull_ui_example/src/component_library/components/notification/notification_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification_badge/notification_badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/pagination/pagination_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/progress_indicator/progress_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/radio_button/radio_button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/radio_button_list_item/radio_button_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/refreshindicator/refreshindicator_library_item.dart';
@@ -82,6 +83,7 @@ class ComponentLibrary {
     const NotificationLibraryItem(),
     const NotificationBadgeLibraryItem(),
     const PaginationLibraryItem(),
+    const ProgressIndicatorLibraryItem(),
     const RadioButtonLibraryItem(),
     const RadioButtonListItemLibraryItem(),
     const RefreshIndicatorLibraryItem(),

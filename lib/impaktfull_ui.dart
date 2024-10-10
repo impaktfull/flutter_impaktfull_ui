@@ -35,6 +35,7 @@ export 'src/components/network_image/network_image.dart';
 export 'src/components/notification/notification.dart';
 export 'src/components/notification_badge/notification_badge.dart';
 export 'src/components/pagination/pagination.dart';
+export 'src/components/progress_indicator/progress_indicator.dart';
 export 'src/components/radio_button/radio_button.dart';
 export 'src/components/radio_button_list_item/radio_button_list_item.dart';
 export 'src/components/refresh_indicator/refresh_indicator.dart';

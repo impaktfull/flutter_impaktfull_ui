@@ -90,5 +90,3 @@ class ImpaktfullUiSeparatedColumn extends StatelessWidget
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
-
-class ImpaktfullAutoLayout {}
