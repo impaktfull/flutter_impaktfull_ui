@@ -21,7 +21,7 @@ class CmsHeaderVariant
         actions: [
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
-            leadingIcon: theme.assets.icons.add,
+            leadingAsset: theme.assets.icons.add,
             title: 'Add',
             onTap: () {},
           ),
@@ -34,12 +34,12 @@ class CmsHeaderVariant
         actions: [
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.secondary,
-            leadingIcon: theme.assets.icons.logout,
+            leadingAsset: theme.assets.icons.logout,
             onTap: () {},
           ),
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
-            leadingIcon: theme.assets.icons.settings,
+            leadingAsset: theme.assets.icons.settings,
             title: 'Settings',
             onTap: () {},
           ),

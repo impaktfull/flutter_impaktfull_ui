@@ -18,10 +18,10 @@ part 'button.describe.dart';
 class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiButtonType type;
   final ImpaktfullUiButtonSize size;
-  final ImpaktfullUiAsset? leadingIcon;
+  final ImpaktfullUiAsset? leadingAsset;
   final Widget? leadingChild;
   final String? title;
-  final ImpaktfullUiAsset? trailingIcon;
+  final ImpaktfullUiAsset? trailingAsset;
   final Widget? trailingChild;
   final bool isLoading;
   final bool fullWidth;
@@ -33,9 +33,9 @@ class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
     required this.type,
     this.title,
     this.size = ImpaktfullUiButtonSize.medium,
-    this.leadingIcon,
+    this.leadingAsset,
     this.leadingChild,
-    this.trailingIcon,
+    this.trailingAsset,
     this.trailingChild,
     this.fullWidth = false,
     this.isLoading = false,
@@ -97,9 +97,9 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                         if (widget.leadingChild != null) ...[
                           widget.leadingChild!,
                         ],
-                        if (widget.leadingIcon != null) ...[
+                        if (widget.leadingAsset != null) ...[
                           ImpaktfullUiAssetWidget(
-                            asset: widget.leadingIcon,
+                            asset: widget.leadingAsset,
                             color: color,
                             size: iconSize,
                           ),
@@ -114,9 +114,9 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                             ),
                           ),
                         ],
-                        if (widget.trailingIcon != null) ...[
+                        if (widget.trailingAsset != null) ...[
                           ImpaktfullUiAssetWidget(
-                            asset: widget.trailingIcon,
+                            asset: widget.trailingAsset,
                             color: color,
                             size: iconSize,
                           ),

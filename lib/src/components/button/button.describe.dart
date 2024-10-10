@@ -5,9 +5,9 @@ String _describeInstance(BuildContext context, ImpaktfullUiButton instance) {
   descriptor.add('type', instance.type.name);
   descriptor.add('size', instance.size.name);
   descriptor.add('title', instance.title);
-  descriptor.add('leadingIcon', instance.leadingIcon);
+  descriptor.add('leadingIcon', instance.leadingAsset);
   descriptor.add('leadingChild', instance.leadingChild);
-  descriptor.add('trailingIcon', instance.trailingIcon);
+  descriptor.add('trailingIcon', instance.trailingAsset);
   descriptor.add('trailingChild', instance.trailingChild);
   descriptor.add('isLoading', instance.isLoading);
   descriptor.add('fullWidth', instance.fullWidth);

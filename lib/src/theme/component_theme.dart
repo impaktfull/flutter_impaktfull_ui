@@ -21,6 +21,7 @@ import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.d
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui_2/src/components/loading_error_data/loading_error_data.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
@@ -75,6 +76,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiInputFieldTheme inputField;
   final ImpaktfullUiListItemTheme listItem;
   final ImpaktfullUiListViewTheme listView;
+  final ImpaktfullUiLoadingErrorDataTheme loadingErrorData;
   final ImpaktfullUiLoadingIndicatorTheme loadingIndicator;
   final ImpaktfullUiModalTheme modal;
   final ImpaktfullUiNavBarTheme navBar;
@@ -125,6 +127,7 @@ class ImpaktfullUiComponentsTheme {
     required this.inputField,
     required this.listItem,
     required this.listView,
+    required this.loadingErrorData,
     required this.loadingIndicator,
     required this.modal,
     required this.navBar,
@@ -176,6 +179,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiInputFieldTheme? inputField,
     ImpaktfullUiListItemTheme? listItem,
     ImpaktfullUiListViewTheme? listView,
+    ImpaktfullUiLoadingErrorDataTheme? loadingErrorData,
     ImpaktfullUiLoadingIndicatorTheme? loadingIndicator,
     ImpaktfullUiModalTheme? modal,
     ImpaktfullUiNavBarTheme? navBar,
@@ -226,6 +230,7 @@ class ImpaktfullUiComponentsTheme {
         inputField: inputField ?? this.inputField,
         listItem: listItem ?? this.listItem,
         listView: listView ?? this.listView,
+        loadingErrorData: loadingErrorData ?? this.loadingErrorData,
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
         modal: modal ?? this.modal,
         navBar: navBar ?? this.navBar,
@@ -300,6 +305,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiListViewTheme) {
       return ImpaktfullUiListViewTheme.of(context) as T;
+    } else if (T == ImpaktfullUiLoadingErrorDataTheme) {
+      return ImpaktfullUiLoadingErrorDataTheme.of(context) as T;
     } else if (T == ImpaktfullUiLoadingIndicatorTheme) {
       return ImpaktfullUiLoadingIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiModalTheme) {

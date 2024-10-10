@@ -67,6 +67,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiInputField
 - ImpaktfullUiListItem
   - ImpaktfullUiSimpleListItem
+- ImpaktfullUiLoadingErrorData
 - ImpaktfullUiLoadingIndicator
 - ImpaktfullUiModal
 - ImpaktfullUiNavBar

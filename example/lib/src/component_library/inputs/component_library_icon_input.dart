@@ -25,8 +25,8 @@ class ComponentLibraryIconInput extends ComponentLibraryInputItem<IconData> {
           button: (context) => ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.secondary,
             size: ImpaktfullUiButtonSize.extraLarge,
-            leadingIcon: value == null ? null : ImpaktfullUiAsset.icon(value!),
-            trailingIcon: const ImpaktfullUiAsset.icon(Icons.arrow_drop_down),
+            leadingAsset: value == null ? null : ImpaktfullUiAsset.icon(value!),
+            trailingAsset: const ImpaktfullUiAsset.icon(Icons.arrow_drop_down),
             onTap: () => _controller.open(),
           ),
           items: items,

@@ -55,22 +55,30 @@ class ScreenLibraryVariant
                 label: 'Home',
                 onTap: () =>
                     ImpaktfullUiNotification.show(title: 'On home tapped'),
-                isSelected: false,
+                isSelected: true,
               ),
               ImpaktfullUiBottomNavigationItem(
                 asset: theme.assets.icons.settings,
                 label: 'Settings',
                 onTap: () =>
                     ImpaktfullUiNotification.show(title: 'On settings tapped'),
-                isSelected: true,
+                isSelected: false,
               ),
             ],
           ),
-          child: Center(
-            child: Text(
-              'No data available',
-              style: theme.textStyles.onCanvas.text.small,
-            ),
+          child: ImpaktfullUiLoadingErrorData(
+            isLoading: false,
+            errorTitle: 'No internet',
+            errorMessage: 'Check your internet connection and try again',
+            errorActions: [
+              ImpaktfullUiButton(
+                type: ImpaktfullUiButtonType.primary,
+                title: 'Retry',
+                onTap: () {},
+              ),
+            ],
+            items: const [],
+            builder: (context) => Container(),
           ),
         ),
       ),

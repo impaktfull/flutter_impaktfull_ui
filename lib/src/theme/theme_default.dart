@@ -21,6 +21,7 @@ import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.d
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui_2/src/components/loading_error_data/loading_error_data.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
@@ -527,6 +528,17 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiListViewTextStylesTheme(
             title: textStyles.onCanvas.display.small,
+          ),
+        ),
+        loadingErrorData: ImpaktfullUiLoadingErrorDataTheme(
+          assets: const ImpaktfullUiLoadingErrorDataAssetsTheme(),
+          colors: const ImpaktfullUiLoadingErrorDataColorTheme(),
+          dimens: const ImpaktfullUiLoadingErrorDataDimensTheme(),
+          textStyles: ImpaktfullUiLoadingErrorDataTextStyleTheme(
+            noDataTitle: textStyles.onCanvas.display.small.semiBold,
+            noDataMessage: textStyles.onCanvas.text.small.light,
+            errorTitle: textStyles.onCanvas.display.small.semiBold,
+            errorMessage: textStyles.onCanvas.text.small.light,
           ),
         ),
         loadingIndicator: ImpaktfullUiLoadingIndicatorTheme(

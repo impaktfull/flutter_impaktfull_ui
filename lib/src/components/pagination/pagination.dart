@@ -40,7 +40,7 @@ class ImpaktfullUiPagination extends StatelessWidget
         children: [
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.secondaryGrey,
-            leadingIcon: componentTheme.assets.arrowLeft,
+            leadingAsset: componentTheme.assets.arrowLeft,
             onTap: page == 1 ? null : () => onLoadPage(page - 1),
           ),
           Expanded(
@@ -52,7 +52,7 @@ class ImpaktfullUiPagination extends StatelessWidget
           ),
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.secondaryGrey,
-            leadingIcon: componentTheme.assets.arrowRight,
+            leadingAsset: componentTheme.assets.arrowRight,
             onTap: isFinalPage ? null : () => onLoadPage(page + 1),
           ),
         ],

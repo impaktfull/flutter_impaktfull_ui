@@ -39,10 +39,10 @@ class ButtonTypeLibraryVariant
                 size: size,
                 title: title,
                 fullWidth: fullWidth,
-                leadingIcon: leadingIcon == null
+                leadingAsset: leadingIcon == null
                     ? null
                     : ImpaktfullUiAsset.icon(leadingIcon),
-                trailingIcon: trailingIcon == null
+                trailingAsset: trailingIcon == null
                     ? null
                     : ImpaktfullUiAsset.icon(trailingIcon),
                 onTap: () {},
@@ -52,10 +52,10 @@ class ButtonTypeLibraryVariant
                 size: size,
                 title: title,
                 fullWidth: fullWidth,
-                leadingIcon: leadingIcon == null
+                leadingAsset: leadingIcon == null
                     ? null
                     : ImpaktfullUiAsset.icon(leadingIcon),
-                trailingIcon: trailingIcon == null
+                trailingAsset: trailingIcon == null
                     ? null
                     : ImpaktfullUiAsset.icon(trailingIcon),
                 onAsyncTap: () async =>
@@ -67,7 +67,7 @@ class ButtonTypeLibraryVariant
             type: type,
             size: size,
             fullWidth: fullWidth,
-            leadingIcon:
+            leadingAsset:
                 ImpaktfullUiAsset.icon(inputs.leadingIcon.value ?? Icons.add),
             onAsyncTap: () async => Future.delayed(const Duration(seconds: 3)),
           ),

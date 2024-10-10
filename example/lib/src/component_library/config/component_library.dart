@@ -22,6 +22,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/icon_butt
 import 'package:impaktfull_ui_example/src/component_library/components/input_field/input_field_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/list_item/list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/list_view/list_view_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/loading_error_data/loading_error_data_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_indicator/loading_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/modal/modal_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/nav_bar/nav_bar_library_item.dart';
@@ -36,6 +37,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/section_t
 import 'package:impaktfull_ui_example/src/component_library/components/selectable_list_item/selectable_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/separated_column/separated_column_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/sidebar_navigation/sidebar_navigation_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/sidebar_navigation_item/sidebar_navigation_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/simple_list_item/simple_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/snacky/snacky_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/switch/switch_library_item.dart';
@@ -43,8 +45,6 @@ import 'package:impaktfull_ui_example/src/component_library/components/switch_li
 import 'package:impaktfull_ui_example/src/component_library/components/table/table_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/tooltip/tooltip_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
-
-import '../components/sidebar_navigation_item/sidebar_navigation_item_library_item.dart';
 
 class ComponentLibrary {
   final List<ComponentLibraryItem> components = [
@@ -72,6 +72,7 @@ class ComponentLibrary {
     const IconButtonLibraryItem(),
     const ListItemLibraryItem(),
     const ListViewLibraryItem(),
+    const LoadingErrorDataLibraryItem(),
     const LoadingIndicatorLibraryItem(),
     const ModalLibraryItem(),
     const NavBarLibraryItem(),

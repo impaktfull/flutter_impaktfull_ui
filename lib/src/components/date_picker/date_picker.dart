@@ -206,7 +206,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
                   children: [
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.tertiaryGrey,
-                      leadingIcon: componentTheme.assets.arrowLeft,
+                      leadingAsset: componentTheme.assets.arrowLeft,
                       onTap: _onPreviousTapped,
                     ),
                     Expanded(
@@ -218,7 +218,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.tertiaryGrey,
-                      leadingIcon: componentTheme.assets.arrowRight,
+                      leadingAsset: componentTheme.assets.arrowRight,
                       onTap: _onNextTapped,
                     ),
                   ],

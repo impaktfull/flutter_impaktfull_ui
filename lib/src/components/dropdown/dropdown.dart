@@ -169,7 +169,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                 return ImpaktfullUiButton(
                   onTap: _onTapButton,
                   type: ImpaktfullUiButtonType.secondaryGrey,
-                  trailingIcon: _tooltipController.isShowing
+                  trailingAsset: _tooltipController.isShowing
                       ? componentTheme.assets.dropUp
                       : componentTheme.assets.dropDown,
                   title: 'Button Text',
