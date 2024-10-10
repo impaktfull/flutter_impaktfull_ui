@@ -55,7 +55,7 @@ class _CommandMenuWindowState extends State<CommandMenuWindow> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCommandMenuTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) => Actions(
+      builder: (context, componentTheme) => Actions(
         actions: {
           DismissIntent: CallbackAction<DismissIntent>(
             onInvoke: (intent) => widget.onCloseWindow(),

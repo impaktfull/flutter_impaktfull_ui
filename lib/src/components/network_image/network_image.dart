@@ -33,7 +33,7 @@ class ImpaktfullUiNetworkImage extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiNetworkImageTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         String fullUrl = url;
         if (url.startsWith('https://picsum.photos')) {
           fullUrl =

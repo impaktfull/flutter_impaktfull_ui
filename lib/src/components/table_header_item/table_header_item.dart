@@ -49,7 +49,7 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableHeaderItemTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         if (title == null) return const SizedBox(height: 48);
         return ImpaktfullUiTouchFeedback(
           onTap: onTap,

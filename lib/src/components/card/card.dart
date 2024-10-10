@@ -48,7 +48,7 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCardTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiContainer(
+      builder: (context, componentTheme) => ImpaktfullUiContainer(
         width: widget.width,
         height: widget.height,
         borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,

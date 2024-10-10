@@ -25,7 +25,7 @@ class ImpaktfullUiRefreshIndicator extends StatelessWidget
     if (onRefresh == null) return child;
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiRefreshIndicatorTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentStyle) => RefreshIndicator(
+      builder: (context, componentStyle) => RefreshIndicator(
         color: componentStyle.colors.loadingIndicator,
         strokeWidth: 1,
         onRefresh: onRefresh!,

@@ -29,7 +29,7 @@ class ImpaktfullUiRadioButton<T> extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiRadioButtonTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => SizedBox(
+      builder: (context, componentTheme) => SizedBox(
         width: 20,
         height: 20,
         child: ImpaktfullUiTouchFeedback(

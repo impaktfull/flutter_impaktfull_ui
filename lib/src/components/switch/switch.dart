@@ -25,7 +25,7 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSwitchTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final color = value
             ? componentTheme.colors.active
             : componentTheme.colors.inactive;
@@ -40,7 +40,7 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
             color: backgroundColor,
             borderRadius: componentTheme.dimens.borderRadius,
             child: AnimatedContainer(
-              duration: theme.durations.short,
+              duration: componentTheme.durations.selected,
               curve: Curves.easeInOut,
               decoration: BoxDecoration(
                 borderRadius: componentTheme.dimens.borderRadius,
@@ -59,9 +59,9 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
                   left: value ? 20 : 4,
                 ),
                 curve: Curves.easeInOut,
-                duration: theme.durations.short,
+                duration: componentTheme.durations.selected,
                 child: AnimatedContainer(
-                  duration: theme.durations.short,
+                  duration: componentTheme.durations.selected,
                   curve: Curves.easeInOut,
                   height: 16,
                   width: 16,
@@ -83,7 +83,7 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
                             MediaQuery.of(context).accessibleNavigation && value
                                 ? 1
                                 : 0,
-                        duration: theme.durations.short,
+                        duration: componentTheme.durations.selected,
                         curve: Curves.easeInOut,
                         child: ImpaktfullUiAssetWidget(
                           asset: componentTheme.assets.active,
@@ -96,7 +96,7 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
                                 !value
                             ? 1
                             : 0,
-                        duration: theme.durations.short,
+                        duration: componentTheme.durations.selected,
                         curve: Curves.easeInOut,
                         child: ImpaktfullUiAssetWidget(
                           asset: componentTheme.assets.inactive,

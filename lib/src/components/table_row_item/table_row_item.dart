@@ -86,7 +86,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableRowItemTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         if (builder != null) {
           return Padding(
             padding: const EdgeInsetsDirectional.only(end: 8),

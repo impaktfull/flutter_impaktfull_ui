@@ -40,7 +40,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiGridViewTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) =>
+      builder: (context, componentTheme) =>
           LayoutBuilder(builder: (context, constraints) {
         final config = ImpaktfullUiGridViewConfig(
           maxWidth: constraints.maxWidth,

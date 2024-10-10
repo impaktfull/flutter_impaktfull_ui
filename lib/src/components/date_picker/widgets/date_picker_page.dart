@@ -39,7 +39,7 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDatePickerTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => Padding(
+      builder: (context, componentTheme) => Padding(
         padding: margin,
         child: Builder(
           builder: (context) {

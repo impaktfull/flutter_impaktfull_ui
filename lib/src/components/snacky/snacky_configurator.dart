@@ -28,7 +28,7 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
     return ImpaktfullUiComponentThemeBuidler<
         ImpaktfullUiSnackyConfiguratorTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final languageCode = locale?.languageCode;
         final textDirection = languageCode == null
             ? TextDirection.ltr

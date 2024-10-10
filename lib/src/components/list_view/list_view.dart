@@ -126,7 +126,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
     }
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiListViewTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final padding = MediaQuery.of(context).padding.add(widget.padding);
         if (widget.children != null) {
           return ImpaktfullUiRefreshIndicator(

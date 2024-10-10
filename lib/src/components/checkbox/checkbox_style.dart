@@ -5,11 +5,13 @@ import 'package:impaktfull_ui_2/src/theme/theme.dart';
 class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiCheckboxColorTheme colors;
   final ImpaktfullUiCheckboxDimensTheme dimens;
+  final ImpaktfullUiCheckboxDurationsTheme durations;
   final ImpaktfullUiCheckboxAssetsTheme assets;
 
   const ImpaktfullUiCheckboxTheme({
     required this.colors,
     required this.dimens,
+    required this.durations,
     required this.assets,
   });
 
@@ -19,12 +21,33 @@ class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
   ImpaktfullUiCheckboxTheme copyWith({
     ImpaktfullUiCheckboxColorTheme? colors,
     ImpaktfullUiCheckboxDimensTheme? dimens,
+    ImpaktfullUiCheckboxDurationsTheme? durations,
     ImpaktfullUiCheckboxAssetsTheme? assets,
   }) =>
       ImpaktfullUiCheckboxTheme(
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         assets: assets ?? this.assets,
+      );
+}
+
+class ImpaktfullUiCheckboxAssetsTheme {
+  final ImpaktfullUiAsset check;
+  final ImpaktfullUiAsset indermediate;
+
+  const ImpaktfullUiCheckboxAssetsTheme({
+    required this.check,
+    required this.indermediate,
+  });
+
+  ImpaktfullUiCheckboxAssetsTheme copyWith({
+    ImpaktfullUiAsset? check,
+    ImpaktfullUiAsset? indermediate,
+  }) =>
+      ImpaktfullUiCheckboxAssetsTheme(
+        check: check ?? this.check,
+        indermediate: indermediate ?? this.indermediate,
       );
 }
 
@@ -74,21 +97,9 @@ class ImpaktfullUiCheckboxDimensTheme {
       );
 }
 
-class ImpaktfullUiCheckboxAssetsTheme {
-  final ImpaktfullUiAsset check;
-  final ImpaktfullUiAsset indermediate;
-
-  const ImpaktfullUiCheckboxAssetsTheme({
-    required this.check,
-    required this.indermediate,
+class ImpaktfullUiCheckboxDurationsTheme {
+  final Duration selected;
+  const ImpaktfullUiCheckboxDurationsTheme({
+    required this.selected,
   });
-
-  ImpaktfullUiCheckboxAssetsTheme copyWith({
-    ImpaktfullUiAsset? check,
-    ImpaktfullUiAsset? indermediate,
-  }) =>
-      ImpaktfullUiCheckboxAssetsTheme(
-        check: check ?? this.check,
-        indermediate: indermediate ?? this.indermediate,
-      );
 }

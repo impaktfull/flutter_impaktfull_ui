@@ -21,7 +21,7 @@ class ImpaktfullUiDatePickerWeekdays extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDatePickerTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final days = [
           'Mon',
           'Tue',

@@ -10,7 +10,7 @@ import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/date_picker_style.dart';
+import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/floating_action_button/floating_action_button.dart';
@@ -34,7 +34,7 @@ import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_butt
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
-import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item_style.dart';
+import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/separated_column/separated_column.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
@@ -43,6 +43,7 @@ import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/tab_bar/tab_bar.dart';
+import 'package:impaktfull_ui_2/src/components/tab_bar_item/tab_bar_item.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
 import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
@@ -192,14 +193,14 @@ class DefaultTheme {
       package: package,
       assetSuffix: assetSuffix,
     );
-    final duration = ImpaktfullUiDurationTheme.getDefault();
+    final durations = ImpaktfullUiDurationTheme.getDefault();
     return ImpaktfullUiTheme(
       label: label,
       assets: assets,
       colors: colors,
       textStyles: textStyles,
       dimens: dimens,
-      durations: duration,
+      durations: durations,
       shadows: shadows,
       components: ImpaktfullUiComponentsTheme(
         avatar: ImpaktfullUiAvatarTheme(
@@ -287,6 +288,9 @@ class DefaultTheme {
           dimens: ImpaktfullUiButtonDimensTheme(
             borderRadius: dimens.borderRadius,
           ),
+          durations: ImpaktfullUiButtonDurationsTheme(
+            loading: durations.short,
+          ),
           textStyles: ImpaktfullUiButtonTextStylesTheme(
             primary: textStyles.onAccent.text.small.bold,
             alternative: textStyles.onCardPrimary.text.small.bold,
@@ -311,6 +315,10 @@ class DefaultTheme {
           ),
         ),
         checkbox: ImpaktfullUiCheckboxTheme(
+          assets: ImpaktfullUiCheckboxAssetsTheme(
+            check: assets.icons.check,
+            indermediate: assets.icons.minus,
+          ),
           colors: ImpaktfullUiCheckboxColorTheme(
             borderColor: colors.border,
             activeColor: colors.accent,
@@ -321,20 +329,26 @@ class DefaultTheme {
           dimens: ImpaktfullUiCheckboxDimensTheme(
             borderRadius: dimens.borderRadiusSmall,
           ),
-          assets: ImpaktfullUiCheckboxAssetsTheme(
-            check: assets.icons.check,
-            indermediate: assets.icons.minus,
+          durations: ImpaktfullUiCheckboxDurationsTheme(
+            selected: durations.short,
           ),
         ),
         cmsHeader: ImpaktfullUiCmsHeaderTheme(
+          assets: ImpaktfullUiCmsHeaderAssetsTheme(
+            back: assets.icons.arrowLeft,
+          ),
           colors: ImpaktfullUiCmsHeaderColorTheme(
             background: colors.card,
             border: colors.border,
             icons: colors.text,
           ),
           dimens: const ImpaktfullUiCmsHeaderDimensTheme(),
-          assets: ImpaktfullUiCmsHeaderAssetsTheme(
-            back: assets.icons.arrowLeft,
+          shadows: ImpaktfullUiCmsHeaderShadowsTheme(
+            background: shadows.extraSmall,
+          ),
+          textStyles: ImpaktfullUiCmsHeaderTextStylesTheme(
+            title: textStyles.onCard.text.large,
+            subtitle: textStyles.onCard.text.small.light,
           ),
         ),
         colorPicker: ImpaktfullUiColorPickerTheme(
@@ -632,7 +646,7 @@ class DefaultTheme {
             borderRadius: dimens.borderRadius,
           ),
           durations: ImpaktfullUiNotificationBadgeDurationTheme(
-            opacity: duration.short,
+            opacity: durations.short,
           ),
           textStyles: ImpaktfullUiNotificationBadgeTextStyleTheme(
             text: textStyles.onPrimary.text.small,
@@ -716,7 +730,7 @@ class DefaultTheme {
           ),
           dimens: const ImpaktfullUiSelectableListItemDimensTheme(),
           durations: ImpaktfullUiSelectableListItemDurationsTheme(
-            color: duration.short,
+            color: durations.short,
           ),
           textStyles: const ImpaktfullUiSelectableListItemTextStyleTheme(),
         ),
@@ -765,7 +779,7 @@ class DefaultTheme {
             ),
           ),
           durations: ImpaktfullUiSidebarNavigationItemDurationTheme(
-            dropdownRotation: duration.short,
+            dropdownRotation: durations.short,
           ),
           textStyles: ImpaktfullUiSidebarNavigationItemTextStyleTheme(
             title: textStyles.onCard.text.medium.medium,
@@ -813,6 +827,10 @@ class DefaultTheme {
           ),
         ),
         switchTheme: ImpaktfullUiSwitchTheme(
+          assets: ImpaktfullUiSwitchAssetsTheme(
+            active: assets.icons.check,
+            inactive: assets.icons.close,
+          ),
           colors: ImpaktfullUiSwitchColorTheme(
             activeBackgroundColor: colors.accent,
             inactiveBackgroundColor: colors.border,
@@ -820,16 +838,15 @@ class DefaultTheme {
             inactive: colors.card,
             border: colors.border,
           ),
-          textStyles: const ImpaktfullUiSwitchTextStyleTheme(),
           dimens: ImpaktfullUiSwitchDimensTheme(
             borderRadius: dimens.borderRadius,
             thumbBorderRadius: dimens.borderRadiusExtraSmall,
             borderWidth: 0,
           ),
-          assets: ImpaktfullUiSwitchAssetsTheme(
-            active: assets.icons.check,
-            inactive: assets.icons.close,
+          durations: ImpaktfullUiSwitchDurationsTheme(
+            selected: durations.short,
           ),
+          textStyles: const ImpaktfullUiSwitchTextStyleTheme(),
         ),
         switchListItem: ImpaktfullUiSwitchListItemTheme(
           assets: const ImpaktfullUiSwitchListItemAssetsTheme(),
@@ -844,6 +861,19 @@ class DefaultTheme {
           colors: ImpaktfullUiTabBarColorTheme(),
           dimens: ImpaktfullUiTabBarDimensTheme(),
           textStyles: ImpaktfullUiTabBarTextStyleTheme(),
+        ),
+        tabBarItem: ImpaktfullUiTabBarItemTheme(
+          assets: const ImpaktfullUiTabBarItemAssetsTheme(),
+          colors: ImpaktfullUiTabBarItemColorTheme(background: colors.card),
+          dimens: ImpaktfullUiTabBarItemDimensTheme(
+            selectedMarkerBorderRadius: dimens.borderRadius,
+          ),
+          durations: ImpaktfullUiTabBarItemDurationsTheme(
+            selected: durations.short,
+          ),
+          textStyles: ImpaktfullUiTabBarItemTextStyleTheme(
+            label: textStyles.onCard.text.small.medium,
+          ),
         ),
         table: ImpaktfullUiTableTheme(
           colors: ImpaktfullUiTableColorTheme(
@@ -894,7 +924,7 @@ class DefaultTheme {
             borderRadius: dimens.borderRadiusSmall,
           ),
           durations: ImpaktfullUiTooltipDurationTheme(
-            wait: duration.long,
+            wait: durations.long,
           ),
           assets: const ImpaktfullUiTooltipAssetsTheme(),
         ),

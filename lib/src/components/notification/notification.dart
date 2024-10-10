@@ -102,7 +102,7 @@ class ImpaktfullUiNotification extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiNotificationTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final crossAxisAlignment = _getAlignment();
         final config = _getNotificationTypeConfig(componentTheme);
         return Container(

@@ -114,7 +114,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiModalTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         return GestureDetector(
           onTap: () => Navigator.of(context).pop(),
           child: Padding(

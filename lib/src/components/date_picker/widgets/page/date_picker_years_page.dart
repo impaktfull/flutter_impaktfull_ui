@@ -27,7 +27,7 @@ class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDatePickerTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => SizedBox(
+      builder: (context, componentTheme) => SizedBox(
         height: 220,
         child: ImpaktfullUiListView.builder(
           items: _getItems(context),

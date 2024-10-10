@@ -47,7 +47,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiBadgeTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final color = _getColor(theme);
         final textStyle = _getTextStyle(theme);
         return Container(

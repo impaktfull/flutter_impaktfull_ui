@@ -33,7 +33,7 @@ class ImpaktfullUiSectionTitle extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSectionTitleTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final areAllIconButtons = _areAllValidActions(actions);
         return Padding(
           padding: margin ??

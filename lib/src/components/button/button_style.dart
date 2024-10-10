@@ -4,11 +4,13 @@ import 'package:impaktfull_ui_2/src/theme/theme.dart';
 class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiButtonColorTheme colors;
   final ImpaktfullUiButtonDimensTheme dimens;
+  final ImpaktfullUiButtonDurationsTheme durations;
   final ImpaktfullUiButtonTextStylesTheme textStyles;
 
   const ImpaktfullUiButtonTheme({
     required this.colors,
     required this.dimens,
+    required this.durations,
     required this.textStyles,
   });
 
@@ -43,6 +45,13 @@ class ImpaktfullUiButtonDimensTheme {
 
   const ImpaktfullUiButtonDimensTheme({
     required this.borderRadius,
+  });
+}
+
+class ImpaktfullUiButtonDurationsTheme {
+  final Duration loading;
+  const ImpaktfullUiButtonDurationsTheme({
+    required this.loading,
   });
 }
 

@@ -25,11 +25,11 @@ class ImpaktfullUiInputFieldAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiCard(
+      builder: (context, componentTheme) => ImpaktfullUiCard(
         onTap: onTap,
         borderRadius: BorderRadiusDirectional.only(
-          topEnd: theme.dimens.borderRadius.topEnd,
-          bottomEnd: theme.dimens.borderRadius.bottomStart,
+          topEnd: componentTheme.dimens.borderRadius.topEnd,
+          bottomEnd: componentTheme.dimens.borderRadius.bottomStart,
         ),
         height: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 16),

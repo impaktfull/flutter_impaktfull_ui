@@ -45,7 +45,7 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
     return ImpaktfullUiComponentThemeBuidler<
         ImpaktfullUiSidebarNavigationTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final hasHeader = asset != null || header != null;
         final hasFooter = footer != null;
         final hasFooterItems = footerItems.isNotEmpty;

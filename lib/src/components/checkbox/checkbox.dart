@@ -40,7 +40,7 @@ class ImpaktfullUiCheckBox extends StatelessWidget
     final isSelected = value == null || value == true;
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCheckboxTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => Center(
+      builder: (context, componentTheme) => Center(
         child: ImpaktfullUiTouchFeedback(
           onTap: _onTap,
           borderRadius: componentTheme.dimens.borderRadius,
@@ -63,7 +63,7 @@ class ImpaktfullUiCheckBox extends StatelessWidget
                 ),
                 Positioned.fill(
                   child: AnimatedOpacity(
-                    duration: theme.durations.short,
+                    duration: componentTheme.durations.selected,
                     curve: Curves.easeInOut,
                     opacity: isSelected ? 1 : 0,
                     child: Container(
@@ -80,7 +80,7 @@ class ImpaktfullUiCheckBox extends StatelessWidget
                 if (value == true) ...[
                   Positioned.fill(
                     child: AnimatedOpacity(
-                      duration: theme.durations.short,
+                      duration: componentTheme.durations.selected,
                       curve: Curves.easeInOut,
                       opacity: isSelected ? 1 : 0,
                       child: Center(

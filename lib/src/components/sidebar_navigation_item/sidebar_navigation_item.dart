@@ -48,7 +48,7 @@ class _ImpaktfullUiSidebarNavigationItemState
     return ImpaktfullUiComponentThemeBuidler<
         ImpaktfullUiSidebarNavigationItemTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         return ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,

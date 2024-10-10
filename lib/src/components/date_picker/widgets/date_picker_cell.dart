@@ -34,7 +34,7 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDatePickerTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiTouchFeedback(
+      builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,
         color: _getBackgroundColor(componentTheme),
         borderRadius: _getBorderRadius(componentTheme),

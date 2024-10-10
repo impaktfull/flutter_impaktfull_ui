@@ -46,7 +46,7 @@ class ImpaktfullUiColorPicker extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiColorPickerTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final allowedColors =
             this.allowedColors.isEmpty ? defaultColors : this.allowedColors;
         switch (type) {

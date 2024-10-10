@@ -31,7 +31,7 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => Container(
+      builder: (context, componentTheme) => Container(
         decoration: BoxDecoration(
           color: componentTheme.colors.background,
           borderRadius: componentTheme.dimens.borderRadius,

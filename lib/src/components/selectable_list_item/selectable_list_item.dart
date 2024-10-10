@@ -36,7 +36,7 @@ class ImpaktfullUiSelectableListItem extends StatelessWidget
     return ImpaktfullUiComponentThemeBuidler<
         ImpaktfullUiSelectableListItemTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiSimpleListItem(
+      builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
         title: title,
         subtitle: subtitle,
         onTap: onChanged == null ? null : _onTap,

@@ -60,7 +60,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiButtonTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final iconSize = _getIconSize();
         final textStyle = _getTextStyle(componentTheme);
         final color = textStyle?.color;
@@ -130,7 +130,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                 ),
                 AnimatedOpacity(
                   opacity: _isLoading ? 1 : 0,
-                  duration: theme.durations.short,
+                  duration: componentTheme.durations.loading,
                   curve: Curves.easeInOut,
                   child: ImpaktfullUiAutoLayout.horizontal(
                     mainAxisSize:

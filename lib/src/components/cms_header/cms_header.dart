@@ -44,7 +44,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCmsHeaderTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) => Container(
+      builder: (context, componentTheme) => Container(
         decoration: BoxDecoration(
           color: componentTheme.colors.background,
           border: componentTheme.colors.border == null
@@ -55,7 +55,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                     width: 1,
                   ),
                 ),
-          boxShadow: theme.shadows.extraSmall,
+          boxShadow: componentTheme.shadows.background,
         ),
         child: ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
@@ -88,7 +88,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                           children: [
                             Text(
                               widget.title,
-                              style: theme.textStyles.onCard.text.large,
+                              style: componentTheme.textStyles.title,
                             ),
                             if (widget.badge != null) ...[
                               ImpaktfullUiBadge(
@@ -101,7 +101,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                         if (widget.subtitle != null) ...[
                           Text(
                             widget.subtitle!,
-                            style: theme.textStyles.onCardTertiary.text.small,
+                            style: componentTheme.textStyles.subtitle,
                           ),
                         ],
                       ],

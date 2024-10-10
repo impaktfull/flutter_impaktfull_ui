@@ -29,7 +29,7 @@ class ImpaktfullUiSwitchListItem extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSwitchListItemTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiSimpleListItem(
+      builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
         title: title,
         subtitle: subtitle,
         onTap: onChanged == null ? null : _onTap,

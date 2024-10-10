@@ -44,7 +44,7 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget
     return ImpaktfullUiComponentThemeBuidler<
         ImpaktfullUiNotificationBadgeTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final showBadge = show || text != null;
         final color = this.color ?? componentTheme.colors.background;
         final textStyle = componentTheme.textStyles.text;

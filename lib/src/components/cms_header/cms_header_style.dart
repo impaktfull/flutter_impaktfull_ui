@@ -3,18 +3,30 @@ import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
+  final ImpaktfullUiCmsHeaderAssetsTheme assets;
   final ImpaktfullUiCmsHeaderColorTheme colors;
   final ImpaktfullUiCmsHeaderDimensTheme dimens;
-  final ImpaktfullUiCmsHeaderAssetsTheme assets;
+  final ImpaktfullUiCmsHeaderShadowsTheme shadows;
+  final ImpaktfullUiCmsHeaderTextStylesTheme textStyles;
 
   const ImpaktfullUiCmsHeaderTheme({
+    required this.assets,
     required this.colors,
     required this.dimens,
-    required this.assets,
+    required this.shadows,
+    required this.textStyles,
   });
 
   static ImpaktfullUiCmsHeaderTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.cmsHeader;
+}
+
+class ImpaktfullUiCmsHeaderAssetsTheme {
+  final ImpaktfullUiAsset back;
+
+  const ImpaktfullUiCmsHeaderAssetsTheme({
+    required this.back,
+  });
 }
 
 class ImpaktfullUiCmsHeaderColorTheme {
@@ -33,10 +45,23 @@ class ImpaktfullUiCmsHeaderDimensTheme {
   const ImpaktfullUiCmsHeaderDimensTheme();
 }
 
-class ImpaktfullUiCmsHeaderAssetsTheme {
-  final ImpaktfullUiAsset back;
+class ImpaktfullUiCmsHeaderDurationsTheme {
+  const ImpaktfullUiCmsHeaderDurationsTheme();
+}
 
-  const ImpaktfullUiCmsHeaderAssetsTheme({
-    required this.back,
+class ImpaktfullUiCmsHeaderShadowsTheme {
+  final List<BoxShadow> background;
+  const ImpaktfullUiCmsHeaderShadowsTheme({
+    required this.background,
+  });
+}
+
+class ImpaktfullUiCmsHeaderTextStylesTheme {
+  final TextStyle title;
+  final TextStyle subtitle;
+
+  const ImpaktfullUiCmsHeaderTextStylesTheme({
+    required this.title,
+    required this.subtitle,
   });
 }

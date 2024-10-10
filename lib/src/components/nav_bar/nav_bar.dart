@@ -34,7 +34,7 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiNavBarTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => Container(
+      builder: (context, componentTheme) => Container(
         decoration: BoxDecoration(
           color: componentTheme.colors.background,
           border: componentTheme.colors.border == null

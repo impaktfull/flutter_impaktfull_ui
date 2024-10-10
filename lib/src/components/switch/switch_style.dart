@@ -6,12 +6,14 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSwitchColorTheme colors;
   final ImpaktfullUiSwitchTextStyleTheme textStyles;
   final ImpaktfullUiSwitchDimensTheme dimens;
+  final ImpaktfullUiSwitchDurationsTheme durations;
   final ImpaktfullUiSwitchAssetsTheme assets;
 
   const ImpaktfullUiSwitchTheme({
     required this.colors,
     required this.textStyles,
     required this.dimens,
+    required this.durations,
     required this.assets,
   });
 
@@ -47,6 +49,13 @@ class ImpaktfullUiSwitchDimensTheme {
     this.borderRadius,
     this.thumbBorderRadius,
     this.borderWidth,
+  });
+}
+
+class ImpaktfullUiSwitchDurationsTheme {
+  final Duration selected;
+  const ImpaktfullUiSwitchDurationsTheme({
+    required this.selected,
   });
 }
 

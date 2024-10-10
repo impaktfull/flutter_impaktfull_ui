@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'horizontal_tabs_style.dart';
@@ -27,7 +28,7 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiHorizontalTabsTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => SizedBox(
+      builder: (context, componentTheme) => SizedBox(
         height: 48,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
@@ -40,7 +41,7 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget
               badge: tab.badge,
               badgeType: tab.badgeType,
               isSelected: selectedValue == tab.value,
-              theme: theme.components.horizontalTab,
+              theme: ImpaktfullUiTheme.of(context).components.horizontalTab,
               onTap: () => _onTap(tab.value),
             );
           },

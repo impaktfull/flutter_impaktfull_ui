@@ -41,7 +41,7 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiScreenTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) {
+      builder: (context, componentTheme) {
         final hasNavbar = onBackTapped != null ||
             title != null ||
             subtitle != null ||

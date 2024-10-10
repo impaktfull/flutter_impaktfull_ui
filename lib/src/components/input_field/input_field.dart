@@ -105,8 +105,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     final trailingAction = widget.trailingAction;
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) =>
-          ImpaktfullUiAutoLayout.vertical(
+      builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
         spacing: 4,
         children: [

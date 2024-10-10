@@ -118,7 +118,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     final width = widget.childWidth ?? _buttonWidth ?? 0;
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDropdownTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, theme, componentTheme) => PopScope(
+      builder: (context, componentTheme) => PopScope(
         onPopInvokedWithResult: (didPop, result) => _tooltipController.hide(),
         child: CompositedTransformTarget(
           link: _link,

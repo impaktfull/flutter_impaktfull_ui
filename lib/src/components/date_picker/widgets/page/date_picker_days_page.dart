@@ -29,8 +29,7 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDatePickerTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) =>
-          ImpaktfullUiAutoLayout.vertical(
+      builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         children: [
           ImpaktfullUiDatePickerWeekdays(
             startDate: weekdaysStartDate,

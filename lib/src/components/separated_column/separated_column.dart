@@ -35,8 +35,7 @@ class ImpaktfullUiSeparatedColumn extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSeparatedColumnTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) =>
-          ImpaktfullUiAutoLayout.vertical(
+      builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         spacing: 8,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

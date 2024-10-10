@@ -21,7 +21,7 @@ class ImpaktfullUiDivider extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDividerTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => Container(
+      builder: (context, componentTheme) => Container(
         color: componentTheme.colors.color,
         width: double.infinity,
         margin: margin ?? componentTheme.dimens.margin,

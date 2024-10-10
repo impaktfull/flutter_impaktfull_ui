@@ -42,7 +42,7 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget
     return ImpaktfullUiComponentThemeBuidler<
         ImpaktfullUiBottomNavigationItemTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => Expanded(
+      builder: (context, componentTheme) => Expanded(
         child: ImpaktfullUiTouchFeedback(
           toolTip: showLabel ? null : label,
           onTap: onTap,

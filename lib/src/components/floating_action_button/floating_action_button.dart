@@ -33,7 +33,7 @@ class ImpaktfullUiFloatingActionButton extends StatelessWidget
     return ImpaktfullUiComponentThemeBuidler<
         ImpaktfullUiFloatingActionButtonTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => ImpaktfullUiTouchFeedback(
+      builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,
         toolTip: toolTip,
         color: onTap == null
