@@ -5,14 +5,16 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class SidebarNavigationLibraryVariant extends ComponentLibraryVariant<SidebarNavigationLibraryPrimaryInputs> {
+class SidebarNavigationLibraryVariant
+    extends ComponentLibraryVariant<SidebarNavigationLibraryPrimaryInputs> {
   const SidebarNavigationLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, SidebarNavigationLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, SidebarNavigationLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         height: 250,
@@ -68,7 +70,8 @@ class SidebarNavigationLibraryVariant extends ComponentLibraryVariant<SidebarNav
               title: 'Search',
             ),
           ],
-          secondaryItems: List.generate(inputs.amountOfSecondaryItems.value ?? 0, (index) => index)
+          secondaryItems: List.generate(
+                  inputs.amountOfSecondaryItems.value ?? 0, (index) => index)
               .map(
                 (index) => ImpaktfullUiSidebarNavigationItem(
                   leading: theme.assets.icons.confetti,
@@ -89,7 +92,9 @@ class SidebarNavigationLibraryVariant extends ComponentLibraryVariant<SidebarNav
                   url: NetworkImages.profilePicture,
                 ),
                 trailingWidgetBuilder: (context) => const SizedBox(width: 40),
-                borderRadius: ImpaktfullUiSidebarNavigationItemTheme.of(context).dimens.borderRadius,
+                borderRadius: ImpaktfullUiSidebarNavigationItemTheme.of(context)
+                    .dimens
+                    .borderRadius,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 8,
@@ -106,7 +111,8 @@ class SidebarNavigationLibraryVariant extends ComponentLibraryVariant<SidebarNav
                 child: ImpaktfullUiIconButton(
                   asset: theme.assets.icons.logout,
                   color: theme.colors.text,
-                  onTap: () => ImpaktfullUiNotification.show(title: 'Logout tapped'),
+                  onTap: () =>
+                      ImpaktfullUiNotification.show(title: 'Logout tapped'),
                 ),
               ),
             ],
@@ -117,7 +123,9 @@ class SidebarNavigationLibraryVariant extends ComponentLibraryVariant<SidebarNav
   }
 
   @override
-  SidebarNavigationLibraryPrimaryInputs inputs() => SidebarNavigationLibraryPrimaryInputs();
+  SidebarNavigationLibraryPrimaryInputs inputs() =>
+      SidebarNavigationLibraryPrimaryInputs();
 }
 
-class SidebarNavigationLibraryPrimaryInputs extends SidebarNavigationLibraryInputs {}
+class SidebarNavigationLibraryPrimaryInputs
+    extends SidebarNavigationLibraryInputs {}

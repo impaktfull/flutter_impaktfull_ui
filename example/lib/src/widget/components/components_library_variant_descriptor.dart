@@ -35,7 +35,11 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
         if (text != null) ...[
           Text(
             text,
-            style: ImpaktfullUiTheme.of(context).textStyles.onCanvas.text.extraSmall,
+            style: ImpaktfullUiTheme.of(context)
+                .textStyles
+                .onCanvas
+                .text
+                .extraSmall,
           ),
         ],
         Container(

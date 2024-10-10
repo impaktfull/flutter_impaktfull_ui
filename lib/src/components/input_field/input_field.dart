@@ -3,6 +3,7 @@ import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
@@ -16,6 +17,7 @@ part 'input_field.describe.dart';
 class ImpaktfullUiInputField extends StatefulWidget
     with ComponentDescriptorMixin {
   final String? label;
+  final List<Widget> labelActions;
   final String? placeholder;
   final String? hint;
   final String? error;
@@ -41,6 +43,7 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.hint,
     this.error,
     this.label,
+    this.labelActions = const [],
     this.controller,
     this.focusNode,
     this.onFocusChanged,
@@ -108,9 +111,10 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
         spacing: 4,
         children: [
           if (widget.label != null) ...[
-            Text(
-              widget.label ?? '',
-              style: componentTheme.textStyles.label,
+            ImpaktfullUiSectionTitle(
+              title: widget.label ?? '',
+              padding: EdgeInsets.zero,
+              actions: widget.labelActions,
             ),
           ],
           SizedBox(

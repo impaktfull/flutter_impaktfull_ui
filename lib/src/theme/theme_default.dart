@@ -29,6 +29,7 @@ import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item_style.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
@@ -614,6 +615,26 @@ class DefaultTheme {
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
           colors: ImpaktfullUiRefreshIndicatorColorTheme(
               loadingIndicator: colors.accent),
+        ),
+        sectionTitle: ImpaktfullUiSectionTitleTheme(
+          assets: const ImpaktfullUiSectionTitleAssetsTheme(),
+          colors: ImpaktfullUiSectionTitleColorTheme(
+            icons: colors.text,
+          ),
+          dimens: const ImpaktfullUiSectionTitleDimensTheme(
+            padding: EdgeInsetsDirectional.only(
+              start: 16,
+              end: 16,
+              top: 16,
+            ),
+            paddingWithIconButtonActions: EdgeInsetsDirectional.only(
+              start: 16,
+              end: 4,
+            ),
+          ),
+          textStyles: ImpaktfullUiSectionTitleTextStyleTheme(
+            title: textStyles.onCard.text.small.medium,
+          ),
         ),
         selectableListItem: ImpaktfullUiSelectableListItemTheme(
           assets: ImpaktfullUiSelectableListItemAssetsTheme(

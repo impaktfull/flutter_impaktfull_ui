@@ -58,7 +58,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     bool hasBlurredBackground = false,
     bool rootNavigator = false,
   }) =>
-      Navigator.of(context, rootNavigator: rootNavigator).push<T>(ImpaktfullUiDefaultModalRoute<T>(
+      Navigator.of(context, rootNavigator: rootNavigator)
+          .push<T>(ImpaktfullUiDefaultModalRoute<T>(
         context: context,
         builder: builder,
         barrierDismissible: true,
@@ -117,10 +118,14 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
             child: Center(
               child: LayoutBuilder(
                 builder: (context, constraints) {
-                  final width = constraints.maxWidth > this.width ? this.width : constraints.maxWidth;
+                  final width = constraints.maxWidth > this.width
+                      ? this.width
+                      : constraints.maxWidth;
                   final actionsOrientation = _getActionsOrientation(width);
                   List<Widget> actions = this.actions;
-                  if (actions.isNotEmpty && actionsOrientation == ImpaktfullUiAutoLayoutOrientation.horizontal) {
+                  if (actions.isNotEmpty &&
+                      actionsOrientation ==
+                          ImpaktfullUiAutoLayoutOrientation.horizontal) {
                     actions = actions
                         .map(
                           (action) => Expanded(
@@ -137,7 +142,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: componentTheme.colors.leadingHeaderIcon.withOpacity(0.2),
+                            color: componentTheme.colors.leadingHeaderIcon
+                                .withOpacity(0.2),
                           ),
                           borderRadius: componentTheme.dimens.borderRadius,
                         ),
@@ -149,7 +155,9 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                       ),
                     ],
                   ];
-                  final hasHeader = headerChildLocation != null || headerIcon != null || headerChild != null;
+                  final hasHeader = headerChildLocation != null ||
+                      headerIcon != null ||
+                      headerChild != null;
                   return GestureDetector(
                     onTap: () {}, // cancel close event
                     child: ImpaktfullUiContainer(
@@ -167,39 +175,50 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                     padding: componentTheme.dimens.padding,
                                     child: ImpaktfullUiAutoLayout.horizontal(
                                       mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       spacing: 16,
                                       children: [
-                                        if (headerChildLocation == ImpaktfullUiModalHeaderChildLocation.leading &&
+                                        if (headerChildLocation ==
+                                                ImpaktfullUiModalHeaderChildLocation
+                                                    .leading &&
                                             headerChilderen.isNotEmpty) ...[
                                           ...headerChilderen,
                                         ],
                                         Expanded(
-                                          child: ImpaktfullUiAutoLayout.vertical(
+                                          child:
+                                              ImpaktfullUiAutoLayout.vertical(
                                             mainAxisSize: MainAxisSize.min,
                                             spacing: 4,
                                             children: [
-                                              if (headerChildLocation == ImpaktfullUiModalHeaderChildLocation.top &&
-                                                  headerChilderen.isNotEmpty) ...[
+                                              if (headerChildLocation ==
+                                                      ImpaktfullUiModalHeaderChildLocation
+                                                          .top &&
+                                                  headerChilderen
+                                                      .isNotEmpty) ...[
                                                 ...headerChilderen,
                                               ],
                                               if (title != null) ...[
                                                 Text(
                                                   title!,
-                                                  style: componentTheme.textStyles.title,
+                                                  style: componentTheme
+                                                      .textStyles.title,
                                                 ),
                                                 if (subtitle != null) ...[
                                                   Text(
                                                     subtitle!,
-                                                    style: componentTheme.textStyles.subtitle,
+                                                    style: componentTheme
+                                                        .textStyles.subtitle,
                                                   ),
                                                 ],
                                               ],
                                             ],
                                           ),
                                         ),
-                                        if (hasClose || onCloseTapped != null) ...[
+                                        if (hasClose ||
+                                            onCloseTapped != null) ...[
                                           const SizedBox(width: 48),
                                         ],
                                       ],
@@ -210,7 +229,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                   Align(
                                     alignment: Alignment.topRight,
                                     child: Padding(
-                                      padding: componentTheme.dimens.closeIconButtonPadding,
+                                      padding: componentTheme
+                                          .dimens.closeIconButtonPadding,
                                       child: ImpaktfullUiIconButton(
                                         onTap: () => _onCloseTapped(context),
                                         asset: componentTheme.assets.close,
@@ -230,7 +250,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                 child: child!,
                               ),
                             ],
-                            if (showDividers && (child != null || title != null)) ...[
+                            if (showDividers &&
+                                (child != null || title != null)) ...[
                               const ImpaktfullUiDivider(),
                             ],
                             if (actions.isNotEmpty) ...[
@@ -239,7 +260,9 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                 child: ImpaktfullUiAutoLayout(
                                   spacing: 8,
                                   orientation: actionsOrientation,
-                                  crossAxisAlignment: actionsOrientation == ImpaktfullUiAutoLayoutOrientation.vertical
+                                  crossAxisAlignment: actionsOrientation ==
+                                          ImpaktfullUiAutoLayoutOrientation
+                                              .vertical
                                       ? CrossAxisAlignment.stretch
                                       : CrossAxisAlignment.start,
                                   children: [

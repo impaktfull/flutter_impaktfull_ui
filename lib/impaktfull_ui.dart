@@ -34,6 +34,7 @@ export 'src/components/pagination/pagination.dart';
 export 'src/components/radio_button/radio_button.dart';
 export 'src/components/radio_button_list_item/radio_button_list_item.dart';
 export 'src/components/refresh_indicator/refresh_indicator.dart';
+export 'src/components/section_title/section_title.dart';
 export 'src/components/selectable_list_item/selectable_list_item.dart';
 export 'src/components/sidebar_navigation/sidebar_navigation.dart';
 export 'src/components/sidebar_navigation_item/sidebar_navigation_item.dart';

@@ -14,7 +14,8 @@ export 'date_picker_style.dart';
 
 part 'date_picker.describe.dart';
 
-class ImpaktfullUiDatePicker extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiDatePicker extends StatefulWidget
+    with ComponentDescriptorMixin {
   final DateTime? selectedStartDate;
   final DateTime? selectedEndDate;
   final ValueChanged<DateTime?> onStartDateChanged;
@@ -169,7 +170,8 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   void didUpdateWidget(covariant ImpaktfullUiDatePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
     final selectedStartDate = widget.selectedStartDate;
-    if (selectedStartDate != null && selectedStartDate != oldWidget.selectedStartDate) {
+    if (selectedStartDate != null &&
+        selectedStartDate != oldWidget.selectedStartDate) {
       final oldActiveDate = _activeDate;
       if (oldActiveDate != selectedStartDate) {
         _activeDate = selectedStartDate;
@@ -295,7 +297,8 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   }
 
   void _onHeaderTitleTapped() {
-    if (_activeType == ImpaktfullUiDatePickerActiveType.days || _activeType == ImpaktfullUiDatePickerActiveType.years) {
+    if (_activeType == ImpaktfullUiDatePickerActiveType.days ||
+        _activeType == ImpaktfullUiDatePickerActiveType.years) {
       setState(() {
         _activeType = ImpaktfullUiDatePickerActiveType.months;
       });
@@ -325,7 +328,8 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
     });
   }
 
-  void _onActiveTypeChanged(ImpaktfullUiDatePickerActiveType value, DateTime date) {
+  void _onActiveTypeChanged(
+      ImpaktfullUiDatePickerActiveType value, DateTime date) {
     setState(() {
       _activeType = value;
       _activeDate = date;
@@ -341,7 +345,8 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
         _pageController.jumpToPage(initialPage + yearsOffset + monthsOffset);
         break;
       case ImpaktfullUiDatePickerActiveType.months:
-        _pageController.jumpToPage(initialPage + (_activeDate.year - _initialStartDay.year));
+        _pageController.jumpToPage(
+            initialPage + (_activeDate.year - _initialStartDay.year));
         break;
       case ImpaktfullUiDatePickerActiveType.years:
         throw UnimplementedError();

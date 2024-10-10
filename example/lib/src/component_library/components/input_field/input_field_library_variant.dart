@@ -25,6 +25,13 @@ class InputFieldVariant
         leadingIcon:
             leadingIcon == null ? null : ImpaktfullUiAsset.icon(leadingIcon),
         label: label,
+        labelActions: [
+          ImpaktfullUiIconButton(
+            asset: theme.assets.icons.copy,
+            onTap: () =>
+                ImpaktfullUiNotification.show(title: 'Copied to clipboard'),
+          ),
+        ],
         placeholder: placholder,
         hint: hint,
         error: error,

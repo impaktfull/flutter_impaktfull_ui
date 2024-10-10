@@ -29,6 +29,7 @@ import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
@@ -78,6 +79,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiRadioButtonTheme radioButton;
   final ImpaktfullUiRadioButtonListItemTheme radioButtonListItem;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
+  final ImpaktfullUiSectionTitleTheme sectionTitle;
   final ImpaktfullUiSelectableListItemTheme selectableListItem;
   final ImpaktfullUiSidebarNavigationTheme sidebarNavigation;
   final ImpaktfullUiSidebarNavigationItemTheme sidebarNavigationItem;
@@ -123,6 +125,7 @@ class ImpaktfullUiComponentsTheme {
     required this.radioButton,
     required this.radioButtonListItem,
     required this.refreshIndicator,
+    required this.sectionTitle,
     required this.selectableListItem,
     required this.sidebarNavigation,
     required this.sidebarNavigationItem,
@@ -169,6 +172,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiRadioButtonTheme? radioButton,
     ImpaktfullUiRadioButtonListItemTheme? radioButtonListItem,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
+    ImpaktfullUiSectionTitleTheme? sectionTitle,
     ImpaktfullUiSelectableListItemTheme? selectableListItem,
     ImpaktfullUiSidebarNavigationTheme? sidebarNavigation,
     ImpaktfullUiSidebarNavigationItemTheme? sidebarNavigationItem,
@@ -214,6 +218,7 @@ class ImpaktfullUiComponentsTheme {
         radioButton: radioButton ?? this.radioButton,
         radioButtonListItem: radioButtonListItem ?? this.radioButtonListItem,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
+        sectionTitle: sectionTitle ?? this.sectionTitle,
         selectableListItem: selectableListItem ?? this.selectableListItem,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
         sidebarNavigationItem:
@@ -291,6 +296,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiRadioButtonListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
+    } else if (T == ImpaktfullUiSectionTitleTheme) {
+      return ImpaktfullUiSectionTitleTheme.of(context) as T;
     } else if (T == ImpaktfullUiSelectableListItemTheme) {
       return ImpaktfullUiSelectableListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiSidebarNavigationTheme) {

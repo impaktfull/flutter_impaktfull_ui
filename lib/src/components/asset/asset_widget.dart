@@ -95,4 +95,12 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
+
+  ImpaktfullUiAssetWidget overrideColor(Color color) {
+    if (this.color != null) return this;
+    return ImpaktfullUiAssetWidget(
+      asset: asset,
+      color: color,
+    );
+  }
 }

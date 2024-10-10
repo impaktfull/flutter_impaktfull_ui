@@ -43,4 +43,15 @@ class ImpaktfullUiIconButton extends StatelessWidget
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
+
+  ImpaktfullUiIconButton overrideColor(Color color) {
+    if (this.color != null) return this;
+    return ImpaktfullUiIconButton(
+      onTap: onTap,
+      asset: asset,
+      color: color,
+      size: size,
+      tooltip: tooltip,
+    );
+  }
 }

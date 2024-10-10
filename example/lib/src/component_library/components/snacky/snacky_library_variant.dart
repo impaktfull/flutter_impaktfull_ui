@@ -22,13 +22,18 @@ class SnackyLibraryVariant
         child: ImpaktfullUiButton(
           type: ImpaktfullUiButtonType.primary,
           title: 'Show snacky',
-          onTap: () => SnackyController.instance.showMessage(
-            (context) => Snacky(
-              title: type.name,
-              type: type,
-              canBeClosed: true,
-            ),
-          ),
+          onTap: () {
+            if (inputs.cancelAll.value ?? false) {
+              SnackyController.instance.cancelAll();
+            }
+            SnackyController.instance.showMessage(
+              (context) => Snacky(
+                title: type.name,
+                type: type,
+                canBeClosed: true,
+              ),
+            );
+          },
         ),
       ),
     ];
