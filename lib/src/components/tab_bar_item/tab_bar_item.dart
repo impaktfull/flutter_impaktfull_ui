@@ -59,6 +59,7 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
           child: ImpaktfullUiAutoLayout.vertical(
             spacing: 4,
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 widget.label,

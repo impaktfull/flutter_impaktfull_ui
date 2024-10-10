@@ -87,6 +87,8 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiSnackyConfigurator
 - ImpaktfullUiSwitch
 - ImpaktfullUiSwitchListItem
+- ImpaktfullUiTabBar
+  - ImpaktfullUiTabBarItem
 - ImpaktfullUiTable
   - ImpaktfullUiTableHeader
     - ImpaktfullUiTableHeaderItem
@@ -102,8 +104,6 @@ Many more to come in the future, always with the focus on minimizing maintenance
 
 - ImpaktfullUiDateTimePicker
 - ImpaktfullUiDateTimePickerDialog
-- ImpaktfullUiTabBar
-- ImpaktfullUiTabBarItem
 - ImpaktfullUiTimePicker
 
 ### Theming
