@@ -11,6 +11,7 @@ class ImpaktfullUiTextStylesTheme {
   final ImpaktfullUiTextStyleTheme onCardTertiary;
   final ImpaktfullUiTextStyleTheme onCardDestructive;
   final ImpaktfullUiTextStyleTheme onPrimary;
+  final ImpaktfullUiTextStyleTheme onAccent;
   final ImpaktfullUiTextStyleTheme onSecondary;
   final ImpaktfullUiTextStyleTheme onDestructive;
 
@@ -25,6 +26,7 @@ class ImpaktfullUiTextStylesTheme {
     required this.onCardTertiary,
     required this.onCardDestructive,
     required this.onPrimary,
+    required this.onAccent,
     required this.onSecondary,
     required this.onDestructive,
   });
@@ -40,6 +42,7 @@ class ImpaktfullUiTextStylesTheme {
         onCardTertiary,
         onCardDestructive,
         onPrimary,
+        onAccent,
         onSecondary,
         onDestructive,
       ];
@@ -55,6 +58,7 @@ class ImpaktfullUiTextStylesTheme {
     ImpaktfullUiTextStyleTheme? onCardTertiary,
     ImpaktfullUiTextStyleTheme? onCardDestructive,
     ImpaktfullUiTextStyleTheme? onPrimary,
+    ImpaktfullUiTextStyleTheme? onAccent,
     ImpaktfullUiTextStyleTheme? onSecondary,
     ImpaktfullUiTextStyleTheme? onDestructive,
   }) =>
@@ -69,6 +73,7 @@ class ImpaktfullUiTextStylesTheme {
         onCardTertiary: onCardTertiary ?? this.onCardTertiary,
         onCardDestructive: onCardDestructive ?? this.onCardDestructive,
         onPrimary: onPrimary ?? this.onPrimary,
+        onAccent: onAccent ?? this.onAccent,
         onSecondary: onSecondary ?? this.onSecondary,
         onDestructive: onDestructive ?? this.onDestructive,
       );

@@ -41,5 +41,8 @@ class ImpaktfullUiFloatingActionButtonDimensTheme {
 }
 
 class ImpaktfullUiFloatingActionButtonTextStyleTheme {
-  const ImpaktfullUiFloatingActionButtonTextStyleTheme();
+  final TextStyle label;
+  const ImpaktfullUiFloatingActionButtonTextStyleTheme({
+    required this.label,
+  });
 }
