@@ -18,10 +18,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final myApp = MyApp.of(context);
     return Container(
       color: theme.colors.canvas,
-      padding: const EdgeInsets.all(16),
       child: ImpaktfullUiListView(
         shrinkWrap: true,
         spacing: 16,
+        padding: const EdgeInsets.all(16),
         children: [
           ImpaktfullUiSeparatedColumn(
             title: 'Theme',
@@ -69,8 +69,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _onThemeChanged(String? value) {
-    final theme =
-        ExampleThemes.themes.firstWhere((element) => element.label == value);
+    final theme = ExampleThemes.themes.firstWhere((element) => element.label == value);
     MyApp.of(context).setTheme(theme);
     setState(() {});
   }
