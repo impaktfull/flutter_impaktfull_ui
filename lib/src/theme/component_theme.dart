@@ -13,6 +13,7 @@ import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui_2/src/components/file_picker/file_picker.dart';
 import 'package:impaktfull_ui_2/src/components/floating_action_button/floating_action_button.dart';
 import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
@@ -70,6 +71,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiDatePickerTheme datePicker;
   final ImpaktfullUiDividerTheme divider;
   final ImpaktfullUiDropdownTheme dropdown;
+  final ImpaktfullUiFilePickerTheme filePicker;
   final ImpaktfullUiFluidPaddingTheme fluidPadding;
   final ImpaktfullUiFloatingActionButtonTheme floatingActionButton;
   final ImpaktfullUiGridViewTheme gridView;
@@ -123,6 +125,7 @@ class ImpaktfullUiComponentsTheme {
     required this.datePicker,
     required this.divider,
     required this.dropdown,
+    required this.filePicker,
     required this.floatingActionButton,
     required this.fluidPadding,
     required this.gridView,
@@ -177,6 +180,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiDatePickerTheme? datePicker,
     ImpaktfullUiDividerTheme? divider,
     ImpaktfullUiDropdownTheme? dropdown,
+    ImpaktfullUiFilePickerTheme? filePicker,
     ImpaktfullUiFloatingActionButtonTheme? floatingActionButton,
     ImpaktfullUiFluidPaddingTheme? fluidPadding,
     ImpaktfullUiGridViewTheme? gridView,
@@ -230,6 +234,7 @@ class ImpaktfullUiComponentsTheme {
         datePicker: datePicker ?? this.datePicker,
         divider: divider ?? this.divider,
         dropdown: dropdown ?? this.dropdown,
+        filePicker: filePicker ?? this.filePicker,
         floatingActionButton: floatingActionButton ?? this.floatingActionButton,
         fluidPadding: fluidPadding ?? this.fluidPadding,
         gridView: gridView ?? this.gridView,
@@ -299,6 +304,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiDividerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDropdownTheme) {
       return ImpaktfullUiDropdownTheme.of(context) as T;
+    } else if (T == ImpaktfullUiFilePickerTheme) {
+      return ImpaktfullUiFilePickerTheme.of(context) as T;
     } else if (T == ImpaktfullUiFloatingActionButtonTheme) {
       return ImpaktfullUiFloatingActionButtonTheme.of(context) as T;
     } else if (T == ImpaktfullUiFluidPaddingTheme) {

@@ -14,6 +14,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/command_m
 import 'package:impaktfull_ui_example/src/component_library/components/date_picker/date_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/divider/divider_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/dropdown/dropdown_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/file_picker/file_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/floating_action_button/floating_action_button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/fluid_padding/fluid_padding_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/grid_view/grid_view_library_item.dart';
@@ -65,6 +66,7 @@ class ComponentLibrary {
     const DatePickerLibraryItem(),
     const DividerLibraryItem(),
     const DropdownLibraryItem(),
+    const FilePickerLibraryItem(),
     const FloatingActionButtonLibraryItem(),
     const FluidPaddingLibraryItem(),
     const GridViewLibraryItem(),

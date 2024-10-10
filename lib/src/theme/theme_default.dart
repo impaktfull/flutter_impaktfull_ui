@@ -13,6 +13,7 @@ import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui_2/src/components/file_picker/file_picker.dart';
 import 'package:impaktfull_ui_2/src/components/floating_action_button/floating_action_button.dart';
 import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
@@ -419,6 +420,28 @@ class DefaultTheme {
           assets: ImpaktfullUiDropdownAssetsTheme(
             dropUp: assets.icons.chevronUp,
             dropDown: assets.icons.chevronDown,
+          ),
+        ),
+        filePicker: ImpaktfullUiFilePickerTheme(
+          assets: ImpaktfullUiFilePickerAssetsTheme(
+            delete: assets.icons.delete,
+            file: assets.icons.file,
+            upload: assets.icons.cloudUpload,
+          ),
+          colors: ImpaktfullUiFilePickerColorTheme(
+            background: colors.card,
+            icons: colors.text,
+            progressIndicator: colors.accent,
+            border: colors.border,
+            borderDrop: colors.accent,
+            borderError: colors.error,
+          ),
+          dimens: ImpaktfullUiFilePickerDimensTheme(
+            borderRadius: dimens.borderRadius,
+          ),
+          textStyles: ImpaktfullUiFilePickerTextStyleTheme(
+            title: textStyles.onCard.text.medium,
+            subtitle: textStyles.onCard.text.small.light.withOpacity(0.66),
           ),
         ),
         floatingActionButton: ImpaktfullUiFloatingActionButtonTheme(

@@ -17,6 +17,7 @@ export 'src/components/command_menu/command_menu_window.dart';
 export 'src/components/divider/divider.dart';
 export 'src/components/dropdown/dropdown.dart';
 export 'src/components/date_picker/date_picker.dart';
+export 'src/components/file_picker/file_picker.dart';
 export 'src/components/floating_action_button/floating_action_button.dart';
 export 'src/components/fluid_padding/fluid_padding.dart';
 export 'src/components/grid_view/grid_view.dart';

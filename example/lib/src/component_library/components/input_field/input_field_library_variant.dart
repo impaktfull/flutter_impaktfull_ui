@@ -20,17 +20,20 @@ class InputFieldVariant
     final value = inputs.value.value;
     final leadingIcon = inputs.leadingIcon.value;
     final showTrailingAction = inputs.showTrailingAction.value ?? false;
+    final showLabelAction = inputs.showLabelAction.value ?? false;
     return [
       ImpaktfullUiInputField(
         leadingIcon:
             leadingIcon == null ? null : ImpaktfullUiAsset.icon(leadingIcon),
         label: label,
         labelActions: [
-          ImpaktfullUiIconButton(
-            asset: theme.assets.icons.copy,
-            onTap: () =>
-                ImpaktfullUiNotification.show(title: 'Copied to clipboard'),
-          ),
+          if (showLabelAction) ...[
+            ImpaktfullUiIconButton(
+              asset: theme.assets.icons.copy,
+              onTap: () =>
+                  ImpaktfullUiNotification.show(title: 'Copied to clipboard'),
+            ),
+          ],
         ],
         placeholder: placholder,
         hint: hint,

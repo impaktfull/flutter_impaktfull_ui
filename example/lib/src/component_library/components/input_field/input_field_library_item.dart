@@ -20,12 +20,15 @@ class InputFieldLibraryItem extends ComponentLibraryItem {
 }
 
 class InputLibraryInputs extends ComponentLibraryInputs {
-  final label = ComponentLibraryStringInput('Label');
+  final label =
+      ComponentLibraryStringInput('Label', initialValue: 'Email adress');
   final leadingIcon = ComponentLibraryIconInput('Leading icon');
-  final placholder = ComponentLibraryStringInput('Placeholder');
+  final placholder = ComponentLibraryStringInput('Placeholder',
+      initialValue: 'Enter your email adress');
   final value = ComponentLibraryStringInput('Value');
   final hint = ComponentLibraryStringInput('Hint');
   final error = ComponentLibraryStringInput('Error');
+  final showLabelAction = ComponentLibraryBoolInput('Show label action');
   final showTrailingAction = ComponentLibraryBoolInput('Show trailing action');
 
   @override
@@ -36,6 +39,7 @@ class InputLibraryInputs extends ComponentLibraryInputs {
         value,
         hint,
         error,
+        showLabelAction,
         showTrailingAction,
       ];
 }

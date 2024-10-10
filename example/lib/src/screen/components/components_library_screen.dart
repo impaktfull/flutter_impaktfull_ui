@@ -50,7 +50,7 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
         actions: [
           if (_fixedSearchQuery.isNotEmpty) ...[
             ImpaktfullUiIconButton(
-              asset: theme.assets.icons.delete,
+              asset: theme.assets.icons.cloudDownload,
               onTap: () {
                 _fixedSearchQuery.clear();
                 setState(() {});

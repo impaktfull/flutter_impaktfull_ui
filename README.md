@@ -58,9 +58,11 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiDatePicker.range
 - ImpaktfullUiDivider
 - ImpaktfullUiDropdown
+- ImpaktfullUiFilePicker
 - ImpaktfullUiFloatingActionButton
 - ImpaktfullUiFluidPadding
 - ImpaktfullUiGridView
+- ImpaktfullUiHoverFeedback
 - ImpaktfullUiHorizontalTabs
   - ImpaktfullUiHorizontalTab
 - ImpaktfullUiIconButton

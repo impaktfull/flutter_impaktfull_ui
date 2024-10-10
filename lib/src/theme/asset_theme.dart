@@ -45,11 +45,15 @@ class ImpaktfullUiAssetTheme {
               chevronUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
               circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle()),
               close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
+              cloudDownload:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown()),
+              cloudUpload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowUp()),
               confetti: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
               copy: ImpaktfullUiAsset.icon(PhosphorIcons.copy()),
-              delete: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
+              delete: ImpaktfullUiAsset.icon(PhosphorIcons.trashSimple()),
               edit: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
               error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
+              file: ImpaktfullUiAsset.icon(PhosphorIcons.file()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
               lineVertical:
@@ -151,14 +155,17 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset confetti;
   final ImpaktfullUiAsset copy;
   final ImpaktfullUiAsset delete;
+  final ImpaktfullUiAsset cloudDownload;
   final ImpaktfullUiAsset edit;
   final ImpaktfullUiAsset error;
+  final ImpaktfullUiAsset file;
   final ImpaktfullUiAsset home;
   final ImpaktfullUiAsset info;
   final ImpaktfullUiAsset lineVertical;
   final ImpaktfullUiAsset list;
   final ImpaktfullUiAsset logout;
   final ImpaktfullUiAsset minus;
+  final ImpaktfullUiAsset cloudUpload;
   final ImpaktfullUiAsset user;
   final ImpaktfullUiAsset search;
   final ImpaktfullUiAsset settings;
@@ -181,8 +188,10 @@ class ImpaktfullUiIconTheme {
     required this.confetti,
     required this.copy,
     required this.delete,
+    required this.cloudDownload,
     required this.edit,
     required this.error,
+    required this.file,
     required this.home,
     required this.info,
     required this.lineVertical,
@@ -192,6 +201,7 @@ class ImpaktfullUiIconTheme {
     required this.search,
     required this.settings,
     required this.success,
+    required this.cloudUpload,
     required this.user,
     required this.warning,
   });
@@ -209,11 +219,14 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? chevronUp,
     ImpaktfullUiAsset? circle,
     ImpaktfullUiAsset? close,
+    ImpaktfullUiAsset? cloudDownload,
+    ImpaktfullUiAsset? cloudUpload,
     ImpaktfullUiAsset? confetti,
     ImpaktfullUiAsset? copy,
     ImpaktfullUiAsset? delete,
     ImpaktfullUiAsset? edit,
     ImpaktfullUiAsset? error,
+    ImpaktfullUiAsset? file,
     ImpaktfullUiAsset? home,
     ImpaktfullUiAsset? info,
     ImpaktfullUiAsset? lineVertical,
@@ -239,11 +252,14 @@ class ImpaktfullUiIconTheme {
         chevronUp: chevronUp ?? this.chevronUp,
         circle: circle ?? this.circle,
         close: close ?? this.close,
+        cloudDownload: cloudDownload ?? this.cloudDownload,
+        cloudUpload: cloudUpload ?? this.cloudUpload,
         confetti: confetti ?? this.confetti,
         copy: copy ?? this.copy,
         delete: delete ?? this.delete,
         edit: edit ?? this.edit,
         error: error ?? this.error,
+        file: file ?? this.file,
         home: home ?? this.home,
         info: info ?? this.info,
         lineVertical: lineVertical ?? this.lineVertical,

@@ -69,7 +69,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _onThemeChanged(String? value) {
-    final theme = ExampleThemes.themes.firstWhere((element) => element.label == value);
+    final theme =
+        ExampleThemes.themes.firstWhere((element) => element.label == value);
     MyApp.of(context).setTheme(theme);
     setState(() {});
   }
