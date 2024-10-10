@@ -5,6 +5,7 @@ import 'package:impaktfull_ui_2/src/components/date_picker/date_picker_active_ty
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker_style.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker_type.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_page.dart';
+import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:intl/intl.dart';
@@ -13,8 +14,7 @@ export 'date_picker_style.dart';
 
 part 'date_picker.describe.dart';
 
-class ImpaktfullUiDatePicker extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiDatePicker extends StatefulWidget with ComponentDescriptorMixin {
   final DateTime? selectedStartDate;
   final DateTime? selectedEndDate;
   final ValueChanged<DateTime?> onStartDateChanged;
@@ -48,6 +48,100 @@ class ImpaktfullUiDatePicker extends StatefulWidget
   @override
   State<ImpaktfullUiDatePicker> createState() => _ImpaktfullUiDatePickerState();
 
+  static Future<DateTime?> showModal({
+    required BuildContext context,
+    DateTime? selectedDate,
+    bool showDividers = false,
+    bool hasBlurredBackground = false,
+    bool isDismissible = false,
+    bool rootNavigator = false,
+  }) {
+    var newDate = selectedDate;
+    return ImpaktfullUiModal.showSimple(
+      context: context,
+      hasClose: false,
+      hasBlurredBackground: hasBlurredBackground,
+      isDismissible: isDismissible,
+      rootNavigator: rootNavigator,
+      actions: [
+        ImpaktfullUiButton(
+          type: ImpaktfullUiButtonType.secondaryGrey,
+          title: 'Cancel',
+          onTap: () => Navigator.of(context).pop(),
+        ),
+        ImpaktfullUiButton(
+          type: ImpaktfullUiButtonType.primary,
+          title: 'Apply',
+          onTap: () {
+            Navigator.of(context).pop(newDate);
+          },
+        ),
+      ],
+      child: Center(
+        child: StatefulBuilder(
+          builder: (context, setState) => ImpaktfullUiDatePicker(
+            selectedDate: newDate,
+            onDateChanged: (value) {
+              setState(() => newDate = value);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  static Future<DateTimeRange?> showRangeModal({
+    required BuildContext context,
+    DateTime? selectedStartDate,
+    DateTime? selectedEndDate,
+    bool showDividers = false,
+    bool hasBlurredBackground = false,
+    bool isDismissible = false,
+    bool rootNavigator = false,
+  }) {
+    var newStartDate = selectedStartDate;
+    var newEndDate = selectedEndDate;
+    return ImpaktfullUiModal.showSimple(
+      context: context,
+      hasClose: false,
+      hasBlurredBackground: hasBlurredBackground,
+      isDismissible: isDismissible,
+      rootNavigator: rootNavigator,
+      showDividers: showDividers,
+      actions: [
+        ImpaktfullUiButton(
+          type: ImpaktfullUiButtonType.secondaryGrey,
+          title: 'Cancel',
+          onTap: () => Navigator.of(context).pop(),
+        ),
+        ImpaktfullUiButton(
+          type: ImpaktfullUiButtonType.primary,
+          title: 'Apply',
+          onTap: () {
+            final startDate = newStartDate;
+            final endDate = newEndDate;
+            if (startDate == null || endDate == null) {
+              Navigator.of(context).pop();
+              return;
+            }
+            final dateTimeRange = DateTimeRange(start: startDate, end: endDate);
+            Navigator.of(context).pop(dateTimeRange);
+          },
+        ),
+      ],
+      child: Center(
+        child: StatefulBuilder(
+          builder: (context, setState) => ImpaktfullUiDatePicker.range(
+            selectedStartDate: newStartDate,
+            selectedEndDate: newEndDate,
+            onStartDateChanged: (value) => setState(() => newStartDate = value),
+            onEndDateChanged: (value) => setState(() => newEndDate = value),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
@@ -75,8 +169,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   void didUpdateWidget(covariant ImpaktfullUiDatePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
     final selectedStartDate = widget.selectedStartDate;
-    if (selectedStartDate != null &&
-        selectedStartDate != oldWidget.selectedStartDate) {
+    if (selectedStartDate != null && selectedStartDate != oldWidget.selectedStartDate) {
       final oldActiveDate = _activeDate;
       if (oldActiveDate != selectedStartDate) {
         _activeDate = selectedStartDate;
@@ -202,8 +295,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   }
 
   void _onHeaderTitleTapped() {
-    if (_activeType == ImpaktfullUiDatePickerActiveType.days ||
-        _activeType == ImpaktfullUiDatePickerActiveType.years) {
+    if (_activeType == ImpaktfullUiDatePickerActiveType.days || _activeType == ImpaktfullUiDatePickerActiveType.years) {
       setState(() {
         _activeType = ImpaktfullUiDatePickerActiveType.months;
       });
@@ -233,8 +325,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
     });
   }
 
-  void _onActiveTypeChanged(
-      ImpaktfullUiDatePickerActiveType value, DateTime date) {
+  void _onActiveTypeChanged(ImpaktfullUiDatePickerActiveType value, DateTime date) {
     setState(() {
       _activeType = value;
       _activeDate = date;
@@ -250,8 +341,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
         _pageController.jumpToPage(initialPage + yearsOffset + monthsOffset);
         break;
       case ImpaktfullUiDatePickerActiveType.months:
-        _pageController.jumpToPage(
-            initialPage + (_activeDate.year - _initialStartDay.year));
+        _pageController.jumpToPage(initialPage + (_activeDate.year - _initialStartDay.year));
         break;
       case ImpaktfullUiDatePickerActiveType.years:
         throw UnimplementedError();
