@@ -42,6 +42,7 @@ import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/tab_bar/tab_bar.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
 import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
@@ -508,6 +509,7 @@ class DefaultTheme {
             error: textStyles.onCardDestructive.text.small.medium
                 .copyWith(color: colors.error),
             label: textStyles.onCard.text.small.medium,
+            action: textStyles.onCard.text.small.medium,
           ),
         ),
         listItem: ImpaktfullUiListItemTheme(
@@ -836,6 +838,21 @@ class DefaultTheme {
           dimens: const ImpaktfullUiSwitchListItemDimensTheme(),
           textStyles: const ImpaktfullUiSwitchListItemTextStyleTheme(),
         ),
+        tabBar: const ImpaktfullUiTabBarTheme(
+          assets: ImpaktfullUiTabBarAssetsTheme(),
+          colors: ImpaktfullUiTabBarColorTheme(),
+          dimens: ImpaktfullUiTabBarDimensTheme(),
+          textStyles: ImpaktfullUiTabBarTextStyleTheme(),
+        ),
+        table: ImpaktfullUiTableTheme(
+          colors: ImpaktfullUiTableColorTheme(
+            background: colors.card,
+            border: colors.border,
+          ),
+          dimens: ImpaktfullUiTableDimensTheme(
+            borderRadius: dimens.borderRadius,
+          ),
+        ),
         tableHeader: ImpaktfullUiTableHeaderTheme(
           colors: ImpaktfullUiTableHeaderColorTheme(
             background: colors.canvas,
@@ -845,15 +862,6 @@ class DefaultTheme {
               topStart: dimens.borderRadius.topStart,
               topEnd: dimens.borderRadius.topEnd,
             ),
-          ),
-        ),
-        table: ImpaktfullUiTableTheme(
-          colors: ImpaktfullUiTableColorTheme(
-            background: colors.card,
-            border: colors.border,
-          ),
-          dimens: ImpaktfullUiTableDimensTheme(
-            borderRadius: dimens.borderRadius,
           ),
         ),
         tableHeaderItem: ImpaktfullUiTableHeaderItemTheme(

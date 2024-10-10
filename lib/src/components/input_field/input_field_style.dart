@@ -3,8 +3,8 @@ import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiInputFieldColorTheme colors;
-  final ImpaktfullUiInputFieldTextStylesTheme textStyles;
   final ImpaktfullUiInputFieldDimensTheme dimens;
+  final ImpaktfullUiInputFieldTextStylesTheme textStyles;
 
   const ImpaktfullUiInputFieldTheme({
     required this.colors,
@@ -34,12 +34,20 @@ class ImpaktfullUiInputFieldColorTheme {
   });
 }
 
+class ImpaktfullUiInputFieldDimensTheme {
+  final BorderRadiusGeometry borderRadius;
+  const ImpaktfullUiInputFieldDimensTheme({
+    required this.borderRadius,
+  });
+}
+
 class ImpaktfullUiInputFieldTextStylesTheme {
   final TextStyle label;
   final TextStyle text;
   final TextStyle placeholder;
   final TextStyle hint;
   final TextStyle error;
+  final TextStyle action;
 
   const ImpaktfullUiInputFieldTextStylesTheme({
     required this.label,
@@ -47,12 +55,6 @@ class ImpaktfullUiInputFieldTextStylesTheme {
     required this.placeholder,
     required this.hint,
     required this.error,
-  });
-}
-
-class ImpaktfullUiInputFieldDimensTheme {
-  final BorderRadiusGeometry borderRadius;
-  const ImpaktfullUiInputFieldDimensTheme({
-    required this.borderRadius,
+    required this.action,
   });
 }

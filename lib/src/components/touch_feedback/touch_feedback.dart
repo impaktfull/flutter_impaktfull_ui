@@ -121,13 +121,16 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         ),
       );
     }
+    final isAndroidTarget =
+        Theme.of(context).platform == TargetPlatform.android;
     return InkWell(
       borderRadius: widget.borderRadius?.value,
       onTap: widget.onTap,
       mouseCursor: widget.cursor,
       onFocusChange: widget.onFocusChanged,
       focusColor: Colors.transparent,
-      splashFactory: NoSplash.splashFactory,
+      splashFactory:
+          isAndroidTarget ? InkSparkle.splashFactory : NoSplash.splashFactory,
       child: ColoredBox(
         color: Colors.transparent,
         child: widget.child,

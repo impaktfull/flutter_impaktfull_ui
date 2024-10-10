@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/app/debug/app_debug_flag.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_configurator.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 import 'package:snacky/snacky.dart';
 
@@ -54,44 +55,47 @@ class ImpaktfullUiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    setImpaktfullUiTheme(impaktfullUiTheme);
+    final theme = impaktfullUiTheme ?? ImpaktfullUiTheme.getDefault();
     setImpaktfullUiLocale(locale);
-    return ImpaktfullUiSnackyConfigurator(
-      locale: locale,
-      snackyController: snackyController,
-      snackyBuilder: snackyBuilder,
-      app: Builder(
-        builder: (context) {
-          final app = AppDebugFlag(
-            showDebugFlag: showDebugFlag,
-            flavorBannerText: flavorBannerText,
-            flavorBannerColor: flavorBannerColor ?? theme.colors.accent,
-            child: MaterialApp(
-              title: title,
-              home: home,
-              debugShowCheckedModeBanner: showDebugFlag,
-              locale: locale,
-              theme: (materialLightTheme ?? Theme.of(context))
-                  .removeUnwantedBehavior(
-                targetPlatform: targetPlatform,
+    return ImpaktfullUiThemeConfigurator(
+      theme: theme,
+      child: ImpaktfullUiSnackyConfigurator(
+        locale: locale,
+        snackyController: snackyController,
+        snackyBuilder: snackyBuilder,
+        app: Builder(
+          builder: (context) {
+            final app = AppDebugFlag(
+              showDebugFlag: showDebugFlag,
+              flavorBannerText: flavorBannerText,
+              flavorBannerColor: flavorBannerColor ?? theme.colors.accent,
+              child: MaterialApp(
+                title: title,
+                home: home,
+                debugShowCheckedModeBanner: showDebugFlag,
+                locale: locale,
+                theme: (materialLightTheme ?? Theme.of(context))
+                    .removeUnwantedBehavior(
+                  targetPlatform: targetPlatform,
+                ),
+                darkTheme: (materialLightTheme ?? Theme.of(context))
+                    .removeUnwantedBehavior(
+                  targetPlatform: targetPlatform,
+                ),
+                supportedLocales: supportedLocales,
+                localizationsDelegates: localizationsDelegates,
+                navigatorKey: navigatorKey,
+                initialRoute: initialRoute,
+                onGenerateRoute: onGenerateRoute,
+                navigatorObservers: [
+                  SnackyNavigationObserver(),
+                  ...navigatorObservers,
+                ],
               ),
-              darkTheme: (materialLightTheme ?? Theme.of(context))
-                  .removeUnwantedBehavior(
-                targetPlatform: targetPlatform,
-              ),
-              supportedLocales: supportedLocales,
-              localizationsDelegates: localizationsDelegates,
-              navigatorKey: navigatorKey,
-              initialRoute: initialRoute,
-              onGenerateRoute: onGenerateRoute,
-              navigatorObservers: [
-                SnackyNavigationObserver(),
-                ...navigatorObservers,
-              ],
-            ),
-          );
-          return builder?.call(context, app) ?? app;
-        },
+            );
+            return builder?.call(context, app) ?? app;
+          },
+        ),
       ),
     );
   }

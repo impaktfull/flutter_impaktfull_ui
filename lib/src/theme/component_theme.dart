@@ -42,6 +42,7 @@ import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/tab_bar/tab_bar.dart';
 import 'package:impaktfull_ui_2/src/components/table/table.dart';
 import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
@@ -97,6 +98,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiSnackyConfiguratorTheme snackyConfigurator;
   final ImpaktfullUiSwitchTheme switchTheme;
   final ImpaktfullUiSwitchListItemTheme switchListItem;
+  final ImpaktfullUiTabBarTheme tabBar;
   final ImpaktfullUiTableTheme table;
   final ImpaktfullUiTableHeaderTheme tableHeader;
   final ImpaktfullUiTableHeaderItemTheme tableHeaderItem;
@@ -148,9 +150,10 @@ class ImpaktfullUiComponentsTheme {
     required this.snackyConfigurator,
     required this.switchTheme,
     required this.switchListItem,
+    required this.tabBar,
+    required this.table,
     required this.tableHeader,
     required this.tableHeaderItem,
-    required this.table,
     required this.tableRow,
     required this.tableRowItem,
     required this.tooltip,
@@ -200,6 +203,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiSnackyConfiguratorTheme? snackyConfigurator,
     ImpaktfullUiSwitchTheme? switchTheme,
     ImpaktfullUiSwitchListItemTheme? switchListItem,
+    ImpaktfullUiTabBarTheme? tabBar,
     ImpaktfullUiTableTheme? table,
     ImpaktfullUiTableHeaderTheme? tableHeader,
     ImpaktfullUiTableHeaderItemTheme? tableHeaderItem,
@@ -252,6 +256,7 @@ class ImpaktfullUiComponentsTheme {
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
         switchListItem: switchListItem ?? this.switchListItem,
+        tabBar: tabBar ?? this.tabBar,
         table: table ?? this.table,
         tableHeader: tableHeader ?? this.tableHeader,
         tableHeaderItem: tableHeaderItem ?? this.tableHeaderItem,
@@ -347,6 +352,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiSwitchTheme.of(context) as T;
     } else if (T == ImpaktfullUiSwitchListItemTheme) {
       return ImpaktfullUiSwitchListItemTheme.of(context) as T;
+    } else if (T == ImpaktfullUiTabBarTheme) {
+      return ImpaktfullUiTabBarTheme.of(context) as T;
     } else if (T == ImpaktfullUiTableTheme) {
       return ImpaktfullUiTableTheme.of(context) as T;
     } else if (T == ImpaktfullUiTableHeaderTheme) {

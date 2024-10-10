@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/navigator/page_route/native_page_route_builder.dart';
 import 'package:impaktfull_ui_example/src/screen/components/components_library_screen.dart';
+import 'package:impaktfull_ui_example/src/screen/settings/settings_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
-import 'package:impaktfull_ui_example/src/widget/theme/theme_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,8 +13,13 @@ class HomeScreen extends StatelessWidget {
     return BaseScreen(
       title: 'impaktfull_ui',
       canGoBack: false,
-      actions: const [
-        ThemeButton(),
+      actions: [
+        ImpaktfullUiButton(
+          type: ImpaktfullUiButtonType.secondaryGrey,
+          leadingAsset: theme.assets.icons.settings,
+          title: 'Settings',
+          onTap: () => _onSettingsTapped(context),
+        ),
       ],
       builder: (context) => ImpaktfullUiListView(
         padding: const EdgeInsets.all(16),
@@ -31,4 +36,18 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
+  void _onSettingsTapped(BuildContext context) => ImpaktfullUiModal.showSimple(
+        context: context,
+        title: 'Settings',
+        showDividers: true,
+        child: const SettingsScreen(),
+        actions: [
+          ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.primary,
+            title: 'Close',
+            onTap: () => Navigator.of(context).pop(),
+          ),
+        ],
+      );
 }

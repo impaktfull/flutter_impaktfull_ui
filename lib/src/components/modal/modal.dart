@@ -157,7 +157,9 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                   ];
                   final hasHeader = headerChildLocation != null ||
                       headerIcon != null ||
-                      headerChild != null;
+                      headerChild != null ||
+                      title != null ||
+                      subtitle != null;
                   return GestureDetector(
                     onTap: () {}, // cancel close event
                     child: ImpaktfullUiContainer(
