@@ -724,6 +724,7 @@ class DefaultTheme {
           assets: const ImpaktfullUiSeparatedColumnAssetsTheme(),
           colors: ImpaktfullUiSeparatedColumnColorTheme(
             background: colors.card,
+            border: colors.border,
           ),
           dimens: ImpaktfullUiSeparatedColumnDimensTheme(
             borderRadius: dimens.borderRadius,

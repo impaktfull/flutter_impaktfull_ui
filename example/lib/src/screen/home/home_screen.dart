@@ -41,7 +41,6 @@ class HomeScreen extends StatelessWidget {
         context: context,
         title: 'Settings',
         showDividers: true,
-        child: const SettingsScreen(),
         actions: [
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
@@ -49,5 +48,7 @@ class HomeScreen extends StatelessWidget {
             onTap: () => Navigator.of(context).pop(),
           ),
         ],
+        childPadding: EdgeInsets.zero,
+        child: const SettingsScreen(),
       );
 }

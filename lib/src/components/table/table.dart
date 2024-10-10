@@ -31,20 +31,20 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableTheme>(
       overrideComponentTheme: theme,
-      builder: (context, theme, componentTheme) => ClipRRect(
-        borderRadius: componentTheme.dimens.borderRadius,
-        child: Container(
-          decoration: BoxDecoration(
-            color: componentTheme.colors.background,
-            borderRadius: componentTheme.dimens.borderRadius,
-            border: componentTheme.colors.border == null
-                ? null
-                : Border.all(
-                    color: componentTheme.colors.border!,
-                    strokeAlign: BorderSide.strokeAlignInside,
-                    width: 1,
-                  ),
-          ),
+      builder: (context, theme, componentTheme) => Container(
+        decoration: BoxDecoration(
+          color: componentTheme.colors.background,
+          borderRadius: componentTheme.dimens.borderRadius,
+          border: componentTheme.colors.border == null
+              ? null
+              : Border.all(
+                  color: componentTheme.colors.border!,
+                  strokeAlign: BorderSide.strokeAlignOutside,
+                  width: 1,
+                ),
+        ),
+        child: ClipRRect(
+          borderRadius: componentTheme.dimens.borderRadius,
           child: _TableContainer(
             columnConfig: columnConfig,
             amountOfColumns: titles.length,

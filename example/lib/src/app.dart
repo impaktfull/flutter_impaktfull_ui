@@ -18,6 +18,8 @@ class MyAppState extends State<MyApp> {
   ImpaktfullUiTheme? _theme;
   TargetPlatform? _targetPlatform;
 
+  ImpaktfullUiTheme? get theme => _theme;
+
   TargetPlatform? get targetPlatform => _targetPlatform;
 
   @override

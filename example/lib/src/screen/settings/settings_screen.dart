@@ -12,8 +12,6 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  var _selectedThemeIndex = 0;
-
   static final _themes = [
     ImpaktfullUiTheme.getDefault(
       package: null,
@@ -45,61 +43,64 @@ class _SettingsScreenState extends State<SettingsScreen> {
       package: null,
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     final myApp = MyApp.of(context);
-    return ImpaktfullUiListView(
-      shrinkWrap: true,
-      spacing: 16,
-      children: [
-        ImpaktfullUiSeparatedColumn(
-          title: 'Theme',
-          titleMargin: EdgeInsets.zero,
-          separatorMargin: EdgeInsets.zero,
-          children: [
-            for (final theme in _themes) ...[
+    return Container(
+      color: theme.colors.canvas,
+      padding: const EdgeInsets.all(16),
+      child: ImpaktfullUiListView(
+        shrinkWrap: true,
+        spacing: 16,
+        children: [
+          ImpaktfullUiSeparatedColumn(
+            title: 'Theme',
+            titleMargin: EdgeInsets.zero,
+            separatorMargin: EdgeInsets.zero,
+            children: [
+              for (final theme in _themes) ...[
+                ImpaktfullUiRadioButtonListItem(
+                  title: theme.label ?? 'N/A',
+                  value: theme.label,
+                  groupValue: myApp.theme?.label,
+                  onChanged: _onThemeChanged,
+                ),
+              ],
+            ],
+          ),
+          ImpaktfullUiSeparatedColumn(
+            title: 'Target platform',
+            titleMargin: EdgeInsets.zero,
+            separatorMargin: EdgeInsets.zero,
+            children: [
               ImpaktfullUiRadioButtonListItem(
-                title: theme.label ?? 'N/A',
-                value: _themes.indexOf(theme),
-                groupValue: _selectedThemeIndex,
-                onChanged: _onThemeChanged,
+                title: 'Android',
+                value: TargetPlatform.android,
+                groupValue: myApp.targetPlatform,
+                onChanged: _onTargetPlatformChanged,
+              ),
+              ImpaktfullUiRadioButtonListItem(
+                title: 'iOS',
+                value: TargetPlatform.iOS,
+                groupValue: myApp.targetPlatform,
+                onChanged: _onTargetPlatformChanged,
+              ),
+              ImpaktfullUiRadioButtonListItem(
+                title: 'Systeem',
+                value: null,
+                groupValue: myApp.targetPlatform,
+                onChanged: _onTargetPlatformChanged,
               ),
             ],
-          ],
-        ),
-        ImpaktfullUiSeparatedColumn(
-          title: 'Target platform',
-          titleMargin: EdgeInsets.zero,
-          separatorMargin: EdgeInsets.zero,
-          children: [
-            ImpaktfullUiRadioButtonListItem(
-              title: 'Android',
-              value: TargetPlatform.android,
-              groupValue: myApp.targetPlatform,
-              onChanged: _onTargetPlatformChanged,
-            ),
-            ImpaktfullUiRadioButtonListItem(
-              title: 'iOS',
-              value: TargetPlatform.iOS,
-              groupValue: myApp.targetPlatform,
-              onChanged: _onTargetPlatformChanged,
-            ),
-            ImpaktfullUiRadioButtonListItem(
-              title: 'Systeem',
-              value: null,
-              groupValue: myApp.targetPlatform,
-              onChanged: _onTargetPlatformChanged,
-            ),
-          ],
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 
-  void _onThemeChanged(int value) {
-    if (_selectedThemeIndex == value) return;
-    _selectedThemeIndex = value;
-    final theme = _themes[value];
+  void _onThemeChanged(String? value) {
+    final theme = _themes.firstWhere((element) => element.label == value);
     MyApp.of(context).setTheme(theme);
     setState(() {});
   }

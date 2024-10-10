@@ -46,10 +46,20 @@ class ImpaktfullUiSeparatedColumn extends StatelessWidget
               margin: titleMargin ?? componentTheme.dimens.titleMargin,
             ),
           ],
-          ClipRRect(
-            borderRadius: componentTheme.dimens.borderRadius,
-            child: ColoredBox(
+          Container(
+            decoration: BoxDecoration(
               color: componentTheme.colors.background,
+              borderRadius: componentTheme.dimens.borderRadius,
+              border: componentTheme.colors.border == null
+                  ? null
+                  : Border.all(
+                      color: componentTheme.colors.border!,
+                      width: 1,
+                      strokeAlign: BorderSide.strokeAlignOutside,
+                    ),
+            ),
+            child: ClipRRect(
+              borderRadius: componentTheme.dimens.borderRadius,
               child: ImpaktfullUiAutoLayout.vertical(
                 children: children.isEmpty
                     ? []

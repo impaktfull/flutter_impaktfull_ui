@@ -24,8 +24,10 @@ class ImpaktfullUiSeparatedColumnAssetsTheme {
 
 class ImpaktfullUiSeparatedColumnColorTheme {
   final Color background;
+  final Color? border;
   const ImpaktfullUiSeparatedColumnColorTheme({
     required this.background,
+    required this.border,
   });
 }
 

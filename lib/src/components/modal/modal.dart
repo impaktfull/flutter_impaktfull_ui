@@ -34,6 +34,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   final bool isDismissible;
   final bool showDividers;
   final double width;
+  final EdgeInsetsGeometry? childPadding;
 
   const ImpaktfullUiModal({
     this.headerChildLocation,
@@ -48,6 +49,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     this.isDismissible = true,
     this.showDividers = false,
     this.width = 400,
+    this.childPadding,
     this.theme,
     super.key,
   });
@@ -83,6 +85,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     bool showDividers = false,
     bool rootNavigator = false,
     double width = 400,
+    EdgeInsetsGeometry? childPadding,
   }) {
     final modal = ImpaktfullUiModal(
       headerChildLocation: headerChildLocation,
@@ -96,6 +99,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
       isDismissible: isDismissible,
       showDividers: showDividers,
       width: width,
+      childPadding: childPadding,
       child: child,
     );
     return show(
@@ -248,7 +252,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                             ],
                             if (child != null) ...[
                               Padding(
-                                padding: componentTheme.dimens.padding,
+                                padding: childPadding ??
+                                    componentTheme.dimens.padding,
                                 child: child!,
                               ),
                             ],
