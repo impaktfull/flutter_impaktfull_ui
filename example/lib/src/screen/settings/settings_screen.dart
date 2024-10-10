@@ -18,7 +18,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final myApp = MyApp.of(context);
     return Container(
       color: theme.colors.canvas,
-      margin: const EdgeInsets.all(1),
       padding: const EdgeInsets.all(16),
       child: ImpaktfullUiListView(
         shrinkWrap: true,
