@@ -77,6 +77,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiRefreshIndicator
 - ImpaktfullUiSectionTitle
 - ImpaktfullUiSelectableListItem
+- ImpaktfullUiSeparatedColumn
 - ImpaktfullUiSideNavigation
   - ImpaktfullUiSideNavigationItem
 - ImpaktfullUiSnackyConfigurator
@@ -99,7 +100,6 @@ Many more to come in the future, always with the focus on minimizing maintenance
 - ImpaktfullUiDateTimePickerDialog
 - ImpaktfullUiNavBar
 - ImpaktfullUiScreen
-- ImpaktfullUiSeparatedColumn
 - ImpaktfullUiTabBar
 - ImpaktfullUiTabBarItem
 - ImpaktfullUiTimePicker

@@ -31,6 +31,7 @@ import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_butt
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item_style.dart';
+import 'package:impaktfull_ui_2/src/components/separated_column/separated_column.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
@@ -376,6 +377,9 @@ class DefaultTheme {
           colors: ImpaktfullUiDividerColorTheme(
             color: colors.border,
           ),
+          dimens: const ImpaktfullUiDividerDimensTheme(
+            margin: EdgeInsets.zero,
+          ),
         ),
         dropdown: ImpaktfullUiDropdownTheme(
           colors: ImpaktfullUiDropdownColorTheme(
@@ -622,12 +626,12 @@ class DefaultTheme {
             icons: colors.text,
           ),
           dimens: const ImpaktfullUiSectionTitleDimensTheme(
-            padding: EdgeInsetsDirectional.only(
+            margin: EdgeInsetsDirectional.only(
               start: 16,
               end: 16,
               top: 16,
             ),
-            paddingWithIconButtonActions: EdgeInsetsDirectional.only(
+            marginWithIconButtonActions: EdgeInsetsDirectional.only(
               start: 16,
               end: 4,
             ),
@@ -650,6 +654,22 @@ class DefaultTheme {
             color: duration.short,
           ),
           textStyles: const ImpaktfullUiSelectableListItemTextStyleTheme(),
+        ),
+        separatedColumn: ImpaktfullUiSeparatedColumnTheme(
+          assets: const ImpaktfullUiSeparatedColumnAssetsTheme(),
+          colors: ImpaktfullUiSeparatedColumnColorTheme(
+            background: colors.card,
+          ),
+          dimens: ImpaktfullUiSeparatedColumnDimensTheme(
+            borderRadius: dimens.borderRadius,
+            titleMargin: const EdgeInsetsDirectional.only(
+              start: 16,
+              end: 16,
+              top: 16,
+            ),
+            separatorMargin: const EdgeInsets.symmetric(horizontal: 16),
+          ),
+          textStyles: const ImpaktfullUiSeparatedColumnTextStyleTheme(),
         ),
         sidebarNavigation: ImpaktfullUiSidebarNavigationTheme(
           assets: const ImpaktfullUiSidebarNavigationAssetsTheme(),

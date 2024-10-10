@@ -8,9 +8,11 @@ part 'divider.describe.dart';
 
 class ImpaktfullUiDivider extends StatelessWidget
     with ComponentDescriptorMixin {
+  final EdgeInsetsGeometry? margin;
   final ImpaktfullUiDividerTheme? theme;
 
   const ImpaktfullUiDivider({
+    this.margin,
     this.theme,
     super.key,
   });
@@ -22,6 +24,7 @@ class ImpaktfullUiDivider extends StatelessWidget
       builder: (context, theme, componentTheme) => Container(
         color: componentTheme.colors.color,
         width: double.infinity,
+        margin: margin ?? componentTheme.dimens.margin,
         height: 1,
       ),
     );

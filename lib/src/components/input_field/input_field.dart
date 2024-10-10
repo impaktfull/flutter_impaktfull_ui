@@ -113,7 +113,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
           if (widget.label != null) ...[
             ImpaktfullUiSectionTitle(
               title: widget.label ?? '',
-              padding: EdgeInsets.zero,
+              margin: EdgeInsets.zero,
               actions: widget.labelActions,
             ),
           ],

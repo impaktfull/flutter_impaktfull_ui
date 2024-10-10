@@ -16,14 +16,14 @@ class ImpaktfullUiSectionTitle extends StatelessWidget
     with ComponentDescriptorMixin {
   final String title;
   final List<Widget> actions;
-  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
   final TextAlign textAlign;
   final ImpaktfullUiSectionTitleTheme? theme;
 
   const ImpaktfullUiSectionTitle({
     required this.title,
     this.actions = const [],
-    this.padding,
+    this.margin,
     this.textAlign = TextAlign.start,
     this.theme,
     super.key,
@@ -36,10 +36,10 @@ class ImpaktfullUiSectionTitle extends StatelessWidget
       builder: (context, theme, componentTheme) {
         final areAllIconButtons = _areAllValidActions(actions);
         return Padding(
-          padding: padding ??
+          padding: margin ??
               (areAllIconButtons
-                  ? componentTheme.dimens.paddingWithIconButtonActions
-                  : componentTheme.dimens.padding),
+                  ? componentTheme.dimens.marginWithIconButtonActions
+                  : componentTheme.dimens.margin),
           child: ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: CrossAxisAlignment.end,
             spacing: 8,

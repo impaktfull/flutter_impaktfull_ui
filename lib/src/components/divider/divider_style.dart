@@ -3,9 +3,11 @@ import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiDividerTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiDividerColorTheme colors;
+  final ImpaktfullUiDividerDimensTheme dimens;
 
   const ImpaktfullUiDividerTheme({
     required this.colors,
+    required this.dimens,
   });
 
   static ImpaktfullUiDividerTheme of(BuildContext context) =>
@@ -17,5 +19,13 @@ class ImpaktfullUiDividerColorTheme {
 
   const ImpaktfullUiDividerColorTheme({
     required this.color,
+  });
+}
+
+class ImpaktfullUiDividerDimensTheme {
+  final EdgeInsetsGeometry margin;
+
+  const ImpaktfullUiDividerDimensTheme({
+    required this.margin,
   });
 }

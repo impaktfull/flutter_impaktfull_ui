@@ -31,6 +31,7 @@ import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_butt
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/separated_column/separated_column.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
@@ -81,6 +82,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
   final ImpaktfullUiSectionTitleTheme sectionTitle;
   final ImpaktfullUiSelectableListItemTheme selectableListItem;
+  final ImpaktfullUiSeparatedColumnTheme separatedColumn;
   final ImpaktfullUiSidebarNavigationTheme sidebarNavigation;
   final ImpaktfullUiSidebarNavigationItemTheme sidebarNavigationItem;
   final ImpaktfullUiSimpleListItemTheme simpleListItem;
@@ -127,6 +129,7 @@ class ImpaktfullUiComponentsTheme {
     required this.refreshIndicator,
     required this.sectionTitle,
     required this.selectableListItem,
+    required this.separatedColumn,
     required this.sidebarNavigation,
     required this.sidebarNavigationItem,
     required this.simpleListItem,
@@ -174,6 +177,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
     ImpaktfullUiSectionTitleTheme? sectionTitle,
     ImpaktfullUiSelectableListItemTheme? selectableListItem,
+    ImpaktfullUiSeparatedColumnTheme? separatedColumn,
     ImpaktfullUiSidebarNavigationTheme? sidebarNavigation,
     ImpaktfullUiSidebarNavigationItemTheme? sidebarNavigationItem,
     ImpaktfullUiSimpleListItemTheme? simpleListItem,
@@ -223,6 +227,7 @@ class ImpaktfullUiComponentsTheme {
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
         sidebarNavigationItem:
             sidebarNavigationItem ?? this.sidebarNavigationItem,
+        separatedColumn: separatedColumn ?? this.separatedColumn,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
@@ -300,6 +305,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiSectionTitleTheme.of(context) as T;
     } else if (T == ImpaktfullUiSelectableListItemTheme) {
       return ImpaktfullUiSelectableListItemTheme.of(context) as T;
+    } else if (T == ImpaktfullUiSeparatedColumnTheme) {
+      return ImpaktfullUiSeparatedColumnTheme.of(context) as T;
     } else if (T == ImpaktfullUiSidebarNavigationTheme) {
       return ImpaktfullUiSidebarNavigationTheme.of(context) as T;
     } else if (T == ImpaktfullUiSidebarNavigationItemTheme) {

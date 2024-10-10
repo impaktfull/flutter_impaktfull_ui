@@ -30,11 +30,11 @@ class ImpaktfullUiSectionTitleColorTheme {
 }
 
 class ImpaktfullUiSectionTitleDimensTheme {
-  final EdgeInsetsDirectional padding;
-  final EdgeInsetsDirectional paddingWithIconButtonActions;
+  final EdgeInsetsGeometry margin;
+  final EdgeInsetsGeometry marginWithIconButtonActions;
   const ImpaktfullUiSectionTitleDimensTheme({
-    required this.padding,
-    required this.paddingWithIconButtonActions,
+    required this.margin,
+    required this.marginWithIconButtonActions,
   });
 }
 

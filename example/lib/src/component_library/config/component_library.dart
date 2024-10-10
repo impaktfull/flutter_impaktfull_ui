@@ -31,6 +31,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/radio_but
 import 'package:impaktfull_ui_example/src/component_library/components/refreshindicator/refreshindicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/section_title/section_title_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/selectable_list_item/selectable_list_item_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/separated_column/separated_column_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/sidebar_navigation/sidebar_navigation_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/simple_list_item/simple_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/snacky/snacky_library_item.dart';
@@ -77,6 +78,7 @@ class ComponentLibrary {
     const RefreshIndicatorLibraryItem(),
     const SectionTitleLibraryItem(),
     const SelectableListItemLibraryItem(),
+    const SeparatedColumnLibraryItem(),
     const SidebarNavigationLibraryItem(),
     const SidebarNavigationItemLibraryItem(),
     const SimpleListItemLibraryItem(),
