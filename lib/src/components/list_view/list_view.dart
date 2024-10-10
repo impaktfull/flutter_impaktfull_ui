@@ -19,6 +19,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   final List<Widget>? children;
   final List<T>? items;
   final Widget Function(BuildContext context, T item, int index)? itemBuilder;
+  final Widget Function(BuildContext context, T item, int index)?
+      separatorBuilder;
   final EdgeInsetsGeometry padding;
   final double spacing;
   final int itemsPerRow;
@@ -44,6 +46,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
         child = null,
         items = null,
         separated = false,
+        separatorBuilder = null,
         noDataLabel = null,
         refreshBtnLabel = null;
 
@@ -62,6 +65,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.theme,
     super.key,
   })  : separated = false,
+        separatorBuilder = null,
         child = null,
         children = null;
 
@@ -70,6 +74,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     required Widget Function(BuildContext context, T item, int index)
         this.itemBuilder,
     required String this.noDataLabel,
+    this.separatorBuilder,
     this.isLoading = false,
     this.refreshBtnLabel,
     this.onRefresh,
@@ -100,6 +105,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
         itemBuilder = null,
         children = null,
         separated = true,
+        separatorBuilder = null,
         itemsPerRow = 1;
 
   @override
@@ -198,7 +204,11 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               padding: padding,
               itemBuilder: _buildItem,
               shrinkWrap: widget.shrinkWrap,
-              separatorBuilder: (context, index) => const ImpaktfullUiDivider(),
+              separatorBuilder: (context, index) {
+                final item = widget.items![index];
+                return widget.separatorBuilder?.call(context, item, index) ??
+                    const ImpaktfullUiDivider();
+              },
               itemCount: widget.items!.length,
             ),
           );

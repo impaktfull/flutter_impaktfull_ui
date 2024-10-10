@@ -1,37 +1,35 @@
-import 'package:impaktfull_ui_example/src/component_library/components/switch_list_item/switch_list_item_library_variant.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/screen/screen_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
-import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_boolean_input.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_string_input.dart';
 
-class SwitchListItemLibraryItem extends ComponentLibraryItem {
-  const SwitchListItemLibraryItem();
+class ScreenLibraryItem extends ComponentLibraryItem {
+  const ScreenLibraryItem();
 
   @override
-  String get title => 'ImpaktfullUiSwitchListItem';
+  String get title => 'ImpaktfullUiScreen';
 
   @override
   List<ComponentLibraryVariant> getComponentVariants() {
     return [
-      const SwitchListItemLibraryVariant(),
+      const ScreenLibraryVariant(),
     ];
   }
 }
 
-class SwitchListItemLibraryInputs extends ComponentLibraryInputs {
+class ScreenLibraryInputs extends ComponentLibraryInputs {
   final title = ComponentLibraryStringInput(
     'Title',
-    initialValue: 'Title',
+    initialValue: 'My title',
   );
   final subtitle = ComponentLibraryStringInput(
     'Subtitle',
-    initialValue: 'Subtitle',
+    initialValue: 'My subtitle',
   );
-  final switchValue = ComponentLibraryBoolInput('Switch value');
+
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
         title,
         subtitle,
-        switchValue,
       ];
 }

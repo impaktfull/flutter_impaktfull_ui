@@ -20,21 +20,21 @@ class SeparatedColumnLibraryItem extends ComponentLibraryItem {
 }
 
 class SeparatedColumnLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput title = ComponentLibraryStringInput(
+  final title = ComponentLibraryStringInput(
     'Title',
     initialValue: 'My title',
   );
 
-  final ComponentLibraryIntInput amountOfItems = ComponentLibraryIntInput(
+  final amountOfItems = ComponentLibraryIntInput(
     'Amount of items',
     initialValue: 2,
   );
 
-  final ComponentLibraryBoolInput showFirstDivider = ComponentLibraryBoolInput(
+  final showFirstDivider = ComponentLibraryBoolInput(
     'Show first divider',
   );
 
-  final ComponentLibraryBoolInput showLastDivider = ComponentLibraryBoolInput(
+  final showLastDivider = ComponentLibraryBoolInput(
     'Show last divider',
   );
 

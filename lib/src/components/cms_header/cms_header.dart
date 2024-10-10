@@ -5,6 +5,7 @@ import 'package:impaktfull_ui_2/src/components/cms_header/cms_header_style.dart'
 import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/util/extension/widget_list_extensions.dart';
 
 export 'cms_header_style.dart';
 
@@ -73,7 +74,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                     ImpaktfullUiIconButton(
                       onTap: widget.onBackTapped!,
                       asset: componentTheme.assets.back,
-                      color: componentTheme.colors.icon,
+                      color: componentTheme.colors.icons,
                     ),
                     const SizedBox(width: 8),
                   ],
@@ -108,12 +109,11 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                   ),
                   if (widget.actions.isNotEmpty) ...[
                     const SizedBox(width: 16),
-                    for (var i = 0; i < widget.actions.length; ++i) ...[
-                      widget.actions[i],
-                      if (i < widget.actions.length - 1) ...[
-                        const SizedBox(width: 8),
-                      ]
-                    ],
+                    ImpaktfullUiAutoLayout.horizontal(
+                      spacing: 8,
+                      children: widget.actions
+                          .overrideColorOnWidgets(componentTheme.colors.icons),
+                    ),
                   ],
                 ],
               ),

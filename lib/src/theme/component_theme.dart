@@ -13,6 +13,7 @@ import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui_2/src/components/floating_action_button/floating_action_button.dart';
 import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
@@ -22,6 +23,7 @@ import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
+import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
@@ -29,6 +31,7 @@ import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/separated_column/separated_column.dart';
@@ -65,6 +68,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiDividerTheme divider;
   final ImpaktfullUiDropdownTheme dropdown;
   final ImpaktfullUiFluidPaddingTheme fluidPadding;
+  final ImpaktfullUiFloatingActionButtonTheme floatingActionButton;
   final ImpaktfullUiGridViewTheme gridView;
   final ImpaktfullUiHorizontalTabTheme horizontalTab;
   final ImpaktfullUiHorizontalTabsTheme horizontalTabs;
@@ -73,6 +77,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiListViewTheme listView;
   final ImpaktfullUiLoadingIndicatorTheme loadingIndicator;
   final ImpaktfullUiModalTheme modal;
+  final ImpaktfullUiNavBarTheme navBar;
   final ImpaktfullUiNetworkImageTheme networkImage;
   final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
@@ -80,6 +85,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiRadioButtonTheme radioButton;
   final ImpaktfullUiRadioButtonListItemTheme radioButtonListItem;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
+  final ImpaktfullUiScreenTheme screen;
   final ImpaktfullUiSectionTitleTheme sectionTitle;
   final ImpaktfullUiSelectableListItemTheme selectableListItem;
   final ImpaktfullUiSeparatedColumnTheme separatedColumn;
@@ -111,6 +117,7 @@ class ImpaktfullUiComponentsTheme {
     required this.datePicker,
     required this.divider,
     required this.dropdown,
+    required this.floatingActionButton,
     required this.fluidPadding,
     required this.gridView,
     required this.horizontalTab,
@@ -120,6 +127,7 @@ class ImpaktfullUiComponentsTheme {
     required this.listView,
     required this.loadingIndicator,
     required this.modal,
+    required this.navBar,
     required this.networkImage,
     required this.notification,
     required this.notificationBadge,
@@ -127,6 +135,7 @@ class ImpaktfullUiComponentsTheme {
     required this.radioButton,
     required this.radioButtonListItem,
     required this.refreshIndicator,
+    required this.screen,
     required this.sectionTitle,
     required this.selectableListItem,
     required this.separatedColumn,
@@ -159,6 +168,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiDatePickerTheme? datePicker,
     ImpaktfullUiDividerTheme? divider,
     ImpaktfullUiDropdownTheme? dropdown,
+    ImpaktfullUiFloatingActionButtonTheme? floatingActionButton,
     ImpaktfullUiFluidPaddingTheme? fluidPadding,
     ImpaktfullUiGridViewTheme? gridView,
     ImpaktfullUiHorizontalTabTheme? horizontalTab,
@@ -168,6 +178,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiListViewTheme? listView,
     ImpaktfullUiLoadingIndicatorTheme? loadingIndicator,
     ImpaktfullUiModalTheme? modal,
+    ImpaktfullUiNavBarTheme? navBar,
     ImpaktfullUiNetworkImageTheme? networkImage,
     ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
@@ -175,6 +186,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiRadioButtonTheme? radioButton,
     ImpaktfullUiRadioButtonListItemTheme? radioButtonListItem,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
+    ImpaktfullUiScreenTheme? screen,
     ImpaktfullUiSectionTitleTheme? sectionTitle,
     ImpaktfullUiSelectableListItemTheme? selectableListItem,
     ImpaktfullUiSeparatedColumnTheme? separatedColumn,
@@ -206,6 +218,7 @@ class ImpaktfullUiComponentsTheme {
         datePicker: datePicker ?? this.datePicker,
         divider: divider ?? this.divider,
         dropdown: dropdown ?? this.dropdown,
+        floatingActionButton: floatingActionButton ?? this.floatingActionButton,
         fluidPadding: fluidPadding ?? this.fluidPadding,
         gridView: gridView ?? this.gridView,
         horizontalTab: horizontalTab ?? this.horizontalTab,
@@ -215,6 +228,7 @@ class ImpaktfullUiComponentsTheme {
         listView: listView ?? this.listView,
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
         modal: modal ?? this.modal,
+        navBar: navBar ?? this.navBar,
         networkImage: networkImage ?? this.networkImage,
         notification: notification ?? this.notification,
         notificationBadge: notificationBadge ?? this.notificationBadge,
@@ -222,6 +236,7 @@ class ImpaktfullUiComponentsTheme {
         radioButton: radioButton ?? this.radioButton,
         radioButtonListItem: radioButtonListItem ?? this.radioButtonListItem,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
+        screen: screen ?? this.screen,
         sectionTitle: sectionTitle ?? this.sectionTitle,
         selectableListItem: selectableListItem ?? this.selectableListItem,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
@@ -269,6 +284,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiDividerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDropdownTheme) {
       return ImpaktfullUiDropdownTheme.of(context) as T;
+    } else if (T == ImpaktfullUiFloatingActionButtonTheme) {
+      return ImpaktfullUiFloatingActionButtonTheme.of(context) as T;
     } else if (T == ImpaktfullUiFluidPaddingTheme) {
       return ImpaktfullUiFluidPaddingTheme.of(context) as T;
     } else if (T == ImpaktfullUiGridViewTheme) {
@@ -287,6 +304,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiLoadingIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiModalTheme) {
       return ImpaktfullUiModalTheme.of(context) as T;
+    } else if (T == ImpaktfullUiNavBarTheme) {
+      return ImpaktfullUiNavBarTheme.of(context) as T;
     } else if (T == ImpaktfullUiNetworkImageTheme) {
       return ImpaktfullUiNetworkImageTheme.of(context) as T;
     } else if (T == ImpaktfullUiNotificationTheme) {
@@ -301,6 +320,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiRadioButtonListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
+    } else if (T == ImpaktfullUiScreenTheme) {
+      return ImpaktfullUiScreenTheme.of(context) as T;
     } else if (T == ImpaktfullUiSectionTitleTheme) {
       return ImpaktfullUiSectionTitleTheme.of(context) as T;
     } else if (T == ImpaktfullUiSelectableListItemTheme) {

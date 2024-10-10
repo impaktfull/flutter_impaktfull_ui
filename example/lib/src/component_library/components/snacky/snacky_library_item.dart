@@ -21,8 +21,7 @@ class SnackyLibraryItem extends ComponentLibraryItem {
 }
 
 class SnackyLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryBoolInput cancelAll =
-      ComponentLibraryBoolInput('Cancel all');
+  final cancelAll = ComponentLibraryBoolInput('Cancel all');
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
         cancelAll,

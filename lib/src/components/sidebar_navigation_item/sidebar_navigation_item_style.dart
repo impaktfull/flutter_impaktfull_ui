@@ -31,11 +31,11 @@ class ImpaktfullUiSidebarNavigationItemAssetsTheme {
 
 class ImpaktfullUiSidebarNavigationItemColorTheme {
   final Color background;
-  final Color icon;
+  final Color icons;
 
   const ImpaktfullUiSidebarNavigationItemColorTheme({
     required this.background,
-    required this.icon,
+    required this.icons,
   });
 }
 

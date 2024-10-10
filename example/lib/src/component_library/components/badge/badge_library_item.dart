@@ -22,15 +22,15 @@ class BadgeLibraryItem extends ComponentLibraryItem {
 }
 
 class BadgeLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput label = ComponentLibraryStringInput(
+  final label = ComponentLibraryStringInput(
     'Title',
     initialValue: 'Badge label',
   );
-  final ComponentLibraryIconInput leadingIcon = ComponentLibraryIconInput(
+  final leadingIcon = ComponentLibraryIconInput(
     'Leading icon',
     initialValue: PhosphorIcons.plus(),
   );
-  final ComponentLibraryIconInput trailingIcon = ComponentLibraryIconInput(
+  final trailingIcon = ComponentLibraryIconInput(
     'TrailingIcon icon',
     initialValue: PhosphorIcons.plus(),
   );

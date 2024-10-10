@@ -13,6 +13,7 @@ import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker_style.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui_2/src/components/floating_action_button/floating_action_button.dart';
 import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
@@ -22,6 +23,7 @@ import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
+import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
@@ -29,6 +31,7 @@ import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item_style.dart';
 import 'package:impaktfull_ui_2/src/components/separated_column/separated_column.dart';
@@ -90,7 +93,7 @@ class DefaultTheme {
       canvas: canvas ?? const Color(0xFFF9FAFB),
       card: card ?? const Color(0xFFFFFFFF),
       border: border ?? Colors.grey.withOpacity(0.2),
-      shadow: shadow ?? const Color(0xFF101828).withOpacity(0.5),
+      shadow: shadow ?? Colors.black12,
       text: text ?? const Color(0xFF344054),
       //todo check if color requires white or black if not provided
       textOnPrimary: textOnPrimary ?? const Color(0xFFFFFFFF),
@@ -247,7 +250,7 @@ class DefaultTheme {
           colors: ImpaktfullUiBottomSheetColorTheme(
             background: colors.card,
             handle: colors.text,
-            icon: colors.text,
+            icons: colors.text,
           ),
           dimens: ImpaktfullUiBottomSheetDimensTheme(
             borderRadius: dimens.borderRadius.copyWith(
@@ -320,7 +323,7 @@ class DefaultTheme {
           colors: ImpaktfullUiCmsHeaderColorTheme(
             background: colors.card,
             border: colors.border,
-            icon: colors.text,
+            icons: colors.text,
           ),
           dimens: const ImpaktfullUiCmsHeaderDimensTheme(),
           assets: ImpaktfullUiCmsHeaderAssetsTheme(
@@ -396,6 +399,18 @@ class DefaultTheme {
             dropUp: assets.icons.chevronUp,
             dropDown: assets.icons.chevronDown,
           ),
+        ),
+        floatingActionButton: ImpaktfullUiFloatingActionButtonTheme(
+          assets: const ImpaktfullUiFloatingActionButtonAssetsTheme(),
+          colors: ImpaktfullUiFloatingActionButtonColorTheme(
+            background: colors.accent,
+            backgroundDisabled: colors.accent.withOpacity(0.66),
+            icon: colors.textOnAccent,
+          ),
+          dimens: ImpaktfullUiFloatingActionButtonDimensTheme(
+            borderRadius: dimens.borderRadius,
+          ),
+          textStyles: const ImpaktfullUiFloatingActionButtonTextStyleTheme(),
         ),
         fluidPadding: const ImpaktfullUiFluidPaddingTheme(
           assets: ImpaktfullUiFluidPaddingAssetsTheme(),
@@ -532,6 +547,25 @@ class DefaultTheme {
             close: assets.icons.close,
           ),
         ),
+        navBar: ImpaktfullUiNavBarTheme(
+          assets: ImpaktfullUiNavBarAssetsTheme(
+            back: assets.icons.arrowLeft,
+            close: assets.icons.close,
+          ),
+          colors: ImpaktfullUiNavBarColorTheme(
+            background: colors.card,
+            icons: colors.text,
+            border: colors.border,
+          ),
+          dimens: const ImpaktfullUiNavBarDimensTheme(),
+          textStyles: ImpaktfullUiNavBarTextStyleTheme(
+            title: textStyles.onCard.text.medium,
+            subtitle: textStyles.onCard.text.small.light.withOpacity(0.66),
+          ),
+          shadows: ImpaktfullUiNavBarShadowsTheme(
+            shadow: shadows.small,
+          ),
+        ),
         networkImage: const ImpaktfullUiNetworkImageTheme(
           assets: ImpaktfullUiNetworkImageAssetsTheme(),
           colors: ImpaktfullUiNetworkImageColorTheme(),
@@ -542,6 +576,7 @@ class DefaultTheme {
           colors: ImpaktfullUiNotificationColorTheme(
             background: colors.card,
             border: colors.border,
+            shadow: colors.shadow,
             branded: colors.accent,
             error: colors.error,
             info: colors.info,
@@ -620,6 +655,14 @@ class DefaultTheme {
           colors: ImpaktfullUiRefreshIndicatorColorTheme(
               loadingIndicator: colors.accent),
         ),
+        screen: ImpaktfullUiScreenTheme(
+          assets: const ImpaktfullUiScreenAssetsTheme(),
+          colors: ImpaktfullUiScreenColorTheme(
+            background: colors.canvas,
+          ),
+          dimens: const ImpaktfullUiScreenDimensTheme(),
+          textStyles: const ImpaktfullUiScreenTextStyleTheme(),
+        ),
         sectionTitle: ImpaktfullUiSectionTitleTheme(
           assets: const ImpaktfullUiSectionTitleAssetsTheme(),
           colors: ImpaktfullUiSectionTitleColorTheme(
@@ -688,7 +731,7 @@ class DefaultTheme {
           ),
           colors: ImpaktfullUiSidebarNavigationItemColorTheme(
             background: colors.canvas,
-            icon: colors.text,
+            icons: colors.text,
           ),
           dimens: ImpaktfullUiSidebarNavigationItemDimensTheme(
             borderRadius: dimens.borderRadius,

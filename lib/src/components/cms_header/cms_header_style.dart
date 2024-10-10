@@ -20,12 +20,12 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
 class ImpaktfullUiCmsHeaderColorTheme {
   final Color background;
   final Color? border;
-  final Color icon;
+  final Color icons;
 
   const ImpaktfullUiCmsHeaderColorTheme({
     required this.background,
     required this.border,
-    required this.icon,
+    required this.icons,
   });
 }
 

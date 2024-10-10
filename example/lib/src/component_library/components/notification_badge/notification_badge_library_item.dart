@@ -19,12 +19,11 @@ class NotificationBadgeLibraryItem extends ComponentLibraryItem {
 }
 
 class NotificationBadgeLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryBoolInput show = ComponentLibraryBoolInput(
+  final show = ComponentLibraryBoolInput(
     'Show',
     initialValue: true,
   );
-  final ComponentLibraryStringInput badgeText =
-      ComponentLibraryStringInput('Badge text');
+  final badgeText = ComponentLibraryStringInput('Badge text');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

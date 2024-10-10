@@ -23,15 +23,15 @@ class ButtonLibraryItem extends ComponentLibraryItem {
 }
 
 class ButtonLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput title = ComponentLibraryStringInput(
+  final title = ComponentLibraryStringInput(
     'Title',
     initialValue: "{button_value}",
   );
-  final ComponentLibraryIconInput leadingIcon = ComponentLibraryIconInput(
+  final leadingIcon = ComponentLibraryIconInput(
     'Leading icon',
     initialValue: Icons.add,
   );
-  final ComponentLibraryIconInput trailingIcon = ComponentLibraryIconInput(
+  final trailingIcon = ComponentLibraryIconInput(
     'TrailingIcon icon',
     initialValue: Icons.add,
   );

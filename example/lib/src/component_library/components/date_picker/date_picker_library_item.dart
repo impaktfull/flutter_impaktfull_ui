@@ -18,13 +18,11 @@ class DatePickerLibraryItem extends ComponentLibraryItem {
 }
 
 class DatePickerLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryDateTimeInput selectedStartDate =
-      ComponentLibraryDateTimeInput(
+  final selectedStartDate = ComponentLibraryDateTimeInput(
     'Selected start date',
     initialValue: DateTime(2023, 7, 6),
   );
-  final ComponentLibraryDateTimeInput selectedEndDate =
-      ComponentLibraryDateTimeInput(
+  final selectedEndDate = ComponentLibraryDateTimeInput(
     'Selected end date',
   );
   @override

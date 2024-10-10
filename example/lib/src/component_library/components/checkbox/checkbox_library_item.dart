@@ -18,7 +18,7 @@ class CheckboxLibraryItem extends ComponentLibraryItem {
 }
 
 class CheckboxLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryBoolInput value = ComponentLibraryBoolInput(
+  final value = ComponentLibraryBoolInput(
     'Value',
     initialValue: true,
     allowNull: true,

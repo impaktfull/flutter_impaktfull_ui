@@ -39,29 +39,27 @@ class ImpaktfullSnackyBuilder extends SnackyBuilder {
       borderRadius: borderRadius.value, //todo fix in snacky
       layoutConfig: layoutConfig,
       customBuilder: builder ??
-          (context, cancelableSnacky) {
-            return ImpaktfullUiNotification(
-              title: snacky.title,
-              subtitle: snacky.subtitle,
-              width: layoutConfig.getSnackyWidth(context),
-              onTap: snacky.onTap,
-              onCloseTapped:
-                  snacky.canBeClosed ? () => cancelableSnacky.cancel() : null,
-              trailingWidgetBuilder: snacky.trailingWidgetBuilder == null
-                  ? null
-                  : (context, config) =>
-                      snacky.trailingWidgetBuilder!(context, cancelableSnacky),
-              leadingWidgetBuilder: snacky.leadingWidgetBuilder == null
-                  ? null
-                  : (context, config) =>
-                      snacky.leadingWidgetBuilder!(context, cancelableSnacky),
-              centerWidgetBuilder: snacky.bottomWidgetBuilder == null
-                  ? null
-                  : (context, config) =>
-                      snacky.bottomWidgetBuilder!(context, cancelableSnacky),
-              type: _getType(snacky),
-            );
-          },
+          (context, cancelableSnacky) => ImpaktfullUiNotification(
+                title: snacky.title,
+                subtitle: snacky.subtitle,
+                width: layoutConfig.getSnackyWidth(context),
+                onTap: snacky.onTap,
+                onCloseTapped:
+                    snacky.canBeClosed ? () => cancelableSnacky.cancel() : null,
+                trailingWidgetBuilder: snacky.trailingWidgetBuilder == null
+                    ? null
+                    : (context, config) => snacky.trailingWidgetBuilder!(
+                        context, cancelableSnacky),
+                leadingWidgetBuilder: snacky.leadingWidgetBuilder == null
+                    ? null
+                    : (context, config) =>
+                        snacky.leadingWidgetBuilder!(context, cancelableSnacky),
+                centerWidgetBuilder: snacky.bottomWidgetBuilder == null
+                    ? null
+                    : (context, config) =>
+                        snacky.bottomWidgetBuilder!(context, cancelableSnacky),
+                type: _getType(snacky),
+              ),
     );
   }
 

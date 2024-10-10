@@ -22,6 +22,7 @@ class ImpaktfullUiNotificationTheme extends ImpaktfullUiComponentTheme {
 class ImpaktfullUiNotificationColorTheme {
   final Color background;
   final Color? border;
+  final Color shadow;
   final Color branded;
   final Color error;
   final Color info;
@@ -32,6 +33,7 @@ class ImpaktfullUiNotificationColorTheme {
   const ImpaktfullUiNotificationColorTheme({
     required this.background,
     required this.border,
+    required this.shadow,
     required this.branded,
     required this.error,
     required this.info,

@@ -20,11 +20,11 @@ class IconButtonLibraryItem extends ComponentLibraryItem {
 }
 
 class IconButtonLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryIconInput icon = ComponentLibraryIconInput(
+  final icon = ComponentLibraryIconInput(
     'Icon',
     initialValue: PhosphorIcons.plus(),
   );
-  final ComponentLibraryStringInput tooltip = ComponentLibraryStringInput(
+  final tooltip = ComponentLibraryStringInput(
     'Tooltip',
     initialValue: 'Add',
   );

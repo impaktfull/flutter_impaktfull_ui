@@ -58,6 +58,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiDatePicker.range
 - ImpaktfullUiDivider
 - ImpaktfullUiDropdown
+- ImpaktfullUiFloatingActionButton
 - ImpaktfullUiFluidPadding
 - ImpaktfullUiGridView
 - ImpaktfullUiHorizontalTabs
@@ -68,6 +69,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiSimpleListItem
 - ImpaktfullUiLoadingIndicator
 - ImpaktfullUiModal
+- ImpaktfullUiNavBar
 - ImpaktfullUiNetworkImage
 - ImpaktfullUiNotification
 - ImpaktfullUiNotificationBadge
@@ -75,6 +77,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiRadioButton
 - ImpaktfullUiRadioButtonListItem
 - ImpaktfullUiRefreshIndicator
+- ImpaktfullUiScreen
 - ImpaktfullUiSectionTitle
 - ImpaktfullUiSelectableListItem
 - ImpaktfullUiSeparatedColumn
@@ -98,8 +101,6 @@ Many more to come in the future, always with the focus on minimizing maintenance
 
 - ImpaktfullUiDateTimePicker
 - ImpaktfullUiDateTimePickerDialog
-- ImpaktfullUiNavBar
-- ImpaktfullUiScreen
 - ImpaktfullUiTabBar
 - ImpaktfullUiTabBarItem
 - ImpaktfullUiTimePicker

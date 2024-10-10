@@ -18,8 +18,7 @@ class SidebarNavigationLibraryItem extends ComponentLibraryItem {
 }
 
 class SidebarNavigationLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryIntInput amountOfSecondaryItems =
-      ComponentLibraryIntInput(
+  final amountOfSecondaryItems = ComponentLibraryIntInput(
     'Amount of secondary items',
     initialValue: 0,
   );

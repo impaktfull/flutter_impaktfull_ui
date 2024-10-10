@@ -18,7 +18,7 @@ class HorizontalTabsLibraryItem extends ComponentLibraryItem {
 }
 
 class HorizontalTabsLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryIntInput selectedIndex = ComponentLibraryIntInput(
+  final selectedIndex = ComponentLibraryIntInput(
     'SelectedIndex',
     initialValue: 0,
   );

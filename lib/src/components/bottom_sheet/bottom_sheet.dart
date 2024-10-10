@@ -168,7 +168,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
                                 }
                               },
                               asset: componentTheme.assets.close,
-                              color: componentTheme.colors.icon,
+                              color: componentTheme.colors.icons,
                             ),
                           ),
                         ),

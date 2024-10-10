@@ -25,6 +25,7 @@ class _ThemeButtonState extends State<ThemeButton> {
       secondary: const Color(0xFF7d64f2),
       canvas: const Color(0xFF1A1A1A),
       card: const Color(0xFF131313),
+      shadow: Colors.black87,
       text: const Color(0xFFFFFFFF),
       textOnAccent: const Color(0xFFFFFFFF),
       textOnSecondary: const Color(0xFFFFFFFF),

@@ -21,8 +21,7 @@ class ColorPickerLibraryItem extends ComponentLibraryItem {
 }
 
 class ColorPickerLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryColorInput color =
-      ComponentLibraryColorInput('Selected color');
+  final color = ComponentLibraryColorInput('Selected color');
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
         color,

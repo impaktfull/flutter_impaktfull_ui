@@ -20,19 +20,13 @@ class InputFieldLibraryItem extends ComponentLibraryItem {
 }
 
 class InputLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput label =
-      ComponentLibraryStringInput('Label');
-  final ComponentLibraryIconInput leadingIcon =
-      ComponentLibraryIconInput('Leading icon');
-  final ComponentLibraryStringInput placholder =
-      ComponentLibraryStringInput('Placeholder');
-  final ComponentLibraryStringInput value =
-      ComponentLibraryStringInput('Value');
-  final ComponentLibraryStringInput hint = ComponentLibraryStringInput('Hint');
-  final ComponentLibraryStringInput error =
-      ComponentLibraryStringInput('Error');
-  final ComponentLibraryBoolInput showTrailingAction =
-      ComponentLibraryBoolInput('Show trailing action');
+  final label = ComponentLibraryStringInput('Label');
+  final leadingIcon = ComponentLibraryIconInput('Leading icon');
+  final placholder = ComponentLibraryStringInput('Placeholder');
+  final value = ComponentLibraryStringInput('Value');
+  final hint = ComponentLibraryStringInput('Hint');
+  final error = ComponentLibraryStringInput('Error');
+  final showTrailingAction = ComponentLibraryBoolInput('Show trailing action');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

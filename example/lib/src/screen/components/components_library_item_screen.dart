@@ -40,7 +40,9 @@ class _ComponentsLibraryItemScreenState
               tabs: variants
                   .map(
                     (e) => ImpaktfullUiHorizontalTabConfig(
-                        label: e.title, value: e),
+                      label: e.title,
+                      value: e,
+                    ),
                   )
                   .toList(),
               onTabSelected: (value) => setState(() => _selectedTab = value),
@@ -48,7 +50,7 @@ class _ComponentsLibraryItemScreenState
       actions: [
         ImpaktfullUiIconButton(
           onTap: _onEditTapped,
-          color: _showEdits ? theme.colors.accent : theme.colors.primary,
+          color: _showEdits ? theme.colors.accent : theme.colors.text,
           asset: theme.assets.icons.edit,
         ),
       ],

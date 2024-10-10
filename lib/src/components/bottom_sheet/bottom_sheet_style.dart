@@ -30,12 +30,12 @@ class ImpaktfullUiBottomSheetAssetsTheme {
 class ImpaktfullUiBottomSheetColorTheme {
   final Color background;
   final Color handle;
-  final Color icon;
+  final Color icons;
 
   const ImpaktfullUiBottomSheetColorTheme({
     required this.background,
     required this.handle,
-    required this.icon,
+    required this.icons,
   });
 }
 

@@ -19,16 +19,15 @@ class BottomNavigationItemLibraryItem extends ComponentLibraryItem {
 }
 
 class BottomNavigationItemLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryBoolInput isSelected = ComponentLibraryBoolInput(
+  final isSelected = ComponentLibraryBoolInput(
     'Is selected',
     initialValue: false,
   );
-  final ComponentLibraryBoolInput badgeShow = ComponentLibraryBoolInput(
+  final badgeShow = ComponentLibraryBoolInput(
     'Badge show',
     initialValue: false,
   );
-  final ComponentLibraryStringInput badgeText =
-      ComponentLibraryStringInput('Badge text');
+  final badgeText = ComponentLibraryStringInput('Badge text');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

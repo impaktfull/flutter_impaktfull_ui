@@ -18,7 +18,7 @@ class SidebarNavigationItemLibraryItem extends ComponentLibraryItem {
 }
 
 class SidebarNavigationItemLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryIntInput selectedPage = ComponentLibraryIntInput(
+  final selectedPage = ComponentLibraryIntInput(
     'Selected Page',
     initialValue: 0,
   );

@@ -18,7 +18,7 @@ class SectionTitleLibraryItem extends ComponentLibraryItem {
 }
 
 class SectionTitleLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput title = ComponentLibraryStringInput(
+  final title = ComponentLibraryStringInput(
     'Title',
     initialValue: 'My custom title',
   );

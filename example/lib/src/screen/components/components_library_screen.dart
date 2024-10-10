@@ -18,14 +18,26 @@ class ComponentsLibraryScreen extends StatefulWidget {
 
 class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   final _componentLibrary = ComponentLibrary();
+  final _fixedSearchQuery = [
+    'NavBar',
+    'Screen',
+    'FloatingActionButton',
+  ];
   var _searchQuery = '';
 
   @override
   Widget build(BuildContext context) {
-    final filteredComponents = _componentLibrary.components
-        .where(
-            (e) => e.title.toLowerCase().contains(_searchQuery.toLowerCase()))
-        .toList();
+    final filteredComponents = _componentLibrary.components.where((e) {
+      if (_fixedSearchQuery.isNotEmpty) {
+        for (final fixedQuery in _fixedSearchQuery) {
+          if (e.title.toLowerCase().contains(fixedQuery.toLowerCase())) {
+            return true;
+          }
+        }
+        return false;
+      }
+      return e.title.toLowerCase().contains(_searchQuery.toLowerCase());
+    }).toList();
     return ImpaktfullUiCommandMenu(
       shortcutActivator: const SingleActivator(
         LogicalKeyboardKey.keyF,
@@ -39,6 +51,17 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
       ),
       child: BaseScreen(
         title: 'Components',
+        actions: [
+          if (_fixedSearchQuery.isNotEmpty) ...[
+            ImpaktfullUiIconButton(
+              asset: theme.assets.icons.delete,
+              onTap: () {
+                _fixedSearchQuery.clear();
+                setState(() {});
+              },
+            ),
+          ],
+        ],
         builder: (context) => ImpaktfullUiGridView.builder(
           crossAxisCount: (context, config) => config.maxWidth ~/ 250,
           padding: const EdgeInsets.all(16),

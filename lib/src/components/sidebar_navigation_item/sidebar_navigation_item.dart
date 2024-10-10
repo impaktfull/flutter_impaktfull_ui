@@ -70,7 +70,7 @@ class _ImpaktfullUiSidebarNavigationItemState
                     if (widget.leading != null) ...[
                       ImpaktfullUiAssetWidget(
                         asset: widget.leading,
-                        color: componentTheme.colors.icon,
+                        color: componentTheme.colors.icons,
                       ),
                     ],
                     Expanded(
@@ -90,7 +90,7 @@ class _ImpaktfullUiSidebarNavigationItemState
                         duration: componentTheme.durations.dropdownRotation,
                         child: ImpaktfullUiIconButton(
                           asset: componentTheme.assets.chevronUp,
-                          color: componentTheme.colors.icon,
+                          color: componentTheme.colors.icons,
                           onTap: _onExpandedTapped,
                         ),
                       ),

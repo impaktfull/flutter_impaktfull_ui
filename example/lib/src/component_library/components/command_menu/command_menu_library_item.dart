@@ -19,10 +19,8 @@ class CommandMenuLibraryItem extends ComponentLibraryItem {
 }
 
 class CommandMenuLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput input =
-      ComponentLibraryStringInput('Search value');
-  final ComponentLibraryBoolInput blurBackground =
-      ComponentLibraryBoolInput('Blur background');
+  final input = ComponentLibraryStringInput('Search value');
+  final blurBackground = ComponentLibraryBoolInput('Blur background');
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
         input,

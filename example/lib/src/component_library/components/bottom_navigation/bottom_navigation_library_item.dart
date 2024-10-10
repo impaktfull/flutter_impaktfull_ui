@@ -18,7 +18,7 @@ class BottomNavigationLibraryItem extends ComponentLibraryItem {
 }
 
 class BottomNavigationLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryIntInput selectedIndex = ComponentLibraryIntInput(
+  final selectedIndex = ComponentLibraryIntInput(
     'Selectred Index',
     initialValue: 0,
   );

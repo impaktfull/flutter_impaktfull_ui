@@ -25,15 +25,13 @@ class NotificationLibraryItem extends ComponentLibraryItem {
 }
 
 class NotificationLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput title = ComponentLibraryStringInput(
+  final title = ComponentLibraryStringInput(
     'Title',
     initialValue: 'Title',
   );
-  final ComponentLibraryStringInput subtitle =
-      ComponentLibraryStringInput('Subtitle');
-  final ComponentLibraryBoolInput canBeClosed =
-      ComponentLibraryBoolInput('Can be closed');
-  final ComponentLibraryIntInput width = ComponentLibraryIntInput(
+  final subtitle = ComponentLibraryStringInput('Subtitle');
+  final canBeClosed = ComponentLibraryBoolInput('Can be closed');
+  final width = ComponentLibraryIntInput(
     'Width',
     extraInfo: 'Fallback to min 300px',
   );

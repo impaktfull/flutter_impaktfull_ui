@@ -18,7 +18,7 @@ class RadioButtonLibraryItem extends ComponentLibraryItem {
 }
 
 class RadioButtonLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput groupValue = ComponentLibraryStringInput(
+  final groupValue = ComponentLibraryStringInput(
     'Group value',
     initialValue: '1',
   );

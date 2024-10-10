@@ -14,6 +14,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/command_m
 import 'package:impaktfull_ui_example/src/component_library/components/date_picker/date_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/divider/divider_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/dropdown/dropdown_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/floating_action_button/floating_action_button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/fluid_padding/fluid_padding_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/grid_view/grid_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_item.dart';
@@ -23,12 +24,14 @@ import 'package:impaktfull_ui_example/src/component_library/components/list_item
 import 'package:impaktfull_ui_example/src/component_library/components/list_view/list_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_indicator/loading_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/modal/modal_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/nav_bar/nav_bar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification/notification_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification_badge/notification_badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/pagination/pagination_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/radio_button/radio_button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/radio_button_list_item/radio_button_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/refreshindicator/refreshindicator_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/screen/screen_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/section_title/section_title_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/selectable_list_item/selectable_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/separated_column/separated_column_library_item.dart';
@@ -61,6 +64,7 @@ class ComponentLibrary {
     const DatePickerLibraryItem(),
     const DividerLibraryItem(),
     const DropdownLibraryItem(),
+    const FloatingActionButtonLibraryItem(),
     const FluidPaddingLibraryItem(),
     const GridViewLibraryItem(),
     const HorizontalTabsLibraryItem(),
@@ -70,12 +74,14 @@ class ComponentLibrary {
     const ListViewLibraryItem(),
     const LoadingIndicatorLibraryItem(),
     const ModalLibraryItem(),
+    const NavBarLibraryItem(),
     const NotificationLibraryItem(),
     const NotificationBadgeLibraryItem(),
     const PaginationLibraryItem(),
     const RadioButtonLibraryItem(),
     const RadioButtonListItemLibraryItem(),
     const RefreshIndicatorLibraryItem(),
+    const ScreenLibraryItem(),
     const SectionTitleLibraryItem(),
     const SelectableListItemLibraryItem(),
     const SeparatedColumnLibraryItem(),

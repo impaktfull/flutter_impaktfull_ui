@@ -18,7 +18,7 @@ class SwitchLibraryItem extends ComponentLibraryItem {
 }
 
 class SwitchLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryBoolInput value = ComponentLibraryBoolInput('Value');
+  final value = ComponentLibraryBoolInput('Value');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

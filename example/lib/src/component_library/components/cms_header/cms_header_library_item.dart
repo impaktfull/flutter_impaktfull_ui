@@ -19,14 +19,11 @@ class CmsHeaderLibraryItem extends ComponentLibraryItem {
 }
 
 class CmsHeaderLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryStringInput title =
-      ComponentLibraryStringInput('Title', initialValue: '{title}');
-  final ComponentLibraryStringInput subtitle =
+  final title = ComponentLibraryStringInput('Title', initialValue: '{title}');
+  final subtitle =
       ComponentLibraryStringInput('Subtitle', initialValue: '{subtitle}');
-  final ComponentLibraryStringInput badge =
-      ComponentLibraryStringInput('Badge');
-  final ComponentLibraryIntInput selectedTab =
-      ComponentLibraryIntInput('Tab index', initialValue: 0);
+  final badge = ComponentLibraryStringInput('Badge');
+  final selectedTab = ComponentLibraryIntInput('Tab index', initialValue: 0);
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

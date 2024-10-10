@@ -18,17 +18,17 @@ class PaginationLibraryItem extends ComponentLibraryItem {
 }
 
 class PaginationLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryIntInput page = ComponentLibraryIntInput(
+  final page = ComponentLibraryIntInput(
     'Page',
     initialValue: 1,
     min: 1,
   );
-  final ComponentLibraryIntInput amountOfItems = ComponentLibraryIntInput(
+  final amountOfItems = ComponentLibraryIntInput(
     'amountOfItems',
     initialValue: 55,
     min: 1,
   );
-  final ComponentLibraryIntInput itemsPerPage = ComponentLibraryIntInput(
+  final itemsPerPage = ComponentLibraryIntInput(
     'itemsPerPage',
     initialValue: 10,
     min: 1,
