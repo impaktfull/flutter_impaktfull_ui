@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/app.dart';
+import 'package:impaktfull_ui_example/src/util/themes.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({
@@ -12,43 +13,12 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  static final _themes = [
-    ImpaktfullUiTheme.getDefault(
-      package: null,
-    ),
-    ImpaktfullUiTheme.custom(
-      label: 'Impaktfull Dark Theme',
-      primary: const Color(0xFF1A1A1A),
-      accent: const Color(0xFF7d64f2),
-      secondary: const Color(0xFF7d64f2),
-      canvas: const Color(0xFF1A1A1A),
-      card: const Color(0xFF131313),
-      shadow: Colors.black87,
-      text: const Color(0xFFFFFFFF),
-      textOnAccent: const Color(0xFFFFFFFF),
-      textOnSecondary: const Color(0xFFFFFFFF),
-      package: null,
-      assetSuffix: 'theme_dark',
-    ),
-    ImpaktfullUiTheme.custom(
-      label: 'Light mode (zero border radius)',
-      primary: const Color(0xFF1A1A1A),
-      accent: const Color(0xFF7d64f2),
-      secondary: const Color(0xFF7d64f2),
-      borderRadiusExtraSmall: BorderRadius.zero,
-      borderRadiusSmall: BorderRadius.zero,
-      borderRadius: BorderRadius.zero,
-      borderRadiusLarge: BorderRadius.zero,
-      borderRadiusExtraLarge: BorderRadius.zero,
-      package: null,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final myApp = MyApp.of(context);
     return Container(
       color: theme.colors.canvas,
+      margin: const EdgeInsets.all(1),
       padding: const EdgeInsets.all(16),
       child: ImpaktfullUiListView(
         shrinkWrap: true,
@@ -59,7 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             titleMargin: EdgeInsets.zero,
             separatorMargin: EdgeInsets.zero,
             children: [
-              for (final theme in _themes) ...[
+              for (final theme in ExampleThemes.themes) ...[
                 ImpaktfullUiRadioButtonListItem(
                   title: theme.label ?? 'N/A',
                   value: theme.label,
@@ -100,7 +70,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _onThemeChanged(String? value) {
-    final theme = _themes.firstWhere((element) => element.label == value);
+    final theme =
+        ExampleThemes.themes.firstWhere((element) => element.label == value);
     MyApp.of(context).setTheme(theme);
     setState(() {});
   }

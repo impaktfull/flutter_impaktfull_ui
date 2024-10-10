@@ -77,7 +77,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                 : Border.all(
                     color: borderColor,
                     width: 1,
-                    strokeAlign: BorderSide.strokeAlignOutside,
+                    strokeAlign: BorderSide.strokeAlignInside,
                   ),
             onTap: isClickable ? _onTap : null,
             child: Stack(

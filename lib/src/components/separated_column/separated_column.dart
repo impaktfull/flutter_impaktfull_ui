@@ -54,7 +54,7 @@ class ImpaktfullUiSeparatedColumn extends StatelessWidget
                   : Border.all(
                       color: componentTheme.colors.border!,
                       width: 1,
-                      strokeAlign: BorderSide.strokeAlignOutside,
+                      strokeAlign: BorderSide.strokeAlignInside,
                     ),
             ),
             child: ClipRRect(

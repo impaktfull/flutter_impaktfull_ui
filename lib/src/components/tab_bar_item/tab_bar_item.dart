@@ -13,13 +13,13 @@ class ImpaktfullUiTabBarItem extends StatefulWidget
     with ComponentDescriptorMixin {
   final String label;
   final int index;
-  final TabController tabController;
+  final TabController controller;
   final ImpaktfullUiTabBarItemTheme? theme;
 
   const ImpaktfullUiTabBarItem({
     required this.label,
     required this.index,
-    required this.tabController,
+    required this.controller,
     this.theme,
     super.key,
   });
@@ -34,13 +34,13 @@ class ImpaktfullUiTabBarItem extends StatefulWidget
 class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
   @override
   void initState() {
-    widget.tabController.addListener(_onTabChanged);
+    widget.controller.addListener(_onTabChanged);
     super.initState();
   }
 
   @override
   void dispose() {
-    widget.tabController.removeListener(_onTabChanged);
+    widget.controller.removeListener(_onTabChanged);
     super.dispose();
   }
 
@@ -49,7 +49,7 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTabBarItemTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
-        onTap: () => widget.tabController.animateTo(widget.index),
+        onTap: () => widget.controller.animateTo(widget.index),
         child: Container(
           color: componentTheme.colors.background,
           padding: const EdgeInsets.symmetric(
@@ -66,7 +66,7 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
                 style: componentTheme.textStyles.label,
               ),
               AnimatedOpacity(
-                opacity: widget.index == widget.tabController.index ? 1 : 0,
+                opacity: widget.index == widget.controller.index ? 1 : 0,
                 duration: componentTheme.durations.selected,
                 curve: Curves.easeInOut,
                 child: Container(

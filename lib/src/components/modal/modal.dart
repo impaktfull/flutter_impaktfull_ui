@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/container/container.dart';
+import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal_style.dart';
@@ -166,8 +166,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                       subtitle != null;
                   return GestureDetector(
                     onTap: () {}, // cancel close event
-                    child: ImpaktfullUiContainer(
-                      color: componentTheme.colors.background,
+                    child: ImpaktfullUiCard(
+                      padding: EdgeInsets.zero,
                       borderRadius: componentTheme.dimens.borderRadius,
                       child: SizedBox(
                         width: width,

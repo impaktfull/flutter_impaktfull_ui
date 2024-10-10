@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/nav_bar/nav_bar_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/tab_bar/widget/tab_bar_controller_configurator.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
 class NavBarLibraryVariant
@@ -54,14 +55,26 @@ class NavBarLibraryVariant
         subtitle: inputs.subtitle.value ?? '',
         onBackTapped: () => ImpaktfullUiNotification.show(title: 'Go back!'),
         isFullScreen: inputs.isFullScreen.value ?? false,
-        bottomChild: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Center(
-            child: ImpaktfullUiButton(
-              type: ImpaktfullUiButtonType.primary,
-              title: 'Add',
-              onTap: () {},
-            ),
+        bottomChild: TabBarControllerConfigurator(
+          builder: (context, controller, setState) => ImpaktfullUiTabBar(
+            controller: controller,
+            items: [
+              ImpaktfullUiTabBarItem(
+                label: 'Tab 1',
+                index: 0,
+                controller: controller,
+              ),
+              ImpaktfullUiTabBarItem(
+                label: 'Tab 2',
+                index: 1,
+                controller: controller,
+              ),
+              ImpaktfullUiTabBarItem(
+                label: 'Tab 3',
+                index: 2,
+                controller: controller,
+              ),
+            ],
           ),
         ),
       ),

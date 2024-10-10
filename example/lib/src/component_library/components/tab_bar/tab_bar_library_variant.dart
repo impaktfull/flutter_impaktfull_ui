@@ -21,17 +21,17 @@ class TabBarLibraryVariant
             ImpaktfullUiTabBarItem(
               label: 'Tab 1',
               index: 0,
-              tabController: controller,
+              controller: controller,
             ),
             ImpaktfullUiTabBarItem(
               label: 'Tab 2',
               index: 1,
-              tabController: controller,
+              controller: controller,
             ),
             ImpaktfullUiTabBarItem(
               label: 'Tab 3',
               index: 2,
-              tabController: controller,
+              controller: controller,
             ),
           ],
         ),

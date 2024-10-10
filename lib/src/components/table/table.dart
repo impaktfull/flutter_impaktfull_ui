@@ -39,7 +39,7 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
               ? null
               : Border.all(
                   color: componentTheme.colors.border!,
-                  strokeAlign: BorderSide.strokeAlignOutside,
+                  strokeAlign: BorderSide.strokeAlignInside,
                   width: 1,
                 ),
         ),
