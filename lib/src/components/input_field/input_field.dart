@@ -14,8 +14,7 @@ export 'action/input_field_action.dart';
 
 part 'input_field.describe.dart';
 
-class ImpaktfullUiInputField extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiInputField extends StatefulWidget with ComponentDescriptorMixin {
   final String? label;
   final List<Widget> labelActions;
   final String? placeholder;
@@ -33,6 +32,8 @@ class ImpaktfullUiInputField extends StatefulWidget
   final TextInputType textInputType;
   final TextInputAction textInputAction;
   final ImpaktfullUiInputFieldTheme? theme;
+  final bool multiline;
+  final int? maxLines;
 
   const ImpaktfullUiInputField({
     required this.value,
@@ -52,6 +53,8 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.textInputType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
     this.theme,
+    this.multiline = false,
+    this.maxLines,
     super.key,
   });
 
@@ -69,8 +72,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   @override
   void initState() {
     super.initState();
-    _controller =
-        widget.controller ?? TextEditingController(text: widget.value);
+    _controller = widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(_onFocusChanged);
     if (widget.autofocus) {
@@ -117,7 +119,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
             ),
           ],
           SizedBox(
-            height: 40,
+            height: widget.multiline ? null : 40,
             child: ImpaktfullUiAutoLayout.horizontal(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
@@ -134,14 +136,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                     ),
                     borderRadius: BorderRadiusDirectional.only(
                       topStart: componentTheme.dimens.borderRadius.topStart,
-                      bottomStart:
-                          componentTheme.dimens.borderRadius.bottomStart,
-                      topEnd: trailingAction == null
-                          ? componentTheme.dimens.borderRadius.topEnd
-                          : Radius.zero,
-                      bottomEnd: trailingAction == null
-                          ? componentTheme.dimens.borderRadius.bottomEnd
-                          : Radius.zero,
+                      bottomStart: componentTheme.dimens.borderRadius.bottomStart,
+                      topEnd: trailingAction == null ? componentTheme.dimens.borderRadius.topEnd : Radius.zero,
+                      bottomEnd: trailingAction == null ? componentTheme.dimens.borderRadius.bottomEnd : Radius.zero,
                     ),
                     child: ImpaktfullUiAutoLayout.horizontal(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -161,8 +158,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                               textSelectionTheme: TextSelectionThemeData(
                                 cursorColor: componentTheme.colors.cursor,
                                 selectionColor: componentTheme.colors.selection,
-                                selectionHandleColor:
-                                    componentTheme.colors.selectionHandle,
+                                selectionHandleColor: componentTheme.colors.selectionHandle,
                               ),
                             ),
                             child: TextField(
@@ -174,16 +170,16 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                               onChanged: widget.onChanged,
                               obscureText: widget.obscureText,
                               textInputAction: widget.textInputAction,
-                              keyboardType: widget.textInputType,
+                              keyboardType: widget.multiline ? TextInputType.multiline : widget.textInputType,
+                              maxLines: widget.multiline ? widget.maxLines : 1,
+                              minLines: widget.multiline ? 3 : 1,
                               decoration: InputDecoration(
                                 isDense: true,
                                 hintText: widget.placeholder,
                                 focusColor: Colors.transparent,
-                                hintStyle:
-                                    componentTheme.textStyles.placeholder,
+                                hintStyle: componentTheme.textStyles.placeholder,
                                 border: OutlineInputBorder(
-                                  borderRadius:
-                                      componentTheme.dimens.borderRadius.value,
+                                  borderRadius: componentTheme.dimens.borderRadius.value,
                                 ),
                                 errorBorder: InputBorder.none,
                                 enabledBorder: InputBorder.none,

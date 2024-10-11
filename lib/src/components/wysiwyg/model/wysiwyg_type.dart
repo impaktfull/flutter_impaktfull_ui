@@ -1,0 +1,4 @@
+enum ImpaktfullUiWysiwygType {
+  markdown,
+  html;
+}

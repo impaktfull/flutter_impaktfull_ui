@@ -45,8 +45,7 @@ class ImpaktfullUiAssetTheme {
               chevronUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
               circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle()),
               close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
-              cloudDownload:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown()),
+              cloudDownload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown()),
               cloudUpload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowUp()),
               confetti: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
               copy: ImpaktfullUiAsset.icon(PhosphorIcons.copy()),
@@ -56,8 +55,7 @@ class ImpaktfullUiAssetTheme {
               file: ImpaktfullUiAsset.icon(PhosphorIcons.file()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
-              lineVertical:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
+              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
               logout: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
@@ -66,6 +64,12 @@ class ImpaktfullUiAssetTheme {
               success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
               user: ImpaktfullUiAsset.icon(PhosphorIcons.user()),
               warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
+              wysiwygBold: ImpaktfullUiAsset.icon(PhosphorIcons.textB()),
+              wysiwygItalic: ImpaktfullUiAsset.icon(PhosphorIcons.textItalic()),
+              wysiwygOrderedList: ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers()),
+              wysiwygUnorderedList: ImpaktfullUiAsset.icon(PhosphorIcons.listBullets()),
+              wysiwygLink: ImpaktfullUiAsset.icon(PhosphorIcons.link()),
+              wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image()),
             ),
         images: images ??
             ImpaktfullUiImageTheme(
@@ -171,6 +175,12 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset settings;
   final ImpaktfullUiAsset success;
   final ImpaktfullUiAsset warning;
+  final ImpaktfullUiAsset wysiwygBold;
+  final ImpaktfullUiAsset wysiwygItalic;
+  final ImpaktfullUiAsset wysiwygOrderedList;
+  final ImpaktfullUiAsset wysiwygUnorderedList;
+  final ImpaktfullUiAsset wysiwygLink;
+  final ImpaktfullUiAsset wysiwygPhoto;
 
   const ImpaktfullUiIconTheme({
     required this.add,
@@ -204,6 +214,12 @@ class ImpaktfullUiIconTheme {
     required this.cloudUpload,
     required this.user,
     required this.warning,
+    required this.wysiwygBold,
+    required this.wysiwygItalic,
+    required this.wysiwygOrderedList,
+    required this.wysiwygUnorderedList,
+    required this.wysiwygLink,
+    required this.wysiwygPhoto,
   });
 
   ImpaktfullUiIconTheme copyWith({
@@ -238,6 +254,12 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? success,
     ImpaktfullUiAsset? user,
     ImpaktfullUiAsset? warning,
+    ImpaktfullUiAsset? wysiwygBold,
+    ImpaktfullUiAsset? wysiwygItalic,
+    ImpaktfullUiAsset? wysiwygOrderedList,
+    ImpaktfullUiAsset? wysiwygUnorderedList,
+    ImpaktfullUiAsset? wysiwygLink,
+    ImpaktfullUiAsset? wysiwygPhoto,
   }) =>
       ImpaktfullUiIconTheme(
         add: add ?? this.add,
@@ -271,6 +293,12 @@ class ImpaktfullUiIconTheme {
         success: success ?? this.success,
         user: user ?? this.user,
         warning: warning ?? this.warning,
+        wysiwygBold: wysiwygBold ?? this.wysiwygBold,
+        wysiwygItalic: wysiwygItalic ?? this.wysiwygItalic,
+        wysiwygOrderedList: wysiwygOrderedList ?? this.wysiwygOrderedList,
+        wysiwygUnorderedList: wysiwygUnorderedList ?? this.wysiwygUnorderedList,
+        wysiwygLink: wysiwygLink ?? this.wysiwygLink,
+        wysiwygPhoto: wysiwygPhoto ?? this.wysiwygPhoto,
       );
 }
 

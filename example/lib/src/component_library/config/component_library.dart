@@ -48,6 +48,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/switch_li
 import 'package:impaktfull_ui_example/src/component_library/components/tab_bar/tab_bar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/table/table_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/tooltip/tooltip_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/wysiwyg/wysiwyg_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
 class ComponentLibrary {
@@ -102,5 +103,6 @@ class ComponentLibrary {
     const TabBarLibraryItem(),
     const TableLibraryItem(),
     const TooltipLibraryItem(),
+    const WysiwygLibraryItem(),
   ];
 }

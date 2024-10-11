@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
@@ -18,7 +19,20 @@ class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiWysiwygAssetsTheme {
-  const ImpaktfullUiWysiwygAssetsTheme();
+  final ImpaktfullUiAsset bold;
+  final ImpaktfullUiAsset italic;
+  final ImpaktfullUiAsset orderedList;
+  final ImpaktfullUiAsset unorderedList;
+  final ImpaktfullUiAsset link;
+  final ImpaktfullUiAsset photo;
+  const ImpaktfullUiWysiwygAssetsTheme({
+    required this.bold,
+    required this.italic,
+    required this.orderedList,
+    required this.unorderedList,
+    required this.link,
+    required this.photo,
+  });
 }
 
 class ImpaktfullUiWysiwygColorTheme {
@@ -29,7 +43,9 @@ class ImpaktfullUiWysiwygDimensTheme {
   const ImpaktfullUiWysiwygDimensTheme();
 }
 
-
 class ImpaktfullUiWysiwygTextStyleTheme {
-  const ImpaktfullUiWysiwygTextStyleTheme();
+  final TextStyle previewText;
+  const ImpaktfullUiWysiwygTextStyleTheme({
+    required this.previewText,
+  });
 }

@@ -974,11 +974,20 @@ class DefaultTheme {
           ),
           assets: const ImpaktfullUiTooltipAssetsTheme(),
         ),
-        wysiwyg: const ImpaktfullUiWysiwygTheme(
-          assets: ImpaktfullUiWysiwygAssetsTheme(),
-          colors: ImpaktfullUiWysiwygColorTheme(),
-          dimens: ImpaktfullUiWysiwygDimensTheme(),
-          textStyles: ImpaktfullUiWysiwygTextStyleTheme(),
+        wysiwyg: ImpaktfullUiWysiwygTheme(
+          assets: ImpaktfullUiWysiwygAssetsTheme(
+            bold: assets.icons.wysiwygBold,
+            italic: assets.icons.wysiwygItalic,
+            orderedList: assets.icons.wysiwygOrderedList,
+            unorderedList: assets.icons.wysiwygUnorderedList,
+            link: assets.icons.wysiwygLink,
+            photo: assets.icons.wysiwygPhoto,
+          ),
+          colors: const ImpaktfullUiWysiwygColorTheme(),
+          dimens: const ImpaktfullUiWysiwygDimensTheme(),
+          textStyles: ImpaktfullUiWysiwygTextStyleTheme(
+            previewText: textStyles.onCanvas.text.small,
+          ),
         ),
       ),
     );
