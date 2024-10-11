@@ -16,16 +16,20 @@ class ImpaktfullUiAccordion extends StatefulWidget
     with ComponentDescriptorMixin {
   final String title;
   final WidgetBuilder expandedBuilder;
+  final bool expanded;
   final String? subtitle;
   final ImpaktfullUiAccordionRevealType revealType;
   final ImpaktfullUiAccordionTheme? theme;
+  final ValueChanged<bool>? onExpandedChanged;
 
   const ImpaktfullUiAccordion({
     required this.title,
     required this.expandedBuilder,
     this.subtitle,
+    this.expanded = false,
     this.revealType = ImpaktfullUiAccordionRevealType.topDown,
     this.theme,
+    this.onExpandedChanged,
     super.key,
   });
 
@@ -40,7 +44,6 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _expandAnimation;
-  bool _expanded = false;
 
   @override
   void initState() {
@@ -53,6 +56,17 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
       parent: _controller,
       curve: Curves.easeInOut,
     );
+    if (widget.expanded) {
+      _controller.value = 1.0;
+    }
+  }
+
+  @override
+  void didUpdateWidget(ImpaktfullUiAccordion oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.expanded != oldWidget.expanded) {
+      _setExpanded(widget.expanded);
+    }
   }
 
   @override
@@ -93,13 +107,16 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
   }
 
   void _toggleExpanded() {
-    setState(() {
-      _expanded = !_expanded;
-      if (_expanded) {
-        _controller.forward();
-      } else {
-        _controller.reverse();
-      }
-    });
+    final newValue = !widget.expanded;
+    _setExpanded(newValue);
+    widget.onExpandedChanged?.call(newValue);
+  }
+
+  void _setExpanded(bool expanded) {
+    if (expanded) {
+      _controller.forward();
+    } else {
+      _controller.reverse();
+    }
   }
 }

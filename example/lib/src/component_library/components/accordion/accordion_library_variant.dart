@@ -17,6 +17,28 @@ class AccordionLibraryVariant
       ImpaktfullUiAccordion(
         title: 'Title',
         revealType: inputs.revealType.value!,
+        expanded: inputs.expanded.value ?? false,
+        onExpandedChanged: inputs.expanded.updateState,
+        expandedBuilder: (BuildContext context) => Container(
+          width: double.infinity,
+          color: theme.colors.accent,
+          padding: const EdgeInsets.all(16),
+          child: ImpaktfullUiAutoLayout.vertical(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Disclaimer',
+                style: theme.textStyles.onAccent.text.small.medium,
+              ),
+            ],
+          ),
+        ),
+      ),
+      ImpaktfullUiAccordion(
+        title: 'Title',
+        revealType: inputs.revealType.value!,
+        expanded: inputs.expanded.value ?? false,
+        onExpandedChanged: inputs.expanded.updateState,
         expandedBuilder: (BuildContext context) => Container(
           width: double.infinity,
           color: theme.colors.accent,
