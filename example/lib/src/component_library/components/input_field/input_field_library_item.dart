@@ -20,9 +20,11 @@ class InputFieldLibraryItem extends ComponentLibraryItem {
 }
 
 class InputLibraryInputs extends ComponentLibraryInputs {
-  final label = ComponentLibraryStringInput('Label', initialValue: 'Email adress');
+  final label =
+      ComponentLibraryStringInput('Label', initialValue: 'Email adress');
   final leadingIcon = ComponentLibraryIconInput('Leading icon');
-  final placholder = ComponentLibraryStringInput('Placeholder', initialValue: 'Enter your email adress');
+  final placholder = ComponentLibraryStringInput('Placeholder',
+      initialValue: 'Enter your email adress');
   final value = ComponentLibraryStringInput('Value');
   final hint = ComponentLibraryStringInput('Hint');
   final error = ComponentLibraryStringInput('Error');

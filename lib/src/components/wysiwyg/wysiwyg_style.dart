@@ -15,7 +15,8 @@ class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiWysiwygTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.wysiwyg;
+  static ImpaktfullUiWysiwygTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.wysiwyg;
 }
 
 class ImpaktfullUiWysiwygAssetsTheme {

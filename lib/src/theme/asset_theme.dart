@@ -45,7 +45,8 @@ class ImpaktfullUiAssetTheme {
               chevronUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
               circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle()),
               close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
-              cloudDownload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown()),
+              cloudDownload:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown()),
               cloudUpload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowUp()),
               confetti: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
               copy: ImpaktfullUiAsset.icon(PhosphorIcons.copy()),
@@ -55,7 +56,8 @@ class ImpaktfullUiAssetTheme {
               file: ImpaktfullUiAsset.icon(PhosphorIcons.file()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
-              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
+              lineVertical:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
               logout: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
@@ -66,8 +68,10 @@ class ImpaktfullUiAssetTheme {
               warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
               wysiwygBold: ImpaktfullUiAsset.icon(PhosphorIcons.textB()),
               wysiwygItalic: ImpaktfullUiAsset.icon(PhosphorIcons.textItalic()),
-              wysiwygOrderedList: ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers()),
-              wysiwygUnorderedList: ImpaktfullUiAsset.icon(PhosphorIcons.listBullets()),
+              wysiwygOrderedList:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers()),
+              wysiwygUnorderedList:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.listBullets()),
               wysiwygLink: ImpaktfullUiAsset.icon(PhosphorIcons.link()),
               wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image()),
             ),
