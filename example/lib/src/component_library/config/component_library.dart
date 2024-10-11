@@ -1,3 +1,4 @@
+import 'package:impaktfull_ui_example/src/component_library/components/accordion/accordion_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/asset/asset_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/autolayout/autolayout_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/avatar/avatar_library_item.dart';
@@ -51,6 +52,7 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 
 class ComponentLibrary {
   final List<ComponentLibraryItem> components = [
+    const AccordionLibraryItem(),
     const AssetLibraryItem(),
     const AutoLayoutLibraryItem(),
     const AvatarLibraryItem(),

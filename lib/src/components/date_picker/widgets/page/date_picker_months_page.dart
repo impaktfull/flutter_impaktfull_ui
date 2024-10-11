@@ -32,6 +32,7 @@ class ImpaktfullUiDatePickerMonthsPage extends StatelessWidget {
         child: ImpaktfullUiListView.builder(
           items: _getItems(context),
           itemsPerRow: 2,
+          scrollPhysics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, item, index) => ImpaktfullUiDatePickerCell(
             value: _formatDate(item),
             fullWidth: true,

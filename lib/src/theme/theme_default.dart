@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/accordion/accordion.dart';
 import 'package:impaktfull_ui_2/src/components/avatar/avatar.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation.dart';
@@ -205,6 +206,14 @@ class DefaultTheme {
       durations: durations,
       shadows: shadows,
       components: ImpaktfullUiComponentsTheme(
+        accordion: ImpaktfullUiAccordionTheme(
+          assets: ImpaktfullUiAccordionAssetsTheme(
+            arrow: assets.icons.chevronDown,
+          ),
+          colors: const ImpaktfullUiAccordionColorTheme(),
+          dimens: const ImpaktfullUiAccordionDimensTheme(),
+          textStyles: const ImpaktfullUiAccordionTextStyleTheme(),
+        ),
         avatar: ImpaktfullUiAvatarTheme(
           assets: ImpaktfullUiAvatarAssetsTheme(
             placeholder: assets.icons.user,
@@ -419,8 +428,8 @@ class DefaultTheme {
             borderRadius: dimens.borderRadius,
           ),
           assets: ImpaktfullUiDropdownAssetsTheme(
-            dropUp: assets.icons.chevronUp,
             dropDown: assets.icons.chevronDown,
+            dropUp: assets.icons.chevronUp,
           ),
         ),
         filePicker: ImpaktfullUiFilePickerTheme(

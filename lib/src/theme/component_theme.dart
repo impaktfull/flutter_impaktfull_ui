@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/accordion/accordion.dart';
 import 'package:impaktfull_ui_2/src/components/avatar/avatar.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation.dart';
@@ -58,6 +59,7 @@ abstract class ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiComponentsTheme {
+  final ImpaktfullUiAccordionTheme accordion;
   final ImpaktfullUiAvatarTheme avatar;
   final ImpaktfullUiBadgeTheme badge;
   final ImpaktfullUiBottomNavigationTheme bottomNavigation;
@@ -113,6 +115,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiTooltipTheme tooltip;
 
   ImpaktfullUiComponentsTheme({
+    required this.accordion,
     required this.avatar,
     required this.badge,
     required this.bottomNavigation,
@@ -169,6 +172,7 @@ class ImpaktfullUiComponentsTheme {
   });
 
   ImpaktfullUiComponentsTheme copyWith({
+    ImpaktfullUiAccordionTheme? accordion,
     ImpaktfullUiAvatarTheme? avatar,
     ImpaktfullUiBadgeTheme? badge,
     ImpaktfullUiBottomNavigationTheme? bottomNavigation,
@@ -224,6 +228,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiTooltipTheme? tooltip,
   }) =>
       ImpaktfullUiComponentsTheme(
+        accordion: accordion ?? this.accordion,
         avatar: avatar ?? this.avatar,
         badge: badge ?? this.badge,
         bottomNavigation: bottomNavigation ?? this.bottomNavigation,
@@ -281,10 +286,12 @@ class ImpaktfullUiComponentsTheme {
       );
 
   static T of<T extends ImpaktfullUiComponentTheme>(BuildContext context) {
-    if (T == ImpaktfullUiBadgeTheme) {
-      return ImpaktfullUiBadgeTheme.of(context) as T;
+    if (T == ImpaktfullUiAccordionTheme) {
+      return ImpaktfullUiAccordionTheme.of(context) as T;
     } else if (T == ImpaktfullUiAvatarTheme) {
       return ImpaktfullUiAvatarTheme.of(context) as T;
+    } else if (T == ImpaktfullUiBadgeTheme) {
+      return ImpaktfullUiBadgeTheme.of(context) as T;
     } else if (T == ImpaktfullUiBottomNavigationTheme) {
       return ImpaktfullUiBottomNavigationTheme.of(context) as T;
     } else if (T == ImpaktfullUiBottomNavigationItemTheme) {

@@ -24,6 +24,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
   final Widget Function(BuildContext, T, int) itemBuilder;
   final EdgeInsetsGeometry padding;
   final double spacing;
+  final ScrollPhysics? scrollPhysics;
   final ImpaktfullUiGridViewTheme? theme;
 
   const ImpaktfullUiGridView.builder({
@@ -32,6 +33,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
     required this.crossAxisCount,
     this.padding = EdgeInsets.zero,
     this.spacing = 0,
+    this.scrollPhysics,
     this.theme,
     super.key,
   });
@@ -48,6 +50,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
         );
         return GridView.builder(
           padding: padding,
+          physics: scrollPhysics,
           itemCount: items.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount(context, config),

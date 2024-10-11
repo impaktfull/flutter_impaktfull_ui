@@ -30,6 +30,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   final bool isLoading;
   final bool shrinkWrap;
   final AsyncCallback? onRefresh;
+  final ScrollPhysics? scrollPhysics;
   final ImpaktfullUiListViewTheme? theme;
 
   const ImpaktfullUiListView({
@@ -40,6 +41,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.itemsPerRow = 1,
     this.padding = EdgeInsetsDirectional.zero,
     this.shrinkWrap = false,
+    this.scrollPhysics,
     this.theme,
     super.key,
   })  : itemBuilder = null,
@@ -62,6 +64,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.itemsPerRow = 1,
     this.padding = EdgeInsets.zero,
     this.shrinkWrap = false,
+    this.scrollPhysics,
     this.theme,
     super.key,
   })  : separated = false,
@@ -81,6 +84,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.itemsPerRow = 1,
     this.padding = EdgeInsets.zero,
     this.shrinkWrap = false,
+    this.scrollPhysics,
     this.theme,
     super.key,
     required,
@@ -96,6 +100,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.onRefresh,
     this.padding = EdgeInsets.zero,
     this.shrinkWrap = false,
+    this.scrollPhysics,
     this.theme,
     super.key,
     required,
@@ -133,6 +138,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             onRefresh: widget.onRefresh,
             child: ListView(
               padding: padding,
+              physics: widget.scrollPhysics,
               shrinkWrap: widget.shrinkWrap,
               children: [
                 ImpaktfullUiAutoLayout.vertical(
@@ -149,6 +155,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             onRefresh: widget.onRefresh,
             child: ListView(
               padding: padding,
+              physics: widget.scrollPhysics,
               shrinkWrap: widget.shrinkWrap,
               children: [
                 widget.child!,
@@ -162,7 +169,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             child: LayoutBuilder(
               builder: (context, constraints) => SingleChildScrollView(
                 physics: widget.onRefresh == null
-                    ? null
+                    ? widget.scrollPhysics
                     : const AlwaysScrollableScrollPhysics(),
                 child: Container(
                   padding: const EdgeInsets.all(16),
@@ -202,6 +209,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             onRefresh: widget.onRefresh,
             child: ListView.separated(
               padding: padding,
+              physics: widget.scrollPhysics,
               itemBuilder: _buildItem,
               shrinkWrap: widget.shrinkWrap,
               separatorBuilder: (context, index) {
@@ -217,6 +225,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
           onRefresh: widget.onRefresh,
           child: ListView.separated(
             padding: padding,
+            physics: widget.scrollPhysics,
             itemBuilder: _buildItem,
             shrinkWrap: widget.shrinkWrap,
             separatorBuilder: (context, index) =>

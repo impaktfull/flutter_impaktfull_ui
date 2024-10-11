@@ -45,11 +45,11 @@ class ImpaktfullUiDropdownDimensTheme {
 }
 
 class ImpaktfullUiDropdownAssetsTheme {
-  final ImpaktfullUiAsset dropUp;
   final ImpaktfullUiAsset dropDown;
+  final ImpaktfullUiAsset dropUp;
 
   const ImpaktfullUiDropdownAssetsTheme({
-    required this.dropUp,
     required this.dropDown,
+    required this.dropUp,
   });
 }
