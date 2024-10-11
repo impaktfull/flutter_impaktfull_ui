@@ -29,10 +29,15 @@ class AccordionLibraryInputs extends ComponentLibraryInputs {
     'Expanded',
     initialValue: true,
   );
+  final expanded2 = ComponentLibraryBoolInput(
+    'Expanded 2',
+    initialValue: false,
+  );
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
         revealType,
         expanded,
+        expanded2,
       ];
 }

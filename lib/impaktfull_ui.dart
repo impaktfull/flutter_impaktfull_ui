@@ -59,6 +59,7 @@ export 'src/components/table_header/table_header.dart';
 export 'src/components/table_header_item/table_header_item.dart';
 export 'src/components/tooltip/tooltip.dart';
 export 'src/components/touch_feedback/touch_feedback.dart';
+export 'src/components/wysiwyg/wysiwyg.dart';
 // Model
 export 'src/models/asset.dart';
 // Theme

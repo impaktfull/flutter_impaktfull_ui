@@ -53,6 +53,7 @@ import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_it
 import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 
 abstract class ImpaktfullUiComponentTheme {
   const ImpaktfullUiComponentTheme();
@@ -113,6 +114,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiTableRowTheme tableRow;
   final ImpaktfullUiTableRowItemTheme tableRowItem;
   final ImpaktfullUiTooltipTheme tooltip;
+  final ImpaktfullUiWysiwygTheme wysiwyg;
 
   ImpaktfullUiComponentsTheme({
     required this.accordion,
@@ -169,6 +171,7 @@ class ImpaktfullUiComponentsTheme {
     required this.tableRow,
     required this.tableRowItem,
     required this.tooltip,
+    required this.wysiwyg,
   });
 
   ImpaktfullUiComponentsTheme copyWith({
@@ -226,6 +229,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiTableRowTheme? tableRow,
     ImpaktfullUiTableRowItemTheme? tableRowItem,
     ImpaktfullUiTooltipTheme? tooltip,
+    ImpaktfullUiWysiwygTheme? wysiwyg,
   }) =>
       ImpaktfullUiComponentsTheme(
         accordion: accordion ?? this.accordion,
@@ -268,8 +272,7 @@ class ImpaktfullUiComponentsTheme {
         sectionTitle: sectionTitle ?? this.sectionTitle,
         selectableListItem: selectableListItem ?? this.selectableListItem,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
-        sidebarNavigationItem:
-            sidebarNavigationItem ?? this.sidebarNavigationItem,
+        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
         separatedColumn: separatedColumn ?? this.separatedColumn,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
@@ -283,6 +286,7 @@ class ImpaktfullUiComponentsTheme {
         tableRow: tableRow ?? this.tableRow,
         tableRowItem: tableRowItem ?? this.tableRowItem,
         tooltip: tooltip ?? this.tooltip,
+        wysiwyg: wysiwyg ?? this.wysiwyg,
       );
 
   static T of<T extends ImpaktfullUiComponentTheme>(BuildContext context) {
@@ -394,6 +398,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiTableRowItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiTooltipTheme) {
       return ImpaktfullUiTooltipTheme.of(context) as T;
+    } else if (T == ImpaktfullUiWysiwygTheme) {
+      return ImpaktfullUiWysiwygTheme.of(context) as T;
     } else {
       throw ArgumentError('$T is not configured in the impaktfull ui theme');
     }
