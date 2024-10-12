@@ -30,6 +30,7 @@ export 'src/components/list_item/list_item.dart';
 export 'src/components/list_view/list_view.dart';
 export 'src/components/loading_error_data/loading_error_data.dart';
 export 'src/components/loading_indicator/loading_indicator.dart';
+export 'src/components/markdown/markdown.dart';
 export 'src/components/modal/modal.dart';
 export 'src/components/nav_bar/nav_bar.dart';
 export 'src/components/network_image/network_image.dart';

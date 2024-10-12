@@ -25,6 +25,7 @@ import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_error_data/loading_error_data.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/markdown/markdown.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
@@ -70,6 +71,7 @@ class DefaultTheme {
     Color? tertiary,
     Color? canvas,
     Color? card,
+    Color? card2,
     Color? border,
     Color? shadow,
     Color? text,
@@ -100,6 +102,7 @@ class DefaultTheme {
       canvas: canvas ?? const Color(0xFFF9FAFB),
       card: card ?? const Color(0xFFFFFFFF),
       border: border ?? Colors.grey.withOpacity(0.2),
+      card2: card2 ?? Colors.grey.withOpacity(0.2),
       shadow: shadow ?? Colors.black12,
       text: text ?? const Color(0xFF344054),
       //todo check if color requires white or black if not provided
@@ -114,13 +117,11 @@ class DefaultTheme {
       destructive: destructive ?? const Color(0xFFBD0D00),
     );
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadiusExtraSmall:
-          borderRadiusExtraSmall ?? BorderRadius.circular(4),
+      borderRadiusExtraSmall: borderRadiusExtraSmall ?? BorderRadius.circular(4),
       borderRadiusSmall: borderRadiusSmall ?? BorderRadius.circular(6),
       borderRadius: borderRadiusSmall ?? BorderRadius.circular(8),
       borderRadiusLarge: borderRadiusLarge ?? BorderRadius.circular(12),
-      borderRadiusExtraLarge:
-          borderRadiusExtraLarge ?? BorderRadius.circular(16),
+      borderRadiusExtraLarge: borderRadiusExtraLarge ?? BorderRadius.circular(16),
       borderRadiusCircle: BorderRadius.circular(99999999),
     );
     final textStyles = ImpaktfullUiTextStylesTheme(
@@ -308,8 +309,7 @@ class DefaultTheme {
             alternative: textStyles.onCardPrimary.text.small.bold,
             grey: textStyles.onCard.text.small.bold,
             destructivePrimary: textStyles.onDestructive.text.small.bold,
-            destructiveAlternative:
-                textStyles.onCardDestructive.text.small.bold,
+            destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
           ),
         ),
         card: ImpaktfullUiCardTheme(
@@ -550,12 +550,10 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            placeholder: textStyles.onCardTertiary.text.medium.copyWith(
-                color: textStyles.onCardTertiary.text.medium.color
-                    ?.withOpacity(0.5)),
+            placeholder: textStyles.onCardTertiary.text.medium
+                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
             hint: textStyles.onCardTertiary.text.small,
-            error: textStyles.onCardDestructive.text.small.medium
-                .copyWith(color: colors.error),
+            error: textStyles.onCardDestructive.text.small.medium.copyWith(color: colors.error),
             label: textStyles.onCard.text.small.medium,
             action: textStyles.onCard.text.small.medium,
           ),
@@ -595,6 +593,32 @@ class DefaultTheme {
           colors: ImpaktfullUiLoadingIndicatorColorTheme(color: colors.accent),
           assets: ImpaktfullUiLoadingIndicatorAssetTheme(
             lottie: assets.lotties.loading,
+          ),
+        ),
+        markdown: ImpaktfullUiMarkdownTheme(
+          assets: ImpaktfullUiMarkdownAssetsTheme(
+            unorderedListBullet: assets.icons.wysiwygUnorderedListItem,
+          ),
+          colors: ImpaktfullUiMarkdownColorTheme(
+            code: colors.card2,
+          ),
+          dimens: ImpaktfullUiMarkdownDimensTheme(
+            code: dimens.borderRadiusSmall,
+          ),
+          textStyles: ImpaktfullUiMarkdownTextStyleTheme(
+            h1: textStyles.onCanvas.display.large.bold,
+            h2: textStyles.onCanvas.display.medium.bold,
+            h3: textStyles.onCanvas.display.small.bold,
+            h4: textStyles.onCanvas.display.extraSmall.bold,
+            h5: textStyles.onCanvas.display.extraSmall.medium,
+            h6: textStyles.onCanvas.display.extraSmall,
+            paragraph: textStyles.onCanvas.text.small,
+            link: textStyles.onCanvasPrimary.text.small.bold.copyWith(
+              decoration: TextDecoration.underline,
+            ),
+            orderedList: textStyles.onCanvas.text.small.medium,
+            unorderedList: textStyles.onCanvas.text.small.medium,
+            code: textStyles.onCanvas.text.small,
           ),
         ),
         modal: ImpaktfullUiModalTheme(
@@ -740,8 +764,7 @@ class DefaultTheme {
           textStyles: const ImpaktfullUiRadioButtonListItemTextStyleTheme(),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(
-              loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
         ),
         screen: ImpaktfullUiScreenTheme(
           assets: const ImpaktfullUiScreenAssetsTheme(),

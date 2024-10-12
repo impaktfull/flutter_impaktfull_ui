@@ -1,7 +1,6 @@
 enum ImpaktfullUiWysiwygAction {
   bold,
   italic,
-  orderedList,
   unorderedList,
   link,
   photo;

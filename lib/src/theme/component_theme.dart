@@ -25,6 +25,7 @@ import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_error_data/loading_error_data.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/markdown/markdown.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
@@ -86,6 +87,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiListViewTheme listView;
   final ImpaktfullUiLoadingErrorDataTheme loadingErrorData;
   final ImpaktfullUiLoadingIndicatorTheme loadingIndicator;
+  final ImpaktfullUiMarkdownTheme markdown;
   final ImpaktfullUiModalTheme modal;
   final ImpaktfullUiNavBarTheme navBar;
   final ImpaktfullUiNetworkImageTheme networkImage;
@@ -143,6 +145,7 @@ class ImpaktfullUiComponentsTheme {
     required this.listView,
     required this.loadingErrorData,
     required this.loadingIndicator,
+    required this.markdown,
     required this.modal,
     required this.navBar,
     required this.networkImage,
@@ -201,6 +204,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiListViewTheme? listView,
     ImpaktfullUiLoadingErrorDataTheme? loadingErrorData,
     ImpaktfullUiLoadingIndicatorTheme? loadingIndicator,
+    ImpaktfullUiMarkdownTheme? markdown,
     ImpaktfullUiModalTheme? modal,
     ImpaktfullUiNavBarTheme? navBar,
     ImpaktfullUiNetworkImageTheme? networkImage,
@@ -258,6 +262,7 @@ class ImpaktfullUiComponentsTheme {
         listView: listView ?? this.listView,
         loadingErrorData: loadingErrorData ?? this.loadingErrorData,
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
+        markdown: markdown ?? this.markdown,
         modal: modal ?? this.modal,
         navBar: navBar ?? this.navBar,
         networkImage: networkImage ?? this.networkImage,
@@ -272,8 +277,7 @@ class ImpaktfullUiComponentsTheme {
         sectionTitle: sectionTitle ?? this.sectionTitle,
         selectableListItem: selectableListItem ?? this.selectableListItem,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
-        sidebarNavigationItem:
-            sidebarNavigationItem ?? this.sidebarNavigationItem,
+        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
         separatedColumn: separatedColumn ?? this.separatedColumn,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
@@ -343,6 +347,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiLoadingErrorDataTheme.of(context) as T;
     } else if (T == ImpaktfullUiLoadingIndicatorTheme) {
       return ImpaktfullUiLoadingIndicatorTheme.of(context) as T;
+    } else if (T == ImpaktfullUiMarkdownTheme) {
+      return ImpaktfullUiMarkdownTheme.of(context) as T;
     } else if (T == ImpaktfullUiModalTheme) {
       return ImpaktfullUiModalTheme.of(context) as T;
     } else if (T == ImpaktfullUiNavBarTheme) {

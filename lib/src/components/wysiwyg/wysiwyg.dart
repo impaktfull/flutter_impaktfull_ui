@@ -37,6 +37,20 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
   final _controller = TextEditingController();
   var _showPreview = false;
   var _text = '';
+  var _selection = const TextSelection.collapsed(offset: 0);
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(_onSelectionChanged);
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(_onSelectionChanged);
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +79,9 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
                     text: _text,
                     type: widget.type,
                     actions: widget.actions,
-                    onChangedText: _onChanged,
+                    onChangedText: _onTextChanged,
                     componentTheme: componentTheme,
+                    selectedText: _selection.textInside(_text),
                   ),
                 ),
               ],
@@ -82,16 +97,12 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
             ImpaktfullUiInputField(
               controller: _controller,
               value: _text,
-              onChanged: _onChanged,
+              onChanged: _onTextChanged,
             ),
           ],
         ],
       ),
     );
-  }
-
-  void _onChanged(String value) {
-    setState(() => _text = value);
   }
 
   void _onEditorTapped() {
@@ -103,6 +114,16 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
   void _onPreviewTapped() {
     setState(() {
       _showPreview = true;
+    });
+  }
+
+  void _onTextChanged(String value) {
+    setState(() => _text = value);
+  }
+
+  void _onSelectionChanged() {
+    setState(() {
+      _selection = _controller.selection;
     });
   }
 }

@@ -26,6 +26,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/list_item
 import 'package:impaktfull_ui_example/src/component_library/components/list_view/list_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_error_data/loading_error_data_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_indicator/loading_indicator_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/markdown/markdown_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/modal/modal_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/nav_bar/nav_bar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification/notification_library_item.dart';
@@ -81,6 +82,7 @@ class ComponentLibrary {
     const ListViewLibraryItem(),
     const LoadingErrorDataLibraryItem(),
     const LoadingIndicatorLibraryItem(),
+    const MarkdownLibraryItem(),
     const ModalLibraryItem(),
     const NavBarLibraryItem(),
     const NotificationLibraryItem(),

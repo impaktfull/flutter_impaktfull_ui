@@ -7,6 +7,7 @@ class ImpaktfullUiColorTheme {
   final Color tertiary;
   final Color canvas;
   final Color card;
+  final Color card2;
   final Color border;
   final Color shadow;
   final Color text;
@@ -27,6 +28,7 @@ class ImpaktfullUiColorTheme {
     required this.tertiary,
     required this.canvas,
     required this.card,
+    required this.card2,
     required this.border,
     required this.shadow,
     required this.text,
@@ -48,6 +50,7 @@ class ImpaktfullUiColorTheme {
     Color? tertiary,
     Color? canvas,
     Color? card,
+    Color? card2,
     Color? border,
     Color? shadow,
     Color? text,
@@ -68,6 +71,7 @@ class ImpaktfullUiColorTheme {
         tertiary: tertiary ?? this.tertiary,
         canvas: canvas ?? this.canvas,
         card: card ?? this.card,
+        card2: card2 ?? this.card2,
         border: border ?? this.border,
         shadow: shadow ?? this.shadow,
         text: text ?? this.text,

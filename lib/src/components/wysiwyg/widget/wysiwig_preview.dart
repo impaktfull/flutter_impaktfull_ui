@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/markdown/markdown.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 
 class WysiwygPreview extends StatelessWidget {
@@ -14,12 +15,13 @@ class WysiwygPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Text(
-        text,
-        style: componentTheme.textStyles.previewText,
-      ),
-    );
+    switch (type) {
+      case ImpaktfullUiWysiwygType.markdown:
+        return ImpaktfullUiMarkdown(
+          data: text,
+        );
+      case ImpaktfullUiWysiwygType.html:
+        return Text(text);
+    }
   }
 }

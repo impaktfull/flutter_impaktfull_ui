@@ -72,6 +72,8 @@ class ImpaktfullUiAssetTheme {
                   ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers()),
               wysiwygUnorderedList:
                   ImpaktfullUiAsset.icon(PhosphorIcons.listBullets()),
+              wysiwygUnorderedListItem:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.dot()),
               wysiwygLink: ImpaktfullUiAsset.icon(PhosphorIcons.link()),
               wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image()),
             ),
@@ -183,6 +185,7 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset wysiwygItalic;
   final ImpaktfullUiAsset wysiwygOrderedList;
   final ImpaktfullUiAsset wysiwygUnorderedList;
+  final ImpaktfullUiAsset wysiwygUnorderedListItem;
   final ImpaktfullUiAsset wysiwygLink;
   final ImpaktfullUiAsset wysiwygPhoto;
 
@@ -222,6 +225,7 @@ class ImpaktfullUiIconTheme {
     required this.wysiwygItalic,
     required this.wysiwygOrderedList,
     required this.wysiwygUnorderedList,
+    required this.wysiwygUnorderedListItem,
     required this.wysiwygLink,
     required this.wysiwygPhoto,
   });
@@ -262,6 +266,7 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? wysiwygItalic,
     ImpaktfullUiAsset? wysiwygOrderedList,
     ImpaktfullUiAsset? wysiwygUnorderedList,
+    ImpaktfullUiAsset? wysiwygUnorderedListItem,
     ImpaktfullUiAsset? wysiwygLink,
     ImpaktfullUiAsset? wysiwygPhoto,
   }) =>
@@ -301,6 +306,7 @@ class ImpaktfullUiIconTheme {
         wysiwygItalic: wysiwygItalic ?? this.wysiwygItalic,
         wysiwygOrderedList: wysiwygOrderedList ?? this.wysiwygOrderedList,
         wysiwygUnorderedList: wysiwygUnorderedList ?? this.wysiwygUnorderedList,
+        wysiwygUnorderedListItem: wysiwygUnorderedListItem ?? this.wysiwygUnorderedListItem,
         wysiwygLink: wysiwygLink ?? this.wysiwygLink,
         wysiwygPhoto: wysiwygPhoto ?? this.wysiwygPhoto,
       );

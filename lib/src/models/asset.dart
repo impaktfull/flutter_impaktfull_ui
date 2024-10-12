@@ -85,7 +85,7 @@ class ImpaktfullUiAsset {
     if (directory != null) {
       path += '$directory';
     }
-    if (!path.endsWith('/')) {
+    if (path.isNotEmpty && !path.endsWith('/')) {
       path += '/';
     }
     path += asset;
