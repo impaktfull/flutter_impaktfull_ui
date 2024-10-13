@@ -16,6 +16,7 @@ enum ImpaktfullUiMarkDownHeaderLevel {
     if (amountOfHashtags == 0 || amountOfHashtags > 6) {
       throw ArgumentError('Invalid amount of hashtags (between 1 and 6)');
     }
-    return values.firstWhere((item) => item.amountOfHashtags == amountOfHashtags);
+    return values
+        .firstWhere((item) => item.amountOfHashtags == amountOfHashtags);
   }
 }

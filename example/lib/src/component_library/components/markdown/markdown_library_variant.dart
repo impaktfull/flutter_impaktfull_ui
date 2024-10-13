@@ -4,14 +4,16 @@ import 'package:impaktfull_ui_example/src/component_library/components/markdown/
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
 
-class MarkdownLibraryVariant extends ComponentLibraryVariant<MarkdownLibraryPrimaryInputs> {
+class MarkdownLibraryVariant
+    extends ComponentLibraryVariant<MarkdownLibraryPrimaryInputs> {
   const MarkdownLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, MarkdownLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, MarkdownLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiMarkdown(
         data: '''
@@ -69,7 +71,9 @@ Paragraph
 
 ### Network image
 
-![Failed to load image!](${NetworkImages.profilePicture} "We already knew this would fail!")
+![Failed to load image!](${NetworkImages.profilePicture}failt "We already knew this would fail!")
+
+![Koen Van Looveren!](${NetworkImages.profilePicture} "Profile picture of Koen Van Looveren")
 ''',
         onOpenLink: (url) => ImpaktfullUiNotification.show(
           title: 'On url tapped',

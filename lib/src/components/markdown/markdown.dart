@@ -14,7 +14,8 @@ part 'markdown.describe.dart';
 
 typedef ImpaktfullUiMarkdownLinkCallback = FutureOr<void> Function(String url);
 
-class ImpaktfullUiMarkdown extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiMarkdown extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String data;
   final ImpaktfullUiMarkdownParsers? parsers;
   final ImpaktfullUiMarkdownLinkCallback? onOpenLink;

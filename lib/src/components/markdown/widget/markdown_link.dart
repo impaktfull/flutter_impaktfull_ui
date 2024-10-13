@@ -30,10 +30,14 @@ class ImpaktfullUiMarkDownLink extends StatelessWidget {
           child: ImpaktfullUiTooltip(
             message: altText ?? '',
             child: GestureDetector(
-              onTap: hasLink && onOpenLink != null ? () => onOpenLink!.call(link) : null,
+              onTap: hasLink && onOpenLink != null
+                  ? () => onOpenLink!.call(link)
+                  : null,
               child: Text(
                 _getText(),
-                style: hasLink ? componentTheme.textStyles.link : componentTheme.textStyles.paragraph,
+                style: hasLink
+                    ? componentTheme.textStyles.link
+                    : componentTheme.textStyles.paragraph,
               ),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/markdown/markdown.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
@@ -25,8 +26,9 @@ class ImpaktfullUiMarkDownImage extends StatelessWidget {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiMarkdownTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
-        final isAsset =
-            imageUrl.startsWith('/assets') || imageUrl.startsWith('assets/') || imageUrl.startsWith('file://assets/');
+        final isAsset = imageUrl.startsWith('/assets') ||
+            imageUrl.startsWith('assets/') ||
+            imageUrl.startsWith('file://assets/');
         if (isAsset) {
           final assetUrl = imageUrl;
           ImpaktfullUiAsset asset;
@@ -41,10 +43,41 @@ class ImpaktfullUiMarkDownImage extends StatelessWidget {
         }
         return Image.network(
           imageUrl,
-          errorBuilder: (context, error, stackTrace) => Text(
-            '${_getText()} (Failed to load image, $error)',
-            style: componentTheme.textStyles.paragraph,
-          ),
+          errorBuilder: (context, error, stackTrace) =>
+              LayoutBuilder(builder: (context, constraints) {
+            return Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: Placeholder(
+                    color: componentTheme.colors.error,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: constraints.maxWidth * 0.2,
+                    vertical: 16,
+                  ),
+                  child: ImpaktfullUiAutoLayout.vertical(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        _getText(),
+                        style: componentTheme.textStyles.alt,
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        '(Failed to load image, $error)',
+                        style: componentTheme.textStyles.error,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          }),
         );
       },
     );

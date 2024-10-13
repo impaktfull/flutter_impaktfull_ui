@@ -306,7 +306,8 @@ class ImpaktfullUiIconTheme {
         wysiwygItalic: wysiwygItalic ?? this.wysiwygItalic,
         wysiwygOrderedList: wysiwygOrderedList ?? this.wysiwygOrderedList,
         wysiwygUnorderedList: wysiwygUnorderedList ?? this.wysiwygUnorderedList,
-        wysiwygUnorderedListItem: wysiwygUnorderedListItem ?? this.wysiwygUnorderedListItem,
+        wysiwygUnorderedListItem:
+            wysiwygUnorderedListItem ?? this.wysiwygUnorderedListItem,
         wysiwygLink: wysiwygLink ?? this.wysiwygLink,
         wysiwygPhoto: wysiwygPhoto ?? this.wysiwygPhoto,
       );

@@ -20,4 +20,3 @@ class MarkdownLibraryInputs extends ComponentLibraryInputs {
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [];
 }
-

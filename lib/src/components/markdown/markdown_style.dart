@@ -15,7 +15,8 @@ class ImpaktfullUiMarkdownTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiMarkdownTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.markdown;
+  static ImpaktfullUiMarkdownTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.markdown;
 }
 
 class ImpaktfullUiMarkdownAssetsTheme {
@@ -27,8 +28,10 @@ class ImpaktfullUiMarkdownAssetsTheme {
 
 class ImpaktfullUiMarkdownColorTheme {
   final Color code;
+  final Color error;
   const ImpaktfullUiMarkdownColorTheme({
     required this.code,
+    required this.error,
   });
 }
 
@@ -51,6 +54,8 @@ class ImpaktfullUiMarkdownTextStyleTheme {
   final TextStyle orderedList;
   final TextStyle unorderedList;
   final TextStyle code;
+  final TextStyle alt;
+  final TextStyle error;
 
   const ImpaktfullUiMarkdownTextStyleTheme({
     required this.h1,
@@ -64,5 +69,7 @@ class ImpaktfullUiMarkdownTextStyleTheme {
     required this.orderedList,
     required this.unorderedList,
     required this.code,
+    required this.alt,
+    required this.error,
   });
 }

@@ -9,7 +9,8 @@ import 'package:rive/rive.dart' hide Image;
 
 part 'asset_widget.describe.dart';
 
-class ImpaktfullUiAssetWidget extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiAssetWidget extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? asset;
   final Color? color;
   final double? width;
@@ -65,7 +66,8 @@ class ImpaktfullUiAssetWidget extends StatelessWidget with ComponentDescriptorMi
     if (svgAsset != null) {
       return SvgPicture.asset(
         svgAsset,
-        colorFilter: color == null ? null : ColorFilter.mode(color, BlendMode.srcIn),
+        colorFilter:
+            color == null ? null : ColorFilter.mode(color, BlendMode.srcIn),
         width: width,
         height: height,
         package: asset.package,

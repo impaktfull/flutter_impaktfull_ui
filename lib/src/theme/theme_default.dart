@@ -117,11 +117,13 @@ class DefaultTheme {
       destructive: destructive ?? const Color(0xFFBD0D00),
     );
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadiusExtraSmall: borderRadiusExtraSmall ?? BorderRadius.circular(4),
+      borderRadiusExtraSmall:
+          borderRadiusExtraSmall ?? BorderRadius.circular(4),
       borderRadiusSmall: borderRadiusSmall ?? BorderRadius.circular(6),
       borderRadius: borderRadiusSmall ?? BorderRadius.circular(8),
       borderRadiusLarge: borderRadiusLarge ?? BorderRadius.circular(12),
-      borderRadiusExtraLarge: borderRadiusExtraLarge ?? BorderRadius.circular(16),
+      borderRadiusExtraLarge:
+          borderRadiusExtraLarge ?? BorderRadius.circular(16),
       borderRadiusCircle: BorderRadius.circular(99999999),
     );
     final textStyles = ImpaktfullUiTextStylesTheme(
@@ -309,7 +311,8 @@ class DefaultTheme {
             alternative: textStyles.onCardPrimary.text.small.bold,
             grey: textStyles.onCard.text.small.bold,
             destructivePrimary: textStyles.onDestructive.text.small.bold,
-            destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
+            destructiveAlternative:
+                textStyles.onCardDestructive.text.small.bold,
           ),
         ),
         card: ImpaktfullUiCardTheme(
@@ -550,10 +553,12 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            placeholder: textStyles.onCardTertiary.text.medium
-                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
+            placeholder: textStyles.onCardTertiary.text.medium.copyWith(
+                color: textStyles.onCardTertiary.text.medium.color
+                    ?.withOpacity(0.5)),
             hint: textStyles.onCardTertiary.text.small,
-            error: textStyles.onCardDestructive.text.small.medium.copyWith(color: colors.error),
+            error: textStyles.onCardDestructive.text.small.medium
+                .copyWith(color: colors.error),
             label: textStyles.onCard.text.small.medium,
             action: textStyles.onCard.text.small.medium,
           ),
@@ -601,6 +606,7 @@ class DefaultTheme {
           ),
           colors: ImpaktfullUiMarkdownColorTheme(
             code: colors.card2,
+            error: colors.error,
           ),
           dimens: ImpaktfullUiMarkdownDimensTheme(
             code: dimens.borderRadiusSmall,
@@ -619,6 +625,9 @@ class DefaultTheme {
             orderedList: textStyles.onCanvas.text.small.medium,
             unorderedList: textStyles.onCanvas.text.small.medium,
             code: textStyles.onCanvas.text.small,
+            alt: textStyles.onCanvas.text.small.medium,
+            error: textStyles.onCanvas.text.extraSmall
+                .copyWith(color: colors.error),
           ),
         ),
         modal: ImpaktfullUiModalTheme(
@@ -764,7 +773,8 @@ class DefaultTheme {
           textStyles: const ImpaktfullUiRadioButtonListItemTextStyleTheme(),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(
+              loadingIndicator: colors.accent),
         ),
         screen: ImpaktfullUiScreenTheme(
           assets: const ImpaktfullUiScreenAssetsTheme(),
