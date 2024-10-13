@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
@@ -17,6 +19,7 @@ class BaseInputField extends StatefulWidget {
   final bool multiline;
   final int? maxLines;
   final ImpaktfullUiInputFieldTheme? theme;
+  final Duration debounceDuration;
 
   const BaseInputField({
     required this.value,
@@ -32,6 +35,7 @@ class BaseInputField extends StatefulWidget {
     required this.multiline,
     required this.maxLines,
     required this.theme,
+    this.debounceDuration = Duration.zero,
     super.key,
   });
 
@@ -41,6 +45,7 @@ class BaseInputField extends StatefulWidget {
 
 class _BaseInputFieldState extends State<BaseInputField> {
   late final TextEditingController _controller;
+  Timer? _debounceTimer;
 
   @override
   void initState() {
@@ -66,6 +71,7 @@ class _BaseInputFieldState extends State<BaseInputField> {
 
   @override
   void dispose() {
+    _debounceTimer?.cancel();
     widget.focusNode.removeListener(_onFocusChanged);
     super.dispose();
   }
@@ -90,7 +96,7 @@ class _BaseInputFieldState extends State<BaseInputField> {
             scrollPadding: EdgeInsets.zero,
             cursorColor: componentTheme.colors.cursor,
             style: componentTheme.textStyles.text,
-            onChanged: widget.onChanged,
+            onChanged: _debouncedOnChanged,
             obscureText: widget.obscureText,
             textInputAction: widget.multiline
                 ? TextInputAction.newline
@@ -119,6 +125,13 @@ class _BaseInputFieldState extends State<BaseInputField> {
         ),
       ),
     );
+  }
+
+  void _debouncedOnChanged(String value) {
+    _debounceTimer?.cancel();
+    _debounceTimer = Timer(widget.debounceDuration, () {
+      widget.onChanged(value);
+    });
   }
 
   void _onFocusChanged() =>

@@ -13,12 +13,15 @@ class ImpaktfullUiAutoCompleteOverlay<T> extends StatefulWidget {
   final String noDataLabel;
   final bool isShownAboveInputField;
   final ImpaktfullUiAutoCompleteTheme? theme;
+  final Duration debounceDuration;
+
   const ImpaktfullUiAutoCompleteOverlay({
     required this.initialSearchQuery,
     required this.onSearchChanged,
     required this.itemBuilder,
     required this.noDataLabel,
     required this.isShownAboveInputField,
+    required this.debounceDuration,
     this.theme,
     super.key,
   });
@@ -34,6 +37,7 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
   final _items = <T>[];
   var _isLoading = true;
   late String _searchQuery;
+  Timer? _debounceTimer;
 
   @override
   void initState() {
@@ -43,6 +47,12 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
       if (!mounted) return;
       _getData();
     });
+  }
+
+  @override
+  void dispose() {
+    _debounceTimer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -66,14 +76,22 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
   }
 
   void updateSearchQuery(String value) {
-    _searchQuery = value;
-    _getData();
+    setState(() {
+      _searchQuery = value;
+      _isLoading = true;
+    });
+
+    _debounceTimer?.cancel();
+    _debounceTimer = Timer(widget.debounceDuration, () {
+      _getData();
+    });
   }
 
   Future<void> _getData() async {
     try {
-      _isLoading = true;
-      setState(() {});
+      if (_isLoading != true) {
+        setState(() => _isLoading = true);
+      }
       final searchDateTime = DateTime.now();
       _latestSearch = searchDateTime;
       final items = await widget.onSearchChanged(_searchQuery);
@@ -87,7 +105,9 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
         stackTrace: trace,
       );
     }
-    _isLoading = false;
-    setState(() {});
+    if (!mounted) return;
+    setState(() {
+      _isLoading = false;
+    });
   }
 }

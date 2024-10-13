@@ -25,6 +25,7 @@ class ImpaktfullUiAutoComplete<T> extends StatefulWidget
   final String noDataLabel;
   final String? placeholder;
   final bool replaceWithOverlay;
+  final Duration debounceDuration;
   final ImpaktfullUiAutoCompleteTheme? theme;
 
   const ImpaktfullUiAutoComplete({
@@ -35,6 +36,7 @@ class ImpaktfullUiAutoComplete<T> extends StatefulWidget
     this.placeholder,
     this.controller,
     this.replaceWithOverlay = false,
+    this.debounceDuration = const Duration(milliseconds: 300),
     this.theme,
     super.key,
   });
@@ -164,6 +166,7 @@ class _ImpaktfullUiAutoCompleteState<T>
                 ),
                 initialSearchQuery: _value,
                 noDataLabel: widget.noDataLabel,
+                debounceDuration: widget.debounceDuration,
               ),
             ),
           ),
