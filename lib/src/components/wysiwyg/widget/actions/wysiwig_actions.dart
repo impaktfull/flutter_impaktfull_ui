@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_bold_formatter.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_code_block_formatter.dart';
@@ -38,9 +38,11 @@ class WysiwygActions extends StatefulWidget {
 class _WysiwygActionsState extends State<WysiwygActions> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      height: 48,
       padding: const EdgeInsets.all(4),
-      child: ImpaktfullUiAutoLayout.horizontal(
+      child: ImpaktfullUiListView(
+        scrollDirection: Axis.horizontal,
         children: <WysiwygActionItem>[
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.header,
@@ -107,8 +109,7 @@ class _WysiwygActionsState extends State<WysiwygActions> {
 
   void _onItalicTapped() => _format(const ImpaktfullUiWysiwygItalicFormatter());
 
-  void _onUnorderedListTapped() =>
-      _format(const ImpaktfullUiWysiwygUnorderedListFormatter());
+  void _onUnorderedListTapped() => _format(const ImpaktfullUiWysiwygUnorderedListFormatter());
 
   void _onOrderedListTapped() {
     ImpaktfullUiNotification.show(
@@ -120,8 +121,7 @@ class _WysiwygActionsState extends State<WysiwygActions> {
 
   void _onCodeTapped() => _format(const ImpaktfullUiWysiwygCodeFormatter());
 
-  void _onCodeBlockTapped() =>
-      _format(const ImpaktfullUiWysiwygCodeBlockFormatter());
+  void _onCodeBlockTapped() => _format(const ImpaktfullUiWysiwygCodeBlockFormatter());
 
   void _onLinkTapped() => _format(const ImpaktfullUiWysiwygLinkFormatter());
 
