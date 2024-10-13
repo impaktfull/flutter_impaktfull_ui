@@ -22,6 +22,7 @@ class WysiwygActionItem extends StatelessWidget {
     if (!actions.contains(action)) return const SizedBox();
     return ImpaktfullUiIconButton(
       asset: asset,
+      tooltip: action.tooltip,
       onTap: onTap,
     );
   }
