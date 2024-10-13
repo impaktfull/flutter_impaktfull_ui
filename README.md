@@ -102,13 +102,9 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiTooltip
 - ImpaktfullUiTouchFeedback
 
-#### Todo
+#### Future
 
-Many more to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull
-
-- ImpaktfullUiDateTimePicker
-- ImpaktfullUiDateTimePickerDialog
-- ImpaktfullUiTimePicker
+Many more to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull (Checkout the TODO list below)
 
 ### Theming
 
@@ -176,6 +172,50 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 - [ ] Add tests
 - [ ] Add extra components
+  - ImpaktfullUiSkeleton
+  - ImpaktfullUiAutoComplete
+  - ImpaktfullUiCalendar
+  - ImpaktfullUiNumberInput
+  - ImpaktfullUiMetrics
+  - ImpaktfullUiLineChart
+  - ImpaktfullUiBarChart
+  - ImpaktfullUiPieChart
+  - ImpaktfullUiStepper
+  - ImpaktfullUiSlider
+  - ImpaktfullUiPasswordStrengthIndicator
+  - ImpaktfullUiBreadcrumbs
+  - ImpaktfullUiSocialLoginsButton
+  - ImpaktfullUiSegmentedControll
+  - ImpaktfullUiHtml
+  - ImpaktfullUiWysiwyg (HTML)
+  - ImpaktfullUiRating
+  - ImpaktfullUiDateTimePicker
+  - ImpaktfullUiDateTimePickerDialog
+  - ImpaktfullUiTimePicker
+  - ImpaktfullUiGallery
+  - ImpaktfullUiStoryView
+  - ImpaktfullUiStoryViewItem
+  - ImpaktfullUiVidoPlayerControls
+  - ImpaktfullUiFileCropper
+  - ImpaktfullUiWebView
+- [ ] Add addaptive components
+  - ImpaktfullUiResponsiveLayout
+  - ImpaktfullUiMasterDetail
+  - ImpaktfullUiAdaptiveScreen
+  - ImpaktfullUiAdaptiveNavBar
+  - ImpaktfullUiAdaptiveNavBarAction
+  - ImpaktfullUiAdaptiveNavigation
+- [ ] Add building blocks
+  - ImpaktfullUiBBLogin
+  - ImpaktfullUiBBRegister
+  - ImpaktfullUiBBForgotPassword
+  - ImpaktfullUiBBResetPassword
+  - ImpaktfullUiBBVerifyEmail
+  - ImpaktfullUiBBMoreScreen
+  - ImpaktfullUiBBDebugScreen
+  - ImpaktfullUiBBPrivacyPolicyScreen
+  - ImpaktfullUiBBTermsAndConditionsScreen
+  - ImpaktfullUiBBLicensesScreen
 
 # License
 

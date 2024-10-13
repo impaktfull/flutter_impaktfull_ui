@@ -109,7 +109,8 @@ class _WysiwygActionsState extends State<WysiwygActions> {
 
   void _onItalicTapped() => _format(const ImpaktfullUiWysiwygItalicFormatter());
 
-  void _onUnorderedListTapped() => _format(const ImpaktfullUiWysiwygUnorderedListFormatter());
+  void _onUnorderedListTapped() =>
+      _format(const ImpaktfullUiWysiwygUnorderedListFormatter());
 
   void _onOrderedListTapped() {
     ImpaktfullUiNotification.show(
@@ -121,7 +122,8 @@ class _WysiwygActionsState extends State<WysiwygActions> {
 
   void _onCodeTapped() => _format(const ImpaktfullUiWysiwygCodeFormatter());
 
-  void _onCodeBlockTapped() => _format(const ImpaktfullUiWysiwygCodeBlockFormatter());
+  void _onCodeBlockTapped() =>
+      _format(const ImpaktfullUiWysiwygCodeBlockFormatter());
 
   void _onLinkTapped() => _format(const ImpaktfullUiWysiwygLinkFormatter());
 
