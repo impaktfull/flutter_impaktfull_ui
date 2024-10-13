@@ -88,6 +88,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiSeparatedColumn
 - ImpaktfullUiSideNavigation
   - ImpaktfullUiSideNavigationItem
+- ImpaktfullUiSkeleton
 - ImpaktfullUiSnackyConfigurator
 - ImpaktfullUiSwitch
 - ImpaktfullUiSwitchListItem
@@ -172,7 +173,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 - [ ] Add tests
 - [ ] Add extra components
-  - ImpaktfullUiSkeleton
+
   - ImpaktfullUiAutoComplete
   - ImpaktfullUiCalendar
   - ImpaktfullUiNumberInput
@@ -198,6 +199,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
   - ImpaktfullUiVidoPlayerControls
   - ImpaktfullUiFileCropper
   - ImpaktfullUiWebView
+
 - [ ] Add addaptive components
   - ImpaktfullUiResponsiveLayout
   - ImpaktfullUiMasterDetail

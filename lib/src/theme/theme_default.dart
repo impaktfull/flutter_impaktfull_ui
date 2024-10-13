@@ -43,6 +43,7 @@ import 'package:impaktfull_ui_2/src/components/separated_column/separated_column
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/skeleton/skeleton.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
@@ -888,6 +889,16 @@ class DefaultTheme {
             subtitle: textStyles.onCard.text.small.light,
             subtitleDanger: textStyles.onCardDestructive.text.small.light,
           ),
+        ),
+        skeleton: ImpaktfullUiSkeletonTheme(
+          assets: const ImpaktfullUiSkeletonAssetsTheme(),
+          colors: ImpaktfullUiSkeletonColorTheme(
+            background: colors.card2,
+          ),
+          dimens: ImpaktfullUiSkeletonDimensTheme(
+            borderRadius: dimens.borderRadius,
+          ),
+          textStyles: const ImpaktfullUiSkeletonTextStyleTheme(),
         ),
         snackyConfigurator: ImpaktfullUiSnackyConfiguratorTheme(
           colors: ImpaktfullUiSnackyConfiguratorColorTheme(

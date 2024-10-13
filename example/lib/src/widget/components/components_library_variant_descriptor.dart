@@ -32,6 +32,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
     }
     return ImpaktfullUiAutoLayout.vertical(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       spacing: 8,
       children: [
         if (text != null) ...[

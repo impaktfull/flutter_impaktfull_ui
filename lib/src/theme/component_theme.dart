@@ -43,6 +43,7 @@ import 'package:impaktfull_ui_2/src/components/separated_column/separated_column
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/skeleton/skeleton.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
@@ -105,6 +106,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiSidebarNavigationTheme sidebarNavigation;
   final ImpaktfullUiSidebarNavigationItemTheme sidebarNavigationItem;
   final ImpaktfullUiSimpleListItemTheme simpleListItem;
+  final ImpaktfullUiSkeletonTheme skeleton;
   final ImpaktfullUiSnackyConfiguratorTheme snackyConfigurator;
   final ImpaktfullUiSwitchTheme switchTheme;
   final ImpaktfullUiSwitchListItemTheme switchListItem;
@@ -163,6 +165,7 @@ class ImpaktfullUiComponentsTheme {
     required this.sidebarNavigation,
     required this.sidebarNavigationItem,
     required this.simpleListItem,
+    required this.skeleton,
     required this.snackyConfigurator,
     required this.switchTheme,
     required this.switchListItem,
@@ -222,6 +225,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiSidebarNavigationTheme? sidebarNavigation,
     ImpaktfullUiSidebarNavigationItemTheme? sidebarNavigationItem,
     ImpaktfullUiSimpleListItemTheme? simpleListItem,
+    ImpaktfullUiSkeletonTheme? skeleton,
     ImpaktfullUiSnackyConfiguratorTheme? snackyConfigurator,
     ImpaktfullUiSwitchTheme? switchTheme,
     ImpaktfullUiSwitchListItemTheme? switchListItem,
@@ -281,6 +285,7 @@ class ImpaktfullUiComponentsTheme {
             sidebarNavigationItem ?? this.sidebarNavigationItem,
         separatedColumn: separatedColumn ?? this.separatedColumn,
         simpleListItem: simpleListItem ?? this.simpleListItem,
+        skeleton: skeleton ?? this.skeleton,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         switchTheme: switchTheme ?? this.switchTheme,
         switchListItem: switchListItem ?? this.switchListItem,
@@ -384,6 +389,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiSidebarNavigationItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiSimpleListItemTheme) {
       return ImpaktfullUiSimpleListItemTheme.of(context) as T;
+    } else if (T == ImpaktfullUiSkeletonTheme) {
+      return ImpaktfullUiSkeletonTheme.of(context) as T;
     } else if (T == ImpaktfullUiSnackyConfiguratorTheme) {
       return ImpaktfullUiSnackyConfiguratorTheme.of(context) as T;
     } else if (T == ImpaktfullUiSwitchTheme) {
