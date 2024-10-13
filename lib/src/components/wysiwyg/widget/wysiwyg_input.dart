@@ -53,8 +53,12 @@ class _ImpaktfullUiWysiwygInputFieldState
   @override
   void initState() {
     super.initState();
-    _controller =
-        widget.controller ?? TextEditingController(text: widget.value);
+    final widgetController = widget.controller;
+    _controller = widgetController ?? TextEditingController(text: widget.value);
+    if (widgetController == null) {
+      _controller.selection = TextSelection(
+          baseOffset: widget.value!.length, extentOffset: widget.value!.length);
+    }
     _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(_onFocusChanged);
     _controller.addListener(_onTextChanged);
@@ -69,9 +73,7 @@ class _ImpaktfullUiWysiwygInputFieldState
   void didUpdateWidget(covariant ImpaktfullUiWysiwygInputField oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value && _controller.text != widget.value) {
-      final currentSelection = _controller.selection;
       _controller.text = widget.value ?? '';
-      _controller.selection = currentSelection;
     }
   }
 
@@ -88,7 +90,9 @@ class _ImpaktfullUiWysiwygInputFieldState
     super.dispose();
   }
 
-  void _onTextChanged() => setState(() {});
+  void _onTextChanged() {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {

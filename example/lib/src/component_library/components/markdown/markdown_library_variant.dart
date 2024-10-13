@@ -57,6 +57,14 @@ Paragraph
 
 `ImpaktfullUiApp.doEverythingForMe()`
 
+```dart
+class ImpaktfullUiApp { 
+  static void doEverythingForMe() {}
+}
+```
+
+This code is something you could use to do everything with: `ImpaktfullUiApp.doEverythingForMe()`
+
 ## Images
 
 ### Asset image

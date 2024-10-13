@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:impaktfull_ui_2/src/components/markdown/element_builder/code_element_builder.dart';
 import 'package:impaktfull_ui_2/src/components/markdown/markdown_style.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
@@ -45,10 +46,17 @@ class ImpaktfullUiMarkdown extends StatelessWidget
           p: componentTheme.textStyles.paragraph,
           listBullet: componentTheme.textStyles.unorderedList,
           a: componentTheme.textStyles.link,
-          code: componentTheme.textStyles.code.copyWith(
-            backgroundColor: componentTheme.colors.code,
+          code: componentTheme.textStyles.code,
+          codeblockDecoration: BoxDecoration(
+            borderRadius: componentTheme.dimens.code,
           ),
+          codeblockPadding: EdgeInsets.zero,
         ),
+        builders: {
+          'code': ImpaktfullUiMarkdownCodeElementBuilder(
+            theme: componentTheme,
+          ),
+        },
         onTapLink: onOpenLink == null ? null : _onTapLink,
         imageBuilder: (uri, title, alt) {
           final url = uri.toString();
