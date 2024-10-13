@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
-import 'package:impaktfull_ui_2/src/components/dropdown/dropdown_menu.dart';
+import 'package:impaktfull_ui_2/src/components/dropdown/widget/dropdown_overlay.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown_style.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
@@ -138,7 +138,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                       alignment: AlignmentDirectional.topStart,
                       child: Padding(
                         padding: const EdgeInsets.only(top: 4),
-                        child: ImpaktfullUiDropdownMenu(
+                        child: ImpaktfullUiDropdownOverlay(
                           width: width,
                           height: widget.height,
                           theme: componentTheme,

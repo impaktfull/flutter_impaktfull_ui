@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/accordion/accordion.dart';
+import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart';
 import 'package:impaktfull_ui_2/src/components/avatar/avatar.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation.dart';
@@ -233,6 +234,15 @@ class DefaultTheme {
           ),
           textStyles: const ImpaktfullUiAvatarTextStyleTheme(),
         ),
+        autoComplete: ImpaktfullUiAutoCompleteTheme(
+          assets: const ImpaktfullUiAutoCompleteAssetsTheme(),
+          colors: const ImpaktfullUiAutoCompleteColorTheme(),
+          dimens: const ImpaktfullUiAutoCompleteDimensTheme(),
+          shadows: ImpaktfullUiAutoCompleteShadowTheme(
+            overlay: shadows.large,
+          ),
+          textStyles: const ImpaktfullUiAutoCompleteTextStyleTheme(),
+        ),
         badge: ImpaktfullUiBadgeTheme(
           colors: const ImpaktfullUiBadgeColorTheme(),
           dimens: ImpaktfullUiBadgeDimensTheme(
@@ -427,7 +437,7 @@ class DefaultTheme {
             menuBorder: colors.border,
           ),
           shadows: ImpaktfullUiDropdownShadowTheme(
-            menuShadow: shadows.medium,
+            overlay: shadows.large,
           ),
           dimens: ImpaktfullUiDropdownDimensTheme(
             borderRadius: dimens.borderRadius,

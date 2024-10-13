@@ -29,6 +29,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   final String? refreshBtnLabel;
   final bool isLoading;
   final bool shrinkWrap;
+  final bool reversed;
   final Axis scrollDirection;
   final AsyncCallback? onRefresh;
   final ScrollPhysics? scrollPhysics;
@@ -42,6 +43,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.itemsPerRow = 1,
     this.padding = EdgeInsetsDirectional.zero,
     this.shrinkWrap = false,
+    this.reversed = false,
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
     this.theme,
@@ -66,6 +68,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.itemsPerRow = 1,
     this.padding = EdgeInsets.zero,
     this.shrinkWrap = false,
+    this.reversed = false,
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
     this.theme,
@@ -87,6 +90,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.itemsPerRow = 1,
     this.padding = EdgeInsets.zero,
     this.shrinkWrap = false,
+    this.reversed = false,
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
     this.theme,
@@ -104,6 +108,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.onRefresh,
     this.padding = EdgeInsets.zero,
     this.shrinkWrap = false,
+    this.reversed = false,
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
     this.theme,
@@ -145,6 +150,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               padding: padding,
               physics: widget.scrollPhysics,
               shrinkWrap: widget.shrinkWrap,
+              reverse: widget.reversed,
               scrollDirection: widget.scrollDirection,
               children: [
                 ImpaktfullUiAutoLayout(
@@ -166,6 +172,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               padding: padding,
               physics: widget.scrollPhysics,
               shrinkWrap: widget.shrinkWrap,
+              reverse: widget.reversed,
               scrollDirection: widget.scrollDirection,
               children: [
                 widget.child!,
@@ -223,6 +230,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               scrollDirection: widget.scrollDirection,
               itemBuilder: _buildItem,
               shrinkWrap: widget.shrinkWrap,
+              reverse: widget.reversed,
               separatorBuilder: (context, index) {
                 final item = widget.items![index];
                 return widget.separatorBuilder?.call(context, item, index) ??
@@ -240,6 +248,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             scrollDirection: widget.scrollDirection,
             itemBuilder: _buildItem,
             shrinkWrap: widget.shrinkWrap,
+            reverse: widget.reversed,
             separatorBuilder: (context, index) =>
                 SizedBox(height: widget.spacing),
             itemCount: widget.items!.length,

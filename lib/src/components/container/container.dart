@@ -9,7 +9,7 @@ class ImpaktfullUiContainer extends StatelessWidget {
   final BoxBorder? border;
   final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry margin;
-  final List<BoxShadow>? boxShadow;
+  final List<BoxShadow>? shadow;
 
   const ImpaktfullUiContainer({
     required this.child,
@@ -20,7 +20,7 @@ class ImpaktfullUiContainer extends StatelessWidget {
     this.border,
     this.padding = EdgeInsets.zero,
     this.margin = EdgeInsets.zero,
-    this.boxShadow,
+    this.shadow,
     super.key,
   });
 
@@ -33,7 +33,7 @@ class ImpaktfullUiContainer extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           borderRadius: borderRadius ?? BorderRadius.zero,
-          boxShadow: boxShadow,
+          boxShadow: shadow,
         ),
         child: Material(
           shape: borderRadius == null || border == null

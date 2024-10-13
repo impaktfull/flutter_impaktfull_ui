@@ -19,6 +19,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
   final VoidCallback? onFocus;
   final EdgeInsetsGeometry? padding;
   final BorderRadiusGeometry? borderRadius;
+  final List<BoxShadow>? shadow;
   final bool error;
   final ImpaktfullUiCardTheme? theme;
 
@@ -31,6 +32,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
     this.onFocus,
     this.padding,
     this.borderRadius,
+    this.shadow,
     this.error = false,
     this.theme,
     super.key,
@@ -54,7 +56,7 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
         color: componentTheme.colors.background,
         border: _getBorder(componentTheme),
-        boxShadow: componentTheme.shadows.card,
+        shadow: widget.shadow ?? componentTheme.shadows.card,
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: false,
           useFocusColor: false,

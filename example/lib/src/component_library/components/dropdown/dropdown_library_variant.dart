@@ -22,11 +22,14 @@ class DropdownVariant
             child: ImpaktfullUiDropdown(
               childWidth: width,
               alignment: alignment,
-              child: ListView(
-                children: [
-                  for (final item in List.generate(100, (e) => e))
-                    Text("Testing: $item"),
-                ],
+              child: ImpaktfullUiListView.builder(
+                items: List.generate(100, (e) => 'Item $e'),
+                itemBuilder: (context, item, index) => ImpaktfullUiListItem(
+                  title: item,
+                  onTap: () =>
+                      ImpaktfullUiNotification.show(title: 'Tapped: $item'),
+                ),
+                noDataLabel: 'No data',
               ),
             ),
           ),

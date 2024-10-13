@@ -43,6 +43,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiAsset.image
   - ImpaktfullUiAsset.lottie
   - ImpaktfullUiAsset.rive
+- ImpaktfullUiAutoComplete
 - ImpaktfullUiAutoLayout
 - ImpaktfullUiAvatar
 - ImpaktfullUiBadge
@@ -174,7 +175,6 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - [ ] Add tests
 - [ ] Add extra components
 
-  - ImpaktfullUiAutoComplete
   - ImpaktfullUiCalendar
   - ImpaktfullUiNumberInput
   - ImpaktfullUiMetrics

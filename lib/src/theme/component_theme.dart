@@ -56,6 +56,7 @@ import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
+import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart';
 
 abstract class ImpaktfullUiComponentTheme {
   const ImpaktfullUiComponentTheme();
@@ -64,6 +65,7 @@ abstract class ImpaktfullUiComponentTheme {
 class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiAccordionTheme accordion;
   final ImpaktfullUiAvatarTheme avatar;
+  final ImpaktfullUiAutoCompleteTheme autoComplete;
   final ImpaktfullUiBadgeTheme badge;
   final ImpaktfullUiBottomNavigationTheme bottomNavigation;
   final ImpaktfullUiBottomNavigationItemTheme bottomNavigationItem;
@@ -78,8 +80,8 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiDividerTheme divider;
   final ImpaktfullUiDropdownTheme dropdown;
   final ImpaktfullUiFilePickerTheme filePicker;
-  final ImpaktfullUiFluidPaddingTheme fluidPadding;
   final ImpaktfullUiFloatingActionButtonTheme floatingActionButton;
+  final ImpaktfullUiFluidPaddingTheme fluidPadding;
   final ImpaktfullUiGridViewTheme gridView;
   final ImpaktfullUiHorizontalTabTheme horizontalTab;
   final ImpaktfullUiHorizontalTabsTheme horizontalTabs;
@@ -123,6 +125,7 @@ class ImpaktfullUiComponentsTheme {
   ImpaktfullUiComponentsTheme({
     required this.accordion,
     required this.avatar,
+    required this.autoComplete,
     required this.badge,
     required this.bottomNavigation,
     required this.bottomNavigationItem,
@@ -183,6 +186,7 @@ class ImpaktfullUiComponentsTheme {
   ImpaktfullUiComponentsTheme copyWith({
     ImpaktfullUiAccordionTheme? accordion,
     ImpaktfullUiAvatarTheme? avatar,
+    ImpaktfullUiAutoCompleteTheme? autoComplete,
     ImpaktfullUiBadgeTheme? badge,
     ImpaktfullUiBottomNavigationTheme? bottomNavigation,
     ImpaktfullUiBottomNavigationItemTheme? bottomNavigationItem,
@@ -242,6 +246,7 @@ class ImpaktfullUiComponentsTheme {
       ImpaktfullUiComponentsTheme(
         accordion: accordion ?? this.accordion,
         avatar: avatar ?? this.avatar,
+        autoComplete: autoComplete ?? this.autoComplete,
         badge: badge ?? this.badge,
         bottomNavigation: bottomNavigation ?? this.bottomNavigation,
         bottomNavigationItem: bottomNavigationItem ?? this.bottomNavigationItem,
@@ -305,6 +310,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiAccordionTheme.of(context) as T;
     } else if (T == ImpaktfullUiAvatarTheme) {
       return ImpaktfullUiAvatarTheme.of(context) as T;
+    } else if (T == ImpaktfullUiAutoCompleteTheme) {
+      return ImpaktfullUiAutoCompleteTheme.of(context) as T;
     } else if (T == ImpaktfullUiBadgeTheme) {
       return ImpaktfullUiBadgeTheme.of(context) as T;
     } else if (T == ImpaktfullUiBottomNavigationTheme) {

@@ -41,7 +41,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     if (onTap == null) {
       return ImpaktfullUiContainer(
         border: border,
-        boxShadow: shadow,
+        shadow: shadow,
         borderRadius: borderRadius,
         color: color ?? Colors.transparent,
         child: child,
@@ -50,7 +50,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     return ImpaktfullUiThemeBuidler(
       builder: (contex, theme) => ImpaktfullUiContainer(
         border: border,
-        boxShadow: shadow,
+        shadow: shadow,
         borderRadius: borderRadius,
         color: color ?? Colors.transparent,
         child: ImpaktfullUiTooltip(

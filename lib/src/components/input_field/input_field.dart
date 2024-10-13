@@ -8,6 +8,7 @@ import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dar
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui_2/src/widget/input/base_input_field.dart';
 
 export 'input_field_style.dart';
 export 'action/input_field_action.dart';
@@ -21,6 +22,7 @@ class ImpaktfullUiInputField extends StatefulWidget
   final String? placeholder;
   final String? hint;
   final String? error;
+  final WidgetBuilder? leadingBuilder;
   final ImpaktfullUiAsset? leadingIcon;
   final Widget? trailingAction;
   final String? value;
@@ -40,6 +42,7 @@ class ImpaktfullUiInputField extends StatefulWidget
     required this.value,
     required this.onChanged,
     this.leadingIcon,
+    this.leadingBuilder,
     this.trailingAction,
     this.placeholder,
     this.hint,
@@ -111,125 +114,103 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     final trailingAction = widget.trailingAction;
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 4,
-        children: [
-          if (widget.label != null) ...[
-            ImpaktfullUiSectionTitle(
-              title: widget.label ?? '',
-              margin: EdgeInsets.zero,
-              actions: widget.labelActions,
-            ),
-          ],
-          SizedBox(
-            height: widget.multiline ? null : 40,
-            child: ImpaktfullUiAutoLayout.horizontal(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: ImpaktfullUiCard(
-                    cursor: SystemMouseCursors.text,
-                    error: widget.error != null && widget.error!.isNotEmpty,
-                    onTap: _onTap,
-                    onFocus: _onFocus,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 8,
-                    ),
-                    borderRadius: BorderRadiusDirectional.only(
-                      topStart: componentTheme.dimens.borderRadius.topStart,
-                      bottomStart:
-                          componentTheme.dimens.borderRadius.bottomStart,
-                      topEnd: trailingAction == null
-                          ? componentTheme.dimens.borderRadius.topEnd
-                          : Radius.zero,
-                      bottomEnd: trailingAction == null
-                          ? componentTheme.dimens.borderRadius.bottomEnd
-                          : Radius.zero,
-                    ),
-                    child: ImpaktfullUiAutoLayout.horizontal(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      spacing: 8,
-                      children: [
-                        if (widget.leadingIcon != null) ...[
-                          ImpaktfullUiAssetWidget(
-                            asset: widget.leadingIcon,
-                            size: 20,
-                            color: componentTheme.textStyles.text.color,
-                          ),
-                        ],
-                        Expanded(
-                          child: Theme(
-                            data: Theme.of(context).copyWith(
-                              textSelectionTheme: TextSelectionThemeData(
-                                cursorColor: componentTheme.colors.cursor,
-                                selectionColor: componentTheme.colors.selection,
-                                selectionHandleColor:
-                                    componentTheme.colors.selectionHandle,
-                              ),
+      builder: (context, componentTheme) {
+        final trailingActionAllowed =
+            widget.multiline == false && trailingAction != null;
+        return ImpaktfullUiAutoLayout.vertical(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 4,
+          children: [
+            if (widget.label != null) ...[
+              ImpaktfullUiSectionTitle(
+                title: widget.label ?? '',
+                margin: EdgeInsets.zero,
+                actions: widget.labelActions,
+              ),
+            ],
+            SizedBox(
+              height: widget.multiline ? null : 40,
+              child: ImpaktfullUiAutoLayout.horizontal(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: ImpaktfullUiCard(
+                      cursor: SystemMouseCursors.text,
+                      error: widget.error != null && widget.error!.isNotEmpty,
+                      onTap: _onTap,
+                      onFocus: _onFocus,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      borderRadius: BorderRadiusDirectional.only(
+                        topStart: componentTheme.dimens.borderRadius.topStart,
+                        bottomStart:
+                            componentTheme.dimens.borderRadius.bottomStart,
+                        topEnd: trailingActionAllowed
+                            ? Radius.zero
+                            : componentTheme.dimens.borderRadius.topEnd,
+                        bottomEnd: trailingActionAllowed
+                            ? Radius.zero
+                            : componentTheme.dimens.borderRadius.bottomEnd,
+                      ),
+                      child: ImpaktfullUiAutoLayout.horizontal(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        spacing: 8,
+                        children: [
+                          if (widget.leadingIcon != null) ...[
+                            ImpaktfullUiAssetWidget(
+                              asset: widget.leadingIcon,
+                              size: 20,
+                              color: componentTheme.textStyles.text.color,
                             ),
-                            child: TextField(
+                          ],
+                          if (widget.leadingBuilder != null) ...[
+                            widget.leadingBuilder!(context),
+                          ],
+                          Expanded(
+                            child: BaseInputField(
+                              value: widget.value,
+                              onChanged: widget.onChanged,
                               focusNode: _focusNode,
                               controller: _controller,
-                              scrollPadding: EdgeInsets.zero,
-                              cursorColor: componentTheme.colors.cursor,
-                              style: componentTheme.textStyles.text,
-                              onChanged: widget.onChanged,
+                              theme: componentTheme,
+                              maxLines: widget.maxLines,
+                              textInputAction: widget.textInputAction,
+                              textInputType: widget.textInputType,
                               obscureText: widget.obscureText,
-                              textInputAction: widget.multiline
-                                  ? TextInputAction.newline
-                                  : widget.textInputAction,
-                              keyboardType: widget.multiline
-                                  ? TextInputType.multiline
-                                  : widget.textInputType,
-                              maxLines: widget.multiline ? widget.maxLines : 1,
-                              minLines: widget.multiline ? 3 : 1,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                hintText: widget.placeholder,
-                                focusColor: Colors.transparent,
-                                hintStyle:
-                                    componentTheme.textStyles.placeholder,
-                                border: OutlineInputBorder(
-                                  borderRadius:
-                                      componentTheme.dimens.borderRadius.value,
-                                ),
-                                errorBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                                focusedErrorBorder: InputBorder.none,
-                                contentPadding: EdgeInsets.zero,
-                              ),
+                              placeholder: widget.placeholder,
+                              autofocus: widget.autofocus,
+                              multiline: widget.multiline,
+                              onFocusChanged: widget.onFocusChanged,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                if (trailingAction != null) ...[
-                  trailingAction,
+                  if (trailingActionAllowed) ...[
+                    trailingAction,
+                  ],
                 ],
-              ],
+              ),
             ),
-          ),
-          if (widget.error != null) ...[
-            Text(
-              widget.error ?? '',
-              style: componentTheme.textStyles.error,
-            ),
-          ] else if (widget.hint != null) ...[
-            Text(
-              widget.hint ?? '',
-              style: componentTheme.textStyles.hint,
-            ),
-          ]
-        ],
-      ),
+            if (widget.error != null) ...[
+              Text(
+                widget.error ?? '',
+                style: componentTheme.textStyles.error,
+              ),
+            ] else if (widget.hint != null) ...[
+              Text(
+                widget.hint ?? '',
+                style: componentTheme.textStyles.hint,
+              ),
+            ]
+          ],
+        );
+      },
     );
   }
 

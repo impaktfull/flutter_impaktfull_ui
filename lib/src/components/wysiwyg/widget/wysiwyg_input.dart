@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
@@ -8,7 +7,7 @@ import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dar
 import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/widget/actions/wysiwig_actions.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
-import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui_2/src/widget/input/base_input_field.dart';
 
 class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   final String? placeholder;
@@ -60,7 +59,6 @@ class _ImpaktfullUiWysiwygInputFieldState
           baseOffset: widget.value!.length, extentOffset: widget.value!.length);
     }
     _focusNode = widget.focusNode ?? FocusNode();
-    _focusNode.addListener(_onFocusChanged);
     _controller.addListener(_onTextChanged);
     if (widget.autofocus) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -82,7 +80,6 @@ class _ImpaktfullUiWysiwygInputFieldState
     if (widget.controller == null) {
       _controller.dispose();
     }
-    _focusNode.removeListener(_onFocusChanged);
     _controller.removeListener(_onTextChanged);
     if (widget.focusNode == null) {
       _focusNode.dispose();
@@ -122,58 +119,24 @@ class _ImpaktfullUiWysiwygInputFieldState
                         horizontal: 16,
                         vertical: 8,
                       ),
-                      child: Theme(
-                        data: Theme.of(context).copyWith(
-                          textSelectionTheme: TextSelectionThemeData(
-                            cursorColor: inputFieldTheme.colors.cursor,
-                            selectionColor: inputFieldTheme.colors.selection,
-                            selectionHandleColor:
-                                inputFieldTheme.colors.selectionHandle,
+                      child: Column(
+                        children: [
+                          BaseInputField(
+                            value: widget.value,
+                            onChanged: widget.onChanged,
+                            focusNode: _focusNode,
+                            controller: _controller,
+                            placeholder: widget.placeholder,
+                            onFocusChanged: widget.onFocusChanged,
+                            autofocus: widget.autofocus,
+                            obscureText: false,
+                            textInputType: TextInputType.multiline,
+                            textInputAction: TextInputAction.newline,
+                            multiline: true,
+                            maxLines: null,
+                            theme: inputFieldTheme,
                           ),
-                        ),
-                        child: TextField(
-                          focusNode: _focusNode,
-                          controller: _controller,
-                          scrollPadding: EdgeInsets.zero,
-                          cursorColor: inputFieldTheme.colors.cursor,
-                          style: inputFieldTheme.textStyles.text,
-                          onChanged: widget.onChanged,
-                          textInputAction: TextInputAction.newline,
-                          keyboardType: TextInputType.multiline,
-                          minLines: 3,
-                          maxLines: null,
-                          decoration: InputDecoration(
-                            isDense: true,
-                            hintText: widget.placeholder,
-                            focusColor: Colors.transparent,
-                            hintStyle: inputFieldTheme.textStyles.placeholder,
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  inputFieldTheme.dimens.borderRadius.value,
-                            ),
-                            errorBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            focusedErrorBorder: InputBorder.none,
-                            contentPadding: EdgeInsets.zero,
-                          ),
-                          inputFormatters: [
-                            TextInputFormatter.withFunction(
-                                (oldValue, newValue) {
-                              if (newValue.text.endsWith('\t')) {
-                                final newText =
-                                    newValue.text.replaceAll('\t', '    ');
-                                return TextEditingValue(
-                                  text: newText,
-                                  selection: TextSelection.collapsed(
-                                      offset: newText.length),
-                                );
-                              }
-                              return newValue;
-                            }),
-                          ],
-                        ),
+                        ],
                       ),
                     ),
                   ),
@@ -209,7 +172,7 @@ class _ImpaktfullUiWysiwygInputFieldState
   void _onTap() {
     _focusNode.requestFocus();
     // Hack to make sure the cursor is at the end of the text
-    WidgetsBinding.instance.addPostFrameCallback((d) {
+    WidgetsBinding.instance.addPostFrameCallback((timestamp) {
       if (!mounted) return;
       _controller.selection = TextSelection(
         baseOffset: _controller.text.length,
@@ -219,8 +182,6 @@ class _ImpaktfullUiWysiwygInputFieldState
   }
 
   void _onFocus() => _focusNode.requestFocus();
-
-  void _onFocusChanged() => widget.onFocusChanged?.call(_focusNode.hasFocus);
 
   void _onChangedTextFromAction(String text, TextSelection? textSelection) {
     _controller.text = text;

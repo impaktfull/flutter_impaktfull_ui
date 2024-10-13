@@ -30,9 +30,9 @@ class ImpaktfullUiDropdownColorTheme {
 }
 
 class ImpaktfullUiDropdownShadowTheme {
-  final List<BoxShadow> menuShadow;
+  final List<BoxShadow> overlay;
   const ImpaktfullUiDropdownShadowTheme({
-    required this.menuShadow,
+    required this.overlay,
   });
 }
 

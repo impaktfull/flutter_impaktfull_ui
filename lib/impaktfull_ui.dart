@@ -2,6 +2,7 @@
 export 'src/components/accordion/accordion.dart';
 export 'src/components/app/app.dart';
 export 'src/components/asset/asset_widget.dart';
+export 'src/components/auto_complete/auto_complete.dart';
 export 'src/components/auto_layout/auto_layout.dart';
 export 'src/components/avatar/avatar.dart';
 export 'src/components/button/button.dart';
