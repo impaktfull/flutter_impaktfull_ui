@@ -90,10 +90,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     if (oldWidget.value != widget.value && _controller.text != widget.value) {
       final currentSelection = _controller.selection;
       _controller.text = widget.value ?? '';
-      if (currentSelection.isValid &&
-          currentSelection.start <= _controller.text.length) {
-        _controller.selection = currentSelection;
-      }
+      _controller.selection = currentSelection;
     }
   }
 
@@ -182,7 +179,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                               style: componentTheme.textStyles.text,
                               onChanged: widget.onChanged,
                               obscureText: widget.obscureText,
-                              textInputAction: widget.textInputAction,
+                              textInputAction: widget.multiline
+                                  ? TextInputAction.newline
+                                  : widget.textInputAction,
                               keyboardType: widget.multiline
                                   ? TextInputType.multiline
                                   : widget.textInputType,

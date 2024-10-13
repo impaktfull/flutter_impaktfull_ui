@@ -18,7 +18,7 @@ class ImpaktfullUiMarkdownUnorderedParser extends ImpaktfullUiMarkdownParser {
     indent = leadingSpaces ~/ 4;
 
     for (final indicator in _indicators) {
-      if (trimmedText.startsWith(indicator)) {
+      if (trimmedText.startsWith('$indicator ')) {
         return ImpaktfullUiMarkDownUnorderedList(
           text: trimmedText.substring(indicator.length).trim(),
           indent: indent,

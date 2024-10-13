@@ -3,6 +3,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/wysiwyg/w
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_enum_input.dart';
+import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_string_input.dart';
 
 class WysiwygLibraryItem extends ComponentLibraryItem {
   const WysiwygLibraryItem();
@@ -25,8 +26,10 @@ class WysiwygLibraryInputs extends ComponentLibraryInputs {
     initialValue: ImpaktfullUiWysiwygType.markdown,
     options: ImpaktfullUiWysiwygType.values,
   );
+  final text = ComponentLibraryStringInput('Text');
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
         previewType,
+        text,
       ];
 }

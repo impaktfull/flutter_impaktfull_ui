@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_bold_formatter.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_formatter.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_italic_formatter.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/widget/actions/wysiwyg_action_item.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 
@@ -6,9 +11,9 @@ class WysiwygActions extends StatefulWidget {
   final List<ImpaktfullUiWysiwygAction> actions;
   final String text;
   final ImpaktfullUiWysiwygType type;
-  final ValueChanged<String> onChangedText;
+  final Function(String, TextSelection?) onChangedText;
   final ImpaktfullUiWysiwygTheme componentTheme;
-  final String selectedText;
+  final TextSelection? textSelected;
 
   const WysiwygActions({
     required this.text,
@@ -16,7 +21,7 @@ class WysiwygActions extends StatefulWidget {
     required this.actions,
     required this.onChangedText,
     required this.componentTheme,
-    required this.selectedText,
+    required this.textSelected,
     super.key,
   });
 
@@ -27,8 +32,9 @@ class WysiwygActions extends StatefulWidget {
 class _WysiwygActionsState extends State<WysiwygActions> {
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-        alignment: WrapAlignment.end,
+    return Padding(
+      padding: const EdgeInsets.all(4),
+      child: ImpaktfullUiAutoLayout.horizontal(
         children: <WysiwygActionItem>[
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.bold,
@@ -49,6 +55,12 @@ class _WysiwygActionsState extends State<WysiwygActions> {
             onTap: _onUnorderedListTapped,
           ),
           WysiwygActionItem(
+            action: ImpaktfullUiWysiwygAction.orderdList,
+            actions: widget.actions,
+            asset: widget.componentTheme.assets.orderedList,
+            onTap: _onOrderedListTapped,
+          ),
+          WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.link,
             actions: widget.actions,
             asset: widget.componentTheme.assets.link,
@@ -60,39 +72,49 @@ class _WysiwygActionsState extends State<WysiwygActions> {
             asset: widget.componentTheme.assets.photo,
             onTap: _onPhotoTapped,
           ),
-        ]..removeWhere((item) => !item.actions.contains(item.action)));
+        ]..removeWhere((item) => !item.actions.contains(item.action)),
+      ),
+    );
   }
 
-  void _onBoldTapped() {
-    _wrapSelectedText('**', '**');
-  }
+  void _onBoldTapped() => _format(const ImpaktfullUiWysiwygBoldFormatter());
 
-  void _onItalicTapped() {
-    _wrapSelectedText('*', '*');
-  }
+  void _onItalicTapped() => _format(const ImpaktfullUiWysiwygItalicFormatter());
 
   void _onUnorderedListTapped() {
-    _wrapSelectedText('\n- ', '\n');
-  }
-
-  void _onLinkTapped() {
-    _wrapSelectedText('[', '](url)');
-  }
-
-  void _onPhotoTapped() {
-    _wrapSelectedText('![', '](url)');
-  }
-
-  void _wrapSelectedText(String prefix, [String suffix = '']) {
-    if (widget.selectedText.isEmpty) return;
-    final newText = widget.text.replaceRange(
-      widget.text.indexOf(widget.selectedText),
-      widget.text.indexOf(widget.selectedText) + widget.selectedText.length,
-      '$prefix${widget.selectedText}$suffix',
+    ImpaktfullUiNotification.show(
+      title: 'Not yet supported',
+      subtitle: 'Unordered list is not yet supported',
+      type: ImpaktfullUiNotificationType.warning,
     );
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if (!mounted) return;
-      widget.onChangedText(newText);
-    });
+  }
+
+  void _onOrderedListTapped() {
+    ImpaktfullUiNotification.show(
+      title: 'Not yet supported',
+      subtitle: 'Ordered list is not yet supported',
+      type: ImpaktfullUiNotificationType.warning,
+    );
+  }
+
+  Future<void> _onLinkTapped() async {
+    ImpaktfullUiNotification.show(
+      title: 'Not yet supported',
+      subtitle: 'Link is not yet supported',
+      type: ImpaktfullUiNotificationType.warning,
+    );
+  }
+
+  Future<void> _onPhotoTapped() async {
+    ImpaktfullUiNotification.show(
+      title: 'Not yet supported',
+      subtitle: 'Photo is not yet supported',
+      type: ImpaktfullUiNotificationType.warning,
+    );
+  }
+
+  void _format(ImpaktfullUiWysiwygFormatter formatter) {
+    final result = formatter.format(widget.text, widget.textSelected);
+    widget.onChangedText(result.text, result.textSelection);
   }
 }
