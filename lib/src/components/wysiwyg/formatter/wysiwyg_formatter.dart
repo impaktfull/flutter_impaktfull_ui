@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 class ImpaktfullUiWysiwygFormatterResult {
   final String text;
-  final TextSelection? textSelection;
+  final TextSelection textSelection;
 
   ImpaktfullUiWysiwygFormatterResult({
     required this.text,
@@ -14,20 +14,15 @@ abstract class ImpaktfullUiWysiwygFormatter {
   const ImpaktfullUiWysiwygFormatter();
 
   ImpaktfullUiWysiwygFormatterResult format(
-      String text, TextSelection? textSelection);
+      String text, TextSelection textSelection);
+
   @protected
   ImpaktfullUiWysiwygFormatterResult replaceText({
     required String text,
-    required TextSelection? textSelection,
+    required TextSelection textSelection,
     required String prefix,
     String? suffix,
   }) {
-    if (textSelection == null) {
-      return ImpaktfullUiWysiwygFormatterResult(
-        text: text,
-        textSelection: textSelection,
-      );
-    }
     final selectedText = getSelectedText(text, textSelection);
     final effectiveSuffix = suffix ?? '';
 

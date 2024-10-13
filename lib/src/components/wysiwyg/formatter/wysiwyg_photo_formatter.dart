@@ -14,13 +14,7 @@ class ImpaktfullUiWysiwygPhotoFormatter extends ImpaktfullUiWysiwygFormatter {
 
   @override
   ImpaktfullUiWysiwygFormatterResult format(
-      String text, TextSelection? textSelection) {
-    if (textSelection == null) {
-      return ImpaktfullUiWysiwygFormatterResult(
-        text: text,
-        textSelection: textSelection,
-      );
-    }
+      String text, TextSelection textSelection) {
     final selectedText = getSelectedText(text, textSelection);
     if (selectedText.toLowerCase().startsWith('assets/')) {
       return replaceText(

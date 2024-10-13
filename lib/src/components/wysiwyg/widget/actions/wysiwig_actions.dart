@@ -17,9 +17,9 @@ class WysiwygActions extends StatefulWidget {
   final List<ImpaktfullUiWysiwygAction> actions;
   final String text;
   final ImpaktfullUiWysiwygType type;
-  final Function(String, TextSelection?) onChangedText;
+  final Function(String, TextSelection) onChangedText;
   final ImpaktfullUiWysiwygTheme componentTheme;
-  final TextSelection? textSelected;
+  final TextSelection textSelected;
 
   const WysiwygActions({
     required this.text,

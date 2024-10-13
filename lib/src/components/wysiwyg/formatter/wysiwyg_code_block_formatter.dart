@@ -7,7 +7,7 @@ class ImpaktfullUiWysiwygCodeBlockFormatter
 
   @override
   ImpaktfullUiWysiwygFormatterResult format(
-      String text, TextSelection? textSelection) {
+      String text, TextSelection textSelection) {
     return replaceText(
       text: text,
       textSelection: textSelection,

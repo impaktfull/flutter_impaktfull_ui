@@ -6,7 +6,7 @@ class ImpaktfullUiWysiwygBoldFormatter extends ImpaktfullUiWysiwygFormatter {
 
   @override
   ImpaktfullUiWysiwygFormatterResult format(
-          String text, TextSelection? textSelection) =>
+          String text, TextSelection textSelection) =>
       replaceText(
         text: text,
         textSelection: textSelection,

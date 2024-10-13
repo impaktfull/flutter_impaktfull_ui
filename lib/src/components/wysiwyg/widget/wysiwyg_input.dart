@@ -49,7 +49,6 @@ class _ImpaktfullUiWysiwygInputFieldState
     extends State<ImpaktfullUiWysiwygInputField> {
   late final TextEditingController _controller;
   late final FocusNode _focusNode;
-  TextSelection? _textSelection;
 
   @override
   void initState() {
@@ -89,11 +88,7 @@ class _ImpaktfullUiWysiwygInputFieldState
     super.dispose();
   }
 
-  void _onTextChanged() {
-    setState(() {
-      _textSelection = _controller.selection;
-    });
-  }
+  void _onTextChanged() => setState(() {});
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +180,7 @@ class _ImpaktfullUiWysiwygInputFieldState
                     actions: widget.actions,
                     onChangedText: _onChangedTextFromAction,
                     componentTheme: componentTheme,
-                    textSelected: _textSelection,
+                    textSelected: _controller.selection,
                   ),
                 ],
               ),
