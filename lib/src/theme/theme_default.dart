@@ -621,6 +621,8 @@ class DefaultTheme {
             paragraph: textStyles.onCanvas.text.small,
             link: textStyles.onCanvasPrimary.text.small.bold.copyWith(
               decoration: TextDecoration.underline,
+              decorationColor: colors.accent,
+              decorationThickness: 2,
             ),
             orderedList: textStyles.onCanvas.text.small.medium,
             unorderedList: textStyles.onCanvas.text.small.medium,
@@ -1016,6 +1018,9 @@ class DefaultTheme {
         wysiwyg: ImpaktfullUiWysiwygTheme(
           assets: ImpaktfullUiWysiwygAssetsTheme(
             bold: assets.icons.wysiwygBold,
+            code: assets.icons.wysiwygCode,
+            codeBlock: assets.icons.wysiwygCodeBlock,
+            header: assets.icons.wysiwygHeader,
             italic: assets.icons.wysiwygItalic,
             orderedList: assets.icons.wysiwygOrderedList,
             unorderedList: assets.icons.wysiwygUnorderedList,

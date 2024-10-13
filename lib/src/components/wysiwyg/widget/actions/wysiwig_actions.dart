@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_bold_formatter.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_code_block_formatter.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_code_formatter.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_formatter.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_header_formatter.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_italic_formatter.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_link_formatter.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_photo_formatter.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_unorderedlist_formatter.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/widget/actions/wysiwyg_action_item.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 
@@ -37,6 +43,12 @@ class _WysiwygActionsState extends State<WysiwygActions> {
       child: ImpaktfullUiAutoLayout.horizontal(
         children: <WysiwygActionItem>[
           WysiwygActionItem(
+            action: ImpaktfullUiWysiwygAction.header,
+            actions: widget.actions,
+            asset: widget.componentTheme.assets.header,
+            onTap: _onHeaderTapped,
+          ),
+          WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.bold,
             actions: widget.actions,
             asset: widget.componentTheme.assets.bold,
@@ -61,6 +73,18 @@ class _WysiwygActionsState extends State<WysiwygActions> {
             onTap: _onOrderedListTapped,
           ),
           WysiwygActionItem(
+            action: ImpaktfullUiWysiwygAction.code,
+            actions: widget.actions,
+            asset: widget.componentTheme.assets.code,
+            onTap: _onCodeTapped,
+          ),
+          WysiwygActionItem(
+            action: ImpaktfullUiWysiwygAction.codeBlock,
+            actions: widget.actions,
+            asset: widget.componentTheme.assets.codeBlock,
+            onTap: _onCodeBlockTapped,
+          ),
+          WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.link,
             actions: widget.actions,
             asset: widget.componentTheme.assets.link,
@@ -77,17 +101,14 @@ class _WysiwygActionsState extends State<WysiwygActions> {
     );
   }
 
+  void _onHeaderTapped() => _format(const ImpaktfullUiWysiwygHeaderFormatter());
+
   void _onBoldTapped() => _format(const ImpaktfullUiWysiwygBoldFormatter());
 
   void _onItalicTapped() => _format(const ImpaktfullUiWysiwygItalicFormatter());
 
-  void _onUnorderedListTapped() {
-    ImpaktfullUiNotification.show(
-      title: 'Not yet supported',
-      subtitle: 'Unordered list is not yet supported',
-      type: ImpaktfullUiNotificationType.warning,
-    );
-  }
+  void _onUnorderedListTapped() =>
+      _format(const ImpaktfullUiWysiwygUnorderedListFormatter());
 
   void _onOrderedListTapped() {
     ImpaktfullUiNotification.show(
@@ -97,21 +118,14 @@ class _WysiwygActionsState extends State<WysiwygActions> {
     );
   }
 
-  Future<void> _onLinkTapped() async {
-    ImpaktfullUiNotification.show(
-      title: 'Not yet supported',
-      subtitle: 'Link is not yet supported',
-      type: ImpaktfullUiNotificationType.warning,
-    );
-  }
+  void _onCodeTapped() => _format(const ImpaktfullUiWysiwygCodeFormatter());
 
-  Future<void> _onPhotoTapped() async {
-    ImpaktfullUiNotification.show(
-      title: 'Not yet supported',
-      subtitle: 'Photo is not yet supported',
-      type: ImpaktfullUiNotificationType.warning,
-    );
-  }
+  void _onCodeBlockTapped() =>
+      _format(const ImpaktfullUiWysiwygCodeBlockFormatter());
+
+  void _onLinkTapped() => _format(const ImpaktfullUiWysiwygLinkFormatter());
+
+  void _onPhotoTapped() => _format(const ImpaktfullUiWysiwygPhotoFormatter());
 
   void _format(ImpaktfullUiWysiwygFormatter formatter) {
     final result = formatter.format(widget.text, widget.textSelected);

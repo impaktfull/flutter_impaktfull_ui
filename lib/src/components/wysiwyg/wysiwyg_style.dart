@@ -21,6 +21,9 @@ class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiWysiwygAssetsTheme {
   final ImpaktfullUiAsset bold;
+  final ImpaktfullUiAsset code;
+  final ImpaktfullUiAsset codeBlock;
+  final ImpaktfullUiAsset header;
   final ImpaktfullUiAsset italic;
   final ImpaktfullUiAsset orderedList;
   final ImpaktfullUiAsset unorderedList;
@@ -28,6 +31,9 @@ class ImpaktfullUiWysiwygAssetsTheme {
   final ImpaktfullUiAsset photo;
   const ImpaktfullUiWysiwygAssetsTheme({
     required this.bold,
+    required this.code,
+    required this.codeBlock,
+    required this.header,
     required this.italic,
     required this.orderedList,
     required this.unorderedList,

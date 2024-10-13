@@ -67,15 +67,19 @@ class ImpaktfullUiAssetTheme {
               user: ImpaktfullUiAsset.icon(PhosphorIcons.user()),
               warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
               wysiwygBold: ImpaktfullUiAsset.icon(PhosphorIcons.textB()),
+              wysiwygCode: ImpaktfullUiAsset.icon(PhosphorIcons.code()),
+              wysiwygCodeBlock:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.codeBlock()),
+              wysiwygHeader: ImpaktfullUiAsset.icon(PhosphorIcons.textH()),
               wysiwygItalic: ImpaktfullUiAsset.icon(PhosphorIcons.textItalic()),
+              wysiwygLink: ImpaktfullUiAsset.icon(PhosphorIcons.link()),
+              wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image()),
               wysiwygOrderedList:
                   ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers()),
               wysiwygUnorderedList:
                   ImpaktfullUiAsset.icon(PhosphorIcons.listBullets()),
               wysiwygUnorderedListItem:
                   ImpaktfullUiAsset.icon(PhosphorIcons.dot()),
-              wysiwygLink: ImpaktfullUiAsset.icon(PhosphorIcons.link()),
-              wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image()),
             ),
         images: images ??
             ImpaktfullUiImageTheme(
@@ -182,12 +186,15 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset success;
   final ImpaktfullUiAsset warning;
   final ImpaktfullUiAsset wysiwygBold;
+  final ImpaktfullUiAsset wysiwygCode;
+  final ImpaktfullUiAsset wysiwygCodeBlock;
+  final ImpaktfullUiAsset wysiwygHeader;
   final ImpaktfullUiAsset wysiwygItalic;
+  final ImpaktfullUiAsset wysiwygLink;
+  final ImpaktfullUiAsset wysiwygPhoto;
   final ImpaktfullUiAsset wysiwygOrderedList;
   final ImpaktfullUiAsset wysiwygUnorderedList;
   final ImpaktfullUiAsset wysiwygUnorderedListItem;
-  final ImpaktfullUiAsset wysiwygLink;
-  final ImpaktfullUiAsset wysiwygPhoto;
 
   const ImpaktfullUiIconTheme({
     required this.add,
@@ -222,12 +229,15 @@ class ImpaktfullUiIconTheme {
     required this.user,
     required this.warning,
     required this.wysiwygBold,
+    required this.wysiwygCode,
+    required this.wysiwygCodeBlock,
+    required this.wysiwygHeader,
     required this.wysiwygItalic,
+    required this.wysiwygLink,
+    required this.wysiwygPhoto,
     required this.wysiwygOrderedList,
     required this.wysiwygUnorderedList,
     required this.wysiwygUnorderedListItem,
-    required this.wysiwygLink,
-    required this.wysiwygPhoto,
   });
 
   ImpaktfullUiIconTheme copyWith({
@@ -263,12 +273,15 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? user,
     ImpaktfullUiAsset? warning,
     ImpaktfullUiAsset? wysiwygBold,
+    ImpaktfullUiAsset? wysiwygCode,
+    ImpaktfullUiAsset? wysiwygCodeBlock,
+    ImpaktfullUiAsset? wysiwygHeader,
     ImpaktfullUiAsset? wysiwygItalic,
+    ImpaktfullUiAsset? wysiwygLink,
+    ImpaktfullUiAsset? wysiwygPhoto,
     ImpaktfullUiAsset? wysiwygOrderedList,
     ImpaktfullUiAsset? wysiwygUnorderedList,
     ImpaktfullUiAsset? wysiwygUnorderedListItem,
-    ImpaktfullUiAsset? wysiwygLink,
-    ImpaktfullUiAsset? wysiwygPhoto,
   }) =>
       ImpaktfullUiIconTheme(
         add: add ?? this.add,
@@ -303,13 +316,16 @@ class ImpaktfullUiIconTheme {
         user: user ?? this.user,
         warning: warning ?? this.warning,
         wysiwygBold: wysiwygBold ?? this.wysiwygBold,
+        wysiwygCode: wysiwygCode ?? this.wysiwygCode,
+        wysiwygCodeBlock: wysiwygCodeBlock ?? this.wysiwygCodeBlock,
+        wysiwygHeader: wysiwygHeader ?? this.wysiwygHeader,
         wysiwygItalic: wysiwygItalic ?? this.wysiwygItalic,
+        wysiwygLink: wysiwygLink ?? this.wysiwygLink,
+        wysiwygPhoto: wysiwygPhoto ?? this.wysiwygPhoto,
         wysiwygOrderedList: wysiwygOrderedList ?? this.wysiwygOrderedList,
         wysiwygUnorderedList: wysiwygUnorderedList ?? this.wysiwygUnorderedList,
         wysiwygUnorderedListItem:
             wysiwygUnorderedListItem ?? this.wysiwygUnorderedListItem,
-        wysiwygLink: wysiwygLink ?? this.wysiwygLink,
-        wysiwygPhoto: wysiwygPhoto ?? this.wysiwygPhoto,
       );
 }
 

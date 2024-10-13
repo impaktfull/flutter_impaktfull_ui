@@ -20,7 +20,7 @@ abstract class ImpaktfullUiWysiwygFormatter {
     required String text,
     required TextSelection? textSelection,
     required String prefix,
-    required String suffix,
+    String? suffix,
   }) {
     if (textSelection == null) {
       return ImpaktfullUiWysiwygFormatterResult(
@@ -28,11 +28,8 @@ abstract class ImpaktfullUiWysiwygFormatter {
         textSelection: textSelection,
       );
     }
-    final selectedText = text.substring(
-      textSelection.start,
-      textSelection.end,
-    );
-    final effectiveSuffix = suffix;
+    final selectedText = getSelectedText(text, textSelection);
+    final effectiveSuffix = suffix ?? '';
 
     String newText;
     TextSelection newSelection;
@@ -40,7 +37,8 @@ abstract class ImpaktfullUiWysiwygFormatter {
     final beforeSelection = text.substring(0, textSelection.start);
     final afterSelection = text.substring(textSelection.end);
     final isPrefixAdded = beforeSelection.endsWith(prefix);
-    final isSuffixAdded = afterSelection.startsWith(effectiveSuffix);
+    final isSuffixAdded =
+        suffix != null && afterSelection.startsWith(effectiveSuffix);
 
     if (isPrefixAdded && isSuffixAdded) {
       // Remove prefix and suffix if they are already added
@@ -54,7 +52,7 @@ abstract class ImpaktfullUiWysiwygFormatter {
         extentOffset: textSelection.end - prefix.length,
       );
     } else if (selectedText.startsWith(prefix) &&
-        selectedText.endsWith(effectiveSuffix)) {
+        (suffix == null || selectedText.endsWith(effectiveSuffix))) {
       // Remove prefix and suffix if they are within the selected text
       newText = text.replaceRange(
         textSelection.start,
@@ -84,6 +82,14 @@ abstract class ImpaktfullUiWysiwygFormatter {
     return ImpaktfullUiWysiwygFormatterResult(
       text: newText,
       textSelection: newSelection,
+    );
+  }
+
+  @protected
+  String getSelectedText(String text, TextSelection textSelection) {
+    return text.substring(
+      textSelection.start,
+      textSelection.end,
     );
   }
 }
