@@ -41,10 +41,12 @@ class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiWysiwygInputField> createState() => _ImpaktfullUiWysiwygInputFieldState();
+  State<ImpaktfullUiWysiwygInputField> createState() =>
+      _ImpaktfullUiWysiwygInputFieldState();
 }
 
-class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInputField> {
+class _ImpaktfullUiWysiwygInputFieldState
+    extends State<ImpaktfullUiWysiwygInputField> {
   late final TextEditingController _controller;
   late final FocusNode _focusNode;
   TextSelection? _textSelection;
@@ -52,7 +54,8 @@ class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInput
   @override
   void initState() {
     super.initState();
-    _controller = widget.controller ?? TextEditingController(text: widget.value);
+    _controller =
+        widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(_onFocusChanged);
     _controller.addListener(_onTextChanged);
@@ -95,7 +98,8 @@ class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInput
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
-      builder: (context, inputFieldTheme) => ImpaktfullUiComponentThemeBuidler<ImpaktfullUiWysiwygTheme>(
+      builder: (context, inputFieldTheme) =>
+          ImpaktfullUiComponentThemeBuidler<ImpaktfullUiWysiwygTheme>(
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
@@ -124,7 +128,8 @@ class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInput
                           textSelectionTheme: TextSelectionThemeData(
                             cursorColor: inputFieldTheme.colors.cursor,
                             selectionColor: inputFieldTheme.colors.selection,
-                            selectionHandleColor: inputFieldTheme.colors.selectionHandle,
+                            selectionHandleColor:
+                                inputFieldTheme.colors.selectionHandle,
                           ),
                         ),
                         child: TextField(
@@ -144,7 +149,8 @@ class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInput
                             focusColor: Colors.transparent,
                             hintStyle: inputFieldTheme.textStyles.placeholder,
                             border: OutlineInputBorder(
-                              borderRadius: inputFieldTheme.dimens.borderRadius.value,
+                              borderRadius:
+                                  inputFieldTheme.dimens.borderRadius.value,
                             ),
                             errorBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -154,12 +160,15 @@ class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInput
                             contentPadding: EdgeInsets.zero,
                           ),
                           inputFormatters: [
-                            TextInputFormatter.withFunction((oldValue, newValue) {
+                            TextInputFormatter.withFunction(
+                                (oldValue, newValue) {
                               if (newValue.text.endsWith('\t')) {
-                                final newText = newValue.text.replaceAll('\t', '    ');
+                                final newText =
+                                    newValue.text.replaceAll('\t', '    ');
                                 return TextEditingValue(
                                   text: newText,
-                                  selection: TextSelection.collapsed(offset: newText.length),
+                                  selection: TextSelection.collapsed(
+                                      offset: newText.length),
                                 );
                               }
                               return newValue;

@@ -9,7 +9,8 @@ export 'tab_bar_item_style.dart';
 
 part 'tab_bar_item.describe.dart';
 
-class ImpaktfullUiTabBarItem extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiTabBarItem extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String label;
   final int index;
   final TabController controller;
@@ -74,7 +75,8 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
                   width: 4,
                   decoration: BoxDecoration(
                     color: componentTheme.textStyles.label.color,
-                    borderRadius: componentTheme.dimens.selectedMarkerBorderRadius,
+                    borderRadius:
+                        componentTheme.dimens.selectedMarkerBorderRadius,
                   ),
                 ),
               ),

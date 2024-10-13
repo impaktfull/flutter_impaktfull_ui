@@ -137,7 +137,8 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         ),
       );
     }
-    final isAndroidTarget = Theme.of(context).platform == TargetPlatform.android;
+    final isAndroidTarget =
+        Theme.of(context).platform == TargetPlatform.android;
     return ImpaktfullUiFocusFeedback(
       hasFocus: _focusNode.hasFocus,
       borderRadius: widget.borderRadius,
@@ -150,8 +151,11 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         onFocusChange: _onFocusChanged,
         canRequestFocus: widget.canRequestFocus,
         autofocus: widget.autofocus,
-        focusColor: widget.useFocusColor ? Theme.of(context).hoverColor : Colors.transparent,
-        splashFactory: isAndroidTarget ? InkSparkle.splashFactory : NoSplash.splashFactory,
+        focusColor: widget.useFocusColor
+            ? Theme.of(context).hoverColor
+            : Colors.transparent,
+        splashFactory:
+            isAndroidTarget ? InkSparkle.splashFactory : NoSplash.splashFactory,
         child: ColoredBox(
           color: Colors.transparent,
           child: widget.child,
