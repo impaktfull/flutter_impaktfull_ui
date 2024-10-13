@@ -7,7 +7,8 @@ export 'skeleton_style.dart';
 
 part 'skeleton.describe.dart';
 
-class ImpaktfullUiSkeleton extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSkeleton extends StatefulWidget
+    with ComponentDescriptorMixin {
   final double? height;
   final double? width;
   final double? widthFactor;
@@ -49,7 +50,8 @@ class ImpaktfullUiSkeleton extends StatefulWidget with ComponentDescriptorMixin 
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton> with SingleTickerProviderStateMixin {
+class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -74,18 +76,26 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton> with Single
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSkeletonTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) => AnimatedBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) =>
+            AnimatedBuilder(
           animation: _animation,
           builder: (context, child) => Container(
-            width: widget.width ?? (widget.widthFactor != null ? constraints.maxWidth * widget.widthFactor! : null),
-            height:
-                widget.height ?? (widget.heightFactor != null ? constraints.maxHeight * widget.heightFactor! : null),
+            width: widget.width ??
+                (widget.widthFactor != null
+                    ? constraints.maxWidth * widget.widthFactor!
+                    : null),
+            height: widget.height ??
+                (widget.heightFactor != null
+                    ? constraints.maxHeight * widget.heightFactor!
+                    : null),
             decoration: BoxDecoration(
               color: componentTheme.colors.background,
-              borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
+              borderRadius:
+                  widget.borderRadius ?? componentTheme.dimens.borderRadius,
             ),
             child: ClipRRect(
-              borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
+              borderRadius:
+                  widget.borderRadius ?? componentTheme.dimens.borderRadius,
               child: FractionallySizedBox(
                 widthFactor: 0.5,
                 alignment: Alignment(_animation.value, 0),

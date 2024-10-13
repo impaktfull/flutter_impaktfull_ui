@@ -4,14 +4,16 @@ import 'package:impaktfull_ui_example/src/component_library/components/skeleton/
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class SkeletonLibraryVariant extends ComponentLibraryVariant<SkeletonLibraryPrimaryInputs> {
+class SkeletonLibraryVariant
+    extends ComponentLibraryVariant<SkeletonLibraryPrimaryInputs> {
   const SkeletonLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, SkeletonLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, SkeletonLibraryPrimaryInputs inputs) {
     return [
       const ComponentsLibraryVariantDescriptor(
         wrapWithCard: true,
