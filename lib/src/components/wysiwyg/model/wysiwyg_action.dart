@@ -11,8 +11,8 @@ enum ImpaktfullUiWysiwygAction {
 
   static const List<ImpaktfullUiWysiwygAction> basicValues = [
     ImpaktfullUiWysiwygAction.header,
-    // ImpaktfullUiWysiwygAction.bold,
-    // ImpaktfullUiWysiwygAction.italic,
+    ImpaktfullUiWysiwygAction.bold,
+    ImpaktfullUiWysiwygAction.italic,
     ImpaktfullUiWysiwygAction.unorderedList,
     ImpaktfullUiWysiwygAction.code,
     ImpaktfullUiWysiwygAction.codeBlock,

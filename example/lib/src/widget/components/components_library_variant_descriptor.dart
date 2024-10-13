@@ -8,6 +8,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
   final double? height;
   final Color? color;
   final EdgeInsetsGeometry? padding;
+  final bool isScrollable;
   final bool wrapWithCard;
 
   const ComponentsLibraryVariantDescriptor({
@@ -16,6 +17,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
     this.width,
     this.height,
     this.padding,
+    this.isScrollable = false,
     this.wrapWithCard = false,
     this.color,
     super.key,
@@ -47,13 +49,15 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
           width: width,
           height: height,
           child: Builder(builder: (context) {
+            final wrapepdChild =
+                isScrollable ? SingleChildScrollView(child: child) : child;
             if (wrapWithCard) {
               return ImpaktfullUiCard(
                 padding: padding,
-                child: child,
+                child: wrapepdChild,
               );
             }
-            return child;
+            return wrapepdChild;
           }),
         ),
       ],

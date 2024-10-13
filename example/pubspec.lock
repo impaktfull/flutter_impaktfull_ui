@@ -94,6 +94,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  flutter_markdown:
+    dependency: transitive
+    description:
+      name: flutter_markdown
+      sha256: bd9c475d9aae256369edacafc29d1e74c81f78a10cdcdacbbbc9e3c43d009e4a
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.4"
   flutter_svg:
     dependency: transitive
     description:
@@ -191,6 +199,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
+  markdown:
+    dependency: transitive
+    description:
+      name: markdown
+      sha256: ef2a1298144e3f985cc736b22e0ccdaf188b5b3970648f2d9dc13efd1d9df051
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.2.2"
   matcher:
     dependency: transitive
     description:
@@ -398,4 +414,4 @@ packages:
     version: "6.5.0"
 sdks:
   dart: ">=3.4.1 <4.0.0"
-  flutter: ">=3.18.0-18.0.pre.54"
+  flutter: ">=3.19.0"

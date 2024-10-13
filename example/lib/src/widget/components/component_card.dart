@@ -16,9 +16,13 @@ class ComponentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isScrollable = false;
     var correctChild = child;
     if (correctChild is ComponentsLibraryVariantDescriptor) {
-      correctChild = (child as ComponentsLibraryVariantDescriptor).child;
+      // ignore: unnecessary_cast
+      final descriptor = correctChild as ComponentsLibraryVariantDescriptor;
+      correctChild = descriptor.child;
+      isScrollable = descriptor.isScrollable;
     }
     return ImpaktfullUiCard(
       onTap: onTap,
@@ -39,7 +43,14 @@ class ComponentCard extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Center(
-                        child: correctChild,
+                        child: Builder(builder: (context) {
+                          if (isScrollable) {
+                            return SingleChildScrollView(
+                              child: correctChild,
+                            );
+                          }
+                          return correctChild;
+                        }),
                       ),
                     ),
                   ),

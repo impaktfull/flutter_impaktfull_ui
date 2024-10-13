@@ -59,6 +59,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiDatePicker.range
 - ImpaktfullUiDivider
 - ImpaktfullUiDropdown
+- ImpaktfullUiFocusFeedback
 - ImpaktfullUiFilePicker
 - ImpaktfullUiFloatingActionButton
 - ImpaktfullUiFluidPadding
@@ -160,6 +161,16 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - success
 - user
 - warning
+- wysiwygBold
+- wysiwygCode
+- wysiwygCodeBlock
+- wysiwygHeader
+- wysiwygItalic
+- wysiwygLink
+- wysiwygOrderedList
+- wysiwygPhoto
+- wysiwygUnorderedList
+- wysiwygUnorderedListItem
 
 # Todo
 

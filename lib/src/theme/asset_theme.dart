@@ -73,9 +73,9 @@ class ImpaktfullUiAssetTheme {
               wysiwygHeader: ImpaktfullUiAsset.icon(PhosphorIcons.textH()),
               wysiwygItalic: ImpaktfullUiAsset.icon(PhosphorIcons.textItalic()),
               wysiwygLink: ImpaktfullUiAsset.icon(PhosphorIcons.link()),
-              wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image()),
               wysiwygOrderedList:
                   ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers()),
+              wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image()),
               wysiwygUnorderedList:
                   ImpaktfullUiAsset.icon(PhosphorIcons.listBullets()),
               wysiwygUnorderedListItem:
@@ -191,8 +191,8 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset wysiwygHeader;
   final ImpaktfullUiAsset wysiwygItalic;
   final ImpaktfullUiAsset wysiwygLink;
-  final ImpaktfullUiAsset wysiwygPhoto;
   final ImpaktfullUiAsset wysiwygOrderedList;
+  final ImpaktfullUiAsset wysiwygPhoto;
   final ImpaktfullUiAsset wysiwygUnorderedList;
   final ImpaktfullUiAsset wysiwygUnorderedListItem;
 
@@ -234,8 +234,8 @@ class ImpaktfullUiIconTheme {
     required this.wysiwygHeader,
     required this.wysiwygItalic,
     required this.wysiwygLink,
-    required this.wysiwygPhoto,
     required this.wysiwygOrderedList,
+    required this.wysiwygPhoto,
     required this.wysiwygUnorderedList,
     required this.wysiwygUnorderedListItem,
   });
@@ -278,8 +278,8 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? wysiwygHeader,
     ImpaktfullUiAsset? wysiwygItalic,
     ImpaktfullUiAsset? wysiwygLink,
-    ImpaktfullUiAsset? wysiwygPhoto,
     ImpaktfullUiAsset? wysiwygOrderedList,
+    ImpaktfullUiAsset? wysiwygPhoto,
     ImpaktfullUiAsset? wysiwygUnorderedList,
     ImpaktfullUiAsset? wysiwygUnorderedListItem,
   }) =>
@@ -321,8 +321,8 @@ class ImpaktfullUiIconTheme {
         wysiwygHeader: wysiwygHeader ?? this.wysiwygHeader,
         wysiwygItalic: wysiwygItalic ?? this.wysiwygItalic,
         wysiwygLink: wysiwygLink ?? this.wysiwygLink,
-        wysiwygPhoto: wysiwygPhoto ?? this.wysiwygPhoto,
         wysiwygOrderedList: wysiwygOrderedList ?? this.wysiwygOrderedList,
+        wysiwygPhoto: wysiwygPhoto ?? this.wysiwygPhoto,
         wysiwygUnorderedList: wysiwygUnorderedList ?? this.wysiwygUnorderedList,
         wysiwygUnorderedListItem:
             wysiwygUnorderedListItem ?? this.wysiwygUnorderedListItem,
