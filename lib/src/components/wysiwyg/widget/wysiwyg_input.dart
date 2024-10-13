@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/widget/actions/wysiwig_actions.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
@@ -40,12 +41,10 @@ class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiWysiwygInputField> createState() =>
-      _ImpaktfullUiWysiwygInputFieldState();
+  State<ImpaktfullUiWysiwygInputField> createState() => _ImpaktfullUiWysiwygInputFieldState();
 }
 
-class _ImpaktfullUiWysiwygInputFieldState
-    extends State<ImpaktfullUiWysiwygInputField> {
+class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInputField> {
   late final TextEditingController _controller;
   late final FocusNode _focusNode;
   TextSelection? _textSelection;
@@ -53,8 +52,7 @@ class _ImpaktfullUiWysiwygInputFieldState
   @override
   void initState() {
     super.initState();
-    _controller =
-        widget.controller ?? TextEditingController(text: widget.value);
+    _controller = widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(_onFocusChanged);
     _controller.addListener(_onTextChanged);
@@ -97,8 +95,7 @@ class _ImpaktfullUiWysiwygInputFieldState
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
-      builder: (context, inputFieldTheme) =>
-          ImpaktfullUiComponentThemeBuidler<ImpaktfullUiWysiwygTheme>(
+      builder: (context, inputFieldTheme) => ImpaktfullUiComponentThemeBuidler<ImpaktfullUiWysiwygTheme>(
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
@@ -115,6 +112,8 @@ class _ImpaktfullUiWysiwygInputFieldState
                 children: [
                   ImpaktfullUiTouchFeedback(
                     onTap: _onTap,
+                    useFocusColor: false,
+                    canRequestFocus: false,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
@@ -125,8 +124,7 @@ class _ImpaktfullUiWysiwygInputFieldState
                           textSelectionTheme: TextSelectionThemeData(
                             cursorColor: inputFieldTheme.colors.cursor,
                             selectionColor: inputFieldTheme.colors.selection,
-                            selectionHandleColor:
-                                inputFieldTheme.colors.selectionHandle,
+                            selectionHandleColor: inputFieldTheme.colors.selectionHandle,
                           ),
                         ),
                         child: TextField(
@@ -146,8 +144,7 @@ class _ImpaktfullUiWysiwygInputFieldState
                             focusColor: Colors.transparent,
                             hintStyle: inputFieldTheme.textStyles.placeholder,
                             border: OutlineInputBorder(
-                              borderRadius:
-                                  inputFieldTheme.dimens.borderRadius.value,
+                              borderRadius: inputFieldTheme.dimens.borderRadius.value,
                             ),
                             errorBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
@@ -156,6 +153,18 @@ class _ImpaktfullUiWysiwygInputFieldState
                             focusedErrorBorder: InputBorder.none,
                             contentPadding: EdgeInsets.zero,
                           ),
+                          inputFormatters: [
+                            TextInputFormatter.withFunction((oldValue, newValue) {
+                              if (newValue.text.endsWith('\t')) {
+                                final newText = newValue.text.replaceAll('\t', '    ');
+                                return TextEditingValue(
+                                  text: newText,
+                                  selection: TextSelection.collapsed(offset: newText.length),
+                                );
+                              }
+                              return newValue;
+                            }),
+                          ],
                         ),
                       ),
                     ),

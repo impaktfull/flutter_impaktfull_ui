@@ -6,7 +6,7 @@ import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item_type.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 
 export 'table_row_item_style.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/container/container.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/focus_feedback/focus_feedback.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_builder.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
@@ -16,6 +17,8 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final List<BoxShadow> shadow;
   final String? toolTip;
   final bool canRequestFocus;
+  final bool autofocus;
+  final bool useFocusColor;
 
   const ImpaktfullUiTouchFeedback({
     required this.onTap,
@@ -27,6 +30,8 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     this.toolTip,
     this.cursor = SystemMouseCursors.click,
     this.canRequestFocus = true,
+    this.autofocus = false,
+    this.useFocusColor = true,
     this.shadow = const [],
     super.key,
   });
@@ -54,6 +59,9 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
             borderRadius: borderRadius,
             onTap: onTap,
             cursor: cursor,
+            canRequestFocus: canRequestFocus,
+            autofocus: autofocus,
+            useFocusColor: useFocusColor,
             onFocusChanged: _onFocusChanged,
             child: child,
           ),
@@ -74,6 +82,9 @@ class _PlatformTouchFeedback extends StatefulWidget {
   final BorderRadiusGeometry? borderRadius;
   final VoidCallback? onTap;
   final MouseCursor cursor;
+  final bool canRequestFocus;
+  final bool autofocus;
+  final bool useFocusColor;
   final ValueChanged<bool> onFocusChanged;
 
   const _PlatformTouchFeedback({
@@ -81,6 +92,9 @@ class _PlatformTouchFeedback extends StatefulWidget {
     required this.borderRadius,
     required this.onTap,
     required this.cursor,
+    required this.canRequestFocus,
+    required this.autofocus,
+    required this.useFocusColor,
     required this.onFocusChanged,
   });
 
@@ -113,6 +127,8 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
           child: Focus(
             focusNode: _focusNode,
             onFocusChange: widget.onFocusChanged,
+            canRequestFocus: widget.canRequestFocus,
+            autofocus: widget.autofocus,
             child: ColoredBox(
               color: Colors.transparent,
               child: widget.child,
@@ -121,20 +137,31 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         ),
       );
     }
-    final isAndroidTarget =
-        Theme.of(context).platform == TargetPlatform.android;
-    return InkWell(
-      borderRadius: widget.borderRadius?.value,
-      onTap: widget.onTap,
-      mouseCursor: widget.cursor,
-      onFocusChange: widget.onFocusChanged,
-      focusColor: Colors.transparent,
-      splashFactory:
-          isAndroidTarget ? InkSparkle.splashFactory : NoSplash.splashFactory,
-      child: ColoredBox(
-        color: Colors.transparent,
-        child: widget.child,
+    final isAndroidTarget = Theme.of(context).platform == TargetPlatform.android;
+    return ImpaktfullUiFocusFeedback(
+      hasFocus: _focusNode.hasFocus,
+      borderRadius: widget.borderRadius,
+      enabled: false,
+      child: InkWell(
+        borderRadius: widget.borderRadius?.value,
+        onTap: widget.onTap,
+        focusNode: _focusNode,
+        mouseCursor: widget.cursor,
+        onFocusChange: _onFocusChanged,
+        canRequestFocus: widget.canRequestFocus,
+        autofocus: widget.autofocus,
+        focusColor: widget.useFocusColor ? Theme.of(context).hoverColor : Colors.transparent,
+        splashFactory: isAndroidTarget ? InkSparkle.splashFactory : NoSplash.splashFactory,
+        child: ColoredBox(
+          color: Colors.transparent,
+          child: widget.child,
+        ),
       ),
     );
+  }
+
+  void _onFocusChanged(bool value) {
+    setState(() {});
+    widget.onFocusChanged(value);
   }
 }

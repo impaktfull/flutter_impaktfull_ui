@@ -21,20 +21,22 @@ class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: theme.colors.canvas,
-      body: ImpaktfullUiThemeBuidler(
-        builder: (context, theme) => ImpaktfullUiAutoLayout.vertical(
-          children: [
-            ImpaktfullUiCmsHeader(
-              title: title,
-              onBackTapped:
-                  canGoBack ? () => Navigator.of(context).pop() : null,
-              actions: actions,
-              bottom: headerBottom,
-            ),
-            Expanded(
-              child: builder(context),
-            ),
-          ],
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: ImpaktfullUiThemeBuidler(
+          builder: (context, theme) => ImpaktfullUiAutoLayout.vertical(
+            children: [
+              ImpaktfullUiCmsHeader(
+                title: title,
+                onBackTapped: canGoBack ? () => Navigator.of(context).pop() : null,
+                actions: actions,
+                bottom: headerBottom,
+              ),
+              Expanded(
+                child: builder(context),
+              ),
+            ],
+          ),
         ),
       ),
     );

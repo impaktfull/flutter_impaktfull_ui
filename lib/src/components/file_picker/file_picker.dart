@@ -4,9 +4,9 @@ import 'package:impaktfull_ui_2/src/components/file_picker/model/file_picker_dat
 import 'package:impaktfull_ui_2/src/components/file_picker/model/file_picker_progress_type.dart';
 import 'package:impaktfull_ui_2/src/components/file_picker/widgets/file_picker_content.dart';
 import 'package:impaktfull_ui_2/src/components/file_picker/widgets/file_picker_empty.dart';
-import 'package:impaktfull_ui_2/src/components/hover_feedback/hover_feedback.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/hover_feedback/hover_feedback.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'model/file_picker_data.dart';
