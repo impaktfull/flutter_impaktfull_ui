@@ -57,6 +57,7 @@ import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dar
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart';
+import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
 
 abstract class ImpaktfullUiComponentTheme {
   const ImpaktfullUiComponentTheme();
@@ -85,6 +86,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiGridViewTheme gridView;
   final ImpaktfullUiHorizontalTabTheme horizontalTab;
   final ImpaktfullUiHorizontalTabsTheme horizontalTabs;
+  final ImpaktfullUiImageCropTheme imageCrop;
   final ImpaktfullUiInputFieldTheme inputField;
   final ImpaktfullUiListItemTheme listItem;
   final ImpaktfullUiListViewTheme listView;
@@ -145,6 +147,7 @@ class ImpaktfullUiComponentsTheme {
     required this.gridView,
     required this.horizontalTab,
     required this.horizontalTabs,
+    required this.imageCrop,
     required this.inputField,
     required this.listItem,
     required this.listView,
@@ -206,6 +209,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiGridViewTheme? gridView,
     ImpaktfullUiHorizontalTabTheme? horizontalTab,
     ImpaktfullUiHorizontalTabsTheme? horizontalTabs,
+    ImpaktfullUiImageCropTheme? imageCrop,
     ImpaktfullUiInputFieldTheme? inputField,
     ImpaktfullUiListItemTheme? listItem,
     ImpaktfullUiListViewTheme? listView,
@@ -266,6 +270,7 @@ class ImpaktfullUiComponentsTheme {
         gridView: gridView ?? this.gridView,
         horizontalTab: horizontalTab ?? this.horizontalTab,
         horizontalTabs: horizontalTabs ?? this.horizontalTabs,
+        imageCrop: imageCrop ?? this.imageCrop,
         inputField: inputField ?? this.inputField,
         listItem: listItem ?? this.listItem,
         listView: listView ?? this.listView,
@@ -350,6 +355,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiHorizontalTabTheme.of(context) as T;
     } else if (T == ImpaktfullUiHorizontalTabsTheme) {
       return ImpaktfullUiHorizontalTabsTheme.of(context) as T;
+    } else if (T == ImpaktfullUiImageCropTheme) {
+      return ImpaktfullUiImageCropTheme.of(context) as T;
     } else if (T == ImpaktfullUiInputFieldTheme) {
       return ImpaktfullUiInputFieldTheme.of(context) as T;
     } else if (T == ImpaktfullUiListItemTheme) {

@@ -13,12 +13,13 @@ class ImpaktfullUiIconButton extends StatelessWidget
   final ImpaktfullUiAsset asset;
   final double size;
   final String? tooltip;
-
+  final Color? backgroundColor;
   const ImpaktfullUiIconButton({
     required this.onTap,
     required this.asset,
     this.color,
     this.size = 16,
+    this.backgroundColor,
     this.tooltip,
     super.key,
   });
@@ -30,6 +31,7 @@ class ImpaktfullUiIconButton extends StatelessWidget
       toolTip: tooltip,
       borderRadius: BorderRadius.circular(9999),
       onTap: onTap,
+      color: backgroundColor,
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: ImpaktfullUiAssetWidget(

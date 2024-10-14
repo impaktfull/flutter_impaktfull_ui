@@ -177,39 +177,47 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - [ ] Add tests
 - [ ] Add extra components
 
-  - ImpaktfullUiCalendar
   - ImpaktfullUiNumberInput
+  - ImpaktfullUiTimePicker
+  - ImpaktfullUiDateTimePicker
+  - ImpaktfullUiDateTimePickerDialog
+  - ImpaktfullUiSlider
+  - ImpaktfullUiStepper
+  - ImpaktfullUiSegmentedControll
+  - ImpaktfullUiBreadcrumbs
+  - ImpaktfullUiCalendar
   - ImpaktfullUiMetrics
   - ImpaktfullUiLineChart
   - ImpaktfullUiBarChart
   - ImpaktfullUiPieChart
-  - ImpaktfullUiStepper
-  - ImpaktfullUiSlider
   - ImpaktfullUiPasswordStrengthIndicator
-  - ImpaktfullUiBreadcrumbs
-  - ImpaktfullUiSocialLoginsButton
-  - ImpaktfullUiSegmentedControll
-  - ImpaktfullUiHtml
-  - ImpaktfullUiWysiwyg (HTML)
-  - ImpaktfullUiRating
-  - ImpaktfullUiDateTimePicker
-  - ImpaktfullUiDateTimePickerDialog
-  - ImpaktfullUiTimePicker
   - ImpaktfullUiGallery
   - ImpaktfullUiStoryView
   - ImpaktfullUiStoryViewItem
   - ImpaktfullUiVidoPlayerControls
   - ImpaktfullUiFileCropper
+  - ImpaktfullUiSocialLoginsButton
   - ImpaktfullUiWebView
+  - ImpaktfullUiHtml
+  - ImpaktfullUiWysiwyg (HTML)
+  - ImpaktfullUiRating
+
+- [ ] Add CustomRoutes
+
+  - ImpaktfullUiIosModalRoute
 
 - [ ] Add addaptive components
+
   - ImpaktfullUiResponsiveLayout
   - ImpaktfullUiMasterDetail
   - ImpaktfullUiAdaptiveScreen
   - ImpaktfullUiAdaptiveNavBar
   - ImpaktfullUiAdaptiveNavBarAction
   - ImpaktfullUiAdaptiveNavigation
+  - ImpaktfullUiAdaptiveModalRoute
+
 - [ ] Add building blocks
+
   - ImpaktfullUiBBLogin
   - ImpaktfullUiBBRegister
   - ImpaktfullUiBBForgotPassword
@@ -220,6 +228,10 @@ These icons can be overriden in the theme itself. By adding your own IconData.
   - ImpaktfullUiBBPrivacyPolicyScreen
   - ImpaktfullUiBBTermsAndConditionsScreen
   - ImpaktfullUiBBLicensesScreen
+
+- [ ] Add examples
+
+  - Dashboard
 
 # License
 

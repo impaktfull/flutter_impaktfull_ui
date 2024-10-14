@@ -21,6 +21,7 @@ import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart'
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
+import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
@@ -573,6 +574,16 @@ class DefaultTheme {
           dimens: ImpaktfullUiHorizontalTabsDimensTheme(
             padding: EdgeInsets.symmetric(horizontal: 16),
           ),
+        ),
+        imageCrop: ImpaktfullUiImageCropTheme(
+          assets: ImpaktfullUiImageCropAssetsTheme(
+            delete: assets.icons.delete,
+          ),
+          colors: ImpaktfullUiImageCropColorTheme(
+            deleteIcon: colors.card,
+          ),
+          dimens: const ImpaktfullUiImageCropDimensTheme(),
+          textStyles: const ImpaktfullUiImageCropTextStyleTheme(),
         ),
         inputField: ImpaktfullUiInputFieldTheme(
           colors: ImpaktfullUiInputFieldColorTheme(

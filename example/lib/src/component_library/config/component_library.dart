@@ -22,6 +22,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/fluid_pad
 import 'package:impaktfull_ui_example/src/component_library/components/grid_view/grid_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/icon_button/icon_button_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/image_crop/image_crop_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/input_field/input_field_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/list_item/list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/list_view/list_view_library_item.dart';
@@ -80,8 +81,9 @@ class ComponentLibrary {
     const FluidPaddingLibraryItem(),
     const GridViewLibraryItem(),
     const HorizontalTabsLibraryItem(),
-    const InputFieldLibraryItem(),
     const IconButtonLibraryItem(),
+    const ImageCropLibraryItem(),
+    const InputFieldLibraryItem(),
     const ListItemLibraryItem(),
     const ListViewLibraryItem(),
     const LoadingErrorDataLibraryItem(),

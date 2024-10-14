@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image_style.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
@@ -43,6 +44,29 @@ class ImpaktfullUiNetworkImage extends StatelessWidget
           fullUrl,
           height: height,
           width: width,
+          errorBuilder: (context, error, stackTrace) {
+            if (!kDebugMode) throw error;
+            return Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Placeholder(
+                  color: Colors.red,
+                  fallbackWidth: width ?? 300,
+                  fallbackHeight: height ?? 300,
+                ),
+                FractionallySizedBox(
+                  widthFactor: 0.5,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      'Error: $error',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         );
       },
     );

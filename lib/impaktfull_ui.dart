@@ -26,6 +26,7 @@ export 'src/components/grid_view/grid_view.dart';
 export 'src/components/horizontal_tab/horizontal_tab.dart';
 export 'src/components/horizontal_tabs/horizontal_tabs.dart';
 export 'src/components/icon_button/icon_button.dart';
+export 'src/components/image_crop/image_crop.dart';
 export 'src/components/input_field/input_field.dart';
 export 'src/components/list_item/list_item.dart';
 export 'src/components/list_view/list_view.dart';
