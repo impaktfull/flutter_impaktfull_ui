@@ -9,6 +9,7 @@ class CropInfo {
   final Offset position;
   final bool isFlippedVertical;
   final bool isFlippedHorizontal;
+  final Color backgroundColor;
 
   const CropInfo({
     required this.cropRect,
@@ -19,6 +20,7 @@ class CropInfo {
     required this.position,
     required this.isFlippedVertical,
     required this.isFlippedHorizontal,
+    this.backgroundColor = const Color(0x00000000),
   });
 
   CropInfo copyWith({
@@ -30,6 +32,7 @@ class CropInfo {
     Offset? position,
     bool? isFlippedVertical,
     bool? isFlippedHorizontal,
+    Color? backgroundColor,
   }) {
     return CropInfo(
       cropRect: cropRect ?? this.cropRect,
@@ -40,6 +43,7 @@ class CropInfo {
       position: position ?? this.position,
       isFlippedVertical: isFlippedVertical ?? this.isFlippedVertical,
       isFlippedHorizontal: isFlippedHorizontal ?? this.isFlippedHorizontal,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
     );
   }
 }

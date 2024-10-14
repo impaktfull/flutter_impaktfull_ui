@@ -48,6 +48,14 @@ Future<ui.Image> isolateCropImage(Map<String, dynamic> params) async {
     scaledCropRect.bottom.clamp(0, imageHeight),
   );
 
+  // Add background color if not transparent
+  if (cropInfo.backgroundColor != const Color(0x00000000)) {
+    canvas.drawRect(
+      Rect.fromLTWH(0, 0, srcRect.width, srcRect.height),
+      Paint()..color = cropInfo.backgroundColor,
+    );
+  }
+
   canvas.save();
   // Translate the canvas to the center of the crop rectangle.
   // This sets the pivot point for subsequent transformations (rotation, scaling, etc.)

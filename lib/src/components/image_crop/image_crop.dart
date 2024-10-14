@@ -25,12 +25,14 @@ class ImpaktfullUiImageCrop extends StatefulWidget
   final ImpaktfullUiImageCropController? controller;
   final String? imageUrl;
   final double size;
+  final Color backgroundColor;
   final ImpaktfullUiImageCropTheme? theme;
 
   const ImpaktfullUiImageCrop({
     required this.size,
     this.controller,
     this.imageUrl,
+    this.backgroundColor = const Color(0x00000000),
     this.theme,
     super.key,
   });
@@ -51,21 +53,23 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
   @override
   void initState() {
     super.initState();
-    final sizePercentage = widget.size / 4;
+    final padding = widget.size / 8;
+    final cropSize = widget.size - padding * 2;
     _cropInfo = CropInfo(
       cropRect: Rect.fromLTWH(
-        sizePercentage / 2,
-        sizePercentage / 2,
-        widget.size - sizePercentage,
-        widget.size - sizePercentage,
+        padding,
+        padding,
+        cropSize,
+        cropSize,
       ),
       width: widget.size,
       height: widget.size,
       rotation: 0,
-      scale: 1.0,
+      scale: 1,
       position: Offset.zero,
       isFlippedHorizontal: false,
       isFlippedVertical: false,
+      backgroundColor: widget.backgroundColor,
     );
     _controller = widget.controller ?? ImpaktfullUiImageCropController();
   }
@@ -91,7 +95,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                 width: widget.size,
                 height: widget.size,
                 child: Container(
-                  color: Colors.black.withOpacity(0.33),
+                  color: widget.backgroundColor,
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
@@ -145,28 +149,31 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                     Positioned.fill(
                       child: GestureDetector(
                         onScaleUpdate: _onScaleUpdate,
-                        child: Transform(
-                          transform: Matrix4.identity()
-                            ..translate(
-                                _cropInfo.position.dx, _cropInfo.position.dy)
-                            ..scale(_cropInfo.scale)
-                            ..rotateZ(_cropInfo.rotation),
-                          alignment: Alignment.center,
+                        child: Material(
+                          color: Colors.transparent,
                           child: Transform(
                             transform: Matrix4.identity()
-                              ..scale(
-                                _cropInfo.isFlippedHorizontal ? -1.0 : 1.0,
-                                _cropInfo.isFlippedVertical ? -1.0 : 1.0,
-                              ),
+                              ..translate(
+                                  _cropInfo.position.dx, _cropInfo.position.dy)
+                              ..scale(_cropInfo.scale)
+                              ..rotateZ(_cropInfo.rotation),
                             alignment: Alignment.center,
-                            child: Builder(builder: (context) {
-                              if (widget.imageUrl != null) {
-                                return Image.network(
-                                  widget.imageUrl!,
-                                );
-                              }
-                              throw Exception('Image not found');
-                            }),
+                            child: Transform(
+                              transform: Matrix4.identity()
+                                ..scale(
+                                  _cropInfo.isFlippedHorizontal ? -1.0 : 1.0,
+                                  _cropInfo.isFlippedVertical ? -1.0 : 1.0,
+                                ),
+                              alignment: Alignment.center,
+                              child: Builder(builder: (context) {
+                                if (widget.imageUrl != null) {
+                                  return Image.network(
+                                    widget.imageUrl!,
+                                  );
+                                }
+                                throw Exception('Image not found');
+                              }),
+                            ),
                           ),
                         ),
                       ),

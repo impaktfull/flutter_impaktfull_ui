@@ -16,7 +16,8 @@ class ImageCropLibraryVariant
       BuildContext context, ImageCropLibraryPrimaryInputs inputs) {
     return [
       const ImpaktfullUiImageCrop(
-        size: 100,
+        size: 120,
+        backgroundColor: Colors.amber,
         imageUrl: NetworkImages.profilePicture,
       ),
       const ImpaktfullUiImageCrop(
@@ -25,6 +26,7 @@ class ImageCropLibraryVariant
       ),
       const ImpaktfullUiImageCrop(
         size: 300,
+        backgroundColor: Colors.amber,
         imageUrl: NetworkImages.image16x9,
       ),
     ];
