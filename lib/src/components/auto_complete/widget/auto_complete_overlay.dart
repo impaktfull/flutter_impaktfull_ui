@@ -27,12 +27,10 @@ class ImpaktfullUiAutoCompleteOverlay<T> extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiAutoCompleteOverlay<T>> createState() =>
-      ImpaktfullUiAutoCompleteOverlayState<T>();
+  State<ImpaktfullUiAutoCompleteOverlay<T>> createState() => ImpaktfullUiAutoCompleteOverlayState<T>();
 }
 
-class ImpaktfullUiAutoCompleteOverlayState<T>
-    extends State<ImpaktfullUiAutoCompleteOverlay<T>> {
+class ImpaktfullUiAutoCompleteOverlayState<T> extends State<ImpaktfullUiAutoCompleteOverlay<T>> {
   DateTime? _latestSearch;
   final _items = <T>[];
   var _isLoading = true;
@@ -67,8 +65,7 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
           items: _items,
           reversed: widget.isShownAboveInputField,
           isLoading: _isLoading,
-          itemBuilder: (contesxt, item, index) =>
-              widget.itemBuilder(context, item, index),
+          itemBuilder: (contesxt, item, index) => widget.itemBuilder(context, item, index),
           noDataLabel: widget.noDataLabel,
         ),
       ),
@@ -83,6 +80,7 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
 
     _debounceTimer?.cancel();
     _debounceTimer = Timer(widget.debounceDuration, () {
+      _debounceTimer = null;
       _getData();
     });
   }
@@ -96,7 +94,7 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
       _latestSearch = searchDateTime;
       final items = await widget.onSearchChanged(_searchQuery);
       if (_latestSearch != searchDateTime) return;
-      if (!mounted) return;
+      if (!mounted || _debounceTimer != null) return;
       _items.clear();
       _items.addAll(items);
     } catch (error, trace) {
@@ -105,7 +103,7 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
         stackTrace: trace,
       );
     }
-    if (!mounted) return;
+    if (!mounted || _debounceTimer != null) return;
     setState(() {
       _isLoading = false;
     });
