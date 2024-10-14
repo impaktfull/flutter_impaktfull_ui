@@ -23,6 +23,7 @@ class ImpaktfullUiInputField extends StatefulWidget
   final String? hint;
   final String? error;
   final WidgetBuilder? leadingBuilder;
+  final WidgetBuilder? topBuilder;
   final ImpaktfullUiAsset? leadingIcon;
   final Widget? trailingAction;
   final String? value;
@@ -43,6 +44,7 @@ class ImpaktfullUiInputField extends StatefulWidget
     required this.onChanged,
     this.leadingIcon,
     this.leadingBuilder,
+    this.topBuilder,
     this.trailingAction,
     this.placeholder,
     this.hint,
@@ -128,74 +130,88 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                 actions: widget.labelActions,
               ),
             ],
-            SizedBox(
-              height: widget.multiline ? null : 40,
-              child: ImpaktfullUiAutoLayout.horizontal(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    child: ImpaktfullUiCard(
-                      cursor: SystemMouseCursors.text,
-                      error: widget.error != null && widget.error!.isNotEmpty,
-                      onTap: _onTap,
-                      onFocus: _onFocus,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      borderRadius: BorderRadiusDirectional.only(
-                        topStart: componentTheme.dimens.borderRadius.topStart,
-                        bottomStart:
-                            componentTheme.dimens.borderRadius.bottomStart,
-                        topEnd: trailingActionAllowed
-                            ? Radius.zero
-                            : componentTheme.dimens.borderRadius.topEnd,
-                        bottomEnd: trailingActionAllowed
-                            ? Radius.zero
-                            : componentTheme.dimens.borderRadius.bottomEnd,
-                      ),
-                      child: ImpaktfullUiAutoLayout.horizontal(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: 8,
-                        children: [
-                          if (widget.leadingIcon != null) ...[
-                            ImpaktfullUiAssetWidget(
-                              asset: widget.leadingIcon,
-                              size: 20,
-                              color: componentTheme.textStyles.text.color,
+            ImpaktfullUiAutoLayout.horizontal(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: ImpaktfullUiCard(
+                    cursor: SystemMouseCursors.text,
+                    error: widget.error != null && widget.error!.isNotEmpty,
+                    onTap: _onTap,
+                    onFocus: _onFocus,
+                    padding: EdgeInsets.zero,
+                    borderRadius: BorderRadiusDirectional.only(
+                      topStart: componentTheme.dimens.borderRadius.topStart,
+                      bottomStart:
+                          componentTheme.dimens.borderRadius.bottomStart,
+                      topEnd: trailingActionAllowed
+                          ? Radius.zero
+                          : componentTheme.dimens.borderRadius.topEnd,
+                      bottomEnd: trailingActionAllowed
+                          ? Radius.zero
+                          : componentTheme.dimens.borderRadius.bottomEnd,
+                    ),
+                    child: ImpaktfullUiAutoLayout.vertical(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (widget.topBuilder != null) ...[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 8,
+                              bottom: 8,
+                              left: 8,
+                              right: 8,
                             ),
-                          ],
-                          if (widget.leadingBuilder != null) ...[
-                            widget.leadingBuilder!(context),
-                          ],
-                          Expanded(
-                            child: BaseInputField(
-                              value: widget.value,
-                              onChanged: widget.onChanged,
-                              focusNode: _focusNode,
-                              controller: _controller,
-                              theme: componentTheme,
-                              maxLines: widget.maxLines,
-                              textInputAction: widget.textInputAction,
-                              textInputType: widget.textInputType,
-                              obscureText: widget.obscureText,
-                              placeholder: widget.placeholder,
-                              autofocus: widget.autofocus,
-                              multiline: widget.multiline,
-                              onFocusChanged: widget.onFocusChanged,
-                            ),
+                            child: widget.topBuilder!(context),
                           ),
                         ],
-                      ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16, right: 16),
+                          child: ImpaktfullUiAutoLayout.horizontal(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            spacing: 8,
+                            children: [
+                              if (widget.leadingIcon != null) ...[
+                                ImpaktfullUiAssetWidget(
+                                  asset: widget.leadingIcon,
+                                  size: 20,
+                                  color: componentTheme.textStyles.text.color,
+                                ),
+                              ],
+                              if (widget.leadingBuilder != null) ...[
+                                widget.leadingBuilder!(context),
+                              ],
+                              Expanded(
+                                child: BaseInputField(
+                                  value: widget.value,
+                                  onChanged: widget.onChanged,
+                                  focusNode: _focusNode,
+                                  controller: _controller,
+                                  theme: componentTheme,
+                                  maxLines: widget.maxLines,
+                                  textInputAction: widget.textInputAction,
+                                  textInputType: widget.textInputType,
+                                  obscureText: widget.obscureText,
+                                  placeholder: widget.placeholder,
+                                  autofocus: widget.autofocus,
+                                  multiline: widget.multiline,
+                                  onFocusChanged: widget.onFocusChanged,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  if (trailingActionAllowed) ...[
-                    trailingAction,
-                  ],
+                ),
+                if (trailingActionAllowed) ...[
+                  trailingAction,
                 ],
-              ),
+              ],
             ),
             if (widget.error != null) ...[
               Text(

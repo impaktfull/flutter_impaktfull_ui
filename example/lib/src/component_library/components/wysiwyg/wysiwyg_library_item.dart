@@ -2,6 +2,7 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/wysiwyg/wysiwyg_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_boolean_input.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_enum_input.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_string_input.dart';
 
@@ -27,9 +28,11 @@ class WysiwygLibraryInputs extends ComponentLibraryInputs {
     options: ImpaktfullUiWysiwygType.values,
   );
   final text = ComponentLibraryStringInput('Text');
+  final showPreview = ComponentLibraryBoolInput('Show preview');
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
         previewType,
         text,
+        showPreview,
       ];
 }

@@ -16,6 +16,7 @@ class WysiwygLibraryVariant
       ImpaktfullUiWysiwyg(
         type: inputs.previewType.value!,
         text: inputs.text.value ?? '',
+        showPreview: inputs.showPreview.value ?? false,
         onChanged: inputs.text.updateState,
       ),
     ];

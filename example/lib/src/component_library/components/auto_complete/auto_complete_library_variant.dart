@@ -16,7 +16,7 @@ class AutoCompleteLibraryVariant
     return [
       ImpaktfullUiAutoComplete(
         placeholder: 'Search...',
-        builder: () {
+        leadingBuilder: () {
           if (inputs.selectedIndex.value == null) {
             return null;
           }
@@ -45,15 +45,22 @@ class AutoCompleteLibraryVariant
       const SizedBox(height: 1000),
       ImpaktfullUiAutoComplete(
         placeholder: 'Search...',
-        builder: () {
+        topBuilder: () {
           if (inputs.selectedIndex.value == null) {
-            return null;
+            return [];
           }
-          return ImpaktfullUiBadge(
-            label: 'Selected index is `${inputs.selectedIndex.value}`',
-            type: ImpaktfullUiBadgeType.neutral,
-            onCloseTap: () => inputs.selectedIndex.updateState(null),
-          );
+          return [
+            ImpaktfullUiBadge(
+              label: 'Selected index is `${inputs.selectedIndex.value}`',
+              type: ImpaktfullUiBadgeType.neutral,
+              onCloseTap: () => inputs.selectedIndex.updateState(null),
+            ),
+            ImpaktfullUiBadge(
+              label: 'Selected index is `${inputs.selectedIndex.value}`',
+              type: ImpaktfullUiBadgeType.neutral,
+              onCloseTap: () => inputs.selectedIndex.updateState(null),
+            ),
+          ];
         },
         onSearchChanged: (String value) async {
           await Future.delayed(const Duration(milliseconds: 500));

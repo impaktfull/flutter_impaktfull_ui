@@ -15,7 +15,8 @@ part 'auto_complete.describe.dart';
 class ImpaktfullUiAutoComplete<T> extends StatefulWidget
     with ComponentDescriptorMixin {
   final ImpaktfullUiAutoCompleteController? controller;
-  final Widget? Function() builder;
+  final Widget? Function()? leadingBuilder;
+  final List<Widget> Function()? topBuilder;
   final FutureOr<List<T>> Function(String searchQuery) onSearchChanged;
   final Widget Function(
     BuildContext context,
@@ -30,10 +31,11 @@ class ImpaktfullUiAutoComplete<T> extends StatefulWidget
   final ImpaktfullUiAutoCompleteTheme? theme;
 
   const ImpaktfullUiAutoComplete({
-    required this.builder,
     required this.onSearchChanged,
     required this.itemBuilder,
     required this.noDataLabel,
+    this.leadingBuilder,
+    this.topBuilder,
     this.placeholder,
     this.controller,
     this.replaceWithOverlay = false,
@@ -98,7 +100,8 @@ class _ImpaktfullUiAutoCompleteState<T>
           child: LayoutBuilder(
             builder: (context, constraints) {
               _checkIfRebuildIsNeeded(constraints);
-              final leadingChild = widget.builder();
+              final leadingChild = widget.leadingBuilder?.call();
+              final topChildren = widget.topBuilder?.call() ?? [];
               return ImpaktfullUiInputField(
                 key: _inputFieldKey,
                 placeholder: widget.placeholder,
@@ -106,6 +109,13 @@ class _ImpaktfullUiAutoCompleteState<T>
                 value: _value,
                 leadingBuilder:
                     leadingChild == null ? null : (context) => leadingChild,
+                topBuilder: topChildren.isNotEmpty
+                    ? (context) => ImpaktfullUiWrap(
+                          spacing: 4,
+                          runSpacing: 4,
+                          children: topChildren,
+                        )
+                    : null,
                 onChanged: _onChanged,
               );
             },

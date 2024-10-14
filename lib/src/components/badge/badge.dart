@@ -4,7 +4,6 @@ import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'badge_style.dart';
@@ -48,13 +47,15 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiBadgeTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
-        final color = _getColor(theme);
-        final textStyle = _getTextStyle(theme);
+        final textColor = _getColor(componentTheme);
+        final borderColor = _getBorderColor(componentTheme);
+        final backgroundColor = _getBackgroundColor(componentTheme);
+        final textStyle = _getTextStyle(componentTheme);
         return Container(
           decoration: BoxDecoration(
-            color: color.withOpacity(0.05),
+            color: backgroundColor,
             border: Border.all(
-              color: color.withOpacity(0.33),
+              color: borderColor,
               width: 1,
             ),
             borderRadius: componentTheme.dimens.borderRadius,
@@ -76,32 +77,32 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (widget.leading != null) ...[
-                _getWidgetOrIcon(widget.leading!, color),
+                _getWidgetOrIcon(widget.leading!, textColor),
                 SizedBox(width: widget.size.spacing),
               ],
               if (widget.label != null) ...[
                 Text(
                   widget.label!,
-                  style: textStyle.copyWith(color: color),
+                  style: textStyle.copyWith(color: textColor),
                 ),
               ],
               if (widget.onCloseTap != null) ...[
                 const SizedBox(width: 2),
                 ImpaktfullUiTouchFeedback(
-                  borderRadius: BorderRadius.circular(999),
+                  borderRadius: componentTheme.dimens.borderRadius,
                   onTap: widget.onCloseTap!,
                   child: Padding(
                     padding: const EdgeInsets.all(2),
                     child: ImpaktfullUiAssetWidget(
                       asset: componentTheme.assets.close,
                       size: 16,
-                      color: color.withOpacity(0.66),
+                      color: textColor.withOpacity(0.66),
                     ),
                   ),
                 ),
               ] else if (widget.trailing != null) ...[
                 SizedBox(width: widget.size.spacing),
-                _getWidgetOrIcon(widget.trailing!, color),
+                _getWidgetOrIcon(widget.trailing!, textColor),
               ]
             ],
           ),
@@ -110,31 +111,65 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
     );
   }
 
-  Color _getColor(ImpaktfullUiTheme theme) {
+  Color _getColor(ImpaktfullUiBadgeTheme componentTheme) {
     switch (widget.type) {
       case ImpaktfullUiBadgeType.primary:
-        return theme.colors.accent;
+        return componentTheme.colors.primaryText;
       case ImpaktfullUiBadgeType.secondary:
-        return theme.colors.secondary;
+        return componentTheme.colors.secondaryText;
       case ImpaktfullUiBadgeType.neutral:
-        return theme.colors.text;
+        return componentTheme.colors.neutralText;
       case ImpaktfullUiBadgeType.error:
-        return theme.colors.error;
+        return componentTheme.colors.errorText;
       case ImpaktfullUiBadgeType.warning:
-        return theme.colors.warning;
+        return componentTheme.colors.warningText;
       case ImpaktfullUiBadgeType.success:
-        return theme.colors.success;
+        return componentTheme.colors.successText;
     }
   }
 
-  TextStyle _getTextStyle(ImpaktfullUiTheme theme) {
+  Color _getBorderColor(ImpaktfullUiBadgeTheme componentTheme) {
+    switch (widget.type) {
+      case ImpaktfullUiBadgeType.primary:
+        return componentTheme.colors.primaryBorder;
+      case ImpaktfullUiBadgeType.secondary:
+        return componentTheme.colors.secondaryBorder;
+      case ImpaktfullUiBadgeType.neutral:
+        return componentTheme.colors.neutralBorder;
+      case ImpaktfullUiBadgeType.error:
+        return componentTheme.colors.errorBorder;
+      case ImpaktfullUiBadgeType.warning:
+        return componentTheme.colors.warningBorder;
+      case ImpaktfullUiBadgeType.success:
+        return componentTheme.colors.successBorder;
+    }
+  }
+
+  Color _getBackgroundColor(ImpaktfullUiBadgeTheme componentTheme) {
+    switch (widget.type) {
+      case ImpaktfullUiBadgeType.primary:
+        return componentTheme.colors.primaryBackground;
+      case ImpaktfullUiBadgeType.secondary:
+        return componentTheme.colors.secondaryBackground;
+      case ImpaktfullUiBadgeType.neutral:
+        return componentTheme.colors.neutralBackground;
+      case ImpaktfullUiBadgeType.error:
+        return componentTheme.colors.errorBackground;
+      case ImpaktfullUiBadgeType.warning:
+        return componentTheme.colors.warningBackground;
+      case ImpaktfullUiBadgeType.success:
+        return componentTheme.colors.successBackground;
+    }
+  }
+
+  TextStyle _getTextStyle(ImpaktfullUiBadgeTheme componentTheme) {
     switch (widget.size) {
       case ImpaktfullUiBadgeSize.small:
-        return theme.textStyles.onCanvas.text.small;
+        return componentTheme.textStyles.small;
       case ImpaktfullUiBadgeSize.medium:
-        return theme.textStyles.onCanvas.text.small;
+        return componentTheme.textStyles.small;
       case ImpaktfullUiBadgeSize.large:
-        return theme.textStyles.onCanvas.text.small;
+        return componentTheme.textStyles.small;
     }
   }
 

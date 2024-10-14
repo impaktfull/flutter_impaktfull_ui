@@ -244,12 +244,36 @@ class DefaultTheme {
           textStyles: const ImpaktfullUiAutoCompleteTextStyleTheme(),
         ),
         badge: ImpaktfullUiBadgeTheme(
-          colors: const ImpaktfullUiBadgeColorTheme(),
+          assets: ImpaktfullUiBadgeAssetsTheme(
+            close: assets.icons.close,
+          ),
+          colors: ImpaktfullUiBadgeColorTheme(
+            primaryText: colors.accent,
+            primaryBorder: colors.accent,
+            primaryBackground: colors.accent.withOpacity(0.05),
+            secondaryText: colors.secondary,
+            secondaryBorder: colors.secondary.withOpacity(0.5),
+            secondaryBackground: colors.secondary.withOpacity(0.05),
+            neutralText: colors.text,
+            neutralBorder: colors.border,
+            neutralBackground: colors.border.withOpacity(0.05),
+            errorText: colors.error,
+            errorBorder: colors.error.withOpacity(0.5),
+            errorBackground: colors.error.withOpacity(0.05),
+            warningText: colors.warning,
+            warningBorder: colors.warning.withOpacity(0.5),
+            warningBackground: colors.warning.withOpacity(0.05),
+            successText: colors.success,
+            successBorder: colors.success.withOpacity(0.5),
+            successBackground: colors.success.withOpacity(0.05),
+          ),
           dimens: ImpaktfullUiBadgeDimensTheme(
             borderRadius: dimens.borderRadiusCircle,
           ),
-          assets: ImpaktfullUiBadgeAssetsTheme(
-            close: assets.icons.close,
+          textStyles: ImpaktfullUiBadgeTextStylesTheme(
+            small: textStyles.onCard.text.small,
+            medium: textStyles.onCard.text.small,
+            large: textStyles.onCard.text.small,
           ),
         ),
         bottomNavigation: ImpaktfullUiBottomNavigationTheme(

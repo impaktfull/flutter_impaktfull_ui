@@ -80,47 +80,43 @@ class _BaseInputFieldState extends State<BaseInputField> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => SizedBox(
-        height: widget.multiline ? null : 40,
-        child: Theme(
-          data: Theme.of(context).copyWith(
-            textSelectionTheme: TextSelectionThemeData(
-              cursorColor: componentTheme.colors.cursor,
-              selectionColor: componentTheme.colors.selection,
-              selectionHandleColor: componentTheme.colors.selectionHandle,
-            ),
-          ),
-          child: TextField(
-            focusNode: widget.focusNode,
-            controller: _controller,
-            scrollPadding: EdgeInsets.zero,
+      builder: (context, componentTheme) => Theme(
+        data: Theme.of(context).copyWith(
+          textSelectionTheme: TextSelectionThemeData(
             cursorColor: componentTheme.colors.cursor,
-            style: componentTheme.textStyles.text,
-            onChanged: _debouncedOnChanged,
-            obscureText: widget.obscureText,
-            textInputAction: widget.multiline
-                ? TextInputAction.newline
-                : widget.textInputAction,
-            keyboardType: widget.multiline
-                ? TextInputType.multiline
-                : widget.textInputType,
-            maxLines: widget.multiline ? widget.maxLines : 1,
-            minLines: widget.multiline ? 3 : 1,
-            decoration: InputDecoration(
-              isDense: true,
-              hintText: widget.placeholder,
-              focusColor: Colors.transparent,
-              hintStyle: componentTheme.textStyles.placeholder,
-              border: OutlineInputBorder(
-                borderRadius: componentTheme.dimens.borderRadius.value,
-              ),
-              errorBorder: InputBorder.none,
-              enabledBorder: InputBorder.none,
-              focusedBorder: InputBorder.none,
-              disabledBorder: InputBorder.none,
-              focusedErrorBorder: InputBorder.none,
-              contentPadding: EdgeInsets.zero,
+            selectionColor: componentTheme.colors.selection,
+            selectionHandleColor: componentTheme.colors.selectionHandle,
+          ),
+        ),
+        child: TextField(
+          focusNode: widget.focusNode,
+          controller: _controller,
+          scrollPadding: EdgeInsets.zero,
+          cursorColor: componentTheme.colors.cursor,
+          style: componentTheme.textStyles.text,
+          onChanged: _debouncedOnChanged,
+          obscureText: widget.obscureText,
+          textInputAction: widget.multiline
+              ? TextInputAction.newline
+              : widget.textInputAction,
+          keyboardType:
+              widget.multiline ? TextInputType.multiline : widget.textInputType,
+          maxLines: widget.multiline ? widget.maxLines : 1,
+          minLines: widget.multiline ? 3 : 1,
+          decoration: InputDecoration(
+            isDense: true,
+            hintText: widget.placeholder,
+            focusColor: Colors.transparent,
+            hintStyle: componentTheme.textStyles.placeholder,
+            border: OutlineInputBorder(
+              borderRadius: componentTheme.dimens.borderRadius.value,
             ),
+            errorBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+            focusedErrorBorder: InputBorder.none,
+            contentPadding: const EdgeInsets.symmetric(vertical: 12),
           ),
         ),
       ),
