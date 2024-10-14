@@ -27,10 +27,12 @@ class ImpaktfullUiAutoCompleteOverlay<T> extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiAutoCompleteOverlay<T>> createState() => ImpaktfullUiAutoCompleteOverlayState<T>();
+  State<ImpaktfullUiAutoCompleteOverlay<T>> createState() =>
+      ImpaktfullUiAutoCompleteOverlayState<T>();
 }
 
-class ImpaktfullUiAutoCompleteOverlayState<T> extends State<ImpaktfullUiAutoCompleteOverlay<T>> {
+class ImpaktfullUiAutoCompleteOverlayState<T>
+    extends State<ImpaktfullUiAutoCompleteOverlay<T>> {
   DateTime? _latestSearch;
   final _items = <T>[];
   var _isLoading = true;
@@ -65,7 +67,8 @@ class ImpaktfullUiAutoCompleteOverlayState<T> extends State<ImpaktfullUiAutoComp
           items: _items,
           reversed: widget.isShownAboveInputField,
           isLoading: _isLoading,
-          itemBuilder: (contesxt, item, index) => widget.itemBuilder(context, item, index),
+          itemBuilder: (contesxt, item, index) =>
+              widget.itemBuilder(context, item, index),
           noDataLabel: widget.noDataLabel,
         ),
       ),

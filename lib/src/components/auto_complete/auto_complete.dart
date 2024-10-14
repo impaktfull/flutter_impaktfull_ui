@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_2/src/components/auto_complete/controller/auto_complete_controller_listener.dart';
 import 'package:impaktfull_ui_2/src/components/auto_complete/widget/auto_complete_overlay.dart';
@@ -84,19 +85,27 @@ class _ImpaktfullUiAutoCompleteState<T> extends State<ImpaktfullUiAutoComplete<T
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => CompositedTransformTarget(
         link: _layerLink,
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            _checkIfRebuildIsNeeded(constraints);
-            final leadingChild = widget.builder();
-            return ImpaktfullUiInputField(
-              key: _inputFieldKey,
-              placeholder: widget.placeholder,
-              focusNode: _foucsNode,
-              value: _value,
-              leadingBuilder: leadingChild == null ? null : (context) => leadingChild,
-              onChanged: _onChanged,
-            );
+        child: CallbackShortcuts(
+          bindings: {
+            const SingleActivator(LogicalKeyboardKey.escape): () {
+              _removeOverlay();
+              _foucsNode.requestFocus();
+            },
           },
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              _checkIfRebuildIsNeeded(constraints);
+              final leadingChild = widget.builder();
+              return ImpaktfullUiInputField(
+                key: _inputFieldKey,
+                placeholder: widget.placeholder,
+                focusNode: _foucsNode,
+                value: _value,
+                leadingBuilder: leadingChild == null ? null : (context) => leadingChild,
+                onChanged: _onChanged,
+              );
+            },
+          ),
         ),
       ),
     );
