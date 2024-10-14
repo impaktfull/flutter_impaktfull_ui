@@ -11,54 +11,118 @@ export 'floating_action_button_style.dart';
 
 part 'floating_action_button.describe.dart';
 
-class ImpaktfullUiFloatingActionButton extends StatelessWidget
+class ImpaktfullUiFloatingActionButton extends StatefulWidget
     with ComponentDescriptorMixin {
   final ImpaktfullUiAsset asset;
   final String? label;
-  final String? toolTip;
+  final bool expanded;
   final VoidCallback? onTap;
   final ImpaktfullUiFloatingActionButtonTheme? theme;
 
   const ImpaktfullUiFloatingActionButton({
     required this.asset,
     this.label,
-    this.toolTip,
     this.onTap,
+    bool expanded = false,
     this.theme,
     super.key,
-  });
+  }) : expanded = label == null ? false : expanded;
+
+  @override
+  State<ImpaktfullUiFloatingActionButton> createState() =>
+      _ImpaktfullUiFloatingActionButtonState();
+
+  @override
+  String describe(BuildContext context) => _describeInstance(context, this);
+}
+
+class _ImpaktfullUiFloatingActionButtonState
+    extends State<ImpaktfullUiFloatingActionButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+    if (widget.expanded) {
+      _controller.value = 1.0;
+    }
+  }
+
+  @override
+  void didUpdateWidget(ImpaktfullUiFloatingActionButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.expanded != oldWidget.expanded) {
+      if (widget.expanded) {
+        _controller.forward();
+      } else {
+        _controller.reverse();
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<
         ImpaktfullUiFloatingActionButtonTheme>(
-      overrideComponentTheme: theme,
+      overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
-        onTap: onTap,
-        toolTip: toolTip,
-        color: onTap == null
+        onTap: widget.onTap,
+        toolTip: widget.label,
+        color: widget.onTap == null
             ? componentTheme.colors.backgroundDisabled
             : componentTheme.colors.background,
         borderRadius: componentTheme.dimens.borderRadius,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: ImpaktfullUiAutoLayout.horizontal(
-            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 12,
+            mainAxisSize: MainAxisSize.min,
             children: [
               ImpaktfullUiAssetWidget(
-                asset: asset,
+                asset: widget.asset,
                 color: componentTheme.colors.icon,
                 size: 24,
               ),
-              if (label != null) ...[
-                Padding(
-                  padding: const EdgeInsetsDirectional.only(end: 8),
-                  child: Text(
-                    label!,
-                    style: componentTheme.textStyles.label,
-                  ),
+              if (widget.label != null) ...[
+                AnimatedBuilder(
+                  animation: _animation,
+                  builder: (context, child) {
+                    return ClipRect(
+                      child: SizedBox(
+                        width: _animation.value *
+                            getSize(
+                                widget.label!, componentTheme.textStyles.label),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.only(
+                            start: 12,
+                            end: 8,
+                          ),
+                          child: Text(
+                            widget.label!,
+                            style: componentTheme.textStyles.label,
+                            overflow: TextOverflow.clip,
+                            softWrap: false,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ],
@@ -68,6 +132,13 @@ class ImpaktfullUiFloatingActionButton extends StatelessWidget
     );
   }
 
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
+  double getSize(String text, TextStyle style) {
+    final textPainter = TextPainter(
+      text: TextSpan(text: text, style: style),
+      maxLines: 1,
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout(maxWidth: double.infinity);
+    return 12 + textPainter.width + 8;
+  }
 }

@@ -20,9 +20,10 @@ class AutoCompleteLibraryVariant
           if (inputs.selectedIndex.value == null) {
             return null;
           }
-          return Text(
-            'Selected index: (${inputs.selectedIndex.value}) |',
-            style: theme.textStyles.onCard.text.small,
+          return ImpaktfullUiBadge(
+            label: 'Selected index is `${inputs.selectedIndex.value}`',
+            type: ImpaktfullUiBadgeType.neutral,
+            onCloseTap: () => inputs.selectedIndex.updateState(null),
           );
         },
         onSearchChanged: (String value) async {
@@ -48,9 +49,10 @@ class AutoCompleteLibraryVariant
           if (inputs.selectedIndex.value == null) {
             return null;
           }
-          return Text(
-            'Selected index: (${inputs.selectedIndex.value}) |',
-            style: theme.textStyles.onCard.text.small,
+          return ImpaktfullUiBadge(
+            label: 'Selected index is `${inputs.selectedIndex.value}`',
+            type: ImpaktfullUiBadgeType.neutral,
+            onCloseTap: () => inputs.selectedIndex.updateState(null),
           );
         },
         onSearchChanged: (String value) async {

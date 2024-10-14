@@ -12,7 +12,8 @@ export 'controller/auto_complete_controller.dart';
 
 part 'auto_complete.describe.dart';
 
-class ImpaktfullUiAutoComplete<T> extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiAutoComplete<T> extends StatefulWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAutoCompleteController? controller;
   final Widget? Function() builder;
   final FutureOr<List<T>> Function(String searchQuery) onSearchChanged;
@@ -42,13 +43,15 @@ class ImpaktfullUiAutoComplete<T> extends StatefulWidget with ComponentDescripto
   });
 
   @override
-  State<ImpaktfullUiAutoComplete<T>> createState() => _ImpaktfullUiAutoCompleteState<T>();
+  State<ImpaktfullUiAutoComplete<T>> createState() =>
+      _ImpaktfullUiAutoCompleteState<T>();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiAutoCompleteState<T> extends State<ImpaktfullUiAutoComplete<T>>
+class _ImpaktfullUiAutoCompleteState<T>
+    extends State<ImpaktfullUiAutoComplete<T>>
     with ImpaktfullUiAutoCompleteControllerListener {
   late final ImpaktfullUiAutoCompleteController _controller;
   var _value = '';
@@ -101,7 +104,8 @@ class _ImpaktfullUiAutoCompleteState<T> extends State<ImpaktfullUiAutoComplete<T
                 placeholder: widget.placeholder,
                 focusNode: _foucsNode,
                 value: _value,
-                leadingBuilder: leadingChild == null ? null : (context) => leadingChild,
+                leadingBuilder:
+                    leadingChild == null ? null : (context) => leadingChild,
                 onChanged: _onChanged,
               );
             },
@@ -136,12 +140,16 @@ class _ImpaktfullUiAutoCompleteState<T> extends State<ImpaktfullUiAutoComplete<T
     _overlayEntry = OverlayEntry(
       builder: (context) {
         final screenSize = MediaQuery.of(context).size;
-        final inputFieldRenderBox = _inputFieldKey.currentContext?.findRenderObject() as RenderBox?;
-        final inputFieldPosition = inputFieldRenderBox?.localToGlobal(Offset.zero) ?? Offset.zero;
+        final inputFieldRenderBox =
+            _inputFieldKey.currentContext?.findRenderObject() as RenderBox?;
+        final inputFieldPosition =
+            inputFieldRenderBox?.localToGlobal(Offset.zero) ?? Offset.zero;
         final inputFieldSize = inputFieldRenderBox?.size ?? Size.zero;
-        final availableHeight = screenSize.height - inputFieldPosition.dy - inputFieldSize.height;
+        final availableHeight =
+            screenSize.height - inputFieldPosition.dy - inputFieldSize.height;
         final showAbove =
-            availableHeight < ImpaktfullUiAutoCompleteOverlay.defaultHeight && inputFieldPosition.dy > availableHeight;
+            availableHeight < ImpaktfullUiAutoCompleteOverlay.defaultHeight &&
+                inputFieldPosition.dy > availableHeight;
 
         return Positioned(
           width: _size!.width,
@@ -149,11 +157,13 @@ class _ImpaktfullUiAutoCompleteState<T> extends State<ImpaktfullUiAutoComplete<T
             link: _layerLink,
             showWhenUnlinked: false,
             targetAnchor: showAbove ? Alignment.topLeft : Alignment.bottomLeft,
-            followerAnchor: showAbove ? Alignment.bottomLeft : Alignment.topLeft,
+            followerAnchor:
+                showAbove ? Alignment.bottomLeft : Alignment.topLeft,
             offset: Offset(0, showAbove ? -8 : 8),
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                maxHeight: showAbove ? inputFieldPosition.dy - 8 : availableHeight - 8,
+                maxHeight:
+                    showAbove ? inputFieldPosition.dy - 8 : availableHeight - 8,
               ),
               child: ImpaktfullUiAutoCompleteOverlay<T>(
                 key: _overlayKey,
@@ -185,7 +195,8 @@ class _ImpaktfullUiAutoCompleteState<T> extends State<ImpaktfullUiAutoComplete<T
   }
 
   Size _getInputFieldSize() {
-    final renderBox = _inputFieldKey.currentContext?.findRenderObject() as RenderBox?;
+    final renderBox =
+        _inputFieldKey.currentContext?.findRenderObject() as RenderBox?;
     return renderBox?.size ?? Size.zero;
   }
 

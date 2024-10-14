@@ -23,6 +23,7 @@ class FloatingActionButtonLibraryVariant
       ImpaktfullUiFloatingActionButton(
         asset: theme.assets.icons.add,
         label: 'Add',
+        expanded: inputs.expanded.value ?? false,
         onTap: () {
           ImpaktfullUiNotification.show(title: 'On fab tapped');
         },
