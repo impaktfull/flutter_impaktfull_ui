@@ -19,7 +19,7 @@ This UI library was built to have a simple way to build UIs for impaktfull. This
 
 # Demo
 
-[Live Web demo](https://example.impaktfull-ui.opensource.impaktfull.com)
+[Live Web Demo](https://example.impaktfull-ui.opensource.impaktfull.com)
 
 ## Usage
 
@@ -188,6 +188,8 @@ These icons can be overriden in the theme itself. By adding your own IconData.
   - ImpaktfullUiCalendar
   - ImpaktfullUiMetrics
   - ImpaktfullUiLineChart
+  - ImpaktfullUiQrCode
+  - ImpaktfullUiBarCode
   - ImpaktfullUiBarChart
   - ImpaktfullUiPieChart
   - ImpaktfullUiPasswordStrengthIndicator
@@ -197,7 +199,10 @@ These icons can be overriden in the theme itself. By adding your own IconData.
   - ImpaktfullUiVidoPlayerControls
   - ImpaktfullUiFileCropper
   - ImpaktfullUiSocialLoginsButton
+  - ImpaktfullUiImageComparisonView
   - ImpaktfullUiWebView
+  - ImpaktfullUiQrCodeScanner
+  - ImpaktfullUiBarcodeScanner
   - ImpaktfullUiHtml
   - ImpaktfullUiWysiwyg (HTML)
   - ImpaktfullUiRating
