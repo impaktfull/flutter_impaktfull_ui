@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class CropInfo {
+class ImpaktfullUiImageCropInfo {
   final Rect cropRect;
   final double width;
   final double height;
@@ -11,7 +11,7 @@ class CropInfo {
   final bool isFlippedHorizontal;
   final Color backgroundColor;
 
-  const CropInfo({
+  const ImpaktfullUiImageCropInfo({
     required this.cropRect,
     required this.width,
     required this.height,
@@ -23,7 +23,7 @@ class CropInfo {
     this.backgroundColor = const Color(0x00000000),
   });
 
-  CropInfo copyWith({
+  ImpaktfullUiImageCropInfo copyWith({
     Rect? cropRect,
     double? width,
     double? height,
@@ -34,7 +34,7 @@ class CropInfo {
     bool? isFlippedHorizontal,
     Color? backgroundColor,
   }) {
-    return CropInfo(
+    return ImpaktfullUiImageCropInfo(
       cropRect: cropRect ?? this.cropRect,
       width: width ?? this.width,
       height: height ?? this.height,

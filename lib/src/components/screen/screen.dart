@@ -13,12 +13,14 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
+  final bool isFullScreen;
   final bool canPop;
   final VoidCallback? onPopInvoked;
   final Widget child;
   final List<Widget> actions;
   final Alignment fabAlignment;
   final Widget? fab;
+  final Widget? bottomNavBarChild;
   final Widget? bottomChild;
   final ImpaktfullUiScreenTheme? theme;
 
@@ -27,11 +29,13 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
     this.title,
     this.subtitle,
     this.onBackTapped,
+    this.isFullScreen = false,
     this.canPop = true,
     this.onPopInvoked,
     this.actions = const [],
     this.fabAlignment = Alignment.bottomRight,
     this.fab,
+    this.bottomNavBarChild,
     this.bottomChild,
     this.theme,
     super.key,
@@ -45,7 +49,8 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
         final hasNavbar = onBackTapped != null ||
             title != null ||
             subtitle != null ||
-            actions.isNotEmpty;
+            actions.isNotEmpty ||
+            bottomNavBarChild != null;
         final hasBottomChild = bottomChild != null;
         return PopScope(
           onPopInvokedWithResult: (didPop, result) => onPopInvoked?.call(),
@@ -54,12 +59,16 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
             backgroundColor: componentTheme.colors.background,
             body: ImpaktfullUiAutoLayout.vertical(
               children: [
-                ImpaktfullUiNavBar(
-                  title: title,
-                  subtitle: subtitle,
-                  onBackTapped: onBackTapped,
-                  actions: actions,
-                ),
+                if (hasNavbar) ...[
+                  ImpaktfullUiNavBar(
+                    onBackTapped: onBackTapped,
+                    isFullScreen: isFullScreen,
+                    title: title,
+                    subtitle: subtitle,
+                    actions: actions,
+                    bottomChild: bottomChild,
+                  ),
+                ],
                 Expanded(
                   child: SizedBox(
                     width: double.infinity,

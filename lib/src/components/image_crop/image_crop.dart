@@ -8,9 +8,11 @@ import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/controller/image_crop_controller.dart';
-import 'package:impaktfull_ui_2/src/components/image_crop/cropper/image_crop_cropper.dart';
+import 'package:impaktfull_ui_2/src/components/image_crop/image_crop_preview.dart';
+import 'package:impaktfull_ui_2/src/components/image_crop/overlay/image_crop_circle_overlay.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop_style.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/model/crop_info.dart';
+import 'package:impaktfull_ui_2/src/components/image_crop/overlay/image_crop_overlay.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
@@ -26,6 +28,7 @@ class ImpaktfullUiImageCrop extends StatefulWidget
   final String? imageUrl;
   final double size;
   final Color backgroundColor;
+  final ImpaktfullUiImageCropOverlay cropOverlay;
   final ImpaktfullUiImageCropTheme? theme;
 
   const ImpaktfullUiImageCrop({
@@ -33,6 +36,7 @@ class ImpaktfullUiImageCrop extends StatefulWidget
     this.controller,
     this.imageUrl,
     this.backgroundColor = const Color(0x00000000),
+    this.cropOverlay = const ImpaktfullUiImageCropCircleOverlay(),
     this.theme,
     super.key,
   });
@@ -45,7 +49,7 @@ class ImpaktfullUiImageCrop extends StatefulWidget
 }
 
 class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
-  late CropInfo _cropInfo;
+  late ImpaktfullUiImageCropInfo _cropInfo;
   Uint8List? _croppedImageBytes;
 
   late final ImpaktfullUiImageCropController _controller;
@@ -55,7 +59,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
     super.initState();
     final padding = widget.size / 8;
     final cropSize = widget.size - padding * 2;
-    _cropInfo = CropInfo(
+    _cropInfo = ImpaktfullUiImageCropInfo(
       cropRect: Rect.fromLTWH(
         padding,
         padding,
@@ -134,92 +138,107 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
             ],
           );
         }
-        return ImpaktfullUiAutoLayout.vertical(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        return ImpaktfullUiAutoLayout.horizontal(
           spacing: 8,
           children: [
-            SizedBox(
-              width: widget.size,
-              height: widget.size,
-              child: ClipRect(
-                child: Stack(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  children: [
-                    Positioned.fill(
-                      child: GestureDetector(
-                        onScaleUpdate: _onScaleUpdate,
-                        child: Material(
-                          color: Colors.transparent,
-                          child: Transform(
-                            transform: Matrix4.identity()
-                              ..translate(
-                                  _cropInfo.position.dx, _cropInfo.position.dy)
-                              ..scale(_cropInfo.scale)
-                              ..rotateZ(_cropInfo.rotation),
-                            alignment: Alignment.center,
-                            child: Transform(
-                              transform: Matrix4.identity()
-                                ..scale(
-                                  _cropInfo.isFlippedHorizontal ? -1.0 : 1.0,
-                                  _cropInfo.isFlippedVertical ? -1.0 : 1.0,
+            ImpaktfullUiAutoLayout.vertical(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 8,
+              children: [
+                SizedBox(
+                  width: widget.size,
+                  height: widget.size,
+                  child: ClipRect(
+                    child: Stack(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      children: [
+                        Positioned.fill(
+                          child: GestureDetector(
+                            onScaleUpdate: _onScaleUpdate,
+                            child: Material(
+                              color: Colors.transparent,
+                              child: Transform(
+                                transform: Matrix4.identity()
+                                  ..translate(_cropInfo.position.dx,
+                                      _cropInfo.position.dy)
+                                  ..scale(_cropInfo.scale)
+                                  ..rotateZ(_cropInfo.rotation),
+                                alignment: Alignment.center,
+                                child: Transform(
+                                  transform: Matrix4.identity()
+                                    ..scale(
+                                      _cropInfo.isFlippedHorizontal
+                                          ? -1.0
+                                          : 1.0,
+                                      _cropInfo.isFlippedVertical ? -1.0 : 1.0,
+                                    ),
+                                  alignment: Alignment.center,
+                                  child: Builder(builder: (context) {
+                                    if (widget.imageUrl != null) {
+                                      return Image.network(
+                                        widget.imageUrl!,
+                                      );
+                                    }
+                                    throw Exception('Image not found');
+                                  }),
                                 ),
-                              alignment: Alignment.center,
-                              child: Builder(builder: (context) {
-                                if (widget.imageUrl != null) {
-                                  return Image.network(
-                                    widget.imageUrl!,
-                                  );
-                                }
-                                throw Exception('Image not found');
-                              }),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    Positioned.fill(
-                      child: IgnorePointer(
-                        child: CustomPaint(
-                          painter: CropPainter(
-                            _cropInfo.cropRect,
+                        Positioned.fill(
+                          child: IgnorePointer(
+                            child: CustomPaint(
+                              painter: widget.cropOverlay
+                                  .getCustomPainter(_cropInfo.cropRect),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
+                    ),
+                  ),
+                ),
+                ImpaktfullUiAutoLayout.horizontal(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: 8,
+                  children: [
+                    ImpaktfullUiButton(
+                      type: ImpaktfullUiButtonType.secondaryGrey,
+                      onTap: _onRotateTapped,
+                      leadingAsset: ImpaktfullUiAsset.icon(
+                          PhosphorIcons.arrowClockwise()),
+                    ),
+                    ImpaktfullUiButton(
+                      type: ImpaktfullUiButtonType.secondaryGrey,
+                      onTap: _onFlipHorizontalTapped,
+                      leadingAsset: ImpaktfullUiAsset.icon(
+                          PhosphorIcons.flipHorizontal()),
+                    ),
+                    ImpaktfullUiButton(
+                      type: ImpaktfullUiButtonType.secondaryGrey,
+                      onTap: _onFlipVerticalTapped,
+                      leadingAsset:
+                          ImpaktfullUiAsset.icon(PhosphorIcons.flipVertical()),
+                    ),
+                    ImpaktfullUiButton(
+                      type: ImpaktfullUiButtonType.secondaryGrey,
+                      onAsyncTap: _onCropTapped,
+                      leadingAsset:
+                          ImpaktfullUiAsset.icon(PhosphorIcons.crop()),
                     ),
                   ],
                 ),
-              ),
-            ),
-            ImpaktfullUiAutoLayout.horizontal(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              spacing: 8,
-              children: [
-                ImpaktfullUiButton(
-                  type: ImpaktfullUiButtonType.secondaryGrey,
-                  onTap: _onRotateTapped,
-                  leadingAsset:
-                      ImpaktfullUiAsset.icon(PhosphorIcons.arrowClockwise()),
-                ),
-                ImpaktfullUiButton(
-                  type: ImpaktfullUiButtonType.secondaryGrey,
-                  onTap: _onFlipHorizontalTapped,
-                  leadingAsset:
-                      ImpaktfullUiAsset.icon(PhosphorIcons.flipHorizontal()),
-                ),
-                ImpaktfullUiButton(
-                  type: ImpaktfullUiButtonType.secondaryGrey,
-                  onTap: _onFlipVerticalTapped,
-                  leadingAsset:
-                      ImpaktfullUiAsset.icon(PhosphorIcons.flipVertical()),
-                ),
-                ImpaktfullUiButton(
-                  type: ImpaktfullUiButtonType.secondaryGrey,
-                  onAsyncTap: _onCropTapped,
-                  leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.crop()),
-                ),
               ],
+            ),
+            SizedBox(
+              height: widget.size,
+              width: widget.size,
+              child: ImageCropPreview(
+                cropInfo: _cropInfo,
+                imageUrl: widget.imageUrl!,
+              ),
             ),
           ],
         );
