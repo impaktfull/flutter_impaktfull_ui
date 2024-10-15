@@ -59,6 +59,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
         color: color,
         width: width,
         height: height,
+        package: asset.package,
       );
     }
 
@@ -69,6 +70,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
             color == null ? null : ColorFilter.mode(color, BlendMode.srcIn),
         width: width,
         height: height,
+        package: asset.package,
       );
     }
     if (lottieAsset != null) {
@@ -76,6 +78,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
         lottieAsset,
         width: width,
         height: height,
+        package: asset.package,
       );
     }
     if (riveAsset != null) {

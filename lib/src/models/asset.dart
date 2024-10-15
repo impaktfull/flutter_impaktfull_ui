@@ -74,12 +74,15 @@ class ImpaktfullUiAsset {
 
   String? getFullLottieAsset() => _getFullPath(lottieAsset);
 
-  String? getFullRiveAsset() => _getFullPath(riveAsset);
+  String? getFullRiveAsset() => _getFullPath(riveAsset, addPackage: true);
 
-  String? _getFullPath(String? asset) {
+  String? _getFullPath(
+    String? asset, {
+    bool addPackage = false,
+  }) {
     if (asset == null) return null;
     var path = '';
-    if (package != null) {
+    if (addPackage && package != null) {
       path += 'packages/$package/';
     }
     if (directory != null) {
