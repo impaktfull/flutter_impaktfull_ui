@@ -9,13 +9,13 @@ import 'package:rive/rive.dart' hide Image;
 
 part 'asset_widget.describe.dart';
 
-class ImpaktfullUiAssetWidget extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiAssetWidget extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? asset;
   final Color? color;
   final double? width;
   final double? height;
   final double? size;
+  final BoxFit? fit;
 
   const ImpaktfullUiAssetWidget({
     required this.asset,
@@ -23,6 +23,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
     this.width,
     this.height,
     this.size,
+    this.fit,
     super.key,
   });
 
@@ -60,17 +61,18 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
         width: width,
         height: height,
         package: asset.package,
+        fit: fit,
       );
     }
 
     if (svgAsset != null) {
       return SvgPicture.asset(
         svgAsset,
-        colorFilter:
-            color == null ? null : ColorFilter.mode(color, BlendMode.srcIn),
+        colorFilter: color == null ? null : ColorFilter.mode(color, BlendMode.srcIn),
         width: width,
         height: height,
         package: asset.package,
+        fit: fit ?? BoxFit.contain,
       );
     }
     if (lottieAsset != null) {
@@ -79,6 +81,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
         width: width,
         height: height,
         package: asset.package,
+        fit: fit,
       );
     }
     if (riveAsset != null) {
