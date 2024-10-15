@@ -21,6 +21,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
   final BorderRadiusGeometry? borderRadius;
   final List<BoxShadow>? shadow;
   final bool error;
+  final AlignmentGeometry? alignment;
   final ImpaktfullUiCardTheme? theme;
 
   const ImpaktfullUiCard({
@@ -34,6 +35,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
     this.borderRadius,
     this.shadow,
     this.error = false,
+    this.alignment,
     this.theme,
     super.key,
   });
@@ -71,7 +73,10 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
             borderRadius: componentTheme.dimens.borderRadius,
             child: Padding(
               padding: widget.padding ?? componentTheme.dimens.padding,
-              child: widget.child,
+              child: Align(
+                alignment: widget.alignment ?? AlignmentDirectional.topStart,
+                child: widget.child,
+              ),
             ),
           ),
         ),
