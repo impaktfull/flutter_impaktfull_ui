@@ -74,7 +74,7 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
             child: Padding(
               padding: widget.padding ?? componentTheme.dimens.padding,
               child: Align(
-                alignment: widget.alignment ?? AlignmentDirectional.topStart,
+                alignment: widget.alignment ?? Alignment.center,
                 child: widget.child,
               ),
             ),
