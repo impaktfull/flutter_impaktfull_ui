@@ -4,24 +4,23 @@ import 'package:impaktfull_ui_example/src/component_library/components/image_cro
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
 
-class ImageCropLibraryVariant
-    extends ComponentLibraryVariant<ImageCropLibraryPrimaryInputs> {
+class ImageCropLibraryVariant extends ComponentLibraryVariant<ImageCropLibraryPrimaryInputs> {
   const ImageCropLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(
-      BuildContext context, ImageCropLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, ImageCropLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiImageCrop(
         size: 120,
         backgroundColor: theme.colors.accent,
         imageUrl: NetworkImages.profilePicture,
       ),
-      const ImpaktfullUiImageCrop(
+      ImpaktfullUiImageCrop(
         size: 300,
+        backgroundColor: theme.colors.accent,
         imageUrl: NetworkImages.profilePicture,
       ),
       ImpaktfullUiImageCrop(
