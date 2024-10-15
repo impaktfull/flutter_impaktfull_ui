@@ -15,18 +15,18 @@ class ImageCropLibraryVariant
   List<Widget> build(
       BuildContext context, ImageCropLibraryPrimaryInputs inputs) {
     return [
-      const ImpaktfullUiImageCrop(
+      ImpaktfullUiImageCrop(
         size: 120,
-        backgroundColor: Colors.amber,
+        backgroundColor: theme.colors.accent,
         imageUrl: NetworkImages.profilePicture,
       ),
       const ImpaktfullUiImageCrop(
         size: 300,
         imageUrl: NetworkImages.profilePicture,
       ),
-      const ImpaktfullUiImageCrop(
+      ImpaktfullUiImageCrop(
         size: 300,
-        backgroundColor: Colors.amber,
+        backgroundColor: theme.colors.accent,
         imageUrl: NetworkImages.image16x9,
       ),
     ];

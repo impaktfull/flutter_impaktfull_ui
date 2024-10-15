@@ -102,6 +102,13 @@ class ImpaktfullUiImageCropCropper {
     final positionOffsetX = cropInfo.position.dx * scaleWidth;
     final positionOffsetY = cropInfo.position.dy * scaleHeight;
 
+    print('Image Size: ($imageWidth, $imageHeight)');
+    print('Original Size: (${cropInfo.width}, ${cropInfo.height})');
+    print('Size: (${srcRect.width}, ${srcRect.height})');
+    print('Position: (${cropInfo.position.dx}, ${cropInfo.position.dy})');
+    print(
+        'Position (scaled): (${cropInfo.position.dx * scaleWidth}, ${cropInfo.position.dy * scaleHeight})');
+
     // Draw the image, maintaining the aspect ratio
     canvas.drawImageRect(
       imageToCrop,
