@@ -22,13 +22,13 @@ export 'image_crop_style.dart';
 
 part 'image_crop.describe.dart';
 
-class ImpaktfullUiImageCrop extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiImageCrop extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiImageCropController? controller;
   final String? imageUrl;
   final double size;
   final Color backgroundColor;
   final ImpaktfullUiImageCropOverlay cropOverlay;
+  final bool showPreview;
   final ImpaktfullUiImageCropTheme? theme;
 
   const ImpaktfullUiImageCrop({
@@ -37,6 +37,7 @@ class ImpaktfullUiImageCrop extends StatefulWidget
     this.imageUrl,
     this.backgroundColor = const Color(0x00000000),
     this.cropOverlay = const ImpaktfullUiImageCropCircleOverlay(),
+    this.showPreview = false,
     this.theme,
     super.key,
   });
@@ -116,8 +117,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                             children: [
                               ImpaktfullUiIconButton(
                                 onTap: _onBackToEditingTapped,
-                                asset: ImpaktfullUiAsset.icon(
-                                    PhosphorIcons.arrowClockwise()),
+                                asset: ImpaktfullUiAsset.icon(PhosphorIcons.arrowClockwise()),
                                 color: componentTheme.colors.deleteIcon,
                                 backgroundColor: Colors.black.withOpacity(0.33),
                               ),
@@ -160,17 +160,14 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                               color: Colors.transparent,
                               child: Transform(
                                 transform: Matrix4.identity()
-                                  ..translate(_cropInfo.position.dx,
-                                      _cropInfo.position.dy)
+                                  ..translate(_cropInfo.position.dx, _cropInfo.position.dy)
                                   ..scale(_cropInfo.scale)
                                   ..rotateZ(_cropInfo.rotation),
                                 alignment: Alignment.center,
                                 child: Transform(
                                   transform: Matrix4.identity()
                                     ..scale(
-                                      _cropInfo.isFlippedHorizontal
-                                          ? -1.0
-                                          : 1.0,
+                                      _cropInfo.isFlippedHorizontal ? -1.0 : 1.0,
                                       _cropInfo.isFlippedVertical ? -1.0 : 1.0,
                                     ),
                                   alignment: Alignment.center,
@@ -190,8 +187,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                         Positioned.fill(
                           child: IgnorePointer(
                             child: CustomPaint(
-                              painter: widget.cropOverlay
-                                  .getCustomPainter(_cropInfo.cropRect),
+                              painter: widget.cropOverlay.getCustomPainter(_cropInfo.cropRect),
                             ),
                           ),
                         ),
@@ -207,39 +203,37 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onTap: _onRotateTapped,
-                      leadingAsset: ImpaktfullUiAsset.icon(
-                          PhosphorIcons.arrowClockwise()),
+                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.arrowClockwise()),
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onTap: _onFlipHorizontalTapped,
-                      leadingAsset: ImpaktfullUiAsset.icon(
-                          PhosphorIcons.flipHorizontal()),
+                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.flipHorizontal()),
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onTap: _onFlipVerticalTapped,
-                      leadingAsset:
-                          ImpaktfullUiAsset.icon(PhosphorIcons.flipVertical()),
+                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.flipVertical()),
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onAsyncTap: _onCropTapped,
-                      leadingAsset:
-                          ImpaktfullUiAsset.icon(PhosphorIcons.crop()),
+                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.crop()),
                     ),
                   ],
                 ),
               ],
             ),
-            SizedBox(
-              height: widget.size,
-              width: widget.size,
-              child: ImageCropPreview(
-                cropInfo: _cropInfo,
-                imageUrl: widget.imageUrl!,
+            if (widget.showPreview) ...[
+              SizedBox(
+                height: widget.size,
+                width: widget.size,
+                child: ImageCropPreview(
+                  cropInfo: _cropInfo,
+                  imageUrl: widget.imageUrl!,
+                ),
               ),
-            ),
+            ],
           ],
         );
       },

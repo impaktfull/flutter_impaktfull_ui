@@ -21,11 +21,13 @@ class ImageCropLibraryVariant extends ComponentLibraryVariant<ImageCropLibraryPr
       ImpaktfullUiImageCrop(
         size: 300,
         backgroundColor: theme.colors.accent,
+        showPreview: true,
         imageUrl: NetworkImages.profilePicture,
       ),
       ImpaktfullUiImageCrop(
         size: 300,
         backgroundColor: theme.colors.accent,
+        showPreview: true,
         imageUrl: NetworkImages.image16x9,
       ),
     ];

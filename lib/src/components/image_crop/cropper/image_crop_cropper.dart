@@ -106,8 +106,7 @@ class ImpaktfullUiImageCropCropper {
     print('Original Size: (${cropInfo.width}, ${cropInfo.height})');
     print('Size: (${srcRect.width}, ${srcRect.height})');
     print('Position: (${cropInfo.position.dx}, ${cropInfo.position.dy})');
-    print(
-        'Position (scaled): (${cropInfo.position.dx * scaleWidth}, ${cropInfo.position.dy * scaleHeight})');
+    print('Position (scaled): (${cropInfo.position.dx * scaleWidth}, ${cropInfo.position.dy * scaleHeight})');
 
     // Draw the image, maintaining the aspect ratio
     canvas.drawImageRect(
@@ -139,9 +138,7 @@ class ImpaktfullUiImageCropCropper {
   Future<ui.Image> downloadImage(String imageUrl) async {
     final completer = Completer<ui.Image>();
     final networkImage = NetworkImage(imageUrl);
-    networkImage
-        .resolve(const ImageConfiguration())
-        .addListener(ImageStreamListener(
+    networkImage.resolve(const ImageConfiguration()).addListener(ImageStreamListener(
       (info, _) {
         final image = info.image;
         completer.complete(image);
