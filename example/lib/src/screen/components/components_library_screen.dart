@@ -18,7 +18,7 @@ class ComponentsLibraryScreen extends StatefulWidget {
 class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   final _componentLibrary = ComponentLibrary();
   final _fixedSearchQuery = [
-    'ImageCrop',
+    // 'ImageCrop',
   ];
   var _searchQuery = '';
 
