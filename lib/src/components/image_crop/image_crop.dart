@@ -9,10 +9,10 @@ import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/controller/image_crop_controller.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop_preview.dart';
-import 'package:impaktfull_ui_2/src/components/image_crop/overlay/image_crop_circle_overlay.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop_style.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/model/crop_info.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/overlay/image_crop_overlay.dart';
+import 'package:impaktfull_ui_2/src/components/image_crop/overlay/image_crop_square_overlay.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
@@ -36,7 +36,7 @@ class ImpaktfullUiImageCrop extends StatefulWidget with ComponentDescriptorMixin
     this.controller,
     this.imageUrl,
     this.backgroundColor = const Color(0x00000000),
-    this.cropOverlay = const ImpaktfullUiImageCropCircleOverlay(),
+    this.cropOverlay = const ImpaktfullUiImageCropSquareOverlay(),
     this.showPreview = false,
     this.theme,
     super.key,
@@ -225,13 +225,10 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
               ],
             ),
             if (widget.showPreview) ...[
-              SizedBox(
-                height: widget.size,
-                width: widget.size,
-                child: ImageCropPreview(
-                  cropInfo: _cropInfo,
-                  imageUrl: widget.imageUrl!,
-                ),
+              ImageCropPreview(
+                size: widget.size,
+                cropInfo: _cropInfo,
+                imageUrl: widget.imageUrl!,
               ),
             ],
           ],

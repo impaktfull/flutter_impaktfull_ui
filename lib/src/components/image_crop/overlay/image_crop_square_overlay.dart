@@ -7,10 +7,10 @@ class ImpaktfullUiImageCropSquareOverlay extends ImpaktfullUiImageCropOverlay {
   final bool isDashedBorder;
   final double borderWidth;
 
-  ImpaktfullUiImageCropSquareOverlay({
+  const ImpaktfullUiImageCropSquareOverlay({
     this.overlayColor = Colors.black45,
     this.borderColor = Colors.white,
-    this.isDashedBorder = false,
+    this.isDashedBorder = true,
     this.borderWidth = 2.0,
   });
 
@@ -84,16 +84,14 @@ class ImpaktfullUiImageCropSquareOverlayPainter extends CustomPainter {
 
     // Draw top line
     while (startX < rect.right) {
-      canvas.drawLine(
-          Offset(startX, startY), Offset(startX + dashWidth, startY), paint);
+      canvas.drawLine(Offset(startX, startY), Offset(startX + dashWidth, startY), paint);
       startX += dashWidth + dashSpace;
     }
 
     // Draw right line
     startX = rect.right;
     while (startY < rect.bottom) {
-      canvas.drawLine(
-          Offset(startX, startY), Offset(startX, startY + dashWidth), paint);
+      canvas.drawLine(Offset(startX, startY), Offset(startX, startY + dashWidth), paint);
       startY += dashWidth + dashSpace;
     }
 
@@ -101,8 +99,7 @@ class ImpaktfullUiImageCropSquareOverlayPainter extends CustomPainter {
     startY = rect.bottom;
     startX = rect.right;
     while (startX > rect.left) {
-      canvas.drawLine(
-          Offset(startX, startY), Offset(startX - dashWidth, startY), paint);
+      canvas.drawLine(Offset(startX, startY), Offset(startX - dashWidth, startY), paint);
       startX -= dashWidth + dashSpace;
     }
 
@@ -110,8 +107,7 @@ class ImpaktfullUiImageCropSquareOverlayPainter extends CustomPainter {
     startX = rect.left;
     startY = rect.bottom;
     while (startY > rect.top) {
-      canvas.drawLine(
-          Offset(startX, startY), Offset(startX, startY - dashWidth), paint);
+      canvas.drawLine(Offset(startX, startY), Offset(startX, startY - dashWidth), paint);
       startY -= dashWidth + dashSpace;
     }
   }

@@ -3,17 +3,20 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/cropper/image_crop_cropper.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/model/crop_info.dart';
-import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
+import 'package:impaktfull_ui_2/src/util/file_size/file_size_calculation_util.dart';
 
 class ImageCropPreview extends StatefulWidget {
   final String imageUrl;
+  final double size;
   final ImpaktfullUiImageCropInfo cropInfo;
 
   const ImageCropPreview({
     required this.imageUrl,
     required this.cropInfo,
+    required this.size,
     super.key,
   });
 
@@ -36,9 +39,9 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
   @override
   void didUpdateWidget(covariant ImageCropPreview oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.cropInfo != oldWidget.cropInfo) {
-      _debouncedCrop();
-    }
+    // if (widget.cropInfo != oldWidget.cropInfo) {
+    _debouncedCrop();
+    // }
   }
 
   @override
@@ -50,15 +53,31 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
   @override
   Widget build(BuildContext context) {
     if (_imageBytes == null) {
-      return const Center(
-        child: ImpaktfullUiLoadingIndicator(),
+      return SizedBox(
+        height: widget.size,
+        width: widget.size,
+        child: const Center(
+          child: ImpaktfullUiLoadingIndicator(),
+        ),
       );
     }
-    return Container(
-      color: Colors.grey,
-      child: Image.memory(
-        _imageBytes!,
-      ),
+    return ImpaktfullUiAutoLayout.vertical(
+      spacing: 16,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          height: widget.size,
+          width: widget.size,
+          color: Colors.grey,
+          child: Image.memory(
+            _imageBytes!,
+          ),
+        ),
+        Text(
+          FileSizeCalculationUtil.calculateFileSize(_imageBytes!.length),
+          style: theme.textStyles.onCanvas.text.small,
+        ),
+      ],
     );
   }
 
@@ -81,6 +100,9 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
     );
 
     final bytes = await image.toByteData(format: ui.ImageByteFormat.png);
-    setState(() => _imageBytes = bytes?.buffer.asUint8List());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      setState(() => _imageBytes = bytes?.buffer.asUint8List());
+    });
   }
 }
