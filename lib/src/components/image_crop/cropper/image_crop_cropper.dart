@@ -50,43 +50,64 @@ class ImpaktfullUiImageCropCropper {
 
     final recorder = ui.PictureRecorder();
     final canvas = Canvas(recorder);
+
+    // Image info
     final imageWidth = imageToCrop.width.toDouble();
     final imageHeight = imageToCrop.height.toDouble();
-    final imageAspectRatio = AspectRatio(aspectRatio: imageWidth / imageHeight);
-    final imageSize = min(imageWidth, imageHeight);
+    final imageAspectRatio = imageWidth / imageHeight;
 
-    final scaleX = cropInfo.width / cropRect.width;
-    final scaleY = cropInfo.height / cropRect.height;
+    // Crop rect padding info
+    final cropRectScaleX = cropInfo.width / cropRect.width;
+    final cropRectScaleY = cropInfo.height / cropRect.height;
 
-    final imageScaleX = imageWidth / cropInfo.width;
-    final imageScaleY = imageHeight / cropInfo.height;
+    // Crop rect info
+    final cropAspectRatio = cropRect.width / cropRect.height;
+    double croppedRectHeight;
+    double croppedRectWidth;
+    if (cropAspectRatio > 1) {
+      // Aspect ratio is bigger than 1:1 (example: 2/1)
+      croppedRectHeight = imageHeight;
+      croppedRectWidth = croppedRectHeight * imageAspectRatio;
+    } else if (cropAspectRatio < 1) {
+      // Aspect ratio is smaller than 1:1 (example: 1/2)
+      croppedRectWidth = imageWidth;
+      croppedRectHeight = croppedRectWidth / imageAspectRatio;
+    } else {
+      // Aspect ratio is 1:1
+      croppedRectWidth = min(imageHeight, imageWidth);
+      croppedRectHeight = croppedRectWidth;
+    }
 
-    // Calculate the position offset
-    final positionOffset = Offset(
-      cropInfo.position.dx * imageScaleX,
-      cropInfo.position.dy * imageScaleY,
+    final imageCropScaleX = croppedRectHeight / imageHeight;
+    final imageCropScaleY = croppedRectWidth / imageWidth;
+    final cropedImageWidth = croppedRectWidth * imageCropScaleX;
+    final cropedImageHeight = croppedRectHeight * imageCropScaleY;
+
+    final spacingX = (croppedRectWidth - cropedImageWidth) / 2;
+    final spacingY = (croppedRectHeight - cropedImageHeight) / 2;
+
+    final imageRect = Rect.fromLTWH(
+      spacingX,
+      spacingY,
+      cropedImageWidth,
+      cropedImageHeight,
     );
 
-    final scaledImageSize = imageSize * scaleX;
-    final scaledCropRect = Rect.fromCenter(
-      center: Offset(scaledImageSize / 2, scaledImageSize / 2),
-      width: scaledImageSize,
-      height: scaledImageSize,
-    );
-
-    final fullCroppedImageRect = Rect.fromCenter(
-      center: Offset(imageSize / 2, imageSize / 2),
-      width: imageSize,
-      height: imageSize,
+    final fullCroppedImageRect = Rect.fromLTWH(
+      0,
+      0,
+      croppedRectWidth,
+      croppedRectHeight,
     );
 
     // Add background color
-    drawBackground(
+    _drawBackground(
       canvas,
       fullCroppedImageRect,
       cropInfo.backgroundColor,
     );
 
+    // Save the canvas state
     canvas.save();
 
     // Translate the canvas to the center of the crop rectangle.
@@ -97,20 +118,15 @@ class ImpaktfullUiImageCropCropper {
       fullCroppedImageRect.height / 2,
     );
 
-    // Already scale the image (to it the crop rect is the same size as the image)
-    canvas.scale(scaleX, scaleY);
-    // Set the correct rotation
-    canvas.rotate(cropInfo.rotation);
-    // Flip horizontally if needed
-    if (cropInfo.isFlippedHorizontal) {
-      canvas.scale(-1, 1);
-    }
-    // Flip vertically if needed
-    if (cropInfo.isFlippedVertical) {
-      canvas.scale(1, -1);
-    }
-    // Scale the image
-    canvas.scale(cropInfo.scale);
+    // Scale the image to the crop rect
+    canvas.scale(
+      cropRectScaleX,
+      cropRectScaleY,
+    );
+
+    // Set the user changes (rotation, flip, scale)
+    _setUserChanges(canvas, cropInfo);
+
     // Translate the canvas back to the top-left corner of the image
     // This is necessary because we previously translated to the center for rotation and scaling
     // Now we need to move back so the image is drawn in the correct position
@@ -119,33 +135,23 @@ class ImpaktfullUiImageCropCropper {
       -(fullCroppedImageRect.height / 2),
     );
 
-    if (imageAspectRatio.aspectRatio == 1) {
-      final rotatedRect = Rect.fromLTWH(
-        -positionOffset.dx * cos(cropInfo.rotation) - positionOffset.dy * sin(cropInfo.rotation),
-        positionOffset.dx * sin(cropInfo.rotation) - positionOffset.dy * cos(cropInfo.rotation),
-        scaledCropRect.width,
-        scaledCropRect.height,
-      );
-
-      canvas.drawImageRect(
-        imageToCrop,
-        rotatedRect,
-        scaledCropRect,
-        Paint(),
-      );
-    } else {
-      canvas.drawImageRect(
-        imageToCrop,
-        Rect.fromLTWH(
-          -positionOffset.dx,
-          -positionOffset.dy,
-          scaledCropRect.width,
-          scaledCropRect.height,
-        ),
-        scaledCropRect,
-        Paint(),
-      );
-    }
+    // Draw the image
+    canvas.drawImageRect(
+      imageToCrop,
+      Rect.fromLTWH(
+        0,
+        0,
+        imageWidth,
+        imageHeight,
+      ),
+      Rect.fromLTWH(
+        spacingX,
+        spacingY,
+        imageRect.width,
+        imageRect.height,
+      ),
+      Paint(),
+    );
 
     canvas.restore();
 
@@ -160,11 +166,26 @@ class ImpaktfullUiImageCropCropper {
         );
   }
 
-  void drawBackground(ui.Canvas canvas, Rect rect, Color backgroundColor) {
+  void _drawBackground(ui.Canvas canvas, Rect rect, Color backgroundColor) {
     canvas.drawRect(
       rect,
       Paint()..color = backgroundColor,
     );
+  }
+
+  void _setUserChanges(ui.Canvas canvas, ImpaktfullUiImageCropInfo cropInfo) {
+    // Set the correct rotation
+    canvas.rotate(cropInfo.rotation);
+    // Flip horizontally if needed
+    if (cropInfo.isFlippedHorizontal) {
+      canvas.scale(-1, 1);
+    }
+    // Flip vertically if needed
+    if (cropInfo.isFlippedVertical) {
+      canvas.scale(1, -1);
+    }
+    // Scale the image
+    canvas.scale(cropInfo.scale);
   }
 
   Future<ui.Image> downloadImage(String imageUrl) async {
