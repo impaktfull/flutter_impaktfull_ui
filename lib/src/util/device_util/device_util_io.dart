@@ -2,27 +2,26 @@ import 'dart:io';
 
 class DeviceUtil {
   // Web
-  bool isWeb() => false;
+  static bool isWeb() => false;
 
-  bool isMobileWeb() => false;
+  static bool isMobileWeb() => false;
 
   // Mobile
-  bool isMobile() => Platform.isAndroid || Platform.isIOS;
+  static bool isMobile() => Platform.isAndroid || Platform.isIOS;
 
-  bool isAndroid() => Platform.isAndroid;
+  static bool isAndroid() => Platform.isAndroid;
 
-  bool isIos() => Platform.isIOS;
+  static bool isIos() => Platform.isIOS;
 
   // Desktop
-  bool isDesktop() =>
-      Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+  static bool isDesktop() => Platform.isMacOS || Platform.isWindows || Platform.isLinux;
 
-  bool isMacOs() => Platform.isMacOS;
+  static bool isMacOs() => Platform.isMacOS;
 
-  bool isWindows() => Platform.isWindows;
+  static bool isWindows() => Platform.isWindows;
 
-  bool isLinux() => Platform.isLinux;
+  static bool isLinux() => Platform.isLinux;
 
   // General
-  bool isApple() => Platform.isIOS || Platform.isMacOS;
+  static bool isApple() => Platform.isIOS || Platform.isMacOS;
 }

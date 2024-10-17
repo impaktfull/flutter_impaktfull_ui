@@ -5,6 +5,7 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/screen/components/components_library_item_screen.dart';
 import 'package:impaktfull_ui_example/src/screen/components/components_library_screen.dart';
 import 'package:impaktfull_ui_example/src/screen/home/home_screen.dart';
+import 'package:impaktfull_ui_example/src/screen/settings/settings_screen.dart';
 
 class ImpaktfullUiNavigator {
   final navigatorKey = GlobalKey<NavigatorState>();
@@ -15,8 +16,7 @@ class ImpaktfullUiNavigator {
 
   ImpaktfullUiNavigator._();
 
-  static ImpaktfullUiNavigator get instance =>
-      _instance ??= ImpaktfullUiNavigator._();
+  static ImpaktfullUiNavigator get instance => _instance ??= ImpaktfullUiNavigator._();
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     final name = settings.name;
@@ -24,6 +24,12 @@ class ImpaktfullUiNavigator {
       case '/':
         return ImpaktfullUiDesktopPageRoute<void>(
           builder: (_) => const HomeScreen(),
+          settings: settings,
+          fullscreenDialog: false,
+        );
+      case '/settings':
+        return ImpaktfullUiDesktopPageRoute<void>(
+          builder: (_) => const SettingsScreen(),
           settings: settings,
           fullscreenDialog: false,
         );
@@ -53,10 +59,11 @@ class ImpaktfullUiNavigator {
 
   void goToHome() => navigatorKey.currentState?.pushNamed('/');
 
+  void goToSettings() => navigatorKey.currentState?.pushNamed('/settings');
+
   void goToComponents() => navigatorKey.currentState?.pushNamed('/components');
 
-  void goToComponent(ComponentLibraryItem item) =>
-      navigatorKey.currentState?.pushNamed('/components/${item.slug}');
+  void goToComponent(ComponentLibraryItem item) => navigatorKey.currentState?.pushNamed('/components/${item.slug}');
 
   void goBack() => navigatorKey.currentState?.pop();
 }
