@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_example/src/screen/home/home_screen.dart';
+import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/util/themes.dart';
 
 class MyApp extends StatefulWidget {
@@ -43,9 +43,8 @@ class MyAppState extends State<MyApp> {
         ),
         child: app,
       ),
-      // const is disabled here because it would not rebuild when the theme is set again.
-      // ignore: prefer_const_constructors
-      home: HomeScreen(),
+      initialRoute: '/',
+      onGenerateRoute: ImpaktfullUiNavigator().onGenerateRoute,
     );
   }
 
