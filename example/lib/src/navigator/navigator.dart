@@ -37,7 +37,7 @@ class ImpaktfullUiNavigator {
 
     final components = ComponentLibrary.instance.components;
     for (final component in components) {
-      if (name == '/components/${component.title}') {
+      if (name == '/components/${component.name}') {
         return NativePageRoute<void>(
           builder: (_) => ComponentsLibraryItemScreen(
             item: component,
@@ -56,7 +56,7 @@ class ImpaktfullUiNavigator {
   void goToComponents() => navigatorKey.currentState?.pushNamed('/components');
 
   void goToComponent(ComponentLibraryItem item) =>
-      navigatorKey.currentState?.pushNamed('/components/${item.title}');
+      navigatorKey.currentState?.pushNamed('/components/${item.name}');
 
   void goBack() => navigatorKey.currentState?.pop();
 }
