@@ -45,6 +45,7 @@ class ImpaktfullUiImageCropCircleOverlayPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // Draw the overlay with the see-through circle
     final paint = Paint()
       ..color = overlayColor
       ..style = PaintingStyle.fill;
@@ -53,8 +54,6 @@ class ImpaktfullUiImageCropCircleOverlayPainter extends CustomPainter {
     path.fillType = PathFillType.evenOdd;
     path.addRect(Offset.zero & size);
     path.addOval(cropRect);
-
-    // Draw the overlay with the see-through circle
     canvas.drawPath(path, paint);
 
     // Draw the circular crop border

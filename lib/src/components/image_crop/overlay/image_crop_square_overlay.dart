@@ -43,25 +43,16 @@ class ImpaktfullUiImageCropSquareOverlayPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // Draw the overlay with the see-through square
     final paint = Paint()
       ..color = overlayColor
       ..style = PaintingStyle.fill;
 
-    // Create a path for the entire canvas
-    final path = Path()..addRect(Offset.zero & size);
-
-    // Create a path for the crop area
-    final cropPath = Path()..addRect(cropRect);
-
-    // Use difference to create a path with a see-through rect
-    final finalPath = Path.combine(
-      PathOperation.difference,
-      path,
-      cropPath,
-    );
-
-    // Draw the overlay with the see-through rect
-    canvas.drawPath(finalPath, paint);
+    final Path path = Path();
+    path.fillType = PathFillType.evenOdd;
+    path.addRect(Offset.zero & size);
+    path.addRect(cropRect);
+    canvas.drawPath(path, paint);
 
     // Draw the crop border
     final borderPaint = Paint()

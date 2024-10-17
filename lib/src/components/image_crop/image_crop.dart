@@ -53,6 +53,8 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
   Uint8List? _croppedImageBytes;
 
   late final ImpaktfullUiImageCropController _controller;
+  
+  double _baseScaleFactor = 1.0;
 
   @override
   void initState() {
@@ -151,6 +153,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                       children: [
                         Positioned.fill(
                           child: GestureDetector(
+                            onScaleStart: _onScaleStart,
                             onScaleUpdate: _onScaleUpdate,
                             child: Material(
                               color: Colors.transparent,
@@ -233,13 +236,19 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
         isFlippedHorizontal: false,
         isFlippedVertical: false,
       );
+      _baseScaleFactor = 1.0;
     });
+  }
+
+  void _onScaleStart(ScaleStartDetails details) {
+    _baseScaleFactor = _cropInfo.scale;
   }
 
   void _onScaleUpdate(ScaleUpdateDetails details) {
     setState(() {
+      final newScale = (_baseScaleFactor * details.scale).clamp(0.5, 3.0);
       _cropInfo = _cropInfo.copyWith(
-        scale: (_cropInfo.scale * details.scale).clamp(0.5, 3.0),
+        scale: newScale,
         position: _cropInfo.position + details.focalPointDelta,
       );
     });
@@ -248,7 +257,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
   void _onZoomInTapped() {
     setState(() {
       _cropInfo = _cropInfo.copyWith(
-        scale: _cropInfo.scale + 0.1,
+        scale: (_cropInfo.scale * 1.1).clamp(0.5, 3.0),
       );
     });
   }
@@ -256,7 +265,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
   void _onZoomOutTapped() {
     setState(() {
       _cropInfo = _cropInfo.copyWith(
-        scale: _cropInfo.scale - 0.1,
+        scale: (_cropInfo.scale / 1.1).clamp(0.5, 3.0),
       );
     });
   }
