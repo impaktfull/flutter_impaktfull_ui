@@ -3,6 +3,7 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/screen/settings/settings_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
+import 'package:impaktfull_ui_example/src/widget/home/action_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,17 +21,22 @@ class HomeScreen extends StatelessWidget {
           onTap: () => _onSettingsTapped(context),
         ),
       ],
-      builder: (context) => ImpaktfullUiListView(
+      builder: (context) => ImpaktfullUiGridView.builder(
         padding: const EdgeInsets.all(16),
         spacing: 8,
-        children: [
-          ImpaktfullUiButton(
-            type: ImpaktfullUiButtonType.primary,
-            title: 'Components',
-            fullWidth: true,
+        crossAxisCount: (context, config) => config.maxWidth ~/ 400,
+        childAspectRatio: (context, config) => 16 / 12,
+        items: [
+          ActionCard(
+            label: 'Components',
+            asset: const ImpaktfullUiAsset.pixel(
+              'components.png',
+              directory: 'assets/images/supporting',
+            ),
             onTap: () => ImpaktfullUiNavigator.instance.goToComponents(),
           ),
         ],
+        itemBuilder: (context, item, index) => item,
       ),
     );
   }

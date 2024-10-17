@@ -24,6 +24,7 @@ flutter:
     - assets/fonts/ubuntu/
     - assets/fonts/geologica/
     - assets/images/
+    - assets/images/supporting/
     - assets/lottie/
     - assets/rive/
   fonts:
