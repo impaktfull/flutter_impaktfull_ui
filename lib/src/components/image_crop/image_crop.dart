@@ -21,7 +21,8 @@ export 'image_crop_style.dart';
 
 part 'image_crop.describe.dart';
 
-class ImpaktfullUiImageCrop extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiImageCrop extends StatefulWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiImageCropController? controller;
   final String? imageUrl;
   final double size;
@@ -114,7 +115,8 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                             children: [
                               ImpaktfullUiIconButton(
                                 onTap: _onBackToEditingTapped,
-                                asset: ImpaktfullUiAsset.icon(PhosphorIcons.arrowClockwise()),
+                                asset: ImpaktfullUiAsset.icon(
+                                    PhosphorIcons.arrowClockwise()),
                                 color: componentTheme.colors.deleteIcon,
                                 backgroundColor: Colors.black.withOpacity(0.33),
                               ),
@@ -158,7 +160,8 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                               color: Colors.transparent,
                               child: Transform(
                                 transform: Matrix4.identity()
-                                  ..translate(_cropInfo.position.dx, _cropInfo.position.dy)
+                                  ..translate(_cropInfo.position.dx,
+                                      _cropInfo.position.dy)
                                   ..scale(_cropInfo.scale),
                                 alignment: Alignment.center,
                                 child: Builder(builder: (context) {
@@ -176,7 +179,8 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                         Positioned.fill(
                           child: IgnorePointer(
                             child: CustomPaint(
-                              painter: widget.cropOverlay.getCustomPainter(_cropInfo.cropRect),
+                              painter: widget.cropOverlay
+                                  .getCustomPainter(_cropInfo.cropRect),
                             ),
                           ),
                         ),
@@ -192,17 +196,20 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onTap: _onZoomInTapped,
-                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlassPlus()),
+                      leadingAsset: ImpaktfullUiAsset.icon(
+                          PhosphorIcons.magnifyingGlassPlus()),
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onTap: _onZoomOutTapped,
-                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlassMinus()),
+                      leadingAsset: ImpaktfullUiAsset.icon(
+                          PhosphorIcons.magnifyingGlassMinus()),
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onAsyncTap: _onCropTapped,
-                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.crop()),
+                      leadingAsset:
+                          ImpaktfullUiAsset.icon(PhosphorIcons.crop()),
                     ),
                   ],
                 ),

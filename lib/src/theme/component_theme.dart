@@ -58,6 +58,7 @@ import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
+import 'package:impaktfull_ui_2/src/components/number_input/number_input.dart';
 
 abstract class ImpaktfullUiComponentTheme {
   const ImpaktfullUiComponentTheme();
@@ -98,6 +99,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiNetworkImageTheme networkImage;
   final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
+  final ImpaktfullUiNumberInputTheme numberInput;
   final ImpaktfullUiPaginationTheme pagination;
   final ImpaktfullUiProgressIndicatorTheme progressIndicator;
   final ImpaktfullUiRadioButtonTheme radioButton;
@@ -159,6 +161,7 @@ class ImpaktfullUiComponentsTheme {
     required this.networkImage,
     required this.notification,
     required this.notificationBadge,
+    required this.numberInput,
     required this.pagination,
     required this.progressIndicator,
     required this.radioButton,
@@ -221,6 +224,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiNetworkImageTheme? networkImage,
     ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
+    ImpaktfullUiNumberInputTheme? numberInput,
     ImpaktfullUiPaginationTheme? pagination,
     ImpaktfullUiProgressIndicatorTheme? progressIndicator,
     ImpaktfullUiRadioButtonTheme? radioButton,
@@ -282,6 +286,7 @@ class ImpaktfullUiComponentsTheme {
         networkImage: networkImage ?? this.networkImage,
         notification: notification ?? this.notification,
         notificationBadge: notificationBadge ?? this.notificationBadge,
+        numberInput: numberInput ?? this.numberInput,
         pagination: pagination ?? this.pagination,
         progressIndicator: progressIndicator ?? this.progressIndicator,
         radioButton: radioButton ?? this.radioButton,
@@ -379,6 +384,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiNotificationTheme.of(context) as T;
     } else if (T == ImpaktfullUiNotificationBadgeTheme) {
       return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
+    } else if (T == ImpaktfullUiNumberInputTheme) {
+      return ImpaktfullUiNumberInputTheme.of(context) as T;
     } else if (T == ImpaktfullUiProgressIndicatorTheme) {
       return ImpaktfullUiProgressIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiPaginationTheme) {

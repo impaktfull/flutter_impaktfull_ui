@@ -80,6 +80,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiNetworkImage
 - ImpaktfullUiNotification
 - ImpaktfullUiNotificationBadge
+- ImpaktfullUiNumberInput
 - ImpaktfullUiPagination
 - ImpaktfullUiRadioButton
 - ImpaktfullUiRadioButtonListItem
@@ -178,7 +179,6 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - [ ] Add tests
 - [ ] Add extra components
 
-  - ImpaktfullUiNumberInput
   - ImpaktfullUiTimePicker
   - ImpaktfullUiDateTimePicker
   - ImpaktfullUiDateTimePickerDialog

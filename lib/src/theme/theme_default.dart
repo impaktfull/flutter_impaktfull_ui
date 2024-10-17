@@ -33,6 +33,7 @@ import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
+import 'package:impaktfull_ui_2/src/components/number_input/number_input.dart';
 import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator_style.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
@@ -766,6 +767,15 @@ class DefaultTheme {
           textStyles: ImpaktfullUiNotificationBadgeTextStyleTheme(
             text: textStyles.onPrimary.text.small,
           ),
+        ),
+        numberInput: ImpaktfullUiNumberInputTheme(
+          assets: ImpaktfullUiNumberInputAssetsTheme(
+            minus: assets.icons.minus,
+            plus: assets.icons.add,
+          ),
+          colors: const ImpaktfullUiNumberInputColorTheme(),
+          dimens: const ImpaktfullUiNumberInputDimensTheme(),
+          textStyles: const ImpaktfullUiNumberInputTextStyleTheme(),
         ),
         pagination: ImpaktfullUiPaginationTheme(
           assets: ImpaktfullUiPaginationAssetsTheme(
