@@ -57,6 +57,7 @@ import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
+import 'package:impaktfull_ui_2/src/components/time_picker/time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
@@ -1067,6 +1068,12 @@ class DefaultTheme {
             title: textStyles.onCanvas.text.small.medium,
             subtitle: textStyles.onCanvas.text.small,
           ),
+        ),
+        timePicker: const ImpaktfullUiTimePickerTheme(
+          assets: ImpaktfullUiTimePickerAssetsTheme(),
+          colors: ImpaktfullUiTimePickerColorTheme(),
+          dimens: ImpaktfullUiTimePickerDimensTheme(),
+          textStyles: ImpaktfullUiTimePickerTextStyleTheme(),
         ),
         tooltip: ImpaktfullUiTooltipTheme(
           colors: ImpaktfullUiTooltipColorTheme(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/adaptive_safe_area/adaptive_safe_area.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header_style.dart';
@@ -57,72 +58,76 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                 ),
           boxShadow: componentTheme.shadows.background,
         ),
-        child: ImpaktfullUiAutoLayout.vertical(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                top: 16,
-                left: 16,
-                right: 16,
-                bottom: widget.bottom == null ? 16 : 12,
-              ),
-              child: ImpaktfullUiAutoLayout.horizontal(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  if (widget.onBackTapped != null) ...[
-                    ImpaktfullUiIconButton(
-                      onTap: widget.onBackTapped!,
-                      asset: componentTheme.assets.back,
-                      color: componentTheme.colors.icons,
-                    ),
-                    const SizedBox(width: 8),
-                  ],
-                  Expanded(
-                    child: ImpaktfullUiAutoLayout.vertical(
-                      spacing: 4,
-                      children: [
-                        ImpaktfullUiAutoLayout.horizontal(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          spacing: 8,
-                          children: [
-                            Text(
-                              widget.title,
-                              style: componentTheme.textStyles.title,
-                            ),
-                            if (widget.badge != null) ...[
-                              ImpaktfullUiBadge(
-                                type: ImpaktfullUiBadgeType.primary,
-                                label: widget.badge!,
+        child: ImpaktfullUiAdaptiveSafeArea(
+          bottom: false,
+          hasMacOsMenuBar: false,
+          child: ImpaktfullUiAutoLayout.vertical(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 16,
+                  left: 16,
+                  right: 16,
+                  bottom: widget.bottom == null ? 16 : 12,
+                ),
+                child: ImpaktfullUiAutoLayout.horizontal(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    if (widget.onBackTapped != null) ...[
+                      ImpaktfullUiIconButton(
+                        onTap: widget.onBackTapped!,
+                        asset: componentTheme.assets.back,
+                        color: componentTheme.colors.icons,
+                      ),
+                      const SizedBox(width: 8),
+                    ],
+                    Expanded(
+                      child: ImpaktfullUiAutoLayout.vertical(
+                        spacing: 4,
+                        children: [
+                          ImpaktfullUiAutoLayout.horizontal(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            spacing: 8,
+                            children: [
+                              Text(
+                                widget.title,
+                                style: componentTheme.textStyles.title,
                               ),
+                              if (widget.badge != null) ...[
+                                ImpaktfullUiBadge(
+                                  type: ImpaktfullUiBadgeType.primary,
+                                  label: widget.badge!,
+                                ),
+                              ],
                             ],
-                          ],
-                        ),
-                        if (widget.subtitle != null) ...[
-                          Text(
-                            widget.subtitle!,
-                            style: componentTheme.textStyles.subtitle,
                           ),
+                          if (widget.subtitle != null) ...[
+                            Text(
+                              widget.subtitle!,
+                              style: componentTheme.textStyles.subtitle,
+                            ),
+                          ],
                         ],
-                      ],
+                      ),
                     ),
-                  ),
-                  if (widget.actions.isNotEmpty) ...[
-                    const SizedBox(width: 16),
-                    ImpaktfullUiAutoLayout.horizontal(
-                      spacing: 8,
-                      children: widget.actions
-                          .overrideColorOnWidgets(componentTheme.colors.icons),
-                    ),
+                    if (widget.actions.isNotEmpty) ...[
+                      const SizedBox(width: 16),
+                      ImpaktfullUiAutoLayout.horizontal(
+                        spacing: 8,
+                        children: widget.actions.overrideColorOnWidgets(
+                            componentTheme.colors.icons),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
-            ),
-            if (widget.bottom != null) ...[
-              widget.bottom!,
-              const SizedBox(height: 12),
+              if (widget.bottom != null) ...[
+                widget.bottom!,
+                const SizedBox(height: 12),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

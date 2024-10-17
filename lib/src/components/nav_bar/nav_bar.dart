@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/adaptive_safe_area/adaptive_safe_area.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar_style.dart';
@@ -47,7 +48,7 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
                 ),
           boxShadow: componentTheme.shadows.shadow,
         ),
-        child: SafeArea(
+        child: ImpaktfullUiAdaptiveSafeArea(
           bottom: false,
           child: ImpaktfullUiAutoLayout.vertical(
             mainAxisSize: MainAxisSize.min,

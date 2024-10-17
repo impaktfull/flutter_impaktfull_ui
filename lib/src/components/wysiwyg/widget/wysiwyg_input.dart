@@ -134,6 +134,7 @@ class _ImpaktfullUiWysiwygInputFieldState
                             textInputAction: TextInputAction.newline,
                             multiline: true,
                             maxLines: null,
+                            textAlign: TextAlign.start,
                             theme: inputFieldTheme,
                           ),
                         ],

@@ -38,6 +38,7 @@ class ImpaktfullUiInputField extends StatefulWidget
   final ImpaktfullUiInputFieldTheme? theme;
   final bool multiline;
   final int? maxLines;
+  final TextAlign textAlign;
 
   const ImpaktfullUiInputField({
     required this.value,
@@ -61,6 +62,7 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.theme,
     this.multiline = false,
     this.maxLines,
+    this.textAlign = TextAlign.start,
     super.key,
   });
 
@@ -93,9 +95,10 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   void didUpdateWidget(covariant ImpaktfullUiInputField oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value && _controller.text != widget.value) {
-      final currentSelection = _controller.selection;
+      // TODO check how we need to do the selection
+      // final currentSelection = _controller.selection;
       _controller.text = widget.value ?? '';
-      _controller.selection = currentSelection;
+      // _controller.selection = currentSelection;
     }
   }
 
@@ -199,6 +202,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                   autofocus: widget.autofocus,
                                   multiline: widget.multiline,
                                   onFocusChanged: widget.onFocusChanged,
+                                  textAlign: widget.textAlign,
                                 ),
                               ),
                             ],

@@ -36,6 +36,7 @@ This UI library was built to have a simple way to build UIs for impaktfull. This
 Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other libraries.
 
 - ImpaktfullUiAccordion
+- ImpaktfullUiAdaptiveSafeArea
 - ImpaktfullUiApp
 - ImpaktfullUiAssetWidget
   - ImpaktfullUiAsset.icon
@@ -58,6 +59,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiCommandMenu
 - ImpaktfullUiDatePicker
   - ImpaktfullUiDatePicker.range
+- ImpaktfullUiTimePicker  
 - ImpaktfullUiDivider
 - ImpaktfullUiDropdown
 - ImpaktfullUiFocusFeedback
@@ -179,7 +181,6 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - [ ] Add tests
 - [ ] Add extra components
 
-  - ImpaktfullUiTimePicker
   - ImpaktfullUiDateTimePicker
   - ImpaktfullUiDateTimePickerDialog
   - ImpaktfullUiSlider

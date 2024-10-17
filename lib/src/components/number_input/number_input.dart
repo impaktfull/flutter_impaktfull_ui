@@ -16,12 +16,16 @@ class ImpaktfullUiNumberInput extends StatelessWidget
   final ValueChanged<int> onChanged;
   final String? label;
   final int value;
+  final int? min;
+  final int? max;
   final ImpaktfullUiNumberInputTheme? theme;
 
   const ImpaktfullUiNumberInput({
     required this.value,
     required this.onChanged,
     this.label,
+    this.min,
+    this.max,
     this.theme,
     super.key,
   });
@@ -78,7 +82,20 @@ class ImpaktfullUiNumberInput extends StatelessWidget
 
   void _onChanged(String value) {
     final intValue = int.tryParse(value);
-    if (intValue == null) return;
-    onChanged(intValue);
+    if (intValue == null) {
+      onChanged(this.value);
+      return;
+    }
+
+    final min = this.min;
+    final max = this.max;
+    var clampedValue = intValue;
+    if (min != null && intValue < min) {
+      clampedValue = min;
+    }
+    if (max != null && intValue > max) {
+      clampedValue = max;
+    }
+    onChanged(clampedValue);
   }
 }

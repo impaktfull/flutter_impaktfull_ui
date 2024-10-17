@@ -54,6 +54,7 @@ import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
+import 'package:impaktfull_ui_2/src/components/time_picker/time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart';
@@ -123,6 +124,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiTableHeaderItemTheme tableHeaderItem;
   final ImpaktfullUiTableRowTheme tableRow;
   final ImpaktfullUiTableRowItemTheme tableRowItem;
+  final ImpaktfullUiTimePickerTheme timePicker;
   final ImpaktfullUiTooltipTheme tooltip;
   final ImpaktfullUiWysiwygTheme wysiwyg;
 
@@ -185,6 +187,7 @@ class ImpaktfullUiComponentsTheme {
     required this.tableHeaderItem,
     required this.tableRow,
     required this.tableRowItem,
+    required this.timePicker,
     required this.tooltip,
     required this.wysiwyg,
   });
@@ -248,6 +251,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiTableHeaderItemTheme? tableHeaderItem,
     ImpaktfullUiTableRowTheme? tableRow,
     ImpaktfullUiTableRowItemTheme? tableRowItem,
+    ImpaktfullUiTimePickerTheme? timePicker,
     ImpaktfullUiTooltipTheme? tooltip,
     ImpaktfullUiWysiwygTheme? wysiwyg,
   }) =>
@@ -311,6 +315,7 @@ class ImpaktfullUiComponentsTheme {
         tableHeaderItem: tableHeaderItem ?? this.tableHeaderItem,
         tableRow: tableRow ?? this.tableRow,
         tableRowItem: tableRowItem ?? this.tableRowItem,
+        timePicker: timePicker ?? this.timePicker,
         tooltip: tooltip ?? this.tooltip,
         wysiwyg: wysiwyg ?? this.wysiwyg,
       );
@@ -432,6 +437,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiTableRowTheme.of(context) as T;
     } else if (T == ImpaktfullUiTableRowItemTheme) {
       return ImpaktfullUiTableRowItemTheme.of(context) as T;
+    } else if (T == ImpaktfullUiTimePickerTheme) {
+      return ImpaktfullUiTimePickerTheme.of(context) as T;
     } else if (T == ImpaktfullUiTooltipTheme) {
       return ImpaktfullUiTooltipTheme.of(context) as T;
     } else if (T == ImpaktfullUiWysiwygTheme) {

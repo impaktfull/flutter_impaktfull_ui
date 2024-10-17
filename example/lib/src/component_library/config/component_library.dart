@@ -52,6 +52,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/switch/sw
 import 'package:impaktfull_ui_example/src/component_library/components/switch_list_item/switch_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/tab_bar/tab_bar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/table/table_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/time_picker/time_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/tooltip/tooltip_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/wrap/wrap_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/wysiwyg/wysiwyg_library_item.dart';
@@ -113,6 +114,7 @@ class ComponentLibrary {
     const SwitchListItemLibraryItem(),
     const TabBarLibraryItem(),
     const TableLibraryItem(),
+    const TimePickerLibraryItem(),
     const TooltipLibraryItem(),
     const WrapLibraryItem(),
     const WysiwygLibraryItem(),

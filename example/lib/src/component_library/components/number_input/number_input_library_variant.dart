@@ -18,6 +18,8 @@ class NumberInputLibraryVariant
         label: 'Number input',
         value: inputs.value.value ?? 0,
         onChanged: inputs.value.updateState,
+        min: -1,
+        max: 10,
       ),
     ];
   }

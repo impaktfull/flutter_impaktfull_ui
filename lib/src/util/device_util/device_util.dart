@@ -4,3 +4,4 @@ import 'device_util.dart'
 
 bool isMobileWeb() => platform.isMobileWeb();
 bool isApple() => platform.isApple();
+bool isMacOs() => platform.isMacOs();
