@@ -63,13 +63,17 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
                                   TextSpan(
                                     children: [
                                       if (data.size != null) ...[
-                                        TextSpan(text: FileSizeCalculationUtil.calculateFileSize(data.size!)),
+                                        TextSpan(
+                                            text: FileSizeCalculationUtil
+                                                .calculateFileSize(data.size!)),
                                       ],
-                                      if (data.size != null && progressType.textProgressOnly) ...[
+                                      if (data.size != null &&
+                                          progressType.textProgressOnly) ...[
                                         const TextSpan(text: ' - '),
                                       ],
                                       if (progressType.textProgressOnly) ...[
-                                        TextSpan(text: '${data.progress * 100}%'),
+                                        TextSpan(
+                                            text: '${data.progress * 100}%'),
                                       ]
                                     ],
                                   ),

@@ -63,7 +63,8 @@ class ImpaktfullUiImageCropCircleOverlayPainter extends CustomPainter {
       ..strokeWidth = borderWidth;
 
     if (isDashedBorder) {
-      _drawDashedCircle(canvas, cropRect.center, cropRect.width / 2, borderPaint);
+      _drawDashedCircle(
+          canvas, cropRect.center, cropRect.width / 2, borderPaint);
     } else {
       canvas.drawCircle(
         cropRect.center,
@@ -73,7 +74,8 @@ class ImpaktfullUiImageCropCircleOverlayPainter extends CustomPainter {
     }
   }
 
-  void _drawDashedCircle(Canvas canvas, Offset center, double radius, Paint paint) {
+  void _drawDashedCircle(
+      Canvas canvas, Offset center, double radius, Paint paint) {
     const dashCount = 60;
     var startAngle = 0.0;
 

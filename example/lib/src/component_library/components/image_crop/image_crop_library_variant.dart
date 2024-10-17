@@ -21,19 +21,16 @@ class ImageCropLibraryVariant extends ComponentLibraryVariant<ImageCropLibraryPr
       ImpaktfullUiImageCrop(
         size: 300,
         backgroundColor: theme.colors.accent,
-        showPreview: true,
         imageUrl: NetworkImages.profilePicture,
       ),
       ImpaktfullUiImageCrop(
         size: 300,
         backgroundColor: theme.colors.accent,
-        showPreview: true,
         imageUrl: NetworkImages.image16x9,
       ),
       ImpaktfullUiImageCrop(
         size: 300,
         backgroundColor: theme.colors.accent,
-        showPreview: true,
         imageUrl:
             'https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/05/rule-of-thirds-in-photography-1002-1.jpg?resize=400%2C592&ssl=1',
       ),

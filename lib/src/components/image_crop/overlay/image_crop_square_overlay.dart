@@ -75,14 +75,22 @@ class ImpaktfullUiImageCropSquareOverlayPainter extends CustomPainter {
 
     // Draw top line
     while (startX < rect.right) {
-      canvas.drawLine(Offset(startX, startY), Offset(startX + dashWidth, startY), paint);
+      canvas.drawLine(
+        Offset(startX, startY),
+        Offset(startX + dashWidth, startY),
+        paint,
+      );
       startX += dashWidth + dashSpace;
     }
 
     // Draw right line
     startX = rect.right;
     while (startY < rect.bottom) {
-      canvas.drawLine(Offset(startX, startY), Offset(startX, startY + dashWidth), paint);
+      canvas.drawLine(
+        Offset(startX, startY),
+        Offset(startX, startY + dashWidth),
+        paint,
+      );
       startY += dashWidth + dashSpace;
     }
 
@@ -90,7 +98,11 @@ class ImpaktfullUiImageCropSquareOverlayPainter extends CustomPainter {
     startY = rect.bottom;
     startX = rect.right;
     while (startX > rect.left) {
-      canvas.drawLine(Offset(startX, startY), Offset(startX - dashWidth, startY), paint);
+      canvas.drawLine(
+        Offset(startX, startY),
+        Offset(startX - dashWidth, startY),
+        paint,
+      );
       startX -= dashWidth + dashSpace;
     }
 
@@ -98,7 +110,11 @@ class ImpaktfullUiImageCropSquareOverlayPainter extends CustomPainter {
     startX = rect.left;
     startY = rect.bottom;
     while (startY > rect.top) {
-      canvas.drawLine(Offset(startX, startY), Offset(startX, startY - dashWidth), paint);
+      canvas.drawLine(
+        Offset(startX, startY),
+        Offset(startX, startY - dashWidth),
+        paint,
+      );
       startY -= dashWidth + dashSpace;
     }
   }

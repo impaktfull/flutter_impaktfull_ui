@@ -12,7 +12,8 @@ class ComponentsLibraryScreen extends StatefulWidget {
   const ComponentsLibraryScreen({super.key});
 
   @override
-  State<ComponentsLibraryScreen> createState() => _ComponentsLibraryScreenState();
+  State<ComponentsLibraryScreen> createState() =>
+      _ComponentsLibraryScreenState();
 }
 
 class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
@@ -67,7 +68,8 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
           itemBuilder: (context, item, index) {
             final value = filteredComponents[index];
             final fistComponent = value.getComponentVariants().first;
-            final widget = fistComponent.build(context, fistComponent.inputs()).first;
+            final widget =
+                fistComponent.build(context, fistComponent.inputs()).first;
             return ComponentCard(
               label: value.title,
               onTap: () => _onItemTapped(value),
@@ -80,7 +82,8 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   }
 
   void _onItemTapped(ComponentLibraryItem value) =>
-      Navigator.of(context).push(NativePageRoute(builder: (context) => ComponentsLibraryItemScreen(item: value)));
+      Navigator.of(context).push(NativePageRoute(
+          builder: (context) => ComponentsLibraryItemScreen(item: value)));
 
   void _onChanged(String value) {
     setState(() {

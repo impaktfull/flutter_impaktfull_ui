@@ -27,7 +27,7 @@ class ImpaktfullUiImageCrop extends StatefulWidget with ComponentDescriptorMixin
   final double size;
   final Color backgroundColor;
   final ImpaktfullUiImageCropOverlay cropOverlay;
-  final bool showPreview;
+  final bool showPreview = false;
   final ImpaktfullUiImageCropTheme? theme;
 
   const ImpaktfullUiImageCrop({
@@ -36,7 +36,6 @@ class ImpaktfullUiImageCrop extends StatefulWidget with ComponentDescriptorMixin
     this.imageUrl,
     this.backgroundColor = const Color(0x00000000),
     this.cropOverlay = const ImpaktfullUiImageCropSquareOverlay(),
-    this.showPreview = false,
     this.theme,
     super.key,
   });
@@ -53,7 +52,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
   Uint8List? _croppedImageBytes;
 
   late final ImpaktfullUiImageCropController _controller;
-  
+
   double _baseScaleFactor = 1.0;
 
   @override

@@ -69,6 +69,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiHorizontalTabs
   - ImpaktfullUiHorizontalTab
 - ImpaktfullUiIconButton
+- ImpaktfullUiImageCrop
 - ImpaktfullUiInputField
 - ImpaktfullUiListItem
   - ImpaktfullUiSimpleListItem
@@ -219,6 +220,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
   - ImpaktfullUiAdaptiveNavBar
   - ImpaktfullUiAdaptiveNavBarAction
   - ImpaktfullUiAdaptiveNavigation
+  - ImpaktfullUiAdaptiveRoute
   - ImpaktfullUiAdaptiveModalRoute
 
 - [ ] Add building blocks
