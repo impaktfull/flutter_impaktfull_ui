@@ -36,6 +36,7 @@ This UI library was built to have a simple way to build UIs for impaktfull. This
 Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other libraries.
 
 - ImpaktfullUiAccordion
+- ImpaktfullUiAdaptivePageRoute
 - ImpaktfullUiAdaptiveSafeArea
 - ImpaktfullUiApp
 - ImpaktfullUiAssetWidget
@@ -59,8 +60,9 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiCommandMenu
 - ImpaktfullUiDatePicker
   - ImpaktfullUiDatePicker.range
-- ImpaktfullUiTimePicker  
+- ImpaktfullUiTimePicker
 - ImpaktfullUiDivider
+- ImpaktfullUiDesktopPageRoute
 - ImpaktfullUiDropdown
 - ImpaktfullUiFocusFeedback
 - ImpaktfullUiFilePicker

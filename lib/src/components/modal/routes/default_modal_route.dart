@@ -42,7 +42,7 @@ Widget _customTransitionBuilder(
   Widget child,
   bool hasBlurredBackground,
 ) {
-  if (isApple()) {
+  if (DeviceUtil.isApple()) {
     return _buildCupertinoDialogTransitions(
       context,
       animation,

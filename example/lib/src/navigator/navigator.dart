@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
-import 'package:impaktfull_ui_example/src/navigator/page_route/native_page_route_builder.dart';
 import 'package:impaktfull_ui_example/src/screen/components/components_library_item_screen.dart';
 import 'package:impaktfull_ui_example/src/screen/components/components_library_screen.dart';
 import 'package:impaktfull_ui_example/src/screen/home/home_screen.dart';
@@ -22,13 +22,13 @@ class ImpaktfullUiNavigator {
     final name = settings.name;
     switch (name) {
       case '/':
-        return NativePageRoute<void>(
+        return ImpaktfullUiDesktopPageRoute<void>(
           builder: (_) => const HomeScreen(),
           settings: settings,
           fullscreenDialog: false,
         );
       case '/components':
-        return NativePageRoute<void>(
+        return ImpaktfullUiDesktopPageRoute<void>(
           builder: (_) => const ComponentsLibraryScreen(),
           settings: settings,
           fullscreenDialog: false,
@@ -38,7 +38,7 @@ class ImpaktfullUiNavigator {
     final components = ComponentLibrary.instance.components;
     for (final component in components) {
       if (name == '/components/${component.slug}') {
-        return NativePageRoute<void>(
+        return ImpaktfullUiDesktopPageRoute<void>(
           builder: (_) => ComponentsLibraryItemScreen(
             item: component,
           ),

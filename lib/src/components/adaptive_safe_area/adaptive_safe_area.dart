@@ -32,7 +32,7 @@ class ImpaktfullUiAdaptiveSafeArea extends StatelessWidget
       right: direction == TextDirection.ltr ? end : start,
       child: Builder(
         builder: (context) {
-          if (isMacOs()) {
+          if (DeviceUtil.isMacOs()) {
             return Padding(
               padding: EdgeInsets.only(top: hasMacOsMenuBar ? 0 : 22),
               child: child,

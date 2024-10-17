@@ -119,7 +119,7 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
 
   @override
   Widget build(BuildContext context) {
-    if (isMobileWeb()) {
+    if (DeviceUtil.isMobileWeb()) {
       return MouseRegion(
         cursor: widget.cursor,
         child: GestureDetector(

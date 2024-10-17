@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-class NativePageRoute<T> extends PageRouteBuilder<T> {
+class ImpaktfullUiDesktopPageRoute<T> extends PageRouteBuilder<T> {
   final Function(BuildContext context) builder;
 
-  NativePageRoute({
+  ImpaktfullUiDesktopPageRoute({
     required this.builder,
     super.settings,
     super.fullscreenDialog,
