@@ -6,6 +6,8 @@ abstract class ComponentLibraryItem {
 
   const ComponentLibraryItem();
 
+  String get name => title.replaceAll('ImpaktfullUi', '');
+
   List<ComponentLibraryVariant> getComponentVariants();
 }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/screen/settings/settings_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
 
@@ -27,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             type: ImpaktfullUiButtonType.primary,
             title: 'Components',
             fullWidth: true,
-            onTap: () => Navigator.of(context).pushNamed('/components'),
+            onTap: () => ImpaktfullUiNavigator.instance.goToComponents(),
           ),
         ],
       ),
@@ -42,7 +43,7 @@ class HomeScreen extends StatelessWidget {
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
             title: 'Close',
-            onTap: () => Navigator.of(context).pop(),
+            onTap: () => ImpaktfullUiNavigator.instance.goBack(),
           ),
         ],
         childPadding: EdgeInsets.zero,

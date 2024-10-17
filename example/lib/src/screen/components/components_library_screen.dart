@@ -3,8 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
-import 'package:impaktfull_ui_example/src/navigator/page_route/native_page_route_builder.dart';
-import 'package:impaktfull_ui_example/src/screen/components/components_library_item_screen.dart';
+import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/components/component_card.dart';
 
@@ -17,7 +16,6 @@ class ComponentsLibraryScreen extends StatefulWidget {
 }
 
 class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
-  final _componentLibrary = ComponentLibrary();
   final _fixedSearchQuery = [
     // 'ImageCrop',
   ];
@@ -25,7 +23,7 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final filteredComponents = _componentLibrary.components.where((e) {
+    final filteredComponents = ComponentLibrary.instance.components.where((e) {
       if (_fixedSearchQuery.isNotEmpty) {
         for (final fixedQuery in _fixedSearchQuery) {
           if (e.title.toLowerCase().contains(fixedQuery.toLowerCase())) {
@@ -71,7 +69,7 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
             final widget =
                 fistComponent.build(context, fistComponent.inputs()).first;
             return ComponentCard(
-              label: value.title,
+              label: value.name,
               onTap: () => _onItemTapped(value),
               child: widget,
             );
@@ -82,8 +80,7 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
   }
 
   void _onItemTapped(ComponentLibraryItem value) =>
-      Navigator.of(context).push(NativePageRoute(
-          builder: (context) => ComponentsLibraryItemScreen(item: value)));
+      ImpaktfullUiNavigator.instance.goToComponent(value);
 
   void _onChanged(String value) {
     setState(() {

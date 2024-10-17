@@ -43,8 +43,9 @@ class MyAppState extends State<MyApp> {
         ),
         child: app,
       ),
-      initialRoute: '/',
-      onGenerateRoute: ImpaktfullUiNavigator().onGenerateRoute,
+      navigatorKey: ImpaktfullUiNavigator.instance.navigatorKey,
+      initialRoute: ImpaktfullUiNavigator.instance.initialRoute,
+      onGenerateRoute: ImpaktfullUiNavigator.instance.onGenerateRoute,
     );
   }
 

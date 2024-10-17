@@ -59,6 +59,12 @@ import 'package:impaktfull_ui_example/src/component_library/components/wysiwyg/w
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
 class ComponentLibrary {
+  static ComponentLibrary? _instance;
+
+  ComponentLibrary._();
+
+  static ComponentLibrary get instance => _instance ??= ComponentLibrary._();
+
   final List<ComponentLibraryItem> components = [
     const AccordionLibraryItem(),
     const AssetLibraryItem(),
