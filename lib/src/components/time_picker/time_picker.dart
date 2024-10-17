@@ -10,8 +10,7 @@ export 'time_picker_style.dart';
 
 part 'time_picker.describe.dart';
 
-class ImpaktfullUiTimePicker extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiTimePicker extends StatefulWidget with ComponentDescriptorMixin {
   final String? label;
   final TimeOfDay? value;
   final ValueChanged<TimeOfDay> onChanged;
@@ -87,6 +86,7 @@ class _ImpaktfullUiTimePickerState extends State<ImpaktfullUiTimePicker> {
                   controller: _hoursController,
                   value: hoursString,
                   textAlign: TextAlign.center,
+                  textInputAction: TextInputAction.next,
                   textInputType: const TextInputType.numberWithOptions(
                     signed: true,
                     decimal: false,
