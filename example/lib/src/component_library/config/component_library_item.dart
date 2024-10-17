@@ -8,6 +8,11 @@ abstract class ComponentLibraryItem {
 
   String get name => title.replaceAll('ImpaktfullUi', '');
 
+  String get slug => name
+      .replaceAllMapped(RegExp(r'(?<=[a-z])[A-Z]'),
+          (Match m) => '-${m.group(0)!.toLowerCase()}')
+      .toLowerCase();
+
   List<ComponentLibraryVariant> getComponentVariants();
 }
 
