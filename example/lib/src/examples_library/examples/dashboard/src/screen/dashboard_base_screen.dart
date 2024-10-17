@@ -29,7 +29,8 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
                 leading: ImpaktfullUiAsset.icon(PhosphorIcons.house()),
                 title: 'Home',
                 isSelected: _activeScreen == DashboardScreen.home,
-                onTap: () => setState(() => _activeScreen = DashboardScreen.home),
+                onTap: () =>
+                    setState(() => _activeScreen = DashboardScreen.home),
               ),
               ImpaktfullUiSidebarNavigationItem(
                 leading: ImpaktfullUiAsset.icon(PhosphorIcons.basket()),
@@ -39,25 +40,30 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
                     leading: ImpaktfullUiAsset.icon(PhosphorIcons.tShirt()),
                     title: 'Products',
                     isSelected: _activeScreen == DashboardScreen.storeProducts,
-                    onTap: () => setState(() => _activeScreen = DashboardScreen.storeProducts),
+                    onTap: () => setState(
+                        () => _activeScreen = DashboardScreen.storeProducts),
                   ),
                   ImpaktfullUiSidebarNavigationItem(
                     leading: ImpaktfullUiAsset.icon(PhosphorIcons.money()),
                     title: 'Orders',
                     isSelected: _activeScreen == DashboardScreen.storeOrders,
-                    onTap: () => setState(() => _activeScreen = DashboardScreen.storeOrders),
+                    onTap: () => setState(
+                        () => _activeScreen = DashboardScreen.storeOrders),
                   ),
                   ImpaktfullUiSidebarNavigationItem(
-                    leading: ImpaktfullUiAsset.icon(PhosphorIcons.sealPercent()),
+                    leading:
+                        ImpaktfullUiAsset.icon(PhosphorIcons.sealPercent()),
                     title: 'Coupons',
                     isSelected: _activeScreen == DashboardScreen.storeCoupons,
-                    onTap: () => setState(() => _activeScreen = DashboardScreen.storeCoupons),
+                    onTap: () => setState(
+                        () => _activeScreen = DashboardScreen.storeCoupons),
                   ),
                   ImpaktfullUiSidebarNavigationItem(
                     leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
                     title: 'Settings',
                     isSelected: _activeScreen == DashboardScreen.storeSettings,
-                    onTap: () => setState(() => _activeScreen = DashboardScreen.storeSettings),
+                    onTap: () => setState(
+                        () => _activeScreen = DashboardScreen.storeSettings),
                   ),
                 ],
               ),
@@ -68,20 +74,24 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
                   ImpaktfullUiSidebarNavigationItem(
                     leading: ImpaktfullUiAsset.icon(PhosphorIcons.tShirt()),
                     title: 'Campaigns',
-                    isSelected: _activeScreen == DashboardScreen.emailsCampaigns,
-                    onTap: () => setState(() => _activeScreen = DashboardScreen.emailsCampaigns),
+                    isSelected:
+                        _activeScreen == DashboardScreen.emailsCampaigns,
+                    onTap: () => setState(
+                        () => _activeScreen = DashboardScreen.emailsCampaigns),
                   ),
                   ImpaktfullUiSidebarNavigationItem(
                     leading: ImpaktfullUiAsset.icon(PhosphorIcons.money()),
                     title: 'API',
                     isSelected: _activeScreen == DashboardScreen.emailsApi,
-                    onTap: () => setState(() => _activeScreen = DashboardScreen.emailsApi),
+                    onTap: () => setState(
+                        () => _activeScreen = DashboardScreen.emailsApi),
                   ),
                   ImpaktfullUiSidebarNavigationItem(
                     leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
                     title: 'Settings',
                     isSelected: _activeScreen == DashboardScreen.emailsSettings,
-                    onTap: () => setState(() => _activeScreen = DashboardScreen.emailsSettings),
+                    onTap: () => setState(
+                        () => _activeScreen = DashboardScreen.emailsSettings),
                   ),
                 ],
               ),
@@ -91,7 +101,8 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
                 leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
                 title: 'Settings',
                 isSelected: _activeScreen == DashboardScreen.settings,
-                onTap: () => setState(() => _activeScreen = DashboardScreen.settings),
+                onTap: () =>
+                    setState(() => _activeScreen = DashboardScreen.settings),
               ),
             ],
             footer: ImpaktfullUiSimpleListItem(
