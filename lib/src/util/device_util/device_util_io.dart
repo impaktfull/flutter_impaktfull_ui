@@ -14,7 +14,8 @@ class DeviceUtil {
   static bool isIos() => Platform.isIOS;
 
   // Desktop
-  static bool isDesktop() => Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+  static bool isDesktop() =>
+      Platform.isMacOS || Platform.isWindows || Platform.isLinux;
 
   static bool isMacOs() => Platform.isMacOS;
 

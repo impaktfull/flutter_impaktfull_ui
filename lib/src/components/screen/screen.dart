@@ -66,7 +66,7 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
                     title: title,
                     subtitle: subtitle,
                     actions: actions,
-                    bottomChild: bottomChild,
+                    bottomChild: bottomNavBarChild,
                   ),
                 ],
                 Expanded(

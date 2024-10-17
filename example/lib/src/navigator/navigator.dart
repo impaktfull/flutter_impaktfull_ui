@@ -16,7 +16,8 @@ class ImpaktfullUiNavigator {
 
   ImpaktfullUiNavigator._();
 
-  static ImpaktfullUiNavigator get instance => _instance ??= ImpaktfullUiNavigator._();
+  static ImpaktfullUiNavigator get instance =>
+      _instance ??= ImpaktfullUiNavigator._();
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     final name = settings.name;
@@ -63,7 +64,8 @@ class ImpaktfullUiNavigator {
 
   void goToComponents() => navigatorKey.currentState?.pushNamed('/components');
 
-  void goToComponent(ComponentLibraryItem item) => navigatorKey.currentState?.pushNamed('/components/${item.slug}');
+  void goToComponent(ComponentLibraryItem item) =>
+      navigatorKey.currentState?.pushNamed('/components/${item.slug}');
 
   void goBack() => navigatorKey.currentState?.pop();
 }
