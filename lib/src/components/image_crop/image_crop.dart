@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
@@ -69,11 +68,8 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
       ),
       width: widget.size,
       height: widget.size,
-      rotation: 0,
       scale: 1,
       position: Offset.zero,
-      isFlippedHorizontal: false,
-      isFlippedVertical: false,
       backgroundColor: widget.backgroundColor,
     );
     _controller = widget.controller ?? ImpaktfullUiImageCropController();
@@ -161,25 +157,16 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                               child: Transform(
                                 transform: Matrix4.identity()
                                   ..translate(_cropInfo.position.dx, _cropInfo.position.dy)
-                                  ..scale(_cropInfo.scale)
-                                  ..rotateZ(_cropInfo.rotation),
+                                  ..scale(_cropInfo.scale),
                                 alignment: Alignment.center,
-                                child: Transform(
-                                  transform: Matrix4.identity()
-                                    ..scale(
-                                      _cropInfo.isFlippedHorizontal ? -1.0 : 1.0,
-                                      _cropInfo.isFlippedVertical ? -1.0 : 1.0,
-                                    ),
-                                  alignment: Alignment.center,
-                                  child: Builder(builder: (context) {
-                                    if (widget.imageUrl != null) {
-                                      return Image.network(
-                                        widget.imageUrl!,
-                                      );
-                                    }
-                                    throw Exception('Image not found');
-                                  }),
-                                ),
+                                child: Builder(builder: (context) {
+                                  if (widget.imageUrl != null) {
+                                    return Image.network(
+                                      widget.imageUrl!,
+                                    );
+                                  }
+                                  throw Exception('Image not found');
+                                }),
                               ),
                             ),
                           ),
@@ -202,18 +189,13 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                   children: [
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
-                      onTap: _onRotateTapped,
-                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.arrowClockwise()),
+                      onTap: _onZoomInTapped,
+                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlassPlus()),
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
-                      onTap: _onFlipHorizontalTapped,
-                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.flipHorizontal()),
-                    ),
-                    ImpaktfullUiButton(
-                      type: ImpaktfullUiButtonType.secondaryGrey,
-                      onTap: _onFlipVerticalTapped,
-                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.flipVertical()),
+                      onTap: _onZoomOutTapped,
+                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlassMinus()),
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
@@ -258,32 +240,23 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
     setState(() {
       _cropInfo = _cropInfo.copyWith(
         scale: (_cropInfo.scale * details.scale).clamp(0.5, 3.0),
-        rotation: _cropInfo.rotation + details.rotation,
         position: _cropInfo.position + details.focalPointDelta,
       );
     });
   }
 
-  void _onFlipHorizontalTapped() {
+  void _onZoomInTapped() {
     setState(() {
       _cropInfo = _cropInfo.copyWith(
-        isFlippedHorizontal: !_cropInfo.isFlippedHorizontal,
+        scale: _cropInfo.scale + 0.1,
       );
     });
   }
 
-  void _onFlipVerticalTapped() {
+  void _onZoomOutTapped() {
     setState(() {
       _cropInfo = _cropInfo.copyWith(
-        isFlippedVertical: !_cropInfo.isFlippedVertical,
-      );
-    });
-  }
-
-  void _onRotateTapped() {
-    setState(() {
-      _cropInfo = _cropInfo.copyWith(
-        rotation: _cropInfo.rotation + (pi / 2),
+        scale: _cropInfo.scale - 0.1,
       );
     });
   }

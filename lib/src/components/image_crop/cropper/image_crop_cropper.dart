@@ -142,11 +142,9 @@ class ImpaktfullUiImageCropCropper {
     _setUserChanges(canvas, cropInfo);
 
     // Calculate the position offset after rotation
-    final positionOffset = _calculateRotatedOffset(
-      cropInfo.position,
-      cropInfo.rotation,
-      imageScaleX,
-      imageScaleY,
+    final positionOffset = Offset(
+      -cropInfo.position.dx * imageScaleX / cropInfo.scale,
+      -cropInfo.position.dy * imageScaleY / cropInfo.scale,
     );
 
     // Translate the canvas back to the top-left corner of the image
@@ -193,41 +191,8 @@ class ImpaktfullUiImageCropCropper {
   }
 
   void _setUserChanges(ui.Canvas canvas, ImpaktfullUiImageCropInfo cropInfo) {
-    // Set the correct rotation
-    canvas.rotate(cropInfo.rotation);
-    // Flip horizontally if needed
-    if (cropInfo.isFlippedHorizontal) {
-      canvas.scale(-1, 1);
-    }
-    // Flip vertically if needed
-    if (cropInfo.isFlippedVertical) {
-      canvas.scale(1, -1);
-    }
     // Scale the image
     canvas.scale(cropInfo.scale);
-  }
-
-  Offset _calculateRotatedOffset(
-    Offset position,
-    double rotation,
-    double scaleX,
-    double scaleY,
-  ) {
-    final dx = position.dx * scaleX;
-    final dy = position.dy * scaleY;
-    if (rotation == 0) {
-      return Offset(
-        -dx,
-        -dy,
-      );
-    } else {
-      final cosTheta = cos(rotation);
-      final sinTheta = sin(rotation);
-      return Offset(
-        dx * cosTheta - dy * sinTheta,
-        dx * sinTheta + dy * cosTheta,
-      );
-    }
   }
 
   Future<ui.Image> downloadImage(String imageUrl) async {
