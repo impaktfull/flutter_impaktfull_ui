@@ -106,10 +106,6 @@ class ImpaktfullUiImageCropCropper {
       cropedImageWidth,
       cropedImageHeight,
     );
-    final positionOffset = Offset(
-      -cropInfo.position.dx * imageScaleX,
-      -cropInfo.position.dy * imageScaleY,
-    );
 
     final fullCroppedImageRect = Rect.fromLTWH(
       0,
@@ -145,6 +141,14 @@ class ImpaktfullUiImageCropCropper {
     // Set the user changes (rotation, flip, scale)
     _setUserChanges(canvas, cropInfo);
 
+    // Calculate the position offset after rotation
+    final positionOffset = _calculateRotatedOffset(
+      cropInfo.position,
+      cropInfo.rotation,
+      imageScaleX,
+      imageScaleY,
+    );
+
     // Translate the canvas back to the top-left corner of the image
     // This is necessary because we previously translated to the center for rotation and scaling
     // Now we need to move back so the image is drawn in the correct position
@@ -153,7 +157,7 @@ class ImpaktfullUiImageCropCropper {
       -(fullCroppedImageRect.height / 2),
     );
 
-    // Draw the image, taking the position into account
+    // Draw the image, taking the rotated position into account
     canvas.drawImageRect(
       imageToCrop,
       Rect.fromLTWH(
@@ -201,6 +205,29 @@ class ImpaktfullUiImageCropCropper {
     }
     // Scale the image
     canvas.scale(cropInfo.scale);
+  }
+
+  Offset _calculateRotatedOffset(
+    Offset position,
+    double rotation,
+    double scaleX,
+    double scaleY,
+  ) {
+    final dx = position.dx * scaleX;
+    final dy = position.dy * scaleY;
+    if (rotation == 0) {
+      return Offset(
+        -dx,
+        -dy,
+      );
+    } else {
+      final cosTheta = cos(rotation);
+      final sinTheta = sin(rotation);
+      return Offset(
+        dx * cosTheta - dy * sinTheta,
+        dx * sinTheta + dy * cosTheta,
+      );
+    }
   }
 
   Future<ui.Image> downloadImage(String imageUrl) async {
