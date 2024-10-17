@@ -35,6 +35,14 @@ class HomeScreen extends StatelessWidget {
             ),
             onTap: () => ImpaktfullUiNavigator.instance.goToComponents(),
           ),
+          ActionCard(
+            label: 'Examples',
+            asset: const ImpaktfullUiAsset.pixel(
+              'examples.png',
+              directory: 'assets/images/supporting',
+            ),
+            onTap: () => ImpaktfullUiNavigator.instance.goToExamples(),
+          ),
         ],
         itemBuilder: (context, item, index) => item,
       ),

@@ -55,48 +55,50 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
         return PopScope(
           onPopInvokedWithResult: (didPop, result) => onPopInvoked?.call(),
           canPop: canPop,
-          child: Scaffold(
-            backgroundColor: componentTheme.colors.background,
-            body: ImpaktfullUiAutoLayout.vertical(
-              children: [
-                if (hasNavbar) ...[
-                  ImpaktfullUiNavBar(
-                    onBackTapped: onBackTapped,
-                    isFullScreen: isFullScreen,
-                    title: title,
-                    subtitle: subtitle,
-                    actions: actions,
-                    bottomChild: bottomNavBarChild,
-                  ),
-                ],
-                Expanded(
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: MediaQuery.removePadding(
-                      context: context,
-                      removeTop: hasNavbar,
-                      removeBottom: hasBottomChild,
-                      child: Stack(
-                        alignment: fabAlignment,
-                        children: [
-                          Positioned.fill(
-                            child: SizedBox(
-                              child: child,
+          child: ClipRect(
+            child: Scaffold(
+              backgroundColor: componentTheme.colors.background,
+              body: ImpaktfullUiAutoLayout.vertical(
+                children: [
+                  if (hasNavbar) ...[
+                    ImpaktfullUiNavBar(
+                      onBackTapped: onBackTapped,
+                      isFullScreen: isFullScreen,
+                      title: title,
+                      subtitle: subtitle,
+                      actions: actions,
+                      bottomChild: bottomNavBarChild,
+                    ),
+                  ],
+                  Expanded(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: MediaQuery.removePadding(
+                        context: context,
+                        removeTop: hasNavbar,
+                        removeBottom: hasBottomChild,
+                        child: Stack(
+                          alignment: fabAlignment,
+                          children: [
+                            Positioned.fill(
+                              child: SizedBox(
+                                child: child,
+                              ),
                             ),
-                          ),
-                          if (fab != null) ...[
-                            Padding(
-                              padding: const EdgeInsets.all(16),
-                              child: fab!,
-                            ),
+                            if (fab != null) ...[
+                              Padding(
+                                padding: const EdgeInsets.all(16),
+                                child: fab!,
+                              ),
+                            ],
                           ],
-                        ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                if (bottomChild != null) bottomChild!,
-              ],
+                  if (bottomChild != null) bottomChild!,
+                ],
+              ),
             ),
           ),
         );

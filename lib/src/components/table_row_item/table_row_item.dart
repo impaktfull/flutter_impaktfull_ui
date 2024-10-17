@@ -7,6 +7,7 @@ import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dar
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item_type.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
 
 export 'table_row_item_style.dart';
 
@@ -55,13 +56,13 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
   const ImpaktfullUiTableRowItem.badge({
     required String this.title,
     this.badgeType,
-    this.subtitle,
     this.padding = const EdgeInsets.symmetric(
       horizontal: 16,
     ),
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableRowItemType.badge,
+        subtitle = null,
         builder = null,
         onTap = null,
         onChanged = null,
@@ -126,22 +127,29 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
                     ),
                   ),
                 ],
-                ImpaktfullUiAutoLayout.vertical(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (title != null) ...[
-                      Text(
-                        title!,
-                        style: componentTheme.textStyles.title,
-                      ),
+                Expanded(
+                  child: ImpaktfullUiAutoLayout.vertical(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (title != null) ...[
+                        Text(
+                          title!,
+                          style: componentTheme.textStyles.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                      if (subtitle != null) ...[
+                        Text(
+                          subtitle!,
+                          style: componentTheme.textStyles.subtitle
+                              .withOpacity(0.5),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ],
-                    if (subtitle != null) ...[
-                      Text(
-                        subtitle!,
-                        style: componentTheme.textStyles.subtitle,
-                      ),
-                    ],
-                  ],
+                  ),
                 ),
               ],
             ),
