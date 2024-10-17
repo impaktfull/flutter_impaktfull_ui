@@ -55,13 +55,27 @@ class ImpaktfullUiImageCropCropper {
     final imageWidth = imageToCrop.width.toDouble();
     final imageHeight = imageToCrop.height.toDouble();
     final imageAspectRatio = imageWidth / imageHeight;
+    final cropAspectRatio = cropInfo.width / cropInfo.height;
+
+    // Calculate scale factors considering aspect ratios
+    double imageScaleX;
+    double imageScaleY;
+    if (imageAspectRatio > cropAspectRatio) {
+      imageScaleY = imageHeight / cropInfo.height;
+      imageScaleX = imageScaleY;
+    } else if (imageAspectRatio < cropAspectRatio) {
+      imageScaleX = imageWidth / cropInfo.width;
+      imageScaleY = imageScaleX;
+    } else {
+      imageScaleX = imageWidth / cropInfo.width;
+      imageScaleY = imageHeight / cropInfo.height;
+    }
 
     // Crop rect padding info
     final cropRectScaleX = cropInfo.width / cropRect.width;
     final cropRectScaleY = cropInfo.height / cropRect.height;
 
     // Crop rect info
-    final cropAspectRatio = cropRect.width / cropRect.height;
     double croppedRectHeight;
     double croppedRectWidth;
     if (cropAspectRatio > 1) {
@@ -91,6 +105,10 @@ class ImpaktfullUiImageCropCropper {
       spacingY,
       cropedImageWidth,
       cropedImageHeight,
+    );
+    final positionOffset = Offset(
+      -cropInfo.position.dx * imageScaleX,
+      -cropInfo.position.dy * imageScaleY,
     );
 
     final fullCroppedImageRect = Rect.fromLTWH(
@@ -135,7 +153,7 @@ class ImpaktfullUiImageCropCropper {
       -(fullCroppedImageRect.height / 2),
     );
 
-    // Draw the image
+    // Draw the image, taking the position into account
     canvas.drawImageRect(
       imageToCrop,
       Rect.fromLTWH(
@@ -145,8 +163,8 @@ class ImpaktfullUiImageCropCropper {
         imageHeight,
       ),
       Rect.fromLTWH(
-        spacingX,
-        spacingY,
+        spacingX - positionOffset.dx,
+        spacingY - positionOffset.dy,
         imageRect.width,
         imageRect.height,
       ),
@@ -155,11 +173,8 @@ class ImpaktfullUiImageCropCropper {
 
     canvas.restore();
 
-    print('fullCroppedImageRect: (${fullCroppedImageRect.width}, ${fullCroppedImageRect.height})');
-    print('=========================');
-
     // Take a picture of the canvas of the biggest possible square size
-    // If the image is bigger than the crop rect, the smalles width/height of the image should be used.
+    // If the image is bigger than the crop rect, the smallest width/height of the image should be used.
     return recorder.endRecording().toImage(
           fullCroppedImageRect.width.toInt(),
           fullCroppedImageRect.height.toInt(),
