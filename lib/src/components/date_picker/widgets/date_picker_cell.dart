@@ -8,6 +8,7 @@ enum ImpaktfullUiDatePickerCellType {
   start,
   between,
   end,
+  today,
 }
 
 class ImpaktfullUiDatePickerCell extends StatelessWidget {
@@ -38,6 +39,7 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
         onTap: onTap,
         color: _getBackgroundColor(componentTheme),
         borderRadius: _getBorderRadius(componentTheme),
+        border: _getBorder(componentTheme),
         child: Center(
           child: SizedBox(
             width: fullWidth ? double.infinity : 40,
@@ -65,6 +67,23 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
         return componentTheme.dimens.borderRadiusRangeBetween;
       case ImpaktfullUiDatePickerCellType.end:
         return componentTheme.dimens.borderRadiusRangeEnd;
+      case ImpaktfullUiDatePickerCellType.today:
+        return componentTheme.dimens.borderRadius;
+    }
+  }
+
+  Border? _getBorder(ImpaktfullUiDatePickerTheme componentTheme) {
+    switch (type) {
+      case ImpaktfullUiDatePickerCellType.today:
+        return Border.all(
+          color: componentTheme.colors.selected,
+          width: 2,
+        );
+      case ImpaktfullUiDatePickerCellType.single:
+      case ImpaktfullUiDatePickerCellType.start:
+      case ImpaktfullUiDatePickerCellType.between:
+      case ImpaktfullUiDatePickerCellType.end:
+        return null;
     }
   }
 

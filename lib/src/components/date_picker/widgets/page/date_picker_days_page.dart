@@ -100,13 +100,26 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
   ImpaktfullUiDatePickerCellType _getCellType(DateTime item) {
     final startDate = selectedStartDate;
     final endDate = selectedEndDate;
-    if (startDate == null) return ImpaktfullUiDatePickerCellType.single;
-    if (endDate == null) return ImpaktfullUiDatePickerCellType.single;
+    if (startDate == null) {
+      if (item.isSameDay(DateTime.now())) {
+        return ImpaktfullUiDatePickerCellType.today;
+      }
+      return ImpaktfullUiDatePickerCellType.single;
+    }
+    if (endDate == null) {
+      if (item.isSameDay(DateTime.now())) {
+        return ImpaktfullUiDatePickerCellType.today;
+      }
+      return ImpaktfullUiDatePickerCellType.single;
+    }
     if (item.isSameDay(startDate)) return ImpaktfullUiDatePickerCellType.start;
     if (item.isAfter(startDate) && item.isBefore(endDate)) {
       return ImpaktfullUiDatePickerCellType.between;
     }
     if (item.isSameDay(endDate)) return ImpaktfullUiDatePickerCellType.end;
+    if (item.isSameDay(DateTime.now())) {
+      return ImpaktfullUiDatePickerCellType.today;
+    }
     return ImpaktfullUiDatePickerCellType.single;
   }
 }
