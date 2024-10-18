@@ -60,6 +60,7 @@ import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
 import 'package:impaktfull_ui_2/src/components/number_input/number_input.dart';
+import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state.dart';
 
 abstract class ImpaktfullUiComponentTheme {
   const ImpaktfullUiComponentTheme();
@@ -102,6 +103,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
   final ImpaktfullUiNumberInputTheme numberInput;
   final ImpaktfullUiPaginationTheme pagination;
+  final ImpaktfullUiPlaceholderStateTheme placeholderState;
   final ImpaktfullUiProgressIndicatorTheme progressIndicator;
   final ImpaktfullUiRadioButtonTheme radioButton;
   final ImpaktfullUiRadioButtonListItemTheme radioButtonListItem;
@@ -165,6 +167,7 @@ class ImpaktfullUiComponentsTheme {
     required this.notificationBadge,
     required this.numberInput,
     required this.pagination,
+    required this.placeholderState,
     required this.progressIndicator,
     required this.radioButton,
     required this.radioButtonListItem,
@@ -229,6 +232,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
     ImpaktfullUiNumberInputTheme? numberInput,
     ImpaktfullUiPaginationTheme? pagination,
+    ImpaktfullUiPlaceholderStateTheme? placeholderState,
     ImpaktfullUiProgressIndicatorTheme? progressIndicator,
     ImpaktfullUiRadioButtonTheme? radioButton,
     ImpaktfullUiRadioButtonListItemTheme? radioButtonListItem,
@@ -292,6 +296,7 @@ class ImpaktfullUiComponentsTheme {
         notificationBadge: notificationBadge ?? this.notificationBadge,
         numberInput: numberInput ?? this.numberInput,
         pagination: pagination ?? this.pagination,
+        placeholderState: placeholderState ?? this.placeholderState,
         progressIndicator: progressIndicator ?? this.progressIndicator,
         radioButton: radioButton ?? this.radioButton,
         radioButtonListItem: radioButtonListItem ?? this.radioButtonListItem,
@@ -395,6 +400,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiProgressIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiPaginationTheme) {
       return ImpaktfullUiPaginationTheme.of(context) as T;
+    } else if (T == ImpaktfullUiPlaceholderStateTheme) {
+      return ImpaktfullUiPlaceholderStateTheme.of(context) as T;
     } else if (T == ImpaktfullUiRadioButtonTheme) {
       return ImpaktfullUiRadioButtonTheme.of(context) as T;
     } else if (T == ImpaktfullUiRadioButtonListItemTheme) {

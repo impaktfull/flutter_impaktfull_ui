@@ -43,6 +43,7 @@ export 'src/components/number_input/number_input.dart';
 export 'src/components/page_route/adaptive/adaptive_page_route.dart';
 export 'src/components/page_route/desktop_page_route.dart';
 export 'src/components/pagination/pagination.dart';
+export 'src/components/placeholder_state/placeholder_state.dart';
 export 'src/components/progress_indicator/progress_indicator.dart';
 export 'src/components/radio_button/radio_button.dart';
 export 'src/components/radio_button_list_item/radio_button_list_item.dart';

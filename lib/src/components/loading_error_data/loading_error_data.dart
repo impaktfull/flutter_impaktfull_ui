@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/loading_error_data/loading_error_data_style.dart';
-import 'package:impaktfull_ui_2/src/components/loading_error_data/widget/loading_error_data_info.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
@@ -54,13 +54,13 @@ class ImpaktfullUiLoadingErrorData extends StatelessWidget
           return const ImpaktfullUiLoadingIndicator();
         }
         if (errorAsset != null || errorTitle != null || errorMessage != null) {
-          return ImpaktfullUiLoadingErrorDataInfo(
+          return ImpaktfullUiPlaceholderState(
             asset: errorAsset,
             assetBuilder: errorAssetBuilder,
             title: errorTitle,
-            errorMessage: errorMessage,
+            subtitle: errorMessage,
             titleStyle: componentTheme.textStyles.errorTitle,
-            messageStyle: componentTheme.textStyles.errorMessage,
+            subtitleStyle: componentTheme.textStyles.errorMessage,
             actions: errorActions,
           );
         }
@@ -68,13 +68,13 @@ class ImpaktfullUiLoadingErrorData extends StatelessWidget
             (noDataAsset != null ||
                 noDataTitle != null ||
                 noDataMessage != null)) {
-          return ImpaktfullUiLoadingErrorDataInfo(
+          return ImpaktfullUiPlaceholderState(
             asset: noDataAsset,
             assetBuilder: noDataAssetBuilder,
             title: noDataTitle,
-            errorMessage: noDataMessage,
+            subtitle: noDataMessage,
             titleStyle: componentTheme.textStyles.noDataTitle,
-            messageStyle: componentTheme.textStyles.noDataMessage,
+            subtitleStyle: componentTheme.textStyles.noDataMessage,
             actions: noDataActions,
           );
         }

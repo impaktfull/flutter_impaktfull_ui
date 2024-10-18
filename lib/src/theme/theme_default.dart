@@ -35,6 +35,7 @@ import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/number_input/number_input.dart';
 import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
+import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state.dart';
 import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator_style.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
@@ -787,6 +788,15 @@ class DefaultTheme {
           dimens: const ImpaktfullUiPaginationDimensTheme(),
           textStyles: ImpaktfullUiPaginationTextStyleTheme(
             text: textStyles.onCard.text.small,
+          ),
+        ),
+        placeholderState: ImpaktfullUiPlaceholderStateTheme(
+          assets: const ImpaktfullUiPlaceholderStateAssetsTheme(),
+          colors: const ImpaktfullUiPlaceholderStateColorTheme(),
+          dimens: const ImpaktfullUiPlaceholderStateDimensTheme(),
+          textStyles: ImpaktfullUiPlaceholderStateTextStyleTheme(
+            title: textStyles.onCanvas.display.small.semiBold,
+            subtitle: textStyles.onCanvas.text.small.light,
           ),
         ),
         progressIndicator: ImpaktfullUiProgressIndicatorTheme(

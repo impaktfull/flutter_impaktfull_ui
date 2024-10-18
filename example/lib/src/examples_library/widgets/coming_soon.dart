@@ -10,11 +10,10 @@ class ExampleComingSoon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiScreen(
-      child: ImpaktfullUiLoadingErrorData(
-        isLoading: false,
-        noDataTitle: 'Coming soon',
-        noDataMessage: 'This example page has not been implemented yet.',
-        noDataAssetBuilder: (context) => Center(
+      child: ImpaktfullUiPlaceholderState(
+        title: 'Coming soon',
+        subtitle: 'This example page has not been implemented yet.',
+        assetBuilder: (context) => Center(
           child: Container(
             decoration: BoxDecoration(
               color: theme.colors.accent,
@@ -26,10 +25,6 @@ class ExampleComingSoon extends StatelessWidget {
               color: theme.colors.textOnAccent,
             ),
           ),
-        ),
-        items: const [],
-        builder: (context) => const Center(
-          child: Text('Coming soon'),
         ),
       ),
     );
