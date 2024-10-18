@@ -5,7 +5,7 @@ extension EdgeInsetsGeometryExtension on EdgeInsetsGeometry {
     if (this is EdgeInsetsDirectional) {
       return (this as EdgeInsetsDirectional).start;
     }
-    return (this as EdgeInsets).start;
+    return (this as EdgeInsets).left;
   }
 
   double get end {

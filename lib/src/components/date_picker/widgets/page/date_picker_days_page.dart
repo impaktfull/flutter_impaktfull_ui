@@ -30,12 +30,15 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDatePickerTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ImpaktfullUiDatePickerWeekdays(
             startDate: weekdaysStartDate,
             theme: componentTheme,
           ),
-          Expanded(
+          Flexible(
+            flex: 1,
+            fit: FlexFit.loose,
             child: SizedBox(
               height: 280,
               child: ImpaktfullUiGridView.builder(

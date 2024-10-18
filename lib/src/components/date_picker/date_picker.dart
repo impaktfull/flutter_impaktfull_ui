@@ -8,6 +8,7 @@ import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_p
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/util/extension/edge_insets_geometry_extension.dart';
 import 'package:intl/intl.dart';
 
 export 'date_picker_style.dart';
@@ -63,7 +64,9 @@ class ImpaktfullUiDatePicker extends StatefulWidget
       hasClose: false,
       hasBlurredBackground: hasBlurredBackground,
       isDismissible: isDismissible,
+      width: 310,
       rootNavigator: rootNavigator,
+      childPadding: const EdgeInsets.only(top: 16),
       actions: [
         ImpaktfullUiButton(
           type: ImpaktfullUiButtonType.secondaryGrey,
@@ -78,14 +81,13 @@ class ImpaktfullUiDatePicker extends StatefulWidget
           },
         ),
       ],
-      child: Center(
-        child: StatefulBuilder(
-          builder: (context, setState) => ImpaktfullUiDatePicker(
-            selectedDate: newDate,
-            onDateChanged: (value) {
-              setState(() => newDate = value);
-            },
-          ),
+      child: StatefulBuilder(
+        builder: (context, setState) => ImpaktfullUiDatePicker(
+          selectedDate: newDate,
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          onDateChanged: (value) {
+            setState(() => newDate = value);
+          },
         ),
       ),
     );
@@ -109,6 +111,8 @@ class ImpaktfullUiDatePicker extends StatefulWidget
       isDismissible: isDismissible,
       rootNavigator: rootNavigator,
       showDividers: showDividers,
+      width: 310,
+      childPadding: const EdgeInsets.only(top: 16),
       actions: [
         ImpaktfullUiButton(
           type: ImpaktfullUiButtonType.secondaryGrey,
@@ -130,14 +134,13 @@ class ImpaktfullUiDatePicker extends StatefulWidget
           },
         ),
       ],
-      child: Center(
-        child: StatefulBuilder(
-          builder: (context, setState) => ImpaktfullUiDatePicker.range(
-            selectedStartDate: newStartDate,
-            selectedEndDate: newEndDate,
-            onStartDateChanged: (value) => setState(() => newStartDate = value),
-            onEndDateChanged: (value) => setState(() => newEndDate = value),
-          ),
+      child: StatefulBuilder(
+        builder: (context, setState) => ImpaktfullUiDatePicker.range(
+          selectedStartDate: newStartDate,
+          selectedEndDate: newEndDate,
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          onStartDateChanged: (value) => setState(() => newStartDate = value),
+          onEndDateChanged: (value) => setState(() => newEndDate = value),
         ),
       ),
     );
@@ -190,64 +193,67 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDatePickerTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) {
-        return SizedBox(
-          width: 280 + widget.margin.horizontal,
-          height: 312 + widget.margin.vertical,
-          child: ImpaktfullUiAutoLayout.vertical(
-            spacing: 8,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: widget.margin,
-                child: ImpaktfullUiAutoLayout.horizontal(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 8,
-                  children: [
-                    ImpaktfullUiButton(
+      builder: (context, componentTheme) => SizedBox(
+        width: 280 + widget.margin.horizontal,
+        height: 312 + widget.margin.vertical,
+        child: ImpaktfullUiAutoLayout.vertical(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          spacing: 8,
+          children: [
+            Padding(
+              padding: widget.margin,
+              child: ImpaktfullUiAutoLayout.horizontal(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 8,
+                children: [
+                  ImpaktfullUiButton(
+                    type: ImpaktfullUiButtonType.tertiaryGrey,
+                    leadingAsset: componentTheme.assets.arrowLeft,
+                    onTap: _onPreviousTapped,
+                  ),
+                  Expanded(
+                    child: ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.tertiaryGrey,
-                      leadingAsset: componentTheme.assets.arrowLeft,
-                      onTap: _onPreviousTapped,
+                      title: _formatDate(_activeDate),
+                      onTap: _onHeaderTitleTapped,
                     ),
-                    Expanded(
-                      child: ImpaktfullUiButton(
-                        type: ImpaktfullUiButtonType.tertiaryGrey,
-                        title: _formatDate(_activeDate),
-                        onTap: _onHeaderTitleTapped,
-                      ),
-                    ),
-                    ImpaktfullUiButton(
-                      type: ImpaktfullUiButtonType.tertiaryGrey,
-                      leadingAsset: componentTheme.assets.arrowRight,
-                      onTap: _onNextTapped,
-                    ),
-                  ],
-                ),
+                  ),
+                  ImpaktfullUiButton(
+                    type: ImpaktfullUiButtonType.tertiaryGrey,
+                    leadingAsset: componentTheme.assets.arrowRight,
+                    onTap: _onNextTapped,
+                  ),
+                ],
               ),
-              Expanded(
-                child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: initialPage * 2,
-                  itemBuilder: (context, index) {
-                    final date = _getPageDate(index);
-                    return ImpaktfullUiDatePickerPage(
-                      date: date,
-                      activeType: _activeType,
-                      selectedStartDate: widget.selectedStartDate,
-                      selectedEndDate: widget.selectedEndDate,
-                      margin: widget.margin,
-                      onStartDateChanged: widget.onStartDateChanged,
-                      onEndDateChanged: widget.onEndDateChanged,
-                      onChangeActiveType: _onActiveTypeChanged,
-                      theme: componentTheme,
-                    );
-                  },
-                ),
+            ),
+            Flexible(
+              fit: FlexFit.loose,
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: initialPage * 2,
+                itemBuilder: (context, index) {
+                  final date = _getPageDate(index);
+                  return ImpaktfullUiDatePickerPage(
+                    date: date,
+                    activeType: _activeType,
+                    selectedStartDate: widget.selectedStartDate,
+                    selectedEndDate: widget.selectedEndDate,
+                    margin: EdgeInsetsDirectional.only(
+                      start: widget.margin.start,
+                      end: widget.margin.end,
+                    ),
+                    onStartDateChanged: widget.onStartDateChanged,
+                    onEndDateChanged: widget.onEndDateChanged,
+                    onChangeActiveType: _onActiveTypeChanged,
+                    theme: componentTheme,
+                  );
+                },
               ),
-            ],
-          ),
-        );
-      },
+            ),
+          ],
+        ),
+      ),
     );
   }
 

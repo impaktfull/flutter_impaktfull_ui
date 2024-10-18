@@ -172,6 +172,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                       child: SizedBox(
                         width: width,
                         child: ImpaktfullUiAutoLayout.vertical(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Stack(
