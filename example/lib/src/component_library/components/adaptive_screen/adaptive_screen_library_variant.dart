@@ -4,14 +4,16 @@ import 'package:impaktfull_ui_example/src/component_library/components/adaptive_
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class AdaptiveScreenLibraryVariant extends ComponentLibraryVariant<AdaptiveScreenLibraryPrimaryInputs> {
+class AdaptiveScreenLibraryVariant
+    extends ComponentLibraryVariant<AdaptiveScreenLibraryPrimaryInputs> {
   const AdaptiveScreenLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, AdaptiveScreenLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, AdaptiveScreenLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         height: 500,
@@ -42,7 +44,8 @@ class AdaptiveScreenLibraryVariant extends ComponentLibraryVariant<AdaptiveScree
   }
 
   @override
-  AdaptiveScreenLibraryPrimaryInputs inputs() => AdaptiveScreenLibraryPrimaryInputs();
+  AdaptiveScreenLibraryPrimaryInputs inputs() =>
+      AdaptiveScreenLibraryPrimaryInputs();
 }
 
 class AdaptiveScreenLibraryPrimaryInputs extends AdaptiveScreenLibraryInputs {}

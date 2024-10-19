@@ -10,7 +10,8 @@ export 'model/adaptive_nav_bar_action_type.dart';
 
 part 'adaptive_nav_bar.describe.dart';
 
-class ImpaktfullUiAdaptiveNavBar extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;

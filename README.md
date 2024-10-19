@@ -38,6 +38,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiAccordion
 - ImpaktfullUiAdaptiveNavBar
 - ImpaktfullUiAdaptiveNavBarAction
+- ImpaktfullUiAdaptiveScreen
 - ImpaktfullUiAdaptivePageRoute
 - ImpaktfullUiAdaptiveSafeArea
 - ImpaktfullUiApp
@@ -224,7 +225,6 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - [ ] Add addaptive components
 
   - ImpaktfullUiMasterDetail
-  - ImpaktfullUiAdaptiveScreen
   - ImpaktfullUiAdaptiveNavigation
   - ImpaktfullUiAdaptiveRoute
   - ImpaktfullUiAdaptiveModalRoute

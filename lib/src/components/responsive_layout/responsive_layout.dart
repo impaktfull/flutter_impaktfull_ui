@@ -7,7 +7,8 @@ export 'responsive_layout_style.dart';
 
 part 'responsive_layout.describe.dart';
 
-class ImpaktfullUiResponsiveLayout extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiResponsiveLayout extends StatelessWidget
+    with ComponentDescriptorMixin {
   final WidgetBuilder small;
   final WidgetBuilder? medium;
   final WidgetBuilder? large;
@@ -34,9 +35,14 @@ class ImpaktfullUiResponsiveLayout extends StatelessWidget with ComponentDescrip
         } else if (screenSize.width < componentTheme.dimens.breakpointMedium) {
           return medium?.call(context) ?? small(context);
         } else if (screenSize.width < componentTheme.dimens.breakpointLarge) {
-          return large?.call(context) ?? medium?.call(context) ?? small(context);
+          return large?.call(context) ??
+              medium?.call(context) ??
+              small(context);
         } else {
-          return extraLarge?.call(context) ?? large?.call(context) ?? medium?.call(context) ?? small(context);
+          return extraLarge?.call(context) ??
+              large?.call(context) ??
+              medium?.call(context) ??
+              small(context);
         }
       },
     );

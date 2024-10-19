@@ -6,7 +6,8 @@ import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.d
 
 part 'adaptive_screen.describe.dart';
 
-class ImpaktfullUiAdaptiveScreen extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiAdaptiveScreen extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
