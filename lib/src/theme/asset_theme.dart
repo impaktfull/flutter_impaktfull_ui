@@ -1,4 +1,5 @@
 import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ImpaktfullUiAssetTheme {
@@ -61,7 +62,13 @@ class ImpaktfullUiAssetTheme {
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
               logout: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
+              moreHorizontal: ImpaktfullUiAsset.icon(PhosphorIcons.dotsThree()),
+              moreVertical:
+                  ImpaktfullUiAsset.icon(PhosphorIcons.dotsThreeVertical()),
               search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
+              share: ImpaktfullUiAsset.icon(DeviceUtil.isAndroid()
+                  ? PhosphorIcons.shareNetwork()
+                  : PhosphorIcons.export()),
               settings: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
               success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
               user: ImpaktfullUiAsset.icon(PhosphorIcons.user()),
@@ -179,10 +186,13 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset list;
   final ImpaktfullUiAsset logout;
   final ImpaktfullUiAsset minus;
+  final ImpaktfullUiAsset moreHorizontal;
+  final ImpaktfullUiAsset moreVertical;
   final ImpaktfullUiAsset cloudUpload;
   final ImpaktfullUiAsset user;
   final ImpaktfullUiAsset search;
   final ImpaktfullUiAsset settings;
+  final ImpaktfullUiAsset share;
   final ImpaktfullUiAsset success;
   final ImpaktfullUiAsset warning;
   final ImpaktfullUiAsset wysiwygBold;
@@ -222,8 +232,11 @@ class ImpaktfullUiIconTheme {
     required this.list,
     required this.logout,
     required this.minus,
+    required this.moreHorizontal,
+    required this.moreVertical,
     required this.search,
     required this.settings,
+    required this.share,
     required this.success,
     required this.cloudUpload,
     required this.user,
@@ -267,8 +280,11 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? list,
     ImpaktfullUiAsset? logout,
     ImpaktfullUiAsset? minus,
+    ImpaktfullUiAsset? moreHorizontal,
+    ImpaktfullUiAsset? moreVertical,
     ImpaktfullUiAsset? search,
     ImpaktfullUiAsset? settings,
+    ImpaktfullUiAsset? share,
     ImpaktfullUiAsset? success,
     ImpaktfullUiAsset? user,
     ImpaktfullUiAsset? warning,
@@ -310,8 +326,11 @@ class ImpaktfullUiIconTheme {
         list: list ?? this.list,
         logout: logout ?? this.logout,
         minus: minus ?? this.minus,
+        moreHorizontal: moreHorizontal ?? this.moreHorizontal,
+        moreVertical: moreVertical ?? this.moreVertical,
         search: search ?? this.search,
         settings: settings ?? this.settings,
+        share: share ?? this.share,
         success: success ?? this.success,
         user: user ?? this.user,
         warning: warning ?? this.warning,

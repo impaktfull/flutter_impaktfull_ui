@@ -79,6 +79,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiSimpleListItem
 - ImpaktfullUiLoadingErrorData
 - ImpaktfullUiLoadingIndicator
+- ImpaktfullUiMetric
 - ImpaktfullUiModal
 - ImpaktfullUiNavBar
 - ImpaktfullUiNetworkImage
@@ -163,6 +164,8 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - list
 - logout
 - minus
+- moreHorizontal
+- moreVertical
 - search
 - settings
 - success
@@ -184,19 +187,18 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - [ ] Add tests
 - [ ] Add extra components
 
-  - ImpaktfullUiDateTimePicker
-  - ImpaktfullUiDateTimePickerDialog
   - ImpaktfullUiSlider
   - ImpaktfullUiStepper
   - ImpaktfullUiSegmentedControll
   - ImpaktfullUiBreadcrumbs
   - ImpaktfullUiCalendar
-  - ImpaktfullUiMetrics
   - ImpaktfullUiLineChart
   - ImpaktfullUiQrCode
   - ImpaktfullUiBarCode
   - ImpaktfullUiBarChart
   - ImpaktfullUiPieChart
+  - ImpaktfullUiDateTimePicker
+  - ImpaktfullUiDateTimePickerDialog
   - ImpaktfullUiPasswordStrengthIndicator
   - ImpaktfullUiGallery
   - ImpaktfullUiStoryView

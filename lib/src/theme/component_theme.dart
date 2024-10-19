@@ -61,6 +61,7 @@ import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart'
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
 import 'package:impaktfull_ui_2/src/components/number_input/number_input.dart';
 import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state.dart';
+import 'package:impaktfull_ui_2/src/components/metric/metric.dart';
 
 abstract class ImpaktfullUiComponentTheme {
   const ImpaktfullUiComponentTheme();
@@ -129,6 +130,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiTimePickerTheme timePicker;
   final ImpaktfullUiTooltipTheme tooltip;
   final ImpaktfullUiWysiwygTheme wysiwyg;
+  final ImpaktfullUiMetricTheme metric;
 
   ImpaktfullUiComponentsTheme({
     required this.accordion,
@@ -193,6 +195,7 @@ class ImpaktfullUiComponentsTheme {
     required this.timePicker,
     required this.tooltip,
     required this.wysiwyg,
+    required this.metric,
   });
 
   ImpaktfullUiComponentsTheme copyWith({
@@ -258,6 +261,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiTimePickerTheme? timePicker,
     ImpaktfullUiTooltipTheme? tooltip,
     ImpaktfullUiWysiwygTheme? wysiwyg,
+    ImpaktfullUiMetricTheme? metric,
   }) =>
       ImpaktfullUiComponentsTheme(
         accordion: accordion ?? this.accordion,
@@ -323,6 +327,7 @@ class ImpaktfullUiComponentsTheme {
         timePicker: timePicker ?? this.timePicker,
         tooltip: tooltip ?? this.tooltip,
         wysiwyg: wysiwyg ?? this.wysiwyg,
+        metric: metric ?? this.metric,
       );
 
   static T of<T extends ImpaktfullUiComponentTheme>(BuildContext context) {
@@ -384,6 +389,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiLoadingIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiMarkdownTheme) {
       return ImpaktfullUiMarkdownTheme.of(context) as T;
+    } else if (T == ImpaktfullUiMetricTheme) {
+      return ImpaktfullUiMetricTheme.of(context) as T;
     } else if (T == ImpaktfullUiModalTheme) {
       return ImpaktfullUiModalTheme.of(context) as T;
     } else if (T == ImpaktfullUiNavBarTheme) {

@@ -4,6 +4,7 @@ import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'badge_style.dart';
@@ -17,7 +18,9 @@ class ImpaktfullUiBadge extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiBadgeSize size;
   final String? label;
   final Widget? leading;
+  final ImpaktfullUiAsset? leadingAsset;
   final Widget? trailing;
+  final ImpaktfullUiAsset? trailingAsset;
   final VoidCallback? onTap;
   final VoidCallback? onCloseTap;
   final ImpaktfullUiBadgeTheme? theme;
@@ -27,7 +30,9 @@ class ImpaktfullUiBadge extends StatefulWidget with ComponentDescriptorMixin {
     required this.label,
     this.size = ImpaktfullUiBadgeSize.small,
     this.leading,
+    this.leadingAsset,
     this.trailing,
+    this.trailingAsset,
     this.onTap,
     this.onCloseTap,
     this.theme,
@@ -47,6 +52,10 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiBadgeTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
+        final hasLeading =
+            widget.leading != null || widget.leadingAsset != null;
+        final hasTrailing =
+            widget.trailing != null || widget.trailingAsset != null;
         final textColor = _getColor(componentTheme);
         final borderColor = _getBorderColor(componentTheme);
         final backgroundColor = _getBackgroundColor(componentTheme);
@@ -61,14 +70,14 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
             borderRadius: componentTheme.dimens.borderRadius,
           ),
           padding: EdgeInsets.only(
-            left: widget.leading == null
-                ? widget.size.horizontalPadding
-                : (widget.size.horizontalPadding / 2) -
-                    widget.size.paddingOffset,
-            right: widget.trailing == null
-                ? widget.size.horizontalPadding
-                : (widget.size.horizontalPadding / 2) -
-                    widget.size.paddingOffset,
+            left: hasLeading
+                ? (widget.size.horizontalPadding / 2) -
+                    widget.size.paddingOffset
+                : widget.size.horizontalPadding,
+            right: hasTrailing
+                ? (widget.size.horizontalPadding / 2) -
+                    widget.size.paddingOffset
+                : widget.size.horizontalPadding,
             top: widget.size.verticalPadding,
             bottom: widget.size.verticalPadding,
           ),
@@ -76,6 +85,15 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              if (widget.leadingAsset != null) ...[
+                _getWidgetOrIcon(
+                  ImpaktfullUiAssetWidget(
+                    asset: widget.leadingAsset!,
+                  ),
+                  textColor,
+                ),
+                SizedBox(width: widget.size.spacing),
+              ],
               if (widget.leading != null) ...[
                 _getWidgetOrIcon(widget.leading!, textColor),
                 SizedBox(width: widget.size.spacing),
@@ -99,6 +117,14 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                       color: textColor.withOpacity(0.66),
                     ),
                   ),
+                ),
+              ] else if (widget.trailingAsset != null) ...[
+                SizedBox(width: widget.size.spacing),
+                _getWidgetOrIcon(
+                  ImpaktfullUiAssetWidget(
+                    asset: widget.trailingAsset!,
+                  ),
+                  textColor,
                 ),
               ] else if (widget.trailing != null) ...[
                 SizedBox(width: widget.size.spacing),

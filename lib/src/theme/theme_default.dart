@@ -28,6 +28,7 @@ import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_error_data/loading_error_data.dart';
 import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/markdown/markdown.dart';
+import 'package:impaktfull_ui_2/src/components/metric/metric.dart';
 import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
 import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
@@ -64,6 +65,7 @@ import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
 import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
 import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -679,6 +681,28 @@ class DefaultTheme {
             alt: textStyles.onCanvas.text.small.medium,
             error: textStyles.onCanvas.text.extraSmall
                 .copyWith(color: colors.error),
+          ),
+        ),
+        metric: ImpaktfullUiMetricTheme(
+          assets: ImpaktfullUiMetricAssetsTheme(
+            more: DeviceUtil.isAndroid()
+                ? assets.icons.moreVertical
+                : assets.icons.moreHorizontal,
+          ),
+          colors: const ImpaktfullUiMetricColorTheme(),
+          dimens: const ImpaktfullUiMetricDimensTheme(),
+          textStyles: ImpaktfullUiMetricTextStyleTheme(
+            title: textStyles.onCard.text.small,
+            value: textStyles.onCard.text.extraLarge.medium,
+            value2Growth:
+                textStyles.onCard.text.small.copyWith(color: colors.success),
+            value2Neutral:
+                textStyles.onCard.text.small.copyWith(color: colors.text),
+            value2Decline:
+                textStyles.onCard.text.small.copyWith(color: colors.error),
+            value2Branded:
+                textStyles.onCard.text.small.copyWith(color: colors.accent),
+            value2Custom: textStyles.onCard.text.small,
           ),
         ),
         modal: ImpaktfullUiModalTheme(
