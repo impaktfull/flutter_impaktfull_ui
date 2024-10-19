@@ -1,6 +1,7 @@
 // Components
 export 'src/components/accordion/accordion.dart';
 export 'src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
+export 'src/components/adaptive_screen/adaptive_screen.dart';
 export 'src/components/adaptive_safe_area/adaptive_safe_area.dart';
 export 'src/components/app/app.dart';
 export 'src/components/asset/asset_widget.dart';

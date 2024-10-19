@@ -1,5 +1,6 @@
 import 'package:impaktfull_ui_example/src/component_library/components/accordion/accordion_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/adaptive_nav_bar/adaptive_nav_bar_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/adaptive_screen/adaptive_screen_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/asset/asset_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/auto_complete/auto_complete_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/autolayout/autolayout_library_item.dart';
@@ -71,6 +72,7 @@ class ComponentLibrary {
   final List<ComponentLibraryItem> components = [
     const AccordionLibraryItem(),
     const AdaptiveNavBarLibraryItem(),
+    const AdaptiveScreenLibraryItem(),
     const AssetLibraryItem(),
     const AutoCompleteLibraryItem(),
     const AutoLayoutLibraryItem(),

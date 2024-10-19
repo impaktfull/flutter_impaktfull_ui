@@ -9,12 +9,10 @@ class DashboardStoreProductsScreen extends StatefulWidget {
   });
 
   @override
-  State<DashboardStoreProductsScreen> createState() =>
-      _DashboardStoreProductsScreenState();
+  State<DashboardStoreProductsScreen> createState() => _DashboardStoreProductsScreenState();
 }
 
-class _DashboardStoreProductsScreenState
-    extends State<DashboardStoreProductsScreen> {
+class _DashboardStoreProductsScreenState extends State<DashboardStoreProductsScreen> {
   static const columnConfig = [
     TableColumnConfig(flex: 2),
     TableColumnConfig(flex: 1),
@@ -37,9 +35,9 @@ class _DashboardStoreProductsScreenState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiScreen(
+    return ImpaktfullUiAdaptiveScreen(
       title: 'Products',
-      child: Padding(
+      builder: (context) => Padding(
         padding: const EdgeInsets.all(32),
         child: ImpaktfullUiTable(
           columnConfig: columnConfig,
@@ -58,26 +56,19 @@ class _DashboardStoreProductsScreenState
                     title: i,
                     subtitle: i.hashCode % 4 == 0 ? 'New product' : null,
                   ),
-                  ImpaktfullUiTableRowItem.text(
-                      title: (i.hashCode % 100).toString()),
+                  ImpaktfullUiTableRowItem.text(title: (i.hashCode % 100).toString()),
                   ImpaktfullUiTableRowItem.badge(
-                    title: _verifiedList.contains(i)
-                        ? 'Sale disabled'
-                        : 'Active sale',
-                    badgeType: _verifiedList.contains(i)
-                        ? ImpaktfullUiBadgeType.error
-                        : ImpaktfullUiBadgeType.success,
+                    title: _verifiedList.contains(i) ? 'Sale disabled' : 'Active sale',
+                    badgeType: _verifiedList.contains(i) ? ImpaktfullUiBadgeType.error : ImpaktfullUiBadgeType.success,
                   ),
                   ImpaktfullUiTableRowItem.custom(
-                    builder: (context, theme) =>
-                        ImpaktfullUiAutoLayout.horizontal(
+                    builder: (context, theme) => ImpaktfullUiAutoLayout.horizontal(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         ImpaktfullUiIconButton(
                           onTap: () => _onEditTapped(i),
                           size: 20,
-                          asset: ImpaktfullUiAsset.icon(
-                              PhosphorIcons.pencilSimple()),
+                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
                         ),
                         ImpaktfullUiIconButton(
                           onTap: () => _onDeleteTapped(i),
