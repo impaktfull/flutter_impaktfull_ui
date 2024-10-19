@@ -23,73 +23,103 @@ class _DashboardStoreProductsScreenState
   ];
 
   final list = TestData.getProducts();
-  final _verifiedList = <String>{};
+  final _disabledSalesList = <String>{};
 
   @override
   void initState() {
     super.initState();
-    _verifiedList.add(list[0]);
-    _verifiedList.add(list[4]);
-    _verifiedList.add(list[7]);
-    _verifiedList.add(list[10]);
-    _verifiedList.add(list[13]);
+    _disabledSalesList.add(list[0]);
+    _disabledSalesList.add(list[4]);
+    _disabledSalesList.add(list[7]);
+    _disabledSalesList.add(list[10]);
+    _disabledSalesList.add(list[13]);
   }
 
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiAdaptiveScreen(
       title: 'Products',
+      badge: '${list.length} products',
       builder: (context) => Padding(
         padding: const EdgeInsets.all(32),
-        child: ImpaktfullUiTable(
-          columnConfig: columnConfig,
-          titles: const [
-            ImpaktfullUiTableHeaderItem(title: 'Naam product'),
-            ImpaktfullUiTableHeaderItem(title: 'Stock'),
-            ImpaktfullUiTableHeaderItem(title: 'On Sale'),
-            ImpaktfullUiTableHeaderItem(),
-          ],
-          content: [
-            for (final i in list) ...[
-              ImpaktfullUiTableRow(
+        child: ImpaktfullUiAutoLayout.vertical(
+          spacing: 8,
+          children: [
+            ImpaktfullUiResponsiveRow(
+              horizontalSpacing: 8,
+              verticalSpacing: 8,
+              maxColumns: 1,
+              mediumMaxColumns: 2,
+              largeMaxColumns: 3,
+              children: [
+                ImpaktfullUiMetric(
+                  title: 'Amount of products',
+                  value: list.length.toString(),
+                ),
+                ImpaktfullUiMetric(
+                  title: 'Active sales items',
+                  value: '${list.length - _disabledSalesList.length}',
+                ),
+                ImpaktfullUiMetric(
+                  title: 'Disabled sales items',
+                  value: _disabledSalesList.length.toString(),
+                ),
+              ],
+            ),
+            Expanded(
+              child: ImpaktfullUiTable(
                 columnConfig: columnConfig,
-                columns: [
-                  ImpaktfullUiTableRowItem.text(
-                    title: i,
-                    subtitle: i.hashCode % 4 == 0 ? 'New product' : null,
-                  ),
-                  ImpaktfullUiTableRowItem.text(
-                      title: (i.hashCode % 100).toString()),
-                  ImpaktfullUiTableRowItem.badge(
-                    title: _verifiedList.contains(i)
-                        ? 'Sale disabled'
-                        : 'Active sale',
-                    badgeType: _verifiedList.contains(i)
-                        ? ImpaktfullUiBadgeType.error
-                        : ImpaktfullUiBadgeType.success,
-                  ),
-                  ImpaktfullUiTableRowItem.custom(
-                    builder: (context, theme) =>
-                        ImpaktfullUiAutoLayout.horizontal(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        ImpaktfullUiIconButton(
-                          onTap: () => _onEditTapped(i),
-                          size: 20,
-                          asset: ImpaktfullUiAsset.icon(
-                              PhosphorIcons.pencilSimple()),
+                titles: const [
+                  ImpaktfullUiTableHeaderItem(title: 'Naam product'),
+                  ImpaktfullUiTableHeaderItem(title: 'Stock'),
+                  ImpaktfullUiTableHeaderItem(title: 'On Sale'),
+                  ImpaktfullUiTableHeaderItem(),
+                ],
+                content: [
+                  for (final i in list) ...[
+                    ImpaktfullUiTableRow(
+                      columnConfig: columnConfig,
+                      columns: [
+                        ImpaktfullUiTableRowItem.text(
+                          title: i,
+                          subtitle: i.hashCode % 4 == 0 ? 'New product' : null,
                         ),
-                        ImpaktfullUiIconButton(
-                          onTap: () => _onDeleteTapped(i),
-                          size: 20,
-                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
+                        ImpaktfullUiTableRowItem.text(
+                            title: (i.hashCode % 100).toString()),
+                        ImpaktfullUiTableRowItem.badge(
+                          title: _disabledSalesList.contains(i)
+                              ? 'Sale disabled'
+                              : 'Active sale',
+                          badgeType: _disabledSalesList.contains(i)
+                              ? ImpaktfullUiBadgeType.error
+                              : ImpaktfullUiBadgeType.success,
+                        ),
+                        ImpaktfullUiTableRowItem.custom(
+                          builder: (context, theme) =>
+                              ImpaktfullUiAutoLayout.horizontal(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ImpaktfullUiIconButton(
+                                onTap: () => _onEditTapped(i),
+                                size: 20,
+                                asset: ImpaktfullUiAsset.icon(
+                                    PhosphorIcons.pencilSimple()),
+                              ),
+                              ImpaktfullUiIconButton(
+                                onTap: () => _onDeleteTapped(i),
+                                size: 20,
+                                asset: ImpaktfullUiAsset.icon(
+                                    PhosphorIcons.trash()),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
+                  ],
                 ],
               ),
-            ],
+            ),
           ],
         ),
       ),
@@ -99,10 +129,10 @@ class _DashboardStoreProductsScreenState
   void _onEditTapped(String item) {
     final isActiveSale = list.contains(item);
     setState(() {
-      if (_verifiedList.contains(item)) {
-        _verifiedList.remove(item);
+      if (_disabledSalesList.contains(item)) {
+        _disabledSalesList.remove(item);
       } else {
-        _verifiedList.add(item);
+        _disabledSalesList.add(item);
       }
     });
     ImpaktfullUiNotification.show(

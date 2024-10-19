@@ -15,7 +15,10 @@ class ResponsiveLayoutLibraryVariant
       BuildContext context, ResponsiveLayoutLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiResponsiveLayout(
-        small: (context) => Container(),
+        small: (context) => const Text('Small'),
+        medium: (context) => const Text('Medium'),
+        large: (context) => const Text('Large'),
+        extraLarge: (context) => const Text('Extra large'),
       ),
     ];
   }

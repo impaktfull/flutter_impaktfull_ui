@@ -52,6 +52,7 @@ export 'src/components/radio_button/radio_button.dart';
 export 'src/components/radio_button_list_item/radio_button_list_item.dart';
 export 'src/components/refresh_indicator/refresh_indicator.dart';
 export 'src/components/responsive_layout/responsive_layout.dart';
+export 'src/components/responsive_row/responsive_row.dart';
 export 'src/components/screen/screen.dart';
 export 'src/components/section_title/section_title.dart';
 export 'src/components/selectable_list_item/selectable_list_item.dart';

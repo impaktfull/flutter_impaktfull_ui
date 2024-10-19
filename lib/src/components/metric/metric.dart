@@ -86,6 +86,8 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                             Text(
                               title,
                               style: componentTheme.textStyles.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                             ImpaktfullUiAutoLayout.horizontal(
                               crossAxisAlignment: CrossAxisAlignment.end,

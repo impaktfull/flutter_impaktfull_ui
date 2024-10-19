@@ -95,6 +95,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiRadioButtonListItem
 - ImpaktfullUiRefreshIndicator
 - ImpaktfullUiResponsiveLayout
+- ImpaktfullUiResponsiveRow
 - ImpaktfullUiScreen
 - ImpaktfullUiSectionTitle
 - ImpaktfullUiSelectableListItem
