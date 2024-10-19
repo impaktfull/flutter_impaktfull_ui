@@ -10,12 +10,10 @@ class DashboardStoreProductsScreen extends StatefulWidget {
   });
 
   @override
-  State<DashboardStoreProductsScreen> createState() =>
-      _DashboardStoreProductsScreenState();
+  State<DashboardStoreProductsScreen> createState() => _DashboardStoreProductsScreenState();
 }
 
-class _DashboardStoreProductsScreenState
-    extends State<DashboardStoreProductsScreen> {
+class _DashboardStoreProductsScreenState extends State<DashboardStoreProductsScreen> {
   static const columnConfig = [
     TableColumnConfig(flex: 1),
     TableColumnConfig(flex: 1),
@@ -87,34 +85,27 @@ class _DashboardStoreProductsScreenState
                           title: product.name,
                           subtitle: product.isNewProduct ? 'New product' : null,
                         ),
-                        ImpaktfullUiTableRowItem.text(
-                            title: TestData.formatPrice(product.price)),
-                        ImpaktfullUiTableRowItem.text(
-                            title: product.stock.toString()),
+                        ImpaktfullUiTableRowItem.text(title: TestData.formatPrice(product.price)),
+                        ImpaktfullUiTableRowItem.text(title: product.stock.toString()),
                         ImpaktfullUiTableRowItem.badge(
-                          title: _disabledSalesList.contains(product)
-                              ? 'Sale disabled'
-                              : 'Active sale',
+                          title: _disabledSalesList.contains(product) ? 'Sale disabled' : 'Active sale',
                           badgeType: _disabledSalesList.contains(product)
                               ? ImpaktfullUiBadgeType.error
                               : ImpaktfullUiBadgeType.success,
                         ),
                         ImpaktfullUiTableRowItem.custom(
-                          builder: (context, theme) =>
-                              ImpaktfullUiAutoLayout.horizontal(
+                          builder: (context, theme) => ImpaktfullUiAutoLayout.horizontal(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               ImpaktfullUiIconButton(
                                 onTap: () => _onEditTapped(product),
                                 size: 20,
-                                asset: ImpaktfullUiAsset.icon(
-                                    PhosphorIcons.pencilSimple()),
+                                asset: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
                               ),
                               ImpaktfullUiIconButton(
                                 onTap: () => _onDeleteTapped(product),
                                 size: 20,
-                                asset: ImpaktfullUiAsset.icon(
-                                    PhosphorIcons.trash()),
+                                asset: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
                               ),
                             ],
                           ),
@@ -132,7 +123,7 @@ class _DashboardStoreProductsScreenState
   }
 
   void _onEditTapped(Product item) {
-    final isActiveSale = products.contains(item);
+    final isDisabledSale = _disabledSalesList.contains(item);
     setState(() {
       if (_disabledSalesList.contains(item)) {
         _disabledSalesList.remove(item);
@@ -141,8 +132,8 @@ class _DashboardStoreProductsScreenState
       }
     });
     ImpaktfullUiNotification.show(
-      title: '`$item` updated',
-      subtitle: 'Sale is ${isActiveSale ? 'disabled' : 'active'}',
+      title: 'Order is updated',
+      subtitle: 'Sale is ${isDisabledSale ? 'active' : 'disabled'}',
       type: ImpaktfullUiNotificationType.success,
     );
   }
@@ -150,8 +141,8 @@ class _DashboardStoreProductsScreenState
   void _onDeleteTapped(Product item) {
     setState(() => products.remove(item));
     ImpaktfullUiNotification.show(
-      title: '`$item` is deleted',
-      subtitle: 'Item is deleted, but only for this session.',
+      title: 'Order is deleted',
+      subtitle: '`${item.sku}` is deleted, but only for this session.',
     );
   }
 }
