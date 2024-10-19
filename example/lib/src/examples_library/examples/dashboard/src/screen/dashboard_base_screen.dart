@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_coupon_screen.dart';
+import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_orders_screen.dart';
 import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_products_screen.dart';
 import 'package:impaktfull_ui_example/src/examples_library/widgets/coming_soon.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
@@ -67,34 +69,6 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
                   ),
                 ],
               ),
-              ImpaktfullUiSidebarNavigationItem(
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.envelopeSimple()),
-                title: 'Emails',
-                items: [
-                  ImpaktfullUiSidebarNavigationItem(
-                    leading: ImpaktfullUiAsset.icon(PhosphorIcons.tShirt()),
-                    title: 'Campaigns',
-                    isSelected:
-                        _activeScreen == DashboardScreen.emailsCampaigns,
-                    onTap: () => setState(
-                        () => _activeScreen = DashboardScreen.emailsCampaigns),
-                  ),
-                  ImpaktfullUiSidebarNavigationItem(
-                    leading: ImpaktfullUiAsset.icon(PhosphorIcons.money()),
-                    title: 'API',
-                    isSelected: _activeScreen == DashboardScreen.emailsApi,
-                    onTap: () => setState(
-                        () => _activeScreen = DashboardScreen.emailsApi),
-                  ),
-                  ImpaktfullUiSidebarNavigationItem(
-                    leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
-                    title: 'Settings',
-                    isSelected: _activeScreen == DashboardScreen.emailsSettings,
-                    onTap: () => setState(
-                        () => _activeScreen = DashboardScreen.emailsSettings),
-                  ),
-                ],
-              ),
             ],
             footerItems: [
               ImpaktfullUiSidebarNavigationItem(
@@ -125,11 +99,10 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
                 case DashboardScreen.storeProducts:
                   return const DashboardStoreProductsScreen();
                 case DashboardScreen.storeOrders:
+                  return const DashboardStoreOrdersScreen();
                 case DashboardScreen.storeCoupons:
+                  return const DashboardStoreCouponScreen();
                 case DashboardScreen.storeSettings:
-                case DashboardScreen.emailsCampaigns:
-                case DashboardScreen.emailsApi:
-                case DashboardScreen.emailsSettings:
                 case DashboardScreen.settings:
                   return const ExampleComingSoon();
               }
@@ -147,8 +120,5 @@ enum DashboardScreen {
   storeOrders,
   storeCoupons,
   storeSettings,
-  emailsCampaigns,
-  emailsApi,
-  emailsSettings,
   settings,
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_example/src/examples_library/data/model/product.dart';
 import 'package:impaktfull_ui_example/src/examples_library/data/test_data.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -16,30 +17,31 @@ class DashboardStoreProductsScreen extends StatefulWidget {
 class _DashboardStoreProductsScreenState
     extends State<DashboardStoreProductsScreen> {
   static const columnConfig = [
-    TableColumnConfig(flex: 2),
+    TableColumnConfig(flex: 1),
+    TableColumnConfig(flex: 1),
     TableColumnConfig(flex: 1),
     TableColumnConfig(flex: 1),
     TableColumnConfig.fixedSize(size: 44 * 3),
   ];
 
-  final list = TestData.getProducts();
-  final _disabledSalesList = <String>{};
+  final products = TestData.getProducts();
+  final _disabledSalesList = <Product>{};
 
   @override
   void initState() {
     super.initState();
-    _disabledSalesList.add(list[0]);
-    _disabledSalesList.add(list[4]);
-    _disabledSalesList.add(list[7]);
-    _disabledSalesList.add(list[10]);
-    _disabledSalesList.add(list[13]);
+    _disabledSalesList.add(products[0]);
+    _disabledSalesList.add(products[4]);
+    _disabledSalesList.add(products[7]);
+    _disabledSalesList.add(products[10]);
+    _disabledSalesList.add(products[13]);
   }
 
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiAdaptiveScreen(
       title: 'Products',
-      badge: '${list.length} products',
+      badge: '${products.length} products',
       builder: (context) => Padding(
         padding: const EdgeInsets.all(32),
         child: ImpaktfullUiAutoLayout.vertical(
@@ -54,11 +56,11 @@ class _DashboardStoreProductsScreenState
               children: [
                 ImpaktfullUiMetric(
                   title: 'Amount of products',
-                  value: list.length.toString(),
+                  value: products.length.toString(),
                 ),
                 ImpaktfullUiMetric(
                   title: 'Active sales items',
-                  value: '${list.length - _disabledSalesList.length}',
+                  value: '${products.length - _disabledSalesList.length}',
                 ),
                 ImpaktfullUiMetric(
                   title: 'Disabled sales items',
@@ -70,27 +72,30 @@ class _DashboardStoreProductsScreenState
               child: ImpaktfullUiTable(
                 columnConfig: columnConfig,
                 titles: const [
-                  ImpaktfullUiTableHeaderItem(title: 'Naam product'),
+                  ImpaktfullUiTableHeaderItem(title: 'Order id'),
+                  ImpaktfullUiTableHeaderItem(title: 'Price'),
                   ImpaktfullUiTableHeaderItem(title: 'Stock'),
                   ImpaktfullUiTableHeaderItem(title: 'On Sale'),
                   ImpaktfullUiTableHeaderItem(),
                 ],
                 content: [
-                  for (final i in list) ...[
+                  for (final product in products) ...[
                     ImpaktfullUiTableRow(
                       columnConfig: columnConfig,
                       columns: [
                         ImpaktfullUiTableRowItem.text(
-                          title: i,
-                          subtitle: i.hashCode % 4 == 0 ? 'New product' : null,
+                          title: product.name,
+                          subtitle: product.isNewProduct ? 'New product' : null,
                         ),
                         ImpaktfullUiTableRowItem.text(
-                            title: (i.hashCode % 100).toString()),
+                            title: TestData.formatPrice(product.price)),
+                        ImpaktfullUiTableRowItem.text(
+                            title: product.stock.toString()),
                         ImpaktfullUiTableRowItem.badge(
-                          title: _disabledSalesList.contains(i)
+                          title: _disabledSalesList.contains(product)
                               ? 'Sale disabled'
                               : 'Active sale',
-                          badgeType: _disabledSalesList.contains(i)
+                          badgeType: _disabledSalesList.contains(product)
                               ? ImpaktfullUiBadgeType.error
                               : ImpaktfullUiBadgeType.success,
                         ),
@@ -100,13 +105,13 @@ class _DashboardStoreProductsScreenState
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               ImpaktfullUiIconButton(
-                                onTap: () => _onEditTapped(i),
+                                onTap: () => _onEditTapped(product),
                                 size: 20,
                                 asset: ImpaktfullUiAsset.icon(
                                     PhosphorIcons.pencilSimple()),
                               ),
                               ImpaktfullUiIconButton(
-                                onTap: () => _onDeleteTapped(i),
+                                onTap: () => _onDeleteTapped(product),
                                 size: 20,
                                 asset: ImpaktfullUiAsset.icon(
                                     PhosphorIcons.trash()),
@@ -126,8 +131,8 @@ class _DashboardStoreProductsScreenState
     );
   }
 
-  void _onEditTapped(String item) {
-    final isActiveSale = list.contains(item);
+  void _onEditTapped(Product item) {
+    final isActiveSale = products.contains(item);
     setState(() {
       if (_disabledSalesList.contains(item)) {
         _disabledSalesList.remove(item);
@@ -142,8 +147,8 @@ class _DashboardStoreProductsScreenState
     );
   }
 
-  void _onDeleteTapped(String item) {
-    setState(() => list.remove(item));
+  void _onDeleteTapped(Product item) {
+    setState(() => products.remove(item));
     ImpaktfullUiNotification.show(
       title: '`$item` is deleted',
       subtitle: 'Item is deleted, but only for this session.',

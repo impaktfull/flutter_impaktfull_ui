@@ -207,11 +207,11 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
 
   TextStyle _getValue2Style(ImpaktfullUiMetricTheme componentTheme) {
     switch (impactType) {
-      case ImpaktfullUiMetricImpactType.growth:
+      case ImpaktfullUiMetricImpactType.positive:
         return componentTheme.textStyles.value2Growth;
       case ImpaktfullUiMetricImpactType.neutral:
         return componentTheme.textStyles.value2Neutral;
-      case ImpaktfullUiMetricImpactType.decline:
+      case ImpaktfullUiMetricImpactType.negative:
         return componentTheme.textStyles.value2Decline;
       case ImpaktfullUiMetricImpactType.branded:
         return componentTheme.textStyles.value2Branded;

@@ -26,7 +26,7 @@ class MetricLibraryInputs extends ComponentLibraryInputs {
   final impactType = ComponentLibraryEnumInput(
     'Impact type',
     options: ImpaktfullUiMetricImpactType.values,
-    initialValue: ImpaktfullUiMetricImpactType.growth,
+    initialValue: ImpaktfullUiMetricImpactType.positive,
   );
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [

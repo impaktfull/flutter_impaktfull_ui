@@ -1,7 +1,7 @@
 enum ImpaktfullUiMetricImpactType {
-  growth,
+  positive,
   neutral,
-  decline,
+  negative,
   branded,
   custom,
 }

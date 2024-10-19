@@ -54,7 +54,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
         badgeType = null;
 
   const ImpaktfullUiTableRowItem.badge({
-    required String this.title,
+    required this.title,
     this.badgeType,
     this.padding = const EdgeInsets.symmetric(
       horizontal: 16,
@@ -95,6 +95,9 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
           );
         }
         if (type == ImpaktfullUiTableRowItemType.badge) {
+          if (title == null || title!.isEmpty) {
+            return const SizedBox.shrink();
+          }
           return Padding(
             padding: padding,
             child: Align(
