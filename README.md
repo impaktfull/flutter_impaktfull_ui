@@ -36,6 +36,8 @@ This UI library was built to have a simple way to build UIs for impaktfull. This
 Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other libraries.
 
 - ImpaktfullUiAccordion
+- ImpaktfullUiAdaptiveNavBar
+- ImpaktfullUiAdaptiveNavBarAction
 - ImpaktfullUiAdaptivePageRoute
 - ImpaktfullUiAdaptiveSafeArea
 - ImpaktfullUiApp
@@ -91,6 +93,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiRadioButton
 - ImpaktfullUiRadioButtonListItem
 - ImpaktfullUiRefreshIndicator
+- ImpaktfullUiResponsiveLayout
 - ImpaktfullUiScreen
 - ImpaktfullUiSectionTitle
 - ImpaktfullUiSelectableListItem
@@ -220,11 +223,8 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 - [ ] Add addaptive components
 
-  - ImpaktfullUiResponsiveLayout
   - ImpaktfullUiMasterDetail
   - ImpaktfullUiAdaptiveScreen
-  - ImpaktfullUiAdaptiveNavBar
-  - ImpaktfullUiAdaptiveNavBarAction
   - ImpaktfullUiAdaptiveNavigation
   - ImpaktfullUiAdaptiveRoute
   - ImpaktfullUiAdaptiveModalRoute

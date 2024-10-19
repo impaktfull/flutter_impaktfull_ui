@@ -36,6 +36,7 @@ import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indic
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
 import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
@@ -109,6 +110,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiRadioButtonTheme radioButton;
   final ImpaktfullUiRadioButtonListItemTheme radioButtonListItem;
   final ImpaktfullUiRefreshIndicatorTheme refreshIndicator;
+  final ImpaktfullUiResponsiveLayoutTheme responsiveLayout;
   final ImpaktfullUiScreenTheme screen;
   final ImpaktfullUiSectionTitleTheme sectionTitle;
   final ImpaktfullUiSelectableListItemTheme selectableListItem;
@@ -174,6 +176,7 @@ class ImpaktfullUiComponentsTheme {
     required this.radioButton,
     required this.radioButtonListItem,
     required this.refreshIndicator,
+    required this.responsiveLayout,
     required this.screen,
     required this.sectionTitle,
     required this.selectableListItem,
@@ -240,6 +243,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiRadioButtonTheme? radioButton,
     ImpaktfullUiRadioButtonListItemTheme? radioButtonListItem,
     ImpaktfullUiRefreshIndicatorTheme? refreshIndicator,
+    ImpaktfullUiResponsiveLayoutTheme? responsiveLayout,
     ImpaktfullUiScreenTheme? screen,
     ImpaktfullUiSectionTitleTheme? sectionTitle,
     ImpaktfullUiSelectableListItemTheme? selectableListItem,
@@ -305,6 +309,7 @@ class ImpaktfullUiComponentsTheme {
         radioButton: radioButton ?? this.radioButton,
         radioButtonListItem: radioButtonListItem ?? this.radioButtonListItem,
         refreshIndicator: refreshIndicator ?? this.refreshIndicator,
+        responsiveLayout: responsiveLayout ?? this.responsiveLayout,
         screen: screen ?? this.screen,
         sectionTitle: sectionTitle ?? this.sectionTitle,
         selectableListItem: selectableListItem ?? this.selectableListItem,
@@ -415,6 +420,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiRadioButtonListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
       return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
+    } else if (T == ImpaktfullUiResponsiveLayoutTheme) {
+      return ImpaktfullUiResponsiveLayoutTheme.of(context) as T;
     } else if (T == ImpaktfullUiScreenTheme) {
       return ImpaktfullUiScreenTheme.of(context) as T;
     } else if (T == ImpaktfullUiSectionTitleTheme) {

@@ -41,6 +41,7 @@ import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indic
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
 import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
@@ -868,6 +869,16 @@ class DefaultTheme {
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
           colors: ImpaktfullUiRefreshIndicatorColorTheme(
               loadingIndicator: colors.accent),
+        ),
+        responsiveLayout: const ImpaktfullUiResponsiveLayoutTheme(
+          assets: ImpaktfullUiResponsiveLayoutAssetsTheme(),
+          colors: ImpaktfullUiResponsiveLayoutColorTheme(),
+          dimens: ImpaktfullUiResponsiveLayoutDimensTheme(
+            breakpointSmall: 600,
+            breakpointMedium: 1024,
+            breakpointLarge: 1440,
+          ),
+          textStyles: ImpaktfullUiResponsiveLayoutTextStyleTheme(),
         ),
         screen: ImpaktfullUiScreenTheme(
           assets: const ImpaktfullUiScreenAssetsTheme(),

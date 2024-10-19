@@ -72,6 +72,7 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
                         onTap: onBackTapped!,
                         asset: componentTheme.assets.back,
                         color: componentTheme.colors.icons,
+                        tooltip: 'Back',
                       ),
                     ],
                     Expanded(

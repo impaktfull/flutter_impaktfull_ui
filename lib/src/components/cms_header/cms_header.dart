@@ -79,6 +79,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                         onTap: widget.onBackTapped!,
                         asset: componentTheme.assets.back,
                         color: componentTheme.colors.icons,
+                        tooltip: 'Back',
                       ),
                       const SizedBox(width: 8),
                     ],
