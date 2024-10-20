@@ -60,8 +60,7 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
                   child: ListView.separated(
                     itemCount: content.length,
                     itemBuilder: (context, index) => content[index],
-                    separatorBuilder: (contex, index) =>
-                        const ImpaktfullUiDivider(),
+                    separatorBuilder: (contex, index) => const ImpaktfullUiDivider(),
                   ),
                 ),
               ],
@@ -117,16 +116,15 @@ class _TableContainer extends StatelessWidget {
   }
 
   double _getMinWidth() {
-    if (columnConfig.isEmpty) return amountOfColumns * 250;
+    const minWidthColumn = 250.0;
+    if (columnConfig.isEmpty) return amountOfColumns * minWidthColumn;
     var minWidth = 0.0;
     for (var i = 0; i < amountOfColumns; ++i) {
-      final tableConfig = i > columnConfig.length - 1
-          ? const TableColumnConfig(flex: 1)
-          : columnConfig[i];
+      final tableConfig = i > columnConfig.length - 1 ? const TableColumnConfig(flex: 1) : columnConfig[i];
       if (tableConfig.minWidth != null) {
         minWidth += tableConfig.minWidth!;
       } else if (tableConfig.flex != null) {
-        minWidth += 250 * tableConfig.flex!;
+        minWidth += minWidthColumn * tableConfig.flex!;
       } else {}
     }
     return minWidth;
