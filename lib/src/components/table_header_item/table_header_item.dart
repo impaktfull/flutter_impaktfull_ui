@@ -67,21 +67,39 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
                     onChanged: onChanged!,
                   ),
                 ],
-                Text(
-                  title ?? '',
-                  style: componentTheme.textStyles.title,
+                Expanded(
+                  child: Text.rich(
+                    style: componentTheme.textStyles.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.visible,
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: title ?? '',
+                        ),
+                        if (ascending == true) ...[
+                          const WidgetSpan(child: SizedBox(width: 8)),
+                          WidgetSpan(
+                            alignment: PlaceholderAlignment.middle,
+                            child: Icon(
+                              PhosphorIcons.caretUp(),
+                              size: 16,
+                            ),
+                          ),
+                        ] else if (ascending == false) ...[
+                          const WidgetSpan(child: SizedBox(width: 8)),
+                          WidgetSpan(
+                            alignment: PlaceholderAlignment.middle,
+                            child: Icon(
+                              PhosphorIcons.caretDown(),
+                              size: 16,
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
                 ),
-                if (ascending == true) ...[
-                  Icon(
-                    PhosphorIcons.caretUp(),
-                    size: 16,
-                  ),
-                ] else if (ascending == false) ...[
-                  Icon(
-                    PhosphorIcons.caretDown(),
-                    size: 16,
-                  ),
-                ],
                 const Spacer(),
               ],
             ),

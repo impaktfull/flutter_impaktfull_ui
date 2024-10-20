@@ -126,8 +126,8 @@ class _TableContainer extends StatelessWidget {
       if (tableConfig.minWidth != null) {
         minWidth += tableConfig.minWidth!;
       } else if (tableConfig.flex != null) {
-        minWidth += 50 * tableConfig.flex!;
-      }
+        minWidth += 250 * tableConfig.flex!;
+      } else {}
     }
     return minWidth;
   }
