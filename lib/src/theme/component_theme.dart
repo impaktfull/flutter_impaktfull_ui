@@ -63,6 +63,7 @@ import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
 import 'package:impaktfull_ui_2/src/components/number_input/number_input.dart';
 import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state.dart';
 import 'package:impaktfull_ui_2/src/components/metric/metric.dart';
+import 'package:impaktfull_ui_2/src/components/line_chart/line_chart.dart';
 
 abstract class ImpaktfullUiComponentTheme {
   const ImpaktfullUiComponentTheme();
@@ -133,6 +134,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiTooltipTheme tooltip;
   final ImpaktfullUiWysiwygTheme wysiwyg;
   final ImpaktfullUiMetricTheme metric;
+  final ImpaktfullUiLineChartTheme lineChart;
 
   ImpaktfullUiComponentsTheme({
     required this.accordion,
@@ -199,6 +201,7 @@ class ImpaktfullUiComponentsTheme {
     required this.tooltip,
     required this.wysiwyg,
     required this.metric,
+    required this.lineChart,
   });
 
   ImpaktfullUiComponentsTheme copyWith({
@@ -266,6 +269,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiTooltipTheme? tooltip,
     ImpaktfullUiWysiwygTheme? wysiwyg,
     ImpaktfullUiMetricTheme? metric,
+    ImpaktfullUiLineChartTheme? lineChart,
   }) =>
       ImpaktfullUiComponentsTheme(
         accordion: accordion ?? this.accordion,
@@ -333,6 +337,7 @@ class ImpaktfullUiComponentsTheme {
         tooltip: tooltip ?? this.tooltip,
         wysiwyg: wysiwyg ?? this.wysiwyg,
         metric: metric ?? this.metric,
+        lineChart: lineChart ?? this.lineChart,
       );
 
   static T of<T extends ImpaktfullUiComponentTheme>(BuildContext context) {
@@ -384,6 +389,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiImageCropTheme.of(context) as T;
     } else if (T == ImpaktfullUiInputFieldTheme) {
       return ImpaktfullUiInputFieldTheme.of(context) as T;
+    } else if (T == ImpaktfullUiLineChartTheme) {
+      return ImpaktfullUiLineChartTheme.of(context) as T;
     } else if (T == ImpaktfullUiListItemTheme) {
       return ImpaktfullUiListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiListViewTheme) {

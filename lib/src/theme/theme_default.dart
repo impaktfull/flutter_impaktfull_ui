@@ -23,6 +23,7 @@ import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dar
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/line_chart/line_chart.dart';
 import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/loading_error_data/loading_error_data.dart';
@@ -614,6 +615,17 @@ class DefaultTheme {
             label: textStyles.onCard.text.small.medium,
             action: textStyles.onCard.text.small.medium,
           ),
+        ),
+        lineChart: ImpaktfullUiLineChartTheme(
+          assets: const ImpaktfullUiLineChartAssetsTheme(),
+          colors: ImpaktfullUiLineChartColorTheme(
+            lineColor: colors.accent,
+            backgroundColor: Colors.transparent,
+          ),
+          dimens: const ImpaktfullUiLineChartDimensTheme(
+            strokeWidth: 2,
+          ),
+          textStyles: const ImpaktfullUiLineChartTextStyleTheme(),
         ),
         listItem: ImpaktfullUiListItemTheme(
           assets: ImpaktfullUiListItemAssetsTheme(

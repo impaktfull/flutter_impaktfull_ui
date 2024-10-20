@@ -1,0 +1,79 @@
+import 'package:flutter/widgets.dart';
+import 'dart:math' as math;
+import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_painter_data.dart';
+
+class ImpaktfullUiLineChartPainter extends CustomPainter {
+  final List<ImpaktfullUiLineChartPainterData> data;
+  final Color backgroundColor;
+  final Color defaultLineColor;
+  final double defaultStrokeWidth;
+
+  ImpaktfullUiLineChartPainter({
+    required this.data,
+    required this.backgroundColor,
+    required this.defaultLineColor,
+    required this.defaultStrokeWidth,
+  });
+
+  double get _minX =>
+      data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minX));
+  double get _maxX =>
+      data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxX));
+  double get _minY =>
+      data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minY));
+  double get _maxY =>
+      data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxY));
+
+  double get _maxStrokeWidth => data.fold(
+      0,
+      (max, lineChartData) =>
+          math.max(max, lineChartData.strokeWidth ?? defaultStrokeWidth));
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
+
+    canvas.drawRect(
+      Offset.zero & size,
+      Paint()..color = backgroundColor,
+    );
+
+    final adjustedSize = Size(
+      size.width - _maxStrokeWidth,
+      size.height - _maxStrokeWidth,
+    );
+    final offset = Offset(_maxStrokeWidth / 2, _maxStrokeWidth / 2);
+
+    for (final lineChartData in data) {
+      final points = lineChartData.points;
+      paint.color = lineChartData.lineColor ?? defaultLineColor;
+      paint.strokeWidth = lineChartData.strokeWidth ?? defaultStrokeWidth;
+      if (points.isEmpty) continue;
+
+      final path = Path();
+      path.moveTo(
+        _normalizeX(points.first.dx, adjustedSize.width) + offset.dx,
+        _normalizeY(points.first.dy, adjustedSize.height) + offset.dy,
+      );
+
+      for (int i = 1; i < points.length; i++) {
+        path.lineTo(
+          _normalizeX(points[i].dx, adjustedSize.width) + offset.dx,
+          _normalizeY(points[i].dy, adjustedSize.height) + offset.dy,
+        );
+      }
+
+      canvas.drawPath(path, paint);
+    }
+  }
+
+  double _normalizeX(double x, double width) =>
+      (x - _minX) / (_maxX - _minX) * width;
+  double _normalizeY(double y, double height) =>
+      height - (y - _minY) / (_maxY - _minY) * height;
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}

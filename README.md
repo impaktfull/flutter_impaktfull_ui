@@ -78,8 +78,10 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiIconButton
 - ImpaktfullUiImageCrop
 - ImpaktfullUiInputField
+- ImpaktfullUiLineChart
 - ImpaktfullUiListItem
   - ImpaktfullUiSimpleListItem
+- ImpaktfullUiListView
 - ImpaktfullUiLoadingErrorData
 - ImpaktfullUiLoadingIndicator
 - ImpaktfullUiMetric
@@ -197,7 +199,6 @@ These icons can be overriden in the theme itself. By adding your own IconData.
   - ImpaktfullUiSegmentedControll
   - ImpaktfullUiBreadcrumbs
   - ImpaktfullUiCalendar
-  - ImpaktfullUiLineChart
   - ImpaktfullUiQrCode
   - ImpaktfullUiBarCode
   - ImpaktfullUiBarChart

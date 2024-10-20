@@ -26,6 +26,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/horizonta
 import 'package:impaktfull_ui_example/src/component_library/components/icon_button/icon_button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/image_crop/image_crop_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/input_field/input_field_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/line_chart/line_chart_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/list_item/list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/list_view/list_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_error_data/loading_error_data_library_item.dart';
@@ -100,6 +101,7 @@ class ComponentLibrary {
     const IconButtonLibraryItem(),
     const ImageCropLibraryItem(),
     const InputFieldLibraryItem(),
+    const LineChartLibraryItem(),
     const ListItemLibraryItem(),
     const ListViewLibraryItem(),
     const LoadingErrorDataLibraryItem(),
