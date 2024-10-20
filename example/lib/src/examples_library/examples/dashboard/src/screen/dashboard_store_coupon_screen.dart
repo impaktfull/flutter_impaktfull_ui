@@ -26,6 +26,7 @@ class _DashboardStoreCouponScreenState extends State<DashboardStoreCouponScreen>
     return ImpaktfullUiAdaptiveScreen(
       title: 'Coupons',
       badge: '${coupons.length} coupons',
+      isDrawerEnabled: true,
       builder: (context) => Padding(
         padding: const EdgeInsets.all(16),
         child: ImpaktfullUiTable(
