@@ -102,7 +102,8 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                                         minWidth: TextSizeUtil.getTextWidth(
                                               context: context,
                                               text: value,
-                                              style: componentTheme.textStyles.value,
+                                              style: componentTheme
+                                                  .textStyles.value,
                                             ) +
                                             12,
                                       ),
@@ -113,19 +114,24 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                                     ),
                                     if (extraTextValue != null) ...[
                                       ImpaktfullUiAutoLayout.horizontal(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         spacing: 2,
                                         children: [
-                                          if (leadingExtraTextValue != null) ...[
+                                          if (leadingExtraTextValue !=
+                                              null) ...[
                                             ImpaktfullUiAssetWidget(
                                               asset: leadingExtraTextValue!,
-                                              color: _getValue2Style(componentTheme).color,
+                                              color: _getValue2Style(
+                                                      componentTheme)
+                                                  .color,
                                               size: 12,
                                             ),
                                           ],
                                           Text(
                                             extraTextValue!,
-                                            style: _getValue2Style(componentTheme),
+                                            style:
+                                                _getValue2Style(componentTheme),
                                           ),
                                         ],
                                       ),
@@ -157,10 +163,14 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                 if (actions.isNotEmpty) ...[
                   const ImpaktfullUiDivider(),
                   Builder(builder: (context) {
-                    final isFirstIconButton = actions.first is ImpaktfullUiIconButton;
-                    final isLastIconButton = actions.last is ImpaktfullUiIconButton;
-                    final containsButton = actions.any((action) => action is ImpaktfullUiButton);
-                    final allIconButtons = actions.all((action) => action is ImpaktfullUiIconButton);
+                    final isFirstIconButton =
+                        actions.first is ImpaktfullUiIconButton;
+                    final isLastIconButton =
+                        actions.last is ImpaktfullUiIconButton;
+                    final containsButton =
+                        actions.any((action) => action is ImpaktfullUiButton);
+                    final allIconButtons = actions
+                        .all((action) => action is ImpaktfullUiIconButton);
 
                     return Padding(
                       padding: EdgeInsetsDirectional.only(
