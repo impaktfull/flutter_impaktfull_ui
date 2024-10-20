@@ -7,11 +7,13 @@ import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dar
 class ImpaktfullUiHalfCircleProgressIndicator extends StatelessWidget {
   final double value;
   final bool showText;
+  final Color? color;
   final ImpaktfullUiProgressIndicatorTheme? theme;
 
   const ImpaktfullUiHalfCircleProgressIndicator({
     required this.value,
     this.showText = false,
+    this.color,
     this.theme,
     super.key,
   });
@@ -40,7 +42,8 @@ class ImpaktfullUiHalfCircleProgressIndicator extends StatelessWidget {
                       progress: animatedValue,
                       strokeWidth: componentTheme.dimens.height,
                       backgroundColor: componentTheme.colors.background,
-                      foregroundColor: componentTheme.colors.foreground,
+                      foregroundColor:
+                          color ?? componentTheme.colors.foreground,
                       borderColor: componentTheme.colors.border,
                     ),
                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_coupon_screen.dart';
+import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_home_screen.dart';
 import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_orders_screen.dart';
 import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_products_screen.dart';
 import 'package:impaktfull_ui_example/src/examples_library/widgets/coming_soon.dart';
@@ -91,7 +92,7 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
       child: Builder(builder: (context) {
         switch (_activeScreen) {
           case DashboardScreen.home:
-            return const ExampleComingSoon();
+            return const DashboardStoreHomeScreen();
           case DashboardScreen.storeProducts:
             return const DashboardStoreProductsScreen();
           case DashboardScreen.storeOrders:

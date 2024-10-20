@@ -6,11 +6,13 @@ import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dar
 class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
   final double value;
   final bool showText;
+  final Color? color;
   final ImpaktfullUiProgressIndicatorTheme? theme;
 
   const ImpaktfullUiLineProgressIndicator({
     required this.value,
     this.showText = false,
+    this.color,
     this.theme,
     super.key,
   });
@@ -47,7 +49,7 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
                     child: Container(
                       height: 8,
                       decoration: BoxDecoration(
-                        color: componentTheme.colors.foreground,
+                        color: color ?? componentTheme.colors.foreground,
                         borderRadius: componentTheme.dimens.borderRadius,
                       ),
                     ),
