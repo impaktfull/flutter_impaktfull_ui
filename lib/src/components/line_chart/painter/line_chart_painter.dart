@@ -58,15 +58,42 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
         _normalizeY(points.first.dy, adjustedSize.height) + offset.dy,
       );
 
-      for (int i = 1; i < points.length; i++) {
-        path.lineTo(
-          _normalizeX(points[i].dx, adjustedSize.width) + offset.dx,
-          _normalizeY(points[i].dy, adjustedSize.height) + offset.dy,
+      if (lineChartData.isCurved) {
+        for (int i = 0; i < points.length - 1; i++) {
+          final p0 = points[i];
+          final p1 = points[i + 1];
+          final midPoint = Offset(
+            (p0.dx + p1.dx) / 2,
+            (p0.dy + p1.dy) / 2,
+          );
+          path.quadraticBezierTo(
+            _normalizeX(p0.dx, adjustedSize.width) + offset.dx,
+            _normalizeY(p0.dy, adjustedSize.height) + offset.dy,
+            _normalizeX(midPoint.dx, adjustedSize.width) + offset.dx,
+            _normalizeY(midPoint.dy, adjustedSize.height) + offset.dy,
+          );
+        }
+        path.quadraticBezierTo(
+          _normalizeX(points[points.length - 1].dx, adjustedSize.width) +
+              offset.dx,
+          _normalizeY(points[points.length - 1].dy, adjustedSize.height) +
+              offset.dy,
+          _normalizeX(points[points.length - 1].dx, adjustedSize.width) +
+              offset.dx,
+          _normalizeY(points[points.length - 1].dy, adjustedSize.height) +
+              offset.dy,
         );
+      } else {
+        for (int i = 1; i < points.length; i++) {
+          path.lineTo(
+            _normalizeX(points[i].dx, adjustedSize.width) + offset.dx,
+            _normalizeY(points[i].dy, adjustedSize.height) + offset.dy,
+          );
+        }
       }
 
       // Draw gradient below the graph
-      if (lineChartData.hasGradient) {
+      if (lineChartData.gradientEnabled) {
         final gradientColors = lineChartData.gradientColors ??
             [
               paint.color.withOpacity(0.5),
