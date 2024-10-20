@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
@@ -94,49 +96,52 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               spacing: 16,
                               children: [
-                                ImpaktfullUiAutoLayout.horizontal(
-                                  spacing: 8,
-                                  children: [
-                                    ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        minWidth: TextSizeUtil.getTextWidth(
-                                              context: context,
-                                              text: value,
-                                              style: componentTheme
-                                                  .textStyles.value,
-                                            ) +
-                                            12,
-                                      ),
-                                      child: Text(
+                                ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    minWidth: max(
+                                      TextSizeUtil.getTextWidth(
+                                            context: context,
+                                            text: value,
+                                            style:
+                                                componentTheme.textStyles.value,
+                                          ) +
+                                          32,
+                                      100,
+                                    ),
+                                  ),
+                                  child: ImpaktfullUiAutoLayout.horizontal(
+                                    spacing: 8,
+                                    children: [
+                                      Text(
                                         value,
                                         style: componentTheme.textStyles.value,
                                       ),
-                                    ),
-                                    if (extraTextValue != null) ...[
-                                      ImpaktfullUiAutoLayout.horizontal(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        spacing: 2,
-                                        children: [
-                                          if (leadingExtraTextValue !=
-                                              null) ...[
-                                            ImpaktfullUiAssetWidget(
-                                              asset: leadingExtraTextValue!,
-                                              color: _getValue2Style(
-                                                      componentTheme)
-                                                  .color,
-                                              size: 12,
+                                      if (extraTextValue != null) ...[
+                                        ImpaktfullUiAutoLayout.horizontal(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          spacing: 2,
+                                          children: [
+                                            if (leadingExtraTextValue !=
+                                                null) ...[
+                                              ImpaktfullUiAssetWidget(
+                                                asset: leadingExtraTextValue!,
+                                                color: _getValue2Style(
+                                                        componentTheme)
+                                                    .color,
+                                                size: 12,
+                                              ),
+                                            ],
+                                            Text(
+                                              extraTextValue!,
+                                              style: _getValue2Style(
+                                                  componentTheme),
                                             ),
                                           ],
-                                          Text(
-                                            extraTextValue!,
-                                            style:
-                                                _getValue2Style(componentTheme),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ],
-                                  ],
+                                  ),
                                 ),
                                 if (leftValueBuilder != null) ...[
                                   Expanded(
