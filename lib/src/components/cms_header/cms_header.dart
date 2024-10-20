@@ -12,7 +12,8 @@ export 'cms_header_style.dart';
 
 part 'cms_header.describe.dart';
 
-class ImpaktfullUiCmsHeader extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiCmsHeader extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
@@ -83,7 +84,9 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                         onTap: widget.onDrawerTapped!,
                         asset: componentTheme.assets.drawerMenu,
                         color: componentTheme.colors.icons,
-                        tooltip: widget.isDrawerOpen ? 'Close drawer' : 'Open drawer',
+                        tooltip: widget.isDrawerOpen
+                            ? 'Close drawer'
+                            : 'Open drawer',
                       ),
                     ] else if (widget.onBackTapped != null) ...[
                       ImpaktfullUiIconButton(
@@ -125,7 +128,8 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                     if (widget.actions.isNotEmpty) ...[
                       ImpaktfullUiAutoLayout.horizontal(
                         spacing: 8,
-                        children: widget.actions.overrideColorOnWidgets(componentTheme.colors.icons),
+                        children: widget.actions.overrideColorOnWidgets(
+                            componentTheme.colors.icons),
                       ),
                     ],
                   ],
