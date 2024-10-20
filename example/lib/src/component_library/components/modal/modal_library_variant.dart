@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/modal/modal_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
 class ModalLibraryVariant
@@ -52,7 +53,7 @@ class ModalLibraryVariant
                     type: ImpaktfullUiButtonType
                         .values[index % ImpaktfullUiButtonType.values.length],
                     title: 'Action $index',
-                    onTap: () => Navigator.of(context).pop(),
+                    onTap: () => ImpaktfullUiNavigator.instance.goBack(),
                   ),
                 ],
               ],

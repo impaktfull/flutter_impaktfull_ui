@@ -10,12 +10,10 @@ class DashboardStoreOrdersScreen extends StatefulWidget {
   });
 
   @override
-  State<DashboardStoreOrdersScreen> createState() =>
-      _DashboardStoreOrdersScreenState();
+  State<DashboardStoreOrdersScreen> createState() => _DashboardStoreOrdersScreenState();
 }
 
-class _DashboardStoreOrdersScreenState
-    extends State<DashboardStoreOrdersScreen> {
+class _DashboardStoreOrdersScreenState extends State<DashboardStoreOrdersScreen> {
   static const columnConfig = [
     TableColumnConfig(flex: 1),
     TableColumnConfig(flex: 1),
@@ -41,8 +39,9 @@ class _DashboardStoreOrdersScreenState
     return ImpaktfullUiAdaptiveScreen(
       title: 'Orders',
       badge: '${orders.length} orders',
+      isDrawerEnabled: true,
       builder: (context) => Padding(
-        padding: const EdgeInsets.all(32),
+        padding: const EdgeInsets.all(16),
         child: ImpaktfullUiAutoLayout.vertical(
           spacing: 8,
           children: [
@@ -92,20 +91,17 @@ class _DashboardStoreOrdersScreenState
                           title: order.id,
                         ),
                         ImpaktfullUiTableRowItem.badge(
-                          title:
-                              _refundList.contains(order) ? 'Refunded' : null,
+                          title: _refundList.contains(order) ? 'Refunded' : null,
                           badgeType: ImpaktfullUiBadgeType.neutral,
                         ),
                         ImpaktfullUiTableRowItem.custom(
-                          builder: (context, theme) =>
-                              ImpaktfullUiAutoLayout.horizontal(
+                          builder: (context, theme) => ImpaktfullUiAutoLayout.horizontal(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               ImpaktfullUiIconButton(
                                 onTap: () => _onRefundTapped(order),
                                 size: 20,
-                                asset: ImpaktfullUiAsset.icon(
-                                    PhosphorIcons.handCoins()),
+                                asset: ImpaktfullUiAsset.icon(PhosphorIcons.handCoins()),
                               ),
                             ],
                           ),

@@ -71,20 +71,19 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 8,
                   children: [
-                    if (!isFullScreen && onBackTapped != null) ...[
-                      ImpaktfullUiIconButton(
-                        onTap: onBackTapped!,
-                        asset: componentTheme.assets.back,
-                        color: componentTheme.colors.icons,
-                        tooltip: 'Back',
-                      ),
-                    ],
                     if (onDrawerTapped != null) ...[
                       ImpaktfullUiIconButton(
                         onTap: onDrawerTapped!,
                         asset: componentTheme.assets.drawerMenu,
                         color: componentTheme.colors.icons,
                         tooltip: isDrawerOpen ? 'Close drawer' : 'Open drawer',
+                      ),
+                    ] else if (!isFullScreen && onBackTapped != null) ...[
+                      ImpaktfullUiIconButton(
+                        onTap: onBackTapped!,
+                        asset: componentTheme.assets.back,
+                        color: componentTheme.colors.icons,
+                        tooltip: 'Back',
                       ),
                     ],
                     Expanded(

@@ -52,8 +52,12 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
                 subtitle: subtitle,
                 bottomChild: headerBottomChild,
                 onBackTapped: onBackTapped,
-                isDrawerOpen: ImpaktfullUiScreen.of(context).isDrawerOpen,
-                onDrawerTapped: ImpaktfullUiScreen.of(context).openDrawer,
+                isDrawerOpen: isDrawerEnabled
+                    ? ImpaktfullUiScreen.of(context).isDrawerOpen
+                    : false,
+                onDrawerTapped: isDrawerEnabled
+                    ? ImpaktfullUiScreen.of(context).openDrawer
+                    : null,
                 actions: actions,
               ),
               Expanded(

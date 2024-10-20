@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_screen.dart';
 
 class ComponentsLibraryItemScreen extends StatefulWidget {
@@ -44,7 +45,7 @@ class _ComponentsLibraryItemScreenState
           ),
         ],
       ],
-      onBackTapped: () => Navigator.of(context).pop(),
+      onBackTapped: () => ImpaktfullUiNavigator.instance.goBack(),
       headerBottomChild: variants.length <= 1
           ? null
           : ImpaktfullUiHorizontalTabs(

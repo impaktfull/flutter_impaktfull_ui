@@ -4,6 +4,7 @@ import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/sr
 import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_orders_screen.dart';
 import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_products_screen.dart';
 import 'package:impaktfull_ui_example/src/examples_library/widgets/coming_soon.dart';
+import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -83,7 +84,7 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
           subtitle: 'koen@impaktfull.com',
           trailingWidgetBuilder: (context) => ImpaktfullUiIconButton(
             asset: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
-            onTap: () => Navigator.of(context, rootNavigator: true).pop(),
+            onTap: () => ImpaktfullUiNavigator.instance.goBack(),
           ),
         ),
       ),

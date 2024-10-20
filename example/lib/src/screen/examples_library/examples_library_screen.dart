@@ -3,7 +3,6 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/examples_library/config/example_library.dart';
 import 'package:impaktfull_ui_example/src/examples_library/config/example_library_item.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
-import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/examples/example_card.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -12,8 +11,9 @@ class ExamplesLibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseScreen(
+    return ImpaktfullUiAdaptiveScreen(
       title: 'Examples',
+      onBackTapped: () => ImpaktfullUiNavigator.instance.goBack(),
       builder: (context) => ImpaktfullUiGridView.builder(
         crossAxisCount: (context, config) => config.maxWidth ~/ 250,
         padding: const EdgeInsets.all(16),

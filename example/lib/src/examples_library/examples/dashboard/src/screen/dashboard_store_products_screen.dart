@@ -10,12 +10,10 @@ class DashboardStoreProductsScreen extends StatefulWidget {
   });
 
   @override
-  State<DashboardStoreProductsScreen> createState() =>
-      _DashboardStoreProductsScreenState();
+  State<DashboardStoreProductsScreen> createState() => _DashboardStoreProductsScreenState();
 }
 
-class _DashboardStoreProductsScreenState
-    extends State<DashboardStoreProductsScreen> {
+class _DashboardStoreProductsScreenState extends State<DashboardStoreProductsScreen> {
   static const columnConfig = [
     TableColumnConfig(flex: 1),
     TableColumnConfig(flex: 1),
@@ -42,8 +40,9 @@ class _DashboardStoreProductsScreenState
     return ImpaktfullUiAdaptiveScreen(
       title: 'Products',
       badge: '${products.length} products',
+      isDrawerEnabled: true,
       builder: (context) => Padding(
-        padding: const EdgeInsets.all(32),
+        padding: const EdgeInsets.all(16),
         child: ImpaktfullUiAutoLayout.vertical(
           spacing: 8,
           children: [
@@ -71,8 +70,7 @@ class _DashboardStoreProductsScreenState
                           ImpaktfullUiLineChartItemDataItem(x: 2.0, y: 40.0),
                           ImpaktfullUiLineChartItemDataItem(x: 3.0, y: 50.0),
                           ImpaktfullUiLineChartItemDataItem(x: 4.0, y: 80.0),
-                          ImpaktfullUiLineChartItemDataItem(
-                              x: 5.0, y: products.length.toDouble()),
+                          ImpaktfullUiLineChartItemDataItem(x: 5.0, y: products.length.toDouble()),
                         ],
                         offsetBuilder: (x, y) => Offset(x, y),
                       ),
@@ -98,8 +96,7 @@ class _DashboardStoreProductsScreenState
                           ImpaktfullUiLineChartItemDataItem(x: 4.0, y: 75.0),
                           ImpaktfullUiLineChartItemDataItem(
                             x: 5.0,
-                            y: (products.length - _disabledSalesList.length)
-                                .toDouble(),
+                            y: (products.length - _disabledSalesList.length).toDouble(),
                           ),
                         ],
                         offsetBuilder: (x, y) => Offset(x, y),
@@ -124,8 +121,7 @@ class _DashboardStoreProductsScreenState
                           ImpaktfullUiLineChartItemDataItem(x: 2.0, y: 3.0),
                           ImpaktfullUiLineChartItemDataItem(x: 3.0, y: 0.0),
                           ImpaktfullUiLineChartItemDataItem(x: 4.0, y: 5.0),
-                          ImpaktfullUiLineChartItemDataItem(
-                              x: 5.0, y: _disabledSalesList.length.toDouble()),
+                          ImpaktfullUiLineChartItemDataItem(x: 5.0, y: _disabledSalesList.length.toDouble()),
                         ],
                         offsetBuilder: (x, y) => Offset(x, y),
                       ),
@@ -153,34 +149,27 @@ class _DashboardStoreProductsScreenState
                           title: product.name,
                           subtitle: product.isNewProduct ? 'New product' : null,
                         ),
-                        ImpaktfullUiTableRowItem.text(
-                            title: TestData.formatPrice(product.price)),
-                        ImpaktfullUiTableRowItem.text(
-                            title: product.stock.toString()),
+                        ImpaktfullUiTableRowItem.text(title: TestData.formatPrice(product.price)),
+                        ImpaktfullUiTableRowItem.text(title: product.stock.toString()),
                         ImpaktfullUiTableRowItem.badge(
-                          title: _disabledSalesList.contains(product)
-                              ? 'Sale disabled'
-                              : 'Active sale',
+                          title: _disabledSalesList.contains(product) ? 'Sale disabled' : 'Active sale',
                           badgeType: _disabledSalesList.contains(product)
                               ? ImpaktfullUiBadgeType.error
                               : ImpaktfullUiBadgeType.success,
                         ),
                         ImpaktfullUiTableRowItem.custom(
-                          builder: (context, theme) =>
-                              ImpaktfullUiAutoLayout.horizontal(
+                          builder: (context, theme) => ImpaktfullUiAutoLayout.horizontal(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               ImpaktfullUiIconButton(
                                 onTap: () => _onEditTapped(product),
                                 size: 20,
-                                asset: ImpaktfullUiAsset.icon(
-                                    PhosphorIcons.pencilSimple()),
+                                asset: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
                               ),
                               ImpaktfullUiIconButton(
                                 onTap: () => _onDeleteTapped(product),
                                 size: 20,
-                                asset: ImpaktfullUiAsset.icon(
-                                    PhosphorIcons.trash()),
+                                asset: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
                               ),
                             ],
                           ),

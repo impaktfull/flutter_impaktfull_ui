@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/screen/settings/settings_screen.dart';
-import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/home/action_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,13 +9,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseScreen(
+    return ImpaktfullUiAdaptiveScreen(
       title: 'impaktfull_ui',
-      canGoBack: false,
       actions: [
-        ImpaktfullUiButton(
-          type: ImpaktfullUiButtonType.secondaryGrey,
-          leadingAsset: theme.assets.icons.settings,
+        ImpaktfullUiAdaptiveNavBarActionItem(
+          type: ImpaktfullUiAdaptiveNavBarActionItemType.secondaryGrey,
+          asset: theme.assets.icons.settings,
           title: 'Settings',
           onTap: () => _onSettingsTapped(context),
         ),

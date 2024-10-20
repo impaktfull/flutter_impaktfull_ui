@@ -44,7 +44,7 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
       ),
       child: ImpaktfullUiAdaptiveScreen(
         title: 'Components',
-        onBackTapped: () => Navigator.of(context).pop(),
+        onBackTapped: () => ImpaktfullUiNavigator.instance.goBack(),
         actions: [
           if (_fixedSearchQuery.isNotEmpty) ...[
             ImpaktfullUiAdaptiveNavBarActionItem(

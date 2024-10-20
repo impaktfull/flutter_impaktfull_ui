@@ -8,12 +8,10 @@ class DashboardStoreCouponScreen extends StatefulWidget {
   });
 
   @override
-  State<DashboardStoreCouponScreen> createState() =>
-      _DashboardStoreCouponScreenState();
+  State<DashboardStoreCouponScreen> createState() => _DashboardStoreCouponScreenState();
 }
 
-class _DashboardStoreCouponScreenState
-    extends State<DashboardStoreCouponScreen> {
+class _DashboardStoreCouponScreenState extends State<DashboardStoreCouponScreen> {
   static const columnConfig = [
     TableColumnConfig(flex: 1),
     TableColumnConfig(flex: 1),
@@ -29,7 +27,7 @@ class _DashboardStoreCouponScreenState
       title: 'Coupons',
       badge: '${coupons.length} coupons',
       builder: (context) => Padding(
-        padding: const EdgeInsets.all(32),
+        padding: const EdgeInsets.all(16),
         child: ImpaktfullUiTable(
           columnConfig: columnConfig,
           titles: const [
@@ -47,8 +45,7 @@ class _DashboardStoreCouponScreenState
                     title: TestData.formatDate(order.validFrom, withTime: true),
                   ),
                   ImpaktfullUiTableRowItem.text(
-                    title:
-                        TestData.formatDate(order.validUntil, withTime: true),
+                    title: TestData.formatDate(order.validUntil, withTime: true),
                   ),
                   ImpaktfullUiTableRowItem.text(
                     title: order.tag,
