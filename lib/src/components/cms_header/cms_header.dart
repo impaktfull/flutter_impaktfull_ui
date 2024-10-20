@@ -12,8 +12,7 @@ export 'cms_header_style.dart';
 
 part 'cms_header.describe.dart';
 
-class ImpaktfullUiCmsHeader extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiCmsHeader extends StatefulWidget with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
@@ -77,24 +76,21 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                 ),
                 child: ImpaktfullUiAutoLayout.horizontal(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  spacing: 8,
                   children: [
-                    if (widget.onBackTapped != null) ...[
-                      ImpaktfullUiIconButton(
-                        onTap: widget.onBackTapped!,
-                        asset: componentTheme.assets.back,
-                        color: componentTheme.colors.icons,
-                        tooltip: 'Back',
-                      ),
-                      const SizedBox(width: 8),
-                    ],
                     if (widget.onDrawerTapped != null) ...[
                       ImpaktfullUiIconButton(
                         onTap: widget.onDrawerTapped!,
                         asset: componentTheme.assets.drawerMenu,
                         color: componentTheme.colors.icons,
-                        tooltip: widget.isDrawerOpen
-                            ? 'Close drawer'
-                            : 'Open drawer',
+                        tooltip: widget.isDrawerOpen ? 'Close drawer' : 'Open drawer',
+                      ),
+                    ] else if (widget.onBackTapped != null) ...[
+                      ImpaktfullUiIconButton(
+                        onTap: widget.onBackTapped!,
+                        asset: componentTheme.assets.back,
+                        color: componentTheme.colors.icons,
+                        tooltip: 'Back',
                       ),
                     ],
                     Expanded(
@@ -127,11 +123,9 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                       ),
                     ),
                     if (widget.actions.isNotEmpty) ...[
-                      const SizedBox(width: 16),
                       ImpaktfullUiAutoLayout.horizontal(
                         spacing: 8,
-                        children: widget.actions.overrideColorOnWidgets(
-                            componentTheme.colors.icons),
+                        children: widget.actions.overrideColorOnWidgets(componentTheme.colors.icons),
                       ),
                     ],
                   ],
