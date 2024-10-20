@@ -14,6 +14,8 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
   final String? subtitle;
   final VoidCallback? onBackTapped;
   final List<ImpaktfullUiAdaptiveNavBarActionItem> actions;
+  final bool isDrawerEnabled;
+  final Widget? drawer;
   final Widget? headerBottomChild;
   final WidgetBuilder builder;
   final WidgetBuilder? mediumBuilder;
@@ -26,6 +28,8 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
     this.subtitle,
     this.onBackTapped,
     this.badge,
+    this.isDrawerEnabled = false,
+    this.drawer,
     this.headerBottomChild,
     this.mediumBuilder,
     this.largeBuilder,
@@ -37,26 +41,31 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiScreen(
-      child: ClipRect(
-        child: ImpaktfullUiAutoLayout.vertical(
-          children: [
-            ImpaktfullUiAdaptiveNavBar(
-              title: title,
-              badge: badge,
-              subtitle: subtitle,
-              bottomChild: headerBottomChild,
-              onBackTapped: onBackTapped,
-              actions: actions,
-            ),
-            Expanded(
-              child: ImpaktfullUiResponsiveLayout(
-                small: builder,
-                medium: mediumBuilder,
-                large: largeBuilder,
-                extraLarge: extraLargeBuilder,
+      drawer: drawer,
+      child: Builder(
+        builder: (context) => ClipRect(
+          child: ImpaktfullUiAutoLayout.vertical(
+            children: [
+              ImpaktfullUiAdaptiveNavBar(
+                title: title,
+                badge: badge,
+                subtitle: subtitle,
+                bottomChild: headerBottomChild,
+                onBackTapped: onBackTapped,
+                isDrawerOpen: ImpaktfullUiScreen.of(context).isDrawerOpen,
+                onDrawerTapped: ImpaktfullUiScreen.of(context).openDrawer,
+                actions: actions,
               ),
-            ),
-          ],
+              Expanded(
+                child: ImpaktfullUiResponsiveLayout(
+                  small: builder,
+                  medium: mediumBuilder,
+                  large: largeBuilder,
+                  extraLarge: extraLargeBuilder,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

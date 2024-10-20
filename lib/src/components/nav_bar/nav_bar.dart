@@ -15,6 +15,8 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
+  final VoidCallback? onDrawerTapped;
+  final bool isDrawerOpen;
   final bool isFullScreen;
   final Widget? bottomChild;
   final List<Widget> actions;
@@ -24,6 +26,8 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
     this.title,
     this.subtitle,
     this.onBackTapped,
+    this.onDrawerTapped,
+    this.isDrawerOpen = false,
     this.bottomChild,
     this.isFullScreen = false,
     this.actions = const [],
@@ -73,6 +77,14 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
                         asset: componentTheme.assets.back,
                         color: componentTheme.colors.icons,
                         tooltip: 'Back',
+                      ),
+                    ],
+                    if (onDrawerTapped != null) ...[
+                      ImpaktfullUiIconButton(
+                        onTap: onDrawerTapped!,
+                        asset: componentTheme.assets.drawerMenu,
+                        color: componentTheme.colors.icons,
+                        tooltip: isDrawerOpen ? 'Close drawer' : 'Open drawer',
                       ),
                     ],
                     Expanded(

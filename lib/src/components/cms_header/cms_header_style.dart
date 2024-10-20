@@ -23,9 +23,11 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiCmsHeaderAssetsTheme {
   final ImpaktfullUiAsset back;
+  final ImpaktfullUiAsset drawerMenu;
 
   const ImpaktfullUiCmsHeaderAssetsTheme({
     required this.back,
+    required this.drawerMenu,
   });
 }
 

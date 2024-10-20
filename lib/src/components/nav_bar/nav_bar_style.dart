@@ -23,9 +23,11 @@ class ImpaktfullUiNavBarTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiNavBarAssetsTheme {
   final ImpaktfullUiAsset back;
+  final ImpaktfullUiAsset drawerMenu;
   final ImpaktfullUiAsset close;
   const ImpaktfullUiNavBarAssetsTheme({
     required this.back,
+    required this.drawerMenu,
     required this.close,
   });
 }

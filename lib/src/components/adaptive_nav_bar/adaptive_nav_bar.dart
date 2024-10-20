@@ -16,6 +16,8 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
   final String? badge;
   final String? subtitle;
   final VoidCallback? onBackTapped;
+  final VoidCallback? onDrawerTapped;
+  final bool isDrawerOpen;
   final Widget? bottomChild;
   final List<ImpaktfullUiAdaptiveNavBarActionItem> actions;
 
@@ -24,7 +26,9 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
     this.badge,
     this.subtitle,
     this.onBackTapped,
+    this.onDrawerTapped,
     this.bottomChild,
+    this.isDrawerOpen = false,
     this.actions = const [],
     super.key,
   });
@@ -37,6 +41,8 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
         subtitle: subtitle,
         onBackTapped: onBackTapped,
         bottomChild: bottomChild,
+        onDrawerTapped: onDrawerTapped,
+        isDrawerOpen: isDrawerOpen,
         actions: actions.map((e) => e.small()).toList(),
       ),
       medium: (context) => ImpaktfullUiCmsHeader(
@@ -45,6 +51,8 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
         subtitle: subtitle,
         bottomChild: bottomChild,
         onBackTapped: onBackTapped,
+        onDrawerTapped: onDrawerTapped,
+        isDrawerOpen: isDrawerOpen,
         actions: actions.map((e) => e.medium()).toList(),
       ),
     );

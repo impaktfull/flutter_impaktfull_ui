@@ -394,6 +394,7 @@ class DefaultTheme {
         cmsHeader: ImpaktfullUiCmsHeaderTheme(
           assets: ImpaktfullUiCmsHeaderAssetsTheme(
             back: assets.icons.arrowLeft,
+            drawerMenu: assets.icons.list,
           ),
           colors: ImpaktfullUiCmsHeaderColorTheme(
             background: colors.card,
@@ -741,6 +742,7 @@ class DefaultTheme {
         navBar: ImpaktfullUiNavBarTheme(
           assets: ImpaktfullUiNavBarAssetsTheme(
             back: assets.icons.arrowLeft,
+            drawerMenu: assets.icons.list,
             close: assets.icons.close,
           ),
           colors: ImpaktfullUiNavBarColorTheme(

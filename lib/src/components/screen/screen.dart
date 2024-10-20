@@ -9,13 +9,15 @@ export 'screen_style.dart';
 
 part 'screen.describe.dart';
 
-class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiScreen extends StatefulWidget with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
   final bool isFullScreen;
   final bool canPop;
   final VoidCallback? onPopInvoked;
+  final Widget? drawer;
+  final bool isDrawerEnabled;
   final Widget child;
   final List<Widget> actions;
   final Alignment fabAlignment;
@@ -28,6 +30,8 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
     required this.child,
     this.title,
     this.subtitle,
+    this.drawer,
+    this.isDrawerEnabled = false,
     this.onBackTapped,
     this.isFullScreen = false,
     this.canPop = true,
@@ -41,33 +45,59 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
     super.key,
   });
 
+  static ImpaktfullUiScreenState of(BuildContext context) {
+    final ImpaktfullUiScreenState? result =
+        context.findAncestorStateOfType<ImpaktfullUiScreenState>();
+    assert(result != null,
+        'No ImpaktfullUImpaktfullUiScreenStateiScreen found in context');
+    return result!;
+  }
+
+  @override
+  State<ImpaktfullUiScreen> createState() => ImpaktfullUiScreenState();
+
+  @override
+  String describe(BuildContext context) => _describeInstance(context, this);
+}
+
+class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
+  final _scaffoldState = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiScreenTheme>(
-      overrideComponentTheme: theme,
+      overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
-        final hasNavbar = onBackTapped != null ||
-            title != null ||
-            subtitle != null ||
-            actions.isNotEmpty ||
-            bottomNavBarChild != null;
-        final hasBottomChild = bottomChild != null;
+        final hasNavbar = widget.onBackTapped != null ||
+            widget.title != null ||
+            widget.subtitle != null ||
+            widget.actions.isNotEmpty ||
+            widget.bottomNavBarChild != null;
+        final hasBottomChild = widget.bottomChild != null;
         return PopScope(
-          onPopInvokedWithResult: (didPop, result) => onPopInvoked?.call(),
-          canPop: canPop,
+          onPopInvokedWithResult: (didPop, result) =>
+              widget.onPopInvoked?.call(),
+          canPop: widget.canPop,
           child: ClipRect(
             child: Scaffold(
+              key: _scaffoldState,
               backgroundColor: componentTheme.colors.background,
+              drawer: widget.drawer,
               body: ImpaktfullUiAutoLayout.vertical(
                 children: [
                   if (hasNavbar) ...[
                     ImpaktfullUiNavBar(
-                      onBackTapped: onBackTapped,
-                      isFullScreen: isFullScreen,
-                      title: title,
-                      subtitle: subtitle,
-                      actions: actions,
-                      bottomChild: bottomNavBarChild,
+                      onBackTapped:
+                          widget.drawer == null ? widget.onBackTapped : null,
+                      onDrawerTapped:
+                          widget.drawer == null && !widget.isDrawerEnabled
+                              ? null
+                              : openDrawer,
+                      isDrawerOpen: Scaffold.of(context).isDrawerOpen,
+                      isFullScreen: widget.isFullScreen,
+                      title: widget.title,
+                      subtitle: widget.subtitle,
+                      actions: widget.actions,
+                      bottomChild: widget.bottomNavBarChild,
                     ),
                   ],
                   Expanded(
@@ -78,17 +108,17 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
                         removeTop: hasNavbar,
                         removeBottom: hasBottomChild,
                         child: Stack(
-                          alignment: fabAlignment,
+                          alignment: widget.fabAlignment,
                           children: [
                             Positioned.fill(
                               child: SizedBox(
-                                child: child,
+                                child: widget.child,
                               ),
                             ),
-                            if (fab != null) ...[
+                            if (widget.fab != null) ...[
                               Padding(
                                 padding: const EdgeInsets.all(16),
-                                child: fab!,
+                                child: widget.fab!,
                               ),
                             ],
                           ],
@@ -96,7 +126,7 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
                       ),
                     ),
                   ),
-                  if (bottomChild != null) bottomChild!,
+                  if (widget.bottomChild != null) widget.bottomChild!,
                 ],
               ),
             ),
@@ -106,6 +136,33 @@ class ImpaktfullUiScreen extends StatelessWidget with ComponentDescriptorMixin {
     );
   }
 
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
+  bool get isDrawerOpen {
+    final state = _scaffoldState.currentState;
+    if (state == null) return false;
+    return state.isDrawerOpen;
+  }
+
+  void openDrawer() {
+    if (_scaffoldState.currentState?.widget.drawer != null) {
+      _scaffoldState.currentState?.openDrawer();
+      return;
+    }
+    final context = _scaffoldState.currentContext;
+    if (context == null) return;
+    final state = findDrawer(context);
+    if (state == null) return;
+    state.openDrawer();
+  }
+
+  ImpaktfullUiScreenState? findDrawer(BuildContext context) {
+    final state = context.findAncestorStateOfType<ImpaktfullUiScreenState>();
+    if (state == null) return null;
+    if (state.widget.drawer == null) {
+      final parentContext =
+          context.findAncestorStateOfType<ImpaktfullUiScreenState>()?.context;
+      if (parentContext == null) return null;
+      return findDrawer(parentContext);
+    }
+    return state;
+  }
 }

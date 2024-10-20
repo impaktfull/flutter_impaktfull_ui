@@ -21,95 +21,87 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiScreen(
-      child: ImpaktfullUiAutoLayout.horizontal(
-        children: [
-          ImpaktfullUiSidebarNavigation(
-            width: 300,
-            asset: theme.assets.images.logo,
+      drawer: ImpaktfullUiSidebarNavigation(
+        width: 300,
+        asset: theme.assets.images.logo,
+        items: [
+          ImpaktfullUiSidebarNavigationItem(
+            leading: ImpaktfullUiAsset.icon(PhosphorIcons.house()),
+            title: 'Home',
+            isSelected: _activeScreen == DashboardScreen.home,
+            onTap: () => setState(() => _activeScreen = DashboardScreen.home),
+          ),
+          ImpaktfullUiSidebarNavigationItem(
+            leading: ImpaktfullUiAsset.icon(PhosphorIcons.basket()),
+            title: 'Store',
             items: [
               ImpaktfullUiSidebarNavigationItem(
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.house()),
-                title: 'Home',
-                isSelected: _activeScreen == DashboardScreen.home,
-                onTap: () =>
-                    setState(() => _activeScreen = DashboardScreen.home),
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.tShirt()),
+                title: 'Products',
+                isSelected: _activeScreen == DashboardScreen.storeProducts,
+                onTap: () => setState(
+                    () => _activeScreen = DashboardScreen.storeProducts),
               ),
               ImpaktfullUiSidebarNavigationItem(
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.basket()),
-                title: 'Store',
-                items: [
-                  ImpaktfullUiSidebarNavigationItem(
-                    leading: ImpaktfullUiAsset.icon(PhosphorIcons.tShirt()),
-                    title: 'Products',
-                    isSelected: _activeScreen == DashboardScreen.storeProducts,
-                    onTap: () => setState(
-                        () => _activeScreen = DashboardScreen.storeProducts),
-                  ),
-                  ImpaktfullUiSidebarNavigationItem(
-                    leading: ImpaktfullUiAsset.icon(PhosphorIcons.money()),
-                    title: 'Orders',
-                    isSelected: _activeScreen == DashboardScreen.storeOrders,
-                    onTap: () => setState(
-                        () => _activeScreen = DashboardScreen.storeOrders),
-                  ),
-                  ImpaktfullUiSidebarNavigationItem(
-                    leading:
-                        ImpaktfullUiAsset.icon(PhosphorIcons.sealPercent()),
-                    title: 'Coupons',
-                    isSelected: _activeScreen == DashboardScreen.storeCoupons,
-                    onTap: () => setState(
-                        () => _activeScreen = DashboardScreen.storeCoupons),
-                  ),
-                  ImpaktfullUiSidebarNavigationItem(
-                    leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
-                    title: 'Settings',
-                    isSelected: _activeScreen == DashboardScreen.storeSettings,
-                    onTap: () => setState(
-                        () => _activeScreen = DashboardScreen.storeSettings),
-                  ),
-                ],
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.money()),
+                title: 'Orders',
+                isSelected: _activeScreen == DashboardScreen.storeOrders,
+                onTap: () =>
+                    setState(() => _activeScreen = DashboardScreen.storeOrders),
               ),
-            ],
-            footerItems: [
+              ImpaktfullUiSidebarNavigationItem(
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.sealPercent()),
+                title: 'Coupons',
+                isSelected: _activeScreen == DashboardScreen.storeCoupons,
+                onTap: () => setState(
+                    () => _activeScreen = DashboardScreen.storeCoupons),
+              ),
               ImpaktfullUiSidebarNavigationItem(
                 leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
                 title: 'Settings',
-                isSelected: _activeScreen == DashboardScreen.settings,
-                onTap: () =>
-                    setState(() => _activeScreen = DashboardScreen.settings),
+                isSelected: _activeScreen == DashboardScreen.storeSettings,
+                onTap: () => setState(
+                    () => _activeScreen = DashboardScreen.storeSettings),
               ),
             ],
-            footer: ImpaktfullUiSimpleListItem(
-              leadingWidgetBuilder: (context) => const ImpaktfullUiAvatar(
-                url: NetworkImages.profilePicture,
-              ),
-              title: 'Koen Van Looveren',
-              subtitle: 'koen@impaktfull.com',
-              trailingWidgetBuilder: (context) => ImpaktfullUiIconButton(
-                asset: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
-                onTap: () => Navigator.of(context, rootNavigator: true).pop(),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Builder(builder: (context) {
-              switch (_activeScreen) {
-                case DashboardScreen.home:
-                  return const ExampleComingSoon();
-                case DashboardScreen.storeProducts:
-                  return const DashboardStoreProductsScreen();
-                case DashboardScreen.storeOrders:
-                  return const DashboardStoreOrdersScreen();
-                case DashboardScreen.storeCoupons:
-                  return const DashboardStoreCouponScreen();
-                case DashboardScreen.storeSettings:
-                case DashboardScreen.settings:
-                  return const ExampleComingSoon();
-              }
-            }),
           ),
         ],
+        footerItems: [
+          ImpaktfullUiSidebarNavigationItem(
+            leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
+            title: 'Settings',
+            isSelected: _activeScreen == DashboardScreen.settings,
+            onTap: () =>
+                setState(() => _activeScreen = DashboardScreen.settings),
+          ),
+        ],
+        footer: ImpaktfullUiSimpleListItem(
+          leadingWidgetBuilder: (context) => const ImpaktfullUiAvatar(
+            url: NetworkImages.profilePicture,
+          ),
+          title: 'Koen Van Looveren',
+          subtitle: 'koen@impaktfull.com',
+          trailingWidgetBuilder: (context) => ImpaktfullUiIconButton(
+            asset: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
+            onTap: () => Navigator.of(context, rootNavigator: true).pop(),
+          ),
+        ),
       ),
+      child: Builder(builder: (context) {
+        switch (_activeScreen) {
+          case DashboardScreen.home:
+            return const ExampleComingSoon();
+          case DashboardScreen.storeProducts:
+            return const DashboardStoreProductsScreen();
+          case DashboardScreen.storeOrders:
+            return const DashboardStoreOrdersScreen();
+          case DashboardScreen.storeCoupons:
+            return const DashboardStoreCouponScreen();
+          case DashboardScreen.storeSettings:
+          case DashboardScreen.settings:
+            return const ExampleComingSoon();
+        }
+      }),
     );
   }
 }

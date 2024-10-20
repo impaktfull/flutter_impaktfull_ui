@@ -9,8 +9,10 @@ class ExampleComingSoon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiScreen(
-      child: ImpaktfullUiPlaceholderState(
+    return ImpaktfullUiAdaptiveScreen(
+      title: 'Coming soon',
+      isDrawerEnabled: true,
+      builder: (context) => ImpaktfullUiPlaceholderState(
         title: 'Coming soon',
         subtitle: 'This example page has not been implemented yet.',
         assetBuilder: (context) => Center(
@@ -26,6 +28,13 @@ class ExampleComingSoon extends StatelessWidget {
             ),
           ),
         ),
+        actions: [
+          ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.primary,
+            title: 'Open drawer',
+            onTap: () => ImpaktfullUiScreen.of(context).openDrawer(),
+          ),
+        ],
       ),
     );
   }

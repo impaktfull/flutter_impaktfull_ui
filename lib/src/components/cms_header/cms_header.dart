@@ -17,6 +17,8 @@ class ImpaktfullUiCmsHeader extends StatefulWidget
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
+  final VoidCallback? onDrawerTapped;
+  final bool isDrawerOpen;
   final List<Widget> actions;
   final ImpaktfullUiCmsHeaderTheme? theme;
   final String? badge;
@@ -27,6 +29,8 @@ class ImpaktfullUiCmsHeader extends StatefulWidget
     this.subtitle,
     this.onBackTapped,
     this.actions = const [],
+    this.onDrawerTapped,
+    this.isDrawerOpen = false,
     this.bottomChild,
     this.badge,
     this.theme,
@@ -82,6 +86,16 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                         tooltip: 'Back',
                       ),
                       const SizedBox(width: 8),
+                    ],
+                    if (widget.onDrawerTapped != null) ...[
+                      ImpaktfullUiIconButton(
+                        onTap: widget.onDrawerTapped!,
+                        asset: componentTheme.assets.drawerMenu,
+                        color: componentTheme.colors.icons,
+                        tooltip: widget.isDrawerOpen
+                            ? 'Close drawer'
+                            : 'Open drawer',
+                      ),
                     ],
                     Expanded(
                       child: ImpaktfullUiAutoLayout.vertical(
