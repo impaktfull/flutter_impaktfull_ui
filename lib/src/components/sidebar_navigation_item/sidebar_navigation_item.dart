@@ -13,7 +13,8 @@ export 'sidebar_navigation_item_style.dart';
 
 part 'sidebar_navigation_item.describe.dart';
 
-class ImpaktfullUiSidebarNavigationItem extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSidebarNavigationItem extends StatefulWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? leading;
   final String title;
   final List<Widget> items;
@@ -32,13 +33,15 @@ class ImpaktfullUiSidebarNavigationItem extends StatefulWidget with ComponentDes
   });
 
   @override
-  State<ImpaktfullUiSidebarNavigationItem> createState() => _ImpaktfullUiSidebarNavigationItemState();
+  State<ImpaktfullUiSidebarNavigationItem> createState() =>
+      _ImpaktfullUiSidebarNavigationItemState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiSidebarNavigationItemState extends State<ImpaktfullUiSidebarNavigationItem>
+class _ImpaktfullUiSidebarNavigationItemState
+    extends State<ImpaktfullUiSidebarNavigationItem>
     with SingleTickerProviderStateMixin {
   var _expanded = false;
   late AnimationController _controller;
@@ -65,7 +68,8 @@ class _ImpaktfullUiSidebarNavigationItemState extends State<ImpaktfullUiSidebarN
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSidebarNavigationItemTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiSidebarNavigationItemTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         return ImpaktfullUiAutoLayout.vertical(
@@ -75,11 +79,13 @@ class _ImpaktfullUiSidebarNavigationItemState extends State<ImpaktfullUiSidebarN
           children: [
             ImpaktfullUiTouchFeedback(
               onTap: _onTap,
-              color: widget.isSelected ? componentTheme.colors.background : null,
+              color:
+                  widget.isSelected ? componentTheme.colors.background : null,
               borderRadius: componentTheme.dimens.borderRadius,
               child: Padding(
-                padding:
-                    widget.items.isEmpty ? componentTheme.dimens.padding : componentTheme.dimens.paddingWithSubItems,
+                padding: widget.items.isEmpty
+                    ? componentTheme.dimens.padding
+                    : componentTheme.dimens.paddingWithSubItems,
                 child: ImpaktfullUiAutoLayout.horizontal(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 12,
