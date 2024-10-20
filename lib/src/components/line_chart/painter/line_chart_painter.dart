@@ -96,7 +96,7 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
       if (lineChartData.gradientEnabled) {
         final gradientColors = lineChartData.gradientColors ??
             [
-              paint.color.withOpacity(0.5),
+              paint.color.withOpacity(0.33),
               paint.color.withOpacity(0),
             ];
         final gradientPath = Path.from(path);

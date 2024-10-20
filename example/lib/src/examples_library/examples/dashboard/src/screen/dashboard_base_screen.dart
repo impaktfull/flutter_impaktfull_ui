@@ -22,7 +22,7 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
   Widget build(BuildContext context) {
     return ImpaktfullUiScreen(
       drawer: ImpaktfullUiSidebarNavigation(
-        width: 300,
+        width: 500,
         asset: theme.assets.images.logo,
         items: [
           ImpaktfullUiSidebarNavigationItem(

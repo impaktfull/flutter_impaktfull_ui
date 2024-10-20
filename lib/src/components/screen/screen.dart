@@ -81,7 +81,14 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
             child: Scaffold(
               key: _scaffoldState,
               backgroundColor: componentTheme.colors.background,
-              drawer: widget.drawer,
+              drawer: widget.drawer == null
+                  ? null
+                  : ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width - 64,
+                      ),
+                      child: widget.drawer,
+                    ),
               body: ImpaktfullUiAutoLayout.vertical(
                 children: [
                   if (hasNavbar) ...[

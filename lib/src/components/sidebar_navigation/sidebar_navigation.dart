@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
@@ -49,114 +51,116 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
         final hasHeader = asset != null || header != null;
         final hasFooter = footer != null;
         final hasFooterItems = footerItems.isNotEmpty;
-        return Container(
-          color: componentTheme.colors.backgroundColor,
-          child: ImpaktfullUiAutoLayout.horizontal(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                width: width,
-                child: ImpaktfullUiAutoLayout.vertical(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 8,
-                  children: [
-                    if (hasHeader) ...[
-                      Padding(
-                        padding: EdgeInsetsDirectional.only(
-                          start: componentTheme.dimens.padding.start,
-                          end: componentTheme.dimens.padding.end,
-                          top: componentTheme.dimens.padding.top,
-                          bottom: 32,
-                        ),
-                        child: ImpaktfullUiAutoLayout.vertical(
-                          spacing: 8,
-                          children: [
-                            if (asset != null) ...[
-                              const SizedBox(height: 10),
-                              ConstrainedBox(
-                                constraints: const BoxConstraints(
-                                  maxWidth: 150,
-                                  maxHeight: 40,
-                                ),
-                                child: ImpaktfullUiAssetWidget(
-                                  asset: asset!,
-                                ),
-                              ),
-                            ],
-                            if (header != null) ...[
-                              header!,
-                            ],
-                          ],
-                        ),
-                      ),
-                    ],
-                    if (content != null) ...[
-                      content!
-                    ] else ...[
-                      if (items.isNotEmpty) ...[
-                        Expanded(
-                          child: ImpaktfullUiListView(
+        return LayoutBuilder(builder: (context, constraints) {
+          return Container(
+            color: componentTheme.colors.backgroundColor,
+            child: ImpaktfullUiAutoLayout.horizontal(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: min(width ?? double.infinity, constraints.maxWidth),
+                  child: ImpaktfullUiAutoLayout.vertical(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8,
+                    children: [
+                      if (hasHeader) ...[
+                        Padding(
+                          padding: EdgeInsetsDirectional.only(
+                            start: componentTheme.dimens.padding.start,
+                            end: componentTheme.dimens.padding.end,
+                            top: componentTheme.dimens.padding.top,
+                            bottom: 32,
+                          ),
+                          child: ImpaktfullUiAutoLayout.vertical(
                             spacing: 8,
-                            padding: EdgeInsetsDirectional.only(
-                              start: componentTheme.dimens.padding.start,
-                              end: componentTheme.dimens.padding.end,
-                              top: hasHeader
-                                  ? 0
-                                  : componentTheme.dimens.padding.top,
-                              bottom: hasFooter || hasFooterItems
-                                  ? 0
-                                  : componentTheme.dimens.padding.bottom,
+                            children: [
+                              if (asset != null) ...[
+                                const SizedBox(height: 10),
+                                ConstrainedBox(
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 150,
+                                    maxHeight: 40,
+                                  ),
+                                  child: ImpaktfullUiAssetWidget(
+                                    asset: asset!,
+                                  ),
+                                ),
+                              ],
+                              if (header != null) ...[
+                                header!,
+                              ],
+                            ],
+                          ),
+                        ),
+                      ],
+                      if (content != null) ...[
+                        content!
+                      ] else ...[
+                        if (items.isNotEmpty) ...[
+                          Expanded(
+                            child: ImpaktfullUiListView(
+                              spacing: 8,
+                              padding: EdgeInsetsDirectional.only(
+                                start: componentTheme.dimens.padding.start,
+                                end: componentTheme.dimens.padding.end,
+                                top: hasHeader
+                                    ? 0
+                                    : componentTheme.dimens.padding.top,
+                                bottom: hasFooter || hasFooterItems
+                                    ? 0
+                                    : componentTheme.dimens.padding.bottom,
+                              ),
+                              children: items,
                             ),
-                            children: items,
+                          ),
+                        ],
+                      ],
+                      if (footer != null || footerItems.isNotEmpty) ...[
+                        Padding(
+                          padding: EdgeInsetsDirectional.only(
+                            start: componentTheme.dimens.padding.start,
+                            end: componentTheme.dimens.padding.end,
+                            top: componentTheme.dimens.padding.top,
+                            bottom: componentTheme.dimens.padding.bottom,
+                          ),
+                          child: ImpaktfullUiAutoLayout.vertical(
+                            spacing: 8,
+                            children: [
+                              ...footerItems,
+                              if (footer != null) ...[
+                                const ImpaktfullUiDivider(),
+                                footer!,
+                              ],
+                            ],
                           ),
                         ),
                       ],
                     ],
-                    if (footer != null || footerItems.isNotEmpty) ...[
-                      Padding(
-                        padding: EdgeInsetsDirectional.only(
-                          start: componentTheme.dimens.padding.start,
-                          end: componentTheme.dimens.padding.end,
-                          top: componentTheme.dimens.padding.top,
-                          bottom: componentTheme.dimens.padding.bottom,
-                        ),
-                        child: ImpaktfullUiAutoLayout.vertical(
-                          spacing: 8,
-                          children: [
-                            ...footerItems,
-                            if (footer != null) ...[
-                              const ImpaktfullUiDivider(),
-                              footer!,
-                            ],
-                          ],
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-              if (secondaryContent != null || secondaryItems.isNotEmpty) ...[
-                Container(
-                  color: componentTheme.colors.border,
-                  width: 1,
-                  height: double.infinity,
-                ),
-                if (secondaryContent != null) ...[
-                  secondaryContent!,
-                ] else ...[
-                  SizedBox(
-                    width: 300,
-                    child: ImpaktfullUiListView(
-                      spacing: 8,
-                      padding: componentTheme.dimens.padding,
-                      children: secondaryItems,
-                    ),
                   ),
+                ),
+                if (secondaryContent != null || secondaryItems.isNotEmpty) ...[
+                  Container(
+                    color: componentTheme.colors.border,
+                    width: 1,
+                    height: double.infinity,
+                  ),
+                  if (secondaryContent != null) ...[
+                    secondaryContent!,
+                  ] else ...[
+                    SizedBox(
+                      width: 300,
+                      child: ImpaktfullUiListView(
+                        spacing: 8,
+                        padding: componentTheme.dimens.padding,
+                        children: secondaryItems,
+                      ),
+                    ),
+                  ],
                 ],
               ],
-            ],
-          ),
-        );
+            ),
+          );
+        });
       },
     );
   }
