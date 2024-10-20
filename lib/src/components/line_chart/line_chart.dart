@@ -74,7 +74,7 @@ class _ImpaktfullUiLineChartState extends State<ImpaktfullUiLineChart> {
               maxX: e.maxX,
               minY: e.minY,
               maxY: e.maxY,
-              hasGradient: e.style?.hasGradient ?? false,
+              hasGradient: e.style?.gradientEnabled ?? false,
               gradientColors: _getGradientColors(e.style),
               gradientStops: _getGradientStops(e.style),
               lineColor: e.style?.color ?? widget.theme?.colors.lineColor,
@@ -86,7 +86,7 @@ class _ImpaktfullUiLineChartState extends State<ImpaktfullUiLineChart> {
   List<double> _getGradientStops(ImpaktfullUiLineChartItemStyle? style) {
     final defaultStops = <double>[0, 1];
     if (style == null) return defaultStops;
-    if (style.hasGradient) return style.gradientStops ?? defaultStops;
+    if (style.gradientEnabled) return style.gradientStops ?? defaultStops;
     return defaultStops;
   }
 

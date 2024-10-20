@@ -21,16 +21,17 @@ class LineChartLibraryVariant extends ComponentLibraryVariant<LineChartLibraryPr
           data: [
             ImpaktfullUiLineChartItemData(
               style: ImpaktfullUiLineChartItemStyle(
-                color: theme.colors.text,
+                color: theme.colors.accent,
+                gradientEnabled: true,
                 gradientColors: [
-                  theme.colors.text.withOpacity(0.2),
-                  theme.colors.text.withOpacity(0.0),
+                  theme.colors.accent.withOpacity(1),
+                  theme.colors.accent.withOpacity(0.0),
                 ],
               ),
               offsetBuilder: (x, y) => Offset(x, y),
               points: List.generate(100, (index) {
                 final x = index / 99 * 6;
-                final y = 1.5 + (1.5 * sin(x * pi / 3));
+                final y = 2 + (sin(x * pi / 2) + cos(x * pi / 4)) / 2;
                 return ImpaktfullUiLineChartItemDataItem(
                   x: x,
                   y: y,
@@ -39,13 +40,13 @@ class LineChartLibraryVariant extends ComponentLibraryVariant<LineChartLibraryPr
             ),
             ImpaktfullUiLineChartItemData(
               style: ImpaktfullUiLineChartItemStyle(
-                color: theme.colors.accent,
-                hasGradient: true,
+                color: theme.colors.text,
+                gradientEnabled: true,
               ),
               offsetBuilder: (x, y) => Offset(x, y),
               points: List.generate(100, (index) {
                 final x = index / 99 * 6;
-                final y = 2 + (sin(x * pi / 2) + cos(x * pi / 4)) / 2;
+                final y = 1.5 + (1.5 * sin(x * pi / 3));
                 return ImpaktfullUiLineChartItemDataItem(
                   x: x,
                   y: y,
