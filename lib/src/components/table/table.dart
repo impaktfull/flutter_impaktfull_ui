@@ -102,6 +102,7 @@ class _TableContainer extends StatelessWidget {
             height: constraints.maxHeight,
             child: ListView(
               scrollDirection: Axis.horizontal,
+              physics: const ClampingScrollPhysics(),
               children: [
                 SizedBox(
                   width: minWidth,
