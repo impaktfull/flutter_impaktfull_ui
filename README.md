@@ -123,7 +123,15 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 
 #### Future
 
-Many more to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull (Checkout the TODO list below)
+Much more components to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull (Checkout the TODO list below)
+
+### Examples
+
+- Dashboard
+
+### Future
+
+Much more examples to come in the future.
 
 ### Theming
 
@@ -192,6 +200,9 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 # Todo
 
 - [ ] Add tests
+
+  - Add screenshot tests for all components
+
 - [ ] Add extra components
 
   - ImpaktfullUiSlider
@@ -246,7 +257,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 - [ ] Add examples
 
-  - Dashboard
+  - Login
 
 # License
 
