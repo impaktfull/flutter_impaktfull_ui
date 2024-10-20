@@ -6,16 +6,14 @@ import 'package:impaktfull_ui_example/src/component_library/components/line_char
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
 
-class LineChartLibraryVariant
-    extends ComponentLibraryVariant<LineChartLibraryPrimaryInputs> {
+class LineChartLibraryVariant extends ComponentLibraryVariant<LineChartLibraryPrimaryInputs> {
   const LineChartLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(
-      BuildContext context, LineChartLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, LineChartLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         height: 500,
@@ -23,18 +21,11 @@ class LineChartLibraryVariant
           data: [
             ImpaktfullUiLineChartItemData(
               style: ImpaktfullUiLineChartItemStyle(
-                color: theme.colors.border,
-              ),
-              offsetBuilder: (x, y) => Offset(x, y),
-              points: List.generate(100, (index) {
-                final x = index / 99 * 6;
-                final y = (index % 10) / 3;
-                return ImpaktfullUiLineChartItemDataItem(x: x, y: y);
-              }),
-            ),
-            ImpaktfullUiLineChartItemData(
-              style: ImpaktfullUiLineChartItemStyle(
                 color: theme.colors.text,
+                gradientColors: [
+                  theme.colors.text.withOpacity(0.2),
+                  theme.colors.text.withOpacity(0.0),
+                ],
               ),
               offsetBuilder: (x, y) => Offset(x, y),
               points: List.generate(100, (index) {
@@ -47,6 +38,13 @@ class LineChartLibraryVariant
               }),
             ),
             ImpaktfullUiLineChartItemData(
+              style: ImpaktfullUiLineChartItemStyle(
+                color: theme.colors.accent,
+                gradientColors: [
+                  theme.colors.accent.withOpacity(0.2),
+                  theme.colors.accent.withOpacity(0.0),
+                ],
+              ),
               offsetBuilder: (x, y) => Offset(x, y),
               points: List.generate(100, (index) {
                 final x = index / 99 * 6;

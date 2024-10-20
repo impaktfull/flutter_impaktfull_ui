@@ -13,8 +13,7 @@ export 'model/line_chart_item_style.dart';
 
 part 'line_chart.describe.dart';
 
-class ImpaktfullUiLineChart extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiLineChart extends StatefulWidget with ComponentDescriptorMixin {
   final List<ImpaktfullUiLineChartItemData> data;
   final ImpaktfullUiLineChartTheme? theme;
 
@@ -69,13 +68,12 @@ class _ImpaktfullUiLineChartState extends State<ImpaktfullUiLineChart> {
   void _setPainterData() {
     painterData = widget.data
         .map((e) => ImpaktfullUiLineChartPainterData(
-              points: e.points
-                  .map((point) => e.offsetBuilder(point.x, point.y))
-                  .toList(),
+              points: e.points.map((point) => e.offsetBuilder(point.x, point.y)).toList(),
               minX: e.minX,
               maxX: e.maxX,
               minY: e.minY,
               maxY: e.maxY,
+              gradientColors: e.style?.gradientColors,
               lineColor: e.style?.color ?? widget.theme?.colors.lineColor,
               strokeWidth: e.style?.strokeWidth,
             ))

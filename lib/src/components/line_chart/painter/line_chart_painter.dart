@@ -65,6 +65,23 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
         );
       }
 
+      // Draw gradient below the graph
+      if (lineChartData.gradientColors != null && lineChartData.gradientColors!.isNotEmpty) {
+        final gradientPath = Path.from(path);
+        gradientPath.lineTo(size.width, size.height);
+        gradientPath.lineTo(0, size.height);
+        gradientPath.close();
+
+        final gradientPaint = Paint()
+          ..shader = LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: lineChartData.gradientColors!,
+          ).createShader(Offset.zero & size);
+
+        canvas.drawPath(gradientPath, gradientPaint);
+      }
+
       canvas.drawPath(path, paint);
     }
   }
