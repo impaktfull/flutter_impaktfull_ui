@@ -16,11 +16,15 @@ part 'line_chart.describe.dart';
 
 class ImpaktfullUiLineChart extends StatefulWidget
     with ComponentDescriptorMixin {
+  final double? width;
+  final double? height;
   final List<ImpaktfullUiLineChartItemData> data;
   final ImpaktfullUiLineChartTheme? theme;
 
   const ImpaktfullUiLineChart({
     required this.data,
+    this.width,
+    this.height,
     this.theme,
     super.key,
   });
@@ -53,14 +57,18 @@ class _ImpaktfullUiLineChartState extends State<ImpaktfullUiLineChart> {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiLineChartTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => ClipRect(
-        child: CustomPaint(
-          size: Size.infinite,
-          painter: ImpaktfullUiLineChartPainter(
-            data: painterData,
-            defaultStrokeWidth: componentTheme.dimens.strokeWidth,
-            defaultLineColor: componentTheme.colors.lineColor,
-            backgroundColor: componentTheme.colors.backgroundColor,
+      builder: (context, componentTheme) => SizedBox(
+        width: widget.width,
+        height: widget.height,
+        child: ClipRect(
+          child: CustomPaint(
+            size: Size.infinite,
+            painter: ImpaktfullUiLineChartPainter(
+              data: painterData,
+              defaultStrokeWidth: componentTheme.dimens.strokeWidth,
+              defaultLineColor: componentTheme.colors.lineColor,
+              backgroundColor: componentTheme.colors.backgroundColor,
+            ),
           ),
         ),
       ),

@@ -57,14 +57,80 @@ class _DashboardStoreProductsScreenState
                 ImpaktfullUiMetric(
                   title: 'Amount of products',
                   value: products.length.toString(),
+                  leftValueBuilder: (context) => ImpaktfullUiLineChart(
+                    height: 25,
+                    data: [
+                      ImpaktfullUiLineChartItemData(
+                        style: ImpaktfullUiLineChartItemStyle(
+                          lineColor: theme.colors.accent,
+                          gradientEnabled: true,
+                        ),
+                        points: [
+                          ImpaktfullUiLineChartItemDataItem(x: 0.0, y: 25.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 1.0, y: 60.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 2.0, y: 40.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 3.0, y: 50.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 4.0, y: 80.0),
+                          ImpaktfullUiLineChartItemDataItem(
+                              x: 5.0, y: products.length.toDouble()),
+                        ],
+                        offsetBuilder: (x, y) => Offset(x, y),
+                      ),
+                    ],
+                  ),
                 ),
                 ImpaktfullUiMetric(
                   title: 'Active sales items',
                   value: '${products.length - _disabledSalesList.length}',
+                  leftValueBuilder: (context) => ImpaktfullUiLineChart(
+                    height: 25,
+                    data: [
+                      ImpaktfullUiLineChartItemData(
+                        style: ImpaktfullUiLineChartItemStyle(
+                          lineColor: theme.colors.success,
+                          gradientEnabled: true,
+                        ),
+                        points: [
+                          ImpaktfullUiLineChartItemDataItem(x: 0.0, y: 25.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 1.0, y: 59.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 2.0, y: 37.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 3.0, y: 50.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 4.0, y: 75.0),
+                          ImpaktfullUiLineChartItemDataItem(
+                            x: 5.0,
+                            y: (products.length - _disabledSalesList.length)
+                                .toDouble(),
+                          ),
+                        ],
+                        offsetBuilder: (x, y) => Offset(x, y),
+                      ),
+                    ],
+                  ),
                 ),
                 ImpaktfullUiMetric(
                   title: 'Disabled sales items',
                   value: _disabledSalesList.length.toString(),
+                  leftValueBuilder: (context) => ImpaktfullUiLineChart(
+                    height: 25,
+                    data: [
+                      ImpaktfullUiLineChartItemData(
+                        style: ImpaktfullUiLineChartItemStyle(
+                          lineColor: theme.colors.text,
+                          gradientEnabled: true,
+                        ),
+                        points: [
+                          ImpaktfullUiLineChartItemDataItem(x: 0.0, y: 0.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 1.0, y: 1.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 2.0, y: 3.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 3.0, y: 0.0),
+                          ImpaktfullUiLineChartItemDataItem(x: 4.0, y: 5.0),
+                          ImpaktfullUiLineChartItemDataItem(
+                              x: 5.0, y: _disabledSalesList.length.toDouble()),
+                        ],
+                        offsetBuilder: (x, y) => Offset(x, y),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -148,7 +214,12 @@ class _DashboardStoreProductsScreenState
   }
 
   void _onDeleteTapped(Product item) {
-    setState(() => products.remove(item));
+    setState(() {
+      products.remove(item);
+      if (_disabledSalesList.contains(item)) {
+        _disabledSalesList.remove(item);
+      }
+    });
     ImpaktfullUiNotification.show(
       title: 'Order is deleted',
       subtitle: '`${item.sku}` is deleted, but only for this session.',

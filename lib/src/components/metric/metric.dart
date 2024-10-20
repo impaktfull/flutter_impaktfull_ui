@@ -96,9 +96,14 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                                 ImpaktfullUiAutoLayout.horizontal(
                                   spacing: 8,
                                   children: [
-                                    Text(
-                                      value,
-                                      style: componentTheme.textStyles.value,
+                                    ConstrainedBox(
+                                      constraints: const BoxConstraints(
+                                        minWidth: 50,
+                                      ),
+                                      child: Text(
+                                        value,
+                                        style: componentTheme.textStyles.value,
+                                      ),
                                     ),
                                     if (extraTextValue != null) ...[
                                       ImpaktfullUiAutoLayout.horizontal(
