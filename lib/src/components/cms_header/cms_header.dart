@@ -20,14 +20,14 @@ class ImpaktfullUiCmsHeader extends StatefulWidget
   final List<Widget> actions;
   final ImpaktfullUiCmsHeaderTheme? theme;
   final String? badge;
-  final Widget? bottom;
+  final Widget? bottomChild;
 
   const ImpaktfullUiCmsHeader({
     required this.title,
     this.subtitle,
     this.onBackTapped,
     this.actions = const [],
-    this.bottom,
+    this.bottomChild,
     this.badge,
     this.theme,
     super.key,
@@ -69,7 +69,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                   top: 16,
                   left: 16,
                   right: 16,
-                  bottom: widget.bottom == null ? 16 : 12,
+                  bottom: widget.bottomChild == null ? 16 : 12,
                 ),
                 child: ImpaktfullUiAutoLayout.horizontal(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,8 +123,8 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                   ],
                 ),
               ),
-              if (widget.bottom != null) ...[
-                widget.bottom!,
+              if (widget.bottomChild != null) ...[
+                widget.bottomChild!,
                 const SizedBox(height: 12),
               ],
             ],

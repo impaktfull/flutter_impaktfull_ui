@@ -31,7 +31,7 @@ class BaseScreen extends StatelessWidget {
                 onBackTapped:
                     canGoBack ? () => Navigator.of(context).pop() : null,
                 actions: actions,
-                bottom: headerBottom,
+                bottomChild: headerBottom,
               ),
               Expanded(
                 child: builder(context),

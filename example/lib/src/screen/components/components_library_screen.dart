@@ -4,7 +4,6 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
-import 'package:impaktfull_ui_example/src/widget/base/base_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/components/component_card.dart';
 
 class ComponentsLibraryScreen extends StatefulWidget {
@@ -16,9 +15,7 @@ class ComponentsLibraryScreen extends StatefulWidget {
 }
 
 class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
-  final _fixedSearchQuery = [
-    // 'ImageCrop',
-  ];
+  final _fixedSearchQuery = [];
   var _searchQuery = '';
 
   @override
@@ -45,16 +42,18 @@ class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
         onInputChanged: _onChanged,
         onCloseWindow: () => controller.hide(),
       ),
-      child: BaseScreen(
+      child: ImpaktfullUiAdaptiveScreen(
         title: 'Components',
+        onBackTapped: () => Navigator.of(context).pop(),
         actions: [
           if (_fixedSearchQuery.isNotEmpty) ...[
-            ImpaktfullUiIconButton(
-              asset: theme.assets.icons.cloudDownload,
+            ImpaktfullUiAdaptiveNavBarActionItem(
+              asset: theme.assets.icons.close,
               onTap: () {
                 _fixedSearchQuery.clear();
                 setState(() {});
               },
+              title: 'Clear search',
             ),
           ],
         ],

@@ -6,7 +6,7 @@ String _describeInstance(BuildContext context, ImpaktfullUiCmsHeader instance) {
   descriptor.add('subtitle', instance.subtitle);
   descriptor.add('onBackTapped', instance.onBackTapped);
   descriptor.add('actions', instance.actions);
-  descriptor.add('bottom', instance.bottom);
+  descriptor.add('bottom', instance.bottomChild);
   descriptor.add('badge', instance.badge);
   descriptor.add('theme', instance.theme);
   return descriptor.describe();

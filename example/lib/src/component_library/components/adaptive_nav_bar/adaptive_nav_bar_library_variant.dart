@@ -27,8 +27,7 @@ class AdaptiveNavBarLibraryVariant
           ImpaktfullUiAdaptiveNavBarActionItem(
             title: 'Action',
             asset: const ImpaktfullUiAsset.icon(Icons.add),
-            onTapped: () =>
-                ImpaktfullUiNotification.show(title: 'Action tapped'),
+            onTap: () => ImpaktfullUiNotification.show(title: 'Action tapped'),
             type: ImpaktfullUiAdaptiveNavBarActionItemType.primary,
           ),
         ],

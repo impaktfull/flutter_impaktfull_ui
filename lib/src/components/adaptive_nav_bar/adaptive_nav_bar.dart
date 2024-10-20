@@ -16,6 +16,7 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
   final String? badge;
   final String? subtitle;
   final VoidCallback? onBackTapped;
+  final Widget? bottomChild;
   final List<ImpaktfullUiAdaptiveNavBarActionItem> actions;
 
   const ImpaktfullUiAdaptiveNavBar({
@@ -23,6 +24,7 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
     this.badge,
     this.subtitle,
     this.onBackTapped,
+    this.bottomChild,
     this.actions = const [],
     super.key,
   });
@@ -34,12 +36,14 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
         title: title,
         subtitle: subtitle,
         onBackTapped: onBackTapped,
+        bottomChild: bottomChild,
         actions: actions.map((e) => e.small()).toList(),
       ),
       medium: (context) => ImpaktfullUiCmsHeader(
         title: title,
         badge: badge,
         subtitle: subtitle,
+        bottomChild: bottomChild,
         onBackTapped: onBackTapped,
         actions: actions.map((e) => e.medium()).toList(),
       ),

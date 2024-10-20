@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
+import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 part 'adaptive_screen.describe.dart';
@@ -13,6 +14,7 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
   final String? subtitle;
   final VoidCallback? onBackTapped;
   final List<ImpaktfullUiAdaptiveNavBarActionItem> actions;
+  final Widget? headerBottomChild;
   final WidgetBuilder builder;
   final WidgetBuilder? mediumBuilder;
   final WidgetBuilder? largeBuilder;
@@ -21,37 +23,41 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
   const ImpaktfullUiAdaptiveScreen({
     required this.title,
     required this.builder,
+    this.subtitle,
+    this.onBackTapped,
     this.badge,
+    this.headerBottomChild,
     this.mediumBuilder,
     this.largeBuilder,
     this.extraLargeBuilder,
-    this.subtitle,
-    this.onBackTapped,
     this.actions = const [],
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ClipRect(
-      child: ImpaktfullUiAutoLayout.vertical(
-        children: [
-          ImpaktfullUiAdaptiveNavBar(
-            title: title,
-            badge: badge,
-            subtitle: subtitle,
-            onBackTapped: onBackTapped,
-            actions: actions,
-          ),
-          Expanded(
-            child: ImpaktfullUiResponsiveLayout(
-              small: builder,
-              medium: mediumBuilder,
-              large: largeBuilder,
-              extraLarge: extraLargeBuilder,
+    return ImpaktfullUiScreen(
+      child: ClipRect(
+        child: ImpaktfullUiAutoLayout.vertical(
+          children: [
+            ImpaktfullUiAdaptiveNavBar(
+              title: title,
+              badge: badge,
+              subtitle: subtitle,
+              bottomChild: headerBottomChild,
+              onBackTapped: onBackTapped,
+              actions: actions,
             ),
-          ),
-        ],
+            Expanded(
+              child: ImpaktfullUiResponsiveLayout(
+                small: builder,
+                medium: mediumBuilder,
+                large: largeBuilder,
+                extraLarge: extraLargeBuilder,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -26,8 +26,8 @@ class _DashboardStoreCouponScreenState
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiAdaptiveScreen(
-      title: 'Orders',
-      badge: '${coupons.length} orders',
+      title: 'Coupons',
+      badge: '${coupons.length} coupons',
       builder: (context) => Padding(
         padding: const EdgeInsets.all(32),
         child: ImpaktfullUiTable(
@@ -35,8 +35,8 @@ class _DashboardStoreCouponScreenState
           titles: const [
             ImpaktfullUiTableHeaderItem(title: 'Valid from'),
             ImpaktfullUiTableHeaderItem(title: 'Valid until'),
-            ImpaktfullUiTableHeaderItem(title: 'Order id'),
-            ImpaktfullUiTableHeaderItem(title: 'Refunded'),
+            ImpaktfullUiTableHeaderItem(title: 'Coupon code'),
+            ImpaktfullUiTableHeaderItem(title: 'Discount'),
           ],
           content: [
             for (final order in coupons) ...[

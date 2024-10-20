@@ -19,6 +19,7 @@ class LoadingErrorDataLibraryVariant
         width: 500,
         height: 300,
         wrapWithCard: true,
+        alignment: Alignment.center,
         child: ImpaktfullUiLoadingErrorData(
           isLoading: inputs.isLoading.value ?? false,
           noDataTitle: 'No Users found',
@@ -37,6 +38,7 @@ class LoadingErrorDataLibraryVariant
         width: 500,
         height: 300,
         wrapWithCard: true,
+        alignment: Alignment.center,
         child: ImpaktfullUiLoadingErrorData(
           isLoading: inputs.isLoading.value ?? false,
           noDataAsset: theme.assets.icons.user,
@@ -56,6 +58,7 @@ class LoadingErrorDataLibraryVariant
         width: 500,
         height: 300,
         wrapWithCard: true,
+        alignment: Alignment.center,
         child: ImpaktfullUiLoadingErrorData(
           isLoading: inputs.isLoading.value ?? false,
           noDataAssetBuilder: (context) => Container(
@@ -85,6 +88,7 @@ class LoadingErrorDataLibraryVariant
         width: 500,
         height: 300,
         wrapWithCard: true,
+        alignment: Alignment.center,
         child: ImpaktfullUiLoadingErrorData(
           isLoading: inputs.isLoading.value ?? false,
           noDataTitle: 'No Users found',

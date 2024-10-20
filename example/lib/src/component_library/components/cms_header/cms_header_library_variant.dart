@@ -44,7 +44,7 @@ class CmsHeaderVariant
             onTap: () {},
           ),
         ],
-        bottom: ImpaktfullUiHorizontalTabs(
+        bottomChild: ImpaktfullUiHorizontalTabs(
           selectedValue: inputs.selectedTab.value,
           onTabSelected: inputs.selectedTab.updateState,
           tabs: [
