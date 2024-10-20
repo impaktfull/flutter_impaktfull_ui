@@ -30,7 +30,7 @@ class ExampleComingSoon extends StatelessWidget {
         ),
         actions: [
           ImpaktfullUiButton(
-            type: ImpaktfullUiButtonType.primary,
+            type: ImpaktfullUiButtonType.secondaryGrey,
             title: 'Open drawer',
             onTap: () => ImpaktfullUiScreen.of(context).openDrawer(),
           ),
