@@ -12,6 +12,7 @@ import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dar
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
+import 'package:impaktfull_ui_2/src/util/text_size/text_size_util.dart';
 
 export 'model/metric_impact_type.dart';
 export 'model/metric_type.dart';
@@ -91,14 +92,19 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                             ),
                             ImpaktfullUiAutoLayout.horizontal(
                               crossAxisAlignment: CrossAxisAlignment.end,
-                              spacing: 64,
+                              spacing: 16,
                               children: [
                                 ImpaktfullUiAutoLayout.horizontal(
                                   spacing: 8,
                                   children: [
                                     ConstrainedBox(
-                                      constraints: const BoxConstraints(
-                                        minWidth: 50,
+                                      constraints: BoxConstraints(
+                                        minWidth: TextSizeUtil.getTextWidth(
+                                              context: context,
+                                              text: value,
+                                              style: componentTheme.textStyles.value,
+                                            ) +
+                                            12,
                                       ),
                                       child: Text(
                                         value,
@@ -107,24 +113,19 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                                     ),
                                     if (extraTextValue != null) ...[
                                       ImpaktfullUiAutoLayout.horizontal(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         spacing: 2,
                                         children: [
-                                          if (leadingExtraTextValue !=
-                                              null) ...[
+                                          if (leadingExtraTextValue != null) ...[
                                             ImpaktfullUiAssetWidget(
                                               asset: leadingExtraTextValue!,
-                                              color: _getValue2Style(
-                                                      componentTheme)
-                                                  .color,
+                                              color: _getValue2Style(componentTheme).color,
                                               size: 12,
                                             ),
                                           ],
                                           Text(
                                             extraTextValue!,
-                                            style:
-                                                _getValue2Style(componentTheme),
+                                            style: _getValue2Style(componentTheme),
                                           ),
                                         ],
                                       ),
@@ -156,14 +157,10 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                 if (actions.isNotEmpty) ...[
                   const ImpaktfullUiDivider(),
                   Builder(builder: (context) {
-                    final isFirstIconButton =
-                        actions.first is ImpaktfullUiIconButton;
-                    final isLastIconButton =
-                        actions.last is ImpaktfullUiIconButton;
-                    final containsButton =
-                        actions.any((action) => action is ImpaktfullUiButton);
-                    final allIconButtons = actions
-                        .all((action) => action is ImpaktfullUiIconButton);
+                    final isFirstIconButton = actions.first is ImpaktfullUiIconButton;
+                    final isLastIconButton = actions.last is ImpaktfullUiIconButton;
+                    final containsButton = actions.any((action) => action is ImpaktfullUiButton);
+                    final allIconButtons = actions.all((action) => action is ImpaktfullUiIconButton);
 
                     return Padding(
                       padding: EdgeInsetsDirectional.only(
