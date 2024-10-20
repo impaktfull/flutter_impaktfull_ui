@@ -15,19 +15,13 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
     required this.defaultStrokeWidth,
   });
 
-  double get _minX =>
-      data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minX));
-  double get _maxX =>
-      data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxX));
-  double get _minY =>
-      data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minY));
-  double get _maxY =>
-      data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxY));
+  double get _minX => data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minX));
+  double get _maxX => data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxX));
+  double get _minY => data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minY));
+  double get _maxY => data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxY));
 
-  double get _maxStrokeWidth => data.fold(
-      0,
-      (max, lineChartData) =>
-          math.max(max, lineChartData.strokeWidth ?? defaultStrokeWidth));
+  double get _maxStrokeWidth =>
+      data.fold(0, (max, lineChartData) => math.max(max, lineChartData.strokeWidth ?? defaultStrokeWidth));
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -66,7 +60,12 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
       }
 
       // Draw gradient below the graph
-      if (lineChartData.gradientColors != null && lineChartData.gradientColors!.isNotEmpty) {
+      if (lineChartData.hasGradient) {
+        final gradientColors = lineChartData.gradientColors ??
+            [
+              paint.color.withOpacity(0.5),
+              paint.color.withOpacity(0),
+            ];
         final gradientPath = Path.from(path);
         gradientPath.lineTo(size.width, size.height);
         gradientPath.lineTo(0, size.height);
@@ -76,7 +75,8 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
           ..shader = LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: lineChartData.gradientColors!,
+            colors: gradientColors,
+            stops: lineChartData.gradientStops,
           ).createShader(Offset.zero & size);
 
         canvas.drawPath(gradientPath, gradientPaint);
@@ -86,10 +86,8 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
     }
   }
 
-  double _normalizeX(double x, double width) =>
-      (x - _minX) / (_maxX - _minX) * width;
-  double _normalizeY(double y, double height) =>
-      height - (y - _minY) / (_maxY - _minY) * height;
+  double _normalizeX(double x, double width) => (x - _minX) / (_maxX - _minX) * width;
+  double _normalizeY(double y, double height) => height - (y - _minY) / (_maxY - _minY) * height;
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;

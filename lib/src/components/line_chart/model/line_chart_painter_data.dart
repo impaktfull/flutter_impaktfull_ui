@@ -6,7 +6,9 @@ class ImpaktfullUiLineChartPainterData {
   final double maxX;
   final double minY;
   final double maxY;
+  final bool hasGradient;
   final List<Color>? gradientColors;
+  final List<double> gradientStops;
   final Color? lineColor;
   final double? strokeWidth;
 
@@ -16,7 +18,9 @@ class ImpaktfullUiLineChartPainterData {
     required this.maxX,
     required this.minY,
     required this.maxY,
+    required this.hasGradient,
     required this.gradientColors,
+    required this.gradientStops,
     required this.lineColor,
     required this.strokeWidth,
   });

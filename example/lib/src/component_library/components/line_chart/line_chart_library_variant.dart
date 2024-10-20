@@ -40,10 +40,7 @@ class LineChartLibraryVariant extends ComponentLibraryVariant<LineChartLibraryPr
             ImpaktfullUiLineChartItemData(
               style: ImpaktfullUiLineChartItemStyle(
                 color: theme.colors.accent,
-                gradientColors: [
-                  theme.colors.accent.withOpacity(0.2),
-                  theme.colors.accent.withOpacity(0.0),
-                ],
+                hasGradient: true,
               ),
               offsetBuilder: (x, y) => Offset(x, y),
               points: List.generate(100, (index) {
