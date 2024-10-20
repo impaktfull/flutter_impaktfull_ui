@@ -10,7 +10,8 @@ export 'fluid_padding_breakpoint.dart';
 
 part 'fluid_padding.describe.dart';
 
-class ImpaktfullUiFluidPadding extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiFluidPadding extends StatelessWidget
+    with ComponentDescriptorMixin {
   final List<ImpaktfullUiFluidPaddingBreakPoint>? breakPoints;
   final double topPadding;
   final double bottomPadding;
@@ -32,8 +33,10 @@ class ImpaktfullUiFluidPadding extends StatelessWidget with ComponentDescriptorM
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final width = MediaQuery.of(context).size.width;
-        final breakPoints = this.breakPoints ?? componentTheme.dimens.breakPoints;
-        final breakPoint = breakPoints.firstWhereOrNull((element) => element.matchesWidth(width));
+        final breakPoints =
+            this.breakPoints ?? componentTheme.dimens.breakPoints;
+        final breakPoint = breakPoints
+            .firstWhereOrNull((element) => element.matchesWidth(width));
         if (breakPoint == null) return child;
         final padding = breakPoint.getPadding(width);
         if (padding == null) return child;

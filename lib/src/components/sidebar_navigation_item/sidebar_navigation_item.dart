@@ -40,8 +40,30 @@ class ImpaktfullUiSidebarNavigationItem extends StatefulWidget
 }
 
 class _ImpaktfullUiSidebarNavigationItemState
-    extends State<ImpaktfullUiSidebarNavigationItem> {
+    extends State<ImpaktfullUiSidebarNavigationItem>
+    with SingleTickerProviderStateMixin {
   var _expanded = false;
+  late AnimationController _controller;
+  late Animation<double> _expandAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+    _expandAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,13 +121,17 @@ class _ImpaktfullUiSidebarNavigationItemState
                 ),
               ),
             ),
-            if (widget.items.isNotEmpty && _expanded) ...[
-              Padding(
-                padding: const EdgeInsetsDirectional.only(start: 16),
-                child: ImpaktfullUiAutoLayout.vertical(
-                  mainAxisSize: MainAxisSize.min,
-                  spacing: 8,
-                  children: widget.items,
+            if (widget.items.isNotEmpty) ...[
+              SizeTransition(
+                sizeFactor: _expandAnimation,
+                axisAlignment: 1,
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.only(start: 16),
+                  child: ImpaktfullUiAutoLayout.vertical(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 8,
+                    children: widget.items,
+                  ),
                 ),
               ),
             ],
@@ -122,7 +148,14 @@ class _ImpaktfullUiSidebarNavigationItemState
 
   void _onExpandedTapped() {
     if (widget.items.isNotEmpty) {
-      setState(() => _expanded = !_expanded);
+      setState(() {
+        _expanded = !_expanded;
+        if (_expanded) {
+          _controller.forward();
+        } else {
+          _controller.reverse();
+        }
+      });
     }
   }
 }
