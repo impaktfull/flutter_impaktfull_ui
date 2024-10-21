@@ -34,10 +34,6 @@ Future<void> _createBuildingBlock({
 
   final componentFileContent = """import 'package:flutter/material.dart';
 
-export '${snakeCaseComponentName}_style.dart';
-
-part '$snakeCaseComponentName.describe.dart';
-
 class $className extends StatelessWidget {
   final ${className}Theme? theme;
 
