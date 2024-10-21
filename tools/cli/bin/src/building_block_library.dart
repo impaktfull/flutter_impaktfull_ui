@@ -35,10 +35,8 @@ Future<void> _createBuildingBlock({
   final componentFileContent = """import 'package:flutter/material.dart';
 
 class $className extends StatelessWidget {
-  final ${className}Theme? theme;
 
   const $className({
-    this.theme,
     super.key,
   });
 
