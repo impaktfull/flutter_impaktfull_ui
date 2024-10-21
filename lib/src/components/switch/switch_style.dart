@@ -17,23 +17,26 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiSwitchTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.switchTheme;
+  static ImpaktfullUiSwitchTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.switchTheme;
 }
 
 class ImpaktfullUiSwitchColorTheme {
-  final Color inactiveBackgroundColor;
-  final Color activeBackgroundColor;
+  final Color inactiveBackground;
+  final Color activeBackground;
   final Color active;
   final Color inactive;
   final Color border;
+  final Color accessibleInactiveIcon;
+  final Color accessibleActiveIcon;
 
   const ImpaktfullUiSwitchColorTheme({
-    required this.inactiveBackgroundColor,
-    required this.activeBackgroundColor,
+    required this.inactiveBackground,
+    required this.activeBackground,
     required this.active,
     required this.inactive,
     required this.border,
+    required this.accessibleInactiveIcon,
+    required this.accessibleActiveIcon,
   });
 }
 
