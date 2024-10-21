@@ -68,7 +68,7 @@ Future<void> _createBuildingBlockLibrary({
 
   final libaryItemFileContent =
       """import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
+import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 
 class ${componentName}LibraryItem extends BuildingBlockLibraryItem {
