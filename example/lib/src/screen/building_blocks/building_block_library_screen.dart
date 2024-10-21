@@ -23,7 +23,7 @@ class BuildignBLockLibraryScreen extends StatelessWidget {
         items: ExampleLibrary.instance.examples,
         spacing: 8,
         itemBuilder: (context, item, index) {
-          final value = BuildingBlockLibrary.instance.examples[index];
+          final value = BuildingBlockLibrary.instance.buildingBlocks[index];
           return ExampleCard(
             label: value.name,
             onTap: () => _onItemTapped(value),

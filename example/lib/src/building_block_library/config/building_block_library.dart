@@ -1,3 +1,4 @@
+import 'package:impaktfull_ui_example/src/building_block_library/building_blocks/login/login_building_block.dart';
 import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
 
 class BuildingBlockLibrary {
@@ -8,5 +9,7 @@ class BuildingBlockLibrary {
   static BuildingBlockLibrary get instance =>
       _instance ??= BuildingBlockLibrary._();
 
-  final List<BuildingBlockLibraryItem> examples = [];
+  final List<BuildingBlockLibraryItem> buildingBlocks = [
+    const LoginBuildingBlock(),
+  ];
 }

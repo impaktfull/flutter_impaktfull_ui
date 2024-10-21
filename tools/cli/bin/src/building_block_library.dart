@@ -66,8 +66,7 @@ Future<void> _createBuildingBlockLibrary({
   final libraryItemFile =
       File(join(dir.path, '${snakeCaseComponentName}_library_item.dart'));
 
-  final libaryItemFileContent =
-      """import 'package:flutter/widgets.dart';
+  final libaryItemFileContent = """import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
 

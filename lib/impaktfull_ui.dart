@@ -1,4 +1,9 @@
-// Components
+library impaktfull_ui;
+
+/// Building Blocks
+export 'src/building_block/login/login.dart';
+
+/// Components
 export 'src/components/accordion/accordion.dart';
 export 'src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
 export 'src/components/adaptive_screen/adaptive_screen.dart';
@@ -77,17 +82,23 @@ export 'src/components/tooltip/tooltip.dart';
 export 'src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 export 'src/components/wrap/wrap.dart';
 export 'src/components/wysiwyg/wysiwyg.dart';
-// Model
+
+/// Models
 export 'src/models/asset.dart';
-// Theme
+
+/// Theme
 export 'src/theme/theme.dart';
 export 'src/components/theme/theme_builder.dart';
-// Widget Library
+
+/// Widget Library
 export 'src/util/descriptor/component_descriptor_mixin.dart';
-// Extensions
+
+/// Extensions
 export 'src/util/extension/edge_insets_geometry_extension.dart';
 export 'src/util/extension/border_radius_geometry_extension.dart';
-// Util
+
+/// Util
 export 'src/util/responsive/responsive_extension.dart';
-// External packages
+
+/// External packages
 export 'package:snacky/snacky.dart';

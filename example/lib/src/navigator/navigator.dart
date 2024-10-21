@@ -75,7 +75,7 @@ class ImpaktfullUiNavigator {
       }
     }
 
-    final buildingBlocks = BuildingBlockLibrary.instance.examples;
+    final buildingBlocks = BuildingBlockLibrary.instance.buildingBlocks;
     for (final buildingBlock in buildingBlocks) {
       if (name == '/examples/${buildingBlock.slug}') {
         return ImpaktfullUiDesktopPageRoute<void>(
