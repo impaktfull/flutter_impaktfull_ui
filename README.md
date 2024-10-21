@@ -207,11 +207,11 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 # Todo
 
-[ ] Add tests
+⌛️ Add tests
 
 - Add screenshot tests for all components
 
-[ ] Add extra components
+⌛️ Add extra components
 
 - ImpaktfullUiSlider
 - ImpaktfullUiStepper
@@ -239,18 +239,18 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - ImpaktfullUiWysiwyg (HTML)
 - ImpaktfullUiRating
 
-[ ] Add CustomRoutes
+⌛️ Add CustomRoutes
 
 - ImpaktfullUiIosModalRoute
 
-[ ] Add addaptive components
+⌛️ Add addaptive components
 
 - ImpaktfullUiMasterDetail
 - ImpaktfullUiAdaptiveNavigation
 - ImpaktfullUiAdaptiveRoute
 - ImpaktfullUiAdaptiveModalRoute
 
-[ ] Add building blocks
+⌛️ Add building blocks
 
 - ImpaktfullUiBBLogin
 - ImpaktfullUiBBRegister
@@ -263,7 +263,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - ImpaktfullUiBBTermsAndConditionsScreen
 - ImpaktfullUiBBLicensesScreen
 
-[ ] Add examples
+⌛️ Add examples
 
 - Signup
 - Forget Password

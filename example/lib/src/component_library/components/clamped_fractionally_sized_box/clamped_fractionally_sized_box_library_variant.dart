@@ -15,9 +15,10 @@ class ClampedFractionallySizedBoxLibraryVariant extends ComponentLibraryVariant<
       ClampedFractionallySizedBoxLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiClampedFractionallySizedBox(
-        widthFactor: 0.2,
-        minWidth: 200,
+        widthFactor: 0.5,
+        minWidth: 600,
         maxWidth: 1000,
+        alignment: Alignment.centerLeft,
         child: Container(
           color: theme.colors.accent,
           height: 50,
