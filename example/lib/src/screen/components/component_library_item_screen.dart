@@ -12,10 +12,12 @@ class ComponentLibraryItemScreen extends StatefulWidget {
   });
 
   @override
-  State<ComponentLibraryItemScreen> createState() => _ComponentLibraryItemScreenState();
+  State<ComponentLibraryItemScreen> createState() =>
+      _ComponentLibraryItemScreenState();
 }
 
-class _ComponentLibraryItemScreenState extends State<ComponentLibraryItemScreen> {
+class _ComponentLibraryItemScreenState
+    extends State<ComponentLibraryItemScreen> {
   late final List<ComponentLibraryVariant> variants;
   late ComponentLibraryVariant _selectedTab;
   var _showEdits = false;
