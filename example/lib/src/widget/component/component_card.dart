@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
+import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
 class ComponentCard extends StatelessWidget {
   final Widget child;

@@ -4,17 +4,18 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
-import 'package:impaktfull_ui_example/src/widget/components/component_card.dart';
+import 'package:impaktfull_ui_example/src/widget/component/component_card.dart';
 
-class ComponentsLibraryScreen extends StatefulWidget {
-  const ComponentsLibraryScreen({super.key});
+class ComponentLibraryScreen extends StatefulWidget {
+  const ComponentLibraryScreen({
+    super.key,
+  });
 
   @override
-  State<ComponentsLibraryScreen> createState() =>
-      _ComponentsLibraryScreenState();
+  State<ComponentLibraryScreen> createState() => _ComponentLibraryScreenState();
 }
 
-class _ComponentsLibraryScreenState extends State<ComponentsLibraryScreen> {
+class _ComponentLibraryScreenState extends State<ComponentLibraryScreen> {
   final _fixedSearchQuery = [];
   var _searchQuery = '';
 

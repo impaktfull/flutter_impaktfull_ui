@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
-import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_screen.dart';
+import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_screen.dart';
 
-class ComponentsLibraryItemScreen extends StatefulWidget {
+class ComponentLibraryItemScreen extends StatefulWidget {
   final ComponentLibraryItem item;
-  const ComponentsLibraryItemScreen({
+  const ComponentLibraryItemScreen({
     required this.item,
     super.key,
   });
 
   @override
-  State<ComponentsLibraryItemScreen> createState() =>
-      _ComponentsLibraryItemScreenState();
+  State<ComponentLibraryItemScreen> createState() =>
+      _ComponentLibraryItemScreenState();
 }
 
-class _ComponentsLibraryItemScreenState
-    extends State<ComponentsLibraryItemScreen> {
+class _ComponentLibraryItemScreenState
+    extends State<ComponentLibraryItemScreen> {
   late final List<ComponentLibraryVariant> variants;
   late ComponentLibraryVariant _selectedTab;
   var _showEdits = false;

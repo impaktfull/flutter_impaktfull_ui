@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_example/src/examples_library/data/model/product.dart';
-import 'package:impaktfull_ui_example/src/examples_library/data/test_data.dart';
+import 'package:impaktfull_ui_example/src/example_library/data/model/product.dart';
+import 'package:impaktfull_ui_example/src/example_library/data/test_data.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class DashboardStoreProductsScreen extends StatefulWidget {

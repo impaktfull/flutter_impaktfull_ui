@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:impaktfull_ui_example/src/examples_library/data/model/coupon.dart';
-import 'package:impaktfull_ui_example/src/examples_library/data/model/order.dart';
-import 'package:impaktfull_ui_example/src/examples_library/data/model/product.dart';
+import 'package:impaktfull_ui_example/src/example_library/data/model/coupon.dart';
+import 'package:impaktfull_ui_example/src/example_library/data/model/order.dart';
+import 'package:impaktfull_ui_example/src/example_library/data/model/product.dart';
 
 class TestData {
   static List<Product> getProducts() => [

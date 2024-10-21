@@ -3,7 +3,7 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/markdown/markdown_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
-import 'package:impaktfull_ui_example/src/widget/components/components_library_variant_descriptor.dart';
+import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
 class MarkdownLibraryVariant
     extends ComponentLibraryVariant<MarkdownLibraryPrimaryInputs> {

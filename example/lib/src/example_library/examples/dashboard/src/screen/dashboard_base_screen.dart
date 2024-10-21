@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_coupon_screen.dart';
-import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_home_screen.dart';
-import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_orders_screen.dart';
-import 'package:impaktfull_ui_example/src/examples_library/examples/dashboard/src/screen/dashboard_store_products_screen.dart';
-import 'package:impaktfull_ui_example/src/examples_library/widgets/coming_soon.dart';
+import 'package:impaktfull_ui_example/src/example_library/examples/dashboard/src/screen/dashboard_store_coupon_screen.dart';
+import 'package:impaktfull_ui_example/src/example_library/examples/dashboard/src/screen/dashboard_store_home_screen.dart';
+import 'package:impaktfull_ui_example/src/example_library/examples/dashboard/src/screen/dashboard_store_orders_screen.dart';
+import 'package:impaktfull_ui_example/src/example_library/examples/dashboard/src/screen/dashboard_store_products_screen.dart';
+import 'package:impaktfull_ui_example/src/example_library/widgets/coming_soon.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_example/src/examples_library/config/example_library_item.dart';
+import 'package:impaktfull_ui_example/src/example_library/config/example_library_item.dart';
 
-class ExamplesLibraryItemScreen extends StatelessWidget {
+class ExampleLibraryItemScreen extends StatelessWidget {
   final ExampleLibraryItem item;
-  const ExamplesLibraryItemScreen({
+  const ExampleLibraryItemScreen({
     required this.item,
     super.key,
   });
