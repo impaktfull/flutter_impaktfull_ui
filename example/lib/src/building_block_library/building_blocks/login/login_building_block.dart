@@ -45,7 +45,8 @@ class LoginBuildingBlock extends BuildingBlockLibraryItem {
                 ),
                 Text(
                   'Make an impakt on your customers!',
-                  style: theme.textStyles.onAccent.text.medium.withOpacity(0.66),
+                  style:
+                      theme.textStyles.onAccent.text.medium.withOpacity(0.66),
                   textAlign: TextAlign.center,
                 ),
               ],
