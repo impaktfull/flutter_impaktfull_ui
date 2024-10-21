@@ -5,7 +5,7 @@ abstract class BuildingBlockLibraryItem {
 
   const BuildingBlockLibraryItem();
 
-  String get name => title.replaceAll('ImpaktfullUi', '');
+  String get name => title.replaceAll('ImpaktfullUiBB', '');
 
   String get slug => name
       .replaceAllMapped(RegExp(r'(?<=[a-z])[A-Z]'),

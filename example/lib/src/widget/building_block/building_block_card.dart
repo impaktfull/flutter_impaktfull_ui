@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 
-class ExampleCard extends StatelessWidget {
+class BuildingBLockCard extends StatelessWidget {
   final String label;
   final ImpaktfullUiAsset asset;
   final VoidCallback onTap;
 
-  const ExampleCard({
+  const BuildingBLockCard({
     required this.label,
     required this.asset,
     required this.onTap,

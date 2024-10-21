@@ -4,7 +4,7 @@ import 'package:impaktfull_ui_example/src/building_block_library/config/building
 import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
 import 'package:impaktfull_ui_example/src/example_library/config/example_library.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
-import 'package:impaktfull_ui_example/src/widget/example/example_card.dart';
+import 'package:impaktfull_ui_example/src/widget/building_block/building_block_card.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class BuildignBLockLibraryScreen extends StatelessWidget {
@@ -24,10 +24,10 @@ class BuildignBLockLibraryScreen extends StatelessWidget {
         spacing: 8,
         itemBuilder: (context, item, index) {
           final value = BuildingBlockLibrary.instance.buildingBlocks[index];
-          return ExampleCard(
+          return BuildingBLockCard(
             label: value.name,
             onTap: () => _onItemTapped(value),
-            asset: ImpaktfullUiAsset.icon(PhosphorIcons.chartLineUp()),
+            asset: ImpaktfullUiAsset.icon(PhosphorIcons.lock()),
           );
         },
       ),

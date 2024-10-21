@@ -20,6 +20,7 @@ export 'src/components/bottom_sheet/bottom_sheet.dart';
 export 'src/components/badge/badge.dart';
 export 'src/components/card/card.dart';
 export 'src/components/checkbox/checkbox.dart';
+export 'src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
 export 'src/components/cms_header/cms_header.dart';
 export 'src/components/color_picker/color_picker.dart';
 export 'src/components/command_menu/command_menu.dart';
@@ -96,6 +97,7 @@ export 'src/util/descriptor/component_descriptor_mixin.dart';
 /// Extensions
 export 'src/util/extension/edge_insets_geometry_extension.dart';
 export 'src/util/extension/border_radius_geometry_extension.dart';
+export 'src/util/extension/text_style_extension.dart';
 
 /// Util
 export 'src/util/responsive/responsive_extension.dart';

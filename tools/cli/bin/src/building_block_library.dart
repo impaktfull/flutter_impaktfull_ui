@@ -54,7 +54,8 @@ Future<void> _createBuildingBlockLibrary({
 }) async {
   final snakeCaseComponentName = componentName.pascalToSnakeCase();
   // Create dir
-  final path = join('example', 'lib', 'src', 'building_block_library', 'building_blocks', snakeCaseComponentName);
+  final path = join('example', 'lib', 'src', 'building_block_library',
+      'building_blocks', snakeCaseComponentName);
   final dir = Directory(path);
   if (dir.existsSync()) {
     throw Exception('Building Block already exists');
@@ -62,7 +63,8 @@ Future<void> _createBuildingBlockLibrary({
   dir.createSync(recursive: true);
 
   // Create files
-  final libraryItemFile = File(join(dir.path, '${snakeCaseComponentName}_building_block.dart'));
+  final libraryItemFile =
+      File(join(dir.path, '${snakeCaseComponentName}_building_block.dart'));
 
   final libaryItemFileContent = """import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';

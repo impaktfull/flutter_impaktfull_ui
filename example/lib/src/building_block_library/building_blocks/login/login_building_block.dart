@@ -10,6 +10,48 @@ class LoginBuildingBlock extends BuildingBlockLibraryItem {
 
   @override
   Widget build(BuildContext context) {
-    return const ImpaktfullUiBBLogin();
+    return ImpaktfullUiBBLogin(
+      email: 'email',
+      password: 'password',
+      onChangedEmail: (value) {},
+      onChangedPassword: (value) {},
+      onLoginTapped: () => Future.delayed(const Duration(seconds: 2)),
+      endBuilder: (context) {
+        if (ImpaktfullUiResponsiveLayout.isMedium(context)) {
+          return null;
+        }
+        return Expanded(
+          child: Container(
+            height: double.infinity,
+            color: theme.colors.accent,
+            padding: const EdgeInsets.all(32),
+            alignment: Alignment.center,
+            child: ImpaktfullUiAutoLayout.vertical(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 4,
+              children: [
+                ImpaktfullUiAssetWidget(
+                  asset: theme.assets.icons.confetti,
+                  color: theme.colors.textOnAccent,
+                  size: 64,
+                ),
+                Text(
+                  'Make an impakt on your customers!',
+                  style: theme.textStyles.onAccent.display.small,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  'Make an impakt on your customers!',
+                  style:
+                      theme.textStyles.onAccent.text.medium.withOpacity(0.66),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

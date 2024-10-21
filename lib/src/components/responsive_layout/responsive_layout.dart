@@ -24,6 +24,38 @@ class ImpaktfullUiResponsiveLayout extends StatelessWidget
     super.key,
   });
 
+  static bool isSmall(BuildContext context,
+      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+    final screenSize = MediaQuery.sizeOf(context);
+    final componentTheme =
+        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    return screenSize.width < componentTheme.dimens.breakpointSmall;
+  }
+
+  static bool isMedium(BuildContext context,
+      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+    final screenSize = MediaQuery.sizeOf(context);
+    final componentTheme =
+        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    return screenSize.width < componentTheme.dimens.breakpointMedium;
+  }
+
+  static bool isLarge(BuildContext context,
+      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+    final screenSize = MediaQuery.sizeOf(context);
+    final componentTheme =
+        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    return screenSize.width < componentTheme.dimens.breakpointLarge;
+  }
+
+  static bool isExtraLarge(BuildContext context,
+      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+    final screenSize = MediaQuery.sizeOf(context);
+    final componentTheme =
+        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    return screenSize.width > componentTheme.dimens.breakpointLarge;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiResponsiveLayoutTheme>(
