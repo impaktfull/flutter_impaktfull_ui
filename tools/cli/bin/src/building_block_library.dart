@@ -60,8 +60,8 @@ Future<void> _createBuildingBlockLibrary({
 }) async {
   final snakeCaseComponentName = componentName.pascalToSnakeCase();
   // Create dir
-  final path = join('example', 'lib', 'src', 'component_library', 'components',
-      snakeCaseComponentName);
+  final path = join('example', 'lib', 'src', 'building_block_library',
+      'building_blocks', snakeCaseComponentName);
   final dir = Directory(path);
   if (dir.existsSync()) {
     throw Exception('Component already exists');
