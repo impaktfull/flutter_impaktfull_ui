@@ -114,10 +114,10 @@ class _ImpaktfullUiSidebarNavigationItemState
                     ),
                     if (widget.items.isNotEmpty) ...[
                       AnimatedRotation(
-                        turns: _expanded ? 0.5 : 0,
+                        turns: _expanded ? -0.5 : 0,
                         duration: componentTheme.durations.dropdownRotation,
                         child: ImpaktfullUiIconButton(
-                          asset: componentTheme.assets.chevronUp,
+                          asset: componentTheme.assets.chevronDown,
                           color: componentTheme.colors.icons,
                           onTap: _onExpandedTapped,
                         ),

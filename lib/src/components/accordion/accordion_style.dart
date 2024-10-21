@@ -20,9 +20,9 @@ class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiAccordionAssetsTheme {
-  final ImpaktfullUiAsset arrow;
+  final ImpaktfullUiAsset chevronDown;
   const ImpaktfullUiAccordionAssetsTheme({
-    required this.arrow,
+    required this.chevronDown,
   });
 }
 

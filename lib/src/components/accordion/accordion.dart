@@ -87,11 +87,11 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
               title: widget.title,
               subtitle: widget.subtitle,
               onTap: _toggleExpanded,
-              trailingWidgetBuilder: (context) => RotationTransition(
-                turns:
-                    Tween<double>(begin: 0, end: 0.5).animate(_expandAnimation),
+              trailingWidgetBuilder: (context) => AnimatedRotation(
+                turns: widget.expanded ? -0.5 : 0,
+                duration: const Duration(milliseconds: 200),
                 child: ImpaktfullUiAssetWidget(
-                  asset: componentTheme.assets.arrow,
+                  asset: componentTheme.assets.chevronDown,
                 ),
               ),
             ),

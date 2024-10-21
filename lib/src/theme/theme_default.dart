@@ -223,7 +223,7 @@ class DefaultTheme {
       components: ImpaktfullUiComponentsTheme(
         accordion: ImpaktfullUiAccordionTheme(
           assets: ImpaktfullUiAccordionAssetsTheme(
-            arrow: assets.icons.chevronDown,
+            chevronDown: assets.icons.chevronDown,
           ),
           colors: const ImpaktfullUiAccordionColorTheme(),
           dimens: const ImpaktfullUiAccordionDimensTheme(),
@@ -968,7 +968,7 @@ class DefaultTheme {
         ),
         sidebarNavigationItem: ImpaktfullUiSidebarNavigationItemTheme(
           assets: ImpaktfullUiSidebarNavigationItemAssetsTheme(
-            chevronUp: assets.icons.chevronUp,
+            chevronDown: assets.icons.chevronDown,
           ),
           colors: ImpaktfullUiSidebarNavigationItemColorTheme(
             background: colors.canvas,

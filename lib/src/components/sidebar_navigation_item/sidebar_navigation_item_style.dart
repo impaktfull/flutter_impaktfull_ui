@@ -23,9 +23,9 @@ class ImpaktfullUiSidebarNavigationItemTheme
 }
 
 class ImpaktfullUiSidebarNavigationItemAssetsTheme {
-  final ImpaktfullUiAsset chevronUp;
+  final ImpaktfullUiAsset chevronDown;
   const ImpaktfullUiSidebarNavigationItemAssetsTheme({
-    required this.chevronUp,
+    required this.chevronDown,
   });
 }
 
