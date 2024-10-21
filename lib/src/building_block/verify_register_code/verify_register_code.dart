@@ -14,6 +14,7 @@ class ImpaktfullUiBBVerifyRegisterCode extends StatelessWidget {
   final String code;
   final Function(String) onChangedVerificationCode;
   final AsyncCallback onVerifyCodeTapped;
+  final VoidCallback? onBackTapped;
   final Alignment alignment;
 
   const ImpaktfullUiBBVerifyRegisterCode({
@@ -24,6 +25,7 @@ class ImpaktfullUiBBVerifyRegisterCode extends StatelessWidget {
     this.startBuilder,
     this.endBuilder,
     this.bottomBuilder,
+    this.onBackTapped,
     this.alignment = Alignment.center,
     super.key,
   });
@@ -73,6 +75,14 @@ class ImpaktfullUiBBVerifyRegisterCode extends StatelessWidget {
                 fullWidth: true,
                 onAsyncTap: onVerifyCodeTapped,
               ),
+              if (onBackTapped != null) ...[
+                ImpaktfullUiButton(
+                  type: ImpaktfullUiButtonType.linkGrey,
+                  title: 'Go back',
+                  fullWidth: true,
+                  onTap: onBackTapped,
+                ),
+              ],
             ],
           ),
         ],

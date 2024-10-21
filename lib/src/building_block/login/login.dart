@@ -12,6 +12,7 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
   final Function(String) onChangedEmail;
   final Function(String) onChangedPassword;
   final AsyncCallback onLoginTapped;
+  final VoidCallback? onRegisterTapped;
   final Alignment alignment;
 
   const ImpaktfullUiBBLogin({
@@ -24,6 +25,7 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
     this.startBuilder,
     this.endBuilder,
     this.bottomBuilder,
+    this.onRegisterTapped,
     this.alignment = Alignment.center,
     super.key,
   });
@@ -84,6 +86,14 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
                 fullWidth: true,
                 onAsyncTap: onLoginTapped,
               ),
+              if (onRegisterTapped != null) ...[
+                ImpaktfullUiButton(
+                  type: ImpaktfullUiButtonType.linkGrey,
+                  title: 'Create new account',
+                  fullWidth: true,
+                  onTap: onRegisterTapped,
+                ),
+              ],
             ],
           ),
         ],

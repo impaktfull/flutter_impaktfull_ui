@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
+import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 
 class LoginBuildingBlock extends BuildingBlockLibraryItem {
   const LoginBuildingBlock();
@@ -16,6 +17,7 @@ class LoginBuildingBlock extends BuildingBlockLibraryItem {
       onChangedEmail: (value) {},
       onChangedPassword: (value) {},
       onLoginTapped: () => Future.delayed(const Duration(seconds: 2)),
+      onRegisterTapped: () => ImpaktfullUiNavigator.instance.goBack(),
       endBuilder: (context) {
         if (ImpaktfullUiResponsiveLayout.isMedium(context)) {
           return null;
@@ -43,8 +45,7 @@ class LoginBuildingBlock extends BuildingBlockLibraryItem {
                 ),
                 Text(
                   'Make an impakt on your customers!',
-                  style:
-                      theme.textStyles.onAccent.text.medium.withOpacity(0.66),
+                  style: theme.textStyles.onAccent.text.medium.withOpacity(0.66),
                   textAlign: TextAlign.center,
                 ),
               ],

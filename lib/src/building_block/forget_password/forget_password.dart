@@ -14,6 +14,7 @@ class ImpaktfullUiBBForgetPassword extends StatelessWidget {
   final String email;
   final Function(String) onChangedEmail;
   final AsyncCallback onResetPasswordTapped;
+  final VoidCallback? onBackToLoginTapped;
   final Alignment alignment;
 
   const ImpaktfullUiBBForgetPassword({
@@ -24,6 +25,7 @@ class ImpaktfullUiBBForgetPassword extends StatelessWidget {
     this.startBuilder,
     this.endBuilder,
     this.bottomBuilder,
+    this.onBackToLoginTapped,
     this.alignment = Alignment.center,
     super.key,
   });
@@ -73,6 +75,14 @@ class ImpaktfullUiBBForgetPassword extends StatelessWidget {
                 fullWidth: true,
                 onAsyncTap: onResetPasswordTapped,
               ),
+              if (onBackToLoginTapped != null) ...[
+                ImpaktfullUiButton(
+                  type: ImpaktfullUiButtonType.linkGrey,
+                  title: 'Back to login',
+                  fullWidth: true,
+                  onTap: onBackToLoginTapped,
+                ),
+              ],
             ],
           ),
         ],

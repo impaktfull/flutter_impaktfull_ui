@@ -16,6 +16,7 @@ class ImpaktfullUiBBRegister extends StatelessWidget {
   final Function(String) onChangedEmail;
   final Function(String) onChangedPassword;
   final AsyncCallback onRegisterTapped;
+  final VoidCallback? onBackToLoginTapped;
   final Alignment alignment;
 
   const ImpaktfullUiBBRegister({
@@ -28,6 +29,7 @@ class ImpaktfullUiBBRegister extends StatelessWidget {
     this.startBuilder,
     this.endBuilder,
     this.bottomBuilder,
+    this.onBackToLoginTapped,
     this.alignment = Alignment.center,
     super.key,
   });
@@ -89,6 +91,14 @@ class ImpaktfullUiBBRegister extends StatelessWidget {
                 fullWidth: true,
                 onAsyncTap: onRegisterTapped,
               ),
+              if (onBackToLoginTapped != null) ...[
+                ImpaktfullUiButton(
+                  type: ImpaktfullUiButtonType.linkGrey,
+                  title: 'Back to login',
+                  fullWidth: true,
+                  onTap: onBackToLoginTapped,
+                ),
+              ],
             ],
           ),
         ],
