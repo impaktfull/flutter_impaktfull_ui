@@ -17,6 +17,7 @@ class ImpaktfullUiAccordion extends StatefulWidget
   final String title;
   final WidgetBuilder expandedBuilder;
   final bool expanded;
+  final bool animated;
   final String? subtitle;
   final ImpaktfullUiAccordionRevealType revealType;
   final ImpaktfullUiAccordionTheme? theme;
@@ -25,8 +26,9 @@ class ImpaktfullUiAccordion extends StatefulWidget
   const ImpaktfullUiAccordion({
     required this.title,
     required this.expandedBuilder,
+    required this.expanded,
+    this.animated = true,
     this.subtitle,
-    this.expanded = false,
     this.revealType = ImpaktfullUiAccordionRevealType.topDown,
     this.theme,
     this.onExpandedChanged,
@@ -79,36 +81,39 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiAccordionTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) {
-        return ImpaktfullUiAutoLayout.vertical(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ImpaktfullUiSimpleListItem(
-              title: widget.title,
-              subtitle: widget.subtitle,
-              onTap: _toggleExpanded,
-              trailingWidgetBuilder: (context) => AnimatedRotation(
-                turns: widget.expanded ? -0.5 : 0,
-                duration: const Duration(milliseconds: 200),
-                child: ImpaktfullUiAssetWidget(
-                  asset: componentTheme.assets.chevronDown,
-                ),
+      builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ImpaktfullUiSimpleListItem(
+            title: widget.title,
+            subtitle: widget.subtitle,
+            onTap: _toggleExpanded,
+            trailingWidgetBuilder: (context) => AnimatedRotation(
+              turns: widget.expanded ? -0.5 : 0,
+              duration: const Duration(milliseconds: 200),
+              child: ImpaktfullUiAssetWidget(
+                asset: componentTheme.assets.chevronDown,
               ),
             ),
+          ),
+          if (widget.animated) ...[
             SizeTransition(
               sizeFactor: _expandAnimation,
               axisAlignment: widget.revealType.axisAlignment,
               child: widget.expandedBuilder(context),
             ),
+          ] else ...[
+            if (widget.expanded) ...[
+              widget.expandedBuilder(context),
+            ],
           ],
-        );
-      },
+        ],
+      ),
     );
   }
 
   void _toggleExpanded() {
     final newValue = !widget.expanded;
-    _setExpanded(newValue);
     widget.onExpandedChanged?.call(newValue);
   }
 
