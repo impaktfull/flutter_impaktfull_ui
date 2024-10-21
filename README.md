@@ -125,11 +125,19 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 
 Much more components to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull (Checkout the TODO list below)
 
+### Building Blocks
+
+- Login
+
+#### Future
+
+Much more building blocks to come in the future.
+
 ### Examples
 
 - Dashboard
 
-### Future
+#### Future
 
 Much more examples to come in the future.
 
@@ -199,65 +207,69 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 # Todo
 
-- [ ] Add tests
+[ ] Add tests
 
-  - Add screenshot tests for all components
+- Add screenshot tests for all components
 
-- [ ] Add extra components
+[ ] Add extra components
 
-  - ImpaktfullUiSlider
-  - ImpaktfullUiStepper
-  - ImpaktfullUiSegmentedControll
-  - ImpaktfullUiBreadcrumbs
-  - ImpaktfullUiCalendar
-  - ImpaktfullUiQrCode
-  - ImpaktfullUiBarCode
-  - ImpaktfullUiBarChart
-  - ImpaktfullUiPieChart
-  - ImpaktfullUiDateTimePicker
-  - ImpaktfullUiDateTimePickerDialog
-  - ImpaktfullUiPasswordStrengthIndicator
-  - ImpaktfullUiGallery
-  - ImpaktfullUiStoryView
-  - ImpaktfullUiStoryViewItem
-  - ImpaktfullUiVidoPlayerControls
-  - ImpaktfullUiFileCropper
-  - ImpaktfullUiSocialLoginsButton
-  - ImpaktfullUiImageComparisonView
-  - ImpaktfullUiWebView
-  - ImpaktfullUiQrCodeScanner
-  - ImpaktfullUiBarcodeScanner
-  - ImpaktfullUiHtml
-  - ImpaktfullUiWysiwyg (HTML)
-  - ImpaktfullUiRating
+- ImpaktfullUiSlider
+- ImpaktfullUiStepper
+- ImpaktfullUiSegmentedControll
+- ImpaktfullUiBreadcrumbs
+- ImpaktfullUiCalendar
+- ImpaktfullUiQrCode
+- ImpaktfullUiBarCode
+- ImpaktfullUiBarChart
+- ImpaktfullUiPieChart
+- ImpaktfullUiDateTimePicker
+- ImpaktfullUiDateTimePickerDialog
+- ImpaktfullUiPasswordStrengthIndicator
+- ImpaktfullUiGallery
+- ImpaktfullUiStoryView
+- ImpaktfullUiStoryViewItem
+- ImpaktfullUiVidoPlayerControls
+- ImpaktfullUiFileCropper
+- ImpaktfullUiSocialLoginsButton
+- ImpaktfullUiImageComparisonView
+- ImpaktfullUiWebView
+- ImpaktfullUiQrCodeScanner
+- ImpaktfullUiBarcodeScanner
+- ImpaktfullUiHtml
+- ImpaktfullUiWysiwyg (HTML)
+- ImpaktfullUiRating
 
-- [ ] Add CustomRoutes
+[ ] Add CustomRoutes
 
-  - ImpaktfullUiIosModalRoute
+- ImpaktfullUiIosModalRoute
 
-- [ ] Add addaptive components
+[ ] Add addaptive components
 
-  - ImpaktfullUiMasterDetail
-  - ImpaktfullUiAdaptiveNavigation
-  - ImpaktfullUiAdaptiveRoute
-  - ImpaktfullUiAdaptiveModalRoute
+- ImpaktfullUiMasterDetail
+- ImpaktfullUiAdaptiveNavigation
+- ImpaktfullUiAdaptiveRoute
+- ImpaktfullUiAdaptiveModalRoute
 
-- [ ] Add building blocks
+[ ] Add building blocks
 
-  - ImpaktfullUiBBLogin
-  - ImpaktfullUiBBRegister
-  - ImpaktfullUiBBForgotPassword
-  - ImpaktfullUiBBResetPassword
-  - ImpaktfullUiBBVerifyEmail
-  - ImpaktfullUiBBMoreScreen
-  - ImpaktfullUiBBDebugScreen
-  - ImpaktfullUiBBPrivacyPolicyScreen
-  - ImpaktfullUiBBTermsAndConditionsScreen
-  - ImpaktfullUiBBLicensesScreen
+- ImpaktfullUiBBLogin
+- ImpaktfullUiBBRegister
+- ImpaktfullUiBBForgotPassword
+- ImpaktfullUiBBResetPassword
+- ImpaktfullUiBBVerifyEmail
+- ImpaktfullUiBBMoreScreen
+- ImpaktfullUiBBDebugScreen
+- ImpaktfullUiBBPrivacyPolicyScreen
+- ImpaktfullUiBBTermsAndConditionsScreen
+- ImpaktfullUiBBLicensesScreen
 
-- [ ] Add examples
+[ ] Add examples
 
-  - Login
+- Signup
+- Forget Password
+- Reset password
+- 404
+- Verify code
 
 # License
 
