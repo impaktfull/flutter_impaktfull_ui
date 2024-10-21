@@ -67,8 +67,8 @@ Future<void> _createBuildingBlockLibrary({
       File(join(dir.path, '${snakeCaseComponentName}_library_item.dart'));
 
   final libaryItemFileContent =
-      """import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
-import 'package:impaktfull_ui_example/src/building_block_library/building_blocks/$snakeCaseComponentName/${snakeCaseComponentName}_library_variant.dart';
+      """import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 
 class ${componentName}LibraryItem extends BuildingBlockLibraryItem {
@@ -78,49 +78,11 @@ class ${componentName}LibraryItem extends BuildingBlockLibraryItem {
   String get title => '$componentClassName';
 
   @override
-  List<BuildingBlockLibraryItem> getBuildingBlockVariants() {
-    return [
-      const ${componentName}LibraryVariant(),
-    ];
+  Widget build(BuildContext context) {
+    return const $componentClassName();
   }
 }
-
-class ${componentName}LibraryInputs extends ComponentLibraryInputs {
-  @override
-  List<ComponentLibraryInputItem> buildInputItems() => [];
-}
-
 """;
 
   libraryItemFile.writeAsStringSync(libaryItemFileContent);
-
-  // Component file
-  final libraryVariantFile =
-      File(join(dir.path, '${snakeCaseComponentName}_library_variant.dart'));
-
-  final componentFileContent = """import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_example/src/building_block_library/building_blocks/$snakeCaseComponentName/${snakeCaseComponentName}_library_item.dart';
-import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
-
-class ${componentName}LibraryVariant extends BuildingBlockLibraryVariant<${componentName}LibraryPrimaryInputs> {
-  const ${componentName}LibraryVariant();
-
-  @override
-  String get title => 'Default';
-
-  @override
-  List<Widget> build(BuildContext context, ${componentName}LibraryPrimaryInputs inputs) {
-    return [
-      const $componentClassName(),
-    ];
-  }
-
-  @override
-  ${componentName}LibraryPrimaryInputs inputs() => ${componentName}LibraryPrimaryInputs();
-}
-
-class ${componentName}LibraryPrimaryInputs extends ${componentName}LibraryInputs {}
-""";
-  libraryVariantFile.writeAsStringSync(componentFileContent);
 }
