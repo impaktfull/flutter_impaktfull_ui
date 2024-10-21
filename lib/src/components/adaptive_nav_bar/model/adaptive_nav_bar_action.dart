@@ -29,6 +29,7 @@ class ImpaktfullUiAdaptiveNavBarActionItem {
         onTap: onTap,
         leadingAsset: asset,
         title: title,
+        size: ImpaktfullUiButtonSize.small,
         type: type.buttonType,
       );
 }
