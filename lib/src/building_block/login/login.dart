@@ -61,6 +61,9 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
                 placeholder: 'Enter your email',
                 value: email,
                 onChanged: onChangedEmail,
+                autofill: const [
+                  AutofillHints.email,
+                ],
                 textInputType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
               ),
@@ -69,6 +72,9 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
                 placeholder: 'Enter your password',
                 value: password,
                 onChanged: onChangedPassword,
+                autofill: const [
+                  AutofillHints.password,
+                ],
                 obscureText: true,
                 textInputAction: TextInputAction.done,
               ),

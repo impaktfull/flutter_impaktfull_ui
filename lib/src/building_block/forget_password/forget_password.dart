@@ -60,6 +60,9 @@ class ImpaktfullUiBBForgetPassword extends StatelessWidget {
                 label: 'Email',
                 placeholder: 'Enter your email',
                 value: email,
+                autofill: const [
+                  AutofillHints.email,
+                ],
                 onChanged: onChangedEmail,
                 textInputType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,

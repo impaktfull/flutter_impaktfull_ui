@@ -132,6 +132,7 @@ Much more components to come in the future, always with the focus on minimizing 
 - ImpaktfullUiBBLogin
 - ImpaktfullUiBBNotFound
 - ImpaktfullUiBBRegister
+- ImpaktfullUiBBVerifyRegisterCode
 
 #### Future
 
@@ -256,7 +257,6 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 ⌛️ Add building blocks
 
-- ImpaktfullUiBBVerifyEmail
 - ImpaktfullUiBBMoreScreen
 - ImpaktfullUiBBDebugScreen
 - ImpaktfullUiBBPrivacyPolicyScreen

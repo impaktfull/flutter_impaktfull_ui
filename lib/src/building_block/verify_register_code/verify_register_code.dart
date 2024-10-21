@@ -60,6 +60,9 @@ class ImpaktfullUiBBVerifyRegisterCode extends StatelessWidget {
                 label: 'Verification code',
                 placeholder: 'Enter your verification code',
                 value: code,
+                autofill: const [
+                  AutofillHints.oneTimeCode,
+                ],
                 onChanged: onChangedVerificationCode,
                 textInputType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,

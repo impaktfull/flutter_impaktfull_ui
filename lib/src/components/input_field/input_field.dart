@@ -35,10 +35,11 @@ class ImpaktfullUiInputField extends StatefulWidget
   final bool obscureText;
   final TextInputType textInputType;
   final TextInputAction textInputAction;
-  final ImpaktfullUiInputFieldTheme? theme;
   final bool multiline;
   final int? maxLines;
+  final List<String> autofill;
   final TextAlign textAlign;
+  final ImpaktfullUiInputFieldTheme? theme;
 
   const ImpaktfullUiInputField({
     required this.value,
@@ -52,6 +53,7 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.error,
     this.label,
     this.labelActions = const [],
+    this.autofill = const [],
     this.controller,
     this.focusNode,
     this.onFocusChanged,
@@ -59,10 +61,10 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.obscureText = false,
     this.textInputType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
-    this.theme,
     this.multiline = false,
     this.maxLines,
     this.textAlign = TextAlign.start,
+    this.theme,
     super.key,
   });
 
@@ -193,6 +195,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                   onChanged: widget.onChanged,
                                   focusNode: _focusNode,
                                   controller: _controller,
+                                  autofill: widget.autofill,
                                   theme: componentTheme,
                                   maxLines: widget.maxLines,
                                   textInputAction: widget.textInputAction,

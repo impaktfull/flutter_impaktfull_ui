@@ -64,6 +64,10 @@ class ImpaktfullUiBBRegister extends StatelessWidget {
                 label: 'Email',
                 placeholder: 'Enter your email',
                 value: email,
+                autofill: const [
+                  AutofillHints.email,
+                  AutofillHints.newUsername,
+                ],
                 onChanged: onChangedEmail,
                 textInputType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
@@ -72,6 +76,9 @@ class ImpaktfullUiBBRegister extends StatelessWidget {
                 label: 'Password',
                 placeholder: 'Enter your password',
                 value: password,
+                autofill: const [
+                  AutofillHints.newPassword,
+                ],
                 onChanged: onChangedPassword,
                 obscureText: true,
                 textInputAction: TextInputAction.done,

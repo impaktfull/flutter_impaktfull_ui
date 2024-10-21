@@ -130,6 +130,7 @@ class _ImpaktfullUiWysiwygInputFieldState
                             onFocusChanged: widget.onFocusChanged,
                             autofocus: widget.autofocus,
                             obscureText: false,
+                            autofill: const [],
                             textInputType: TextInputType.multiline,
                             textInputAction: TextInputAction.newline,
                             multiline: true,
