@@ -23,6 +23,7 @@ Future<void> main(List<String> args) async {
       throw Exception('Invalid type');
     }
   } catch (e) {
+    // ignore: avoid_print
     print(e);
   }
 }
