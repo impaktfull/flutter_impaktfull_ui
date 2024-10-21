@@ -102,12 +102,14 @@ class _DashboardStoreOrdersScreenState
                               ImpaktfullUiAutoLayout.horizontal(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              ImpaktfullUiIconButton(
-                                onTap: () => _onRefundTapped(order),
-                                size: 20,
-                                asset: ImpaktfullUiAsset.icon(
-                                    PhosphorIcons.handCoins()),
-                              ),
+                              if (!_refundList.contains(order)) ...[
+                                ImpaktfullUiIconButton(
+                                  onTap: () => _onRefundTapped(order),
+                                  size: 20,
+                                  asset: ImpaktfullUiAsset.icon(
+                                      PhosphorIcons.handCoins()),
+                                ),
+                              ],
                             ],
                           ),
                         ),

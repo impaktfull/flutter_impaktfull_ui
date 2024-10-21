@@ -26,9 +26,12 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSwitchTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
-        final color = value ? componentTheme.colors.active : componentTheme.colors.inactive;
-        final backgroundColor =
-            value ? componentTheme.colors.activeBackground : componentTheme.colors.inactiveBackground;
+        final color = value
+            ? componentTheme.colors.active
+            : componentTheme.colors.inactive;
+        final backgroundColor = value
+            ? componentTheme.colors.activeBackground
+            : componentTheme.colors.inactiveBackground;
         final borderWidth = componentTheme.dimens.borderWidth;
         return Opacity(
           opacity: onChanged == null ? 0.5 : 1,
@@ -76,7 +79,10 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
                   child: Stack(
                     children: [
                       AnimatedOpacity(
-                        opacity: MediaQuery.of(context).accessibleNavigation && value ? 1 : 0,
+                        opacity:
+                            MediaQuery.of(context).accessibleNavigation && value
+                                ? 1
+                                : 0,
                         duration: componentTheme.durations.selected,
                         curve: Curves.easeInOut,
                         child: ImpaktfullUiAssetWidget(
@@ -86,7 +92,10 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
                         ),
                       ),
                       AnimatedOpacity(
-                        opacity: MediaQuery.of(context).accessibleNavigation && !value ? 1 : 0,
+                        opacity: MediaQuery.of(context).accessibleNavigation &&
+                                !value
+                            ? 1
+                            : 0,
                         duration: componentTheme.durations.selected,
                         curve: Curves.easeInOut,
                         child: ImpaktfullUiAssetWidget(

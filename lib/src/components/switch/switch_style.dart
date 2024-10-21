@@ -17,7 +17,8 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiSwitchTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.switchTheme;
+  static ImpaktfullUiSwitchTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.switchTheme;
 }
 
 class ImpaktfullUiSwitchColorTheme {
