@@ -57,6 +57,7 @@ import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
 import 'package:impaktfull_ui_2/src/components/time_picker/time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
+import 'package:impaktfull_ui_2/src/components/unified_screen_layout/unified_screen_layout.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
@@ -94,11 +95,13 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiHorizontalTabsTheme horizontalTabs;
   final ImpaktfullUiImageCropTheme imageCrop;
   final ImpaktfullUiInputFieldTheme inputField;
+  final ImpaktfullUiLineChartTheme lineChart;
   final ImpaktfullUiListItemTheme listItem;
   final ImpaktfullUiListViewTheme listView;
   final ImpaktfullUiLoadingErrorDataTheme loadingErrorData;
   final ImpaktfullUiLoadingIndicatorTheme loadingIndicator;
   final ImpaktfullUiMarkdownTheme markdown;
+  final ImpaktfullUiMetricTheme metric;
   final ImpaktfullUiModalTheme modal;
   final ImpaktfullUiNavBarTheme navBar;
   final ImpaktfullUiNetworkImageTheme networkImage;
@@ -132,9 +135,8 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiTableRowItemTheme tableRowItem;
   final ImpaktfullUiTimePickerTheme timePicker;
   final ImpaktfullUiTooltipTheme tooltip;
+  final ImpaktfullUiUnifiedScreenLayoutTheme unifiedScreenLayout;
   final ImpaktfullUiWysiwygTheme wysiwyg;
-  final ImpaktfullUiMetricTheme metric;
-  final ImpaktfullUiLineChartTheme lineChart;
 
   ImpaktfullUiComponentsTheme({
     required this.accordion,
@@ -161,11 +163,13 @@ class ImpaktfullUiComponentsTheme {
     required this.horizontalTabs,
     required this.imageCrop,
     required this.inputField,
+    required this.lineChart,
     required this.listItem,
     required this.listView,
     required this.loadingErrorData,
     required this.loadingIndicator,
     required this.markdown,
+    required this.metric,
     required this.modal,
     required this.navBar,
     required this.networkImage,
@@ -199,9 +203,8 @@ class ImpaktfullUiComponentsTheme {
     required this.tableRowItem,
     required this.timePicker,
     required this.tooltip,
+    required this.unifiedScreenLayout,
     required this.wysiwyg,
-    required this.metric,
-    required this.lineChart,
   });
 
   ImpaktfullUiComponentsTheme copyWith({
@@ -229,11 +232,13 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiHorizontalTabsTheme? horizontalTabs,
     ImpaktfullUiImageCropTheme? imageCrop,
     ImpaktfullUiInputFieldTheme? inputField,
+    ImpaktfullUiLineChartTheme? lineChart,
     ImpaktfullUiListItemTheme? listItem,
     ImpaktfullUiListViewTheme? listView,
     ImpaktfullUiLoadingErrorDataTheme? loadingErrorData,
     ImpaktfullUiLoadingIndicatorTheme? loadingIndicator,
     ImpaktfullUiMarkdownTheme? markdown,
+    ImpaktfullUiMetricTheme? metric,
     ImpaktfullUiModalTheme? modal,
     ImpaktfullUiNavBarTheme? navBar,
     ImpaktfullUiNetworkImageTheme? networkImage,
@@ -267,9 +272,8 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiTableRowItemTheme? tableRowItem,
     ImpaktfullUiTimePickerTheme? timePicker,
     ImpaktfullUiTooltipTheme? tooltip,
+    ImpaktfullUiUnifiedScreenLayoutTheme? unifiedScreenLayout,
     ImpaktfullUiWysiwygTheme? wysiwyg,
-    ImpaktfullUiMetricTheme? metric,
-    ImpaktfullUiLineChartTheme? lineChart,
   }) =>
       ImpaktfullUiComponentsTheme(
         accordion: accordion ?? this.accordion,
@@ -296,11 +300,13 @@ class ImpaktfullUiComponentsTheme {
         horizontalTabs: horizontalTabs ?? this.horizontalTabs,
         imageCrop: imageCrop ?? this.imageCrop,
         inputField: inputField ?? this.inputField,
+        lineChart: lineChart ?? this.lineChart,
         listItem: listItem ?? this.listItem,
         listView: listView ?? this.listView,
         loadingErrorData: loadingErrorData ?? this.loadingErrorData,
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
         markdown: markdown ?? this.markdown,
+        metric: metric ?? this.metric,
         modal: modal ?? this.modal,
         navBar: navBar ?? this.navBar,
         networkImage: networkImage ?? this.networkImage,
@@ -335,9 +341,8 @@ class ImpaktfullUiComponentsTheme {
         tableRowItem: tableRowItem ?? this.tableRowItem,
         timePicker: timePicker ?? this.timePicker,
         tooltip: tooltip ?? this.tooltip,
+        unifiedScreenLayout: unifiedScreenLayout ?? this.unifiedScreenLayout,
         wysiwyg: wysiwyg ?? this.wysiwyg,
-        metric: metric ?? this.metric,
-        lineChart: lineChart ?? this.lineChart,
       );
 
   static T of<T extends ImpaktfullUiComponentTheme>(BuildContext context) {
@@ -469,6 +474,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiTimePickerTheme.of(context) as T;
     } else if (T == ImpaktfullUiTooltipTheme) {
       return ImpaktfullUiTooltipTheme.of(context) as T;
+    } else if (T == ImpaktfullUiUnifiedScreenLayoutTheme) {
+      return ImpaktfullUiUnifiedScreenLayoutTheme.of(context) as T;
     } else if (T == ImpaktfullUiWysiwygTheme) {
       return ImpaktfullUiWysiwygTheme.of(context) as T;
     } else {

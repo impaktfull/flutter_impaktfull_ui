@@ -31,26 +31,32 @@ class ComponentCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: theme.colors.canvas,
-              alignment: Alignment.center,
-              child: IgnorePointer(
-                child: Focus(
-                  descendantsAreFocusable: false,
-                  child: ClipRect(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Center(
-                        child: Builder(builder: (context) {
-                          if (isScrollable) {
-                            return SingleChildScrollView(
+            child: LayoutBuilder(
+              builder: (context, constraints) => FittedBox(
+                fit: BoxFit.cover,
+                child: Container(
+                  width: constraints.maxWidth * 1.5,
+                  height: constraints.maxHeight * 1.5,
+                  color: theme.colors.canvas,
+                  alignment: Alignment.center,
+                  child: IgnorePointer(
+                    child: Focus(
+                      descendantsAreFocusable: false,
+                      child: ClipRect(
+                        child: Center(
+                          child: Builder(builder: (context) {
+                            if (isScrollable) {
+                              return SingleChildScrollView(
+                                padding: const EdgeInsets.all(16),
+                                child: correctChild,
+                              );
+                            }
+                            return Padding(
+                              padding: const EdgeInsets.all(16),
                               child: correctChild,
                             );
-                          }
-                          return correctChild;
-                        }),
+                          }),
+                        ),
                       ),
                     ),
                   ),

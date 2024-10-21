@@ -63,6 +63,7 @@ import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
 import 'package:impaktfull_ui_2/src/components/time_picker/time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
+import 'package:impaktfull_ui_2/src/components/unified_screen_layout/unified_screen_layout.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
@@ -1148,6 +1149,17 @@ class DefaultTheme {
             wait: durations.long,
           ),
           assets: const ImpaktfullUiTooltipAssetsTheme(),
+        ),
+        unifiedScreenLayout: const ImpaktfullUiUnifiedScreenLayoutTheme(
+          assets: ImpaktfullUiUnifiedScreenLayoutAssetsTheme(),
+          colors: ImpaktfullUiUnifiedScreenLayoutColorTheme(),
+          dimens: ImpaktfullUiUnifiedScreenLayoutDimensTheme(
+            centerWidthFactor: 0.5,
+            centerMaxWidth: 700,
+            centerMinWidth: 500,
+            centerPadding: EdgeInsets.all(16),
+          ),
+          textStyles: ImpaktfullUiUnifiedScreenLayoutTextStyleTheme(),
         ),
         wysiwyg: ImpaktfullUiWysiwygTheme(
           assets: ImpaktfullUiWysiwygAssetsTheme(

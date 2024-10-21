@@ -281,6 +281,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
         debugPrint(error.toString());
         debugPrintStack(stackTrace: trace);
       }
+      if (!mounted) return;
       setState(() => _isLoading = false);
     } else if (widget.onTap != null) {
       widget.onTap?.call();

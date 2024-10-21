@@ -4,7 +4,6 @@ import 'package:impaktfull_ui_example/src/example_library/config/example_library
 import 'package:impaktfull_ui_example/src/example_library/config/example_library_item.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/widget/example/example_card.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ExampleLibraryScreen extends StatelessWidget {
   const ExampleLibraryScreen({
@@ -26,7 +25,7 @@ class ExampleLibraryScreen extends StatelessWidget {
           return ExampleCard(
             label: value.name,
             onTap: () => _onItemTapped(value),
-            asset: ImpaktfullUiAsset.icon(PhosphorIcons.chartLineUp()),
+            builder: value.build,
           );
         },
       ),

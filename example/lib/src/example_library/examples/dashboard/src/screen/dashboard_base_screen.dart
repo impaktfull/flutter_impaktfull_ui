@@ -19,7 +19,7 @@ class DashboardBaseScreen extends StatefulWidget {
 }
 
 class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
-  var _activeScreen = DashboardScreen.home;
+  var _activeScreen = DashboardScreen.storeProducts;
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiScreen(

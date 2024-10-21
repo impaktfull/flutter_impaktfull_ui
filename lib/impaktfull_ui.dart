@@ -2,6 +2,8 @@ library impaktfull_ui;
 
 /// Building Blocks
 export 'src/building_block/login/login.dart';
+export 'src/building_block/not_found/not_found.dart';
+export 'src/building_block/register/register.dart';
 
 /// Components
 export 'src/components/accordion/accordion.dart';
@@ -81,6 +83,7 @@ export 'src/components/table_header_item/table_header_item.dart';
 export 'src/components/time_picker/time_picker.dart';
 export 'src/components/tooltip/tooltip.dart';
 export 'src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+export 'src/components/unified_screen_layout/unified_screen_layout.dart';
 export 'src/components/wrap/wrap.dart';
 export 'src/components/wysiwyg/wysiwyg.dart';
 

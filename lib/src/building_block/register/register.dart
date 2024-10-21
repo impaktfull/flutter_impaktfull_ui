@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/unified_screen_layout/unified_screen_layout.dart';
 
-class ImpaktfullUiBBLogin extends StatelessWidget {
+class ImpaktfullUiBBRegister extends StatelessWidget {
   final WidgetBuilder? topBuilder;
   final WidgetBuilder? bottomBuilder;
   final Widget? Function(BuildContext)? startBuilder;
@@ -11,15 +14,15 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
   final String password;
   final Function(String) onChangedEmail;
   final Function(String) onChangedPassword;
-  final AsyncCallback onLoginTapped;
+  final AsyncCallback onRegisterTapped;
   final Alignment alignment;
 
-  const ImpaktfullUiBBLogin({
+  const ImpaktfullUiBBRegister({
     required this.email,
     required this.password,
     required this.onChangedEmail,
     required this.onChangedPassword,
-    required this.onLoginTapped,
+    required this.onRegisterTapped,
     this.topBuilder,
     this.startBuilder,
     this.endBuilder,
@@ -58,9 +61,9 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
           ),
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
-            title: 'Login',
+            title: 'Register',
             fullWidth: true,
-            onAsyncTap: onLoginTapped,
+            onAsyncTap: onRegisterTapped,
           ),
         ],
       ),
