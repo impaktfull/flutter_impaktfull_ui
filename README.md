@@ -128,7 +128,10 @@ Much more components to come in the future, always with the focus on minimizing 
 
 ### Building Blocks
 
-- Login
+- ImpaktfullUiBBForgetPassword
+- ImpaktfullUiBBLogin
+- ImpaktfullUiBBNotFound
+- ImpaktfullUiBBRegister
 
 #### Future
 
@@ -253,10 +256,6 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 ⌛️ Add building blocks
 
-- ImpaktfullUiBBLogin
-- ImpaktfullUiBBRegister
-- ImpaktfullUiBBForgotPassword
-- ImpaktfullUiBBResetPassword
 - ImpaktfullUiBBVerifyEmail
 - ImpaktfullUiBBMoreScreen
 - ImpaktfullUiBBDebugScreen

@@ -6,24 +6,20 @@ import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/unified_screen_layout/unified_screen_layout.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
-class ImpaktfullUiBBRegister extends StatelessWidget {
+class ImpaktfullUiBBForgetPassword extends StatelessWidget {
   final WidgetBuilder? topBuilder;
   final WidgetBuilder? bottomBuilder;
   final Widget? Function(BuildContext)? startBuilder;
   final Widget? Function(BuildContext)? endBuilder;
   final String email;
-  final String password;
   final Function(String) onChangedEmail;
-  final Function(String) onChangedPassword;
-  final AsyncCallback onRegisterTapped;
+  final AsyncCallback onResetPasswordTapped;
   final Alignment alignment;
 
-  const ImpaktfullUiBBRegister({
+  const ImpaktfullUiBBForgetPassword({
     required this.email,
-    required this.password,
     required this.onChangedEmail,
-    required this.onChangedPassword,
-    required this.onRegisterTapped,
+    required this.onResetPasswordTapped,
     this.topBuilder,
     this.startBuilder,
     this.endBuilder,
@@ -48,17 +44,17 @@ class ImpaktfullUiBBRegister extends StatelessWidget {
             spacing: 8,
             children: [
               Text(
-                'Hi there!',
+                'Forgot password?',
                 style: theme.textStyles.onCanvas.display.large,
               ),
               Text(
-                "Create your account to get started",
+                'No problem, we will send you a link to reset your password.',
                 style: theme.textStyles.onCardTertiary.text.small,
               ),
             ],
           ),
           ImpaktfullUiAutoLayout.vertical(
-            spacing: 16,
+            spacing: 8,
             children: [
               ImpaktfullUiInputField(
                 label: 'Email',
@@ -68,19 +64,11 @@ class ImpaktfullUiBBRegister extends StatelessWidget {
                 textInputType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
               ),
-              ImpaktfullUiInputField(
-                label: 'Password',
-                placeholder: 'Enter your password',
-                value: password,
-                onChanged: onChangedPassword,
-                obscureText: true,
-                textInputAction: TextInputAction.done,
-              ),
               ImpaktfullUiButton(
                 type: ImpaktfullUiButtonType.primary,
-                title: 'Register',
+                title: 'Reset password',
                 fullWidth: true,
-                onAsyncTap: onRegisterTapped,
+                onAsyncTap: onResetPasswordTapped,
               ),
             ],
           ),

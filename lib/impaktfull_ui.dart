@@ -1,9 +1,11 @@
 library impaktfull_ui;
 
 /// Building Blocks
+export 'src/building_block/forget_password/forget_password.dart';
 export 'src/building_block/login/login.dart';
 export 'src/building_block/not_found/not_found.dart';
 export 'src/building_block/register/register.dart';
+export 'src/building_block/verify_register_code/verify_register_code.dart';
 
 /// Components
 export 'src/components/accordion/accordion.dart';

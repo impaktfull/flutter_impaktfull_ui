@@ -38,29 +38,47 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
       alignment: alignment,
       centerChild: ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
-        spacing: 8,
+        spacing: 48,
         children: [
-          ImpaktfullUiInputField(
-            label: 'Email',
-            placeholder: 'Enter your email',
-            value: email,
-            onChanged: onChangedEmail,
-            textInputType: TextInputType.emailAddress,
-            textInputAction: TextInputAction.next,
+          ImpaktfullUiAutoLayout.vertical(
+            spacing: 8,
+            children: [
+              Text(
+                'Welcome back!',
+                style: theme.textStyles.onCanvas.display.large,
+              ),
+              Text(
+                "Log in to your account to continue",
+                style: theme.textStyles.onCardTertiary.text.small,
+              ),
+            ],
           ),
-          ImpaktfullUiInputField(
-            label: 'Password',
-            placeholder: 'Enter your password',
-            value: password,
-            onChanged: onChangedPassword,
-            obscureText: true,
-            textInputAction: TextInputAction.done,
-          ),
-          ImpaktfullUiButton(
-            type: ImpaktfullUiButtonType.primary,
-            title: 'Login',
-            fullWidth: true,
-            onAsyncTap: onLoginTapped,
+          ImpaktfullUiAutoLayout.vertical(
+            spacing: 8,
+            children: [
+              ImpaktfullUiInputField(
+                label: 'Email',
+                placeholder: 'Enter your email',
+                value: email,
+                onChanged: onChangedEmail,
+                textInputType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
+              ),
+              ImpaktfullUiInputField(
+                label: 'Password',
+                placeholder: 'Enter your password',
+                value: password,
+                onChanged: onChangedPassword,
+                obscureText: true,
+                textInputAction: TextInputAction.done,
+              ),
+              ImpaktfullUiButton(
+                type: ImpaktfullUiButtonType.primary,
+                title: 'Login',
+                fullWidth: true,
+                onAsyncTap: onLoginTapped,
+              ),
+            ],
           ),
         ],
       ),
