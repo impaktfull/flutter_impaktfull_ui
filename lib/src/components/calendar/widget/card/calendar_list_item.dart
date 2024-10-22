@@ -21,7 +21,7 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
       builder: (context, componentTheme) => ImpaktfullUiCard(
         width: double.infinity,
         child: ImpaktfullUiAutoLayout.vertical(
-          spacing: 9,
+          spacing: 12,
           children: [
             Text(
               item.title,

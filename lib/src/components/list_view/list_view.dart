@@ -13,14 +13,12 @@ export 'list_view_style.dart';
 
 part 'list_view.describe.dart';
 
-class ImpaktfullUiListView<T> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMixin {
   final Widget? child;
   final List<Widget>? children;
   final List<T>? items;
   final Widget Function(BuildContext context, T item, int index)? itemBuilder;
-  final Widget Function(BuildContext context, T item, int index)?
-      separatorBuilder;
+  final Widget Function(BuildContext context, T item, int index)? separatorBuilder;
   final EdgeInsetsGeometry padding;
   final double spacing;
   final int itemsPerRow;
@@ -33,6 +31,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   final Axis scrollDirection;
   final AsyncCallback? onRefresh;
   final ScrollPhysics? scrollPhysics;
+  final ScrollController? controller;
   final ImpaktfullUiListViewTheme? theme;
 
   const ImpaktfullUiListView({
@@ -46,6 +45,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.reversed = false,
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
+    this.controller,
     this.theme,
     super.key,
   })  : itemBuilder = null,
@@ -58,8 +58,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
 
   const ImpaktfullUiListView.builder({
     required List<T> this.items,
-    required Widget Function(BuildContext context, T item, int index)
-        this.itemBuilder,
+    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
     required String this.noDataLabel,
     this.spacing = 0,
     this.isLoading = false,
@@ -71,6 +70,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.reversed = false,
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
+    this.controller,
     this.theme,
     super.key,
   })  : separated = false,
@@ -80,8 +80,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
 
   const ImpaktfullUiListView.separated({
     required List<T> this.items,
-    required Widget Function(BuildContext context, T item, int index)
-        this.itemBuilder,
+    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
     required String this.noDataLabel,
     this.separatorBuilder,
     this.isLoading = false,
@@ -93,6 +92,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.reversed = false,
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
+    this.controller,
     this.theme,
     super.key,
     required,
@@ -111,6 +111,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.reversed = false,
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
+    this.controller,
     this.theme,
     super.key,
     required,
@@ -124,8 +125,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
         itemsPerRow = 1;
 
   @override
-  State<ImpaktfullUiListView<T>> createState() =>
-      _ImpaktfullUiListViewState<T>();
+  State<ImpaktfullUiListView<T>> createState() => _ImpaktfullUiListViewState<T>();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
@@ -133,6 +133,21 @@ class ImpaktfullUiListView<T> extends StatefulWidget
 
 class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
   var _isLoading = false;
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = widget.controller ?? ScrollController();
+  }
+
+  @override
+  void dispose() {
+    if (widget.controller == null) {
+      _scrollController.dispose();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -147,6 +162,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
           return ImpaktfullUiRefreshIndicator(
             onRefresh: widget.onRefresh,
             child: ListView(
+              controller: _scrollController,
               padding: padding,
               physics: widget.scrollPhysics,
               shrinkWrap: widget.shrinkWrap,
@@ -169,6 +185,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
           return ImpaktfullUiRefreshIndicator(
             onRefresh: widget.onRefresh,
             child: ListView(
+              controller: _scrollController,
               padding: padding,
               physics: widget.scrollPhysics,
               shrinkWrap: widget.shrinkWrap,
@@ -185,9 +202,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             onRefresh: widget.onRefresh,
             child: LayoutBuilder(
               builder: (context, constraints) => SingleChildScrollView(
-                physics: widget.onRefresh == null
-                    ? widget.scrollPhysics
-                    : const AlwaysScrollableScrollPhysics(),
+                controller: _scrollController,
+                physics: widget.onRefresh == null ? widget.scrollPhysics : const AlwaysScrollableScrollPhysics(),
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   height: constraints.maxHeight,
@@ -201,8 +217,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                         style: componentTheme.textStyles.title,
                         textAlign: TextAlign.center,
                       ),
-                      if (widget.refreshBtnLabel != null &&
-                          widget.onRefresh != null) ...[
+                      if (widget.refreshBtnLabel != null && widget.onRefresh != null) ...[
                         const SizedBox(height: 16),
                         if (_isLoading) ...[
                           const ImpaktfullUiLoadingIndicator(),
@@ -225,6 +240,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
           return ImpaktfullUiRefreshIndicator(
             onRefresh: widget.onRefresh,
             child: ListView.separated(
+              controller: _scrollController,
               padding: padding,
               physics: widget.scrollPhysics,
               scrollDirection: widget.scrollDirection,
@@ -233,8 +249,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               reverse: widget.reversed,
               separatorBuilder: (context, index) {
                 final item = widget.items![index];
-                return widget.separatorBuilder?.call(context, item, index) ??
-                    const ImpaktfullUiDivider();
+                return widget.separatorBuilder?.call(context, item, index) ?? const ImpaktfullUiDivider();
               },
               itemCount: widget.items!.length,
             ),
@@ -243,14 +258,14 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
         return ImpaktfullUiRefreshIndicator(
           onRefresh: widget.onRefresh,
           child: ListView.separated(
+            controller: _scrollController,
             padding: padding,
             physics: widget.scrollPhysics,
             scrollDirection: widget.scrollDirection,
             itemBuilder: _buildItem,
             shrinkWrap: widget.shrinkWrap,
             reverse: widget.reversed,
-            separatorBuilder: (context, index) =>
-                SizedBox(height: widget.spacing),
+            separatorBuilder: (context, index) => SizedBox(height: widget.spacing),
             itemCount: widget.items!.length,
           ),
         );
@@ -297,6 +312,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
     } catch (e) {
       debugPrint('Error refreshing list: $e');
     }
+    if (!mounted) return;
     setState(() => _isLoading = false);
   }
 }
