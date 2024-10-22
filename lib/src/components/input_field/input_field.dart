@@ -97,10 +97,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   void didUpdateWidget(covariant ImpaktfullUiInputField oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value && _controller.text != widget.value) {
-      // TODO check how we need to do the selection
-      // final currentSelection = _controller.selection;
       _controller.text = widget.value ?? '';
-      // _controller.selection = currentSelection;
     }
   }
 

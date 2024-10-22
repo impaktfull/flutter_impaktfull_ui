@@ -10,6 +10,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/bottom_na
 import 'package:impaktfull_ui_example/src/component_library/components/bottom_navigation_item/bottom_navigation_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/bottomsheet/bottomsheet_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/button/button_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/calendar/calendar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/card/card_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/checkbox/checkbox_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box_library_item.dart';
@@ -87,6 +88,7 @@ class ComponentLibrary {
     const BottomSheetLibraryItem(),
     const ButtonLibraryItem(),
     const CheckboxLibraryItem(),
+    const CalendarLibraryItem(),
     const CardLibraryItem(),
     const ClampedFractionallySizedBoxLibraryItem(),
     const CmsHeaderLibraryItem(),

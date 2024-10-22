@@ -7,6 +7,7 @@ import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigati
 import 'package:impaktfull_ui_2/src/components/bottom_navigation_item/bottom_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_sheet/bottom_sheet.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
@@ -357,6 +358,22 @@ class DefaultTheme {
             destructivePrimary: textStyles.onDestructive.text.small.bold,
             destructiveAlternative:
                 textStyles.onCardDestructive.text.small.bold,
+          ),
+        ),
+        calendar: ImpaktfullUiCalendarTheme(
+          assets: const ImpaktfullUiCalendarAssetsTheme(),
+          colors: ImpaktfullUiCalendarColorTheme(
+            divider: colors.border,
+          ),
+          dimens: const ImpaktfullUiCalendarDimensTheme(
+            dividerHeight: 1,
+            sectionTitleWidth: 50,
+          ),
+          textStyles: ImpaktfullUiCalendarTextStyleTheme(
+            sectionTitle: textStyles.onCanvas.text.small.semiBold,
+            sectionSubtitle: textStyles.onCanvasTertiary.text.extraSmall.light,
+            listItemTitle: textStyles.onCard.text.small,
+            listItemSubtitle: textStyles.onCanvasTertiary.text.small.light,
           ),
         ),
         card: ImpaktfullUiCardTheme(

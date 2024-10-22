@@ -24,6 +24,7 @@ export 'src/components/bottom_navigation_item/bottom_navigation_item.dart';
 export 'src/components/bottom_sheet/bottom_sheet.dart';
 export 'src/components/badge/badge.dart';
 export 'src/components/card/card.dart';
+export 'src/components/calendar/calendar.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
 export 'src/components/cms_header/cms_header.dart';
@@ -101,8 +102,9 @@ export 'src/components/theme/theme_builder.dart';
 export 'src/util/descriptor/component_descriptor_mixin.dart';
 
 /// Extensions
-export 'src/util/extension/edge_insets_geometry_extension.dart';
 export 'src/util/extension/border_radius_geometry_extension.dart';
+export 'src/util/extension/datetime_extensions.dart';
+export 'src/util/extension/edge_insets_geometry_extension.dart';
 export 'src/util/extension/text_style_extension.dart';
 
 /// Util

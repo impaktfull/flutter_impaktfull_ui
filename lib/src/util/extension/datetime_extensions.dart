@@ -1,6 +1,22 @@
 import 'package:intl/intl.dart';
 
-extension DateExtension on DateTime {
+extension DateTimeExtensions on DateTime {
+  DateTime get startOfTheDay => DateTime(year, month, day);
+
+  DateTime get endOfTheDay => DateTime(year, month, day, 23, 59, 59);
+
+  DateTime get tomorrow => add(const Duration(days: 1));
+
+  DateTime get nextWeek => add(const Duration(days: 7));
+
+  DateTime get yesterday => add(const Duration(days: -1));
+
+  DateTime get previousWeek => add(const Duration(days: -7));
+
+  DateTime get beginningOfTheWeek => add(Duration(days: weekday - 1));
+
+  DateTime get endOfTheWeek => add(Duration(days: 7 - weekday));
+
   String format(String format) => DateFormat(format).format(this);
 
   DateTime getPreviousMonth() => copyWith(month: month - 1);
@@ -24,6 +40,18 @@ extension DateExtension on DateTime {
   int getDaysInMonth() => _getDaysForMonth(
         year: year,
         month: month,
+      );
+
+  DateTime setTime(int hour, int minute,
+          [int second = 0, int millisecond = 0]) =>
+      DateTime(
+        year,
+        month,
+        day,
+        hour,
+        minute,
+        second,
+        millisecond,
       );
 }
 

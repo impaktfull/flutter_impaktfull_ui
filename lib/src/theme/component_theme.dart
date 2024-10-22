@@ -6,6 +6,7 @@ import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigati
 import 'package:impaktfull_ui_2/src/components/bottom_navigation_item/bottom_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/bottom_sheet/bottom_sheet.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
@@ -79,6 +80,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiBottomNavigationItemTheme bottomNavigationItem;
   final ImpaktfullUiBottomSheetTheme bottomSheet;
   final ImpaktfullUiButtonTheme button;
+  final ImpaktfullUiCalendarTheme calendar;
   final ImpaktfullUiCardTheme card;
   final ImpaktfullUiCheckboxTheme checkbox;
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
@@ -147,6 +149,7 @@ class ImpaktfullUiComponentsTheme {
     required this.bottomNavigationItem,
     required this.bottomSheet,
     required this.button,
+    required this.calendar,
     required this.card,
     required this.checkbox,
     required this.cmsHeader,
@@ -216,6 +219,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiBottomNavigationItemTheme? bottomNavigationItem,
     ImpaktfullUiBottomSheetTheme? bottomSheet,
     ImpaktfullUiButtonTheme? button,
+    ImpaktfullUiCalendarTheme? calendar,
     ImpaktfullUiCardTheme? card,
     ImpaktfullUiCheckboxTheme? checkbox,
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
@@ -284,6 +288,7 @@ class ImpaktfullUiComponentsTheme {
         bottomNavigationItem: bottomNavigationItem ?? this.bottomNavigationItem,
         bottomSheet: bottomSheet ?? this.bottomSheet,
         button: button ?? this.button,
+        calendar: calendar ?? this.calendar,
         card: card ?? this.card,
         checkbox: checkbox ?? this.checkbox,
         cmsHeader: cmsHeader ?? this.cmsHeader,
@@ -362,6 +367,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiBottomSheetTheme.of(context) as T;
     } else if (T == ImpaktfullUiButtonTheme) {
       return ImpaktfullUiButtonTheme.of(context) as T;
+    } else if (T == ImpaktfullUiCalendarTheme) {
+      return ImpaktfullUiCalendarTheme.of(context) as T;
     } else if (T == ImpaktfullUiCardTheme) {
       return ImpaktfullUiCardTheme.of(context) as T;
     } else if (T == ImpaktfullUiCheckboxTheme) {

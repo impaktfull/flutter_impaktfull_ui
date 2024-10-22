@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/util/date_extensions.dart';
+import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_cell.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_weekdays.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';

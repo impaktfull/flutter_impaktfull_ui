@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/util/date_extensions.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_cell.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_weekdays.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
 
 class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
   final ImpaktfullUiDatePickerWeekdaysStartDate weekdaysStartDate;
