@@ -1,12 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/accordion/accordion.dart';
+import 'package:impaktfull_ui_2/src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
 import 'package:impaktfull_ui_2/src/components/adaptive_screen/adaptive_screen.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
+import 'package:impaktfull_ui_2/src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
+import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui_2/src/components/markdown/markdown.dart';
+import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
 import 'package:impaktfull_ui_2/src/models/license.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
@@ -27,6 +31,31 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
   final _licenses = <ImpaktfullUiLicense>[];
   final _expandedSet = <ImpaktfullUiLicense>{};
 
+  var _search = false;
+  var _searchText = '';
+
+  final _queryListForLicenses = [
+    'impaktfull',
+    'koen van looveren',
+  ];
+
+  List<ImpaktfullUiLicense> get _filteredLicenses => _licenses.where((e) {
+        final searchText = _searchText.toLowerCase();
+        if (searchText.isEmpty) {
+          return true;
+        } else if (e.name.toLowerCase().contains(searchText)) {
+          return true;
+        } else if (_queryListForLicenses.any((e) => e.contains(searchText))) {
+          return e.licenses.any((e) {
+            final license = e.toLowerCase();
+            if (!license.contains('impaktfull')) return false;
+            return license.contains(searchText);
+          });
+        } else {
+          return false;
+        }
+      }).toList();
+
   @override
   void initState() {
     super.initState();
@@ -35,11 +64,41 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
 
   @override
   Widget build(BuildContext context) {
+    final showSearch =
+        _search || !ImpaktfullUiResponsiveLayout.isSmall(context);
     return ImpaktfullUiAdaptiveScreen(
       title: 'Licenses',
       onBackTapped: widget.onBackTapped,
+      actions: [
+        if (ImpaktfullUiResponsiveLayout.isSmall(context)) ...[
+          ImpaktfullUiAdaptiveNavBarActionItem(
+            title: 'Search',
+            asset: theme.assets.icons.search,
+            onTap: _onSearchTapped,
+          ),
+        ],
+      ],
+      headerBottomChild: showSearch
+          ? Padding(
+              padding: EdgeInsetsDirectional.only(
+                start: 16,
+                end: 16,
+                bottom: ImpaktfullUiResponsiveLayout.isSmall(context) ? 16 : 0,
+              ),
+              child: ImpaktfullUiClampedFractionallySizedBox(
+                widthFactor: 0.5,
+                minWidth: 600,
+                maxWidth: 800,
+                child: ImpaktfullUiInputField(
+                  value: _searchText,
+                  placeholder: 'Search for any license',
+                  onChanged: _onSearchChanged,
+                ),
+              ),
+            )
+          : null,
       builder: (context) => ImpaktfullUiListView.builder(
-        items: _licenses,
+        items: _filteredLicenses,
         spacing: 8,
         isLoading: _isLoading,
         padding: const EdgeInsets.all(16),
@@ -119,5 +178,16 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
       _expandedSet.add(value);
     }
     setState(() {});
+  }
+
+  void _onSearchTapped() {
+    setState(() => _search = !_search);
+  }
+
+  void _onSearchChanged(String value) {
+    setState(() {
+      _expandedSet.clear();
+      _searchText = value;
+    });
   }
 }

@@ -13,12 +13,14 @@ export 'list_view_style.dart';
 
 part 'list_view.describe.dart';
 
-class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiListView<T> extends StatefulWidget
+    with ComponentDescriptorMixin {
   final Widget? child;
   final List<Widget>? children;
   final List<T>? items;
   final Widget Function(BuildContext context, T item, int index)? itemBuilder;
-  final Widget Function(BuildContext context, T item, int index)? separatorBuilder;
+  final Widget Function(BuildContext context, T item, int index)?
+      separatorBuilder;
   final EdgeInsetsGeometry padding;
   final double spacing;
   final int itemsPerRow;
@@ -58,7 +60,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
 
   const ImpaktfullUiListView.builder({
     required List<T> this.items,
-    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
+    required Widget Function(BuildContext context, T item, int index)
+        this.itemBuilder,
     required String this.noDataLabel,
     this.spacing = 0,
     this.isLoading = false,
@@ -80,7 +83,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
 
   const ImpaktfullUiListView.separated({
     required List<T> this.items,
-    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
+    required Widget Function(BuildContext context, T item, int index)
+        this.itemBuilder,
     required String this.noDataLabel,
     this.separatorBuilder,
     this.isLoading = false,
@@ -125,7 +129,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
         itemsPerRow = 1;
 
   @override
-  State<ImpaktfullUiListView<T>> createState() => _ImpaktfullUiListViewState<T>();
+  State<ImpaktfullUiListView<T>> createState() =>
+      _ImpaktfullUiListViewState<T>();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
@@ -203,7 +208,9 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             child: LayoutBuilder(
               builder: (context, constraints) => SingleChildScrollView(
                 controller: _scrollController,
-                physics: widget.onRefresh == null ? widget.scrollPhysics : const AlwaysScrollableScrollPhysics(),
+                physics: widget.onRefresh == null
+                    ? widget.scrollPhysics
+                    : const AlwaysScrollableScrollPhysics(),
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   height: constraints.maxHeight,
@@ -217,7 +224,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                         style: componentTheme.textStyles.title,
                         textAlign: TextAlign.center,
                       ),
-                      if (widget.refreshBtnLabel != null && widget.onRefresh != null) ...[
+                      if (widget.refreshBtnLabel != null &&
+                          widget.onRefresh != null) ...[
                         const SizedBox(height: 16),
                         if (_isLoading) ...[
                           const ImpaktfullUiLoadingIndicator(),
@@ -249,7 +257,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               reverse: widget.reversed,
               separatorBuilder: (context, index) {
                 final item = widget.items![index];
-                return widget.separatorBuilder?.call(context, item, index) ?? const ImpaktfullUiDivider();
+                return widget.separatorBuilder?.call(context, item, index) ??
+                    const ImpaktfullUiDivider();
               },
               itemCount: widget.items!.length,
             ),
@@ -265,7 +274,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             itemBuilder: _buildItem,
             shrinkWrap: widget.shrinkWrap,
             reverse: widget.reversed,
-            separatorBuilder: (context, index) => SizedBox(height: widget.spacing),
+            separatorBuilder: (context, index) =>
+                SizedBox(height: widget.spacing),
             itemCount: widget.items!.length,
           ),
         );

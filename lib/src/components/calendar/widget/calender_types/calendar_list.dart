@@ -21,7 +21,8 @@ class ImpaktfullUiCalendarList extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiCalendarList> createState() => _ImpaktfullUiCalendarListState();
+  State<ImpaktfullUiCalendarList> createState() =>
+      _ImpaktfullUiCalendarListState();
 }
 
 class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
@@ -54,7 +55,8 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
           final previousSubtitle = _createSectionSubTitle(previousItem);
           final title = _createSectionTitle(item)!;
           final previousTitle = _createSectionTitle(previousItem);
-          final showSectionTitle = previousSubtitle != subtitle || previousTitle != title;
+          final showSectionTitle =
+              previousSubtitle != subtitle || previousTitle != title;
           return ImpaktfullUiAutoLayout.vertical(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -72,7 +74,8 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
                 const SizedBox(height: 8),
               ],
               Padding(
-                padding: EdgeInsetsDirectional.only(start: componentTheme.dimens.sectionTitleWidth),
+                padding: EdgeInsetsDirectional.only(
+                    start: componentTheme.dimens.sectionTitleWidth),
                 child: ImpaktfullUiCalendarListItem(
                   item: item,
                   theme: componentTheme,

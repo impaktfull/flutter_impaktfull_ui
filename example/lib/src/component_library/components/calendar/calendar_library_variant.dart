@@ -4,7 +4,8 @@ import 'package:impaktfull_ui_example/src/component_library/components/calendar/
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class CalendarLibraryVariant extends ComponentLibraryVariant<CalendarLibraryPrimaryInputs> {
+class CalendarLibraryVariant
+    extends ComponentLibraryVariant<CalendarLibraryPrimaryInputs> {
   final ImpaktfullUiCalendarType type;
 
   const CalendarLibraryVariant({
@@ -15,7 +16,8 @@ class CalendarLibraryVariant extends ComponentLibraryVariant<CalendarLibraryPrim
   String get title => type.name;
 
   @override
-  List<Widget> build(BuildContext context, CalendarLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, CalendarLibraryPrimaryInputs inputs) {
     final now = DateTime.now();
     return [
       ComponentsLibraryVariantDescriptor(
@@ -43,12 +45,15 @@ class CalendarLibraryVariant extends ComponentLibraryVariant<CalendarLibraryPrim
             ImpaktfullUiCalendarItem(
               title: 'Sync with Team A',
               startDate: now.setTime(10, 0).add(const Duration(days: 2)),
-              endDate: now.setTime(10, 0).add(const Duration(days: 3, minutes: 10)),
+              endDate:
+                  now.setTime(10, 0).add(const Duration(days: 3, minutes: 10)),
             ),
             ImpaktfullUiCalendarItem(
               title: 'Sync with Team B',
-              startDate: now.setTime(10, 0).add(const Duration(days: 2, minutes: 10)),
-              endDate: now.setTime(10, 0).add(const Duration(days: 3, minutes: 20)),
+              startDate:
+                  now.setTime(10, 0).add(const Duration(days: 2, minutes: 10)),
+              endDate:
+                  now.setTime(10, 0).add(const Duration(days: 3, minutes: 20)),
             ),
             for (int i = 0; i < 100; i++) ...[
               ImpaktfullUiCalendarItem(
