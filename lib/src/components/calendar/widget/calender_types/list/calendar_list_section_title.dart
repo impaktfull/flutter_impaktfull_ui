@@ -3,12 +3,12 @@ import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
-class ImpaktfullUiCalendarSectionTitle extends StatelessWidget {
+class ImpaktfullUiCalendarListSectionTitle extends StatelessWidget {
   final String title;
   final String? subtitle;
   final ImpaktfullUiCalendarTheme? theme;
 
-  const ImpaktfullUiCalendarSectionTitle({
+  const ImpaktfullUiCalendarListSectionTitle({
     required this.title,
     this.subtitle,
     this.theme,

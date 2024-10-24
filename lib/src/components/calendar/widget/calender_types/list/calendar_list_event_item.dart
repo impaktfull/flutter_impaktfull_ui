@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/widget/time/calendar_event_time.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
 
-class ImpaktfullUiCalendarListItem extends StatelessWidget {
-  final ImpaktfullUiCalendarItem item;
+class ImpaktfullUiCalendarListEventItem extends StatelessWidget {
+  final ImpaktfullUiCalendarEvent item;
   final ImpaktfullUiCalendarTheme? theme;
-  const ImpaktfullUiCalendarListItem({
+  final VoidCallback onTap;
+  const ImpaktfullUiCalendarListEventItem({
     required this.item,
+    required this.onTap,
     this.theme,
     super.key,
   });
@@ -20,6 +22,7 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiCard(
         width: double.infinity,
+        onTap: onTap,
         child: ImpaktfullUiAutoLayout.vertical(
           spacing: 12,
           children: [
@@ -27,21 +30,9 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
               item.title,
               style: componentTheme.textStyles.listItemTitle,
             ),
-            Text.rich(
+            ImpaktfullUiCalendarEventTime(
+              item: item,
               style: componentTheme.textStyles.listItemSubtitle,
-              TextSpan(
-                children: [
-                  if (item.isAllDay) ...[
-                    const TextSpan(text: 'All day'),
-                  ] else ...[
-                    TextSpan(text: item.startDate.format('HH:mm')),
-                    if (item.endDate != null) ...[
-                      const TextSpan(text: ' - '),
-                      TextSpan(text: item.endDate!.format('HH:mm')),
-                    ],
-                  ],
-                ],
-              ),
             ),
           ],
         ),

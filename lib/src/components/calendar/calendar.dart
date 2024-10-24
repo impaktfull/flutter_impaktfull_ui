@@ -3,6 +3,7 @@ import 'package:impaktfull_ui_2/src/components/calendar/calendar_style.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/model/calendar_item.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/model/calendar_type.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/calendar_list.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/calendar_week.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
@@ -12,17 +13,18 @@ export 'model/calendar_type.dart';
 
 part 'calendar.describe.dart';
 
-class ImpaktfullUiCalendar extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiCalendar extends StatelessWidget with ComponentDescriptorMixin {
   final DateTime selectedDate;
   final ImpaktfullUiCalendarType type;
-  final List<ImpaktfullUiCalendarItem> events;
+  final List<ImpaktfullUiCalendarEvent> events;
+  final ValueChanged<ImpaktfullUiCalendarEvent> onEventTap;
   final ImpaktfullUiCalendarTheme? theme;
 
   const ImpaktfullUiCalendar({
     required this.selectedDate,
     required this.events,
     required this.type,
+    required this.onEventTap,
     this.theme,
     super.key,
   });
@@ -37,6 +39,14 @@ class ImpaktfullUiCalendar extends StatelessWidget
             return ImpaktfullUiCalendarList(
               selectedDate: selectedDate,
               events: events,
+              onEventTap: onEventTap,
+              theme: componentTheme,
+            );
+          case ImpaktfullUiCalendarType.week:
+            return ImpaktfullUiCalendarWeek(
+              selectedDate: selectedDate,
+              events: events,
+              onEventTap: onEventTap,
               theme: componentTheme,
             );
         }

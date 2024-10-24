@@ -1,3 +1,4 @@
 enum ImpaktfullUiCalendarType {
   list,
+  week,
 }

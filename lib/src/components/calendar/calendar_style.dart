@@ -14,8 +14,7 @@ class ImpaktfullUiCalendarTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiCalendarTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.calendar;
+  static ImpaktfullUiCalendarTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.calendar;
 }
 
 class ImpaktfullUiCalendarAssetsTheme {
@@ -24,19 +23,23 @@ class ImpaktfullUiCalendarAssetsTheme {
 
 class ImpaktfullUiCalendarColorTheme {
   final Color divider;
+  final Color eventBackground;
 
   const ImpaktfullUiCalendarColorTheme({
     required this.divider,
+    required this.eventBackground,
   });
 }
 
 class ImpaktfullUiCalendarDimensTheme {
   final double dividerHeight;
   final double sectionTitleWidth;
+  final double weekHourHeight;
 
   const ImpaktfullUiCalendarDimensTheme({
     required this.dividerHeight,
     required this.sectionTitleWidth,
+    required this.weekHourHeight,
   });
 }
 
@@ -44,12 +47,16 @@ class ImpaktfullUiCalendarTextStyleTheme {
   final TextStyle sectionTitle;
   final TextStyle sectionSubtitle;
   final TextStyle listItemTitle;
+  final TextStyle listItemTitleSmall;
   final TextStyle listItemSubtitle;
+  final TextStyle listItemSubtitleSmall;
 
   const ImpaktfullUiCalendarTextStyleTheme({
     required this.sectionTitle,
     required this.sectionSubtitle,
     required this.listItemTitle,
+    required this.listItemTitleSmall,
     required this.listItemSubtitle,
+    required this.listItemSubtitleSmall,
   });
 }
