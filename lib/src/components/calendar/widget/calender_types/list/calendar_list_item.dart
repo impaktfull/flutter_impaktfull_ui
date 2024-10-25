@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/model/calendar_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/list/calendar_list_event_item.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/list/calendar_list_section_title.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
 
 class ImpaktfullUiCalendarListItem extends StatelessWidget {
-  final ImpaktfullUiCalendarEvent item;
-  final ImpaktfullUiCalendarEvent? previousItem;
+  final ImpaktfulluiCalendarListItem item;
+  final ImpaktfulluiCalendarListItem? previousItem;
   final VoidCallback onTap;
   final ImpaktfullUiCalendarTheme? theme;
   const ImpaktfullUiCalendarListItem({
@@ -50,7 +51,8 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(
                   start: componentTheme.dimens.sectionTitleWidth),
               child: ImpaktfullUiCalendarListEventItem(
-                item: item,
+                item: item.event,
+                showForDate: item.date,
                 onTap: onTap,
                 theme: componentTheme,
               ),
@@ -61,15 +63,15 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
     );
   }
 
-  String? _createSectionTitle(ImpaktfullUiCalendarEvent? event) {
+  String? _createSectionTitle(ImpaktfulluiCalendarListItem? event) {
     if (event == null) return null;
-    final minutes = event.startDate.minute;
+    final minutes = event.date.minute;
     final roundedMinutes = minutes < 30 ? 0 : 30;
-    return event.startDate.copyWith(minute: roundedMinutes).format('HH:mm');
+    return event.date.copyWith(minute: roundedMinutes).format('HH:mm');
   }
 
-  String? _createSectionSubTitle(ImpaktfullUiCalendarEvent? event) {
+  String? _createSectionSubTitle(ImpaktfulluiCalendarListItem? event) {
     if (event == null) return null;
-    return event.startDate.format('dd/MM/yyyy');
+    return event.date.format('dd/MM/yyyy');
   }
 }

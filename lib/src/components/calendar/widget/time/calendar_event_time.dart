@@ -4,10 +4,12 @@ import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
 
 class ImpaktfullUiCalendarEventTime extends StatelessWidget {
   final ImpaktfullUiCalendarEvent item;
+  final DateTime? forDate;
   final TextStyle style;
   const ImpaktfullUiCalendarEventTime({
     required this.item,
     required this.style,
+    this.forDate,
     super.key,
   });
 
@@ -16,13 +18,24 @@ class ImpaktfullUiCalendarEventTime extends StatelessWidget {
     final sb = StringBuffer();
     final startDate = item.startDate;
     final endDate = item.endDate;
+    if (forDate != null) {
+      final amountOfDays = item.amountOfDaysCovered;
+      if (amountOfDays > 1) {
+        final dayX =
+            (forDate!.startOfTheDay.difference(startDate.startOfTheDay).inDays +
+                    1)
+                .clamp(1, amountOfDays);
+        sb.write('($dayX/$amountOfDays days)');
+        sb.write(' ');
+      }
+    }
     if (startDate.isAtSameMomentAs(startDate.startOfTheDay) &&
         endDate.isAtSameMomentAs(endDate.endOfTheDay)) {
       sb.write('All day');
     } else {
-      sb.write(item.startDate.format('HH:mm'));
+      sb.write(startDate.format('HH:mm'));
       sb.write(' - ');
-      sb.write(item.endDate.format('HH:mm'));
+      sb.write(endDate.format('HH:mm'));
     }
     return Text(
       sb.toString(),

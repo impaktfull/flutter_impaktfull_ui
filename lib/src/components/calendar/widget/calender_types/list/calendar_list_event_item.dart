@@ -7,11 +7,13 @@ import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dar
 
 class ImpaktfullUiCalendarListEventItem extends StatelessWidget {
   final ImpaktfullUiCalendarEvent item;
+  final DateTime? showForDate;
   final ImpaktfullUiCalendarTheme? theme;
   final VoidCallback onTap;
   const ImpaktfullUiCalendarListEventItem({
     required this.item,
     required this.onTap,
+    this.showForDate,
     this.theme,
     super.key,
   });
@@ -32,6 +34,7 @@ class ImpaktfullUiCalendarListEventItem extends StatelessWidget {
             ),
             ImpaktfullUiCalendarEventTime(
               item: item,
+              forDate: showForDate,
               style: componentTheme.textStyles.listItemSubtitle,
             ),
           ],
