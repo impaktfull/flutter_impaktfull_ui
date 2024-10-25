@@ -49,43 +49,78 @@ class _ImpaktfullUiCalendarWeekEventsState extends State<ImpaktfullUiCalendarWee
           for (var dayIndex = 0; dayIndex < 7; ++dayIndex) ...[
             Expanded(
               child: Stack(
-                children: _weekEvents.where((event) {
-                  final eventStartDate = event.startDate;
-                  final eventEndDate = event.endDate;
-                  final currentDayDate = widget.dateRange.start.add(Duration(days: dayIndex));
-                  return eventStartDate.isSameDay(currentDayDate) || eventEndDate.isSameDay(currentDayDate);
-                }).map((event) {
-                  final currentDayDate = widget.dateRange.start.add(Duration(days: dayIndex));
-                  final startDateTime =
-                      event.startDate.isSameDay(currentDayDate) ? event.startDate : currentDayDate.startOfTheDay;
-                  final endDateTime =
-                      event.endDate.isSameDay(currentDayDate) ? event.endDate : currentDayDate.endOfTheDay;
-
-                  final top = (startDateTime.hour + (startDateTime.minute / 60)) * componentTheme.dimens.weekHourHeight;
-                  final maxDifferenceInHours = (endDateTime.difference(startDateTime).inMinutes / 60).clamp(0.0, 24.0);
-                  final height = maxDifferenceInHours * componentTheme.dimens.weekHourHeight;
-
-                  return Positioned(
-                    top: top,
-                    left: 0,
-                    right: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 2),
-                      child: ImpaktfullUiCalendarWeekEventItem(
-                        event: event,
-                        height: height,
-                        onTap: () => widget.onEventTap(event),
-                        theme: componentTheme,
-                      ),
-                    ),
-                  );
-                }).toList(),
+                children: _buildEventsForDay(dayIndex, componentTheme),
               ),
             ),
           ],
         ],
       ),
     );
+  }
+
+  List<Widget> _buildEventsForDay(int dayIndex, ImpaktfullUiCalendarTheme componentTheme) {
+    final currentDayDate = widget.dateRange.start.add(Duration(days: dayIndex));
+    final eventsForDay = _weekEvents.where((event) {
+      final eventStartDate = event.startDate;
+      final eventEndDate = event.endDate;
+      return eventStartDate.isSameDay(currentDayDate) || eventEndDate.isSameDay(currentDayDate);
+    }).toList();
+
+    // Sort events by start time
+    eventsForDay.sort((a, b) => a.startDate.compareTo(b.startDate));
+
+    final eventWidgets = <Widget>[];
+    final occupiedSlots = <List<double>>[];
+
+    for (int i = 0; i < eventsForDay.length; i++) {
+      final event = eventsForDay[i];
+      final startDateTime = event.startDate.isSameDay(currentDayDate) ? event.startDate : currentDayDate.startOfTheDay;
+      final endDateTime = event.endDate.isSameDay(currentDayDate) ? event.endDate : currentDayDate.endOfTheDay;
+
+      final top = (startDateTime.hour + (startDateTime.minute / 60)) * componentTheme.dimens.weekHourHeight;
+      final maxDifferenceInHours = (endDateTime.difference(startDateTime).inMinutes / 60).clamp(0.0, 24.0);
+      final height = maxDifferenceInHours * componentTheme.dimens.weekHourHeight;
+
+      // Check if this event starts at the same time as the previous one
+      final sameStartAsLast = i > 0 && eventsForDay[i - 1].startDate == event.startDate;
+
+      // Find a free slot for the event
+      int slot = 0;
+      if (sameStartAsLast) {
+        slot = occupiedSlots.length;
+      } else {
+        while (slot < occupiedSlots.length && occupiedSlots[slot].any((end) => end > top)) {
+          slot++;
+        }
+      }
+
+      if (slot == occupiedSlots.length) {
+        occupiedSlots.add([]);
+      }
+      occupiedSlots[slot].add(top + height);
+
+      final width = sameStartAsLast ? 1.0 / (slot + 1) : 1.0;
+      final left = sameStartAsLast ? slot * (1.0 / (slot + 1)) : 0.0;
+
+      eventWidgets.add(
+        Positioned(
+          top: top,
+          left: left * 100,
+          right: (1 - left - width) * 100,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 2),
+            child: ImpaktfullUiCalendarWeekEventItem(
+              event: event,
+              height: height,
+              onTap: () => widget.onEventTap(event),
+              theme: componentTheme,
+            ),
+          ),
+        ),
+      );
+    }
+
+    return eventWidgets;
   }
 
   void _setWeekEvents() {
