@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_events.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_full_day_events.dart';
@@ -81,15 +82,28 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                 Container(
                   width: componentTheme.dimens.sectionTitleWidth + 32,
                   padding: const EdgeInsets.all(4),
-                  child: ImpaktfullUiAutoLayout.horizontal(
+                  child: ImpaktfullUiAutoLayout.vertical(
+                    spacing: 4,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ImpaktfullUiIconButton(
-                        asset: componentTheme.assets.chevronLeft,
-                        onTap: _onPreviousWeekTapped,
+                      ImpaktfullUiButton(
+                        fullWidth: true,
+                        type: ImpaktfullUiButtonType.secondaryGrey,
+                        size: ImpaktfullUiButtonSize.extraSmall,
+                        title: 'Today',
+                        onTap: _onNowTapped,
                       ),
-                      ImpaktfullUiIconButton(
-                        asset: componentTheme.assets.chevronRight,
-                        onTap: _onNextWeekTapped,
+                      ImpaktfullUiAutoLayout.horizontal(
+                        children: [
+                          ImpaktfullUiIconButton(
+                            asset: componentTheme.assets.chevronLeft,
+                            onTap: _onPreviousWeekTapped,
+                          ),
+                          ImpaktfullUiIconButton(
+                            asset: componentTheme.assets.chevronRight,
+                            onTap: _onNextWeekTapped,
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -175,6 +189,11 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
 
   void _onPreviousWeekTapped() {
     setState(() => _currentWeekStart = _currentWeekStart.previousWeek);
+  }
+
+  void _onNowTapped() {
+    setState(() => _currentWeekStart = _getWeekStart(DateTime.now()));
+    _scrollTo8AM();
   }
 
   void _onNextWeekTapped() {
