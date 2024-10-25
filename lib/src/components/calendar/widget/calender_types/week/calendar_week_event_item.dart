@@ -26,8 +26,7 @@ class ImpaktfullUiCalendarWeekEventItem extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final isSmall = height < componentTheme.dimens.weekEventMinHeightSmall;
-        final isExtraSmall =
-            height < componentTheme.dimens.weekEventMinHeightExtraSmall;
+        final isExtraSmall = height < componentTheme.dimens.weekEventMinHeightExtraSmall;
         return ImpaktfullUiCard(
           height: max(height, 17),
           padding: EdgeInsets.symmetric(
@@ -35,41 +34,47 @@ class ImpaktfullUiCalendarWeekEventItem extends StatelessWidget {
             vertical: isExtraSmall ? 0 : 4,
           ),
           onTap: onTap,
-          child: ImpaktfullUiAutoLayout.vertical(
-            spacing: 4,
-            children: [
-              if (isSmall) ...[
-                ImpaktfullUiAutoLayout.horizontal(
-                  spacing: 8,
-                  children: [
-                    Flexible(
-                      fit: FlexFit.loose,
-                      child: Text(
-                        event.title,
-                        style: componentTheme.textStyles.listItemTitleSmall,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+          child: LayoutBuilder(builder: (context, constraints) {
+            final showTime = constraints.maxWidth > 110;
+            return ImpaktfullUiAutoLayout.vertical(
+              spacing: 4,
+              children: [
+                if (isSmall) ...[
+                  ImpaktfullUiAutoLayout.horizontal(
+                    spacing: 8,
+                    children: [
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Text(
+                          event.title,
+                          style: componentTheme.textStyles.listItemTitleSmall,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                    ),
-                    ImpaktfullUiCalendarEventTime(
-                        item: event,
-                        style: componentTheme.textStyles.listItemSubtitleSmall),
-                  ],
-                ),
-              ] else ...[
-                Text(
-                  event.title,
-                  style: componentTheme.textStyles.listItemTitle,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                ImpaktfullUiCalendarEventTime(
-                  item: event,
-                  style: componentTheme.textStyles.listItemSubtitle,
-                ),
+                      if (showTime) ...[
+                        ImpaktfullUiCalendarEventTime(
+                          item: event,
+                          style: componentTheme.textStyles.listItemSubtitleSmall,
+                        ),
+                      ],
+                    ],
+                  ),
+                ] else ...[
+                  Text(
+                    event.title,
+                    style: componentTheme.textStyles.listItemTitle,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  ImpaktfullUiCalendarEventTime(
+                    item: event,
+                    style: componentTheme.textStyles.listItemSubtitle,
+                  ),
+                ],
               ],
-            ],
-          ),
+            );
+          }),
         );
       },
     );

@@ -20,8 +20,7 @@ class ImpaktfullUiCalendarList extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiCalendarList> createState() =>
-      _ImpaktfullUiCalendarListState();
+  State<ImpaktfullUiCalendarList> createState() => _ImpaktfullUiCalendarListState();
 }
 
 class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
@@ -64,7 +63,7 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
   void _setEvents(List<ImpaktfullUiCalendarEvent> events) {
     final now = DateTime.now();
     final futureEvents = widget.events.where((e) {
-      final compareDate = e.endDate ?? e.startDate;
+      final compareDate = e.endDate;
       return compareDate.isAfter(now);
     }).toList();
     futureEvents.sortBy((e) => e.startDate);
