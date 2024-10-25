@@ -57,6 +57,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/sidebar_n
 import 'package:impaktfull_ui_example/src/component_library/components/simple_list_item/simple_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/skeleton/skeleton_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/snacky/snacky_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/stepper/stepper_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/switch/switch_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/switch_list_item/switch_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/tab_bar/tab_bar_library_item.dart';
@@ -134,6 +135,7 @@ class ComponentLibrary {
     const SimpleListItemLibraryItem(),
     const SkeletonLibraryItem(),
     const SnackyLibraryItem(),
+    const StepperLibraryItem(),
     const SwitchLibraryItem(),
     const SwitchListItemLibraryItem(),
     const TabBarLibraryItem(),

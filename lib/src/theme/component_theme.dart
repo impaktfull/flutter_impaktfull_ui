@@ -47,6 +47,7 @@ import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_n
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/skeleton/skeleton.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
+import 'package:impaktfull_ui_2/src/components/stepper/stepper_style.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/tab_bar/tab_bar.dart';
@@ -126,6 +127,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiSimpleListItemTheme simpleListItem;
   final ImpaktfullUiSkeletonTheme skeleton;
   final ImpaktfullUiSnackyConfiguratorTheme snackyConfigurator;
+  final ImpaktfullUiStepperTheme stepper;
   final ImpaktfullUiSwitchTheme switchTheme;
   final ImpaktfullUiSwitchListItemTheme switchListItem;
   final ImpaktfullUiTabBarTheme tabBar;
@@ -195,6 +197,7 @@ class ImpaktfullUiComponentsTheme {
     required this.simpleListItem,
     required this.skeleton,
     required this.snackyConfigurator,
+    required this.stepper,
     required this.switchTheme,
     required this.switchListItem,
     required this.tabBar,
@@ -265,6 +268,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiSimpleListItemTheme? simpleListItem,
     ImpaktfullUiSkeletonTheme? skeleton,
     ImpaktfullUiSnackyConfiguratorTheme? snackyConfigurator,
+    ImpaktfullUiStepperTheme? stepper,
     ImpaktfullUiSwitchTheme? switchTheme,
     ImpaktfullUiSwitchListItemTheme? switchListItem,
     ImpaktfullUiTabBarTheme? tabBar,
@@ -335,6 +339,7 @@ class ImpaktfullUiComponentsTheme {
         simpleListItem: simpleListItem ?? this.simpleListItem,
         skeleton: skeleton ?? this.skeleton,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
+        stepper: stepper ?? this.stepper,
         switchTheme: switchTheme ?? this.switchTheme,
         switchListItem: switchListItem ?? this.switchListItem,
         tabBar: tabBar ?? this.tabBar,
@@ -459,6 +464,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiSkeletonTheme.of(context) as T;
     } else if (T == ImpaktfullUiSnackyConfiguratorTheme) {
       return ImpaktfullUiSnackyConfiguratorTheme.of(context) as T;
+    } else if (T == ImpaktfullUiStepperTheme) {
+      return ImpaktfullUiStepperTheme.of(context) as T;
     } else if (T == ImpaktfullUiSwitchTheme) {
       return ImpaktfullUiSwitchTheme.of(context) as T;
     } else if (T == ImpaktfullUiSwitchListItemTheme) {

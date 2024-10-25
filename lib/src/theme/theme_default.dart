@@ -53,6 +53,7 @@ import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_n
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/skeleton/skeleton.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
+import 'package:impaktfull_ui_2/src/components/stepper/stepper_style.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
 import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/tab_bar/tab_bar.dart';
@@ -877,7 +878,7 @@ class DefaultTheme {
             border: colors.border,
           ),
           dimens: ImpaktfullUiProgressIndicatorDimensTheme(
-            height: 8,
+            height: 4,
             borderRadius: dimens.borderRadiusExtraSmall,
           ),
           durations: ImpaktfullUiProgressIndicatorDurationsTheme(
@@ -1068,6 +1069,22 @@ class DefaultTheme {
             warning: assets.icons.warning,
             info: assets.icons.info,
             branded: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
+          ),
+        ),
+        stepper: ImpaktfullUiStepperTheme(
+          assets: const ImpaktfullUiStepperAssetsTheme(),
+          colors: ImpaktfullUiStepperColorTheme(
+            activeStep: colors.accent,
+            inactiveStep: colors.border,
+          ),
+          dimens: ImpaktfullUiStepperDimensTheme(
+            spacing: 8,
+            height: 8,
+            borderRadius: dimens.borderRadius,
+          ),
+          textStyles: ImpaktfullUiStepperTextStyleTheme(
+            title: textStyles.onCard.text.small.medium,
+            subtitle: textStyles.onCard.text.small.light,
           ),
         ),
         switchTheme: ImpaktfullUiSwitchTheme(
