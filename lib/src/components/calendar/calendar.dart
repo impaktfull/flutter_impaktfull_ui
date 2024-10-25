@@ -10,6 +10,8 @@ import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.d
 export 'calendar_style.dart';
 export 'model/calendar_item.dart';
 export 'model/calendar_type.dart';
+export 'widget/calender_types/calendar_list.dart';
+export 'widget/calender_types/calendar_week.dart';
 
 part 'calendar.describe.dart';
 
