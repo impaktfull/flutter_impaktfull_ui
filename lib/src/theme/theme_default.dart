@@ -129,11 +129,13 @@ class DefaultTheme {
       destructive: destructive ?? const Color(0xFFBD0D00),
     );
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadiusExtraSmall: borderRadiusExtraSmall ?? BorderRadius.circular(4),
+      borderRadiusExtraSmall:
+          borderRadiusExtraSmall ?? BorderRadius.circular(4),
       borderRadiusSmall: borderRadiusSmall ?? BorderRadius.circular(6),
       borderRadius: borderRadiusSmall ?? BorderRadius.circular(8),
       borderRadiusLarge: borderRadiusLarge ?? BorderRadius.circular(12),
-      borderRadiusExtraLarge: borderRadiusExtraLarge ?? BorderRadius.circular(16),
+      borderRadiusExtraLarge:
+          borderRadiusExtraLarge ?? BorderRadius.circular(16),
       borderRadiusCircle: BorderRadius.circular(99999999),
     );
     final textStyles = ImpaktfullUiTextStylesTheme(
@@ -354,19 +356,23 @@ class DefaultTheme {
             alternative: textStyles.onCardPrimary.text.small.bold,
             grey: textStyles.onCard.text.small.bold,
             destructivePrimary: textStyles.onDestructive.text.small.bold,
-            destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
+            destructiveAlternative:
+                textStyles.onCardDestructive.text.small.bold,
           ),
         ),
         calendar: ImpaktfullUiCalendarTheme(
           assets: const ImpaktfullUiCalendarAssetsTheme(),
           colors: ImpaktfullUiCalendarColorTheme(
             divider: colors.border,
+            headerBackground: colors.card,
             eventBackground: colors.card,
           ),
           dimens: const ImpaktfullUiCalendarDimensTheme(
             dividerHeight: 1,
             sectionTitleWidth: 50,
-            weekHourHeight: 100,
+            weekHourHeight: 75,
+            weekEventMinHeightSmall: 40,
+            weekEventMinHeightExtraSmall: 25,
           ),
           textStyles: ImpaktfullUiCalendarTextStyleTheme(
             sectionTitle: textStyles.onCanvas.text.small.semiBold,
@@ -374,7 +380,8 @@ class DefaultTheme {
             listItemTitle: textStyles.onCard.text.small,
             listItemTitleSmall: textStyles.onCard.text.extraSmall,
             listItemSubtitle: textStyles.onCanvasTertiary.text.small.light,
-            listItemSubtitleSmall: textStyles.onCanvasTertiary.text.extraSmall.light,
+            listItemSubtitleSmall:
+                textStyles.onCanvasTertiary.text.extraSmall.light,
           ),
         ),
         card: ImpaktfullUiCardTheme(
@@ -626,10 +633,12 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            placeholder: textStyles.onCardTertiary.text.medium
-                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
+            placeholder: textStyles.onCardTertiary.text.medium.copyWith(
+                color: textStyles.onCardTertiary.text.medium.color
+                    ?.withOpacity(0.5)),
             hint: textStyles.onCardTertiary.text.small,
-            error: textStyles.onCardDestructive.text.small.medium.copyWith(color: colors.error),
+            error: textStyles.onCardDestructive.text.small.medium
+                .copyWith(color: colors.error),
             label: textStyles.onCard.text.small.medium,
             action: textStyles.onCard.text.small.medium,
           ),
@@ -710,22 +719,29 @@ class DefaultTheme {
             unorderedList: textStyles.onCanvas.text.small.medium,
             code: textStyles.onCanvas.text.small,
             alt: textStyles.onCanvas.text.small.medium,
-            error: textStyles.onCanvas.text.extraSmall.copyWith(color: colors.error),
+            error: textStyles.onCanvas.text.extraSmall
+                .copyWith(color: colors.error),
           ),
         ),
         metric: ImpaktfullUiMetricTheme(
           assets: ImpaktfullUiMetricAssetsTheme(
-            more: DeviceUtil.isAndroid() ? assets.icons.moreVertical : assets.icons.moreHorizontal,
+            more: DeviceUtil.isAndroid()
+                ? assets.icons.moreVertical
+                : assets.icons.moreHorizontal,
           ),
           colors: const ImpaktfullUiMetricColorTheme(),
           dimens: const ImpaktfullUiMetricDimensTheme(),
           textStyles: ImpaktfullUiMetricTextStyleTheme(
             title: textStyles.onCard.text.small,
             value: textStyles.onCard.text.extraLarge.medium,
-            value2Growth: textStyles.onCard.text.small.copyWith(color: colors.success),
-            value2Neutral: textStyles.onCard.text.small.copyWith(color: colors.text),
-            value2Decline: textStyles.onCard.text.small.copyWith(color: colors.error),
-            value2Branded: textStyles.onCard.text.small.copyWith(color: colors.accent),
+            value2Growth:
+                textStyles.onCard.text.small.copyWith(color: colors.success),
+            value2Neutral:
+                textStyles.onCard.text.small.copyWith(color: colors.text),
+            value2Decline:
+                textStyles.onCard.text.small.copyWith(color: colors.error),
+            value2Branded:
+                textStyles.onCard.text.small.copyWith(color: colors.accent),
             value2Custom: textStyles.onCard.text.small,
           ),
         ),
@@ -891,7 +907,8 @@ class DefaultTheme {
           textStyles: const ImpaktfullUiRadioButtonListItemTextStyleTheme(),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(
+              loadingIndicator: colors.accent),
         ),
         responsiveLayout: const ImpaktfullUiResponsiveLayoutTheme(
           assets: ImpaktfullUiResponsiveLayoutAssetsTheme(),

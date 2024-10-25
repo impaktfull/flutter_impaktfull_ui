@@ -13,9 +13,28 @@ extension DateTimeExtensions on DateTime {
 
   DateTime get previousWeek => add(const Duration(days: -7));
 
-  DateTime get beginningOfTheWeek => add(Duration(days: weekday - 1));
+  DateTime get beginningOfTheWeek => subtract(Duration(days: weekday - 1));
 
   DateTime get endOfTheWeek => add(Duration(days: 7 - weekday));
+
+  DateTime get thisWeekMonday => beginningOfTheWeek;
+
+  DateTime get thisWeekTuesday =>
+      beginningOfTheWeek.add(const Duration(days: 1));
+
+  DateTime get thisWeekWednesday =>
+      beginningOfTheWeek.add(const Duration(days: 2));
+
+  DateTime get thisWeekThursday =>
+      beginningOfTheWeek.add(const Duration(days: 3));
+
+  DateTime get thisWeekFriday =>
+      beginningOfTheWeek.add(const Duration(days: 4));
+
+  DateTime get thisWeekSaturday =>
+      beginningOfTheWeek.add(const Duration(days: 5));
+
+  DateTime get thisWeekSunday => endOfTheWeek;
 
   String format(String format) => DateFormat(format).format(this);
 

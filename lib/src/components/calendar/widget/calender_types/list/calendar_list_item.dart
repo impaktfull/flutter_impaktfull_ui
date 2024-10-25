@@ -28,7 +28,8 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
         final previousSubtitle = _createSectionSubTitle(previousItem);
         final title = _createSectionTitle(item)!;
         final previousTitle = _createSectionTitle(previousItem);
-        final showSectionTitle = title != previousTitle || subtitle != previousSubtitle;
+        final showSectionTitle =
+            title != previousTitle || subtitle != previousSubtitle;
         return ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -46,7 +47,8 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
               const SizedBox(height: 8),
             ],
             Padding(
-              padding: EdgeInsetsDirectional.only(start: componentTheme.dimens.sectionTitleWidth),
+              padding: EdgeInsetsDirectional.only(
+                  start: componentTheme.dimens.sectionTitleWidth),
               child: ImpaktfullUiCalendarListEventItem(
                 item: item,
                 onTap: onTap,

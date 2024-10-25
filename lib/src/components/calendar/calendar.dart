@@ -13,7 +13,8 @@ export 'model/calendar_type.dart';
 
 part 'calendar.describe.dart';
 
-class ImpaktfullUiCalendar extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiCalendar extends StatelessWidget
+    with ComponentDescriptorMixin {
   final DateTime selectedDate;
   final ImpaktfullUiCalendarType type;
   final List<ImpaktfullUiCalendarEvent> events;

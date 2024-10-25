@@ -25,8 +25,9 @@ class ImpaktfullUiCalendarWeekEventItem extends StatelessWidget {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCalendarTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
-        final isSmall = height < 40;
-        final isExtraSmall = height < 25;
+        final isSmall = height < componentTheme.dimens.weekEventMinHeightSmall;
+        final isExtraSmall =
+            height < componentTheme.dimens.weekEventMinHeightExtraSmall;
         return ImpaktfullUiCard(
           height: max(height, 17),
           padding: EdgeInsets.symmetric(
@@ -50,7 +51,9 @@ class ImpaktfullUiCalendarWeekEventItem extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    ImpaktfullUiCalendarEventTime(item: event, style: componentTheme.textStyles.listItemSubtitleSmall),
+                    ImpaktfullUiCalendarEventTime(
+                        item: event,
+                        style: componentTheme.textStyles.listItemSubtitleSmall),
                   ],
                 ),
               ] else ...[

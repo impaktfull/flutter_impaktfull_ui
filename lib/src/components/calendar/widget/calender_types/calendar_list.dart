@@ -20,7 +20,8 @@ class ImpaktfullUiCalendarList extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiCalendarList> createState() => _ImpaktfullUiCalendarListState();
+  State<ImpaktfullUiCalendarList> createState() =>
+      _ImpaktfullUiCalendarListState();
 }
 
 class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {

@@ -13,21 +13,20 @@ class ImpaktfullUiCalendarEventTime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text.rich(
+    final sb = StringBuffer();
+    final startDate = item.startDate;
+    final endDate = item.endDate;
+    if (startDate.isAtSameMomentAs(startDate.startOfTheDay) &&
+        endDate.isAtSameMomentAs(endDate.endOfTheDay)) {
+      sb.write('All day');
+    } else {
+      sb.write(item.startDate.format('HH:mm'));
+      sb.write(' - ');
+      sb.write(item.endDate.format('HH:mm'));
+    }
+    return Text(
+      sb.toString(),
       style: style,
-      TextSpan(
-        children: [
-          if (item.isAllDay) ...[
-            const TextSpan(text: 'All day'),
-          ] else ...[
-            TextSpan(text: item.startDate.format('HH:mm')),
-            if (item.endDate != null) ...[
-              const TextSpan(text: ' - '),
-              TextSpan(text: item.endDate!.format('HH:mm')),
-            ],
-          ],
-        ],
-      ),
     );
   }
 }

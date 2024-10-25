@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_events.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_full_day_events.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_legend.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
@@ -21,7 +22,8 @@ class ImpaktfullUiCalendarWeek extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiCalendarWeek> createState() => _ImpaktfullUiCalendarWeekState();
+  State<ImpaktfullUiCalendarWeek> createState() =>
+      _ImpaktfullUiCalendarWeekState();
 }
 
 class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
@@ -56,32 +58,46 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCalendarTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
+        final dateRange = DateTimeRange(
+          start: DateTime.now()
+              .subtract(Duration(days: DateTime.now().weekday - 1)),
+          end: DateTime.now().add(
+              Duration(days: DateTime.daysPerWeek - DateTime.now().weekday)),
+        );
         final dayHeight = componentTheme.dimens.weekHourHeight * 24;
-        return ListView(
-          key: _key,
-          controller: _scrollController,
+        return Column(
           children: [
-            Container(
-              height: dayHeight,
-              padding: const EdgeInsetsDirectional.only(start: 16),
-              child: Stack(
+            ImpaktfullUiCalendarWeekFullDayEvents(
+              dateRange: dateRange,
+              events: _events,
+              theme: componentTheme,
+            ),
+            Expanded(
+              child: ListView(
+                key: _key,
+                controller: _scrollController,
                 children: [
-                  ImpaktfullUiCalendarWeekLegend(
-                    theme: componentTheme,
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(
-                      start: componentTheme.dimens.sectionTitleWidth + 16,
-                      end: 16,
-                    ),
-                    child: ImpaktfullUiCalendarWeekEvents(
-                      dateRange: DateTimeRange(
-                        start: DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1)),
-                        end: DateTime.now().add(Duration(days: DateTime.daysPerWeek - DateTime.now().weekday)),
-                      ),
-                      events: _events,
-                      onEventTap: widget.onEventTap,
-                      theme: componentTheme,
+                  Container(
+                    height: dayHeight,
+                    padding: const EdgeInsetsDirectional.only(start: 16),
+                    child: Stack(
+                      children: [
+                        ImpaktfullUiCalendarWeekLegend(
+                          theme: componentTheme,
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.only(
+                            start: componentTheme.dimens.sectionTitleWidth + 16,
+                            end: 16,
+                          ),
+                          child: ImpaktfullUiCalendarWeekEvents(
+                            dateRange: dateRange,
+                            events: _events,
+                            onEventTap: widget.onEventTap,
+                            theme: componentTheme,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -94,14 +110,9 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
   }
 
   void _setEvents(List<ImpaktfullUiCalendarEvent> events) {
-    final now = DateTime.now();
-    final futureEvents = widget.events.where((e) {
-      final compareDate = e.endDate ?? e.startDate;
-      return compareDate.isAfter(now);
-    }).toList();
-    futureEvents.sortBy((e) => e.startDate);
+    events.sortBy((e) => e.startDate);
     setState(() {
-      _events = futureEvents;
+      _events = events;
     });
   }
 
