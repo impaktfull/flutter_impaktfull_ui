@@ -71,6 +71,7 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
               dateRange: dateRange,
               events: _events,
               theme: componentTheme,
+              onEventTap: widget.onEventTap,
             ),
             Expanded(
               child: ListView(
