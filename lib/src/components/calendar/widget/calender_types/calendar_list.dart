@@ -78,7 +78,7 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
       );
       weekEvents.add(listItem);
       if (event.amountOfDaysCovered > 1) {
-        for (int i = 1; i <= event.amountOfDaysCovered; i++) {
+        for (int i = 1; i < event.amountOfDaysCovered; i++) {
           final date = startDate.add(Duration(days: i)).startOfTheDay;
           final listItem = ImpaktfulluiCalendarListItem(
             date: date,

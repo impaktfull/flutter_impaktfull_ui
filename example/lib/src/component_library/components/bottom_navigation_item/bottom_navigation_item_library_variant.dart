@@ -14,7 +14,7 @@ class BottomNavigationItemLibraryVariant
   List<Widget> build(
       BuildContext context, BottomNavigationItemLibraryPrimaryInputs inputs) {
     return [
-      Row(
+      ImpaktfullUiAutoLayout.horizontal(
         children: [
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.home,

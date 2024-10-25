@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiCalendarTheme extends ImpaktfullUiComponentTheme {
@@ -19,7 +20,13 @@ class ImpaktfullUiCalendarTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiCalendarAssetsTheme {
-  const ImpaktfullUiCalendarAssetsTheme();
+  final ImpaktfullUiAsset chevronLeft;
+  final ImpaktfullUiAsset chevronRight;
+
+  const ImpaktfullUiCalendarAssetsTheme({
+    required this.chevronLeft,
+    required this.chevronRight,
+  });
 }
 
 class ImpaktfullUiCalendarColorTheme {
@@ -57,6 +64,8 @@ class ImpaktfullUiCalendarTextStyleTheme {
   final TextStyle listItemTitleSmall;
   final TextStyle listItemSubtitle;
   final TextStyle listItemSubtitleSmall;
+  final TextStyle dayTitle;
+  final TextStyle dayOfTheWeekTitle;
 
   const ImpaktfullUiCalendarTextStyleTheme({
     required this.sectionTitle,
@@ -65,5 +74,7 @@ class ImpaktfullUiCalendarTextStyleTheme {
     required this.listItemTitleSmall,
     required this.listItemSubtitle,
     required this.listItemSubtitleSmall,
+    required this.dayTitle,
+    required this.dayOfTheWeekTitle,
   });
 }

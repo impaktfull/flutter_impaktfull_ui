@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_event_item.dart';
-import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
@@ -58,65 +57,54 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
           decoration: BoxDecoration(
             color: componentTheme.colors.headerBackground,
           ),
-          child: Column(
-            children: [
-              Container(
-                height: _calculateHeight(
-                    componentTheme.dimens.weekEventMinHeightExtraSmall),
-                padding: EdgeInsetsDirectional.only(
-                  start: componentTheme.dimens.sectionTitleWidth + 32,
-                  end: 16,
-                ),
-                child: LayoutBuilder(
-                  builder: (context, constratins) {
-                    final widthPerDay =
-                        constratins.maxWidth / widget.amountOfDays;
-                    return Stack(
-                      children: [
-                        for (var dayIndex = 0;
-                            dayIndex < widget.amountOfDays;
-                            ++dayIndex) ...[
-                          for (var eventIndex = 0;
-                              eventIndex < _eventsPerDay[dayIndex]!.length;
-                              ++eventIndex) ...[
-                            Builder(
-                              builder: (context) {
-                                final event =
-                                    _eventsPerDay[dayIndex]![eventIndex];
-                                final dayOffset = _dayOffsets[dayIndex] ?? 0;
-                                final amountOfDays = event.endDate
-                                        .difference(event.startDate)
-                                        .inDays +
-                                    1;
-                                return Positioned(
-                                  top: (eventIndex + dayOffset) *
-                                      componentTheme
-                                          .dimens.weekEventMinHeightExtraSmall,
-                                  left: dayIndex * widthPerDay,
-                                  width: widthPerDay * amountOfDays,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 2),
-                                    child: ImpaktfullUiCalendarWeekEventItem(
-                                      event: event,
-                                      height: componentTheme
-                                          .dimens.weekEventMinHeightExtraSmall,
-                                      onTap: () => widget.onEventTap(event),
-                                      theme: widget.theme,
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
-                        ],
+          child: SizedBox(
+            height: _calculateHeight(
+                componentTheme.dimens.weekEventMinHeightExtraSmall),
+            child: LayoutBuilder(
+              builder: (context, constratins) {
+                final widthPerDay = constratins.maxWidth / widget.amountOfDays;
+                return Stack(
+                  children: [
+                    for (var dayIndex = 0;
+                        dayIndex < widget.amountOfDays;
+                        ++dayIndex) ...[
+                      for (var eventIndex = 0;
+                          eventIndex < _eventsPerDay[dayIndex]!.length;
+                          ++eventIndex) ...[
+                        Builder(
+                          builder: (context) {
+                            final event = _eventsPerDay[dayIndex]![eventIndex];
+                            final dayOffset = _dayOffsets[dayIndex] ?? 0;
+                            final amountOfDays = event.endDate
+                                    .difference(event.startDate)
+                                    .inDays +
+                                1;
+                            return Positioned(
+                              top: (eventIndex + dayOffset) *
+                                  componentTheme
+                                      .dimens.weekEventMinHeightExtraSmall,
+                              left: dayIndex * widthPerDay,
+                              width: widthPerDay * amountOfDays,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 2),
+                                child: ImpaktfullUiCalendarWeekEventItem(
+                                  event: event,
+                                  height: componentTheme
+                                      .dimens.weekEventMinHeightExtraSmall,
+                                  onTap: () => widget.onEventTap(event),
+                                  theme: widget.theme,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ],
-                    );
-                  },
-                ),
-              ),
-              const ImpaktfullUiDivider(),
-            ],
+                    ],
+                  ],
+                );
+              },
+            ),
           ),
         );
       },

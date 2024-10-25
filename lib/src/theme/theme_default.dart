@@ -361,7 +361,10 @@ class DefaultTheme {
           ),
         ),
         calendar: ImpaktfullUiCalendarTheme(
-          assets: const ImpaktfullUiCalendarAssetsTheme(),
+          assets: ImpaktfullUiCalendarAssetsTheme(
+            chevronLeft: assets.icons.chevronLeft,
+            chevronRight: assets.icons.chevronRight,
+          ),
           colors: ImpaktfullUiCalendarColorTheme(
             divider: colors.border,
             headerBackground: colors.card,
@@ -369,7 +372,7 @@ class DefaultTheme {
           ),
           dimens: const ImpaktfullUiCalendarDimensTheme(
             dividerHeight: 1,
-            sectionTitleWidth: 50,
+            sectionTitleWidth: 60,
             weekHourHeight: 75,
             weekEventMinHeightSmall: 40,
             weekEventMinHeightExtraSmall: 25,
@@ -382,6 +385,8 @@ class DefaultTheme {
             listItemSubtitle: textStyles.onCanvasTertiary.text.small.light,
             listItemSubtitleSmall:
                 textStyles.onCanvasTertiary.text.extraSmall.light,
+            dayTitle: textStyles.onCanvas.text.extraSmall.semiBold,
+            dayOfTheWeekTitle: textStyles.onCanvas.text.extraSmall,
           ),
         ),
         card: ImpaktfullUiCardTheme(

@@ -119,7 +119,7 @@ class _ImpaktfullUiWysiwygInputFieldState
                         horizontal: 16,
                         vertical: 8,
                       ),
-                      child: Column(
+                      child: ImpaktfullUiAutoLayout.vertical(
                         children: [
                           BaseInputField(
                             value: widget.value,

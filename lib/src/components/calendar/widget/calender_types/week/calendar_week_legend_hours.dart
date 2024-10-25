@@ -4,9 +4,9 @@ import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
-class ImpaktfullUiCalendarWeekLegend extends StatelessWidget {
+class ImpaktfullUiCalendarWeekLegendHours extends StatelessWidget {
   final ImpaktfullUiCalendarTheme? theme;
-  const ImpaktfullUiCalendarWeekLegend({
+  const ImpaktfullUiCalendarWeekLegendHours({
     this.theme,
     super.key,
   });

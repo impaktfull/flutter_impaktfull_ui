@@ -9,12 +9,14 @@ class ImpaktfullUiCalendarWeekEvents extends StatefulWidget {
   final DateTimeRange dateRange;
   final List<ImpaktfullUiCalendarEvent> events;
   final ValueChanged<ImpaktfullUiCalendarEvent> onEventTap;
+  final int amountOfDays;
   final ImpaktfullUiCalendarTheme? theme;
 
   const ImpaktfullUiCalendarWeekEvents({
     required this.events,
     required this.dateRange,
     required this.onEventTap,
+    required this.amountOfDays,
     this.theme,
     super.key,
   });
@@ -49,7 +51,9 @@ class _ImpaktfullUiCalendarWeekEventsState
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
         children: [
-          for (var dayIndex = 0; dayIndex < 7; ++dayIndex) ...[
+          for (var dayIndex = 0;
+              dayIndex < widget.amountOfDays;
+              ++dayIndex) ...[
             Expanded(
               child: Stack(
                 children: _buildEventsForDay(dayIndex, componentTheme),

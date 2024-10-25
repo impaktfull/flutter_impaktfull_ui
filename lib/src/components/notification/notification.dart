@@ -148,7 +148,7 @@ class ImpaktfullUiNotification extends StatelessWidget
                         padding: const EdgeInsets.symmetric(
                           vertical: 16,
                         ),
-                        child: Column(
+                        child: ImpaktfullUiAutoLayout.vertical(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [

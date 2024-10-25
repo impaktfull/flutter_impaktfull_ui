@@ -33,7 +33,7 @@ Future<void> runComponentTest({
       goldenTest(
         'renders correctly',
         fileName: fileName,
-        builder: () => Column(
+        builder: () => ImpaktfullUiAutoLayout.vertical(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GoldenTestGroup(

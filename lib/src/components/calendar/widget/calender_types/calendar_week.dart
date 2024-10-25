@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_events.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_full_day_events.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_legend.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_legend_days.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_legend_hours.dart';
+import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
+import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
 
 class ImpaktfullUiCalendarWeek extends StatefulWidget {
@@ -27,15 +32,18 @@ class ImpaktfullUiCalendarWeek extends StatefulWidget {
 }
 
 class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
+  static const _amountOfDays = 7;
   final _key = GlobalKey();
   late List<ImpaktfullUiCalendarEvent> _events;
   late ScrollController _scrollController;
+  late DateTime _currentWeekStart;
 
   @override
   void initState() {
     super.initState();
     _setEvents(widget.events);
     _scrollController = ScrollController();
+    _currentWeekStart = _getWeekStart(widget.selectedDate);
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollTo8AM());
   }
 
@@ -51,6 +59,9 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
     if (widget.events != oldWidget.events) {
       _setEvents(widget.events);
     }
+    if (widget.selectedDate != oldWidget.selectedDate) {
+      _currentWeekStart = _getWeekStart(widget.selectedDate);
+    }
   }
 
   @override
@@ -59,20 +70,52 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final dateRange = DateTimeRange(
-          start: DateTime.now()
-              .subtract(Duration(days: DateTime.now().weekday - 1)),
-          end: DateTime.now().add(
-              Duration(days: DateTime.daysPerWeek - DateTime.now().weekday)),
+          start: _currentWeekStart,
+          end: _currentWeekStart.add(const Duration(days: 6)),
         );
         final dayHeight = componentTheme.dimens.weekHourHeight * 24;
-        return Column(
+        return ImpaktfullUiAutoLayout.vertical(
           children: [
-            ImpaktfullUiCalendarWeekFullDayEvents(
-              dateRange: dateRange,
-              events: _events,
-              theme: componentTheme,
-              onEventTap: widget.onEventTap,
+            ImpaktfullUiAutoLayout.horizontal(
+              children: [
+                Container(
+                  width: componentTheme.dimens.sectionTitleWidth + 32,
+                  padding: const EdgeInsets.all(4),
+                  child: ImpaktfullUiAutoLayout.horizontal(
+                    children: [
+                      ImpaktfullUiIconButton(
+                        asset: componentTheme.assets.chevronLeft,
+                        onTap: _onPreviousWeekTapped,
+                      ),
+                      ImpaktfullUiIconButton(
+                        asset: componentTheme.assets.chevronRight,
+                        onTap: _onNextWeekTapped,
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ImpaktfullUiAutoLayout.vertical(
+                    children: [
+                      ImpaktfullUiCalendarWeekLegendDays(
+                        firstDay: dateRange.start,
+                        amountOfDays: _amountOfDays,
+                        theme: componentTheme,
+                      ),
+                      ImpaktfullUiCalendarWeekFullDayEvents(
+                        dateRange: dateRange,
+                        events: _events,
+                        onEventTap: widget.onEventTap,
+                        amountOfDays: _amountOfDays,
+                        theme: componentTheme,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 16),
+              ],
             ),
+            const ImpaktfullUiDivider(),
             Expanded(
               child: ListView(
                 key: _key,
@@ -83,7 +126,7 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                     padding: const EdgeInsetsDirectional.only(start: 16),
                     child: Stack(
                       children: [
-                        ImpaktfullUiCalendarWeekLegend(
+                        ImpaktfullUiCalendarWeekLegendHours(
                           theme: componentTheme,
                         ),
                         Padding(
@@ -95,6 +138,7 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                             dateRange: dateRange,
                             events: _events,
                             onEventTap: widget.onEventTap,
+                            amountOfDays: _amountOfDays,
                             theme: componentTheme,
                           ),
                         ),
@@ -128,4 +172,14 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
       );
     }
   }
+
+  void _onPreviousWeekTapped() {
+    setState(() => _currentWeekStart = _currentWeekStart.previousWeek);
+  }
+
+  void _onNextWeekTapped() {
+    setState(() => _currentWeekStart = _currentWeekStart.nextWeek);
+  }
+
+  DateTime _getWeekStart(DateTime date) => date.beginningOfTheWeek;
 }
