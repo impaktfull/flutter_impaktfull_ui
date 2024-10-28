@@ -1,0 +1,147 @@
+import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/slider/slider_style.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+
+export 'slider_style.dart';
+
+part 'slider.describe.dart';
+
+class ImpaktfullUiSlider extends StatefulWidget with ComponentDescriptorMixin {
+  final ImpaktfullUiSliderTheme? theme;
+  final double value;
+  final double min;
+  final double max;
+  final ValueChanged<double>? onChanged;
+
+  const ImpaktfullUiSlider({
+    required this.value,
+    required this.min,
+    required this.max,
+    this.onChanged,
+    this.theme,
+    super.key,
+  });
+
+  @override
+  State<ImpaktfullUiSlider> createState() => _ImpaktfullUiSliderState();
+
+  @override
+  String describe(BuildContext context) => _describeInstance(context, this);
+}
+
+class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
+  late double _currentValue;
+  final _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _currentValue = widget.value.toDouble();
+  }
+
+  // @override
+  // void didUpdateWidget(covariant ImpaktfullUiSlider oldWidget) {
+  //   super.didUpdateWidget(oldWidget);
+  //   if (widget.value != _currentValue) {
+  //     _currentValue = widget.value;
+  //   }
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSliderTheme>(
+      overrideComponentTheme: widget.theme,
+      builder: (context, componentTheme) => Focus(
+        focusNode: _focusNode,
+        child: LayoutBuilder(
+          builder: (context, constraints) => GestureDetector(
+            onHorizontalDragUpdate: (details) => _onUpdateThumb(details.localPosition.dx, constraints.maxWidth),
+            onTapDown: (details) => _onUpdateThumb(details.localPosition.dx, constraints.maxWidth),
+            child: Container(
+              height: 48,
+              color: Colors.transparent,
+              child: Stack(
+                clipBehavior: Clip.none,
+                alignment: Alignment.centerLeft,
+                children: [
+                  Container(
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: componentTheme.colors.track,
+                      borderRadius: componentTheme.dimens.trackBorderRadius,
+                      border: Border.all(
+                        color: componentTheme.colors.trackBorder,
+                        width: 1,
+                        strokeAlign: BorderSide.strokeAlignOutside,
+                      ),
+                    ),
+                  ),
+                  FractionallySizedBox(
+                    widthFactor:
+                        (_currentValue - widget.min.toDouble()) / (widget.max.toDouble() - widget.min.toDouble()),
+                    child: Container(
+                      height: 4,
+                      decoration: BoxDecoration(
+                        color: componentTheme.colors.activeTrack,
+                        border: Border.all(
+                          color: componentTheme.colors.activeTrack,
+                          width: 1,
+                          strokeAlign: BorderSide.strokeAlignOutside,
+                        ),
+                        borderRadius: componentTheme.dimens.trackBorderRadius,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: (_currentValue - widget.min.toDouble()) /
+                            (widget.max.toDouble() - widget.min.toDouble()) *
+                            constraints.maxWidth -
+                        8,
+                    child: Container(
+                      width: 16,
+                      height: 16,
+                      decoration: BoxDecoration(
+                        color: componentTheme.colors.thumb,
+                        borderRadius: componentTheme.dimens.thumbBorderRadius,
+                        border: Border.all(
+                          color: componentTheme.colors.thumbBorder,
+                          width: 1,
+                          strokeAlign: BorderSide.strokeAlignOutside,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  void _onUpdateThumb(double dx, double width) {
+    final min = widget.min.toDouble();
+    final max = widget.max.toDouble();
+    final localX = dx.clamp(0, width);
+    final percent = localX / width;
+    final newValue = min + (max - min) * percent;
+
+    setState(() => _currentValue = newValue.clamp(min, max));
+    widget.onChanged?.call(_currentValue);
+  }
+}

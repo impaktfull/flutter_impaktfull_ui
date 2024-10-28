@@ -46,6 +46,7 @@ import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_naviga
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/skeleton/skeleton.dart';
+import 'package:impaktfull_ui_2/src/components/slider/slider.dart';
 import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui_2/src/components/stepper/stepper_style.dart';
 import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
@@ -126,6 +127,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiSidebarNavigationItemTheme sidebarNavigationItem;
   final ImpaktfullUiSimpleListItemTheme simpleListItem;
   final ImpaktfullUiSkeletonTheme skeleton;
+  final ImpaktfullUiSliderTheme slider;
   final ImpaktfullUiSnackyConfiguratorTheme snackyConfigurator;
   final ImpaktfullUiStepperTheme stepper;
   final ImpaktfullUiSwitchTheme switchTheme;
@@ -196,6 +198,7 @@ class ImpaktfullUiComponentsTheme {
     required this.sidebarNavigationItem,
     required this.simpleListItem,
     required this.skeleton,
+    required this.slider,
     required this.snackyConfigurator,
     required this.stepper,
     required this.switchTheme,
@@ -267,6 +270,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiSidebarNavigationItemTheme? sidebarNavigationItem,
     ImpaktfullUiSimpleListItemTheme? simpleListItem,
     ImpaktfullUiSkeletonTheme? skeleton,
+    ImpaktfullUiSliderTheme? slider,
     ImpaktfullUiSnackyConfiguratorTheme? snackyConfigurator,
     ImpaktfullUiStepperTheme? stepper,
     ImpaktfullUiSwitchTheme? switchTheme,
@@ -333,11 +337,11 @@ class ImpaktfullUiComponentsTheme {
         sectionTitle: sectionTitle ?? this.sectionTitle,
         selectableListItem: selectableListItem ?? this.selectableListItem,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
-        sidebarNavigationItem:
-            sidebarNavigationItem ?? this.sidebarNavigationItem,
+        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
         separatedColumn: separatedColumn ?? this.separatedColumn,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         skeleton: skeleton ?? this.skeleton,
+        slider: slider ?? this.slider,
         snackyConfigurator: snackyConfigurator ?? this.snackyConfigurator,
         stepper: stepper ?? this.stepper,
         switchTheme: switchTheme ?? this.switchTheme,
@@ -462,6 +466,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiSimpleListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiSkeletonTheme) {
       return ImpaktfullUiSkeletonTheme.of(context) as T;
+    } else if (T == ImpaktfullUiSliderTheme) {
+      return ImpaktfullUiSliderTheme.of(context) as T;
     } else if (T == ImpaktfullUiSnackyConfiguratorTheme) {
       return ImpaktfullUiSnackyConfiguratorTheme.of(context) as T;
     } else if (T == ImpaktfullUiStepperTheme) {

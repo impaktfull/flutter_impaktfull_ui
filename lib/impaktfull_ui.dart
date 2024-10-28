@@ -74,6 +74,7 @@ export 'src/components/sidebar_navigation/sidebar_navigation.dart';
 export 'src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
 export 'src/components/simple_list_item/simple_list_item.dart';
 export 'src/components/skeleton/skeleton.dart';
+export 'src/components/slider/slider.dart';
 export 'src/components/stepper/stepper.dart';
 export 'src/components/switch/switch.dart';
 export 'src/components/switch_list_item/switch_list_item.dart';
