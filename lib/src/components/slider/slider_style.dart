@@ -14,7 +14,8 @@ class ImpaktfullUiSliderTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiSliderTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.slider;
+  static ImpaktfullUiSliderTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.slider;
 }
 
 class ImpaktfullUiSliderAssetsTheme {
