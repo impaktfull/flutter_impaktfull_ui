@@ -25,10 +25,22 @@ class ImpaktfullUiStepperAssetsTheme {
 class ImpaktfullUiStepperColorTheme {
   final Color activeStep;
   final Color inactiveStep;
+  final Color assetBorder;
+  final Color assetBackground;
+  final Color assetColor;
+  final Color assetBorderCompleted;
+  final Color assetBackgroundCompleted;
+  final Color assetColorCompleted;
 
   const ImpaktfullUiStepperColorTheme({
     required this.activeStep,
     required this.inactiveStep,
+    required this.assetBorder,
+    required this.assetColor,
+    required this.assetBackground,
+    required this.assetBorderCompleted,
+    required this.assetBackgroundCompleted,
+    required this.assetColorCompleted,
   });
 }
 

@@ -1,0 +1,4 @@
+enum ImpaktfullUiStepperOrientation {
+  horizontal,
+  vertical,
+}

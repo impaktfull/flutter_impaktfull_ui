@@ -1076,6 +1076,12 @@ class DefaultTheme {
           colors: ImpaktfullUiStepperColorTheme(
             activeStep: colors.accent,
             inactiveStep: colors.border,
+            assetBorder: colors.border,
+            assetBackground: colors.card,
+            assetColor: colors.text,
+            assetBorderCompleted: colors.accent,
+            assetBackgroundCompleted: colors.accent,
+            assetColorCompleted: colors.textOnAccent,
           ),
           dimens: ImpaktfullUiStepperDimensTheme(
             spacing: 8,
