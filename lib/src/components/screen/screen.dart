@@ -46,10 +46,8 @@ class ImpaktfullUiScreen extends StatefulWidget with ComponentDescriptorMixin {
   });
 
   static ImpaktfullUiScreenState of(BuildContext context) {
-    final ImpaktfullUiScreenState? result =
-        context.findAncestorStateOfType<ImpaktfullUiScreenState>();
-    assert(result != null,
-        'No ImpaktfullUImpaktfullUiScreenStateiScreen found in context');
+    final ImpaktfullUiScreenState? result = context.findAncestorStateOfType<ImpaktfullUiScreenState>();
+    assert(result != null, 'No ImpaktfullUImpaktfullUiScreenStateiScreen found in context');
     return result!;
   }
 
@@ -74,8 +72,7 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
             widget.bottomNavBarChild != null;
         final hasBottomChild = widget.bottomChild != null;
         return PopScope(
-          onPopInvokedWithResult: (didPop, result) =>
-              widget.onPopInvoked?.call(),
+          onPopInvokedWithResult: (didPop, result) => widget.onPopInvoked?.call(),
           canPop: widget.canPop,
           child: ClipRect(
             child: Scaffold(
@@ -93,13 +90,9 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                 children: [
                   if (hasNavbar) ...[
                     ImpaktfullUiNavBar(
-                      onBackTapped:
-                          widget.drawer == null ? widget.onBackTapped : null,
-                      onDrawerTapped:
-                          widget.drawer == null && !widget.isDrawerEnabled
-                              ? null
-                              : openDrawer,
-                      isDrawerOpen: Scaffold.of(context).isDrawerOpen,
+                      onBackTapped: widget.drawer == null ? widget.onBackTapped : null,
+                      onDrawerTapped: widget.drawer == null && !widget.isDrawerEnabled ? null : openDrawer,
+                      isDrawerOpen: _isDrawerOpen(context),
                       isFullScreen: widget.isFullScreen,
                       title: widget.title,
                       subtitle: widget.subtitle,
@@ -174,11 +167,16 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
     final state = context.findAncestorStateOfType<ImpaktfullUiScreenState>();
     if (state == null) return null;
     if (state.widget.drawer == null) {
-      final parentContext =
-          context.findAncestorStateOfType<ImpaktfullUiScreenState>()?.context;
+      final parentContext = context.findAncestorStateOfType<ImpaktfullUiScreenState>()?.context;
       if (parentContext == null) return null;
       return _findDrawer(parentContext);
     }
     return state;
+  }
+
+  bool _isDrawerOpen(BuildContext context) {
+    var isDrawerOpen = _scaffoldState.currentState?.isDrawerOpen;
+    isDrawerOpen ??= Scaffold.maybeOf(context)?.isDrawerOpen;
+    return isDrawerOpen ?? false;
   }
 }
