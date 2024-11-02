@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/components/fluid_padding/fluid_padding.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiFluidPaddingTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiFluidPaddingAssetsTheme assets;

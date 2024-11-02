@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiListViewTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiListViewTextStylesTheme textStyles;
@@ -10,7 +10,8 @@ class ImpaktfullUiListViewTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiListViewTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.listView;
+  static ImpaktfullUiListViewTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.listView;
 }
 
 class ImpaktfullUiListViewTextStylesTheme {

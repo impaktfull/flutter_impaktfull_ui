@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/container/container.dart';
-import 'package:impaktfull_ui/src/components/interaction_feedback/focus_feedback/focus_feedback.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_builder.dart';
-import 'package:impaktfull_ui/src/components/tooltip/tooltip.dart';
-import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
-import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui_2/src/components/container/container.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/focus_feedback/focus_feedback.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_builder.dart';
+import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
+import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
+import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
 
 class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final VoidCallback? onTap;
@@ -137,7 +137,8 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         ),
       );
     }
-    final isAndroidTarget = Theme.of(context).platform == TargetPlatform.android;
+    final isAndroidTarget =
+        Theme.of(context).platform == TargetPlatform.android;
     return ImpaktfullUiFocusFeedback(
       hasFocus: _focusNode.hasFocus,
       borderRadius: widget.borderRadius,
@@ -150,8 +151,11 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         onFocusChange: _onFocusChanged,
         canRequestFocus: widget.canRequestFocus,
         autofocus: widget.autofocus,
-        focusColor: widget.useFocusColor ? Theme.of(context).hoverColor : Colors.transparent,
-        splashFactory: isAndroidTarget ? InkSparkle.splashFactory : NoSplash.splashFactory,
+        focusColor: widget.useFocusColor
+            ? Theme.of(context).hoverColor
+            : Colors.transparent,
+        splashFactory:
+            isAndroidTarget ? InkSparkle.splashFactory : NoSplash.splashFactory,
         child: ColoredBox(
           color: Colors.transparent,
           child: widget.child,

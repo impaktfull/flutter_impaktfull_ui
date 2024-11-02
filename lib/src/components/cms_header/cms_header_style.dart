@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiCmsHeaderAssetsTheme assets;
@@ -17,7 +17,8 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiCmsHeaderTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.cmsHeader;
+  static ImpaktfullUiCmsHeaderTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.cmsHeader;
 }
 
 class ImpaktfullUiCmsHeaderAssetsTheme {

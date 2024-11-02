@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/button/button.dart';
-import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
-import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/week/calendar_week_events.dart';
-import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/week/calendar_week_full_day_events.dart';
-import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/week/calendar_week_legend_days.dart';
-import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/week/calendar_week_legend_hours.dart';
-import 'package:impaktfull_ui/src/components/divider/divider.dart';
-import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
-import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_events.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_full_day_events.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_legend_days.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_legend_hours.dart';
+import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
+import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
 
 class ImpaktfullUiCalendarWeek extends StatefulWidget {
   final DateTime selectedDate;
@@ -28,7 +28,8 @@ class ImpaktfullUiCalendarWeek extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiCalendarWeek> createState() => _ImpaktfullUiCalendarWeekState();
+  State<ImpaktfullUiCalendarWeek> createState() =>
+      _ImpaktfullUiCalendarWeekState();
 }
 
 class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {

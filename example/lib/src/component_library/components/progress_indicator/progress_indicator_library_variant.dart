@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/progress_indicator/progress_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class ProgressIndicatorLibraryVariant extends ComponentLibraryVariant<ProgressIndicatorLibraryPrimaryInputs> {
+class ProgressIndicatorLibraryVariant
+    extends ComponentLibraryVariant<ProgressIndicatorLibraryPrimaryInputs> {
   final ImpaktfullUiProgressIndicatorType type;
   const ProgressIndicatorLibraryVariant({
     required this.type,
@@ -14,7 +15,8 @@ class ProgressIndicatorLibraryVariant extends ComponentLibraryVariant<ProgressIn
   String get title => type.name;
 
   @override
-  List<Widget> build(BuildContext context, ProgressIndicatorLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, ProgressIndicatorLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         wrapWithCard: true,
@@ -31,7 +33,9 @@ class ProgressIndicatorLibraryVariant extends ComponentLibraryVariant<ProgressIn
   }
 
   @override
-  ProgressIndicatorLibraryPrimaryInputs inputs() => ProgressIndicatorLibraryPrimaryInputs();
+  ProgressIndicatorLibraryPrimaryInputs inputs() =>
+      ProgressIndicatorLibraryPrimaryInputs();
 }
 
-class ProgressIndicatorLibraryPrimaryInputs extends ProgressIndicatorLibraryInputs {}
+class ProgressIndicatorLibraryPrimaryInputs
+    extends ProgressIndicatorLibraryInputs {}

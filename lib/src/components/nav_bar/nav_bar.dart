@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/adaptive_safe_area/adaptive_safe_area.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
-import 'package:impaktfull_ui/src/components/nav_bar/nav_bar_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/util/extension/widget_list_extensions.dart';
+import 'package:impaktfull_ui_2/src/components/adaptive_safe_area/adaptive_safe_area.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
+import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar_style.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/util/extension/widget_list_extensions.dart';
 
 export 'nav_bar_style.dart';
 
@@ -104,7 +104,8 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
                         ],
                       ),
                     ),
-                    ...actions.overrideColorOnWidgets(componentTheme.colors.icons),
+                    ...actions
+                        .overrideColorOnWidgets(componentTheme.colors.icons),
                     if (isFullScreen && onBackTapped != null) ...[
                       ImpaktfullUiIconButton(
                         onTap: onBackTapped!,

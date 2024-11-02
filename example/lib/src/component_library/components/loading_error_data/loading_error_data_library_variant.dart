@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/loading_error_data/loading_error_data_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class LoadingErrorDataLibraryVariant extends ComponentLibraryVariant<LoadingErrorDataLibraryPrimaryInputs> {
+class LoadingErrorDataLibraryVariant
+    extends ComponentLibraryVariant<LoadingErrorDataLibraryPrimaryInputs> {
   const LoadingErrorDataLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, LoadingErrorDataLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, LoadingErrorDataLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         width: 500,
@@ -21,10 +23,12 @@ class LoadingErrorDataLibraryVariant extends ComponentLibraryVariant<LoadingErro
         child: ImpaktfullUiLoadingErrorData(
           isLoading: inputs.isLoading.value ?? false,
           noDataTitle: 'No Users found',
-          noDataMessage: 'The search criteria you have entered did not match any users',
+          noDataMessage:
+              'The search criteria you have entered did not match any users',
           errorTitle: inputs.errorTitle.value,
           errorMessage: inputs.errorMessage.value,
-          items: List.generate(inputs.itemSize.value ?? 0, (index) => 'User $index'),
+          items: List.generate(
+              inputs.itemSize.value ?? 0, (index) => 'User $index'),
           builder: (context) => ImpaktfullUiAssetWidget(
             asset: theme.assets.icons.check,
           ),
@@ -39,10 +43,12 @@ class LoadingErrorDataLibraryVariant extends ComponentLibraryVariant<LoadingErro
           isLoading: inputs.isLoading.value ?? false,
           noDataAsset: theme.assets.icons.user,
           noDataTitle: 'No Users found',
-          noDataMessage: 'The search criteria you have entered did not match any users',
+          noDataMessage:
+              'The search criteria you have entered did not match any users',
           errorTitle: inputs.errorTitle.value,
           errorMessage: inputs.errorMessage.value,
-          items: List.generate(inputs.itemSize.value ?? 0, (index) => 'User $index'),
+          items: List.generate(
+              inputs.itemSize.value ?? 0, (index) => 'User $index'),
           builder: (context) => ImpaktfullUiAssetWidget(
             asset: theme.assets.icons.check,
           ),
@@ -67,10 +73,12 @@ class LoadingErrorDataLibraryVariant extends ComponentLibraryVariant<LoadingErro
             ),
           ),
           noDataTitle: 'No Users found',
-          noDataMessage: 'The search criteria you have entered did not match any users',
+          noDataMessage:
+              'The search criteria you have entered did not match any users',
           errorTitle: inputs.errorTitle.value,
           errorMessage: inputs.errorMessage.value,
-          items: List.generate(inputs.itemSize.value ?? 0, (index) => 'User $index'),
+          items: List.generate(
+              inputs.itemSize.value ?? 0, (index) => 'User $index'),
           builder: (context) => ImpaktfullUiAssetWidget(
             asset: theme.assets.icons.check,
           ),
@@ -84,7 +92,8 @@ class LoadingErrorDataLibraryVariant extends ComponentLibraryVariant<LoadingErro
         child: ImpaktfullUiLoadingErrorData(
           isLoading: inputs.isLoading.value ?? false,
           noDataTitle: 'No Users found',
-          noDataMessage: 'The search criteria you have entered did not match any users',
+          noDataMessage:
+              'The search criteria you have entered did not match any users',
           noDataActions: [
             ImpaktfullUiButton(
               type: ImpaktfullUiButtonType.secondaryGrey,
@@ -106,7 +115,8 @@ class LoadingErrorDataLibraryVariant extends ComponentLibraryVariant<LoadingErro
               onTap: () {},
             ),
           ],
-          items: List.generate(inputs.itemSize.value ?? 0, (index) => 'User $index'),
+          items: List.generate(
+              inputs.itemSize.value ?? 0, (index) => 'User $index'),
           builder: (context) => ImpaktfullUiAssetWidget(
             asset: theme.assets.icons.check,
           ),
@@ -116,7 +126,9 @@ class LoadingErrorDataLibraryVariant extends ComponentLibraryVariant<LoadingErro
   }
 
   @override
-  LoadingErrorDataLibraryPrimaryInputs inputs() => LoadingErrorDataLibraryPrimaryInputs();
+  LoadingErrorDataLibraryPrimaryInputs inputs() =>
+      LoadingErrorDataLibraryPrimaryInputs();
 }
 
-class LoadingErrorDataLibraryPrimaryInputs extends LoadingErrorDataLibraryInputs {}
+class LoadingErrorDataLibraryPrimaryInputs
+    extends LoadingErrorDataLibraryInputs {}

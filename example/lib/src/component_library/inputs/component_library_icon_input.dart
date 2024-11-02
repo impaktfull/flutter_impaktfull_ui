@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/icons_data/icons_data.dart';
 
 class ComponentLibraryIconInput extends ComponentLibraryInputItem<IconData> {
   final _controller = ImpaktfullUiDropdownController();
   final items = AllIcons.allFlatIconsAsMap.values
-      .map((e) => ImpaktfullUiDropdownItem(label: e.hashCode.toString(), value: e))
+      .map((e) =>
+          ImpaktfullUiDropdownItem(label: e.hashCode.toString(), value: e))
       .toList();
 
   ComponentLibraryIconInput(

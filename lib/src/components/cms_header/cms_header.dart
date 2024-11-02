@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/adaptive_safe_area/adaptive_safe_area.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/badge/badge.dart';
-import 'package:impaktfull_ui/src/components/cms_header/cms_header_style.dart';
-import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/util/extension/widget_list_extensions.dart';
+import 'package:impaktfull_ui_2/src/components/adaptive_safe_area/adaptive_safe_area.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
+import 'package:impaktfull_ui_2/src/components/cms_header/cms_header_style.dart';
+import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/util/extension/widget_list_extensions.dart';
 
 export 'cms_header_style.dart';
 
 part 'cms_header.describe.dart';
 
-class ImpaktfullUiCmsHeader extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiCmsHeader extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
@@ -83,7 +84,9 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                         onTap: widget.onDrawerTapped!,
                         asset: componentTheme.assets.drawerMenu,
                         color: componentTheme.colors.icons,
-                        tooltip: widget.isDrawerOpen ? 'Close drawer' : 'Open drawer',
+                        tooltip: widget.isDrawerOpen
+                            ? 'Close drawer'
+                            : 'Open drawer',
                       ),
                     ] else if (widget.onBackTapped != null) ...[
                       ImpaktfullUiIconButton(
@@ -125,7 +128,8 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                     if (widget.actions.isNotEmpty) ...[
                       ImpaktfullUiAutoLayout.horizontal(
                         spacing: 8,
-                        children: widget.actions.overrideColorOnWidgets(componentTheme.colors.icons),
+                        children: widget.actions.overrideColorOnWidgets(
+                            componentTheme.colors.icons),
                       ),
                     ],
                   ],

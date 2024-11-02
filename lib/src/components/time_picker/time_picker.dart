@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
-import 'package:impaktfull_ui/src/components/time_picker/time_picker_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
+import 'package:impaktfull_ui_2/src/components/time_picker/time_picker_style.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'time_picker_style.dart';
 
 part 'time_picker.describe.dart';
 
-class ImpaktfullUiTimePicker extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiTimePicker extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String? label;
   final TimeOfDay? value;
   final ValueChanged<TimeOfDay> onChanged;

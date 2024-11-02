@@ -1,4 +1,4 @@
-import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item_type.dart';
+import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item_type.dart';
 
 enum ImpaktfullUiListItemType {
   neutral,

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiThemeConfigurator extends InheritedWidget {
   final ImpaktfullUiTheme theme;
@@ -12,8 +12,8 @@ class ImpaktfullUiThemeConfigurator extends InheritedWidget {
     setImpaktfullUiTheme(theme);
   }
 
-  static ImpaktfullUiThemeConfigurator of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<ImpaktfullUiThemeConfigurator>()!;
+  static ImpaktfullUiThemeConfigurator of(BuildContext context) => context
+      .dependOnInheritedWidgetOfExactType<ImpaktfullUiThemeConfigurator>()!;
 
   @override
   bool updateShouldNotify(covariant ImpaktfullUiThemeConfigurator oldWidget) {

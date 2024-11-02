@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/example_library/data/model/order.dart';
 import 'package:impaktfull_ui_example/src/example_library/data/test_data.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -10,10 +10,12 @@ class DashboardStoreOrdersScreen extends StatefulWidget {
   });
 
   @override
-  State<DashboardStoreOrdersScreen> createState() => _DashboardStoreOrdersScreenState();
+  State<DashboardStoreOrdersScreen> createState() =>
+      _DashboardStoreOrdersScreenState();
 }
 
-class _DashboardStoreOrdersScreenState extends State<DashboardStoreOrdersScreen> {
+class _DashboardStoreOrdersScreenState
+    extends State<DashboardStoreOrdersScreen> {
   static const columnConfig = [
     TableColumnConfig(flex: 1),
     TableColumnConfig(flex: 1),
@@ -91,18 +93,21 @@ class _DashboardStoreOrdersScreenState extends State<DashboardStoreOrdersScreen>
                           title: order.id,
                         ),
                         ImpaktfullUiTableRowItem.badge(
-                          title: _refundList.contains(order) ? 'Refunded' : null,
+                          title:
+                              _refundList.contains(order) ? 'Refunded' : null,
                           badgeType: ImpaktfullUiBadgeType.neutral,
                         ),
                         ImpaktfullUiTableRowItem.custom(
-                          builder: (context, theme) => ImpaktfullUiAutoLayout.horizontal(
+                          builder: (context, theme) =>
+                              ImpaktfullUiAutoLayout.horizontal(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               if (!_refundList.contains(order)) ...[
                                 ImpaktfullUiIconButton(
                                   onTap: () => _onRefundTapped(order),
                                   size: 20,
-                                  asset: ImpaktfullUiAsset.icon(PhosphorIcons.handCoins()),
+                                  asset: ImpaktfullUiAsset.icon(
+                                      PhosphorIcons.handCoins()),
                                 ),
                               ],
                             ],

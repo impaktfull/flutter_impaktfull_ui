@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiStepperTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiStepperAssetsTheme assets;
@@ -14,7 +14,8 @@ class ImpaktfullUiStepperTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiStepperTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.stepper;
+  static ImpaktfullUiStepperTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.stepper;
 }
 
 class ImpaktfullUiStepperAssetsTheme {

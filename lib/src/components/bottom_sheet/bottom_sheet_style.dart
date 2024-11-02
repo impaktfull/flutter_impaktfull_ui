@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiBottomSheetTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiBottomSheetAssetsTheme assets;
@@ -15,7 +15,8 @@ class ImpaktfullUiBottomSheetTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiBottomSheetTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.bottomSheet;
+  static ImpaktfullUiBottomSheetTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.bottomSheet;
 }
 
 class ImpaktfullUiBottomSheetAssetsTheme {

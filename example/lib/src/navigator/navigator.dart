@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library.dart';
 import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library.dart';
@@ -24,7 +24,8 @@ class ImpaktfullUiNavigator {
 
   ImpaktfullUiNavigator._();
 
-  static ImpaktfullUiNavigator get instance => _instance ??= ImpaktfullUiNavigator._();
+  static ImpaktfullUiNavigator get instance =>
+      _instance ??= ImpaktfullUiNavigator._();
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     final name = settings.name;
@@ -109,16 +110,19 @@ class ImpaktfullUiNavigator {
 
   void goToComponents() => navigatorKey.currentState?.pushNamed('/components');
 
-  void goToBuildingBlocks() => navigatorKey.currentState?.pushNamed('/building-blocks');
+  void goToBuildingBlocks() =>
+      navigatorKey.currentState?.pushNamed('/building-blocks');
 
   void goToExamples() => navigatorKey.currentState?.pushNamed('/examples');
 
-  void goToComponent(ComponentLibraryItem item) => navigatorKey.currentState?.pushNamed('/components/${item.slug}');
+  void goToComponent(ComponentLibraryItem item) =>
+      navigatorKey.currentState?.pushNamed('/components/${item.slug}');
 
   void goToBuildingBlock(BuildingBlockLibraryItem item) =>
       navigatorKey.currentState?.pushNamed('/building-blocks/${item.slug}');
 
-  void goToExample(ExampleLibraryItem item) => navigatorKey.currentState?.pushNamed('/examples/${item.slug}');
+  void goToExample(ExampleLibraryItem item) =>
+      navigatorKey.currentState?.pushNamed('/examples/${item.slug}');
 
   void goBack() => navigatorKey.currentState?.pop();
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
-import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
-import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_weekdays.dart';
-import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_cell.dart';
+import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_weekdays.dart';
+import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
 
 class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
   final ImpaktfullUiDatePickerWeekdaysStartDate weekdaysStartDate;
@@ -44,7 +44,8 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
               child: ImpaktfullUiGridView.builder(
                 scrollPhysics: const NeverScrollableScrollPhysics(),
                 items: _getItems(context),
-                itemBuilder: (context, item, index) => ImpaktfullUiDatePickerCell(
+                itemBuilder: (context, item, index) =>
+                    ImpaktfullUiDatePickerCell(
                   value: item.day.toString(),
                   active: item.isSameMonth(date),
                   isSelected: _isSelected(item),
@@ -64,20 +65,23 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
   List<DateTime> _getItems(BuildContext context) {
     final dates = <DateTime>[];
     final daysPageDateMonth = date.getDaysInMonth();
-    final days = List.generate(daysPageDateMonth, (index) => date.copyWith(day: index + 1));
+    final days = List.generate(
+        daysPageDateMonth, (index) => date.copyWith(day: index + 1));
     final firstWeekday = days.first.weekday;
     if (firstWeekday != 0) {
       final previousMonth = date.getPreviousMonth();
       final daysPreviousMonth = previousMonth.getDaysInMonth();
-      final daysBeforeMonth =
-          List.generate(firstWeekday - 1, (index) => previousMonth.copyWith(day: daysPreviousMonth - index)).reversed;
+      final daysBeforeMonth = List.generate(firstWeekday - 1,
+              (index) => previousMonth.copyWith(day: daysPreviousMonth - index))
+          .reversed;
       dates.addAll(daysBeforeMonth);
     }
     dates.addAll(days);
     final lastWeekday = days.last.weekday;
     if (lastWeekday != 7) {
       final nextMonth = date.getNextMonth();
-      final daysAfterMonth = List.generate(7 - lastWeekday, (index) => nextMonth.copyWith(day: index + 1));
+      final daysAfterMonth = List.generate(
+          7 - lastWeekday, (index) => nextMonth.copyWith(day: index + 1));
       dates.addAll(daysAfterMonth);
     }
     return dates;

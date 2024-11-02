@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
-import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_cell.dart';
+import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
 import 'package:intl/intl.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -116,7 +116,8 @@ void main() {
       });
     });
     group('Years View', () {
-      testWidgets('Tap on title (to years view and to months view)', (tester) async {
+      testWidgets('Tap on title (to years view and to months view)',
+          (tester) async {
         final sut = ImpaktfullUiDatePicker(
           selectedDate: testDate,
           onDateChanged: (date) {},

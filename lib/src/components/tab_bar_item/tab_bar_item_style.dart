@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTabBarItemAssetsTheme assets;
@@ -16,7 +16,8 @@ class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiTabBarItemTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.tabBarItem;
+  static ImpaktfullUiTabBarItemTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.tabBarItem;
 }
 
 class ImpaktfullUiTabBarItemAssetsTheme {

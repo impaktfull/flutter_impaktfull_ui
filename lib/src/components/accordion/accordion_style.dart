@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiAccordionAssetsTheme assets;
@@ -15,7 +15,8 @@ class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiAccordionTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.accordion;
+  static ImpaktfullUiAccordionTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.accordion;
 }
 
 class ImpaktfullUiAccordionAssetsTheme {

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui/src/components/radio_button/radio_button.dart';
-import 'package:impaktfull_ui/src/components/radio_button_list_item/radio_button_list_item_style.dart';
-import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
+import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item_style.dart';
+import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'radio_button_list_item_style.dart';
 
 part 'radio_button_list_item.describe.dart';
 
-class ImpaktfullUiRadioButtonListItem<T> extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiRadioButtonListItem<T> extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final T value;
@@ -33,7 +34,8 @@ class ImpaktfullUiRadioButtonListItem<T> extends StatelessWidget with ComponentD
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiRadioButtonListItemTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiRadioButtonListItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
         title: title,

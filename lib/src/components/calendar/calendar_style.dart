@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiCalendarTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiCalendarAssetsTheme assets;
@@ -15,7 +15,8 @@ class ImpaktfullUiCalendarTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiCalendarTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.calendar;
+  static ImpaktfullUiCalendarTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.calendar;
 }
 
 class ImpaktfullUiCalendarAssetsTheme {

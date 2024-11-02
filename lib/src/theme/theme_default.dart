@@ -1,79 +1,79 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/accordion/accordion.dart';
-import 'package:impaktfull_ui/src/components/auto_complete/auto_complete.dart';
-import 'package:impaktfull_ui/src/components/avatar/avatar.dart';
-import 'package:impaktfull_ui/src/components/badge/badge.dart';
-import 'package:impaktfull_ui/src/components/bottom_navigation/bottom_navigation.dart';
-import 'package:impaktfull_ui/src/components/bottom_navigation_item/bottom_navigation_item.dart';
-import 'package:impaktfull_ui/src/components/bottom_sheet/bottom_sheet.dart';
-import 'package:impaktfull_ui/src/components/button/button.dart';
-import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
-import 'package:impaktfull_ui/src/components/card/card.dart';
-import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
-import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
-import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
-import 'package:impaktfull_ui/src/components/command_menu/command_menu.dart';
-import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
-import 'package:impaktfull_ui/src/components/divider/divider.dart';
-import 'package:impaktfull_ui/src/components/dropdown/dropdown.dart';
-import 'package:impaktfull_ui/src/components/file_picker/file_picker.dart';
-import 'package:impaktfull_ui/src/components/floating_action_button/floating_action_button.dart';
-import 'package:impaktfull_ui/src/components/fluid_padding/fluid_padding.dart';
-import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
-import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart';
-import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
-import 'package:impaktfull_ui/src/components/image_crop/image_crop.dart';
-import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui/src/components/line_chart/line_chart.dart';
-import 'package:impaktfull_ui/src/components/list_item/list_item.dart';
-import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui/src/components/loading_error_data/loading_error_data.dart';
-import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
-import 'package:impaktfull_ui/src/components/markdown/markdown.dart';
-import 'package:impaktfull_ui/src/components/metric/metric.dart';
-import 'package:impaktfull_ui/src/components/modal/modal.dart';
-import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.dart';
-import 'package:impaktfull_ui/src/components/network_image/network_image.dart';
-import 'package:impaktfull_ui/src/components/notification/notification.dart';
-import 'package:impaktfull_ui/src/components/notification_badge/notification_badge.dart';
-import 'package:impaktfull_ui/src/components/number_input/number_input.dart';
-import 'package:impaktfull_ui/src/components/pagination/pagination.dart';
-import 'package:impaktfull_ui/src/components/placeholder_state/placeholder_state.dart';
-import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator_style.dart';
-import 'package:impaktfull_ui/src/components/radio_button/radio_button.dart';
-import 'package:impaktfull_ui/src/components/radio_button_list_item/radio_button_list_item.dart';
-import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator.dart';
-import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
-import 'package:impaktfull_ui/src/components/screen/screen.dart';
-import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
-import 'package:impaktfull_ui/src/components/selectable_list_item/selectable_list_item.dart';
-import 'package:impaktfull_ui/src/components/separated_column/separated_column.dart';
-import 'package:impaktfull_ui/src/components/sidebar_navigation/sidebar_navigation.dart';
-import 'package:impaktfull_ui/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
-import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
-import 'package:impaktfull_ui/src/components/skeleton/skeleton.dart';
-import 'package:impaktfull_ui/src/components/slider/slider.dart';
-import 'package:impaktfull_ui/src/components/snacky/snacky_configurator.dart';
-import 'package:impaktfull_ui/src/components/stepper/stepper_style.dart';
-import 'package:impaktfull_ui/src/components/switch/switch.dart';
-import 'package:impaktfull_ui/src/components/switch_list_item/switch_list_item.dart';
-import 'package:impaktfull_ui/src/components/tab_bar/tab_bar.dart';
-import 'package:impaktfull_ui/src/components/tab_bar_item/tab_bar_item.dart';
-import 'package:impaktfull_ui/src/components/table/table.dart';
-import 'package:impaktfull_ui/src/components/table_header/table_header.dart';
-import 'package:impaktfull_ui/src/components/table_header_item/table_header_item.dart';
-import 'package:impaktfull_ui/src/components/table_row/table_row.dart';
-import 'package:impaktfull_ui/src/components/table_row_item/table_row_item.dart';
-import 'package:impaktfull_ui/src/components/time_picker/time_picker.dart';
-import 'package:impaktfull_ui/src/components/tooltip/tooltip.dart';
-import 'package:impaktfull_ui/src/components/unified_screen_layout/unified_screen_layout.dart';
-import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/asset_theme.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
-import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
-import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
-import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
+import 'package:impaktfull_ui_2/src/components/accordion/accordion.dart';
+import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart';
+import 'package:impaktfull_ui_2/src/components/avatar/avatar.dart';
+import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_navigation_item/bottom_navigation_item.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_sheet/bottom_sheet.dart';
+import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui_2/src/components/card/card.dart';
+import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
+import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
+import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
+import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
+import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
+import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui_2/src/components/file_picker/file_picker.dart';
+import 'package:impaktfull_ui_2/src/components/floating_action_button/floating_action_button.dart';
+import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
+import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
+import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
+import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
+import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
+import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/line_chart/line_chart.dart';
+import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
+import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui_2/src/components/loading_error_data/loading_error_data.dart';
+import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/markdown/markdown.dart';
+import 'package:impaktfull_ui_2/src/components/metric/metric.dart';
+import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
+import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
+import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
+import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
+import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
+import 'package:impaktfull_ui_2/src/components/number_input/number_input.dart';
+import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
+import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state.dart';
+import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator_style.dart';
+import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
+import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
+import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
+import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
+import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/separated_column/separated_column.dart';
+import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
+import 'package:impaktfull_ui_2/src/components/sidebar_navigation_item/sidebar_navigation_item.dart';
+import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/skeleton/skeleton.dart';
+import 'package:impaktfull_ui_2/src/components/slider/slider.dart';
+import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
+import 'package:impaktfull_ui_2/src/components/stepper/stepper_style.dart';
+import 'package:impaktfull_ui_2/src/components/switch/switch.dart';
+import 'package:impaktfull_ui_2/src/components/switch_list_item/switch_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/tab_bar/tab_bar.dart';
+import 'package:impaktfull_ui_2/src/components/tab_bar_item/tab_bar_item.dart';
+import 'package:impaktfull_ui_2/src/components/table/table.dart';
+import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
+import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
+import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
+import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
+import 'package:impaktfull_ui_2/src/components/time_picker/time_picker.dart';
+import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
+import 'package:impaktfull_ui_2/src/components/unified_screen_layout/unified_screen_layout.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
+import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class DefaultTheme {
@@ -131,11 +131,13 @@ class DefaultTheme {
       destructive: destructive ?? const Color(0xFFBD0D00),
     );
     final dimens = ImpaktfullUiDimensTheme(
-      borderRadiusExtraSmall: borderRadiusExtraSmall ?? BorderRadius.circular(4),
+      borderRadiusExtraSmall:
+          borderRadiusExtraSmall ?? BorderRadius.circular(4),
       borderRadiusSmall: borderRadiusSmall ?? BorderRadius.circular(6),
       borderRadius: borderRadiusSmall ?? BorderRadius.circular(8),
       borderRadiusLarge: borderRadiusLarge ?? BorderRadius.circular(12),
-      borderRadiusExtraLarge: borderRadiusExtraLarge ?? BorderRadius.circular(16),
+      borderRadiusExtraLarge:
+          borderRadiusExtraLarge ?? BorderRadius.circular(16),
       borderRadiusCircle: BorderRadius.circular(99999999),
     );
     final textStyles = ImpaktfullUiTextStylesTheme(
@@ -356,7 +358,8 @@ class DefaultTheme {
             alternative: textStyles.onCardPrimary.text.small.bold,
             grey: textStyles.onCard.text.small.bold,
             destructivePrimary: textStyles.onDestructive.text.small.bold,
-            destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
+            destructiveAlternative:
+                textStyles.onCardDestructive.text.small.bold,
           ),
         ),
         calendar: ImpaktfullUiCalendarTheme(
@@ -382,7 +385,8 @@ class DefaultTheme {
             listItemTitle: textStyles.onCard.text.small,
             listItemTitleSmall: textStyles.onCard.text.extraSmall,
             listItemSubtitle: textStyles.onCanvasTertiary.text.small.light,
-            listItemSubtitleSmall: textStyles.onCanvasTertiary.text.extraSmall.light,
+            listItemSubtitleSmall:
+                textStyles.onCanvasTertiary.text.extraSmall.light,
             dayTitle: textStyles.onCanvas.text.extraSmall.semiBold,
             dayOfTheWeekTitle: textStyles.onCanvas.text.extraSmall,
           ),
@@ -636,10 +640,12 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiInputFieldTextStylesTheme(
             text: textStyles.onCard.text.medium,
-            placeholder: textStyles.onCardTertiary.text.medium
-                .copyWith(color: textStyles.onCardTertiary.text.medium.color?.withOpacity(0.5)),
+            placeholder: textStyles.onCardTertiary.text.medium.copyWith(
+                color: textStyles.onCardTertiary.text.medium.color
+                    ?.withOpacity(0.5)),
             hint: textStyles.onCardTertiary.text.small,
-            error: textStyles.onCardDestructive.text.small.medium.copyWith(color: colors.error),
+            error: textStyles.onCardDestructive.text.small.medium
+                .copyWith(color: colors.error),
             label: textStyles.onCard.text.small.medium,
             action: textStyles.onCard.text.small.medium,
           ),
@@ -720,22 +726,29 @@ class DefaultTheme {
             unorderedList: textStyles.onCanvas.text.small.medium,
             code: textStyles.onCanvas.text.small,
             alt: textStyles.onCanvas.text.small.medium,
-            error: textStyles.onCanvas.text.extraSmall.copyWith(color: colors.error),
+            error: textStyles.onCanvas.text.extraSmall
+                .copyWith(color: colors.error),
           ),
         ),
         metric: ImpaktfullUiMetricTheme(
           assets: ImpaktfullUiMetricAssetsTheme(
-            more: DeviceUtil.isAndroid() ? assets.icons.moreVertical : assets.icons.moreHorizontal,
+            more: DeviceUtil.isAndroid()
+                ? assets.icons.moreVertical
+                : assets.icons.moreHorizontal,
           ),
           colors: const ImpaktfullUiMetricColorTheme(),
           dimens: const ImpaktfullUiMetricDimensTheme(),
           textStyles: ImpaktfullUiMetricTextStyleTheme(
             title: textStyles.onCard.text.small,
             value: textStyles.onCard.text.extraLarge.medium,
-            value2Growth: textStyles.onCard.text.small.copyWith(color: colors.success),
-            value2Neutral: textStyles.onCard.text.small.copyWith(color: colors.text),
-            value2Decline: textStyles.onCard.text.small.copyWith(color: colors.error),
-            value2Branded: textStyles.onCard.text.small.copyWith(color: colors.accent),
+            value2Growth:
+                textStyles.onCard.text.small.copyWith(color: colors.success),
+            value2Neutral:
+                textStyles.onCard.text.small.copyWith(color: colors.text),
+            value2Decline:
+                textStyles.onCard.text.small.copyWith(color: colors.error),
+            value2Branded:
+                textStyles.onCard.text.small.copyWith(color: colors.accent),
             value2Custom: textStyles.onCard.text.small,
           ),
         ),
@@ -901,7 +914,8 @@ class DefaultTheme {
           textStyles: const ImpaktfullUiRadioButtonListItemTextStyleTheme(),
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(loadingIndicator: colors.accent),
+          colors: ImpaktfullUiRefreshIndicatorColorTheme(
+              loadingIndicator: colors.accent),
         ),
         responsiveLayout: const ImpaktfullUiResponsiveLayoutTheme(
           assets: ImpaktfullUiResponsiveLayoutAssetsTheme(),

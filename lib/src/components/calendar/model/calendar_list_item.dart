@@ -1,4 +1,4 @@
-import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 
 class ImpaktfulluiCalendarListItem {
   final DateTime date;

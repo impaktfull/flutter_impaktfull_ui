@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/stepper/model/stepper_alignment.dart';
-import 'package:impaktfull_ui/src/components/stepper/model/stepper_item.dart';
-import 'package:impaktfull_ui/src/components/stepper/stepper_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/stepper/model/stepper_alignment.dart';
+import 'package:impaktfull_ui_2/src/components/stepper/model/stepper_item.dart';
+import 'package:impaktfull_ui_2/src/components/stepper/stepper_style.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'stepper_style.dart';
 export 'model/stepper_item.dart';
@@ -13,7 +13,8 @@ export 'model/stepper_alignment.dart';
 
 part 'stepper.describe.dart';
 
-class ImpaktfullUiStepper extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiStepper extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiStepperOrientation orientation;
   final List<ImpaktfullUiStepperItem> items;
   final ImpaktfullUiStepperTheme? theme;
@@ -33,7 +34,10 @@ class ImpaktfullUiStepper extends StatelessWidget with ComponentDescriptorMixin 
     required int amountOfSteps,
     this.theme,
     super.key,
-  })  : items = List.generate(amountOfSteps, (index) => ImpaktfullUiStepperItem(isCompleted: index < currentStep)),
+  })  : items = List.generate(
+            amountOfSteps,
+            (index) =>
+                ImpaktfullUiStepperItem(isCompleted: index < currentStep)),
         orientation = ImpaktfullUiStepperOrientation.horizontal;
 
   @override
@@ -58,9 +62,13 @@ class ImpaktfullUiStepper extends StatelessWidget with ComponentDescriptorMixin 
               Builder(
                 builder: (context) {
                   final i = items.indexOf(item);
-                  final crossAxisAlignment = item.asset == null ? CrossAxisAlignment.start : CrossAxisAlignment.center;
-                  final textAlign = item.asset == null ? TextAlign.start : TextAlign.center;
-                  final useExpanded = autoLayoutOrientation == ImpaktfullUiAutoLayoutOrientation.horizontal;
+                  final crossAxisAlignment = item.asset == null
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.center;
+                  final textAlign =
+                      item.asset == null ? TextAlign.start : TextAlign.center;
+                  final useExpanded = autoLayoutOrientation ==
+                      ImpaktfullUiAutoLayoutOrientation.horizontal;
                   final child = ImpaktfullUiAutoLayout.vertical(
                     crossAxisAlignment: crossAxisAlignment,
                     mainAxisSize: MainAxisSize.min,
@@ -71,8 +79,9 @@ class ImpaktfullUiStepper extends StatelessWidget with ComponentDescriptorMixin 
                           height: componentTheme.dimens.height,
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color:
-                                i < currentStep ? componentTheme.colors.activeStep : componentTheme.colors.inactiveStep,
+                            color: i < currentStep
+                                ? componentTheme.colors.activeStep
+                                : componentTheme.colors.inactiveStep,
                             borderRadius: componentTheme.dimens.borderRadius,
                           ),
                         ),

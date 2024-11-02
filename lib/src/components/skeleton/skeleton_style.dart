@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiSkeletonTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSkeletonAssetsTheme assets;
@@ -14,7 +14,8 @@ class ImpaktfullUiSkeletonTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiSkeletonTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.skeleton;
+  static ImpaktfullUiSkeletonTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.skeleton;
 }
 
 class ImpaktfullUiSkeletonAssetsTheme {

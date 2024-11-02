@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 part 'auto_layout.describe.dart';
 
@@ -8,7 +8,8 @@ enum ImpaktfullUiAutoLayoutOrientation {
   vertical,
 }
 
-class ImpaktfullUiAutoLayout extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiAutoLayout extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAutoLayoutOrientation orientation;
   final MainAxisAlignment mainAxisAlignment;
   final MainAxisSize mainAxisSize;
@@ -50,8 +51,12 @@ class ImpaktfullUiAutoLayout extends StatelessWidget with ComponentDescriptorMix
 
   @override
   Widget build(BuildContext context) {
-    final width = orientation == ImpaktfullUiAutoLayoutOrientation.horizontal ? spacing.toDouble() : 0.0;
-    final height = orientation == ImpaktfullUiAutoLayoutOrientation.vertical ? spacing.toDouble() : 0.0;
+    final width = orientation == ImpaktfullUiAutoLayoutOrientation.horizontal
+        ? spacing.toDouble()
+        : 0.0;
+    final height = orientation == ImpaktfullUiAutoLayoutOrientation.vertical
+        ? spacing.toDouble()
+        : 0.0;
     final childerenWithSpacing = <Widget>[];
     for (var i = 0; i < children.length; ++i) {
       childerenWithSpacing.add(children[i]);

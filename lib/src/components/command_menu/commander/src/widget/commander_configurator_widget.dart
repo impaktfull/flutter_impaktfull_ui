@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/command_menu/commander/src/controller/commander_controller.dart';
-import 'package:impaktfull_ui/src/components/command_menu/commander/src/controller/commander_controller_listener.dart';
+import 'package:impaktfull_ui_2/src/components/command_menu/commander/src/controller/commander_controller.dart';
+import 'package:impaktfull_ui_2/src/components/command_menu/commander/src/controller/commander_controller_listener.dart';
 
 class CommanderConfiguratorWidget extends StatefulWidget {
   final Widget child;
@@ -19,11 +19,14 @@ class CommanderConfiguratorWidget extends StatefulWidget {
   });
 
   @override
-  State<CommanderConfiguratorWidget> createState() => _CommanderConfiguratorWidgetState();
+  State<CommanderConfiguratorWidget> createState() =>
+      _CommanderConfiguratorWidgetState();
 }
 
-class _CommanderConfiguratorWidgetState extends State<CommanderConfiguratorWidget> implements CommanderListener {
-  CommanderController get commanderController => widget.commanderController ?? CommanderController.instance;
+class _CommanderConfiguratorWidgetState
+    extends State<CommanderConfiguratorWidget> implements CommanderListener {
+  CommanderController get commanderController =>
+      widget.commanderController ?? CommanderController.instance;
 
   @override
   void initState() {
@@ -61,7 +64,8 @@ class _CommanderConfiguratorWidgetState extends State<CommanderConfiguratorWidge
 
     context.visitChildElements(visitor);
 
-    assert(navigator != null, '''It looks like you are not using Navigator in your app.
+    assert(navigator != null,
+        '''It looks like you are not using Navigator in your app.
          Did you wrapped you app widget like this?
          CommanderConfiguratorWidget(
            app: MaterialApp(
@@ -80,7 +84,9 @@ class _CommanderConfiguratorWidgetState extends State<CommanderConfiguratorWidge
   }
 
   void _onShortcutActivated() {
-    commanderController.isShowingCommandMenu ? commanderController.hide() : commanderController.show();
+    commanderController.isShowingCommandMenu
+        ? commanderController.hide()
+        : commanderController.show();
   }
 
   @override

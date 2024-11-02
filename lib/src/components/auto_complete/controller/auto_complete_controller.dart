@@ -1,4 +1,4 @@
-import 'package:impaktfull_ui/src/components/auto_complete/controller/auto_complete_controller_listener.dart';
+import 'package:impaktfull_ui_2/src/components/auto_complete/controller/auto_complete_controller_listener.dart';
 
 class ImpaktfullUiAutoCompleteController {
   final Set<ImpaktfullUiAutoCompleteControllerListener> _listeners = {};

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/bottom_navigation/bottom_navigation_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/bottom_navigation/bottom_navigation_style.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'bottom_navigation_style.dart';
 
 part 'bottom_navigation.describe.dart';
 
-class ImpaktfullUiBottomNavigation extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiBottomNavigation extends StatelessWidget
+    with ComponentDescriptorMixin {
   final List<Widget> items;
   final ImpaktfullUiBottomNavigationTheme? theme;
 
@@ -26,7 +27,8 @@ class ImpaktfullUiBottomNavigation extends StatelessWidget with ComponentDescrip
         decoration: BoxDecoration(
           color: componentTheme.colors.background,
           boxShadow: [
-            if (componentTheme.shadows.background != null) ...componentTheme.shadows.background!,
+            if (componentTheme.shadows.background != null)
+              ...componentTheme.shadows.background!,
           ],
         ),
         child: SafeArea(

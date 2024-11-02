@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:ui' as ui;
 
-import 'package:impaktfull_ui/src/components/image_crop/cropper/image_crop_cropper.dart';
-import 'package:impaktfull_ui/src/components/image_crop/model/crop_info.dart';
+import 'package:impaktfull_ui_2/src/components/image_crop/cropper/image_crop_cropper.dart';
+import 'package:impaktfull_ui_2/src/components/image_crop/model/crop_info.dart';
 
 class ImpaktfullUiImageCropController {
   final cropper = ImpaktfullUiImageCropCropper();

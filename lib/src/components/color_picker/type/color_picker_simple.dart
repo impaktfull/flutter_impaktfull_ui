@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
-import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 
 class ImpaktfullUiColorPickerSimple extends StatelessWidget {
   final Color? selectedColor;
@@ -33,7 +33,8 @@ class ImpaktfullUiColorPickerSimple extends StatelessWidget {
               for (final allowedColor in allowedColors) ...[
                 ImpaktfullUiTouchFeedback(
                   color: allowedColor,
-                  borderRadius: componentTheme.dimens.simpleColorPickerItemBorderRadius,
+                  borderRadius:
+                      componentTheme.dimens.simpleColorPickerItemBorderRadius,
                   onTap: () => onColorChanged?.call(allowedColor),
                   toolTip: allowedColor.toString(),
                   child: SizedBox(
@@ -52,7 +53,8 @@ class ImpaktfullUiColorPickerSimple extends StatelessWidget {
             height: componentTheme.dimens.simpleColorPickerItemSize,
             decoration: BoxDecoration(
               color: selectedColor!,
-              borderRadius: componentTheme.dimens.simpleColorPickerItemBorderRadius,
+              borderRadius:
+                  componentTheme.dimens.simpleColorPickerItemBorderRadius,
             ),
           ),
         ],

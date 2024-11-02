@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 part 'clamped_fractionally_sized_box.describe.dart';
 
-class ImpaktfullUiClampedFractionallySizedBox extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiClampedFractionallySizedBox extends StatelessWidget
+    with ComponentDescriptorMixin {
   final double widthFactor;
   final double? minWidth;
   final double? maxWidth;
@@ -23,7 +24,8 @@ class ImpaktfullUiClampedFractionallySizedBox extends StatelessWidget with Compo
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth * widthFactor;
-        final clampedWidth = width.clamp(minWidth ?? 0, maxWidth ?? double.infinity);
+        final clampedWidth =
+            width.clamp(minWidth ?? 0, maxWidth ?? double.infinity);
         return Align(
           alignment: alignment,
           child: SizedBox(

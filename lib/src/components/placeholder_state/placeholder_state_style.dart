@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiPlaceholderStateTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiPlaceholderStateAssetsTheme assets;

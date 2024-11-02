@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_formatter.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_formatter.dart';
 
 class ImpaktfullUiWysiwygPhotoFormatter extends ImpaktfullUiWysiwygFormatter {
   static const supportedExtensions = [
@@ -13,7 +13,8 @@ class ImpaktfullUiWysiwygPhotoFormatter extends ImpaktfullUiWysiwygFormatter {
   const ImpaktfullUiWysiwygPhotoFormatter();
 
   @override
-  ImpaktfullUiWysiwygFormatterResult format(String text, TextSelection textSelection) {
+  ImpaktfullUiWysiwygFormatterResult format(
+      String text, TextSelection textSelection) {
     final selectedText = getSelectedText(text, textSelection);
     if (selectedText.toLowerCase().startsWith('assets/')) {
       return replaceText(
@@ -22,7 +23,8 @@ class ImpaktfullUiWysiwygPhotoFormatter extends ImpaktfullUiWysiwygFormatter {
         prefix: '![text](',
         suffix: ')',
       );
-    } else if (supportedExtensions.any((ext) => selectedText.toLowerCase().endsWith(ext))) {
+    } else if (supportedExtensions
+        .any((ext) => selectedText.toLowerCase().endsWith(ext))) {
       return replaceText(
         text: text,
         textSelection: textSelection,

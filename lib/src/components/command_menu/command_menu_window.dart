@@ -2,11 +2,11 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/card/card.dart';
-import 'package:impaktfull_ui/src/components/command_menu/command_menu.dart';
-import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/card/card.dart';
+import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
+import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 class CommandMenuWindow extends StatefulWidget {
   final String? value;
@@ -98,7 +98,9 @@ class _CommandMenuWindowState extends State<CommandMenuWindow> {
                     padding: const EdgeInsets.all(16),
                     child: LayoutBuilder(
                       builder: (context, constraints) {
-                        final bottomChild = widget.bottomBuilder != null ? widget.bottomBuilder!(context) : null;
+                        final bottomChild = widget.bottomBuilder != null
+                            ? widget.bottomBuilder!(context)
+                            : null;
                         return ConstrainedBox(
                           constraints: BoxConstraints(
                             maxWidth: min(constraints.maxWidth, 800),
@@ -111,7 +113,8 @@ class _CommandMenuWindowState extends State<CommandMenuWindow> {
                             },
                             child: ImpaktfullUiCard(
                               padding: widget.padding,
-                              borderRadius: componentTheme.dimens.windowBorderRadius,
+                              borderRadius:
+                                  componentTheme.dimens.windowBorderRadius,
                               child: ImpaktfullUiAutoLayout.vertical(
                                 mainAxisSize: MainAxisSize.min,
                                 spacing: 8,

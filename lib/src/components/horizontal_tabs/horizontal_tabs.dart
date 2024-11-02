@@ -1,15 +1,16 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart';
-import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
+import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'horizontal_tabs_style.dart';
 
 part 'horizontal_tabs.describe.dart';
 
-class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget
+    with ComponentDescriptorMixin {
   final T selectedValue;
   final ValueChanged<T> onTabSelected;
   final List<ImpaktfullUiHorizontalTabConfig> tabs;

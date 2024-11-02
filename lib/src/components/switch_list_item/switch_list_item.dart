@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 export 'switch_list_item_style.dart';
 
 part 'switch_list_item.describe.dart';
 
-class ImpaktfullUiSwitchListItem extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSwitchListItem extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final bool value;

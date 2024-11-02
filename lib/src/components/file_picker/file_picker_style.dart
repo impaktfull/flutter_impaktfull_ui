@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiFilePickerTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiFilePickerAssetsTheme assets;
@@ -15,7 +15,8 @@ class ImpaktfullUiFilePickerTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiFilePickerTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.filePicker;
+  static ImpaktfullUiFilePickerTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.filePicker;
 }
 
 class ImpaktfullUiFilePickerAssetsTheme {

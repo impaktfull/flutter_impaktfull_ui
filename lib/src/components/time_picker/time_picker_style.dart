@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiTimePickerTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTimePickerAssetsTheme assets;
@@ -14,7 +14,8 @@ class ImpaktfullUiTimePickerTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiTimePickerTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.timePicker;
+  static ImpaktfullUiTimePickerTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.timePicker;
 }
 
 class ImpaktfullUiTimePickerAssetsTheme {

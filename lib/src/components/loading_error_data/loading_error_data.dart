@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/loading_error_data/loading_error_data_style.dart';
-import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
-import 'package:impaktfull_ui/src/components/placeholder_state/placeholder_state.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/loading_error_data/loading_error_data_style.dart';
+import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'loading_error_data_style.dart';
 
 part 'loading_error_data.describe.dart';
 
-class ImpaktfullUiLoadingErrorData extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiLoadingErrorData extends StatelessWidget
+    with ComponentDescriptorMixin {
   final bool isLoading;
   final ImpaktfullUiAsset? noDataAsset;
   final WidgetBuilder? noDataAssetBuilder;
@@ -64,7 +65,9 @@ class ImpaktfullUiLoadingErrorData extends StatelessWidget with ComponentDescrip
           );
         }
         if ((items != null && items!.isEmpty) &&
-            (noDataAsset != null || noDataTitle != null || noDataMessage != null)) {
+            (noDataAsset != null ||
+                noDataTitle != null ||
+                noDataMessage != null)) {
           return ImpaktfullUiPlaceholderState(
             asset: noDataAsset,
             assetBuilder: noDataAssetBuilder,

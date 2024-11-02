@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiMetricTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiMetricAssetsTheme assets;
@@ -15,7 +15,8 @@ class ImpaktfullUiMetricTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiMetricTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.metric;
+  static ImpaktfullUiMetricTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.metric;
 }
 
 class ImpaktfullUiMetricAssetsTheme {

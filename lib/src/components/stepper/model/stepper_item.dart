@@ -1,4 +1,4 @@
-import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 
 class ImpaktfullUiStepperItem {
   final bool isCompleted;

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 
 Future<void> loadImpaktfullUiFonts({
   ImpaktfullUiTheme? theme,
@@ -66,7 +66,8 @@ class ImpaktfullUiTestFontLoader {
     } else if (fontWeight == FontWeight.w700) {
       fullPath += '_bold';
     } else {
-      throw Exception('Font weight not supported (create your own font loader ${textStyle.fontWeight})');
+      throw Exception(
+          'Font weight not supported (create your own font loader ${textStyle.fontWeight})');
     }
     fullPath += '.ttf';
     if (loadedFont.contains(fullPath)) return;

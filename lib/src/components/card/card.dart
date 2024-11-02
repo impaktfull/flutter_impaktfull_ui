@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/components/card/card_style.dart';
-import 'package:impaktfull_ui/src/components/container/container.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/card/card_style.dart';
+import 'package:impaktfull_ui_2/src/components/container/container.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'card_style.dart';
 
@@ -62,10 +62,13 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: false,
           useFocusColor: false,
-          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer ? SystemMouseCursors.click : widget.cursor,
+          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer
+              ? SystemMouseCursors.click
+              : widget.cursor,
           onTap: widget.onTap,
           onFocus: widget.onFocus,
-          borderRadius: widget.borderRadius ?? componentTheme.dimens.borderRadius,
+          borderRadius:
+              widget.borderRadius ?? componentTheme.dimens.borderRadius,
           child: ClipRRect(
             borderRadius: componentTheme.dimens.borderRadius,
             child: Padding(
@@ -96,7 +99,9 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
     }
     if (componentTheme.colors.border != null) {
       return Border.all(
-        color: widget.error ? componentTheme.colors.borderError! : componentTheme.colors.border!,
+        color: widget.error
+            ? componentTheme.colors.borderError!
+            : componentTheme.colors.border!,
         strokeAlign: BorderSide.strokeAlignOutside,
         width: 1,
       );

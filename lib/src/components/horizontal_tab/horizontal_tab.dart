@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/badge/badge.dart';
-import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
+import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'horizontal_tab_style.dart';
 part 'horizontal_tab.describe.dart';
@@ -23,7 +23,8 @@ class ImpaktfullUiHorizontalTabConfig<T> {
   });
 }
 
-class ImpaktfullUiHorizontalTab extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiHorizontalTab extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String label;
   final String? badge;
   final ImpaktfullUiBadgeType? badgeType;
@@ -48,7 +49,9 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget with ComponentDescriptor
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,
         borderRadius: componentTheme.dimens.borderRadius,
-        color: isSelected ? componentTheme.colors.backgroundSelectedTab : componentTheme.colors.backgroundUnSelectedTab,
+        color: isSelected
+            ? componentTheme.colors.backgroundSelectedTab
+            : componentTheme.colors.backgroundUnSelectedTab,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 12,
@@ -60,12 +63,16 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget with ComponentDescriptor
             children: [
               Text(
                 label,
-                style: isSelected ? componentTheme.textStyles.selected : componentTheme.textStyles.unselected,
+                style: isSelected
+                    ? componentTheme.textStyles.selected
+                    : componentTheme.textStyles.unselected,
               ),
               if (badge != null) ...[
                 const SizedBox(width: 8),
                 ImpaktfullUiBadge(
-                  type: isSelected ? ImpaktfullUiBadgeType.primary : badgeType ?? ImpaktfullUiBadgeType.primary,
+                  type: isSelected
+                      ? ImpaktfullUiBadgeType.primary
+                      : badgeType ?? ImpaktfullUiBadgeType.primary,
                   size: ImpaktfullUiBadgeSize.small,
                   label: badge,
                 ),

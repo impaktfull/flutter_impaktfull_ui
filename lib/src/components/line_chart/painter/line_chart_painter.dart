@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'dart:math' as math;
-import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_painter_data.dart';
+import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_painter_data.dart';
 
 class ImpaktfullUiLineChartPainter extends CustomPainter {
   final List<ImpaktfullUiLineChartPainterData> data;
@@ -15,13 +15,19 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
     required this.defaultStrokeWidth,
   });
 
-  double get _minX => data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minX));
-  double get _maxX => data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxX));
-  double get _minY => data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minY));
-  double get _maxY => data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxY));
+  double get _minX =>
+      data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minX));
+  double get _maxX =>
+      data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxX));
+  double get _minY =>
+      data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minY));
+  double get _maxY =>
+      data.fold(0, (max, lineChartData) => math.max(max, lineChartData.maxY));
 
-  double get _maxStrokeWidth =>
-      data.fold(0, (max, lineChartData) => math.max(max, lineChartData.strokeWidth ?? defaultStrokeWidth));
+  double get _maxStrokeWidth => data.fold(
+      0,
+      (max, lineChartData) =>
+          math.max(max, lineChartData.strokeWidth ?? defaultStrokeWidth));
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -68,10 +74,14 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
           );
         }
         path.quadraticBezierTo(
-          _normalizeX(points[points.length - 1].dx, adjustedSize.width) + offset.dx,
-          _normalizeY(points[points.length - 1].dy, adjustedSize.height) + offset.dy,
-          _normalizeX(points[points.length - 1].dx, adjustedSize.width) + offset.dx,
-          _normalizeY(points[points.length - 1].dy, adjustedSize.height) + offset.dy,
+          _normalizeX(points[points.length - 1].dx, adjustedSize.width) +
+              offset.dx,
+          _normalizeY(points[points.length - 1].dy, adjustedSize.height) +
+              offset.dy,
+          _normalizeX(points[points.length - 1].dx, adjustedSize.width) +
+              offset.dx,
+          _normalizeY(points[points.length - 1].dy, adjustedSize.height) +
+              offset.dy,
         );
       } else {
         for (int i = 1; i < points.length; i++) {
@@ -109,8 +119,10 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
     }
   }
 
-  double _normalizeX(double x, double width) => (x - _minX) / (_maxX - _minX) * width;
-  double _normalizeY(double y, double height) => height - (y - _minY) / (_maxY - _minY) * height;
+  double _normalizeX(double x, double width) =>
+      (x - _minX) / (_maxX - _minX) * width;
+  double _normalizeY(double y, double height) =>
+      height - (y - _minY) / (_maxY - _minY) * height;
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;

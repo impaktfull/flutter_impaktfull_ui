@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/adaptive_nav_bar/adaptive_nav_bar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class AdaptiveNavBarLibraryVariant extends ComponentLibraryVariant<AdaptiveNavBarLibraryPrimaryInputs> {
+class AdaptiveNavBarLibraryVariant
+    extends ComponentLibraryVariant<AdaptiveNavBarLibraryPrimaryInputs> {
   const AdaptiveNavBarLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, AdaptiveNavBarLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, AdaptiveNavBarLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiAdaptiveNavBar(
         title: 'Title',
@@ -34,7 +36,8 @@ class AdaptiveNavBarLibraryVariant extends ComponentLibraryVariant<AdaptiveNavBa
   }
 
   @override
-  AdaptiveNavBarLibraryPrimaryInputs inputs() => AdaptiveNavBarLibraryPrimaryInputs();
+  AdaptiveNavBarLibraryPrimaryInputs inputs() =>
+      AdaptiveNavBarLibraryPrimaryInputs();
 }
 
 class AdaptiveNavBarLibraryPrimaryInputs extends AdaptiveNavBarLibraryInputs {}

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui/src/components/selectable_list_item/selectable_list_item_style.dart';
-import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item_style.dart';
+import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'selectable_list_item_style.dart';
 
 part 'selectable_list_item.describe.dart';
 
-class ImpaktfullUiSelectableListItem extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSelectableListItem extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
   final bool isSelected;
@@ -32,7 +33,8 @@ class ImpaktfullUiSelectableListItem extends StatelessWidget with ComponentDescr
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSelectableListItemTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiSelectableListItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
         title: title,
@@ -53,7 +55,9 @@ class ImpaktfullUiSelectableListItem extends StatelessWidget with ComponentDescr
           return TweenAnimationBuilder<Color?>(
             tween: ColorTween(
               begin: componentTheme.colors.unselected,
-              end: isSelected ? componentTheme.colors.selected : componentTheme.colors.unselected,
+              end: isSelected
+                  ? componentTheme.colors.selected
+                  : componentTheme.colors.unselected,
             ),
             curve: Curves.easeInOut,
             duration: componentTheme.durations.color,

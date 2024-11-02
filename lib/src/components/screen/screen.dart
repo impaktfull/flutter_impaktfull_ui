@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.dart';
-import 'package:impaktfull_ui/src/components/screen/screen_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
+import 'package:impaktfull_ui_2/src/components/screen/screen_style.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'screen_style.dart';
 
@@ -46,8 +46,10 @@ class ImpaktfullUiScreen extends StatefulWidget with ComponentDescriptorMixin {
   });
 
   static ImpaktfullUiScreenState of(BuildContext context) {
-    final ImpaktfullUiScreenState? result = context.findAncestorStateOfType<ImpaktfullUiScreenState>();
-    assert(result != null, 'No ImpaktfullUImpaktfullUiScreenStateiScreen found in context');
+    final ImpaktfullUiScreenState? result =
+        context.findAncestorStateOfType<ImpaktfullUiScreenState>();
+    assert(result != null,
+        'No ImpaktfullUImpaktfullUiScreenStateiScreen found in context');
     return result!;
   }
 
@@ -72,7 +74,8 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
             widget.bottomNavBarChild != null;
         final hasBottomChild = widget.bottomChild != null;
         return PopScope(
-          onPopInvokedWithResult: (didPop, result) => widget.onPopInvoked?.call(),
+          onPopInvokedWithResult: (didPop, result) =>
+              widget.onPopInvoked?.call(),
           canPop: widget.canPop,
           child: ClipRect(
             child: Scaffold(
@@ -90,8 +93,12 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                 children: [
                   if (hasNavbar) ...[
                     ImpaktfullUiNavBar(
-                      onBackTapped: widget.drawer == null ? widget.onBackTapped : null,
-                      onDrawerTapped: widget.drawer == null && !widget.isDrawerEnabled ? null : openDrawer,
+                      onBackTapped:
+                          widget.drawer == null ? widget.onBackTapped : null,
+                      onDrawerTapped:
+                          widget.drawer == null && !widget.isDrawerEnabled
+                              ? null
+                              : openDrawer,
                       isDrawerOpen: Scaffold.of(context).isDrawerOpen,
                       isFullScreen: widget.isFullScreen,
                       title: widget.title,
@@ -167,7 +174,8 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
     final state = context.findAncestorStateOfType<ImpaktfullUiScreenState>();
     if (state == null) return null;
     if (state.widget.drawer == null) {
-      final parentContext = context.findAncestorStateOfType<ImpaktfullUiScreenState>()?.context;
+      final parentContext =
+          context.findAncestorStateOfType<ImpaktfullUiScreenState>()?.context;
       if (parentContext == null) return null;
       return _findDrawer(parentContext);
     }

@@ -1,20 +1,20 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/button/button.dart';
-import 'package:impaktfull_ui/src/components/card/card.dart';
-import 'package:impaktfull_ui/src/components/divider/divider.dart';
-import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
-import 'package:impaktfull_ui/src/components/metric/metric_style.dart';
-import 'package:impaktfull_ui/src/components/metric/model/metric_impact_type.dart';
-import 'package:impaktfull_ui/src/components/metric/model/metric_type.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
-import 'package:impaktfull_ui/src/util/text_size/text_size_util.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui_2/src/components/card/card.dart';
+import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
+import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
+import 'package:impaktfull_ui_2/src/components/metric/metric_style.dart';
+import 'package:impaktfull_ui_2/src/components/metric/model/metric_impact_type.dart';
+import 'package:impaktfull_ui_2/src/components/metric/model/metric_type.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
+import 'package:impaktfull_ui_2/src/util/text_size/text_size_util.dart';
 
 export 'model/metric_impact_type.dart';
 export 'model/metric_type.dart';
@@ -102,7 +102,8 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                                       TextSizeUtil.getTextWidth(
                                             context: context,
                                             text: value,
-                                            style: componentTheme.textStyles.value,
+                                            style:
+                                                componentTheme.textStyles.value,
                                           ) +
                                           32,
                                       100,
@@ -117,19 +118,24 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                                       ),
                                       if (extraTextValue != null) ...[
                                         ImpaktfullUiAutoLayout.horizontal(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           spacing: 2,
                                           children: [
-                                            if (leadingExtraTextValue != null) ...[
+                                            if (leadingExtraTextValue !=
+                                                null) ...[
                                               ImpaktfullUiAssetWidget(
                                                 asset: leadingExtraTextValue!,
-                                                color: _getValue2Style(componentTheme).color,
+                                                color: _getValue2Style(
+                                                        componentTheme)
+                                                    .color,
                                                 size: 12,
                                               ),
                                             ],
                                             Text(
                                               extraTextValue!,
-                                              style: _getValue2Style(componentTheme),
+                                              style: _getValue2Style(
+                                                  componentTheme),
                                             ),
                                           ],
                                         ),
@@ -162,10 +168,14 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
                 if (actions.isNotEmpty) ...[
                   const ImpaktfullUiDivider(),
                   Builder(builder: (context) {
-                    final isFirstIconButton = actions.first is ImpaktfullUiIconButton;
-                    final isLastIconButton = actions.last is ImpaktfullUiIconButton;
-                    final containsButton = actions.any((action) => action is ImpaktfullUiButton);
-                    final allIconButtons = actions.all((action) => action is ImpaktfullUiIconButton);
+                    final isFirstIconButton =
+                        actions.first is ImpaktfullUiIconButton;
+                    final isLastIconButton =
+                        actions.last is ImpaktfullUiIconButton;
+                    final containsButton =
+                        actions.any((action) => action is ImpaktfullUiButton);
+                    final allIconButtons = actions
+                        .all((action) => action is ImpaktfullUiIconButton);
 
                     return Padding(
                       padding: EdgeInsetsDirectional.only(

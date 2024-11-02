@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSwitchColorTheme colors;
@@ -17,7 +17,8 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiSwitchTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.switchTheme;
+  static ImpaktfullUiSwitchTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.switchTheme;
 }
 
 class ImpaktfullUiSwitchColorTheme {

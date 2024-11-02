@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 
@@ -45,7 +45,8 @@ class LoginBuildingBlock extends BuildingBlockLibraryItem {
                 ),
                 Text(
                   'Make an impakt on your customers!',
-                  style: theme.textStyles.onAccent.text.medium.withOpacity(0.66),
+                  style:
+                      theme.textStyles.onAccent.text.medium.withOpacity(0.66),
                   textAlign: TextAlign.center,
                 ),
               ],

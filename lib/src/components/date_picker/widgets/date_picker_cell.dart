@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 
 enum ImpaktfullUiDatePickerCellType {
   single,
@@ -56,7 +56,8 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
     );
   }
 
-  BorderRadiusGeometry _getBorderRadius(ImpaktfullUiDatePickerTheme componentTheme) {
+  BorderRadiusGeometry _getBorderRadius(
+      ImpaktfullUiDatePickerTheme componentTheme) {
     switch (type) {
       case ImpaktfullUiDatePickerCellType.single:
         return componentTheme.dimens.borderRadius;

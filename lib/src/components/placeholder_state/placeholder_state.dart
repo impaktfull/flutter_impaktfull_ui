@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/placeholder_state/placeholder_state_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state_style.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'placeholder_state_style.dart';
 
 part 'placeholder_state.describe.dart';
 
-class ImpaktfullUiPlaceholderState extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiPlaceholderState extends StatelessWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? asset;
   final WidgetBuilder? assetBuilder;
   final String? title;

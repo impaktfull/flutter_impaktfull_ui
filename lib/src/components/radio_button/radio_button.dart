@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/radio_button/radio_button_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/radio_button/radio_button_style.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'radio_button_style.dart';
 
 part 'radio_button.describe.dart';
 
-class ImpaktfullUiRadioButton<T> extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiRadioButton<T> extends StatelessWidget
+    with ComponentDescriptorMixin {
   final T value;
   final T groupValue;
   final ValueChanged<T>? onChanged;
@@ -33,7 +34,9 @@ class ImpaktfullUiRadioButton<T> extends StatelessWidget with ComponentDescripto
         height: 20,
         child: ImpaktfullUiTouchFeedback(
           borderRadius: componentTheme.dimens.borderRadius,
-          color: isSelected ? componentTheme.colors.selected : componentTheme.colors.unselected,
+          color: isSelected
+              ? componentTheme.colors.selected
+              : componentTheme.colors.unselected,
           border: Border.all(
             color: componentTheme.colors.border,
             width: 1,

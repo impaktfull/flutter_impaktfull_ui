@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:impaktfull_ui/src/components/markdown/element_builder/code_element_builder.dart';
-import 'package:impaktfull_ui/src/components/markdown/markdown_style.dart';
-import 'package:impaktfull_ui/src/components/network_image/network_image.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/markdown/element_builder/code_element_builder.dart';
+import 'package:impaktfull_ui_2/src/components/markdown/markdown_style.dart';
+import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'markdown_style.dart';
 
@@ -15,7 +15,8 @@ part 'markdown.describe.dart';
 
 typedef ImpaktfullUiMarkdownLinkCallback = FutureOr<void> Function(String url);
 
-class ImpaktfullUiMarkdown extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiMarkdown extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String data;
   final ImpaktfullUiMarkdownLinkCallback? onOpenLink;
   final ImpaktfullUiMarkdownTheme? theme;

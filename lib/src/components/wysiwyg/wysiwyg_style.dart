@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiWysiwygAssetsTheme assets;
@@ -15,7 +15,8 @@ class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiWysiwygTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.wysiwyg;
+  static ImpaktfullUiWysiwygTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.wysiwyg;
 }
 
 class ImpaktfullUiWysiwygAssetsTheme {

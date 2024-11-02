@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/markdown/markdown.dart';
-import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
+import 'package:impaktfull_ui_2/src/components/markdown/markdown.dart';
+import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 
 class WysiwygPreview extends StatelessWidget {
   final String text;

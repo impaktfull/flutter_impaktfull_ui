@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/file_picker/file_picker_style.dart';
-import 'package:impaktfull_ui/src/components/file_picker/model/file_picker_data.dart';
-import 'package:impaktfull_ui/src/components/file_picker/model/file_picker_progress_type.dart';
-import 'package:impaktfull_ui/src/components/file_picker/widgets/file_picker_content.dart';
-import 'package:impaktfull_ui/src/components/file_picker/widgets/file_picker_empty.dart';
-import 'package:impaktfull_ui/src/components/interaction_feedback/hover_feedback/hover_feedback.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/file_picker/file_picker_style.dart';
+import 'package:impaktfull_ui_2/src/components/file_picker/model/file_picker_data.dart';
+import 'package:impaktfull_ui_2/src/components/file_picker/model/file_picker_progress_type.dart';
+import 'package:impaktfull_ui_2/src/components/file_picker/widgets/file_picker_content.dart';
+import 'package:impaktfull_ui_2/src/components/file_picker/widgets/file_picker_empty.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/hover_feedback/hover_feedback.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'model/file_picker_data.dart';
 export 'file_picker_style.dart';
 
 part 'file_picker.describe.dart';
 
-class ImpaktfullUiFilePicker extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiFilePicker extends StatelessWidget
+    with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final ImpaktfullUiFilePickerData? data;
@@ -79,7 +80,8 @@ class ImpaktfullUiFilePicker extends StatelessWidget with ComponentDescriptorMix
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 
-  BoxBorder _getBorder(ImpaktfullUiFilePickerTheme componentTheme, bool isHovered) {
+  BoxBorder _getBorder(
+      ImpaktfullUiFilePickerTheme componentTheme, bool isHovered) {
     Color color;
     if (data == null && isHovered) {
       color = componentTheme.colors.borderDrop;

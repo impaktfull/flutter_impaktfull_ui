@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/asset/asset_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class AssetLibraryVariant extends ComponentLibraryVariant<AssetLibraryPrimaryInputs> {
+class AssetLibraryVariant
+    extends ComponentLibraryVariant<AssetLibraryPrimaryInputs> {
   final ImpaktfullUiAsset asset;
 
   const AssetLibraryVariant({

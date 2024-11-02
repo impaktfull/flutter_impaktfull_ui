@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 part 'responsive_row.describe.dart';
 
-class ImpaktfullUiResponsiveRow extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiResponsiveRow extends StatelessWidget
+    with ComponentDescriptorMixin {
   final List<Widget> children;
   final double verticalSpacing;
   final double horizontalSpacing;
@@ -54,7 +55,10 @@ class ImpaktfullUiResponsiveRow extends StatelessWidget with ComponentDescriptor
       extraLarge: (context) => _buildRow(
         context,
         children,
-        extraLargeMaxColumns ?? largeMaxColumns ?? mediumMaxColumns ?? maxColumns,
+        extraLargeMaxColumns ??
+            largeMaxColumns ??
+            mediumMaxColumns ??
+            maxColumns,
       ),
     );
   }

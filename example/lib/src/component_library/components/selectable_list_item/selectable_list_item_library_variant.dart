@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/selectable_list_item/selectable_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class SelectableListItemLibraryVariant extends ComponentLibraryVariant<SelectableListItemLibraryPrimaryInputs> {
+class SelectableListItemLibraryVariant
+    extends ComponentLibraryVariant<SelectableListItemLibraryPrimaryInputs> {
   const SelectableListItemLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, SelectableListItemLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, SelectableListItemLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiSelectableListItem(
         title: inputs.title.value ?? '',
@@ -23,7 +25,9 @@ class SelectableListItemLibraryVariant extends ComponentLibraryVariant<Selectabl
   }
 
   @override
-  SelectableListItemLibraryPrimaryInputs inputs() => SelectableListItemLibraryPrimaryInputs();
+  SelectableListItemLibraryPrimaryInputs inputs() =>
+      SelectableListItemLibraryPrimaryInputs();
 }
 
-class SelectableListItemLibraryPrimaryInputs extends SelectableListItemLibraryInputs {}
+class SelectableListItemLibraryPrimaryInputs
+    extends SelectableListItemLibraryInputs {}

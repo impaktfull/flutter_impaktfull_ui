@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiPaginationTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiPaginationAssetsTheme assets;
@@ -15,7 +15,8 @@ class ImpaktfullUiPaginationTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiPaginationTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.pagination;
+  static ImpaktfullUiPaginationTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.pagination;
 }
 
 class ImpaktfullUiPaginationAssetsTheme {

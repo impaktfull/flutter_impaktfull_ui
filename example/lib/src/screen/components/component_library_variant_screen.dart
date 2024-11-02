@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_inputs_widget.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class ComponentsLibraryVariantScreen<T extends ComponentLibraryInputs?> extends StatefulWidget {
+class ComponentsLibraryVariantScreen<T extends ComponentLibraryInputs?>
+    extends StatefulWidget {
   final ComponentLibraryVariant<T> variant;
   final bool showInputs;
   const ComponentsLibraryVariantScreen({
@@ -15,7 +16,8 @@ class ComponentsLibraryVariantScreen<T extends ComponentLibraryInputs?> extends 
   });
 
   @override
-  State<ComponentsLibraryVariantScreen> createState() => _ComponentsLibraryVariantScreenState<T>();
+  State<ComponentsLibraryVariantScreen> createState() =>
+      _ComponentsLibraryVariantScreenState<T>();
 }
 
 class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
@@ -46,7 +48,8 @@ class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
               padding: const EdgeInsets.all(32),
               spacing: 8,
               items: widgets,
-              itemBuilder: (context, item, index) => ComponentsLibraryVariantDescriptor(
+              itemBuilder: (context, item, index) =>
+                  ComponentsLibraryVariantDescriptor(
                 child: item,
               ),
               noDataLabel: 'No widgets for ${widget.variant.runtimeType}',

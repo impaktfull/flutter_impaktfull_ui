@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiInputFieldColorTheme colors;
@@ -12,7 +12,8 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiInputFieldTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.inputField;
+  static ImpaktfullUiInputFieldTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.inputField;
 }
 
 class ImpaktfullUiInputFieldColorTheme {

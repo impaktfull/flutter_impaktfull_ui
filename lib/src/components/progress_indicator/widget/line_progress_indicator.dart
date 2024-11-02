@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
   final double value;
@@ -19,7 +19,8 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiProgressIndicatorTheme>(
+    return ImpaktfullUiComponentThemeBuidler<
+        ImpaktfullUiProgressIndicatorTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,7 +43,8 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
                   duration: componentTheme.durations.progress,
                   curve: Curves.easeInOut,
                   tween: Tween(begin: 0, end: value),
-                  builder: (context, animatedValue, child) => FractionallySizedBox(
+                  builder: (context, animatedValue, child) =>
+                      FractionallySizedBox(
                     widthFactor: animatedValue,
                     child: Container(
                       height: 8,

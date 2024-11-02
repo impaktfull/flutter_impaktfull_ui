@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
 
 class BaseInputField extends StatefulWidget {
   final String? placeholder;
@@ -100,8 +100,11 @@ class _BaseInputFieldState extends State<BaseInputField> {
           style: componentTheme.textStyles.text,
           onChanged: _debouncedOnChanged,
           obscureText: widget.obscureText,
-          textInputAction: widget.multiline ? TextInputAction.newline : widget.textInputAction,
-          keyboardType: widget.multiline ? TextInputType.multiline : widget.textInputType,
+          textInputAction: widget.multiline
+              ? TextInputAction.newline
+              : widget.textInputAction,
+          keyboardType:
+              widget.multiline ? TextInputType.multiline : widget.textInputType,
           maxLines: widget.multiline ? widget.maxLines : 1,
           minLines: widget.multiline ? 3 : 1,
           textAlign: widget.textAlign,
@@ -133,5 +136,6 @@ class _BaseInputFieldState extends State<BaseInputField> {
     });
   }
 
-  void _onFocusChanged() => widget.onFocusChanged?.call(widget.focusNode.hasFocus);
+  void _onFocusChanged() =>
+      widget.onFocusChanged?.call(widget.focusNode.hasFocus);
 }

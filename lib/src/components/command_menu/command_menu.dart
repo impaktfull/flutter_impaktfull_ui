@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/command_menu/command_menu_style.dart';
-import 'package:impaktfull_ui/src/components/command_menu/commander/commander.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/command_menu/command_menu_style.dart';
+import 'package:impaktfull_ui_2/src/components/command_menu/commander/commander.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'command_menu_style.dart';
 
 part 'command_menu.describe.dart';
 
-class ImpaktfullUiCommandMenu extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiCommandMenu extends StatefulWidget
+    with ComponentDescriptorMixin {
   final ShortcutActivator? shortcutActivator;
   final Widget child;
-  final Widget Function(BuildContext context, ImpaktfullUiCommandMenuTheme theme, CommanderController controller)
-      builder;
+  final Widget Function(
+      BuildContext context,
+      ImpaktfullUiCommandMenuTheme theme,
+      CommanderController controller) builder;
   final bool autofocus;
   final ImpaktfullUiCommandMenuTheme? theme;
 
@@ -26,7 +29,8 @@ class ImpaktfullUiCommandMenu extends StatefulWidget with ComponentDescriptorMix
   });
 
   @override
-  State<ImpaktfullUiCommandMenu> createState() => _ImpaktfullUiCommandMenuState();
+  State<ImpaktfullUiCommandMenu> createState() =>
+      _ImpaktfullUiCommandMenuState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
@@ -49,7 +53,8 @@ class _ImpaktfullUiCommandMenuState extends State<ImpaktfullUiCommandMenu> {
             bindings: <ShortcutActivator, VoidCallback>{
               shortcutActivator: () => _commanderController.hide(),
             },
-            child: widget.builder(context, componentTheme, _commanderController),
+            child:
+                widget.builder(context, componentTheme, _commanderController),
           ),
           child: Focus(
             autofocus: widget.autofocus,

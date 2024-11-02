@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/section_title/section_title_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class SectionTitleLibraryVariant extends ComponentLibraryVariant<SectionTitleLibraryPrimaryInputs> {
+class SectionTitleLibraryVariant
+    extends ComponentLibraryVariant<SectionTitleLibraryPrimaryInputs> {
   const SectionTitleLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, SectionTitleLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, SectionTitleLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         wrapWithCard: true,
@@ -19,7 +21,8 @@ class SectionTitleLibraryVariant extends ComponentLibraryVariant<SectionTitleLib
           title: inputs.title.value ?? '',
           actions: [
             ImpaktfullUiIconButton(
-              onTap: () => ImpaktfullUiNotification.show(title: 'On add tapped'),
+              onTap: () =>
+                  ImpaktfullUiNotification.show(title: 'On add tapped'),
               asset: theme.assets.icons.add,
             ),
           ],
@@ -48,7 +51,8 @@ class SectionTitleLibraryVariant extends ComponentLibraryVariant<SectionTitleLib
               color: theme.colors.accent,
             ),
             ImpaktfullUiIconButton(
-              onTap: () => ImpaktfullUiNotification.show(title: 'On add tapped'),
+              onTap: () =>
+                  ImpaktfullUiNotification.show(title: 'On add tapped'),
               asset: theme.assets.icons.add,
             ),
           ],
@@ -64,7 +68,8 @@ class SectionTitleLibraryVariant extends ComponentLibraryVariant<SectionTitleLib
   }
 
   @override
-  SectionTitleLibraryPrimaryInputs inputs() => SectionTitleLibraryPrimaryInputs();
+  SectionTitleLibraryPrimaryInputs inputs() =>
+      SectionTitleLibraryPrimaryInputs();
 }
 
 class SectionTitleLibraryPrimaryInputs extends SectionTitleLibraryInputs {}

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/calendar/calendar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class CalendarLibraryVariant extends ComponentLibraryVariant<CalendarLibraryPrimaryInputs> {
+class CalendarLibraryVariant
+    extends ComponentLibraryVariant<CalendarLibraryPrimaryInputs> {
   final ImpaktfullUiCalendarType type;
 
   const CalendarLibraryVariant({
@@ -15,7 +16,8 @@ class CalendarLibraryVariant extends ComponentLibraryVariant<CalendarLibraryPrim
   String get title => type.name;
 
   @override
-  List<Widget> build(BuildContext context, CalendarLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, CalendarLibraryPrimaryInputs inputs) {
     final now = DateTime.now();
     return [
       ComponentsLibraryVariantDescriptor(
@@ -32,8 +34,12 @@ class CalendarLibraryVariant extends ComponentLibraryVariant<CalendarLibraryPrim
             ),
             ImpaktfullUiCalendarEvent(
               title: 'Party',
-              startDate: now.startOfTheDay.beginningOfTheWeek.add(const Duration(days: 3)).setTime(22, 30),
-              endDate: now.beginningOfTheWeek.add(const Duration(days: 4)).setTime(06, 30),
+              startDate: now.startOfTheDay.beginningOfTheWeek
+                  .add(const Duration(days: 3))
+                  .setTime(22, 30),
+              endDate: now.beginningOfTheWeek
+                  .add(const Duration(days: 4))
+                  .setTime(06, 30),
             ),
             ImpaktfullUiCalendarEvent(
               title: 'Saturday - Chill day!',
@@ -68,25 +74,34 @@ class CalendarLibraryVariant extends ComponentLibraryVariant<CalendarLibraryPrim
             for (int i = 0; i < 5; i++) ...[
               ImpaktfullUiCalendarEvent(
                 title: 'Lunch',
-                startDate: now.beginningOfTheWeek.add(Duration(days: i)).setTime(12, 0),
-                endDate: now.beginningOfTheWeek.add(Duration(days: i)).setTime(13, 0),
+                startDate: now.beginningOfTheWeek
+                    .add(Duration(days: i))
+                    .setTime(12, 0),
+                endDate: now.beginningOfTheWeek
+                    .add(Duration(days: i))
+                    .setTime(13, 0),
               ),
             ],
             ImpaktfullUiCalendarEvent(
               title: 'Sync with Team A',
               startDate: now.setTime(10, 0).add(const Duration(days: 2)),
-              endDate: now.setTime(10, 0).add(const Duration(days: 2, minutes: 10)),
+              endDate:
+                  now.setTime(10, 0).add(const Duration(days: 2, minutes: 10)),
             ),
             ImpaktfullUiCalendarEvent(
               title: 'Sync with Team B',
-              startDate: now.setTime(10, 0).add(const Duration(days: 2, minutes: 10)),
-              endDate: now.setTime(10, 0).add(const Duration(days: 2, minutes: 20)),
+              startDate:
+                  now.setTime(10, 0).add(const Duration(days: 2, minutes: 10)),
+              endDate:
+                  now.setTime(10, 0).add(const Duration(days: 2, minutes: 20)),
             ),
             for (int i = 0; i < 100; i++) ...[
               ImpaktfullUiCalendarEvent(
                 title: 'Daily Standup',
-                startDate: now.thisWeekMonday.setTime(9, 0).add(Duration(days: i)),
-                endDate: now.thisWeekMonday.setTime(9, 15).add(Duration(days: i)),
+                startDate:
+                    now.thisWeekMonday.setTime(9, 0).add(Duration(days: i)),
+                endDate:
+                    now.thisWeekMonday.setTime(9, 15).add(Duration(days: i)),
               ),
             ],
             ImpaktfullUiCalendarEvent(
@@ -100,7 +115,8 @@ class CalendarLibraryVariant extends ComponentLibraryVariant<CalendarLibraryPrim
               endDate: now.tomorrow.setTime(06, 30),
             ),
           ],
-          onEventTap: (event) => ImpaktfullUiNotification.show(title: event.title),
+          onEventTap: (event) =>
+              ImpaktfullUiNotification.show(title: event.title),
           type: type,
         ),
       ),

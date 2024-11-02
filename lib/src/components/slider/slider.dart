@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/slider/model/slider_legend_alignment.dart';
-import 'package:impaktfull_ui/src/components/slider/slider_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/components/slider/model/slider_legend_alignment.dart';
+import 'package:impaktfull_ui_2/src/components/slider/slider_style.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'slider_style.dart';
 export 'model/slider_legend_alignment.dart';
@@ -62,12 +62,15 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
         focusNode: _focusNode,
         child: LayoutBuilder(
           builder: (context, constraints) => GestureDetector(
-            onHorizontalDragUpdate: (details) => _onUpdateThumb(details.localPosition.dx, constraints.maxWidth),
-            onTapDown: (details) => _onUpdateThumb(details.localPosition.dx, constraints.maxWidth),
+            onHorizontalDragUpdate: (details) =>
+                _onUpdateThumb(details.localPosition.dx, constraints.maxWidth),
+            onTapDown: (details) =>
+                _onUpdateThumb(details.localPosition.dx, constraints.maxWidth),
             child: Stack(
               children: [
                 if (widget.legendBuilder != null) ...[
-                  if (widget.legendAlignment == ImpaktfullUiSliderLegendAlignment.aboveSlider) ...[
+                  if (widget.legendAlignment ==
+                      ImpaktfullUiSliderLegendAlignment.aboveSlider) ...[
                     Positioned(
                       top: 0,
                       left: 0,
@@ -77,7 +80,8 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                         child: widget.legendBuilder!(context, _currentValue),
                       ),
                     ),
-                  ] else if (widget.legendAlignment == ImpaktfullUiSliderLegendAlignment.belowSlider) ...[
+                  ] else if (widget.legendAlignment ==
+                      ImpaktfullUiSliderLegendAlignment.belowSlider) ...[
                     Positioned(
                       bottom: 0,
                       left: 0,
@@ -87,7 +91,8 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                         child: widget.legendBuilder!(context, _currentValue),
                       ),
                     ),
-                  ] else if (widget.legendAlignment == ImpaktfullUiSliderLegendAlignment.behindSlider) ...[
+                  ] else if (widget.legendAlignment ==
+                      ImpaktfullUiSliderLegendAlignment.behindSlider) ...[
                     Positioned(
                       top: 0,
                       bottom: 0,
@@ -120,8 +125,8 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                         ),
                       ),
                       FractionallySizedBox(
-                        widthFactor:
-                            (_currentValue - widget.min.toDouble()) / (widget.max.toDouble() - widget.min.toDouble()),
+                        widthFactor: (_currentValue - widget.min.toDouble()) /
+                            (widget.max.toDouble() - widget.min.toDouble()),
                         child: Container(
                           height: 4,
                           decoration: BoxDecoration(
@@ -131,13 +136,15 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                               width: 1,
                               strokeAlign: BorderSide.strokeAlignOutside,
                             ),
-                            borderRadius: componentTheme.dimens.trackBorderRadius,
+                            borderRadius:
+                                componentTheme.dimens.trackBorderRadius,
                           ),
                         ),
                       ),
                       Positioned(
                         left: (_currentValue - widget.min.toDouble()) /
-                                (widget.max.toDouble() - widget.min.toDouble()) *
+                                (widget.max.toDouble() -
+                                    widget.min.toDouble()) *
                                 constraints.maxWidth -
                             8,
                         child: Container(
@@ -145,7 +152,8 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                           height: 16,
                           decoration: BoxDecoration(
                             color: componentTheme.colors.thumb,
-                            borderRadius: componentTheme.dimens.thumbBorderRadius,
+                            borderRadius:
+                                componentTheme.dimens.thumbBorderRadius,
                             border: Border.all(
                               color: componentTheme.colors.thumbBorder,
                               width: 1,
