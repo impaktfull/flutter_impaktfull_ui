@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/widget/time/calendar_event_time.dart';
-import 'package:impaktfull_ui_2/src/components/card/card.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/time/calendar_event_time.dart';
+import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiCalendarWeekEventItem extends StatelessWidget {
   final ImpaktfullUiCalendarEvent event;
@@ -26,8 +26,7 @@ class ImpaktfullUiCalendarWeekEventItem extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final isSmall = height < componentTheme.dimens.weekEventMinHeightSmall;
-        final isExtraSmall =
-            height < componentTheme.dimens.weekEventMinHeightExtraSmall;
+        final isExtraSmall = height < componentTheme.dimens.weekEventMinHeightExtraSmall;
         return ImpaktfullUiCard(
           height: max(height, 17),
           padding: EdgeInsets.symmetric(
@@ -56,8 +55,7 @@ class ImpaktfullUiCalendarWeekEventItem extends StatelessWidget {
                       if (showTime) ...[
                         ImpaktfullUiCalendarEventTime(
                           item: event,
-                          style:
-                              componentTheme.textStyles.listItemSubtitleSmall,
+                          style: componentTheme.textStyles.listItemSubtitleSmall,
                         ),
                       ],
                     ],

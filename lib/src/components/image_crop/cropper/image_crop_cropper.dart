@@ -5,7 +5,7 @@ import 'dart:ui' as ui;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/image_crop/model/crop_info.dart';
+import 'package:impaktfull_ui/src/components/image_crop/model/crop_info.dart';
 
 class ImpaktfullUiImageCropCropper {
   /// Crops the image based on the crop info.
@@ -198,9 +198,7 @@ class ImpaktfullUiImageCropCropper {
   Future<ui.Image> downloadImage(String imageUrl) async {
     final completer = Completer<ui.Image>();
     final networkImage = NetworkImage(imageUrl);
-    networkImage
-        .resolve(const ImageConfiguration())
-        .addListener(ImageStreamListener(
+    networkImage.resolve(const ImageConfiguration()).addListener(ImageStreamListener(
       (info, _) {
         final image = info.image;
         completer.complete(image);

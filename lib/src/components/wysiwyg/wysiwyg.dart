@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/button/button.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/widget/wysiwyg_input.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/widget/wysiwyg_preview.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/widget/wysiwyg_input.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/widget/wysiwyg_preview.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'wysiwyg_style.dart';
 export 'model/wysiwyg_type.dart';

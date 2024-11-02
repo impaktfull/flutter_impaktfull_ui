@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/simple_list_item/simple_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class SimpleListItemLibraryVariant
-    extends ComponentLibraryVariant<SimpleListItemLibraryPrimaryInputs> {
+class SimpleListItemLibraryVariant extends ComponentLibraryVariant<SimpleListItemLibraryPrimaryInputs> {
   final ImpaktfullUiSimpleListItemType type;
 
   const SimpleListItemLibraryVariant(
@@ -15,8 +14,7 @@ class SimpleListItemLibraryVariant
   String get title => type.name;
 
   @override
-  List<Widget> build(
-      BuildContext context, SimpleListItemLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, SimpleListItemLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiSimpleListItem(
         title: inputs.title.value ?? '',
@@ -39,8 +37,7 @@ class SimpleListItemLibraryVariant
   }
 
   @override
-  SimpleListItemLibraryPrimaryInputs inputs() =>
-      SimpleListItemLibraryPrimaryInputs();
+  SimpleListItemLibraryPrimaryInputs inputs() => SimpleListItemLibraryPrimaryInputs();
 }
 
 class SimpleListItemLibraryPrimaryInputs extends SimpleListItemLibraryInputs {}

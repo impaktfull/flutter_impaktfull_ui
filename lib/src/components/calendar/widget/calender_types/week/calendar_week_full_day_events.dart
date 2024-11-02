@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_event_item.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
-import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
+import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/week/calendar_week_event_item.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
 
 class ImpaktfullUiCalendarWeekFullDayEvents extends StatefulWidget {
   final List<ImpaktfullUiCalendarEvent> events;
@@ -24,12 +24,10 @@ class ImpaktfullUiCalendarWeekFullDayEvents extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiCalendarWeekFullDayEvents> createState() =>
-      _ImpaktfullUiCalendarWeekFullDayEventsState();
+  State<ImpaktfullUiCalendarWeekFullDayEvents> createState() => _ImpaktfullUiCalendarWeekFullDayEventsState();
 }
 
-class _ImpaktfullUiCalendarWeekFullDayEventsState
-    extends State<ImpaktfullUiCalendarWeekFullDayEvents> {
+class _ImpaktfullUiCalendarWeekFullDayEventsState extends State<ImpaktfullUiCalendarWeekFullDayEvents> {
   final _eventsPerDay = <int, List<ImpaktfullUiCalendarEvent>>{};
   final _dayOffsets = <int, int>{};
 
@@ -40,8 +38,7 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
   }
 
   @override
-  void didUpdateWidget(
-      covariant ImpaktfullUiCalendarWeekFullDayEvents oldWidget) {
+  void didUpdateWidget(covariant ImpaktfullUiCalendarWeekFullDayEvents oldWidget) {
     super.didUpdateWidget(oldWidget);
     // if (oldWidget.amountOfDays != widget.amountOfDays || oldWidget.events != widget.events) {
     _setEventsPerDay();
@@ -58,40 +55,28 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
             color: componentTheme.colors.headerBackground,
           ),
           child: SizedBox(
-            height: _calculateHeight(
-                componentTheme.dimens.weekEventMinHeightExtraSmall),
+            height: _calculateHeight(componentTheme.dimens.weekEventMinHeightExtraSmall),
             child: LayoutBuilder(
               builder: (context, constratins) {
                 final widthPerDay = constratins.maxWidth / widget.amountOfDays;
                 return Stack(
                   children: [
-                    for (var dayIndex = 0;
-                        dayIndex < widget.amountOfDays;
-                        ++dayIndex) ...[
-                      for (var eventIndex = 0;
-                          eventIndex < _eventsPerDay[dayIndex]!.length;
-                          ++eventIndex) ...[
+                    for (var dayIndex = 0; dayIndex < widget.amountOfDays; ++dayIndex) ...[
+                      for (var eventIndex = 0; eventIndex < _eventsPerDay[dayIndex]!.length; ++eventIndex) ...[
                         Builder(
                           builder: (context) {
                             final event = _eventsPerDay[dayIndex]![eventIndex];
                             final dayOffset = _dayOffsets[dayIndex] ?? 0;
-                            final amountOfDays = event.endDate
-                                    .difference(event.startDate)
-                                    .inDays +
-                                1;
+                            final amountOfDays = event.endDate.difference(event.startDate).inDays + 1;
                             return Positioned(
-                              top: (eventIndex + dayOffset) *
-                                  componentTheme
-                                      .dimens.weekEventMinHeightExtraSmall,
+                              top: (eventIndex + dayOffset) * componentTheme.dimens.weekEventMinHeightExtraSmall,
                               left: dayIndex * widthPerDay,
                               width: widthPerDay * amountOfDays,
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 2),
+                                padding: const EdgeInsets.symmetric(horizontal: 2),
                                 child: ImpaktfullUiCalendarWeekEventItem(
                                   event: event,
-                                  height: componentTheme
-                                      .dimens.weekEventMinHeightExtraSmall,
+                                  height: componentTheme.dimens.weekEventMinHeightExtraSmall,
                                   onTap: () => widget.onEventTap(event),
                                   theme: widget.theme,
                                 ),
@@ -115,8 +100,7 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
     final fullDayEvents = widget.events.where((event) {
       final startDate = event.startDate;
       final endDate = event.endDate;
-      return (startDate.isBefore(widget.dateRange.end) &&
-          endDate.isAfter(widget.dateRange.start));
+      return (startDate.isBefore(widget.dateRange.end) && endDate.isAfter(widget.dateRange.start));
     });
     _setFullDayEvents(fullDayEvents);
     _setDayOffset();
@@ -174,8 +158,7 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
   double _calculateHeight(double componentHeight) {
     var maxAmountOfEvents = 0;
     for (var i = 0; i < widget.amountOfDays; ++i) {
-      final amountOfEvents =
-          (_eventsPerDay[i]?.length ?? 0) + (_dayOffsets[i] ?? 0);
+      final amountOfEvents = (_eventsPerDay[i]?.length ?? 0) + (_dayOffsets[i] ?? 0);
       maxAmountOfEvents = max(maxAmountOfEvents, amountOfEvents);
     }
     final spacing = (maxAmountOfEvents - 1) * 4;

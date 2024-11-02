@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiAutoCompleteOverlay<T> extends StatefulWidget {
   static const double defaultHeight = 300;
@@ -27,12 +27,10 @@ class ImpaktfullUiAutoCompleteOverlay<T> extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiAutoCompleteOverlay<T>> createState() =>
-      ImpaktfullUiAutoCompleteOverlayState<T>();
+  State<ImpaktfullUiAutoCompleteOverlay<T>> createState() => ImpaktfullUiAutoCompleteOverlayState<T>();
 }
 
-class ImpaktfullUiAutoCompleteOverlayState<T>
-    extends State<ImpaktfullUiAutoCompleteOverlay<T>> {
+class ImpaktfullUiAutoCompleteOverlayState<T> extends State<ImpaktfullUiAutoCompleteOverlay<T>> {
   DateTime? _latestSearch;
   final _items = <T>[];
   var _isLoading = true;
@@ -67,8 +65,7 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
           items: _items,
           reversed: widget.isShownAboveInputField,
           isLoading: _isLoading,
-          itemBuilder: (contesxt, item, index) =>
-              widget.itemBuilder(context, item, index),
+          itemBuilder: (contesxt, item, index) => widget.itemBuilder(context, item, index),
           noDataLabel: widget.noDataLabel,
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/models/asset.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiCheckboxColorTheme colors;
@@ -15,8 +15,7 @@ class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiCheckboxTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.checkbox;
+  static ImpaktfullUiCheckboxTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.checkbox;
 
   ImpaktfullUiCheckboxTheme copyWith({
     ImpaktfullUiCheckboxColorTheme? colors,

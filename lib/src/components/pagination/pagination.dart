@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/button/button.dart';
-import 'package:impaktfull_ui_2/src/components/pagination/pagination_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/pagination/pagination_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'pagination_style.dart';
 
 part 'pagination.describe.dart';
 
-class ImpaktfullUiPagination extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiPagination extends StatelessWidget with ComponentDescriptorMixin {
   final int page;
   final int itemsPerPage;
   final int amountOfItems;

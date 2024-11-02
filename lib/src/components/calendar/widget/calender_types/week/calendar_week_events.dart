@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/week/calendar_week_event_item.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/week/calendar_week_event_item.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 
 class ImpaktfullUiCalendarWeekEvents extends StatefulWidget {
   final DateTimeRange dateRange;
@@ -22,12 +22,10 @@ class ImpaktfullUiCalendarWeekEvents extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiCalendarWeekEvents> createState() =>
-      _ImpaktfullUiCalendarWeekEventsState();
+  State<ImpaktfullUiCalendarWeekEvents> createState() => _ImpaktfullUiCalendarWeekEventsState();
 }
 
-class _ImpaktfullUiCalendarWeekEventsState
-    extends State<ImpaktfullUiCalendarWeekEvents> {
+class _ImpaktfullUiCalendarWeekEventsState extends State<ImpaktfullUiCalendarWeekEvents> {
   final _weekEvents = <ImpaktfullUiCalendarEvent>[];
 
   @override
@@ -39,8 +37,7 @@ class _ImpaktfullUiCalendarWeekEventsState
   @override
   void didUpdateWidget(covariant ImpaktfullUiCalendarWeekEvents oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.events != widget.events ||
-        oldWidget.dateRange != widget.dateRange) {
+    if (oldWidget.events != widget.events || oldWidget.dateRange != widget.dateRange) {
       _setWeekEvents();
     }
   }
@@ -51,9 +48,7 @@ class _ImpaktfullUiCalendarWeekEventsState
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
         children: [
-          for (var dayIndex = 0;
-              dayIndex < widget.amountOfDays;
-              ++dayIndex) ...[
+          for (var dayIndex = 0; dayIndex < widget.amountOfDays; ++dayIndex) ...[
             Expanded(
               child: Stack(
                 children: _buildEventsForDay(dayIndex, componentTheme),
@@ -65,14 +60,12 @@ class _ImpaktfullUiCalendarWeekEventsState
     );
   }
 
-  List<Widget> _buildEventsForDay(
-      int dayIndex, ImpaktfullUiCalendarTheme componentTheme) {
+  List<Widget> _buildEventsForDay(int dayIndex, ImpaktfullUiCalendarTheme componentTheme) {
     final currentDayDate = widget.dateRange.start.add(Duration(days: dayIndex));
     final eventsForDay = _weekEvents.where((event) {
       final eventStartDate = event.startDate;
       final eventEndDate = event.endDate;
-      return eventStartDate.isSameDay(currentDayDate) ||
-          eventEndDate.isSameDay(currentDayDate);
+      return eventStartDate.isSameDay(currentDayDate) || eventEndDate.isSameDay(currentDayDate);
     }).toList();
 
     // Sort events by start time
@@ -83,32 +76,22 @@ class _ImpaktfullUiCalendarWeekEventsState
 
     for (int i = 0; i < eventsForDay.length; i++) {
       final event = eventsForDay[i];
-      final startDateTime = event.startDate.isSameDay(currentDayDate)
-          ? event.startDate
-          : currentDayDate.startOfTheDay;
-      final endDateTime = event.endDate.isSameDay(currentDayDate)
-          ? event.endDate
-          : currentDayDate.endOfTheDay;
+      final startDateTime = event.startDate.isSameDay(currentDayDate) ? event.startDate : currentDayDate.startOfTheDay;
+      final endDateTime = event.endDate.isSameDay(currentDayDate) ? event.endDate : currentDayDate.endOfTheDay;
 
-      final top = (startDateTime.hour + (startDateTime.minute / 60)) *
-          componentTheme.dimens.weekHourHeight;
-      final maxDifferenceInHours =
-          (endDateTime.difference(startDateTime).inMinutes / 60)
-              .clamp(0.0, 24.0);
-      final height =
-          maxDifferenceInHours * componentTheme.dimens.weekHourHeight;
+      final top = (startDateTime.hour + (startDateTime.minute / 60)) * componentTheme.dimens.weekHourHeight;
+      final maxDifferenceInHours = (endDateTime.difference(startDateTime).inMinutes / 60).clamp(0.0, 24.0);
+      final height = maxDifferenceInHours * componentTheme.dimens.weekHourHeight;
 
       // Check if this event starts at the same time as the previous one
-      final sameStartAsLast =
-          i > 0 && eventsForDay[i - 1].startDate == event.startDate;
+      final sameStartAsLast = i > 0 && eventsForDay[i - 1].startDate == event.startDate;
 
       // Find a free slot for the event
       int slot = 0;
       if (sameStartAsLast) {
         slot = occupiedSlots.length;
       } else {
-        while (slot < occupiedSlots.length &&
-            occupiedSlots[slot].any((end) => end > top)) {
+        while (slot < occupiedSlots.length && occupiedSlots[slot].any((end) => end > top)) {
           slot++;
         }
       }
@@ -150,14 +133,10 @@ class _ImpaktfullUiCalendarWeekEventsState
       if (duration >= const Duration(hours: 23, minutes: 59, seconds: 59)) {
         return false;
       }
-      return (startDate.isAfter(
-                  widget.dateRange.start.subtract(const Duration(days: 1))) &&
-              startDate.isBefore(
-                  widget.dateRange.end.add(const Duration(days: 1)))) ||
-          (endDate.isAfter(
-                  widget.dateRange.start.subtract(const Duration(days: 1))) &&
-              endDate
-                  .isBefore(widget.dateRange.end.add(const Duration(days: 1))));
+      return (startDate.isAfter(widget.dateRange.start.subtract(const Duration(days: 1))) &&
+              startDate.isBefore(widget.dateRange.end.add(const Duration(days: 1)))) ||
+          (endDate.isAfter(widget.dateRange.start.subtract(const Duration(days: 1))) &&
+              endDate.isBefore(widget.dateRange.end.add(const Duration(days: 1))));
     });
     _weekEvents.clear();
     _weekEvents.addAll(weekEvents);

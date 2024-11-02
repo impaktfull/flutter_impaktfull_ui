@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/autolayout/autolayout_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class AutoLayoutLibraryVariant
-    extends ComponentLibraryVariant<AutoLayoutLibraryPrimaryInputs> {
+class AutoLayoutLibraryVariant extends ComponentLibraryVariant<AutoLayoutLibraryPrimaryInputs> {
   final ImpaktfullUiAutoLayoutOrientation orientation;
   const AutoLayoutLibraryVariant(
     this.orientation,
@@ -15,8 +14,7 @@ class AutoLayoutLibraryVariant
   String get title => orientation.name;
 
   @override
-  List<Widget> build(
-      BuildContext context, AutoLayoutLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, AutoLayoutLibraryPrimaryInputs inputs) {
     return [
       for (final mainAxisAlignment in MainAxisAlignment.values) ...[
         ComponentsLibraryVariantDescriptor(

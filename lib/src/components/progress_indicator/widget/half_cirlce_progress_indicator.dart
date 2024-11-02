@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiHalfCircleProgressIndicator extends StatelessWidget {
   final double value;
@@ -20,11 +20,9 @@ class ImpaktfullUiHalfCircleProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
-        ImpaktfullUiProgressIndicatorTheme>(
+    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiProgressIndicatorTheme>(
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) =>
-          LayoutBuilder(builder: (context, constraints) {
+      builder: (context, componentTheme) => LayoutBuilder(builder: (context, constraints) {
         final size = min(constraints.maxWidth, constraints.maxHeight);
         return SizedBox(
           width: size,
@@ -42,8 +40,7 @@ class ImpaktfullUiHalfCircleProgressIndicator extends StatelessWidget {
                       progress: animatedValue,
                       strokeWidth: componentTheme.dimens.height,
                       backgroundColor: componentTheme.colors.background,
-                      foregroundColor:
-                          color ?? componentTheme.colors.foreground,
+                      foregroundColor: color ?? componentTheme.colors.foreground,
                       borderColor: componentTheme.colors.border,
                     ),
                   ),

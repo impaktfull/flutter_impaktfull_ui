@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/models/asset.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
 
 mixin ComponentDescriptorMixin {
   String describe(BuildContext context);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:impaktfull_ui_2/src/components/app/app.dart';
-import 'package:impaktfull_ui_2/src/components/container/container.dart';
+import 'package:impaktfull_ui/src/components/app/app.dart';
+import 'package:impaktfull_ui/src/components/container/container.dart';
 
 Future<void> pumpAndSettleComponent(WidgetTester tester, Widget widget) async {
   final app = ImpaktfullUiApp(
@@ -18,8 +18,7 @@ Future<void> pumpAndSettleComponent(WidgetTester tester, Widget widget) async {
 }
 
 extension CommonFindersExtension on CommonFinders {
-  T findWidget<T extends Widget>(
-      WidgetTester tester, Type type, bool Function(T) condition) {
+  T findWidget<T extends Widget>(WidgetTester tester, Type type, bool Function(T) condition) {
     final value = byType(type);
     expect(value, findsAtLeast(1));
     final results = value.evaluate();
@@ -32,8 +31,7 @@ extension CommonFindersExtension on CommonFinders {
     throw Exception('Widget not found');
   }
 
-  List<T> findWidgets<T extends Widget>(
-      WidgetTester tester, Type type, bool Function(T) condition) {
+  List<T> findWidgets<T extends Widget>(WidgetTester tester, Type type, bool Function(T) condition) {
     final value = byType(type);
     expect(value, findsAtLeast(1));
     final results = value.evaluate();

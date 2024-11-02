@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/table/table_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
@@ -44,9 +44,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                   ImpaktfullUiTableRowItem.text(title: 'Value $i'),
                   ImpaktfullUiTableRowItem.badge(
                     title: i % 2 == 0 ? 'Paid' : 'Failed',
-                    badgeType: i % 2 == 0
-                        ? ImpaktfullUiBadgeType.success
-                        : ImpaktfullUiBadgeType.error,
+                    badgeType: i % 2 == 0 ? ImpaktfullUiBadgeType.success : ImpaktfullUiBadgeType.error,
                   ),
                 ],
               ),
@@ -82,9 +80,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                 columnConfig: columnConfig,
                 columns: [
                   ImpaktfullUiTableRowItem.checkbox(
-                    isSelected: inputs.selectedAll.value == true
-                        ? true
-                        : i == inputs.selectedIndex.value,
+                    isSelected: inputs.selectedAll.value == true ? true : i == inputs.selectedIndex.value,
                     onChanged: (value) {
                       inputs.selectedIndex.toggle(i);
 
@@ -101,8 +97,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                   ImpaktfullUiTableRowItem.badge(title: 'Value $i'),
                   ImpaktfullUiTableRowItem.text(title: 'Value $i'),
                   ImpaktfullUiTableRowItem.custom(
-                    builder: (context, theme) =>
-                        ImpaktfullUiAutoLayout.horizontal(
+                    builder: (context, theme) => ImpaktfullUiAutoLayout.horizontal(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         ImpaktfullUiIconButton(
@@ -119,8 +114,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                           },
                           size: 20,
                           color: Colors.green,
-                          asset:
-                              ImpaktfullUiAsset.icon(PhosphorIcons.sealCheck()),
+                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.sealCheck()),
                         ),
                         ImpaktfullUiIconButton(
                           onTap: () {
@@ -135,8 +129,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                             );
                           },
                           size: 20,
-                          asset: ImpaktfullUiAsset.icon(
-                              PhosphorIcons.pencilSimple()),
+                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
                         ),
                         ImpaktfullUiIconButton(
                           onTap: () {
@@ -144,8 +137,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                             SnackyController.instance.showMessage(
                               (context) => const Snacky(
                                 title: 'Failed to delete',
-                                subtitle:
-                                    'It is not possible to delete this item',
+                                subtitle: 'It is not possible to delete this item',
                                 type: SnackyType.error,
                                 canBeClosed: true,
                               ),

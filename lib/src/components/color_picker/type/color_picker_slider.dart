@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
+import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
 
 class ImpaktfullUiColorPickerSlider extends StatelessWidget {
   final Color? selectedColor;

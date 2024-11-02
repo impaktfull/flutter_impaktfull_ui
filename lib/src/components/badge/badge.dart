@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui_2/src/models/asset.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/badge/badge.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'badge_style.dart';
 export 'badge_type.dart';
@@ -52,10 +52,8 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiBadgeTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
-        final hasLeading =
-            widget.leading != null || widget.leadingAsset != null;
-        final hasTrailing =
-            widget.trailing != null || widget.trailingAsset != null;
+        final hasLeading = widget.leading != null || widget.leadingAsset != null;
+        final hasTrailing = widget.trailing != null || widget.trailingAsset != null;
         final textColor = _getColor(componentTheme);
         final borderColor = _getBorderColor(componentTheme);
         final backgroundColor = _getBackgroundColor(componentTheme);
@@ -71,12 +69,10 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
           ),
           padding: EdgeInsets.only(
             left: hasLeading
-                ? (widget.size.horizontalPadding / 2) -
-                    widget.size.paddingOffset
+                ? (widget.size.horizontalPadding / 2) - widget.size.paddingOffset
                 : widget.size.horizontalPadding,
             right: hasTrailing
-                ? (widget.size.horizontalPadding / 2) -
-                    widget.size.paddingOffset
+                ? (widget.size.horizontalPadding / 2) - widget.size.paddingOffset
                 : widget.size.horizontalPadding,
             top: widget.size.verticalPadding,
             bottom: widget.size.verticalPadding,

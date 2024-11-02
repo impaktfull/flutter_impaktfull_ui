@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/image_crop/overlay/image_crop_overlay.dart';
+import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_overlay.dart';
 
 class ImpaktfullUiImageCropCircleOverlay extends ImpaktfullUiImageCropOverlay {
   final Color overlayColor;
@@ -63,8 +63,7 @@ class ImpaktfullUiImageCropCircleOverlayPainter extends CustomPainter {
       ..strokeWidth = borderWidth;
 
     if (isDashedBorder) {
-      _drawDashedCircle(
-          canvas, cropRect.center, cropRect.width / 2, borderPaint);
+      _drawDashedCircle(canvas, cropRect.center, cropRect.width / 2, borderPaint);
     } else {
       canvas.drawCircle(
         cropRect.center,
@@ -74,8 +73,7 @@ class ImpaktfullUiImageCropCircleOverlayPainter extends CustomPainter {
     }
   }
 
-  void _drawDashedCircle(
-      Canvas canvas, Offset center, double radius, Paint paint) {
+  void _drawDashedCircle(Canvas canvas, Offset center, double radius, Paint paint) {
     const dashCount = 60;
     var startAngle = 0.0;
 

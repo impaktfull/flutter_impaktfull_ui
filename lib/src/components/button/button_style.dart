@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiButtonColorTheme colors;
@@ -14,8 +14,7 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiButtonTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.button;
+  static ImpaktfullUiButtonTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.button;
 }
 
 class ImpaktfullUiButtonColorTheme {

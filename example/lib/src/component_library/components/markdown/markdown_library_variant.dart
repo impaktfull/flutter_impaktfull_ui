@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/markdown/markdown_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class MarkdownLibraryVariant
-    extends ComponentLibraryVariant<MarkdownLibraryPrimaryInputs> {
+class MarkdownLibraryVariant extends ComponentLibraryVariant<MarkdownLibraryPrimaryInputs> {
   const MarkdownLibraryVariant();
 
   @override
@@ -79,8 +78,7 @@ This code is something you could use to do everything with: `ImpaktfullUiApp.doE
 ''';
 
   @override
-  List<Widget> build(
-      BuildContext context, MarkdownLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, MarkdownLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         isScrollable: true,

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiColorPickerTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiColorPickerAssetsTheme assets;
@@ -14,8 +14,7 @@ class ImpaktfullUiColorPickerTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiColorPickerTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.colorPicker;
+  static ImpaktfullUiColorPickerTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.colorPicker;
 }
 
 class ImpaktfullUiColorPickerAssetsTheme {

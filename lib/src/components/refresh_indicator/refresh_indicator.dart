@@ -1,14 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'refresh_indicator_style.dart';
 part 'refresh_indicator.describe.dart';
 
-class ImpaktfullUiRefreshIndicator extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiRefreshIndicator extends StatelessWidget with ComponentDescriptorMixin {
   final AsyncCallback? onRefresh;
   final ImpaktfullUiRefreshIndicatorTheme? theme;
   final Widget child;

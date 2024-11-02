@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/floating_action_button/floating_action_button_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui_2/src/models/asset.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/floating_action_button/floating_action_button_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'floating_action_button_style.dart';
 
 part 'floating_action_button.describe.dart';
 
-class ImpaktfullUiFloatingActionButton extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiFloatingActionButton extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiAsset asset;
   final String? label;
   final bool expanded;
@@ -29,15 +28,13 @@ class ImpaktfullUiFloatingActionButton extends StatefulWidget
   }) : expanded = label == null ? false : expanded;
 
   @override
-  State<ImpaktfullUiFloatingActionButton> createState() =>
-      _ImpaktfullUiFloatingActionButtonState();
+  State<ImpaktfullUiFloatingActionButton> createState() => _ImpaktfullUiFloatingActionButtonState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiFloatingActionButtonState
-    extends State<ImpaktfullUiFloatingActionButton>
+class _ImpaktfullUiFloatingActionButtonState extends State<ImpaktfullUiFloatingActionButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -78,15 +75,12 @@ class _ImpaktfullUiFloatingActionButtonState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
-        ImpaktfullUiFloatingActionButtonTheme>(
+    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiFloatingActionButtonTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: widget.onTap,
         toolTip: widget.label,
-        color: widget.onTap == null
-            ? componentTheme.colors.backgroundDisabled
-            : componentTheme.colors.background,
+        color: widget.onTap == null ? componentTheme.colors.backgroundDisabled : componentTheme.colors.background,
         borderRadius: componentTheme.dimens.borderRadius,
         child: Padding(
           padding: const EdgeInsets.all(12),
@@ -105,9 +99,7 @@ class _ImpaktfullUiFloatingActionButtonState
                   builder: (context, child) {
                     return ClipRect(
                       child: SizedBox(
-                        width: _animation.value *
-                            getSize(
-                                widget.label!, componentTheme.textStyles.label),
+                        width: _animation.value * getSize(widget.label!, componentTheme.textStyles.label),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.only(
                             start: 12,

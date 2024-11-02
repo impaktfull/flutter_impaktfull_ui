@@ -1,18 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/accordion/accordion.dart';
-import 'package:impaktfull_ui_2/src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
-import 'package:impaktfull_ui_2/src/components/adaptive_screen/adaptive_screen.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/card/card.dart';
-import 'package:impaktfull_ui_2/src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
-import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
-import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui_2/src/components/markdown/markdown.dart';
-import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
-import 'package:impaktfull_ui_2/src/models/license.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/components/accordion/accordion.dart';
+import 'package:impaktfull_ui/src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
+import 'package:impaktfull_ui/src/components/adaptive_screen/adaptive_screen.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
+import 'package:impaktfull_ui/src/components/divider/divider.dart';
+import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui/src/components/markdown/markdown.dart';
+import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
+import 'package:impaktfull_ui/src/models/license.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiBBLicenses extends StatefulWidget {
   final VoidCallback? onBackTapped;
@@ -64,8 +64,7 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
 
   @override
   Widget build(BuildContext context) {
-    final showSearch =
-        _search || !ImpaktfullUiResponsiveLayout.isSmall(context);
+    final showSearch = _search || !ImpaktfullUiResponsiveLayout.isSmall(context);
     return ImpaktfullUiAdaptiveScreen(
       title: 'Licenses',
       onBackTapped: widget.onBackTapped,

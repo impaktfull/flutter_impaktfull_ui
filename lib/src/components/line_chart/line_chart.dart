@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/line_chart_style.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_item_data.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_item_style.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_painter_data.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/painter/line_chart_painter.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/line_chart/line_chart_style.dart';
+import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_data.dart';
+import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_style.dart';
+import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_painter_data.dart';
+import 'package:impaktfull_ui/src/components/line_chart/painter/line_chart_painter.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'line_chart_style.dart';
 export 'model/line_chart_item_data.dart';
@@ -14,8 +14,7 @@ export 'model/line_chart_item_style.dart';
 
 part 'line_chart.describe.dart';
 
-class ImpaktfullUiLineChart extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiLineChart extends StatefulWidget with ComponentDescriptorMixin {
   final double? width;
   final double? height;
   final List<ImpaktfullUiLineChartItemData> data;
@@ -78,9 +77,7 @@ class _ImpaktfullUiLineChartState extends State<ImpaktfullUiLineChart> {
   void _setPainterData() {
     painterData = widget.data
         .map((e) => ImpaktfullUiLineChartPainterData(
-              points: e.points
-                  .map((point) => e.offsetBuilder(point.x, point.y))
-                  .toList(),
+              points: e.points.map((point) => e.offsetBuilder(point.x, point.y)).toList(),
               minX: e.minX,
               maxX: e.maxX,
               minY: e.minY,

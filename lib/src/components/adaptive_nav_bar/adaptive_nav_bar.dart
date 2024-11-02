@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/adaptive_nav_bar/model/adaptive_nav_bar_action.dart';
-import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
-import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
-import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/adaptive_nav_bar/model/adaptive_nav_bar_action.dart';
+import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
+import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.dart';
+import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'model/adaptive_nav_bar_action.dart';
 export 'model/adaptive_nav_bar_action_type.dart';
 
 part 'adaptive_nav_bar.describe.dart';
 
-class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiAdaptiveNavBar extends StatelessWidget with ComponentDescriptorMixin {
   final String title;
   final String? badge;
   final String? subtitle;

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 ImpaktfullUiTheme? _theme;
 ImpaktfullUiTheme? _testTheme;
@@ -8,16 +8,14 @@ Locale? _locale;
 ImpaktfullUiTheme get theme {
   if (_testTheme != null) return _testTheme!;
   if (_theme == null) {
-    throw Exception(
-        'Impaktfull theme is not set, make sure you call setImpaktfullTheme() before using theme.');
+    throw Exception('Impaktfull theme is not set, make sure you call setImpaktfullTheme() before using theme.');
   }
   return _theme!;
 }
 
 Locale get locale {
   if (_locale == null) {
-    throw Exception(
-        'Impaktfull locale is not set, make sure you call setImpaktfullLocale() before using theme.');
+    throw Exception('Impaktfull locale is not set, make sure you call setImpaktfullLocale() before using theme.');
   }
   return _locale!;
 }

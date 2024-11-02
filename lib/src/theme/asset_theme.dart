@@ -1,5 +1,5 @@
-import 'package:impaktfull_ui_2/src/models/asset.dart';
-import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ImpaktfullUiAssetTheme {
@@ -46,8 +46,7 @@ class ImpaktfullUiAssetTheme {
               chevronUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
               circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle()),
               close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
-              cloudDownload:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown()),
+              cloudDownload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown()),
               cloudUpload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowUp()),
               confetti: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
               copy: ImpaktfullUiAsset.icon(PhosphorIcons.copy()),
@@ -57,36 +56,29 @@ class ImpaktfullUiAssetTheme {
               file: ImpaktfullUiAsset.icon(PhosphorIcons.file()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
-              lineVertical:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
+              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
               logout: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
               minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
               moreHorizontal: ImpaktfullUiAsset.icon(PhosphorIcons.dotsThree()),
-              moreVertical:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.dotsThreeVertical()),
+              moreVertical: ImpaktfullUiAsset.icon(PhosphorIcons.dotsThreeVertical()),
               search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
-              share: ImpaktfullUiAsset.icon(DeviceUtil.isAndroid()
-                  ? PhosphorIcons.shareNetwork()
-                  : PhosphorIcons.export()),
+              share: ImpaktfullUiAsset.icon(
+                  DeviceUtil.isAndroid() ? PhosphorIcons.shareNetwork() : PhosphorIcons.export()),
               settings: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
               success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
               user: ImpaktfullUiAsset.icon(PhosphorIcons.user()),
               warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
               wysiwygBold: ImpaktfullUiAsset.icon(PhosphorIcons.textB()),
               wysiwygCode: ImpaktfullUiAsset.icon(PhosphorIcons.code()),
-              wysiwygCodeBlock:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.codeBlock()),
+              wysiwygCodeBlock: ImpaktfullUiAsset.icon(PhosphorIcons.codeBlock()),
               wysiwygHeader: ImpaktfullUiAsset.icon(PhosphorIcons.textH()),
               wysiwygItalic: ImpaktfullUiAsset.icon(PhosphorIcons.textItalic()),
               wysiwygLink: ImpaktfullUiAsset.icon(PhosphorIcons.link()),
-              wysiwygOrderedList:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers()),
+              wysiwygOrderedList: ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers()),
               wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image()),
-              wysiwygUnorderedList:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.listBullets()),
-              wysiwygUnorderedListItem:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.dot()),
+              wysiwygUnorderedList: ImpaktfullUiAsset.icon(PhosphorIcons.listBullets()),
+              wysiwygUnorderedListItem: ImpaktfullUiAsset.icon(PhosphorIcons.dot()),
             ),
         images: images ??
             ImpaktfullUiImageTheme(
@@ -343,8 +335,7 @@ class ImpaktfullUiIconTheme {
         wysiwygOrderedList: wysiwygOrderedList ?? this.wysiwygOrderedList,
         wysiwygPhoto: wysiwygPhoto ?? this.wysiwygPhoto,
         wysiwygUnorderedList: wysiwygUnorderedList ?? this.wysiwygUnorderedList,
-        wysiwygUnorderedListItem:
-            wysiwygUnorderedListItem ?? this.wysiwygUnorderedListItem,
+        wysiwygUnorderedListItem: wysiwygUnorderedListItem ?? this.wysiwygUnorderedListItem,
       );
 }
 

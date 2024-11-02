@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'responsive_layout_style.dart';
 
 part 'responsive_layout.describe.dart';
 
-class ImpaktfullUiResponsiveLayout extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiResponsiveLayout extends StatelessWidget with ComponentDescriptorMixin {
   final WidgetBuilder small;
   final WidgetBuilder? medium;
   final WidgetBuilder? large;
@@ -24,35 +23,27 @@ class ImpaktfullUiResponsiveLayout extends StatelessWidget
     super.key,
   });
 
-  static bool isSmall(BuildContext context,
-      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+  static bool isSmall(BuildContext context, {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
     final screenSize = MediaQuery.sizeOf(context);
-    final componentTheme =
-        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    final componentTheme = overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
     return screenSize.width < componentTheme.dimens.breakpointSmall;
   }
 
-  static bool isMedium(BuildContext context,
-      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+  static bool isMedium(BuildContext context, {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
     final screenSize = MediaQuery.sizeOf(context);
-    final componentTheme =
-        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    final componentTheme = overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
     return screenSize.width < componentTheme.dimens.breakpointMedium;
   }
 
-  static bool isLarge(BuildContext context,
-      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+  static bool isLarge(BuildContext context, {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
     final screenSize = MediaQuery.sizeOf(context);
-    final componentTheme =
-        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    final componentTheme = overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
     return screenSize.width < componentTheme.dimens.breakpointLarge;
   }
 
-  static bool isExtraLarge(BuildContext context,
-      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+  static bool isExtraLarge(BuildContext context, {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
     final screenSize = MediaQuery.sizeOf(context);
-    final componentTheme =
-        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    final componentTheme = overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
     return screenSize.width > componentTheme.dimens.breakpointLarge;
   }
 
@@ -67,14 +58,9 @@ class ImpaktfullUiResponsiveLayout extends StatelessWidget
         } else if (screenSize.width < componentTheme.dimens.breakpointMedium) {
           return medium?.call(context) ?? small(context);
         } else if (screenSize.width < componentTheme.dimens.breakpointLarge) {
-          return large?.call(context) ??
-              medium?.call(context) ??
-              small(context);
+          return large?.call(context) ?? medium?.call(context) ?? small(context);
         } else {
-          return extraLarge?.call(context) ??
-              large?.call(context) ??
-              medium?.call(context) ??
-              small(context);
+          return extraLarge?.call(context) ?? large?.call(context) ?? medium?.call(context) ?? small(context);
         }
       },
     );

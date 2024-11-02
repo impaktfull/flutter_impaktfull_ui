@@ -1,4 +1,4 @@
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 class ImpaktfullUiCalendarEvent {
   final String title;

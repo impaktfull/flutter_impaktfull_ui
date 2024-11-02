@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/app.dart';
 import 'package:impaktfull_ui_example/src/util/themes.dart';
 
@@ -69,8 +69,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _onThemeChanged(String? value) {
-    final theme =
-        ExampleThemes.themes.firstWhere((element) => element.label == value);
+    final theme = ExampleThemes.themes.firstWhere((element) => element.label == value);
     MyApp.of(context).setTheme(theme);
     setState(() {});
   }

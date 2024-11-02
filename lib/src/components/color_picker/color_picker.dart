@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/color_picker/color_picker_style.dart';
-import 'package:impaktfull_ui_2/src/components/color_picker/type/color_picker_simple.dart';
-import 'package:impaktfull_ui_2/src/components/color_picker/type/color_picker_slider.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/color_picker/color_picker_style.dart';
+import 'package:impaktfull_ui/src/components/color_picker/type/color_picker_simple.dart';
+import 'package:impaktfull_ui/src/components/color_picker/type/color_picker_slider.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'color_picker_style.dart';
 
@@ -14,8 +14,7 @@ enum ImpaktfullUiColorPickerType {
   slider,
 }
 
-class ImpaktfullUiColorPicker extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiColorPicker extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiColorPickerType type;
   final Color? selectedColor;
   final bool showActiveColor;
@@ -47,8 +46,7 @@ class ImpaktfullUiColorPicker extends StatelessWidget
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiColorPickerTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
-        final allowedColors =
-            this.allowedColors.isEmpty ? defaultColors : this.allowedColors;
+        final allowedColors = this.allowedColors.isEmpty ? defaultColors : this.allowedColors;
         switch (type) {
           case ImpaktfullUiColorPickerType.simple:
             return ImpaktfullUiColorPickerSimple(

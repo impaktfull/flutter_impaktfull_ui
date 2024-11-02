@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/card/card.dart';
-import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/models/asset.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
-import 'package:impaktfull_ui_2/src/widget/input/base_input_field.dart';
+import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui/src/widget/input/base_input_field.dart';
 
 export 'input_field_style.dart';
 export 'action/input_field_action.dart';
 
 part 'input_field.describe.dart';
 
-class ImpaktfullUiInputField extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiInputField extends StatefulWidget with ComponentDescriptorMixin {
   final String? label;
   final List<Widget> labelActions;
   final String? placeholder;
@@ -82,8 +81,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   @override
   void initState() {
     super.initState();
-    _controller =
-        widget.controller ?? TextEditingController(text: widget.value);
+    _controller = widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(_onFocusChanged);
     if (widget.autofocus) {
@@ -119,8 +117,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
-        final trailingActionAllowed =
-            widget.multiline == false && trailingAction != null;
+        final trailingActionAllowed = widget.multiline == false && trailingAction != null;
         return ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
           spacing: 4,
@@ -145,14 +142,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                     padding: EdgeInsets.zero,
                     borderRadius: BorderRadiusDirectional.only(
                       topStart: componentTheme.dimens.borderRadius.topStart,
-                      bottomStart:
-                          componentTheme.dimens.borderRadius.bottomStart,
-                      topEnd: trailingActionAllowed
-                          ? Radius.zero
-                          : componentTheme.dimens.borderRadius.topEnd,
-                      bottomEnd: trailingActionAllowed
-                          ? Radius.zero
-                          : componentTheme.dimens.borderRadius.bottomEnd,
+                      bottomStart: componentTheme.dimens.borderRadius.bottomStart,
+                      topEnd: trailingActionAllowed ? Radius.zero : componentTheme.dimens.borderRadius.topEnd,
+                      bottomEnd: trailingActionAllowed ? Radius.zero : componentTheme.dimens.borderRadius.bottomEnd,
                     ),
                     child: ImpaktfullUiAutoLayout.vertical(
                       crossAxisAlignment: CrossAxisAlignment.start,

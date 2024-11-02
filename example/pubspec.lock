@@ -144,7 +144,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-  impaktfull_ui_2:
+  impaktfull_ui:
     dependency: "direct main"
     description:
       path: ".."

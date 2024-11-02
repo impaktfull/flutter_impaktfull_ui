@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/date_picker/date_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class DatePickerLibraryVariant
-    extends ComponentLibraryVariant<DatePickerLibraryPrimaryInputs> {
+class DatePickerLibraryVariant extends ComponentLibraryVariant<DatePickerLibraryPrimaryInputs> {
   const DatePickerLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(
-      BuildContext context, DatePickerLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, DatePickerLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiDatePicker(
         selectedDate: inputs.selectedStartDate.value,
@@ -70,9 +68,7 @@ class DatePickerLibraryVariant
               selectedStartDate: inputs.selectedStartDate.value,
               selectedEndDate: inputs.selectedEndDate.value,
             );
-            ImpaktfullUiNotification.show(
-                title:
-                    'Date range selected: ${result?.start} - ${result?.end}');
+            ImpaktfullUiNotification.show(title: 'Date range selected: ${result?.start} - ${result?.end}');
           },
         ),
       ),

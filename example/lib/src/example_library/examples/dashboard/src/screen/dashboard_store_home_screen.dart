@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 class DashboardStoreHomeScreen extends StatefulWidget {
   const DashboardStoreHomeScreen({
@@ -7,8 +7,7 @@ class DashboardStoreHomeScreen extends StatefulWidget {
   });
 
   @override
-  State<DashboardStoreHomeScreen> createState() =>
-      _DashboardStoreHomeScreenState();
+  State<DashboardStoreHomeScreen> createState() => _DashboardStoreHomeScreenState();
 }
 
 class _DashboardStoreHomeScreenState extends State<DashboardStoreHomeScreen> {
@@ -32,8 +31,7 @@ class _DashboardStoreHomeScreenState extends State<DashboardStoreHomeScreen> {
                 ImpaktfullUiMetric(
                   title: 'Products',
                   value: '100',
-                  bottomValueBuilder: (context) =>
-                      ImpaktfullUiProgressIndicator(
+                  bottomValueBuilder: (context) => ImpaktfullUiProgressIndicator(
                     value: 100 / 100,
                     color: theme.colors.success,
                   ),
@@ -41,8 +39,7 @@ class _DashboardStoreHomeScreenState extends State<DashboardStoreHomeScreen> {
                 ImpaktfullUiMetric(
                   title: 'Available for sale',
                   value: '96',
-                  bottomValueBuilder: (context) =>
-                      ImpaktfullUiProgressIndicator(
+                  bottomValueBuilder: (context) => ImpaktfullUiProgressIndicator(
                     value: 96 / 100,
                     color: theme.colors.success,
                   ),
@@ -50,8 +47,7 @@ class _DashboardStoreHomeScreenState extends State<DashboardStoreHomeScreen> {
                 ImpaktfullUiMetric(
                   title: 'Disabled sales',
                   value: '4',
-                  bottomValueBuilder: (context) =>
-                      ImpaktfullUiProgressIndicator(
+                  bottomValueBuilder: (context) => ImpaktfullUiProgressIndicator(
                     value: 4 / 100,
                     color: theme.colors.error,
                   ),

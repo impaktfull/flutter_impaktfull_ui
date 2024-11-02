@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
+import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 
 extension WidgetListExtension on List<Widget> {
   List<Widget> overrideColorOnWidgets(Color color) => map((widget) {

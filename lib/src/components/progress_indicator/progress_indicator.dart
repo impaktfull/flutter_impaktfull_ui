@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator.dart';
-import 'package:impaktfull_ui_2/src/components/progress_indicator/widget/half_cirlce_progress_indicator.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
+import 'package:impaktfull_ui/src/components/progress_indicator/widget/half_cirlce_progress_indicator.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'progress_indicator_style.dart';
 export 'model/progress_indicator_type.dart';
@@ -11,8 +11,7 @@ export 'widget/line_progress_indicator.dart';
 
 part 'progress_indicator.describe.dart';
 
-class ImpaktfullUiProgressIndicator extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiProgressIndicator extends StatelessWidget with ComponentDescriptorMixin {
   final double value;
   final bool showText;
   final ImpaktfullUiProgressIndicatorType type;
@@ -30,8 +29,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
-        ImpaktfullUiProgressIndicatorTheme>(
+    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiProgressIndicatorTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         switch (type) {

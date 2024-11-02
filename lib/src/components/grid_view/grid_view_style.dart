@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiGridViewTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiGridViewAssetsTheme assets;
@@ -14,8 +14,7 @@ class ImpaktfullUiGridViewTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiGridViewTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.gridView;
+  static ImpaktfullUiGridViewTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.gridView;
 }
 
 class ImpaktfullUiGridViewAssetsTheme {

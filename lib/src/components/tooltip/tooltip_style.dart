@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTooltipColorTheme colors;
@@ -16,8 +16,7 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
-  static ImpaktfullUiTooltipTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.tooltip;
+  static ImpaktfullUiTooltipTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.tooltip;
 }
 
 class ImpaktfullUiTooltipColorTheme {

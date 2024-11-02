@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 class ComponentsLibraryVariantDescriptor extends StatelessWidget {
   final String? title;
@@ -40,11 +40,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
         if (text != null) ...[
           Text(
             text,
-            style: ImpaktfullUiTheme.of(context)
-                .textStyles
-                .onCanvas
-                .text
-                .extraSmall,
+            style: ImpaktfullUiTheme.of(context).textStyles.onCanvas.text.extraSmall,
           ),
         ],
         Container(
@@ -52,8 +48,7 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
           width: width,
           height: height,
           child: Builder(builder: (context) {
-            final wrapepdChild =
-                isScrollable ? SingleChildScrollView(child: child) : child;
+            final wrapepdChild = isScrollable ? SingleChildScrollView(child: child) : child;
             if (wrapWithCard) {
               return ImpaktfullUiCard(
                 padding: padding,

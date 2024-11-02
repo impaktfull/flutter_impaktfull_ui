@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/grid_view/grid_view_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/grid_view/grid_view_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'grid_view_style.dart';
 
@@ -17,12 +17,10 @@ class ImpaktfullUiGridViewConfig {
   });
 }
 
-class ImpaktfullUiGridView<T> extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiGridView<T> extends StatelessWidget with ComponentDescriptorMixin {
   final List<T> items;
   final int Function(BuildContext, ImpaktfullUiGridViewConfig) crossAxisCount;
-  final double Function(BuildContext, ImpaktfullUiGridViewConfig)?
-      childAspectRatio;
+  final double Function(BuildContext, ImpaktfullUiGridViewConfig)? childAspectRatio;
   final Widget Function(BuildContext, T, int) itemBuilder;
   final EdgeInsetsGeometry padding;
   final double spacing;
@@ -45,8 +43,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiGridViewTheme>(
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) =>
-          LayoutBuilder(builder: (context, constraints) {
+      builder: (context, componentTheme) => LayoutBuilder(builder: (context, constraints) {
         final config = ImpaktfullUiGridViewConfig(
           maxWidth: constraints.maxWidth,
           maxHeight: constraints.maxHeight,
@@ -57,9 +54,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
           itemCount: items.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount(context, config),
-            childAspectRatio: childAspectRatio == null
-                ? 1.0
-                : childAspectRatio!(context, config),
+            childAspectRatio: childAspectRatio == null ? 1.0 : childAspectRatio!(context, config),
             crossAxisSpacing: spacing,
             mainAxisSpacing: spacing,
           ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/date_picker_active_type.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_weekdays.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/widgets/page/date_picker_days_page.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/widgets/page/date_picker_months_page.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/widgets/page/date_picker_years_page.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui/src/components/date_picker/date_picker_active_type.dart';
+import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_weekdays.dart';
+import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_days_page.dart';
+import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_months_page.dart';
+import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_years_page.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 
 class ImpaktfullUiDatePickerPage extends StatelessWidget {
   final ImpaktfullUiDatePickerWeekdaysStartDate weekdaysStartDate;
@@ -17,8 +17,7 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
   final DateTime? selectedEndDate;
   final ValueChanged<DateTime?> onStartDateChanged;
   final ValueChanged<DateTime?>? onEndDateChanged;
-  final Function(ImpaktfullUiDatePickerActiveType, DateTime)?
-      onChangeActiveType;
+  final Function(ImpaktfullUiDatePickerActiveType, DateTime)? onChangeActiveType;
   final ImpaktfullUiDatePickerTheme theme;
 
   const ImpaktfullUiDatePickerPage({
@@ -94,9 +93,7 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
     }
   }
 
-  void _onMonthChanged(DateTime value) =>
-      onChangeActiveType?.call(ImpaktfullUiDatePickerActiveType.days, value);
+  void _onMonthChanged(DateTime value) => onChangeActiveType?.call(ImpaktfullUiDatePickerActiveType.days, value);
 
-  void _onYearChanged(DateTime value) =>
-      onChangeActiveType?.call(ImpaktfullUiDatePickerActiveType.months, value);
+  void _onYearChanged(DateTime value) => onChangeActiveType?.call(ImpaktfullUiDatePickerActiveType.months, value);
 }

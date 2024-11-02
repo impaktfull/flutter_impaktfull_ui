@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/models/asset.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiBadgeAssetsTheme assets;
@@ -15,8 +15,7 @@ class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiBadgeTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.badge;
+  static ImpaktfullUiBadgeTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.badge;
 }
 
 class ImpaktfullUiBadgeAssetsTheme {

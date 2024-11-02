@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 enum ImpaktfullUiDatePickerWeekdaysStartDate {
   monday,

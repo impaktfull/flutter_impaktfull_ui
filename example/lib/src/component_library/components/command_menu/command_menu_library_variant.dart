@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/command_menu/command_menu_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class CommandMenuLibraryVariant
-    extends ComponentLibraryVariant<CommandMenuLibraryPrimaryInputs> {
+class CommandMenuLibraryVariant extends ComponentLibraryVariant<CommandMenuLibraryPrimaryInputs> {
   const CommandMenuLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(
-      BuildContext context, CommandMenuLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, CommandMenuLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiCommandMenu(
         shortcutActivator: const SingleActivator(

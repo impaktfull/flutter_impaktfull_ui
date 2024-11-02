@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 
 class ComponentsLibraryInputsWidget extends StatefulWidget {
@@ -11,12 +11,10 @@ class ComponentsLibraryInputsWidget extends StatefulWidget {
   });
 
   @override
-  State<ComponentsLibraryInputsWidget> createState() =>
-      _ComponentsLibraryInputsWidgetState();
+  State<ComponentsLibraryInputsWidget> createState() => _ComponentsLibraryInputsWidgetState();
 }
 
-class _ComponentsLibraryInputsWidgetState
-    extends State<ComponentsLibraryInputsWidget> {
+class _ComponentsLibraryInputsWidgetState extends State<ComponentsLibraryInputsWidget> {
   late final List<ComponentLibraryInputItem> inputs;
 
   @override
@@ -48,8 +46,7 @@ class _ComponentsLibraryInputsWidgetState
                   if (input.extraInfo != null) ...[
                     Text(
                       input.extraInfo!,
-                      style:
-                          theme.textStyles.onCardTertiary.text.extraSmall.light,
+                      style: theme.textStyles.onCardTertiary.text.extraSmall.light,
                     ),
                   ],
                   const SizedBox(height: 4),

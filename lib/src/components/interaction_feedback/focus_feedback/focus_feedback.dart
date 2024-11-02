@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 class ImpaktfullUiFocusFeedback extends StatelessWidget {
   final Widget child;
@@ -33,9 +33,7 @@ class ImpaktfullUiFocusFeedback extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: borderRadius,
                 border: Border.all(
-                  color: hasFocus
-                      ? theme.colors.accent.withOpacity(0.66)
-                      : Colors.transparent,
+                  color: hasFocus ? theme.colors.accent.withOpacity(0.66) : Colors.transparent,
                   width: 2,
                   strokeAlign: BorderSide.strokeAlignOutside,
                 ),

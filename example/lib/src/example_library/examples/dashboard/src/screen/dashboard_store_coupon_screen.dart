@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/example_library/data/test_data.dart';
 
 class DashboardStoreCouponScreen extends StatefulWidget {
@@ -8,12 +8,10 @@ class DashboardStoreCouponScreen extends StatefulWidget {
   });
 
   @override
-  State<DashboardStoreCouponScreen> createState() =>
-      _DashboardStoreCouponScreenState();
+  State<DashboardStoreCouponScreen> createState() => _DashboardStoreCouponScreenState();
 }
 
-class _DashboardStoreCouponScreenState
-    extends State<DashboardStoreCouponScreen> {
+class _DashboardStoreCouponScreenState extends State<DashboardStoreCouponScreen> {
   static const columnConfig = [
     TableColumnConfig(flex: 1),
     TableColumnConfig(flex: 1),
@@ -48,8 +46,7 @@ class _DashboardStoreCouponScreenState
                     title: TestData.formatDate(order.validFrom, withTime: true),
                   ),
                   ImpaktfullUiTableRowItem.text(
-                    title:
-                        TestData.formatDate(order.validUntil, withTime: true),
+                    title: TestData.formatDate(order.validUntil, withTime: true),
                   ),
                   ImpaktfullUiTableRowItem.text(
                     title: order.tag,

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
-import 'package:impaktfull_ui_2/src/components/unified_screen_layout/unified_screen_layout_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
+import 'package:impaktfull_ui/src/components/unified_screen_layout/unified_screen_layout_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'unified_screen_layout_style.dart';
 
 part 'unified_screen_layout.describe.dart';
 
-class ImpaktfullUiUnifiedScreenLayout extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiUnifiedScreenLayout extends StatelessWidget with ComponentDescriptorMixin {
   final Widget centerChild;
   final WidgetBuilder? topBuilder;
   final WidgetBuilder? bottomBuilder;
@@ -32,8 +31,7 @@ class ImpaktfullUiUnifiedScreenLayout extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
-        ImpaktfullUiUnifiedScreenLayoutTheme>(
+    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiUnifiedScreenLayoutTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final startWidget = startBuilder?.call(context);
@@ -43,8 +41,7 @@ class ImpaktfullUiUnifiedScreenLayout extends StatelessWidget
             if (startWidget != null) startWidget,
             Expanded(
               child: Padding(
-                padding: componentTheme.dimens.centerPadding
-                    .add(MediaQuery.paddingOf(context)),
+                padding: componentTheme.dimens.centerPadding.add(MediaQuery.paddingOf(context)),
                 child: ImpaktfullUiClampedFractionallySizedBox(
                   widthFactor: componentTheme.dimens.centerWidthFactor,
                   minWidth: componentTheme.dimens.centerMinWidth,

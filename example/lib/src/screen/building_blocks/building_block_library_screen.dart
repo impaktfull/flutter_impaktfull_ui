@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library.dart';
 import 'package:impaktfull_ui_example/src/building_block_library/config/building_block_library_item.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
@@ -32,6 +32,5 @@ class BuildignBLockLibraryScreen extends StatelessWidget {
     );
   }
 
-  void _onItemTapped(BuildingBlockLibraryItem value) =>
-      ImpaktfullUiNavigator.instance.goToBuildingBlock(value);
+  void _onItemTapped(BuildingBlockLibraryItem value) => ImpaktfullUiNavigator.instance.goToBuildingBlock(value);
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
@@ -66,8 +66,7 @@ class _ComponentLibraryScreenState extends State<ComponentLibraryScreen> {
           itemBuilder: (context, item, index) {
             final value = filteredComponents[index];
             final fistComponent = value.getComponentVariants().first;
-            final widget =
-                fistComponent.build(context, fistComponent.inputs()).first;
+            final widget = fistComponent.build(context, fistComponent.inputs()).first;
             return ComponentCard(
               label: value.name,
               onTap: () => _onItemTapped(value),
@@ -79,8 +78,7 @@ class _ComponentLibraryScreenState extends State<ComponentLibraryScreen> {
     );
   }
 
-  void _onItemTapped(ComponentLibraryItem value) =>
-      ImpaktfullUiNavigator.instance.goToComponent(value);
+  void _onItemTapped(ComponentLibraryItem value) => ImpaktfullUiNavigator.instance.goToComponent(value);
 
   void _onChanged(String value) {
     setState(() {

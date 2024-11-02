@@ -1,15 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/network_image/network_image_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/network_image/network_image_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'network_image_style.dart';
 
 part 'network_image.describe.dart';
 
-class ImpaktfullUiNetworkImage extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiNetworkImage extends StatelessWidget with ComponentDescriptorMixin {
   final String url;
   final double? height;
   final double? width;
@@ -37,8 +36,7 @@ class ImpaktfullUiNetworkImage extends StatelessWidget
       builder: (context, componentTheme) {
         String fullUrl = url;
         if (url.startsWith('https://picsum.photos')) {
-          fullUrl =
-              'https://picsum.photos/${(width ?? 300).toInt()}/${(height ?? 300).toInt()}';
+          fullUrl = 'https://picsum.photos/${(width ?? 300).toInt()}/${(height ?? 300).toInt()}';
         }
         return Image.network(
           fullUrl,

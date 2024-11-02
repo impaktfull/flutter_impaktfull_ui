@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
-import 'package:impaktfull_ui_2/src/components/table/table.dart';
-import 'package:impaktfull_ui_2/src/components/table/table_column_config.dart';
-import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
-import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
-import 'package:impaktfull_ui_2/src/components/table_row/table_row.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/divider/divider.dart';
+import 'package:impaktfull_ui/src/components/table/table.dart';
+import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
+import 'package:impaktfull_ui/src/components/table_header/table_header.dart';
+import 'package:impaktfull_ui/src/components/table_header_item/table_header_item.dart';
+import 'package:impaktfull_ui/src/components/table_row/table_row.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'table_style.dart';
 
@@ -60,8 +60,7 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
                   child: ListView.separated(
                     itemCount: content.length,
                     itemBuilder: (context, index) => content[index],
-                    separatorBuilder: (contex, index) =>
-                        const ImpaktfullUiDivider(),
+                    separatorBuilder: (contex, index) => const ImpaktfullUiDivider(),
                   ),
                 ),
               ],
@@ -122,9 +121,7 @@ class _TableContainer extends StatelessWidget {
     if (columnConfig.isEmpty) return amountOfColumns * minWidthColumn;
     var minWidth = 0.0;
     for (var i = 0; i < amountOfColumns; ++i) {
-      final tableConfig = i > columnConfig.length - 1
-          ? const TableColumnConfig(flex: 1)
-          : columnConfig[i];
+      final tableConfig = i > columnConfig.length - 1 ? const TableColumnConfig(flex: 1) : columnConfig[i];
       if (tableConfig.minWidth != null) {
         minWidth += tableConfig.minWidth!;
       } else if (tableConfig.flex != null) {

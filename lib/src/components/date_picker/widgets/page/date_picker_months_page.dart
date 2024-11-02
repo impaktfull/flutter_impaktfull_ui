@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_cell.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/widgets/date_picker_weekdays.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
+import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_weekdays.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:intl/intl.dart';
 
 class ImpaktfullUiDatePickerMonthsPage extends StatelessWidget {

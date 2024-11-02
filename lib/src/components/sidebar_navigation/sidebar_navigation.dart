@@ -1,22 +1,21 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/models/asset.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui_2/src/util/extension/edge_insets_geometry_extension.dart';
+import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/divider/divider.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui/src/components/sidebar_navigation/sidebar_navigation_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/extension/edge_insets_geometry_extension.dart';
 
 export 'sidebar_navigation_style.dart';
 
 part 'sidebar_navigation.describe.dart';
 
-class ImpaktfullUiSidebarNavigation extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSidebarNavigation extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? asset;
   final Widget? header;
   final Widget? content;
@@ -44,8 +43,7 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
-        ImpaktfullUiSidebarNavigationTheme>(
+    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSidebarNavigationTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final hasHeader = asset != null || header != null;
@@ -103,12 +101,8 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
                               padding: EdgeInsetsDirectional.only(
                                 start: componentTheme.dimens.padding.start,
                                 end: componentTheme.dimens.padding.end,
-                                top: hasHeader
-                                    ? 0
-                                    : componentTheme.dimens.padding.top,
-                                bottom: hasFooter || hasFooterItems
-                                    ? 0
-                                    : componentTheme.dimens.padding.bottom,
+                                top: hasHeader ? 0 : componentTheme.dimens.padding.top,
+                                bottom: hasFooter || hasFooterItems ? 0 : componentTheme.dimens.padding.bottom,
                               ),
                               children: items,
                             ),

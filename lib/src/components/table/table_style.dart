@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiTableTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTableColorTheme colors;
@@ -10,8 +10,7 @@ class ImpaktfullUiTableTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
-  static ImpaktfullUiTableTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.table;
+  static ImpaktfullUiTableTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.table;
 }
 
 class ImpaktfullUiTableColorTheme {

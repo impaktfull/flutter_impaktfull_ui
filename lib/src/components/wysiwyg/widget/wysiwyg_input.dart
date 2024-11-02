@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/card/card.dart';
-import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
-import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/widget/actions/wysiwig_actions.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
-import 'package:impaktfull_ui_2/src/widget/input/base_input_field.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/divider/divider.dart';
+import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/widget/actions/wysiwig_actions.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
+import 'package:impaktfull_ui/src/widget/input/base_input_field.dart';
 
 class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   final String? placeholder;
@@ -40,12 +40,10 @@ class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiWysiwygInputField> createState() =>
-      _ImpaktfullUiWysiwygInputFieldState();
+  State<ImpaktfullUiWysiwygInputField> createState() => _ImpaktfullUiWysiwygInputFieldState();
 }
 
-class _ImpaktfullUiWysiwygInputFieldState
-    extends State<ImpaktfullUiWysiwygInputField> {
+class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInputField> {
   late final TextEditingController _controller;
   late final FocusNode _focusNode;
 
@@ -55,8 +53,7 @@ class _ImpaktfullUiWysiwygInputFieldState
     final widgetController = widget.controller;
     _controller = widgetController ?? TextEditingController(text: widget.value);
     if (widgetController == null) {
-      _controller.selection = TextSelection(
-          baseOffset: widget.value!.length, extentOffset: widget.value!.length);
+      _controller.selection = TextSelection(baseOffset: widget.value!.length, extentOffset: widget.value!.length);
     }
     _focusNode = widget.focusNode ?? FocusNode();
     _controller.addListener(_onTextChanged);
@@ -94,8 +91,7 @@ class _ImpaktfullUiWysiwygInputFieldState
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
-      builder: (context, inputFieldTheme) =>
-          ImpaktfullUiComponentThemeBuidler<ImpaktfullUiWysiwygTheme>(
+      builder: (context, inputFieldTheme) => ImpaktfullUiComponentThemeBuidler<ImpaktfullUiWysiwygTheme>(
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiCommandMenuTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiCommandMenuAssetsTheme assets;
@@ -14,8 +14,7 @@ class ImpaktfullUiCommandMenuTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiCommandMenuTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.commandMenu;
+  static ImpaktfullUiCommandMenuTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.commandMenu;
 }
 
 class ImpaktfullUiCommandMenuAssetsTheme {

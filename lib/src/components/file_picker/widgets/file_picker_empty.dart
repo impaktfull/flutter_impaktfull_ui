@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/file_picker/file_picker.dart';
+import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/file_picker/file_picker.dart';
 
 class ImpaktfullUiFilePickerEmpty extends StatelessWidget {
   final String? title;

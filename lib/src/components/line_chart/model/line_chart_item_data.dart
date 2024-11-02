@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'dart:math' as math;
 
-import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_item_data_item.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_item_style.dart';
+import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_data_item.dart';
+import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_style.dart';
 
 class ImpaktfullUiLineChartItemData<T, E> {
   final List<ImpaktfullUiLineChartItemDataItem<T, E>> points;

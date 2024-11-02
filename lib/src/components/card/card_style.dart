@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiCardTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiCardColorTheme colors;
@@ -12,8 +12,7 @@ class ImpaktfullUiCardTheme extends ImpaktfullUiComponentTheme {
     required this.shadows,
   });
 
-  static ImpaktfullUiCardTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.card;
+  static ImpaktfullUiCardTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.card;
 }
 
 class ImpaktfullUiCardColorTheme {

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/screen/screen_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class ScreenLibraryVariant
-    extends ComponentLibraryVariant<ScreenLibraryPrimaryInputs> {
+class ScreenLibraryVariant extends ComponentLibraryVariant<ScreenLibraryPrimaryInputs> {
   const ScreenLibraryVariant();
 
   @override
@@ -30,8 +29,7 @@ class ScreenLibraryVariant
             padding: const EdgeInsets.all(16),
             itemBuilder: (context, item, index) => ImpaktfullUiListItem(
               title: item,
-              onTap: () =>
-                  ImpaktfullUiNotification.show(title: 'On `$item` tapped'),
+              onTap: () => ImpaktfullUiNotification.show(title: 'On `$item` tapped'),
             ),
             noDataLabel: 'No data',
           ),
@@ -53,15 +51,13 @@ class ScreenLibraryVariant
               ImpaktfullUiBottomNavigationItem(
                 asset: theme.assets.icons.home,
                 label: 'Home',
-                onTap: () =>
-                    ImpaktfullUiNotification.show(title: 'On home tapped'),
+                onTap: () => ImpaktfullUiNotification.show(title: 'On home tapped'),
                 isSelected: true,
               ),
               ImpaktfullUiBottomNavigationItem(
                 asset: theme.assets.icons.settings,
                 label: 'Settings',
-                onTap: () =>
-                    ImpaktfullUiNotification.show(title: 'On settings tapped'),
+                onTap: () => ImpaktfullUiNotification.show(title: 'On settings tapped'),
                 isSelected: false,
               ),
             ],

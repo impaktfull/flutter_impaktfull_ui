@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 
 part 'adaptive_safe_area.describe.dart';
 
-class ImpaktfullUiAdaptiveSafeArea extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiAdaptiveSafeArea extends StatelessWidget with ComponentDescriptorMixin {
   final Widget child;
   final bool top;
   final bool bottom;
