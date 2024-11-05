@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/components/page_route/desktop_page_route.dart';
 import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
-import '../desktop_page_route.dart';
 
 class ImpaktfullUIAdaptivePageRoute {
   ImpaktfullUIAdaptivePageRoute._();

@@ -1,6 +1,5 @@
-import 'device_util.dart'
-    if (dart.library.html) 'device_util_web.dart'
-    if (dart.library.io) 'device_util_io.dart' as platform;
+import 'device_util.dart' if (dart.library.html) 'device_util_web.dart' if (dart.library.io) 'device_util_io.dart'
+    as platform;
 
 class DeviceUtil {
   // Web
@@ -17,6 +16,7 @@ class DeviceUtil {
 
   // Desktop
   static bool isDesktop() => platform.DeviceUtil.isDesktop();
+
   static bool isMacOs() => platform.DeviceUtil.isMacOs();
 
   static bool isWindows() => platform.DeviceUtil.isWindows();
