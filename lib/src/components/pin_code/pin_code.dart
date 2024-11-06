@@ -47,7 +47,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
   @override
   void didUpdateWidget(covariant ImpaktfullUiPinCode oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.code != widget.code) {
+    if (_code != widget.code) {
       _code = widget.code;
     }
   }
