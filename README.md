@@ -96,6 +96,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiNotificationBadge
 - ImpaktfullUiNumberInput
 - ImpaktfullUiPagination
+- ImpaktfullUiPinCode
 - ImpaktfullUiPlaceholderState
 - ImpaktfullUiRadioButton
 - ImpaktfullUiRadioButtonListItem

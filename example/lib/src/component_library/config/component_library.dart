@@ -42,6 +42,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/notificat
 import 'package:impaktfull_ui_example/src/component_library/components/notification_badge/notification_badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/number_input/number_input_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/pagination/pagination_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/pin_code/pin_code_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/placeholder_state/placeholder_state_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/progress_indicator/progress_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/radio_button/radio_button_library_item.dart';
@@ -123,6 +124,7 @@ class ComponentLibrary {
     const NotificationBadgeLibraryItem(),
     const NumberInputLibraryItem(),
     const PaginationLibraryItem(),
+    const PinCodeLibraryItem(),
     const PlaceholderStateLibraryItem(),
     const ProgressIndicatorLibraryItem(),
     const RadioButtonLibraryItem(),

@@ -33,6 +33,7 @@ import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart'
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
+import 'package:impaktfull_ui_2/src/components/pin_code/pin_code.dart';
 import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator_style.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button_list_item/radio_button_list_item.dart';
@@ -113,6 +114,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
   final ImpaktfullUiNumberInputTheme numberInput;
   final ImpaktfullUiPaginationTheme pagination;
+  final ImpaktfullUiPinCodeTheme pinCode;
   final ImpaktfullUiPlaceholderStateTheme placeholderState;
   final ImpaktfullUiProgressIndicatorTheme progressIndicator;
   final ImpaktfullUiRadioButtonTheme radioButton;
@@ -184,6 +186,7 @@ class ImpaktfullUiComponentsTheme {
     required this.notificationBadge,
     required this.numberInput,
     required this.pagination,
+    required this.pinCode,
     required this.placeholderState,
     required this.progressIndicator,
     required this.radioButton,
@@ -256,6 +259,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
     ImpaktfullUiNumberInputTheme? numberInput,
     ImpaktfullUiPaginationTheme? pagination,
+    ImpaktfullUiPinCodeTheme? pinCode,
     ImpaktfullUiPlaceholderStateTheme? placeholderState,
     ImpaktfullUiProgressIndicatorTheme? progressIndicator,
     ImpaktfullUiRadioButtonTheme? radioButton,
@@ -327,6 +331,7 @@ class ImpaktfullUiComponentsTheme {
         notificationBadge: notificationBadge ?? this.notificationBadge,
         numberInput: numberInput ?? this.numberInput,
         pagination: pagination ?? this.pagination,
+        pinCode: pinCode ?? this.pinCode,
         placeholderState: placeholderState ?? this.placeholderState,
         progressIndicator: progressIndicator ?? this.progressIndicator,
         radioButton: radioButton ?? this.radioButton,
@@ -441,6 +446,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiProgressIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiPaginationTheme) {
       return ImpaktfullUiPaginationTheme.of(context) as T;
+    } else if (T == ImpaktfullUiPinCodeTheme) {
+      return ImpaktfullUiPinCodeTheme.of(context) as T;
     } else if (T == ImpaktfullUiPlaceholderStateTheme) {
       return ImpaktfullUiPlaceholderStateTheme.of(context) as T;
     } else if (T == ImpaktfullUiRadioButtonTheme) {

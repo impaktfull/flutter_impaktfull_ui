@@ -39,6 +39,7 @@ class ImpaktfullUiAssetTheme {
               arrowRight: ImpaktfullUiAsset.icon(PhosphorIcons.arrowRight()),
               arrowUp: ImpaktfullUiAsset.icon(PhosphorIcons.arrowUp()),
               arrowDown: ImpaktfullUiAsset.icon(PhosphorIcons.arrowDown()),
+              backspace: ImpaktfullUiAsset.icon(PhosphorIcons.backspace()),
               check: ImpaktfullUiAsset.icon(PhosphorIcons.check()),
               chevronDown: ImpaktfullUiAsset.icon(PhosphorIcons.caretDown()),
               chevronLeft: ImpaktfullUiAsset.icon(PhosphorIcons.caretLeft()),
@@ -166,6 +167,7 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset arrowRight;
   final ImpaktfullUiAsset arrowUp;
   final ImpaktfullUiAsset arrowDown;
+  final ImpaktfullUiAsset backspace;
   final ImpaktfullUiAsset check;
   final ImpaktfullUiAsset chevronDown;
   final ImpaktfullUiAsset chevronLeft;
@@ -212,6 +214,7 @@ class ImpaktfullUiIconTheme {
     required this.arrowRight,
     required this.arrowUp,
     required this.arrowDown,
+    required this.backspace,
     required this.check,
     required this.chevronDown,
     required this.chevronLeft,
@@ -259,6 +262,7 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? arrowRight,
     ImpaktfullUiAsset? arrowUp,
     ImpaktfullUiAsset? arrowDown,
+    ImpaktfullUiAsset? backspace,
     ImpaktfullUiAsset? check,
     ImpaktfullUiAsset? chevronDown,
     ImpaktfullUiAsset? chevronLeft,
@@ -305,6 +309,7 @@ class ImpaktfullUiIconTheme {
         arrowRight: arrowRight ?? this.arrowRight,
         arrowUp: arrowUp ?? this.arrowUp,
         arrowDown: arrowDown ?? this.arrowDown,
+        backspace: backspace ?? this.backspace,
         check: check ?? this.check,
         chevronDown: chevronDown ?? this.chevronDown,
         chevronLeft: chevronLeft ?? this.chevronLeft,

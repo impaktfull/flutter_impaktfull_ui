@@ -38,6 +38,7 @@ import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/number_input/number_input.dart';
 import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
+import 'package:impaktfull_ui_2/src/components/pin_code/pin_code.dart';
 import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state.dart';
 import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator_style.dart';
 import 'package:impaktfull_ui_2/src/components/radio_button/radio_button.dart';
@@ -861,6 +862,24 @@ class DefaultTheme {
           textStyles: ImpaktfullUiPaginationTextStyleTheme(
             text: textStyles.onCard.text.small,
           ),
+        ),
+        pinCode: ImpaktfullUiPinCodeTheme(
+          assets: ImpaktfullUiPinCodeAssetsTheme(
+            backspace: assets.icons.backspace,
+            check: assets.icons.check,
+          ),
+          colors: ImpaktfullUiPinCodeColorTheme(
+            valueBackgroundSelected: colors.accent,
+            valueBackground: colors.card,
+            valueBorder: colors.border,
+          ),
+          dimens: ImpaktfullUiPinCodeDimensTheme(
+            valueBorderRadius: dimens.borderRadius,
+          ),
+          durations: ImpaktfullUiPinCodeDurationsTheme(
+            submitOpacity: durations.short,
+          ),
+          textStyles: const ImpaktfullUiPinCodeTextStyleTheme(),
         ),
         placeholderState: ImpaktfullUiPlaceholderStateTheme(
           assets: const ImpaktfullUiPlaceholderStateAssetsTheme(),
