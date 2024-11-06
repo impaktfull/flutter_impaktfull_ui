@@ -33,6 +33,7 @@ class ModalLibraryVariant
                   'This is quite a long subtitle that should wrap to the next line',
               hasBlurredBackground: inputs.showBackgroundBlur.value ?? false,
               showDividers: inputs.showDividers.value ?? false,
+              barrierDismissible: inputs.enableDismissBarrier.value ?? true,
               onCloseTapped: () async => true,
               child: ImpaktfullUiAutoLayout.vertical(
                 children: [

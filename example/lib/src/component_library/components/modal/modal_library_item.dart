@@ -21,6 +21,8 @@ class ModalLibraryItem extends ComponentLibraryItem {
 class ModalLibraryInputs extends ComponentLibraryInputs {
   final showDividers = ComponentLibraryBoolInput('Show dividers');
   final showBackgroundBlur = ComponentLibraryBoolInput('Show background blur');
+  final enableDismissBarrier =
+      ComponentLibraryBoolInput('Enable dismiss barrier', initialValue: true);
   final amountOfActions = ComponentLibraryIntInput(
     'Amount of actions',
     initialValue: 1,
@@ -32,6 +34,7 @@ class ModalLibraryInputs extends ComponentLibraryInputs {
   List<ComponentLibraryInputItem> buildInputItems() => [
         showDividers,
         showBackgroundBlur,
+        enableDismissBarrier,
         amountOfActions,
       ];
 }

@@ -4,7 +4,8 @@ import 'package:impaktfull_ui_example/src/component_library/components/pin_code/
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class PinCodeLibraryVariant extends ComponentLibraryVariant<PinCodeLibraryPrimaryInputs> {
+class PinCodeLibraryVariant
+    extends ComponentLibraryVariant<PinCodeLibraryPrimaryInputs> {
   const PinCodeLibraryVariant();
 
   @override
@@ -18,7 +19,8 @@ class PinCodeLibraryVariant extends ComponentLibraryVariant<PinCodeLibraryPrimar
         child: ImpaktfullUiPinCode(
           code: inputs.code.value ?? '',
           onChanged: inputs.code.updateState,
-          onSubmit: (value) => ImpaktfullUiNotification.show(title: 'Pincode is: $value'),
+          onSubmit: (value) =>
+              ImpaktfullUiNotification.show(title: 'Pincode is: $value'),
           length: 5,
         ),
       ),

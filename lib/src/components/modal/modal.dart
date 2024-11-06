@@ -58,14 +58,14 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     required BuildContext context,
     required Widget Function(BuildContext context) builder,
     bool hasBlurredBackground = false,
+    bool barrierDismissible = true,
     bool rootNavigator = false,
   }) =>
       Navigator.of(context, rootNavigator: rootNavigator)
           .push<T>(ImpaktfullUiDefaultModalRoute<T>(
         context: context,
         builder: builder,
-        barrierDismissible: true,
-        barrierLabel: '',
+        barrierDismissible: barrierDismissible,
         hasBlurredBackground: hasBlurredBackground,
       ));
 
@@ -82,6 +82,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     bool hasClose = true,
     bool isDismissible = true,
     bool hasBlurredBackground = false,
+    bool barrierDismissible = true,
     bool showDividers = false,
     bool rootNavigator = false,
     double width = 400,
@@ -107,6 +108,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
       builder: (context) => modal,
       rootNavigator: rootNavigator,
       hasBlurredBackground: hasBlurredBackground,
+      barrierDismissible: barrierDismissible,
     );
   }
 
