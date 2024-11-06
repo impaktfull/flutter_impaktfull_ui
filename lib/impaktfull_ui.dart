@@ -51,6 +51,7 @@ export 'src/components/loading_indicator/loading_indicator.dart';
 export 'src/components/markdown/markdown.dart';
 export 'src/components/metric/metric.dart';
 export 'src/components/modal/modal.dart';
+export 'src/components/morse_code_touch_feedback/morse_code_touch_feedback.dart';
 export 'src/components/nav_bar/nav_bar.dart';
 export 'src/components/network_image/network_image.dart';
 export 'src/components/notification/notification.dart';

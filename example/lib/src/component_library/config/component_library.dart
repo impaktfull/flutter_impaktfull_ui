@@ -36,6 +36,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/loading_i
 import 'package:impaktfull_ui_example/src/component_library/components/markdown/markdown_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/metric/metric_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/modal/modal_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/morse_code_touch_feedback/morse_code_touch_feedback_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/nav_bar/nav_bar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification/notification_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/notification_badge/notification_badge_library_item.dart';
@@ -115,6 +116,7 @@ class ComponentLibrary {
     const MarkdownLibraryItem(),
     const MetricLibraryItem(),
     const ModalLibraryItem(),
+    const MorseCodeTouchFeedbackLibraryItem(),
     const NavBarLibraryItem(),
     const NotificationLibraryItem(),
     const NotificationBadgeLibraryItem(),

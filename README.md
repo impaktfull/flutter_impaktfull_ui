@@ -89,6 +89,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiLoadingIndicator
 - ImpaktfullUiMetric
 - ImpaktfullUiModal
+- ImpaktfullUiMorseCodeTouchFeedback
 - ImpaktfullUiNavBar
 - ImpaktfullUiNetworkImage
 - ImpaktfullUiNotification
