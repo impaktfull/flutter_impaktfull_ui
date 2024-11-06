@@ -1,6 +1,7 @@
 import 'package:impaktfull_ui_example/src/component_library/components/pin_code/pin_code_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_string_input.dart';
 
 class PinCodeLibraryItem extends ComponentLibraryItem {
   const PinCodeLibraryItem();
@@ -17,6 +18,10 @@ class PinCodeLibraryItem extends ComponentLibraryItem {
 }
 
 class PinCodeLibraryInputs extends ComponentLibraryInputs {
+  final code = ComponentLibraryStringInput('Code');
+
   @override
-  List<ComponentLibraryInputItem> buildInputItems() => [];
+  List<ComponentLibraryInputItem> buildInputItems() => [
+        code,
+      ];
 }

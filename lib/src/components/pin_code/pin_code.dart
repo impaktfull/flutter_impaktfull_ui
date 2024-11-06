@@ -12,15 +12,17 @@ part 'pin_code.describe.dart';
 
 class ImpaktfullUiPinCode extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiPinCodeTheme? theme;
+  final String code;
   final int length;
-  final Function(String) onComplete;
-  final bool showSubmitButton;
+  final void Function(String) onChanged;
+  final void Function(String)? onSubmit;
 
   const ImpaktfullUiPinCode({
-    required this.onComplete,
+    required this.code,
+    required this.onChanged,
     this.length = 4,
     this.theme,
-    this.showSubmitButton = false,
+    this.onSubmit,
     super.key,
   });
 
@@ -36,28 +38,39 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
 
   bool get hasFullPin => _code.length == widget.length;
 
-  void _onNumberTap(String number) {
-    if (_code.length < widget.length) {
-      setState(() {
-        _code += number;
-      });
+  @override
+  void initState() {
+    super.initState();
+    _code = widget.code;
+  }
 
-      if (widget.showSubmitButton) return;
-      _onSubmit();
+  @override
+  void didUpdateWidget(covariant ImpaktfullUiPinCode oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.code != widget.code) {
+      _code = widget.code;
     }
   }
 
+  void _onNumberTap(String number) {
+    if (_code.length >= widget.length) return;
+    setState(() {
+      _code += number;
+    });
+    widget.onChanged(_code);
+  }
+
   void _onDelete() {
-    if (_code.isNotEmpty) {
-      setState(() {
-        _code = _code.substring(0, _code.length - 1);
-      });
-    }
+    if (_code.isEmpty) return;
+    setState(() {
+      _code = _code.substring(0, _code.length - 1);
+    });
+    widget.onChanged(_code);
   }
 
   void _onSubmit() {
     if (!hasFullPin) return;
-    widget.onComplete(_code);
+    widget.onSubmit?.call(_code);
   }
 
   @override
@@ -120,7 +133,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
                         ),
                       ),
                       _buildNumberButton('0'),
-                      if (widget.showSubmitButton) ...[
+                      if (widget.onSubmit != null) ...[
                         Expanded(
                           child: AspectRatio(
                             aspectRatio: 1,
