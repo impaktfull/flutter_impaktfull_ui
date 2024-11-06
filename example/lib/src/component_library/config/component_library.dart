@@ -66,6 +66,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/tab_bar/t
 import 'package:impaktfull_ui_example/src/component_library/components/table/table_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/time_picker/time_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/tooltip/tooltip_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/touch_feedback_sequence/touch_feedback_sequence_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/wrap/wrap_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/wysiwyg/wysiwyg_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
@@ -145,6 +146,7 @@ class ComponentLibrary {
     const TabBarLibraryItem(),
     const TableLibraryItem(),
     const TimePickerLibraryItem(),
+    const TouchFeedbackSequenceLibraryItem(),
     const TooltipLibraryItem(),
     const WrapLibraryItem(),
     const WysiwygLibraryItem(),

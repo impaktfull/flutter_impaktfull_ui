@@ -16,8 +16,10 @@ class MorseCodeTouchFeedbackLibraryVariant extends ComponentLibraryVariant<
     return [
       ImpaktfullUiMorseCodeTouchFeedback(
         text: 'sos',
-        // ignore: avoid_print
-        onTap: () => print('sos'),
+        onTap: () => ImpaktfullUiNotification.show(
+          title: 'SOS! Please help!',
+          type: ImpaktfullUiNotificationType.warning,
+        ),
         child: const Text(
             'Tap `SOS` in Morse Code!\nThis is the code\n3x short, 3x long, 3x short (...---...)'),
       ),

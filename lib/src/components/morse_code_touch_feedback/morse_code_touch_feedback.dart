@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'dart:async';
 
 part 'morse_code_touch_feedback.describe.dart';
 
@@ -8,12 +9,14 @@ class ImpaktfullUiMorseCodeTouchFeedback extends StatefulWidget
   final VoidCallback onTap;
   final String text;
   final Widget child;
+  final bool ignoreChildPointerEvents;
   final Duration shortDuration;
 
   const ImpaktfullUiMorseCodeTouchFeedback({
     required this.text,
     required this.onTap,
     required this.child,
+    this.ignoreChildPointerEvents = true,
     this.shortDuration = const Duration(milliseconds: 150),
     super.key,
   });
@@ -30,8 +33,8 @@ class _ImpaktfullUiMorseCodeTouchFeedbackState
     extends State<ImpaktfullUiMorseCodeTouchFeedback> {
   final List<Duration> _tapDurations = [];
   final maxWaitTime = const Duration(seconds: 1);
-  DateTime? _lastInteractionTime;
   DateTime? _tapStartTime;
+  Timer? _resetTimer;
 
   static const Map<String, String> _morseCodeMap = {
     'a': '.-',
@@ -79,12 +82,8 @@ class _ImpaktfullUiMorseCodeTouchFeedbackState
       .join();
 
   void _onTapDown(TapDownDetails details) {
-    final now = DateTime.now();
-    if (_lastInteractionTime != null &&
-        now.difference(_lastInteractionTime!) > maxWaitTime) {
-      _tapDurations.clear();
-    }
-    _tapStartTime = now;
+    _resetTimer?.cancel();
+    _tapStartTime = DateTime.now();
   }
 
   void _onTapUp(TapUpDetails details) {
@@ -93,12 +92,21 @@ class _ImpaktfullUiMorseCodeTouchFeedbackState
       _tapDurations.add(duration);
       _checkMorseCode();
     }
-    _lastInteractionTime = DateTime.now();
+    _setResetTimer();
   }
 
   void _onTapCancel() {
     _tapStartTime = null;
-    _lastInteractionTime = DateTime.now();
+    _setResetTimer();
+  }
+
+  void _setResetTimer() {
+    _resetTimer?.cancel();
+    _resetTimer = Timer(maxWaitTime, () {
+      setState(() {
+        _tapDurations.clear();
+      });
+    });
   }
 
   void _checkMorseCode() {
@@ -120,6 +128,12 @@ class _ImpaktfullUiMorseCodeTouchFeedbackState
   }
 
   @override
+  void dispose() {
+    _resetTimer?.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: _onTapDown,
@@ -128,6 +142,7 @@ class _ImpaktfullUiMorseCodeTouchFeedbackState
       child: ColoredBox(
         color: Colors.transparent,
         child: IgnorePointer(
+          ignoring: widget.ignoreChildPointerEvents,
           child: widget.child,
         ),
       ),

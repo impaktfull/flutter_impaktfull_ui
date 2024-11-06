@@ -123,6 +123,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiTheme
 - ImpaktfullUiTooltip
 - ImpaktfullUiTouchFeedback
+- ImpaktfullUiTouchFeedbackSequence
 - ImpaktfullUiUnifiedScreenLayout
 - ImpaktfullUiWrap
 - ImpaktfullUiWysiwyg
