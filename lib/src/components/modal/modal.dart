@@ -24,6 +24,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiModalTheme? theme;
   final ImpaktfullUiModalHeaderChildLocation? headerChildLocation;
   final ImpaktfullUiAsset? headerIcon;
+  final Color? headerIconColor;
   final Widget? headerChild;
   final String? title;
   final String? subtitle;
@@ -39,6 +40,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   const ImpaktfullUiModal({
     this.headerChildLocation,
     this.headerIcon,
+    this.headerIconColor,
     this.headerChild,
     this.title,
     this.subtitle,
@@ -73,6 +75,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     required BuildContext context,
     ImpaktfullUiModalHeaderChildLocation? headerChildLocation,
     ImpaktfullUiAsset? headerIcon,
+    Color? headerIconColor,
     Widget? headerChild,
     String? title,
     String? subtitle,
@@ -91,6 +94,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     final modal = ImpaktfullUiModal(
       headerChildLocation: headerChildLocation,
       headerIcon: headerIcon,
+      headerIconColor: headerIconColor,
       headerChild: headerChild,
       title: title,
       subtitle: subtitle,
@@ -156,7 +160,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                         padding: componentTheme.dimens.leadingIconPadding,
                         child: ImpaktfullUiAssetWidget(
                           asset: headerIcon!,
-                          color: componentTheme.colors.leadingHeaderIcon,
+                          color: headerIconColor ??
+                              componentTheme.colors.leadingHeaderIcon,
                         ),
                       ),
                     ],
