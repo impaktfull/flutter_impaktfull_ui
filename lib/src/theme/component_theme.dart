@@ -8,6 +8,7 @@ import 'package:impaktfull_ui_2/src/components/bottom_sheet/bottom_sheet.dart';
 import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
+import 'package:impaktfull_ui_2/src/components/carrousel/carrousel.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
@@ -18,6 +19,7 @@ import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/file_picker/file_picker.dart';
 import 'package:impaktfull_ui_2/src/components/floating_action_button/floating_action_button.dart';
 import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding.dart';
+import 'package:impaktfull_ui_2/src/components/gallery/gallery.dart';
 import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
@@ -85,6 +87,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiButtonTheme button;
   final ImpaktfullUiCalendarTheme calendar;
   final ImpaktfullUiCardTheme card;
+  final ImpaktfullUiCarrouselTheme carrousel;
   final ImpaktfullUiCheckboxTheme checkbox;
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
@@ -95,6 +98,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiFilePickerTheme filePicker;
   final ImpaktfullUiFloatingActionButtonTheme floatingActionButton;
   final ImpaktfullUiFluidPaddingTheme fluidPadding;
+  final ImpaktfullUiGalleryTheme gallery;
   final ImpaktfullUiGridViewTheme gridView;
   final ImpaktfullUiHorizontalTabTheme horizontalTab;
   final ImpaktfullUiHorizontalTabsTheme horizontalTabs;
@@ -157,6 +161,7 @@ class ImpaktfullUiComponentsTheme {
     required this.button,
     required this.calendar,
     required this.card,
+    required this.carrousel,
     required this.checkbox,
     required this.cmsHeader,
     required this.colorPicker,
@@ -168,6 +173,7 @@ class ImpaktfullUiComponentsTheme {
     required this.floatingActionButton,
     required this.fluidPadding,
     required this.gridView,
+    required this.gallery,
     required this.horizontalTab,
     required this.horizontalTabs,
     required this.imageCrop,
@@ -230,6 +236,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiButtonTheme? button,
     ImpaktfullUiCalendarTheme? calendar,
     ImpaktfullUiCardTheme? card,
+    ImpaktfullUiCarrouselTheme? carrousel,
     ImpaktfullUiCheckboxTheme? checkbox,
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
@@ -240,6 +247,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiFilePickerTheme? filePicker,
     ImpaktfullUiFloatingActionButtonTheme? floatingActionButton,
     ImpaktfullUiFluidPaddingTheme? fluidPadding,
+    ImpaktfullUiGalleryTheme? gallery,
     ImpaktfullUiGridViewTheme? gridView,
     ImpaktfullUiHorizontalTabTheme? horizontalTab,
     ImpaktfullUiHorizontalTabsTheme? horizontalTabs,
@@ -302,6 +310,7 @@ class ImpaktfullUiComponentsTheme {
         button: button ?? this.button,
         calendar: calendar ?? this.calendar,
         card: card ?? this.card,
+        carrousel: carrousel ?? this.carrousel,
         checkbox: checkbox ?? this.checkbox,
         cmsHeader: cmsHeader ?? this.cmsHeader,
         colorPicker: colorPicker ?? this.colorPicker,
@@ -313,6 +322,7 @@ class ImpaktfullUiComponentsTheme {
         floatingActionButton: floatingActionButton ?? this.floatingActionButton,
         fluidPadding: fluidPadding ?? this.fluidPadding,
         gridView: gridView ?? this.gridView,
+        gallery: gallery ?? this.gallery,
         horizontalTab: horizontalTab ?? this.horizontalTab,
         horizontalTabs: horizontalTabs ?? this.horizontalTabs,
         imageCrop: imageCrop ?? this.imageCrop,
@@ -342,8 +352,7 @@ class ImpaktfullUiComponentsTheme {
         sectionTitle: sectionTitle ?? this.sectionTitle,
         selectableListItem: selectableListItem ?? this.selectableListItem,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
-        sidebarNavigationItem:
-            sidebarNavigationItem ?? this.sidebarNavigationItem,
+        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
         separatedColumn: separatedColumn ?? this.separatedColumn,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         skeleton: skeleton ?? this.skeleton,
@@ -386,6 +395,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiCalendarTheme.of(context) as T;
     } else if (T == ImpaktfullUiCardTheme) {
       return ImpaktfullUiCardTheme.of(context) as T;
+    } else if (T == ImpaktfullUiCarrouselTheme) {
+      return ImpaktfullUiCarrouselTheme.of(context) as T;
     } else if (T == ImpaktfullUiCheckboxTheme) {
       return ImpaktfullUiCheckboxTheme.of(context) as T;
     } else if (T == ImpaktfullUiCmsHeaderTheme) {
@@ -406,6 +417,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiFloatingActionButtonTheme.of(context) as T;
     } else if (T == ImpaktfullUiFluidPaddingTheme) {
       return ImpaktfullUiFluidPaddingTheme.of(context) as T;
+    } else if (T == ImpaktfullUiGalleryTheme) {
+      return ImpaktfullUiGalleryTheme.of(context) as T;
     } else if (T == ImpaktfullUiGridViewTheme) {
       return ImpaktfullUiGridViewTheme.of(context) as T;
     } else if (T == ImpaktfullUiHorizontalTabTheme) {

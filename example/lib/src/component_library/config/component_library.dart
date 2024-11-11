@@ -12,6 +12,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/bottomshe
 import 'package:impaktfull_ui_example/src/component_library/components/button/button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/calendar/calendar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/card/card_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/carrousel/carrousel_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/checkbox/checkbox_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/cms_header/cms_header_library_item.dart';
@@ -23,6 +24,7 @@ import 'package:impaktfull_ui_example/src/component_library/components/dropdown/
 import 'package:impaktfull_ui_example/src/component_library/components/file_picker/file_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/floating_action_button/floating_action_button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/fluid_padding/fluid_padding_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/components/gallery/gallery_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/grid_view/grid_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/horizontal_tabs/horizontal_tabs_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/icon_button/icon_button_library_item.dart';
@@ -95,6 +97,7 @@ class ComponentLibrary {
     const CheckboxLibraryItem(),
     const CalendarLibraryItem(),
     const CardLibraryItem(),
+    const CarrouselLibraryItem(),
     const ClampedFractionallySizedBoxLibraryItem(),
     const CmsHeaderLibraryItem(),
     const ColorPickerLibraryItem(),
@@ -105,6 +108,7 @@ class ComponentLibrary {
     const FilePickerLibraryItem(),
     const FloatingActionButtonLibraryItem(),
     const FluidPaddingLibraryItem(),
+    const GalleryLibraryItem(),
     const GridViewLibraryItem(),
     const HorizontalTabsLibraryItem(),
     const IconButtonLibraryItem(),

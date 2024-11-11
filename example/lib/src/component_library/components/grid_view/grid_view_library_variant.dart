@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/components/grid_view/grid_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
-class GridViewLibraryVariant
-    extends ComponentLibraryVariant<GridViewLibraryPrimaryInputs> {
+class GridViewLibraryVariant extends ComponentLibraryVariant<GridViewLibraryPrimaryInputs> {
   const GridViewLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(
-      BuildContext context, GridViewLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, GridViewLibraryPrimaryInputs inputs) {
     return [
-      SizedBox(
-        height: 200,
+      ComponentsLibraryVariantDescriptor(
+        height: 500,
         child: ImpaktfullUiGridView.builder(
-          crossAxisCount: (context, config) => config.maxWidth ~/ 100,
+          crossAxisCount: (context, config) => config.maxWidth ~/ 250,
           items: List.generate(100, (i) => i),
           spacing: 4,
           itemBuilder: (context, item, index) => Container(

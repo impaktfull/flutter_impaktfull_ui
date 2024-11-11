@@ -9,6 +9,7 @@ import 'package:impaktfull_ui_2/src/theme/shadow_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/textstyle_theme.dart';
 import 'package:impaktfull_ui_2/src/theme/theme_default.dart';
 
+export 'asset_theme.dart';
 export 'color_theme.dart';
 export 'component_theme.dart';
 export 'dimens_theme.dart';
