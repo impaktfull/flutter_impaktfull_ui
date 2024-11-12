@@ -49,7 +49,7 @@ class ImpaktfullUiBadge extends StatefulWidget with ComponentDescriptorMixin {
 class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiBadgeTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiBadgeTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final hasLeading =

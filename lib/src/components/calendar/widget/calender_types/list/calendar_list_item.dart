@@ -22,7 +22,7 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCalendarTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCalendarTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final subtitle = _createSectionSubTitle(item)!;

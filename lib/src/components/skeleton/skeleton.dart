@@ -73,7 +73,7 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSkeletonTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSkeletonTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) =>

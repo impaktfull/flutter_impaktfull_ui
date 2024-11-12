@@ -85,7 +85,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiImageCropTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiImageCropTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         if (_croppedImageBytes != null) {

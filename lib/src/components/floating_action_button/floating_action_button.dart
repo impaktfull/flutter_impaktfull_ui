@@ -78,7 +78,7 @@ class _ImpaktfullUiFloatingActionButtonState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
+    return ImpaktfullUiComponentThemeBuilder<
         ImpaktfullUiFloatingActionButtonTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(

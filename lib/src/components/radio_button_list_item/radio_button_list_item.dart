@@ -34,7 +34,7 @@ class ImpaktfullUiRadioButtonListItem<T> extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
+    return ImpaktfullUiComponentThemeBuilder<
         ImpaktfullUiRadioButtonListItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(

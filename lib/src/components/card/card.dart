@@ -50,7 +50,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
 class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCardTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCardTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiContainer(
         width: widget.width,

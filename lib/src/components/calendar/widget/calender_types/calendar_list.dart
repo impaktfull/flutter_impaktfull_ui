@@ -45,7 +45,7 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCalendarTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCalendarTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiListView.builder(
         padding: const EdgeInsets.all(16),

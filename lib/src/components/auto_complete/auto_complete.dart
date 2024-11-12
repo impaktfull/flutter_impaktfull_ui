@@ -86,7 +86,7 @@ class _ImpaktfullUiAutoCompleteState<T>
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiAutoCompleteTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiAutoCompleteTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => CompositedTransformTarget(
         link: _layerLink,

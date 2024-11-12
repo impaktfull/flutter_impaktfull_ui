@@ -23,7 +23,7 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSwitchTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSwitchTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final color = value

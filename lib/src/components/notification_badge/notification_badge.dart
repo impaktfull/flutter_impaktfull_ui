@@ -41,7 +41,7 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
+    return ImpaktfullUiComponentThemeBuilder<
         ImpaktfullUiNotificationBadgeTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {

@@ -58,7 +58,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
   bool get hasOnTap => widget.onTap != null || widget.onAsyncTap != null;
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiButtonTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiButtonTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final iconSize = _getIconSize();

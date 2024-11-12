@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
-class ImpaktfullUiComponentThemeBuidler<T extends ImpaktfullUiComponentTheme>
+class ImpaktfullUiComponentThemeBuilder<T extends ImpaktfullUiComponentTheme>
     extends StatelessWidget {
   final T? overrideComponentTheme;
   final Widget Function(BuildContext context, T componentTheme) builder;
 
-  const ImpaktfullUiComponentThemeBuidler({
+  const ImpaktfullUiComponentThemeBuilder({
     required this.builder,
     this.overrideComponentTheme,
     super.key,

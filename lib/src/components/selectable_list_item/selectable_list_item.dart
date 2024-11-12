@@ -33,7 +33,7 @@ class ImpaktfullUiSelectableListItem extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
+    return ImpaktfullUiComponentThemeBuilder<
         ImpaktfullUiSelectableListItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(

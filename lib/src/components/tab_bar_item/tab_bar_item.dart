@@ -46,7 +46,7 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTabBarItemTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTabBarItemTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         useFocusColor: false,

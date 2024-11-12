@@ -25,7 +25,7 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
+    return ImpaktfullUiComponentThemeBuilder<
         ImpaktfullUiSnackyConfiguratorTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {

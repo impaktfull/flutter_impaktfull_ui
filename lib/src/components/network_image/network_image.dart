@@ -32,7 +32,7 @@ class ImpaktfullUiNetworkImage extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiNetworkImageTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiNetworkImageTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         String fullUrl = url;

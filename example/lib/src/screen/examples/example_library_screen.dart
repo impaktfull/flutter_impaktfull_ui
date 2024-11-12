@@ -20,6 +20,7 @@ class ExampleLibraryScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         items: ExampleLibrary.instance.examples,
         spacing: 8,
+        noDataLabel: 'No Examples',
         itemBuilder: (context, item, index) {
           final value = ExampleLibrary.instance.examples[index];
           return ExampleCard(

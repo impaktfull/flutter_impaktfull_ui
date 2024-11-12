@@ -33,7 +33,7 @@ class ImpaktfullUiMarkdown extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiMarkdownTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiMarkdownTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => MarkdownBody(
         styleSheet: MarkdownStyleSheet(

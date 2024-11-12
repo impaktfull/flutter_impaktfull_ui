@@ -22,7 +22,7 @@ class ImpaktfullUiTooltip extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTooltipTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTooltipTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         if (message == null) {

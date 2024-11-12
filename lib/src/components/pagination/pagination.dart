@@ -31,7 +31,7 @@ class ImpaktfullUiPagination extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiPaginationTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiPaginationTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
         spacing: 8,

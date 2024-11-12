@@ -24,7 +24,7 @@ class ImpaktfullUiTableRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableRowTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTableRowTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,

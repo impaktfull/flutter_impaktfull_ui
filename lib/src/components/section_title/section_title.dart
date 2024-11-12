@@ -31,7 +31,7 @@ class ImpaktfullUiSectionTitle extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSectionTitleTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSectionTitleTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final areAllIconButtons = _areAllValidActions(actions);

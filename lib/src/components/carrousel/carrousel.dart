@@ -12,7 +12,8 @@ part 'carrousel.describe.dart';
 
 const _pageTransitionDuration = Duration(milliseconds: 300);
 
-class ImpaktfullUiCarrousel extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiCarrousel extends StatefulWidget
+    with ComponentDescriptorMixin {
   final List<Widget> items;
   final int index;
   final EdgeInsetsGeometry? itemMargin;
@@ -119,14 +120,15 @@ class _ImpaktfullUiCarrouselState extends State<ImpaktfullUiCarrousel> {
         curve: Curves.easeInOut,
       );
     }
-    if (oldWidget.autoplay != widget.autoplay || oldWidget.autoplayInterval != widget.autoplayInterval) {
+    if (oldWidget.autoplay != widget.autoplay ||
+        oldWidget.autoplayInterval != widget.autoplayInterval) {
       _setupAutoplay();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCarrouselTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCarrouselTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         crossAxisAlignment: CrossAxisAlignment.center,

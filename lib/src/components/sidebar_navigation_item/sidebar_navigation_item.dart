@@ -73,7 +73,7 @@ class _ImpaktfullUiSidebarNavigationItemState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
+    return ImpaktfullUiComponentThemeBuilder<
         ImpaktfullUiSidebarNavigationItemTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {

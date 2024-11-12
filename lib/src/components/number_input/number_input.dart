@@ -32,7 +32,7 @@ class ImpaktfullUiNumberInput extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiNumberInputTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiNumberInputTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,

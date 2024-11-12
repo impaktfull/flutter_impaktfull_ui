@@ -191,7 +191,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDatePickerTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiDatePickerTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => SizedBox(
         width: 280 + widget.margin.horizontal,

@@ -16,7 +16,7 @@ class ImpaktfullUiPinCodeValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler(
+    return ImpaktfullUiComponentThemeBuilder(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
         mainAxisAlignment: MainAxisAlignment.center,

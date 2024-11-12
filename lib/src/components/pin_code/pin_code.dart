@@ -75,7 +75,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiPinCodeTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiPinCodeTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         spacing: 16,

@@ -41,7 +41,7 @@ class _ImpaktfullUiCommandMenuState extends State<ImpaktfullUiCommandMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCommandMenuTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCommandMenuTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final shortcutActivator = widget.shortcutActivator;

@@ -93,9 +93,9 @@ class _ImpaktfullUiWysiwygInputFieldState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiInputFieldTheme>(
       builder: (context, inputFieldTheme) =>
-          ImpaktfullUiComponentThemeBuidler<ImpaktfullUiWysiwygTheme>(
+          ImpaktfullUiComponentThemeBuilder<ImpaktfullUiWysiwygTheme>(
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,

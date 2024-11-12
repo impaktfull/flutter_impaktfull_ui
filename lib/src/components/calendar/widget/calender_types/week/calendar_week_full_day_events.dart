@@ -50,7 +50,7 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCalendarTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCalendarTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         return Container(

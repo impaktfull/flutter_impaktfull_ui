@@ -21,7 +21,7 @@ class _ComponentLibraryScreenState extends State<ComponentLibraryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final filteredComponents = ComponentLibrary.instance.components.where((e) {
+    final filteredComponents = ComponentLibrary.instance.items.where((e) {
       if (_fixedSearchQuery.isNotEmpty) {
         for (final fixedQuery in _fixedSearchQuery) {
           if (e.title.toLowerCase().contains(fixedQuery.toLowerCase())) {
@@ -63,6 +63,7 @@ class _ComponentLibraryScreenState extends State<ComponentLibraryScreen> {
           padding: const EdgeInsets.all(16),
           items: filteredComponents,
           spacing: 8,
+          noDataLabel: 'No Components',
           itemBuilder: (context, item, index) {
             final value = filteredComponents[index];
             final fistComponent = value.getComponentVariants().first;

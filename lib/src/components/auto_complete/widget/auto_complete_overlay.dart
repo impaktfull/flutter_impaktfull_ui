@@ -57,7 +57,7 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiAutoCompleteTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiAutoCompleteTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiCard(
         height: ImpaktfullUiAutoCompleteOverlay.defaultHeight,

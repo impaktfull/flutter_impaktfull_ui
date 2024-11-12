@@ -58,7 +58,7 @@ class ImpaktfullUiResponsiveLayout extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiResponsiveLayoutTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiResponsiveLayoutTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final screenSize = MediaQuery.sizeOf(context);

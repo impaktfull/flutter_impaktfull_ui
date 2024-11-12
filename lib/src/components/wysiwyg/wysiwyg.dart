@@ -43,7 +43,7 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiWysiwygTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiWysiwygTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,

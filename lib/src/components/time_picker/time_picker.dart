@@ -67,7 +67,7 @@ class _ImpaktfullUiTimePickerState extends State<ImpaktfullUiTimePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTimePickerTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTimePickerTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,

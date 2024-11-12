@@ -159,7 +159,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
     if (widget.isLoading) {
       return const Center(child: ImpaktfullUiLoadingIndicator());
     }
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiListViewTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiListViewTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final padding = MediaQuery.of(context).padding.add(widget.padding);

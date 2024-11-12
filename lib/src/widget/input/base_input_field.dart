@@ -82,7 +82,7 @@ class _BaseInputFieldState extends State<BaseInputField> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => Theme(
         data: Theme.of(context).copyWith(

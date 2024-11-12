@@ -30,7 +30,8 @@ Future<void> _createComponent({
   dir.createSync(recursive: true);
 
   //Create files
-  final styleFile = File(join(dir.path, '${snakeCaseComponentName}_style.dart'));
+  final styleFile =
+      File(join(dir.path, '${snakeCaseComponentName}_style.dart'));
 
   final styleFileContent = """import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
@@ -87,7 +88,8 @@ class ${className}TextStyleTheme {
 
   styleFile.writeAsStringSync(styleFileContent);
   //Create describe file
-  final describeFile = File(join(dir.path, '$snakeCaseComponentName.describe.dart'));
+  final describeFile =
+      File(join(dir.path, '$snakeCaseComponentName.describe.dart'));
 
   final describeFileContent = """part of '$snakeCaseComponentName.dart';
 
@@ -139,7 +141,8 @@ Future<void> _createWidgetLibrary({
 }) async {
   final snakeCaseComponentName = componentName.pascalToSnakeCase();
   // Create dir
-  final path = join('example', 'lib', 'src', 'component_library', 'components', snakeCaseComponentName);
+  final path = join('example', 'lib', 'src', 'component_library', 'components',
+      snakeCaseComponentName);
   final dir = Directory(path);
   if (dir.existsSync()) {
     throw Exception('Component already exists');
@@ -147,7 +150,8 @@ Future<void> _createWidgetLibrary({
   dir.createSync(recursive: true);
 
   // Create files
-  final libraryItemFile = File(join(dir.path, '${snakeCaseComponentName}_library_item.dart'));
+  final libraryItemFile =
+      File(join(dir.path, '${snakeCaseComponentName}_library_item.dart'));
 
   final libaryItemFileContent =
       """import 'package:impaktfull_ui_example/src/component_library/components/$snakeCaseComponentName/${snakeCaseComponentName}_library_variant.dart';
@@ -178,7 +182,8 @@ class ${componentName}LibraryInputs extends ComponentLibraryInputs {
   libraryItemFile.writeAsStringSync(libaryItemFileContent);
 
   // Component file
-  final libraryVariantFile = File(join(dir.path, '${snakeCaseComponentName}_library_variant.dart'));
+  final libraryVariantFile =
+      File(join(dir.path, '${snakeCaseComponentName}_library_variant.dart'));
 
   final componentFileContent = """import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';

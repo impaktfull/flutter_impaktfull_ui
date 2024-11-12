@@ -23,16 +23,31 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
   final int Function(BuildContext, ImpaktfullUiGridViewConfig) crossAxisCount;
   final double Function(BuildContext, ImpaktfullUiGridViewConfig)?
       childAspectRatio;
-  final Widget Function(BuildContext, T, int) itemBuilder;
+  final Widget Function(BuildContext, T, int)? itemBuilder;
   final EdgeInsetsGeometry padding;
   final double spacing;
   final ScrollPhysics? scrollPhysics;
+  final String noDataLabel;
   final ImpaktfullUiGridViewTheme? theme;
+
+  const ImpaktfullUiGridView({
+    required List<T> children,
+    required this.crossAxisCount,
+    required this.noDataLabel,
+    this.childAspectRatio,
+    this.padding = EdgeInsets.zero,
+    this.spacing = 0,
+    this.scrollPhysics,
+    this.theme,
+    super.key,
+  })  : items = children,
+        itemBuilder = null;
 
   const ImpaktfullUiGridView.builder({
     required this.items,
-    required this.itemBuilder,
+    required Widget Function(BuildContext, T, int) this.itemBuilder,
     required this.crossAxisCount,
+    required this.noDataLabel,
     this.childAspectRatio,
     this.padding = EdgeInsets.zero,
     this.spacing = 0,
@@ -43,10 +58,19 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiGridViewTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiGridViewTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) =>
           LayoutBuilder(builder: (context, constraints) {
+        if (items.isEmpty) {
+          return Center(
+            child: Text(
+              noDataLabel,
+              style: componentTheme.textStyles.title,
+              textAlign: TextAlign.center,
+            ),
+          );
+        }
         final config = ImpaktfullUiGridViewConfig(
           maxWidth: constraints.maxWidth,
           maxHeight: constraints.maxHeight,
@@ -65,7 +89,10 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
           ),
           itemBuilder: (context, index) {
             final item = items[index];
-            return itemBuilder(context, item, index);
+            if (itemBuilder == null && item is Widget) {
+              return item;
+            }
+            return itemBuilder!(context, item, index);
           },
         );
       }),

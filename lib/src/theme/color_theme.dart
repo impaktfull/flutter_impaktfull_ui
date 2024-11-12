@@ -12,9 +12,9 @@ class ImpaktfullUiColorTheme {
   final Color shadow;
   final Color text;
   final Color textOnPrimary;
-  final Color textOnDestructive;
   final Color textOnAccent;
   final Color textOnSecondary;
+  final Color textOnDestructive;
   final Color warning;
   final Color error;
   final Color info;
@@ -33,9 +33,9 @@ class ImpaktfullUiColorTheme {
     required this.shadow,
     required this.text,
     required this.textOnPrimary,
-    required this.textOnDestructive,
     required this.textOnAccent,
     required this.textOnSecondary,
+    required this.textOnDestructive,
     required this.warning,
     required this.error,
     required this.info,
@@ -76,9 +76,9 @@ class ImpaktfullUiColorTheme {
         shadow: shadow ?? this.shadow,
         text: text ?? this.text,
         textOnPrimary: textOnPrimary ?? this.textOnPrimary,
-        textOnDestructive: textOnDestructive ?? this.textOnDestructive,
         textOnAccent: textOnAccent ?? this.textOnAccent,
         textOnSecondary: textOnSecondary ?? this.textOnSecondary,
+        textOnDestructive: textOnDestructive ?? this.textOnDestructive,
         warning: warning ?? this.warning,
         error: error ?? this.error,
         info: info ?? this.info,

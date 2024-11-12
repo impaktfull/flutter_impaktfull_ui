@@ -14,6 +14,10 @@ import 'package:impaktfull_ui_example/src/screen/examples/example_library_item_s
 import 'package:impaktfull_ui_example/src/screen/examples/example_library_screen.dart';
 import 'package:impaktfull_ui_example/src/screen/home/home_screen.dart';
 import 'package:impaktfull_ui_example/src/screen/settings/settings_screen.dart';
+import 'package:impaktfull_ui_example/src/screen/styles/styles_library_item_screen.dart';
+import 'package:impaktfull_ui_example/src/screen/styles/styles_library_screen.dart';
+import 'package:impaktfull_ui_example/src/styles_library/config/styles_library.dart';
+import 'package:impaktfull_ui_example/src/styles_library/config/styles_library_item.dart';
 
 class ImpaktfullUiNavigator {
   final navigatorKey = GlobalKey<NavigatorState>();
@@ -50,7 +54,7 @@ class ImpaktfullUiNavigator {
         );
       case '/building-blocks':
         return ImpaktfullUiDesktopPageRoute<void>(
-          builder: (_) => const BuildignBLockLibraryScreen(),
+          builder: (_) => const BuildignBlockLibraryScreen(),
           settings: settings,
           fullscreenDialog: false,
         );
@@ -60,9 +64,15 @@ class ImpaktfullUiNavigator {
           settings: settings,
           fullscreenDialog: false,
         );
+      case '/styles':
+        return ImpaktfullUiDesktopPageRoute<void>(
+          builder: (_) => const StylesLibraryScreen(),
+          settings: settings,
+          fullscreenDialog: false,
+        );
     }
 
-    final components = ComponentLibrary.instance.components;
+    final components = ComponentLibrary.instance.items;
     for (final component in components) {
       if (name == '/components/${component.slug}') {
         return ImpaktfullUiDesktopPageRoute<void>(
@@ -75,7 +85,7 @@ class ImpaktfullUiNavigator {
       }
     }
 
-    final buildingBlocks = BuildingBlockLibrary.instance.buildingBlocks;
+    final buildingBlocks = BuildingBlockLibrary.instance.items;
     for (final buildingBlock in buildingBlocks) {
       if (name == '/building-blocks/${buildingBlock.slug}') {
         return ImpaktfullUiDesktopPageRoute<void>(
@@ -101,6 +111,19 @@ class ImpaktfullUiNavigator {
       }
     }
 
+    final styles = StylesLibrary.instance.items;
+    for (final style in styles) {
+      if (name == '/styles/${style.slug}') {
+        return ImpaktfullUiDesktopPageRoute<void>(
+          builder: (_) => StylesLibraryItemScreen(
+            item: style,
+          ),
+          settings: settings,
+          fullscreenDialog: false,
+        );
+      }
+    }
+
     return null;
   }
 
@@ -115,6 +138,8 @@ class ImpaktfullUiNavigator {
 
   void goToExamples() => navigatorKey.currentState?.pushNamed('/examples');
 
+  void goToStyles() => navigatorKey.currentState?.pushNamed('/styles');
+
   void goToComponent(ComponentLibraryItem item) =>
       navigatorKey.currentState?.pushNamed('/components/${item.slug}');
 
@@ -123,6 +148,9 @@ class ImpaktfullUiNavigator {
 
   void goToExample(ExampleLibraryItem item) =>
       navigatorKey.currentState?.pushNamed('/examples/${item.slug}');
+
+  void goToStyle(StylesLibraryItem item) =>
+      navigatorKey.currentState?.pushNamed('/styles/${item.slug}');
 
   void goBack() => navigatorKey.currentState?.pop();
 }

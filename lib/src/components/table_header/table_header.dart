@@ -21,7 +21,7 @@ class ImpaktfullUiTableHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableHeaderTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTableHeaderTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Container(
         decoration: BoxDecoration(

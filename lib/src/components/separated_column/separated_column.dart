@@ -33,7 +33,7 @@ class ImpaktfullUiSeparatedColumn extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSeparatedColumnTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSeparatedColumnTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         spacing: 8,

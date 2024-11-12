@@ -42,7 +42,7 @@ class _ImpaktfullUiTabBarState extends State<ImpaktfullUiTabBar> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTabBarTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTabBarTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => Builder(
         builder: (context) => ImpaktfullUiAutoLayout.horizontal(

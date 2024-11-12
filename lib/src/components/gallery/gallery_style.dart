@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
 
 class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
@@ -14,7 +15,8 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiGalleryTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.gallery;
+  static ImpaktfullUiGalleryTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.gallery;
 
   static ImpaktfullUiGalleryTheme defaultTheme({
     required ImpaktfullUiAssetTheme assets,
@@ -25,8 +27,13 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
       ImpaktfullUiGalleryTheme(
-        assets: const ImpaktfullUiGalleryAssetsTheme(),
-        colors: const ImpaktfullUiGalleryColorTheme(),
+        assets: ImpaktfullUiGalleryAssetsTheme(
+          close: assets.icons.close,
+        ),
+        colors: ImpaktfullUiGalleryColorTheme(
+          close: colors.textOnPrimary,
+          background: Colors.black54,
+        ),
         dimens: ImpaktfullUiGalleryDimensTheme(
           itemBorderRadius: dimens.borderRadius,
         ),
@@ -35,11 +42,20 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiGalleryAssetsTheme {
-  const ImpaktfullUiGalleryAssetsTheme();
+  final ImpaktfullUiAsset close;
+  const ImpaktfullUiGalleryAssetsTheme({
+    required this.close,
+  });
 }
 
 class ImpaktfullUiGalleryColorTheme {
-  const ImpaktfullUiGalleryColorTheme();
+  final Color close;
+  final Color background;
+
+  const ImpaktfullUiGalleryColorTheme({
+    required this.close,
+    required this.background,
+  });
 }
 
 class ImpaktfullUiGalleryDimensTheme {

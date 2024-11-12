@@ -27,7 +27,7 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiDatePickerTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiDatePickerTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
@@ -44,6 +44,7 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
               child: ImpaktfullUiGridView.builder(
                 scrollPhysics: const NeverScrollableScrollPhysics(),
                 items: _getItems(context),
+                noDataLabel: 'No Days',
                 itemBuilder: (context, item, index) =>
                     ImpaktfullUiDatePickerCell(
                   value: item.day.toString(),

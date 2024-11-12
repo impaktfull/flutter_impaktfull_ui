@@ -47,7 +47,7 @@ class ImpaktfullUiLoadingErrorData extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiLoadingErrorDataTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiLoadingErrorDataTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         if (isLoading) {

@@ -46,7 +46,7 @@ class _ImpaktfullUiListItemState extends State<ImpaktfullUiListItem> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiListItemTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiListItemTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final isClickable = widget.onTap != null || widget.onAsyncTap != null;

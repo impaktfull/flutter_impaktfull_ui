@@ -21,7 +21,7 @@ class ImpaktfullUiBottomNavigation extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiBottomNavigationTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiBottomNavigationTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Container(
         decoration: BoxDecoration(

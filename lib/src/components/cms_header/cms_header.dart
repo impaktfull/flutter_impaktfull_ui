@@ -47,7 +47,7 @@ class ImpaktfullUiCmsHeader extends StatefulWidget
 class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCmsHeaderTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCmsHeaderTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => Container(
         decoration: BoxDecoration(

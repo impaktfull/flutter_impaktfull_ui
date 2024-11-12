@@ -5,8 +5,8 @@ import 'package:impaktfull_ui_example/src/building_block_library/config/building
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/widget/building_block/building_block_card.dart';
 
-class BuildignBLockLibraryScreen extends StatelessWidget {
-  const BuildignBLockLibraryScreen({
+class BuildignBlockLibraryScreen extends StatelessWidget {
+  const BuildignBlockLibraryScreen({
     super.key,
   });
 
@@ -18,11 +18,12 @@ class BuildignBLockLibraryScreen extends StatelessWidget {
       builder: (context) => ImpaktfullUiGridView.builder(
         crossAxisCount: (context, config) => config.maxWidth ~/ 250,
         padding: const EdgeInsets.all(16),
-        items: BuildingBlockLibrary.instance.buildingBlocks,
+        items: BuildingBlockLibrary.instance.items,
         spacing: 8,
+        noDataLabel: 'No Building Blocks',
         itemBuilder: (context, item, index) {
-          final value = BuildingBlockLibrary.instance.buildingBlocks[index];
-          return BuildingBLockCard(
+          final value = BuildingBlockLibrary.instance.items[index];
+          return BuildingBlockCard(
             label: value.name,
             onTap: () => _onItemTapped(value),
             builder: value.build,

@@ -352,7 +352,8 @@ class ImpaktfullUiComponentsTheme {
         sectionTitle: sectionTitle ?? this.sectionTitle,
         selectableListItem: selectableListItem ?? this.selectableListItem,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
-        sidebarNavigationItem: sidebarNavigationItem ?? this.sidebarNavigationItem,
+        sidebarNavigationItem:
+            sidebarNavigationItem ?? this.sidebarNavigationItem,
         separatedColumn: separatedColumn ?? this.separatedColumn,
         simpleListItem: simpleListItem ?? this.simpleListItem,
         skeleton: skeleton ?? this.skeleton,

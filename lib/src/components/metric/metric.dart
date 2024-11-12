@@ -60,7 +60,7 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiMetricTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiMetricTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiCard(
         padding: EdgeInsets.zero,

@@ -47,7 +47,7 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableHeaderItemTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTableHeaderItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         if (title == null) return const SizedBox(height: 48);

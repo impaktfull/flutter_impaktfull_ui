@@ -31,7 +31,7 @@ class ImpaktfullUiAvatar extends StatelessWidget with ComponentDescriptorMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiAvatarTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiAvatarTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => SizedBox(
         width: width,

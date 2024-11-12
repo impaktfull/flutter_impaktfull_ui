@@ -77,7 +77,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiBottomSheetTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiBottomSheetTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => GestureDetector(
         onTap: () => Navigator.of(context).pop(),

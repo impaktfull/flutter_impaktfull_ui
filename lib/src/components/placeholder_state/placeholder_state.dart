@@ -35,7 +35,7 @@ class ImpaktfullUiPlaceholderState extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiPlaceholderStateTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiPlaceholderStateTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         crossAxisAlignment: CrossAxisAlignment.center,

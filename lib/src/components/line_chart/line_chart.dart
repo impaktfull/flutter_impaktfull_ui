@@ -55,7 +55,7 @@ class _ImpaktfullUiLineChartState extends State<ImpaktfullUiLineChart> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiLineChartTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiLineChartTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => SizedBox(
         width: widget.width,

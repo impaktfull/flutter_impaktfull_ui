@@ -23,7 +23,7 @@ class ImpaktfullUiInputFieldAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiCard(
         onTap: onTap,

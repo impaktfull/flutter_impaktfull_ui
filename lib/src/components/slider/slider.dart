@@ -56,7 +56,7 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSliderTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSliderTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => Focus(
         focusNode: _focusNode,

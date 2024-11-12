@@ -1,5 +1,5 @@
 import 'package:impaktfull_ui_example/src/example_library/config/example_library_item.dart';
-import 'package:impaktfull_ui_example/src/example_library/examples/dashboard/dashboard_example.dart';
+import 'package:impaktfull_ui_example/src/example_library/items/dashboard/dashboard_example.dart';
 
 class ExampleLibrary {
   static ExampleLibrary? _instance;

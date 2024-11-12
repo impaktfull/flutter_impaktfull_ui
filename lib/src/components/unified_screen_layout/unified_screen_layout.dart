@@ -32,7 +32,7 @@ class ImpaktfullUiUnifiedScreenLayout extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
+    return ImpaktfullUiComponentThemeBuilder<
         ImpaktfullUiUnifiedScreenLayoutTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {

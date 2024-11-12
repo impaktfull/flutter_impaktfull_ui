@@ -14,7 +14,8 @@ class ImpaktfullUiCarrouselTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiCarrouselTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.carrousel;
+  static ImpaktfullUiCarrouselTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.carrousel;
 }
 
 class ImpaktfullUiCarrouselAssetsTheme {

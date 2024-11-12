@@ -59,7 +59,7 @@ class ImpaktfullUiShadowsTheme {
         large: [
           BoxShadow(
             color: shadowBase.withOpacity(0.08),
-            offset: const Offset(1, 12),
+            offset: const Offset(0, 12),
             spreadRadius: -4,
             blurRadius: 16,
           ),

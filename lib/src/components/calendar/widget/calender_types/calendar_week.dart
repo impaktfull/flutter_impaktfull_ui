@@ -67,7 +67,7 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCalendarTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCalendarTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final dateRange = DateTimeRange(

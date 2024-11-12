@@ -38,7 +38,7 @@ class ImpaktfullUiCheckBox extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     final isSelected = value == null || value == true;
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCheckboxTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCheckboxTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Center(
         child: ImpaktfullUiTouchFeedback(

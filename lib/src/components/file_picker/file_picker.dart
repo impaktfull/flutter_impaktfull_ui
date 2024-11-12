@@ -41,7 +41,7 @@ class ImpaktfullUiFilePicker extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiFilePickerTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiFilePickerTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiHoverFeedback(
         cursor: data == null ? SystemMouseCursors.click : MouseCursor.defer,

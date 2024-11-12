@@ -30,7 +30,7 @@ class ImpaktfullUiLoadingIndicator extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiLoadingIndicatorTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiLoadingIndicatorTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final lottie = asset ?? componentTheme.assets.lottie;

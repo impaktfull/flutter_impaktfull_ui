@@ -31,5 +31,8 @@ class ImpaktfullUiGridViewDimensTheme {
 }
 
 class ImpaktfullUiGridViewTextStyleTheme {
-  const ImpaktfullUiGridViewTextStyleTheme();
+  final TextStyle title;
+  const ImpaktfullUiGridViewTextStyleTheme({
+    required this.title,
+  });
 }

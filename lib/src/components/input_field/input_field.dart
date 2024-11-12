@@ -116,7 +116,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   @override
   Widget build(BuildContext context) {
     final trailingAction = widget.trailingAction;
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiInputFieldTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final trailingActionAllowed =

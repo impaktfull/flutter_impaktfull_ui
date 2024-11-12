@@ -57,7 +57,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSimpleListItemTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSimpleListItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,

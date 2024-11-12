@@ -27,7 +27,7 @@ class ImpaktfullUiSwitchListItem extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiSwitchListItemTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSwitchListItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
         title: title,

@@ -79,7 +79,7 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiAccordionTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiAccordionTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,

@@ -44,7 +44,7 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiHorizontalTabTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiHorizontalTabTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,

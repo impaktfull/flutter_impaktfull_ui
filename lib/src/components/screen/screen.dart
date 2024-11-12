@@ -64,7 +64,7 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
   final _scaffoldState = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiScreenTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiScreenTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final hasNavbar = widget.onBackTapped != null ||

@@ -44,7 +44,7 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<
+    return ImpaktfullUiComponentThemeBuilder<
         ImpaktfullUiSidebarNavigationTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {

@@ -26,7 +26,7 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiHorizontalTabsTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiHorizontalTabsTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => SizedBox(
         height: 48,

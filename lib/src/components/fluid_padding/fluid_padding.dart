@@ -29,7 +29,7 @@ class ImpaktfullUiFluidPadding extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiFluidPaddingTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiFluidPaddingTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final width = MediaQuery.of(context).size.width;

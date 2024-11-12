@@ -53,7 +53,7 @@ class _CommandMenuWindowState extends State<CommandMenuWindow> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiCommandMenuTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCommandMenuTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => Actions(
         actions: {

@@ -42,7 +42,7 @@ class ImpaktfullUiStepper extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiStepperTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiStepperTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final ImpaktfullUiAutoLayoutOrientation autoLayoutOrientation;

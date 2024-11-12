@@ -85,7 +85,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<ImpaktfullUiTableRowItemTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTableRowItemTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         if (builder != null) {
