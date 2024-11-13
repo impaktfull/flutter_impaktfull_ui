@@ -41,10 +41,12 @@ class ImpaktfullUiKeyboardListener extends StatefulWidget {
   ];
 
   @override
-  State<ImpaktfullUiKeyboardListener> createState() => _ImpaktfullUiKeyboardListenerState();
+  State<ImpaktfullUiKeyboardListener> createState() =>
+      _ImpaktfullUiKeyboardListenerState();
 }
 
-class _ImpaktfullUiKeyboardListenerState extends State<ImpaktfullUiKeyboardListener> {
+class _ImpaktfullUiKeyboardListenerState
+    extends State<ImpaktfullUiKeyboardListener> {
   final _focusNode = FocusNode();
 
   @override
@@ -66,12 +68,14 @@ class _ImpaktfullUiKeyboardListenerState extends State<ImpaktfullUiKeyboardListe
   KeyEventResult _handleKeyPress(FocusNode node, KeyEvent event) {
     if (event is! KeyDownEvent) return KeyEventResult.ignored;
 
-    if (event.logicalKey == LogicalKeyboardKey.backspace && widget.onDelete != null) {
+    if (event.logicalKey == LogicalKeyboardKey.backspace &&
+        widget.onDelete != null) {
       widget.onDelete?.call();
       return KeyEventResult.handled;
     }
 
-    if (event.logicalKey == LogicalKeyboardKey.enter && widget.onSubmit != null) {
+    if (event.logicalKey == LogicalKeyboardKey.enter &&
+        widget.onSubmit != null) {
       widget.onSubmit?.call();
       return KeyEventResult.handled;
     }

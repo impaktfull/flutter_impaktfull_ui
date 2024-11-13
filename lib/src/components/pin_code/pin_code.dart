@@ -146,7 +146,8 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
                               aspectRatio: 1,
                               child: AnimatedOpacity(
                                 opacity: hasFullPin ? 1 : 0.33,
-                                duration: componentTheme.durations.submitOpacity,
+                                duration:
+                                    componentTheme.durations.submitOpacity,
                                 child: ImpaktfullUiPinCodeButton(
                                   asset: componentTheme.assets.check,
                                   onTap: _onSubmit,
