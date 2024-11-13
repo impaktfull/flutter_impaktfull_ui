@@ -1,13 +1,18 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/gallery/gallery.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiGalleryFullScreenItemWidget extends StatefulWidget {
   final ImpaktfullUiGalleryItem item;
+  final double maxScale;
   final ImpaktfullUiGalleryTheme theme;
+
   const ImpaktfullUiGalleryFullScreenItemWidget({
     required this.item,
     required this.theme,
+    this.maxScale = 4.0,
     super.key,
   });
 
@@ -21,6 +26,8 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState extends State<ImpaktfullUiGa
   late AnimationController _animationController;
   late Animation<Matrix4> _animation;
   TapDownDetails? _doubleTapDetails;
+  final _interactiveViewerKey = GlobalKey();
+  final _imageKey = GlobalKey();
 
   @override
   void initState() {
@@ -48,10 +55,11 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState extends State<ImpaktfullUiGa
     if (_transformationController.value != Matrix4.identity()) {
       endMatrix = Matrix4.identity();
     } else {
-      final position = _doubleTapDetails!.localPosition;
+      final renderBox = _interactiveViewerKey.currentContext!.findRenderObject() as RenderBox;
+      final position = renderBox.globalToLocal(_doubleTapDetails!.globalPosition);
       endMatrix = Matrix4.identity()
         ..translate(-position.dx * 2, -position.dy * 2)
-        ..scale(3.0);
+        ..scale(min(3.0, widget.maxScale));
     }
 
     _animation = Matrix4Tween(
@@ -72,16 +80,27 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState extends State<ImpaktfullUiGa
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder(
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => GestureDetector(
-        onDoubleTapDown: _handleDoubleTapDown,
-        onDoubleTap: _handleDoubleTap,
-        child: InteractiveViewer(
-          transformationController: _transformationController,
-          minScale: 1.0,
-          maxScale: 4.0,
-          child: Center(
-            child: ImpaktfullUiGalleryHeroItem(
-              item: widget.item,
+      builder: (context, componentTheme) => InteractiveViewer(
+        key: _interactiveViewerKey,
+        transformationController: _transformationController,
+        minScale: 1.0,
+        maxScale: widget.maxScale,
+        child: GestureDetector(
+          onTap: () => Navigator.of(context).pop(),
+          child: Container(
+            color: Colors.transparent,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(64),
+                child: GestureDetector(
+                  onDoubleTapDown: _handleDoubleTapDown,
+                  onDoubleTap: _handleDoubleTap,
+                  child: ImpaktfullUiGalleryHeroItem(
+                    key: _imageKey,
+                    item: widget.item,
+                  ),
+                ),
+              ),
             ),
           ),
         ),
