@@ -17,7 +17,8 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiGalleryTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.gallery;
+  static ImpaktfullUiGalleryTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.gallery;
 
   static ImpaktfullUiGalleryTheme defaultTheme({
     required ImpaktfullUiAssetTheme assets,
