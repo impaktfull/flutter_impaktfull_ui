@@ -10,6 +10,7 @@ class ImpaktfullUiGalleryItem {
 
   String get heroTag {
     if (id != null) return id!;
+    if (imageUrl != null) return imageUrl!;
     return '';
   }
 

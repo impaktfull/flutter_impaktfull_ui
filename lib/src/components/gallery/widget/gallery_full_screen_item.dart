@@ -17,12 +17,10 @@ class ImpaktfullUiGalleryFullScreenItemWidget extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiGalleryFullScreenItemWidget> createState() =>
-      _ImpaktfullUiGalleryFullScreenItemWidgetState();
+  State<ImpaktfullUiGalleryFullScreenItemWidget> createState() => _ImpaktfullUiGalleryFullScreenItemWidgetState();
 }
 
-class _ImpaktfullUiGalleryFullScreenItemWidgetState
-    extends State<ImpaktfullUiGalleryFullScreenItemWidget>
+class _ImpaktfullUiGalleryFullScreenItemWidgetState extends State<ImpaktfullUiGalleryFullScreenItemWidget>
     with SingleTickerProviderStateMixin {
   late TransformationController _transformationController;
   late AnimationController _animationController;
@@ -57,10 +55,8 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
     if (_transformationController.value != Matrix4.identity()) {
       endMatrix = Matrix4.identity();
     } else {
-      final renderBox =
-          _interactiveViewerKey.currentContext!.findRenderObject() as RenderBox;
-      final position =
-          renderBox.globalToLocal(_doubleTapDetails!.globalPosition);
+      final renderBox = _interactiveViewerKey.currentContext!.findRenderObject() as RenderBox;
+      final position = renderBox.globalToLocal(_doubleTapDetails!.globalPosition);
       endMatrix = Matrix4.identity()
         ..translate(-position.dx * 2, -position.dy * 2)
         ..scale(min(3.0, widget.maxScale));
@@ -102,6 +98,9 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
                 child: GestureDetector(
                   onDoubleTapDown: _handleDoubleTapDown,
                   onDoubleTap: _handleDoubleTap,
+                  onTap: () {
+                    // ignore tap (because otherwise it will close the fullscreen)
+                  },
                   child: ImpaktfullUiGalleryHeroItem(
                     key: _imageKey,
                     item: widget.item,

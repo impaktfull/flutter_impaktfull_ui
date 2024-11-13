@@ -15,7 +15,6 @@ class ImpaktfullUiGalleryFullScreen extends StatefulWidget {
     required this.theme,
     super.key,
   });
-
   static void show({
     required BuildContext context,
     required ImpaktfullUiGalleryTheme componentTheme,
@@ -23,23 +22,23 @@ class ImpaktfullUiGalleryFullScreen extends StatefulWidget {
     required ImpaktfullUiGalleryItem initialItem,
     bool barrierDismissible = true,
   }) =>
-      showDialog(
-        context: context,
-        useSafeArea: false,
-        barrierDismissible: barrierDismissible,
-        builder: (context) => ImpaktfullUiGalleryFullScreen(
-          items: items,
-          initialItem: initialItem,
-          theme: componentTheme,
+      Navigator.of(context).push(
+        PageRouteBuilder(
+          opaque: false,
+          barrierDismissible: barrierDismissible,
+          pageBuilder: (context, _, __) => ImpaktfullUiGalleryFullScreen(
+            items: items,
+            initialItem: initialItem,
+            theme: componentTheme,
+          ),
         ),
       );
+
   @override
-  State<ImpaktfullUiGalleryFullScreen> createState() =>
-      _ImpaktfullUiGalleryFullScreenState();
+  State<ImpaktfullUiGalleryFullScreen> createState() => _ImpaktfullUiGalleryFullScreenState();
 }
 
-class _ImpaktfullUiGalleryFullScreenState
-    extends State<ImpaktfullUiGalleryFullScreen> {
+class _ImpaktfullUiGalleryFullScreenState extends State<ImpaktfullUiGalleryFullScreen> {
   late PageController _pageController;
   late int _currentIndex;
   late FocusNode _focusNode;
@@ -108,9 +107,10 @@ class _ImpaktfullUiGalleryFullScreenState
               top: 16,
               right: 16,
               child: ImpaktfullUiIconButton(
+                onTap: () => Navigator.of(context).pop(),
                 asset: componentTheme.assets.close,
                 color: componentTheme.colors.icons,
-                onTap: () => Navigator.of(context).pop(),
+                tooltip: 'Close fullscreen',
               ),
             ),
             if (_currentIndex > 0)
@@ -120,7 +120,9 @@ class _ImpaktfullUiGalleryFullScreenState
                   padding: const EdgeInsetsDirectional.only(start: 16),
                   child: ImpaktfullUiIconButton(
                     onTap: () => _onTapPrevious(componentTheme),
+                    backgroundColor: componentTheme.colors.iconButtonBackground,
                     asset: componentTheme.assets.arrowLeft,
+                    tooltip: 'Previous',
                     color: componentTheme.colors.icons,
                   ),
                 ),
@@ -132,7 +134,9 @@ class _ImpaktfullUiGalleryFullScreenState
                   padding: const EdgeInsetsDirectional.only(end: 16),
                   child: ImpaktfullUiIconButton(
                     onTap: () => _onTapNext(componentTheme),
+                    backgroundColor: componentTheme.colors.iconButtonBackground,
                     asset: componentTheme.assets.arrowRight,
+                    tooltip: 'Next',
                     color: componentTheme.colors.icons,
                   ),
                 ),
