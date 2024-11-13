@@ -36,6 +36,7 @@ class ModalLibraryVariant
               barrierDismissible: inputs.enableDismissBarrier.value ?? true,
               onCloseTapped: () async => true,
               child: ImpaktfullUiAutoLayout.vertical(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     'Testing',

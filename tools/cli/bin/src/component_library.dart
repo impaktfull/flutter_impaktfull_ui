@@ -60,7 +60,7 @@ class ${className}Theme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiDurationTheme durations,
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
-      ${className}Theme(
+      const ${className}Theme(
         assets: ${className}AssetsTheme(),
         colors: ${className}ColorTheme(),
         dimens: ${className}DimensTheme(),
@@ -123,7 +123,7 @@ class $className extends StatelessWidget with ComponentDescriptorMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuidler<${className}Theme>(
+    return ImpaktfullUiComponentThemeBuilder<${className}Theme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Container(),
     );
@@ -141,7 +141,7 @@ Future<void> _createWidgetLibrary({
 }) async {
   final snakeCaseComponentName = componentName.pascalToSnakeCase();
   // Create dir
-  final path = join('example', 'lib', 'src', 'component_library', 'components',
+  final path = join('example', 'lib', 'src', 'component_library', 'items',
       snakeCaseComponentName);
   final dir = Directory(path);
   if (dir.existsSync()) {

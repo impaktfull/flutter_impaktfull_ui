@@ -39,6 +39,7 @@ import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart'
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui_2/src/components/number_input/number_input.dart';
+import 'package:impaktfull_ui_2/src/components/option_selector/option_selector.dart';
 import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui_2/src/components/pin_code/pin_code.dart';
 import 'package:impaktfull_ui_2/src/components/placeholder_state/placeholder_state.dart';
@@ -813,6 +814,14 @@ class DefaultTheme {
           colors: const ImpaktfullUiNumberInputColorTheme(),
           dimens: const ImpaktfullUiNumberInputDimensTheme(),
           textStyles: const ImpaktfullUiNumberInputTextStyleTheme(),
+        ),
+        optionSelector: ImpaktfullUiOptionSelectorTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         pagination: ImpaktfullUiPaginationTheme(
           assets: ImpaktfullUiPaginationAssetsTheme(

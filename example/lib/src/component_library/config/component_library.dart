@@ -43,6 +43,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/nav_bar/nav_ba
 import 'package:impaktfull_ui_example/src/component_library/items/notification/notification_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/notification_badge/notification_badge_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/number_input/number_input_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/option_selector/option_selector_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/pagination/pagination_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/pin_code/pin_code_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/placeholder_state/placeholder_state_library_item.dart';
@@ -127,6 +128,7 @@ class ComponentLibrary {
     const NotificationLibraryItem(),
     const NotificationBadgeLibraryItem(),
     const NumberInputLibraryItem(),
+    const OptionSelectorLibraryItem(),
     const PaginationLibraryItem(),
     const PinCodeLibraryItem(),
     const PlaceholderStateLibraryItem(),

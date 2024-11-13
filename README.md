@@ -59,6 +59,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiCalendar
   - ImpaktfullUiCalendarList
   - ImpaktfullUiCalendarWeek
+- ImpaktfullUiCarrousel
 - ImpaktfullUiCheckBox
 - ImpaktfullUiCmsHeader
 - ImpaktfullUiColorPicker
@@ -74,6 +75,10 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiFilePicker
 - ImpaktfullUiFloatingActionButton
 - ImpaktfullUiFluidPadding
+- ImpaktfullUiGallery
+  - ImpaktfullUiGalleryFullScreen
+  - ImpaktfullUiGalleryFullScreenItem
+  - ImpaktfullUiGalleryHeroItem
 - ImpaktfullUiGridView
 - ImpaktfullUiHoverFeedback
 - ImpaktfullUiHorizontalTabs
@@ -95,6 +100,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiNotification
 - ImpaktfullUiNotificationBadge
 - ImpaktfullUiNumberInput
+- ImpaktfullUiOptionSelector
 - ImpaktfullUiPagination
 - ImpaktfullUiPinCode
 - ImpaktfullUiPlaceholderState

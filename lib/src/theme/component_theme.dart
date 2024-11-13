@@ -34,6 +34,7 @@ import 'package:impaktfull_ui_2/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui_2/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
 import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
+import 'package:impaktfull_ui_2/src/components/option_selector/option_selector.dart';
 import 'package:impaktfull_ui_2/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui_2/src/components/pin_code/pin_code.dart';
 import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator_style.dart';
@@ -117,6 +118,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiNotificationTheme notification;
   final ImpaktfullUiNotificationBadgeTheme notificationBadge;
   final ImpaktfullUiNumberInputTheme numberInput;
+  final ImpaktfullUiOptionSelectorTheme optionSelector;
   final ImpaktfullUiPaginationTheme pagination;
   final ImpaktfullUiPinCodeTheme pinCode;
   final ImpaktfullUiPlaceholderStateTheme placeholderState;
@@ -191,6 +193,7 @@ class ImpaktfullUiComponentsTheme {
     required this.notification,
     required this.notificationBadge,
     required this.numberInput,
+    required this.optionSelector,
     required this.pagination,
     required this.pinCode,
     required this.placeholderState,
@@ -266,6 +269,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiNotificationTheme? notification,
     ImpaktfullUiNotificationBadgeTheme? notificationBadge,
     ImpaktfullUiNumberInputTheme? numberInput,
+    ImpaktfullUiOptionSelectorTheme? optionSelector,
     ImpaktfullUiPaginationTheme? pagination,
     ImpaktfullUiPinCodeTheme? pinCode,
     ImpaktfullUiPlaceholderStateTheme? placeholderState,
@@ -340,6 +344,7 @@ class ImpaktfullUiComponentsTheme {
         notification: notification ?? this.notification,
         notificationBadge: notificationBadge ?? this.notificationBadge,
         numberInput: numberInput ?? this.numberInput,
+        optionSelector: optionSelector ?? this.optionSelector,
         pagination: pagination ?? this.pagination,
         pinCode: pinCode ?? this.pinCode,
         placeholderState: placeholderState ?? this.placeholderState,
@@ -456,6 +461,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
     } else if (T == ImpaktfullUiNumberInputTheme) {
       return ImpaktfullUiNumberInputTheme.of(context) as T;
+    } else if (T == ImpaktfullUiOptionSelectorTheme) {
+      return ImpaktfullUiOptionSelectorTheme.of(context) as T;
     } else if (T == ImpaktfullUiProgressIndicatorTheme) {
       return ImpaktfullUiProgressIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiPaginationTheme) {

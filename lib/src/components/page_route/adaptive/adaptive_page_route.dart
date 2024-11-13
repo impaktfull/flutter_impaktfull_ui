@@ -9,7 +9,7 @@ class ImpaktfullUIAdaptivePageRoute {
     RouteSettings? settings,
     bool fullscreenDialog = false,
   }) {
-    if (DeviceUtil.isDesktop()) {
+    if (!DeviceUtil.isDesktop()) {
       return ImpaktfullUiDesktopPageRoute<T>(
         builder: builder,
         settings: settings,

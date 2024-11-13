@@ -61,6 +61,7 @@ export 'src/components/network_image/network_image.dart';
 export 'src/components/notification/notification.dart';
 export 'src/components/notification_badge/notification_badge.dart';
 export 'src/components/number_input/number_input.dart';
+export 'src/components/option_selector/option_selector.dart';
 export 'src/components/page_route/adaptive/adaptive_page_route.dart';
 export 'src/components/page_route/desktop_page_route.dart';
 export 'src/components/pagination/pagination.dart';

@@ -10,7 +10,7 @@ export 'selectable_list_item_style.dart';
 
 part 'selectable_list_item.describe.dart';
 
-class ImpaktfullUiSelectableListItem extends StatelessWidget
+class ImpaktfullUiSelectableListItem extends StatefulWidget
     with ComponentDescriptorMixin {
   final String title;
   final String? subtitle;
@@ -32,30 +32,53 @@ class ImpaktfullUiSelectableListItem extends StatelessWidget
   });
 
   @override
+  State<ImpaktfullUiSelectableListItem> createState() =>
+      _ImpaktfullUiSelectableListItemState();
+
+  @override
+  String describe(BuildContext context) => _describeInstance(context, this);
+}
+
+class _ImpaktfullUiSelectableListItemState
+    extends State<ImpaktfullUiSelectableListItem> {
+  late bool _previousIsSelected;
+
+  @override
+  void initState() {
+    super.initState();
+    _previousIsSelected = widget.isSelected;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder<
         ImpaktfullUiSelectableListItemTheme>(
-      overrideComponentTheme: theme,
+      overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
-        title: title,
-        subtitle: subtitle,
-        onTap: onChanged == null ? null : _onTap,
+        title: widget.title,
+        subtitle: widget.subtitle,
+        onTap: widget.onChanged == null ? null : _onTap,
         type: ImpaktfullUiSimpleListItemType.neutral,
-        leadingWidgetBuilder: leading == null
+        leadingWidgetBuilder: widget.leading == null
             ? null
             : (context) => ImpaktfullUiAssetWidget(
-                  asset: leading,
+                  asset: widget.leading,
                   color: componentTheme.colors.icons,
                 ),
         trailingWidgetBuilder: (context) {
-          final widget = trailingBuilder?.call(context, isSelected);
-          if (widget != null) {
-            return widget;
+          final customWidget =
+              widget.trailingBuilder?.call(context, widget.isSelected);
+          if (customWidget != null) {
+            return customWidget;
           }
+
+          _previousIsSelected = widget.isSelected;
           return TweenAnimationBuilder<Color?>(
             tween: ColorTween(
-              begin: componentTheme.colors.unselected,
-              end: isSelected
+              begin: _previousIsSelected
+                  ? componentTheme.colors.selected
+                  : componentTheme.colors.unselected,
+              end: widget.isSelected
                   ? componentTheme.colors.selected
                   : componentTheme.colors.unselected,
             ),
@@ -71,8 +94,5 @@ class ImpaktfullUiSelectableListItem extends StatelessWidget
     );
   }
 
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
-
-  void _onTap() => onChanged?.call(!isSelected);
+  void _onTap() => widget.onChanged?.call(!widget.isSelected);
 }
