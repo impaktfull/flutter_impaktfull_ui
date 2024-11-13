@@ -5,6 +5,7 @@ import 'package:impaktfull_ui_2/src/components/pin_code/widget/pin_code_button.d
 import 'package:impaktfull_ui_2/src/components/pin_code/widget/pin_code_value.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui_2/src/widget/keyboard/keyboard_listener.dart';
 
 export 'pin_code_style.dart';
 
@@ -52,7 +53,8 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
     }
   }
 
-  void _onNumberTap(String number) {
+  void _onKeyTap(String number) {
+    if (int.tryParse(number) == null) return;
     if (_code.length >= widget.length) return;
     setState(() {
       _code += number;
@@ -75,88 +77,94 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiPinCodeTheme>(
-      overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
-        spacing: 16,
-        children: [
-          ImpaktfullUiPinCodeValue(
-            code: _code,
-            length: widget.length,
-            theme: componentTheme,
-          ),
-          Expanded(
-            child: ImpaktfullUiAutoLayout.vertical(
-              spacing: 8,
-              children: [
-                Expanded(
-                  child: ImpaktfullUiAutoLayout.horizontal(
-                    spacing: 8,
-                    children: [
-                      _buildNumberButton('1'),
-                      _buildNumberButton('2'),
-                      _buildNumberButton('3'),
-                    ],
+    return ImpaktfullUiKeyboardListener(
+      onSubmit: _onSubmit,
+      onDelete: _onDelete,
+      allowedKeys: ImpaktfullUiKeyboardListener.numpadKeys,
+      onNumberTap: _onKeyTap,
+      child: ImpaktfullUiComponentThemeBuilder<ImpaktfullUiPinCodeTheme>(
+        overrideComponentTheme: widget.theme,
+        builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
+          spacing: 16,
+          children: [
+            ImpaktfullUiPinCodeValue(
+              code: _code,
+              length: widget.length,
+              theme: componentTheme,
+            ),
+            Expanded(
+              child: ImpaktfullUiAutoLayout.vertical(
+                spacing: 8,
+                children: [
+                  Expanded(
+                    child: ImpaktfullUiAutoLayout.horizontal(
+                      spacing: 8,
+                      children: [
+                        _buildNumberButton('1'),
+                        _buildNumberButton('2'),
+                        _buildNumberButton('3'),
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ImpaktfullUiAutoLayout.horizontal(
-                    spacing: 8,
-                    children: [
-                      _buildNumberButton('4'),
-                      _buildNumberButton('5'),
-                      _buildNumberButton('6'),
-                    ],
+                  Expanded(
+                    child: ImpaktfullUiAutoLayout.horizontal(
+                      spacing: 8,
+                      children: [
+                        _buildNumberButton('4'),
+                        _buildNumberButton('5'),
+                        _buildNumberButton('6'),
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ImpaktfullUiAutoLayout.horizontal(
-                    spacing: 8,
-                    children: [
-                      _buildNumberButton('7'),
-                      _buildNumberButton('8'),
-                      _buildNumberButton('9'),
-                    ],
+                  Expanded(
+                    child: ImpaktfullUiAutoLayout.horizontal(
+                      spacing: 8,
+                      children: [
+                        _buildNumberButton('7'),
+                        _buildNumberButton('8'),
+                        _buildNumberButton('9'),
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ImpaktfullUiAutoLayout.horizontal(
-                    spacing: 8,
-                    children: [
-                      Expanded(
-                        child: AspectRatio(
-                          aspectRatio: 1,
-                          child: ImpaktfullUiPinCodeButton(
-                            asset: componentTheme.assets.backspace,
-                            onTap: _onDelete,
-                          ),
-                        ),
-                      ),
-                      _buildNumberButton('0'),
-                      if (widget.onSubmit != null) ...[
+                  Expanded(
+                    child: ImpaktfullUiAutoLayout.horizontal(
+                      spacing: 8,
+                      children: [
                         Expanded(
                           child: AspectRatio(
                             aspectRatio: 1,
-                            child: AnimatedOpacity(
-                              opacity: hasFullPin ? 1 : 0.33,
-                              duration: componentTheme.durations.submitOpacity,
-                              child: ImpaktfullUiPinCodeButton(
-                                asset: componentTheme.assets.check,
-                                onTap: _onSubmit,
-                              ),
+                            child: ImpaktfullUiPinCodeButton(
+                              asset: componentTheme.assets.backspace,
+                              onTap: _onDelete,
                             ),
                           ),
-                        )
-                      ] else ...[
-                        const Expanded(child: SizedBox()),
+                        ),
+                        _buildNumberButton('0'),
+                        if (widget.onSubmit != null) ...[
+                          Expanded(
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: AnimatedOpacity(
+                                opacity: hasFullPin ? 1 : 0.33,
+                                duration: componentTheme.durations.submitOpacity,
+                                child: ImpaktfullUiPinCodeButton(
+                                  asset: componentTheme.assets.check,
+                                  onTap: _onSubmit,
+                                ),
+                              ),
+                            ),
+                          )
+                        ] else ...[
+                          const Expanded(child: SizedBox()),
+                        ],
                       ],
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -166,7 +174,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
       child: AspectRatio(
         aspectRatio: 1,
         child: ImpaktfullUiPinCodeButton(
-          onTap: () => _onNumberTap(number),
+          onTap: () => _onKeyTap(number),
           value: number,
         ),
       ),
