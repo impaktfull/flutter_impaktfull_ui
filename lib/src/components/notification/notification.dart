@@ -111,13 +111,7 @@ class ImpaktfullUiNotification extends StatelessWidget
             color: componentTheme.colors.background,
             border: _getBorder(componentTheme),
             borderRadius: componentTheme.dimens.borderRadius,
-            boxShadow: [
-              BoxShadow(
-                color: componentTheme.colors.shadow,
-                offset: const Offset(0, 2),
-                blurRadius: 50,
-              ),
-            ],
+            boxShadow: componentTheme.shadows.card,
           ),
           child: ClipRRect(
             borderRadius: componentTheme.dimens.borderRadius,

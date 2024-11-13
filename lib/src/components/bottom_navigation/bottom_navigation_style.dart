@@ -18,6 +18,26 @@ class ImpaktfullUiBottomNavigationTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiBottomNavigationTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.bottomNavigation;
+
+  static ImpaktfullUiBottomNavigationTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiBottomNavigationTheme(
+        assets: const ImpaktfullUiBottomNavigationAssetsTheme(),
+        colors: ImpaktfullUiBottomNavigationColorTheme(
+          background: colors.card,
+        ),
+        dimens: const ImpaktfullUiBottomNavigationDimensTheme(),
+        textStyles: const ImpaktfullUiBottomNavigationTextStyleTheme(),
+        shadows: ImpaktfullUiBottomNavigationShadowsTheme(
+          background: shadows.medium,
+        ),
+      );
 }
 
 class ImpaktfullUiBottomNavigationAssetsTheme {

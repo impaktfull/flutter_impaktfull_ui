@@ -37,4 +37,26 @@ class ImpaktfullUiGalleryItem {
     required this.imageUrl,
     this.imageFit = BoxFit.contain,
   }) : _child = null;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is ImpaktfullUiGalleryItem &&
+        other.title == title &&
+        other.description == description &&
+        other.id == id &&
+        other._child == _child &&
+        other.imageUrl == imageUrl &&
+        other.imageFit == imageFit;
+  }
+
+  @override
+  int get hashCode => Object.hash(
+        title,
+        description,
+        id,
+        _child,
+        imageUrl,
+        imageFit,
+      );
 }

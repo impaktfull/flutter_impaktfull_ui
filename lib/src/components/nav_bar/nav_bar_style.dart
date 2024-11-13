@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiNavBarTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiNavBarAssetsTheme assets;
@@ -19,6 +20,35 @@ class ImpaktfullUiNavBarTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiNavBarTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.navBar;
+
+  static ImpaktfullUiNavBarTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiNavBarTheme(
+        assets: ImpaktfullUiNavBarAssetsTheme(
+          back: assets.icons.arrowLeft,
+          drawerMenu: assets.icons.list,
+          close: assets.icons.close,
+        ),
+        colors: ImpaktfullUiNavBarColorTheme(
+          background: colors.card,
+          icons: colors.text,
+          border: colors.border,
+        ),
+        dimens: const ImpaktfullUiNavBarDimensTheme(),
+        textStyles: ImpaktfullUiNavBarTextStyleTheme(
+          title: textStyles.onCard.text.medium,
+          subtitle: textStyles.onCard.text.small.light.withOpacity(0.66),
+        ),
+        shadows: ImpaktfullUiNavBarShadowsTheme(
+          shadow: shadows.small,
+        ),
+      );
 }
 
 class ImpaktfullUiNavBarAssetsTheme {

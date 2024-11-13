@@ -22,7 +22,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
   final List<T> items;
   final int Function(BuildContext, ImpaktfullUiGridViewConfig) crossAxisCount;
   final double Function(BuildContext, ImpaktfullUiGridViewConfig)?
-      childAspectRatio;
+      itemAspectRatio;
   final Widget Function(BuildContext, T, int)? itemBuilder;
   final EdgeInsetsGeometry padding;
   final double spacing;
@@ -34,7 +34,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
     required List<T> children,
     required this.crossAxisCount,
     required this.noDataLabel,
-    this.childAspectRatio,
+    this.itemAspectRatio,
     this.padding = EdgeInsets.zero,
     this.spacing = 0,
     this.scrollPhysics,
@@ -48,7 +48,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
     required Widget Function(BuildContext, T, int) this.itemBuilder,
     required this.crossAxisCount,
     required this.noDataLabel,
-    this.childAspectRatio,
+    this.itemAspectRatio,
     this.padding = EdgeInsets.zero,
     this.spacing = 0,
     this.scrollPhysics,
@@ -81,9 +81,9 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
           itemCount: items.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount(context, config),
-            childAspectRatio: childAspectRatio == null
+            childAspectRatio: itemAspectRatio == null
                 ? 1.0
-                : childAspectRatio!(context, config),
+                : itemAspectRatio!(context, config),
             crossAxisSpacing: spacing,
             mainAxisSpacing: spacing,
           ),

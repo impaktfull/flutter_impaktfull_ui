@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class ImpaktfullUiTextStylesTheme {
   final ImpaktfullUiTextStyleTheme onCanvas;
-  final ImpaktfullUiTextStyleTheme onCanvasPrimary;
+  final ImpaktfullUiTextStyleTheme onCanvasAccent;
   final ImpaktfullUiTextStyleTheme onCanvasSecondary;
   final ImpaktfullUiTextStyleTheme onCanvasTertiary;
   final ImpaktfullUiTextStyleTheme onCard;
-  final ImpaktfullUiTextStyleTheme onCardPrimary;
+  final ImpaktfullUiTextStyleTheme onCardAccent;
   final ImpaktfullUiTextStyleTheme onCardSecondary;
   final ImpaktfullUiTextStyleTheme onCardTertiary;
   final ImpaktfullUiTextStyleTheme onCardDestructive;
@@ -17,11 +17,11 @@ class ImpaktfullUiTextStylesTheme {
 
   const ImpaktfullUiTextStylesTheme({
     required this.onCanvas,
-    required this.onCanvasPrimary,
+    required this.onCanvasAccent,
     required this.onCanvasSecondary,
     required this.onCanvasTertiary,
     required this.onCard,
-    required this.onCardPrimary,
+    required this.onCardAccent,
     required this.onCardSecondary,
     required this.onCardTertiary,
     required this.onCardDestructive,
@@ -33,11 +33,11 @@ class ImpaktfullUiTextStylesTheme {
 
   List<ImpaktfullUiTextStyleTheme> get all => [
         onCanvas,
-        onCanvasPrimary,
+        onCanvasAccent,
         onCanvasSecondary,
         onCanvasTertiary,
         onCard,
-        onCardPrimary,
+        onCardAccent,
         onCardSecondary,
         onCardTertiary,
         onCardDestructive,
@@ -49,11 +49,11 @@ class ImpaktfullUiTextStylesTheme {
 
   ImpaktfullUiTextStylesTheme copyWith({
     ImpaktfullUiTextStyleTheme? onCanvas,
-    ImpaktfullUiTextStyleTheme? onCanvasPrimary,
+    ImpaktfullUiTextStyleTheme? onCanvasAccent,
     ImpaktfullUiTextStyleTheme? onCanvasSecondary,
     ImpaktfullUiTextStyleTheme? onCanvasTertiary,
     ImpaktfullUiTextStyleTheme? onCard,
-    ImpaktfullUiTextStyleTheme? onCardPrimary,
+    ImpaktfullUiTextStyleTheme? onCardAccent,
     ImpaktfullUiTextStyleTheme? onCardSecondary,
     ImpaktfullUiTextStyleTheme? onCardTertiary,
     ImpaktfullUiTextStyleTheme? onCardDestructive,
@@ -64,11 +64,11 @@ class ImpaktfullUiTextStylesTheme {
   }) =>
       ImpaktfullUiTextStylesTheme(
         onCanvas: onCanvas ?? this.onCanvas,
-        onCanvasPrimary: onCanvasPrimary ?? this.onCanvasPrimary,
+        onCanvasAccent: onCanvasAccent ?? this.onCanvasAccent,
         onCanvasSecondary: onCanvasSecondary ?? this.onCanvasSecondary,
         onCanvasTertiary: onCanvasTertiary ?? this.onCanvasTertiary,
         onCard: onCard ?? this.onCard,
-        onCardPrimary: onCardPrimary ?? this.onCardPrimary,
+        onCardAccent: onCardAccent ?? this.onCardAccent,
         onCardSecondary: onCardSecondary ?? this.onCardSecondary,
         onCardTertiary: onCardTertiary ?? this.onCardTertiary,
         onCardDestructive: onCardDestructive ?? this.onCardDestructive,

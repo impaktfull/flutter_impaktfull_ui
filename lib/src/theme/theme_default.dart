@@ -92,9 +92,9 @@ class DefaultTheme {
     Color? shadow,
     Color? text,
     Color? textOnPrimary,
-    Color? textOnDestructive,
     Color? textOnAccent,
     Color? textOnSecondary,
+    Color? textOnDestructive,
     Color? warning,
     Color? error,
     Color? success,
@@ -124,7 +124,7 @@ class DefaultTheme {
       //todo check if color requires white or black if not provided
       textOnPrimary: textOnPrimary ?? const Color(0xFFFFFFFF),
       textOnAccent: textOnAccent ?? const Color(0xFFFFFFFF),
-      textOnSecondary: textOnSecondary ?? const Color(0xFF344054),
+      textOnSecondary: textOnSecondary ?? const Color(0xFFFFFFFF),
       textOnDestructive: textOnDestructive ?? const Color(0xFFFFFFFF),
       warning: warning ?? const Color(0xFFFFA733),
       error: error ?? const Color(0xFFEB2F21),
@@ -148,7 +148,7 @@ class DefaultTheme {
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
-      onCanvasPrimary: ImpaktfullUiTextStyleTheme.getByColor(
+      onCanvasAccent: ImpaktfullUiTextStyleTheme.getByColor(
         color: colors.accent,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
@@ -168,7 +168,7 @@ class DefaultTheme {
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
-      onCardPrimary: ImpaktfullUiTextStyleTheme.getByColor(
+      onCardAccent: ImpaktfullUiTextStyleTheme.getByColor(
         color: colors.accent,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
@@ -290,30 +290,21 @@ class DefaultTheme {
             large: textStyles.onCard.text.small,
           ),
         ),
-        bottomNavigation: ImpaktfullUiBottomNavigationTheme(
-          assets: const ImpaktfullUiBottomNavigationAssetsTheme(),
-          colors: ImpaktfullUiBottomNavigationColorTheme(
-            background: colors.card,
-          ),
-          dimens: const ImpaktfullUiBottomNavigationDimensTheme(),
-          textStyles: const ImpaktfullUiBottomNavigationTextStyleTheme(),
-          shadows: ImpaktfullUiBottomNavigationShadowsTheme(
-            background: shadows.medium,
-          ),
+        bottomNavigation: ImpaktfullUiBottomNavigationTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
-        bottomNavigationItem: ImpaktfullUiBottomNavigationItemTheme(
-          assets: const ImpaktfullUiBottomNavigationItemAssetsTheme(),
-          colors: ImpaktfullUiBottomNavigationItemColorTheme(
-            active: colors.accent,
-            inactive: colors.tertiary,
-            badgeActive: colors.tertiary,
-            badgeInActive: colors.accent,
-          ),
-          dimens: const ImpaktfullUiBottomNavigationItemDimensTheme(),
-          textStyles: ImpaktfullUiBottomNavigationItemTextStyleTheme(
-            activeLabel: textStyles.onCardPrimary.text.small.bold,
-            inActiveLabel: textStyles.onCardTertiary.text.small.bold,
-          ),
+        bottomNavigationItem: ImpaktfullUiBottomNavigationItemTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         bottomSheet: ImpaktfullUiBottomSheetTheme(
           assets: ImpaktfullUiBottomSheetAssetsTheme(
@@ -338,31 +329,13 @@ class DefaultTheme {
             subtitle: textStyles.onCanvas.text.small,
           ),
         ),
-        button: ImpaktfullUiButtonTheme(
-          colors: ImpaktfullUiButtonColorTheme(
-            primary: colors.accent,
-            primaryBorder: colors.accent,
-            secondary: colors.card,
-            secondaryBorder: colors.border,
-            tertiary: null,
-            tertiaryBorder: null,
-            destructive: colors.destructive,
-            destructiveBorder: colors.destructive,
-          ),
-          dimens: ImpaktfullUiButtonDimensTheme(
-            borderRadius: dimens.borderRadius,
-          ),
-          durations: ImpaktfullUiButtonDurationsTheme(
-            loading: durations.short,
-          ),
-          textStyles: ImpaktfullUiButtonTextStylesTheme(
-            primary: textStyles.onAccent.text.small.bold,
-            alternative: textStyles.onCardPrimary.text.small.bold,
-            grey: textStyles.onCard.text.small.bold,
-            destructivePrimary: textStyles.onDestructive.text.small.bold,
-            destructiveAlternative:
-                textStyles.onCardDestructive.text.small.bold,
-          ),
+        button: ImpaktfullUiButtonTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         calendar: ImpaktfullUiCalendarTheme(
           assets: ImpaktfullUiCalendarAssetsTheme(
@@ -633,7 +606,7 @@ class DefaultTheme {
             borderRadius: dimens.borderRadius,
           ),
           textStyles: ImpaktfullUiHorizontalTabTextStylesTheme(
-            selected: textStyles.onCardPrimary.text.small.semiBold,
+            selected: textStyles.onCardAccent.text.small.semiBold,
             unselected: textStyles.onCard.text.small.semiBold,
           ),
         ),
@@ -653,29 +626,13 @@ class DefaultTheme {
           dimens: const ImpaktfullUiImageCropDimensTheme(),
           textStyles: const ImpaktfullUiImageCropTextStyleTheme(),
         ),
-        inputField: ImpaktfullUiInputFieldTheme(
-          colors: ImpaktfullUiInputFieldColorTheme(
-            background: colors.card,
-            border: colors.border,
-            borderError: colors.error,
-            cursor: colors.accent,
-            selection: colors.accent.withOpacity(0.3),
-            selectionHandle: colors.accent,
-          ),
-          dimens: ImpaktfullUiInputFieldDimensTheme(
-            borderRadius: dimens.borderRadius,
-          ),
-          textStyles: ImpaktfullUiInputFieldTextStylesTheme(
-            text: textStyles.onCard.text.medium,
-            placeholder: textStyles.onCardTertiary.text.medium.copyWith(
-                color: textStyles.onCardTertiary.text.medium.color
-                    ?.withOpacity(0.5)),
-            hint: textStyles.onCardTertiary.text.small,
-            error: textStyles.onCardDestructive.text.small.medium
-                .copyWith(color: colors.error),
-            label: textStyles.onCard.text.small.medium,
-            action: textStyles.onCard.text.small.medium,
-          ),
+        inputField: ImpaktfullUiInputFieldTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         lineChart: ImpaktfullUiLineChartTheme(
           assets: const ImpaktfullUiLineChartAssetsTheme(),
@@ -744,7 +701,7 @@ class DefaultTheme {
             h5: textStyles.onCanvas.display.extraSmall.medium,
             h6: textStyles.onCanvas.display.extraSmall,
             paragraph: textStyles.onCanvas.text.small,
-            link: textStyles.onCanvasPrimary.text.small.bold.copyWith(
+            link: textStyles.onCardAccent.text.small.bold.copyWith(
               decoration: TextDecoration.underline,
               decorationColor: colors.accent,
               decorationThickness: 2,
@@ -825,33 +782,12 @@ class DefaultTheme {
           dimens: ImpaktfullUiNetworkImageDimensTheme(),
           textStyles: ImpaktfullUiNetworkImageTextStyleTheme(),
         ),
-        notification: ImpaktfullUiNotificationTheme(
-          colors: ImpaktfullUiNotificationColorTheme(
-            background: colors.card,
-            border: colors.border,
-            shadow: colors.shadow,
-            branded: colors.accent,
-            error: colors.error,
-            info: colors.info,
-            success: colors.success,
-            warning: colors.warning,
-          ),
-          textStyles: ImpaktfullUiNotificationTextStyleTheme(
-            title: textStyles.onCard.text.medium.bold,
-            subtitle: textStyles.onCard.text.small,
-          ),
-          dimens: ImpaktfullUiNotificationDimensTheme(
-            borderRadius: dimens.borderRadius,
-          ),
-          assets: ImpaktfullUiNotificationAssetsTheme(
-            branded: assets.icons.confetti,
-            chevronRight: assets.icons.chevronRight,
-            close: assets.icons.close,
-            error: assets.icons.error,
-            info: assets.icons.info,
-            success: assets.icons.success,
-            warning: assets.icons.warning,
-          ),
+        notification: ImpaktfullUiNotificationTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          shadows: shadows,
         ),
         notificationBadge: ImpaktfullUiNotificationBadgeTheme(
           assets: const ImpaktfullUiNotificationBadgeAssetsTheme(),
@@ -980,25 +916,13 @@ class DefaultTheme {
           dimens: const ImpaktfullUiScreenDimensTheme(),
           textStyles: const ImpaktfullUiScreenTextStyleTheme(),
         ),
-        sectionTitle: ImpaktfullUiSectionTitleTheme(
-          assets: const ImpaktfullUiSectionTitleAssetsTheme(),
-          colors: ImpaktfullUiSectionTitleColorTheme(
-            icons: colors.text,
-          ),
-          dimens: const ImpaktfullUiSectionTitleDimensTheme(
-            margin: EdgeInsetsDirectional.only(
-              start: 16,
-              end: 16,
-              top: 16,
-            ),
-            marginWithIconButtonActions: EdgeInsetsDirectional.only(
-              start: 16,
-              end: 4,
-            ),
-          ),
-          textStyles: ImpaktfullUiSectionTitleTextStyleTheme(
-            title: textStyles.onCard.text.small.medium,
-          ),
+        sectionTitle: ImpaktfullUiSectionTitleTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         selectableListItem: ImpaktfullUiSelectableListItemTheme(
           assets: ImpaktfullUiSelectableListItemAssetsTheme(

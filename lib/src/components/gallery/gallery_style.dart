@@ -6,12 +6,14 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiGalleryAssetsTheme assets;
   final ImpaktfullUiGalleryColorTheme colors;
   final ImpaktfullUiGalleryDimensTheme dimens;
+  final ImpaktfullUiGalleryDurationsTheme durations;
   final ImpaktfullUiGalleryTextStyleTheme textStyles;
 
   const ImpaktfullUiGalleryTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
+    required this.durations,
     required this.textStyles,
   });
 
@@ -29,13 +31,18 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
       ImpaktfullUiGalleryTheme(
         assets: ImpaktfullUiGalleryAssetsTheme(
           close: assets.icons.close,
+          arrowRight: assets.icons.arrowRight,
+          arrowLeft: assets.icons.arrowLeft,
         ),
         colors: ImpaktfullUiGalleryColorTheme(
-          close: colors.textOnPrimary,
+          icons: colors.textOnPrimary,
           background: Colors.black54,
         ),
         dimens: ImpaktfullUiGalleryDimensTheme(
           itemBorderRadius: dimens.borderRadius,
+        ),
+        durations: ImpaktfullUiGalleryDurationsTheme(
+          pageTransition: durations.short,
         ),
         textStyles: const ImpaktfullUiGalleryTextStyleTheme(),
       );
@@ -43,17 +50,21 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiGalleryAssetsTheme {
   final ImpaktfullUiAsset close;
+  final ImpaktfullUiAsset arrowRight;
+  final ImpaktfullUiAsset arrowLeft;
   const ImpaktfullUiGalleryAssetsTheme({
     required this.close,
+    required this.arrowRight,
+    required this.arrowLeft,
   });
 }
 
 class ImpaktfullUiGalleryColorTheme {
-  final Color close;
+  final Color icons;
   final Color background;
 
   const ImpaktfullUiGalleryColorTheme({
-    required this.close,
+    required this.icons,
     required this.background,
   });
 }
@@ -62,6 +73,13 @@ class ImpaktfullUiGalleryDimensTheme {
   final BorderRadiusGeometry itemBorderRadius;
   const ImpaktfullUiGalleryDimensTheme({
     required this.itemBorderRadius,
+  });
+}
+
+class ImpaktfullUiGalleryDurationsTheme {
+  final Duration pageTransition;
+  const ImpaktfullUiGalleryDurationsTheme({
+    required this.pageTransition,
   });
 }
 

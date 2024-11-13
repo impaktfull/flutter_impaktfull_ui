@@ -45,31 +45,28 @@ class ImpaktfullUiShadowsTheme {
           BoxShadow(
             color: shadowBase.withOpacity(0.1),
             offset: const Offset(0, 1),
-            blurRadius: 3,
+            blurRadius: 8,
           ),
         ],
         medium: [
           BoxShadow(
             color: shadowBase.withOpacity(0.1),
-            offset: const Offset(0, 4),
-            blurRadius: 8,
-            spreadRadius: -2,
+            offset: const Offset(0, 2),
+            blurRadius: 16,
           ),
         ],
         large: [
           BoxShadow(
             color: shadowBase.withOpacity(0.08),
-            offset: const Offset(0, 12),
-            spreadRadius: -4,
-            blurRadius: 16,
+            offset: const Offset(0, 4),
+            blurRadius: 24,
           ),
         ],
         extraLarge: [
           BoxShadow(
             color: shadowBase.withOpacity(0.08),
-            offset: const Offset(0, 20),
-            blurRadius: 25,
-            spreadRadius: -4,
+            offset: const Offset(0, 6),
+            blurRadius: 48,
           ),
         ],
       );

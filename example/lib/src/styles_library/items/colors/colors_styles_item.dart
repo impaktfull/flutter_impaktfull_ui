@@ -3,8 +3,8 @@ import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/styles_library/config/styles_library_item.dart';
 import 'package:impaktfull_ui_example/src/styles_library/items/colors/widget/color_style_card.dart';
 
-class ColorsStyle extends StylesLibraryItem {
-  const ColorsStyle();
+class ColorsStyleItem extends StylesLibraryItem {
+  const ColorsStyleItem();
 
   @override
   String get title => 'ImpaktfullUiStyleColors';
@@ -19,79 +19,79 @@ class ColorsStyle extends StylesLibraryItem {
       children: [
         ColorStyleCard(
           color: theme.colors.primary,
-          label: 'Primary',
+          label: 'primary',
         ),
         ColorStyleCard(
           color: theme.colors.accent,
-          label: 'Accent',
+          label: 'accent',
         ),
         ColorStyleCard(
           color: theme.colors.secondary,
-          label: 'Secondary',
+          label: 'secondary',
         ),
         ColorStyleCard(
           color: theme.colors.tertiary,
-          label: 'Tertiary',
+          label: 'tertiary',
         ),
         ColorStyleCard(
           color: theme.colors.canvas,
-          label: 'Canvas',
+          label: 'canvas',
         ),
         ColorStyleCard(
           color: theme.colors.card,
-          label: 'Card',
+          label: 'card',
         ),
         ColorStyleCard(
           color: theme.colors.card2,
-          label: 'Card2',
+          label: 'card2',
         ),
         ColorStyleCard(
           color: theme.colors.border,
-          label: 'Border',
+          label: 'border',
         ),
         ColorStyleCard(
           color: theme.colors.shadow,
-          label: 'Shadow',
+          label: 'shadow',
         ),
         ColorStyleCard(
           color: theme.colors.text,
-          label: 'Text',
+          label: 'text',
         ),
         ColorStyleCard(
           color: theme.colors.textOnPrimary,
-          label: 'TextOnPrimary',
+          label: 'textOnPrimary',
         ),
         ColorStyleCard(
           color: theme.colors.textOnAccent,
-          label: 'TextOnAccent',
+          label: 'textOnAccent',
         ),
         ColorStyleCard(
           color: theme.colors.textOnSecondary,
-          label: 'TextOnSecondary',
+          label: 'textOnSecondary',
         ),
         ColorStyleCard(
           color: theme.colors.textOnDestructive,
-          label: 'TextOnDestructive',
+          label: 'textOnDestructive',
         ),
         ColorStyleCard(
           color: theme.colors.warning,
-          label: 'Warning',
+          label: 'warning',
         ),
         ColorStyleCard(
           color: theme.colors.error,
-          label: 'Error',
+          label: 'error',
         ),
         ColorStyleCard(
           color: theme.colors.info,
-          label: 'Info',
+          label: 'info',
         ),
         ColorStyleCard(
           color: theme.colors.success,
-          label: 'Success',
+          label: 'success',
         ),
         ColorStyleCard(
           color: theme.colors.destructive,
-          label: 'Destructive',
+          label: 'destructive',
         ),
       ],
     );

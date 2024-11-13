@@ -23,13 +23,13 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         spacing: 8,
         crossAxisCount: (context, config) => config.maxWidth ~/ 400,
-        childAspectRatio: (context, config) => 16 / 12,
+        itemAspectRatio: (context, config) => 16 / 12,
         noDataLabel: 'No Actions',
         items: [
           ActionCard(
             label: 'Styles',
             asset: const ImpaktfullUiAsset.pixel(
-              'building_blocks.png',
+              'styles.png',
               directory: 'assets/images/supporting',
             ),
             onTap: () => ImpaktfullUiNavigator.instance.goToStyles(),
