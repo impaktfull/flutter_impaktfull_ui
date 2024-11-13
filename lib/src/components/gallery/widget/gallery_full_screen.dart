@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_2/src/components/gallery/widget/gallery_item.dart';
+import 'package:impaktfull_ui_2/src/components/gallery/widget/gallery_full_screen_item.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiGalleryFullScreen extends StatefulWidget {
@@ -34,12 +34,10 @@ class ImpaktfullUiGalleryFullScreen extends StatefulWidget {
         ),
       );
   @override
-  State<ImpaktfullUiGalleryFullScreen> createState() =>
-      _ImpaktfullUiGalleryFullScreenState();
+  State<ImpaktfullUiGalleryFullScreen> createState() => _ImpaktfullUiGalleryFullScreenState();
 }
 
-class _ImpaktfullUiGalleryFullScreenState
-    extends State<ImpaktfullUiGalleryFullScreen> {
+class _ImpaktfullUiGalleryFullScreenState extends State<ImpaktfullUiGalleryFullScreen> {
   late PageController _pageController;
   late int _currentIndex;
   late FocusNode _focusNode;
@@ -98,7 +96,7 @@ class _ImpaktfullUiGalleryFullScreenState
               itemCount: widget.items.length,
               itemBuilder: (context, index) {
                 final item = widget.items[index];
-                return ImpaktfullUiGalleryItemWidget(
+                return ImpaktfullUiGalleryFullScreenItemWidget(
                   item: item,
                   theme: componentTheme,
                 );

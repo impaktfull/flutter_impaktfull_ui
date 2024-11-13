@@ -14,7 +14,7 @@ class ImpaktfullUiGalleryItem {
   }
 
   Widget get child {
-    if (imageUrl == null) return _child!;
+    if (_child != null) return _child;
     return Image.network(
       imageUrl!,
       fit: imageFit,
