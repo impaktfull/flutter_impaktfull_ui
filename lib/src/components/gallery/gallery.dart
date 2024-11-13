@@ -15,11 +15,13 @@ export 'widget/gallery_hero_item.dart';
 
 part 'gallery.describe.dart';
 
-class ImpaktfullUiGallery extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiGallery extends StatelessWidget
+    with ComponentDescriptorMixin {
   final List<ImpaktfullUiGalleryItem> items;
   final BorderRadiusGeometry? itemBorderRadius;
   final int Function(BuildContext, ImpaktfullUiGridViewConfig)? crossAxisCount;
-  final double Function(BuildContext, ImpaktfullUiGridViewConfig)? itemAspectRatio;
+  final double Function(BuildContext, ImpaktfullUiGridViewConfig)?
+      itemAspectRatio;
   final double spacing;
   final ImpaktfullUiGalleryTheme? theme;
 
@@ -43,7 +45,8 @@ class ImpaktfullUiGallery extends StatelessWidget with ComponentDescriptorMixin 
         padding: const EdgeInsets.all(16),
         noDataLabel: 'No Gallery Items',
         itemBuilder: (context, item, index) => ImpaktfullUiTouchFeedback(
-          borderRadius: itemBorderRadius ?? componentTheme.dimens.itemBorderRadius,
+          borderRadius:
+              itemBorderRadius ?? componentTheme.dimens.itemBorderRadius,
           onTap: () => ImpaktfullUiGalleryFullScreen.show(
             context: context,
             componentTheme: componentTheme,
@@ -55,7 +58,8 @@ class ImpaktfullUiGallery extends StatelessWidget with ComponentDescriptorMixin 
           ),
         ),
         itemAspectRatio: itemAspectRatio,
-        crossAxisCount: crossAxisCount ?? (context, config) => config.maxWidth ~/ 250,
+        crossAxisCount:
+            crossAxisCount ?? (context, config) => config.maxWidth ~/ 250,
       ),
     );
   }

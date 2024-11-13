@@ -34,10 +34,12 @@ class ImpaktfullUiGalleryFullScreen extends StatefulWidget {
         ),
       );
   @override
-  State<ImpaktfullUiGalleryFullScreen> createState() => _ImpaktfullUiGalleryFullScreenState();
+  State<ImpaktfullUiGalleryFullScreen> createState() =>
+      _ImpaktfullUiGalleryFullScreenState();
 }
 
-class _ImpaktfullUiGalleryFullScreenState extends State<ImpaktfullUiGalleryFullScreen> {
+class _ImpaktfullUiGalleryFullScreenState
+    extends State<ImpaktfullUiGalleryFullScreen> {
   late PageController _pageController;
   late int _currentIndex;
   late FocusNode _focusNode;
