@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiGalleryAssetsTheme assets;
@@ -45,7 +46,10 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
         durations: ImpaktfullUiGalleryDurationsTheme(
           pageTransition: durations.short,
         ),
-        textStyles: const ImpaktfullUiGalleryTextStyleTheme(),
+        textStyles: ImpaktfullUiGalleryTextStyleTheme(
+          itemTitle: textStyles.onAccent.display.extraSmall,
+          itemDescription: textStyles.onAccent.text.small.withOpacity(0.5),
+        ),
       );
 }
 
@@ -87,5 +91,11 @@ class ImpaktfullUiGalleryDurationsTheme {
 }
 
 class ImpaktfullUiGalleryTextStyleTheme {
-  const ImpaktfullUiGalleryTextStyleTheme();
+  final TextStyle itemTitle;
+  final TextStyle itemDescription;
+
+  const ImpaktfullUiGalleryTextStyleTheme({
+    required this.itemTitle,
+    required this.itemDescription,
+  });
 }

@@ -33,6 +33,8 @@ class GalleryLibraryVariant
           'https://4kwallpapers.com/images/wallpapers/mountain-landscape-7680x4320-19802.jpg',
       imageFit: BoxFit.cover,
       title: 'Mountain Landscape (8k)',
+      description:
+          'This is just a test image to see if we loose quality of the image when zooming in!',
     ),
   ];
   const GalleryLibraryVariant();

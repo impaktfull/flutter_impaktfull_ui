@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/gallery/gallery.dart';
+import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiGalleryFullScreenItemWidget extends StatefulWidget {
@@ -84,35 +84,63 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder(
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => InteractiveViewer(
-        key: _interactiveViewerKey,
-        transformationController: _transformationController,
-        minScale: 1.0,
-        maxScale: widget.maxScale,
-        constrained: true,
-        panEnabled: true,
-        boundaryMargin: EdgeInsets.zero,
-        child: GestureDetector(
-          onTap: () => Navigator.of(context).pop(),
-          child: Container(
-            color: Colors.transparent,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(64),
-                child: GestureDetector(
-                  onDoubleTapDown: _handleDoubleTapDown,
-                  onDoubleTap: _handleDoubleTap,
-                  onTap: () {
-                    // ignore tap (because otherwise it will close the fullscreen)
-                  },
-                  child: ImpaktfullUiGalleryHeroItem(
-                    key: _imageKey,
-                    item: widget.item,
+      builder: (context, componentTheme) => Material(
+        color: Colors.transparent,
+        child: Stack(
+          children: [
+            InteractiveViewer(
+              key: _interactiveViewerKey,
+              transformationController: _transformationController,
+              minScale: 1.0,
+              maxScale: widget.maxScale,
+              constrained: true,
+              panEnabled: true,
+              boundaryMargin: EdgeInsets.zero,
+              child: GestureDetector(
+                onTap: () => Navigator.of(context).pop(),
+                child: Container(
+                  color: Colors.transparent,
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(64),
+                      child: GestureDetector(
+                        onDoubleTapDown: _handleDoubleTapDown,
+                        onDoubleTap: _handleDoubleTap,
+                        onTap: () {
+                          // ignore tap (because otherwise it will close the fullscreen)
+                        },
+                        child: ImpaktfullUiGalleryHeroItem(
+                          key: _imageKey,
+                          item: widget.item,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
+            Align(
+              alignment: AlignmentDirectional.bottomStart,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: ImpaktfullUiAutoLayout.vertical(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      widget.item.title ?? '',
+                      style: componentTheme.textStyles.itemTitle,
+                    ),
+                    if (widget.item.description != null) ...[
+                      Text(
+                        widget.item.description ?? '',
+                        style: componentTheme.textStyles.itemDescription,
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

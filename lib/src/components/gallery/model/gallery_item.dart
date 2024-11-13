@@ -22,6 +22,8 @@ class ImpaktfullUiGalleryItem {
     );
   }
 
+  bool get hasInfo => title != null || description != null;
+
   const ImpaktfullUiGalleryItem({
     this.id,
     this.title,
