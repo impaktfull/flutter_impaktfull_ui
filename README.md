@@ -67,6 +67,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiCommandMenu
 - ImpaktfullUiDatePicker
   - ImpaktfullUiDatePicker.range
+- ImpaktfullUiDateTimePicker
 - ImpaktfullUiTimePicker
 - ImpaktfullUiDivider
 - ImpaktfullUiDesktopPageRoute
@@ -243,10 +244,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - ImpaktfullUiBarCode
 - ImpaktfullUiBarChart
 - ImpaktfullUiPieChart
-- ImpaktfullUiDateTimePicker
-- ImpaktfullUiDateTimePickerDialog
 - ImpaktfullUiPasswordStrengthIndicator
-- ImpaktfullUiGallery
 - ImpaktfullUiStoryView
 - ImpaktfullUiStoryViewItem
 - ImpaktfullUiVidoPlayerControls
@@ -266,7 +264,6 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 ⌛️ Add addaptive components
 
-- ImpaktfullUiMasterDetail
 - ImpaktfullUiAdaptiveNavigation
 - ImpaktfullUiAdaptiveRoute
 - ImpaktfullUiAdaptiveModalRoute

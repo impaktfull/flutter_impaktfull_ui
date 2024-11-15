@@ -19,6 +19,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/cms_header/cms
 import 'package:impaktfull_ui_example/src/component_library/items/color_picker/color_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/command_menu/command_menu_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/date_picker/date_picker_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/date_time_picker/date_time_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/divider/divider_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/dropdown/dropdown_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/file_picker/file_picker_library_item.dart';
@@ -106,6 +107,7 @@ class ComponentLibrary {
     const ColorPickerLibraryItem(),
     const CommandMenuLibraryItem(),
     const DatePickerLibraryItem(),
+    const DateTimePickerLibraryItem(),
     const DividerLibraryItem(),
     const DropdownLibraryItem(),
     const FilePickerLibraryItem(),

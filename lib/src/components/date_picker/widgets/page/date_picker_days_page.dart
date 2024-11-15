@@ -69,6 +69,8 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
     final days = List.generate(
         daysPageDateMonth, (index) => date.copyWith(day: index + 1));
     final firstWeekday = days.first.weekday;
+
+    // Add days from previous month
     if (firstWeekday != 0) {
       final previousMonth = date.getPreviousMonth();
       final daysPreviousMonth = previousMonth.getDaysInMonth();
@@ -77,14 +79,17 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
           .reversed;
       dates.addAll(daysBeforeMonth);
     }
+
+    // Add current month days
     dates.addAll(days);
-    final lastWeekday = days.last.weekday;
-    if (lastWeekday != 7) {
-      final nextMonth = date.getNextMonth();
-      final daysAfterMonth = List.generate(
-          7 - lastWeekday, (index) => nextMonth.copyWith(day: index + 1));
-      dates.addAll(daysAfterMonth);
-    }
+
+    // Add days from next month to complete 7 rows (42 days total)
+    final remainingDays = 42 - dates.length;
+    final nextMonth = date.getNextMonth();
+    final daysAfterMonth = List.generate(
+        remainingDays, (index) => nextMonth.copyWith(day: index + 1));
+    dates.addAll(daysAfterMonth);
+
     return dates;
   }
 

@@ -14,6 +14,7 @@ import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui_2/src/components/date_time_picker/date_time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/file_picker/file_picker.dart';
@@ -95,6 +96,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiColorPickerTheme colorPicker;
   final ImpaktfullUiCommandMenuTheme commandMenu;
   final ImpaktfullUiDatePickerTheme datePicker;
+  final ImpaktfullUiDateTimePickerTheme dateTimePicker;
   final ImpaktfullUiDividerTheme divider;
   final ImpaktfullUiDropdownTheme dropdown;
   final ImpaktfullUiFilePickerTheme filePicker;
@@ -171,6 +173,7 @@ class ImpaktfullUiComponentsTheme {
     required this.colorPicker,
     required this.commandMenu,
     required this.datePicker,
+    required this.dateTimePicker,
     required this.divider,
     required this.dropdown,
     required this.filePicker,
@@ -248,6 +251,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiColorPickerTheme? colorPicker,
     ImpaktfullUiCommandMenuTheme? commandMenu,
     ImpaktfullUiDatePickerTheme? datePicker,
+    ImpaktfullUiDateTimePickerTheme? dateTimePicker,
     ImpaktfullUiDividerTheme? divider,
     ImpaktfullUiDropdownTheme? dropdown,
     ImpaktfullUiFilePickerTheme? filePicker,
@@ -324,6 +328,7 @@ class ImpaktfullUiComponentsTheme {
         colorPicker: colorPicker ?? this.colorPicker,
         commandMenu: commandMenu ?? this.commandMenu,
         datePicker: datePicker ?? this.datePicker,
+        dateTimePicker: dateTimePicker ?? this.dateTimePicker,
         divider: divider ?? this.divider,
         dropdown: dropdown ?? this.dropdown,
         filePicker: filePicker ?? this.filePicker,
@@ -418,6 +423,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiCommandMenuTheme.of(context) as T;
     } else if (T == ImpaktfullUiDatePickerTheme) {
       return ImpaktfullUiDatePickerTheme.of(context) as T;
+    } else if (T == ImpaktfullUiDateTimePickerTheme) {
+      return ImpaktfullUiDateTimePickerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDividerTheme) {
       return ImpaktfullUiDividerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDropdownTheme) {

@@ -15,6 +15,7 @@ import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui_2/src/components/date_time_picker/date_time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
 import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
 import 'package:impaktfull_ui_2/src/components/file_picker/file_picker.dart';
@@ -480,6 +481,14 @@ class DefaultTheme {
             cell: textStyles.onCard.text.small,
             cellSelected: textStyles.onPrimary.text.small.semiBold,
           ),
+        ),
+        dateTimePicker: ImpaktfullUiDateTimePickerTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         divider: ImpaktfullUiDividerTheme(
           colors: ImpaktfullUiDividerColorTheme(
