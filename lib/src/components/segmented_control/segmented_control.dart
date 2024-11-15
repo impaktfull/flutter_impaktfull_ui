@@ -3,7 +3,6 @@ import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui_2/src/components/segmented_control/segmented_control_style.dart';
 import 'package:impaktfull_ui_2/src/components/segmented_control/widget/segment_control_item.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'segmented_control_style.dart';
@@ -14,7 +13,8 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget
     with ComponentDescriptorMixin {
   final T value;
   final List<T> items;
-  final ImpaktfullUiAsset Function(BuildContext context, T item)? iconBuilder;
+  final Widget Function(BuildContext context, T item)? leadingBuilder;
+  final Widget Function(BuildContext context, T item)? trailingBuilder;
   final String Function(BuildContext context, T item)? labelBuilder;
   final ValueChanged<T> onChanged;
   final ImpaktfullUiSegmentedControlTheme? theme;
@@ -23,8 +23,9 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget
     required this.value,
     required this.items,
     required this.onChanged,
-    this.iconBuilder,
+    this.leadingBuilder,
     this.labelBuilder,
+    this.trailingBuilder,
     this.theme,
     super.key,
   });
@@ -71,7 +72,8 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget
             ImpaktfullUiAutoLayout.horizontal(
               spacing: 4,
               children: items.map((item) {
-                final icon = iconBuilder?.call(context, item);
+                final leading = leadingBuilder?.call(context, item);
+                final trailing = trailingBuilder?.call(context, item);
                 var label = labelBuilder?.call(context, item);
                 if (label == null && item is String) {
                   label = item;
@@ -86,8 +88,9 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget
                     child: ImpaktfullUiSegmentControlItem(
                       onTap: () => onChanged(item),
                       isSelected: value == item,
+                      leading: leading,
                       label: label,
-                      icon: icon,
+                      trailing: trailing,
                       theme: componentTheme,
                     ),
                   ),
