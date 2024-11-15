@@ -5,16 +5,14 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class MasterDetailLibraryVariant
-    extends ComponentLibraryVariant<MasterDetailLibraryPrimaryInputs> {
+class MasterDetailLibraryVariant extends ComponentLibraryVariant<MasterDetailLibraryPrimaryInputs> {
   const MasterDetailLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(
-      BuildContext context, MasterDetailLibraryPrimaryInputs inputs) {
+  List<Widget> build(BuildContext context, MasterDetailLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         height: 500,
@@ -30,39 +28,37 @@ class MasterDetailLibraryVariant
               type: ImpaktfullUiButtonType.secondaryGrey,
             ),
           ),
-          onBackTapped: () =>
-              ImpaktfullUiNotification.show(title: 'Back tapped'),
+          onBackTapped: () => ImpaktfullUiNotification.show(title: 'Back tapped'),
           onCloseDetail: () => inputs.hasDetail.updateState(false),
           closeDetailBeforeMaster: true,
-          detail: inputs.hasDetail.value ?? false
-              ? MasterDetailItemScreen(
-                  title: 'Detail',
-                  subtitle: 'Subtitle',
-                  keepOriginalMasterTitle: true,
-                  actions: [
-                    ImpaktfullUiAdaptiveNavBarActionItem(
-                      asset: theme.assets.icons.add,
-                      title: 'Add new item',
-                      onTap: () => ImpaktfullUiNotification.show(
-                          title: 'On `Add new item` tapped'),
-                    ),
-                  ],
-                  child: Container(
-                    color: theme.colors.card2,
-                    height: double.infinity,
-                    alignment: Alignment.center,
-                    child: const Text('Detail is open!!'),
-                  ),
-                )
-              : null,
+          detail: (context) {
+            if (inputs.hasDetail.value != true) return null;
+            return ImpaktfullUiMasterDetailItemScreen(
+              title: 'Detail',
+              subtitle: 'Subtitle',
+              keepOriginalMasterTitle: true,
+              actions: [
+                ImpaktfullUiAdaptiveNavBarActionItem(
+                  asset: theme.assets.icons.add,
+                  title: 'Add new item',
+                  onTap: () => ImpaktfullUiNotification.show(title: 'On `Add new item` tapped'),
+                ),
+              ],
+              child: Container(
+                color: theme.colors.card2,
+                height: double.infinity,
+                alignment: Alignment.center,
+                child: const Text('Detail is open!!'),
+              ),
+            );
+          },
         ),
       ),
     ];
   }
 
   @override
-  MasterDetailLibraryPrimaryInputs inputs() =>
-      MasterDetailLibraryPrimaryInputs();
+  MasterDetailLibraryPrimaryInputs inputs() => MasterDetailLibraryPrimaryInputs();
 }
 
 class MasterDetailLibraryPrimaryInputs extends MasterDetailLibraryInputs {}

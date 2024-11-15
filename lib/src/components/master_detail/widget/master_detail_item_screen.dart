@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 
-class MasterDetailItemScreen extends StatelessWidget {
+class ImpaktfullUiMasterDetailItemScreen extends StatelessWidget {
   final String? title;
   final String? subtitle;
   final bool keepOriginalMasterTitle;
@@ -9,7 +9,7 @@ class MasterDetailItemScreen extends StatelessWidget {
   final Widget? headerBottomChild;
   final Widget child;
 
-  const MasterDetailItemScreen({
+  const ImpaktfullUiMasterDetailItemScreen({
     required this.child,
     this.title,
     this.subtitle,
@@ -22,7 +22,9 @@ class MasterDetailItemScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _overrideMasterScreen(context);
-    return child;
+    return FocusScope(
+      child: child,
+    );
   }
 
   void _overrideMasterScreen(BuildContext context) {
