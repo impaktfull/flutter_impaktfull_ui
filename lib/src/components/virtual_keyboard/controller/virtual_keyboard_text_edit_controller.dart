@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/components/virtual_keyboard/virtual_keyboard.dart';
 
-class ImpaktfullUiVirtualKeyboardTextEditController extends TextEditingController {
+class ImpaktfullUiVirtualKeyboardTextEditController
+    extends TextEditingController {
   final VirtualKeyboardConfig config;
 
   ImpaktfullUiVirtualKeyboardTextEditController({

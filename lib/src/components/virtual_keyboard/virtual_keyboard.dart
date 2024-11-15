@@ -17,7 +17,8 @@ export 'controller/virtual_keyboard_text_edit_controller.dart';
 
 part 'virtual_keyboard.describe.dart';
 
-class ImpaktfullUiVirtualKeyboard extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiVirtualKeyboard extends StatefulWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiVirtualKeyboardTextEditController controller;
   final double? width;
   final ValueChanged<String>? onChanged;
@@ -65,7 +66,8 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget with ComponentDescripto
   });
 
   @override
-  State<ImpaktfullUiVirtualKeyboard> createState() => _ImpaktfullUiVirtualKeyboardState();
+  State<ImpaktfullUiVirtualKeyboard> createState() =>
+      _ImpaktfullUiVirtualKeyboardState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
@@ -100,7 +102,9 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget with ComponentDescripto
   }
 }
 
-class _ImpaktfullUiVirtualKeyboardState extends State<ImpaktfullUiVirtualKeyboard> with SingleTickerProviderStateMixin {
+class _ImpaktfullUiVirtualKeyboardState
+    extends State<ImpaktfullUiVirtualKeyboard>
+    with SingleTickerProviderStateMixin {
   var _shift = false;
   var _capsLock = false;
   var _control = false;
@@ -108,7 +112,8 @@ class _ImpaktfullUiVirtualKeyboardState extends State<ImpaktfullUiVirtualKeyboar
   late Animation<double> _cursorAnimation;
   int _cursorPosition = 0;
 
-  List<List<ImpaktfullUiVirtualKeyboardKeyItem>> get keys => widget.controller.config.keys;
+  List<List<ImpaktfullUiVirtualKeyboardKeyItem>> get keys =>
+      widget.controller.config.keys;
   bool get useUppercase => _capsLock || _shift;
 
   @override
@@ -135,7 +140,9 @@ class _ImpaktfullUiVirtualKeyboardState extends State<ImpaktfullUiVirtualKeyboar
 
   @override
   Widget build(BuildContext context) {
-    final text = widget.obscureText ? '•' * widget.controller.text.length : widget.controller.text;
+    final text = widget.obscureText
+        ? '•' * widget.controller.text.length
+        : widget.controller.text;
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiVirtualKeyboardTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => SizedBox(
@@ -157,7 +164,9 @@ class _ImpaktfullUiVirtualKeyboardState extends State<ImpaktfullUiVirtualKeyboar
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: _cursorPosition > 0 ? text.substring(0, _cursorPosition) : '',
+                          text: _cursorPosition > 0
+                              ? text.substring(0, _cursorPosition)
+                              : '',
                         ),
                         WidgetSpan(
                           alignment: PlaceholderAlignment.middle,
@@ -184,7 +193,8 @@ class _ImpaktfullUiVirtualKeyboardState extends State<ImpaktfullUiVirtualKeyboar
                           Expanded(
                             flex: key.flex,
                             child: Builder(
-                              builder: (context) => ImpaktfullUiVirtualKeyboardButton(
+                              builder: (context) =>
+                                  ImpaktfullUiVirtualKeyboardButton(
                                 shift: _shift,
                                 capsLock: _capsLock,
                                 virtualKeyboardKey: key,
@@ -228,7 +238,8 @@ class _ImpaktfullUiVirtualKeyboardState extends State<ImpaktfullUiVirtualKeyboar
       if (_cursorPosition < text.length) {
         setState(() => _cursorPosition++);
       }
-    } else if (logicalKey == LogicalKeyboardKey.enter || logicalKey == LogicalKeyboardKey.numpadEnter) {
+    } else if (logicalKey == LogicalKeyboardKey.enter ||
+        logicalKey == LogicalKeyboardKey.numpadEnter) {
       widget.onSubmit?.call();
     } else if (logicalKey == LogicalKeyboardKey.shift ||
         logicalKey == LogicalKeyboardKey.shiftLeft ||
@@ -243,7 +254,8 @@ class _ImpaktfullUiVirtualKeyboardState extends State<ImpaktfullUiVirtualKeyboar
     } else {
       var value = key.valueForTextInput.toLowerCase();
       if (useUppercase) {
-        final isUpperCaseAllowed = ImpaktfullUiVirtualKeyboard.uppercaseKeys.contains(logicalKey);
+        final isUpperCaseAllowed =
+            ImpaktfullUiVirtualKeyboard.uppercaseKeys.contains(logicalKey);
         if (isUpperCaseAllowed && (_shift || _capsLock)) {
           value = value.toUpperCase();
         }
