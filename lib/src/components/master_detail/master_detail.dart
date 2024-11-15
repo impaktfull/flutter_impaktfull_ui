@@ -5,7 +5,8 @@ export 'widget/master_detail_item_screen.dart';
 
 part 'master_detail.describe.dart';
 
-class ImpaktfullUiMasterDetail extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiMasterDetail extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final Widget? headerBottomChild;
@@ -34,7 +35,8 @@ class ImpaktfullUiMasterDetail extends StatefulWidget with ComponentDescriptorMi
   });
 
   static ImpaktfullUiMasterDetailState of(BuildContext context) {
-    final state = context.findAncestorStateOfType<ImpaktfullUiMasterDetailState>();
+    final state =
+        context.findAncestorStateOfType<ImpaktfullUiMasterDetailState>();
     if (state == null) {
       throw FlutterError('No ImpaktfullUiMasterDetail found in context');
     }
@@ -42,7 +44,8 @@ class ImpaktfullUiMasterDetail extends StatefulWidget with ComponentDescriptorMi
   }
 
   @override
-  State<ImpaktfullUiMasterDetail> createState() => ImpaktfullUiMasterDetailState();
+  State<ImpaktfullUiMasterDetail> createState() =>
+      ImpaktfullUiMasterDetailState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
@@ -127,7 +130,8 @@ class ImpaktfullUiMasterDetailState extends State<ImpaktfullUiMasterDetail> {
   }
 
   void _onBackTapped(BuildContext context) {
-    if ((context.isMediumScreenOrSmaller || widget.closeDetailBeforeMaster) && widget.detail != null) {
+    if ((context.isMediumScreenOrSmaller || widget.closeDetailBeforeMaster) &&
+        widget.detail != null) {
       widget.onCloseDetail?.call();
       return;
     }

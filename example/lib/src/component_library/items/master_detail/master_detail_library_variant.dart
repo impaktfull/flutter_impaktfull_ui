@@ -5,14 +5,16 @@ import 'package:impaktfull_ui_example/src/component_library/config/component_lib
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class MasterDetailLibraryVariant extends ComponentLibraryVariant<MasterDetailLibraryPrimaryInputs> {
+class MasterDetailLibraryVariant
+    extends ComponentLibraryVariant<MasterDetailLibraryPrimaryInputs> {
   const MasterDetailLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, MasterDetailLibraryPrimaryInputs inputs) {
+  List<Widget> build(
+      BuildContext context, MasterDetailLibraryPrimaryInputs inputs) {
     return [
       ComponentsLibraryVariantDescriptor(
         height: 500,
@@ -28,7 +30,8 @@ class MasterDetailLibraryVariant extends ComponentLibraryVariant<MasterDetailLib
               type: ImpaktfullUiButtonType.secondaryGrey,
             ),
           ),
-          onBackTapped: () => ImpaktfullUiNotification.show(title: 'Back tapped'),
+          onBackTapped: () =>
+              ImpaktfullUiNotification.show(title: 'Back tapped'),
           onCloseDetail: () => inputs.hasDetail.updateState(false),
           closeDetailBeforeMaster: true,
           detail: (context) {
@@ -41,7 +44,8 @@ class MasterDetailLibraryVariant extends ComponentLibraryVariant<MasterDetailLib
                 ImpaktfullUiAdaptiveNavBarActionItem(
                   asset: theme.assets.icons.add,
                   title: 'Add new item',
-                  onTap: () => ImpaktfullUiNotification.show(title: 'On `Add new item` tapped'),
+                  onTap: () => ImpaktfullUiNotification.show(
+                      title: 'On `Add new item` tapped'),
                 ),
               ],
               child: Container(
@@ -58,7 +62,8 @@ class MasterDetailLibraryVariant extends ComponentLibraryVariant<MasterDetailLib
   }
 
   @override
-  MasterDetailLibraryPrimaryInputs inputs() => MasterDetailLibraryPrimaryInputs();
+  MasterDetailLibraryPrimaryInputs inputs() =>
+      MasterDetailLibraryPrimaryInputs();
 }
 
 class MasterDetailLibraryPrimaryInputs extends MasterDetailLibraryInputs {}
