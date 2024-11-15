@@ -108,6 +108,10 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiPagination
 - ImpaktfullUiPinCode
 - ImpaktfullUiPlaceholderState
+- ImpaktfullUiProgressIndicator
+  - ImpaktfullUiLineProgressIndicator
+  - ImpaktfullUiCircleProgressIndicator
+  - ImpaktfullUiHalfCircleProgressIndicator
 - ImpaktfullUiRadioButton
 - ImpaktfullUiRadioButtonListItem
 - ImpaktfullUiRefreshIndicator
@@ -119,6 +123,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiSeparatedColumn
 - ImpaktfullUiSideNavigation
   - ImpaktfullUiSideNavigationItem
+- ImpaktfullUiSlider
 - ImpaktfullUiSkeleton
 - ImpaktfullUiSnackyConfigurator
 - ImpaktfullUiStepper
@@ -237,7 +242,6 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 ⌛️ Add extra components
 
-- ImpaktfullUiSlider
 - ImpaktfullUiSegmentedControll
 - ImpaktfullUiBreadcrumbs
 - ImpaktfullUiQrCode

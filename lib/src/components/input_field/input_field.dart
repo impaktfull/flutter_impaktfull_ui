@@ -260,6 +260,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
         context,
         onChanged: widget.onChanged,
         onSubmit: _onSubmitFromVirtualKeyboard,
+        obscureText: widget.obscureText,
       );
     }
     widget.onFocusChanged?.call(hasFocus);

@@ -17,11 +17,11 @@ export 'controller/virtual_keyboard_text_edit_controller.dart';
 
 part 'virtual_keyboard.describe.dart';
 
-class ImpaktfullUiVirtualKeyboard extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiVirtualKeyboard extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiVirtualKeyboardTextEditController controller;
   final double? width;
   final ValueChanged<String>? onChanged;
+  final bool obscureText;
   final VoidCallback? onSubmit;
   final ImpaktfullUiVirtualKeyboardTheme? theme;
 
@@ -59,13 +59,13 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget
     this.width,
     this.onChanged,
     this.onSubmit,
+    this.obscureText = false,
     this.theme,
     super.key,
   });
 
   @override
-  State<ImpaktfullUiVirtualKeyboard> createState() =>
-      _ImpaktfullUiVirtualKeyboardState();
+  State<ImpaktfullUiVirtualKeyboard> createState() => _ImpaktfullUiVirtualKeyboardState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
@@ -74,6 +74,7 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget
     required BuildContext context,
     required ImpaktfullUiVirtualKeyboardTextEditController controller,
     ValueChanged<String>? onChanged,
+    bool obscureText = false,
     VoidCallback? onSubmit,
   }) {
     showModalBottomSheet(
@@ -92,15 +93,14 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget
           controller: controller,
           onSubmit: onSubmit,
           onChanged: onChanged,
+          obscureText: obscureText,
         ),
       ),
     );
   }
 }
 
-class _ImpaktfullUiVirtualKeyboardState
-    extends State<ImpaktfullUiVirtualKeyboard>
-    with SingleTickerProviderStateMixin {
+class _ImpaktfullUiVirtualKeyboardState extends State<ImpaktfullUiVirtualKeyboard> with SingleTickerProviderStateMixin {
   var _shift = false;
   var _capsLock = false;
   var _control = false;
@@ -108,8 +108,7 @@ class _ImpaktfullUiVirtualKeyboardState
   late Animation<double> _cursorAnimation;
   int _cursorPosition = 0;
 
-  List<List<ImpaktfullUiVirtualKeyboardKeyItem>> get keys =>
-      widget.controller.config.keys;
+  List<List<ImpaktfullUiVirtualKeyboardKeyItem>> get keys => widget.controller.config.keys;
   bool get useUppercase => _capsLock || _shift;
 
   @override
@@ -136,6 +135,7 @@ class _ImpaktfullUiVirtualKeyboardState
 
   @override
   Widget build(BuildContext context) {
+    final text = widget.obscureText ? '•' * widget.controller.text.length : widget.controller.text;
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiVirtualKeyboardTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => SizedBox(
@@ -152,14 +152,12 @@ class _ImpaktfullUiVirtualKeyboardState
                 ImpaktfullUiCard(
                   width: double.infinity,
                   height: 56,
+                  onTap: _onTapInputField,
                   child: Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: _cursorPosition > 0
-                              ? widget.controller.text
-                                  .substring(0, _cursorPosition)
-                              : '',
+                          text: _cursorPosition > 0 ? text.substring(0, _cursorPosition) : '',
                         ),
                         WidgetSpan(
                           alignment: PlaceholderAlignment.middle,
@@ -172,9 +170,7 @@ class _ImpaktfullUiVirtualKeyboardState
                             ),
                           ),
                         ),
-                        TextSpan(
-                            text: widget.controller.text
-                                .substring(_cursorPosition)),
+                        TextSpan(text: text.substring(_cursorPosition)),
                       ],
                     ),
                   ),
@@ -188,8 +184,7 @@ class _ImpaktfullUiVirtualKeyboardState
                           Expanded(
                             flex: key.flex,
                             child: Builder(
-                              builder: (context) =>
-                                  ImpaktfullUiVirtualKeyboardButton(
+                              builder: (context) => ImpaktfullUiVirtualKeyboardButton(
                                 shift: _shift,
                                 capsLock: _capsLock,
                                 virtualKeyboardKey: key,
@@ -233,8 +228,7 @@ class _ImpaktfullUiVirtualKeyboardState
       if (_cursorPosition < text.length) {
         setState(() => _cursorPosition++);
       }
-    } else if (logicalKey == LogicalKeyboardKey.enter ||
-        logicalKey == LogicalKeyboardKey.numpadEnter) {
+    } else if (logicalKey == LogicalKeyboardKey.enter || logicalKey == LogicalKeyboardKey.numpadEnter) {
       widget.onSubmit?.call();
     } else if (logicalKey == LogicalKeyboardKey.shift ||
         logicalKey == LogicalKeyboardKey.shiftLeft ||
@@ -249,8 +243,7 @@ class _ImpaktfullUiVirtualKeyboardState
     } else {
       var value = key.valueForTextInput.toLowerCase();
       if (useUppercase) {
-        final isUpperCaseAllowed =
-            ImpaktfullUiVirtualKeyboard.uppercaseKeys.contains(logicalKey);
+        final isUpperCaseAllowed = ImpaktfullUiVirtualKeyboard.uppercaseKeys.contains(logicalKey);
         if (isUpperCaseAllowed && (_shift || _capsLock)) {
           value = value.toUpperCase();
         }
@@ -282,5 +275,13 @@ class _ImpaktfullUiVirtualKeyboardState
       return;
     }
     setState(() {});
+  }
+
+  void _onTapInputField() {
+    final newCursorPosition = widget.controller.text.length;
+    if (_cursorPosition == newCursorPosition) return;
+    setState(() {
+      _cursorPosition = newCursorPosition;
+    });
   }
 }

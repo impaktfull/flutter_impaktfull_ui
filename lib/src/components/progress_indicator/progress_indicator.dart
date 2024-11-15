@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator.dart';
-import 'package:impaktfull_ui_2/src/components/progress_indicator/widget/half_cirlce_progress_indicator.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'progress_indicator_style.dart';
 export 'model/progress_indicator_type.dart';
 export 'widget/cirlce_progress_indicator.dart';
+export 'widget/half_cirlce_progress_indicator.dart';
 export 'widget/line_progress_indicator.dart';
 
 part 'progress_indicator.describe.dart';
