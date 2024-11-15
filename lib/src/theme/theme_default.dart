@@ -51,6 +51,7 @@ import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicat
 import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
 import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
+import 'package:impaktfull_ui_2/src/components/segmented_control/segmented_control.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/separated_column/separated_column.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
@@ -937,6 +938,14 @@ class DefaultTheme {
           textStyles: const ImpaktfullUiScreenTextStyleTheme(),
         ),
         sectionTitle: ImpaktfullUiSectionTitleTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
+        ),
+        segmentedControl: ImpaktfullUiSegmentedControlTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,

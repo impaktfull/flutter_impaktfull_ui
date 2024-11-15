@@ -57,6 +57,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/responsive_lay
 import 'package:impaktfull_ui_example/src/component_library/items/responsive_row/responsive_row_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/screen/screen_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/section_title/section_title_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/segmented_control/segmented_control_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/selectable_list_item/selectable_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/separated_column/separated_column_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/sidebar_navigation/sidebar_navigation_library_item.dart';
@@ -145,6 +146,7 @@ class ComponentLibrary {
     const ResponsiveRowLibraryItem(),
     const ScreenLibraryItem(),
     const SectionTitleLibraryItem(),
+    const SegmentedControlLibraryItem(),
     const SelectableListItemLibraryItem(),
     const SeparatedColumnLibraryItem(),
     const SidebarNavigationLibraryItem(),

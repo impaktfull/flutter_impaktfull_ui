@@ -45,6 +45,7 @@ import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicat
 import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
 import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
+import 'package:impaktfull_ui_2/src/components/segmented_control/segmented_control.dart';
 import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
 import 'package:impaktfull_ui_2/src/components/separated_column/separated_column.dart';
 import 'package:impaktfull_ui_2/src/components/sidebar_navigation/sidebar_navigation.dart';
@@ -132,6 +133,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiResponsiveLayoutTheme responsiveLayout;
   final ImpaktfullUiScreenTheme screen;
   final ImpaktfullUiSectionTitleTheme sectionTitle;
+  final ImpaktfullUiSegmentedControlTheme segmentedControl;
   final ImpaktfullUiSelectableListItemTheme selectableListItem;
   final ImpaktfullUiSeparatedColumnTheme separatedColumn;
   final ImpaktfullUiSidebarNavigationTheme sidebarNavigation;
@@ -209,6 +211,7 @@ class ImpaktfullUiComponentsTheme {
     required this.responsiveLayout,
     required this.screen,
     required this.sectionTitle,
+    required this.segmentedControl,
     required this.selectableListItem,
     required this.separatedColumn,
     required this.sidebarNavigation,
@@ -287,6 +290,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiResponsiveLayoutTheme? responsiveLayout,
     ImpaktfullUiScreenTheme? screen,
     ImpaktfullUiSectionTitleTheme? sectionTitle,
+    ImpaktfullUiSegmentedControlTheme? segmentedControl,
     ImpaktfullUiSelectableListItemTheme? selectableListItem,
     ImpaktfullUiSeparatedColumnTheme? separatedColumn,
     ImpaktfullUiSidebarNavigationTheme? sidebarNavigation,
@@ -364,6 +368,7 @@ class ImpaktfullUiComponentsTheme {
         responsiveLayout: responsiveLayout ?? this.responsiveLayout,
         screen: screen ?? this.screen,
         sectionTitle: sectionTitle ?? this.sectionTitle,
+        segmentedControl: segmentedControl ?? this.segmentedControl,
         selectableListItem: selectableListItem ?? this.selectableListItem,
         sidebarNavigation: sidebarNavigation ?? this.sidebarNavigation,
         sidebarNavigationItem:
@@ -495,6 +500,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiScreenTheme.of(context) as T;
     } else if (T == ImpaktfullUiSectionTitleTheme) {
       return ImpaktfullUiSectionTitleTheme.of(context) as T;
+    } else if (T == ImpaktfullUiSegmentedControlTheme) {
+      return ImpaktfullUiSegmentedControlTheme.of(context) as T;
     } else if (T == ImpaktfullUiSelectableListItemTheme) {
       return ImpaktfullUiSelectableListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiSeparatedColumnTheme) {

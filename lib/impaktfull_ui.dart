@@ -77,6 +77,7 @@ export 'src/components/responsive_layout/responsive_layout.dart';
 export 'src/components/responsive_row/responsive_row.dart';
 export 'src/components/screen/screen.dart';
 export 'src/components/section_title/section_title.dart';
+export 'src/components/segmented_control/segmented_control.dart';
 export 'src/components/selectable_list_item/selectable_list_item.dart';
 export 'src/components/separated_column/separated_column.dart';
 export 'src/components/sidebar_navigation/sidebar_navigation.dart';
