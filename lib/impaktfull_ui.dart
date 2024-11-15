@@ -53,6 +53,7 @@ export 'src/components/list_view/list_view.dart';
 export 'src/components/loading_error_data/loading_error_data.dart';
 export 'src/components/loading_indicator/loading_indicator.dart';
 export 'src/components/markdown/markdown.dart';
+export 'src/components/master_detail/master_detail.dart';
 export 'src/components/metric/metric.dart';
 export 'src/components/modal/modal.dart';
 export 'src/components/morse_code_touch_feedback/morse_code_touch_feedback.dart';

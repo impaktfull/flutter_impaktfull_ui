@@ -14,7 +14,7 @@ part 'cms_header.describe.dart';
 
 class ImpaktfullUiCmsHeader extends StatefulWidget
     with ComponentDescriptorMixin {
-  final String title;
+  final String? title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
   final VoidCallback? onDrawerTapped;
@@ -25,7 +25,7 @@ class ImpaktfullUiCmsHeader extends StatefulWidget
   final Widget? bottomChild;
 
   const ImpaktfullUiCmsHeader({
-    required this.title,
+    this.title,
     this.subtitle,
     this.onBackTapped,
     this.actions = const [],
@@ -65,81 +65,89 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
         child: ImpaktfullUiAdaptiveSafeArea(
           bottom: false,
           hasMacOsMenuBar: false,
-          child: ImpaktfullUiAutoLayout.vertical(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 16,
-                  left: 16,
-                  right: 16,
-                  bottom: widget.bottomChild == null ? 16 : 12,
-                ),
-                child: ImpaktfullUiAutoLayout.horizontal(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 8,
-                  children: [
-                    if (widget.onDrawerTapped != null) ...[
-                      ImpaktfullUiIconButton(
-                        onTap: widget.onDrawerTapped!,
-                        asset: componentTheme.assets.drawerMenu,
-                        color: componentTheme.colors.icons,
-                        tooltip: widget.isDrawerOpen
-                            ? 'Close drawer'
-                            : 'Open drawer',
-                      ),
-                    ] else if (widget.onBackTapped != null) ...[
-                      ImpaktfullUiIconButton(
-                        onTap: widget.onBackTapped!,
-                        asset: componentTheme.assets.back,
-                        color: componentTheme.colors.icons,
-                        tooltip: 'Back',
-                      ),
-                    ],
-                    Expanded(
-                      child: ImpaktfullUiAutoLayout.vertical(
-                        spacing: 4,
-                        children: [
-                          ImpaktfullUiAutoLayout.horizontal(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            spacing: 8,
-                            children: [
-                              Text(
-                                widget.title,
-                                style: componentTheme.textStyles.title,
-                              ),
-                              if (widget.badge != null) ...[
-                                ImpaktfullUiBadge(
-                                  type: ImpaktfullUiBadgeType.primary,
-                                  label: widget.badge!,
-                                ),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              minHeight: 64,
+            ),
+            child: ImpaktfullUiAutoLayout.vertical(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 8,
+                    left: 16,
+                    right: 16,
+                    bottom: 8,
+                  ),
+                  child: ImpaktfullUiAutoLayout.horizontal(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 8,
+                    children: [
+                      if (widget.onDrawerTapped != null) ...[
+                        ImpaktfullUiIconButton(
+                          onTap: widget.onDrawerTapped!,
+                          asset: componentTheme.assets.drawerMenu,
+                          color: componentTheme.colors.icons,
+                          tooltip: widget.isDrawerOpen
+                              ? 'Close drawer'
+                              : 'Open drawer',
+                        ),
+                      ] else if (widget.onBackTapped != null) ...[
+                        ImpaktfullUiIconButton(
+                          onTap: widget.onBackTapped!,
+                          asset: componentTheme.assets.back,
+                          color: componentTheme.colors.icons,
+                          tooltip: 'Back',
+                        ),
+                      ],
+                      Expanded(
+                        child: ImpaktfullUiAutoLayout.vertical(
+                          spacing: 2,
+                          children: [
+                            ImpaktfullUiAutoLayout.horizontal(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              spacing: 8,
+                              children: [
+                                if (widget.title != null) ...[
+                                  Text(
+                                    widget.title!,
+                                    style: componentTheme.textStyles.title,
+                                  ),
+                                ],
+                                if (widget.badge != null) ...[
+                                  ImpaktfullUiBadge(
+                                    type: ImpaktfullUiBadgeType.primary,
+                                    label: widget.badge!,
+                                  ),
+                                ],
                               ],
-                            ],
-                          ),
-                          if (widget.subtitle != null) ...[
-                            Text(
-                              widget.subtitle!,
-                              style: componentTheme.textStyles.subtitle,
                             ),
+                            if (widget.subtitle != null) ...[
+                              Text(
+                                widget.subtitle!,
+                                style: componentTheme.textStyles.subtitle,
+                              ),
+                            ],
                           ],
-                        ],
+                        ),
                       ),
-                    ),
-                    if (widget.actions.isNotEmpty) ...[
-                      ImpaktfullUiAutoLayout.horizontal(
-                        spacing: 8,
-                        children: widget.actions.overrideColorOnWidgets(
-                            componentTheme.colors.icons),
-                      ),
+                      if (widget.actions.isNotEmpty) ...[
+                        ImpaktfullUiAutoLayout.horizontal(
+                          spacing: 8,
+                          children: widget.actions.overrideColorOnWidgets(
+                              componentTheme.colors.icons),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
-              ),
-              if (widget.bottomChild != null) ...[
-                widget.bottomChild!,
-                const SizedBox(height: 12),
+                if (widget.bottomChild != null) ...[
+                  widget.bottomChild!,
+                  const SizedBox(height: 12),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),

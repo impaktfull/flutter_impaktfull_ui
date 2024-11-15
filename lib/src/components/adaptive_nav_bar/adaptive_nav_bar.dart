@@ -12,7 +12,7 @@ part 'adaptive_nav_bar.describe.dart';
 
 class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
     with ComponentDescriptorMixin {
-  final String title;
+  final String? title;
   final String? badge;
   final String? subtitle;
   final VoidCallback? onBackTapped;
@@ -22,7 +22,7 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
   final List<ImpaktfullUiAdaptiveNavBarActionItem> actions;
 
   const ImpaktfullUiAdaptiveNavBar({
-    required this.title,
+    this.title,
     this.badge,
     this.subtitle,
     this.onBackTapped,

@@ -38,7 +38,7 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget
     T? selectedValue,
     String? subtitle,
   }) async {
-    if (context.isLargeScreen) {
+    if (context.isMediumScreenOrBigger) {
       return ImpaktfullUiModal.showSimple(
         context: context,
         title: title,

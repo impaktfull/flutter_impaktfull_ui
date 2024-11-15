@@ -92,6 +92,9 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiListView
 - ImpaktfullUiLoadingErrorData
 - ImpaktfullUiLoadingIndicator
+- ImpaktfullUiMarkdown
+- ImpaktfullUiMasterDetail
+  - ImpaktfullUiMasterDetailItemScreen
 - ImpaktfullUiMetric
 - ImpaktfullUiModal
 - ImpaktfullUiMorseCodeTouchFeedback

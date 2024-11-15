@@ -19,7 +19,7 @@ class LoginBuildingBlock extends BuildingBlockLibraryItem {
       onLoginTapped: () => Future.delayed(const Duration(seconds: 2)),
       onRegisterTapped: () => ImpaktfullUiNavigator.instance.goBack(),
       endBuilder: (context) {
-        if (ImpaktfullUiResponsiveLayout.isMedium(context)) {
+        if (ImpaktfullUiResponsiveLayout.isMediumOrSmaller(context)) {
           return null;
         }
         return Expanded(

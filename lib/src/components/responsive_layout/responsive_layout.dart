@@ -24,36 +24,60 @@ class ImpaktfullUiResponsiveLayout extends StatelessWidget
     super.key,
   });
 
-  static bool isSmall(BuildContext context,
+  static bool isSmallOrSmaller(BuildContext context,
       {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
     final screenSize = MediaQuery.sizeOf(context);
     final componentTheme =
         overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
-    return screenSize.width < componentTheme.dimens.breakpointSmall;
+    return screenSize.width <= componentTheme.dimens.breakpointSmall;
   }
 
-  static bool isMedium(BuildContext context,
+  static bool isMediumOrSmaller(BuildContext context,
       {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
     final screenSize = MediaQuery.sizeOf(context);
     final componentTheme =
         overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
-    return screenSize.width < componentTheme.dimens.breakpointMedium;
+    return screenSize.width <= componentTheme.dimens.breakpointMedium;
   }
 
-  static bool isLarge(BuildContext context,
+  static bool isLargeOrSmaller(BuildContext context,
       {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
     final screenSize = MediaQuery.sizeOf(context);
     final componentTheme =
         overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
-    return screenSize.width < componentTheme.dimens.breakpointLarge;
+    return screenSize.width <= componentTheme.dimens.breakpointLarge;
   }
 
-  static bool isExtraLarge(BuildContext context,
+  static bool isSmallOrBigger(BuildContext context,
+      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+    final screenSize = MediaQuery.sizeOf(context);
+    final componentTheme =
+        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    return screenSize.width <= componentTheme.dimens.breakpointSmall;
+  }
+
+  static bool isMediumOrBigger(BuildContext context,
+      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+    final screenSize = MediaQuery.sizeOf(context);
+    final componentTheme =
+        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    return screenSize.width > componentTheme.dimens.breakpointMedium;
+  }
+
+  static bool isLargeOrBigger(BuildContext context,
       {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
     final screenSize = MediaQuery.sizeOf(context);
     final componentTheme =
         overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
     return screenSize.width > componentTheme.dimens.breakpointLarge;
+  }
+
+  static bool isExtraLargeOrBigger(BuildContext context,
+      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
+    final screenSize = MediaQuery.sizeOf(context);
+    final componentTheme =
+        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
+    return screenSize.width >= componentTheme.dimens.breakpointLarge;
   }
 
   @override
@@ -62,19 +86,20 @@ class ImpaktfullUiResponsiveLayout extends StatelessWidget
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final screenSize = MediaQuery.sizeOf(context);
-        if (screenSize.width < componentTheme.dimens.breakpointSmall) {
-          return small(context);
-        } else if (screenSize.width < componentTheme.dimens.breakpointMedium) {
-          return medium?.call(context) ?? small(context);
-        } else if (screenSize.width < componentTheme.dimens.breakpointLarge) {
-          return large?.call(context) ??
-              medium?.call(context) ??
-              small(context);
-        } else {
+        final screenWidth = screenSize.width;
+        if (screenWidth > componentTheme.dimens.breakpointExtraLarge) {
           return extraLarge?.call(context) ??
               large?.call(context) ??
               medium?.call(context) ??
               small(context);
+        } else if (screenWidth > componentTheme.dimens.breakpointLarge) {
+          return large?.call(context) ??
+              medium?.call(context) ??
+              small(context);
+        } else if (screenWidth > componentTheme.dimens.breakpointMedium) {
+          return medium?.call(context) ?? small(context);
+        } else {
+          return small(context);
         }
       },
     );

@@ -30,10 +30,12 @@ class ImpaktfullUiResponsiveLayoutDimensTheme {
   final double breakpointSmall;
   final double breakpointMedium;
   final double breakpointLarge;
+  final double breakpointExtraLarge;
   const ImpaktfullUiResponsiveLayoutDimensTheme({
     required this.breakpointSmall,
     required this.breakpointMedium,
     required this.breakpointLarge,
+    required this.breakpointExtraLarge,
   });
 }
 

@@ -154,7 +154,7 @@ Future<void> _createWidgetLibrary({
       File(join(dir.path, '${snakeCaseComponentName}_library_item.dart'));
 
   final libaryItemFileContent =
-      """import 'package:impaktfull_ui_example/src/component_library/components/$snakeCaseComponentName/${snakeCaseComponentName}_library_variant.dart';
+      """import 'package:impaktfull_ui_example/src/component_library/items/$snakeCaseComponentName/${snakeCaseComponentName}_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 

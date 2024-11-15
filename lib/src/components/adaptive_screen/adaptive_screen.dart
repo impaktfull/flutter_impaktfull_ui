@@ -9,7 +9,7 @@ part 'adaptive_screen.describe.dart';
 
 class ImpaktfullUiAdaptiveScreen extends StatelessWidget
     with ComponentDescriptorMixin {
-  final String title;
+  final String? title;
   final String? badge;
   final String? subtitle;
   final VoidCallback? onBackTapped;
@@ -23,8 +23,8 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
   final WidgetBuilder? extraLargeBuilder;
 
   const ImpaktfullUiAdaptiveScreen({
-    required this.title,
     required this.builder,
+    this.title,
     this.subtitle,
     this.onBackTapped,
     this.badge,
@@ -48,8 +48,8 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
             children: [
               ImpaktfullUiAdaptiveNavBar(
                 title: title,
-                badge: badge,
                 subtitle: subtitle,
+                badge: badge,
                 bottomChild: headerBottomChild,
                 onBackTapped: onBackTapped,
                 isDrawerOpen: isDrawerEnabled

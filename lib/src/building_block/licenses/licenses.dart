@@ -65,12 +65,12 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
   @override
   Widget build(BuildContext context) {
     final showSearch =
-        _search || !ImpaktfullUiResponsiveLayout.isSmall(context);
+        _search || !ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context);
     return ImpaktfullUiAdaptiveScreen(
       title: 'Licenses',
       onBackTapped: widget.onBackTapped,
       actions: [
-        if (ImpaktfullUiResponsiveLayout.isSmall(context)) ...[
+        if (ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context)) ...[
           ImpaktfullUiAdaptiveNavBarActionItem(
             title: 'Search',
             asset: theme.assets.icons.search,
@@ -83,7 +83,9 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
               padding: EdgeInsetsDirectional.only(
                 start: 16,
                 end: 16,
-                bottom: ImpaktfullUiResponsiveLayout.isSmall(context) ? 16 : 0,
+                bottom: ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context)
+                    ? 16
+                    : 0,
               ),
               child: ImpaktfullUiClampedFractionallySizedBox(
                 widthFactor: 0.5,

@@ -10,10 +10,12 @@ class ImpaktfullUiDivider extends StatelessWidget
     with ComponentDescriptorMixin {
   final EdgeInsetsGeometry? margin;
   final ImpaktfullUiDividerTheme? theme;
+  final bool vertical;
 
   const ImpaktfullUiDivider({
     this.margin,
     this.theme,
+    this.vertical = false,
     super.key,
   });
 
@@ -23,9 +25,9 @@ class ImpaktfullUiDivider extends StatelessWidget
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Container(
         color: componentTheme.colors.color,
-        width: double.infinity,
+        width: vertical ? 1 : double.infinity,
+        height: vertical ? double.infinity : 1,
         margin: margin ?? componentTheme.dimens.margin,
-        height: 1,
       ),
     );
   }

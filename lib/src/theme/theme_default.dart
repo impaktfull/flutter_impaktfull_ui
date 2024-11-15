@@ -915,6 +915,7 @@ class DefaultTheme {
             breakpointSmall: 600,
             breakpointMedium: 1024,
             breakpointLarge: 1440,
+            breakpointExtraLarge: 1920,
           ),
           textStyles: ImpaktfullUiResponsiveLayoutTextStyleTheme(),
         ),

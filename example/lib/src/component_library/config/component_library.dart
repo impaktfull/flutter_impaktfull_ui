@@ -36,6 +36,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/list_view/list
 import 'package:impaktfull_ui_example/src/component_library/items/loading_error_data/loading_error_data_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/loading_indicator/loading_indicator_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/markdown/markdown_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/master_detail/master_detail_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/metric/metric_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/modal/modal_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/morse_code_touch_feedback/morse_code_touch_feedback_library_item.dart';
@@ -122,6 +123,7 @@ class ComponentLibrary {
     const LoadingErrorDataLibraryItem(),
     const LoadingIndicatorLibraryItem(),
     const MarkdownLibraryItem(),
+    const MasterDetailLibraryItem(),
     const MetricLibraryItem(),
     const ModalLibraryItem(),
     const MorseCodeTouchFeedbackLibraryItem(),
