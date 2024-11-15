@@ -151,7 +151,7 @@ class _ImpaktfullUiVirtualKeyboardState
               children: [
                 ImpaktfullUiCard(
                   width: double.infinity,
-                  height: 50,
+                  height: 56,
                   child: Text.rich(
                     TextSpan(
                       children: [
