@@ -52,7 +52,7 @@ class ${className}Theme extends ImpaktfullUiComponentTheme {
   static ${className}Theme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.${componentName.camelToSnakeCase()};
 
 
-  static ${className}Theme defaultTheme({
+  static ${className}Theme getDefault({
     required ImpaktfullUiAssetTheme assets,
     required ImpaktfullUiColorTheme colors,
     required ImpaktfullUiTextStylesTheme textStyles,
@@ -187,7 +187,7 @@ class ${componentName}LibraryInputs extends ComponentLibraryInputs {
 
   final componentFileContent = """import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_example/src/component_library/components/$snakeCaseComponentName/${snakeCaseComponentName}_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/$snakeCaseComponentName/${snakeCaseComponentName}_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
 class ${componentName}LibraryVariant extends ComponentLibraryVariant<${componentName}LibraryPrimaryInputs> {

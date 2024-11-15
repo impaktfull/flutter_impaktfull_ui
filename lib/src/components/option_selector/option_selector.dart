@@ -13,7 +13,8 @@ export 'option_selector_style.dart';
 
 part 'option_selector.describe.dart';
 
-class ImpaktfullUiOptionSelector<T> extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiOptionSelector<T> extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String Function(T)? titleBuilder;
   final List<T> options;
   final T? selectedValue;
@@ -74,13 +75,15 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget with ComponentDescrip
   }
 
   @override
-  State<ImpaktfullUiOptionSelector<T>> createState() => _ImpaktfullUiOptionSelectorState<T>();
+  State<ImpaktfullUiOptionSelector<T>> createState() =>
+      _ImpaktfullUiOptionSelectorState<T>();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiOptionSelectorState<T> extends State<ImpaktfullUiOptionSelector<T>> {
+class _ImpaktfullUiOptionSelectorState<T>
+    extends State<ImpaktfullUiOptionSelector<T>> {
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiOptionSelectorTheme>(

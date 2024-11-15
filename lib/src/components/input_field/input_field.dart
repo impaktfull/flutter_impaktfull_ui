@@ -5,6 +5,7 @@ import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui_2/src/components/virtual_keyboard/controller/virtual_keyboard_text_edit_controller.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
@@ -248,5 +249,24 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
 
   void _onFocus() => _focusNode.requestFocus();
 
-  void _onFocusChanged() => widget.onFocusChanged?.call(_focusNode.hasFocus);
+  void _onFocusChanged() {
+    final hasFocus = _focusNode.hasFocus;
+    final controller = widget.controller;
+    if (hasFocus &&
+        controller != null &&
+        controller is ImpaktfullUiVirtualKeyboardTextEditController) {
+      _focusNode.unfocus();
+      controller.openKeyboard(
+        context,
+        onChanged: widget.onChanged,
+        onSubmit: _onSubmitFromVirtualKeyboard,
+      );
+    }
+    widget.onFocusChanged?.call(hasFocus);
+  }
+
+  void _onSubmitFromVirtualKeyboard() {
+    Navigator.pop(context);
+    widget.onChanged(_controller.text);
+  }
 }

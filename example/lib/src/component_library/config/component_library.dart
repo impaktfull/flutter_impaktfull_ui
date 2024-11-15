@@ -71,6 +71,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/table/table_li
 import 'package:impaktfull_ui_example/src/component_library/items/time_picker/time_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/tooltip/tooltip_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/touch_feedback_sequence/touch_feedback_sequence_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/virtual_keyboard/virtual_keyboard_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/wrap/wrap_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/wysiwyg/wysiwyg_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
@@ -157,6 +158,7 @@ class ComponentLibrary {
     const TouchFeedbackSequenceLibraryItem(),
     const TooltipLibraryItem(),
     const WrapLibraryItem(),
+    const VirtualKeyboardLibraryItem(),
     const WysiwygLibraryItem(),
   ];
 }

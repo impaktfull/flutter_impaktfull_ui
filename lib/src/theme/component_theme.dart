@@ -65,6 +65,7 @@ import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dar
 import 'package:impaktfull_ui_2/src/components/time_picker/time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/components/unified_screen_layout/unified_screen_layout.dart';
+import 'package:impaktfull_ui_2/src/components/virtual_keyboard/virtual_keyboard.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/components/auto_complete/auto_complete.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
@@ -150,6 +151,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiTimePickerTheme timePicker;
   final ImpaktfullUiTooltipTheme tooltip;
   final ImpaktfullUiUnifiedScreenLayoutTheme unifiedScreenLayout;
+  final ImpaktfullUiVirtualKeyboardTheme virtualKeyboard;
   final ImpaktfullUiWysiwygTheme wysiwyg;
 
   ImpaktfullUiComponentsTheme({
@@ -225,6 +227,7 @@ class ImpaktfullUiComponentsTheme {
     required this.timePicker,
     required this.tooltip,
     required this.unifiedScreenLayout,
+    required this.virtualKeyboard,
     required this.wysiwyg,
   });
 
@@ -301,6 +304,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiTimePickerTheme? timePicker,
     ImpaktfullUiTooltipTheme? tooltip,
     ImpaktfullUiUnifiedScreenLayoutTheme? unifiedScreenLayout,
+    ImpaktfullUiVirtualKeyboardTheme? virtualKeyboard,
     ImpaktfullUiWysiwygTheme? wysiwyg,
   }) =>
       ImpaktfullUiComponentsTheme(
@@ -377,6 +381,7 @@ class ImpaktfullUiComponentsTheme {
         timePicker: timePicker ?? this.timePicker,
         tooltip: tooltip ?? this.tooltip,
         unifiedScreenLayout: unifiedScreenLayout ?? this.unifiedScreenLayout,
+        virtualKeyboard: virtualKeyboard ?? this.virtualKeyboard,
         wysiwyg: wysiwyg ?? this.wysiwyg,
       );
 
@@ -525,6 +530,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiTooltipTheme.of(context) as T;
     } else if (T == ImpaktfullUiUnifiedScreenLayoutTheme) {
       return ImpaktfullUiUnifiedScreenLayoutTheme.of(context) as T;
+    } else if (T == ImpaktfullUiVirtualKeyboardTheme) {
+      return ImpaktfullUiVirtualKeyboardTheme.of(context) as T;
     } else if (T == ImpaktfullUiWysiwygTheme) {
       return ImpaktfullUiWysiwygTheme.of(context) as T;
     } else {

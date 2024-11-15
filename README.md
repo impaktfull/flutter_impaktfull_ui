@@ -132,6 +132,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiTouchFeedback
 - ImpaktfullUiTouchFeedbackSequence
 - ImpaktfullUiUnifiedScreenLayout
+- ImpaktfullUiVirtualKeyboard
 - ImpaktfullUiWrap
 - ImpaktfullUiWysiwyg
 

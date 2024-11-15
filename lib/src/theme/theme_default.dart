@@ -71,6 +71,7 @@ import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dar
 import 'package:impaktfull_ui_2/src/components/time_picker/time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui_2/src/components/unified_screen_layout/unified_screen_layout.dart';
+import 'package:impaktfull_ui_2/src/components/virtual_keyboard/virtual_keyboard.dart';
 import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
@@ -1207,6 +1208,14 @@ class DefaultTheme {
             centerPadding: EdgeInsets.all(16),
           ),
           textStyles: ImpaktfullUiUnifiedScreenLayoutTextStyleTheme(),
+        ),
+        virtualKeyboard: ImpaktfullUiVirtualKeyboardTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          dimens: dimens,
+          textStyles: textStyles,
+          durations: durations,
+          shadows: shadows,
         ),
         wysiwyg: ImpaktfullUiWysiwygTheme(
           assets: ImpaktfullUiWysiwygAssetsTheme(

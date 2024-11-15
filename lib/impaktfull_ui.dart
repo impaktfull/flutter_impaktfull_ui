@@ -96,6 +96,7 @@ export 'src/components/table_header_item/table_header_item.dart';
 export 'src/components/time_picker/time_picker.dart';
 export 'src/components/tooltip/tooltip.dart';
 export 'src/components/unified_screen_layout/unified_screen_layout.dart';
+export 'src/components/virtual_keyboard/virtual_keyboard.dart';
 export 'src/components/wrap/wrap.dart';
 export 'src/components/wysiwyg/wysiwyg.dart';
 

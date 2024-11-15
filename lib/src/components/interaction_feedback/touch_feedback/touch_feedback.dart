@@ -8,6 +8,9 @@ import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extens
 
 class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final VoidCallback? onTap;
+  final ValueChanged<TapDownDetails>? onTapDown;
+  final ValueChanged<TapUpDetails>? onTapUp;
+  final VoidCallback? onTapCancel;
   final VoidCallback? onFocus;
   final Widget child;
   final BorderRadiusGeometry? borderRadius;
@@ -23,6 +26,9 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
   const ImpaktfullUiTouchFeedback({
     required this.onTap,
     required this.child,
+    this.onTapDown,
+    this.onTapUp,
+    this.onTapCancel,
     this.onFocus,
     this.borderRadius,
     this.color,
@@ -38,7 +44,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (onTap == null) {
+    if (onTap == null && onTapDown == null && onTapUp == null) {
       return ImpaktfullUiContainer(
         border: border,
         shadow: shadow,
@@ -58,6 +64,9 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
           child: _PlatformTouchFeedback(
             borderRadius: borderRadius,
             onTap: onTap,
+            onTapDown: onTapDown,
+            onTapUp: onTapUp,
+            onTapCancel: onTapCancel,
             cursor: cursor,
             canRequestFocus: canRequestFocus,
             autofocus: autofocus,
@@ -81,6 +90,9 @@ class _PlatformTouchFeedback extends StatefulWidget {
   final Widget child;
   final BorderRadiusGeometry? borderRadius;
   final VoidCallback? onTap;
+  final ValueChanged<TapDownDetails>? onTapDown;
+  final ValueChanged<TapUpDetails>? onTapUp;
+  final VoidCallback? onTapCancel;
   final MouseCursor cursor;
   final bool canRequestFocus;
   final bool autofocus;
@@ -91,6 +103,9 @@ class _PlatformTouchFeedback extends StatefulWidget {
     required this.child,
     required this.borderRadius,
     required this.onTap,
+    required this.onTapDown,
+    required this.onTapUp,
+    required this.onTapCancel,
     required this.cursor,
     required this.canRequestFocus,
     required this.autofocus,
@@ -124,6 +139,9 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         cursor: widget.cursor,
         child: GestureDetector(
           onTap: widget.onTap,
+          onTapDown: widget.onTapDown,
+          onTapUp: widget.onTapUp,
+          onTapCancel: widget.onTapCancel,
           child: Focus(
             focusNode: _focusNode,
             onFocusChange: widget.onFocusChanged,
@@ -146,6 +164,9 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
       child: InkWell(
         borderRadius: widget.borderRadius?.value,
         onTap: widget.onTap,
+        onTapDown: widget.onTapDown,
+        onTapUp: widget.onTapUp,
+        onTapCancel: widget.onTapCancel,
         focusNode: _focusNode,
         mouseCursor: widget.cursor,
         onFocusChange: _onFocusChanged,
