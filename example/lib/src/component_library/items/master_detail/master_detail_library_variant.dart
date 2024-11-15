@@ -30,8 +30,8 @@ class MasterDetailLibraryVariant
               type: ImpaktfullUiButtonType.secondaryGrey,
             ),
           ),
-          onBackTapped: () =>
-              ImpaktfullUiNotification.show(title: 'Back tapped'),
+          // onBackTapped: () =>
+          //     ImpaktfullUiNotification.show(title: 'Back tapped'),
           onCloseDetail: () => inputs.hasDetail.updateState(false),
           closeDetailBeforeMaster: true,
           detail: (context) {

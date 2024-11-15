@@ -68,11 +68,12 @@ class ImpaktfullUiMasterDetailState extends State<ImpaktfullUiMasterDetail> {
   @override
   Widget build(BuildContext context) {
     final detail = widget.detail?.call(context);
+    final onBackTappedEnabled = _onBackTappedEnabled(detail);
     return ImpaktfullUiAdaptiveScreen(
       title: _overrideTitle ?? widget.title,
       subtitle: _overrideSubtitle ?? widget.subtitle,
       actions: _overrideActions ?? widget.actions,
-      onBackTapped: () => _onBackTapped(context),
+      onBackTapped: onBackTappedEnabled ? () => _onBackTapped(context) : null,
       headerBottomChild: _overrideHeaderBottomChild ?? widget.headerBottomChild,
       builder: (context) {
         if (widget.onCloseDetail != null && detail == null) {
@@ -125,6 +126,11 @@ class ImpaktfullUiMasterDetailState extends State<ImpaktfullUiMasterDetail> {
       if (!mounted) return;
       setState(() => _overrideHeaderBottomChild = headerBottomChild);
     });
+  }
+
+  bool _onBackTappedEnabled(Widget? detail) {
+    if (widget.onCloseDetail != null && detail != null) return true;
+    return widget.onBackTapped != null;
   }
 
   void _onBackTapped(BuildContext context) {
