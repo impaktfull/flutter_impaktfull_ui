@@ -16,6 +16,7 @@ class ImpaktfullUiAvatar extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? placeholderAsset;
   final double width;
   final double height;
+  final BoxFit? fit;
   final VoidCallback? onTap;
   final ImpaktfullUiAvatarTheme? theme;
 
@@ -24,6 +25,7 @@ class ImpaktfullUiAvatar extends StatelessWidget with ComponentDescriptorMixin {
     this.placeholderAsset,
     this.width = 40,
     this.height = 40,
+    this.fit,
     this.onTap,
     this.theme,
     super.key,
@@ -69,6 +71,7 @@ class ImpaktfullUiAvatar extends StatelessWidget with ComponentDescriptorMixin {
                   child: Builder(
                     builder: (context) => ImpaktfullUiNetworkImage(
                       url: url!,
+                      fit: fit,
                     ),
                   ),
                 ),

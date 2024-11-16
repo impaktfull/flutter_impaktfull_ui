@@ -13,12 +13,14 @@ class ImpaktfullUiNetworkImage extends StatelessWidget
   final String url;
   final double? height;
   final double? width;
+  final BoxFit? fit;
   final ImpaktfullUiNetworkImageTheme? theme;
 
   const ImpaktfullUiNetworkImage({
     required this.url,
     this.height,
     this.width,
+    this.fit,
     this.theme,
     super.key,
   });
@@ -26,6 +28,7 @@ class ImpaktfullUiNetworkImage extends StatelessWidget
   const ImpaktfullUiNetworkImage.random({
     this.height,
     this.width,
+    this.fit,
     this.theme,
     super.key,
   }) : url = 'https://picsum.photos';
@@ -44,6 +47,7 @@ class ImpaktfullUiNetworkImage extends StatelessWidget
           fullUrl,
           height: height,
           width: width,
+          fit: fit,
           errorBuilder: (context, error, stackTrace) {
             if (!kDebugMode) throw error;
             return Stack(

@@ -26,6 +26,7 @@ export 'src/components/badge/badge.dart';
 export 'src/components/card/card.dart';
 export 'src/components/carrousel/carrousel.dart';
 export 'src/components/calendar/calendar.dart';
+export 'src/components/chat/chat.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
 export 'src/components/cms_header/cms_header.dart';

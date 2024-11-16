@@ -9,6 +9,7 @@ import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/carrousel/carrousel.dart';
+import 'package:impaktfull_ui_2/src/components/chat/chat.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
@@ -92,6 +93,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiCalendarTheme calendar;
   final ImpaktfullUiCardTheme card;
   final ImpaktfullUiCarrouselTheme carrousel;
+  final ImpaktfullUiChatTheme chat;
   final ImpaktfullUiCheckboxTheme checkbox;
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
@@ -170,6 +172,7 @@ class ImpaktfullUiComponentsTheme {
     required this.calendar,
     required this.card,
     required this.carrousel,
+    required this.chat,
     required this.checkbox,
     required this.cmsHeader,
     required this.colorPicker,
@@ -249,6 +252,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCalendarTheme? calendar,
     ImpaktfullUiCardTheme? card,
     ImpaktfullUiCarrouselTheme? carrousel,
+    ImpaktfullUiChatTheme? chat,
     ImpaktfullUiCheckboxTheme? checkbox,
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
@@ -327,6 +331,7 @@ class ImpaktfullUiComponentsTheme {
         calendar: calendar ?? this.calendar,
         card: card ?? this.card,
         carrousel: carrousel ?? this.carrousel,
+        chat: chat ?? this.chat,
         checkbox: checkbox ?? this.checkbox,
         cmsHeader: cmsHeader ?? this.cmsHeader,
         colorPicker: colorPicker ?? this.colorPicker,
@@ -418,6 +423,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiCardTheme.of(context) as T;
     } else if (T == ImpaktfullUiCarrouselTheme) {
       return ImpaktfullUiCarrouselTheme.of(context) as T;
+    } else if (T == ImpaktfullUiChatTheme) {
+      return ImpaktfullUiChatTheme.of(context) as T;
     } else if (T == ImpaktfullUiCheckboxTheme) {
       return ImpaktfullUiCheckboxTheme.of(context) as T;
     } else if (T == ImpaktfullUiCmsHeaderTheme) {

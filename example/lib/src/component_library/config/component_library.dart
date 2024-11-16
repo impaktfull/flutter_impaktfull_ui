@@ -13,6 +13,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/button/button_
 import 'package:impaktfull_ui_example/src/component_library/items/calendar/calendar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/card/card_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/carrousel/carrousel_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/chat/chat_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/checkbox/checkbox_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/clamped_fractionally_sized_box/clamped_fractionally_sized_box_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/cms_header/cms_header_library_item.dart';
@@ -95,14 +96,15 @@ class ComponentLibrary {
     const AutoLayoutLibraryItem(),
     const AvatarLibraryItem(),
     const BadgeLibraryItem(),
-    const BottomNavigationLibraryItem(),
     const BottomNavigationItemLibraryItem(),
+    const BottomNavigationLibraryItem(),
     const BottomSheetLibraryItem(),
     const ButtonLibraryItem(),
-    const CheckboxLibraryItem(),
     const CalendarLibraryItem(),
     const CardLibraryItem(),
     const CarrouselLibraryItem(),
+    const ChatLibraryItem(),
+    const CheckboxLibraryItem(),
     const ClampedFractionallySizedBoxLibraryItem(),
     const CmsHeaderLibraryItem(),
     const ColorPickerLibraryItem(),
@@ -131,8 +133,8 @@ class ComponentLibrary {
     const ModalLibraryItem(),
     const MorseCodeTouchFeedbackLibraryItem(),
     const NavBarLibraryItem(),
-    const NotificationLibraryItem(),
     const NotificationBadgeLibraryItem(),
+    const NotificationLibraryItem(),
     const NumberInputLibraryItem(),
     const OptionSelectorLibraryItem(),
     const PaginationLibraryItem(),
@@ -149,8 +151,8 @@ class ComponentLibrary {
     const SegmentedControlLibraryItem(),
     const SelectableListItemLibraryItem(),
     const SeparatedColumnLibraryItem(),
-    const SidebarNavigationLibraryItem(),
     const SidebarNavigationItemLibraryItem(),
+    const SidebarNavigationLibraryItem(),
     const SimpleListItemLibraryItem(),
     const SkeletonLibraryItem(),
     const SliderLibraryItem(),
@@ -161,10 +163,10 @@ class ComponentLibrary {
     const TabBarLibraryItem(),
     const TableLibraryItem(),
     const TimePickerLibraryItem(),
-    const TouchFeedbackSequenceLibraryItem(),
     const TooltipLibraryItem(),
-    const WrapLibraryItem(),
+    const TouchFeedbackSequenceLibraryItem(),
     const VirtualKeyboardLibraryItem(),
+    const WrapLibraryItem(),
     const WysiwygLibraryItem(),
   ];
 }

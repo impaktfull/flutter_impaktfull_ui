@@ -10,6 +10,7 @@ import 'package:impaktfull_ui_2/src/components/button/button.dart';
 import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui_2/src/components/card/card.dart';
 import 'package:impaktfull_ui_2/src/components/carrousel/carrousel.dart';
+import 'package:impaktfull_ui_2/src/components/chat/chat.dart';
 import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
@@ -398,6 +399,14 @@ class DefaultTheme {
             indicatorSpacing: const EdgeInsets.symmetric(horizontal: 4),
           ),
           textStyles: const ImpaktfullUiCarrouselTextStyleTheme(),
+        ),
+        chat: ImpaktfullUiChatTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         checkbox: ImpaktfullUiCheckboxTheme(
           assets: ImpaktfullUiCheckboxAssetsTheme(
