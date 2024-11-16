@@ -49,8 +49,9 @@ class ImpaktfullUiChat extends StatelessWidget with ComponentDescriptorMixin {
         reversed: true,
         itemBuilder: (context, item, index) {
           final item = items[index];
-          final nextItem = index < items.length - 1 ? items[index + 1] : null;
-          final previousItem = index > 0 ? items[index - 1] : null;
+          final previousItem =
+              index < items.length - 1 ? items[index + 1] : null;
+          final nextItem = index > 0 ? items[index - 1] : null;
           if (itemBuilder != null) {
             return itemBuilder!(
               context,
