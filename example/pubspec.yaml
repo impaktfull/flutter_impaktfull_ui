@@ -25,6 +25,8 @@ flutter:
     - assets/fonts/geologica/
     - assets/images/
     - assets/images/supporting/
+    - assets/images/supporting/avatars/
+    - assets/images/supporting/gallery/
     - assets/lottie/
     - assets/rive/
   fonts:

@@ -13,10 +13,12 @@ class ImpaktfullUiChatListTypingContainer extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiChatListTypingContainer> createState() => _ImpaktfullUiChatListTypingContainerState();
+  State<ImpaktfullUiChatListTypingContainer> createState() =>
+      _ImpaktfullUiChatListTypingContainerState();
 }
 
-class _ImpaktfullUiChatListTypingContainerState extends State<ImpaktfullUiChatListTypingContainer>
+class _ImpaktfullUiChatListTypingContainerState
+    extends State<ImpaktfullUiChatListTypingContainer>
     with TickerProviderStateMixin {
   late final List<AnimationController> _controllers;
 
@@ -77,7 +79,10 @@ class _ImpaktfullUiChatListTypingContainerState extends State<ImpaktfullUiChatLi
       builder: (context, child) => Transform.translate(
         offset: Offset(
           0,
-          (-size * _controllers[index].value * (1 - _controllers[index].value) * size),
+          (-size *
+              _controllers[index].value *
+              (1 - _controllers[index].value) *
+              size),
         ),
         child: Container(
           width: 8,

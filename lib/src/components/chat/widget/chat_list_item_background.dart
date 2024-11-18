@@ -38,13 +38,19 @@ class ImpaktfullUiChatListItemBackground extends StatelessWidget {
                 ? componentTheme.colors.ownMessageBackground
                 : componentTheme.colors.otherMessageBackground,
             border: Border.all(
-              color: isMyOwnMessage ? componentTheme.colors.ownMessageBorder : componentTheme.colors.otherMessageBorder,
+              color: isMyOwnMessage
+                  ? componentTheme.colors.ownMessageBorder
+                  : componentTheme.colors.otherMessageBorder,
             ),
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(isMyOwnMessage || isDifferentSenderThanPrevious ? 8 : 4),
-              topRight: Radius.circular(isNotMyOwnMessage || isDifferentSenderThanPrevious ? 8 : 4),
-              bottomLeft: Radius.circular(isMyOwnMessage || isDifferentSenderThanNext ? 8 : 4),
-              bottomRight: Radius.circular(isNotMyOwnMessage || isDifferentSenderThanNext ? 8 : 4),
+              topLeft: Radius.circular(
+                  isMyOwnMessage || isDifferentSenderThanPrevious ? 8 : 4),
+              topRight: Radius.circular(
+                  isNotMyOwnMessage || isDifferentSenderThanPrevious ? 8 : 4),
+              bottomLeft: Radius.circular(
+                  isMyOwnMessage || isDifferentSenderThanNext ? 8 : 4),
+              bottomRight: Radius.circular(
+                  isNotMyOwnMessage || isDifferentSenderThanNext ? 8 : 4),
             ),
           ),
           padding: const EdgeInsets.all(8),

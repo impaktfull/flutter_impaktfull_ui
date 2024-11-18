@@ -14,7 +14,8 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiChatTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.chat;
+  static ImpaktfullUiChatTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.chat;
 
   static ImpaktfullUiChatTheme getDefault({
     required ImpaktfullUiAssetTheme assets,

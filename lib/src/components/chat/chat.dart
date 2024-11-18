@@ -124,7 +124,8 @@ class _ImpaktfullUiChatState extends State<ImpaktfullUiChat> {
     _senderIdsTyping.clear();
     _senderIdsTypingSubscription?.cancel();
     if (widget.senderIdsTypingStream == null) return;
-    _senderIdsTypingSubscription = widget.senderIdsTypingStream!.listen((senderIds) {
+    _senderIdsTypingSubscription =
+        widget.senderIdsTypingStream!.listen((senderIds) {
       if (!mounted) return;
       setState(() {
         _senderIdsTyping.clear();

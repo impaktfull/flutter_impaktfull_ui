@@ -47,7 +47,8 @@ class NetworkImages {
       imageUrl:
           'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/northern_light.jpg',
       title: 'Beach',
-      description: 'Photo by Asad Photo Maldives: https://www.pexels.com/photo/brown-dock-near-coconut-trees-1591372/',
+      description:
+          'Photo by Asad Photo Maldives: https://www.pexels.com/photo/brown-dock-near-coconut-trees-1591372/',
     ),
 
     /// Photo by Krivec Ales: https://www.pexels.com/photo/bird-s-eye-view-photography-of-mountains-552785/

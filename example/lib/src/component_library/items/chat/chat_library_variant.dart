@@ -12,7 +12,8 @@ final chatItems = [
     timestamp: DateTime.now().subtract(const Duration(seconds: 1)),
   ),
   ImpaktfullUiChatItem(
-    message: "Monday works for me, all day! Let's meet at 10:00 AM at the office",
+    message:
+        "Monday works for me, all day! Let's meet at 10:00 AM at the office",
     senderId: '1',
     timestamp: DateTime.now().subtract(const Duration(seconds: 30)),
   ),
@@ -27,7 +28,8 @@ final chatItems = [
     timestamp: DateTime.now().subtract(const Duration(minutes: 80)),
   ),
   ImpaktfullUiChatItem(
-    message: 'Great! I just wanted to know if you are available for the meeting tomorrow.',
+    message:
+        'Great! I just wanted to know if you are available for the meeting tomorrow.',
     senderId: '1',
     timestamp: DateTime.now().subtract(const Duration(minutes: 95)),
   ),
@@ -48,7 +50,8 @@ final chatItems = [
   ),
 ];
 
-class ChatLibraryVariant extends ComponentLibraryVariant<ChatLibraryPrimaryInputs> {
+class ChatLibraryVariant
+    extends ComponentLibraryVariant<ChatLibraryPrimaryInputs> {
   const ChatLibraryVariant();
 
   @override
