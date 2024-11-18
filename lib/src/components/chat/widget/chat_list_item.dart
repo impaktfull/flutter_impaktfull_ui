@@ -30,18 +30,18 @@ class ImpaktfullUiChatListItem extends StatelessWidget {
     return ImpaktfullUiComponentThemeBuilder(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Align(
-        alignment:
-            isMyOwnMessage ? Alignment.centerRight : Alignment.centerLeft,
+        alignment: isMyOwnMessage ? Alignment.centerRight : Alignment.centerLeft,
         child: ImpaktfullUiAutoLayout.horizontal(
           mainAxisSize: MainAxisSize.min,
           spacing: 4,
           children: [
-            ImpaktfullUiChatListItemAvatar(
-              sender: sender,
-              showAvatar: isGroupChat,
-              isMyOwnMessage: isMyOwnMessage,
-              previousSender: previousSender,
-            ),
+            if (isGroupChat) ...[
+              ImpaktfullUiChatListItemAvatar(
+                sender: sender,
+                isMyOwnMessage: isMyOwnMessage,
+                previousSender: previousSender,
+              ),
+            ],
             ImpaktfullUiChatListItemBackground(
               previousItem: previousItem,
               item: item,

@@ -14,8 +14,7 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiChatTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.chat;
+  static ImpaktfullUiChatTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.chat;
 
   static ImpaktfullUiChatTheme getDefault({
     required ImpaktfullUiAssetTheme assets,
@@ -32,13 +31,20 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
           ownMessageBorder: colors.accent,
           otherMessageBackground: colors.card,
           otherMessageBorder: colors.border,
+          dateLabelBackground: colors.primary,
+          typingContainerBackground: colors.border,
+          typingContainerDots: colors.border.withOpacity(1),
         ),
-        dimens: const ImpaktfullUiChatDimensTheme(
+        dimens: ImpaktfullUiChatDimensTheme(
           messagePadding: 8,
+          dateLabelBorderRadius: dimens.borderRadius,
+          typingContainerBorderRadius: dimens.borderRadius,
+          typingDotsBorderRadius: dimens.borderRadius,
         ),
         textStyles: ImpaktfullUiChatTextStyleTheme(
           otherMessage: textStyles.onCard.text.small,
           ownMessage: textStyles.onAccent.text.small,
+          dateLabel: textStyles.onPrimary.text.small,
         ),
       );
 }
@@ -52,29 +58,42 @@ class ImpaktfullUiChatColorTheme {
   final Color ownMessageBorder;
   final Color otherMessageBackground;
   final Color otherMessageBorder;
+  final Color dateLabelBackground;
+  final Color typingContainerBackground;
+  final Color typingContainerDots;
 
   const ImpaktfullUiChatColorTheme({
     required this.ownMessageBackground,
     required this.ownMessageBorder,
     required this.otherMessageBackground,
     required this.otherMessageBorder,
+    required this.dateLabelBackground,
+    required this.typingContainerBackground,
+    required this.typingContainerDots,
   });
 }
 
 class ImpaktfullUiChatDimensTheme {
   final double messagePadding;
+  final BorderRadiusGeometry dateLabelBorderRadius;
+  final BorderRadiusGeometry typingContainerBorderRadius;
+  final BorderRadiusGeometry typingDotsBorderRadius;
 
   const ImpaktfullUiChatDimensTheme({
     required this.messagePadding,
+    required this.dateLabelBorderRadius,
+    required this.typingContainerBorderRadius,
+    required this.typingDotsBorderRadius,
   });
 }
 
 class ImpaktfullUiChatTextStyleTheme {
   final TextStyle ownMessage;
   final TextStyle otherMessage;
-
+  final TextStyle dateLabel;
   const ImpaktfullUiChatTextStyleTheme({
     required this.ownMessage,
     required this.otherMessage,
+    required this.dateLabel,
   });
 }

@@ -21,7 +21,11 @@ class ImpaktfullUiChatListItemBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMyOwnMessage = item.senderId == senderConfig.me.id;
+    final senderId = item.senderId;
+    final isMyOwnMessage = senderId == senderConfig.me.id;
+    final isNotMyOwnMessage = !isMyOwnMessage;
+    final isDifferentSenderThanPrevious = previousItem?.senderId != senderId;
+    final isDifferentSenderThanNext = nextItem?.senderId != senderId;
     return ImpaktfullUiComponentThemeBuilder(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
@@ -34,27 +38,13 @@ class ImpaktfullUiChatListItemBackground extends StatelessWidget {
                 ? componentTheme.colors.ownMessageBackground
                 : componentTheme.colors.otherMessageBackground,
             border: Border.all(
-              color: isMyOwnMessage
-                  ? componentTheme.colors.ownMessageBorder
-                  : componentTheme.colors.otherMessageBorder,
+              color: isMyOwnMessage ? componentTheme.colors.ownMessageBorder : componentTheme.colors.otherMessageBorder,
             ),
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(
-                  item.isMyOwnMessage || previousItem?.senderId != item.senderId
-                      ? 8
-                      : 4),
-              topRight: Radius.circular(item.isNotMyOwnMessage ||
-                      previousItem?.senderId != item.senderId
-                  ? 8
-                  : 4),
-              bottomLeft: Radius.circular(
-                  item.isMyOwnMessage || nextItem?.senderId != item.senderId
-                      ? 8
-                      : 4),
-              bottomRight: Radius.circular(
-                  item.isNotMyOwnMessage || nextItem?.senderId != item.senderId
-                      ? 8
-                      : 4),
+              topLeft: Radius.circular(isMyOwnMessage || isDifferentSenderThanPrevious ? 8 : 4),
+              topRight: Radius.circular(isNotMyOwnMessage || isDifferentSenderThanPrevious ? 8 : 4),
+              bottomLeft: Radius.circular(isMyOwnMessage || isDifferentSenderThanNext ? 8 : 4),
+              bottomRight: Radius.circular(isNotMyOwnMessage || isDifferentSenderThanNext ? 8 : 4),
             ),
           ),
           padding: const EdgeInsets.all(8),
