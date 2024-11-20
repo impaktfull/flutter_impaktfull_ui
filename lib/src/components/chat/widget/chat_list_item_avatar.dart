@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/avatar/avatar.dart';
 import 'package:impaktfull_ui_2/src/components/chat/chat.dart';
+import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
+import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiChatListItemAvatar extends StatelessWidget {
   final ImpaktfullUiChatSender? sender;
   final ImpaktfullUiChatSender? previousSender;
   final bool isMyOwnMessage;
+  final ImpaktfullUiChatTheme? theme;
 
   const ImpaktfullUiChatListItemAvatar({
     required this.sender,
     required this.previousSender,
     required this.isMyOwnMessage,
+    this.theme,
     super.key,
   });
 
@@ -21,11 +25,21 @@ class ImpaktfullUiChatListItemAvatar extends StatelessWidget {
       if (sender.id == previousSender?.id) {
         return const SizedBox(width: 24);
       }
-      return ImpaktfullUiAvatar(
-        url: sender.avatarUrl,
-        width: 24,
-        height: 24,
-        fit: BoxFit.cover,
+      final showBadge = sender.isOnline ?? true;
+      return ImpaktfullUiComponentThemeBuilder(
+        overrideComponentTheme: theme,
+        builder: (context, componentTheme) => ImpaktfullUiNotificationBadge(
+          show: showBadge,
+          color: componentTheme.colors.onlineBadge,
+          size: 10,
+          location: ImpaktfullUiNotificationBadgeLocation.bottomRight,
+          child: ImpaktfullUiAvatar(
+            url: sender.avatarUrl,
+            width: 24,
+            height: 24,
+            fit: BoxFit.cover,
+          ),
+        ),
       );
     }
     return const SizedBox.shrink();

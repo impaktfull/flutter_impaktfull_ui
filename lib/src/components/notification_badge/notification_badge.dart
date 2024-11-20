@@ -26,6 +26,7 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget
   final Color? color;
   final String? text;
   final Widget child;
+  final double size;
   final ImpaktfullUiNotificationBadgeLocation location;
   final ImpaktfullUiNotificationBadgeTheme? theme;
 
@@ -33,6 +34,7 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget
     required this.show,
     required this.child,
     required this.color,
+    this.size = 16,
     this.location = ImpaktfullUiNotificationBadgeLocation.topRight,
     this.text,
     this.theme,
@@ -66,9 +68,9 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget
                 child: Transform.scale(
                   scale: 0.75,
                   child: Container(
-                    constraints: const BoxConstraints(
-                      minWidth: 16,
-                      minHeight: 16,
+                    constraints: BoxConstraints(
+                      minWidth: size,
+                      minHeight: size,
                     ),
                     decoration: BoxDecoration(
                       color: color,

@@ -10,6 +10,7 @@ class ImpaktfullUiChatListItem extends StatelessWidget {
   final ImpaktfullUiChatItem? nextItem;
   final ImpaktfullUiChatItem? previousItem;
   final ImpaktfullUiChatSenderConfig senderConfig;
+  final bool showAvatars;
   final ImpaktfullUiChatTheme theme;
 
   const ImpaktfullUiChatListItem({
@@ -18,6 +19,7 @@ class ImpaktfullUiChatListItem extends StatelessWidget {
     required this.senderConfig,
     this.nextItem,
     this.previousItem,
+    this.showAvatars = false,
     super.key,
   });
 
@@ -26,7 +28,6 @@ class ImpaktfullUiChatListItem extends StatelessWidget {
     final sender = senderConfig.getById(item.senderId);
     final previousSender = senderConfig.getById(previousItem?.senderId);
     final isMyOwnMessage = sender?.id == senderConfig.me.id;
-    final isGroupChat = senderConfig.isGroupChat;
     return ImpaktfullUiComponentThemeBuilder(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Align(
@@ -36,7 +37,7 @@ class ImpaktfullUiChatListItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 4,
           children: [
-            if (isGroupChat) ...[
+            if (showAvatars) ...[
               ImpaktfullUiChatListItemAvatar(
                 sender: sender,
                 isMyOwnMessage: isMyOwnMessage,

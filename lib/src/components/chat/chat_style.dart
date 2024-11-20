@@ -35,6 +35,7 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
           dateLabelBackground: colors.primary,
           typingContainerBackground: colors.border,
           typingContainerDots: colors.border.withOpacity(1),
+          onlineBadge: colors.success,
         ),
         dimens: ImpaktfullUiChatDimensTheme(
           messagePadding: 8,
@@ -62,6 +63,7 @@ class ImpaktfullUiChatColorTheme {
   final Color dateLabelBackground;
   final Color typingContainerBackground;
   final Color typingContainerDots;
+  final Color onlineBadge;
 
   const ImpaktfullUiChatColorTheme({
     required this.ownMessageBackground,
@@ -71,6 +73,7 @@ class ImpaktfullUiChatColorTheme {
     required this.dateLabelBackground,
     required this.typingContainerBackground,
     required this.typingContainerDots,
+    required this.onlineBadge,
   });
 }
 

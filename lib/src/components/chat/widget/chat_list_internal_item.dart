@@ -35,6 +35,12 @@ class ImpaktfullUiChatListInternalItem extends StatelessWidget {
     final previousItem = index < items.length - 1 ? items[index + 1] : null;
     final nextItem = index > 0 ? items[index - 1] : null;
     final isLastItem = index == 0;
+    final showAvatars = senderConfig.isGroupChat;
+    final sendersTyping = senderIdsTyping
+        .map((id) => senderConfig.getById(id))
+        .whereType<ImpaktfullUiChatSender>()
+        .where((e) => e.id != senderConfig.me.id)
+        .toList();
     return ImpaktfullUiComponentThemeBuilder(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
@@ -62,12 +68,14 @@ class ImpaktfullUiChatListInternalItem extends StatelessWidget {
                 previousItem: previousItem,
                 theme: componentTheme,
                 senderConfig: senderConfig,
+                showAvatars: showAvatars,
               );
             },
           ),
           if (isLastItem && senderIdsTyping.isNotEmpty) ...[
             ImpaktfullUiChatListTypingContainer(
-              senderIdsTyping: senderIdsTyping,
+              sendersTyping: sendersTyping,
+              showAvatars: showAvatars,
               theme: componentTheme,
             ),
           ],

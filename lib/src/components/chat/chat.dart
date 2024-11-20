@@ -98,8 +98,7 @@ class _ImpaktfullUiChatState extends State<ImpaktfullUiChat> {
           senderConfig: widget.senderConfig,
           theme: componentTheme,
           itemBuilder: widget.itemBuilder,
-          // senderIdsTyping: _senderIdsTyping,
-          senderIdsTyping: const ['1'],
+          senderIdsTyping: _senderIdsTyping,
         ),
       ),
     );
