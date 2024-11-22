@@ -67,6 +67,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiCheckBox
 - ImpaktfullUiCmsHeader
 - ImpaktfullUiColorPicker
+- ImpaktfullUiConfetti
 - ImpaktfullUiCommandMenu
   - ImpaktfullUiCommandMenu
 - ImpaktfullUiDatePicker
@@ -247,6 +248,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 ⌛️ Add extra components
 
+- ImpaktfullUiIntroduction
 - ImpaktfullUiBreadcrumbs
 - ImpaktfullUiQrCode
 - ImpaktfullUiBarCode
