@@ -20,6 +20,7 @@ class GalleryLibraryVariant
         child: ImpaktfullUiGallery(
           items: NetworkImages.gallery,
           itemAspectRatio: (context, config) => 3 / 2,
+          itemFit: BoxFit.cover,
         ),
       ),
     ];

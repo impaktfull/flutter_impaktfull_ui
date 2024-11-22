@@ -34,6 +34,7 @@ class _ImpaktfullUiChatListTypingContainerState
         vsync: this,
       );
       Future.delayed(Duration(milliseconds: index * 200), () {
+        if (!mounted) return;
         controller.repeat(reverse: true);
       });
       return controller;

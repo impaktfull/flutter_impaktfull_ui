@@ -58,6 +58,8 @@ class ImpaktfullUiAssetTheme {
               file: ImpaktfullUiAsset.icon(PhosphorIcons.file()),
               home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
               info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
+              leaf: ImpaktfullUiAsset.icon(
+                  PhosphorIcons.leaf(PhosphorIconsStyle.fill)),
               lineVertical:
                   ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
               list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
@@ -184,6 +186,7 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset file;
   final ImpaktfullUiAsset home;
   final ImpaktfullUiAsset info;
+  final ImpaktfullUiAsset leaf;
   final ImpaktfullUiAsset lineVertical;
   final ImpaktfullUiAsset list;
   final ImpaktfullUiAsset logout;
@@ -231,6 +234,7 @@ class ImpaktfullUiIconTheme {
     required this.file,
     required this.home,
     required this.info,
+    required this.leaf,
     required this.lineVertical,
     required this.list,
     required this.logout,
@@ -280,6 +284,7 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? file,
     ImpaktfullUiAsset? home,
     ImpaktfullUiAsset? info,
+    ImpaktfullUiAsset? leaf,
     ImpaktfullUiAsset? lineVertical,
     ImpaktfullUiAsset? list,
     ImpaktfullUiAsset? logout,
@@ -327,6 +332,7 @@ class ImpaktfullUiIconTheme {
         file: file ?? this.file,
         home: home ?? this.home,
         info: info ?? this.info,
+        leaf: leaf ?? this.leaf,
         lineVertical: lineVertical ?? this.lineVertical,
         list: list ?? this.list,
         logout: logout ?? this.logout,

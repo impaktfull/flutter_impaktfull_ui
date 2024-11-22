@@ -14,11 +14,13 @@ class ImpaktfullUiGalleryItem {
     return '';
   }
 
-  Widget get child {
+  Widget child({
+    BoxFit? fit,
+  }) {
     if (_child != null) return _child;
     return Image.network(
       imageUrl!,
-      fit: imageFit,
+      fit: imageFit ?? fit,
     );
   }
 
@@ -38,7 +40,7 @@ class ImpaktfullUiGalleryItem {
     this.title,
     this.description,
     required this.imageUrl,
-    this.imageFit = BoxFit.contain,
+    this.imageFit,
   }) : _child = null;
 
   @override

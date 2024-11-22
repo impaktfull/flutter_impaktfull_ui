@@ -23,6 +23,7 @@ class ImpaktfullUiGallery extends StatelessWidget
   final double Function(BuildContext, ImpaktfullUiGridViewConfig)?
       itemAspectRatio;
   final double spacing;
+  final BoxFit? itemFit;
   final ImpaktfullUiGalleryTheme? theme;
 
   const ImpaktfullUiGallery({
@@ -31,6 +32,7 @@ class ImpaktfullUiGallery extends StatelessWidget
     this.itemAspectRatio,
     this.crossAxisCount,
     this.spacing = 16,
+    this.itemFit,
     this.theme,
     super.key,
   });
@@ -55,6 +57,7 @@ class ImpaktfullUiGallery extends StatelessWidget
           ),
           child: ImpaktfullUiGalleryHeroItem(
             item: item,
+            fit: itemFit,
           ),
         ),
         itemAspectRatio: itemAspectRatio,

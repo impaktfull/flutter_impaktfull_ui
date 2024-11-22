@@ -33,6 +33,7 @@ export 'src/components/cms_header/cms_header.dart';
 export 'src/components/color_picker/color_picker.dart';
 export 'src/components/command_menu/command_menu.dart';
 export 'src/components/command_menu/command_menu_window.dart';
+export 'src/components/confetti/confetti.dart';
 export 'src/components/divider/divider.dart';
 export 'src/components/dropdown/dropdown.dart';
 export 'src/components/date_picker/date_picker.dart';

@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 
 class NetworkImages {
@@ -20,7 +19,7 @@ class NetworkImages {
 
   /// Photo by stein egil liland: https://www.pexels.com/photo/time-lapse-photo-of-northern-lights-1933316/
   static const String image16x9 =
-      'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/northern_light.jpg';
+      'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/northern_lights.jpg';
 
   static const String random = 'https://picsum.photos/300/300';
 
@@ -28,7 +27,7 @@ class NetworkImages {
     /// Photo by stein egil liland: https://www.pexels.com/photo/time-lapse-photo-of-northern-lights-1933316/
     ImpaktfullUiGalleryItem.image(
       imageUrl:
-          'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/northern_light.jpg',
+          'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/northern_lights.jpg',
       title: 'Northern Lights',
       description:
           'Photo by stein egil liland: https://www.pexels.com/photo/time-lapse-photo-of-northern-lights-1933316/',
@@ -37,7 +36,7 @@ class NetworkImages {
     /// Photo by Line Knipst: https://www.pexels.com/photo/enchanting-fly-agaric-mushrooms-in-autumn-forest-28987435/
     ImpaktfullUiGalleryItem.image(
         imageUrl:
-            'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/northern_light.jpg',
+            'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/forrest.jpg',
         title: 'Forest',
         description:
             'Photo by Line Knipst: https://www.pexels.com/photo/enchanting-fly-agaric-mushrooms-in-autumn-forest-28987435/'),
@@ -45,7 +44,7 @@ class NetworkImages {
     /// Photo by Asad Photo Maldives: https://www.pexels.com/photo/brown-dock-near-coconut-trees-1591372/
     ImpaktfullUiGalleryItem.image(
       imageUrl:
-          'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/northern_light.jpg',
+          'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/beach.jpg',
       title: 'Beach',
       description:
           'Photo by Asad Photo Maldives: https://www.pexels.com/photo/brown-dock-near-coconut-trees-1591372/',
@@ -64,7 +63,6 @@ class NetworkImages {
     ImpaktfullUiGalleryItem.image(
       imageUrl:
           'https://example.impaktfull-ui.opensource.impaktfull.com/assets/assets/images/supporting/gallery/city.jpg',
-      imageFit: BoxFit.cover,
       title: 'City (Vertical)',
       description:
           'Photo by Alex Qian: https://www.pexels.com/photo/bird-s-eye-view-photography-of-high-rise-buildings-2304917/',

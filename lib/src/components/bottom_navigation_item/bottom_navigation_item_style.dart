@@ -36,7 +36,7 @@ class ImpaktfullUiBottomNavigationItemTheme extends ImpaktfullUiComponentTheme {
         ),
         dimens: const ImpaktfullUiBottomNavigationItemDimensTheme(),
         textStyles: ImpaktfullUiBottomNavigationItemTextStyleTheme(
-          activeLabel: textStyles.onCard.text.small.bold,
+          activeLabel: textStyles.onCardAccent.text.small.bold,
           inActiveLabel: textStyles.onCardTertiary.text.small.bold,
         ),
       );

@@ -28,7 +28,7 @@ class SegmentedControlLibraryVariant
         theme: ImpaktfullUiSegmentedControlTheme(
           assets: const ImpaktfullUiSegmentedControlAssetsTheme(),
           colors: ImpaktfullUiSegmentedControlColorTheme(
-            background: theme.colors.primary,
+            background: theme.colors.accent,
             border: Colors.transparent,
             activeBackground: theme.colors.card,
             activeBorder: theme.colors.border,

@@ -14,6 +14,7 @@ import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
+import 'package:impaktfull_ui_2/src/components/confetti/confetti.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui_2/src/components/date_time_picker/date_time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
@@ -98,6 +99,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
   final ImpaktfullUiCommandMenuTheme commandMenu;
+  final ImpaktfullUiConfettiTheme confetti;
   final ImpaktfullUiDatePickerTheme datePicker;
   final ImpaktfullUiDateTimePickerTheme dateTimePicker;
   final ImpaktfullUiDividerTheme divider;
@@ -177,6 +179,7 @@ class ImpaktfullUiComponentsTheme {
     required this.cmsHeader,
     required this.colorPicker,
     required this.commandMenu,
+    required this.confetti,
     required this.datePicker,
     required this.dateTimePicker,
     required this.divider,
@@ -257,6 +260,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
     ImpaktfullUiCommandMenuTheme? commandMenu,
+    ImpaktfullUiConfettiTheme? confetti,
     ImpaktfullUiDatePickerTheme? datePicker,
     ImpaktfullUiDateTimePickerTheme? dateTimePicker,
     ImpaktfullUiDividerTheme? divider,
@@ -336,6 +340,7 @@ class ImpaktfullUiComponentsTheme {
         cmsHeader: cmsHeader ?? this.cmsHeader,
         colorPicker: colorPicker ?? this.colorPicker,
         commandMenu: commandMenu ?? this.commandMenu,
+        confetti: confetti ?? this.confetti,
         datePicker: datePicker ?? this.datePicker,
         dateTimePicker: dateTimePicker ?? this.dateTimePicker,
         divider: divider ?? this.divider,
@@ -433,6 +438,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiColorPickerTheme.of(context) as T;
     } else if (T == ImpaktfullUiCommandMenuTheme) {
       return ImpaktfullUiCommandMenuTheme.of(context) as T;
+    } else if (T == ImpaktfullUiConfettiTheme) {
+      return ImpaktfullUiConfettiTheme.of(context) as T;
     } else if (T == ImpaktfullUiDatePickerTheme) {
       return ImpaktfullUiDatePickerTheme.of(context) as T;
     } else if (T == ImpaktfullUiDateTimePickerTheme) {

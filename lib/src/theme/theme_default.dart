@@ -15,6 +15,7 @@ import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui_2/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui_2/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui_2/src/components/command_menu/command_menu.dart';
+import 'package:impaktfull_ui_2/src/components/confetti/confetti.dart';
 import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui_2/src/components/date_time_picker/date_time_picker.dart';
 import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
@@ -462,6 +463,14 @@ class DefaultTheme {
             windowBorderRadius: dimens.borderRadiusLarge,
           ),
           textStyles: const ImpaktfullUiCommandMenuTextStyleTheme(),
+        ),
+        confetti: ImpaktfullUiConfettiTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         datePicker: ImpaktfullUiDatePickerTheme(
           assets: ImpaktfullUiDatePickerAssetsTheme(

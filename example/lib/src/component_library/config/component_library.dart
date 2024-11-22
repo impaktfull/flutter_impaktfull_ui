@@ -19,6 +19,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/clamped_fracti
 import 'package:impaktfull_ui_example/src/component_library/items/cms_header/cms_header_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/color_picker/color_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/command_menu/command_menu_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/confetti/confetti_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/date_picker/date_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/date_time_picker/date_time_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/divider/divider_library_item.dart';
@@ -109,6 +110,7 @@ class ComponentLibrary {
     const CmsHeaderLibraryItem(),
     const ColorPickerLibraryItem(),
     const CommandMenuLibraryItem(),
+    const ConfettiLibraryItem(),
     const DatePickerLibraryItem(),
     const DateTimePickerLibraryItem(),
     const DividerLibraryItem(),
