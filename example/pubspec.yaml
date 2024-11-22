@@ -12,6 +12,7 @@ dependencies:
   impaktfull_ui_2:
     path: ../
   phosphor_flutter: ^2.1.0
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:

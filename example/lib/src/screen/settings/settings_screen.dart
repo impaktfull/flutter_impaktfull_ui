@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/app.dart';
 import 'package:impaktfull_ui_example/src/util/themes.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({
@@ -63,14 +65,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ],
           ),
+          ImpaktfullUiSeparatedColumn(
+            title: 'Info',
+            titleMargin: EdgeInsets.zero,
+            separatorMargin: EdgeInsets.zero,
+            children: [
+              ImpaktfullUiListItem(
+                title: 'Open git repo',
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.githubLogo()),
+                onTap: _onGitRepoPressed,
+              ),
+              ImpaktfullUiListItem(
+                title: 'Open Linkedin',
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.linkedinLogo()),
+                onTap: _onLinkedinTapped,
+              ),
+              ImpaktfullUiListItem(
+                title: 'Open impaktfull.com',
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.globe()),
+                onTap: _onWebsiteTapped,
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 
   void _onThemeChanged(String? value) {
-    final theme =
-        ExampleThemes.themes.firstWhere((element) => element.label == value);
+    final theme = ExampleThemes.themes.firstWhere((element) => element.label == value);
     MyApp.of(context).setTheme(theme);
     setState(() {});
   }
@@ -79,4 +102,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     MyApp.of(context).setTargetPlatform(value);
     setState(() {});
   }
+
+  void _onGitRepoPressed() => launchUrlString('https://github.com/impaktfull/flutter_impaktfull_ui');
+
+  void _onWebsiteTapped() => launchUrlString('https://impaktfull.com');
+
+  void _onLinkedinTapped() => launchUrlString('https://www.linkedin.com/company/impaktfull/');
 }

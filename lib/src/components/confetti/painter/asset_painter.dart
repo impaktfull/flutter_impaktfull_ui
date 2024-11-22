@@ -4,11 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
 
 class AssetPainter {
+  ImpaktfullUiAsset? asset;
   PictureInfo? _pictureInfo;
   IconData? _iconData;
 
   Future<void> load(ImpaktfullUiAsset? asset) async {
     if (asset == null) return;
+    if (this.asset == asset) return;
+    this.asset = asset;
     if (asset.svgAsset != null) {
       final data = await rootBundle.loadString(asset.svgAsset!);
       _pictureInfo = await vg.loadPicture(

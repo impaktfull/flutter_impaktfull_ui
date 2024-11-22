@@ -18,10 +18,9 @@ class ImpaktfullUiConfettiPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
-    for (var particle in particles) {
+    for (final particle in particles) {
       paint.color = particle.color;
 
-      // Apply rotation transform based on particle angle
       canvas.save();
       canvas.translate(particle.position.dx, particle.position.dy);
       canvas.rotate(particle.rotation);

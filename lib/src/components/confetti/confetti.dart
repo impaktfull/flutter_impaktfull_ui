@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/src/components/confetti/confetti.dart';
@@ -14,8 +15,7 @@ export 'model/confetti_type.dart';
 
 part 'confetti.describe.dart';
 
-class ImpaktfullUiConfetti extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiConfetti extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? asset;
 
   /// The type of confetti to display. If not provided, a random type will be used.
@@ -50,15 +50,18 @@ class ImpaktfullUiConfetti extends StatefulWidget
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
-    with SingleTickerProviderStateMixin, AfterLayout {
-  final _key = GlobalKey();
+class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti> with SingleTickerProviderStateMixin, AfterLayout {
+  static const _baseDuration = Duration(seconds: 20);
   late AnimationController _controller;
   final _particles = <ImpaktfullUiConfettiParticle>[];
   final _random = Random();
   final _assetPainter = AssetPainter();
 
+  double? _width;
+  double? _height;
+
   DateTime? _dateTimeToStopAddingParticles;
+  Timer? _resizeDebounceTimer;
   var _frameCount = 0;
   var _isAddingParticles = true;
 
@@ -67,16 +70,20 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: widget.duration + const Duration(seconds: 20),
+      duration: widget.duration + _baseDuration,
     )..addListener(() => _updateParticles());
   }
 
   @override
   void didUpdateWidget(covariant ImpaktfullUiConfetti oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.duration != widget.duration) {
+      _controller.duration = widget.duration + _baseDuration;
+    }
     if (oldWidget.type != widget.type) {
+      _particles.clear();
+      _controller.stop();
       _controller.reset();
-      _isAddingParticles = true;
       _setupParticles();
     }
   }
@@ -85,8 +92,8 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
   void afterFirstLayout(BuildContext context) => _setupParticles();
 
   Future<void> _setupParticles() async {
-    final componentTheme =
-        widget.theme ?? ImpaktfullUiConfettiTheme.of(context);
+    _isAddingParticles = true;
+    final componentTheme = widget.theme ?? ImpaktfullUiConfettiTheme.of(context);
     if (widget.asset != null) {
       await _assetPainter.load(widget.asset);
     } else if (widget.type == ImpaktfullUiConfettiType.leaf) {
@@ -107,8 +114,8 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
   }
 
   void _initializeParticles(ImpaktfullUiConfettiTheme componentTheme) {
-    final renderBox = _key.currentContext?.findRenderObject() as RenderBox;
-    final size = renderBox.size;
+    if (_width == null || _height == null) return;
+    final size = Size(_width ?? 0, _height ?? 0);
     _particles.clear();
     for (var i = 0; i < 10; i++) {
       _addParticle(componentTheme, size);
@@ -124,10 +131,8 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
       color = randomColors[_random.nextInt(randomColors.length)];
     }
     _particles.add(ImpaktfullUiConfettiParticle(
-      type: widget.type ??
-          ImpaktfullUiConfettiType.random(widget.excludedTypesWithRandom ?? []),
-      position:
-          Offset(_random.nextDouble() * size.width, -widget.initialYOffset),
+      type: widget.type ?? ImpaktfullUiConfettiType.random(widget.excludedTypesWithRandom ?? []),
+      position: Offset(_random.nextDouble() * size.width, -widget.initialYOffset),
       color: color,
       size: _random.nextDouble() * 8 + 4,
       speed: _random.nextDouble() * 4 + 2,
@@ -138,11 +143,12 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
 
   void _updateParticles() {
     if (!mounted) return;
-    final renderBox = _key.currentContext?.findRenderObject();
-    if (renderBox == null || !renderBox.attached) return;
-    final size = (renderBox as RenderBox).size;
-    final componentTheme =
-        widget.theme ?? ImpaktfullUiConfettiTheme.of(context);
+    if (_width == null || _height == null) return;
+    final size = Size(
+      _width ?? 0,
+      _height ?? 0,
+    );
+    final componentTheme = widget.theme ?? ImpaktfullUiConfettiTheme.of(context);
 
     _frameCount++;
     // Add new particles every few frames if we're still adding particles
@@ -191,11 +197,7 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
     // If not repeating and no particles left, stop the animation
     if (!widget.repeat && _particles.isEmpty && !_isAddingParticles) {
       _controller.stop();
-    }
-
-    // Limit total number of particles
-    while (_particles.length > 200) {
-      _particles.removeAt(0);
+      _particles.clear();
     }
   }
 
@@ -209,19 +211,40 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiConfettiTheme>(
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => CustomPaint(
-        key: _key,
-        size: Size.infinite,
-        painter: ImpaktfullUiConfettiPainter(
-          particles: _particles,
-          assetPainter: _assetPainter,
-          repaint: _controller,
+      builder: (context, componentTheme) => RepaintBoundary(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            _updateSize(constraints);
+            return CustomPaint(
+              size: Size(
+                _width ?? 0,
+                _height ?? 0,
+              ),
+              painter: ImpaktfullUiConfettiPainter(
+                particles: _particles,
+                assetPainter: _assetPainter,
+                repaint: _controller,
+              ),
+              isComplex: true,
+              willChange: true,
+            );
+          },
         ),
-        foregroundPainter: null,
-        isComplex: true,
-        willChange: true,
-        child: null,
       ),
     );
+  }
+
+  void _updateSize(BoxConstraints constraints) {
+    if (_width == constraints.maxWidth && _height == constraints.maxHeight) {
+      return;
+    }
+    _resizeDebounceTimer?.cancel();
+    _resizeDebounceTimer = Timer(const Duration(milliseconds: 100), () {
+      if (!mounted) return;
+      setState(() {
+        _width = constraints.maxWidth;
+        _height = constraints.maxHeight;
+      });
+    });
   }
 }
