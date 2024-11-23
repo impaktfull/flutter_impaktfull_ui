@@ -157,7 +157,7 @@ packages:
       path: "."
       ref: "3394426"
       resolved-ref: "33944263d23ae89d4004512c08e29b9a684e7e31"
-      url: "git@github.com:impaktfull/flutter_impaktfull_ui_figma_sync.git"
+      url: "https://github.com/impaktfull/flutter_impaktfull_ui_figma_sync.git"
     source: git
     version: "1.0.0"
   intl:

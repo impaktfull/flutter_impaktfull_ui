@@ -14,7 +14,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   impaktfull_ui_figma_sync:
     git:
-      url: git@github.com:impaktfull/flutter_impaktfull_ui_figma_sync.git
+      url: https://github.com/impaktfull/flutter_impaktfull_ui_figma_sync.git
       ref: '3394426'
   intl: ^0.19.0
   lottie: ^3.0.0
