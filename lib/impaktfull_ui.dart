@@ -48,6 +48,7 @@ export 'src/components/horizontal_tabs/horizontal_tabs.dart';
 export 'src/components/icon_button/icon_button.dart';
 export 'src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 export 'src/components/interaction_feedback/touch_feedback_sequence/touch_feedback_sequence.dart';
+export 'src/components/introduction/introduction.dart';
 export 'src/components/image_crop/image_crop.dart';
 export 'src/components/input_field/input_field.dart';
 export 'src/components/line_chart/line_chart.dart';

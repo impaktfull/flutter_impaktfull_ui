@@ -73,7 +73,7 @@ class ImpaktfullUiTestFontLoader {
     if (loadedFont.contains(fullPath)) return;
     final fontLoader = FontLoader(font);
     fontLoader.addFont(loadFont(fullPath));
-    fontLoader.load();
+    await fontLoader.load();
     loadedFont.add(fullPath);
   }
 

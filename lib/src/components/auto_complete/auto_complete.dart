@@ -57,7 +57,7 @@ class _ImpaktfullUiAutoCompleteState<T>
     with ImpaktfullUiAutoCompleteControllerListener {
   late final ImpaktfullUiAutoCompleteController _controller;
   var _value = '';
-  GlobalKey<ImpaktfullUiAutoCompleteOverlayState>? _overlayKey;
+  GlobalKey<ImpaktfullUiAutoCompleteOverlayState<T>>? _overlayKey;
   OverlayEntry? _overlayEntry;
   final _layerLink = LayerLink();
   final _inputFieldKey = GlobalKey();
@@ -146,7 +146,7 @@ class _ImpaktfullUiAutoCompleteState<T>
 
   void _addOverlay() {
     _size = _getInputFieldSize();
-    _overlayKey = GlobalKey<ImpaktfullUiAutoCompleteOverlayState>();
+    _overlayKey = GlobalKey<ImpaktfullUiAutoCompleteOverlayState<T>>();
     _overlayEntry = OverlayEntry(
       builder: (context) {
         final screenSize = MediaQuery.of(context).size;

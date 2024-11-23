@@ -93,7 +93,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _onThemeChanged(String? value) {
-    final theme = ExampleThemes.themes.firstWhere((element) => element.label == value);
+    final theme =
+        ExampleThemes.themes.firstWhere((element) => element.label == value);
     MyApp.of(context).setTheme(theme);
     setState(() {});
   }
@@ -103,9 +104,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     setState(() {});
   }
 
-  void _onGitRepoPressed() => launchUrlString('https://github.com/impaktfull/flutter_impaktfull_ui');
+  void _onGitRepoPressed() =>
+      launchUrlString('https://github.com/impaktfull/flutter_impaktfull_ui');
 
   void _onWebsiteTapped() => launchUrlString('https://impaktfull.com');
 
-  void _onLinkedinTapped() => launchUrlString('https://www.linkedin.com/company/impaktfull/');
+  void _onLinkedinTapped() =>
+      launchUrlString('https://www.linkedin.com/company/impaktfull/');
 }

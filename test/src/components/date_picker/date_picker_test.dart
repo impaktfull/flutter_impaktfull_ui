@@ -11,10 +11,10 @@ void main() {
   final testDate = DateTime(2023, 07, 06);
   group('Smoke test', () {
     testWidgets('Data picker smoke without start date', (tester) async {
-      smokeTest(tester, null);
+      await smokeTest(tester, null);
     });
     testWidgets('Data picker smoke without start date', (tester) async {
-      smokeTest(tester, testDate);
+      await smokeTest(tester, testDate);
     });
   });
 

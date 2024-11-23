@@ -1,6 +1,7 @@
 part of 'dropdown.dart';
 
-String _describeInstance(BuildContext context, ImpaktfullUiDropdown instance) {
+String _describeInstance<T>(
+    BuildContext context, ImpaktfullUiDropdown<T> instance) {
   final descriptor = ComponentDescriptor();
   descriptor.add('childWidth', instance.childWidth);
   descriptor.add('height', instance.height);

@@ -1,7 +1,7 @@
 part of 'horizontal_tabs.dart';
 
-String _describeInstance(
-    BuildContext context, ImpaktfullUiHorizontalTabs instance) {
+String _describeInstance<T>(
+    BuildContext context, ImpaktfullUiHorizontalTabs<T> instance) {
   final descriptor = ComponentDescriptor();
   descriptor.add('selectedValue', instance.selectedValue);
   descriptor.add('onTabSelected', instance.onTabSelected);

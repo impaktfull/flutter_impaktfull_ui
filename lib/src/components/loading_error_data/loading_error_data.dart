@@ -10,7 +10,7 @@ export 'loading_error_data_style.dart';
 
 part 'loading_error_data.describe.dart';
 
-class ImpaktfullUiLoadingErrorData extends StatelessWidget
+class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget
     with ComponentDescriptorMixin {
   final bool isLoading;
   final ImpaktfullUiAsset? noDataAsset;
@@ -23,7 +23,7 @@ class ImpaktfullUiLoadingErrorData extends StatelessWidget
   final String? errorTitle;
   final String? errorMessage;
   final List<Widget> errorActions;
-  final List? items;
+  final List<T>? items;
   final WidgetBuilder builder;
   final ImpaktfullUiLoadingErrorDataTheme? theme;
 

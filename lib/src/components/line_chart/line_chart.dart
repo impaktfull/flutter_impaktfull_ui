@@ -14,11 +14,11 @@ export 'model/line_chart_item_style.dart';
 
 part 'line_chart.describe.dart';
 
-class ImpaktfullUiLineChart extends StatefulWidget
+class ImpaktfullUiLineChart<T, E> extends StatefulWidget
     with ComponentDescriptorMixin {
   final double? width;
   final double? height;
-  final List<ImpaktfullUiLineChartItemData> data;
+  final List<ImpaktfullUiLineChartItemData<T, E>> data;
   final ImpaktfullUiLineChartTheme? theme;
 
   const ImpaktfullUiLineChart({
@@ -30,13 +30,15 @@ class ImpaktfullUiLineChart extends StatefulWidget
   });
 
   @override
-  State<ImpaktfullUiLineChart> createState() => _ImpaktfullUiLineChartState();
+  State<ImpaktfullUiLineChart<T, E>> createState() =>
+      _ImpaktfullUiLineChartState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiLineChartState extends State<ImpaktfullUiLineChart> {
+class _ImpaktfullUiLineChartState<T, E>
+    extends State<ImpaktfullUiLineChart<T, E>> {
   late List<ImpaktfullUiLineChartPainterData> painterData;
 
   @override
@@ -46,7 +48,7 @@ class _ImpaktfullUiLineChartState extends State<ImpaktfullUiLineChart> {
   }
 
   @override
-  void didUpdateWidget(covariant ImpaktfullUiLineChart oldWidget) {
+  void didUpdateWidget(covariant ImpaktfullUiLineChart<T, E> oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.data != widget.data) {
       _setPainterData();

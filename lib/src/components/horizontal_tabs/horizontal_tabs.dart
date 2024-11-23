@@ -13,7 +13,7 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget
     with ComponentDescriptorMixin {
   final T selectedValue;
   final ValueChanged<T> onTabSelected;
-  final List<ImpaktfullUiHorizontalTabConfig> tabs;
+  final List<ImpaktfullUiHorizontalTabConfig<T>> tabs;
   final ImpaktfullUiHorizontalTabsTheme? theme;
 
   const ImpaktfullUiHorizontalTabs({

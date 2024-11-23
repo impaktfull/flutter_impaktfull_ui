@@ -193,7 +193,7 @@ class _ImpaktfullUiVirtualKeyboardButtonState
     _onTap();
     await Future.delayed(const Duration(milliseconds: 100));
     if (!mounted) return;
-    _startRepeatingTap();
+    await _startRepeatingTap();
   }
 
   void _onSecondarySwipeAction() {

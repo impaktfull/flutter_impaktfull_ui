@@ -97,7 +97,7 @@ class ImpaktfullUiTextStyleTheme {
         text: text ?? this.text,
       );
 
-  static getByColor({
+  static ImpaktfullUiTextStyleTheme getByColor({
     required Color color,
     String? fontFamilyDisplay,
     String? fontFamilyText,
@@ -148,7 +148,7 @@ class ImpaktfullUiTextStyleDisplayTheme {
         extraSmall: extraSmall ?? this.extraSmall,
       );
 
-  static getByColor({
+  static ImpaktfullUiTextStyleDisplayTheme getByColor({
     required Color color,
     String? fontFamily,
   }) {
@@ -194,7 +194,7 @@ class ImpaktfullUiTextStyleTextTheme {
         extraSmall: extraSmall ?? this.extraSmall,
       );
 
-  static getByColor({
+  static ImpaktfullUiTextStyleTextTheme getByColor({
     required Color color,
     String? fontFamily,
   }) =>

@@ -29,6 +29,7 @@ import 'package:impaktfull_ui_2/src/components/horizontal_tab/horizontal_tab.dar
 import 'package:impaktfull_ui_2/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui_2/src/components/image_crop/image_crop.dart';
 import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui_2/src/components/introduction/introduction.dart';
 import 'package:impaktfull_ui_2/src/components/line_chart/line_chart.dart';
 import 'package:impaktfull_ui_2/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
@@ -657,6 +658,14 @@ class DefaultTheme {
           textStyles: const ImpaktfullUiImageCropTextStyleTheme(),
         ),
         inputField: ImpaktfullUiInputFieldTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
+        ),
+        introduction: ImpaktfullUiIntroductionTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,

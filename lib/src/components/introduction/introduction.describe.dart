@@ -1,7 +1,7 @@
-part of 'grid_view.dart';
+part of 'introduction.dart';
 
-String _describeInstance<T>(
-    BuildContext context, ImpaktfullUiGridView<T> instance) {
+String _describeInstance(
+    BuildContext context, ImpaktfullUiIntroduction instance) {
   final descriptor = ComponentDescriptor();
   descriptor.add('theme', instance.theme);
   return descriptor.describe();

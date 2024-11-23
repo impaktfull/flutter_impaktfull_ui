@@ -15,7 +15,8 @@ export 'model/confetti_type.dart';
 
 part 'confetti.describe.dart';
 
-class ImpaktfullUiConfetti extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiConfetti extends StatefulWidget
+    with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? asset;
 
   /// The type of confetti to display. If not provided, a random type will be used.
@@ -50,7 +51,8 @@ class ImpaktfullUiConfetti extends StatefulWidget with ComponentDescriptorMixin 
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti> with SingleTickerProviderStateMixin, AfterLayout {
+class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
+    with SingleTickerProviderStateMixin, AfterLayout {
   static const _baseDuration = Duration(seconds: 20);
   late AnimationController _controller;
   final _particles = <ImpaktfullUiConfettiParticle>[];
@@ -93,7 +95,8 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti> with Single
 
   Future<void> _setupParticles() async {
     _isAddingParticles = true;
-    final componentTheme = widget.theme ?? ImpaktfullUiConfettiTheme.of(context);
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiConfettiTheme.of(context);
     if (widget.asset != null) {
       await _assetPainter.load(widget.asset);
     } else if (widget.type == ImpaktfullUiConfettiType.leaf) {
@@ -107,9 +110,9 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti> with Single
       _dateTimeToStopAddingParticles = DateTime.now().add(widget.duration);
     }
     if (widget.repeat) {
-      _controller.repeat();
+      await _controller.repeat();
     } else {
-      _controller.forward();
+      await _controller.forward();
     }
   }
 
@@ -131,8 +134,10 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti> with Single
       color = randomColors[_random.nextInt(randomColors.length)];
     }
     _particles.add(ImpaktfullUiConfettiParticle(
-      type: widget.type ?? ImpaktfullUiConfettiType.random(widget.excludedTypesWithRandom ?? []),
-      position: Offset(_random.nextDouble() * size.width, -widget.initialYOffset),
+      type: widget.type ??
+          ImpaktfullUiConfettiType.random(widget.excludedTypesWithRandom ?? []),
+      position:
+          Offset(_random.nextDouble() * size.width, -widget.initialYOffset),
       color: color,
       size: _random.nextDouble() * 8 + 4,
       speed: _random.nextDouble() * 4 + 2,
@@ -148,7 +153,8 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti> with Single
       _width ?? 0,
       _height ?? 0,
     );
-    final componentTheme = widget.theme ?? ImpaktfullUiConfettiTheme.of(context);
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiConfettiTheme.of(context);
 
     _frameCount++;
     // Add new particles every few frames if we're still adding particles

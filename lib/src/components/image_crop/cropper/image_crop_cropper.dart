@@ -30,10 +30,10 @@ class ImpaktfullUiImageCropCropper {
   }
 
   Future<ui.Image> isolateCropImage(Map<String, dynamic> params) async {
-    String? originalImageUrl = params['imageUrl'];
-    File? originalImageFile = params['imageFile'];
-    ui.Image? originalImage = params['image'];
-    ImpaktfullUiImageCropInfo cropInfo = params['cropInfo'];
+    final originalImageUrl = params['imageUrl'] as String?;
+    final originalImageFile = params['imageFile'] as File?;
+    final originalImage = params['image'] as ui.Image?;
+    final cropInfo = params['cropInfo'] as ImpaktfullUiImageCropInfo;
     final cropRect = cropInfo.cropRect;
     ui.Image imageToCrop;
 

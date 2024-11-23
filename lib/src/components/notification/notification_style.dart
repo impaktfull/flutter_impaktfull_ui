@@ -21,7 +21,7 @@ class ImpaktfullUiNotificationTheme extends ImpaktfullUiComponentTheme {
   static ImpaktfullUiNotificationTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.notification;
 
-  static getDefault({
+  static ImpaktfullUiNotificationTheme getDefault({
     required ImpaktfullUiAssetTheme assets,
     required ImpaktfullUiColorTheme colors,
     required ImpaktfullUiTextStylesTheme textStyles,

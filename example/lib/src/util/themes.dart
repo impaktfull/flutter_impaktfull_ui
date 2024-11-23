@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui_example/src/util/custom_theme.dart';
 
 class ExampleThemes {
   static final themes = [
@@ -32,5 +33,6 @@ class ExampleThemes {
       borderRadiusExtraLarge: BorderRadius.zero,
       package: null,
     ),
+    ImpaktfullUiCustomTheme.theme,
   ];
 }

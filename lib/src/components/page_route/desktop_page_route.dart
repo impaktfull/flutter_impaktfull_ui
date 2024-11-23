@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class ImpaktfullUiDesktopPageRoute<T> extends PageRouteBuilder<T> {
-  final Function(BuildContext context) builder;
+  final Widget Function(BuildContext context) builder;
 
   ImpaktfullUiDesktopPageRoute({
     required this.builder,
