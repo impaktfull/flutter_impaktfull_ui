@@ -9,6 +9,13 @@ jobs:
     name: Runs all tests on main
     runs-on: macos-latest
     steps:
+      - name: Generate SSH Key
+        run: |
+          ssh-keygen -t rsa -b 4096 -C "github-actions" -f /tmp/github_actions_key -N ""
+          eval "$(ssh-agent -s)"
+          ssh-add /tmp/github_actions_key
+      - name: Add GitHub to Known Hosts
+        run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - name: Clone repository
         uses: actions/checkout@v4
       - name: Set up Flutter
