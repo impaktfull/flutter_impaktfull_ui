@@ -155,8 +155,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: "3394426"
-      resolved-ref: "33944263d23ae89d4004512c08e29b9a684e7e31"
+      ref: "1ef5858"
+      resolved-ref: "1ef58580a87f30bb039d4ce783c79ac78e9580ae"
       url: "https://github.com/impaktfull/flutter_impaktfull_ui_figma_sync.git"
     source: git
     version: "1.0.0"

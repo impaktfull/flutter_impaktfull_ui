@@ -15,7 +15,7 @@ dependencies:
   impaktfull_ui_figma_sync:
     git:
       url: https://github.com/impaktfull/flutter_impaktfull_ui_figma_sync.git
-      ref: '3394426'
+      ref: '1ef5858'
   intl: ^0.19.0
   lottie: ^3.0.0
   phosphor_flutter: ^2.1.0
