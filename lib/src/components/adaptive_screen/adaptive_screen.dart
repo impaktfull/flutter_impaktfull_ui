@@ -16,6 +16,7 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
   final List<ImpaktfullUiAdaptiveNavBarActionItem> actions;
   final bool isDrawerEnabled;
   final Widget? drawer;
+  final Widget? fab;
   final Widget? headerBottomChild;
   final WidgetBuilder builder;
   final WidgetBuilder? mediumBuilder;
@@ -30,6 +31,7 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
     this.badge,
     this.isDrawerEnabled = false,
     this.drawer,
+    this.fab,
     this.headerBottomChild,
     this.mediumBuilder,
     this.largeBuilder,
@@ -61,11 +63,21 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
                 actions: actions,
               ),
               Expanded(
-                child: ImpaktfullUiResponsiveLayout(
-                  small: builder,
-                  medium: mediumBuilder,
-                  large: largeBuilder,
-                  extraLarge: extraLargeBuilder,
+                child: Stack(
+                  children: [
+                    ImpaktfullUiResponsiveLayout(
+                      small: builder,
+                      medium: mediumBuilder,
+                      large: largeBuilder,
+                      extraLarge: extraLargeBuilder,
+                    ),
+                    if (fab != null) ...[
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: fab!,
+                      ),
+                    ],
+                  ],
                 ),
               ),
             ],
