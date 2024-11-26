@@ -17,6 +17,7 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
   final bool isDrawerEnabled;
   final Widget? drawer;
   final Widget? fab;
+  final Alignment fabAlignment;
   final Widget? headerBottomChild;
   final WidgetBuilder builder;
   final WidgetBuilder? mediumBuilder;
@@ -32,6 +33,7 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
     this.isDrawerEnabled = false,
     this.drawer,
     this.fab,
+    this.fabAlignment = Alignment.bottomRight,
     this.headerBottomChild,
     this.mediumBuilder,
     this.largeBuilder,
@@ -64,6 +66,7 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
               ),
               Expanded(
                 child: Stack(
+                  alignment: fabAlignment,
                   children: [
                     ImpaktfullUiResponsiveLayout(
                       small: builder,
