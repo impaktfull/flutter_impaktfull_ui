@@ -68,11 +68,15 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
                 child: Stack(
                   alignment: fabAlignment,
                   children: [
-                    ImpaktfullUiResponsiveLayout(
-                      small: builder,
-                      medium: mediumBuilder,
-                      large: largeBuilder,
-                      extraLarge: extraLargeBuilder,
+                    Positioned.fill(
+                      child: SizedBox(
+                        child: ImpaktfullUiResponsiveLayout(
+                          small: builder,
+                          medium: mediumBuilder,
+                          large: largeBuilder,
+                          extraLarge: extraLargeBuilder,
+                        ),
+                      ),
                     ),
                     if (fab != null) ...[
                       Padding(
