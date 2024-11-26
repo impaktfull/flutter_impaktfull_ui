@@ -65,26 +65,29 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
                 actions: actions,
               ),
               Expanded(
-                child: Stack(
-                  alignment: fabAlignment,
-                  children: [
-                    Positioned.fill(
-                      child: SizedBox(
-                        child: ImpaktfullUiResponsiveLayout(
-                          small: builder,
-                          medium: mediumBuilder,
-                          large: largeBuilder,
-                          extraLarge: extraLargeBuilder,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Stack(
+                    alignment: fabAlignment,
+                    children: [
+                      Positioned.fill(
+                        child: SizedBox(
+                          child: ImpaktfullUiResponsiveLayout(
+                            small: builder,
+                            medium: mediumBuilder,
+                            large: largeBuilder,
+                            extraLarge: extraLargeBuilder,
+                          ),
                         ),
                       ),
-                    ),
-                    if (fab != null) ...[
-                      Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: fab!,
-                      ),
+                      if (fab != null) ...[
+                        Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: fab!,
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ],
