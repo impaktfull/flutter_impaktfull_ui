@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/models/asset.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiMarkdownTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiMarkdownAssetsTheme assets;
@@ -17,6 +18,47 @@ class ImpaktfullUiMarkdownTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiMarkdownTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.markdown;
+
+  static ImpaktfullUiMarkdownTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiMarkdownTheme(
+        assets: ImpaktfullUiMarkdownAssetsTheme(
+          unorderedListBullet: assets.icons.wysiwygUnorderedListItem,
+        ),
+        colors: ImpaktfullUiMarkdownColorTheme(
+          code: colors.card2,
+          error: colors.error,
+        ),
+        dimens: ImpaktfullUiMarkdownDimensTheme(
+          code: dimens.borderRadiusSmall,
+        ),
+        textStyles: ImpaktfullUiMarkdownTextStyleTheme(
+          h1: textStyles.onCanvas.display.large.bold,
+          h2: textStyles.onCanvas.display.medium.bold,
+          h3: textStyles.onCanvas.display.small.bold,
+          h4: textStyles.onCanvas.display.extraSmall.bold,
+          h5: textStyles.onCanvas.display.extraSmall.medium,
+          h6: textStyles.onCanvas.display.extraSmall,
+          paragraph: textStyles.onCanvas.text.small,
+          link: textStyles.onCardAccent.text.small.bold.copyWith(
+            decoration: TextDecoration.underline,
+            decorationColor: colors.accent,
+            decorationThickness: 2,
+          ),
+          orderedList: textStyles.onCanvas.text.small.medium,
+          unorderedList: textStyles.onCanvas.text.small.medium,
+          code: textStyles.onCanvas.text.small,
+          alt: textStyles.onCanvas.text.small.medium,
+          error:
+              textStyles.onCanvas.text.extraSmall.copyWith(color: colors.error),
+        ),
+      );
 }
 
 class ImpaktfullUiMarkdownAssetsTheme {

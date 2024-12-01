@@ -721,37 +721,13 @@ class DefaultTheme {
             lottie: assets.lotties.loading,
           ),
         ),
-        markdown: ImpaktfullUiMarkdownTheme(
-          assets: ImpaktfullUiMarkdownAssetsTheme(
-            unorderedListBullet: assets.icons.wysiwygUnorderedListItem,
-          ),
-          colors: ImpaktfullUiMarkdownColorTheme(
-            code: colors.card2,
-            error: colors.error,
-          ),
-          dimens: ImpaktfullUiMarkdownDimensTheme(
-            code: dimens.borderRadiusSmall,
-          ),
-          textStyles: ImpaktfullUiMarkdownTextStyleTheme(
-            h1: textStyles.onCanvas.display.large.bold,
-            h2: textStyles.onCanvas.display.medium.bold,
-            h3: textStyles.onCanvas.display.small.bold,
-            h4: textStyles.onCanvas.display.extraSmall.bold,
-            h5: textStyles.onCanvas.display.extraSmall.medium,
-            h6: textStyles.onCanvas.display.extraSmall,
-            paragraph: textStyles.onCanvas.text.small,
-            link: textStyles.onCardAccent.text.small.bold.copyWith(
-              decoration: TextDecoration.underline,
-              decorationColor: colors.accent,
-              decorationThickness: 2,
-            ),
-            orderedList: textStyles.onCanvas.text.small.medium,
-            unorderedList: textStyles.onCanvas.text.small.medium,
-            code: textStyles.onCanvas.text.small,
-            alt: textStyles.onCanvas.text.small.medium,
-            error: textStyles.onCanvas.text.extraSmall
-                .copyWith(color: colors.error),
-          ),
+        markdown: ImpaktfullUiMarkdownTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         metric: ImpaktfullUiMetricTheme(
           assets: ImpaktfullUiMetricAssetsTheme(
