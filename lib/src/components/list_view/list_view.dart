@@ -158,10 +158,13 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
   Widget build(BuildContext context) {
     if (widget.isLoading) {
       if (widget.shrinkWrap) {
-        return const SizedBox(
-          height: 50,
-          width: 50,
-          child: ImpaktfullUiLoadingIndicator(),
+        return Padding(
+          padding: widget.padding,
+          child: const SizedBox(
+            height: 50,
+            width: 50,
+            child: ImpaktfullUiLoadingIndicator(),
+          ),
         );
       }
       return const Center(
