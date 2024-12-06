@@ -28,6 +28,9 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final showTextProgress =
+        data.progress != null && progressType.textProgressOnly;
+    final showLineProgress = data.progress != null && progressType.showLine;
     return Stack(
       children: [
         Padding(
@@ -62,18 +65,25 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
                                   style: componentTheme.textStyles.subtitle,
                                   TextSpan(
                                     children: [
+                                      if (data.subtitle != null) ...[
+                                        TextSpan(text: data.subtitle!),
+                                      ],
+                                      if (data.subtitle != null &&
+                                          data.size != null) ...[
+                                        const TextSpan(text: ' - '),
+                                      ],
                                       if (data.size != null) ...[
                                         TextSpan(
                                             text: FileSizeCalculationUtil
                                                 .calculateFileSize(data.size!)),
                                       ],
                                       if (data.size != null &&
-                                          progressType.textProgressOnly) ...[
+                                          showTextProgress) ...[
                                         const TextSpan(text: ' - '),
                                       ],
-                                      if (progressType.textProgressOnly) ...[
+                                      if (showTextProgress) ...[
                                         TextSpan(
-                                            text: '${data.progress * 100}%'),
+                                            text: '${data.progress! * 100}%'),
                                       ]
                                     ],
                                   ),
@@ -97,9 +107,9 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
                         ],
                       ],
                     ),
-                    if (onRetryTapped == null && progressType.showLine) ...[
+                    if (onRetryTapped == null && showLineProgress) ...[
                       ImpaktfullUiProgressIndicator(
-                        value: data.progress,
+                        value: data.progress!,
                         showText: progressType.showText,
                         type: ImpaktfullUiProgressIndicatorType.line,
                       ),

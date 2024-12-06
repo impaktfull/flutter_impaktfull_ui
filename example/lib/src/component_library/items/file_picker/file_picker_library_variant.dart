@@ -26,6 +26,7 @@ class FilePickerLibraryVariant
         subtitle: 'SVG, PNG, JPG or webp (max. 2mb)',
         data: ImpaktfullUiFilePickerData(
           title: title,
+          subtitle: 'Extra data',
           progress: 1,
           size: 2000,
         ),
