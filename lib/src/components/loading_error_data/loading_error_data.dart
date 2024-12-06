@@ -10,7 +10,8 @@ export 'loading_error_data_style.dart';
 
 part 'loading_error_data.describe.dart';
 
-class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget
+    with ComponentDescriptorMixin {
   final bool isLoading;
   final ImpaktfullUiAsset? noDataAsset;
   final WidgetBuilder? noDataAssetBuilder;
@@ -68,7 +69,9 @@ class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget with ComponentDesc
           );
         }
         if ((items != null && items!.isEmpty) &&
-            (noDataAsset != null || noDataTitle != null || noDataMessage != null)) {
+            (noDataAsset != null ||
+                noDataTitle != null ||
+                noDataMessage != null)) {
           return ImpaktfullUiPlaceholderState(
             asset: noDataAsset,
             assetBuilder: noDataAssetBuilder,
