@@ -704,16 +704,13 @@ class DefaultTheme {
             title: textStyles.onCanvas.display.small,
           ),
         ),
-        loadingErrorData: ImpaktfullUiLoadingErrorDataTheme(
-          assets: const ImpaktfullUiLoadingErrorDataAssetsTheme(),
-          colors: const ImpaktfullUiLoadingErrorDataColorTheme(),
-          dimens: const ImpaktfullUiLoadingErrorDataDimensTheme(),
-          textStyles: ImpaktfullUiLoadingErrorDataTextStyleTheme(
-            noDataTitle: textStyles.onCanvas.display.small.semiBold,
-            noDataMessage: textStyles.onCanvas.text.small.light,
-            errorTitle: textStyles.onCanvas.display.small.semiBold,
-            errorMessage: textStyles.onCanvas.text.small.light,
-          ),
+        loadingErrorData: ImpaktfullUiLoadingErrorDataTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         loadingIndicator: ImpaktfullUiLoadingIndicatorTheme(
           colors: ImpaktfullUiLoadingIndicatorColorTheme(color: colors.accent),

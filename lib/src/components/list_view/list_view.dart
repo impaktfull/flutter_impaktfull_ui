@@ -13,12 +13,14 @@ export 'list_view_style.dart';
 
 part 'list_view.describe.dart';
 
-class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiListView<T> extends StatefulWidget
+    with ComponentDescriptorMixin {
   final Widget? child;
   final List<Widget>? children;
   final List<T>? items;
   final Widget Function(BuildContext context, T item, int index)? itemBuilder;
-  final Widget Function(BuildContext context, T item, int index)? separatorBuilder;
+  final Widget Function(BuildContext context, T item, int index)?
+      separatorBuilder;
   final EdgeInsetsGeometry padding;
   final double spacing;
   final int itemsPerRow;
@@ -58,7 +60,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
 
   const ImpaktfullUiListView.builder({
     required List<T> this.items,
-    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
+    required Widget Function(BuildContext context, T item, int index)
+        this.itemBuilder,
     required String this.noDataLabel,
     this.spacing = 0,
     this.isLoading = false,
@@ -80,7 +83,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
 
   const ImpaktfullUiListView.separated({
     required List<T> this.items,
-    required Widget Function(BuildContext context, T item, int index) this.itemBuilder,
+    required Widget Function(BuildContext context, T item, int index)
+        this.itemBuilder,
     required String this.noDataLabel,
     this.separatorBuilder,
     this.isLoading = false,
@@ -125,7 +129,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget with ComponentDescriptorMix
         itemsPerRow = 1;
 
   @override
-  State<ImpaktfullUiListView<T>> createState() => _ImpaktfullUiListViewState<T>();
+  State<ImpaktfullUiListView<T>> createState() =>
+      _ImpaktfullUiListViewState<T>();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
@@ -152,7 +157,16 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
   @override
   Widget build(BuildContext context) {
     if (widget.isLoading) {
-      return const Center(child: ImpaktfullUiLoadingIndicator());
+      if (widget.shrinkWrap) {
+        return const SizedBox(
+          height: 50,
+          width: 50,
+          child: ImpaktfullUiLoadingIndicator(),
+        );
+      }
+      return const Center(
+        child: ImpaktfullUiLoadingIndicator(),
+      );
     }
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiListViewTheme>(
       overrideComponentTheme: widget.theme,
@@ -203,23 +217,29 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             child: LayoutBuilder(
               builder: (context, constraints) => ListView(
                 controller: _scrollController,
-                physics: widget.onRefresh == null ? widget.scrollPhysics : const AlwaysScrollableScrollPhysics(),
+                physics: widget.onRefresh == null
+                    ? widget.scrollPhysics
+                    : const AlwaysScrollableScrollPhysics(),
                 padding: const EdgeInsets.all(16),
-                shrinkWrap: true,
+                shrinkWrap: widget.shrinkWrap,
                 children: [
                   Container(
                     height: widget.shrinkWrap ? null : constraints.maxHeight,
+                    color: Colors.amber,
                     alignment: Alignment.center,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: widget.shrinkWrap
+                          ? CrossAxisAlignment.start
+                          : CrossAxisAlignment.center,
                       children: [
                         Text(
                           widget.noDataLabel!,
                           style: componentTheme.textStyles.title,
                           textAlign: TextAlign.center,
                         ),
-                        if (widget.refreshBtnLabel != null && widget.onRefresh != null) ...[
+                        if (widget.refreshBtnLabel != null &&
+                            widget.onRefresh != null) ...[
                           const SizedBox(height: 16),
                           if (_isLoading) ...[
                             const ImpaktfullUiLoadingIndicator(),
@@ -252,7 +272,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               reverse: widget.reversed,
               separatorBuilder: (context, index) {
                 final item = widget.items![index];
-                return widget.separatorBuilder?.call(context, item, index) ?? const ImpaktfullUiDivider();
+                return widget.separatorBuilder?.call(context, item, index) ??
+                    const ImpaktfullUiDivider();
               },
               itemCount: widget.items!.length,
             ),
@@ -268,7 +289,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             itemBuilder: _buildItem,
             shrinkWrap: widget.shrinkWrap,
             reverse: widget.reversed,
-            separatorBuilder: (context, index) => SizedBox(height: widget.spacing),
+            separatorBuilder: (context, index) =>
+                SizedBox(height: widget.spacing),
             itemCount: widget.items!.length,
           ),
         );

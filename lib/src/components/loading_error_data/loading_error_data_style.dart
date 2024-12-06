@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiLoadingErrorDataTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiLoadingErrorDataAssetsTheme assets;
@@ -16,6 +17,30 @@ class ImpaktfullUiLoadingErrorDataTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiLoadingErrorDataTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.loadingErrorData;
+
+  static ImpaktfullUiLoadingErrorDataTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) {
+    return ImpaktfullUiLoadingErrorDataTheme(
+      assets: const ImpaktfullUiLoadingErrorDataAssetsTheme(),
+      colors: const ImpaktfullUiLoadingErrorDataColorTheme(),
+      dimens: const ImpaktfullUiLoadingErrorDataDimensTheme(
+        loadingWidth: 48,
+        loadingHeight: 48,
+      ),
+      textStyles: ImpaktfullUiLoadingErrorDataTextStyleTheme(
+        noDataTitle: textStyles.onCanvas.display.small.semiBold,
+        noDataMessage: textStyles.onCanvas.text.small.light,
+        errorTitle: textStyles.onCanvas.display.small.semiBold,
+        errorMessage: textStyles.onCanvas.text.small.light,
+      ),
+    );
+  }
 }
 
 class ImpaktfullUiLoadingErrorDataAssetsTheme {
@@ -27,7 +52,13 @@ class ImpaktfullUiLoadingErrorDataColorTheme {
 }
 
 class ImpaktfullUiLoadingErrorDataDimensTheme {
-  const ImpaktfullUiLoadingErrorDataDimensTheme();
+  final double? loadingWidth;
+  final double? loadingHeight;
+
+  const ImpaktfullUiLoadingErrorDataDimensTheme({
+    required this.loadingWidth,
+    required this.loadingHeight,
+  });
 }
 
 class ImpaktfullUiLoadingErrorDataTextStyleTheme {
