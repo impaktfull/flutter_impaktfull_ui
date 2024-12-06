@@ -21,6 +21,7 @@ class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   final bool autofocus;
   final FocusNode? focusNode;
   final ValueChanged<bool>? onFocusChanged;
+  final ValueChanged<String>? onSubmit;
   final ImpaktfullUiWysiwygTheme? theme;
 
   const ImpaktfullUiWysiwygInputField({
@@ -34,6 +35,7 @@ class ImpaktfullUiWysiwygInputField extends StatefulWidget {
     this.controller,
     this.focusNode,
     this.onFocusChanged,
+    this.onSubmit,
     this.autofocus = false,
     this.theme,
     super.key,
@@ -128,6 +130,7 @@ class _ImpaktfullUiWysiwygInputFieldState
                             controller: _controller,
                             placeholder: widget.placeholder,
                             onFocusChanged: widget.onFocusChanged,
+                            onSubmit: widget.onSubmit,
                             autofocus: widget.autofocus,
                             obscureText: false,
                             autofill: const [],

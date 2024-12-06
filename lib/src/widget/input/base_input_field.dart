@@ -9,6 +9,7 @@ class BaseInputField extends StatefulWidget {
   final String? placeholder;
   final String? value;
   final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onSubmit;
   final TextEditingController controller;
   final bool autofocus;
   final FocusNode focusNode;
@@ -26,6 +27,7 @@ class BaseInputField extends StatefulWidget {
   const BaseInputField({
     required this.value,
     required this.onChanged,
+    required this.onSubmit,
     required this.focusNode,
     required this.controller,
     required this.placeholder,
@@ -100,6 +102,7 @@ class _BaseInputFieldState extends State<BaseInputField> {
           style: componentTheme.textStyles.text,
           onChanged: _debouncedOnChanged,
           obscureText: widget.obscureText,
+          onSubmitted: widget.onSubmit,
           textInputAction: widget.multiline
               ? TextInputAction.newline
               : widget.textInputAction,

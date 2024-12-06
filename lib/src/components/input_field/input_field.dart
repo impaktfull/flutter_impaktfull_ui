@@ -29,6 +29,7 @@ class ImpaktfullUiInputField extends StatefulWidget
   final Widget? trailingAction;
   final String? value;
   final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onSubmit;
   final TextEditingController? controller;
   final bool autofocus;
   final FocusNode? focusNode;
@@ -58,6 +59,7 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.controller,
     this.focusNode,
     this.onFocusChanged,
+    this.onSubmit,
     this.autofocus = false,
     this.obscureText = false,
     this.textInputType = TextInputType.text,
@@ -191,6 +193,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                 child: BaseInputField(
                                   value: widget.value,
                                   onChanged: widget.onChanged,
+                                  onSubmit: widget.onSubmit,
                                   focusNode: _focusNode,
                                   controller: _controller,
                                   autofill: widget.autofill,
