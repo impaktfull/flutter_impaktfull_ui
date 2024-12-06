@@ -29,10 +29,7 @@ class ImpaktfullUiLoadingErrorDataTheme extends ImpaktfullUiComponentTheme {
     return ImpaktfullUiLoadingErrorDataTheme(
       assets: const ImpaktfullUiLoadingErrorDataAssetsTheme(),
       colors: const ImpaktfullUiLoadingErrorDataColorTheme(),
-      dimens: const ImpaktfullUiLoadingErrorDataDimensTheme(
-        loadingWidth: 48,
-        loadingHeight: 48,
-      ),
+      dimens: const ImpaktfullUiLoadingErrorDataDimensTheme(),
       textStyles: ImpaktfullUiLoadingErrorDataTextStyleTheme(
         noDataTitle: textStyles.onCanvas.display.small.semiBold,
         noDataMessage: textStyles.onCanvas.text.small.light,
@@ -52,13 +49,7 @@ class ImpaktfullUiLoadingErrorDataColorTheme {
 }
 
 class ImpaktfullUiLoadingErrorDataDimensTheme {
-  final double? loadingWidth;
-  final double? loadingHeight;
-
-  const ImpaktfullUiLoadingErrorDataDimensTheme({
-    required this.loadingWidth,
-    required this.loadingHeight,
-  });
+  const ImpaktfullUiLoadingErrorDataDimensTheme();
 }
 
 class ImpaktfullUiLoadingErrorDataTextStyleTheme {
