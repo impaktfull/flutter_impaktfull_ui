@@ -213,7 +213,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                     : const AlwaysScrollableScrollPhysics(),
                 child: Container(
                   padding: const EdgeInsets.all(16),
-                  height: constraints.maxHeight,
+                  height: widget.shrinkWrap ? null : constraints.maxHeight,
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
