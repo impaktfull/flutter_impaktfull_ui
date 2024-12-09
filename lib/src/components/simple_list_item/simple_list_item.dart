@@ -135,7 +135,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
     if (widget is ImpaktfullUiAssetWidget) {
       return ImpaktfullUiAssetWidget(
         asset: widget.asset,
-        color: _getTitleTextStyle(componentTheme).color,
+        color: widget.color ?? _getTitleTextStyle(componentTheme).color,
       );
     }
     return widget;
