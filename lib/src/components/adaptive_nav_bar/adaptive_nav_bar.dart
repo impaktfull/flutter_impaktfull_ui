@@ -35,6 +35,15 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+    if (title == null &&
+        subtitle == null &&
+        badge == null &&
+        onBackTapped == null &&
+        bottomChild == null &&
+        onDrawerTapped == null &&
+        actions.isEmpty) {
+      return const SizedBox.shrink();
+    }
     return ImpaktfullUiResponsiveLayout(
       small: (context) => ImpaktfullUiNavBar(
         title: title,
