@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
 
 class ImpaktfullUiGalleryItem {
@@ -6,6 +8,7 @@ class ImpaktfullUiGalleryItem {
   final String? id;
   final Widget? _child;
   final String? imageUrl;
+  final File? file;
   final BoxFit? imageFit;
 
   String get heroTag {
@@ -18,10 +21,19 @@ class ImpaktfullUiGalleryItem {
     BoxFit? fit,
   }) {
     if (_child != null) return _child;
-    return Image.network(
-      imageUrl!,
-      fit: imageFit ?? fit,
-    );
+    if (imageUrl != null) {
+      return Image.network(
+        imageUrl!,
+        fit: imageFit ?? fit,
+      );
+    }
+    if (file != null) {
+      return Image.file(
+        file!,
+        fit: imageFit ?? fit,
+      );
+    }
+    throw Exception('No image or file provided');
   }
 
   bool get hasInfo => title != null || description != null;
@@ -33,15 +45,26 @@ class ImpaktfullUiGalleryItem {
     required Widget child,
   })  : _child = null,
         imageUrl = null,
-        imageFit = null;
+        imageFit = null,
+        file = null;
 
   const ImpaktfullUiGalleryItem.image({
     this.id,
     this.title,
     this.description,
-    required this.imageUrl,
+    required String this.imageUrl,
     this.imageFit,
-  }) : _child = null;
+  })  : _child = null,
+        file = null;
+
+  const ImpaktfullUiGalleryItem.file({
+    this.id,
+    this.title,
+    this.description,
+    required File this.file,
+    this.imageFit,
+  })  : _child = null,
+        imageUrl = null;
 
   @override
   bool operator ==(Object other) {
