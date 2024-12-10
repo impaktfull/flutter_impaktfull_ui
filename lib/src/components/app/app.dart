@@ -10,6 +10,7 @@ class ImpaktfullUiApp extends StatelessWidget {
   final String title;
   final Widget? home;
   final SnackyController? snackyController;
+  final bool useSnackyNavigationObserver;
   final SnackyBuilder? snackyBuilder;
   final ImpaktfullUiTheme? impaktfullUiTheme;
   final ThemeData? materialLightTheme;
@@ -31,6 +32,7 @@ class ImpaktfullUiApp extends StatelessWidget {
     required this.title,
     this.home,
     this.snackyController,
+    this.useSnackyNavigationObserver = true,
     this.snackyBuilder,
     this.impaktfullUiTheme,
     this.materialLightTheme,
@@ -88,7 +90,9 @@ class ImpaktfullUiApp extends StatelessWidget {
                 initialRoute: initialRoute,
                 onGenerateRoute: onGenerateRoute,
                 navigatorObservers: [
-                  SnackyNavigationObserver(),
+                  if (useSnackyNavigationObserver) ...[
+                    SnackyNavigationObserver(),
+                  ],
                   ...navigatorObservers,
                 ],
               ),
