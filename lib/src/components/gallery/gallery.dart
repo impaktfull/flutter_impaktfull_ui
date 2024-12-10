@@ -24,10 +24,12 @@ class ImpaktfullUiGallery extends StatelessWidget
       itemAspectRatio;
   final double spacing;
   final BoxFit? itemFit;
+  final String noDataLabel;
   final ImpaktfullUiGalleryTheme? theme;
 
   const ImpaktfullUiGallery({
     required this.items,
+    required this.noDataLabel,
     this.itemBorderRadius,
     this.itemAspectRatio,
     this.crossAxisCount,
@@ -45,7 +47,7 @@ class ImpaktfullUiGallery extends StatelessWidget
         items: items,
         spacing: spacing,
         padding: const EdgeInsets.all(16),
-        noDataLabel: 'No Gallery Items',
+        noDataLabel: noDataLabel,
         itemBuilder: (context, item, index) => ImpaktfullUiTouchFeedback(
           borderRadius:
               itemBorderRadius ?? componentTheme.dimens.itemBorderRadius,

@@ -21,6 +21,7 @@ class GalleryLibraryVariant
           items: NetworkImages.gallery,
           itemAspectRatio: (context, config) => 3 / 2,
           itemFit: BoxFit.cover,
+          noDataLabel: 'No items found',
         ),
       ),
     ];
