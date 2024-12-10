@@ -43,7 +43,7 @@ class ImpaktfullUiGalleryItem {
     this.title,
     this.description,
     required Widget child,
-  })  : _child = null,
+  })  : _child = child,
         imageUrl = null,
         imageFit = null,
         file = null;
