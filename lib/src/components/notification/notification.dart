@@ -78,6 +78,7 @@ class ImpaktfullUiNotification extends StatelessWidget
   static show({
     required String title,
     String? subtitle,
+    Duration? showDuration,
     bool cancelActive = false,
     bool cancelAll = true,
     ImpaktfullUiNotificationType type = ImpaktfullUiNotificationType.success,
@@ -93,6 +94,7 @@ class ImpaktfullUiNotification extends StatelessWidget
         title: title,
         subtitle: subtitle,
         type: type._snackyType,
+        showDuration: showDuration,
         canBeClosed: true,
       ),
     );
