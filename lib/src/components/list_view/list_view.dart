@@ -228,7 +228,6 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                 children: [
                   Container(
                     height: widget.shrinkWrap ? null : constraints.maxHeight,
-                    color: Colors.amber,
                     alignment: Alignment.center,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
