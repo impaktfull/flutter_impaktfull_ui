@@ -35,11 +35,16 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget
   final double? height;
   final Widget? child;
   final WidgetBuilder? button;
+  final String? buttonText;
   final List<ImpaktfullUiDropdownItem<T>>? items;
   final Widget Function(
-          BuildContext context, ImpaktfullUiDropdownItem<T> item, int index)?
-      itemBuilder;
+    BuildContext context,
+    ImpaktfullUiDropdownItem<T> item,
+    int index,
+    ImpaktfullUiDropdownController controller,
+  )? itemBuilder;
   final String? noDataLabel;
+  final bool fullWidth;
   final ImpaktfullUiAlignment alignment;
   final ImpaktfullUiDropdownTheme? theme;
   final ImpaktfullUiDropdownController? controller;
@@ -48,14 +53,18 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget
     required Widget this.child,
     this.controller,
     this.button,
+    this.buttonText,
     this.childWidth,
     this.alignment = ImpaktfullUiAlignment.bottomCenter,
     this.height = 300,
+    this.fullWidth = false,
     this.theme,
     super.key,
   })  : items = null,
         itemBuilder = null,
-        noDataLabel = null;
+        noDataLabel = null,
+        assert(button != null || buttonText != null,
+            'Either button or buttonText must be provided');
 
   const ImpaktfullUiDropdown.builder({
     required List<ImpaktfullUiDropdownItem<T>> this.items,
@@ -63,12 +72,16 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget
     required String this.noDataLabel,
     this.controller,
     this.button,
+    this.buttonText,
     this.childWidth,
     this.alignment = ImpaktfullUiAlignment.bottomCenter,
     this.height = 300,
+    this.fullWidth = false,
     this.theme,
     super.key,
-  }) : child = null;
+  })  : child = null,
+        assert(button != null || buttonText != null,
+            'Either button or buttonText must be provided');
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
@@ -83,6 +96,8 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     implements ImpaktfullUiDropdownControllerListener {
   static OverlayPortalController? _globalToolTipController;
 
+  late ImpaktfullUiDropdownController _controller;
+
   final _link = LayerLink();
   final OverlayPortalController _tooltipController = OverlayPortalController();
   late AnimationController _animationController;
@@ -92,7 +107,8 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
   @override
   void initState() {
     super.initState();
-    widget.controller?._listener = this;
+    _controller = widget.controller ?? ImpaktfullUiDropdownController();
+    _controller._listener = this;
     _animationController = AnimationController(
       duration: const Duration(milliseconds: 200),
       reverseDuration: const Duration(milliseconds: 200),
@@ -107,7 +123,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
 
   @override
   void dispose() {
-    widget.controller?._listener = null;
+    _controller._listener = null;
     _animationController.dispose();
     _hide();
     super.dispose();
@@ -149,7 +165,9 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                               return ImpaktfullUiListView<
                                   ImpaktfullUiDropdownItem<T>>.builder(
                                 items: widget.items!,
-                                itemBuilder: widget.itemBuilder!,
+                                itemBuilder: (context, item, index) =>
+                                    widget.itemBuilder!(
+                                        context, item, index, _controller),
                                 noDataLabel: widget.noDataLabel!,
                                 shrinkWrap: true,
                               );
@@ -169,10 +187,11 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                 return ImpaktfullUiButton(
                   onTap: _onTapButton,
                   type: ImpaktfullUiButtonType.secondaryGrey,
+                  fullWidth: widget.fullWidth,
                   trailingAsset: _tooltipController.isShowing
                       ? componentTheme.assets.dropUp
                       : componentTheme.assets.dropDown,
-                  title: 'Button Text',
+                  title: widget.buttonText,
                 );
               },
             ),

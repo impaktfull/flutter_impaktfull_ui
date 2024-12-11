@@ -30,7 +30,8 @@ class ComponentLibraryIconInput extends ComponentLibraryInputItem<IconData> {
             onTap: () => _controller.open(),
           ),
           items: items,
-          itemBuilder: (context, item, index) => ImpaktfullUiTouchFeedback(
+          itemBuilder: (context, item, index, controller) =>
+              ImpaktfullUiTouchFeedback(
             onTap: () {
               updateState(item.value);
               _controller.close();
