@@ -207,6 +207,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                             AlignmentDirectional.topStart,
                                         child: Text(
                                           _controller.text,
+                                          maxLines: widget.multiline
+                                              ? widget.maxLines
+                                              : 1,
                                           style: componentTheme.textStyles.text,
                                         ),
                                       ),
