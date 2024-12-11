@@ -37,7 +37,7 @@ class AutoCompleteLibraryVariant
           subtitle: 'Top autocomplete field',
           onTap: () {
             inputs.selectedIndex.updateState(index);
-            controller.close();
+            controller.close(clear: true);
           },
         ),
         noDataLabel: 'No data found',

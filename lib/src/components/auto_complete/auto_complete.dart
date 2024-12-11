@@ -230,5 +230,7 @@ class _ImpaktfullUiAutoCompleteState<T>
   }
 
   @override
-  void clear() => _controller.clear();
+  void clear() {
+    setState(() => _value = '');
+  }
 }
