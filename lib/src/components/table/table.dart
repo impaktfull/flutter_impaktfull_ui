@@ -17,12 +17,14 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
   final List<TableColumnConfig> columnConfig;
   final List<ImpaktfullUiTableHeaderItem> titles;
   final List<ImpaktfullUiTableRow> content;
+  final bool shrinkWrap;
   final ImpaktfullUiTableTheme? theme;
 
   const ImpaktfullUiTable({
     required this.titles,
     required this.content,
     this.columnConfig = const [],
+    this.shrinkWrap = false,
     this.theme,
     super.key,
   });
@@ -50,19 +52,27 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
             amountOfColumns: titles.length,
             borderRadius: componentTheme.dimens.borderRadius,
             child: ImpaktfullUiAutoLayout.vertical(
+              mainAxisSize: shrinkWrap ? MainAxisSize.min : MainAxisSize.max,
               children: [
                 ImpaktfullUiTableHeader(
                   titles: titles,
                   columnConfig: columnConfig,
                 ),
                 const ImpaktfullUiDivider(),
-                Expanded(
-                  child: ListView.separated(
-                    itemCount: content.length,
-                    itemBuilder: (context, index) => content[index],
-                    separatorBuilder: (contex, index) =>
-                        const ImpaktfullUiDivider(),
-                  ),
+                Builder(
+                  builder: (context) {
+                    final child = ListView.separated(
+                      itemCount: content.length,
+                      shrinkWrap: shrinkWrap,
+                      itemBuilder: (context, index) => content[index],
+                      separatorBuilder: (contex, index) =>
+                          const ImpaktfullUiDivider(),
+                    );
+                    if (shrinkWrap) {
+                      return child;
+                    }
+                    return Expanded(child: child);
+                  },
                 ),
               ],
             ),
