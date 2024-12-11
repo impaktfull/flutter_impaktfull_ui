@@ -11,9 +11,15 @@ class ImpaktfullUiAutoCompleteController {
     _listeners.remove(listener);
   }
 
-  void close({bool focusOnInput = true}) {
+  void close({
+    bool focusOnInput = true,
+    bool clear = false,
+  }) {
     for (final listener in _listeners) {
       listener.close(focusOnInput: focusOnInput);
+      if (clear) {
+        listener.clear();
+      }
     }
   }
 
