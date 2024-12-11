@@ -228,4 +228,7 @@ class _ImpaktfullUiAutoCompleteState<T>
       _foucsNode.requestFocus();
     }
   }
+
+  @override
+  void clear() => _controller.clear();
 }

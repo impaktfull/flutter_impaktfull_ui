@@ -17,5 +17,11 @@ class ImpaktfullUiAutoCompleteController {
     }
   }
 
+  void clear() {
+    for (final listener in _listeners) {
+      listener.clear();
+    }
+  }
+
   void dispose() => _listeners.clear();
 }
