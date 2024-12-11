@@ -21,6 +21,7 @@ class BaseInputField extends StatefulWidget {
   final int? maxLines;
   final TextAlign textAlign;
   final List<String> autofill;
+  final bool readOnly;
   final ImpaktfullUiInputFieldTheme? theme;
   final Duration debounceDuration;
 
@@ -41,6 +42,7 @@ class BaseInputField extends StatefulWidget {
     required this.textAlign,
     required this.autofill,
     required this.theme,
+    required this.readOnly,
     this.debounceDuration = Duration.zero,
     super.key,
   });
@@ -103,15 +105,13 @@ class _BaseInputFieldState extends State<BaseInputField> {
           onChanged: _debouncedOnChanged,
           obscureText: widget.obscureText,
           onSubmitted: widget.onSubmit,
-          textInputAction: widget.multiline
-              ? TextInputAction.newline
-              : widget.textInputAction,
-          keyboardType:
-              widget.multiline ? TextInputType.multiline : widget.textInputType,
+          textInputAction: widget.multiline ? TextInputAction.newline : widget.textInputAction,
+          keyboardType: widget.multiline ? TextInputType.multiline : widget.textInputType,
           maxLines: widget.multiline ? widget.maxLines : 1,
           minLines: widget.multiline ? 3 : 1,
           textAlign: widget.textAlign,
           autofillHints: widget.autofill,
+          readOnly: widget.readOnly,
           decoration: InputDecoration(
             isDense: true,
             hintText: widget.placeholder,
@@ -139,6 +139,5 @@ class _BaseInputFieldState extends State<BaseInputField> {
     });
   }
 
-  void _onFocusChanged() =>
-      widget.onFocusChanged?.call(widget.focusNode.hasFocus);
+  void _onFocusChanged() => widget.onFocusChanged?.call(widget.focusNode.hasFocus);
 }

@@ -31,10 +31,12 @@ class ImpaktfullUiInputFieldAction extends StatelessWidget {
           topEnd: componentTheme.dimens.borderRadius.topEnd,
           bottomEnd: componentTheme.dimens.borderRadius.bottomStart,
         ),
-        height: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Align(
+        child: Container(
           alignment: Alignment.center,
+          constraints: const BoxConstraints(
+            minHeight: 40,
+          ),
           child: ImpaktfullUiAutoLayout.horizontal(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
