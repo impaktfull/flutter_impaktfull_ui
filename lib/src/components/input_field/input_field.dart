@@ -41,6 +41,7 @@ class ImpaktfullUiInputField extends StatefulWidget
   final int? maxLines;
   final List<String> autofill;
   final TextAlign textAlign;
+  final bool viewOnly;
   final ImpaktfullUiInputFieldTheme? theme;
 
   const ImpaktfullUiInputField({
@@ -67,6 +68,7 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.multiline = false,
     this.maxLines,
     this.textAlign = TextAlign.start,
+    this.viewOnly = false,
     this.theme,
     super.key,
   });
@@ -142,7 +144,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
               children: [
                 Expanded(
                   child: Opacity(
-                    opacity: isDisabled ? 0.66 : 1,
+                    opacity: isDisabled && !widget.viewOnly ? 0.66 : 1,
                     child: ImpaktfullUiCard(
                       cursor: SystemMouseCursors.text,
                       error: widget.error != null && widget.error!.isNotEmpty,
@@ -193,17 +195,20 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                   widget.leadingBuilder!(context),
                                 ],
                                 if (widget.onChanged == null) ...[
-                                  Container(
-                                    constraints: BoxConstraints(
-                                      minHeight: widget.multiline ? 88 : 40,
-                                    ),
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 8),
-                                    child: Align(
-                                      alignment: AlignmentDirectional.topStart,
-                                      child: Text(
-                                        _controller.text,
-                                        style: componentTheme.textStyles.text,
+                                  Expanded(
+                                    child: Container(
+                                      constraints: BoxConstraints(
+                                        minHeight: widget.multiline ? 88 : 40,
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 8),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.topStart,
+                                        child: Text(
+                                          _controller.text,
+                                          style: componentTheme.textStyles.text,
+                                        ),
                                       ),
                                     ),
                                   ),
