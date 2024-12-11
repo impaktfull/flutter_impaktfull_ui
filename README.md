@@ -224,6 +224,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - minus
 - moreHorizontal
 - moreVertical
+- refresh
 - search
 - settings
 - success

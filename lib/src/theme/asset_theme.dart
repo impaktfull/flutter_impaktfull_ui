@@ -68,6 +68,7 @@ class ImpaktfullUiAssetTheme {
               moreHorizontal: ImpaktfullUiAsset.icon(PhosphorIcons.dotsThree()),
               moreVertical:
                   ImpaktfullUiAsset.icon(PhosphorIcons.dotsThreeVertical()),
+              refresh: ImpaktfullUiAsset.icon(PhosphorIcons.arrowClockwise()),
               search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
               share: ImpaktfullUiAsset.icon(DeviceUtil.isAndroid()
                   ? PhosphorIcons.shareNetwork()
@@ -177,6 +178,7 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset chevronUp;
   final ImpaktfullUiAsset circle;
   final ImpaktfullUiAsset close;
+  final ImpaktfullUiAsset cloudUpload;
   final ImpaktfullUiAsset confetti;
   final ImpaktfullUiAsset copy;
   final ImpaktfullUiAsset delete;
@@ -193,12 +195,12 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset minus;
   final ImpaktfullUiAsset moreHorizontal;
   final ImpaktfullUiAsset moreVertical;
-  final ImpaktfullUiAsset cloudUpload;
-  final ImpaktfullUiAsset user;
+  final ImpaktfullUiAsset refresh;
   final ImpaktfullUiAsset search;
   final ImpaktfullUiAsset settings;
   final ImpaktfullUiAsset share;
   final ImpaktfullUiAsset success;
+  final ImpaktfullUiAsset user;
   final ImpaktfullUiAsset warning;
   final ImpaktfullUiAsset wysiwygBold;
   final ImpaktfullUiAsset wysiwygCode;
@@ -225,6 +227,7 @@ class ImpaktfullUiIconTheme {
     required this.chevronUp,
     required this.circle,
     required this.close,
+    required this.cloudUpload,
     required this.confetti,
     required this.copy,
     required this.delete,
@@ -242,10 +245,10 @@ class ImpaktfullUiIconTheme {
     required this.moreHorizontal,
     required this.moreVertical,
     required this.search,
+    required this.refresh,
     required this.settings,
     required this.share,
     required this.success,
-    required this.cloudUpload,
     required this.user,
     required this.warning,
     required this.wysiwygBold,
@@ -291,6 +294,7 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? minus,
     ImpaktfullUiAsset? moreHorizontal,
     ImpaktfullUiAsset? moreVertical,
+    ImpaktfullUiAsset? refresh,
     ImpaktfullUiAsset? search,
     ImpaktfullUiAsset? settings,
     ImpaktfullUiAsset? share,
@@ -339,6 +343,7 @@ class ImpaktfullUiIconTheme {
         minus: minus ?? this.minus,
         moreHorizontal: moreHorizontal ?? this.moreHorizontal,
         moreVertical: moreVertical ?? this.moreVertical,
+        refresh: refresh ?? this.refresh,
         search: search ?? this.search,
         settings: settings ?? this.settings,
         share: share ?? this.share,
