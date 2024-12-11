@@ -103,11 +103,8 @@ class _BaseInputFieldState extends State<BaseInputField> {
           onChanged: _debouncedOnChanged,
           obscureText: widget.obscureText,
           onSubmitted: widget.onSubmit,
-          textInputAction: widget.multiline
-              ? TextInputAction.newline
-              : widget.textInputAction,
-          keyboardType:
-              widget.multiline ? TextInputType.multiline : widget.textInputType,
+          textInputAction: widget.multiline ? TextInputAction.newline : widget.textInputAction,
+          keyboardType: widget.multiline ? TextInputType.multiline : widget.textInputType,
           maxLines: widget.multiline ? widget.maxLines : 1,
           minLines: widget.multiline ? 3 : 1,
           textAlign: widget.textAlign,
@@ -139,6 +136,5 @@ class _BaseInputFieldState extends State<BaseInputField> {
     });
   }
 
-  void _onFocusChanged() =>
-      widget.onFocusChanged?.call(widget.focusNode.hasFocus);
+  void _onFocusChanged() => widget.onFocusChanged?.call(widget.focusNode.hasFocus);
 }
