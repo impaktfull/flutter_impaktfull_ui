@@ -42,10 +42,12 @@ class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiWysiwygInputField> createState() => _ImpaktfullUiWysiwygInputFieldState();
+  State<ImpaktfullUiWysiwygInputField> createState() =>
+      _ImpaktfullUiWysiwygInputFieldState();
 }
 
-class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInputField> {
+class _ImpaktfullUiWysiwygInputFieldState
+    extends State<ImpaktfullUiWysiwygInputField> {
   late final TextEditingController _controller;
   late final FocusNode _focusNode;
 
@@ -55,7 +57,8 @@ class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInput
     final widgetController = widget.controller;
     _controller = widgetController ?? TextEditingController(text: widget.value);
     if (widgetController == null) {
-      _controller.selection = TextSelection(baseOffset: widget.value!.length, extentOffset: widget.value!.length);
+      _controller.selection = TextSelection(
+          baseOffset: widget.value!.length, extentOffset: widget.value!.length);
     }
     _focusNode = widget.focusNode ?? FocusNode();
     _controller.addListener(_onTextChanged);
@@ -93,7 +96,8 @@ class _ImpaktfullUiWysiwygInputFieldState extends State<ImpaktfullUiWysiwygInput
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiInputFieldTheme>(
-      builder: (context, inputFieldTheme) => ImpaktfullUiComponentThemeBuilder<ImpaktfullUiWysiwygTheme>(
+      builder: (context, inputFieldTheme) =>
+          ImpaktfullUiComponentThemeBuilder<ImpaktfullUiWysiwygTheme>(
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
