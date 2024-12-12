@@ -1,0 +1,25 @@
+name: Automated version bump
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bump_version:
+    name: Version bump on main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.IMPAKTFULL_GITHUB_PAT }}
+          ref: ${{ github.ref }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+      - name: Automated version bump
+        uses: impaktfull/gh_action_dart_conventional_release@main
+        with:
+          tag-prefix: 'v'
