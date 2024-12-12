@@ -1,3 +1,13 @@
+# 0.13.0
+
+## Feat
+
+- Added ImpaktfullStatusBar
+
+# Version bump
+
+- Version bump figma sync
+
 # 0.12.0
 
 ## !!!BREAKING!!!
