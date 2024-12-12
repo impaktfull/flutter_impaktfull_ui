@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/markdown/markdown.dart';
-// ignore: depend_on_referenced_packages
 import 'package:markdown/markdown.dart' as md;
 import 'package:flutter_markdown/flutter_markdown.dart';
 
