@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'progress_indicator_style.dart';
 export 'model/progress_indicator_type.dart';

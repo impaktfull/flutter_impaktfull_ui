@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
-import 'package:impaktfull_ui_2/src/components/section_title/section_title.dart';
-import 'package:impaktfull_ui_2/src/components/separated_column/separated_column_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/divider/divider.dart';
+import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
+import 'package:impaktfull_ui/src/components/separated_column/separated_column_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'separated_column_style.dart';
 

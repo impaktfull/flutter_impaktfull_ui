@@ -1,5 +1,5 @@
-import 'package:impaktfull_ui_2/src/components/chat/model/sender/chat_sender.dart';
-import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
+import 'package:impaktfull_ui/src/components/chat/model/sender/chat_sender.dart';
+import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
 
 class ImpaktfullUiChatSenderConfig {
   final ImpaktfullUiChatSender me;

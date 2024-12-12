@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/accordion/model/accordion_reveal_type.dart';
-import 'package:impaktfull_ui_2/src/components/accordion/accordion_style.dart';
-import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/simple_list_item/simple_list_item.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/accordion/model/accordion_reveal_type.dart';
+import 'package:impaktfull_ui/src/components/accordion/accordion_style.dart';
+import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'accordion_style.dart';
 export 'model/accordion_reveal_type.dart';

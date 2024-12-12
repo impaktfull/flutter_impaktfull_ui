@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/badge/badge.dart';
-import 'package:impaktfull_ui_2/src/components/checkbox/checkbox.dart';
-import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item.dart';
-import 'package:impaktfull_ui_2/src/components/table_row_item/table_row_item_type.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/badge/badge.dart';
+import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
+import 'package:impaktfull_ui/src/components/table_row_item/table_row_item.dart';
+import 'package:impaktfull_ui/src/components/table_row_item/table_row_item_type.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 export 'table_row_item_style.dart';
 

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_configurator.dart';
-import 'package:impaktfull_ui_2/src/theme/asset_theme.dart';
-import 'package:impaktfull_ui_2/src/theme/color_theme.dart';
-import 'package:impaktfull_ui_2/src/theme/component_theme.dart';
-import 'package:impaktfull_ui_2/src/theme/dimens_theme.dart';
-import 'package:impaktfull_ui_2/src/theme/duration_theme.dart';
-import 'package:impaktfull_ui_2/src/theme/shadow_theme.dart';
-import 'package:impaktfull_ui_2/src/theme/textstyle_theme.dart';
-import 'package:impaktfull_ui_2/src/theme/theme_default.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_configurator.dart';
+import 'package:impaktfull_ui/src/theme/asset_theme.dart';
+import 'package:impaktfull_ui/src/theme/color_theme.dart';
+import 'package:impaktfull_ui/src/theme/component_theme.dart';
+import 'package:impaktfull_ui/src/theme/dimens_theme.dart';
+import 'package:impaktfull_ui/src/theme/duration_theme.dart';
+import 'package:impaktfull_ui/src/theme/shadow_theme.dart';
+import 'package:impaktfull_ui/src/theme/textstyle_theme.dart';
+import 'package:impaktfull_ui/src/theme/theme_default.dart';
 
 export 'asset_theme.dart';
 export 'color_theme.dart';

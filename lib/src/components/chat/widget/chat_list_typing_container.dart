@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/chat/chat.dart';
-import 'package:impaktfull_ui_2/src/components/chat/widget/chat_list_item_avatar.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/chat/chat.dart';
+import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item_avatar.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiChatListTypingContainer extends StatefulWidget {
   final List<ImpaktfullUiChatSender> sendersTyping;

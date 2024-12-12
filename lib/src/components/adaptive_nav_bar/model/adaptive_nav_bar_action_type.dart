@@ -1,4 +1,4 @@
-import 'package:impaktfull_ui_2/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/button/button.dart';
 
 enum ImpaktfullUiAdaptiveNavBarActionItemType {
   primary(buttonType: ImpaktfullUiButtonType.primary),

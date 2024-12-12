@@ -1,4 +1,4 @@
-import 'package:impaktfull_ui_2/src/components/chat/model/chat_status.dart';
+import 'package:impaktfull_ui/src/components/chat/model/chat_status.dart';
 
 class ImpaktfullUiChatItem {
   final String? message;

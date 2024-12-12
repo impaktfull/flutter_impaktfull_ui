@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/card/card.dart';
-import 'package:impaktfull_ui_2/src/components/dropdown/dropdown.dart';
+import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/dropdown/dropdown.dart';
 
 class ImpaktfullUiDropdownOverlay extends StatelessWidget {
   final double? width;

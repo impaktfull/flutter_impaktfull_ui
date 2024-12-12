@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/components/table/table_column_builder.dart';
-import 'package:impaktfull_ui_2/src/components/table/table_column_config.dart';
-import 'package:impaktfull_ui_2/src/components/table_header/table_header.dart';
-import 'package:impaktfull_ui_2/src/components/table_header_item/table_header_item.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/table/table_column_builder.dart';
+import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
+import 'package:impaktfull_ui/src/components/table_header/table_header.dart';
+import 'package:impaktfull_ui/src/components/table_header_item/table_header_item.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 export 'table_header_style.dart';
 

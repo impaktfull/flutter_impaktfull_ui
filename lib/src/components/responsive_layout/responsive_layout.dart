@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'responsive_layout_style.dart';
 

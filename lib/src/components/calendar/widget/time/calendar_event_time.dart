@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
-import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 
 class ImpaktfullUiCalendarEventTime extends StatelessWidget {
   final ImpaktfullUiCalendarEvent item;

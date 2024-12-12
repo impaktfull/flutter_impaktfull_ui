@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
-import 'package:impaktfull_ui_2/src/components/option_selector/option_selector.dart';
-import 'package:impaktfull_ui_2/src/components/page_route/adaptive/adaptive_page_route.dart';
-import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
-import 'package:impaktfull_ui_2/src/components/selectable_list_item/selectable_list_item.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui_2/src/util/responsive/responsive_extension.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui/src/components/modal/modal.dart';
+import 'package:impaktfull_ui/src/components/option_selector/option_selector.dart';
+import 'package:impaktfull_ui/src/components/page_route/adaptive/adaptive_page_route.dart';
+import 'package:impaktfull_ui/src/components/screen/screen.dart';
+import 'package:impaktfull_ui/src/components/selectable_list_item/selectable_list_item.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/responsive/responsive_extension.dart';
 
 export 'option_selector_style.dart';
 

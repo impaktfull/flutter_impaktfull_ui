@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/line_chart_style.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_item_data.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_item_style.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_painter_data.dart';
-import 'package:impaktfull_ui_2/src/components/line_chart/painter/line_chart_painter.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/line_chart/line_chart_style.dart';
+import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_data.dart';
+import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_style.dart';
+import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_painter_data.dart';
+import 'package:impaktfull_ui/src/components/line_chart/painter/line_chart_painter.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'line_chart_style.dart';
 export 'model/line_chart_item_data.dart';

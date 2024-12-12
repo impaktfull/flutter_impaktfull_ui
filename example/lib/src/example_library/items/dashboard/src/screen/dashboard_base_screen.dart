@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/example_library/items/dashboard/src/screen/dashboard_store_coupon_screen.dart';
 import 'package:impaktfull_ui_example/src/example_library/items/dashboard/src/screen/dashboard_store_home_screen.dart';
 import 'package:impaktfull_ui_example/src/example_library/items/dashboard/src/screen/dashboard_store_orders_screen.dart';

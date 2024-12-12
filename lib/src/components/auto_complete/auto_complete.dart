@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_2/src/components/auto_complete/controller/auto_complete_controller_listener.dart';
-import 'package:impaktfull_ui_2/src/components/auto_complete/widget/auto_complete_overlay.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui/src/components/auto_complete/controller/auto_complete_controller_listener.dart';
+import 'package:impaktfull_ui/src/components/auto_complete/widget/auto_complete_overlay.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 export 'auto_complete_style.dart';
 export 'controller/auto_complete_controller.dart';

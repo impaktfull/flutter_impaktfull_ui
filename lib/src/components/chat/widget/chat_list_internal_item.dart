@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/chat/chat.dart';
-import 'package:impaktfull_ui_2/src/components/chat/widget/chat_list_item.dart';
-import 'package:impaktfull_ui_2/src/components/chat/widget/chat_list_item_date_label.dart';
-import 'package:impaktfull_ui_2/src/components/chat/widget/chat_list_typing_container.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/chat/chat.dart';
+import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item.dart';
+import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item_date_label.dart';
+import 'package:impaktfull_ui/src/components/chat/widget/chat_list_typing_container.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiChatListInternalItem extends StatelessWidget {
   final int index;

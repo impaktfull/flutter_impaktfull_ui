@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/chat/chat_style.dart';
-import 'package:impaktfull_ui_2/src/components/chat/model/chat_item.dart';
-import 'package:impaktfull_ui_2/src/components/chat/model/sender/chat_sender_config.dart';
-import 'package:impaktfull_ui_2/src/components/chat/widget/chat_list_internal_item.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/chat/chat_style.dart';
+import 'package:impaktfull_ui/src/components/chat/model/chat_item.dart';
+import 'package:impaktfull_ui/src/components/chat/model/sender/chat_sender_config.dart';
+import 'package:impaktfull_ui/src/components/chat/widget/chat_list_internal_item.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'chat_style.dart';
 export 'model/chat_item.dart';

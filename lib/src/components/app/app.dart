@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/app/debug/app_debug_flag.dart';
-import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_configurator.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/components/app/debug/app_debug_flag.dart';
+import 'package:impaktfull_ui/src/components/snacky/snacky_configurator.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_configurator.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:snacky/snacky.dart';
 
 class ImpaktfullUiApp extends StatelessWidget {

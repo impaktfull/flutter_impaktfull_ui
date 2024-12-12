@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/image_crop/overlay/image_crop_overlay.dart';
+import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_overlay.dart';
 
 class ImpaktfullUiImageCropCircleOverlay extends ImpaktfullUiImageCropOverlay {
   final Color overlayColor;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
-import 'package:impaktfull_ui_2/src/components/screen/screen.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
+import 'package:impaktfull_ui/src/components/screen/screen.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 part 'adaptive_screen.describe.dart';
 

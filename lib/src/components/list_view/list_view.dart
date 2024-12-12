@@ -1,13 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/button/button.dart';
-import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view_style.dart';
-import 'package:impaktfull_ui_2/src/components/loading_indicator/loading_indicator.dart';
-import 'package:impaktfull_ui_2/src/components/refresh_indicator/refresh_indicator.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/divider/divider.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view_style.dart';
+import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
+import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'list_view_style.dart';
 

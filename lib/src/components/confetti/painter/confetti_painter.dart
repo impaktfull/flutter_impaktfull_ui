@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/components/confetti/model/confetti_particle.dart';
-import 'package:impaktfull_ui_2/src/components/confetti/model/confetti_type.dart';
-import 'package:impaktfull_ui_2/src/components/confetti/painter/asset_painter.dart';
+import 'package:impaktfull_ui/src/components/confetti/model/confetti_particle.dart';
+import 'package:impaktfull_ui/src/components/confetti/model/confetti_type.dart';
+import 'package:impaktfull_ui/src/components/confetti/painter/asset_painter.dart';
 
 class ImpaktfullUiConfettiPainter extends CustomPainter {
   final AssetPainter? assetPainter;

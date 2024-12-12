@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/card/card.dart';
-import 'package:impaktfull_ui_2/src/components/divider/divider.dart';
-import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/widget/actions/wysiwig_actions.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
-import 'package:impaktfull_ui_2/src/widget/input/base_input_field.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/divider/divider.dart';
+import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/widget/actions/wysiwig_actions.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
+import 'package:impaktfull_ui/src/widget/input/base_input_field.dart';
 
 class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   final String? placeholder;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/command_menu/command_menu_style.dart';
-import 'package:impaktfull_ui_2/src/components/command_menu/commander/commander.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/command_menu/command_menu_style.dart';
+import 'package:impaktfull_ui/src/components/command_menu/commander/commander.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'command_menu_style.dart';
 

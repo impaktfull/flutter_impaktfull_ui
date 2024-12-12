@@ -1,5 +1,5 @@
-import 'package:impaktfull_ui_2/src/models/asset.dart';
-import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ImpaktfullUiAssetTheme {

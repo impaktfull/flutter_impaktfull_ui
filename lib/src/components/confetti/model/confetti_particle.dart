@@ -1,5 +1,5 @@
 import 'package:flutter/rendering.dart';
-import 'package:impaktfull_ui_2/src/components/confetti/model/confetti_type.dart';
+import 'package:impaktfull_ui/src/components/confetti/model/confetti_type.dart';
 
 class ImpaktfullUiConfettiParticle {
   Offset position;

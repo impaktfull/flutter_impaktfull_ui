@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:impaktfull_ui_2/src/components/virtual_keyboard/model/config/virtual_keyboard_config.dart';
-import 'package:impaktfull_ui_2/src/components/virtual_keyboard/model/virtual_keyboard_key.dart';
+import 'package:impaktfull_ui/src/components/virtual_keyboard/model/config/virtual_keyboard_config.dart';
+import 'package:impaktfull_ui/src/components/virtual_keyboard/model/virtual_keyboard_key.dart';
 
 class ImpaktfullUiVirtualQwertyKeyboardConfig extends VirtualKeyboardConfig {
   @override

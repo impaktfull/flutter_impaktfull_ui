@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/gallery/gallery_style.dart';
-import 'package:impaktfull_ui_2/src/components/gallery/model/gallery_item.dart';
-import 'package:impaktfull_ui_2/src/components/gallery/widget/gallery_full_screen.dart';
-import 'package:impaktfull_ui_2/src/components/gallery/widget/gallery_hero_item.dart';
-import 'package:impaktfull_ui_2/src/components/grid_view/grid_view.dart';
-import 'package:impaktfull_ui_2/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/gallery/gallery_style.dart';
+import 'package:impaktfull_ui/src/components/gallery/model/gallery_item.dart';
+import 'package:impaktfull_ui/src/components/gallery/widget/gallery_full_screen.dart';
+import 'package:impaktfull_ui/src/components/gallery/widget/gallery_hero_item.dart';
+import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'gallery_style.dart';
 export 'model/gallery_item.dart';

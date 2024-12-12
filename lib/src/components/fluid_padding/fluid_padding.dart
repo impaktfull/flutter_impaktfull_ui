@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding_breakpoint.dart';
-import 'package:impaktfull_ui_2/src/components/fluid_padding/fluid_padding_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui_2/src/util/extension/list_extension.dart';
+import 'package:impaktfull_ui/src/components/fluid_padding/fluid_padding_breakpoint.dart';
+import 'package:impaktfull_ui/src/components/fluid_padding/fluid_padding_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
 
 export 'fluid_padding_style.dart';
 export 'fluid_padding_breakpoint.dart';

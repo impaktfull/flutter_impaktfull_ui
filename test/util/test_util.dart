@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:impaktfull_ui_2/src/components/app/app.dart';
-import 'package:impaktfull_ui_2/src/components/container/container.dart';
+import 'package:impaktfull_ui/src/components/app/app.dart';
+import 'package:impaktfull_ui/src/components/container/container.dart';
 
 Future<void> pumpAndSettleComponent(WidgetTester tester, Widget widget) async {
   final app = ImpaktfullUiApp(

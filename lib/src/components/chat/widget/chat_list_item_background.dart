@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
-import 'package:impaktfull_ui_2/src/components/chat/chat.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui/src/components/chat/chat.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiChatListItemBackground extends StatelessWidget {
   final ImpaktfullUiChatSenderConfig senderConfig;

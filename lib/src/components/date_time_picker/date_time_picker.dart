@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/button/button.dart';
-import 'package:impaktfull_ui_2/src/components/date_picker/date_picker.dart';
-import 'package:impaktfull_ui_2/src/components/date_time_picker/date_time_picker_style.dart';
-import 'package:impaktfull_ui_2/src/components/modal/modal.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/time_picker/time_picker.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui/src/components/date_time_picker/date_time_picker_style.dart';
+import 'package:impaktfull_ui/src/components/modal/modal.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/time_picker/time_picker.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'date_time_picker_style.dart';
 

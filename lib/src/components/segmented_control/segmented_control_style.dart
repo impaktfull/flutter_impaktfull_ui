@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiSegmentedControlTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSegmentedControlAssetsTheme assets;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
-import 'package:impaktfull_ui_2/src/components/snacky/snacky_configurator_style.dart';
-import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui/src/components/notification/notification.dart';
+import 'package:impaktfull_ui/src/components/snacky/snacky_configurator_style.dart';
+import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
 import 'package:snacky/snacky.dart';
 
 enum ImpaktfullSnackyTextType {

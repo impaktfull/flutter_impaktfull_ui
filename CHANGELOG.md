@@ -1,3 +1,484 @@
-## 0.0.1
+# 0.12.0
+
+## !!!BREAKING!!!
+
+- We refactored a lot of components to make them more flexible & customizable
+- We changed the prefix from Impaktfull to ImpaktfukllUi
+- Because this is a pre stable release we don't have a migration guide
+- If the previous version was working for you just pin it to 0.11.3
+
+# 0.11.3
+
+## Fix
+
+- License
+- Version bump snacky
+
+# 0.11.2
+
+## Fix
+
+- Fixed changelog
+
+# 0.11.1
+
+## Fix
+
+- Fixed changelog
+
+# 0.11.0
+
+## Feat
+
+- Added a ThemeConfiguratorWidget so you don't always need to use the ImpaktfullApp
+
+# 0.10.2
+
+## Fix
+
+- export the theme_configurator.dart file
+
+# 0.10.1
+
+## Fix
+
+- version bump dependencies
+
+# 0.10.0
+
+## Feat
+
+- ImpaktfullDialog now has loading states for the actions
+- ImpaktfullLoadingIndicator now has a `color` parameter
+
+# 0.9.0
+
+## Breaking
+
+- Support for Flutter 3.22.x
+- intl updated to 0.19.0
+
+# 0.8.0
+
+## Breaking
+
+- ImpaktfullCheckBox custom theme
+
+## Feat
+
+- ImpaktfullTheme added components & checkbox theme
+- ImpaktfullCheckboxListItem
+
+# 0.7.0
+
+## Feat
+
+- ImpaktfullInputField cursor color
+- ImpaktfullSimpleListItem crossAxisAlignment
+
+# 0.6.0
+
+## Feat
+
+- ImpaktfullBottomNavigationItem added `badgeColor` & `badgeBorderRadius`
+
+## Fix
+
+- ImpaktfullBottomNavigationItem use correct collor when item is selected
+
+# 0.5.3
+
+## Fix
+
+- ImpaktfullScreen unfocus when tapped outside
+
+# 0.5.2
+
+## Fix
+
+- ImpaktfullNavBarAction can now use the default color of the svg
+
+# 0.5.1
+
+## Fix
+
+- ImpaktfullBottomSheet with listview instead of vertical autolayout
+
+# 0.5.0
+
+## Breaking
+
+- ImpaktfullListView all builders now have an `index` parameter
+
+## Feat
+
+- Added add icon
+- Added menu icon
+- Added delete icon
+- Added search icon
+- Added settings icon
+- Added the possibility to use a specific package for the icons
+- Added the possibility to use a specific package for the lottie animations
+- Icons are baked in impaktfull_ui so no need to override, you will always have the icons
+- Lottie animations are baked in impaktfull_ui so no need to override, you will always have the Lottie animations
+- Export lottie dependency
+- Export lottie dependency
+- ImpaktfullBadge borderradius is exposed
+- ImpaktfullInputField added textInputAction (default is `TextInputAction.done`)
+- ImpaktfullInputField added controller
+- ImpaktfullInputField added onSubmit
+- ImpaktfullSimpleListItem added textStyle
+- ImpaktfullSimpleListItem added subtitleTextStyle
+- ImpaktfullSimpleListItem added backgroundColor
+- ImpaktfullListView added ignoreThemePadding so you can use your own padding
+
+#3 Updated
+
+- ImpaktfullTopNavBar example to show a list that is searchable
+- ImpaktfullTopNavBar cleanup
+
+## Fix
+
+- allowEnterRouteSnapping on an ZoomPageTransitionsBuilder: snapping is now disabled by default on Android
+- ImpaktfullButton only show shaddow if `type` not `secondary`
+
+# 0.4.0
+
+## Feat
+
+- Override color of ImpaktfullBadge
+- ImpaktfullSimpleListItem expose (backgroundColor, titleStyle, subTitleStyle)
+
+# 0.3.0
+
+## Feat
+
+- Added ImpaktfullBottomSheetItem
+- Added ImpaktfullSeparatedColumn clip option to check if items should be clipped with the global border radius (mostly used with bottom sheet items)
+- Added ImpaktfullBadge to show a badge with a number or other text
+- Added ImpaktfullTopNavBar as a basic component (alpha)
+- ImpaktfullBottomNavigationItem supports adding a badge
+
+## Fix
+
+- ImpaktfullSwitch accessibility
+- ImpaktfullCheckBox hover state
+- ImpaktfullBottomNavigation no supports different kind of "items" not only ImpaktfullBottomNavigationItem
+- ImpaktfullInputField cleanup on the spacing of the field itself
+
+## Example
+
+- Bottonm sheet example improvements
+
+# 0.2.1
+
+## Fix
+
+- ListView empty state correctly aligned (center)
+
+# 0.2.0
+
+## Feat
+
+- Added universal_io as a dependency to support web & desktop & exported it by default
+
+# 0.1.0
+
+## Feat
+
+- Added support for setting target platform
+
+# 0.0.34
+
+## Fix
+
+- Separated column uses correct border radius again
+
+# 0.0.33
+
+## Update
+
+- Updated readme with disclaimer everything under <1.0.0 should not be used unless you want to test it
+
+# 0.0.32
+
+## Breaking
+
+- ImpaktfullDialog `isPrimaryDange` => `primaryButtonType = ImpaktfullDialogPrimaryButtonType.danger`
+
+## Feat
+
+- TextStyleExtension added `withOpacity()` method to override the color opacity
+- ImpaktfullButton now has an `onAccent` property to flag a secondary button that it is shown on an accent color
+- ImpaktfullCheckbox now has the option to override the colors
+- ImpaktfullSwitch now has the option to override the colors
+- ImpaktfullDialog added `padding` & `margin`
+- ImpaktfullListItem added `padding`
+- ImpaktfullSimpleListItem added `padding` & `spacing`
+- ImpaktfullSwitchListItem added `padding` & `spacing`
+- ImpaktfullListView.child added to have a listview with a child instead of children
+- ImpaktfullLoadingIndicator added `custom` constructor where we can pass an `asset` (lottie file asset path)
+- ImpaktfullNavBar added option to mark a navbar as `isFullScreen`
+- ImpaktfullNavBar title nullable to hide the title
+- ImpaktfullScreen added option to mark a navbar as `isFullScreen`
+- ImpaktfullScreen title nullable to hide the title
+- ImpaktfullSeparatedColumn added 2 options: `showFirstSeparator` & `showLastSeparator` to control the visibility of the separators for the first & last item
+
+## Fix
+
+- ImpaktfullNavBarAction use correct color for the icon
+
+# 0.0.31
+
+## Feat
+
+- Added ImpaktfullBottomSheet
+- Added ImpaktfullSimpleListItem
+- Added ImpaktfullIconButton
+- ImpaktfullInputField has a title
+- Theme: Added close icon
+- Theme: Added danger color
+- ImpaktfullScreen: tap outside to unfocus
+- ImpaktfullSwitch made onChanged optional to make it a read-only switch
+- ImpaktfullSwitchListItem made onChanged optional to make it a read-only switchListItem
+- ImpaktfullListItemTitle added option to set textAlign
+- ImpaktfullListItemTitle added danger option
+- ImpaktfullDialog primary action can be danger action
+- ImpaktfullButton added danger option
+- ImpaktfullAutoLayout added maiinAxisSize
+
+## Fix
+
+- ImpaktfullAutoLayout removed padding & backgroundColor
+
+# 0.0.30
+
+## Feat
+
+- ImpaktfullInputField has a title
+
+## Docs
+
+- Updated readme
+
+# 0.0.29
+
+## Feat
+
+- `extraPadding` added to ImpaktfullListView
+
+# 0.0.28
+
+## Feat
+
+- Added `margin` & `padding` to the ImpaktfullCard
+
+# 0.0.27
+
+## Fix
+
+- ImpaktfullSwitch & ImpaktfullCheckbox with the turned off state (accent1TurnedOffState)
+
+# 0.0.26
+
+## Feat
+
+- Check if leadingAsset is an icon or an image so a color should be a applied or not (on ImpaktfullListItem & ImpaktfullSelectableListItem)
+
+# 0.0.25
+
+## Feat
+
+- ImpaktfullTheme added `listViewTitleHorizontalPadding` && `listViewTitleVerticalPadding` to better control the padding of the title in the ImpaktfullListView
+
+# 0.0.24
+
+## Feat
+
+- ImpaktfullCard has now an `onTap` parameter
+
+# 0.0.23
+
+## Feat
+
+- ImpaktfullTheme expose the defaultSplashFactory
+- RTL & LTR support for ImpaktfullApp (detection by the locale param)
+
+# 0.0.22
+
+## Feat
+
+- ImpaktfullApp now exposes `snackyController` to set a custom snackyController
+
+# 0.0.21
+
+## Feat
+
+- ImpaktfullApp now exposes `snackyBuilder` to set a custom snakcyBuilder
+
+# 0.0.20
+
+## Feat
+
+- Readme added pub.dev badge
+- Example better icons & assets
+- Added ImpaktfullCard
+- Added ImpaktfullDialog
+- Added ImpaktfullFab
+- Added ImpaktfullPagination
+- Added ImpaktfullScreen
+- ImpaktfullBottomNavigationItem supports selected icon assets
+- ImpaktfullListView refresh action & loading state
+- ImpaktfullListView pull to refresh
+- ImpaktfullRefreshIndicator
+- ImpaktfullApp now supports showing or hiding the debugFlag
+- ImpaktfullButton can have a loading state with `onAsyncTap`
+- ImpaktfullTouchFeedback now has actual feedback based on the platform
+- ImpaktfullTheme now has more shadow options (`card`, `selectedCard`, `bottomNavigation`, `button`)
+- ImpaktfullTheme now has border options (`card`, `selectedCard`)
+
+## Fix
+
+- ImpaktfullDatePicker now uses the borderRadius from the theme
+- Small disposed errors in ImpaktfullListItem
+
+# 0.0.18 - 0.0.19
+
+## Fix
+
+- Snacky config to use the correct colors
+
+# 0.0.17
+
+## Feat
+
+- Added ImpaktfullRadioButtonListItem
+
+# 0.0.16
+
+## Fix
+
+- Version bump intl
+
+# 0.0.15
+
+## Feat
+
+- Added ImpaktfullDateTimePickerDialog
+- Added ImpaktfullDateTimeRangePicker
+- Added ImpaktfullDialog
+
+# 0.0.14
+
+## Feat
+
+- Added ImpaktfullRadioButton
+- Added ImpaktfullDatePicker
+- Added ImpaktfullTimePicker
+- Added ImpaktfullCheckbox
+- Added ImpaktfullDateTimePicker
+- Added borderWidth to ImpaktfullTheme.ImpaktfullDimens
+
+## Fix
+
+- ImpaktfullSwitchListItem removed isSelected
+
+# 0.0.13
+
+## Fix
+
+- Bug in ImpaktfullListItem where trailing widget was not shown correctly
+
+# 0.0.12
+
+## Feat
+
+- ImpaktfullSwitch & ImpaktfullSwitchListItem added
+
+# 0.0.11
+
+## Fix
+
+- Assets not loading in Android
+
+# 0.0.10
+
+## Fix
+
+- SvgIcon pixelated (because of flutter_svg/Impeller bug)
+
+# 0.0.9
+
+## Fix
+
+- Documentation
+- obscureText on ImpaktfullInputField
+
+# 0.0.8
+
+## Fix
+
+- ImpaktfullNavBar height & moved to a new component
+
+# 0.0.7
+
+## Feat
+
+- ImpaktfullTabBar & ImpaktfullTabBarItem added
+
+# 0.0.6
+
+## Feat
+
+- ImpaktfullInputField added
+
+# 0.0.5
+
+## Feat
+
+- ImpaktfullBottomNavigationItem & ImpaktfullBottomNavigation added
+
+# 0.0.4
+
+## Fix
+
+- ImpaktfullApp fixed required home widget (now optional)
+- ImpaktfullApp fixed has now the option to override the material themeing
+
+# 0.0.3
+
+## Feat
+
+- Added a couple new components:
+
+```
+    ImpaktfullListItem
+    ImpaktfullListItemTitle
+    ImpaktfullSelectableListItem
+    ImpaktfullSeparatedColumn
+```
+
+- Added a couple new default icons:
+
+```
+    assets/icons/check.svg
+    assets/icons/chevron_right.svg
+```
+
+- Added support for custom durations
+
+## Refactor
+
+- Some onCard is now onCardPrimary and we added onCardSecondary
+
+# 0.0.2
+
+## Feat
+
+- Github actions for CI/CD
+
+# 0.0.1
+
+## Feat
 
 - Initial release

@@ -8,7 +8,7 @@ class ImpaktfullUiThemeWritor {
     String label = 'Figma sync theme',
   }) async {
     final themeString = """import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 class ImpaktfullUiCustomTheme {
     static final theme = ImpaktfullUiTheme.custom(

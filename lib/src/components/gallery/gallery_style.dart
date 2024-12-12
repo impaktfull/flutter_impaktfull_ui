@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/models/asset.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
-import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiGalleryAssetsTheme assets;

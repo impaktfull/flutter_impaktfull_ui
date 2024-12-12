@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/app.dart';
 import 'package:impaktfull_ui_example/src/util/themes.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';

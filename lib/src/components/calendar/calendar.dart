@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/calendar_style.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/model/calendar_item.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/model/calendar_type.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/calendar_list.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/calendar_week.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/calendar/calendar_style.dart';
+import 'package:impaktfull_ui/src/components/calendar/model/calendar_item.dart';
+import 'package:impaktfull_ui/src/components/calendar/model/calendar_type.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/calendar_list.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/calendar_week.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'calendar_style.dart';
 export 'model/calendar_item.dart';

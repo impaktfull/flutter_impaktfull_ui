@@ -5,7 +5,7 @@ import 'dart:ui' as ui;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/image_crop/model/crop_info.dart';
+import 'package:impaktfull_ui/src/components/image_crop/model/crop_info.dart';
 
 class ImpaktfullUiImageCropCropper {
   /// Crops the image based on the crop info.

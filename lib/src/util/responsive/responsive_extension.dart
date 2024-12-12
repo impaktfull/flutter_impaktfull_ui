@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/responsive_layout/responsive_layout.dart';
+import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
 
 extension ResponsiveExtension on BuildContext {
   bool get isSmallScreenOrBigger =>

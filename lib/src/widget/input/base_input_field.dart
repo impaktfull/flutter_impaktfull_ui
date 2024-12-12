@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
 
 class BaseInputField extends StatefulWidget {
   final String? placeholder;

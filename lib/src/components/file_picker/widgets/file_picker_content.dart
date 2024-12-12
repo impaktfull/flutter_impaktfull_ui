@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/button/button.dart';
-import 'package:impaktfull_ui_2/src/components/file_picker/file_picker.dart';
-import 'package:impaktfull_ui_2/src/components/file_picker/model/file_picker_progress_type.dart';
-import 'package:impaktfull_ui_2/src/components/icon_button/icon_button.dart';
-import 'package:impaktfull_ui_2/src/components/progress_indicator/progress_indicator.dart';
-import 'package:impaktfull_ui_2/src/util/file_size/file_size_calculation_util.dart';
+import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/file_picker/file_picker.dart';
+import 'package:impaktfull_ui/src/components/file_picker/model/file_picker_progress_type.dart';
+import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
+import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
+import 'package:impaktfull_ui/src/util/file_size/file_size_calculation_util.dart';
 
 class ImpaktfullUiFilePickerContent extends StatelessWidget {
   final ImpaktfullUiFilePickerData data;

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/card/card.dart';
-import 'package:impaktfull_ui_2/src/components/virtual_keyboard/model/virtual_keyboard_key.dart';
-import 'package:impaktfull_ui_2/src/components/virtual_keyboard/virtual_keyboard_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/components/virtual_keyboard/controller/virtual_keyboard_text_edit_controller.dart';
-import 'package:impaktfull_ui_2/src/components/virtual_keyboard/widget/virtual_keyboard_button.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/virtual_keyboard/model/virtual_keyboard_key.dart';
+import 'package:impaktfull_ui/src/components/virtual_keyboard/virtual_keyboard_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/virtual_keyboard/controller/virtual_keyboard_text_edit_controller.dart';
+import 'package:impaktfull_ui/src/components/virtual_keyboard/widget/virtual_keyboard_button.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'virtual_keyboard_style.dart';
 export 'model/config/virtual_keyboard_config.dart';

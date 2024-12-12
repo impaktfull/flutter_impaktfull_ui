@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/gallery/gallery.dart';
+import 'package:impaktfull_ui/src/components/gallery/gallery.dart';
 
 class ImpaktfullUiGalleryHeroItem extends StatelessWidget {
   final ImpaktfullUiGalleryItem item;

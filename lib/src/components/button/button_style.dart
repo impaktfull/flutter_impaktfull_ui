@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
-import 'package:impaktfull_ui_2/src/util/extension/text_style_extension.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiButtonColorTheme colors;

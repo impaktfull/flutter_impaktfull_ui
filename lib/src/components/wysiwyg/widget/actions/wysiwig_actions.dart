@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui_2/src/components/notification/notification.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_bold_formatter.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_code_block_formatter.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_code_formatter.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_formatter.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_header_formatter.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_italic_formatter.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_link_formatter.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_photo_formatter.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/formatter/wysiwyg_unorderedlist_formatter.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/widget/actions/wysiwyg_action_item.dart';
-import 'package:impaktfull_ui_2/src/components/wysiwyg/wysiwyg.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui/src/components/notification/notification.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_bold_formatter.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_code_block_formatter.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_code_formatter.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_formatter.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_header_formatter.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_italic_formatter.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_link_formatter.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_photo_formatter.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_unorderedlist_formatter.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/widget/actions/wysiwyg_action_item.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
 
 class WysiwygActions extends StatefulWidget {
   final List<ImpaktfullUiWysiwygAction> actions;

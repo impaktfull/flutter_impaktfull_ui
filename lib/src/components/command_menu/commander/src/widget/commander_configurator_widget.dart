@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/command_menu/commander/src/controller/commander_controller.dart';
-import 'package:impaktfull_ui_2/src/components/command_menu/commander/src/controller/commander_controller_listener.dart';
+import 'package:impaktfull_ui/src/components/command_menu/commander/src/controller/commander_controller.dart';
+import 'package:impaktfull_ui/src/components/command_menu/commander/src/controller/commander_controller_listener.dart';
 
 class CommanderConfiguratorWidget extends StatefulWidget {
   final Widget child;

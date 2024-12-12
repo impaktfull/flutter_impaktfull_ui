@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/avatar/avatar.dart';
-import 'package:impaktfull_ui_2/src/components/chat/chat.dart';
-import 'package:impaktfull_ui_2/src/components/notification_badge/notification_badge.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/avatar/avatar.dart';
+import 'package:impaktfull_ui/src/components/chat/chat.dart';
+import 'package:impaktfull_ui/src/components/notification_badge/notification_badge.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiChatListItemAvatar extends StatelessWidget {
   final ImpaktfullUiChatSender? sender;

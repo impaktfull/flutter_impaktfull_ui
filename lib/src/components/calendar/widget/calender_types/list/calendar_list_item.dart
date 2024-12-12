@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/calendar.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/model/calendar_list_item.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/list/calendar_list_event_item.dart';
-import 'package:impaktfull_ui_2/src/components/calendar/widget/calender_types/list/calendar_list_section_title.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui/src/components/calendar/model/calendar_list_item.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/list/calendar_list_event_item.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/list/calendar_list_section_title.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 
 class ImpaktfullUiCalendarListItem extends StatelessWidget {
   final ImpaktfulluiCalendarListItem item;

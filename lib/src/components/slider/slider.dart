@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/slider/model/slider_legend_alignment.dart';
-import 'package:impaktfull_ui_2/src/components/slider/slider_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/slider/model/slider_legend_alignment.dart';
+import 'package:impaktfull_ui/src/components/slider/slider_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'slider_style.dart';
 export 'model/slider_legend_alignment.dart';

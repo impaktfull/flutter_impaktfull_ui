@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'dart:math' as math;
-import 'package:impaktfull_ui_2/src/components/line_chart/model/line_chart_painter_data.dart';
+import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_painter_data.dart';
 
 class ImpaktfullUiLineChartPainter extends CustomPainter {
   final List<ImpaktfullUiLineChartPainterData> data;

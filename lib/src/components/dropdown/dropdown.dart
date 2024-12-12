@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/button/button.dart';
-import 'package:impaktfull_ui_2/src/components/dropdown/widget/dropdown_overlay.dart';
-import 'package:impaktfull_ui_2/src/components/dropdown/dropdown_style.dart';
-import 'package:impaktfull_ui_2/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_overlay.dart';
+import 'package:impaktfull_ui/src/components/dropdown/dropdown_style.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'dropdown_style.dart';
 part 'dropdown.describe.dart';

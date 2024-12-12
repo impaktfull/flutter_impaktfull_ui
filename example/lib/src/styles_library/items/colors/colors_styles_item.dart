@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/styles_library/config/styles_library_item.dart';
 import 'package:impaktfull_ui_example/src/styles_library/items/colors/widget/color_style_card.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/container/container.dart';
-import 'package:impaktfull_ui_2/src/components/interaction_feedback/focus_feedback/focus_feedback.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_builder.dart';
-import 'package:impaktfull_ui_2/src/components/tooltip/tooltip.dart';
-import 'package:impaktfull_ui_2/src/util/device_util/device_util.dart';
-import 'package:impaktfull_ui_2/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui/src/components/container/container.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/focus_feedback/focus_feedback.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_builder.dart';
+import 'package:impaktfull_ui/src/components/tooltip/tooltip.dart';
+import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
+import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
 
 class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final VoidCallback? onTap;

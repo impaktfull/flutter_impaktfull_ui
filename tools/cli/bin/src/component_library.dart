@@ -34,7 +34,7 @@ Future<void> _createComponent({
       File(join(dir.path, '${snakeCaseComponentName}_style.dart'));
 
   final styleFileContent = """import 'package:flutter/widgets.dart';
-import 'package:impaktfull_ui_2/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ${className}Theme extends ImpaktfullUiComponentTheme {
   final ${className}AssetsTheme assets;
@@ -105,9 +105,9 @@ String _describeInstance(BuildContext context, $className instance) {
   final componentFile = File(join(dir.path, '$snakeCaseComponentName.dart'));
 
   final componentFileContent = """import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/src/components/$snakeCaseComponentName/${snakeCaseComponentName}_style.dart';
-import 'package:impaktfull_ui_2/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui_2/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/components/$snakeCaseComponentName/${snakeCaseComponentName}_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export '${snakeCaseComponentName}_style.dart';
 
@@ -186,7 +186,7 @@ class ${componentName}LibraryInputs extends ComponentLibraryInputs {
       File(join(dir.path, '${snakeCaseComponentName}_library_variant.dart'));
 
   final componentFileContent = """import 'package:flutter/material.dart';
-import 'package:impaktfull_ui_2/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/$snakeCaseComponentName/${snakeCaseComponentName}_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
