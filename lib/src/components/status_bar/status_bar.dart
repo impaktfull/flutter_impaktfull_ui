@@ -4,7 +4,8 @@ import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dar
 
 part 'status_bar.describe.dart';
 
-class ImpaktfullUiStatusBar extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiStatusBar extends StatelessWidget
+    with ComponentDescriptorMixin {
   final Widget child;
   final bool isDark;
 
@@ -28,8 +29,10 @@ class ImpaktfullUiStatusBar extends StatelessWidget with ComponentDescriptorMixi
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: isDark
-          ? SystemUiOverlayStyle.dark.copyWith(systemNavigationBarColor: Colors.transparent)
-          : SystemUiOverlayStyle.light.copyWith(systemNavigationBarColor: Colors.transparent),
+          ? SystemUiOverlayStyle.dark
+              .copyWith(systemNavigationBarColor: Colors.transparent)
+          : SystemUiOverlayStyle.light
+              .copyWith(systemNavigationBarColor: Colors.transparent),
       child: child,
     );
   }
