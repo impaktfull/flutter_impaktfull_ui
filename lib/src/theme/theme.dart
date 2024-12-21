@@ -20,7 +20,7 @@ export 'theme_configurator.dart';
 export 'theme_default.dart';
 
 class ImpaktfullUiTheme {
-  static const _packageName = 'impaktfull_ui_2';
+  static const _packageName = 'impaktfull_ui';
 
   final String? label;
   final ImpaktfullUiAssetTheme assets;

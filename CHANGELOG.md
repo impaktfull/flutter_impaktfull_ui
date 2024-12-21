@@ -1,3 +1,9 @@
+# 0.14.1
+
+## Fix
+
+- Fixed the package name in the theme use `impaktfull_ui` instead of `impaktfull_ui_2`
+
 # 0.14.0
 
 ## Feat
