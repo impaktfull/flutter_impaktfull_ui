@@ -36,6 +36,7 @@ export 'src/components/command_menu/command_menu_window.dart';
 export 'src/components/confetti/confetti.dart';
 export 'src/components/divider/divider.dart';
 export 'src/components/dropdown/dropdown.dart';
+export 'src/components/date_input_field/date_input_field.dart';
 export 'src/components/date_picker/date_picker.dart';
 export 'src/components/date_time_picker/date_time_picker.dart';
 export 'src/components/file_picker/file_picker.dart';

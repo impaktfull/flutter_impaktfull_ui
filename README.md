@@ -70,6 +70,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiConfetti
 - ImpaktfullUiCommandMenu
   - ImpaktfullUiCommandMenu
+- ImpaktfullUiDateInputField
 - ImpaktfullUiDatePicker
   - ImpaktfullUiDatePicker.range
 - ImpaktfullUiDateTimePicker
