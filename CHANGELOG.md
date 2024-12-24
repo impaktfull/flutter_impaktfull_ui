@@ -1,3 +1,9 @@
+# 0.15.0
+
+## Feat
+
+- Added ImpaktfullUiPathRouteObserver to log the routes
+
 # 0.14.1
 
 ## Fix

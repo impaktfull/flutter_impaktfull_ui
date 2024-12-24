@@ -111,6 +111,9 @@ export 'src/components/wysiwyg/wysiwyg.dart';
 /// Models
 export 'src/models/asset.dart';
 
+/// Navigator
+export 'src/navigator/observer/path_route_observer.dart';
+
 /// Theme
 export 'src/theme/theme.dart';
 export 'src/components/theme/theme_builder.dart';
