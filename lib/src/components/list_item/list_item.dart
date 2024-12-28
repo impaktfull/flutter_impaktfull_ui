@@ -18,6 +18,7 @@ class ImpaktfullUiListItem extends StatefulWidget
   final String title;
   final String? subtitle;
   final ImpaktfullUiAsset? leading;
+  final ImpaktfullUiAsset? trailing;
   final VoidCallback? onTap;
   final AsyncCallback? onAsyncTap;
   final ImpaktfullUiListItemType type;
@@ -27,6 +28,7 @@ class ImpaktfullUiListItem extends StatefulWidget
     required this.title,
     this.subtitle,
     this.leading,
+    this.trailing,
     this.onTap,
     this.onAsyncTap,
     this.type = ImpaktfullUiListItemType.neutral,
@@ -72,12 +74,23 @@ class _ImpaktfullUiListItemState extends State<ImpaktfullUiListItem> {
                       ),
                     );
                   }
+                  if (widget.trailing != null) {
+                    return ImpaktfullUiAssetWidget(
+                      asset: widget.trailing,
+                      color: _getIconColor(componentTheme),
+                    );
+                  }
                   return ImpaktfullUiAssetWidget(
                     asset: componentTheme.assets.chevronRight,
                     color: componentTheme.colors.icons,
                   );
                 }
-              : null,
+              : widget.trailing == null
+                  ? null
+                  : (context) => ImpaktfullUiAssetWidget(
+                        asset: widget.trailing,
+                        color: _getIconColor(componentTheme),
+                      ),
         );
       },
     );

@@ -1,3 +1,9 @@
+# 0.16.0
+
+## Feat
+
+- Added ImpaktfullUiListItem.trailing asset
+
 # 0.15.0
 
 ## Feat
