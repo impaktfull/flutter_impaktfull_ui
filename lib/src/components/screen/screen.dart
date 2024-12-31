@@ -13,6 +13,7 @@ class ImpaktfullUiScreen extends StatefulWidget with ComponentDescriptorMixin {
   final String? title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
+  final bool centerTitle;
   final bool isFullScreen;
   final bool canPop;
   final VoidCallback? onPopInvoked;
@@ -33,6 +34,7 @@ class ImpaktfullUiScreen extends StatefulWidget with ComponentDescriptorMixin {
     this.drawer,
     this.isDrawerEnabled = false,
     this.onBackTapped,
+    this.centerTitle = false,
     this.isFullScreen = false,
     this.canPop = true,
     this.onPopInvoked,
@@ -100,6 +102,7 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                               ? null
                               : openDrawer,
                       isDrawerOpen: _isDrawerOpen(context),
+                      centerTitle: widget.centerTitle,
                       isFullScreen: widget.isFullScreen,
                       title: widget.title,
                       subtitle: widget.subtitle,

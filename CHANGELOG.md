@@ -1,3 +1,9 @@
+# 0.19.1
+
+## Fix
+
+- Fix the ImpaktfullUiScreen to expose `centerTitle` to the ImpaktfullUiNavBar
+
 # 0.19.0
 
 ## Feat
