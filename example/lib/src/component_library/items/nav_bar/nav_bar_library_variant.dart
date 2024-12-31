@@ -29,6 +29,18 @@ class NavBarLibraryVariant
       ImpaktfullUiNavBar(
         title: inputs.title.value ?? '',
         subtitle: inputs.subtitle.value ?? '',
+        isFullScreen: inputs.isFullScreen.value ?? false,
+        centerTitle: true,
+        actions: [
+          ImpaktfullUiIconButton(
+            onTap: () => ImpaktfullUiNotification.show(title: 'Add'),
+            asset: theme.assets.icons.add,
+          ),
+        ],
+      ),
+      ImpaktfullUiNavBar(
+        title: inputs.title.value ?? '',
+        subtitle: inputs.subtitle.value ?? '',
         onBackTapped: () => ImpaktfullUiNotification.show(title: 'Go back!'),
         isFullScreen: inputs.isFullScreen.value ?? false,
         actions: [

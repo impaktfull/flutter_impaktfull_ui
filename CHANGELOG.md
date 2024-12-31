@@ -1,3 +1,9 @@
+# 0.19.0
+
+## Feat
+
+- Added ImpaktfullUiNavBar `centerTitle` to center the title when there are actions
+
 # 0.18.1
 
 ## Fix

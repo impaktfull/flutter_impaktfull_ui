@@ -102,22 +102,24 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
                 children: [
                   Stack(
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional.center,
-                        child: Opacity(
-                          opacity: 0.5,
-                          child: Container(
-                            margin: const EdgeInsets.only(top: 8),
-                            decoration: BoxDecoration(
-                              color: componentTheme.colors.handle,
-                              borderRadius:
-                                  componentTheme.dimens.handleBorderRadius,
+                      if (showHandle) ...[
+                        Align(
+                          alignment: AlignmentDirectional.center,
+                          child: Opacity(
+                            opacity: 0.5,
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 8),
+                              decoration: BoxDecoration(
+                                color: componentTheme.colors.handle,
+                                borderRadius:
+                                    componentTheme.dimens.handleBorderRadius,
+                              ),
+                              height: 4,
+                              width: 50,
                             ),
-                            height: 4,
-                            width: 50,
                           ),
                         ),
-                      ),
+                      ],
                       Padding(
                         padding: componentTheme.dimens.padding,
                         child: ImpaktfullUiAutoLayout.horizontal(
