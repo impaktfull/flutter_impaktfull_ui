@@ -1,3 +1,9 @@
+# 0.20.0
+
+## Feat
+
+- Added ImpaktfullUiTheme `fontFamilyDisplay` & `fontFamilyText` to set the font family for the display & text
+
 # 0.19.1
 
 ## Fix

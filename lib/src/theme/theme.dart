@@ -72,6 +72,8 @@ class ImpaktfullUiTheme<T extends Object> {
     BorderRadiusGeometry? borderRadius,
     BorderRadiusGeometry? borderRadiusLarge,
     BorderRadiusGeometry? borderRadiusExtraLarge,
+    String fontFamilyDisplay = 'Ubuntu',
+    String fontFamilyText = 'Geologica',
     String? package = _packageName,
     String? assetSuffix,
     T? customTheme,
@@ -96,6 +98,8 @@ class ImpaktfullUiTheme<T extends Object> {
         borderRadiusExtraLarge: borderRadiusExtraLarge,
         package: package,
         assetSuffix: assetSuffix,
+        fontFamilyDisplay: fontFamilyDisplay,
+        fontFamilyText: fontFamilyText,
         customTheme: customTheme,
       );
 
