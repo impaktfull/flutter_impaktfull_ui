@@ -49,7 +49,12 @@ class ImpaktfullUiSwitchDimensTheme {
   final BorderRadiusGeometry? borderRadius;
   final BorderRadiusGeometry? thumbBorderRadius;
   final double? borderWidth;
+  final double verticalPadding;
+  final double horizontalPadding;
+
   const ImpaktfullUiSwitchDimensTheme({
+    required this.verticalPadding,
+    required this.horizontalPadding,
     this.borderRadius,
     this.thumbBorderRadius,
     this.borderWidth,

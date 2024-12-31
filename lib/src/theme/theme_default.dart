@@ -1136,6 +1136,8 @@ class DefaultTheme {
             borderRadius: dimens.borderRadius,
             thumbBorderRadius: dimens.borderRadiusExtraSmall,
             borderWidth: 0,
+            verticalPadding: 4,
+            horizontalPadding: 20,
           ),
           durations: ImpaktfullUiSwitchDurationsTheme(
             selected: durations.short,

@@ -1,3 +1,10 @@
+
+# 0.18.0
+
+## Feat
+
+- Added ImpaktfullUiSwitch `verticalPadding` & `horizontalPadding` to control the padding of the switch
+
 # 0.17.1
 
 ## Fix

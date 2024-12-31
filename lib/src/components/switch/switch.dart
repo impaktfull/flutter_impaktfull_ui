@@ -53,10 +53,14 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
               ),
               child: AnimatedPadding(
                 padding: EdgeInsets.only(
-                  top: 4,
-                  bottom: 4,
-                  right: value ? 4 : 20,
-                  left: value ? 20 : 4,
+                  top: componentTheme.dimens.verticalPadding,
+                  bottom: componentTheme.dimens.verticalPadding,
+                  right: value
+                      ? componentTheme.dimens.verticalPadding
+                      : componentTheme.dimens.horizontalPadding,
+                  left: value
+                      ? componentTheme.dimens.horizontalPadding
+                      : componentTheme.dimens.verticalPadding,
                 ),
                 curve: Curves.easeInOut,
                 duration: componentTheme.durations.selected,
