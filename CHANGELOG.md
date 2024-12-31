@@ -1,3 +1,9 @@
+# 0.16.1
+
+## Fix
+
+- ImpaktfullUiBottomNavigation now has a center alignment
+
 # 0.16.0
 
 ## Feat

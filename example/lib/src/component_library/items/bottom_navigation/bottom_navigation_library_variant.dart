@@ -28,11 +28,29 @@ class BottomNavigationLibraryVariant
             onTap: () => inputs.selectedIndex.updateState(1),
             isSelected: inputs.selectedIndex.value == 1,
           ),
+          ImpaktfullUiTouchFeedback(
+            onTap: () {},
+            color: theme.colors.accent,
+            borderRadius: theme.dimens.borderRadiusCircle,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: ImpaktfullUiAssetWidget(
+                asset: theme.assets.icons.add,
+                color: theme.colors.textOnAccent,
+              ),
+            ),
+          ),
+          ImpaktfullUiBottomNavigationItem(
+            asset: theme.assets.icons.list,
+            label: 'List',
+            onTap: () => inputs.selectedIndex.updateState(2),
+            isSelected: inputs.selectedIndex.value == 2,
+          ),
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.settings,
             label: 'Settings',
-            onTap: () => inputs.selectedIndex.updateState(2),
-            isSelected: inputs.selectedIndex.value == 2,
+            onTap: () => inputs.selectedIndex.updateState(3),
+            isSelected: inputs.selectedIndex.value == 3,
             badgeShow: true,
             badgeText: '3',
           ),
@@ -53,6 +71,23 @@ class BottomNavigationLibraryVariant
             label: 'Search',
             onTap: () => inputs.selectedIndex.updateState(1),
             isSelected: inputs.selectedIndex.value == 1,
+          ),
+          ImpaktfullUiTouchFeedback(
+            onTap: () {},
+            color: theme.colors.accent,
+            borderRadius: theme.dimens.borderRadiusCircle,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: ImpaktfullUiAssetWidget(
+                asset: theme.assets.icons.add,
+                color: theme.colors.textOnAccent,
+              ),
+            ),
+          ),
+          ImpaktfullUiBottomNavigationItem(
+            asset: theme.assets.icons.list,
+            onTap: () => inputs.selectedIndex.updateState(2),
+            isSelected: inputs.selectedIndex.value == 2,
           ),
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.settings,
