@@ -19,7 +19,7 @@ export 'textstyle_theme.dart';
 export 'theme_configurator.dart';
 export 'theme_default.dart';
 
-class ImpaktfullUiTheme {
+class ImpaktfullUiTheme<T extends Object> {
   static const _packageName = 'impaktfull_ui';
 
   final String? label;
@@ -30,6 +30,7 @@ class ImpaktfullUiTheme {
   final ImpaktfullUiDurationTheme durations;
   final ImpaktfullUiShadowsTheme shadows;
   final ImpaktfullUiComponentsTheme components;
+  final T? customTheme;
 
   const ImpaktfullUiTheme({
     required this.label,
@@ -40,9 +41,10 @@ class ImpaktfullUiTheme {
     required this.durations,
     required this.shadows,
     required this.components,
+    this.customTheme,
   });
 
-  static ImpaktfullUiTheme custom({
+  static ImpaktfullUiTheme<T> custom<T extends Object>({
     String? label,
     required Color primary,
     required Color accent,
@@ -62,8 +64,9 @@ class ImpaktfullUiTheme {
     BorderRadiusGeometry? borderRadiusExtraLarge,
     String? package = _packageName,
     String? assetSuffix,
+    T? customTheme,
   }) =>
-      DefaultTheme.withMinimalChanges(
+      DefaultTheme.withMinimalChanges<T>(
         label: label,
         primary: primary,
         accent: accent,
@@ -83,13 +86,14 @@ class ImpaktfullUiTheme {
         borderRadiusExtraLarge: borderRadiusExtraLarge,
         package: package,
         assetSuffix: assetSuffix,
+        customTheme: customTheme,
       );
 
-  static ImpaktfullUiTheme getDefault({
+  static ImpaktfullUiTheme<T> getDefault<T extends Object>({
     String? package = _packageName,
     String? assetSuffix,
   }) =>
-      DefaultTheme.withMinimalChanges(
+      DefaultTheme.withMinimalChanges<T>(
         label: 'Impaktfull Theme',
         primary: const Color(0xFF1A1A1A),
         accent: const Color(0xFF7d64f2),
@@ -97,10 +101,18 @@ class ImpaktfullUiTheme {
         package: package,
       );
 
-  static ImpaktfullUiTheme of(BuildContext context) =>
-      ImpaktfullUiThemeConfigurator.of(context).theme;
+  static ImpaktfullUiTheme<T> of<T extends Object>(BuildContext context) {
+    final theme = ImpaktfullUiThemeConfigurator.of(context).theme;
+    if (theme.customTheme == null) {
+      return theme as ImpaktfullUiTheme<T>;
+    }
+    if (theme.customTheme is T) {
+      return theme as ImpaktfullUiTheme<T>;
+    }
+    throw Exception('Custom theme is not of type $T');
+  }
 
-  ImpaktfullUiTheme copyWith({
+  ImpaktfullUiTheme<T> copyWith({
     String? label,
     ImpaktfullUiAssetTheme? assets,
     ImpaktfullUiColorTheme? colors,
@@ -109,8 +121,9 @@ class ImpaktfullUiTheme {
     ImpaktfullUiDurationTheme? durations,
     ImpaktfullUiShadowsTheme? shadows,
     ImpaktfullUiComponentsTheme? components,
+    T? customTheme,
   }) =>
-      ImpaktfullUiTheme(
+      ImpaktfullUiTheme<T>(
         label: label ?? this.label,
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
@@ -119,5 +132,6 @@ class ImpaktfullUiTheme {
         durations: durations ?? this.durations,
         shadows: shadows ?? this.shadows,
         components: components ?? this.components,
+        customTheme: customTheme ?? this.customTheme,
       );
 }

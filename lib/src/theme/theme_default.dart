@@ -87,7 +87,7 @@ import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class DefaultTheme {
-  static ImpaktfullUiTheme withMinimalChanges({
+  static ImpaktfullUiTheme<T> withMinimalChanges<T extends Object>({
     required Color primary,
     required Color accent,
     required Color secondary,
@@ -117,6 +117,7 @@ class DefaultTheme {
     String fontFamilyText = 'Geologica',
     String? package,
     String? assetSuffix,
+    T? customTheme,
   }) {
     final colors = ImpaktfullUiColorTheme(
       primary: primary,
@@ -227,6 +228,7 @@ class DefaultTheme {
     final durations = ImpaktfullUiDurationTheme.getDefault();
     return ImpaktfullUiTheme(
       label: label,
+      customTheme: customTheme,
       assets: assets,
       colors: colors,
       textStyles: textStyles,

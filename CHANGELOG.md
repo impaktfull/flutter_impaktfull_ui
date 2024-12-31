@@ -1,3 +1,9 @@
+# 0.17.0
+
+## Feat
+
+- Added ImpaktfullUiTheme.customTheme to allow custom themes (through generics so it can be anything you want)
+
 # 0.16.1
 
 ## Fix
