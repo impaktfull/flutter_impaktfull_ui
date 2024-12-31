@@ -30,7 +30,17 @@ class ImpaktfullUiTheme<T extends Object> {
   final ImpaktfullUiDurationTheme durations;
   final ImpaktfullUiShadowsTheme shadows;
   final ImpaktfullUiComponentsTheme components;
-  final T? customTheme;
+  final T? _customTheme;
+
+  T get customTheme {
+    final theme = customThemeOrNull;
+    if (theme == null) {
+      throw Exception('customTheme is not set on the ImpaktfullUiTheme');
+    }
+    return theme;
+  }
+
+  T? get customThemeOrNull => _customTheme;
 
   const ImpaktfullUiTheme({
     required this.label,
@@ -41,8 +51,8 @@ class ImpaktfullUiTheme<T extends Object> {
     required this.durations,
     required this.shadows,
     required this.components,
-    this.customTheme,
-  });
+    T? customTheme,
+  }) : _customTheme = customTheme;
 
   static ImpaktfullUiTheme<T> custom<T extends Object>({
     String? label,
@@ -103,7 +113,7 @@ class ImpaktfullUiTheme<T extends Object> {
 
   static ImpaktfullUiTheme<T> of<T extends Object>(BuildContext context) {
     final theme = ImpaktfullUiThemeConfigurator.of(context).theme;
-    if (theme.customTheme == null) {
+    if (theme.customThemeOrNull == null) {
       return theme as ImpaktfullUiTheme<T>;
     }
     if (theme.customTheme is T) {

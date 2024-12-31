@@ -1,3 +1,9 @@
+# 0.17.1
+
+## Fix
+
+- Make sure the customTheme is not null when calling the getter to simplify the usage of the custom theme
+
 # 0.17.0
 
 ## Feat
