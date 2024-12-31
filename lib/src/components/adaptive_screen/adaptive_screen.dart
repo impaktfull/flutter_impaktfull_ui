@@ -47,52 +47,62 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
     return ImpaktfullUiScreen(
       drawer: drawer,
       child: Builder(
-        builder: (context) => ClipRect(
-          child: ImpaktfullUiAutoLayout.vertical(
-            children: [
-              ImpaktfullUiAdaptiveNavBar(
-                title: title,
-                subtitle: subtitle,
-                badge: badge,
-                bottomChild: headerBottomChild,
-                onBackTapped: onBackTapped,
-                isDrawerOpen: isDrawerEnabled
-                    ? ImpaktfullUiScreen.of(context).isDrawerOpen
-                    : false,
-                onDrawerTapped: isDrawerEnabled
-                    ? ImpaktfullUiScreen.of(context).openDrawer
-                    : null,
-                actions: actions,
-              ),
-              Expanded(
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Stack(
-                    alignment: fabAlignment,
-                    children: [
-                      Positioned.fill(
-                        child: SizedBox(
-                          child: ImpaktfullUiResponsiveLayout(
-                            small: builder,
-                            medium: mediumBuilder,
-                            large: largeBuilder,
-                            extraLarge: extraLargeBuilder,
+        builder: (context) {
+          final hasNavbar = onBackTapped != null ||
+              title != null ||
+              subtitle != null ||
+              actions.isNotEmpty;
+          return ClipRect(
+            child: ImpaktfullUiAutoLayout.vertical(
+              children: [
+                ImpaktfullUiAdaptiveNavBar(
+                  title: title,
+                  subtitle: subtitle,
+                  badge: badge,
+                  bottomChild: headerBottomChild,
+                  onBackTapped: onBackTapped,
+                  isDrawerOpen: isDrawerEnabled
+                      ? ImpaktfullUiScreen.of(context).isDrawerOpen
+                      : false,
+                  onDrawerTapped: isDrawerEnabled
+                      ? ImpaktfullUiScreen.of(context).openDrawer
+                      : null,
+                  actions: actions,
+                ),
+                Expanded(
+                  child: MediaQuery.removePadding(
+                    context: context,
+                    removeTop: hasNavbar,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Stack(
+                        alignment: fabAlignment,
+                        children: [
+                          Positioned.fill(
+                            child: SizedBox(
+                              child: ImpaktfullUiResponsiveLayout(
+                                small: builder,
+                                medium: mediumBuilder,
+                                large: largeBuilder,
+                                extraLarge: extraLargeBuilder,
+                              ),
+                            ),
                           ),
-                        ),
+                          if (fab != null) ...[
+                            Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: fab!,
+                            ),
+                          ],
+                        ],
                       ),
-                      if (fab != null) ...[
-                        Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: fab!,
-                        ),
-                      ],
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

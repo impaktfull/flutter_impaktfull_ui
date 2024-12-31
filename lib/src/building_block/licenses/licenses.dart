@@ -104,31 +104,29 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
         spacing: 8,
         isLoading: _isLoading,
         padding: const EdgeInsets.all(16),
-        itemBuilder: (context, item, index) {
-          return ImpaktfullUiCard(
-            padding: EdgeInsets.zero,
-            child: ImpaktfullUiAccordion(
-              title: item.name,
-              expanded: _expandedSet.contains(item),
-              onExpandedChanged: (value) => _onExpandedChanged(item),
-              animated: item.licenses.length < 2,
-              expandedBuilder: (context) => ImpaktfullUiAutoLayout.vertical(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ImpaktfullUiDivider(),
-                  Container(
-                    color: theme.colors.canvas,
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(16),
-                    child: ImpaktfullUiMarkdown(
-                      data: item.licenseString,
-                    ),
+        itemBuilder: (context, item, index) => ImpaktfullUiCard(
+          padding: EdgeInsets.zero,
+          child: ImpaktfullUiAccordion(
+            title: item.name,
+            expanded: _expandedSet.contains(item),
+            onExpandedChanged: (value) => _onExpandedChanged(item),
+            animated: item.licenses.length < 2,
+            expandedBuilder: (context) => ImpaktfullUiAutoLayout.vertical(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const ImpaktfullUiDivider(),
+                Container(
+                  color: theme.colors.canvas,
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  child: ImpaktfullUiMarkdown(
+                    data: item.licenseString,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        },
+          ),
+        ),
         noDataLabel: 'No licenses found',
       ),
     );

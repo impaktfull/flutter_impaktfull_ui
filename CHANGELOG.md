@@ -1,3 +1,8 @@
+# 0.18.1
+
+## Fix
+
+- Fix the safe area padding when using the ImpaktfullUiAdaptiveScreen
 
 # 0.18.0
 
