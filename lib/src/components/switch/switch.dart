@@ -84,7 +84,7 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
                     children: [
                       AnimatedOpacity(
                         opacity:
-                            MediaQuery.of(context).accessibleNavigation && value
+                            MediaQuery.accessibleNavigationOf(context) && value
                                 ? 1
                                 : 0,
                         duration: componentTheme.durations.selected,
@@ -96,10 +96,10 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
                         ),
                       ),
                       AnimatedOpacity(
-                        opacity: MediaQuery.of(context).accessibleNavigation &&
-                                !value
-                            ? 1
-                            : 0,
+                        opacity:
+                            MediaQuery.accessibleNavigationOf(context) && !value
+                                ? 1
+                                : 0,
                         duration: componentTheme.durations.selected,
                         curve: Curves.easeInOut,
                         child: ImpaktfullUiAssetWidget(

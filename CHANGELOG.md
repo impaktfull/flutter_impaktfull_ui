@@ -1,3 +1,9 @@
+# 0.21.4
+
+## Fix
+
+- ImpaktfullUiBottomNavigation make removing the top padding configurable
+
 # 0.21.3
 
 ## Fix

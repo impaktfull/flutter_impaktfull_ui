@@ -149,7 +149,7 @@ class _ImpaktfullUiAutoCompleteState<T>
     _overlayKey = GlobalKey<ImpaktfullUiAutoCompleteOverlayState<T>>();
     _overlayEntry = OverlayEntry(
       builder: (context) {
-        final screenSize = MediaQuery.of(context).size;
+        final screenSize = MediaQuery.sizeOf(context);
         final inputFieldRenderBox =
             _inputFieldKey.currentContext?.findRenderObject() as RenderBox?;
         final inputFieldPosition =

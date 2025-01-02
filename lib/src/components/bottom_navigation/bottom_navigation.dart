@@ -11,10 +11,12 @@ part 'bottom_navigation.describe.dart';
 class ImpaktfullUiBottomNavigation extends StatelessWidget
     with ComponentDescriptorMixin {
   final List<Widget> items;
+  final bool removeTop;
   final ImpaktfullUiBottomNavigationTheme? theme;
 
   const ImpaktfullUiBottomNavigation({
     required this.items,
+    this.removeTop = true,
     this.theme,
     super.key,
   });
@@ -32,6 +34,7 @@ class ImpaktfullUiBottomNavigation extends StatelessWidget
           ],
         ),
         child: SafeArea(
+          top: removeTop,
           child: ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: items,

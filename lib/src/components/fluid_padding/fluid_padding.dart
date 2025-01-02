@@ -32,7 +32,7 @@ class ImpaktfullUiFluidPadding extends StatelessWidget
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiFluidPaddingTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
-        final width = MediaQuery.of(context).size.width;
+        final width = MediaQuery.sizeOf(context).width;
         final breakPoints =
             this.breakPoints ?? componentTheme.dimens.breakPoints;
         final breakPoint = breakPoints

@@ -36,7 +36,7 @@ class ImpaktfullUiBottomActions extends StatelessWidget
               boxShadow: componentTheme.shadows.shadow,
             ),
             padding: componentTheme.dimens.padding
-                .add(MediaQuery.of(context).padding),
+                .add(MediaQuery.paddingOf(context)),
             child: ImpaktfullUiAutoLayout.vertical(
               spacing: componentTheme.dimens.spacing,
               children: children,

@@ -87,7 +87,7 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                   ? null
                   : ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width - 64,
+                        maxWidth: MediaQuery.sizeOf(context).width - 64,
                       ),
                       child: widget.drawer,
                     ),

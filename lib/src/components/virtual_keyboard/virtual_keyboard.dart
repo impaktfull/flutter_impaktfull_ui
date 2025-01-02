@@ -84,9 +84,9 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget
       enableDrag: false,
       isScrollControlled: true,
       constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height * 0.4,
-        maxWidth: MediaQuery.of(context).size.width,
-        minWidth: MediaQuery.of(context).size.width,
+        maxHeight: MediaQuery.sizeOf(context).height * 0.4,
+        maxWidth: MediaQuery.sizeOf(context).width,
+        minWidth: MediaQuery.sizeOf(context).width,
       ),
       builder: (context) => Container(
         color: Colors.white,
