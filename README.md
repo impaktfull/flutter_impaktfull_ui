@@ -52,6 +52,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiAutoLayout
 - ImpaktfullUiAvatar
 - ImpaktfullUiBadge
+- ImpaktfullUiBottomActions
 - ImpaktfullUiBottomNavigation
   - ImpaktfullUiBottomNavigationItem
 - ImpaktfullUiBottomSheet

@@ -3,6 +3,7 @@ import 'package:impaktfull_ui/src/components/accordion/accordion.dart';
 import 'package:impaktfull_ui/src/components/auto_complete/auto_complete.dart';
 import 'package:impaktfull_ui/src/components/avatar/avatar.dart';
 import 'package:impaktfull_ui/src/components/badge/badge.dart';
+import 'package:impaktfull_ui/src/components/bottom_actions/bottom_actions.dart';
 import 'package:impaktfull_ui/src/components/bottom_navigation/bottom_navigation.dart';
 import 'package:impaktfull_ui/src/components/bottom_navigation_item/bottom_navigation_item.dart';
 import 'package:impaktfull_ui/src/components/bottom_sheet/bottom_sheet.dart';
@@ -299,6 +300,14 @@ class DefaultTheme {
             medium: textStyles.onCard.text.small,
             large: textStyles.onCard.text.small,
           ),
+        ),
+        bottomActions: ImpaktfullUiBottomActionsTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         bottomNavigation: ImpaktfullUiBottomNavigationTheme.getDefault(
           assets: assets,

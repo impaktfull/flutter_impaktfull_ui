@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/accordion/accordion.dart';
 import 'package:impaktfull_ui/src/components/avatar/avatar.dart';
 import 'package:impaktfull_ui/src/components/badge/badge.dart';
+import 'package:impaktfull_ui/src/components/bottom_actions/bottom_actions.dart';
 import 'package:impaktfull_ui/src/components/bottom_navigation/bottom_navigation.dart';
 import 'package:impaktfull_ui/src/components/bottom_navigation_item/bottom_navigation_item.dart';
 import 'package:impaktfull_ui/src/components/bottom_sheet/bottom_sheet.dart';
@@ -89,6 +90,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiAvatarTheme avatar;
   final ImpaktfullUiAutoCompleteTheme autoComplete;
   final ImpaktfullUiBadgeTheme badge;
+  final ImpaktfullUiBottomActionsTheme bottomActions;
   final ImpaktfullUiBottomNavigationTheme bottomNavigation;
   final ImpaktfullUiBottomNavigationItemTheme bottomNavigationItem;
   final ImpaktfullUiBottomSheetTheme bottomSheet;
@@ -171,6 +173,7 @@ class ImpaktfullUiComponentsTheme {
     required this.avatar,
     required this.autoComplete,
     required this.badge,
+    required this.bottomActions,
     required this.bottomNavigation,
     required this.bottomNavigationItem,
     required this.bottomSheet,
@@ -254,6 +257,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiAvatarTheme? avatar,
     ImpaktfullUiAutoCompleteTheme? autoComplete,
     ImpaktfullUiBadgeTheme? badge,
+    ImpaktfullUiBottomActionsTheme? bottomActions,
     ImpaktfullUiBottomNavigationTheme? bottomNavigation,
     ImpaktfullUiBottomNavigationItemTheme? bottomNavigationItem,
     ImpaktfullUiBottomSheetTheme? bottomSheet,
@@ -336,6 +340,7 @@ class ImpaktfullUiComponentsTheme {
         avatar: avatar ?? this.avatar,
         autoComplete: autoComplete ?? this.autoComplete,
         badge: badge ?? this.badge,
+        bottomActions: bottomActions ?? this.bottomActions,
         bottomNavigation: bottomNavigation ?? this.bottomNavigation,
         bottomNavigationItem: bottomNavigationItem ?? this.bottomNavigationItem,
         bottomSheet: bottomSheet ?? this.bottomSheet,
@@ -424,6 +429,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiAutoCompleteTheme.of(context) as T;
     } else if (T == ImpaktfullUiBadgeTheme) {
       return ImpaktfullUiBadgeTheme.of(context) as T;
+    } else if (T == ImpaktfullUiBottomActionsTheme) {
+      return ImpaktfullUiBottomActionsTheme.of(context) as T;
     } else if (T == ImpaktfullUiBottomNavigationTheme) {
       return ImpaktfullUiBottomNavigationTheme.of(context) as T;
     } else if (T == ImpaktfullUiBottomNavigationItemTheme) {

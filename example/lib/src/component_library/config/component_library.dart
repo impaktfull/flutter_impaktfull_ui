@@ -6,6 +6,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/auto_complete/
 import 'package:impaktfull_ui_example/src/component_library/items/autolayout/autolayout_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/avatar/avatar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/badge/badge_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/bottom_actions/bottom_actions_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/bottom_navigation/bottom_navigation_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/bottom_navigation_item/bottom_navigation_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/bottomsheet/bottomsheet_library_item.dart';
@@ -99,6 +100,7 @@ class ComponentLibrary {
     const AutoLayoutLibraryItem(),
     const AvatarLibraryItem(),
     const BadgeLibraryItem(),
+    const BottomActionsLibraryItem(),
     const BottomNavigationItemLibraryItem(),
     const BottomNavigationLibraryItem(),
     const BottomSheetLibraryItem(),

@@ -1,3 +1,9 @@
+# 0.21.0
+
+## Feat
+
+- Added ImpaktfullUiBottomActions
+
 # 0.20.0
 
 ## Feat

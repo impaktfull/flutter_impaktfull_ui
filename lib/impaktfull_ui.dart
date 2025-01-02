@@ -19,6 +19,7 @@ export 'src/components/auto_complete/auto_complete.dart';
 export 'src/components/auto_layout/auto_layout.dart';
 export 'src/components/avatar/avatar.dart';
 export 'src/components/button/button.dart';
+export 'src/components/bottom_actions/bottom_actions.dart';
 export 'src/components/bottom_navigation/bottom_navigation.dart';
 export 'src/components/bottom_navigation_item/bottom_navigation_item.dart';
 export 'src/components/bottom_sheet/bottom_sheet.dart';
