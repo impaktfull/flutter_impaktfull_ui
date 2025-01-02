@@ -140,7 +140,6 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                     MediaQuery.removePadding(
                       context: context,
                       removeTop: hasNavbar,
-                      removeBottom: hasBottomChild,
                       child: widget.bottomChild!,
                     ),
                   ],

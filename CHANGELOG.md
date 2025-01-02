@@ -1,3 +1,9 @@
+# 0.21.2
+
+## Fix
+
+- Fix the removal of the padding on the ImpaktfullUiScreen when using a bottom child
+
 # 0.21.1
 
 ## Fix
