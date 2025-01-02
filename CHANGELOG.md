@@ -1,3 +1,9 @@
+# 0.21.3
+
+## Fix
+
+- Cleanup of the ImpaktfullUiBottomNavigation by removing the top padding config
+
 # 0.21.2
 
 ## Fix
