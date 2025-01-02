@@ -34,7 +34,7 @@ class ImpaktfullUiBottomNavigation extends StatelessWidget
           ],
         ),
         child: SafeArea(
-          top: removeTop,
+          top: !removeTop,
           child: ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: items,
