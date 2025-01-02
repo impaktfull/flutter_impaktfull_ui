@@ -1,3 +1,9 @@
+# 0.21.1
+
+## Fix
+
+- Fixed the cursor color of the ImpaktfullUiInputField
+
 # 0.21.0
 
 ## Feat

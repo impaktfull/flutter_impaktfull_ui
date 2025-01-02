@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
@@ -22,7 +24,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context) => ImpaktfullUiGridView.builder(
         padding: const EdgeInsets.all(16),
         spacing: 8,
-        crossAxisCount: (context, config) => config.maxWidth ~/ 400,
+        crossAxisCount: (context, config) => max(1, config.maxWidth ~/ 400),
         itemAspectRatio: (context, config) => 16 / 12,
         noDataLabel: 'No Actions',
         items: [

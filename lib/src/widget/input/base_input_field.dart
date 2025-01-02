@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
@@ -96,39 +97,44 @@ class _BaseInputFieldState extends State<BaseInputField> {
             selectionHandleColor: componentTheme.colors.selectionHandle,
           ),
         ),
-        child: TextField(
-          focusNode: widget.focusNode,
-          controller: _controller,
-          scrollPadding: EdgeInsets.zero,
-          cursorColor: componentTheme.colors.cursor,
-          style: componentTheme.textStyles.text,
-          onChanged: _debouncedOnChanged,
-          obscureText: widget.obscureText,
-          onSubmitted: widget.onSubmit,
-          textInputAction: widget.multiline
-              ? TextInputAction.newline
-              : widget.textInputAction,
-          keyboardType:
-              widget.multiline ? TextInputType.multiline : widget.textInputType,
-          maxLines: widget.multiline ? widget.maxLines : 1,
-          minLines: widget.multiline ? 3 : 1,
-          textAlign: widget.textAlign,
-          autofillHints: widget.autofill,
-          readOnly: widget.readOnly,
-          decoration: InputDecoration(
-            isDense: true,
-            hintText: widget.placeholder,
-            focusColor: Colors.transparent,
-            hintStyle: componentTheme.textStyles.placeholder,
-            border: OutlineInputBorder(
-              borderRadius: componentTheme.dimens.borderRadius.value,
+        child: CupertinoTheme(
+          data: CupertinoTheme.of(context).copyWith(
+            primaryColor: componentTheme.colors.selectionHandle,
+          ),
+          child: TextField(
+            focusNode: widget.focusNode,
+            controller: _controller,
+            scrollPadding: EdgeInsets.zero,
+            style: componentTheme.textStyles.text,
+            onChanged: _debouncedOnChanged,
+            obscureText: widget.obscureText,
+            onSubmitted: widget.onSubmit,
+            textInputAction: widget.multiline
+                ? TextInputAction.newline
+                : widget.textInputAction,
+            keyboardType: widget.multiline
+                ? TextInputType.multiline
+                : widget.textInputType,
+            maxLines: widget.multiline ? widget.maxLines : 1,
+            minLines: widget.multiline ? 3 : 1,
+            textAlign: widget.textAlign,
+            autofillHints: widget.autofill,
+            readOnly: widget.readOnly,
+            decoration: InputDecoration(
+              isDense: true,
+              hintText: widget.placeholder,
+              focusColor: Colors.transparent,
+              hintStyle: componentTheme.textStyles.placeholder,
+              border: OutlineInputBorder(
+                borderRadius: componentTheme.dimens.borderRadius.value,
+              ),
+              errorBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+              focusedErrorBorder: InputBorder.none,
+              contentPadding: const EdgeInsets.symmetric(vertical: 12),
             ),
-            errorBorder: InputBorder.none,
-            enabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none,
-            disabledBorder: InputBorder.none,
-            focusedErrorBorder: InputBorder.none,
-            contentPadding: const EdgeInsets.symmetric(vertical: 12),
           ),
         ),
       ),
