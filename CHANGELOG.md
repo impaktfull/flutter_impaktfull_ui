@@ -1,3 +1,9 @@
+# 0.21.6
+
+## Fix
+
+- ImpaktfullUiScreen should consider the safearea padding when adding the fab
+
 # 0.21.5
 
 ## Fix

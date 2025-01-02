@@ -117,21 +117,24 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                         context: context,
                         removeTop: hasNavbar,
                         removeBottom: hasBottomChild,
-                        child: Stack(
-                          alignment: widget.fabAlignment,
-                          children: [
-                            Positioned.fill(
-                              child: SizedBox(
-                                child: widget.child,
+                        child: Builder(
+                          builder: (context) => Stack(
+                            alignment: widget.fabAlignment,
+                            children: [
+                              Positioned.fill(
+                                child: SizedBox(
+                                  child: widget.child,
+                                ),
                               ),
-                            ),
-                            if (widget.fab != null) ...[
-                              Padding(
-                                padding: const EdgeInsets.all(16),
-                                child: widget.fab!,
-                              ),
+                              if (widget.fab != null) ...[
+                                Padding(
+                                  padding: const EdgeInsets.all(16)
+                                      .add(MediaQuery.paddingOf(context)),
+                                  child: widget.fab!,
+                                ),
+                              ],
                             ],
-                          ],
+                          ),
                         ),
                       ),
                     ),
