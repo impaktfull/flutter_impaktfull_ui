@@ -1,3 +1,9 @@
+# 0.21.8
+
+## Fix
+
+- License update to 2025
+
 # 0.21.7
 
 ## Fix
@@ -124,7 +130,7 @@
 
 - Added ImpaktfullStatusBar
 
-# Version bump
+## Version bump
 
 - Version bump figma sync
 
