@@ -47,6 +47,7 @@ import 'package:impaktfull_ui/src/components/notification_badge/notification_bad
 import 'package:impaktfull_ui/src/components/number_input/number_input.dart';
 import 'package:impaktfull_ui/src/components/option_selector/option_selector.dart';
 import 'package:impaktfull_ui/src/components/pagination/pagination.dart';
+import 'package:impaktfull_ui/src/components/password_strength_indicator/password_strength_indicator.dart';
 import 'package:impaktfull_ui/src/components/pin_code/pin_code.dart';
 import 'package:impaktfull_ui/src/components/placeholder_state/placeholder_state.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator_style.dart';
@@ -864,6 +865,15 @@ class DefaultTheme {
           textStyles: ImpaktfullUiPaginationTextStyleTheme(
             text: textStyles.onCard.text.small,
           ),
+        ),
+        passwordStrengthIndicator:
+            ImpaktfullUiPasswordStrengthIndicatorTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         pinCode: ImpaktfullUiPinCodeTheme(
           assets: ImpaktfullUiPinCodeAssetsTheme(

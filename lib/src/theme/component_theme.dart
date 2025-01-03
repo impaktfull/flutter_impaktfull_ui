@@ -42,6 +42,7 @@ import 'package:impaktfull_ui/src/components/notification/notification.dart';
 import 'package:impaktfull_ui/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui/src/components/option_selector/option_selector.dart';
 import 'package:impaktfull_ui/src/components/pagination/pagination.dart';
+import 'package:impaktfull_ui/src/components/password_strength_indicator/password_strength_indicator.dart';
 import 'package:impaktfull_ui/src/components/pin_code/pin_code.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator_style.dart';
 import 'package:impaktfull_ui/src/components/radio_button/radio_button.dart';
@@ -134,6 +135,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiNumberInputTheme numberInput;
   final ImpaktfullUiOptionSelectorTheme optionSelector;
   final ImpaktfullUiPaginationTheme pagination;
+  final ImpaktfullUiPasswordStrengthIndicatorTheme passwordStrengthIndicator;
   final ImpaktfullUiPinCodeTheme pinCode;
   final ImpaktfullUiPlaceholderStateTheme placeholderState;
   final ImpaktfullUiProgressIndicatorTheme progressIndicator;
@@ -217,6 +219,7 @@ class ImpaktfullUiComponentsTheme {
     required this.numberInput,
     required this.optionSelector,
     required this.pagination,
+    required this.passwordStrengthIndicator,
     required this.pinCode,
     required this.placeholderState,
     required this.progressIndicator,
@@ -301,6 +304,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiNumberInputTheme? numberInput,
     ImpaktfullUiOptionSelectorTheme? optionSelector,
     ImpaktfullUiPaginationTheme? pagination,
+    ImpaktfullUiPasswordStrengthIndicatorTheme? passwordStrengthIndicator,
     ImpaktfullUiPinCodeTheme? pinCode,
     ImpaktfullUiPlaceholderStateTheme? placeholderState,
     ImpaktfullUiProgressIndicatorTheme? progressIndicator,
@@ -384,6 +388,8 @@ class ImpaktfullUiComponentsTheme {
         numberInput: numberInput ?? this.numberInput,
         optionSelector: optionSelector ?? this.optionSelector,
         pagination: pagination ?? this.pagination,
+        passwordStrengthIndicator:
+            passwordStrengthIndicator ?? this.passwordStrengthIndicator,
         pinCode: pinCode ?? this.pinCode,
         placeholderState: placeholderState ?? this.placeholderState,
         progressIndicator: progressIndicator ?? this.progressIndicator,
@@ -519,6 +525,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiProgressIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiPaginationTheme) {
       return ImpaktfullUiPaginationTheme.of(context) as T;
+    } else if (T == ImpaktfullUiPasswordStrengthIndicatorTheme) {
+      return ImpaktfullUiPasswordStrengthIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiPinCodeTheme) {
       return ImpaktfullUiPinCodeTheme.of(context) as T;
     } else if (T == ImpaktfullUiPlaceholderStateTheme) {

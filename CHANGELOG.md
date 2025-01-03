@@ -1,3 +1,9 @@
+# 0.23.0
+
+## Feat
+
+- Added ImpaktfullUiPasswordStrengthIndicator
+
 # 0.22.0
 
 ## Feat
