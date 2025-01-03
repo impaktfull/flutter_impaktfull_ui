@@ -1,3 +1,9 @@
+# 0.21.7
+
+## Fix
+
+- ImpaktfullUiNavBar padding is now based on leading & trailing actions instead of isFullScreen
+
 # 0.21.6
 
 ## Fix

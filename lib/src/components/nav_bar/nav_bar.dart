@@ -94,8 +94,8 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
               children: [
                 Container(
                   padding: EdgeInsetsDirectional.only(
-                    start: isFullScreen || onBackTapped == null ? 16 : 6,
-                    end: !isFullScreen || onBackTapped == null ? 16 : 6,
+                    start: leadingActions.isEmpty ? 16 : 6,
+                    end: trailingActions.isEmpty ? 16 : 6,
                     top: 4,
                     bottom: 4,
                   ),
