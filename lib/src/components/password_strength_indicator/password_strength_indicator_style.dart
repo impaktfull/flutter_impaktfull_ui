@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiPasswordStrengthIndicatorTheme
@@ -27,9 +28,11 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
       ImpaktfullUiPasswordStrengthIndicatorTheme(
-        assets: const ImpaktfullUiPasswordStrengthIndicatorAssetsTheme(),
+        assets: ImpaktfullUiPasswordStrengthIndicatorAssetsTheme(
+          leadingRequerement: assets.icons.closeCircle,
+          leadingRequerementIsMet: assets.icons.checkCircle,
+        ),
         colors: ImpaktfullUiPasswordStrengthIndicatorColorTheme(
-          requirement: colors.text,
           strengthIndicators: [
             colors.error,
             colors.warning,
@@ -37,6 +40,8 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
             colors.success,
           ],
           strengthIndicatorBackground: colors.card2,
+          requirementAsset: colors.text,
+          requirementAssetIsMet: colors.success,
         ),
         dimens: ImpaktfullUiPasswordStrengthIndicatorDimensTheme(
           spacing: 8,
@@ -52,18 +57,26 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorAssetsTheme {
-  const ImpaktfullUiPasswordStrengthIndicatorAssetsTheme();
+  final ImpaktfullUiAsset? leadingRequerement;
+  final ImpaktfullUiAsset? leadingRequerementIsMet;
+
+  const ImpaktfullUiPasswordStrengthIndicatorAssetsTheme({
+    required this.leadingRequerement,
+    required this.leadingRequerementIsMet,
+  });
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorColorTheme {
-  final Color requirement;
   final List<Color> strengthIndicators;
   final Color strengthIndicatorBackground;
+  final Color requirementAsset;
+  final Color requirementAssetIsMet;
 
   const ImpaktfullUiPasswordStrengthIndicatorColorTheme({
-    required this.requirement,
     required this.strengthIndicators,
     required this.strengthIndicatorBackground,
+    required this.requirementAsset,
+    required this.requirementAssetIsMet,
   });
 }
 

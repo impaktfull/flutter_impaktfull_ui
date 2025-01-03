@@ -41,18 +41,22 @@ class ImpaktfullUiAssetTheme {
               arrowDown: ImpaktfullUiAsset.icon(PhosphorIcons.arrowDown()),
               backspace: ImpaktfullUiAsset.icon(PhosphorIcons.backspace()),
               check: ImpaktfullUiAsset.icon(PhosphorIcons.check()),
+              checkCircle: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
               chevronDown: ImpaktfullUiAsset.icon(PhosphorIcons.caretDown()),
               chevronLeft: ImpaktfullUiAsset.icon(PhosphorIcons.caretLeft()),
               chevronRight: ImpaktfullUiAsset.icon(PhosphorIcons.caretRight()),
               chevronUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
               circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle()),
               close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
+              closeCircle: ImpaktfullUiAsset.icon(PhosphorIcons.xCircle()),
               cloudDownload:
                   ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown()),
               cloudUpload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowUp()),
               confetti: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
               copy: ImpaktfullUiAsset.icon(PhosphorIcons.copy()),
               delete: ImpaktfullUiAsset.icon(PhosphorIcons.trashSimple()),
+              dot: ImpaktfullUiAsset.icon(
+                  PhosphorIcons.dotOutline(PhosphorIconsStyle.fill)),
               edit: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
               error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
               file: ImpaktfullUiAsset.icon(PhosphorIcons.file()),
@@ -172,16 +176,19 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset arrowDown;
   final ImpaktfullUiAsset backspace;
   final ImpaktfullUiAsset check;
+  final ImpaktfullUiAsset checkCircle;
   final ImpaktfullUiAsset chevronDown;
   final ImpaktfullUiAsset chevronLeft;
   final ImpaktfullUiAsset chevronRight;
   final ImpaktfullUiAsset chevronUp;
   final ImpaktfullUiAsset circle;
   final ImpaktfullUiAsset close;
+  final ImpaktfullUiAsset closeCircle;
   final ImpaktfullUiAsset cloudUpload;
   final ImpaktfullUiAsset confetti;
   final ImpaktfullUiAsset copy;
   final ImpaktfullUiAsset delete;
+  final ImpaktfullUiAsset dot;
   final ImpaktfullUiAsset cloudDownload;
   final ImpaktfullUiAsset edit;
   final ImpaktfullUiAsset error;
@@ -221,16 +228,19 @@ class ImpaktfullUiIconTheme {
     required this.arrowDown,
     required this.backspace,
     required this.check,
+    required this.checkCircle,
     required this.chevronDown,
     required this.chevronLeft,
     required this.chevronRight,
     required this.chevronUp,
     required this.circle,
     required this.close,
+    required this.closeCircle,
     required this.cloudUpload,
     required this.confetti,
     required this.copy,
     required this.delete,
+    required this.dot,
     required this.cloudDownload,
     required this.edit,
     required this.error,
@@ -271,17 +281,20 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? arrowDown,
     ImpaktfullUiAsset? backspace,
     ImpaktfullUiAsset? check,
+    ImpaktfullUiAsset? checkCircle,
     ImpaktfullUiAsset? chevronDown,
     ImpaktfullUiAsset? chevronLeft,
     ImpaktfullUiAsset? chevronRight,
     ImpaktfullUiAsset? chevronUp,
     ImpaktfullUiAsset? circle,
     ImpaktfullUiAsset? close,
+    ImpaktfullUiAsset? closeCircle,
     ImpaktfullUiAsset? cloudDownload,
     ImpaktfullUiAsset? cloudUpload,
     ImpaktfullUiAsset? confetti,
     ImpaktfullUiAsset? copy,
     ImpaktfullUiAsset? delete,
+    ImpaktfullUiAsset? dot,
     ImpaktfullUiAsset? edit,
     ImpaktfullUiAsset? error,
     ImpaktfullUiAsset? file,
@@ -320,17 +333,20 @@ class ImpaktfullUiIconTheme {
         arrowDown: arrowDown ?? this.arrowDown,
         backspace: backspace ?? this.backspace,
         check: check ?? this.check,
+        checkCircle: checkCircle ?? this.checkCircle,
         chevronDown: chevronDown ?? this.chevronDown,
         chevronLeft: chevronLeft ?? this.chevronLeft,
         chevronRight: chevronRight ?? this.chevronRight,
         chevronUp: chevronUp ?? this.chevronUp,
         circle: circle ?? this.circle,
         close: close ?? this.close,
+        closeCircle: closeCircle ?? this.closeCircle,
         cloudDownload: cloudDownload ?? this.cloudDownload,
         cloudUpload: cloudUpload ?? this.cloudUpload,
         confetti: confetti ?? this.confetti,
         copy: copy ?? this.copy,
         delete: delete ?? this.delete,
+        dot: dot ?? this.dot,
         edit: edit ?? this.edit,
         error: error ?? this.error,
         file: file ?? this.file,

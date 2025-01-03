@@ -1,3 +1,9 @@
+# 0.23.2
+
+## Fix
+
+- ImpaktfullUiPasswordStrengthIndicator use a leading asset if provided
+
 # 0.23.1
 
 ## Breaking

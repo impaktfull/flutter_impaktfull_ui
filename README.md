@@ -208,6 +208,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - arrowUp
 - arrowDown
 - check
+- checkCircle
 - chevronDown
 - chevronLeft
 - chevronRight
@@ -217,6 +218,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - confetti
 - copy
 - delete
+- dot
 - edit
 - error
 - home

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/password_strength_indicator/model/password_strength_indicator_requirement.dart';
 import 'package:impaktfull_ui/src/components/password_strength_indicator/password_strength_indicator_style.dart';
@@ -64,17 +65,27 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget
                 for (final requirement in requirements) ...[
                   ImpaktfullUiAutoLayout.horizontal(
                     spacing: 8,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        requirement.isMet ? '✓' : '•',
-                        style: requirement.isMet
-                            ? componentTheme.textStyles.requirementIsMet
-                            : componentTheme.textStyles.requirement,
-                      ),
+                      if (componentTheme.assets.leadingRequerementIsMet !=
+                              null &&
+                          componentTheme.assets.leadingRequerement != null) ...[
+                        ImpaktfullUiAssetWidget(
+                          asset: requirement.isMet
+                              ? componentTheme.assets.leadingRequerementIsMet
+                              : componentTheme.assets.leadingRequerement,
+                          size: 16,
+                          color: requirement.isMet
+                              ? componentTheme.colors.requirementAssetIsMet
+                              : componentTheme.colors.requirementAsset,
+                        ),
+                      ],
                       Expanded(
                         child: Text(
                           requirement.requirement,
-                          style: componentTheme.textStyles.requirement,
+                          style: requirement.isMet
+                              ? componentTheme.textStyles.requirementIsMet
+                              : componentTheme.textStyles.requirement,
                         ),
                       ),
                     ],
