@@ -1,3 +1,9 @@
+# 0.23.1
+
+## Breaking
+
+- ImpaktfullUiPasswordStrengthIndicator now using PasswordStrengthIndicatorRequirement instead of string
+
 # 0.23.0
 
 ## Feat

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/password_strength_indicator/model/password_strength_indicator_requirement.dart';
 import 'package:impaktfull_ui/src/components/password_strength_indicator/password_strength_indicator_style.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'password_strength_indicator_style.dart';
+export 'model/password_strength_indicator_requirement.dart';
 
 part 'password_strength_indicator.describe.dart';
 
@@ -12,7 +14,7 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget
     with ComponentDescriptorMixin {
   final int? strengthIndicatorIndex;
   final List<Color>? strengthIndicators;
-  final List<String> requirements;
+  final List<PasswordStrengthIndicatorRequirement> requirements;
   final ImpaktfullUiPasswordStrengthIndicatorTheme? theme;
 
   const ImpaktfullUiPasswordStrengthIndicator({
@@ -64,12 +66,14 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget
                     spacing: 8,
                     children: [
                       Text(
-                        '•',
-                        style: componentTheme.textStyles.requirement,
+                        requirement.isMet ? '✓' : '•',
+                        style: requirement.isMet
+                            ? componentTheme.textStyles.requirementIsMet
+                            : componentTheme.textStyles.requirement,
                       ),
                       Expanded(
                         child: Text(
-                          requirement,
+                          requirement.requirement,
                           style: componentTheme.textStyles.requirement,
                         ),
                       ),
@@ -87,8 +91,11 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 
-  Color _getColor(ImpaktfullUiPasswordStrengthIndicatorTheme componentTheme,
-      List<Color> strengthIndicators, int? strengthIndicatorIndex) {
+  Color _getColor(
+    ImpaktfullUiPasswordStrengthIndicatorTheme componentTheme,
+    List<Color> strengthIndicators,
+    int? strengthIndicatorIndex,
+  ) {
     if (strengthIndicatorIndex == null) {
       return componentTheme.colors.strengthIndicatorBackground;
     }

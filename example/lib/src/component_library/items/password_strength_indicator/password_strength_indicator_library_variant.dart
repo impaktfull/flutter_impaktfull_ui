@@ -17,9 +17,12 @@ class PasswordStrengthIndicatorLibraryVariant extends ComponentLibraryVariant<
       const ImpaktfullUiPasswordStrengthIndicator(
         strengthIndicatorIndex: 2,
         requirements: [
-          'Requirement 1',
-          'Requirement 2',
-          'Requirement 3',
+          PasswordStrengthIndicatorRequirement(
+              requirement: 'Requirement 1', isMet: true),
+          PasswordStrengthIndicatorRequirement(
+              requirement: 'Requirement 2', isMet: false),
+          PasswordStrengthIndicatorRequirement(
+              requirement: 'Requirement 3', isMet: false),
         ],
       ),
     ];

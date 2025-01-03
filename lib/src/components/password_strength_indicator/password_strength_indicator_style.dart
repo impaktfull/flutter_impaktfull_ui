@@ -45,6 +45,8 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
         ),
         textStyles: ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme(
           requirement: textStyles.onCard.text.small,
+          requirementIsMet:
+              textStyles.onCard.text.small.copyWith(color: colors.success),
         ),
       );
 }
@@ -78,7 +80,9 @@ class ImpaktfullUiPasswordStrengthIndicatorDimensTheme {
 
 class ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme {
   final TextStyle requirement;
+  final TextStyle requirementIsMet;
   const ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme({
     required this.requirement,
+    required this.requirementIsMet,
   });
 }
