@@ -27,7 +27,11 @@ class ImpaktfullUiPlaceholderStateColorTheme {
 }
 
 class ImpaktfullUiPlaceholderStateDimensTheme {
-  const ImpaktfullUiPlaceholderStateDimensTheme();
+  final EdgeInsets margin;
+
+  const ImpaktfullUiPlaceholderStateDimensTheme({
+    required this.margin,
+  });
 }
 
 class ImpaktfullUiPlaceholderStateTextStyleTheme {

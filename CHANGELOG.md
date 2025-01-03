@@ -1,3 +1,9 @@
+# 0.22.0
+
+## Feat
+
+- Added margin to ImpaktfullUiPlaceholderState & ImpaktfullUiPlaceholderStateTheme
+
 # 0.21.8
 
 ## Fix

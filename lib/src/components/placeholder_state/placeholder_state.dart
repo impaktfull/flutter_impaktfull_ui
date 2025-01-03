@@ -19,6 +19,7 @@ class ImpaktfullUiPlaceholderState extends StatelessWidget
   final TextStyle? titleStyle;
   final TextStyle? subtitleStyle;
   final List<Widget> actions;
+  final EdgeInsets? margin;
   final ImpaktfullUiPlaceholderStateTheme? theme;
 
   const ImpaktfullUiPlaceholderState({
@@ -29,6 +30,7 @@ class ImpaktfullUiPlaceholderState extends StatelessWidget
     this.subtitle,
     this.titleStyle,
     this.subtitleStyle,
+    this.margin,
     this.actions = const [],
     super.key,
   });
@@ -37,50 +39,53 @@ class ImpaktfullUiPlaceholderState extends StatelessWidget
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiPlaceholderStateTheme>(
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        spacing: 16,
-        children: [
-          if (asset != null) ...[
-            ImpaktfullUiAssetWidget(
-              asset: asset!,
-            ),
-          ] else if (assetBuilder != null) ...[
-            assetBuilder!(context),
-          ] else if (actions.isNotEmpty) ...[
-            const SizedBox(height: 40),
-          ],
-          ImpaktfullUiAutoLayout.vertical(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            spacing: 4,
-            children: [
-              if (title != null) ...[
-                Text(
-                  title.toString(),
-                  style: titleStyle ?? componentTheme.textStyles.title,
-                  textAlign: TextAlign.center,
-                ),
-              ],
-              if (subtitle != null) ...[
-                Text(
-                  subtitle.toString(),
-                  style: subtitleStyle ?? componentTheme.textStyles.subtitle,
-                  textAlign: TextAlign.center,
-                ),
-              ],
+      builder: (context, componentTheme) => Padding(
+        padding: margin ?? componentTheme.dimens.margin,
+        child: ImpaktfullUiAutoLayout.vertical(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          spacing: 16,
+          children: [
+            if (asset != null) ...[
+              ImpaktfullUiAssetWidget(
+                asset: asset!,
+              ),
+            ] else if (assetBuilder != null) ...[
+              assetBuilder!(context),
+            ] else if (actions.isNotEmpty) ...[
+              const SizedBox(height: 40),
             ],
-          ),
-          ImpaktfullUiAutoLayout.horizontal(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 8,
-            children: actions,
-          ),
-        ],
+            ImpaktfullUiAutoLayout.vertical(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              spacing: 4,
+              children: [
+                if (title != null) ...[
+                  Text(
+                    title.toString(),
+                    style: titleStyle ?? componentTheme.textStyles.title,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+                if (subtitle != null) ...[
+                  Text(
+                    subtitle.toString(),
+                    style: subtitleStyle ?? componentTheme.textStyles.subtitle,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ],
+            ),
+            ImpaktfullUiAutoLayout.horizontal(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 8,
+              children: actions,
+            ),
+          ],
+        ),
       ),
     );
   }

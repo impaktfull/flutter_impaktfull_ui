@@ -886,7 +886,9 @@ class DefaultTheme {
         placeholderState: ImpaktfullUiPlaceholderStateTheme(
           assets: const ImpaktfullUiPlaceholderStateAssetsTheme(),
           colors: const ImpaktfullUiPlaceholderStateColorTheme(),
-          dimens: const ImpaktfullUiPlaceholderStateDimensTheme(),
+          dimens: const ImpaktfullUiPlaceholderStateDimensTheme(
+            margin: EdgeInsets.zero,
+          ),
           textStyles: ImpaktfullUiPlaceholderStateTextStyleTheme(
             title: textStyles.onCanvas.display.small.semiBold,
             subtitle: textStyles.onCanvas.text.small.light,
