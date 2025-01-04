@@ -1,3 +1,9 @@
+# 0.25.0
+
+## Feat
+
+- Added ImpaktfullUiTouchFeedback `onDoubleTap` & `onLongTap` to handle double tap & long tap events
+
 # 0.24.0
 
 ## Feat

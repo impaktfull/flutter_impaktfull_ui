@@ -8,6 +8,8 @@ import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extensio
 
 class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final VoidCallback? onTap;
+  final VoidCallback? onDoubleTap;
+  final VoidCallback? onLongTap;
   final ValueChanged<TapDownDetails>? onTapDown;
   final ValueChanged<TapUpDetails>? onTapUp;
   final VoidCallback? onTapCancel;
@@ -29,6 +31,8 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     this.onTapDown,
     this.onTapUp,
     this.onTapCancel,
+    this.onDoubleTap,
+    this.onLongTap,
     this.onFocus,
     this.borderRadius,
     this.color,
@@ -67,6 +71,8 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
             onTapDown: onTapDown,
             onTapUp: onTapUp,
             onTapCancel: onTapCancel,
+            onDoubleTap: onDoubleTap,
+            onLongTap: onLongTap,
             cursor: cursor,
             canRequestFocus: canRequestFocus,
             autofocus: autofocus,
@@ -90,6 +96,8 @@ class _PlatformTouchFeedback extends StatefulWidget {
   final Widget child;
   final BorderRadiusGeometry? borderRadius;
   final VoidCallback? onTap;
+  final VoidCallback? onDoubleTap;
+  final VoidCallback? onLongTap;
   final ValueChanged<TapDownDetails>? onTapDown;
   final ValueChanged<TapUpDetails>? onTapUp;
   final VoidCallback? onTapCancel;
@@ -106,6 +114,8 @@ class _PlatformTouchFeedback extends StatefulWidget {
     required this.onTapDown,
     required this.onTapUp,
     required this.onTapCancel,
+    required this.onDoubleTap,
+    required this.onLongTap,
     required this.cursor,
     required this.canRequestFocus,
     required this.autofocus,
@@ -142,6 +152,8 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
           onTapDown: widget.onTapDown,
           onTapUp: widget.onTapUp,
           onTapCancel: widget.onTapCancel,
+          onDoubleTap: widget.onDoubleTap,
+          onLongPress: widget.onLongTap,
           child: Focus(
             focusNode: _focusNode,
             onFocusChange: widget.onFocusChanged,
@@ -167,6 +179,8 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         onTapDown: widget.onTapDown,
         onTapUp: widget.onTapUp,
         onTapCancel: widget.onTapCancel,
+        onDoubleTap: widget.onDoubleTap,
+        onLongPress: widget.onLongTap,
         focusNode: _focusNode,
         mouseCursor: widget.cursor,
         onFocusChange: _onFocusChanged,
