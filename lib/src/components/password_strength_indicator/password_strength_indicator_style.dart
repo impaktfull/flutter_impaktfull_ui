@@ -7,12 +7,14 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
   final ImpaktfullUiPasswordStrengthIndicatorAssetsTheme assets;
   final ImpaktfullUiPasswordStrengthIndicatorColorTheme colors;
   final ImpaktfullUiPasswordStrengthIndicatorDimensTheme dimens;
+  final ImpaktfullUiPasswordStrengthIndicatorDurationsTheme durations;
   final ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme textStyles;
 
   const ImpaktfullUiPasswordStrengthIndicatorTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
+    required this.durations,
     required this.textStyles,
   });
 
@@ -47,6 +49,9 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
           spacing: 8,
           requirementSpacing: 4,
           strengthIndicatorBorderRadius: BorderRadius.circular(4),
+        ),
+        durations: ImpaktfullUiPasswordStrengthIndicatorDurationsTheme(
+          colorChangeDuration: durations.short,
         ),
         textStyles: ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme(
           requirement: textStyles.onCard.text.small,
@@ -88,6 +93,13 @@ class ImpaktfullUiPasswordStrengthIndicatorDimensTheme {
     required this.spacing,
     required this.requirementSpacing,
     required this.strengthIndicatorBorderRadius,
+  });
+}
+
+class ImpaktfullUiPasswordStrengthIndicatorDurationsTheme {
+  final Duration colorChangeDuration;
+  const ImpaktfullUiPasswordStrengthIndicatorDurationsTheme({
+    required this.colorChangeDuration,
   });
 }
 

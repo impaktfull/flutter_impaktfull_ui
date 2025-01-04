@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/model/virtual_keyboard_key.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/virtual_keyboard_style.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
@@ -106,11 +107,14 @@ class _ImpaktfullUiVirtualKeyboardState
     extends State<ImpaktfullUiVirtualKeyboard>
     with SingleTickerProviderStateMixin {
   var _shift = false;
+  var _shiftKeyReleased = true;
   var _capsLock = false;
   var _control = false;
   late AnimationController _cursorController;
   late Animation<double> _cursorAnimation;
   int _cursorPosition = 0;
+
+  var _obscureText = false;
 
   List<List<ImpaktfullUiVirtualKeyboardKeyItem>> get keys =>
       widget.controller.config.keys;
@@ -119,6 +123,7 @@ class _ImpaktfullUiVirtualKeyboardState
   @override
   void initState() {
     super.initState();
+    _obscureText = widget.obscureText;
     widget.controller.addListener(_onControllerChanged);
     _cursorController = AnimationController(
       vsync: this,
@@ -129,6 +134,14 @@ class _ImpaktfullUiVirtualKeyboardState
       end: 1.0,
     ).animate(_cursorController);
     _cursorPosition = widget.controller.text.length;
+  }
+
+  @override
+  void didUpdateWidget(ImpaktfullUiVirtualKeyboard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.obscureText != oldWidget.obscureText) {
+      _obscureText = widget.obscureText;
+    }
   }
 
   @override
@@ -160,28 +173,42 @@ class _ImpaktfullUiVirtualKeyboardState
                   width: double.infinity,
                   height: 56,
                   onTap: _onTapInputField,
-                  child: Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: _cursorPosition > 0
-                              ? text.substring(0, _cursorPosition)
-                              : '',
-                        ),
-                        WidgetSpan(
-                          alignment: PlaceholderAlignment.middle,
-                          child: FadeTransition(
-                            opacity: _cursorAnimation,
-                            child: Container(
-                              height: 20,
-                              width: 2,
-                              color: componentTheme.colors.cursor,
-                            ),
+                  child: ImpaktfullUiAutoLayout.horizontal(
+                    children: [
+                      Expanded(
+                        child: Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                text: _cursorPosition > 0
+                                    ? text.substring(0, _cursorPosition)
+                                    : '',
+                              ),
+                              WidgetSpan(
+                                alignment: PlaceholderAlignment.middle,
+                                child: FadeTransition(
+                                  opacity: _cursorAnimation,
+                                  child: Container(
+                                    height: 20,
+                                    width: 2,
+                                    color: componentTheme.colors.cursor,
+                                  ),
+                                ),
+                              ),
+                              TextSpan(text: text.substring(_cursorPosition)),
+                            ],
                           ),
                         ),
-                        TextSpan(text: text.substring(_cursorPosition)),
+                      ),
+                      if (widget.obscureText) ...[
+                        ImpaktfullUiIconButton(
+                          asset: _obscureText
+                              ? componentTheme.assets.passwordHide
+                              : componentTheme.assets.passwordShow,
+                          onTap: _onObscureTextHideShowIconTapped,
+                        ),
                       ],
-                    ),
+                    ],
                   ),
                 ),
                 for (final row in keys)
@@ -264,21 +291,34 @@ class _ImpaktfullUiVirtualKeyboardState
       final afterCursor = text.substring(_cursorPosition);
       widget.controller.text = beforeCursor + value + afterCursor;
       _cursorPosition++;
+      if (!_shiftKeyReleased) {
+        _shift = false;
+        _shiftKeyReleased = true;
+      }
     }
     widget.onChanged?.call(widget.controller.text);
     setState(() {});
   }
 
-  void _onTapDownKey(ImpaktfullUiVirtualKeyboardKeyItem key) => _toggleKey(key);
+  void _onTapDownKey(ImpaktfullUiVirtualKeyboardKeyItem key) {
+    final logicalKey = key.logicalKey(_shift);
+    if (logicalKey == LogicalKeyboardKey.controlLeft ||
+        logicalKey == LogicalKeyboardKey.controlRight ||
+        logicalKey == LogicalKeyboardKey.control) {
+      _control = !_control;
+    } else {
+      return;
+    }
+    setState(() {});
+  }
 
-  void _onTapUpKey(ImpaktfullUiVirtualKeyboardKeyItem key) => _toggleKey(key);
-
-  void _toggleKey(ImpaktfullUiVirtualKeyboardKeyItem key) {
+  void _onTapUpKey(ImpaktfullUiVirtualKeyboardKeyItem key) {
     final logicalKey = key.logicalKey(_shift);
     if (logicalKey == LogicalKeyboardKey.shift ||
         logicalKey == LogicalKeyboardKey.shiftLeft ||
         logicalKey == LogicalKeyboardKey.shiftRight) {
       _shift = !_shift;
+      _shiftKeyReleased = false;
     } else if (logicalKey == LogicalKeyboardKey.controlLeft ||
         logicalKey == LogicalKeyboardKey.controlRight ||
         logicalKey == LogicalKeyboardKey.control) {
@@ -295,5 +335,9 @@ class _ImpaktfullUiVirtualKeyboardState
     setState(() {
       _cursorPosition = newCursorPosition;
     });
+  }
+
+  void _onObscureTextHideShowIconTapped() {
+    setState(() => _obscureText = !_obscureText);
   }
 }

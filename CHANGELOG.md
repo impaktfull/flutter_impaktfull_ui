@@ -1,3 +1,15 @@
+# 0.24.0
+
+## Feat
+
+- Added ImpaktfullUiInputField `obscureText` to show a password hide/show icon
+- Animated ImpaktfullUiPasswordStrengthIndicator colors
+- Added ImpaktfullUiVirtualKeyboard `obscureText` to show a password hide/show icon
+
+## Fix
+
+- ImpaktfullUiVirtualKeyboard now handles the shift keys correctly (tap to activate, deactivated by taping again or using another normal key)
+
 # 0.23.2
 
 ## Fix

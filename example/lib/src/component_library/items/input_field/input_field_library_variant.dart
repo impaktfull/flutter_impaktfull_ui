@@ -40,6 +40,7 @@ class InputFieldVariant
         hint: hint,
         error: error,
         value: value,
+        obscureText: inputs.obscureText.value ?? false,
         onChanged: inputs.value.updateState,
         multiline: multiLine,
         trailingAction: showTrailingAction
@@ -71,6 +72,7 @@ class InputFieldVariant
         value: value,
         onChanged: null,
         readOnly: true,
+        obscureText: inputs.obscureText.value ?? false,
         multiline: multiLine,
         trailingAction: showTrailingAction
             ? ImpaktfullUiInputFieldAction(

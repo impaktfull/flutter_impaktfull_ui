@@ -45,7 +45,8 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget
               children: [
                 for (var i = 0; i < strengthIndicators.length; i++) ...[
                   Expanded(
-                    child: Container(
+                    child: AnimatedContainer(
+                      duration: componentTheme.durations.colorChangeDuration,
                       decoration: BoxDecoration(
                         color: _hasColor(i)
                             ? color

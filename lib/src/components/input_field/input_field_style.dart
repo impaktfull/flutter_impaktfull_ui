@@ -1,13 +1,16 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
+  final ImpaktfullUiInputFieldAssetsTheme assets;
   final ImpaktfullUiInputFieldColorTheme colors;
   final ImpaktfullUiInputFieldDimensTheme dimens;
   final ImpaktfullUiInputFieldTextStylesTheme textStyles;
 
   const ImpaktfullUiInputFieldTheme({
+    required this.assets,
     required this.colors,
     required this.dimens,
     required this.textStyles,
@@ -25,6 +28,10 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
       ImpaktfullUiInputFieldTheme(
+        assets: ImpaktfullUiInputFieldAssetsTheme(
+          passwordHide: assets.icons.passwordHide,
+          passwordShow: assets.icons.passwordShow,
+        ),
         colors: ImpaktfullUiInputFieldColorTheme(
           background: colors.card,
           border: colors.border,
@@ -48,6 +55,16 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
           action: textStyles.onCard.text.small.medium,
         ),
       );
+}
+
+class ImpaktfullUiInputFieldAssetsTheme {
+  final ImpaktfullUiAsset passwordHide;
+  final ImpaktfullUiAsset passwordShow;
+
+  const ImpaktfullUiInputFieldAssetsTheme({
+    required this.passwordHide,
+    required this.passwordShow,
+  });
 }
 
 class ImpaktfullUiInputFieldColorTheme {

@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiVirtualKeyboardTheme extends ImpaktfullUiComponentTheme {
@@ -26,7 +27,10 @@ class ImpaktfullUiVirtualKeyboardTheme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
       ImpaktfullUiVirtualKeyboardTheme(
-        assets: const ImpaktfullUiVirtualKeyboardAssetsTheme(),
+        assets: ImpaktfullUiVirtualKeyboardAssetsTheme(
+          passwordHide: assets.icons.passwordHide,
+          passwordShow: assets.icons.passwordShow,
+        ),
         colors: ImpaktfullUiVirtualKeyboardColorTheme(
           cursor: colors.accent,
         ),
@@ -36,7 +40,12 @@ class ImpaktfullUiVirtualKeyboardTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiVirtualKeyboardAssetsTheme {
-  const ImpaktfullUiVirtualKeyboardAssetsTheme();
+  final ImpaktfullUiAsset passwordHide;
+  final ImpaktfullUiAsset passwordShow;
+  const ImpaktfullUiVirtualKeyboardAssetsTheme({
+    required this.passwordHide,
+    required this.passwordShow,
+  });
 }
 
 class ImpaktfullUiVirtualKeyboardColorTheme {

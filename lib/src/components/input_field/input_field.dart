@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
@@ -84,9 +85,12 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   late final TextEditingController _controller;
   late final FocusNode _focusNode;
 
+  var _obscureText = false;
+
   @override
   void initState() {
     super.initState();
+    _obscureText = widget.obscureText;
     _controller =
         widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
@@ -103,6 +107,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value && _controller.text != widget.value) {
       _controller.text = widget.value ?? '';
+    }
+    if (oldWidget.obscureText != widget.obscureText) {
+      _obscureText = widget.obscureText;
     }
   }
 
@@ -178,7 +185,10 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                             ),
                           ],
                           Padding(
-                            padding: const EdgeInsets.only(left: 16, right: 16),
+                            padding: EdgeInsets.only(
+                              left: 16,
+                              right: widget.obscureText ? 0 : 16,
+                            ),
                             child: ImpaktfullUiAutoLayout.horizontal(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisSize: MainAxisSize.min,
@@ -232,7 +242,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                       maxLines: widget.maxLines,
                                       textInputAction: widget.textInputAction,
                                       textInputType: widget.textInputType,
-                                      obscureText: widget.obscureText,
+                                      obscureText: _obscureText,
                                       placeholder: widget.placeholder,
                                       autofocus: widget.autofocus,
                                       multiline: widget.multiline,
@@ -241,6 +251,14 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                       textAlign: widget.textAlign,
                                     ),
                                   ),
+                                  if (widget.obscureText) ...[
+                                    ImpaktfullUiIconButton(
+                                      asset: _obscureText
+                                          ? componentTheme.assets.passwordHide
+                                          : componentTheme.assets.passwordShow,
+                                      onTap: _onObscureTextHideShowIconTapped,
+                                    ),
+                                  ],
                                 ],
                               ],
                             ),
@@ -308,5 +326,11 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     final onChanged = widget.onChanged;
     if (onChanged == null) return;
     onChanged(_controller.text);
+  }
+
+  void _onObscureTextHideShowIconTapped() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
   }
 }

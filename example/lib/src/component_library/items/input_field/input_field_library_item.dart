@@ -31,6 +31,7 @@ class InputLibraryInputs extends ComponentLibraryInputs {
   final showLabelAction = ComponentLibraryBoolInput('Show label action');
   final showTrailingAction = ComponentLibraryBoolInput('Show trailing action');
   final multiLine = ComponentLibraryBoolInput('Multi line');
+  final obscureText = ComponentLibraryBoolInput('Obscure text');
 
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
@@ -43,5 +44,6 @@ class InputLibraryInputs extends ComponentLibraryInputs {
         showLabelAction,
         showTrailingAction,
         multiLine,
+        obscureText,
       ];
 }

@@ -72,6 +72,8 @@ class ImpaktfullUiAssetTheme {
               moreHorizontal: ImpaktfullUiAsset.icon(PhosphorIcons.dotsThree()),
               moreVertical:
                   ImpaktfullUiAsset.icon(PhosphorIcons.dotsThreeVertical()),
+              passwordHide: ImpaktfullUiAsset.icon(PhosphorIcons.eyeSlash()),
+              passwordShow: ImpaktfullUiAsset.icon(PhosphorIcons.eye()),
               refresh: ImpaktfullUiAsset.icon(PhosphorIcons.arrowClockwise()),
               search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
               share: ImpaktfullUiAsset.icon(DeviceUtil.isAndroid()
@@ -202,6 +204,8 @@ class ImpaktfullUiIconTheme {
   final ImpaktfullUiAsset minus;
   final ImpaktfullUiAsset moreHorizontal;
   final ImpaktfullUiAsset moreVertical;
+  final ImpaktfullUiAsset passwordHide;
+  final ImpaktfullUiAsset passwordShow;
   final ImpaktfullUiAsset refresh;
   final ImpaktfullUiAsset search;
   final ImpaktfullUiAsset settings;
@@ -254,8 +258,10 @@ class ImpaktfullUiIconTheme {
     required this.minus,
     required this.moreHorizontal,
     required this.moreVertical,
-    required this.search,
+    required this.passwordHide,
+    required this.passwordShow,
     required this.refresh,
+    required this.search,
     required this.settings,
     required this.share,
     required this.success,
@@ -307,6 +313,8 @@ class ImpaktfullUiIconTheme {
     ImpaktfullUiAsset? minus,
     ImpaktfullUiAsset? moreHorizontal,
     ImpaktfullUiAsset? moreVertical,
+    ImpaktfullUiAsset? passwordHide,
+    ImpaktfullUiAsset? passwordShow,
     ImpaktfullUiAsset? refresh,
     ImpaktfullUiAsset? search,
     ImpaktfullUiAsset? settings,
@@ -359,6 +367,8 @@ class ImpaktfullUiIconTheme {
         minus: minus ?? this.minus,
         moreHorizontal: moreHorizontal ?? this.moreHorizontal,
         moreVertical: moreVertical ?? this.moreVertical,
+        passwordHide: passwordHide ?? this.passwordHide,
+        passwordShow: passwordShow ?? this.passwordShow,
         refresh: refresh ?? this.refresh,
         search: search ?? this.search,
         settings: settings ?? this.settings,

@@ -229,6 +229,8 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - minus
 - moreHorizontal
 - moreVertical
+- passwordHide
+- passwordShow
 - refresh
 - search
 - settings
