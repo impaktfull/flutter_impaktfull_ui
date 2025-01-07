@@ -17,7 +17,8 @@ export 'action/input_field_action.dart';
 
 part 'input_field.describe.dart';
 
-class ImpaktfullUiInputField extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiInputField extends StatefulWidget
+    with ComponentDescriptorMixin {
   final String? label;
   final List<Widget> labelActions;
   final String? placeholder;
@@ -92,7 +93,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   void initState() {
     super.initState();
     _obscureText = widget.obscureText;
-    _controller = widget.controller ?? TextEditingController(text: widget.value);
+    _controller =
+        widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
     _focusNode.addListener(_onFocusChanged);
     if (widget.autofocus) {
@@ -132,11 +134,14 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiInputFieldTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
-        final trailingActionAllowed = widget.multiline == false && trailingAction != null;
+        final trailingActionAllowed =
+            widget.multiline == false && trailingAction != null;
         final trailingInputActions = [
           if (widget.obscureText) ...[
             ImpaktfullUiIconButton(
-              asset: _obscureText ? componentTheme.assets.passwordHide : componentTheme.assets.passwordShow,
+              asset: _obscureText
+                  ? componentTheme.assets.passwordHide
+                  : componentTheme.assets.passwordShow,
               onTap: _onObscureTextHideShowIconTapped,
             ),
           ],
@@ -168,9 +173,14 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                       padding: EdgeInsets.zero,
                       borderRadius: BorderRadiusDirectional.only(
                         topStart: componentTheme.dimens.borderRadius.topStart,
-                        bottomStart: componentTheme.dimens.borderRadius.bottomStart,
-                        topEnd: trailingActionAllowed ? Radius.zero : componentTheme.dimens.borderRadius.topEnd,
-                        bottomEnd: trailingActionAllowed ? Radius.zero : componentTheme.dimens.borderRadius.bottomEnd,
+                        bottomStart:
+                            componentTheme.dimens.borderRadius.bottomStart,
+                        topEnd: trailingActionAllowed
+                            ? Radius.zero
+                            : componentTheme.dimens.borderRadius.topEnd,
+                        bottomEnd: trailingActionAllowed
+                            ? Radius.zero
+                            : componentTheme.dimens.borderRadius.bottomEnd,
                       ),
                       child: ImpaktfullUiAutoLayout.vertical(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -207,7 +217,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                 if (widget.leadingBuilder != null) ...[
                                   widget.leadingBuilder!(context),
                                 ],
-                                if (widget.onChanged == null && !widget.readOnly) ...[
+                                if (widget.onChanged == null &&
+                                    !widget.readOnly) ...[
                                   Expanded(
                                     child: Container(
                                       constraints: BoxConstraints(
@@ -217,10 +228,13 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                         vertical: 8,
                                       ),
                                       child: Align(
-                                        alignment: AlignmentDirectional.topStart,
+                                        alignment:
+                                            AlignmentDirectional.topStart,
                                         child: Text(
                                           _controller.text,
-                                          maxLines: widget.multiline ? widget.maxLines : 1,
+                                          maxLines: widget.multiline
+                                              ? widget.maxLines
+                                              : 1,
                                           style: componentTheme.textStyles.text,
                                         ),
                                       ),
@@ -230,7 +244,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                   Expanded(
                                     child: BaseInputField(
                                       value: widget.value,
-                                      onChanged: widget.readOnly ? (value) {} : widget.onChanged!,
+                                      onChanged: widget.readOnly
+                                          ? (value) {}
+                                          : widget.onChanged!,
                                       onSubmit: widget.onSubmit,
                                       focusNode: _focusNode,
                                       controller: _controller,
@@ -297,7 +313,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   void _onFocusChanged() {
     final hasFocus = _focusNode.hasFocus;
     final controller = widget.controller;
-    if (hasFocus && controller != null && controller is ImpaktfullUiVirtualKeyboardTextEditController) {
+    if (hasFocus &&
+        controller != null &&
+        controller is ImpaktfullUiVirtualKeyboardTextEditController) {
       _focusNode.unfocus();
       controller.openKeyboard(
         context,
