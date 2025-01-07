@@ -1,3 +1,9 @@
+# 0.28.0
+
+## Feat
+
+- Added ImpaktfullUiTouchFeedback `focusNode` to control if the touch feedback can request focus
+
 # 0.27.0
 
 ## Feat

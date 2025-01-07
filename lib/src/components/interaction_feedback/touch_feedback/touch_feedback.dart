@@ -21,6 +21,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final MouseCursor cursor;
   final List<BoxShadow> shadow;
   final String? toolTip;
+  final FocusNode? focusNode;
   final bool canRequestFocus;
   final bool autofocus;
   final bool useFocusColor;
@@ -38,6 +39,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     this.color,
     this.border,
     this.toolTip,
+    this.focusNode,
     this.cursor = SystemMouseCursors.click,
     this.canRequestFocus = true,
     this.autofocus = false,
@@ -77,6 +79,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
             canRequestFocus: canRequestFocus,
             autofocus: autofocus,
             useFocusColor: useFocusColor,
+            focusNode: focusNode,
             onFocusChanged: _onFocusChanged,
             child: child,
           ),
@@ -105,6 +108,7 @@ class _PlatformTouchFeedback extends StatefulWidget {
   final bool canRequestFocus;
   final bool autofocus;
   final bool useFocusColor;
+  final FocusNode? focusNode;
   final ValueChanged<bool> onFocusChanged;
 
   const _PlatformTouchFeedback({
@@ -121,6 +125,7 @@ class _PlatformTouchFeedback extends StatefulWidget {
     required this.autofocus,
     required this.useFocusColor,
     required this.onFocusChanged,
+    required this.focusNode,
   });
 
   @override
@@ -133,12 +138,14 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
   @override
   void initState() {
     super.initState();
-    _focusNode = FocusNode();
+    _focusNode = widget.focusNode ?? FocusNode();
   }
 
   @override
   void dispose() {
-    _focusNode.dispose();
+    if (widget.focusNode == null) {
+      _focusNode.dispose();
+    }
     super.dispose();
   }
 
