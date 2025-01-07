@@ -15,6 +15,19 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiButtonTheme copyWith({
+    ImpaktfullUiButtonColorTheme? colors,
+    ImpaktfullUiButtonDimensTheme? dimens,
+    ImpaktfullUiButtonDurationsTheme? durations,
+    ImpaktfullUiButtonTextStylesTheme? textStyles,
+  }) =>
+      ImpaktfullUiButtonTheme(
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiButtonTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.button;
 
@@ -73,6 +86,27 @@ class ImpaktfullUiButtonColorTheme {
     required this.destructive,
     required this.destructiveBorder,
   });
+
+  ImpaktfullUiButtonColorTheme copyWith({
+    Color? primary,
+    Color? primaryBorder,
+    Color? secondary,
+    Color? secondaryBorder,
+    Color? tertiary,
+    Color? tertiaryBorder,
+    Color? destructive,
+    Color? destructiveBorder,
+  }) =>
+      ImpaktfullUiButtonColorTheme(
+        primary: primary ?? this.primary,
+        primaryBorder: primaryBorder ?? this.primaryBorder,
+        secondary: secondary ?? this.secondary,
+        secondaryBorder: secondaryBorder ?? this.secondaryBorder,
+        tertiary: tertiary ?? this.tertiary,
+        tertiaryBorder: tertiaryBorder ?? this.tertiaryBorder,
+        destructive: destructive ?? this.destructive,
+        destructiveBorder: destructiveBorder ?? this.destructiveBorder,
+      );
 }
 
 class ImpaktfullUiButtonDimensTheme {
@@ -81,6 +115,13 @@ class ImpaktfullUiButtonDimensTheme {
   const ImpaktfullUiButtonDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiButtonDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiButtonDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiButtonDurationsTheme {
@@ -88,6 +129,13 @@ class ImpaktfullUiButtonDurationsTheme {
   const ImpaktfullUiButtonDurationsTheme({
     required this.loading,
   });
+
+  ImpaktfullUiButtonDurationsTheme copyWith({
+    Duration? loading,
+  }) =>
+      ImpaktfullUiButtonDurationsTheme(
+        loading: loading ?? this.loading,
+      );
 }
 
 class ImpaktfullUiButtonTextStylesTheme {
@@ -104,4 +152,20 @@ class ImpaktfullUiButtonTextStylesTheme {
     required this.destructivePrimary,
     required this.destructiveAlternative,
   });
+
+  ImpaktfullUiButtonTextStylesTheme copyWith({
+    TextStyle? primary,
+    TextStyle? alternative,
+    TextStyle? grey,
+    TextStyle? destructivePrimary,
+    TextStyle? destructiveAlternative,
+  }) =>
+      ImpaktfullUiButtonTextStylesTheme(
+        primary: primary ?? this.primary,
+        alternative: alternative ?? this.alternative,
+        grey: grey ?? this.grey,
+        destructivePrimary: destructivePrimary ?? this.destructivePrimary,
+        destructiveAlternative:
+            destructiveAlternative ?? this.destructiveAlternative,
+      );
 }

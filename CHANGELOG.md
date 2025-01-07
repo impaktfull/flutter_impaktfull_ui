@@ -1,3 +1,9 @@
+# 0.29.0
+
+## Feat
+
+- Starting to add `copyWith` methods to the themes: TmpaktfullUiButton & ImpaktfullUiInputField for now
+
 # 0.28.1
 
 ## Fix

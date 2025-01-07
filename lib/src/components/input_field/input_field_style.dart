@@ -16,6 +16,19 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiInputFieldTheme copyWith({
+    ImpaktfullUiInputFieldAssetsTheme? assets,
+    ImpaktfullUiInputFieldColorTheme? colors,
+    ImpaktfullUiInputFieldDimensTheme? dimens,
+    ImpaktfullUiInputFieldTextStylesTheme? textStyles,
+  }) =>
+      ImpaktfullUiInputFieldTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiInputFieldTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.inputField;
 
@@ -65,6 +78,15 @@ class ImpaktfullUiInputFieldAssetsTheme {
     required this.passwordHide,
     required this.passwordShow,
   });
+
+  ImpaktfullUiInputFieldAssetsTheme copyWith({
+    ImpaktfullUiAsset? passwordHide,
+    ImpaktfullUiAsset? passwordShow,
+  }) =>
+      ImpaktfullUiInputFieldAssetsTheme(
+        passwordHide: passwordHide ?? this.passwordHide,
+        passwordShow: passwordShow ?? this.passwordShow,
+      );
 }
 
 class ImpaktfullUiInputFieldColorTheme {
@@ -83,6 +105,23 @@ class ImpaktfullUiInputFieldColorTheme {
     required this.selection,
     required this.selectionHandle,
   });
+
+  ImpaktfullUiInputFieldColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? borderError,
+    Color? cursor,
+    Color? selection,
+    Color? selectionHandle,
+  }) =>
+      ImpaktfullUiInputFieldColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        borderError: borderError ?? this.borderError,
+        cursor: cursor ?? this.cursor,
+        selection: selection ?? this.selection,
+        selectionHandle: selectionHandle ?? this.selectionHandle,
+      );
 }
 
 class ImpaktfullUiInputFieldDimensTheme {
@@ -90,6 +129,13 @@ class ImpaktfullUiInputFieldDimensTheme {
   const ImpaktfullUiInputFieldDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiInputFieldDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiInputFieldDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiInputFieldTextStylesTheme {
@@ -108,4 +154,21 @@ class ImpaktfullUiInputFieldTextStylesTheme {
     required this.error,
     required this.action,
   });
+
+  ImpaktfullUiInputFieldTextStylesTheme copyWith({
+    TextStyle? label,
+    TextStyle? text,
+    TextStyle? placeholder,
+    TextStyle? hint,
+    TextStyle? error,
+    TextStyle? action,
+  }) =>
+      ImpaktfullUiInputFieldTextStylesTheme(
+        label: label ?? this.label,
+        text: text ?? this.text,
+        placeholder: placeholder ?? this.placeholder,
+        hint: hint ?? this.hint,
+        error: error ?? this.error,
+        action: action ?? this.action,
+      );
 }
