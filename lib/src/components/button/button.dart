@@ -25,6 +25,7 @@ class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
   final Widget? trailingChild;
   final bool isLoading;
   final bool fullWidth;
+  final bool canRequestFocus;
   final AsyncCallback? onAsyncTap;
   final VoidCallback? onTap;
   final ImpaktfullUiButtonTheme? theme;
@@ -39,6 +40,7 @@ class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
     this.trailingChild,
     this.fullWidth = false,
     this.isLoading = false,
+    this.canRequestFocus = true,
     this.onTap,
     this.onAsyncTap,
     this.theme,
@@ -71,6 +73,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
           opacity: isClickable ? 1 : 0.5,
           child: ImpaktfullUiTouchFeedback(
             color: backgroundColor,
+            canRequestFocus: widget.canRequestFocus,
             borderRadius: componentTheme.dimens.borderRadius,
             border: borderColor == null
                 ? null

@@ -14,6 +14,8 @@ class ImpaktfullUiIconButton extends StatelessWidget
   final double size;
   final String? tooltip;
   final Color? backgroundColor;
+  final bool canRequestFocus;
+
   const ImpaktfullUiIconButton({
     required this.onTap,
     required this.asset,
@@ -21,6 +23,7 @@ class ImpaktfullUiIconButton extends StatelessWidget
     this.size = 16,
     this.backgroundColor,
     this.tooltip,
+    this.canRequestFocus = true,
     super.key,
   });
 
@@ -32,6 +35,7 @@ class ImpaktfullUiIconButton extends StatelessWidget
       borderRadius: BorderRadius.circular(9999),
       onTap: onTap,
       color: backgroundColor,
+      canRequestFocus: canRequestFocus,
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: ImpaktfullUiAssetWidget(

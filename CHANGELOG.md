@@ -1,3 +1,10 @@
+# 0.27.0
+
+## Feat
+
+- Added ImpaktfullUiIconButton `canRequestFocus` to control if the icon button can request focus
+- Added ImpaktfullUiButton `canRequestFocus` to control if the button can request focus
+
 # 0.26.0
 
 ## Feat
