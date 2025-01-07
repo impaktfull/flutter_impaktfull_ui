@@ -1,3 +1,9 @@
+# 0.26.0
+
+## Feat
+
+- Added ImpaktfullUiInputField `trailingInputActions` to add actions to the input field
+
 # 0.25.0
 
 ## Feat
