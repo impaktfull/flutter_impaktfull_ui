@@ -96,7 +96,6 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     _controller =
         widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
-    _focusNode.addListener(_onFocusChanged);
     if (widget.autofocus) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _focusNode.requestFocus();
@@ -120,7 +119,6 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     if (widget.controller == null) {
       _controller.dispose();
     }
-    _focusNode.removeListener(_onFocusChanged);
     if (widget.focusNode == null) {
       _focusNode.dispose();
     }
@@ -259,7 +257,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                       placeholder: widget.placeholder,
                                       autofocus: widget.autofocus,
                                       multiline: widget.multiline,
-                                      onFocusChanged: widget.onFocusChanged,
+                                      onFocusChanged: _onFocusChanged,
                                       readOnly: widget.readOnly,
                                       textAlign: widget.textAlign,
                                     ),
@@ -310,7 +308,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
 
   void _onFocus() => _focusNode.requestFocus();
 
-  void _onFocusChanged() {
+  void _onFocusChanged(bool hasFocus) {
     final hasFocus = _focusNode.hasFocus;
     final controller = widget.controller;
     if (hasFocus &&
@@ -329,9 +327,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
 
   void _onSubmitFromVirtualKeyboard() {
     Navigator.pop(context);
-    final onChanged = widget.onChanged;
-    if (onChanged == null) return;
-    onChanged(_controller.text);
+    final onSubmit = widget.onSubmit;
+    if (onSubmit == null) return;
+    onSubmit(_controller.text);
   }
 
   void _onObscureTextHideShowIconTapped() {

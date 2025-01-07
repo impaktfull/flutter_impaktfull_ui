@@ -1,3 +1,9 @@
+# 0.28.1
+
+## Fix
+
+- ImpaktfullUiInputField now correctly handles the focus (removed duplicate events)
+
 # 0.28.0
 
 ## Feat
