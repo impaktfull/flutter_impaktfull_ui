@@ -1,3 +1,9 @@
+# 0.30.0
+
+## Feat
+
+- Added `selectedAsset` to ImpaktfullUiBottomNavigationItem
+
 # 0.29.0
 
 ## Feat

@@ -15,6 +15,7 @@ part 'bottom_navigation_item.describe.dart';
 class ImpaktfullUiBottomNavigationItem extends StatelessWidget
     with ComponentDescriptorMixin {
   final ImpaktfullUiAsset asset;
+  final ImpaktfullUiAsset? selectedAsset;
   final String? label;
   final bool isSelected;
   final bool showLabel;
@@ -28,6 +29,7 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget
     required this.asset,
     required this.isSelected,
     this.label,
+    this.selectedAsset,
     this.onTap,
     this.showLabel = true,
     this.badgeShow = false,
@@ -61,7 +63,7 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget
                           ? componentTheme.colors.badgeActive
                           : componentTheme.colors.badgeInActive),
                   child: ImpaktfullUiAssetWidget(
-                    asset: asset,
+                    asset: isSelected ? (selectedAsset ?? asset) : asset,
                     color: isSelected
                         ? componentTheme.colors.active
                         : componentTheme.colors.inactive,
