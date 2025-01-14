@@ -1,3 +1,9 @@
+# 0.32.0
+
+## Feat
+
+- Added `isLoading` to ImpaktfullUiTable
+
 # 0.30.1
 
 ## Fix

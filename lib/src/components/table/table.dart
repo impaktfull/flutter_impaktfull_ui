@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/divider/divider.dart';
+import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui/src/components/table/table.dart';
 import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
 import 'package:impaktfull_ui/src/components/table_header/table_header.dart';
@@ -18,6 +19,7 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
   final List<ImpaktfullUiTableHeaderItem> titles;
   final List<ImpaktfullUiTableRow> content;
   final bool shrinkWrap;
+  final bool isLoading;
   final ImpaktfullUiTableTheme? theme;
 
   const ImpaktfullUiTable({
@@ -25,6 +27,7 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
     required this.content,
     this.columnConfig = const [],
     this.shrinkWrap = false,
+    this.isLoading = false,
     this.theme,
     super.key,
   });
@@ -61,13 +64,20 @@ class ImpaktfullUiTable extends StatelessWidget with ComponentDescriptorMixin {
                 const ImpaktfullUiDivider(),
                 Builder(
                   builder: (context) {
-                    final child = ListView.separated(
-                      itemCount: content.length,
-                      shrinkWrap: shrinkWrap,
-                      itemBuilder: (context, index) => content[index],
-                      separatorBuilder: (contex, index) =>
-                          const ImpaktfullUiDivider(),
-                    );
+                    Widget child;
+                    if (isLoading) {
+                      child = const Center(
+                        child: ImpaktfullUiLoadingIndicator(),
+                      );
+                    } else {
+                      child = ListView.separated(
+                        itemCount: content.length,
+                        shrinkWrap: shrinkWrap,
+                        itemBuilder: (context, index) => content[index],
+                        separatorBuilder: (contex, index) =>
+                            const ImpaktfullUiDivider(),
+                      );
+                    }
                     if (shrinkWrap) {
                       return child;
                     }
