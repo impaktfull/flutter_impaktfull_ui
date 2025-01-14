@@ -1,3 +1,9 @@
+# 0.30.1
+
+## Fix
+
+- ImpaktfullUiPagination now correctly handles the amount of pages
+
 # 0.30.0
 
 ## Feat

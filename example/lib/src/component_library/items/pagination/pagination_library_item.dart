@@ -20,13 +20,13 @@ class PaginationLibraryItem extends ComponentLibraryItem {
 class PaginationLibraryInputs extends ComponentLibraryInputs {
   final page = ComponentLibraryIntInput(
     'Page',
-    initialValue: 1,
-    min: 1,
+    initialValue: 0,
+    min: 0,
   );
   final amountOfItems = ComponentLibraryIntInput(
     'amountOfItems',
     initialValue: 55,
-    min: 1,
+    min: 0,
   );
   final itemsPerPage = ComponentLibraryIntInput(
     'itemsPerPage',

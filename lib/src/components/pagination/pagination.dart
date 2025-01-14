@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
@@ -11,26 +13,48 @@ part 'pagination.describe.dart';
 
 class ImpaktfullUiPagination extends StatelessWidget
     with ComponentDescriptorMixin {
+  /// The page should be zero index based
   final int page;
   final int itemsPerPage;
-  final int amountOfItems;
+  final int? _amountOfPages;
+  final int? _amountOfItems;
   final ValueChanged<int> onLoadPage;
   final ImpaktfullUiPaginationTheme? theme;
 
-  int get amountOfPages => (amountOfItems / itemsPerPage).ceil();
-  bool get isFinalPage => page >= amountOfPages;
+  int get amountOfPages {
+    final amountOfPages = _amountOfPages;
+    if (amountOfPages != null) return amountOfPages;
+    final amountOfItems = _amountOfItems;
+    if (amountOfItems != null) return (amountOfItems / itemsPerPage).ceil();
+    throw Exception('amountOfPages or amountOfItems is required');
+  }
+
+  bool get isFinalPage => page >= amountOfPages - 1;
 
   const ImpaktfullUiPagination({
     required this.page,
     required this.itemsPerPage,
-    required this.amountOfItems,
+    required int amountOfItems,
     required this.onLoadPage,
     this.theme,
     super.key,
-  });
+  })  : _amountOfItems = amountOfItems,
+        _amountOfPages = null;
+
+  const ImpaktfullUiPagination.withAmountOfPages({
+    required this.page,
+    required this.itemsPerPage,
+    required this.onLoadPage,
+    required int amountOfPages,
+    this.theme,
+    super.key,
+  })  : _amountOfPages = amountOfPages,
+        _amountOfItems = null;
 
   @override
   Widget build(BuildContext context) {
+    final humanReadablePage = page + 1;
+    final humanReadableAmountOfPages = max(amountOfPages, 1);
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiPaginationTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
@@ -40,11 +64,11 @@ class ImpaktfullUiPagination extends StatelessWidget
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.secondaryGrey,
             leadingAsset: componentTheme.assets.arrowLeft,
-            onTap: page == 1 ? null : () => onLoadPage(page - 1),
+            onTap: page == 0 ? null : () => onLoadPage(page - 1),
           ),
           Expanded(
             child: Text(
-              'Page $page of $amountOfPages',
+              'Page $humanReadablePage of $humanReadableAmountOfPages',
               style: componentTheme.textStyles.text,
               textAlign: TextAlign.center,
             ),

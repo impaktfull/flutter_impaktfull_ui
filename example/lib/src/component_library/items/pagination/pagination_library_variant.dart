@@ -15,9 +15,9 @@ class PaginationLibraryVariant
       BuildContext context, PaginationLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiPagination(
-        amountOfItems: inputs.amountOfItems.value ?? 1,
-        itemsPerPage: inputs.itemsPerPage.value ?? 1,
-        page: inputs.page.value ?? 1,
+        amountOfItems: inputs.amountOfItems.value ?? 0,
+        itemsPerPage: inputs.itemsPerPage.value ?? 0,
+        page: inputs.page.value ?? 0,
         onLoadPage: (page) {
           inputs.page.updateState(page);
           ImpaktfullUiNotification.show(title: 'Load page $page');
