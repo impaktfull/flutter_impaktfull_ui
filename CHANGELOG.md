@@ -1,3 +1,10 @@
+# 0.33.0
+
+## Feat
+
+- Added `useSafeArea` to ImpaktfullUiBottomSheet
+- Added `padding` to ImpaktfullUiBottomSheet 
+
 # 0.32.0
 
 ## Feat

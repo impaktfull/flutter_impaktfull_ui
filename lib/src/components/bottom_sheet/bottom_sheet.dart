@@ -17,6 +17,8 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
   final bool showHandle;
   final Future<bool> Function()? onCloseTapped;
   final Widget? child;
+  final EdgeInsets? padding;
+  final bool useSafeArea;
   final List<Widget> actions;
   final ImpaktfullUiBottomSheetTheme? theme;
 
@@ -26,8 +28,10 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
     this.hasClose = true,
     this.onCloseTapped,
     this.child,
+    this.padding,
     this.showHandle = false,
     this.actions = const [],
+    this.useSafeArea = true,
     this.theme,
     super.key,
   });
@@ -95,111 +99,125 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
                       ))
                   .toList();
             }
-            return GestureDetector(
-              onTap: () {}, // cancel close event
-              child: ImpaktfullUiAutoLayout.vertical(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Stack(
+            return SafeArea(
+              top: useSafeArea,
+              bottom: useSafeArea,
+              right: useSafeArea,
+              left: useSafeArea,
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: useSafeArea,
+                removeBottom: useSafeArea,
+                removeRight: useSafeArea,
+                removeLeft: useSafeArea,
+                child: GestureDetector(
+                  onTap: () {}, // cancel close event
+                  child: ImpaktfullUiAutoLayout.vertical(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (showHandle) ...[
-                        Align(
-                          alignment: AlignmentDirectional.center,
-                          child: Opacity(
-                            opacity: 0.5,
-                            child: Container(
-                              margin: const EdgeInsets.only(top: 8),
-                              decoration: BoxDecoration(
-                                color: componentTheme.colors.handle,
-                                borderRadius:
-                                    componentTheme.dimens.handleBorderRadius,
+                      Stack(
+                        children: [
+                          if (showHandle) ...[
+                            Align(
+                              alignment: AlignmentDirectional.center,
+                              child: Opacity(
+                                opacity: 0.5,
+                                child: Container(
+                                  margin: const EdgeInsets.only(top: 8),
+                                  decoration: BoxDecoration(
+                                    color: componentTheme.colors.handle,
+                                    borderRadius: componentTheme
+                                        .dimens.handleBorderRadius,
+                                  ),
+                                  height: 4,
+                                  width: 50,
+                                ),
                               ),
-                              height: 4,
-                              width: 50,
+                            ),
+                          ],
+                          Padding(
+                            padding: componentTheme.dimens.padding,
+                            child: ImpaktfullUiAutoLayout.horizontal(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              spacing: 16,
+                              children: [
+                                Expanded(
+                                  child: ImpaktfullUiAutoLayout.vertical(
+                                    mainAxisSize: MainAxisSize.min,
+                                    spacing: 4,
+                                    children: [
+                                      if (title != null) ...[
+                                        Text(
+                                          title!,
+                                          style:
+                                              componentTheme.textStyles.title,
+                                        ),
+                                        if (subtitle != null) ...[
+                                          Text(
+                                            subtitle!,
+                                            style: componentTheme
+                                                .textStyles.subtitle,
+                                          ),
+                                        ],
+                                      ],
+                                    ],
+                                  ),
+                                ),
+                                if (hasClose || onCloseTapped != null) ...[
+                                  const SizedBox(width: 48),
+                                ],
+                              ],
                             ),
                           ),
-                        ),
-                      ],
-                      Padding(
-                        padding: componentTheme.dimens.padding,
-                        child: ImpaktfullUiAutoLayout.horizontal(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          spacing: 16,
-                          children: [
-                            Expanded(
-                              child: ImpaktfullUiAutoLayout.vertical(
-                                mainAxisSize: MainAxisSize.min,
-                                spacing: 4,
-                                children: [
-                                  if (title != null) ...[
-                                    Text(
-                                      title!,
-                                      style: componentTheme.textStyles.title,
-                                    ),
-                                    if (subtitle != null) ...[
-                                      Text(
-                                        subtitle!,
-                                        style:
-                                            componentTheme.textStyles.subtitle,
-                                      ),
-                                    ],
-                                  ],
-                                ],
+                          if (hasClose || onCloseTapped != null) ...[
+                            Align(
+                              alignment: AlignmentDirectional.topEnd,
+                              child: Padding(
+                                padding: componentTheme
+                                    .dimens.closeIconButtonPadding,
+                                child: ImpaktfullUiIconButton(
+                                  onTap: () {
+                                    if (onCloseTapped != null) {
+                                      onCloseTapped!.call();
+                                    } else {
+                                      Navigator.of(context).pop();
+                                    }
+                                  },
+                                  asset: componentTheme.assets.close,
+                                  color: componentTheme.colors.icons,
+                                ),
                               ),
                             ),
-                            if (hasClose || onCloseTapped != null) ...[
-                              const SizedBox(width: 48),
-                            ],
                           ],
-                        ),
+                        ],
                       ),
-                      if (hasClose || onCloseTapped != null) ...[
-                        Align(
-                          alignment: AlignmentDirectional.topEnd,
-                          child: Padding(
-                            padding:
-                                componentTheme.dimens.closeIconButtonPadding,
-                            child: ImpaktfullUiIconButton(
-                              onTap: () {
-                                if (onCloseTapped != null) {
-                                  onCloseTapped!.call();
-                                } else {
-                                  Navigator.of(context).pop();
-                                }
-                              },
-                              asset: componentTheme.assets.close,
-                              color: componentTheme.colors.icons,
-                            ),
+                      if (child != null) ...[
+                        Padding(
+                          padding: padding ?? componentTheme.dimens.padding,
+                          child: child!,
+                        ),
+                      ],
+                      if (actions.isNotEmpty) ...[
+                        Padding(
+                          padding: componentTheme.dimens.padding,
+                          child: ImpaktfullUiAutoLayout(
+                            spacing: 8,
+                            orientation: actionsOrientation,
+                            crossAxisAlignment: actionsOrientation ==
+                                    ImpaktfullUiAutoLayoutOrientation.vertical
+                                ? CrossAxisAlignment.stretch
+                                : CrossAxisAlignment.start,
+                            children: [
+                              ...actions,
+                            ],
                           ),
                         ),
                       ],
                     ],
                   ),
-                  if (child != null) ...[
-                    Padding(
-                      padding: componentTheme.dimens.padding,
-                      child: child!,
-                    ),
-                  ],
-                  if (actions.isNotEmpty) ...[
-                    Padding(
-                      padding: componentTheme.dimens.padding,
-                      child: ImpaktfullUiAutoLayout(
-                        spacing: 8,
-                        orientation: actionsOrientation,
-                        crossAxisAlignment: actionsOrientation ==
-                                ImpaktfullUiAutoLayoutOrientation.vertical
-                            ? CrossAxisAlignment.stretch
-                            : CrossAxisAlignment.start,
-                        children: [
-                          ...actions,
-                        ],
-                      ),
-                    ),
-                  ],
-                ],
+                ),
               ),
             );
           },
