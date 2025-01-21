@@ -54,6 +54,30 @@ class AccordionLibraryVariant
           ),
         ),
       ),
+      ImpaktfullUiAccordion(
+        title: 'Item2',
+        revealType: inputs.revealType.value!,
+        expanded: inputs.expanded2.value ?? false,
+        onExpandedChanged: inputs.expanded2.updateState,
+        trailingWidgetBuilder: (context) => ImpaktfullUiSwitch(
+          value: inputs.expanded2.value ?? false,
+          onChanged: inputs.expanded2.updateState,
+        ),
+        expandedBuilder: (context) => Container(
+          width: double.infinity,
+          color: theme.colors.accent,
+          padding: const EdgeInsets.all(16),
+          child: ImpaktfullUiAutoLayout.vertical(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Disclaimer 2',
+                style: theme.textStyles.onAccent.text.small.medium,
+              ),
+            ],
+          ),
+        ),
+      ),
     ];
   }
 

@@ -16,6 +16,7 @@ class ImpaktfullUiAccordion extends StatefulWidget
     with ComponentDescriptorMixin {
   final String title;
   final WidgetBuilder expandedBuilder;
+  final WidgetBuilder? trailingWidgetBuilder;
   final bool expanded;
   final bool animated;
   final String? subtitle;
@@ -29,9 +30,10 @@ class ImpaktfullUiAccordion extends StatefulWidget
     required this.expanded,
     this.animated = true,
     this.subtitle,
+    this.trailingWidgetBuilder,
     this.revealType = ImpaktfullUiAccordionRevealType.topDown,
-    this.theme,
     this.onExpandedChanged,
+    this.theme,
     super.key,
   });
 
@@ -88,13 +90,14 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
             title: widget.title,
             subtitle: widget.subtitle,
             onTap: _toggleExpanded,
-            trailingWidgetBuilder: (context) => AnimatedRotation(
-              turns: widget.expanded ? -0.5 : 0,
-              duration: const Duration(milliseconds: 200),
-              child: ImpaktfullUiAssetWidget(
-                asset: componentTheme.assets.chevronDown,
-              ),
-            ),
+            trailingWidgetBuilder: widget.trailingWidgetBuilder ??
+                (context) => AnimatedRotation(
+                      turns: widget.expanded ? -0.5 : 0,
+                      duration: const Duration(milliseconds: 200),
+                      child: ImpaktfullUiAssetWidget(
+                        asset: componentTheme.assets.chevronDown,
+                      ),
+                    ),
           ),
           if (widget.animated) ...[
             SizeTransition(

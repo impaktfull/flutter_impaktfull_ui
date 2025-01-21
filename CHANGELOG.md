@@ -1,3 +1,9 @@
+# 0.34.0
+
+## Feat
+
+- Added `trailingWidgetBuilder` to ImpaktfullUiAccordion
+
 # 0.33.0
 
 ## Feat
