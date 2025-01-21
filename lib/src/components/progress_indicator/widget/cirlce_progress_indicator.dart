@@ -8,6 +8,7 @@ class ImpaktfullUiCircleProgressIndicator extends StatelessWidget {
   final double value;
   final bool showText;
   final Color? color;
+  final bool animate;
   final ImpaktfullUiProgressIndicatorTheme? theme;
 
   const ImpaktfullUiCircleProgressIndicator({
@@ -15,6 +16,7 @@ class ImpaktfullUiCircleProgressIndicator extends StatelessWidget {
     this.showText = false,
     this.color,
     this.theme,
+    this.animate = true,
     super.key,
   });
 
@@ -34,7 +36,9 @@ class ImpaktfullUiCircleProgressIndicator extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: TweenAnimationBuilder<double>(
-                  duration: componentTheme.durations.progress,
+                  duration: animate
+                      ? componentTheme.durations.progress
+                      : Duration.zero,
                   curve: Curves.easeInOut,
                   tween: Tween(begin: 0, end: value),
                   builder: (context, animatedValue, child) => CustomPaint(

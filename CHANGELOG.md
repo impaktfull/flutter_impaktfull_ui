@@ -1,3 +1,9 @@
+# 0.35.0
+
+## Feat
+
+- Added `animate` to ImpaktfullUiProgressIndicator
+
 # 0.34.1
 
 ## Fix

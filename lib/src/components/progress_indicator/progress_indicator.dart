@@ -17,6 +17,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget
   final bool showText;
   final ImpaktfullUiProgressIndicatorType type;
   final Color? color;
+  final bool animate;
   final ImpaktfullUiProgressIndicatorTheme? theme;
 
   const ImpaktfullUiProgressIndicator({
@@ -24,6 +25,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget
     this.type = ImpaktfullUiProgressIndicatorType.line,
     this.showText = false,
     this.color,
+    this.animate = true,
     this.theme,
     super.key,
   });
@@ -40,6 +42,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget
               value: value,
               showText: showText,
               color: color,
+              animate: animate,
               theme: componentTheme,
             );
           case ImpaktfullUiProgressIndicatorType.circle:
@@ -47,6 +50,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget
               value: value,
               showText: showText,
               color: color,
+              animate: animate,
               theme: componentTheme,
             );
           case ImpaktfullUiProgressIndicatorType.halfCircle:
@@ -54,6 +58,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget
               value: value,
               showText: showText,
               color: color,
+              animate: animate,
               theme: componentTheme,
             );
         }
