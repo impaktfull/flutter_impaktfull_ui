@@ -13,8 +13,7 @@ export 'sidebar_navigation_item_style.dart';
 
 part 'sidebar_navigation_item.describe.dart';
 
-class ImpaktfullUiSidebarNavigationItem extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSidebarNavigationItem extends StatefulWidget with ComponentDescriptorMixin {
   final ImpaktfullUiAsset? leading;
   final String title;
   final List<Widget> items;
@@ -33,15 +32,13 @@ class ImpaktfullUiSidebarNavigationItem extends StatefulWidget
   });
 
   @override
-  State<ImpaktfullUiSidebarNavigationItem> createState() =>
-      _ImpaktfullUiSidebarNavigationItemState();
+  State<ImpaktfullUiSidebarNavigationItem> createState() => _ImpaktfullUiSidebarNavigationItemState();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiSidebarNavigationItemState
-    extends State<ImpaktfullUiSidebarNavigationItem>
+class _ImpaktfullUiSidebarNavigationItemState extends State<ImpaktfullUiSidebarNavigationItem>
     with SingleTickerProviderStateMixin {
   var _expanded = false;
   late AnimationController _controller;
@@ -50,8 +47,7 @@ class _ImpaktfullUiSidebarNavigationItemState
   @override
   void initState() {
     super.initState();
-    _expanded = widget.items.any(
-        (item) => item is ImpaktfullUiSidebarNavigationItem && item.isSelected);
+    _expanded = _hasSelectedSubItem(widget.items);
     _controller = AnimationController(
       duration: const Duration(milliseconds: 200),
       vsync: this,
@@ -65,6 +61,18 @@ class _ImpaktfullUiSidebarNavigationItemState
     }
   }
 
+  bool _hasSelectedSubItem(List<Widget> items) => items.any(
+        (item) {
+          if (item is! ImpaktfullUiSidebarNavigationItem) {
+            return false;
+          }
+          if (item.items.isNotEmpty) {
+            return _hasSelectedSubItem(item.items);
+          }
+          return item.isSelected;
+        },
+      );
+
   @override
   void dispose() {
     _controller.dispose();
@@ -73,8 +81,7 @@ class _ImpaktfullUiSidebarNavigationItemState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<
-        ImpaktfullUiSidebarNavigationItemTheme>(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSidebarNavigationItemTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         return ImpaktfullUiAutoLayout.vertical(
@@ -84,13 +91,11 @@ class _ImpaktfullUiSidebarNavigationItemState
           children: [
             ImpaktfullUiTouchFeedback(
               onTap: _onTap,
-              color:
-                  widget.isSelected ? componentTheme.colors.background : null,
+              color: widget.isSelected ? componentTheme.colors.background : null,
               borderRadius: componentTheme.dimens.borderRadius,
               child: Padding(
-                padding: widget.items.isEmpty
-                    ? componentTheme.dimens.padding
-                    : componentTheme.dimens.paddingWithSubItems,
+                padding:
+                    widget.items.isEmpty ? componentTheme.dimens.padding : componentTheme.dimens.paddingWithSubItems,
                 child: ImpaktfullUiAutoLayout.horizontal(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 12,

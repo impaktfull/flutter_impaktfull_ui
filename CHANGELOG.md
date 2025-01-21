@@ -1,3 +1,9 @@
+# 0.34.1
+
+## Fix
+
+- ImpaktfullUiSidebarNavigationItem now correctly handles the selected state
+
 # 0.34.0
 
 ## Feat
