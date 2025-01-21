@@ -912,7 +912,7 @@ class DefaultTheme {
             border: colors.border,
           ),
           dimens: ImpaktfullUiProgressIndicatorDimensTheme(
-            height: 4,
+            width: 4,
             borderRadius: dimens.borderRadiusExtraSmall,
           ),
           durations: ImpaktfullUiProgressIndicatorDurationsTheme(

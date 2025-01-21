@@ -36,10 +36,10 @@ class ImpaktfullUiProgressIndicatorColorTheme {
 }
 
 class ImpaktfullUiProgressIndicatorDimensTheme {
-  final double height;
+  final double width;
   final BorderRadiusGeometry borderRadius;
   const ImpaktfullUiProgressIndicatorDimensTheme({
-    required this.height,
+    required this.width,
     required this.borderRadius,
   });
 }

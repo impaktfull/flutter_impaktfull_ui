@@ -1,3 +1,9 @@
+# 0.36.0
+
+## Feat
+
+- Added `width` to ImpaktfullUiLineProgressIndicator
+
 # 0.35.0
 
 ## Feat

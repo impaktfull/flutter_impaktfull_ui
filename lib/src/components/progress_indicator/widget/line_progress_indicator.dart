@@ -7,6 +7,7 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
   final double value;
   final bool showText;
   final Color? color;
+  final double? width;
   final bool animate;
   final ImpaktfullUiProgressIndicatorTheme? theme;
 
@@ -14,6 +15,7 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
     required this.value,
     this.showText = false,
     this.color,
+    this.width,
     this.animate = true,
     this.theme,
     super.key,
@@ -33,7 +35,7 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
               alignment: AlignmentDirectional.centerStart,
               children: [
                 Container(
-                  height: componentTheme.dimens.height,
+                  height: width ?? componentTheme.dimens.width,
                   decoration: BoxDecoration(
                     color: componentTheme.colors.background,
                     borderRadius: componentTheme.dimens.borderRadius,
@@ -51,7 +53,7 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
                       FractionallySizedBox(
                     widthFactor: animatedValue,
                     child: Container(
-                      height: 8,
+                      height: width ?? componentTheme.dimens.width,
                       decoration: BoxDecoration(
                         color: color ?? componentTheme.colors.foreground,
                         borderRadius: componentTheme.dimens.borderRadius,
