@@ -22,6 +22,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   final Widget Function(BuildContext context, T item, int index)?
       separatorBuilder;
   final EdgeInsetsGeometry padding;
+  final bool useSafeArea;
   final double spacing;
   final int itemsPerRow;
   final bool separated;
@@ -39,6 +40,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   const ImpaktfullUiListView({
     required List<Widget> this.children,
     this.isLoading = false,
+    this.useSafeArea = true,
     this.spacing = 0,
     this.onRefresh,
     this.itemsPerRow = 1,
@@ -69,6 +71,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.onRefresh,
     this.itemsPerRow = 1,
     this.padding = EdgeInsets.zero,
+    this.useSafeArea = true,
     this.shrinkWrap = false,
     this.reversed = false,
     this.scrollPhysics,
@@ -92,6 +95,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.onRefresh,
     this.itemsPerRow = 1,
     this.padding = EdgeInsets.zero,
+    this.useSafeArea = true,
     this.shrinkWrap = false,
     this.reversed = false,
     this.scrollPhysics,
@@ -111,6 +115,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.refreshBtnLabel,
     this.onRefresh,
     this.padding = EdgeInsets.zero,
+    this.useSafeArea = true,
     this.shrinkWrap = false,
     this.reversed = false,
     this.scrollPhysics,
@@ -174,7 +179,10 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiListViewTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
-        final padding = MediaQuery.paddingOf(context).add(widget.padding);
+        final safeAreaPadding = widget.useSafeArea
+            ? MediaQuery.paddingOf(context)
+            : EdgeInsets.zero;
+        final padding = safeAreaPadding.add(widget.padding);
         if (widget.children != null) {
           return ImpaktfullUiRefreshIndicator(
             onRefresh: widget.onRefresh,

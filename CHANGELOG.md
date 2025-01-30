@@ -1,3 +1,9 @@
+# 0.37.0
+
+## Fix
+
+- ImpaktfullUiListView make `useSafeArea` configurable
+
 # 0.36.0
 
 ## Feat
