@@ -32,6 +32,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   final bool shrinkWrap;
   final bool reversed;
   final Axis scrollDirection;
+  final Widget? Function(BuildContext context)? leadingBuilder;
+  final Widget? Function(BuildContext context)? trailingBuilder;
   final AsyncCallback? onRefresh;
   final ScrollPhysics? scrollPhysics;
   final ScrollController? controller;
@@ -50,6 +52,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
     this.controller,
+    this.leadingBuilder,
+    this.trailingBuilder,
     this.theme,
     super.key,
   })  : itemBuilder = null,
@@ -77,6 +81,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
     this.controller,
+    this.leadingBuilder,
+    this.trailingBuilder,
     this.theme,
     super.key,
   })  : separated = false,
@@ -101,6 +107,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
     this.controller,
+    this.leadingBuilder,
+    this.trailingBuilder,
     this.theme,
     super.key,
     required,
@@ -121,6 +129,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.scrollPhysics,
     this.scrollDirection = Axis.vertical,
     this.controller,
+    this.leadingBuilder,
+    this.trailingBuilder,
     this.theme,
     super.key,
     required,
@@ -176,6 +186,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
         child: ImpaktfullUiLoadingIndicator(),
       );
     }
+    final leading = widget.leadingBuilder?.call(context);
+    final trailing = widget.trailingBuilder?.call(context);
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiListViewTheme>(
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
@@ -194,6 +206,9 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               reverse: widget.reversed,
               scrollDirection: widget.scrollDirection,
               children: [
+                if (leading != null) ...[
+                  leading,
+                ],
                 ImpaktfullUiAutoLayout(
                   orientation: widget.scrollDirection == Axis.horizontal
                       ? ImpaktfullUiAutoLayoutOrientation.horizontal
@@ -202,6 +217,9 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: widget.children!,
                 ),
+                if (trailing != null) ...[
+                  trailing,
+                ],
               ],
             ),
           );
@@ -217,7 +235,13 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               reverse: widget.reversed,
               scrollDirection: widget.scrollDirection,
               children: [
+                if (leading != null) ...[
+                  leading,
+                ],
                 widget.child!,
+                if (trailing != null) ...[
+                  trailing,
+                ],
               ],
             ),
           );
@@ -234,6 +258,9 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                 padding: const EdgeInsets.all(16),
                 shrinkWrap: widget.shrinkWrap,
                 children: [
+                  if (leading != null) ...[
+                    leading,
+                  ],
                   Container(
                     height: widget.shrinkWrap ? null : constraints.maxHeight,
                     alignment: Alignment.center,
@@ -264,6 +291,9 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                       ],
                     ),
                   ),
+                  if (trailing != null) ...[
+                    trailing,
+                  ],
                 ],
               ),
             ),
@@ -277,7 +307,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               padding: padding,
               physics: widget.scrollPhysics,
               scrollDirection: widget.scrollDirection,
-              itemBuilder: _buildItem,
+              itemBuilder: (context, index) =>
+                  _buildItem(context, index, leading, trailing),
               shrinkWrap: widget.shrinkWrap,
               reverse: widget.reversed,
               separatorBuilder: (context, index) {
@@ -296,7 +327,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             padding: padding,
             physics: widget.scrollPhysics,
             scrollDirection: widget.scrollDirection,
-            itemBuilder: _buildItem,
+            itemBuilder: (context, index) =>
+                _buildItem(context, index, leading, trailing),
             shrinkWrap: widget.shrinkWrap,
             reverse: widget.reversed,
             separatorBuilder: (context, index) =>
@@ -308,10 +340,16 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
     );
   }
 
-  Widget? _buildItem(BuildContext context, int index) {
+  Widget? _buildItem(
+    BuildContext context,
+    int index,
+    Widget? leading,
+    Widget? trailing,
+  ) {
     final itemsPerRow = widget.itemsPerRow;
+    Widget child;
     if (itemsPerRow == 1) {
-      return widget.itemBuilder!(
+      child = widget.itemBuilder!(
         context,
         widget.items![index],
         index,
@@ -332,11 +370,32 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
           );
         }
       }
-      return ImpaktfullUiAutoLayout.horizontal(
+      child = ImpaktfullUiAutoLayout.horizontal(
         spacing: widget.spacing,
         children: rowItems,
       );
     }
+    final isFirst = index == 0;
+    final isLast = index == widget.items!.length - 1;
+    return ImpaktfullUiAutoLayout.vertical(
+      spacing: widget.spacing,
+      children: [
+        if (isFirst && leading != null) ...[
+          leading,
+        ],
+        SizedBox(
+          width:
+              widget.scrollDirection == Axis.vertical ? double.infinity : null,
+          child: child,
+        ),
+        if (widget.separatorBuilder != null) ...[
+          widget.separatorBuilder!(context, widget.items![index], index),
+        ],
+        if (isLast && trailing != null) ...[
+          trailing,
+        ],
+      ],
+    );
   }
 
   Future<void> _onRefreshTapped() async {

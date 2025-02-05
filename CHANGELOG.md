@@ -1,3 +1,9 @@
+# 0.38.0
+
+## Feat
+
+- Added `leadingBuilder` & `trailingBuilder` to ImpaktfullUiListView
+
 # 0.37.0
 
 ## Fix

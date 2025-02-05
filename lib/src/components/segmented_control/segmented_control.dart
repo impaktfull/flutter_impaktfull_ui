@@ -35,7 +35,7 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSegmentedControlTheme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Container(
-        padding: const EdgeInsets.all(4),
+        padding: componentTheme.dimens.padding,
         height: 56,
         decoration: BoxDecoration(
           color: componentTheme.colors.background,

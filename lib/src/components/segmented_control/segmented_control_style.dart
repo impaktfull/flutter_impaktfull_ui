@@ -35,6 +35,7 @@ class ImpaktfullUiSegmentedControlTheme extends ImpaktfullUiComponentTheme {
         ),
         dimens: ImpaktfullUiSegmentedControlDimensTheme(
           borderRadius: dimens.borderRadius,
+          padding: EdgeInsets.zero,
         ),
         textStyles: ImpaktfullUiSegmentedControlTextStyleTheme(
           label: textStyles.onCanvas.text.small,
@@ -62,8 +63,10 @@ class ImpaktfullUiSegmentedControlColorTheme {
 
 class ImpaktfullUiSegmentedControlDimensTheme {
   final BorderRadiusGeometry borderRadius;
+  final EdgeInsets padding;
   const ImpaktfullUiSegmentedControlDimensTheme({
     required this.borderRadius,
+    required this.padding,
   });
 }
 

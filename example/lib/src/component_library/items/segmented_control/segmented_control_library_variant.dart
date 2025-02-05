@@ -35,6 +35,7 @@ class SegmentedControlLibraryVariant
           ),
           dimens: ImpaktfullUiSegmentedControlDimensTheme(
             borderRadius: theme.dimens.borderRadius,
+            padding: EdgeInsets.zero,
           ),
           textStyles: ImpaktfullUiSegmentedControlTextStyleTheme(
             label: theme.textStyles.onPrimary.text.small,

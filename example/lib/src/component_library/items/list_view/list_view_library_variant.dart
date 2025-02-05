@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/list_view/list_view_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
@@ -21,6 +20,8 @@ class ListViewLibraryVariant
         child: ImpaktfullUiListView.builder(
           onRefresh: () async => Future.delayed(const Duration(seconds: 3)),
           spacing: 8,
+          leadingBuilder: (context) => const Icon(Icons.arrow_back),
+          trailingBuilder: (context) => const Icon(Icons.arrow_forward),
           items: List.generate(100, (i) => i),
           itemBuilder: (context, item, index) => Container(
             color: ImpaktfullUiTheme.of(context).colors.accent,
