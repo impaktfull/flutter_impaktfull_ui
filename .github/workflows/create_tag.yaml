@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v2
         with:
           token: ${{ secrets.IMPAKTFULL_GITHUB_PAT }}
           ref: ${{ github.ref }}
@@ -22,4 +22,4 @@ jobs:
       - name: Automated version bump
         uses: impaktfull/gh_action_dart_conventional_release@main
         with:
-          tag-prefix: "v"
+          tag-prefix: 'v'
