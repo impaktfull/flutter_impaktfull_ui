@@ -1,3 +1,9 @@
+# 0.38.1 - 0.38.5
+
+## Fix
+
+- Github pages upload
+
 # 0.38.0
 
 ## Feat
@@ -39,7 +45,7 @@
 ## Feat
 
 - Added `useSafeArea` to ImpaktfullUiBottomSheet
-- Added `padding` to ImpaktfullUiBottomSheet 
+- Added `padding` to ImpaktfullUiBottomSheet
 
 # 0.32.0
 
