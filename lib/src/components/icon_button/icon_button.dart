@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/components/notification_badge/notification_badge.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
@@ -15,6 +16,9 @@ class ImpaktfullUiIconButton extends StatelessWidget
   final String? tooltip;
   final Color? backgroundColor;
   final bool canRequestFocus;
+  final bool showNotificationBadge;
+  final String? notificationBadgeText;
+  final Color? notificationBadgeColor;
 
   const ImpaktfullUiIconButton({
     required this.onTap,
@@ -24,6 +28,9 @@ class ImpaktfullUiIconButton extends StatelessWidget
     this.backgroundColor,
     this.tooltip,
     this.canRequestFocus = true,
+    this.showNotificationBadge = false,
+    this.notificationBadgeText,
+    this.notificationBadgeColor,
     super.key,
   });
 
@@ -38,10 +45,16 @@ class ImpaktfullUiIconButton extends StatelessWidget
       canRequestFocus: canRequestFocus,
       child: Padding(
         padding: const EdgeInsets.all(12),
-        child: ImpaktfullUiAssetWidget(
-          asset: asset,
-          color: color,
-          size: size,
+        child: ImpaktfullUiNotificationBadge(
+          show: showNotificationBadge,
+          color: notificationBadgeColor,
+          text: notificationBadgeText,
+          size: 8,
+          child: ImpaktfullUiAssetWidget(
+            asset: asset,
+            color: color,
+            size: size,
+          ),
         ),
       ),
     );

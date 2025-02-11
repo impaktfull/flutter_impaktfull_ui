@@ -19,6 +19,7 @@ class IconButtonTypeLibraryVariant
         asset: ImpaktfullUiAsset.icon(inputs.icon.value!),
         tooltip: inputs.tooltip.value,
         color: theme.colors.text,
+        showNotificationBadge: true,
       ),
     ];
   }

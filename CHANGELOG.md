@@ -1,3 +1,9 @@
+# 0.39.0
+
+## Feat
+
+- Added notificationBadge support to ImpaktfullUiIconButton
+
 # 0.38.1 - 0.38.5
 
 ## Fix
