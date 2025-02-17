@@ -769,25 +769,13 @@ class DefaultTheme {
             value2Custom: textStyles.onCard.text.small,
           ),
         ),
-        modal: ImpaktfullUiModalTheme(
-          colors: ImpaktfullUiModalColorTheme(
-            background: colors.card,
-            closeIcon: colors.text,
-            leadingHeaderIcon: colors.accent,
-          ),
-          textStyles: ImpaktfullUiModalTextStyleTheme(
-            title: textStyles.onCanvas.display.small.semiBold,
-            subtitle: textStyles.onCanvas.text.small,
-          ),
-          dimens: ImpaktfullUiModalDimensTheme(
-            borderRadius: dimens.borderRadius,
-            padding: const EdgeInsets.all(16),
-            closeIconButtonPadding: const EdgeInsets.all(4),
-            leadingIconPadding: const EdgeInsets.all(8),
-          ),
-          assets: ImpaktfullUiModalAssetsTheme(
-            close: assets.icons.close,
-          ),
+        modal: ImpaktfullUiModalTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         navBar: ImpaktfullUiNavBarTheme(
           assets: ImpaktfullUiNavBarAssetsTheme(

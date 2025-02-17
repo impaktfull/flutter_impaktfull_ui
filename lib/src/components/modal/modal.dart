@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/divider/divider.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
@@ -28,9 +29,14 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   final Widget? headerChild;
   final String? title;
   final String? subtitle;
+  final String? content;
   final bool hasClose;
   final Future<bool> Function()? onCloseTapped;
   final Widget? child;
+  final String? primaryActionLabel;
+  final VoidCallback? primaryActionOnTap;
+  final String? secondaryActionLabel;
+  final VoidCallback? secondaryActionOnTap;
   final List<Widget> actions;
   final bool isDismissible;
   final bool showDividers;
@@ -47,6 +53,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     this.hasClose = true,
     this.onCloseTapped,
     this.child,
+    this.primaryActionLabel,
+    this.secondaryActionLabel,
     this.actions = const [],
     this.isDismissible = true,
     this.showDividers = false,
@@ -54,7 +62,32 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     this.childPadding,
     this.theme,
     super.key,
-  });
+  })  : content = null,
+        primaryActionOnTap = null,
+        secondaryActionOnTap = null;
+
+  const ImpaktfullUiModal.simple({
+    this.headerChildLocation,
+    this.headerIcon,
+    this.headerIconColor,
+    this.headerChild,
+    this.title,
+    this.subtitle,
+    this.content,
+    this.primaryActionLabel,
+    this.secondaryActionLabel,
+    this.primaryActionOnTap,
+    this.secondaryActionOnTap,
+    this.hasClose = true,
+    this.onCloseTapped,
+    this.isDismissible = true,
+    this.showDividers = false,
+    this.width = 400,
+    this.theme,
+    super.key,
+  })  : child = null,
+        actions = const [],
+        childPadding = null;
 
   static Future<T?> show<T>({
     required BuildContext context,
@@ -269,11 +302,26 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                 ),
                               ),
                             ],
+                            if (content != null) ...[
+                              Flexible(
+                                flex: 1,
+                                fit: FlexFit.loose,
+                                child: Padding(
+                                  padding: componentTheme.dimens.padding,
+                                  child: Text(
+                                    content!,
+                                    style: componentTheme.textStyles.content,
+                                  ),
+                                ),
+                              ),
+                            ],
                             if (showDividers &&
                                 (child != null || title != null)) ...[
                               const ImpaktfullUiDivider(),
                             ],
-                            if (actions.isNotEmpty) ...[
+                            if (actions.isNotEmpty ||
+                                primaryActionLabel != null ||
+                                secondaryActionLabel != null) ...[
                               Padding(
                                 padding: componentTheme.dimens.padding,
                                 child: ImpaktfullUiAutoLayout(
@@ -285,6 +333,20 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                       ? CrossAxisAlignment.stretch
                                       : CrossAxisAlignment.start,
                                   children: [
+                                    if (primaryActionLabel != null) ...[
+                                      ImpaktfullUiButton(
+                                        type: ImpaktfullUiButtonType.primary,
+                                        title: primaryActionLabel!,
+                                        onTap: primaryActionOnTap,
+                                      ),
+                                    ],
+                                    if (secondaryActionLabel != null) ...[
+                                      ImpaktfullUiButton(
+                                        type: ImpaktfullUiButtonType.secondary,
+                                        title: secondaryActionLabel!,
+                                        onTap: secondaryActionOnTap,
+                                      ),
+                                    ],
                                     ...actions,
                                   ],
                                 ),

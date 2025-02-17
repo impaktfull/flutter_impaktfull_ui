@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
@@ -17,6 +18,36 @@ class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiModalTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.modal;
+
+  static ImpaktfullUiModalTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiModalTheme(
+        colors: ImpaktfullUiModalColorTheme(
+          background: colors.card,
+          closeIcon: colors.text,
+          leadingHeaderIcon: colors.accent,
+        ),
+        textStyles: ImpaktfullUiModalTextStyleTheme(
+          title: textStyles.onCanvas.display.small.semiBold,
+          subtitle: textStyles.onCanvas.text.small,
+          content: textStyles.onCanvas.text.small,
+        ),
+        dimens: ImpaktfullUiModalDimensTheme(
+          borderRadius: dimens.borderRadius,
+          padding: const EdgeInsets.all(16),
+          closeIconButtonPadding: const EdgeInsets.all(4),
+          leadingIconPadding: const EdgeInsets.all(8),
+        ),
+        assets: ImpaktfullUiModalAssetsTheme(
+          close: assets.icons.close,
+        ),
+      );
 }
 
 class ImpaktfullUiModalColorTheme {
@@ -34,9 +65,12 @@ class ImpaktfullUiModalColorTheme {
 class ImpaktfullUiModalTextStyleTheme {
   final TextStyle title;
   final TextStyle subtitle;
+  final TextStyle content;
+
   const ImpaktfullUiModalTextStyleTheme({
     required this.title,
     required this.subtitle,
+    required this.content,
   });
 }
 

@@ -1,3 +1,9 @@
+# 0.41.0
+
+## Feat
+
+- Added ImpaktfullUiModal.simple with basic strings & actions
+
 # 0.40.0
 
 ## Feat
