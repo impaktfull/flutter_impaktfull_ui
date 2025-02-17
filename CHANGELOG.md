@@ -1,3 +1,9 @@
+# 0.40.0
+
+## Feat
+
+- Added `triggerMode` to ImpaktfullUiTooltip
+
 # 0.39.0
 
 ## Feat
