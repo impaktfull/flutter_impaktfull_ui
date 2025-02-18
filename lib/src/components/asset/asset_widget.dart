@@ -59,8 +59,8 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
       return Image.asset(
         pixelAsset,
         color: color,
-        width: width,
-        height: height,
+        width: width ?? size,
+        height: height ?? size,
         package: asset.package,
         fit: fit,
       );
@@ -71,8 +71,8 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
         svgAsset,
         colorFilter:
             color == null ? null : ColorFilter.mode(color, BlendMode.srcIn),
-        width: width,
-        height: height,
+        width: width ?? size,
+        height: height ?? size,
         package: asset.package,
         fit: fit ?? BoxFit.contain,
       );
@@ -80,16 +80,16 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
     if (lottieAsset != null) {
       return Lottie.asset(
         lottieAsset,
-        width: width,
-        height: height,
+        width: width ?? size,
+        height: height ?? size,
         package: asset.package,
         fit: fit,
       );
     }
     if (riveAsset != null) {
       return SizedBox(
-        width: width,
-        height: height,
+        width: width ?? size,
+        height: height ?? size,
         child: RiveAnimation.asset(
           riveAsset,
         ),

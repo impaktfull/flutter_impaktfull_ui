@@ -1,3 +1,9 @@
+# 0.41.2
+
+## Fix
+
+- Fixed the size of the asset widget
+
 # 0.41.1
 
 ## Fix
