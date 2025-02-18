@@ -96,13 +96,14 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     bool barrierDismissible = true,
     bool rootNavigator = false,
   }) =>
-      Navigator.of(context, rootNavigator: rootNavigator)
-          .push<T>(ImpaktfullUiDefaultModalRoute<T>(
-        context: context,
-        builder: builder,
-        barrierDismissible: barrierDismissible,
-        hasBlurredBackground: hasBlurredBackground,
-      ));
+      Navigator.of(context, rootNavigator: rootNavigator).push<T>(
+        ImpaktfullUiDefaultModalRoute<T>(
+          context: context,
+          builder: builder,
+          barrierDismissible: barrierDismissible,
+          hasBlurredBackground: hasBlurredBackground,
+        ),
+      );
 
   static Future<T?> showSimple<T>({
     required BuildContext context,
@@ -165,7 +166,24 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                       ? this.width
                       : constraints.maxWidth;
                   final actionsOrientation = _getActionsOrientation(width);
-                  List<Widget> actions = this.actions;
+                  final allActions = [
+                    if (primaryActionLabel != null) ...[
+                      ImpaktfullUiButton(
+                        type: ImpaktfullUiButtonType.primary,
+                        title: primaryActionLabel!,
+                        onTap: primaryActionOnTap,
+                      ),
+                    ],
+                    if (secondaryActionLabel != null) ...[
+                      ImpaktfullUiButton(
+                        type: ImpaktfullUiButtonType.secondary,
+                        title: secondaryActionLabel!,
+                        onTap: secondaryActionOnTap,
+                      ),
+                    ],
+                    ...this.actions,
+                  ];
+                  List<Widget> actions = allActions;
                   if (actions.isNotEmpty &&
                       actionsOrientation ==
                           ImpaktfullUiAutoLayoutOrientation.horizontal) {
@@ -333,20 +351,6 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                       ? CrossAxisAlignment.stretch
                                       : CrossAxisAlignment.start,
                                   children: [
-                                    if (primaryActionLabel != null) ...[
-                                      ImpaktfullUiButton(
-                                        type: ImpaktfullUiButtonType.primary,
-                                        title: primaryActionLabel!,
-                                        onTap: primaryActionOnTap,
-                                      ),
-                                    ],
-                                    if (secondaryActionLabel != null) ...[
-                                      ImpaktfullUiButton(
-                                        type: ImpaktfullUiButtonType.secondary,
-                                        title: secondaryActionLabel!,
-                                        onTap: secondaryActionOnTap,
-                                      ),
-                                    ],
                                     ...actions,
                                   ],
                                 ),

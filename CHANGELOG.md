@@ -1,3 +1,9 @@
+# 0.41.1
+
+## Fix
+
+- Fixed the modal actions orientation
+
 # 0.41.0
 
 ## Feat
