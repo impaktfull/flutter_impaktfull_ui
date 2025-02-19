@@ -167,13 +167,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                       : constraints.maxWidth;
                   final actionsOrientation = _getActionsOrientation(width);
                   final allActions = [
-                    if (primaryActionLabel != null) ...[
-                      ImpaktfullUiButton(
-                        type: ImpaktfullUiButtonType.primary,
-                        title: primaryActionLabel!,
-                        onTap: primaryActionOnTap,
-                      ),
-                    ],
+                    ...this.actions,
                     if (secondaryActionLabel != null) ...[
                       ImpaktfullUiButton(
                         type: ImpaktfullUiButtonType.secondary,
@@ -181,7 +175,13 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                         onTap: secondaryActionOnTap,
                       ),
                     ],
-                    ...this.actions,
+                    if (primaryActionLabel != null) ...[
+                      ImpaktfullUiButton(
+                        type: ImpaktfullUiButtonType.primary,
+                        title: primaryActionLabel!,
+                        onTap: primaryActionOnTap,
+                      ),
+                    ],
                   ];
                   List<Widget> actions = allActions;
                   if (actions.isNotEmpty &&

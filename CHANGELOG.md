@@ -1,3 +1,9 @@
+# 0.41.3
+
+## Fix
+
+- Fixed the ImpaktfullUiModal.simple actions order
+
 # 0.41.2
 
 ## Fix
