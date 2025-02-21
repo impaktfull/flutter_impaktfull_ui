@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/adaptive_nav_bar/model/adaptive_nav_bar_action.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
+import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
+import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
@@ -49,7 +51,21 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
         title: title,
         subtitle: subtitle,
         onBackTapped: onBackTapped,
-        bottomChild: bottomChild,
+        bottomChild: bottomChild == null
+            ? null
+            : Builder(
+                builder: (context) {
+                  if (_shouldAddPadding(bottomChild)) {
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 8,
+                      ),
+                      child: bottomChild!,
+                    );
+                  }
+                  return bottomChild!;
+                },
+              ),
         onDrawerTapped: onDrawerTapped,
         isDrawerOpen: isDrawerOpen,
         actions: actions.map((e) => e.small()).toList(),
@@ -69,4 +85,11 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
+
+  bool _shouldAddPadding(Widget? bottomChild) {
+    if (bottomChild == null) return false;
+    if (bottomChild is ImpaktfullUiHorizontalTabs) return true;
+    if (bottomChild is ImpaktfullUiInputField) return true;
+    return false;
+  }
 }

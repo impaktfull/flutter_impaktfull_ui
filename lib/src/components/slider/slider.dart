@@ -3,6 +3,7 @@ import 'package:impaktfull_ui/src/components/slider/model/slider_legend_alignmen
 import 'package:impaktfull_ui/src/components/slider/slider_style.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
 export 'slider_style.dart';
 export 'model/slider_legend_alignment.dart';
@@ -161,7 +162,7 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
+                                color: Colors.black.withOpacityPercentage(0.1),
                                 blurRadius: 4,
                                 offset: const Offset(0, 2),
                               ),

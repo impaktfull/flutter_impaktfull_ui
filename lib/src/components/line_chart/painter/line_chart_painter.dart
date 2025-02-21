@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'dart:math' as math;
 import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_painter_data.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
 class ImpaktfullUiLineChartPainter extends CustomPainter {
   final List<ImpaktfullUiLineChartPainterData> data;
@@ -96,8 +97,8 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
       if (lineChartData.gradientEnabled) {
         final gradientColors = lineChartData.gradientColors ??
             [
-              paint.color.withOpacity(0.33),
-              paint.color.withOpacity(0),
+              paint.color.withOpacityPercentage(0.33),
+              paint.color.withOpacityPercentage(0),
             ];
         final gradientPath = Path.from(path);
         gradientPath.lineTo(size.width, size.height);

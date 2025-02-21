@@ -6,6 +6,7 @@ import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart'
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
 export 'badge_style.dart';
 export 'badge_type.dart';
@@ -114,7 +115,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                     child: ImpaktfullUiAssetWidget(
                       asset: componentTheme.assets.close,
                       size: 16,
-                      color: textColor.withOpacity(0.66),
+                      color: textColor.withOpacityPercentage(0.66),
                     ),
                   ),
                 ),
@@ -207,14 +208,14 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
       return Icon(
         widget.icon,
         size: this.widget.size.widgetSize,
-        color: color.withOpacity(0.66),
+        color: color.withOpacityPercentage(0.66),
       );
     }
     if (widget is ImpaktfullUiAssetWidget) {
       return ImpaktfullUiAssetWidget(
         asset: widget.asset,
         size: this.widget.size.widgetSize,
-        color: color.withOpacity(0.66),
+        color: color.withOpacityPercentage(0.66),
       );
     }
     return SizedBox(

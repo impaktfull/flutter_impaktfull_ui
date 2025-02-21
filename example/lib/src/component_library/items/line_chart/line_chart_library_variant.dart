@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/line_chart/line_chart_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
+import 'package:impaktfull_ui_example/src/util/extensions/color_extensions.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
 
 class LineChartLibraryVariant
@@ -41,8 +42,8 @@ class LineChartLibraryVariant
                 isCurved: true,
                 gradientEnabled: true,
                 gradientColors: [
-                  theme.colors.accent.withOpacity(1),
-                  theme.colors.accent.withOpacity(0.0),
+                  theme.colors.accent.withOpacityPercentage(1),
+                  theme.colors.accent.withOpacityPercentage(0.0),
                 ],
               ),
               offsetBuilder: (x, y) => Offset(x, y),

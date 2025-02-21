@@ -10,6 +10,7 @@ import 'package:impaktfull_ui/src/components/modal/routes/default_modal_route.da
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
 export 'modal_style.dart';
 export 'routes/default_modal_route.dart';
@@ -204,7 +205,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: componentTheme.colors.leadingHeaderIcon
-                                .withOpacity(0.2),
+                                .withOpacityPercentage(0.2),
                           ),
                           borderRadius: componentTheme.dimens.borderRadius,
                         ),

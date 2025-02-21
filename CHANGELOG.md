@@ -1,3 +1,11 @@
+# 0.41.4
+
+## Fix
+
+- Deprecated color methods
+- Button not clickable when loading
+- Bottom navbar child adding padding
+
 # 0.41.3
 
 ## Fix

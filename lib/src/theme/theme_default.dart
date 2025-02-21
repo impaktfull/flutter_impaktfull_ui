@@ -85,6 +85,7 @@ import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -128,8 +129,8 @@ class DefaultTheme {
       tertiary: tertiary ?? const Color(0xFF475467),
       canvas: canvas ?? const Color(0xFFF9FAFB),
       card: card ?? const Color(0xFFFFFFFF),
-      border: border ?? Colors.grey.withOpacity(0.2),
-      card2: card2 ?? Colors.grey.withOpacity(0.2),
+      border: border ?? Colors.grey.withOpacityPercentage(0.2),
+      card2: card2 ?? Colors.grey.withOpacityPercentage(0.2),
       shadow: shadow ?? Colors.black12,
       text: text ?? const Color(0xFF344054),
       //todo check if color requires white or black if not provided
@@ -276,22 +277,22 @@ class DefaultTheme {
           colors: ImpaktfullUiBadgeColorTheme(
             primaryText: colors.accent,
             primaryBorder: colors.accent,
-            primaryBackground: colors.accent.withOpacity(0.05),
+            primaryBackground: colors.accent.withOpacityPercentage(0.05),
             secondaryText: colors.secondary,
-            secondaryBorder: colors.secondary.withOpacity(0.5),
-            secondaryBackground: colors.secondary.withOpacity(0.05),
+            secondaryBorder: colors.secondary.withOpacityPercentage(0.5),
+            secondaryBackground: colors.secondary.withOpacityPercentage(0.05),
             neutralText: colors.text,
             neutralBorder: colors.border,
-            neutralBackground: colors.border.withOpacity(0.05),
+            neutralBackground: colors.border.withOpacityPercentage(0.05),
             errorText: colors.error,
-            errorBorder: colors.error.withOpacity(0.5),
-            errorBackground: colors.error.withOpacity(0.05),
+            errorBorder: colors.error.withOpacityPercentage(0.5),
+            errorBackground: colors.error.withOpacityPercentage(0.05),
             warningText: colors.warning,
-            warningBorder: colors.warning.withOpacity(0.5),
-            warningBackground: colors.warning.withOpacity(0.05),
+            warningBorder: colors.warning.withOpacityPercentage(0.5),
+            warningBackground: colors.warning.withOpacityPercentage(0.05),
             successText: colors.success,
-            successBorder: colors.success.withOpacity(0.5),
-            successBackground: colors.success.withOpacity(0.05),
+            successBorder: colors.success.withOpacityPercentage(0.5),
+            successBackground: colors.success.withOpacityPercentage(0.05),
           ),
           dimens: ImpaktfullUiBadgeDimensTheme(
             borderRadius: dimens.borderRadiusCircle,
@@ -501,7 +502,7 @@ class DefaultTheme {
           ),
           colors: ImpaktfullUiDatePickerColorTheme(
             selected: colors.accent,
-            inRange: colors.accent.withOpacity(0.33),
+            inRange: colors.accent.withOpacityPercentage(0.33),
           ),
           dimens: ImpaktfullUiDatePickerDimensTheme(
             borderRadius: dimens.borderRadius,
@@ -581,7 +582,7 @@ class DefaultTheme {
           assets: const ImpaktfullUiFloatingActionButtonAssetsTheme(),
           colors: ImpaktfullUiFloatingActionButtonColorTheme(
             background: colors.accent,
-            backgroundDisabled: colors.accent.withOpacity(0.66),
+            backgroundDisabled: colors.accent.withOpacityPercentage(0.66),
             icon: colors.textOnAccent,
           ),
           dimens: ImpaktfullUiFloatingActionButtonDimensTheme(
@@ -652,7 +653,7 @@ class DefaultTheme {
         horizontalTab: ImpaktfullUiHorizontalTabTheme(
           colors: ImpaktfullUiHorizontalTabColorTheme(
             backgroundUnSelectedTab: colors.card,
-            backgroundSelectedTab: colors.accent.withOpacity(0.33),
+            backgroundSelectedTab: colors.accent.withOpacityPercentage(0.33),
           ),
           dimens: ImpaktfullUiHorizontalTabDimensTheme(
             borderRadius: dimens.borderRadius,

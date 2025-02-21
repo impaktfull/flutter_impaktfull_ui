@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
 class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiChatAssetsTheme assets;
@@ -34,7 +35,7 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
           otherMessageBorder: colors.border,
           dateLabelBackground: colors.primary,
           typingContainerBackground: colors.border,
-          typingContainerDots: colors.border.withOpacity(1),
+          typingContainerDots: colors.border.withOpacityPercentage(1),
           onlineBadge: colors.success,
         ),
         dimens: ImpaktfullUiChatDimensTheme(

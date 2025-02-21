@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
@@ -38,7 +39,7 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
         colors: ImpaktfullUiGalleryColorTheme(
           icons: colors.textOnPrimary,
           background: Colors.black54,
-          iconButtonBackground: Colors.white.withOpacity(0.05),
+          iconButtonBackground: Colors.white.withOpacityPercentage(0.05),
         ),
         dimens: ImpaktfullUiGalleryDimensTheme(
           itemBorderRadius: dimens.borderRadius,

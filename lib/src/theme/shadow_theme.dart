@@ -1,4 +1,5 @@
 import 'package:flutter/rendering.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
 class ImpaktfullUiShadowsTheme {
   final List<BoxShadow> extraSmall;
@@ -36,35 +37,35 @@ class ImpaktfullUiShadowsTheme {
       ImpaktfullUiShadowsTheme(
         extraSmall: [
           BoxShadow(
-            color: shadowBase.withOpacity(0.05),
+            color: shadowBase.withOpacityPercentage(0.05),
             offset: const Offset(0, 1),
             blurRadius: 2,
           ),
         ],
         small: [
           BoxShadow(
-            color: shadowBase.withOpacity(0.1),
+            color: shadowBase.withOpacityPercentage(0.1),
             offset: const Offset(0, 1),
             blurRadius: 8,
           ),
         ],
         medium: [
           BoxShadow(
-            color: shadowBase.withOpacity(0.1),
+            color: shadowBase.withOpacityPercentage(0.1),
             offset: const Offset(0, 2),
             blurRadius: 16,
           ),
         ],
         large: [
           BoxShadow(
-            color: shadowBase.withOpacity(0.08),
+            color: shadowBase.withOpacityPercentage(0.08),
             offset: const Offset(0, 4),
             blurRadius: 24,
           ),
         ],
         extraLarge: [
           BoxShadow(
-            color: shadowBase.withOpacity(0.08),
+            color: shadowBase.withOpacityPercentage(0.08),
             offset: const Offset(0, 6),
             blurRadius: 48,
           ),

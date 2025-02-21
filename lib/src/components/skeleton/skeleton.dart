@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/skeleton/skeleton_style.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
 export 'skeleton_style.dart';
 
@@ -103,9 +104,12 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        componentTheme.colors.background.withOpacity(0.0),
-                        componentTheme.colors.background.withOpacity(0.2),
-                        componentTheme.colors.background.withOpacity(0.0),
+                        componentTheme.colors.background
+                            .withOpacityPercentage(0.0),
+                        componentTheme.colors.background
+                            .withOpacityPercentage(0.2),
+                        componentTheme.colors.background
+                            .withOpacityPercentage(0.0),
                       ],
                       stops: const [0.0, 0.5, 1.0],
                     ),

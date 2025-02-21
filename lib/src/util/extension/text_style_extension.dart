@@ -1,8 +1,9 @@
 import 'package:flutter/rendering.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
 extension TextStyleExtension on TextStyle {
   TextStyle withOpacity(double opacity) => copyWith(
-        color: color?.withOpacity(opacity),
+        color: color?.withOpacityPercentage(opacity),
       );
   TextStyle get light => copyWith(fontWeight: FontWeight.w300);
   TextStyle get medium => copyWith(fontWeight: FontWeight.w500);

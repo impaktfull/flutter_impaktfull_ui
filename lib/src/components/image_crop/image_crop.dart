@@ -15,6 +15,7 @@ import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_squar
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 export 'image_crop_style.dart';
@@ -118,13 +119,15 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                                 asset: ImpaktfullUiAsset.icon(
                                     PhosphorIcons.arrowClockwise()),
                                 color: componentTheme.colors.deleteIcon,
-                                backgroundColor: Colors.black.withOpacity(0.33),
+                                backgroundColor:
+                                    Colors.black.withOpacityPercentage(0.33),
                               ),
                               ImpaktfullUiIconButton(
                                 onTap: _onResetAllTapped,
                                 asset: componentTheme.assets.delete,
                                 color: componentTheme.colors.deleteIcon,
-                                backgroundColor: Colors.black.withOpacity(0.33),
+                                backgroundColor:
+                                    Colors.black.withOpacityPercentage(0.33),
                               ),
                             ],
                           ),

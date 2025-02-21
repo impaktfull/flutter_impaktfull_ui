@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_example/src/util/extensions/color_extensions.dart';
 
 class ColorStyleCard extends StatelessWidget {
   final Color color;
@@ -14,8 +15,7 @@ class ColorStyleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hexColor =
-        '#${color.value.toRadixString(16).toUpperCase().padLeft(8, '0')}';
+    final hexColor = color.getHexColor();
     return ImpaktfullUiCard(
       padding: EdgeInsets.zero,
       onTap: () {
@@ -24,8 +24,7 @@ class ColorStyleCard extends StatelessWidget {
       },
       child: GestureDetector(
         onDoubleTap: () {
-          final colorWithoutOpacity =
-              '#${color.value.toRadixString(16).toUpperCase().padLeft(8, '0').substring(2)}';
+          final colorWithoutOpacity = color.getHexColorWithoutAlpha();
           Clipboard.setData(ClipboardData(text: colorWithoutOpacity));
           ImpaktfullUiNotification.show(
               title: '$colorWithoutOpacity copied to clipboard');
@@ -55,11 +54,11 @@ class ColorStyleCard extends StatelessWidget {
                         style: theme.textStyles.onCanvasTertiary.text.small,
                       ),
                       Text(
-                        'HSL: ${HSLColor.fromColor(color).hue.toStringAsFixed(0)}°, ${(HSLColor.fromColor(color).saturation * 100).toStringAsFixed(0)}%, ${(HSLColor.fromColor(color).lightness * 100).toStringAsFixed(0)}%, ${(color.opacity * 100).toStringAsFixed(0)}%',
+                        'HSL: ${HSLColor.fromColor(color).hue.toStringAsFixed(0)}°, ${(HSLColor.fromColor(color).saturation * 100).toStringAsFixed(0)}%, ${(HSLColor.fromColor(color).lightness * 100).toStringAsFixed(0)}%, ${(color.a * 100).toStringAsFixed(0)}%',
                         style: theme.textStyles.onCanvasTertiary.text.small,
                       ),
                       Text(
-                        'RGB: ${color.red}, ${color.green}, ${color.blue}, ${(color.opacity * 100).toStringAsFixed(0)}%',
+                        'RGB: ${color.r}, ${color.g}, ${color.b}, ${(color.a * 100).toStringAsFixed(0)}%',
                         style: theme.textStyles.onCanvasTertiary.text.small,
                       ),
                     ],

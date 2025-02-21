@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiDateInputFieldTheme extends ImpaktfullUiComponentTheme {
@@ -41,7 +42,7 @@ class ImpaktfullUiDateInputFieldTheme extends ImpaktfullUiComponentTheme {
           text: textStyles.onCard.text.medium,
           placeholder: textStyles.onCardTertiary.text.medium.copyWith(
               color: textStyles.onCardTertiary.text.medium.color
-                  ?.withOpacity(0.5)),
+                  ?.withOpacityPercentage(0.5)),
           hint: textStyles.onCardTertiary.text.small,
           error: textStyles.onCardDestructive.text.small.medium
               .copyWith(color: colors.error),
