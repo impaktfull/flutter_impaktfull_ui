@@ -1,3 +1,9 @@
+# 0.42.0
+
+## Feat
+
+- Added ImpaktfullUiApp `onGenerateInitialRoutes` to generate initial routes
+
 # 0.41.4
 
 ## Fix

@@ -22,6 +22,7 @@ class ImpaktfullUiApp extends StatelessWidget {
   final GlobalKey<NavigatorState>? navigatorKey;
   final String? initialRoute;
   final RouteFactory? onGenerateRoute;
+  final InitialRouteListFactory? onGenerateInitialRoutes;
   final Widget Function(BuildContext context, Widget app)? builder;
   final TargetPlatform? targetPlatform;
   final bool showDebugFlag;
@@ -43,6 +44,7 @@ class ImpaktfullUiApp extends StatelessWidget {
     this.navigatorKey,
     this.initialRoute,
     this.onGenerateRoute,
+    this.onGenerateInitialRoutes,
     this.navigatorObservers = const <NavigatorObserver>[],
     this.builder,
     this.targetPlatform,
@@ -89,6 +91,21 @@ class ImpaktfullUiApp extends StatelessWidget {
                 navigatorKey: navigatorKey,
                 initialRoute: initialRoute,
                 onGenerateRoute: onGenerateRoute,
+                onGenerateInitialRoutes:
+                    onGenerateRoute == null && onGenerateInitialRoutes == null
+                        ? null
+                        : onGenerateInitialRoutes ??
+                            (initialRoute) {
+                              final settings = RouteSettings(
+                                name: initialRoute,
+                              );
+                              final route = onGenerateRoute!(settings);
+                              if (route == null) {
+                                throw Exception(
+                                    'Route not found for $initialRoute');
+                              }
+                              return [route];
+                            },
                 navigatorObservers: [
                   if (snackyUseNavigationObserver) ...[
                     SnackyNavigationObserver(),
