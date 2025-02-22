@@ -1,3 +1,9 @@
+# 0.43.1
+
+## Fix
+
+- ImpaktfullUiNavBarSmallLoadingWrapper now correctly handles the loading state
+
 # 0.43.0
 
 ## Feat

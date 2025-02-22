@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/components/adaptive_nav_bar/model/adaptive_nav_bar_action_type.dart';
+import 'package:impaktfull_ui/src/components/adaptive_nav_bar/model/adaptive_nav_bar_small_loading_wrapper.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
-import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 
 class ImpaktfullUiAdaptiveNavBarActionItem {
@@ -22,13 +23,14 @@ class ImpaktfullUiAdaptiveNavBarActionItem {
         assert(!(onTap != null && onAsyncTap != null),
             'Only one of onTap or onAsyncTap can be provided');
 
-  ImpaktfullUiIconButton small() => ImpaktfullUiIconButton(
-        onTap: onTap ?? onAsyncTap!,
+  Widget small() => ImpaktfullUiNavBarSmallLoadingWrapper(
+        onTap: onTap,
+        onAsyncTap: onAsyncTap,
         asset: asset,
-        tooltip: title,
+        toolTip: title,
       );
 
-  ImpaktfullUiButton medium() => ImpaktfullUiButton(
+  Widget medium() => ImpaktfullUiButton(
         onTap: onTap,
         onAsyncTap: onAsyncTap,
         leadingAsset: asset,
