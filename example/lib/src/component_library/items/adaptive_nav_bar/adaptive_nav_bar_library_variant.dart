@@ -25,6 +25,15 @@ class AdaptiveNavBarLibraryVariant
         onBackTapped: () => ImpaktfullUiNotification.show(title: 'Back tapped'),
         actions: [
           ImpaktfullUiAdaptiveNavBarActionItem(
+            title: 'Refresh',
+            asset: const ImpaktfullUiAsset.icon(Icons.refresh),
+            onAsyncTap: () async {
+              await Future.delayed(const Duration(seconds: 2));
+              return ImpaktfullUiNotification.show(title: 'On refresh tapped');
+            },
+            type: ImpaktfullUiAdaptiveNavBarActionItemType.secondary,
+          ),
+          ImpaktfullUiAdaptiveNavBarActionItem(
             title: 'Action',
             asset: const ImpaktfullUiAsset.icon(Icons.add),
             onTap: () => ImpaktfullUiNotification.show(title: 'Action tapped'),
