@@ -1,3 +1,9 @@
+# 0.43.0
+
+## Feat
+
+- Added ImpaktfullUiAdaptiveNavBarActionItem `onAsyncTap` to handle async actions
+
 # 0.42.0
 
 ## Feat
