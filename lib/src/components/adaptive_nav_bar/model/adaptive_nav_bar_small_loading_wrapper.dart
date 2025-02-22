@@ -17,16 +17,15 @@ class ImpaktfullUiNavBarSmallLoadingWrapper extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiNavBarSmallLoadingWrapper> createState() =>
-      _ImpaktfullUiNavBarSmallLoadingWrapperState();
+  State<ImpaktfullUiNavBarSmallLoadingWrapper> createState() => _ImpaktfullUiNavBarSmallLoadingWrapperState();
 }
 
-class _ImpaktfullUiNavBarSmallLoadingWrapperState
-    extends State<ImpaktfullUiNavBarSmallLoadingWrapper> {
+class _ImpaktfullUiNavBarSmallLoadingWrapperState extends State<ImpaktfullUiNavBarSmallLoadingWrapper> {
   var _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
+    final color = ImpaktfullUiNavBarTheme.of(context).textStyles.title.color;
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -34,6 +33,7 @@ class _ImpaktfullUiNavBarSmallLoadingWrapperState
           visible: !_isLoading,
           child: ImpaktfullUiIconButton(
             onTap: _onTap,
+            color: color,
             asset: widget.asset,
             tooltip: widget.toolTip,
           ),
@@ -43,7 +43,7 @@ class _ImpaktfullUiNavBarSmallLoadingWrapperState
             width: 24,
             height: 24,
             child: ImpaktfullUiLoadingIndicator(
-              color: ImpaktfullUiNavBarTheme.of(context).textStyles.title.color,
+              color: color,
             ),
           ),
         ],

@@ -1,3 +1,9 @@
+# 0.43.1
+
+## Fix
+
+- ImpaktfullUiNavBarSmallLoadingWrapper color
+
 # 0.43.0
 
 ## Feat
