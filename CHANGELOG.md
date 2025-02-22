@@ -1,3 +1,9 @@
+# 0.43.2
+
+## Fix
+
+- ImpaktfullUiNavBarSmallLoadingWrapper correct color
+
 # 0.43.1
 
 ## Fix

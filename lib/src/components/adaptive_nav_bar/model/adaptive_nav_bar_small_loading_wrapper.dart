@@ -17,12 +17,10 @@ class ImpaktfullUiNavBarSmallLoadingWrapper extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiNavBarSmallLoadingWrapper> createState() =>
-      _ImpaktfullUiNavBarSmallLoadingWrapperState();
+  State<ImpaktfullUiNavBarSmallLoadingWrapper> createState() => _ImpaktfullUiNavBarSmallLoadingWrapperState();
 }
 
-class _ImpaktfullUiNavBarSmallLoadingWrapperState
-    extends State<ImpaktfullUiNavBarSmallLoadingWrapper> {
+class _ImpaktfullUiNavBarSmallLoadingWrapperState extends State<ImpaktfullUiNavBarSmallLoadingWrapper> {
   var _isLoading = false;
 
   @override
@@ -39,10 +37,12 @@ class _ImpaktfullUiNavBarSmallLoadingWrapperState
           ),
         ),
         if (_isLoading) ...[
-          const SizedBox(
+          SizedBox(
             width: 24,
             height: 24,
-            child: ImpaktfullUiLoadingIndicator(),
+            child: ImpaktfullUiLoadingIndicator(
+              color: ImpaktfullUiNavBarTheme.of(context).textStyles.title.color,
+            ),
           ),
         ],
       ],
