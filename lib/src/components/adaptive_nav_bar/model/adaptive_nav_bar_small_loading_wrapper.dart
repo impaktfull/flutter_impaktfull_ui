@@ -17,10 +17,12 @@ class ImpaktfullUiNavBarSmallLoadingWrapper extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiNavBarSmallLoadingWrapper> createState() => _ImpaktfullUiNavBarSmallLoadingWrapperState();
+  State<ImpaktfullUiNavBarSmallLoadingWrapper> createState() =>
+      _ImpaktfullUiNavBarSmallLoadingWrapperState();
 }
 
-class _ImpaktfullUiNavBarSmallLoadingWrapperState extends State<ImpaktfullUiNavBarSmallLoadingWrapper> {
+class _ImpaktfullUiNavBarSmallLoadingWrapperState
+    extends State<ImpaktfullUiNavBarSmallLoadingWrapper> {
   var _isLoading = false;
 
   @override
