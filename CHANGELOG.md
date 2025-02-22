@@ -1,3 +1,9 @@
+# 0.43.2 - 0.43.3
+
+## Fix
+
+- ImpaktfullUiButton disabled state
+
 # 0.43.1
 
 ## Fix

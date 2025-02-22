@@ -68,10 +68,10 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
         final color = textStyle?.color;
         final backgroundColor = _getBackgroundColor(componentTheme);
         final borderColor = _getBorderColor(componentTheme);
-        final isClickable =
-            widget.onTap != null || widget.onAsyncTap != null && !_isLoading;
+        final isDisabled = widget.onTap == null && widget.onAsyncTap == null;
+        final isClickable = !isDisabled && !_isLoading;
         return Opacity(
-          opacity: isClickable ? 1 : 0.5,
+          opacity: isDisabled ? 0.5 : 1,
           child: ImpaktfullUiTouchFeedback(
             color: backgroundColor,
             canRequestFocus: widget.canRequestFocus,
