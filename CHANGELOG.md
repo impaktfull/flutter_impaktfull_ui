@@ -1,20 +1,13 @@
-# 0.43.3 - 0.43.4
-
-## Fix
-
-- ImpaktfullUiNavBarSmallLoadingWrapper correct color
-
-# 0.43.1 - 0.43.2
-
-## Fix
-
-- ImpaktfullUiNavBarSmallLoadingWrapper now correctly handles the loading state
-
 # 0.43.0
 
 ## Feat
 
 - Added ImpaktfullUiAdaptiveNavBarActionItem `onAsyncTap` to handle async actions
+
+## Fix
+
+- ImpaktfullUiNavBarSmallLoadingWrapper correct color
+- ImpaktfullUiNavBarSmallLoadingWrapper now correctly handles the loading state
 
 # 0.42.0
 
