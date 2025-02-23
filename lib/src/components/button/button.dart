@@ -57,7 +57,6 @@ class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
 class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
   var _isLoading = false;
 
-  bool get hasOnTap => widget.onTap != null || widget.onAsyncTap != null;
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiButtonTheme>(
