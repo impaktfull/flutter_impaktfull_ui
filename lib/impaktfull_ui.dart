@@ -31,6 +31,7 @@ export 'src/components/chat/chat.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
 export 'src/components/cms_header/cms_header.dart';
+export 'src/components/color_input_field/color_input_field.dart';
 export 'src/components/color_picker/color_picker.dart';
 export 'src/components/command_menu/command_menu.dart';
 export 'src/components/command_menu/command_menu_window.dart';

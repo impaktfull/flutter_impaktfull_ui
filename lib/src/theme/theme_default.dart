@@ -14,6 +14,7 @@ import 'package:impaktfull_ui/src/components/carrousel/carrousel.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
+import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';
 import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui/src/components/confetti/confetti.dart';
@@ -461,6 +462,14 @@ class DefaultTheme {
             title: textStyles.onCard.text.large,
             subtitle: textStyles.onCard.text.small.light,
           ),
+        ),
+        colorInputField: ImpaktfullUiColorInputFieldTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         colorPicker: ImpaktfullUiColorPickerTheme(
           assets: const ImpaktfullUiColorPickerAssetsTheme(),

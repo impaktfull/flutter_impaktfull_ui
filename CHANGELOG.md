@@ -1,3 +1,9 @@
+# 0.44.0
+
+## Feat
+
+- Added ImpaktfullUiColorInputField
+
 # 0.43.3
 
 ## Fix

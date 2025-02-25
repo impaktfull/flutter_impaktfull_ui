@@ -18,6 +18,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/chat/chat_libr
 import 'package:impaktfull_ui_example/src/component_library/items/checkbox/checkbox_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/clamped_fractionally_sized_box/clamped_fractionally_sized_box_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/cms_header/cms_header_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/color_input_field/color_input_field_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/color_picker/color_picker_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/command_menu/command_menu_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/confetti/confetti_library_item.dart';
@@ -114,6 +115,7 @@ class ComponentLibrary {
     const ClampedFractionallySizedBoxLibraryItem(),
     const CmsHeaderLibraryItem(),
     const ColorPickerLibraryItem(),
+    const ColorInputFieldLibraryItem(),
     const CommandMenuLibraryItem(),
     const ConfettiLibraryItem(),
     const DateInputFieldLibraryItem(),

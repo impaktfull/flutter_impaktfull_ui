@@ -13,6 +13,7 @@ import 'package:impaktfull_ui/src/components/carrousel/carrousel.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
+import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';
 import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui/src/components/confetti/confetti.dart';
@@ -103,6 +104,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiCheckboxTheme checkbox;
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
+  final ImpaktfullUiColorInputFieldTheme colorInputField;
   final ImpaktfullUiCommandMenuTheme commandMenu;
   final ImpaktfullUiConfettiTheme confetti;
   final ImpaktfullUiDateInputFieldTheme dateInputField;
@@ -187,6 +189,7 @@ class ImpaktfullUiComponentsTheme {
     required this.checkbox,
     required this.cmsHeader,
     required this.colorPicker,
+    required this.colorInputField,
     required this.commandMenu,
     required this.confetti,
     required this.dateInputField,
@@ -272,6 +275,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCheckboxTheme? checkbox,
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
+    ImpaktfullUiColorInputFieldTheme? colorInputField,
     ImpaktfullUiCommandMenuTheme? commandMenu,
     ImpaktfullUiConfettiTheme? confetti,
     ImpaktfullUiDateInputFieldTheme? dateInputField,
@@ -356,6 +360,7 @@ class ImpaktfullUiComponentsTheme {
         checkbox: checkbox ?? this.checkbox,
         cmsHeader: cmsHeader ?? this.cmsHeader,
         colorPicker: colorPicker ?? this.colorPicker,
+        colorInputField: colorInputField ?? this.colorInputField,
         commandMenu: commandMenu ?? this.commandMenu,
         confetti: confetti ?? this.confetti,
         dateInputField: dateInputField ?? this.dateInputField,
@@ -459,6 +464,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiCmsHeaderTheme.of(context) as T;
     } else if (T == ImpaktfullUiColorPickerTheme) {
       return ImpaktfullUiColorPickerTheme.of(context) as T;
+    } else if (T == ImpaktfullUiColorInputFieldTheme) {
+      return ImpaktfullUiColorInputFieldTheme.of(context) as T;
     } else if (T == ImpaktfullUiCommandMenuTheme) {
       return ImpaktfullUiCommandMenuTheme.of(context) as T;
     } else if (T == ImpaktfullUiConfettiTheme) {
