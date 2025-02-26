@@ -1,3 +1,9 @@
+# 0.45.0
+
+## Feat
+
+- Added extra color picker to ImpaktfullUiColorInputField
+
 # 0.44.0
 
 ## Feat

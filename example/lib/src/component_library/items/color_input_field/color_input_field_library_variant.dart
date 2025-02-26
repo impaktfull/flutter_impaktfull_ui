@@ -16,6 +16,16 @@ class ColorInputFieldLibraryVariant
     return [
       const ImpaktfullUiColorInputField(
         label: 'Color',
+        colorPickerType: ImpaktfullUiColorPickerType.simple,
+        colorPickerColors: [
+          Colors.red,
+          Colors.blue,
+          Colors.green,
+          Colors.yellow,
+          Colors.purple,
+          Colors.orange,
+          Colors.brown,
+        ],
       ),
     ];
   }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';
+import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
@@ -15,6 +18,8 @@ class ImpaktfullUiColorInputField extends StatefulWidget
   final String? label;
   final Color? initialColor;
   final ValueChanged<Color>? onChanged;
+  final List<Color>? colorPickerColors;
+  final ImpaktfullUiColorPickerType? colorPickerType;
   final bool alphaEnabled;
   final ImpaktfullUiColorInputFieldTheme? theme;
 
@@ -23,6 +28,8 @@ class ImpaktfullUiColorInputField extends StatefulWidget
     this.initialColor,
     this.onChanged,
     this.alphaEnabled = false,
+    this.colorPickerColors,
+    this.colorPickerType,
     this.theme,
     super.key,
   });
@@ -72,21 +79,18 @@ class _ImpaktfullUiColorInputFieldState
             ImpaktfullUiAutoLayout.horizontal(
               spacing: 8,
               children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  padding: EdgeInsets.zero,
-                  decoration: BoxDecoration(
-                    borderRadius: componentTheme.dimens.borderRadius,
-                    border: Border.all(
-                      color: componentTheme.colors.border,
-                      strokeAlign: BorderSide.strokeAlignOutside,
-                      width: 1,
-                    ),
+                ImpaktfullUiTouchFeedback(
+                  onTap: widget.colorPickerType == null ? null : _onTap,
+                  borderRadius: componentTheme.dimens.borderRadius,
+                  border: Border.all(
+                    color: componentTheme.colors.border,
+                    strokeAlign: BorderSide.strokeAlignOutside,
+                    width: 1,
                   ),
-                  clipBehavior: Clip.antiAlias,
-                  child: Container(
-                    color: _color ?? Colors.transparent,
+                  color: _color ?? Colors.transparent,
+                  child: const SizedBox(
+                    width: 40,
+                    height: 40,
                   ),
                 ),
                 Expanded(
@@ -171,5 +175,23 @@ class _ImpaktfullUiColorInputFieldState
     final green = (color.g * 255).round().toRadixString(16).padLeft(2, '0');
     final blue = (color.b * 255).round().toRadixString(16).padLeft(2, '0');
     return '#$red$green$blue';
+  }
+
+  Future<void> _onTap() async {
+    final color = await showDialog<Color>(
+      context: context,
+      builder: (context) => ImpaktfullUiModal(
+        title: 'Select a color',
+        child: ImpaktfullUiColorPicker(
+          allowedColors: widget.colorPickerColors ?? [],
+          type: widget.colorPickerType ?? ImpaktfullUiColorPickerType.simple,
+          onColorChanged: (color) => Navigator.of(context).pop(color),
+          selectedColor: _color,
+        ),
+      ),
+    );
+    if (color == null) return;
+    final hexColor = _colorToHex(color);
+    _onChanged(hexColor);
   }
 }
