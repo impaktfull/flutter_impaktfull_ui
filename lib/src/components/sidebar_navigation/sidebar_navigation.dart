@@ -52,8 +52,14 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
         final hasFooter = footer != null;
         final hasFooterItems = footerItems.isNotEmpty;
         return LayoutBuilder(builder: (context, constraints) {
+          final safeAreaPadding = MediaQuery.paddingOf(context);
           return Container(
             color: componentTheme.colors.backgroundColor,
+            padding: EdgeInsetsDirectional.only(
+              top: safeAreaPadding.top,
+              start: safeAreaPadding.start,
+              bottom: safeAreaPadding.bottom,
+            ),
             child: ImpaktfullUiAutoLayout.horizontal(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -65,17 +71,11 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
                     children: [
                       if (hasHeader) ...[
                         Padding(
-                          padding: EdgeInsetsDirectional.only(
-                            start: componentTheme.dimens.padding.start,
-                            end: componentTheme.dimens.padding.end,
-                            top: componentTheme.dimens.padding.top,
-                            bottom: 32,
-                          ),
+                          padding: componentTheme.dimens.padding,
                           child: ImpaktfullUiAutoLayout.vertical(
                             spacing: 8,
                             children: [
                               if (asset != null) ...[
-                                const SizedBox(height: 10),
                                 ConstrainedBox(
                                   constraints: const BoxConstraints(
                                     maxWidth: 150,

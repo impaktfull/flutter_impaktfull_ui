@@ -1,3 +1,9 @@
+# 0.45.1
+
+## Fix
+
+- Sidebar navigation padding
+
 # 0.45.0
 
 ## Feat
