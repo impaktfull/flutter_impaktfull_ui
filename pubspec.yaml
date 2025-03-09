@@ -1,7 +1,7 @@
 name: impaktfull_ui
 description: impaktfull ui components to simplify development and design
   processes while still allowing custom design
-version: 0.45.1
+version: 0.46.0
 repository: https://github.com/impaktfull/flutter_impaktfull_ui
 environment:
   sdk: ">=3.4.1 <4.0.0"
