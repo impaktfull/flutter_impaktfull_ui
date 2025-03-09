@@ -83,7 +83,7 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
 
   void _onChanged(String value) {
     if (T == int) {
-      _onChangedInt(value) as T;
+      _onChangedInt(value);
     } else {
       _onChangedDouble(value);
     }
@@ -96,8 +96,8 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
       return;
     }
 
-    final min = this.min as int?;
-    final max = this.max as int?;
+    final min = this.min?.toInt();
+    final max = this.max?.toInt();
     var clampedValue = intValue;
     if (min != null && intValue < min) {
       clampedValue = min;
@@ -115,8 +115,8 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
       return;
     }
 
-    final min = this.min as double?;
-    final max = this.max as double?;
+    final min = this.min?.toDouble();
+    final max = this.max?.toDouble();
     var clampedValue = doubleValue;
     if (min != null && doubleValue < min) {
       clampedValue = min;
