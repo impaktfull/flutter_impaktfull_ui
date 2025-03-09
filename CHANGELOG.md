@@ -1,3 +1,9 @@
+# 0.46.0
+
+## Feat
+
+- Added double support to ImpaktfullUiNumberInput
+
 # 0.45.1
 
 ## Fix

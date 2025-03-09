@@ -48,10 +48,9 @@ class ComponentLibraryDoubleInput extends ComponentLibraryInputItem<double> {
   @override
   Widget build(BuildContext context) {
     return StatefulBuilder(
-      builder: (context, setState) => ImpaktfullUiInputField(
-        value: value == null ? '' : value.toString(),
-        textInputType: const TextInputType.numberWithOptions(decimal: true),
-        onChanged: (value) => updateState(double.tryParse(value)),
+      builder: (context, setState) => ImpaktfullUiNumberInput<double>(
+        value: value ?? 0.0,
+        onChanged: (value) => updateState(value),
       ),
     );
   }

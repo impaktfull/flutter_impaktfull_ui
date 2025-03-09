@@ -16,10 +16,17 @@ class NumberInputLibraryVariant
     return [
       ImpaktfullUiNumberInput(
         label: 'Number input',
-        value: inputs.value.value ?? 0,
-        onChanged: inputs.value.updateState,
+        value: inputs.valueInt.value ?? 0,
+        onChanged: inputs.valueInt.updateState,
         min: -1,
         max: 10,
+      ),
+      ImpaktfullUiNumberInput(
+        label: 'Number input',
+        value: inputs.valueDouble.value ?? 0.0,
+        onChanged: inputs.valueDouble.updateState,
+        min: -1.0,
+        max: 10.0,
       ),
     ];
   }

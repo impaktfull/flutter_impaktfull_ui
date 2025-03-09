@@ -48,10 +48,9 @@ class ComponentLibraryIntInput extends ComponentLibraryInputItem<int> {
   @override
   Widget build(BuildContext context) {
     return StatefulBuilder(
-      builder: (context, setState) => ImpaktfullUiInputField(
-        value: value == null ? '' : value.toString(),
-        textInputType: TextInputType.number,
-        onChanged: (value) => updateState(int.tryParse(value)),
+      builder: (context, setState) => ImpaktfullUiNumberInput<int>(
+        value: value ?? 0,
+        onChanged: (value) => updateState(value),
       ),
     );
   }

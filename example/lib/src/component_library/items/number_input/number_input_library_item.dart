@@ -1,3 +1,4 @@
+import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_double_input.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/number_input/number_input_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
@@ -18,12 +19,18 @@ class NumberInputLibraryItem extends ComponentLibraryItem {
 }
 
 class NumberInputLibraryInputs extends ComponentLibraryInputs {
-  final ComponentLibraryIntInput value = ComponentLibraryIntInput(
-    'Value',
+  final ComponentLibraryIntInput valueInt = ComponentLibraryIntInput(
+    'Int value',
     initialValue: 0,
+  );
+
+  final ComponentLibraryDoubleInput valueDouble = ComponentLibraryDoubleInput(
+    'Double value',
+    initialValue: 0.0,
   );
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
-        value,
+        valueInt,
+        valueDouble,
       ];
 }

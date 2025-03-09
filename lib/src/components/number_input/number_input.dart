@@ -11,13 +11,13 @@ export 'number_input_style.dart';
 
 part 'number_input.describe.dart';
 
-class ImpaktfullUiNumberInput extends StatelessWidget
+class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
     with ComponentDescriptorMixin {
-  final ValueChanged<int> onChanged;
+  final ValueChanged<T> onChanged;
   final String? label;
-  final int value;
-  final int? min;
-  final int? max;
+  final T value;
+  final T? min;
+  final T? max;
   final ImpaktfullUiNumberInputTheme? theme;
 
   const ImpaktfullUiNumberInput({
@@ -53,8 +53,9 @@ class ImpaktfullUiNumberInput extends StatelessWidget
                 child: ImpaktfullUiInputField(
                   value: value.toString(),
                   onChanged: _onChanged,
-                  textInputType: const TextInputType.numberWithOptions(
-                    signed: true,
+                  textInputType: TextInputType.numberWithOptions(
+                    signed: T == int,
+                    decimal: T == double,
                   ),
                 ),
               ),
@@ -81,14 +82,22 @@ class ImpaktfullUiNumberInput extends StatelessWidget
   String describe(BuildContext context) => _describeInstance(context, this);
 
   void _onChanged(String value) {
+    if (T == int) {
+      _onChangedInt(value) as T;
+    } else {
+      _onChangedDouble(value);
+    }
+  }
+
+  void _onChangedInt(String value) {
     final intValue = int.tryParse(value);
     if (intValue == null) {
       onChanged(this.value);
       return;
     }
 
-    final min = this.min;
-    final max = this.max;
+    final min = this.min as int?;
+    final max = this.max as int?;
     var clampedValue = intValue;
     if (min != null && intValue < min) {
       clampedValue = min;
@@ -96,6 +105,25 @@ class ImpaktfullUiNumberInput extends StatelessWidget
     if (max != null && intValue > max) {
       clampedValue = max;
     }
-    onChanged(clampedValue);
+    onChanged(clampedValue as T);
+  }
+
+  void _onChangedDouble(String value) {
+    final doubleValue = double.tryParse(value);
+    if (doubleValue == null) {
+      onChanged(this.value);
+      return;
+    }
+
+    final min = this.min as double?;
+    final max = this.max as double?;
+    var clampedValue = doubleValue;
+    if (min != null && doubleValue < min) {
+      clampedValue = min;
+    }
+    if (max != null && doubleValue > max) {
+      clampedValue = max;
+    }
+    onChanged(clampedValue as T);
   }
 }
