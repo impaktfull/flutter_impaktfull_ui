@@ -15,14 +15,14 @@ class NumberInputLibraryVariant
       BuildContext context, NumberInputLibraryPrimaryInputs inputs) {
     return [
       ImpaktfullUiNumberInput(
-        label: 'Number input',
+        label: 'Number input (int)',
         value: inputs.valueInt.value ?? 0,
         onChanged: inputs.valueInt.updateState,
         min: -1,
         max: 10,
       ),
       ImpaktfullUiNumberInput(
-        label: 'Number input',
+        label: 'Number input (double)',
         value: inputs.valueDouble.value ?? 0.0,
         onChanged: inputs.valueDouble.updateState,
         min: -1.0,

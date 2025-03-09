@@ -1,3 +1,9 @@
+# 0.46.2
+
+## Fix
+
+- ImpaktfullUiNumberInput is validated with regex validation on allowed int & double values
+
 # 0.46.0 - 0.46.1
 
 ## Feat

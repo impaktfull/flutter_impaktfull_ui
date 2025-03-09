@@ -11,7 +11,7 @@ export 'number_input_style.dart';
 
 part 'number_input.describe.dart';
 
-class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
+class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
     with ComponentDescriptorMixin {
   final ValueChanged<T> onChanged;
   final String? label;
@@ -31,16 +31,41 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
   });
 
   @override
+  State<ImpaktfullUiNumberInput<T>> createState() =>
+      _ImpaktfullUiNumberInputState<T>();
+
+  @override
+  String describe(BuildContext context) => _describeInstance(context, this);
+}
+
+class _ImpaktfullUiNumberInputState<T extends num>
+    extends State<ImpaktfullUiNumberInput<T>> {
+  late String _oldValue;
+  final _textController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _oldValue = widget.value.toString();
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiNumberInputTheme>(
-      overrideComponentTheme: theme,
+      overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
         spacing: 4,
         children: [
-          if (label != null) ...[
+          if (widget.label != null) ...[
             ImpaktfullUiSectionTitle(
-              title: label ?? '',
+              title: widget.label ?? '',
               margin: EdgeInsets.zero,
             ),
           ],
@@ -51,7 +76,8 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
             children: [
               Expanded(
                 child: ImpaktfullUiInputField(
-                  value: value.toString(),
+                  value: _oldValue,
+                  controller: _textController,
                   onChanged: _onChanged,
                   textInputType: TextInputType.numberWithOptions(
                     signed: T == int,
@@ -63,13 +89,13 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
                 type: ImpaktfullUiButtonType.secondaryGrey,
                 leadingAsset: componentTheme.assets.minus,
                 size: ImpaktfullUiButtonSize.small,
-                onTap: () => _onChanged((value - 1).toString()),
+                onTap: () => _onChanged((widget.value - 1).toString()),
               ),
               ImpaktfullUiButton(
                 type: ImpaktfullUiButtonType.secondaryGrey,
                 leadingAsset: componentTheme.assets.plus,
                 size: ImpaktfullUiButtonSize.small,
-                onTap: () => _onChanged((value + 1).toString()),
+                onTap: () => _onChanged((widget.value + 1).toString()),
               ),
             ],
           ),
@@ -77,9 +103,6 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   void _onChanged(String value) {
     if (T == int) {
@@ -90,14 +113,19 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
   }
 
   void _onChangedInt(String value) {
+    if (!RegExp(r'^-?\d*$').hasMatch(value)) {
+      _resetToOldValue();
+      return;
+    }
+    _oldValue = value;
     final intValue = int.tryParse(value);
     if (intValue == null) {
-      onChanged(this.value);
+      widget.onChanged(widget.value);
       return;
     }
 
-    final min = this.min?.toInt();
-    final max = this.max?.toInt();
+    final min = widget.min?.toInt();
+    final max = widget.max?.toInt();
     var clampedValue = intValue;
     if (min != null && intValue < min) {
       clampedValue = min;
@@ -105,18 +133,23 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
     if (max != null && intValue > max) {
       clampedValue = max;
     }
-    onChanged(clampedValue as T);
+    widget.onChanged(clampedValue as T);
   }
 
   void _onChangedDouble(String value) {
+    if (!RegExp(r'^-?\d*[.,]?\d*$').hasMatch(value)) {
+      _resetToOldValue();
+      return;
+    }
+    _oldValue = value;
     final doubleValue = double.tryParse(value);
     if (doubleValue == null) {
-      onChanged(this.value);
+      widget.onChanged(widget.value);
       return;
     }
 
-    final min = this.min?.toDouble();
-    final max = this.max?.toDouble();
+    final min = widget.min?.toDouble();
+    final max = widget.max?.toDouble();
     var clampedValue = doubleValue;
     if (min != null && doubleValue < min) {
       clampedValue = min;
@@ -124,6 +157,12 @@ class ImpaktfullUiNumberInput<T extends num> extends StatelessWidget
     if (max != null && doubleValue > max) {
       clampedValue = max;
     }
-    onChanged(clampedValue as T);
+    widget.onChanged(clampedValue as T);
+  }
+
+  void _resetToOldValue() {
+    _textController.text = _oldValue;
+    _textController.selection =
+        TextSelection.collapsed(offset: _textController.text.length);
   }
 }
