@@ -1,3 +1,9 @@
+# 0.47.1
+
+## Fix
+
+- ImpaktfullUiBBLogin to use localizations everywhere
+
 # 0.47.0
 
 ## Feat

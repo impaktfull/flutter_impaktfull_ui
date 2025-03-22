@@ -61,8 +61,8 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
             spacing: 8,
             children: [
               ImpaktfullUiInputField(
-                label: 'Email',
-                placeholder: 'Enter your email',
+                label: localizations.emailInputLabel,
+                placeholder: localizations.emailInputPlaceholder,
                 value: email,
                 onChanged: onChangedEmail,
                 autofill: const [
@@ -72,8 +72,8 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
                 textInputAction: TextInputAction.next,
               ),
               ImpaktfullUiInputField(
-                label: 'Password',
-                placeholder: 'Enter your password',
+                label: localizations.passwordInputLabel,
+                placeholder: localizations.passwordInputPlaceholder,
                 value: password,
                 onChanged: onChangedPassword,
                 autofill: const [
@@ -84,14 +84,14 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
               ),
               ImpaktfullUiButton(
                 type: ImpaktfullUiButtonType.primary,
-                title: 'Login',
+                title: localizations.passwordInputLabel,
                 fullWidth: true,
                 onAsyncTap: onLoginTapped,
               ),
               if (onRegisterTapped != null) ...[
                 ImpaktfullUiButton(
                   type: ImpaktfullUiButtonType.linkGrey,
-                  title: 'Create new account',
+                  title: localizations.createNewAccountBtn,
                   fullWidth: true,
                   onTap: onRegisterTapped,
                 ),
@@ -108,7 +108,9 @@ class ImpaktfullUiLoginLocalizations {
   final String title;
   final String subtitle;
   final String emailInputLabel;
+  final String emailInputPlaceholder;
   final String passwordInputLabel;
+  final String passwordInputPlaceholder;
   final String loginBtn;
   final String createNewAccountBtn;
 
@@ -116,7 +118,9 @@ class ImpaktfullUiLoginLocalizations {
     this.title = 'Welcome back!',
     this.subtitle = 'Log in to your account to continue',
     this.emailInputLabel = 'Email',
+    this.emailInputPlaceholder = 'Enter your email',
     this.passwordInputLabel = 'Password',
+    this.passwordInputPlaceholder = 'Enter your password',
     this.loginBtn = 'Login',
     this.createNewAccountBtn = 'Create new account',
   });
