@@ -11,7 +11,8 @@ export 'number_input_style.dart';
 
 part 'number_input.describe.dart';
 
-class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
+    with ComponentDescriptorMixin {
   final ValueChanged<T> onChanged;
   final String? label;
   final T value;
@@ -30,13 +31,15 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget with Compone
   });
 
   @override
-  State<ImpaktfullUiNumberInput<T>> createState() => _ImpaktfullUiNumberInputState<T>();
+  State<ImpaktfullUiNumberInput<T>> createState() =>
+      _ImpaktfullUiNumberInputState<T>();
 
   @override
   String describe(BuildContext context) => _describeInstance(context, this);
 }
 
-class _ImpaktfullUiNumberInputState<T extends num> extends State<ImpaktfullUiNumberInput<T>> {
+class _ImpaktfullUiNumberInputState<T extends num>
+    extends State<ImpaktfullUiNumberInput<T>> {
   late String _oldValue;
   late final TextEditingController _textController;
 
@@ -176,6 +179,7 @@ class _ImpaktfullUiNumberInputState<T extends num> extends State<ImpaktfullUiNum
 
   void _resetToOldValue() {
     _textController.text = _oldValue;
-    _textController.selection = TextSelection.collapsed(offset: _textController.text.length);
+    _textController.selection =
+        TextSelection.collapsed(offset: _textController.text.length);
   }
 }
