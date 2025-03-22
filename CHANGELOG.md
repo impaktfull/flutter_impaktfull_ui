@@ -1,3 +1,9 @@
+# 0.46.4
+
+## Fix
+
+- ImpaktfullUiNumberInput now correctly handles the min & max values
+
 # 0.46.3
 
 ## Fix
