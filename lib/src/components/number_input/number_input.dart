@@ -41,12 +41,13 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
 class _ImpaktfullUiNumberInputState<T extends num>
     extends State<ImpaktfullUiNumberInput<T>> {
   late String _oldValue;
-  final _textController = TextEditingController();
+  late final TextEditingController _textController;
 
   @override
   void initState() {
     super.initState();
     _oldValue = widget.value.toString();
+    _textController = TextEditingController(text: _oldValue);
   }
 
   @override

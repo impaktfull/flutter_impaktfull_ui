@@ -1,3 +1,9 @@
+# 0.46.3
+
+## Fix
+
+- ImpaktfullUiNumberInput text controller was now correctly initialized
+
 # 0.46.2
 
 ## Fix
