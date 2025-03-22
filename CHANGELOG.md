@@ -1,3 +1,9 @@
+# 0.47.2
+
+## Fix
+
+- ImpaktfullUiBBLogin incorrect localization
+
 # 0.47.1
 
 ## Fix

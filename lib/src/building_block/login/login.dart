@@ -84,7 +84,7 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
               ),
               ImpaktfullUiButton(
                 type: ImpaktfullUiButtonType.primary,
-                title: localizations.passwordInputLabel,
+                title: localizations.loginBtn,
                 fullWidth: true,
                 onAsyncTap: onLoginTapped,
               ),
