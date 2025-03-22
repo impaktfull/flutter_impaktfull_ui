@@ -16,8 +16,11 @@ import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiBBLicenses extends StatefulWidget {
   final VoidCallback? onBackTapped;
+  final ImpaktfullUiLicenseLocalizations localizations;
+
   const ImpaktfullUiBBLicenses({
     this.onBackTapped,
+    this.localizations = const ImpaktfullUiLicenseLocalizations(),
     super.key,
   });
 
@@ -67,12 +70,12 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
     final showSearch =
         _search || !ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context);
     return ImpaktfullUiAdaptiveScreen(
-      title: 'Licenses',
+      title: widget.localizations.title,
       onBackTapped: widget.onBackTapped,
       actions: [
         if (ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context)) ...[
           ImpaktfullUiAdaptiveNavBarActionItem(
-            title: 'Search',
+            title: widget.localizations.searchTooltip,
             asset: theme.assets.icons.search,
             onTap: _onSearchTapped,
           ),
@@ -93,7 +96,7 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
                 maxWidth: 800,
                 child: ImpaktfullUiInputField(
                   value: _searchText,
-                  placeholder: 'Search for any license',
+                  placeholder: widget.localizations.searchPlaceholder,
                   onChanged: _onSearchChanged,
                 ),
               ),
@@ -127,7 +130,7 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
             ),
           ),
         ),
-        noDataLabel: 'No licenses found',
+        noDataLabel: widget.localizations.noLicensesFound,
       ),
     );
   }
@@ -190,4 +193,18 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
       _searchText = value;
     });
   }
+}
+
+class ImpaktfullUiLicenseLocalizations {
+  final String title;
+  final String searchTooltip;
+  final String searchPlaceholder;
+  final String noLicensesFound;
+
+  const ImpaktfullUiLicenseLocalizations({
+    this.title = 'Licenses',
+    this.searchTooltip = 'Search',
+    this.searchPlaceholder = 'Search for any license',
+    this.noLicensesFound = 'No licenses found',
+  });
 }

@@ -14,6 +14,7 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
   final AsyncCallback onLoginTapped;
   final VoidCallback? onRegisterTapped;
   final Alignment alignment;
+  final ImpaktfullUiLoginLocalizations localizations;
 
   const ImpaktfullUiBBLogin({
     required this.email,
@@ -27,6 +28,7 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
     this.bottomBuilder,
     this.onRegisterTapped,
     this.alignment = Alignment.center,
+    this.localizations = const ImpaktfullUiLoginLocalizations(),
     super.key,
   });
 
@@ -46,11 +48,11 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
             spacing: 8,
             children: [
               Text(
-                'Welcome back!',
+                localizations.title,
                 style: theme.textStyles.onCanvas.display.large,
               ),
               Text(
-                "Log in to your account to continue",
+                localizations.subtitle,
                 style: theme.textStyles.onCardTertiary.text.small,
               ),
             ],
@@ -100,4 +102,22 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
       ),
     );
   }
+}
+
+class ImpaktfullUiLoginLocalizations {
+  final String title;
+  final String subtitle;
+  final String emailInputLabel;
+  final String passwordInputLabel;
+  final String loginBtn;
+  final String createNewAccountBtn;
+
+  const ImpaktfullUiLoginLocalizations({
+    this.title = 'Welcome back!',
+    this.subtitle = 'Log in to your account to continue',
+    this.emailInputLabel = 'Email',
+    this.passwordInputLabel = 'Password',
+    this.loginBtn = 'Login',
+    this.createNewAccountBtn = 'Create new account',
+  });
 }

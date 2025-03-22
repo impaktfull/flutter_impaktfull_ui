@@ -1,3 +1,10 @@
+# 0.47.0
+
+## Feat
+
+- Added ImpaktfullUiLicenseLocalizations to allow customizing the licenses screen
+- Added ImpaktfullUiLoginLocalizations to allow customizing the login screen
+
 # 0.46.4
 
 ## Fix
