@@ -293,6 +293,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                       height: widget.shrinkWrap ? null : constraints.maxHeight,
                       alignment: Alignment.center,
                       child: ImpaktfullUiPlaceholder(
+                        asset: placeholderData.asset,
                         title: placeholderData.title,
                         subtitle: placeholderData.subtitle,
                         actions: [

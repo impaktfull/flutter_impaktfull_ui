@@ -1,3 +1,9 @@
+# 0.49.2
+
+## Fix
+
+- Use the `asset` from the `ImpaktfullUiListViewPlaceholderData` in the `ImpaktfullUiListView`
+
 # 0.49.1
 
 ## Fix
