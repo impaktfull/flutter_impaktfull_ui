@@ -102,7 +102,9 @@ class _ImpaktfullUiOptionSelectorState<T>
             },
           );
         },
-        noDataLabel: 'No options',
+        placeholderData: const ImpaktfullUiListViewPlaceholderData(
+          title: 'No options',
+        ),
       ),
     );
   }

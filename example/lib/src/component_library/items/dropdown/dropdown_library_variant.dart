@@ -32,7 +32,9 @@ class DropdownVariant
                     ImpaktfullUiNotification.show(title: 'Tapped: $item');
                   },
                 ),
-                noDataLabel: 'No data',
+                placeholderData: const ImpaktfullUiListViewPlaceholderData(
+                  title: 'No data found',
+                ),
               ),
             ),
           ),

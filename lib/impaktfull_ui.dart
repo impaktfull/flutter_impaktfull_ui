@@ -75,7 +75,7 @@ export 'src/components/page_route/desktop_page_route.dart';
 export 'src/components/pagination/pagination.dart';
 export 'src/components/password_strength_indicator/password_strength_indicator.dart';
 export 'src/components/pin_code/pin_code.dart';
-export 'src/components/placeholder_state/placeholder_state.dart';
+export 'src/components/placeholder/placeholder.dart';
 export 'src/components/progress_indicator/progress_indicator.dart';
 export 'src/components/radio_button/radio_button.dart';
 export 'src/components/radio_button_list_item/radio_button_list_item.dart';

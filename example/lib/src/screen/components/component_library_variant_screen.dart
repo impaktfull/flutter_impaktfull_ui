@@ -52,7 +52,9 @@ class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
                   ComponentsLibraryVariantDescriptor(
                 child: item,
               ),
-              noDataLabel: 'No widgets for ${widget.variant.runtimeType}',
+              placeholderData: ImpaktfullUiListViewPlaceholderData(
+                title: 'No widgets for ${widget.variant.runtimeType}',
+              ),
             ),
           ),
           if (widget.showInputs) ...[

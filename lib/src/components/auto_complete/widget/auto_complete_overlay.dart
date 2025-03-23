@@ -69,7 +69,9 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
           isLoading: _isLoading,
           itemBuilder: (contesxt, item, index) =>
               widget.itemBuilder(context, item, index),
-          noDataLabel: widget.noDataLabel,
+          placeholderData: ImpaktfullUiListViewPlaceholderData(
+            title: widget.noDataLabel,
+          ),
         ),
       ),
     );

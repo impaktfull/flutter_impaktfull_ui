@@ -58,7 +58,9 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
             previousItem: previousItem,
           );
         },
-        noDataLabel: 'No events found',
+        placeholderData: const ImpaktfullUiListViewPlaceholderData(
+          title: 'No events found',
+        ),
       ),
     );
   }

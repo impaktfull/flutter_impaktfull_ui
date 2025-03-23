@@ -20,11 +20,13 @@ class ImpaktfullUiLocalizations {
   final ImpaktfullUiBBLoginLocalizations bbLogin;
   final ImpaktfullUiBBLicenseLocalizations bbLicenses;
   final ImpaktfullUiNavBarLocalizations navBar;
+  final ImpaktfullUiListViewLocalizations listView;
 
   const ImpaktfullUiLocalizations({
     this.bbLogin = const ImpaktfullUiBBLoginLocalizations(),
     this.bbLicenses = const ImpaktfullUiBBLicenseLocalizations(),
     this.navBar = const ImpaktfullUiNavBarLocalizations(),
+    this.listView = const ImpaktfullUiListViewLocalizations(),
   });
 
   static T of<T extends ImpaktfullUiCoreLocalizations>(BuildContext context) {
@@ -36,6 +38,8 @@ class ImpaktfullUiLocalizations {
       return localization.bbLogin as T;
     } else if (T == ImpaktfullUiBBLicenseLocalizations) {
       return localization.bbLicenses as T;
+    } else if (T == ImpaktfullUiListViewLocalizations) {
+      return localization.listView as T;
     } else {
       throw Exception('Localization $T not found');
     }

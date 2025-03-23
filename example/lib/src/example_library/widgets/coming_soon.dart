@@ -12,7 +12,7 @@ class ExampleComingSoon extends StatelessWidget {
     return ImpaktfullUiAdaptiveScreen(
       title: 'Coming soon',
       isDrawerEnabled: true,
-      builder: (context) => ImpaktfullUiPlaceholderState(
+      builder: (context) => ImpaktfullUiPlaceholder(
         title: 'Coming soon',
         subtitle: 'This example page has not been implemented yet.',
         assetBuilder: (context) => Center(

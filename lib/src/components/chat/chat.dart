@@ -88,7 +88,9 @@ class _ImpaktfullUiChatState extends State<ImpaktfullUiChat> {
       builder: (context, componentTheme) => ImpaktfullUiListView.builder(
         padding: widget.padding,
         items: _items,
-        noDataLabel: '',
+        placeholderData: const ImpaktfullUiListViewPlaceholderData(
+          title: '',
+        ),
         spacing: 2,
         reversed: true,
         shrinkWrap: widget.shrinkWrap,

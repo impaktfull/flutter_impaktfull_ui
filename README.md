@@ -115,7 +115,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiPagination
 - ImpaktfullUiPasswordStrengthIndicator
 - ImpaktfullUiPinCode
-- ImpaktfullUiPlaceholderState
+- ImpaktfullUiPlaceholder
 - ImpaktfullUiProgressIndicator
   - ImpaktfullUiLineProgressIndicator
   - ImpaktfullUiCircleProgressIndicator

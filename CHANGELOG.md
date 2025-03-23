@@ -1,3 +1,12 @@
+# 0.49.0
+
+## Feat (Breaking)
+
+- Renamed `ImpaktfullUiPlaceholderState` to `ImpaktfullUiPlaceholder`
+- Renamed `ImpaktfullUiPlaceholderStateTheme` to `ImpaktfullUiPlaceholderTheme`
+- Added `ImpaktfullUiListViewPlaceholderData` to handle the placeholder data for the ImpaktfullUiListView
+- Removed `noDataLabel` & `refreshBtnLabel` from ImpaktfullUiListView (use `placeholderData` instead)
+
 # 0.48.2
 
 ## Fix

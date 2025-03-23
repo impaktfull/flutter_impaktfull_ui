@@ -39,7 +39,9 @@ class CommandMenuLibraryVariant
                   controller.hide();
                 },
               ),
-              noDataLabel: 'No data found',
+              placeholderData: const ImpaktfullUiListViewPlaceholderData(
+                title: 'No data found',
+              ),
             );
           },
         ),

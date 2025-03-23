@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/loading_error_data/loading_error_data_style.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
-import 'package:impaktfull_ui/src/components/placeholder_state/placeholder_state.dart';
+import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
@@ -56,7 +56,7 @@ class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget
           );
         }
         if (errorAsset != null || errorTitle != null || errorMessage != null) {
-          return ImpaktfullUiPlaceholderState(
+          return ImpaktfullUiPlaceholder(
             asset: errorAsset,
             assetBuilder: errorAssetBuilder,
             title: errorTitle,
@@ -70,7 +70,7 @@ class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget
             (noDataAsset != null ||
                 noDataTitle != null ||
                 noDataMessage != null)) {
-          return ImpaktfullUiPlaceholderState(
+          return ImpaktfullUiPlaceholder(
             asset: noDataAsset,
             assetBuilder: noDataAssetBuilder,
             title: noDataTitle,

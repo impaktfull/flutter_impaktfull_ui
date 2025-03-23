@@ -30,7 +30,9 @@ class RefreshIndicatorLibraryVariant
                 textAlign: TextAlign.center,
               ),
             ),
-            noDataLabel: 'No values',
+            placeholderData: const ImpaktfullUiListViewPlaceholderData(
+              title: 'No values',
+            ),
           ),
         ),
       ),

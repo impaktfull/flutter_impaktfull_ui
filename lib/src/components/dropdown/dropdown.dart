@@ -168,7 +168,10 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                                 itemBuilder: (context, item, index) =>
                                     widget.itemBuilder!(
                                         context, item, index, _controller),
-                                noDataLabel: widget.noDataLabel!,
+                                placeholderData:
+                                    ImpaktfullUiListViewPlaceholderData(
+                                  title: widget.noDataLabel!,
+                                ),
                                 shrinkWrap: true,
                               );
                             },

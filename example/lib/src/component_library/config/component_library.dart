@@ -151,7 +151,7 @@ class ComponentLibrary {
     const PaginationLibraryItem(),
     const PasswordStrengthIndicatorLibraryItem(),
     const PinCodeLibraryItem(),
-    const PlaceholderStateLibraryItem(),
+    const PlaceholderLibraryItem(),
     const ProgressIndicatorLibraryItem(),
     const RadioButtonLibraryItem(),
     const RadioButtonListItemLibraryItem(),

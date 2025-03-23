@@ -1,7 +1,7 @@
-part of 'placeholder_state.dart';
+part of 'placeholder.dart';
 
 String _describeInstance(
-    BuildContext context, ImpaktfullUiPlaceholderState instance) {
+    BuildContext context, ImpaktfullUiPlaceholder instance) {
   final descriptor = ComponentDescriptor();
   descriptor.add('theme', instance.theme);
   return descriptor.describe();

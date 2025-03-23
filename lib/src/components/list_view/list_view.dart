@@ -3,13 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/divider/divider.dart';
-import 'package:impaktfull_ui/src/components/list_view/list_view_style.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view.localizations.dart';
+import 'package:impaktfull_ui/src/components/list_view/list_view.style.dart';
+import 'package:impaktfull_ui/src/components/list_view/model/list_view_placeholder_state.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
+import 'package:impaktfull_ui/src/components/localization/localization_provider.dart';
+import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
-export 'list_view_style.dart';
+export 'list_view.style.dart';
+export 'model/list_view_placeholder_state.dart';
+export 'list_view.localizations.dart';
 
 part 'list_view.describe.dart';
 
@@ -26,8 +32,11 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   final double spacing;
   final int itemsPerRow;
   final bool separated;
+  @Deprecated('Use [placeholderData] instead')
   final String? noDataLabel;
+  @Deprecated('Use [placeholderData] instead')
   final String? refreshBtnLabel;
+  final ImpaktfullUiListViewPlaceholderData? placeholderData;
   final bool isLoading;
   final bool shrinkWrap;
   final bool reversed;
@@ -37,6 +46,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   final AsyncCallback? onRefresh;
   final ScrollPhysics? scrollPhysics;
   final ScrollController? controller;
+  final ImpaktfullUiListViewLocalizations? localizations;
   final ImpaktfullUiListViewTheme? theme;
 
   const ImpaktfullUiListView({
@@ -54,6 +64,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.controller,
     this.leadingBuilder,
     this.trailingBuilder,
+    this.placeholderData,
+    this.localizations,
     this.theme,
     super.key,
   })  : itemBuilder = null,
@@ -61,17 +73,18 @@ class ImpaktfullUiListView<T> extends StatefulWidget
         items = null,
         separated = false,
         separatorBuilder = null,
+        // ignore: deprecated_member_use_from_same_package
         noDataLabel = null,
+        // ignore: deprecated_member_use_from_same_package
         refreshBtnLabel = null;
 
   const ImpaktfullUiListView.builder({
     required List<T> this.items,
     required Widget Function(BuildContext context, T item, int index)
         this.itemBuilder,
-    required String this.noDataLabel,
+    required this.placeholderData,
     this.spacing = 0,
     this.isLoading = false,
-    this.refreshBtnLabel,
     this.onRefresh,
     this.itemsPerRow = 1,
     this.padding = EdgeInsets.zero,
@@ -83,6 +96,9 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.controller,
     this.leadingBuilder,
     this.trailingBuilder,
+    @Deprecated('Use [placeholderData] instead') this.noDataLabel,
+    @Deprecated('Use [placeholderData] instead') this.refreshBtnLabel,
+    this.localizations,
     this.theme,
     super.key,
   })  : separated = false,
@@ -109,6 +125,8 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.controller,
     this.leadingBuilder,
     this.trailingBuilder,
+    this.placeholderData,
+    this.localizations,
     this.theme,
     super.key,
     required,
@@ -131,11 +149,14 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.controller,
     this.leadingBuilder,
     this.trailingBuilder,
+    this.placeholderData,
+    this.localizations,
     this.theme,
     super.key,
     required,
   })  : spacing = 0,
         items = null,
+        // ignore: deprecated_member_use_from_same_package
         noDataLabel = null,
         itemBuilder = null,
         children = null,
@@ -152,7 +173,6 @@ class ImpaktfullUiListView<T> extends StatefulWidget
 }
 
 class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
-  var _isLoading = false;
   late ScrollController _scrollController;
 
   @override
@@ -188,118 +208,134 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
     }
     final leading = widget.leadingBuilder?.call(context);
     final trailing = widget.trailingBuilder?.call(context);
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiListViewTheme>(
-      overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) {
-        final safeAreaPadding = widget.useSafeArea
-            ? MediaQuery.paddingOf(context)
-            : EdgeInsets.zero;
-        final padding = safeAreaPadding.add(widget.padding);
-        if (widget.children != null) {
-          return ImpaktfullUiRefreshIndicator(
-            onRefresh: widget.onRefresh,
-            child: ListView(
-              controller: _scrollController,
-              padding: padding,
-              physics: widget.scrollPhysics,
-              shrinkWrap: widget.shrinkWrap,
-              reverse: widget.reversed,
-              scrollDirection: widget.scrollDirection,
-              children: [
-                if (leading != null) ...[
-                  leading,
-                ],
-                ImpaktfullUiAutoLayout(
-                  orientation: widget.scrollDirection == Axis.horizontal
-                      ? ImpaktfullUiAutoLayoutOrientation.horizontal
-                      : ImpaktfullUiAutoLayoutOrientation.vertical,
-                  spacing: widget.spacing,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: widget.children!,
-                ),
-                if (trailing != null) ...[
-                  trailing,
-                ],
-              ],
-            ),
-          );
-        }
-        if (widget.child != null) {
-          return ImpaktfullUiRefreshIndicator(
-            onRefresh: widget.onRefresh,
-            child: ListView(
-              controller: _scrollController,
-              padding: padding,
-              physics: widget.scrollPhysics,
-              shrinkWrap: widget.shrinkWrap,
-              reverse: widget.reversed,
-              scrollDirection: widget.scrollDirection,
-              children: [
-                if (leading != null) ...[
-                  leading,
-                ],
-                widget.child!,
-                if (trailing != null) ...[
-                  trailing,
-                ],
-              ],
-            ),
-          );
-        }
-        if (widget.items!.isEmpty) {
-          return ImpaktfullUiRefreshIndicator(
-            onRefresh: widget.onRefresh,
-            child: LayoutBuilder(
-              builder: (context, constraints) => ListView(
+    return ImpaktfullUiLocalizationProvider(
+      localizations: widget.localizations,
+      builder: (context, localizations) =>
+          ImpaktfullUiComponentThemeBuilder<ImpaktfullUiListViewTheme>(
+        overrideComponentTheme: widget.theme,
+        builder: (context, componentTheme) {
+          final safeAreaPadding = widget.useSafeArea
+              ? MediaQuery.paddingOf(context)
+              : EdgeInsets.zero;
+          final padding = safeAreaPadding.add(widget.padding);
+          if (widget.children != null) {
+            return ImpaktfullUiRefreshIndicator(
+              onRefresh: widget.onRefresh,
+              child: ListView(
                 controller: _scrollController,
-                physics: widget.onRefresh == null
-                    ? widget.scrollPhysics
-                    : const AlwaysScrollableScrollPhysics(),
-                padding: const EdgeInsets.all(16),
+                padding: padding,
+                physics: widget.scrollPhysics,
                 shrinkWrap: widget.shrinkWrap,
+                reverse: widget.reversed,
+                scrollDirection: widget.scrollDirection,
                 children: [
                   if (leading != null) ...[
                     leading,
                   ],
-                  Container(
-                    height: widget.shrinkWrap ? null : constraints.maxHeight,
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: widget.shrinkWrap
-                          ? CrossAxisAlignment.start
-                          : CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          widget.noDataLabel!,
-                          style: componentTheme.textStyles.title,
-                          textAlign: TextAlign.center,
-                        ),
-                        if (widget.refreshBtnLabel != null &&
-                            widget.onRefresh != null) ...[
-                          const SizedBox(height: 16),
-                          if (_isLoading) ...[
-                            const ImpaktfullUiLoadingIndicator(),
-                          ] else ...[
-                            ImpaktfullUiButton(
-                              type: ImpaktfullUiButtonType.secondary,
-                              title: widget.refreshBtnLabel!,
-                              onTap: _onRefreshTapped,
-                            ),
-                          ],
-                        ],
-                      ],
-                    ),
+                  ImpaktfullUiAutoLayout(
+                    orientation: widget.scrollDirection == Axis.horizontal
+                        ? ImpaktfullUiAutoLayoutOrientation.horizontal
+                        : ImpaktfullUiAutoLayoutOrientation.vertical,
+                    spacing: widget.spacing,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: widget.children!,
                   ),
                   if (trailing != null) ...[
                     trailing,
                   ],
                 ],
               ),
-            ),
-          );
-        }
-        if (widget.separated) {
+            );
+          }
+          if (widget.child != null) {
+            return ImpaktfullUiRefreshIndicator(
+              onRefresh: widget.onRefresh,
+              child: ListView(
+                controller: _scrollController,
+                padding: padding,
+                physics: widget.scrollPhysics,
+                shrinkWrap: widget.shrinkWrap,
+                reverse: widget.reversed,
+                scrollDirection: widget.scrollDirection,
+                children: [
+                  if (leading != null) ...[
+                    leading,
+                  ],
+                  widget.child!,
+                  if (trailing != null) ...[
+                    trailing,
+                  ],
+                ],
+              ),
+            );
+          }
+          if (widget.items!.isEmpty) {
+            final placeholderData = widget.placeholderData ??
+                ImpaktfullUiListViewPlaceholderData(
+                  // ignore: deprecated_member_use_from_same_package
+                  title: widget.noDataLabel,
+                );
+            return ImpaktfullUiRefreshIndicator(
+              onRefresh: widget.onRefresh,
+              child: LayoutBuilder(
+                builder: (context, constraints) => ListView(
+                  controller: _scrollController,
+                  physics: widget.onRefresh == null
+                      ? widget.scrollPhysics
+                      : const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(16),
+                  shrinkWrap: widget.shrinkWrap,
+                  children: [
+                    if (leading != null) ...[
+                      leading,
+                    ],
+                    Container(
+                      height: widget.shrinkWrap ? null : constraints.maxHeight,
+                      alignment: Alignment.center,
+                      child: ImpaktfullUiPlaceholder(
+                        title: placeholderData.title,
+                        subtitle: placeholderData.subtitle,
+                        actions: [
+                          ...placeholderData.actions,
+                          if (widget.onRefresh != null) ...[
+                            ImpaktfullUiButton(
+                              type: ImpaktfullUiButtonType.secondary,
+                              title: localizations.refreshBtnLabel,
+                              onAsyncTap: widget.onRefresh!,
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                    if (trailing != null) ...[
+                      trailing,
+                    ],
+                  ],
+                ),
+              ),
+            );
+          }
+          if (widget.separated) {
+            return ImpaktfullUiRefreshIndicator(
+              onRefresh: widget.onRefresh,
+              child: ListView.separated(
+                controller: _scrollController,
+                padding: padding,
+                physics: widget.scrollPhysics,
+                scrollDirection: widget.scrollDirection,
+                itemBuilder: (context, index) =>
+                    _buildItem(context, index, leading, trailing),
+                shrinkWrap: widget.shrinkWrap,
+                reverse: widget.reversed,
+                separatorBuilder: (context, index) {
+                  final item = widget.items![index];
+                  return widget.separatorBuilder?.call(context, item, index) ??
+                      const ImpaktfullUiDivider();
+                },
+                itemCount: widget.items!.length,
+              ),
+            );
+          }
           return ImpaktfullUiRefreshIndicator(
             onRefresh: widget.onRefresh,
             child: ListView.separated(
@@ -311,32 +347,13 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                   _buildItem(context, index, leading, trailing),
               shrinkWrap: widget.shrinkWrap,
               reverse: widget.reversed,
-              separatorBuilder: (context, index) {
-                final item = widget.items![index];
-                return widget.separatorBuilder?.call(context, item, index) ??
-                    const ImpaktfullUiDivider();
-              },
+              separatorBuilder: (context, index) =>
+                  SizedBox(height: widget.spacing),
               itemCount: widget.items!.length,
             ),
           );
-        }
-        return ImpaktfullUiRefreshIndicator(
-          onRefresh: widget.onRefresh,
-          child: ListView.separated(
-            controller: _scrollController,
-            padding: padding,
-            physics: widget.scrollPhysics,
-            scrollDirection: widget.scrollDirection,
-            itemBuilder: (context, index) =>
-                _buildItem(context, index, leading, trailing),
-            shrinkWrap: widget.shrinkWrap,
-            reverse: widget.reversed,
-            separatorBuilder: (context, index) =>
-                SizedBox(height: widget.spacing),
-            itemCount: widget.items!.length,
-          ),
-        );
-      },
+        },
+      ),
     );
   }
 
@@ -396,17 +413,5 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
         ],
       ],
     );
-  }
-
-  Future<void> _onRefreshTapped() async {
-    if (widget.onRefresh == null) return;
-    setState(() => _isLoading = true);
-    try {
-      await widget.onRefresh!();
-    } catch (e) {
-      debugPrint('Error refreshing list: $e');
-    }
-    if (!mounted) return;
-    setState(() => _isLoading = false);
   }
 }

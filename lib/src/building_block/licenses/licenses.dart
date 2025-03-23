@@ -136,7 +136,9 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
               ),
             ),
           ),
-          noDataLabel: localizations.noLicensesFound,
+          placeholderData: ImpaktfullUiListViewPlaceholderData(
+            title: localizations.noLicensesFound,
+          ),
         ),
       ),
     );

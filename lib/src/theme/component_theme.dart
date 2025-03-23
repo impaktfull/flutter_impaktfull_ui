@@ -79,7 +79,7 @@ import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui/src/components/auto_complete/auto_complete.dart';
 import 'package:impaktfull_ui/src/components/image_crop/image_crop.dart';
 import 'package:impaktfull_ui/src/components/number_input/number_input.dart';
-import 'package:impaktfull_ui/src/components/placeholder_state/placeholder_state.dart';
+import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/metric/metric.dart';
 import 'package:impaktfull_ui/src/components/line_chart/line_chart.dart';
 
@@ -139,7 +139,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiPaginationTheme pagination;
   final ImpaktfullUiPasswordStrengthIndicatorTheme passwordStrengthIndicator;
   final ImpaktfullUiPinCodeTheme pinCode;
-  final ImpaktfullUiPlaceholderStateTheme placeholderState;
+  final ImpaktfullUiPlaceholderTheme placeholder;
   final ImpaktfullUiProgressIndicatorTheme progressIndicator;
   final ImpaktfullUiRadioButtonTheme radioButton;
   final ImpaktfullUiRadioButtonListItemTheme radioButtonListItem;
@@ -224,7 +224,7 @@ class ImpaktfullUiComponentsTheme {
     required this.pagination,
     required this.passwordStrengthIndicator,
     required this.pinCode,
-    required this.placeholderState,
+    required this.placeholder,
     required this.progressIndicator,
     required this.radioButton,
     required this.radioButtonListItem,
@@ -310,7 +310,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiPaginationTheme? pagination,
     ImpaktfullUiPasswordStrengthIndicatorTheme? passwordStrengthIndicator,
     ImpaktfullUiPinCodeTheme? pinCode,
-    ImpaktfullUiPlaceholderStateTheme? placeholderState,
+    ImpaktfullUiPlaceholderTheme? placeholder,
     ImpaktfullUiProgressIndicatorTheme? progressIndicator,
     ImpaktfullUiRadioButtonTheme? radioButton,
     ImpaktfullUiRadioButtonListItemTheme? radioButtonListItem,
@@ -396,7 +396,7 @@ class ImpaktfullUiComponentsTheme {
         passwordStrengthIndicator:
             passwordStrengthIndicator ?? this.passwordStrengthIndicator,
         pinCode: pinCode ?? this.pinCode,
-        placeholderState: placeholderState ?? this.placeholderState,
+        placeholder: placeholder ?? this.placeholder,
         progressIndicator: progressIndicator ?? this.progressIndicator,
         radioButton: radioButton ?? this.radioButton,
         radioButtonListItem: radioButtonListItem ?? this.radioButtonListItem,
@@ -536,8 +536,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiPasswordStrengthIndicatorTheme.of(context) as T;
     } else if (T == ImpaktfullUiPinCodeTheme) {
       return ImpaktfullUiPinCodeTheme.of(context) as T;
-    } else if (T == ImpaktfullUiPlaceholderStateTheme) {
-      return ImpaktfullUiPlaceholderStateTheme.of(context) as T;
+    } else if (T == ImpaktfullUiPlaceholderTheme) {
+      return ImpaktfullUiPlaceholderTheme.of(context) as T;
     } else if (T == ImpaktfullUiRadioButtonTheme) {
       return ImpaktfullUiRadioButtonTheme.of(context) as T;
     } else if (T == ImpaktfullUiRadioButtonListItemTheme) {

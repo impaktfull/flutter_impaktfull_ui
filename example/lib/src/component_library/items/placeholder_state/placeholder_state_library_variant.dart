@@ -4,24 +4,24 @@ import 'package:impaktfull_ui_example/src/component_library/items/placeholder_st
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class PlaceholderStateLibraryVariant
-    extends ComponentLibraryVariant<PlaceholderStateLibraryPrimaryInputs> {
-  const PlaceholderStateLibraryVariant();
+class PlaceholderLibraryVariant
+    extends ComponentLibraryVariant<PlaceholderLibraryPrimaryInputs> {
+  const PlaceholderLibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
   List<Widget> build(
-      BuildContext context, PlaceholderStateLibraryPrimaryInputs inputs) {
+      BuildContext context, PlaceholderLibraryPrimaryInputs inputs) {
     return [
-      ImpaktfullUiPlaceholderState(
+      ImpaktfullUiPlaceholder(
         title: 'Confetti for everyone!!',
         subtitle:
             'You are ready for your party! Start by inviting your friends.',
         asset: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
       ),
-      ImpaktfullUiPlaceholderState(
+      ImpaktfullUiPlaceholder(
         title: 'Confetti for everyone!!',
         subtitle:
             'You are ready for your party! Start by inviting your friends.',
@@ -45,9 +45,7 @@ class PlaceholderStateLibraryVariant
   }
 
   @override
-  PlaceholderStateLibraryPrimaryInputs inputs() =>
-      PlaceholderStateLibraryPrimaryInputs();
+  PlaceholderLibraryPrimaryInputs inputs() => PlaceholderLibraryPrimaryInputs();
 }
 
-class PlaceholderStateLibraryPrimaryInputs
-    extends PlaceholderStateLibraryInputs {}
+class PlaceholderLibraryPrimaryInputs extends PlaceholderLibraryInputs {}

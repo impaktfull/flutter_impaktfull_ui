@@ -50,7 +50,7 @@ import 'package:impaktfull_ui/src/components/option_selector/option_selector.dar
 import 'package:impaktfull_ui/src/components/pagination/pagination.dart';
 import 'package:impaktfull_ui/src/components/password_strength_indicator/password_strength_indicator.dart';
 import 'package:impaktfull_ui/src/components/pin_code/pin_code.dart';
-import 'package:impaktfull_ui/src/components/placeholder_state/placeholder_state.dart';
+import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator_style.dart';
 import 'package:impaktfull_ui/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui/src/components/radio_button_list_item/radio_button_list_item.dart';
@@ -891,16 +891,12 @@ class DefaultTheme {
           ),
           textStyles: const ImpaktfullUiPinCodeTextStyleTheme(),
         ),
-        placeholderState: ImpaktfullUiPlaceholderStateTheme(
-          assets: const ImpaktfullUiPlaceholderStateAssetsTheme(),
-          colors: const ImpaktfullUiPlaceholderStateColorTheme(),
-          dimens: const ImpaktfullUiPlaceholderStateDimensTheme(
-            margin: EdgeInsets.zero,
-          ),
-          textStyles: ImpaktfullUiPlaceholderStateTextStyleTheme(
-            title: textStyles.onCanvas.display.small.semiBold,
-            subtitle: textStyles.onCanvas.text.small.light,
-          ),
+        placeholder: ImpaktfullUiPlaceholderTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
         ),
         progressIndicator: ImpaktfullUiProgressIndicatorTheme(
           assets: const ImpaktfullUiProgressIndicatorAssetsTheme(),
