@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/building_block/licenses/licenses.localizations.dart';
 import 'package:impaktfull_ui/src/components/accordion/accordion.dart';
 import 'package:impaktfull_ui/src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
 import 'package:impaktfull_ui/src/components/adaptive_screen/adaptive_screen.dart';
@@ -9,18 +10,21 @@ import 'package:impaktfull_ui/src/components/clamped_fractionally_sized_box/clam
 import 'package:impaktfull_ui/src/components/divider/divider.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui/src/components/localization/localization_provider.dart';
 import 'package:impaktfull_ui/src/components/markdown/markdown.dart';
 import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
 import 'package:impaktfull_ui/src/models/license.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
+export 'licenses.localizations.dart';
+
 class ImpaktfullUiBBLicenses extends StatefulWidget {
   final VoidCallback? onBackTapped;
-  final ImpaktfullUiLicenseLocalizations localizations;
+  final ImpaktfullUiBBLicenseLocalizations? localizations;
 
   const ImpaktfullUiBBLicenses({
     this.onBackTapped,
-    this.localizations = const ImpaktfullUiLicenseLocalizations(),
+    this.localizations,
     super.key,
   });
 
@@ -69,68 +73,71 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
   Widget build(BuildContext context) {
     final showSearch =
         _search || !ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context);
-    return ImpaktfullUiAdaptiveScreen(
-      title: widget.localizations.title,
-      onBackTapped: widget.onBackTapped,
-      actions: [
-        if (ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context)) ...[
-          ImpaktfullUiAdaptiveNavBarActionItem(
-            title: widget.localizations.searchTooltip,
-            asset: theme.assets.icons.search,
-            onTap: _onSearchTapped,
-          ),
+    return ImpaktfullUiLocalizationProvider(
+      localizations: widget.localizations,
+      builder: (context, localizations) => ImpaktfullUiAdaptiveScreen(
+        title: localizations.title,
+        onBackTapped: widget.onBackTapped,
+        actions: [
+          if (ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context)) ...[
+            ImpaktfullUiAdaptiveNavBarActionItem(
+              title: localizations.searchTooltip,
+              asset: theme.assets.icons.search,
+              onTap: _onSearchTapped,
+            ),
+          ],
         ],
-      ],
-      headerBottomChild: showSearch
-          ? Padding(
-              padding: EdgeInsetsDirectional.only(
-                start: 16,
-                end: 16,
-                bottom: ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context)
-                    ? 16
-                    : 0,
-              ),
-              child: ImpaktfullUiClampedFractionallySizedBox(
-                widthFactor: 0.5,
-                minWidth: 600,
-                maxWidth: 800,
-                child: ImpaktfullUiInputField(
-                  value: _searchText,
-                  placeholder: widget.localizations.searchPlaceholder,
-                  onChanged: _onSearchChanged,
+        headerBottomChild: showSearch
+            ? Padding(
+                padding: EdgeInsetsDirectional.only(
+                  start: 16,
+                  end: 16,
+                  bottom: ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context)
+                      ? 16
+                      : 0,
                 ),
-              ),
-            )
-          : null,
-      builder: (context) => ImpaktfullUiListView.builder(
-        items: _filteredLicenses,
-        spacing: 8,
-        isLoading: _isLoading,
-        padding: const EdgeInsets.all(16),
-        itemBuilder: (context, item, index) => ImpaktfullUiCard(
-          padding: EdgeInsets.zero,
-          child: ImpaktfullUiAccordion(
-            title: item.name,
-            expanded: _expandedSet.contains(item),
-            onExpandedChanged: (value) => _onExpandedChanged(item),
-            animated: item.licenses.length < 2,
-            expandedBuilder: (context) => ImpaktfullUiAutoLayout.vertical(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const ImpaktfullUiDivider(),
-                Container(
-                  color: theme.colors.canvas,
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(16),
-                  child: ImpaktfullUiMarkdown(
-                    data: item.licenseString,
+                child: ImpaktfullUiClampedFractionallySizedBox(
+                  widthFactor: 0.5,
+                  minWidth: 600,
+                  maxWidth: 800,
+                  child: ImpaktfullUiInputField(
+                    value: _searchText,
+                    placeholder: localizations.searchPlaceholder,
+                    onChanged: _onSearchChanged,
                   ),
                 ),
-              ],
+              )
+            : null,
+        builder: (context) => ImpaktfullUiListView.builder(
+          items: _filteredLicenses,
+          spacing: 8,
+          isLoading: _isLoading,
+          padding: const EdgeInsets.all(16),
+          itemBuilder: (context, item, index) => ImpaktfullUiCard(
+            padding: EdgeInsets.zero,
+            child: ImpaktfullUiAccordion(
+              title: item.name,
+              expanded: _expandedSet.contains(item),
+              onExpandedChanged: (value) => _onExpandedChanged(item),
+              animated: item.licenses.length < 2,
+              expandedBuilder: (context) => ImpaktfullUiAutoLayout.vertical(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImpaktfullUiDivider(),
+                  Container(
+                    color: theme.colors.canvas,
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
+                    child: ImpaktfullUiMarkdown(
+                      data: item.licenseString,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
+          noDataLabel: localizations.noLicensesFound,
         ),
-        noDataLabel: widget.localizations.noLicensesFound,
       ),
     );
   }
@@ -193,18 +200,4 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
       _searchText = value;
     });
   }
-}
-
-class ImpaktfullUiLicenseLocalizations {
-  final String title;
-  final String searchTooltip;
-  final String searchPlaceholder;
-  final String noLicensesFound;
-
-  const ImpaktfullUiLicenseLocalizations({
-    this.title = 'Licenses',
-    this.searchTooltip = 'Search',
-    this.searchPlaceholder = 'Search for any license',
-    this.noLicensesFound = 'No licenses found',
-  });
 }

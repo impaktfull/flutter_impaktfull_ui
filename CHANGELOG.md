@@ -1,3 +1,9 @@
+# 0.48.0
+
+## Feat (Breaking)
+
+- Move localizations to its own configurator & override it on the app itself or on component level
+
 # 0.47.2
 
 ## Fix

@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/app/debug/app_debug_flag.dart';
+import 'package:impaktfull_ui/src/components/localization/localization_configurator.dart';
 import 'package:impaktfull_ui/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_configurator.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 import 'package:snacky/snacky.dart';
 
 class ImpaktfullUiApp extends StatelessWidget {
@@ -18,6 +20,7 @@ class ImpaktfullUiApp extends StatelessWidget {
   final Locale? locale;
   final Iterable<Locale> supportedLocales;
   final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
+  final ImpaktfullUiLocalizations? localizations;
   final List<NavigatorObserver> navigatorObservers;
   final GlobalKey<NavigatorState>? navigatorKey;
   final String? initialRoute;
@@ -41,6 +44,7 @@ class ImpaktfullUiApp extends StatelessWidget {
     this.locale,
     this.supportedLocales = const <Locale>[Locale('en')],
     this.localizationsDelegates,
+    this.localizations,
     this.navigatorKey,
     this.initialRoute,
     this.onGenerateRoute,
@@ -63,59 +67,62 @@ class ImpaktfullUiApp extends StatelessWidget {
     setImpaktfullUiLocale(locale);
     return ImpaktfullUiThemeConfigurator(
       theme: theme,
-      child: ImpaktfullUiSnackyConfigurator(
-        locale: locale,
-        snackyController: snackyController,
-        snackyBuilder: snackyBuilder,
-        app: Builder(
-          builder: (context) {
-            final app = AppDebugFlag(
-              showDebugFlag: showDebugFlag,
-              flavorBannerText: flavorBannerText,
-              flavorBannerColor: flavorBannerColor ?? theme.colors.accent,
-              child: MaterialApp(
-                title: title,
-                home: home,
-                debugShowCheckedModeBanner: showDebugFlag,
-                locale: locale,
-                theme: (materialLightTheme ?? Theme.of(context))
-                    .removeUnwantedBehavior(
-                  targetPlatform: targetPlatform,
-                ),
-                darkTheme: (materialLightTheme ?? Theme.of(context))
-                    .removeUnwantedBehavior(
-                  targetPlatform: targetPlatform,
-                ),
-                supportedLocales: supportedLocales,
-                localizationsDelegates: localizationsDelegates,
-                navigatorKey: navigatorKey,
-                initialRoute: initialRoute,
-                onGenerateRoute: onGenerateRoute,
-                onGenerateInitialRoutes:
-                    onGenerateRoute == null && onGenerateInitialRoutes == null
-                        ? null
-                        : onGenerateInitialRoutes ??
-                            (initialRoute) {
-                              final settings = RouteSettings(
-                                name: initialRoute,
-                              );
-                              final route = onGenerateRoute!(settings);
-                              if (route == null) {
-                                throw Exception(
-                                    'Route not found for $initialRoute');
-                              }
-                              return [route];
-                            },
-                navigatorObservers: [
-                  if (snackyUseNavigationObserver) ...[
-                    SnackyNavigationObserver(),
+      child: ImpaktfullUiLocalizationConfigurator(
+        localizations: localizations ?? const ImpaktfullUiLocalizations(),
+        child: ImpaktfullUiSnackyConfigurator(
+          locale: locale,
+          snackyController: snackyController,
+          snackyBuilder: snackyBuilder,
+          app: Builder(
+            builder: (context) {
+              final app = AppDebugFlag(
+                showDebugFlag: showDebugFlag,
+                flavorBannerText: flavorBannerText,
+                flavorBannerColor: flavorBannerColor ?? theme.colors.accent,
+                child: MaterialApp(
+                  title: title,
+                  home: home,
+                  debugShowCheckedModeBanner: showDebugFlag,
+                  locale: locale,
+                  theme: (materialLightTheme ?? Theme.of(context))
+                      .removeUnwantedBehavior(
+                    targetPlatform: targetPlatform,
+                  ),
+                  darkTheme: (materialLightTheme ?? Theme.of(context))
+                      .removeUnwantedBehavior(
+                    targetPlatform: targetPlatform,
+                  ),
+                  supportedLocales: supportedLocales,
+                  localizationsDelegates: localizationsDelegates,
+                  navigatorKey: navigatorKey,
+                  initialRoute: initialRoute,
+                  onGenerateRoute: onGenerateRoute,
+                  onGenerateInitialRoutes:
+                      onGenerateRoute == null && onGenerateInitialRoutes == null
+                          ? null
+                          : onGenerateInitialRoutes ??
+                              (initialRoute) {
+                                final settings = RouteSettings(
+                                  name: initialRoute,
+                                );
+                                final route = onGenerateRoute!(settings);
+                                if (route == null) {
+                                  throw Exception(
+                                      'Route not found for $initialRoute');
+                                }
+                                return [route];
+                              },
+                  navigatorObservers: [
+                    if (snackyUseNavigationObserver) ...[
+                      SnackyNavigationObserver(),
+                    ],
+                    ...navigatorObservers,
                   ],
-                  ...navigatorObservers,
-                ],
-              ),
-            );
-            return builder?.call(context, app) ?? app;
-          },
+                ),
+              );
+              return builder?.call(context, app) ?? app;
+            },
+          ),
         ),
       ),
     );

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.dart';
-import 'package:impaktfull_ui/src/components/screen/screen_style.dart';
+import 'package:impaktfull_ui/src/components/screen/screen.style.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
-export 'screen_style.dart';
+export 'screen.style.dart';
 
 part 'screen.describe.dart';
 
