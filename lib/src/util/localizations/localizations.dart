@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/localization/localization_configurator.dart';
-import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.localization.dart';
 
 abstract class ImpaktfullUiCoreLocalizations {
   const ImpaktfullUiCoreLocalizations();

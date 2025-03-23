@@ -1,3 +1,9 @@
+# 0.48.2
+
+## Fix
+
+- Export all ImpaktfullUiLocalizations
+
 # 0.48.1
 
 ## Fix

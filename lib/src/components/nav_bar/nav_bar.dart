@@ -12,6 +12,7 @@ import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dar
 import 'package:impaktfull_ui/src/util/extension/widget_list_extensions.dart';
 
 export 'nav_bar.style.dart';
+export 'nav_bar.localization.dart';
 
 part 'nav_bar.describe.dart';
 
