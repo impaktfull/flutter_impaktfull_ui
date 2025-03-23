@@ -1,3 +1,9 @@
+# 0.49.1
+
+## Fix
+
+- ImpaktfullUiListViewPlaceholderData `showRefreshBtn` default is now `true`
+
 # 0.49.0
 
 ## Feat (Breaking)

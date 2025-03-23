@@ -297,7 +297,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                         subtitle: placeholderData.subtitle,
                         actions: [
                           ...placeholderData.actions,
-                          if (widget.onRefresh != null) ...[
+                          if (widget.onRefresh != null &&
+                              placeholderData.showRefreshBtn) ...[
                             ImpaktfullUiButton(
                               type: ImpaktfullUiButtonType.secondary,
                               title: localizations.refreshBtnLabel,

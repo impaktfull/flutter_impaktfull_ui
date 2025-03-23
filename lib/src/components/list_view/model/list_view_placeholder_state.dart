@@ -6,6 +6,7 @@ class ImpaktfullUiListViewPlaceholderData {
   final bool showAsset;
   final String? title;
   final String? subtitle;
+  final bool showRefreshBtn;
   final List<Widget> actions;
 
   const ImpaktfullUiListViewPlaceholderData({
@@ -13,6 +14,7 @@ class ImpaktfullUiListViewPlaceholderData {
     this.subtitle,
     this.asset,
     this.showAsset = true,
+    this.showRefreshBtn = true,
     this.actions = const [],
   });
 }
