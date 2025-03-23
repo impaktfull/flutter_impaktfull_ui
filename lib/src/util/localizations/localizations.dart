@@ -7,11 +7,13 @@ abstract class ImpaktfullUiCoreLocalizations {
   const ImpaktfullUiCoreLocalizations();
 }
 
-abstract class ImpaktfullUiComponentLocalizations extends ImpaktfullUiCoreLocalizations {
+abstract class ImpaktfullUiComponentLocalizations
+    extends ImpaktfullUiCoreLocalizations {
   const ImpaktfullUiComponentLocalizations();
 }
 
-abstract class ImpaktfullUiBBLocalizations extends ImpaktfullUiCoreLocalizations {
+abstract class ImpaktfullUiBBLocalizations
+    extends ImpaktfullUiCoreLocalizations {
   const ImpaktfullUiBBLocalizations();
 }
 
@@ -27,7 +29,8 @@ class ImpaktfullUiLocalizations {
   });
 
   static T of<T extends ImpaktfullUiCoreLocalizations>(BuildContext context) {
-    final localization = ImpaktfullUiLocalizationConfigurator.of(context).localizations;
+    final localization =
+        ImpaktfullUiLocalizationConfigurator.of(context).localizations;
     if (T == ImpaktfullUiNavBarLocalizations) {
       return localization.navBar as T;
     } else if (Table == ImpaktfullUiBBLoginLocalizations) {
