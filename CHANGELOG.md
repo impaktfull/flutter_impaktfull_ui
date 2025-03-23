@@ -1,3 +1,11 @@
+# 0.48.1
+
+## Fix
+
+- Set default ImpaktfullUiLocalizations
+- Export `ImpaktfullUiLocalizations`
+- Validate on T correctly for ImpaktfullUiLocalizations
+
 # 0.48.0
 
 ## Feat (Breaking)

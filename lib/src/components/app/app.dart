@@ -20,7 +20,7 @@ class ImpaktfullUiApp extends StatelessWidget {
   final Locale? locale;
   final Iterable<Locale> supportedLocales;
   final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
-  final ImpaktfullUiLocalizations? localizations;
+  final ImpaktfullUiLocalizations localizations;
   final List<NavigatorObserver> navigatorObservers;
   final GlobalKey<NavigatorState>? navigatorKey;
   final String? initialRoute;
@@ -44,7 +44,7 @@ class ImpaktfullUiApp extends StatelessWidget {
     this.locale,
     this.supportedLocales = const <Locale>[Locale('en')],
     this.localizationsDelegates,
-    this.localizations,
+    this.localizations = const ImpaktfullUiLocalizations(),
     this.navigatorKey,
     this.initialRoute,
     this.onGenerateRoute,
@@ -68,7 +68,7 @@ class ImpaktfullUiApp extends StatelessWidget {
     return ImpaktfullUiThemeConfigurator(
       theme: theme,
       child: ImpaktfullUiLocalizationConfigurator(
-        localizations: localizations ?? const ImpaktfullUiLocalizations(),
+        localizations: localizations,
         child: ImpaktfullUiSnackyConfigurator(
           locale: locale,
           snackyController: snackyController,

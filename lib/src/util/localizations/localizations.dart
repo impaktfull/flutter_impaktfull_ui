@@ -7,13 +7,11 @@ abstract class ImpaktfullUiCoreLocalizations {
   const ImpaktfullUiCoreLocalizations();
 }
 
-abstract class ImpaktfullUiComponentLocalizations
-    extends ImpaktfullUiCoreLocalizations {
+abstract class ImpaktfullUiComponentLocalizations extends ImpaktfullUiCoreLocalizations {
   const ImpaktfullUiComponentLocalizations();
 }
 
-abstract class ImpaktfullUiBBLocalizations
-    extends ImpaktfullUiCoreLocalizations {
+abstract class ImpaktfullUiBBLocalizations extends ImpaktfullUiCoreLocalizations {
   const ImpaktfullUiBBLocalizations();
 }
 
@@ -29,13 +27,12 @@ class ImpaktfullUiLocalizations {
   });
 
   static T of<T extends ImpaktfullUiCoreLocalizations>(BuildContext context) {
-    final localization =
-        ImpaktfullUiLocalizationConfigurator.of(context).localizations;
-    if (localization is ImpaktfullUiNavBarLocalizations) {
+    final localization = ImpaktfullUiLocalizationConfigurator.of(context).localizations;
+    if (T == ImpaktfullUiNavBarLocalizations) {
       return localization.navBar as T;
-    } else if (localization is ImpaktfullUiBBLoginLocalizations) {
+    } else if (Table == ImpaktfullUiBBLoginLocalizations) {
       return localization.bbLogin as T;
-    } else if (localization is ImpaktfullUiBBLicenseLocalizations) {
+    } else if (T == ImpaktfullUiBBLicenseLocalizations) {
       return localization.bbLicenses as T;
     } else {
       throw Exception('Localization $T not found');
