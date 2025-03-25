@@ -93,6 +93,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   static Future<T?> show<T>({
     required BuildContext context,
     required Widget Function(BuildContext context) builder,
+    RouteSettings? routeSettings,
     bool hasBlurredBackground = false,
     bool barrierDismissible = true,
     bool rootNavigator = false,
@@ -101,6 +102,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
         ImpaktfullUiDefaultModalRoute<T>(
           context: context,
           builder: builder,
+          settings: routeSettings,
           barrierDismissible: barrierDismissible,
           hasBlurredBackground: hasBlurredBackground,
         ),
@@ -115,6 +117,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     String? title,
     String? subtitle,
     Widget? child,
+    RouteSettings? routeSettings,
     List<Widget> actions = const [],
     Future<bool> Function()? onCloseTapped,
     bool hasClose = true,
@@ -146,6 +149,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
       context: context,
       builder: (context) => modal,
       rootNavigator: rootNavigator,
+      routeSettings: routeSettings,
       hasBlurredBackground: hasBlurredBackground,
       barrierDismissible: barrierDismissible,
     );

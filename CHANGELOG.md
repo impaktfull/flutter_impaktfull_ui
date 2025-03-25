@@ -1,3 +1,9 @@
+# 0.50.0
+
+## Feature
+
+- Added `routeSettings` to ImpaktfullUiBottomSheet & ImpaktfullUiModal
+
 # 0.49.2
 
 ## Fix

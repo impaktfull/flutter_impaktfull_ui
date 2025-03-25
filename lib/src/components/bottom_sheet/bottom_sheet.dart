@@ -39,6 +39,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
   static Future<T?> show<T>({
     required BuildContext context,
     required Widget Function(BuildContext context) builder,
+    RouteSettings? routeSettings,
     bool rootNavigator = false,
   }) {
     final theme = ImpaktfullUiBottomSheetTheme.of(context);
@@ -51,11 +52,13 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
       backgroundColor: theme.colors.background,
       isScrollControlled: true,
       useRootNavigator: rootNavigator,
+      routeSettings: routeSettings,
     );
   }
 
   static Future<T?> showSimple<T>({
     required BuildContext context,
+    RouteSettings? routeSettings,
     String? title,
     String? subtitle,
     Widget? child,
@@ -75,6 +78,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
     return show(
       context: context,
       builder: (context) => modal,
+      routeSettings: routeSettings,
       rootNavigator: rootNavigator,
     );
   }
