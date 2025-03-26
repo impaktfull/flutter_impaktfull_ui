@@ -51,7 +51,7 @@ class ImpaktfullUiPlaceholder extends StatelessWidget
             children: [
               if (assetBuilder != null) ...[
                 assetBuilder!(context),
-              ]else if (asset != null) ...[
+              ] else if (asset != null) ...[
                 ImpaktfullUiAssetWidget(
                   asset: asset,
                   width: componentTheme.dimens.assetWidth,
