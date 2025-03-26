@@ -49,14 +49,14 @@ class ImpaktfullUiPlaceholder extends StatelessWidget
             mainAxisSize: MainAxisSize.min,
             spacing: 16,
             children: [
-              if (asset != null) ...[
+              if (assetBuilder != null) ...[
+                assetBuilder!(context),
+              ]else if (asset != null) ...[
                 ImpaktfullUiAssetWidget(
                   asset: asset,
                   width: componentTheme.dimens.assetWidth,
                   height: componentTheme.dimens.assetHeight,
                 ),
-              ] else if (assetBuilder != null) ...[
-                assetBuilder!(context),
               ] else if (actions.isNotEmpty) ...[
                 const SizedBox(height: 40),
               ],

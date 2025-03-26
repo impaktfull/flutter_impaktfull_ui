@@ -1,3 +1,9 @@
+# 0.50.1
+
+## Fix
+
+- ImpaktfullUiPlaceholder `assetBuilder` now correctly handles the asset
+
 # 0.50.0
 
 ## Feature
