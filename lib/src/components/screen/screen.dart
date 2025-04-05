@@ -80,73 +80,77 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
               widget.onPopInvoked?.call(),
           canPop: widget.canPop,
           child: ClipRect(
-            child: Scaffold(
-              key: _scaffoldState,
-              backgroundColor: componentTheme.colors.background,
-              drawer: widget.drawer == null
-                  ? null
-                  : ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: MediaQuery.sizeOf(context).width - 64,
+            child: GestureDetector(
+              excludeFromSemantics: true,
+              onTap: () => FocusScope.of(context).unfocus(),
+              child: Scaffold(
+                key: _scaffoldState,
+                backgroundColor: componentTheme.colors.background,
+                drawer: widget.drawer == null
+                    ? null
+                    : ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.sizeOf(context).width - 64,
+                        ),
+                        child: widget.drawer,
                       ),
-                      child: widget.drawer,
-                    ),
-              body: ImpaktfullUiAutoLayout.vertical(
-                children: [
-                  if (hasNavbar) ...[
-                    ImpaktfullUiNavBar(
-                      onBackTapped:
-                          widget.drawer == null ? widget.onBackTapped : null,
-                      onDrawerTapped:
-                          widget.drawer == null && !widget.isDrawerEnabled
-                              ? null
-                              : openDrawer,
-                      isDrawerOpen: _isDrawerOpen(context),
-                      centerTitle: widget.centerTitle,
-                      isFullScreen: widget.isFullScreen,
-                      title: widget.title,
-                      subtitle: widget.subtitle,
-                      actions: widget.actions,
-                      bottomChild: widget.bottomNavBarChild,
-                    ),
-                  ],
-                  Expanded(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: MediaQuery.removePadding(
-                        context: context,
-                        removeTop: hasNavbar,
-                        removeBottom: hasBottomChild,
-                        child: Builder(
-                          builder: (context) => Stack(
-                            alignment: widget.fabAlignment,
-                            children: [
-                              Positioned.fill(
-                                child: SizedBox(
-                                  child: widget.child,
+                body: ImpaktfullUiAutoLayout.vertical(
+                  children: [
+                    if (hasNavbar) ...[
+                      ImpaktfullUiNavBar(
+                        onBackTapped:
+                            widget.drawer == null ? widget.onBackTapped : null,
+                        onDrawerTapped:
+                            widget.drawer == null && !widget.isDrawerEnabled
+                                ? null
+                                : openDrawer,
+                        isDrawerOpen: _isDrawerOpen(context),
+                        centerTitle: widget.centerTitle,
+                        isFullScreen: widget.isFullScreen,
+                        title: widget.title,
+                        subtitle: widget.subtitle,
+                        actions: widget.actions,
+                        bottomChild: widget.bottomNavBarChild,
+                      ),
+                    ],
+                    Expanded(
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: MediaQuery.removePadding(
+                          context: context,
+                          removeTop: hasNavbar,
+                          removeBottom: hasBottomChild,
+                          child: Builder(
+                            builder: (context) => Stack(
+                              alignment: widget.fabAlignment,
+                              children: [
+                                Positioned.fill(
+                                  child: SizedBox(
+                                    child: widget.child,
+                                  ),
                                 ),
-                              ),
-                              if (widget.fab != null) ...[
-                                Padding(
-                                  padding: const EdgeInsets.all(16)
-                                      .add(MediaQuery.paddingOf(context)),
-                                  child: widget.fab!,
-                                ),
+                                if (widget.fab != null) ...[
+                                  Padding(
+                                    padding: const EdgeInsets.all(16)
+                                        .add(MediaQuery.paddingOf(context)),
+                                    child: widget.fab!,
+                                  ),
+                                ],
                               ],
-                            ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  if (widget.bottomChild != null) ...[
-                    MediaQuery.removePadding(
-                      context: context,
-                      removeTop: hasNavbar,
-                      child: widget.bottomChild!,
-                    ),
+                    if (widget.bottomChild != null) ...[
+                      MediaQuery.removePadding(
+                        context: context,
+                        removeTop: hasNavbar,
+                        child: widget.bottomChild!,
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
           ),

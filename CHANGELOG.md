@@ -1,3 +1,9 @@
+# 0.51.0
+
+## Feature
+
+- When tapping outside (on the screen) the keyboard will be closed
+
 # 0.50.1
 
 ## Fix
