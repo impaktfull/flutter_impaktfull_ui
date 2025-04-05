@@ -2,7 +2,7 @@
 
 ## Feature
 
-- When tapping outside (on the screen) the keyboard will be closed
+- When tapping outside (on the screen) the keyboard will be closed (this tap gesture is excluded from the semantics tree)
 
 # 0.50.1
 
