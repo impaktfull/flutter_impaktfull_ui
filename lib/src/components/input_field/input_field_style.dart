@@ -56,6 +56,7 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
         ),
         dimens: ImpaktfullUiInputFieldDimensTheme(
           borderRadius: dimens.borderRadius,
+          labelMargin: EdgeInsets.zero,
         ),
         textStyles: ImpaktfullUiInputFieldTextStylesTheme(
           label: textStyles.onCard.text.small.medium,
@@ -127,15 +128,19 @@ class ImpaktfullUiInputFieldColorTheme {
 
 class ImpaktfullUiInputFieldDimensTheme {
   final BorderRadiusGeometry borderRadius;
+  final EdgeInsets labelMargin;
   const ImpaktfullUiInputFieldDimensTheme({
     required this.borderRadius,
+    required this.labelMargin,
   });
 
   ImpaktfullUiInputFieldDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    EdgeInsets? labelMargin,
   }) =>
       ImpaktfullUiInputFieldDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        labelMargin: labelMargin ?? this.labelMargin,
       );
 }
 

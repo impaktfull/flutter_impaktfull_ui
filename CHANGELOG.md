@@ -1,3 +1,8 @@
+# 0.52.0
+
+## Feature
+
+- Added `labelMargin` to ImpaktfullUiInputFieldTheme
 # 0.51.0
 
 ## Feature
