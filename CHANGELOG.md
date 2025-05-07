@@ -1,3 +1,9 @@
+# 0.53.0
+
+## Feature
+
+- Added `ImpaktfullUiStatusBar` to control the status bar color & style
+
 # 0.52.0
 
 ## Feature
