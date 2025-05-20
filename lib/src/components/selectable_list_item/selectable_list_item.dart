@@ -61,9 +61,13 @@ class _ImpaktfullUiSelectableListItemState
         type: ImpaktfullUiSimpleListItemType.neutral,
         leadingWidgetBuilder: widget.leading == null
             ? null
-            : (context) => ImpaktfullUiAssetWidget(
-                  asset: widget.leading,
-                  color: componentTheme.colors.icons,
+            : (context) => SizedBox(
+                  height: componentTheme.dimens.leadingHeight,
+                  width: componentTheme.dimens.leadingWidth,
+                  child: ImpaktfullUiAssetWidget(
+                    asset: widget.leading,
+                    color: componentTheme.colors.icons,
+                  ),
                 ),
         trailingWidgetBuilder: (context) {
           final customWidget =
@@ -87,6 +91,8 @@ class _ImpaktfullUiSelectableListItemState
             builder: (context, color, child) => ImpaktfullUiAssetWidget(
               asset: componentTheme.assets.check,
               color: color,
+              height: componentTheme.dimens.trailingHeight,
+              width: componentTheme.dimens.trailingWidth,
             ),
           );
         },

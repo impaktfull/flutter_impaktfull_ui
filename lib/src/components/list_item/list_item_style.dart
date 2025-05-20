@@ -37,7 +37,10 @@ class ImpaktfullUiListItemColorTheme {
 }
 
 class ImpaktfullUiListItemDimensTheme {
-  const ImpaktfullUiListItemDimensTheme();
+  final double? leadingSize;
+  const ImpaktfullUiListItemDimensTheme({
+    this.leadingSize,
+  });
 }
 
 class ImpaktfullUiListItemTextStyleTheme {

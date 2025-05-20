@@ -1054,6 +1054,7 @@ class DefaultTheme {
             padding: EdgeInsets.all(16),
             borderRadius: BorderRadius.zero,
             crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 8,
           ),
           textStyles: ImpaktfullUiSimpleListItemTextStyleTheme(
             title: textStyles.onCard.text.small.medium,

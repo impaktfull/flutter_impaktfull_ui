@@ -19,6 +19,21 @@ class ImpaktfullUiSelectableListItemTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSelectableListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.selectableListItem;
+
+  ImpaktfullUiSelectableListItemTheme copyWith({
+    ImpaktfullUiSelectableListItemAssetsTheme? assets,
+    ImpaktfullUiSelectableListItemColorTheme? colors,
+    ImpaktfullUiSelectableListItemDimensTheme? dimens,
+    ImpaktfullUiSelectableListItemDurationsTheme? durations,
+    ImpaktfullUiSelectableListItemTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSelectableListItemTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
 }
 
 class ImpaktfullUiSelectableListItemAssetsTheme {
@@ -29,7 +44,7 @@ class ImpaktfullUiSelectableListItemAssetsTheme {
 }
 
 class ImpaktfullUiSelectableListItemColorTheme {
-  final Color icons;
+  final Color? icons;
   final Color selected;
   final Color unselected;
   const ImpaktfullUiSelectableListItemColorTheme({
@@ -40,7 +55,17 @@ class ImpaktfullUiSelectableListItemColorTheme {
 }
 
 class ImpaktfullUiSelectableListItemDimensTheme {
-  const ImpaktfullUiSelectableListItemDimensTheme();
+  final double? leadingHeight;
+  final double? leadingWidth;
+  final double? trailingHeight;
+  final double? trailingWidth;
+
+  const ImpaktfullUiSelectableListItemDimensTheme({
+    this.leadingHeight,
+    this.leadingWidth,
+    this.trailingHeight,
+    this.trailingWidth,
+  });
 }
 
 class ImpaktfullUiSelectableListItemDurationsTheme {

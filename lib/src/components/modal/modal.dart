@@ -22,6 +22,11 @@ enum ImpaktfullUiModalHeaderChildLocation {
   top,
 }
 
+enum ImpaktfullUiModalType {
+  neutral,
+  danger,
+}
+
 class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   final ImpaktfullUiModalTheme? theme;
   final ImpaktfullUiModalHeaderChildLocation? headerChildLocation;
@@ -43,6 +48,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
   final bool showDividers;
   final double width;
   final EdgeInsetsGeometry? childPadding;
+  final ImpaktfullUiModalType type;
 
   const ImpaktfullUiModal({
     this.headerChildLocation,
@@ -62,6 +68,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     this.width = 400,
     this.childPadding,
     this.theme,
+    this.type = ImpaktfullUiModalType.neutral,
     super.key,
   })  : content = null,
         primaryActionOnTap = null,
@@ -84,6 +91,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
     this.isDismissible = true,
     this.showDividers = false,
     this.width = 400,
+    this.type = ImpaktfullUiModalType.neutral,
     this.theme,
     super.key,
   })  : child = null,
@@ -175,14 +183,16 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                     ...this.actions,
                     if (secondaryActionLabel != null) ...[
                       ImpaktfullUiButton(
-                        type: ImpaktfullUiButtonType.secondary,
+                        type: ImpaktfullUiButtonType.secondaryGrey,
                         title: secondaryActionLabel!,
                         onTap: secondaryActionOnTap,
                       ),
                     ],
                     if (primaryActionLabel != null) ...[
                       ImpaktfullUiButton(
-                        type: ImpaktfullUiButtonType.primary,
+                        type: type == ImpaktfullUiModalType.danger
+                            ? ImpaktfullUiButtonType.destructivePrimary
+                            : ImpaktfullUiButtonType.primary,
                         title: primaryActionLabel!,
                         onTap: primaryActionOnTap,
                       ),
@@ -331,9 +341,12 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                                 fit: FlexFit.loose,
                                 child: Padding(
                                   padding: componentTheme.dimens.padding,
-                                  child: Text(
-                                    content!,
-                                    style: componentTheme.textStyles.content,
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    child: Text(
+                                      content!,
+                                      style: componentTheme.textStyles.content,
+                                    ),
                                   ),
                                 ),
                               ),

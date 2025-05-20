@@ -1,3 +1,7 @@
+# 0.54.0
+
+- Correct use of sizes in the `ListItem` widgets
+
 # 0.53.0
 
 ## Feature

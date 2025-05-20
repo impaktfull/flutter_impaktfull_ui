@@ -22,7 +22,6 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
   final VoidCallback? onTap;
   final EdgeInsetsGeometry? padding;
   final BorderRadiusGeometry? borderRadius;
-  final double spacing;
   final ImpaktfullUiSimpleListItemTheme? theme;
 
   const ImpaktfullUiSimpleListItem({
@@ -32,7 +31,6 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
     this.centerWidgetBuilder,
     this.trailingWidgetBuilder,
     this.onTap,
-    this.spacing = 8,
     this.padding,
     this.borderRadius,
     this.type = ImpaktfullUiSimpleListItemType.neutral,
@@ -47,7 +45,6 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
     this.centerWidgetBuilder,
     this.trailingWidgetBuilder,
     this.onTap,
-    this.spacing = 8,
     this.padding,
     this.borderRadius,
     this.type = ImpaktfullUiSimpleListItemType.neutral,
@@ -67,7 +64,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
           padding: padding ?? componentTheme.dimens.padding,
           child: ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: componentTheme.dimens.crossAxisAlignment,
-            spacing: spacing,
+            spacing: componentTheme.dimens.spacing,
             children: [
               if (leadingWidgetBuilder != null) ...[
                 _buildCorrectWidget(

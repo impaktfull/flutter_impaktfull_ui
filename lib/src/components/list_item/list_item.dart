@@ -62,6 +62,7 @@ class _ImpaktfullUiListItemState extends State<ImpaktfullUiListItem> {
               : (context) => ImpaktfullUiAssetWidget(
                     asset: widget.leading,
                     color: _getIconColor(componentTheme),
+                    size: componentTheme.dimens.leadingSize,
                   ),
           trailingWidgetBuilder: isClickable
               ? (context) {
