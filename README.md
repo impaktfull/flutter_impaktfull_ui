@@ -66,6 +66,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiChatListItemBackgroundd
   - ImpaktfullUiChatListItemAvatar
 - ImpaktfullUiCheckBox
+- ImpaktfullUiCheckBoxListItem
 - ImpaktfullUiCmsHeader
 - ImpaktfullUiColorPicker
 - ImpaktfullUiConfetti

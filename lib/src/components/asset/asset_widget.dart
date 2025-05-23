@@ -35,76 +35,74 @@ class ImpaktfullUiAssetWidget extends StatelessWidget
     return SizedBox(
       width: width ?? size,
       height: height ?? size,
-      child: Center(
-        child: Builder(
-          builder: (context) {
-            final color = this.color;
-            final icon = asset.icon;
-            final svgAsset = asset.getFullSvgAsset();
-            final pixelAsset = asset.getFullPixelAsset();
-            final lottieAsset = asset.getFullLottieAsset();
-            final riveAsset = asset.getFullRiveAsset();
-            if (icon != null) {
-              double? size = this.size;
-              if (size == null) {
-                if (width != null && height != null) {
-                  size = max(width!, height!);
-                } else if (width != null) {
-                  size = width;
-                } else if (height != null) {
-                  size = height;
-                }
+      child: Builder(
+        builder: (context) {
+          final color = this.color;
+          final icon = asset.icon;
+          final svgAsset = asset.getFullSvgAsset();
+          final pixelAsset = asset.getFullPixelAsset();
+          final lottieAsset = asset.getFullLottieAsset();
+          final riveAsset = asset.getFullRiveAsset();
+          if (icon != null) {
+            double? size = this.size;
+            if (size == null) {
+              if (width != null && height != null) {
+                size = max(width!, height!);
+              } else if (width != null) {
+                size = width;
+              } else if (height != null) {
+                size = height;
               }
-              return Icon(
-                icon,
-                color: color,
-                size: size,
-              );
             }
-            if (pixelAsset != null) {
-              return Image.asset(
-                pixelAsset,
-                color: color,
-                width: width ?? size,
-                height: height ?? size,
-                package: asset.package,
-                fit: fit,
-              );
-            }
+            return Icon(
+              icon,
+              color: color,
+              size: size,
+            );
+          }
+          if (pixelAsset != null) {
+            return Image.asset(
+              pixelAsset,
+              color: color,
+              width: width ?? size,
+              height: height ?? size,
+              package: asset.package,
+              fit: fit,
+            );
+          }
 
-            if (svgAsset != null) {
-              return SvgPicture.asset(
-                svgAsset,
-                colorFilter: color == null
-                    ? null
-                    : ColorFilter.mode(color, BlendMode.srcIn),
-                width: width ?? size,
-                height: height ?? size,
-                package: asset.package,
-                fit: fit ?? BoxFit.contain,
-              );
-            }
-            if (lottieAsset != null) {
-              return Lottie.asset(
-                lottieAsset,
-                width: width ?? size,
-                height: height ?? size,
-                package: asset.package,
-                fit: fit,
-              );
-            }
-            if (riveAsset != null) {
-              return SizedBox(
-                width: width ?? size,
-                height: height ?? size,
-                child: RiveAnimation.asset(
-                  riveAsset,
-                ),
-              );
-            }
-            throw Exception('No asset provided (or asset type not supported)');
-          },
-        ),
+          if (svgAsset != null) {
+            return SvgPicture.asset(
+              svgAsset,
+              colorFilter: color == null
+                  ? null
+                  : ColorFilter.mode(color, BlendMode.srcIn),
+              width: width ?? size,
+              height: height ?? size,
+              package: asset.package,
+              fit: fit ?? BoxFit.contain,
+            );
+          }
+          if (lottieAsset != null) {
+            return Lottie.asset(
+              lottieAsset,
+              width: width ?? size,
+              height: height ?? size,
+              package: asset.package,
+              fit: fit,
+            );
+          }
+          if (riveAsset != null) {
+            return SizedBox(
+              width: width ?? size,
+              height: height ?? size,
+              child: RiveAnimation.asset(
+                riveAsset,
+              ),
+            );
+          }
+          throw Exception('No asset provided (or asset type not supported)');
+        },
       ),
     );
   }

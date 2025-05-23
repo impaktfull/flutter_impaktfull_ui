@@ -16,6 +16,25 @@ class ImpaktfullUiRadioButtonListItemTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiRadioButtonListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.radioButtonListItem;
+
+  static ImpaktfullUiRadioButtonListItemTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiRadioButtonListItemTheme(
+        assets: const ImpaktfullUiRadioButtonListItemAssetsTheme(),
+        colors: ImpaktfullUiRadioButtonListItemColorTheme(
+          icons: colors.primary,
+        ),
+        dimens: ImpaktfullUiRadioButtonListItemDimensTheme(
+          borderRadius: dimens.borderRadiusCircle,
+        ),
+        textStyles: const ImpaktfullUiRadioButtonListItemTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiRadioButtonListItemAssetsTheme {

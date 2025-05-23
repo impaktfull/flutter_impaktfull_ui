@@ -1,4 +1,16 @@
+# 0.55.0
+
+## Feature
+
+- Added `ImpaktfullUiCheckBoxListItem` to handle check box list items
+
+## Fix
+
+- ImpaktfullUiCheckBoxListItem now correctly handles the `onChanged` & `onChangedInterpediate`
+
 # 0.54.0
+
+## Feature
 
 - Correct use of sizes in the `ListItem` widgets
 
@@ -13,6 +25,7 @@
 ## Feature
 
 - Added `labelMargin` to ImpaktfullUiInputFieldTheme
+
 # 0.51.0
 
 ## Feature

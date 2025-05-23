@@ -12,6 +12,7 @@ import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/carrousel/carrousel.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
+import 'package:impaktfull_ui/src/components/check_box_list_item/check_box_list_item.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';
@@ -443,6 +444,14 @@ class DefaultTheme {
           durations: ImpaktfullUiCheckboxDurationsTheme(
             selected: durations.short,
           ),
+        ),
+        checkBoxListItem: ImpaktfullUiCheckBoxListItemTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         cmsHeader: ImpaktfullUiCmsHeaderTheme(
           assets: ImpaktfullUiCmsHeaderAssetsTheme(
@@ -930,15 +939,13 @@ class DefaultTheme {
           ),
           textStyles: const ImpaktfullUiRadioButtonTextStyleTheme(),
         ),
-        radioButtonListItem: ImpaktfullUiRadioButtonListItemTheme(
-          assets: const ImpaktfullUiRadioButtonListItemAssetsTheme(),
-          colors: ImpaktfullUiRadioButtonListItemColorTheme(
-            icons: colors.primary,
-          ),
-          dimens: ImpaktfullUiRadioButtonListItemDimensTheme(
-            borderRadius: dimens.borderRadiusCircle,
-          ),
-          textStyles: const ImpaktfullUiRadioButtonListItemTextStyleTheme(),
+        radioButtonListItem: ImpaktfullUiRadioButtonListItemTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
           colors: ImpaktfullUiRefreshIndicatorColorTheme(

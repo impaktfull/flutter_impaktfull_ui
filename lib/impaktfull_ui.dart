@@ -29,6 +29,7 @@ export 'src/components/carrousel/carrousel.dart';
 export 'src/components/calendar/calendar.dart';
 export 'src/components/chat/chat.dart';
 export 'src/components/checkbox/checkbox.dart';
+export 'src/components/check_box_list_item/check_box_list_item.dart';
 export 'src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
 export 'src/components/cms_header/cms_header.dart';
 export 'src/components/color_input_field/color_input_field.dart';

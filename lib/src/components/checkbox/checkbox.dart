@@ -28,7 +28,7 @@ class ImpaktfullUiCheckBox extends StatelessWidget
 
   const ImpaktfullUiCheckBox.indermediate({
     required this.value,
-    required ValueChanged<bool?> onChanged,
+    required ValueChanged<bool?>? onChanged,
     this.theme,
     super.key,
   })  : onChangedInterpediate = onChanged,

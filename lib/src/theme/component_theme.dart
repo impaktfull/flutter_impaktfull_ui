@@ -11,6 +11,7 @@ import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/carrousel/carrousel.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
+import 'package:impaktfull_ui/src/components/check_box_list_item/check_box_list_item.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';
@@ -102,6 +103,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiCarrouselTheme carrousel;
   final ImpaktfullUiChatTheme chat;
   final ImpaktfullUiCheckboxTheme checkbox;
+  final ImpaktfullUiCheckBoxListItemTheme checkBoxListItem;
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
   final ImpaktfullUiColorInputFieldTheme colorInputField;
@@ -187,6 +189,7 @@ class ImpaktfullUiComponentsTheme {
     required this.carrousel,
     required this.chat,
     required this.checkbox,
+    required this.checkBoxListItem,
     required this.cmsHeader,
     required this.colorPicker,
     required this.colorInputField,
@@ -273,6 +276,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCarrouselTheme? carrousel,
     ImpaktfullUiChatTheme? chat,
     ImpaktfullUiCheckboxTheme? checkbox,
+    ImpaktfullUiCheckBoxListItemTheme? checkBoxListItem,
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
     ImpaktfullUiColorInputFieldTheme? colorInputField,
@@ -358,6 +362,7 @@ class ImpaktfullUiComponentsTheme {
         carrousel: carrousel ?? this.carrousel,
         chat: chat ?? this.chat,
         checkbox: checkbox ?? this.checkbox,
+        checkBoxListItem: checkBoxListItem ?? this.checkBoxListItem,
         cmsHeader: cmsHeader ?? this.cmsHeader,
         colorPicker: colorPicker ?? this.colorPicker,
         colorInputField: colorInputField ?? this.colorInputField,
@@ -460,6 +465,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiChatTheme.of(context) as T;
     } else if (T == ImpaktfullUiCheckboxTheme) {
       return ImpaktfullUiCheckboxTheme.of(context) as T;
+    } else if (T == ImpaktfullUiCheckBoxListItemTheme) {
+      return ImpaktfullUiCheckBoxListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiCmsHeaderTheme) {
       return ImpaktfullUiCmsHeaderTheme.of(context) as T;
     } else if (T == ImpaktfullUiColorPickerTheme) {
