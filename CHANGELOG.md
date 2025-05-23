@@ -1,3 +1,9 @@
+# 0.55.1
+
+## Fix
+
+- Alchemist update
+
 # 0.55.0
 
 ## Feature
