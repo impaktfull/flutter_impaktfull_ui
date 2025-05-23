@@ -27,6 +27,11 @@ Future<void> runComponentTest({
       goldenTestTheme: GoldenTestTheme(
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         borderColor: const Color.fromARGB(255, 0, 0, 0),
+        nameTextStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
       ),
     ),
     run: () {
