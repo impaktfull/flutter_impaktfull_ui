@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/command_menu/command_menu_style.dart';
 import 'package:impaktfull_ui/src/components/command_menu/commander/commander.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'command_menu_style.dart';
 
@@ -41,7 +41,8 @@ class _ImpaktfullUiCommandMenuState extends State<ImpaktfullUiCommandMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCommandMenuTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final shortcutActivator = widget.shortcutActivator;

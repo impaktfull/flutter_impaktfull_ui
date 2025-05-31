@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 class ImpaktfullUiGalleryFullScreenItemWidget extends StatefulWidget {
   final ImpaktfullUiGalleryItem item;
@@ -82,7 +81,8 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => Material(
         color: Colors.transparent,

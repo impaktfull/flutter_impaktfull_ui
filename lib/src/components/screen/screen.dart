@@ -3,8 +3,8 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui/src/components/screen/screen.style.dart';
 import 'package:impaktfull_ui/src/components/status_bar/status_bar.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'screen.style.dart';
 
@@ -67,7 +67,8 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
   final _scaffoldState = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiScreenTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final hasNavbar = widget.onBackTapped != null ||

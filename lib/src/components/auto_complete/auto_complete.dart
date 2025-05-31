@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/auto_complete/controller/auto_complete_controller_listener.dart';
 import 'package:impaktfull_ui/src/components/auto_complete/widget/auto_complete_overlay.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
 export 'auto_complete_style.dart';
 export 'controller/auto_complete_controller.dart';
@@ -86,7 +85,8 @@ class _ImpaktfullUiAutoCompleteState<T>
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiAutoCompleteTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => CompositedTransformTarget(
         link: _layerLink,

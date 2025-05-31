@@ -3,8 +3,8 @@ import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_overlay.dart';
 import 'package:impaktfull_ui/src/components/dropdown/dropdown_style.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'dropdown_style.dart';
 part 'dropdown.describe.dart';
@@ -132,7 +132,8 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
   @override
   Widget build(BuildContext context) {
     final width = widget.childWidth ?? _buttonWidth ?? 0;
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiDropdownTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => PopScope(
         onPopInvokedWithResult: (didPop, result) => _tooltipController.hide(),

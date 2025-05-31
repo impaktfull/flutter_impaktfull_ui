@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item_avatar.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item_background.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 class ImpaktfullUiChatListItem extends StatelessWidget {
   final ImpaktfullUiChatItem item;
@@ -28,7 +28,8 @@ class ImpaktfullUiChatListItem extends StatelessWidget {
     final sender = senderConfig.getById(item.senderId);
     final previousSender = senderConfig.getById(previousItem?.senderId);
     final isMyOwnMessage = sender?.id == senderConfig.me.id;
-    return ImpaktfullUiComponentThemeBuilder(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Align(
         alignment:

@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item_date_label.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_typing_container.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 class ImpaktfullUiChatListInternalItem extends StatelessWidget {
   final int index;
@@ -41,7 +41,8 @@ class ImpaktfullUiChatListInternalItem extends StatelessWidget {
         .whereType<ImpaktfullUiChatSender>()
         .where((e) => e.id != senderConfig.me.id)
         .toList();
-    return ImpaktfullUiComponentThemeBuilder(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/snacky/snacky_builder.dart';
 import 'package:impaktfull_ui/src/components/snacky/snacky_configurator_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 import 'package:snacky/snacky.dart';
 import 'package:intl/intl.dart' as intl;
 
@@ -25,8 +25,8 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<
-        ImpaktfullUiSnackyConfiguratorTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final languageCode = locale?.languageCode;

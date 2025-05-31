@@ -5,12 +5,12 @@ import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/controller/virtual_keyboard_text_edit_controller.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
 import 'package:impaktfull_ui/src/widget/input/base_input_field.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'input_field_style.dart';
 export 'action/input_field_action.dart';
@@ -127,11 +127,12 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
 
   @override
   Widget build(BuildContext context) {
-    final trailingAction = widget.trailingAction;
-    final isDisabled = widget.onChanged == null;
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiInputFieldTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
+        final trailingAction = widget.trailingAction;
+        final isDisabled = widget.onChanged == null;
         final trailingActionAllowed =
             widget.multiline == false && trailingAction != null;
         final trailingInputActions = [

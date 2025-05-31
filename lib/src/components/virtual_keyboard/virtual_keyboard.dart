@@ -5,10 +5,10 @@ import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/model/virtual_keyboard_key.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/virtual_keyboard_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/controller/virtual_keyboard_text_edit_controller.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/widget/virtual_keyboard_button.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'virtual_keyboard_style.dart';
 export 'model/config/virtual_keyboard_config.dart';
@@ -153,92 +153,95 @@ class _ImpaktfullUiVirtualKeyboardState
 
   @override
   Widget build(BuildContext context) {
-    final text = widget.obscureText
-        ? '•' * widget.controller.text.length
-        : widget.controller.text;
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiVirtualKeyboardTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => SizedBox(
-        width: widget.width,
-        child: FittedBox(
-          fit: BoxFit.contain,
-          child: SizedBox(
-            width: 1000,
-            height: keys.length * 75,
-            child: ImpaktfullUiAutoLayout.vertical(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 8,
-              children: [
-                ImpaktfullUiCard(
-                  width: double.infinity,
-                  height: 56,
-                  onTap: _onTapInputField,
-                  child: ImpaktfullUiAutoLayout.horizontal(
-                    children: [
-                      Expanded(
-                        child: Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text: _cursorPosition > 0
-                                    ? text.substring(0, _cursorPosition)
-                                    : '',
-                              ),
-                              WidgetSpan(
-                                alignment: PlaceholderAlignment.middle,
-                                child: FadeTransition(
-                                  opacity: _cursorAnimation,
-                                  child: Container(
-                                    height: 20,
-                                    width: 2,
-                                    color: componentTheme.colors.cursor,
+      builder: (context, componentTheme) {
+        final text = widget.obscureText
+            ? '•' * widget.controller.text.length
+            : widget.controller.text;
+        return SizedBox(
+          width: widget.width,
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: SizedBox(
+              width: 1000,
+              height: keys.length * 75,
+              child: ImpaktfullUiAutoLayout.vertical(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 8,
+                children: [
+                  ImpaktfullUiCard(
+                    width: double.infinity,
+                    height: 56,
+                    onTap: _onTapInputField,
+                    child: ImpaktfullUiAutoLayout.horizontal(
+                      children: [
+                        Expanded(
+                          child: Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: _cursorPosition > 0
+                                      ? text.substring(0, _cursorPosition)
+                                      : '',
+                                ),
+                                WidgetSpan(
+                                  alignment: PlaceholderAlignment.middle,
+                                  child: FadeTransition(
+                                    opacity: _cursorAnimation,
+                                    child: Container(
+                                      height: 20,
+                                      width: 2,
+                                      color: componentTheme.colors.cursor,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              TextSpan(text: text.substring(_cursorPosition)),
-                            ],
-                          ),
-                        ),
-                      ),
-                      if (widget.obscureText) ...[
-                        ImpaktfullUiIconButton(
-                          asset: _obscureText
-                              ? componentTheme.assets.passwordHide
-                              : componentTheme.assets.passwordShow,
-                          onTap: _onObscureTextHideShowIconTapped,
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
-                for (final row in keys)
-                  Expanded(
-                    child: ImpaktfullUiAutoLayout.horizontal(
-                      spacing: 8,
-                      children: [
-                        for (final key in row)
-                          Expanded(
-                            flex: key.flex,
-                            child: Builder(
-                              builder: (context) =>
-                                  ImpaktfullUiVirtualKeyboardButton(
-                                shift: _shift,
-                                capsLock: _capsLock,
-                                virtualKeyboardKey: key,
-                                onTap: _onTapKey,
-                                onTapDown: () => _onTapDownKey(key),
-                                onTapUp: () => _onTapUpKey(key),
-                              ),
+                                TextSpan(text: text.substring(_cursorPosition)),
+                              ],
                             ),
                           ),
+                        ),
+                        if (widget.obscureText) ...[
+                          ImpaktfullUiIconButton(
+                            asset: _obscureText
+                                ? componentTheme.assets.passwordHide
+                                : componentTheme.assets.passwordShow,
+                            onTap: _onObscureTextHideShowIconTapped,
+                          ),
+                        ],
                       ],
                     ),
                   ),
-              ],
+                  for (final row in keys)
+                    Expanded(
+                      child: ImpaktfullUiAutoLayout.horizontal(
+                        spacing: 8,
+                        children: [
+                          for (final key in row)
+                            Expanded(
+                              flex: key.flex,
+                              child: Builder(
+                                builder: (context) =>
+                                    ImpaktfullUiVirtualKeyboardButton(
+                                  shift: _shift,
+                                  capsLock: _capsLock,
+                                  virtualKeyboardKey: key,
+                                  onTap: _onTapKey,
+                                  onTapDown: () => _onTapDownKey(key),
+                                  onTapUp: () => _onTapUpKey(key),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
