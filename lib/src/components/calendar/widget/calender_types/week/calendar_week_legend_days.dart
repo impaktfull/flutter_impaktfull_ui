@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 class ImpaktfullUiCalendarWeekLegendDays extends StatelessWidget {
   final DateTime firstDay;
@@ -16,7 +18,8 @@ class ImpaktfullUiCalendarWeekLegendDays extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCalendarTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Padding(
         padding: const EdgeInsetsDirectional.symmetric(vertical: 16),

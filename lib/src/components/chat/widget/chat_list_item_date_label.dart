@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 class ImpaktfullUiChatListItemDateLabel extends StatelessWidget {
   final ImpaktfullUiChatItem item;
@@ -16,7 +16,8 @@ class ImpaktfullUiChatListItemDateLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final date = item.timestamp;

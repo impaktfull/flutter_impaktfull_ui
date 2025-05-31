@@ -3,9 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/week/calendar_week_event_item.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 class ImpaktfullUiCalendarWeekFullDayEvents extends StatefulWidget {
   final List<ImpaktfullUiCalendarEvent> events;
@@ -50,7 +50,8 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCalendarTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         return Container(

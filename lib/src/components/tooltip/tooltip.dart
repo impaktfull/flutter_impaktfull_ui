@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/tooltip/tooltip_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'tooltip_style.dart';
 
@@ -29,7 +29,8 @@ class ImpaktfullUiTooltip extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTooltipTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         if (message == null) {

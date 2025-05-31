@@ -7,10 +7,10 @@ import 'package:impaktfull_ui/src/components/divider/divider.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/modal/modal_style.dart';
 import 'package:impaktfull_ui/src/components/modal/routes/default_modal_route.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'modal_style.dart';
 export 'routes/default_modal_route.dart';
@@ -165,7 +165,8 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiModalTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         return GestureDetector(

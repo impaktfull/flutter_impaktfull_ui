@@ -4,9 +4,9 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/widget_list_extensions.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'section_title_style.dart';
 
@@ -31,7 +31,8 @@ class ImpaktfullUiSectionTitle extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiSectionTitleTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final areAllIconButtons = _areAllValidActions(actions);

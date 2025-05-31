@@ -5,9 +5,9 @@ import 'package:impaktfull_ui/src/components/file_picker/model/file_picker_progr
 import 'package:impaktfull_ui/src/components/file_picker/widgets/file_picker_content.dart';
 import 'package:impaktfull_ui/src/components/file_picker/widgets/file_picker_empty.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/hover_feedback/hover_feedback.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'model/file_picker_data.dart';
 export 'file_picker_style.dart';
@@ -41,7 +41,8 @@ class ImpaktfullUiFilePicker extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiFilePickerTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiHoverFeedback(
         cursor: data == null ? SystemMouseCursors.click : MouseCursor.defer,

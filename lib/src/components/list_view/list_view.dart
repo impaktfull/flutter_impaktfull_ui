@@ -10,8 +10,8 @@ import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator
 import 'package:impaktfull_ui/src/components/localization/localization_provider.dart';
 import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'list_view.style.dart';
 export 'model/list_view_placeholder_state.dart';
@@ -211,7 +211,8 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
     return ImpaktfullUiLocalizationProvider(
       localizations: widget.localizations,
       builder: (context, localizations) =>
-          ImpaktfullUiComponentThemeBuilder<ImpaktfullUiListViewTheme>(
+          ImpaktfullUiOverridableComponentBuilder(
+        component: widget,
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) {
           final safeAreaPadding = widget.useSafeArea

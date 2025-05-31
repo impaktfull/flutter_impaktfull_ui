@@ -3,8 +3,8 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui/src/components/table_header_item/table_header_item_type.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 export 'table_header_item_style.dart';
@@ -47,7 +47,8 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTableHeaderItemTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         if (title == null) return const SizedBox(height: 48);

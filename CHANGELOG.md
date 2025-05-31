@@ -1,3 +1,12 @@
+# 0.56.0
+
+## Feature
+
+- Added support for overriding the components
+- Added `ImpaktfullUiOverridableComponentBuilder` to override the components
+- Added `ImpaktfullUiOverridableComponentConfigurator` to configure the override components
+- Added `overrideComponents` to `ImpaktfullUiApp` to override the components in the `ImpaktfullUiOverridableComponentConfigurator`
+
 # 0.55.1
 
 ## Fix

@@ -3,9 +3,9 @@ import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/notification/notification.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 import 'package:snacky/snacky.dart';
 
 export 'notification_style.dart';
@@ -102,7 +102,8 @@ class ImpaktfullUiNotification extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiNotificationTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final crossAxisAlignment = _getAlignment();

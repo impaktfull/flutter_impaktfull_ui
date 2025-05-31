@@ -6,6 +6,8 @@ import 'package:impaktfull_ui/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_configurator.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_configurator.dart';
 import 'package:snacky/snacky.dart';
 
 class ImpaktfullUiApp extends StatelessWidget {
@@ -31,6 +33,9 @@ class ImpaktfullUiApp extends StatelessWidget {
   final bool showDebugFlag;
   final String? flavorBannerText;
   final Color? flavorBannerColor;
+  final List<
+          ImpaktfullUiOverridableComponent<Widget, ImpaktfullUiComponentTheme>>
+      overrideComponents;
 
   const ImpaktfullUiApp({
     required this.title,
@@ -55,6 +60,7 @@ class ImpaktfullUiApp extends StatelessWidget {
     this.showDebugFlag = kDebugMode,
     this.flavorBannerText,
     this.flavorBannerColor,
+    this.overrideComponents = const [],
     super.key,
   }) : assert(
           home != null || onGenerateRoute != null || builder != null,
@@ -67,61 +73,64 @@ class ImpaktfullUiApp extends StatelessWidget {
     setImpaktfullUiLocale(locale);
     return ImpaktfullUiThemeConfigurator(
       theme: theme,
-      child: ImpaktfullUiLocalizationConfigurator(
-        localizations: localizations,
-        child: ImpaktfullUiSnackyConfigurator(
-          locale: locale,
-          snackyController: snackyController,
-          snackyBuilder: snackyBuilder,
-          app: Builder(
-            builder: (context) {
-              final app = AppDebugFlag(
-                showDebugFlag: showDebugFlag,
-                flavorBannerText: flavorBannerText,
-                flavorBannerColor: flavorBannerColor ?? theme.colors.accent,
-                child: MaterialApp(
-                  title: title,
-                  home: home,
-                  debugShowCheckedModeBanner: showDebugFlag,
-                  locale: locale,
-                  theme: (materialLightTheme ?? Theme.of(context))
-                      .removeUnwantedBehavior(
-                    targetPlatform: targetPlatform,
-                  ),
-                  darkTheme: (materialLightTheme ?? Theme.of(context))
-                      .removeUnwantedBehavior(
-                    targetPlatform: targetPlatform,
-                  ),
-                  supportedLocales: supportedLocales,
-                  localizationsDelegates: localizationsDelegates,
-                  navigatorKey: navigatorKey,
-                  initialRoute: initialRoute,
-                  onGenerateRoute: onGenerateRoute,
-                  onGenerateInitialRoutes:
-                      onGenerateRoute == null && onGenerateInitialRoutes == null
-                          ? null
-                          : onGenerateInitialRoutes ??
-                              (initialRoute) {
-                                final settings = RouteSettings(
-                                  name: initialRoute,
-                                );
-                                final route = onGenerateRoute!(settings);
-                                if (route == null) {
-                                  throw Exception(
-                                      'Route not found for $initialRoute');
-                                }
-                                return [route];
-                              },
-                  navigatorObservers: [
-                    if (snackyUseNavigationObserver) ...[
-                      SnackyNavigationObserver(),
+      child: ImpaktfullUiOverridableComponentConfigurator(
+        overrideComponents: overrideComponents,
+        child: ImpaktfullUiLocalizationConfigurator(
+          localizations: localizations,
+          child: ImpaktfullUiSnackyConfigurator(
+            locale: locale,
+            snackyController: snackyController,
+            snackyBuilder: snackyBuilder,
+            app: Builder(
+              builder: (context) {
+                final app = AppDebugFlag(
+                  showDebugFlag: showDebugFlag,
+                  flavorBannerText: flavorBannerText,
+                  flavorBannerColor: flavorBannerColor ?? theme.colors.accent,
+                  child: MaterialApp(
+                    title: title,
+                    home: home,
+                    debugShowCheckedModeBanner: showDebugFlag,
+                    locale: locale,
+                    theme: (materialLightTheme ?? Theme.of(context))
+                        .removeUnwantedBehavior(
+                      targetPlatform: targetPlatform,
+                    ),
+                    darkTheme: (materialLightTheme ?? Theme.of(context))
+                        .removeUnwantedBehavior(
+                      targetPlatform: targetPlatform,
+                    ),
+                    supportedLocales: supportedLocales,
+                    localizationsDelegates: localizationsDelegates,
+                    navigatorKey: navigatorKey,
+                    initialRoute: initialRoute,
+                    onGenerateRoute: onGenerateRoute,
+                    onGenerateInitialRoutes: onGenerateRoute == null &&
+                            onGenerateInitialRoutes == null
+                        ? null
+                        : onGenerateInitialRoutes ??
+                            (initialRoute) {
+                              final settings = RouteSettings(
+                                name: initialRoute,
+                              );
+                              final route = onGenerateRoute!(settings);
+                              if (route == null) {
+                                throw Exception(
+                                    'Route not found for $initialRoute');
+                              }
+                              return [route];
+                            },
+                    navigatorObservers: [
+                      if (snackyUseNavigationObserver) ...[
+                        SnackyNavigationObserver(),
+                      ],
+                      ...navigatorObservers,
                     ],
-                    ...navigatorObservers,
-                  ],
-                ),
-              );
-              return builder?.call(context, app) ?? app;
-            },
+                  ),
+                );
+                return builder?.call(context, app) ?? app;
+              },
+            ),
           ),
         ),
       ),

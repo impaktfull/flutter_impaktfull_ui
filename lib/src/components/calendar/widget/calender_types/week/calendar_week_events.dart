@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/week/calendar_week_event_item.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 class ImpaktfullUiCalendarWeekEvents extends StatefulWidget {
   final DateTimeRange dateRange;
@@ -47,7 +47,8 @@ class _ImpaktfullUiCalendarWeekEventsState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCalendarTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
         children: [

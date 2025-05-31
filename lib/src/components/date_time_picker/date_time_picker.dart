@@ -4,9 +4,9 @@ import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/components/date_time_picker/date_time_picker_style.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/components/time_picker/time_picker.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'date_time_picker_style.dart';
 
@@ -85,8 +85,9 @@ class _ImpaktfullUiDateTimePickerState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiDateTimePickerTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
       overrideComponentTheme: widget.theme,
+      component: widget,
       builder: (context, componentTheme) => Container(
         width: 280 + widget.margin.horizontal,
         margin: widget.margin,

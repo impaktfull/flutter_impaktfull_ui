@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/bottom_sheet/bottom_sheet_style.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'bottom_sheet_style.dart';
 
@@ -85,7 +85,8 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiBottomSheetTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => GestureDetector(
         onTap: () => Navigator.of(context).pop(),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/loading_error_data/loading_error_data_style.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'loading_error_data_style.dart';
 
@@ -47,7 +47,8 @@ class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiLoadingErrorDataTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         if (isLoading) {

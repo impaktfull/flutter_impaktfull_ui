@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox_style.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox_type.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
 
 export 'checkbox_style.dart';
 
@@ -38,7 +38,8 @@ class ImpaktfullUiCheckBox extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     final isSelected = value == null || value == true;
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiCheckboxTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Center(
         child: ImpaktfullUiTouchFeedback(
