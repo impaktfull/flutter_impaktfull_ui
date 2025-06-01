@@ -14,8 +14,11 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 export 'input_field_style.dart';
 export 'action/input_field_action.dart';
+export 'validator/input_field_validator.dart';
 
 part 'input_field.describe.dart';
+
+typedef InputFieldValidator = InputFieldValidatorResult Function(String value);
 
 class ImpaktfullUiInputField extends StatefulWidget
     with ComponentDescriptorMixin {
@@ -34,6 +37,7 @@ class ImpaktfullUiInputField extends StatefulWidget
   final ValueChanged<String>? onSubmit;
   final TextEditingController? controller;
   final bool autofocus;
+  final bool autocorrect;
   final FocusNode? focusNode;
   final ValueChanged<bool>? onFocusChanged;
   final bool obscureText;
@@ -44,6 +48,7 @@ class ImpaktfullUiInputField extends StatefulWidget
   final List<String> autofill;
   final TextAlign textAlign;
   final bool readOnly;
+  final InputFieldValidator? validator;
   final ImpaktfullUiInputFieldTheme? theme;
 
   const ImpaktfullUiInputField({
@@ -65,6 +70,7 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.onFocusChanged,
     this.onSubmit,
     this.autofocus = false,
+    this.autocorrect = true,
     this.obscureText = false,
     this.textInputType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
@@ -72,6 +78,7 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.maxLines,
     this.textAlign = TextAlign.start,
     this.readOnly = false,
+    this.validator,
     this.theme,
     super.key,
   });
@@ -88,6 +95,8 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   late final FocusNode _focusNode;
 
   var _obscureText = false;
+
+  String? _validationError;
 
   @override
   void initState() {
@@ -243,9 +252,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                   Expanded(
                                     child: BaseInputField(
                                       value: widget.value,
-                                      onChanged: widget.readOnly
-                                          ? (value) {}
-                                          : widget.onChanged!,
+                                      onChanged: _onChanged,
                                       onSubmit: widget.onSubmit,
                                       focusNode: _focusNode,
                                       controller: _controller,
@@ -257,6 +264,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                       obscureText: _obscureText,
                                       placeholder: widget.placeholder,
                                       autofocus: widget.autofocus,
+                                      autocorrect: widget.autocorrect,
                                       multiline: widget.multiline,
                                       onFocusChanged: _onFocusChanged,
                                       readOnly: widget.readOnly,
@@ -278,9 +286,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                 ],
               ],
             ),
-            if (widget.error != null) ...[
+            if (widget.error != null || _validationError != null) ...[
               Text(
-                widget.error ?? '',
+                widget.error ?? _validationError ?? '',
                 style: componentTheme.textStyles.error,
               ),
             ] else if (widget.hint != null) ...[
@@ -337,5 +345,23 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+  void _onChanged(String value) {
+    if (widget.readOnly) return;
+    final onChanged = widget.onChanged;
+    if (onChanged == null) return;
+    onChanged(value);
+    final validator = widget.validator;
+    if (validator == null || widget.error != null) {
+      setState(() => _validationError = null);
+      return;
+    }
+    final validatorResult = validator(value);
+    if (validatorResult.isPendingFinalValidation || validatorResult.isValid) {
+      setState(() => _validationError = null);
+      return;
+    }
+    setState(() => _validationError = validatorResult.errorMessage);
   }
 }
