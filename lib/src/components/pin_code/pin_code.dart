@@ -3,9 +3,9 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/pin_code/pin_code_style.dart';
 import 'package:impaktfull_ui/src/components/pin_code/widget/pin_code_button.dart';
 import 'package:impaktfull_ui/src/components/pin_code/widget/pin_code_value.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/keyboard/keyboard_listener.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'pin_code_style.dart';
 
@@ -82,7 +82,8 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
       onDelete: _onDelete,
       allowedKeys: ImpaktfullUiKeyboardListener.numpadKeys,
       onNumberTap: _onKeyTap,
-      child: ImpaktfullUiComponentThemeBuilder<ImpaktfullUiPinCodeTheme>(
+      child: ImpaktfullUiOverridableComponentBuilder(
+        component: widget,
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
           spacing: 16,

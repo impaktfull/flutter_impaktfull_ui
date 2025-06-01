@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiChatListItemBackground extends StatelessWidget {
   final ImpaktfullUiChatSenderConfig senderConfig;
@@ -27,7 +26,8 @@ class ImpaktfullUiChatListItemBackground extends StatelessWidget {
     final isNotMyOwnMessage = !isMyOwnMessage;
     final isDifferentSenderThanPrevious = previousItem?.senderId != senderId;
     final isDifferentSenderThanNext = nextItem?.senderId != senderId;
-    return ImpaktfullUiComponentThemeBuilder(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         return Container(

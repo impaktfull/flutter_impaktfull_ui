@@ -7,9 +7,9 @@ import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/localization/localization_provider.dart';
 import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.localization.dart';
 import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/widget_list_extensions.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'nav_bar.style.dart';
 export 'nav_bar.localization.dart';
@@ -49,7 +49,8 @@ class ImpaktfullUiNavBar extends StatelessWidget with ComponentDescriptorMixin {
     return ImpaktfullUiLocalizationProvider(
       localizations: localizations,
       builder: (context, localizations) =>
-          ImpaktfullUiComponentThemeBuilder<ImpaktfullUiNavBarTheme>(
+          ImpaktfullUiOverridableComponentBuilder(
+        component: this,
         overrideComponentTheme: theme,
         builder: (context, componentTheme) {
           final leadingActions = [

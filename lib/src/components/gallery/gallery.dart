@@ -5,8 +5,8 @@ import 'package:impaktfull_ui/src/components/gallery/widget/gallery_full_screen.
 import 'package:impaktfull_ui/src/components/gallery/widget/gallery_hero_item.dart';
 import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'gallery_style.dart';
 export 'model/gallery_item.dart';
@@ -41,7 +41,8 @@ class ImpaktfullUiGallery extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiGalleryTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiGridView.builder(
         items: items,

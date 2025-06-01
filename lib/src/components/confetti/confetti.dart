@@ -5,10 +5,10 @@ import 'package:impaktfull_ui/src/components/confetti/confetti.dart';
 import 'package:impaktfull_ui/src/components/confetti/model/confetti_particle.dart';
 import 'package:impaktfull_ui/src/components/confetti/painter/asset_painter.dart';
 import 'package:impaktfull_ui/src/components/confetti/painter/confetti_painter.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/after_layout/after_layout.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'confetti_style.dart';
 export 'model/confetti_type.dart';
@@ -215,7 +215,8 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiConfettiTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => RepaintBoundary(
         child: LayoutBuilder(

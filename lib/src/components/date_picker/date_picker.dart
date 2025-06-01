@@ -6,9 +6,9 @@ import 'package:impaktfull_ui/src/components/date_picker/date_picker_style.dart'
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_type.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_page.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/edge_insets_geometry_extension.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:intl/intl.dart';
 
 export 'date_picker_style.dart';
@@ -191,7 +191,8 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiDatePickerTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => SizedBox(
         width: 280 + widget.margin.horizontal,

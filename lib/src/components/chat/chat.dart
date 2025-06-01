@@ -6,8 +6,8 @@ import 'package:impaktfull_ui/src/components/chat/model/chat_item.dart';
 import 'package:impaktfull_ui/src/components/chat/model/sender/chat_sender_config.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_internal_item.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'chat_style.dart';
 export 'model/chat_item.dart';
@@ -83,7 +83,8 @@ class _ImpaktfullUiChatState extends State<ImpaktfullUiChat> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiChatTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiListView.builder(
         padding: widget.padding,

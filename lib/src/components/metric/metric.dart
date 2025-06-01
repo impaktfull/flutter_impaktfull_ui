@@ -10,11 +10,11 @@ import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/metric/metric_style.dart';
 import 'package:impaktfull_ui/src/components/metric/model/metric_impact_type.dart';
 import 'package:impaktfull_ui/src/components/metric/model/metric_type.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
 import 'package:impaktfull_ui/src/util/text_size/text_size_util.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'model/metric_impact_type.dart';
 export 'model/metric_type.dart';
@@ -60,7 +60,8 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiMetricTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiCard(
         padding: EdgeInsets.zero,

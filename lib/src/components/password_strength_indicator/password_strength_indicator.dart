@@ -3,8 +3,8 @@ import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/password_strength_indicator/model/password_strength_indicator_requirement.dart';
 import 'package:impaktfull_ui/src/components/password_strength_indicator/password_strength_indicator_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'password_strength_indicator_style.dart';
 export 'model/password_strength_indicator_requirement.dart';
@@ -28,8 +28,8 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<
-        ImpaktfullUiPasswordStrengthIndicatorTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final strengthIndicators =

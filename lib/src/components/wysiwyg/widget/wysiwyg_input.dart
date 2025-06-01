@@ -8,6 +8,7 @@ import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback
 import 'package:impaktfull_ui/src/components/wysiwyg/widget/actions/wysiwig_actions.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui/src/widget/input/base_input_field.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   final String? placeholder;
@@ -97,7 +98,8 @@ class _ImpaktfullUiWysiwygInputFieldState
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiInputFieldTheme>(
       builder: (context, inputFieldTheme) =>
-          ImpaktfullUiComponentThemeBuilder<ImpaktfullUiWysiwygTheme>(
+          ImpaktfullUiOverridableComponentBuilder(
+        component: widget,
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,

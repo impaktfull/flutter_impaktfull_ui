@@ -12,10 +12,10 @@ import 'package:impaktfull_ui/src/components/image_crop/image_crop_style.dart';
 import 'package:impaktfull_ui/src/components/image_crop/model/crop_info.dart';
 import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_overlay.dart';
 import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_square_overlay.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 export 'image_crop_style.dart';
@@ -86,7 +86,8 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiImageCropTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         if (_croppedImageBytes != null) {

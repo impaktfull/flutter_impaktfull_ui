@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/pagination/pagination_style.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'pagination_style.dart';
 
@@ -55,7 +55,8 @@ class ImpaktfullUiPagination extends StatelessWidget
   Widget build(BuildContext context) {
     final humanReadablePage = page + 1;
     final humanReadableAmountOfPages = max(amountOfPages, 1);
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiPaginationTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
         spacing: 8,

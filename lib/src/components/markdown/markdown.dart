@@ -6,8 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:impaktfull_ui/src/components/markdown/element_builder/code_element_builder.dart';
 import 'package:impaktfull_ui/src/components/markdown/markdown_style.dart';
 import 'package:impaktfull_ui/src/components/network_image/network_image.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'markdown_style.dart';
 
@@ -33,7 +33,8 @@ class ImpaktfullUiMarkdown extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiMarkdownTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => MarkdownBody(
         styleSheet: MarkdownStyleSheet(

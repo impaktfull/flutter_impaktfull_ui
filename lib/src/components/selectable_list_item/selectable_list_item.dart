@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/selectable_list_item/selectable_list_item_style.dart';
 import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'selectable_list_item_style.dart';
 
@@ -51,8 +51,8 @@ class _ImpaktfullUiSelectableListItemState
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<
-        ImpaktfullUiSelectableListItemTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
         title: widget.title,

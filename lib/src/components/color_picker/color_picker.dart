@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/color_picker/color_picker_style.dart';
 import 'package:impaktfull_ui/src/components/color_picker/type/color_picker_simple.dart';
 import 'package:impaktfull_ui/src/components/color_picker/type/color_picker_slider.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'color_picker_style.dart';
 
@@ -44,7 +44,8 @@ class ImpaktfullUiColorPicker extends StatelessWidget
       ];
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiColorPickerTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final allowedColors =

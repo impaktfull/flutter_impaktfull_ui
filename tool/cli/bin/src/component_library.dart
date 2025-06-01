@@ -123,7 +123,7 @@ class $className extends StatelessWidget with ComponentDescriptorMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<${className}Theme>(
+    return ImpaktfullUiOverridableComponentBuilder<${className}Theme>(
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Container(),
     );

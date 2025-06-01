@@ -2,6 +2,7 @@
 
 A UI library of impaktfull.
 
+[![pub package](https://img.shields.io/pub/v/impaktfull_ui.svg)](https://pub.dartlang.org/packages/impaktfull_ui)
 [![test](https://github.com/impaktfull/flutter_impaktfull_ui/actions/workflows/test.yaml/badge.svg)](https://github.com/impaktfull/flutter_impaktfull_ui/actions/workflows/test.yaml/badge.svg)
 [![publish to github pages](https://github.com/impaktfull/flutter_impaktfull_ui/actions/workflows/publish_to_githubpages.yaml/badge.svg)](https://github.com/impaktfull/flutter_impaktfull_ui/actions/workflows/publish_to_githubpages.yaml/badge.svg)
 [![live_demo](https://img.shields.io/badge/Live%20Demo-Available-7D64F2)](https://example.impaktfull-ui.opensource.impaktfull.com)
@@ -158,6 +159,35 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 #### Future
 
 Much more components to come in the future, always with the focus on minimizing maintenance and maximizing a recognizable UI/brand for impaktfull (Checkout the TODO list below)
+
+#### Overriding Components
+
+These 2 components are used to override the components in the UI library.
+
+- `ImpaktfullUiOverridableComponentBuilder` (Used in the original component that needs to be overriden)
+- `ImpaktfullUiOverridableComponentConfigurator` (Used to configure the override components)
+
+You can place an `ImpaktfullUiOverridableComponentBuilder` anywhere in your widget tree to override the components.
+
+Example:
+
+```dart
+ImpaktfullUiOverridableComponentConfigurator(
+  overrideComponents: [
+    ImpaktfullUiOverridableComponent<ImpaktfullUiRadioButton<bool?>, ImpaktfullUiRadioButtonTheme>(
+      builder: (context, component, theme) => OverrideComponent(component: component),
+    ),
+  ],
+  child: ImpaktfullUiRadioButton(
+    value: true,
+    groupValue: inputs.value.value,
+    onChanged: inputs.value.updateState,
+  ),
+),
+```
+
+The default configuration will be providing your `overrideComponents` to the `ImpaktfullUiApp`. 
+The `ImpaktfullUiApp` will configure the `ImpaktfullUiOverridableComponentConfigurator` with your `overrideComponents`.
 
 ### Building Blocks
 

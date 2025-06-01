@@ -5,9 +5,9 @@ import 'package:impaktfull_ui/src/components/option_selector/option_selector.dar
 import 'package:impaktfull_ui/src/components/page_route/adaptive/adaptive_page_route.dart';
 import 'package:impaktfull_ui/src/components/screen/screen.dart';
 import 'package:impaktfull_ui/src/components/selectable_list_item/selectable_list_item.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/responsive/responsive_extension.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'option_selector_style.dart';
 
@@ -86,7 +86,8 @@ class _ImpaktfullUiOptionSelectorState<T>
     extends State<ImpaktfullUiOptionSelector<T>> {
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiOptionSelectorTheme>(
+    return ImpaktfullUiOverridableComponentBuilder(
+      component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiListView.builder(
         padding: widget.padding,
