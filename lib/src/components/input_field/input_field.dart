@@ -18,7 +18,8 @@ export 'validator/input_field_validator.dart';
 
 part 'input_field.describe.dart';
 
-typedef InputFieldValidator = InputFieldValidatorResult Function(String value);
+typedef InputFieldValidator = ImpaktfullUiInputFieldValidatorResult Function(
+    String value);
 
 class ImpaktfullUiInputField extends StatefulWidget
     with ComponentDescriptorMixin {
