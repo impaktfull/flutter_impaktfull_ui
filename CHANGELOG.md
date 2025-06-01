@@ -1,3 +1,9 @@
+# 0.57.1
+
+## Fix
+
+- Use `ImpaktfullUiInputFieldValidatorResult` instead od `InputFieldValidatorResult`
+
 # 0.57.0
 
 ## Feature
