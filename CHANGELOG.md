@@ -7,6 +7,10 @@
 - Added `ImpaktfullUiOverridableComponentConfigurator` to configure the override components
 - Added `overrideComponents` to `ImpaktfullUiApp` to override the components in the `ImpaktfullUiOverridableComponentConfigurator`
 
+## Fix
+
+- Use deploy keys in github actions
+
 # 0.55.1
 
 ## Fix
