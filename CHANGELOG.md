@@ -9,7 +9,7 @@
 
 ## Fix
 
-- Use deploy keys in github actions
+- Use deploy keys in GitHub Actions
 
 # 0.55.1
 
