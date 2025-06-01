@@ -1,4 +1,4 @@
-class InputFieldValidatorResult {
+class ImpaktfullUiInputFieldValidatorResult {
   final bool isPendingFinalValidation;
   final String? _errorMessage;
 
@@ -6,16 +6,16 @@ class InputFieldValidatorResult {
 
   String get errorMessage => _errorMessage ?? '';
 
-  const InputFieldValidatorResult.pendingFinalValidation()
+  const ImpaktfullUiInputFieldValidatorResult.pendingFinalValidation()
       : isPendingFinalValidation = true,
         _errorMessage = null;
 
-  const InputFieldValidatorResult.invalid({
+  const ImpaktfullUiInputFieldValidatorResult.invalid({
     required String errorMessage,
   })  : _errorMessage = errorMessage,
         isPendingFinalValidation = false;
 
-  const InputFieldValidatorResult.valid()
+  const ImpaktfullUiInputFieldValidatorResult.valid()
       : _errorMessage = null,
         isPendingFinalValidation = false;
 }
