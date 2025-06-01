@@ -1,6 +1,4 @@
-library impaktfull_ui;
-
-/// Building Blocks
+// Building Blocks
 export 'src/building_block/forget_password/forget_password.dart';
 export 'src/building_block/login/login.dart';
 export 'src/building_block/licenses/licenses.dart';
@@ -8,7 +6,7 @@ export 'src/building_block/not_found/not_found.dart';
 export 'src/building_block/register/register.dart';
 export 'src/building_block/verify_register_code/verify_register_code.dart';
 
-/// Components
+// Components
 export 'src/components/accordion/accordion.dart';
 export 'src/components/adaptive_nav_bar/adaptive_nav_bar.dart';
 export 'src/components/adaptive_screen/adaptive_screen.dart';
@@ -112,30 +110,30 @@ export 'src/components/virtual_keyboard/virtual_keyboard.dart';
 export 'src/components/wrap/wrap.dart';
 export 'src/components/wysiwyg/wysiwyg.dart';
 
-/// Models
+// Models
 export 'src/models/asset.dart';
 
-/// Navigator
+// Navigator
 export 'src/navigator/observer/path_route_observer.dart';
 
-/// Theme
+// Theme
 export 'src/theme/theme.dart';
 export 'src/components/theme/theme_builder.dart';
 
-/// Widget Library
+// Widget Library
 export 'src/util/descriptor/component_descriptor_mixin.dart';
 export 'src/widget/override_components/overridable_component_builder.dart';
 export 'src/widget/override_components/overridable_component_configurator.dart';
 
-/// Extensions
+// Extensions
 export 'src/util/extension/border_radius_geometry_extension.dart';
 export 'src/util/extension/datetime_extensions.dart';
 export 'src/util/extension/edge_insets_geometry_extension.dart';
 export 'src/util/extension/text_style_extension.dart';
 
-/// Util
+// Util
 export 'src/util/responsive/responsive_extension.dart';
 export 'src/util/localizations/localizations.dart';
 
-/// External packages
+// External packages
 export 'package:snacky/snacky.dart';

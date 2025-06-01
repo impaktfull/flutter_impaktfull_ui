@@ -52,6 +52,16 @@ class InputFieldVariant
                 ),
               )
             : null,
+        validator: (value) {
+          if (!value.contains('@')) {
+            return const InputFieldValidatorResult.pendingFinalValidation();
+          }
+          if (value.contains('@') && value.contains('.') && value.length < 4) {
+            return const InputFieldValidatorResult.invalid(
+                errorMessage: 'At least 4 characters');
+          }
+          return const InputFieldValidatorResult.valid();
+        },
       ),
       ImpaktfullUiInputField(
         leadingIcon:

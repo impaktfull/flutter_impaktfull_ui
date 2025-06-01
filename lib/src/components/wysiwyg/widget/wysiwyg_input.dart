@@ -135,6 +135,7 @@ class _ImpaktfullUiWysiwygInputFieldState
                             onSubmit: widget.onSubmit,
                             autofocus: widget.autofocus,
                             obscureText: false,
+                            autocorrect: false,
                             autofill: const [],
                             textInputType: TextInputType.multiline,
                             textInputAction: TextInputAction.newline,

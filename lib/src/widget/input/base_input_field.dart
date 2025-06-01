@@ -22,6 +22,7 @@ class BaseInputField extends StatefulWidget {
   final int? maxLines;
   final TextAlign textAlign;
   final List<String> autofill;
+  final bool autocorrect;
   final bool readOnly;
   final ImpaktfullUiInputFieldTheme? theme;
   final Duration debounceDuration;
@@ -42,6 +43,7 @@ class BaseInputField extends StatefulWidget {
     required this.maxLines,
     required this.textAlign,
     required this.autofill,
+    required this.autocorrect,
     required this.theme,
     required this.readOnly,
     this.debounceDuration = Duration.zero,
@@ -120,6 +122,7 @@ class _BaseInputFieldState extends State<BaseInputField> {
             minLines: widget.multiline ? 3 : 1,
             textAlign: widget.textAlign,
             autofillHints: widget.autofill,
+            autocorrect: widget.autocorrect,
             readOnly: widget.readOnly,
             decoration: InputDecoration(
               isDense: true,

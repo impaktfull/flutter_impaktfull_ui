@@ -1,3 +1,10 @@
+# 0.57.0
+
+## Feature
+
+- Added `validator` to `ImpaktfullUiInputField` to validate the input field
+- Added `autocorrect` to `ImpaktfullUiInputField` to enable/disable autocorrect
+
 # 0.56.0
 
 ## Feature
