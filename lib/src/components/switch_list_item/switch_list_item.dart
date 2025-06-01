@@ -5,7 +5,7 @@ import 'package:impaktfull_ui/src/components/switch/switch.dart';
 import 'package:impaktfull_ui/src/components/switch_list_item/switch_list_item_style.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'switch_list_item_style.dart';
 

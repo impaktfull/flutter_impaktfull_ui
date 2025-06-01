@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/skeleton/skeleton_style.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'skeleton_style.dart';
 

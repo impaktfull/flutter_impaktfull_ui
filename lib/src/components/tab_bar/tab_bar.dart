@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/tab_bar/tab_bar_style.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'tab_bar_style.dart';
 

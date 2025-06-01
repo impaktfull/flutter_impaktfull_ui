@@ -6,7 +6,7 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class CommandMenuWindow extends StatefulWidget {
   final String? value;

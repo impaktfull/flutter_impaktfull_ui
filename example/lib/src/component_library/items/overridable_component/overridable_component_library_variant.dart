@@ -24,13 +24,10 @@ class OverridableComponentConfiguratorLibraryVariant
                 OverrideComponent(component: component),
           ),
         ],
-        child: ImpaktfullUiOverridableComponentConfigurator(
-          overrideComponents: const [],
-          child: ImpaktfullUiRadioButton(
-            value: true,
-            groupValue: inputs.value.value,
-            onChanged: inputs.value.updateState,
-          ),
+        child: ImpaktfullUiRadioButton(
+          value: true,
+          groupValue: inputs.value.value,
+          onChanged: inputs.value.updateState,
         ),
       ),
     ];
@@ -42,4 +39,4 @@ class OverridableComponentConfiguratorLibraryVariant
 }
 
 class OverridableComponentConfiguratorPrimaryInputs
-    extends OverridableCOmponentConfiguratorLibraryInputs {}
+    extends OverridableComponentConfiguratorLibraryInputs {}

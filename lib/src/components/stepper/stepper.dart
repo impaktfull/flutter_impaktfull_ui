@@ -5,7 +5,7 @@ import 'package:impaktfull_ui/src/components/stepper/model/stepper_alignment.dar
 import 'package:impaktfull_ui/src/components/stepper/model/stepper_item.dart';
 import 'package:impaktfull_ui/src/components/stepper/stepper_style.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'stepper_style.dart';
 export 'model/stepper_item.dart';

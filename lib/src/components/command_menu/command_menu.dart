@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/command_menu/command_menu_style.dart';
 import 'package:impaktfull_ui/src/components/command_menu/commander/commander.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'command_menu_style.dart';
 

@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/components/card/card_style.dart';
 import 'package:impaktfull_ui/src/components/container/container.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'card_style.dart';
 

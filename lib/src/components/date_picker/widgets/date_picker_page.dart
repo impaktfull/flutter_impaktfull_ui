@@ -6,7 +6,7 @@ import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picke
 import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_months_page.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_years_page.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiDatePickerPage extends StatelessWidget {
   final ImpaktfullUiDatePickerWeekdaysStartDate weekdaysStartDate;

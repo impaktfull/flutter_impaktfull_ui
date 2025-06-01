@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_overlay.da
 import 'package:impaktfull_ui/src/components/dropdown/dropdown_style.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'dropdown_style.dart';
 part 'dropdown.describe.dart';

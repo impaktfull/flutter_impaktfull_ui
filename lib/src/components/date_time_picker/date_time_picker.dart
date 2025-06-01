@@ -6,7 +6,7 @@ import 'package:impaktfull_ui/src/components/date_time_picker/date_time_picker_s
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/components/time_picker/time_picker.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'date_time_picker_style.dart';
 

@@ -7,7 +7,7 @@ import 'package:impaktfull_ui/src/components/screen/screen.dart';
 import 'package:impaktfull_ui/src/components/selectable_list_item/selectable_list_item.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/responsive/responsive_extension.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'option_selector_style.dart';
 

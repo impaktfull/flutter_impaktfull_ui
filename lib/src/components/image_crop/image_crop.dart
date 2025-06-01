@@ -15,7 +15,7 @@ import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_squar
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 export 'image_crop_style.dart';

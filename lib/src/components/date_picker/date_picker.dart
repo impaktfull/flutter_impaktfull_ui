@@ -8,7 +8,7 @@ import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_pag
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/edge_insets_geometry_extension.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:intl/intl.dart';
 
 export 'date_picker_style.dart';

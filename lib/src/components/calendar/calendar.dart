@@ -5,7 +5,7 @@ import 'package:impaktfull_ui/src/components/calendar/model/calendar_type.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/calendar_list.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/calendar_week.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'calendar_style.dart';
 export 'model/calendar_item.dart';

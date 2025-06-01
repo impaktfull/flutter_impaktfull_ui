@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui/src/components/screen/screen.style.dart';
 import 'package:impaktfull_ui/src/components/status_bar/status_bar.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'screen.style.dart';
 

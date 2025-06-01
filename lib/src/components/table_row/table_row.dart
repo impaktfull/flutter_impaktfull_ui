@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
 import 'package:impaktfull_ui/src/components/table_row/table_row_style.dart';
 import 'package:impaktfull_ui/src/components/table_row_item/table_row_item.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'table_row_style.dart';
 

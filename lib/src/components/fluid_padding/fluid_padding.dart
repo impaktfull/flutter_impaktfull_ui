@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/src/components/fluid_padding/fluid_padding_breakpo
 import 'package:impaktfull_ui/src/components/fluid_padding/fluid_padding_style.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'fluid_padding_style.dart';
 export 'fluid_padding_breakpoint.dart';

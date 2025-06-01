@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/snacky/snacky_builder.dart';
 import 'package:impaktfull_ui/src/components/snacky/snacky_configurator_style.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:snacky/snacky.dart';
 import 'package:intl/intl.dart' as intl;
 

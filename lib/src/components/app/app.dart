@@ -6,7 +6,7 @@ import 'package:impaktfull_ui/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_configurator.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_configurator.dart';
 import 'package:snacky/snacky.dart';
 

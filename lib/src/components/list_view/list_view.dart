@@ -11,7 +11,7 @@ import 'package:impaktfull_ui/src/components/localization/localization_provider.
 import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'list_view.style.dart';
 export 'model/list_view_placeholder_state.dart';

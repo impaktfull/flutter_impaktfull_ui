@@ -5,7 +5,7 @@ import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_st
 import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_painter_data.dart';
 import 'package:impaktfull_ui/src/components/line_chart/painter/line_chart_painter.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'line_chart_style.dart';
 export 'model/line_chart_item_data.dart';

@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart'
 import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'horizontal_tabs_style.dart';
 

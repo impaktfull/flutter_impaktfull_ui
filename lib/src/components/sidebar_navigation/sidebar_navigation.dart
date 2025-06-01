@@ -9,7 +9,7 @@ import 'package:impaktfull_ui/src/components/sidebar_navigation/sidebar_navigati
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/edge_insets_geometry_extension.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'sidebar_navigation_style.dart';
 

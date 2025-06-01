@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/src/components/slider/model/slider_legend_alignmen
 import 'package:impaktfull_ui/src/components/slider/slider_style.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'slider_style.dart';
 export 'model/slider_legend_alignment.dart';

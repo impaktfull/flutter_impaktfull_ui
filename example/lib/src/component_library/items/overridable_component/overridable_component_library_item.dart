@@ -17,7 +17,7 @@ class OverridableComponentConfiguratorLibraryItem extends ComponentLibraryItem {
   }
 }
 
-class OverridableCOmponentConfiguratorLibraryInputs
+class OverridableComponentConfiguratorLibraryInputs
     extends ComponentLibraryInputs {
   final ComponentLibraryBoolInput value =
       ComponentLibraryBoolInput('Value', initialValue: false);

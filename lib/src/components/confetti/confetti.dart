@@ -8,7 +8,7 @@ import 'package:impaktfull_ui/src/components/confetti/painter/confetti_painter.d
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/after_layout/after_layout.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'confetti_style.dart';
 export 'model/confetti_type.dart';

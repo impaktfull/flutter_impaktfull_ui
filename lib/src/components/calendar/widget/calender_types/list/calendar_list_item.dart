@@ -5,7 +5,7 @@ import 'package:impaktfull_ui/src/components/calendar/model/calendar_list_item.d
 import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/list/calendar_list_event_item.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/list/calendar_list_section_title.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiCalendarListItem extends StatelessWidget {
   final ImpaktfulluiCalendarListItem item;

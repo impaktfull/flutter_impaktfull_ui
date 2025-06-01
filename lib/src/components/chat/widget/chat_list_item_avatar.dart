@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/avatar/avatar.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/components/notification_badge/notification_badge.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiChatListItemAvatar extends StatelessWidget {
   final ImpaktfullUiChatSender? sender;

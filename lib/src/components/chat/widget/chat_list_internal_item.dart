@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item_date_label.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_typing_container.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiChatListInternalItem extends StatelessWidget {
   final int index;

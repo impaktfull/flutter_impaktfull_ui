@@ -8,7 +8,7 @@ import 'package:impaktfull_ui/src/components/virtual_keyboard/virtual_keyboard_s
 import 'package:impaktfull_ui/src/components/virtual_keyboard/controller/virtual_keyboard_text_edit_controller.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/widget/virtual_keyboard_button.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'virtual_keyboard_style.dart';
 export 'model/config/virtual_keyboard_config.dart';

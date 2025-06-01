@@ -5,7 +5,7 @@ import 'package:impaktfull_ui/src/components/wysiwyg/widget/wysiwyg_input.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/widget/wysiwyg_preview.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'wysiwyg_style.dart';
 export 'model/wysiwyg_type.dart';

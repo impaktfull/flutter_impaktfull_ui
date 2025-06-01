@@ -7,7 +7,7 @@ import 'package:impaktfull_ui/src/components/file_picker/widgets/file_picker_emp
 import 'package:impaktfull_ui/src/components/interaction_feedback/hover_feedback/hover_feedback.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'model/file_picker_data.dart';
 export 'file_picker_style.dart';

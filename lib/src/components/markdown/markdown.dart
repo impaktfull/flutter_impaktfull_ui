@@ -7,7 +7,7 @@ import 'package:impaktfull_ui/src/components/markdown/element_builder/code_eleme
 import 'package:impaktfull_ui/src/components/markdown/markdown_style.dart';
 import 'package:impaktfull_ui/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'markdown_style.dart';
 

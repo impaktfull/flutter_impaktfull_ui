@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_complete/auto_complete.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiAutoCompleteOverlay<T> extends StatefulWidget {
   static const double defaultHeight = 300;

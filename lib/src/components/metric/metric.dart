@@ -14,7 +14,7 @@ import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
 import 'package:impaktfull_ui/src/util/text_size/text_size_util.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component.dart';
+import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'model/metric_impact_type.dart';
 export 'model/metric_type.dart';
