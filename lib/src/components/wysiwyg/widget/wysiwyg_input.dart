@@ -141,6 +141,8 @@ class _ImpaktfullUiWysiwygInputFieldState
                             textInputAction: TextInputAction.newline,
                             multiline: true,
                             maxLines: null,
+                            textCapitalization: TextCapitalization.none,
+                            inputFormatters: const [],
                             textAlign: TextAlign.start,
                             readOnly: false,
                             theme: inputFieldTheme,

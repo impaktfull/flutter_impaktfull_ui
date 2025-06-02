@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
@@ -49,6 +50,8 @@ class ImpaktfullUiInputField extends StatefulWidget
   final List<String> autofill;
   final TextAlign textAlign;
   final bool readOnly;
+  final TextCapitalization textCapitalization;
+  final List<TextInputFormatter> inputFormatters;
   final InputFieldValidator? validator;
   final ImpaktfullUiInputFieldTheme? theme;
 
@@ -80,6 +83,8 @@ class ImpaktfullUiInputField extends StatefulWidget
     this.textAlign = TextAlign.start,
     this.readOnly = false,
     this.validator,
+    this.inputFormatters = const [],
+    this.textCapitalization = TextCapitalization.none,
     this.theme,
     super.key,
   });
@@ -267,6 +272,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                       autofocus: widget.autofocus,
                                       autocorrect: widget.autocorrect,
                                       multiline: widget.multiline,
+                                      inputFormatters: widget.inputFormatters,
+                                      textCapitalization:
+                                          widget.textCapitalization,
                                       onFocusChanged: _onFocusChanged,
                                       readOnly: widget.readOnly,
                                       textAlign: widget.textAlign,
