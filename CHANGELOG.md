@@ -1,3 +1,9 @@
+# 0.58.0
+
+## Feat
+
+- Use `textCapitalization` & `inputFormatters` in `ImpaktfullUiInputField`
+
 # 0.57.1
 
 ## Fix

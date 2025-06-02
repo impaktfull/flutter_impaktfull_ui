@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
@@ -24,6 +25,8 @@ class BaseInputField extends StatefulWidget {
   final List<String> autofill;
   final bool autocorrect;
   final bool readOnly;
+  final TextCapitalization textCapitalization;
+  final List<TextInputFormatter> inputFormatters;
   final ImpaktfullUiInputFieldTheme? theme;
   final Duration debounceDuration;
 
@@ -44,8 +47,10 @@ class BaseInputField extends StatefulWidget {
     required this.textAlign,
     required this.autofill,
     required this.autocorrect,
-    required this.theme,
     required this.readOnly,
+    required this.textCapitalization,
+    required this.inputFormatters,
+    required this.theme,
     this.debounceDuration = Duration.zero,
     super.key,
   });
@@ -124,6 +129,8 @@ class _BaseInputFieldState extends State<BaseInputField> {
             autofillHints: widget.autofill,
             autocorrect: widget.autocorrect,
             readOnly: widget.readOnly,
+            textCapitalization: widget.textCapitalization,
+            inputFormatters: widget.inputFormatters,
             decoration: InputDecoration(
               isDense: true,
               hintText: widget.placeholder,
