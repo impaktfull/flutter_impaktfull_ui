@@ -54,13 +54,14 @@ class InputFieldVariant
             : null,
         validator: (value) {
           if (!value.contains('@')) {
-            return const InputFieldValidatorResult.pendingFinalValidation();
+            return const ImpaktfullUiInputFieldValidatorResult
+                .pendingFinalValidation();
           }
           if (value.contains('@') && value.contains('.') && value.length < 4) {
-            return const InputFieldValidatorResult.invalid(
+            return const ImpaktfullUiInputFieldValidatorResult.invalid(
                 errorMessage: 'At least 4 characters');
           }
-          return const InputFieldValidatorResult.valid();
+          return const ImpaktfullUiInputFieldValidatorResult.valid();
         },
       ),
       ImpaktfullUiInputField(
