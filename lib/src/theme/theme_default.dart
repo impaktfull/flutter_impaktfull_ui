@@ -104,6 +104,8 @@ class DefaultTheme {
     Color? border,
     Color? shadow,
     Color? text,
+    Color? textSecondary,
+    Color? textTertiary,
     Color? textOnPrimary,
     Color? textOnAccent,
     Color? textOnSecondary,
@@ -135,7 +137,8 @@ class DefaultTheme {
       card2: card2 ?? Colors.grey.withOpacityPercentage(0.2),
       shadow: shadow ?? Colors.black12,
       text: text ?? const Color(0xFF344054),
-      //todo check if color requires white or black if not provided
+      textSecondary: textSecondary ?? secondary,
+      textTertiary: textTertiary ?? tertiary ?? const Color(0xFF999b9e),
       textOnPrimary: textOnPrimary ?? const Color(0xFFFFFFFF),
       textOnAccent: textOnAccent ?? const Color(0xFFFFFFFF),
       textOnSecondary: textOnSecondary ?? const Color(0xFFFFFFFF),
@@ -168,12 +171,12 @@ class DefaultTheme {
         fontFamilyText: fontFamilyText,
       ),
       onCanvasSecondary: ImpaktfullUiTextStyleTheme.getByColor(
-        color: colors.secondary,
+        color: colors.textSecondary,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
       onCanvasTertiary: ImpaktfullUiTextStyleTheme.getByColor(
-        color: colors.tertiary,
+        color: colors.textTertiary,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
@@ -188,12 +191,12 @@ class DefaultTheme {
         fontFamilyText: fontFamilyText,
       ),
       onCardSecondary: ImpaktfullUiTextStyleTheme.getByColor(
-        color: colors.secondary,
+        color: colors.textSecondary,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
       onCardTertiary: ImpaktfullUiTextStyleTheme.getByColor(
-        color: colors.tertiary,
+        color: colors.textTertiary,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
       ),
