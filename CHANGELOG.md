@@ -1,3 +1,9 @@
+# 0.59.0
+
+## Feature
+
+- Export `ImpaktfullUiThemeComponentBuilder`
+
 # 0.58.0
 
 ## Feat
