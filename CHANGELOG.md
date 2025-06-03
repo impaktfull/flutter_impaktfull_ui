@@ -1,3 +1,11 @@
+# 0.60.0
+
+## Feature (might be breaking)
+
+- Added `textSecondary` & `textTertiary` to `ImpaktfullUiColorTheme`
+- Changed `onCanvasSecondary` & `onCardSecondary` to use `textSecondary`
+- Changed `onCanvasTertiary` & `onCardTertiary` to use `textTertiary`
+
 # 0.59.0
 
 ## Feature
