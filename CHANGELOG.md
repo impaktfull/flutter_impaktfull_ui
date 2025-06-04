@@ -1,3 +1,9 @@
+# 0.61.1
+
+## Fix
+
+- `ImpaktfullUiGridView` fix padding
+
 # 0.61.0
 
 ## Feature (Breaking)

@@ -88,8 +88,11 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
               ),
             );
           }
-          return const Center(
-            child: ImpaktfullUiLoadingIndicator(),
+          return Padding(
+            padding: padding,
+            child: const Center(
+              child: ImpaktfullUiLoadingIndicator(),
+            ),
           );
         }
         if (items.isEmpty) {
