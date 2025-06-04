@@ -33,7 +33,9 @@ class ScreenLibraryVariant
               onTap: () =>
                   ImpaktfullUiNotification.show(title: 'On `$item` tapped'),
             ),
-            noDataLabel: 'No data',
+            placeholderData: const ImpaktfullUiListViewPlaceholderData(
+              title: 'No data',
+            ),
           ),
         ),
       ),

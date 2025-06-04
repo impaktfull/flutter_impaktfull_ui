@@ -20,7 +20,9 @@ class StylesLibraryScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         items: StylesLibrary.instance.items,
         spacing: 8,
-        noDataLabel: 'No styles found',
+        placeholderData: const ImpaktfullUiGridViewPlaceholderData(
+          title: 'No styles found',
+        ),
         itemBuilder: (context, item, index) => StylesCard(
           label: item.name,
           onTap: () => _onItemTapped(item),

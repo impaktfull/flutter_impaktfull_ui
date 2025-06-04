@@ -15,7 +15,9 @@ class ColorsStyleItem extends StylesLibraryItem {
       padding: const EdgeInsets.all(16),
       spacing: 8,
       crossAxisCount: (context, config) => config.maxWidth ~/ 250,
-      noDataLabel: 'No colors',
+      placeholderData: const ImpaktfullUiGridViewPlaceholderData(
+        title: 'No colors',
+      ),
       children: [
         ColorStyleCard(
           color: theme.colors.primary,

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/grid_view/grid_view_style.dart';
+import 'package:impaktfull_ui/src/components/grid_view/model/grid_view_placeholder_state.dart';
+import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
+import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'grid_view_style.dart';
+export 'model/grid_view_placeholder_state.dart';
 
 part 'grid_view.describe.dart';
 
@@ -28,18 +32,23 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
   final double spacing;
   final ScrollPhysics? scrollPhysics;
   final bool shrinkWrap;
-  final String noDataLabel;
+  final bool isLoading;
+  @Deprecated('Use [placeholderData] instead')
+  final String? noDataLabel;
+  final ImpaktfullUiGridViewPlaceholderData? placeholderData;
   final ImpaktfullUiGridViewTheme? theme;
 
   const ImpaktfullUiGridView({
     required List<T> children,
     required this.crossAxisCount,
-    required this.noDataLabel,
+    required this.placeholderData,
     this.itemAspectRatio,
     this.padding = EdgeInsets.zero,
     this.spacing = 0,
     this.scrollPhysics,
     this.shrinkWrap = false,
+    this.isLoading = false,
+    @Deprecated('Use [placeholderData] instead') this.noDataLabel,
     this.theme,
     super.key,
   })  : items = children,
@@ -49,12 +58,14 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
     required this.items,
     required Widget Function(BuildContext, T, int) this.itemBuilder,
     required this.crossAxisCount,
-    required this.noDataLabel,
+    required this.placeholderData,
     this.itemAspectRatio,
     this.padding = EdgeInsets.zero,
     this.spacing = 0,
     this.scrollPhysics,
     this.shrinkWrap = false,
+    this.isLoading = false,
+    @Deprecated('Use [placeholderData] instead') this.noDataLabel,
     this.theme,
     super.key,
   });
@@ -66,12 +77,33 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
       overrideComponentTheme: theme,
       builder: (context, componentTheme) =>
           LayoutBuilder(builder: (context, constraints) {
+        if (isLoading) {
+          if (shrinkWrap) {
+            return Padding(
+              padding: padding,
+              child: const SizedBox(
+                height: 50,
+                width: 50,
+                child: ImpaktfullUiLoadingIndicator(),
+              ),
+            );
+          }
+          return const Center(
+            child: ImpaktfullUiLoadingIndicator(),
+          );
+        }
         if (items.isEmpty) {
+          final placeholderData = this.placeholderData ??
+              ImpaktfullUiGridViewPlaceholderData(
+                // ignore: deprecated_member_use_from_same_package
+                title: noDataLabel,
+              );
           return Center(
-            child: Text(
-              noDataLabel,
-              style: componentTheme.textStyles.title,
-              textAlign: TextAlign.center,
+            child: ImpaktfullUiPlaceholder(
+              asset: placeholderData.asset,
+              title: placeholderData.title,
+              subtitle: placeholderData.subtitle,
+              actions: placeholderData.actions,
             ),
           );
         }

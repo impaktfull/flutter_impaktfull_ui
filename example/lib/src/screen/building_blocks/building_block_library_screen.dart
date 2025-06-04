@@ -20,7 +20,9 @@ class BuildignBlockLibraryScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         items: BuildingBlockLibrary.instance.items,
         spacing: 8,
-        noDataLabel: 'No Building Blocks',
+        placeholderData: const ImpaktfullUiGridViewPlaceholderData(
+          title: 'No Building Blocks',
+        ),
         itemBuilder: (context, item, index) {
           final value = BuildingBlockLibrary.instance.items[index];
           return BuildingBlockCard(

@@ -1,3 +1,11 @@
+# 0.61.0
+
+## Feature (Breaking)
+
+- Added `placeholderData` to `ImpaktfullUiGridView` (now `noDataLabel` is deprecated)
+- Added `placeholderData` to `ImpaktfullUiListView.separated` (now `noDataLabel` is deprecated)
+- Added `isLoading` to `ImpaktfullUiGridView`
+
 # 0.60.0
 
 ## Feature (might be breaking)

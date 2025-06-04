@@ -21,7 +21,9 @@ class GridViewLibraryVariant
           crossAxisCount: (context, config) => config.maxWidth ~/ 250,
           items: List.generate(100, (i) => i),
           spacing: 4,
-          noDataLabel: 'No Grid items',
+          placeholderData: const ImpaktfullUiGridViewPlaceholderData(
+            title: 'No Grid items',
+          ),
           itemBuilder: (context, item, index) => Container(
             color: theme.colors.accent,
             alignment: Alignment.center,
