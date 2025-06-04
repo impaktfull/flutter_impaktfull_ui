@@ -44,7 +44,9 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
               child: ImpaktfullUiGridView.builder(
                 scrollPhysics: const NeverScrollableScrollPhysics(),
                 items: _getItems(context),
-                noDataLabel: 'No Days',
+                placeholderData: const ImpaktfullUiGridViewPlaceholderData(
+                  title: 'No Days',
+                ),
                 itemBuilder: (context, item, index) =>
                     ImpaktfullUiDatePickerCell(
                   value: item.day.toString(),

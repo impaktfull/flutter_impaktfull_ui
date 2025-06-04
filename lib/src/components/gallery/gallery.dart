@@ -48,7 +48,9 @@ class ImpaktfullUiGallery extends StatelessWidget
         items: items,
         spacing: spacing,
         padding: const EdgeInsets.all(16),
-        noDataLabel: noDataLabel,
+        placeholderData: const ImpaktfullUiGridViewPlaceholderData(
+          title: 'No Gallery items',
+        ),
         itemBuilder: (context, item, index) => ImpaktfullUiTouchFeedback(
           borderRadius:
               itemBorderRadius ?? componentTheme.dimens.itemBorderRadius,

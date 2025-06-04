@@ -26,7 +26,9 @@ class HomeScreen extends StatelessWidget {
         spacing: 8,
         crossAxisCount: (context, config) => max(1, config.maxWidth ~/ 400),
         itemAspectRatio: (context, config) => 16 / 12,
-        noDataLabel: 'No Actions',
+        placeholderData: const ImpaktfullUiGridViewPlaceholderData(
+          title: 'No Actions',
+        ),
         items: [
           ActionCard(
             label: 'Styles',

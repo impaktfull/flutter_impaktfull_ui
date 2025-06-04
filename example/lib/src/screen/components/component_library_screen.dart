@@ -63,7 +63,9 @@ class _ComponentLibraryScreenState extends State<ComponentLibraryScreen> {
           padding: const EdgeInsets.all(16),
           items: filteredComponents,
           spacing: 8,
-          noDataLabel: 'No Components',
+          placeholderData: const ImpaktfullUiGridViewPlaceholderData(
+            title: 'No Components',
+          ),
           itemBuilder: (context, item, index) {
             final value = filteredComponents[index];
             final fistComponent = value.getComponentVariants().first;

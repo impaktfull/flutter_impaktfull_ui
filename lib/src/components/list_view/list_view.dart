@@ -110,7 +110,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     required List<T> this.items,
     required Widget Function(BuildContext context, T item, int index)
         this.itemBuilder,
-    required String this.noDataLabel,
+    required this.placeholderData,
     this.separatorBuilder,
     this.isLoading = false,
     this.refreshBtnLabel,
@@ -125,7 +125,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget
     this.controller,
     this.leadingBuilder,
     this.trailingBuilder,
-    this.placeholderData,
+    @Deprecated('Use [placeholderData] instead') this.noDataLabel,
     this.localizations,
     this.theme,
     super.key,
