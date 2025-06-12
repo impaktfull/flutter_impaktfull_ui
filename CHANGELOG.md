@@ -4,6 +4,12 @@
 
 - Added support for Raised buttons in the `ImpaktfullUiButton`
 
+# 0.61.2
+
+## Fix
+
+- `ImpaktfullUiLocalizations` fix to get `ImpaktfullUiBBLoginLocalizations`
+
 # 0.61.1
 
 ## Fix
