@@ -34,7 +34,7 @@ class ImpaktfullUiLocalizations {
         ImpaktfullUiLocalizationConfigurator.of(context).localizations;
     if (T == ImpaktfullUiNavBarLocalizations) {
       return localization.navBar as T;
-    } else if (Table == ImpaktfullUiBBLoginLocalizations) {
+    } else if (T == ImpaktfullUiBBLoginLocalizations) {
       return localization.bbLogin as T;
     } else if (T == ImpaktfullUiBBLicenseLocalizations) {
       return localization.bbLicenses as T;
