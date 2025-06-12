@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
@@ -7,12 +7,16 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiButtonDimensTheme dimens;
   final ImpaktfullUiButtonDurationsTheme durations;
   final ImpaktfullUiButtonTextStylesTheme textStyles;
+  final ImpaktfullUiButtonShadowTheme? shadow;
+  final ImpaktfullUiButtonConfig config;
 
   const ImpaktfullUiButtonTheme({
     required this.colors,
     required this.dimens,
     required this.durations,
     required this.textStyles,
+    required this.config,
+    this.shadow,
   });
 
   ImpaktfullUiButtonTheme copyWith({
@@ -20,12 +24,14 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiButtonDimensTheme? dimens,
     ImpaktfullUiButtonDurationsTheme? durations,
     ImpaktfullUiButtonTextStylesTheme? textStyles,
+    ImpaktfullUiButtonConfig? config,
   }) =>
       ImpaktfullUiButtonTheme(
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
         durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
+        config: config ?? this.config,
       );
 
   static ImpaktfullUiButtonTheme of(BuildContext context) =>
@@ -49,9 +55,17 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
           tertiaryBorder: null,
           destructive: colors.destructive,
           destructiveBorder: colors.destructive,
+          raisedBackground: ImpaktfullUiRaisedButtonColorTheme(
+            primary: Color.lerp(colors.secondary, Colors.black, 0.33),
+            secondary: colors.border,
+            destructive: Color.lerp(colors.destructive, Colors.black, 0.33),
+            destructiveSecondary:
+                Color.lerp(colors.destructive, Colors.black, 0.05),
+          ),
         ),
         dimens: ImpaktfullUiButtonDimensTheme(
           borderRadius: dimens.borderRadius,
+          borderWidth: 1,
         ),
         durations: ImpaktfullUiButtonDurationsTheme(
           loading: durations.short,
@@ -62,6 +76,14 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
           grey: textStyles.onCard.text.small.bold,
           destructivePrimary: textStyles.onDestructive.text.small.bold,
           destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
+        ),
+        shadow: ImpaktfullUiButtonShadowTheme(
+          primary: [],
+          secondary: [],
+          destructive: [],
+        ),
+        config: ImpaktfullUiButtonConfig(
+          isRaised: true,
         ),
       );
 }
@@ -75,6 +97,7 @@ class ImpaktfullUiButtonColorTheme {
   final Color? tertiaryBorder;
   final Color? destructive;
   final Color? destructiveBorder;
+  final ImpaktfullUiRaisedButtonColorTheme? raisedBackground;
 
   const ImpaktfullUiButtonColorTheme({
     required this.primary,
@@ -85,6 +108,7 @@ class ImpaktfullUiButtonColorTheme {
     required this.tertiaryBorder,
     required this.destructive,
     required this.destructiveBorder,
+    required this.raisedBackground,
   });
 
   ImpaktfullUiButtonColorTheme copyWith({
@@ -96,6 +120,7 @@ class ImpaktfullUiButtonColorTheme {
     Color? tertiaryBorder,
     Color? destructive,
     Color? destructiveBorder,
+    ImpaktfullUiRaisedButtonColorTheme? raisedBackground,
   }) =>
       ImpaktfullUiButtonColorTheme(
         primary: primary ?? this.primary,
@@ -106,21 +131,53 @@ class ImpaktfullUiButtonColorTheme {
         tertiaryBorder: tertiaryBorder ?? this.tertiaryBorder,
         destructive: destructive ?? this.destructive,
         destructiveBorder: destructiveBorder ?? this.destructiveBorder,
+        raisedBackground: raisedBackground ?? this.raisedBackground,
+      );
+}
+
+class ImpaktfullUiRaisedButtonColorTheme {
+  final Color? primary;
+  final Color? secondary;
+  final Color? destructive;
+  final Color? destructiveSecondary;
+
+  const ImpaktfullUiRaisedButtonColorTheme({
+    required this.primary,
+    required this.secondary,
+    required this.destructive,
+    required this.destructiveSecondary,
+  });
+
+  ImpaktfullUiRaisedButtonColorTheme copyWith({
+    Color? primary,
+    Color? secondary,
+    Color? destructive,
+    Color? destructiveSecondary,
+  }) =>
+      ImpaktfullUiRaisedButtonColorTheme(
+        primary: primary ?? this.primary,
+        secondary: secondary ?? this.secondary,
+        destructive: destructive ?? this.destructive,
+        destructiveSecondary: destructiveSecondary ?? this.destructiveSecondary,
       );
 }
 
 class ImpaktfullUiButtonDimensTheme {
   final BorderRadiusGeometry borderRadius;
+  final double borderWidth;
 
   const ImpaktfullUiButtonDimensTheme({
     required this.borderRadius,
+    required this.borderWidth,
   });
 
   ImpaktfullUiButtonDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
   }) =>
       ImpaktfullUiButtonDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
       );
 }
 
@@ -167,5 +224,51 @@ class ImpaktfullUiButtonTextStylesTheme {
         destructivePrimary: destructivePrimary ?? this.destructivePrimary,
         destructiveAlternative:
             destructiveAlternative ?? this.destructiveAlternative,
+      );
+}
+
+class ImpaktfullUiButtonShadowTheme {
+  final List<BoxShadow>? primary;
+  final List<BoxShadow>? secondary;
+  final List<BoxShadow>? destructive;
+
+  const ImpaktfullUiButtonShadowTheme({
+    required this.primary,
+    required this.secondary,
+    required this.destructive,
+  });
+
+  ImpaktfullUiButtonShadowTheme copyWith({
+    List<BoxShadow>? primary,
+    List<BoxShadow>? secondary,
+    List<BoxShadow>? destructive,
+  }) =>
+      ImpaktfullUiButtonShadowTheme(
+        primary: primary ?? this.primary,
+        secondary: secondary ?? this.secondary,
+        destructive: destructive ?? this.destructive,
+      );
+}
+
+class ImpaktfullUiButtonConfig {
+  final bool isRaised;
+  final double elevation;
+  final bool vibrateOnTap;
+
+  const ImpaktfullUiButtonConfig({
+    this.isRaised = false,
+    this.elevation = 0,
+    this.vibrateOnTap = false,
+  });
+
+  ImpaktfullUiButtonConfig copyWith({
+    bool? isRaised,
+    double? elevation,
+    bool? vibrateOnTap,
+  }) =>
+      ImpaktfullUiButtonConfig(
+        isRaised: isRaised ?? this.isRaised,
+        elevation: elevation ?? this.elevation,
+        vibrateOnTap: vibrateOnTap ?? this.vibrateOnTap,
       );
 }
