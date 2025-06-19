@@ -110,6 +110,7 @@ class ImpaktfullUiTheme<T extends Object> {
   static ImpaktfullUiTheme<T> getDefault<T extends Object>({
     String? package = _packageName,
     String? assetSuffix,
+    T? customTheme,
   }) =>
       DefaultTheme.withMinimalChanges<T>(
         label: 'Impaktfull Theme',
@@ -117,6 +118,7 @@ class ImpaktfullUiTheme<T extends Object> {
         accent: const Color(0xFF7d64f2),
         secondary: const Color(0xFF7d64f2),
         package: package,
+        customTheme: customTheme,
       );
 
   static ImpaktfullUiTheme<T> of<T extends Object>(BuildContext context) {
