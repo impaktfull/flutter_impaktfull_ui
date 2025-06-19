@@ -1,12 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/button/raised_button.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
+import 'package:impaktfull_ui/src/util/vibrate/vibrate.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'button_type.dart';
@@ -72,25 +76,80 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
         final isClickable = !isDisabled && !_isLoading;
         return Opacity(
           opacity: isDisabled ? 0.5 : 1,
-          child: ImpaktfullUiTouchFeedback(
-            color: backgroundColor,
-            canRequestFocus: widget.canRequestFocus,
-            borderRadius: componentTheme.dimens.borderRadius,
-            border: borderColor == null
-                ? null
-                : Border.all(
-                    color: borderColor,
-                    width: 1,
-                    strokeAlign: BorderSide.strokeAlignInside,
+          child: ImpaktfullUiRaisedButton(
+            type: widget.type,
+            isLoading: _isLoading,
+            theme: componentTheme,
+            onTap: isClickable && _getIsRaisedButtonAllowed(componentTheme)
+                ? () => _onTap(componentTheme)
+                : null,
+            child: ImpaktfullUiTouchFeedback(
+              color: backgroundColor,
+              canRequestFocus: widget.canRequestFocus,
+              borderRadius: componentTheme.dimens.borderRadius,
+              shadow: _getShadow(componentTheme),
+              border: borderColor == null
+                  ? null
+                  : Border.all(
+                      color: borderColor,
+                      width: componentTheme.dimens.borderWidth,
+                      strokeAlign: BorderSide.strokeAlignInside,
+                    ),
+              onTap: isClickable && !_getIsRaisedButtonAllowed(componentTheme)
+                  ? () => _onTap(componentTheme)
+                  : null,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Opacity(
+                    opacity: _isLoading ? 0 : 1,
+                    child: Padding(
+                      padding: _getPadding(componentTheme),
+                      child: ImpaktfullUiAutoLayout.horizontal(
+                        mainAxisSize: widget.fullWidth
+                            ? MainAxisSize.max
+                            : MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        spacing: 4,
+                        children: [
+                          if (widget.leadingChild != null) ...[
+                            widget.leadingChild!,
+                          ],
+                          if (widget.leadingAsset != null) ...[
+                            ImpaktfullUiAssetWidget(
+                              asset: widget.leadingAsset,
+                              color: color,
+                              size: iconSize,
+                            ),
+                          ],
+                          if (widget.title != null) ...[
+                            Expanded(
+                              flex: widget.fullWidth ? 1 : 0,
+                              child: Text(
+                                widget.title!,
+                                textAlign: TextAlign.center,
+                                style: textStyle,
+                              ),
+                            ),
+                          ],
+                          if (widget.trailingAsset != null) ...[
+                            ImpaktfullUiAssetWidget(
+                              asset: widget.trailingAsset,
+                              color: color,
+                              size: iconSize,
+                            ),
+                          ],
+                          if (widget.trailingChild != null) ...[
+                            widget.trailingChild!,
+                          ],
+                        ],
+                      ),
+                    ),
                   ),
-            onTap: isClickable ? _onTap : null,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Opacity(
-                  opacity: _isLoading ? 0 : 1,
-                  child: Padding(
-                    padding: _getPadding(componentTheme),
+                  AnimatedOpacity(
+                    opacity: _isLoading ? 1 : 0,
+                    duration: componentTheme.durations.loading,
+                    curve: Curves.easeInOut,
                     child: ImpaktfullUiAutoLayout.horizontal(
                       mainAxisSize: widget.fullWidth
                           ? MainAxisSize.max
@@ -98,63 +157,20 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       spacing: 4,
                       children: [
-                        if (widget.leadingChild != null) ...[
-                          widget.leadingChild!,
-                        ],
-                        if (widget.leadingAsset != null) ...[
-                          ImpaktfullUiAssetWidget(
-                            asset: widget.leadingAsset,
-                            color: color,
-                            size: iconSize,
+                        Expanded(
+                          flex: widget.fullWidth ? 1 : 0,
+                          child: SizedBox(
+                            height: _getLoadingSize(),
+                            child: _isLoading
+                                ? ImpaktfullUiLoadingIndicator(color: color)
+                                : const SizedBox(),
                           ),
-                        ],
-                        if (widget.title != null) ...[
-                          Expanded(
-                            flex: widget.fullWidth ? 1 : 0,
-                            child: Text(
-                              widget.title!,
-                              textAlign: TextAlign.center,
-                              style: textStyle,
-                            ),
-                          ),
-                        ],
-                        if (widget.trailingAsset != null) ...[
-                          ImpaktfullUiAssetWidget(
-                            asset: widget.trailingAsset,
-                            color: color,
-                            size: iconSize,
-                          ),
-                        ],
-                        if (widget.trailingChild != null) ...[
-                          widget.trailingChild!,
-                        ],
+                        ),
                       ],
                     ),
                   ),
-                ),
-                AnimatedOpacity(
-                  opacity: _isLoading ? 1 : 0,
-                  duration: componentTheme.durations.loading,
-                  curve: Curves.easeInOut,
-                  child: ImpaktfullUiAutoLayout.horizontal(
-                    mainAxisSize:
-                        widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 4,
-                    children: [
-                      Expanded(
-                        flex: widget.fullWidth ? 1 : 0,
-                        child: SizedBox(
-                          height: _getLoadingSize(),
-                          child: _isLoading
-                              ? ImpaktfullUiLoadingIndicator(color: color)
-                              : const SizedBox(),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
@@ -275,8 +291,11 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
     }
   }
 
-  Future<void> _onTap() async {
+  Future<void> _onTap(ImpaktfullUiButtonTheme componentTheme) async {
     final onAsyncTap = widget.onAsyncTap;
+    if (componentTheme.config.vibrateOnTap) {
+      Vibrate.vibrate();
+    }
     if (onAsyncTap != null) {
       setState(() => _isLoading = true);
       try {
@@ -289,6 +308,46 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
       setState(() => _isLoading = false);
     } else if (widget.onTap != null) {
       widget.onTap?.call();
+    }
+  }
+
+  List<BoxShadow> _getShadow(ImpaktfullUiButtonTheme componentTheme) {
+    final shadowTheme = componentTheme.shadow;
+    if (shadowTheme == null) return [];
+    switch (widget.type) {
+      case ImpaktfullUiButtonType.primary:
+        return shadowTheme.primary ?? [];
+      case ImpaktfullUiButtonType.secondary:
+      case ImpaktfullUiButtonType.secondaryGrey:
+        return shadowTheme.secondary ?? [];
+      case ImpaktfullUiButtonType.destructivePrimary:
+      case ImpaktfullUiButtonType.destructiveSecondary:
+        return shadowTheme.destructive ?? [];
+      case ImpaktfullUiButtonType.tertiary:
+      case ImpaktfullUiButtonType.tertiaryGrey:
+      case ImpaktfullUiButtonType.link:
+      case ImpaktfullUiButtonType.linkGrey:
+      case ImpaktfullUiButtonType.destructiveTertiary:
+      case ImpaktfullUiButtonType.destructiveLink:
+        return [];
+    }
+  }
+
+  bool _getIsRaisedButtonAllowed(ImpaktfullUiButtonTheme componentTheme) {
+    switch (widget.type) {
+      case ImpaktfullUiButtonType.primary:
+      case ImpaktfullUiButtonType.secondary:
+      case ImpaktfullUiButtonType.secondaryGrey:
+      case ImpaktfullUiButtonType.destructivePrimary:
+      case ImpaktfullUiButtonType.destructiveSecondary:
+        return componentTheme.config.isRaised;
+      case ImpaktfullUiButtonType.tertiary:
+      case ImpaktfullUiButtonType.tertiaryGrey:
+      case ImpaktfullUiButtonType.link:
+      case ImpaktfullUiButtonType.linkGrey:
+      case ImpaktfullUiButtonType.destructiveTertiary:
+      case ImpaktfullUiButtonType.destructiveLink:
+        return false;
     }
   }
 }

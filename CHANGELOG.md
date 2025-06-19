@@ -1,3 +1,9 @@
+# 0.63.0
+
+## Feature
+
+- Added support for Raised buttons in the `ImpaktfullUiButton`
+
 # 0.62.0
 
 ## Feature
