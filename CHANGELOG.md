@@ -1,8 +1,14 @@
-# 0.62.0
+# 0.63.0
 
 ## Feature
 
 - Added support for Raised buttons in the `ImpaktfullUiButton`
+
+# 0.62.0
+
+## Feature
+
+- Added `customTheme` to `ImpaktfullUiTheme.getDefault` to allow customizing the theme
 
 # 0.61.2
 
