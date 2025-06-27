@@ -34,7 +34,8 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
         config: config ?? this.config,
       );
 
-  static ImpaktfullUiButtonTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.button;
+  static ImpaktfullUiButtonTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.button;
 
   static ImpaktfullUiButtonTheme getDefault({
     required ImpaktfullUiAssetTheme assets,
@@ -58,7 +59,8 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
             primary: Color.lerp(colors.secondary, Colors.black, 0.33),
             secondary: colors.border,
             destructive: Color.lerp(colors.destructive, Colors.black, 0.33),
-            destructiveSecondary: Color.lerp(colors.destructive, Colors.black, 0.05),
+            destructiveSecondary:
+                Color.lerp(colors.destructive, Colors.black, 0.05),
           ),
         ),
         dimens: ImpaktfullUiButtonDimensTheme(
@@ -80,10 +82,7 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
           secondary: [],
           destructive: [],
         ),
-        config: ImpaktfullUiButtonConfig(
-          isRaised: true,
-          elevation: 4,
-        ),
+        config: const ImpaktfullUiButtonConfig(),
       );
 }
 
@@ -221,7 +220,8 @@ class ImpaktfullUiButtonTextStylesTheme {
         alternative: alternative ?? this.alternative,
         grey: grey ?? this.grey,
         destructivePrimary: destructivePrimary ?? this.destructivePrimary,
-        destructiveAlternative: destructiveAlternative ?? this.destructiveAlternative,
+        destructiveAlternative:
+            destructiveAlternative ?? this.destructiveAlternative,
       );
 }
 

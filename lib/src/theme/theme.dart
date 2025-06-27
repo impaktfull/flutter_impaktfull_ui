@@ -113,7 +113,7 @@ class ImpaktfullUiTheme<T extends Object> {
     T? customTheme,
   }) =>
       DefaultTheme.withMinimalChanges<T>(
-        label: 'Impaktfull Theme',
+        label: 'impaktfull Theme',
         primary: const Color(0xFF1A1A1A),
         accent: const Color(0xFF7d64f2),
         secondary: const Color(0xFF7d64f2),
@@ -152,6 +152,6 @@ class ImpaktfullUiTheme<T extends Object> {
         durations: durations ?? this.durations,
         shadows: shadows ?? this.shadows,
         components: components ?? this.components,
-        customTheme: customTheme ?? this.customTheme,
+        customTheme: customTheme ?? this.customThemeOrNull,
       );
 }

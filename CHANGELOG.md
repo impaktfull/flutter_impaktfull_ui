@@ -3,6 +3,12 @@
 ## Feature
 
 - Added support for Raised buttons in the `ImpaktfullUiButton`
+- Added extra theme in the example to show the raised buttons
+
+## Fix
+
+- Theming copy bug
+- Impaktfull to impaktfull
 
 # 0.62.0
 
@@ -596,7 +602,7 @@
 ## !!!BREAKING!!!
 
 - We refactored a lot of components to make them more flexible & customizable
-- We changed the prefix from Impaktfull to ImpaktfukllUi
+- We changed the prefix from impaktfull to ImpaktfukllUi
 - Because this is a pre stable release we don't have a migration guide
 - If the previous version was working for you just pin it to 0.11.3
 
