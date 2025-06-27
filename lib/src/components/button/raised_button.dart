@@ -22,12 +22,10 @@ class ImpaktfullUiRaisedButton extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiRaisedButton> createState() =>
-      _ImpaktfullUiRaisedButtonState();
+  State<ImpaktfullUiRaisedButton> createState() => _ImpaktfullUiRaisedButtonState();
 }
 
-class _ImpaktfullUiRaisedButtonState extends State<ImpaktfullUiRaisedButton>
-    with SingleTickerProviderStateMixin {
+class _ImpaktfullUiRaisedButtonState extends State<ImpaktfullUiRaisedButton> with SingleTickerProviderStateMixin {
   var _isPressed = false;
   late final AnimationController _controller;
   late final Animation<double> _animation;
@@ -42,7 +40,7 @@ class _ImpaktfullUiRaisedButtonState extends State<ImpaktfullUiRaisedButton>
       duration: const Duration(milliseconds: 25),
       vsync: this,
     );
-    _animation = Tween<double>(begin: 0, end: 4).animate(
+    _animation = Tween<double>(begin: 0, end: widget.theme.config.elevation).animate(
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeInOut,
@@ -81,7 +79,7 @@ class _ImpaktfullUiRaisedButtonState extends State<ImpaktfullUiRaisedButton>
                 animation: _animation,
                 builder: (context, child) => Container(
                   decoration: BoxDecoration(
-                    color: _animation.value < 1 ? color : null,
+                    color: _animation.value < widget.theme.config.elevation ? color : null,
                     borderRadius: widget.theme.dimens.borderRadius,
                   ),
                   child: child,
