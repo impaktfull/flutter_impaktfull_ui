@@ -1,3 +1,3 @@
 #!/bin/bash
 
-fvm dart format -l180 . 
+fvm dart format . 
