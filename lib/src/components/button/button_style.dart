@@ -65,7 +65,7 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
         ),
         dimens: ImpaktfullUiButtonDimensTheme(
           borderRadius: dimens.borderRadius,
-          borderWidth: 2,
+          borderWidth: 1,
         ),
         durations: ImpaktfullUiButtonDurationsTheme(
           loading: durations.short,

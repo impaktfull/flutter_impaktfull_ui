@@ -1,3 +1,9 @@
+# 0.63.1
+
+## Fix
+
+- Border width buttons should stay on 1 in default theme
+
 # 0.63.0
 
 ## Feature
