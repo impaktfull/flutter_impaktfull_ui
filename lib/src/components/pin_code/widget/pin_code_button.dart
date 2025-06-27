@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 class ImpaktfullUiPinCodeButton extends StatelessWidget {
   final String? value;
   final ImpaktfullUiAsset? asset;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const ImpaktfullUiPinCodeButton({
     required this.onTap,
