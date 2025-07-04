@@ -553,13 +553,13 @@ class DefaultTheme {
           durations: durations,
           shadows: shadows,
         ),
-        divider: ImpaktfullUiDividerTheme(
-          colors: ImpaktfullUiDividerColorTheme(
-            color: colors.border,
-          ),
-          dimens: const ImpaktfullUiDividerDimensTheme(
-            margin: EdgeInsets.zero,
-          ),
+        divider: ImpaktfullUiDividerTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         dropdown: ImpaktfullUiDropdownTheme(
           colors: ImpaktfullUiDropdownColorTheme(

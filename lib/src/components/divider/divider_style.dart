@@ -12,6 +12,24 @@ class ImpaktfullUiDividerTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiDividerTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.divider;
+
+  static ImpaktfullUiDividerTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiDividerTheme(
+        colors: ImpaktfullUiDividerColorTheme(
+          color: colors.border,
+        ),
+        dimens: const ImpaktfullUiDividerDimensTheme(
+          margin: EdgeInsets.zero,
+          thickness: 1,
+        ),
+      );
 }
 
 class ImpaktfullUiDividerColorTheme {
@@ -24,8 +42,10 @@ class ImpaktfullUiDividerColorTheme {
 
 class ImpaktfullUiDividerDimensTheme {
   final EdgeInsetsGeometry margin;
+  final double thickness;
 
   const ImpaktfullUiDividerDimensTheme({
     required this.margin,
+    required this.thickness,
   });
 }
