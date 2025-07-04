@@ -1,3 +1,9 @@
+# 0.64.0
+
+## Feature
+
+- Add support for thickness of a divider
+
 # 0.63.1
 
 ## Fix

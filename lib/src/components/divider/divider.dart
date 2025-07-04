@@ -26,8 +26,8 @@ class ImpaktfullUiDivider extends StatelessWidget
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Container(
         color: componentTheme.colors.color,
-        width: vertical ? 1 : double.infinity,
-        height: vertical ? double.infinity : 1,
+        width: vertical ? componentTheme.dimens.thickness : double.infinity,
+        height: vertical ? double.infinity : componentTheme.dimens.thickness,
         margin: margin ?? componentTheme.dimens.margin,
       ),
     );
