@@ -32,6 +32,7 @@ class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
   final bool canRequestFocus;
   final AsyncCallback? onAsyncTap;
   final VoidCallback? onTap;
+  final String? tooltip;
   final ImpaktfullUiButtonTheme? theme;
 
   const ImpaktfullUiButton({
@@ -47,6 +48,7 @@ class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
     this.canRequestFocus = true,
     this.onTap,
     this.onAsyncTap,
+    this.tooltip,
     this.theme,
     super.key,
   });
@@ -88,6 +90,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
               canRequestFocus: widget.canRequestFocus,
               borderRadius: componentTheme.dimens.borderRadius,
               shadow: _getShadow(componentTheme),
+              toolTip: widget.tooltip,
               border: borderColor == null
                   ? null
                   : Border.all(
