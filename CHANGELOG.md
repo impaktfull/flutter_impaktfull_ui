@@ -1,3 +1,9 @@
+# 0.65.0
+
+## Feature
+
+- Added `tooltip` to `ImpaktfullUiButton`
+
 # 0.64.0
 
 ## Feature
