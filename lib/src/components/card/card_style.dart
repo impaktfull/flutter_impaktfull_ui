@@ -14,6 +14,30 @@ class ImpaktfullUiCardTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiCardTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.card;
+
+  static ImpaktfullUiCardTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiCardTheme(
+        colors: ImpaktfullUiCardColorTheme(
+          background: colors.card,
+          border: colors.border,
+          borderError: colors.error,
+        ),
+        dimens: ImpaktfullUiCardDimensTheme(
+          borderRadius: dimens.borderRadius,
+          padding: const EdgeInsets.all(16),
+          borderWidth: 1,
+        ),
+        shadows: ImpaktfullUiCardShadowsTheme(
+          card: shadows.small,
+        ),
+      );
 }
 
 class ImpaktfullUiCardColorTheme {
@@ -31,10 +55,12 @@ class ImpaktfullUiCardColorTheme {
 class ImpaktfullUiCardDimensTheme {
   final BorderRadiusGeometry borderRadius;
   final EdgeInsets padding;
+  final double borderWidth;
 
   const ImpaktfullUiCardDimensTheme({
     required this.borderRadius,
     required this.padding,
+    required this.borderWidth,
   });
 }
 

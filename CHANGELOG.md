@@ -1,3 +1,9 @@
+# 0.66.0
+
+## Feature
+
+- Added `borderWidth` to `ImpaktfullUiCardTheme`
+
 # 0.65.0
 
 ## Feature
