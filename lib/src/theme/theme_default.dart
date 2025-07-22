@@ -392,19 +392,13 @@ class DefaultTheme {
             dayOfTheWeekTitle: textStyles.onCanvas.text.extraSmall,
           ),
         ),
-        card: ImpaktfullUiCardTheme(
-          colors: ImpaktfullUiCardColorTheme(
-            background: colors.card,
-            border: colors.border,
-            borderError: colors.error,
-          ),
-          dimens: ImpaktfullUiCardDimensTheme(
-            borderRadius: dimens.borderRadius,
-            padding: const EdgeInsets.all(16),
-          ),
-          shadows: ImpaktfullUiCardShadowsTheme(
-            card: shadows.small,
-          ),
+        card: ImpaktfullUiCardTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         carrousel: ImpaktfullUiCarrouselTheme(
           assets: const ImpaktfullUiCarrouselAssetsTheme(),
