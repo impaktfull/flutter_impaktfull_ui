@@ -40,6 +40,7 @@ class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
         ),
         dimens: ImpaktfullUiModalDimensTheme(
           borderRadius: dimens.borderRadius,
+          borderWidth: 1,
           padding: const EdgeInsets.all(16),
           closeIconButtonPadding: const EdgeInsets.all(4),
           leadingIconPadding: const EdgeInsets.all(8),
@@ -76,12 +77,14 @@ class ImpaktfullUiModalTextStyleTheme {
 
 class ImpaktfullUiModalDimensTheme {
   final BorderRadiusGeometry borderRadius;
+  final double borderWidth;
   final EdgeInsetsGeometry closeIconButtonPadding;
   final EdgeInsetsGeometry leadingIconPadding;
   final EdgeInsetsGeometry padding;
 
   const ImpaktfullUiModalDimensTheme({
     required this.borderRadius,
+    required this.borderWidth,
     required this.closeIconButtonPadding,
     required this.leadingIconPadding,
     required this.padding,

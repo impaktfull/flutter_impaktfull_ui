@@ -67,7 +67,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
             color: backgroundColor,
             border: Border.all(
               color: borderColor,
-              width: 1,
+              width: componentTheme.dimens.borderWidth,
             ),
             borderRadius: componentTheme.dimens.borderRadius,
           ),
