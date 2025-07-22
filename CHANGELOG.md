@@ -1,3 +1,9 @@
+# 0.66.1
+
+## Fix
+
+- `ImpaktfullUiCard` now correctly handles the border width
+
 # 0.66.0
 
 ## Feature

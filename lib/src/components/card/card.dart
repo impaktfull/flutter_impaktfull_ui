@@ -104,7 +104,7 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
             ? componentTheme.colors.borderError!
             : componentTheme.colors.border!,
         strokeAlign: BorderSide.strokeAlignOutside,
-        width: 1,
+        width: componentTheme.dimens.borderWidth,
       );
     }
     return null;
