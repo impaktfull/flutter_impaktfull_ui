@@ -221,6 +221,7 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
                           border: Border.all(
                             color: componentTheme.colors.leadingHeaderIcon
                                 .withOpacityPercentage(0.2),
+                            width: componentTheme.dimens.borderWidth,
                           ),
                           borderRadius: componentTheme.dimens.borderRadius,
                         ),

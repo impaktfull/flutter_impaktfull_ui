@@ -1,3 +1,10 @@
+# 0.67.0
+
+## Feature
+
+- Added `borderWidth` to `ImpaktfullUiBadgeTheme`
+- Added `borderWidth` to `ImpaktfullUiModalTheme`
+
 # 0.66.1
 
 ## Fix
