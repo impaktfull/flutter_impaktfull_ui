@@ -1,3 +1,9 @@
+# 0.67.1
+
+## Fix
+
+- `ImpaktfullUiIconButton` color override
+
 # 0.67.0
 
 ## Feature
