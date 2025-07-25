@@ -1,3 +1,9 @@
+# 0.67.2
+
+## Fix
+
+- `ImpaktfullUiMarkdown` deprecation warning
+
 # 0.67.1
 
 ## Fix

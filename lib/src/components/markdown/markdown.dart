@@ -15,8 +15,7 @@ part 'markdown.describe.dart';
 
 typedef ImpaktfullUiMarkdownLinkCallback = FutureOr<void> Function(String url);
 
-class ImpaktfullUiMarkdown extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiMarkdown extends StatelessWidget with ComponentDescriptorMixin {
   final String data;
   final ImpaktfullUiMarkdownLinkCallback? onOpenLink;
   final ImpaktfullUiMarkdownTheme? theme;
@@ -59,6 +58,8 @@ class ImpaktfullUiMarkdown extends StatelessWidget
           ),
         },
         onTapLink: onOpenLink == null ? null : _onTapLink,
+        // TODO THIS SHOULD BE FIXED
+        // ignore: deprecated_member_use
         imageBuilder: (uri, title, alt) {
           final url = uri.toString();
           if (url.startsWith('resource:')) {
