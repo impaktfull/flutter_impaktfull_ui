@@ -1,3 +1,9 @@
+# 0.68.0
+
+## Feature
+
+- Allow any version of `intl`
+
 # 0.67.1
 
 ## Fix
