@@ -2,7 +2,7 @@
 
 ## Feature
 
-- Allow any version of `intl`
+- `intl` version bump to 0.20.2
 
 # 0.67.1
 

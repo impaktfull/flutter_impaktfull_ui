@@ -12,7 +12,7 @@ dependencies:
   flutter_markdown: ^0.7.7+1
   flutter_svg: ^2.0.10+1
   impaktfull_ui_figma_sync: ^0.0.2
-  intl: any
+  intl: ^0.20.2
   lottie: ^3.0.0
   markdown: ^7.2.2
   phosphor_flutter: ^2.1.0
