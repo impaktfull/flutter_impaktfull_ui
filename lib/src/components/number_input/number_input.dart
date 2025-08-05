@@ -18,6 +18,7 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
   final T value;
   final T? min;
   final T? max;
+  final T? step;
   final ImpaktfullUiNumberInputTheme? theme;
 
   const ImpaktfullUiNumberInput({
@@ -26,6 +27,7 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
     this.label,
     this.min,
     this.max,
+    this.step,
     this.theme,
     super.key,
   });
@@ -40,8 +42,12 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
 
 class _ImpaktfullUiNumberInputState<T extends num>
     extends State<ImpaktfullUiNumberInput<T>> {
+  static const _defaultStep = 1;
+
   late String _oldValue;
   late final TextEditingController _textController;
+
+  T get _step => (widget.step ?? _defaultStep) as T;
 
   @override
   void initState() {
@@ -107,7 +113,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
   }
 
   void _onDecrement() {
-    final newValue = widget.value - 1;
+    final newValue = widget.value - _step;
     if (widget.min != null && newValue < widget.min!) {
       return;
     }
@@ -115,7 +121,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
   }
 
   void _onIncrement() {
-    final newValue = widget.value + 1;
+    final newValue = widget.value + _step;
     if (widget.max != null && newValue > widget.max!) {
       return;
     }

@@ -1,3 +1,9 @@
+# 0.69.0
+
+## Feature
+
+- Added `step` to `ImpaktfullUiNumberInput`
+
 # 0.68.0
 
 ## Feature
