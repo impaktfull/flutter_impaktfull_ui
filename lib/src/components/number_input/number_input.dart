@@ -42,12 +42,26 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
 
 class _ImpaktfullUiNumberInputState<T extends num>
     extends State<ImpaktfullUiNumberInput<T>> {
-  static const _defaultStep = 1;
+  static const _defaultStepInt = 1;
+  static const _defaultStepDouble = 1.0;
 
   late String _oldValue;
   late final TextEditingController _textController;
 
-  T get _step => (widget.step ?? _defaultStep) as T;
+  T get _step {
+    if (widget.step != null) {
+      return widget.step as T;
+    }
+    if (T == int) {
+      return _defaultStepInt as T;
+    } else if (T == double) {
+      return _defaultStepDouble as T;
+    } else if (T == num) {
+      return _defaultStepDouble as T;
+    } else {
+      throw UnsupportedError('Unsupported type for step: $T');
+    }
+  }
 
   @override
   void initState() {
