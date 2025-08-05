@@ -49,8 +49,9 @@ class _ImpaktfullUiNumberInputState<T extends num>
   late final TextEditingController _textController;
 
   T get _step {
-    if (widget.step != null) {
-      return widget.step as T;
+    final step = widget.step;
+    if (step != null) {
+      return step;
     }
     if (T == int) {
       return _defaultStepInt as T;
