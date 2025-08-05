@@ -18,6 +18,7 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
   final T value;
   final T? min;
   final T? max;
+  final T? step;
   final ImpaktfullUiNumberInputTheme? theme;
 
   const ImpaktfullUiNumberInput({
@@ -26,6 +27,7 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
     this.label,
     this.min,
     this.max,
+    this.step,
     this.theme,
     super.key,
   });
@@ -40,8 +42,27 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
 
 class _ImpaktfullUiNumberInputState<T extends num>
     extends State<ImpaktfullUiNumberInput<T>> {
+  static const _defaultStepInt = 1;
+  static const _defaultStepDouble = 1.0;
+
   late String _oldValue;
   late final TextEditingController _textController;
+
+  T get _step {
+    final step = widget.step;
+    if (step != null) {
+      return step;
+    }
+    if (T == int) {
+      return _defaultStepInt as T;
+    } else if (T == double) {
+      return _defaultStepDouble as T;
+    } else if (T == num) {
+      return _defaultStepDouble as T;
+    } else {
+      throw UnsupportedError('Unsupported type for step: $T');
+    }
+  }
 
   @override
   void initState() {
@@ -107,7 +128,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
   }
 
   void _onDecrement() {
-    final newValue = widget.value - 1;
+    final newValue = widget.value - _step;
     if (widget.min != null && newValue < widget.min!) {
       return;
     }
@@ -115,7 +136,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
   }
 
   void _onIncrement() {
-    final newValue = widget.value + 1;
+    final newValue = widget.value + _step;
     if (widget.max != null && newValue > widget.max!) {
       return;
     }
