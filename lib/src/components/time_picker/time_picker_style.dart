@@ -16,6 +16,23 @@ class ImpaktfullUiTimePickerTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiTimePickerTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.timePicker;
+
+  static ImpaktfullUiTimePickerTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiTimePickerTheme(
+        assets: ImpaktfullUiTimePickerAssetsTheme(),
+        colors: ImpaktfullUiTimePickerColorTheme(),
+        dimens: ImpaktfullUiTimePickerDimensTheme(
+          labelMargin: EdgeInsets.zero,
+        ),
+        textStyles: ImpaktfullUiTimePickerTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiTimePickerAssetsTheme {
@@ -27,7 +44,16 @@ class ImpaktfullUiTimePickerColorTheme {
 }
 
 class ImpaktfullUiTimePickerDimensTheme {
-  const ImpaktfullUiTimePickerDimensTheme();
+  final EdgeInsets labelMargin;
+  const ImpaktfullUiTimePickerDimensTheme({
+    required this.labelMargin,
+  });
+
+  ImpaktfullUiTimePickerDimensTheme copyWith({
+    EdgeInsets? labelMargin,
+  }) =>
+      ImpaktfullUiTimePickerDimensTheme(
+          labelMargin: labelMargin ?? this.labelMargin);
 }
 
 class ImpaktfullUiTimePickerTextStyleTheme {

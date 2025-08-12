@@ -1206,11 +1206,13 @@ class DefaultTheme {
             subtitle: textStyles.onCanvas.text.small,
           ),
         ),
-        timePicker: const ImpaktfullUiTimePickerTheme(
-          assets: ImpaktfullUiTimePickerAssetsTheme(),
-          colors: ImpaktfullUiTimePickerColorTheme(),
-          dimens: ImpaktfullUiTimePickerDimensTheme(),
-          textStyles: ImpaktfullUiTimePickerTextStyleTheme(),
+        timePicker: ImpaktfullUiTimePickerTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         tooltip: ImpaktfullUiTooltipTheme(
           colors: ImpaktfullUiTooltipColorTheme(
