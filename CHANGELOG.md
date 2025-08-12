@@ -1,3 +1,9 @@
+# 0.70.0
+
+## Feature
+
+- Added labelMargin to the styling of `ImpaktfullUiTimePicker`
+
 # 0.69.0
 
 ## Feature
