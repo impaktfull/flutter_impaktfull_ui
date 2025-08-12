@@ -99,7 +99,7 @@ class _ImpaktfullUiColorInputFieldState
                     controller: _colorController,
                     value: _hexColor,
                     placeholder: '#000000',
-                    onChanged: _onChanged,
+                    onChanged: widget.onChanged != null ? _onChanged : null,
                     textInputType: TextInputType.text,
                     maxLines: 1,
                   ),

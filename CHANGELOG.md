@@ -1,3 +1,9 @@
+# 0.70.1
+
+## Fix
+
+- `ImpaktfullUiColorInputField` now correctly handles the `onChanged`
+
 # 0.70.0
 
 ## Feature
