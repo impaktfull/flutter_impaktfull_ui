@@ -1,3 +1,8 @@
+# 0.71.0
+
+- Added `width` to `ImpaktfullUiProgressIndicator`
+- Added `strokeWidth` to `ImpaktfullUiLoadingIndicator`
+
 # 0.70.1
 
 ## Fix

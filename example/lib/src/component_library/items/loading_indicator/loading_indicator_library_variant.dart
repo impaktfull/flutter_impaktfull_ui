@@ -21,6 +21,7 @@ class LoadingIndicatorVariant
       const ImpaktfullUiLoadingIndicator(
         theme: ImpaktfullUiLoadingIndicatorTheme(
           colors: ImpaktfullUiLoadingIndicatorColorTheme(color: Colors.black),
+          dimens: ImpaktfullUiLoadingIndicatorDimensTheme(strokeWidth: 10),
           assets: ImpaktfullUiLoadingIndicatorAssetTheme(lottie: null),
         ),
       ),
@@ -28,6 +29,7 @@ class LoadingIndicatorVariant
         color: ImpaktfullUiTheme.of(context).colors.accent,
         theme: const ImpaktfullUiLoadingIndicatorTheme(
           colors: ImpaktfullUiLoadingIndicatorColorTheme(color: Colors.black),
+          dimens: ImpaktfullUiLoadingIndicatorDimensTheme(strokeWidth: 10),
           assets: ImpaktfullUiLoadingIndicatorAssetTheme(lottie: null),
         ),
       ),

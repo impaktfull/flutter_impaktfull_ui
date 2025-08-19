@@ -724,11 +724,13 @@ class DefaultTheme {
           durations: durations,
           shadows: shadows,
         ),
-        loadingIndicator: ImpaktfullUiLoadingIndicatorTheme(
-          colors: ImpaktfullUiLoadingIndicatorColorTheme(color: colors.accent),
-          assets: ImpaktfullUiLoadingIndicatorAssetTheme(
-            lottie: assets.lotties.loading,
-          ),
+        loadingIndicator: ImpaktfullUiLoadingIndicatorTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         markdown: ImpaktfullUiMarkdownTheme.getDefault(
           assets: assets,

@@ -52,6 +52,7 @@ class ImpaktfullUiLoadingIndicator extends StatelessWidget
         }
         return CircularProgressIndicator(
           color: color ?? componentTheme.colors.color,
+          strokeWidth: componentTheme.dimens.strokeWidth,
         );
       },
     );
