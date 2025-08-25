@@ -50,6 +50,7 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
 class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
   @override
   Widget build(BuildContext context) {
+    final onTapEnabled = widget.onTap != null;
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
@@ -61,9 +62,9 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         border: _getBorder(componentTheme),
         shadow: widget.shadow ?? componentTheme.shadows.card,
         child: ImpaktfullUiTouchFeedback(
-          canRequestFocus: false,
-          useFocusColor: false,
-          cursor: widget.onTap != null && widget.cursor == MouseCursor.defer
+          canRequestFocus: onTapEnabled,
+          useFocusColor: onTapEnabled,
+          cursor: onTapEnabled && widget.cursor == MouseCursor.defer
               ? SystemMouseCursors.click
               : widget.cursor,
           onTap: widget.onTap,

@@ -1,3 +1,9 @@
+# 0.71.2
+
+## Fix
+
+- `ImpaktfullUiCard` now correctly handles the focus color when using `tab`
+
 # 0.71.1
 
 ## Fix
