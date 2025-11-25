@@ -803,21 +803,13 @@ class DefaultTheme {
           dimens: dimens,
           shadows: shadows,
         ),
-        notificationBadge: ImpaktfullUiNotificationBadgeTheme(
-          assets: const ImpaktfullUiNotificationBadgeAssetsTheme(),
-          colors: ImpaktfullUiNotificationBadgeColorTheme(
-            background: colors.primary,
-            border: colors.card,
-          ),
-          dimens: ImpaktfullUiNotificationBadgeDimensTheme(
-            borderRadius: dimens.borderRadius,
-          ),
-          durations: ImpaktfullUiNotificationBadgeDurationTheme(
-            opacity: durations.short,
-          ),
-          textStyles: ImpaktfullUiNotificationBadgeTextStyleTheme(
-            text: textStyles.onPrimary.text.small,
-          ),
+        notificationBadge: ImpaktfullUiNotificationBadgeTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         numberInput: ImpaktfullUiNumberInputTheme(
           assets: ImpaktfullUiNumberInputAssetsTheme(

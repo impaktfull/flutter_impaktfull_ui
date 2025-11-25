@@ -97,7 +97,7 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget
                           );
                         }
                         return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          padding: componentTheme.dimens.textPadding,
                           child: Text(
                             text ?? '',
                             style: componentTheme.textStyles.text,

@@ -1,3 +1,9 @@
+# 0.72.0
+
+## Feature
+
+- Added `textPadding` to `ImpaktfullUiNotificationBadgeTheme`
+
 # 0.71.2
 
 ## Fix
