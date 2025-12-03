@@ -120,6 +120,8 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
                 child: LayoutBuilder(
                   builder: (context, constraints) => ListView(
                     shrinkWrap: shrinkWrap,
+                    padding: padding,
+                    physics: scrollPhysics,
                     children: [
                       Container(
                         height: shrinkWrap ? null : constraints.maxHeight,
