@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui/src/components/grid_view/grid_view.localizations.dart';
 import 'package:impaktfull_ui/src/components/localization/localization_configurator.dart';
 
 abstract class ImpaktfullUiCoreLocalizations {
@@ -21,12 +22,14 @@ class ImpaktfullUiLocalizations {
   final ImpaktfullUiBBLicenseLocalizations bbLicenses;
   final ImpaktfullUiNavBarLocalizations navBar;
   final ImpaktfullUiListViewLocalizations listView;
+  final ImpaktfullUiGridViewLocalizations gridView;
 
   const ImpaktfullUiLocalizations({
     this.bbLogin = const ImpaktfullUiBBLoginLocalizations(),
     this.bbLicenses = const ImpaktfullUiBBLicenseLocalizations(),
     this.navBar = const ImpaktfullUiNavBarLocalizations(),
     this.listView = const ImpaktfullUiListViewLocalizations(),
+    this.gridView = const ImpaktfullUiGridViewLocalizations(),
   });
 
   static T of<T extends ImpaktfullUiCoreLocalizations>(BuildContext context) {
@@ -40,6 +43,8 @@ class ImpaktfullUiLocalizations {
       return localization.bbLicenses as T;
     } else if (T == ImpaktfullUiListViewLocalizations) {
       return localization.listView as T;
+    } else if (T == ImpaktfullUiGridViewLocalizations) {
+      return localization.gridView as T;
     } else {
       throw Exception('Localization $T not found');
     }
