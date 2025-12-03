@@ -1,3 +1,9 @@
+# 0.73.1
+
+## Fix
+
+- `ImpaktfullUiGridView` now correctly handles the padding & scroll physics
+
 # 0.73.0
 
 ## Feature
