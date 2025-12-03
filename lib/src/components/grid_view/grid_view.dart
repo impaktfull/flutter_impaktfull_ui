@@ -83,12 +83,13 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return ImpaktfullUiOverridableComponentBuilder(
-      component: this,
-      overrideComponentTheme: theme,
-      builder: (context, componentTheme) => ImpaktfullUiLocalizationProvider(
-        localizations: localizations,
-        builder: (context, localizations) => LayoutBuilder(
+    return ImpaktfullUiLocalizationProvider(
+      localizations: localizations,
+      builder: (context, localizations) =>
+          ImpaktfullUiOverridableComponentBuilder(
+        component: this,
+        overrideComponentTheme: theme,
+        builder: (context, componentTheme) => LayoutBuilder(
           builder: (context, constraints) {
             if (isLoading) {
               if (shrinkWrap) {
