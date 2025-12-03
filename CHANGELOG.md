@@ -1,3 +1,10 @@
+# 0.73.0
+
+## Feature
+
+- Added `localizations` to `ImpaktfullUiGridView`
+- Added `onRefresh` to `ImpaktfullUiGridView`
+
 # 0.72.0
 
 ## Feature

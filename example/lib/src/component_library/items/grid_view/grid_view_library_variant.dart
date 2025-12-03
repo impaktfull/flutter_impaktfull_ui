@@ -23,7 +23,9 @@ class GridViewLibraryVariant
           spacing: 4,
           placeholderData: const ImpaktfullUiGridViewPlaceholderData(
             title: 'No Grid items',
+            showRefreshBtn: true,
           ),
+          onRefresh: () async => Future.delayed(const Duration(seconds: 3)),
           itemBuilder: (context, item, index) => Container(
             color: theme.colors.accent,
             alignment: Alignment.center,
