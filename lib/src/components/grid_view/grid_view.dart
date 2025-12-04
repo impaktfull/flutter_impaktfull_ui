@@ -26,7 +26,7 @@ class ImpaktfullUiGridViewConfig {
   });
 }
 
-class ImpaktfullUiGridView<T> extends StatelessWidget
+class ImpaktfullUiGridView<T> extends StatefulWidget
     with ComponentDescriptorMixin {
   final List<T> items;
   final int Function(BuildContext, ImpaktfullUiGridViewConfig) crossAxisCount;
@@ -44,6 +44,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
   final ImpaktfullUiGridViewLocalizations? localizations;
   final ImpaktfullUiGridViewPlaceholderData? placeholderData;
   final ImpaktfullUiGridViewTheme? theme;
+  final ScrollController? controller;
 
   const ImpaktfullUiGridView({
     required List<T> children,
@@ -59,6 +60,7 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
     @Deprecated('Use [placeholderData] instead') this.noDataLabel,
     this.theme,
     this.localizations,
+    this.controller,
     super.key,
   })  : items = children,
         itemBuilder = null;
@@ -78,23 +80,49 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
     @Deprecated('Use [placeholderData] instead') this.noDataLabel,
     this.theme,
     this.localizations,
+    this.controller,
     super.key,
   });
 
   @override
+  State<ImpaktfullUiGridView<T>> createState() =>
+      _ImpaktfullUiGridViewState<T>();
+
+  @override
+  String describe(BuildContext context) => _describeInstance(context, this);
+}
+
+class _ImpaktfullUiGridViewState<T> extends State<ImpaktfullUiGridView<T>> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = widget.controller ?? ScrollController();
+  }
+
+  @override
+  void dispose() {
+    if (widget.controller == null) {
+      _scrollController.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ImpaktfullUiLocalizationProvider(
-      localizations: localizations,
+      localizations: widget.localizations,
       builder: (context, localizations) =>
           ImpaktfullUiOverridableComponentBuilder(
-        component: this,
-        overrideComponentTheme: theme,
+        component: widget,
+        overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => LayoutBuilder(
           builder: (context, constraints) {
-            if (isLoading) {
-              if (shrinkWrap) {
+            if (widget.isLoading) {
+              if (widget.shrinkWrap) {
                 return Padding(
-                  padding: padding,
+                  padding: widget.padding,
                   child: const SizedBox(
                     height: 50,
                     width: 50,
@@ -103,28 +131,30 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
                 );
               }
               return Padding(
-                padding: padding,
+                padding: widget.padding,
                 child: const Center(
                   child: ImpaktfullUiLoadingIndicator(),
                 ),
               );
             }
-            if (items.isEmpty) {
-              final placeholderData = this.placeholderData ??
+            if (widget.items.isEmpty) {
+              final placeholderData = widget.placeholderData ??
                   ImpaktfullUiGridViewPlaceholderData(
                     // ignore: deprecated_member_use_from_same_package
-                    title: noDataLabel,
+                    title: widget.noDataLabel,
                   );
               return ImpaktfullUiRefreshIndicator(
-                onRefresh: onRefresh,
+                onRefresh: widget.onRefresh,
                 child: LayoutBuilder(
                   builder: (context, constraints) => ListView(
-                    shrinkWrap: shrinkWrap,
-                    padding: padding,
-                    physics: scrollPhysics,
+                    controller: _scrollController,
+                    shrinkWrap: widget.shrinkWrap,
+                    padding: widget.padding,
+                    physics: widget.scrollPhysics,
                     children: [
                       Container(
-                        height: shrinkWrap ? null : constraints.maxHeight,
+                        height:
+                            widget.shrinkWrap ? null : constraints.maxHeight,
                         alignment: Alignment.center,
                         child: ImpaktfullUiPlaceholder(
                           asset: placeholderData.asset,
@@ -132,12 +162,12 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
                           subtitle: placeholderData.subtitle,
                           actions: [
                             ...placeholderData.actions,
-                            if (onRefresh != null &&
+                            if (widget.onRefresh != null &&
                                 placeholderData.showRefreshBtn) ...[
                               ImpaktfullUiButton(
                                 type: ImpaktfullUiButtonType.secondary,
                                 title: localizations.refreshBtnLabel,
-                                onAsyncTap: onRefresh!,
+                                onAsyncTap: widget.onRefresh!,
                               ),
                             ],
                           ],
@@ -153,26 +183,26 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
               maxHeight: constraints.maxHeight,
             );
             return ImpaktfullUiRefreshIndicator(
-              onRefresh: onRefresh,
+              onRefresh: widget.onRefresh,
               child: GridView.builder(
-                padding: padding,
-                physics: scrollPhysics,
-                shrinkWrap: shrinkWrap,
-                itemCount: items.length,
+                padding: widget.padding,
+                physics: widget.scrollPhysics,
+                shrinkWrap: widget.shrinkWrap,
+                itemCount: widget.items.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: crossAxisCount(context, config),
-                  childAspectRatio: itemAspectRatio == null
+                  crossAxisCount: widget.crossAxisCount(context, config),
+                  childAspectRatio: widget.itemAspectRatio == null
                       ? 1.0
-                      : itemAspectRatio!(context, config),
-                  crossAxisSpacing: spacing,
-                  mainAxisSpacing: spacing,
+                      : widget.itemAspectRatio!(context, config),
+                  crossAxisSpacing: widget.spacing,
+                  mainAxisSpacing: widget.spacing,
                 ),
                 itemBuilder: (context, index) {
-                  final item = items[index];
-                  if (itemBuilder == null && item is Widget) {
+                  final item = widget.items[index];
+                  if (widget.itemBuilder == null && item is Widget) {
                     return item;
                   }
-                  return itemBuilder!(context, item, index);
+                  return widget.itemBuilder!(context, item, index);
                 },
               ),
             );
@@ -181,7 +211,4 @@ class ImpaktfullUiGridView<T> extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
