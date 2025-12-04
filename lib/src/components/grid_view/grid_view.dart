@@ -185,6 +185,7 @@ class _ImpaktfullUiGridViewState<T> extends State<ImpaktfullUiGridView<T>> {
             return ImpaktfullUiRefreshIndicator(
               onRefresh: widget.onRefresh,
               child: GridView.builder(
+                controller: _scrollController,
                 padding: widget.padding,
                 physics: widget.scrollPhysics,
                 shrinkWrap: widget.shrinkWrap,
