@@ -1,3 +1,9 @@
+# 0.74.0
+
+## Feature
+
+- `ImpaktfullUiGridView` now accepts a `ScrollController`
+
 # 0.73.1
 
 ## Fix
