@@ -913,9 +913,13 @@ class DefaultTheme {
           durations: durations,
           shadows: shadows,
         ),
-        refreshIndicator: ImpaktfullUiRefreshIndicatorTheme(
-          colors: ImpaktfullUiRefreshIndicatorColorTheme(
-              loadingIndicator: colors.accent),
+        refreshIndicator: ImpaktfullUiRefreshIndicatorTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
         ),
         responsiveLayout: const ImpaktfullUiResponsiveLayoutTheme(
           assets: ImpaktfullUiResponsiveLayoutAssetsTheme(),

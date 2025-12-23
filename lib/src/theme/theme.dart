@@ -152,6 +152,6 @@ class ImpaktfullUiTheme<T extends Object> {
         durations: durations ?? this.durations,
         shadows: shadows ?? this.shadows,
         components: components ?? this.components,
-        customTheme: customTheme ?? this.customThemeOrNull,
+        customTheme: customTheme ?? customThemeOrNull,
       );
 }
