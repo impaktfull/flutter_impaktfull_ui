@@ -1,3 +1,9 @@
+# 0.75.0
+
+## Feature
+
+- Added `backgroundColor` to `ImpaktfullUiRefreshIndicatorTheme`
+
 # 0.74.0
 
 ## Feature
