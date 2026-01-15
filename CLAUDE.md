@@ -21,5 +21,5 @@ Make sure the formatting is correct.
 
 ## Create Pull Request
 
-Pull requests are created on github. `main` branch is the default branch.
+Pull requests are created on Github. `main` branch is the default branch.
 But all changes pushed to the default branch should be done through a pull request.
