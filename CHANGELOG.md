@@ -1,4 +1,8 @@
-# 0.75.0
+# 0.76.0
+
+## Feature
+
+- Added `theme` parameter to `ImpaktfullUiBottomSheet.show` and `ImpaktfullUiBottomSheet.showSimple`
 
 ## Feature
 
