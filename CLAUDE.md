@@ -7,9 +7,9 @@ Use the same naming conventions and styles as the rest of the codebase.
 Update CHANGELOG.md to match what changed in the code.
 Use the following format:
 
-fix -> 0.0.x fix
+fix/chore/docs/ci -> 0.0.x fix/chore/docs/ci
 feat -> 0.x.0 features
-feat! -> 0.x.0 breaking change
+feat! -> x.0.0 breaking change
 
 ## Validate
 
