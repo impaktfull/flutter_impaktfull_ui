@@ -1,3 +1,9 @@
+# 0.76.1
+
+## Chore
+
+- Added CLAUDE.md with development guidelines
+
 # 0.76.0
 
 ## Feature
