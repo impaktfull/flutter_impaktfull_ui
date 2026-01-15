@@ -41,15 +41,16 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
     required Widget Function(BuildContext context) builder,
     RouteSettings? routeSettings,
     bool rootNavigator = false,
+    ImpaktfullUiBottomSheetTheme? theme,
   }) {
-    final theme = ImpaktfullUiBottomSheetTheme.of(context);
+    final resolvedTheme = theme ?? ImpaktfullUiBottomSheetTheme.of(context);
     return showModalBottomSheet(
       context: context,
       builder: builder,
       shape: RoundedRectangleBorder(
-        borderRadius: theme.dimens.borderRadius,
+        borderRadius: resolvedTheme.dimens.borderRadius,
       ),
-      backgroundColor: theme.colors.background,
+      backgroundColor: resolvedTheme.colors.background,
       isScrollControlled: true,
       useRootNavigator: rootNavigator,
       routeSettings: routeSettings,
@@ -66,6 +67,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
     bool hasClose = true,
     Future<bool> Function()? onCloseTapped,
     bool rootNavigator = false,
+    ImpaktfullUiBottomSheetTheme? theme,
   }) {
     final modal = ImpaktfullUiBottomSheet(
       title: title,
@@ -73,6 +75,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
       actions: actions,
       hasClose: hasClose,
       onCloseTapped: onCloseTapped,
+      theme: theme,
       child: child,
     );
     return show(
@@ -80,6 +83,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
       builder: (context) => modal,
       routeSettings: routeSettings,
       rootNavigator: rootNavigator,
+      theme: theme,
     );
   }
 
