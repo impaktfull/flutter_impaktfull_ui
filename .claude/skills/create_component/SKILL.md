@@ -1,54 +1,29 @@
+# Creating a New Component
 
-## Adding a New Component
+This guide explains how to create a new component in the ImpaktfullUI library.
+
+## Overview
+
+Components are themeable, reusable UI widgets prefixed with `ImpaktfullUi` (e.g., `ImpaktfullUiButton`).
+
+## Quick Reference
+
+| What | Location |
+|------|----------|
+| Component files | `lib/src/components/<component_name>/` |
+| Library showcase | `example/lib/src/component_library/items/<component_name>/` |
+| Theme registration | `lib/src/theme/component_theme.dart` |
+| Default theme | `lib/src/theme/theme_default.dart` |
+| Exports | `lib/impaktfull_ui.dart` |
+| Documentation | `README.md` (Component List section) |
+
+## Step-by-Step Guide
 
 ### 1. Create the Component Directory
 
-Create a new directory: `lib/src/components/<component_name>/`
+Create: `lib/src/components/<component_name>/`
 
-### 2. Required Files
-
-#### Main Widget File (`<component_name>.dart`)
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
-
-export '<component_name>_style.dart';
-
-part '<component_name>.describe.dart';
-
-class ImpaktfullUi<ComponentName> extends StatefulWidget with ComponentDescriptorMixin {
-  final ImpaktfullUi<ComponentName>Theme? theme;
-
-  const ImpaktfullUi<ComponentName>({
-    this.theme,
-    super.key,
-  });
-
-  @override
-  State<ImpaktfullUi<ComponentName>> createState() => _ImpaktfullUi<ComponentName>State();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
-}
-
-class _ImpaktfullUi<ComponentName>State extends State<ImpaktfullUi<ComponentName>> {
-  @override
-  Widget build(BuildContext context) {
-    return ImpaktfullUiOverridableComponentBuilder(
-      component: widget,
-      overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) {
-        // Use componentTheme.colors, componentTheme.dimens, etc.
-        return Container();
-      },
-    );
-  }
-}
-```
-
-#### Style/Theme File (`<component_name>_style.dart`)
+### 2. Create the Style File (`<component_name>_style.dart`)
 
 ```dart
 import 'package:flutter/widgets.dart';
@@ -58,7 +33,7 @@ class ImpaktfullUi<ComponentName>Theme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUi<ComponentName>AssetsTheme assets;
   final ImpaktfullUi<ComponentName>ColorTheme colors;
   final ImpaktfullUi<ComponentName>DimensTheme dimens;
-  final ImpaktfullUi<ComponentName>TextStylesTheme textStyles;
+  final ImpaktfullUi<ComponentName>TextStyleTheme textStyles;
 
   const ImpaktfullUi<ComponentName>Theme({
     required this.assets,
@@ -78,11 +53,11 @@ class ImpaktfullUi<ComponentName>Theme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiDurationTheme durations,
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
-      ImpaktfullUi<ComponentName>Theme(
+      const ImpaktfullUi<ComponentName>Theme(
         assets: ImpaktfullUi<ComponentName>AssetsTheme(),
         colors: ImpaktfullUi<ComponentName>ColorTheme(),
         dimens: ImpaktfullUi<ComponentName>DimensTheme(),
-        textStyles: ImpaktfullUi<ComponentName>TextStylesTheme(),
+        textStyles: ImpaktfullUi<ComponentName>TextStyleTheme(),
       );
 }
 
@@ -98,12 +73,12 @@ class ImpaktfullUi<ComponentName>DimensTheme {
   const ImpaktfullUi<ComponentName>DimensTheme();
 }
 
-class ImpaktfullUi<ComponentName>TextStylesTheme {
-  const ImpaktfullUi<ComponentName>TextStylesTheme();
+class ImpaktfullUi<ComponentName>TextStyleTheme {
+  const ImpaktfullUi<ComponentName>TextStyleTheme();
 }
 ```
 
-#### Describe File (`<component_name>.describe.dart`)
+### 3. Create the Describe File (`<component_name>.describe.dart`)
 
 ```dart
 part of '<component_name>.dart';
@@ -115,31 +90,78 @@ String _describeInstance(BuildContext context, ImpaktfullUi<ComponentName> insta
 }
 ```
 
-#### Optional Files
+### 4. Create the Main Component File (`<component_name>.dart`)
 
-- `<component_name>_enum_name.dart` - Custom enum files (e.g., `ImpaktfullUi<ComponentName>EnumName`)
+```dart
+import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/components/<component_name>/<component_name>_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
-### 3. Register in Theme System
+export '<component_name>_style.dart';
+
+part '<component_name>.describe.dart';
+
+class ImpaktfullUi<ComponentName> extends StatelessWidget with ComponentDescriptorMixin {
+  final ImpaktfullUi<ComponentName>Theme? theme;
+
+  const ImpaktfullUi<ComponentName>({
+    this.theme,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ImpaktfullUiOverridableComponentBuilder<ImpaktfullUi<ComponentName>Theme>(
+      overrideComponentTheme: theme,
+      builder: (context, componentTheme) {
+        // Use componentTheme.colors, componentTheme.dimens, etc.
+        return Container();
+      },
+    );
+  }
+
+  @override
+  String describe(BuildContext context) => _describeInstance(context, this);
+}
+```
+
+### 5. Register in Theme System
 
 #### Update `lib/src/theme/component_theme.dart`
 
-1. Add import for the component style
-2. Add field to `ImpaktfullUiComponentsTheme`:
-   ```dart
-   final ImpaktfullUi<ComponentName>Theme <componentName>;
-   ```
-3. Add to constructor
-4. Add to `copyWith()` method
-5. Add to static `of<T>()` method:
+1. Add import:
 ```dart
-  } else if (T == ImpaktfullUi<ComponentName>Theme) {
-     return ImpaktfullUi<ComponentName>Theme.of(context) as T;
-   }
+import 'package:impaktfull_ui/src/components/<component_name>/<component_name>.dart';
+```
+
+2. Add field to `ImpaktfullUiComponentsTheme`:
+```dart
+final ImpaktfullUi<ComponentName>Theme <componentName>;
+```
+
+3. Add to constructor:
+```dart
+required this.<componentName>,
+```
+
+4. Add to `copyWith()`:
+```dart
+ImpaktfullUi<ComponentName>Theme? <componentName>,
+// In return:
+<componentName>: <componentName> ?? this.<componentName>,
+```
+
+5. Add to `of<T>()`:
+```dart
+} else if (T == ImpaktfullUi<ComponentName>Theme) {
+  return ImpaktfullUi<ComponentName>Theme.of(context) as T;
+}
 ```
 
 #### Update `lib/src/theme/theme_default.dart`
 
-Add the default theme in `DefaultTheme.withMinimalChanges()`:
+Add in `DefaultTheme.withMinimalChanges()`:
 
 ```dart
 <componentName>: ImpaktfullUi<ComponentName>Theme.getDefault(
@@ -152,7 +174,7 @@ Add the default theme in `DefaultTheme.withMinimalChanges()`:
 ),
 ```
 
-### 4. Export the Component
+### 6. Export the Component
 
 Add to `lib/impaktfull_ui.dart`:
 
@@ -160,22 +182,16 @@ Add to `lib/impaktfull_ui.dart`:
 export 'src/components/<component_name>/<component_name>.dart';
 ```
 
-### 5. Add to Example App (Component Library)
+### 7. Add to Example App
 
-The example app serves as a component library for showcasing all components.
+#### Create `example/lib/src/component_library/items/<component_name>/`
 
-#### Create Library Item Directory
-
-Create: `example/lib/src/component_library/items/<component_name>/`
-
-#### Library Item File (`<component_name>_library_item.dart`)
+#### Create `<component_name>_library_item.dart`
 
 ```dart
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/<component_name>/<component_name>_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
-import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_string_input.dart';
-import 'package:impaktfull_ui_example/src/component_library/items/<component_name>/<component_name>_library_variant.dart';
 
 class <ComponentName>LibraryItem extends ComponentLibraryItem {
   const <ComponentName>LibraryItem();
@@ -184,82 +200,76 @@ class <ComponentName>LibraryItem extends ComponentLibraryItem {
   String get title => 'ImpaktfullUi<ComponentName>';
 
   @override
-  List<ComponentLibraryVariant> getComponentVariants() {
-    return [
-      const <ComponentName>LibraryVariant(),
-      // Add more variants if needed (e.g., for different types/sizes)
-    ];
-  }
+  List<ComponentLibraryVariant> getComponentVariants() => [
+    const <ComponentName>LibraryVariant(),
+  ];
 }
 
 class <ComponentName>LibraryInputs extends ComponentLibraryInputs {
-  // Add configurable inputs for the component library UI
-  final label = ComponentLibraryStringInput(
-    'Label',
-    initialValue: 'Example',
-  );
-
   @override
-  List<ComponentLibraryInputItem> buildInputItems() => [
-        label,
-      ];
+  List<ComponentLibraryInputItem> buildInputItems() => [];
 }
 ```
 
-#### Library Variant File (`<component_name>_library_variant.dart`)
+#### Create `<component_name>_library_variant.dart`
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/<component_name>/<component_name>_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class <ComponentName>LibraryVariant
-    extends ComponentLibraryVariant<<ComponentName>LibraryVariantInputs> {
+class <ComponentName>LibraryVariant extends ComponentLibraryVariant<<ComponentName>LibraryPrimaryInputs> {
   const <ComponentName>LibraryVariant();
 
   @override
   String get title => 'Default';
 
   @override
-  List<Widget> build(BuildContext context, <ComponentName>LibraryVariantInputs inputs) {
-    return [
-      ImpaktfullUi<ComponentName>(
-        // Use inputs.label.value, etc.
-      ),
-    ];
-  }
+  List<Widget> build(BuildContext context, <ComponentName>LibraryPrimaryInputs inputs) => [
+    const ImpaktfullUi<ComponentName>(),
+  ];
 
   @override
-  <ComponentName>LibraryVariantInputs inputs() => <ComponentName>LibraryVariantInputs();
+  <ComponentName>LibraryPrimaryInputs inputs() => <ComponentName>LibraryPrimaryInputs();
 }
 
-class <ComponentName>LibraryVariantInputs extends <ComponentName>LibraryInputs {}
+class <ComponentName>LibraryPrimaryInputs extends <ComponentName>LibraryInputs {}
 ```
 
-#### Register in Component Library
-
-Update `example/lib/src/component_library/config/component_library.dart`:
-
-1. Add import:
-   ```dart
-   import 'package:impaktfull_ui_example/src/component_library/items/<component_name>/<component_name>_library_item.dart';
-   ```
-
-2. Add to the `items` list (alphabetically):
-   ```dart
-   const <ComponentName>LibraryItem(),
-   ```
-
-## Accessing Theme in Components
+#### Register in `example/lib/src/component_library/config/component_library.dart`
 
 ```dart
-// Get full theme
-final theme = ImpaktfullUiTheme.of(context);
-
-// Get specific component theme
-final buttonTheme = ImpaktfullUiButtonTheme.of(context);
-
-// Or using generic accessor
-final badgeTheme = ImpaktfullUiComponentsTheme.of<ImpaktfullUiBadgeTheme>(context);
+import 'package:impaktfull_ui_example/src/component_library/items/<component_name>/<component_name>_library_item.dart';
+// Add to items list (alphabetically):
+const <ComponentName>LibraryItem(),
 ```
+
+### 8. Update README.md
+
+Add the component to the **Component List** section in `README.md` (alphabetically):
+
+```markdown
+- ImpaktfullUi<ComponentName>
+```
+
+If the component has sub-components, indent them:
+
+```markdown
+- ImpaktfullUi<ComponentName>
+  - ImpaktfullUi<ComponentName>Item
+```
+
+## Checklist
+
+- [ ] Create component directory
+- [ ] Create style file
+- [ ] Create describe file
+- [ ] Create main component file
+- [ ] Register in `component_theme.dart` (5 places)
+- [ ] Add default in `theme_default.dart`
+- [ ] Export in `impaktfull_ui.dart`
+- [ ] Create library item and variant
+- [ ] Register in component library
+- [ ] Add to README.md Component List
+- [ ] Run `./tool/format.sh && ./tool/analyze.sh`
