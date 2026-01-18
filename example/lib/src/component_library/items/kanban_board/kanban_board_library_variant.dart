@@ -16,35 +16,35 @@ class KanbanBoardLibraryVariant
       BuildContext context, KanbanBoardLibraryVariantInputs inputs) {
     return [
       SizedBox(
-        height: 500,
+        height: 850,
         child: KanbanBoardStateConfigurator(
-          builder: (context, items, onItemMoved, onItemReordered) {
-            return ImpaktfullUiKanbanBoard<String>(
-              columns: const [
-                ImpaktfullUiKanbanBoardColumnConfig(
-                  id: 'todo',
-                  name: 'To Do',
-                  color: Colors.blue,
-                  index: 0,
-                ),
-                ImpaktfullUiKanbanBoardColumnConfig(
-                  id: 'in_progress',
-                  name: 'In Progress',
-                  color: Colors.orange,
-                  index: 1,
-                ),
-                ImpaktfullUiKanbanBoardColumnConfig(
-                  id: 'done',
-                  name: 'Done',
-                  color: Colors.green,
-                  index: 2,
-                ),
-              ],
-              items: items,
-              onItemMoved: onItemMoved,
-              onItemReordered: onItemReordered,
-            );
-          },
+          builder: (context, items, onItemMoved, onItemReordered) =>
+              ImpaktfullUiKanbanBoard<String>(
+            columns: const [
+              ImpaktfullUiKanbanBoardColumnConfig(
+                id: 'todo',
+                name: 'To Do',
+                color: Colors.blue,
+              ),
+              ImpaktfullUiKanbanBoardColumnConfig(
+                id: 'in_progress',
+                name: 'In Progress',
+                color: Colors.orange,
+              ),
+              ImpaktfullUiKanbanBoardColumnConfig(
+                id: 'done',
+                name: 'Done',
+                color: Colors.green,
+              ),
+            ],
+            items: items,
+            itemBuilder: (item) => ImpaktfullUiKanbanBoardCard<String>(
+              key: ValueKey(item.id),
+              item: item,
+            ),
+            onItemMoved: onItemMoved,
+            onItemReordered: onItemReordered,
+          ),
         ),
       ),
     ];

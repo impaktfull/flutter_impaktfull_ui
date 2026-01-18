@@ -47,7 +47,7 @@ class _KanbanBoardStateConfiguratorState
         columnId: 'todo',
         title: 'Write documentation',
         description: 'Document the API endpoints',
-        imageUrl: 'https://picsum.photos/300/200',
+        imageUrl: 'https://picsum.photos',
       ),
       const ImpaktfullUiKanbanBoardItem(
         id: '3',

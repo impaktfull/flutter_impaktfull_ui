@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/kanban_board/kanban_board_card.dart';
 import 'package:impaktfull_ui/src/components/kanban_board/kanban_board_style.dart';
 import 'package:impaktfull_ui/src/components/kanban_board/model/kanban_board_column_config.dart';
 import 'package:impaktfull_ui/src/components/kanban_board/model/kanban_board_item.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
-part 'kanban_board_column.describe.dart';
-
-class ImpaktfullUiKanbanBoardColumn<T> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiKanbanBoardColumn<T> extends StatefulWidget {
   final ImpaktfullUiKanbanBoardColumnConfig config;
   final List<ImpaktfullUiKanbanBoardItem<T>> items;
   final Widget Function(ImpaktfullUiKanbanBoardItem<T> item)? itemBuilder;
@@ -32,10 +29,6 @@ class ImpaktfullUiKanbanBoardColumn<T> extends StatefulWidget
   @override
   State<ImpaktfullUiKanbanBoardColumn<T>> createState() =>
       _ImpaktfullUiKanbanBoardColumnState<T>();
-
-  @override
-  String describe(BuildContext context) =>
-      _describeColumnInstance(context, this);
 }
 
 class _ImpaktfullUiKanbanBoardColumnState<T>
@@ -60,7 +53,7 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
                   )
                 : null,
           ),
-          child: Column(
+          child: ImpaktfullUiAutoLayout.vertical(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _buildHeader(componentTheme),
@@ -84,7 +77,8 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
           topRight: componentTheme.dimens.columnBorderRadius.topRight,
         ),
       ),
-      child: Row(
+      child: ImpaktfullUiAutoLayout.horizontal(
+        spacing: 8,
         children: [
           Container(
             width: 12,
@@ -110,7 +104,7 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
-              '${widget.items.length}',
+              widget.items.length.toString(),
               style: componentTheme.textStyles.columnCount?.copyWith(
                 color: widget.config.color,
               ),
@@ -157,7 +151,7 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
             headerHeight + componentTheme.dimens.columnContentPadding.top;
         final itemHeight = 80 + componentTheme.dimens.itemSpacing;
 
-        int newIndex =
+        final newIndex =
             ((localPosition.dy - contentTop) / itemHeight).floor().clamp(
                   0,
                   widget.items.length,
@@ -214,7 +208,7 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
               final item = widget.items[itemIndex];
               final isDraggedItem = candidateData.isNotEmpty &&
                   candidateData.first?.id == item.id;
-
+              final itemWidget = _itemBuilder(item);
               return Padding(
                 padding: EdgeInsets.only(
                   bottom: itemIndex < widget.items.length - 1
@@ -229,29 +223,17 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
                     child: SizedBox(
                       width: componentTheme.dimens.columnWidth -
                           componentTheme.dimens.columnContentPadding.horizontal,
-                      child: widget.itemBuilder?.call(item) ??
-                          ImpaktfullUiKanbanBoardCard<T>(
-                            item: item,
-                            theme: widget.theme,
-                          ),
+                      child: itemWidget,
                     ),
                   ),
                   childWhenDragging: Opacity(
                     opacity: 0.3,
-                    child: widget.itemBuilder?.call(item) ??
-                        ImpaktfullUiKanbanBoardCard<T>(
-                          item: item,
-                          theme: widget.theme,
-                        ),
+                    child: itemWidget,
                   ),
                   child: AnimatedOpacity(
                     duration: const Duration(milliseconds: 200),
                     opacity: isDraggedItem ? 0.3 : 1.0,
-                    child: widget.itemBuilder?.call(item) ??
-                        ImpaktfullUiKanbanBoardCard<T>(
-                          item: item,
-                          theme: widget.theme,
-                        ),
+                    child: itemWidget,
                   ),
                 ),
               );
@@ -261,4 +243,11 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
       },
     );
   }
+
+  Widget _itemBuilder(ImpaktfullUiKanbanBoardItem<T> item) =>
+      widget.itemBuilder?.call(item) ??
+      ImpaktfullUiKanbanBoardCard<T>(
+        item: item,
+        theme: widget.theme,
+      );
 }

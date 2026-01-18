@@ -52,30 +52,21 @@ class ImpaktfullUiKanbanBoard<T> extends StatefulWidget
 
 class _ImpaktfullUiKanbanBoardState<T>
     extends State<ImpaktfullUiKanbanBoard<T>> {
-  List<ImpaktfullUiKanbanBoardColumnConfig> get _sortedColumns {
-    final sorted =
-        List<ImpaktfullUiKanbanBoardColumnConfig>.from(widget.columns);
-    sorted.sort((a, b) => a.index.compareTo(b.index));
-    return sorted;
-  }
-
-  List<ImpaktfullUiKanbanBoardItem<T>> _getItemsForColumn(String columnId) {
-    return widget.items.where((item) => item.columnId == columnId).toList();
-  }
+  List<ImpaktfullUiKanbanBoardItem<T>> _getItemsForColumn(String columnId) =>
+      widget.items.where((item) => item.columnId == columnId).toList();
 
   void _handleItemDropped(
     ImpaktfullUiKanbanBoardItem<T> item,
     String targetColumnId,
     int targetIndex,
   ) {
-    if (item.columnId != targetColumnId) {
-      widget.onItemMoved?.call(
-        item,
-        item.columnId,
-        targetColumnId,
-        targetIndex,
-      );
-    }
+    if (item.columnId == targetColumnId) return;
+    widget.onItemMoved?.call(
+      item,
+      item.columnId,
+      targetColumnId,
+      targetIndex,
+    );
   }
 
   void _handleItemReordered(
@@ -95,43 +86,37 @@ class _ImpaktfullUiKanbanBoardState<T>
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) {
-        return LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: componentTheme.dimens.boardPadding,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  for (var i = 0; i < _sortedColumns.length; i++) ...[
-                    if (i > 0)
-                      SizedBox(width: componentTheme.dimens.columnSpacing),
-                    SizedBox(
-                      height: constraints.maxHeight -
-                          componentTheme.dimens.boardPadding.vertical,
-                      child: ImpaktfullUiKanbanBoardColumn<T>(
-                        config: _sortedColumns[i],
-                        items: _getItemsForColumn(_sortedColumns[i].id),
-                        itemBuilder: widget.itemBuilder,
-                        theme: widget.theme,
-                        onItemReordered: (item, newIndex) {
-                          _handleItemReordered(
-                              item, newIndex, _sortedColumns[i].id);
-                        },
-                        onItemDropped: (item, targetIndex) {
-                          _handleItemDropped(
-                              item, _sortedColumns[i].id, targetIndex);
-                        },
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            );
-          },
-        );
-      },
+      builder: (context, componentTheme) => LayoutBuilder(
+        builder: (context, constraints) => SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          padding: componentTheme.dimens.boardPadding,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final column in widget.columns) ...[
+                SizedBox(
+                  height: constraints.maxHeight -
+                      componentTheme.dimens.boardPadding.vertical,
+                  child: ImpaktfullUiKanbanBoardColumn<T>(
+                    config: column,
+                    items: _getItemsForColumn(column.id),
+                    itemBuilder: widget.itemBuilder,
+                    theme: widget.theme,
+                    onItemReordered: (item, newIndex) {
+                      _handleItemReordered(item, newIndex, column.id);
+                    },
+                    onItemDropped: (item, targetIndex) {
+                      _handleItemDropped(item, column.id, targetIndex);
+                    },
+                  ),
+                ),
+                if (column != widget.columns.last)
+                  SizedBox(width: componentTheme.dimens.columnSpacing),
+              ],
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

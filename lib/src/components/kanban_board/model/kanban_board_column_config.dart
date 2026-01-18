@@ -4,13 +4,11 @@ class ImpaktfullUiKanbanBoardColumnConfig {
   final String id;
   final String name;
   final Color color;
-  final int index;
 
   const ImpaktfullUiKanbanBoardColumnConfig({
     required this.id,
     required this.name,
     required this.color,
-    required this.index,
   });
 
   @override
