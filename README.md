@@ -96,6 +96,9 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiIconButton
 - ImpaktfullUiImageCrop
 - ImpaktfullUiInputField
+- ImpaktfullUiKanbanBoard
+  - ImpaktfullUiKanbanBoardColumn
+  - ImpaktfullUiKanbanBoardCard
 - ImpaktfullUiLineChart
 - ImpaktfullUiListItem
   - ImpaktfullUiSimpleListItem

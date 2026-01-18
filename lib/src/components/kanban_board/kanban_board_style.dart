@@ -2,12 +2,14 @@ import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiKanbanBoardTheme extends ImpaktfullUiComponentTheme {
+  final ImpaktfullUiKanbanBoardAssetsTheme assets;
   final ImpaktfullUiKanbanBoardColorTheme colors;
   final ImpaktfullUiKanbanBoardDimensTheme dimens;
   final ImpaktfullUiKanbanBoardTextStyleTheme textStyles;
   final ImpaktfullUiKanbanBoardShadowsTheme shadows;
 
   const ImpaktfullUiKanbanBoardTheme({
+    required this.assets,
     required this.colors,
     required this.dimens,
     required this.textStyles,
@@ -26,6 +28,7 @@ class ImpaktfullUiKanbanBoardTheme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
       ImpaktfullUiKanbanBoardTheme(
+        assets: const ImpaktfullUiKanbanBoardAssetsTheme(),
         colors: ImpaktfullUiKanbanBoardColorTheme(
           boardBackground: colors.canvas,
           columnBackground: colors.card,
@@ -135,4 +138,8 @@ class ImpaktfullUiKanbanBoardShadowsTheme {
   const ImpaktfullUiKanbanBoardShadowsTheme({
     required this.card,
   });
+}
+
+class ImpaktfullUiKanbanBoardAssetsTheme {
+  const ImpaktfullUiKanbanBoardAssetsTheme();
 }

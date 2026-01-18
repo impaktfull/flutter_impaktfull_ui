@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./tool/analyze.sh:*)",
+      "Bash(flutter pub:*)",
+      "WebSearch",
+      "Bash(./tool/format.sh:*)"
+    ]
+  }
+}

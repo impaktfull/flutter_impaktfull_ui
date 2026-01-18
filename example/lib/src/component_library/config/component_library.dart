@@ -38,6 +38,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/icon_button/ic
 import 'package:impaktfull_ui_example/src/component_library/items/image_crop/image_crop_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/input_field/input_field_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/introduction/introduction_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/kanban_board/kanban_board_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/line_chart/line_chart_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/list_item/list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/list_view/list_view_library_item.dart';
@@ -136,6 +137,7 @@ class ComponentLibrary {
     const ImageCropLibraryItem(),
     const InputFieldLibraryItem(),
     const IntroductionLibraryItem(),
+    const KanbanBoardLibraryItem(),
     const LineChartLibraryItem(),
     const ListItemLibraryItem(),
     const ListViewLibraryItem(),

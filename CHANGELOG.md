@@ -4,6 +4,12 @@
 
 - Added `ImpaktfullUiKanbanBoard` component with configurable columns, drag-and-drop support, and customizable cards with images
 
+# 0.76.1 - 0.76.2
+
+## Chore
+
+- Added CLAUDE.md with development guidelines
+
 # 0.76.0
 
 ## Feature
