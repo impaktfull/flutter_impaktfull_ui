@@ -53,6 +53,7 @@ export 'src/components/interaction_feedback/touch_feedback_sequence/touch_feedba
 export 'src/components/introduction/introduction.dart';
 export 'src/components/image_crop/image_crop.dart';
 export 'src/components/input_field/input_field.dart';
+export 'src/components/kanban_board/kanban_board.dart';
 export 'src/components/line_chart/line_chart.dart';
 export 'src/components/list_item/list_item.dart';
 export 'src/components/list_view/list_view.dart';
