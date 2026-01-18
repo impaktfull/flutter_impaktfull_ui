@@ -8,14 +8,15 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 part 'kanban_board_column.describe.dart';
 
-class ImpaktfullUiKanbanBoardColumn<T> extends StatelessWidget
+class ImpaktfullUiKanbanBoardColumn<T> extends StatefulWidget
     with ComponentDescriptorMixin {
   final ImpaktfullUiKanbanBoardColumnConfig config;
   final List<ImpaktfullUiKanbanBoardItem<T>> items;
   final Widget Function(ImpaktfullUiKanbanBoardItem<T> item)? itemBuilder;
   final void Function(ImpaktfullUiKanbanBoardItem<T> item, int newIndex)?
       onItemReordered;
-  final void Function(ImpaktfullUiKanbanBoardItem<T> item)? onItemDropped;
+  final void Function(ImpaktfullUiKanbanBoardItem<T> item, int targetIndex)?
+      onItemDropped;
   final ImpaktfullUiKanbanBoardTheme? theme;
 
   const ImpaktfullUiKanbanBoardColumn({
@@ -29,10 +30,23 @@ class ImpaktfullUiKanbanBoardColumn<T> extends StatelessWidget
   });
 
   @override
+  State<ImpaktfullUiKanbanBoardColumn<T>> createState() =>
+      _ImpaktfullUiKanbanBoardColumnState<T>();
+
+  @override
+  String describe(BuildContext context) =>
+      _describeColumnInstance(context, this);
+}
+
+class _ImpaktfullUiKanbanBoardColumnState<T>
+    extends State<ImpaktfullUiKanbanBoardColumn<T>> {
+  int? _dragTargetIndex;
+
+  @override
   Widget build(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
-      component: this,
-      overrideComponentTheme: theme,
+      component: widget,
+      overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         return Container(
           width: componentTheme.dimens.columnWidth,
@@ -51,26 +65,7 @@ class ImpaktfullUiKanbanBoardColumn<T> extends StatelessWidget
             children: [
               _buildHeader(componentTheme),
               Expanded(
-                child: DragTarget<ImpaktfullUiKanbanBoardItem<T>>(
-                  onWillAcceptWithDetails: (details) =>
-                      details.data.columnId != config.id,
-                  onAcceptWithDetails: (details) {
-                    onItemDropped?.call(details.data);
-                  },
-                  builder: (context, candidateData, rejectedData) {
-                    final isHovering = candidateData.isNotEmpty;
-                    return AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      decoration: BoxDecoration(
-                        color: isHovering
-                            ? config.color.withValues(alpha: 0.1)
-                            : Colors.transparent,
-                        borderRadius: componentTheme.dimens.columnBorderRadius,
-                      ),
-                      child: _buildItemsList(componentTheme),
-                    );
-                  },
-                ),
+                child: _buildItemsList(componentTheme),
               ),
             ],
           ),
@@ -83,7 +78,7 @@ class ImpaktfullUiKanbanBoardColumn<T> extends StatelessWidget
     return Container(
       padding: componentTheme.dimens.columnHeaderPadding,
       decoration: BoxDecoration(
-        color: config.color.withValues(alpha: 0.15),
+        color: widget.config.color.withValues(alpha: 0.15),
         borderRadius: BorderRadius.only(
           topLeft: componentTheme.dimens.columnBorderRadius.topLeft,
           topRight: componentTheme.dimens.columnBorderRadius.topRight,
@@ -95,14 +90,14 @@ class ImpaktfullUiKanbanBoardColumn<T> extends StatelessWidget
             width: 12,
             height: 12,
             decoration: BoxDecoration(
-              color: config.color,
+              color: widget.config.color,
               shape: BoxShape.circle,
             ),
           ),
           const SizedBox(width: 8),
           Expanded(
             child: Text(
-              config.name,
+              widget.config.name,
               style: componentTheme.textStyles.columnTitle,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -111,13 +106,13 @@ class ImpaktfullUiKanbanBoardColumn<T> extends StatelessWidget
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
             decoration: BoxDecoration(
-              color: config.color.withValues(alpha: 0.2),
+              color: widget.config.color.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
-              '${items.length}',
+              '${widget.items.length}',
               style: componentTheme.textStyles.columnCount?.copyWith(
-                color: config.color,
+                color: widget.config.color,
               ),
             ),
           ),
@@ -127,77 +122,143 @@ class ImpaktfullUiKanbanBoardColumn<T> extends StatelessWidget
   }
 
   Widget _buildItemsList(ImpaktfullUiKanbanBoardTheme componentTheme) {
-    return ReorderableListView.builder(
-      padding: componentTheme.dimens.columnContentPadding,
-      itemCount: items.length,
-      onReorder: (oldIndex, newIndex) {
-        if (oldIndex < newIndex) {
-          newIndex -= 1;
+    return DragTarget<ImpaktfullUiKanbanBoardItem<T>>(
+      onWillAcceptWithDetails: (details) => true,
+      onAcceptWithDetails: (details) {
+        final targetIndex = _dragTargetIndex ?? widget.items.length;
+        if (details.data.columnId == widget.config.id) {
+          // Reordering within the same column
+          final oldIndex =
+              widget.items.indexWhere((item) => item.id == details.data.id);
+          if (oldIndex != -1 && oldIndex != targetIndex) {
+            widget.onItemReordered?.call(details.data, targetIndex);
+          }
+        } else {
+          // Moving from another column
+          widget.onItemDropped?.call(details.data, targetIndex);
         }
-        if (oldIndex != newIndex) {
-          onItemReordered?.call(items[oldIndex], newIndex);
+        setState(() {
+          _dragTargetIndex = null;
+        });
+      },
+      onLeave: (data) {
+        setState(() {
+          _dragTargetIndex = null;
+        });
+      },
+      onMove: (details) {
+        // Calculate which index the item would be dropped at
+        final RenderBox box = context.findRenderObject() as RenderBox;
+        final localPosition = box.globalToLocal(details.offset);
+        final headerHeight =
+            componentTheme.dimens.columnHeaderPadding.vertical +
+                24; // approximate header height
+        final contentTop =
+            headerHeight + componentTheme.dimens.columnContentPadding.top;
+        final itemHeight = 80 + componentTheme.dimens.itemSpacing;
+
+        int newIndex =
+            ((localPosition.dy - contentTop) / itemHeight).floor().clamp(
+                  0,
+                  widget.items.length,
+                );
+
+        if (_dragTargetIndex != newIndex) {
+          setState(() {
+            _dragTargetIndex = newIndex;
+          });
         }
       },
-      proxyDecorator: (child, index, animation) {
-        return AnimatedBuilder(
-          animation: animation,
-          builder: (context, child) {
-            final double elevation =
-                Tween<double>(begin: 0, end: 8).evaluate(animation);
-            return Material(
-              elevation: elevation,
-              color: Colors.transparent,
-              borderRadius: componentTheme.dimens.cardBorderRadius,
-              child: child,
-            );
-          },
-          child: child,
-        );
-      },
-      itemBuilder: (context, index) {
-        final item = items[index];
-        return Padding(
-          key: ValueKey(item.id),
-          padding: EdgeInsets.only(
-            bottom: index < items.length - 1
-                ? componentTheme.dimens.itemSpacing
-                : 0,
+      builder: (context, candidateData, rejectedData) {
+        final isHovering = candidateData.isNotEmpty;
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          decoration: BoxDecoration(
+            color: isHovering
+                ? widget.config.color.withValues(alpha: 0.05)
+                : Colors.transparent,
+            borderRadius: componentTheme.dimens.columnBorderRadius,
           ),
-          child: LongPressDraggable<ImpaktfullUiKanbanBoardItem<T>>(
-            data: item,
-            feedback: Material(
-              elevation: 8,
-              borderRadius: componentTheme.dimens.cardBorderRadius,
-              child: SizedBox(
-                width: componentTheme.dimens.columnWidth -
-                    componentTheme.dimens.columnContentPadding.horizontal,
-                child: itemBuilder?.call(item) ??
-                    ImpaktfullUiKanbanBoardCard<T>(
-                      item: item,
-                      theme: theme,
+          child: ListView.builder(
+            padding: componentTheme.dimens.columnContentPadding,
+            itemCount: widget.items.length +
+                (isHovering && _dragTargetIndex != null ? 1 : 0),
+            itemBuilder: (context, index) {
+              // Show drop indicator
+              if (isHovering &&
+                  _dragTargetIndex != null &&
+                  index == _dragTargetIndex) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                      bottom: componentTheme.dimens.itemSpacing),
+                  child: Container(
+                    height: 4,
+                    margin: const EdgeInsets.symmetric(vertical: 4),
+                    decoration: BoxDecoration(
+                      color: widget.config.color,
+                      borderRadius: BorderRadius.circular(2),
                     ),
-              ),
-            ),
-            childWhenDragging: Opacity(
-              opacity: 0.5,
-              child: itemBuilder?.call(item) ??
-                  ImpaktfullUiKanbanBoardCard<T>(
-                    item: item,
-                    theme: theme,
                   ),
-            ),
-            child: itemBuilder?.call(item) ??
-                ImpaktfullUiKanbanBoardCard<T>(
-                  item: item,
-                  theme: theme,
+                );
+              }
+
+              // Adjust index if drop indicator is shown before this item
+              final itemIndex = isHovering &&
+                      _dragTargetIndex != null &&
+                      index > _dragTargetIndex!
+                  ? index - 1
+                  : index;
+
+              if (itemIndex >= widget.items.length) return const SizedBox();
+
+              final item = widget.items[itemIndex];
+              final isDraggedItem = candidateData.isNotEmpty &&
+                  candidateData.first?.id == item.id;
+
+              return Padding(
+                padding: EdgeInsets.only(
+                  bottom: itemIndex < widget.items.length - 1
+                      ? componentTheme.dimens.itemSpacing
+                      : 0,
                 ),
+                child: Draggable<ImpaktfullUiKanbanBoardItem<T>>(
+                  data: item,
+                  feedback: Material(
+                    elevation: 8,
+                    borderRadius: componentTheme.dimens.cardBorderRadius,
+                    child: SizedBox(
+                      width: componentTheme.dimens.columnWidth -
+                          componentTheme.dimens.columnContentPadding.horizontal,
+                      child: widget.itemBuilder?.call(item) ??
+                          ImpaktfullUiKanbanBoardCard<T>(
+                            item: item,
+                            theme: widget.theme,
+                          ),
+                    ),
+                  ),
+                  childWhenDragging: Opacity(
+                    opacity: 0.3,
+                    child: widget.itemBuilder?.call(item) ??
+                        ImpaktfullUiKanbanBoardCard<T>(
+                          item: item,
+                          theme: widget.theme,
+                        ),
+                  ),
+                  child: AnimatedOpacity(
+                    duration: const Duration(milliseconds: 200),
+                    opacity: isDraggedItem ? 0.3 : 1.0,
+                    child: widget.itemBuilder?.call(item) ??
+                        ImpaktfullUiKanbanBoardCard<T>(
+                          item: item,
+                          theme: widget.theme,
+                        ),
+                  ),
+                ),
+              );
+            },
           ),
         );
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) =>
-      _describeColumnInstance(context, this);
 }

@@ -66,14 +66,14 @@ class _ImpaktfullUiKanbanBoardState<T>
   void _handleItemDropped(
     ImpaktfullUiKanbanBoardItem<T> item,
     String targetColumnId,
+    int targetIndex,
   ) {
     if (item.columnId != targetColumnId) {
-      final targetColumnItems = _getItemsForColumn(targetColumnId);
       widget.onItemMoved?.call(
         item,
         item.columnId,
         targetColumnId,
-        targetColumnItems.length,
+        targetIndex,
       );
     }
   }
@@ -119,8 +119,9 @@ class _ImpaktfullUiKanbanBoardState<T>
                           _handleItemReordered(
                               item, newIndex, _sortedColumns[i].id);
                         },
-                        onItemDropped: (item) {
-                          _handleItemDropped(item, _sortedColumns[i].id);
+                        onItemDropped: (item, targetIndex) {
+                          _handleItemDropped(
+                              item, _sortedColumns[i].id, targetIndex);
                         },
                       ),
                     ),
