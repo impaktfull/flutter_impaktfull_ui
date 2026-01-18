@@ -60,9 +60,10 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
           _interactiveViewerKey.currentContext!.findRenderObject() as RenderBox;
       final position =
           renderBox.globalToLocal(_doubleTapDetails!.globalPosition);
+      final scale = min(3.0, widget.maxScale);
       endMatrix = Matrix4.identity()
-        ..translate(-position.dx * 2, -position.dy * 2)
-        ..scale(min(3.0, widget.maxScale));
+        ..setTranslationRaw(-position.dx * 2, -position.dy * 2, 0)
+        ..scaleByDouble(scale, scale, scale, 1);
     }
 
     _animation = Matrix4Tween(
