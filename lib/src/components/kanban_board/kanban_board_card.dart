@@ -43,14 +43,19 @@ class ImpaktfullUiKanbanBoardCard<T> extends StatelessWidget
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (item.imageUrl != null) ...[
-                  SizedBox(
-                    height: componentTheme.dimens.cardImageHeight,
-                    child: ImpaktfullUiNetworkImage(
-                      url: item.imageUrl!,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                      height: componentTheme.dimens.cardImageHeight,
-                    ),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      return SizedBox(
+                        height: componentTheme.dimens.cardImageHeight,
+                        width: double.infinity,
+                        child: ImpaktfullUiNetworkImage(
+                          url: item.imageUrl!,
+                          fit: BoxFit.cover,
+                          width: constraints.maxWidth,
+                          height: componentTheme.dimens.cardImageHeight,
+                        ),
+                      );
+                    },
                   ),
                 ],
                 Padding(

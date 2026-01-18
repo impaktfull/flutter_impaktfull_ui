@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiKanbanBoardTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiKanbanBoardAssetsTheme assets;
@@ -53,16 +54,10 @@ class ImpaktfullUiKanbanBoardTheme extends ImpaktfullUiComponentTheme {
           itemSpacing: 8,
         ),
         textStyles: ImpaktfullUiKanbanBoardTextStyleTheme(
-          columnTitle: textStyles.onCanvas.text.medium.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
-          columnCount: textStyles.onCanvas.text.small.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
-          cardTitle: textStyles.onCard.text.medium.copyWith(
-            fontWeight: FontWeight.w500,
-          ),
-          cardDescription: textStyles.onCardSecondary.text.small,
+          columnTitle: textStyles.onCanvas.text.medium.semiBold,
+          columnCount: textStyles.onCanvas.text.small.semiBold,
+          cardTitle: textStyles.onCard.text.small.medium,
+          cardDescription: textStyles.onCard.text.small.light,
         ),
         shadows: ImpaktfullUiKanbanBoardShadowsTheme(
           card: shadows.small,
