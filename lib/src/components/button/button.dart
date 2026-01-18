@@ -51,7 +51,6 @@ class ImpaktfullUiButton extends StatefulWidget {
   });
 
   @override
-  @override
   State<ImpaktfullUiButton> createState() => _ImpaktfullUiButtonState();
 }
 
