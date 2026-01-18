@@ -122,7 +122,6 @@ export 'src/theme/theme.dart';
 export 'src/components/theme/theme_builder.dart';
 
 // Widget Library
-export 'src/util/descriptor/component_descriptor_mixin.dart';
 export 'src/widget/override_components/overridable_component_builder.dart';
 export 'src/widget/override_components/overridable_component_configurator.dart';
 

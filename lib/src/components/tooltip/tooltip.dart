@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/tooltip/tooltip_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'tooltip_style.dart';
-
-part 'tooltip.describe.dart';
 
 enum ImpaktfullUiTooltipTriggerMode {
   tap,
   longTap;
 }
 
-class ImpaktfullUiTooltip extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiTooltip extends StatelessWidget {
   final String? message;
   final Widget child;
   final ImpaktfullUiTooltipTriggerMode triggerMode;
@@ -50,9 +46,6 @@ class ImpaktfullUiTooltip extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   TooltipTriggerMode _getTriggerMode() {
     switch (triggerMode) {

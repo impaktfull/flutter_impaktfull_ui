@@ -3,16 +3,12 @@ import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'simple_list_item_style.dart';
 export 'simple_list_item_type.dart';
 
-part 'simple_list_item.describe.dart';
-
-class ImpaktfullUiSimpleListItem extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSimpleListItem extends StatelessWidget {
   final String? title;
   final String? subtitle;
   final WidgetBuilder? leadingWidgetBuilder;
@@ -105,9 +101,6 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   TextStyle _getTitleTextStyle(ImpaktfullUiSimpleListItemTheme componentTheme) {
     switch (type) {

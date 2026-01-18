@@ -9,7 +9,6 @@ import 'package:impaktfull_ui/src/components/button/raised_button.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/vibrate/vibrate.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
@@ -17,9 +16,7 @@ export 'button_type.dart';
 export 'button_style.dart';
 export 'button_size.dart';
 
-part 'button.describe.dart';
-
-class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiButton extends StatefulWidget {
   final ImpaktfullUiButtonType type;
   final ImpaktfullUiButtonSize size;
   final ImpaktfullUiAsset? leadingAsset;
@@ -54,8 +51,6 @@ class ImpaktfullUiButton extends StatefulWidget with ComponentDescriptorMixin {
   });
 
   @override
-  String describe(BuildContext context) => _describeInstance(context, this);
-
   @override
   State<ImpaktfullUiButton> createState() => _ImpaktfullUiButtonState();
 }

@@ -11,7 +11,6 @@ import 'package:impaktfull_ui/src/components/metric/metric_style.dart';
 import 'package:impaktfull_ui/src/components/metric/model/metric_impact_type.dart';
 import 'package:impaktfull_ui/src/components/metric/model/metric_type.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
 import 'package:impaktfull_ui/src/util/text_size/text_size_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
@@ -20,9 +19,7 @@ export 'model/metric_impact_type.dart';
 export 'model/metric_type.dart';
 export 'metric_style.dart';
 
-part 'metric.describe.dart';
-
-class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiMetric extends StatelessWidget {
   final ImpaktfullUiAsset? leadingAsset;
   final WidgetBuilder? leadingBuilder;
   final String title;
@@ -219,9 +216,6 @@ class ImpaktfullUiMetric extends StatelessWidget with ComponentDescriptorMixin {
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   TextStyle _getValue2Style(ImpaktfullUiMetricTheme componentTheme) {
     switch (impactType) {

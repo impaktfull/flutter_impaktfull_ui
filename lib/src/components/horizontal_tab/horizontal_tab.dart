@@ -3,11 +3,9 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/badge/badge.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'horizontal_tab_style.dart';
-part 'horizontal_tab.describe.dart';
 
 class ImpaktfullUiHorizontalTabConfig<T> {
   final String label;
@@ -23,8 +21,7 @@ class ImpaktfullUiHorizontalTabConfig<T> {
   });
 }
 
-class ImpaktfullUiHorizontalTab extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiHorizontalTab extends StatelessWidget {
   final String label;
   final String? badge;
   final ImpaktfullUiBadgeType? badgeType;
@@ -84,7 +81,4 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

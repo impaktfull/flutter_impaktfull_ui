@@ -3,10 +3,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 export 'widget/master_detail_item_screen.dart';
 
-part 'master_detail.describe.dart';
-
-class ImpaktfullUiMasterDetail extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiMasterDetail extends StatefulWidget {
   final String? title;
   final String? subtitle;
   final Widget? headerBottomChild;
@@ -46,9 +43,6 @@ class ImpaktfullUiMasterDetail extends StatefulWidget
   @override
   State<ImpaktfullUiMasterDetail> createState() =>
       ImpaktfullUiMasterDetailState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class ImpaktfullUiMasterDetailState extends State<ImpaktfullUiMasterDetail> {

@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/introduction/introduction_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'introduction_style.dart';
 
-part 'introduction.describe.dart';
-
-class ImpaktfullUiIntroduction extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiIntroduction extends StatelessWidget {
   final ImpaktfullUiIntroductionTheme? theme;
 
   const ImpaktfullUiIntroduction({
@@ -24,7 +20,4 @@ class ImpaktfullUiIntroduction extends StatelessWidget
       builder: (context, componentTheme) => Container(),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

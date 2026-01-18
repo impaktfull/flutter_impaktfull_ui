@@ -4,17 +4,13 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/stepper/model/stepper_alignment.dart';
 import 'package:impaktfull_ui/src/components/stepper/model/stepper_item.dart';
 import 'package:impaktfull_ui/src/components/stepper/stepper_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'stepper_style.dart';
 export 'model/stepper_item.dart';
 export 'model/stepper_alignment.dart';
 
-part 'stepper.describe.dart';
-
-class ImpaktfullUiStepper extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiStepper extends StatelessWidget {
   final ImpaktfullUiStepperOrientation orientation;
   final List<ImpaktfullUiStepperItem> items;
   final ImpaktfullUiStepperTheme? theme;
@@ -142,7 +138,4 @@ class ImpaktfullUiStepper extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

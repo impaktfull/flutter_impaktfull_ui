@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
-part 'clamped_fractionally_sized_box.describe.dart';
-
-class ImpaktfullUiClampedFractionallySizedBox extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiClampedFractionallySizedBox extends StatelessWidget {
   final double widthFactor;
   final double? minWidth;
   final double? maxWidth;
@@ -36,7 +32,4 @@ class ImpaktfullUiClampedFractionallySizedBox extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

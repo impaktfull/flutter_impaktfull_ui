@@ -3,12 +3,8 @@ import 'package:impaktfull_ui/src/components/adaptive_nav_bar/adaptive_nav_bar.d
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
 import 'package:impaktfull_ui/src/components/screen/screen.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
-part 'adaptive_screen.describe.dart';
-
-class ImpaktfullUiAdaptiveScreen extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiAdaptiveScreen extends StatelessWidget {
   final String? title;
   final String? badge;
   final String? subtitle;
@@ -106,7 +102,4 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

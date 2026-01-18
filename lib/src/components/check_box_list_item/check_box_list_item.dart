@@ -4,20 +4,16 @@ import 'package:impaktfull_ui/src/components/check_box_list_item/check_box_list_
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'check_box_list_item_style.dart';
-
-part 'check_box_list_item.describe.dart';
 
 enum ImpaktfullUiCheckBoxListItemType {
   normal,
   indeterminate,
 }
 
-class ImpaktfullUiCheckBoxListItem extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiCheckBoxListItem extends StatelessWidget {
   final String title;
   final String? subtitle;
   final bool? value;
@@ -85,9 +81,6 @@ class ImpaktfullUiCheckBoxListItem extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   void _onTap() {
     final value = this.value ?? false;

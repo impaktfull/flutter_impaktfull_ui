@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
-part 'status_bar.describe.dart';
-
-class ImpaktfullUiStatusBar extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiStatusBar extends StatelessWidget {
   static final Map<Color, bool> _isColorDarkCache = {};
 
   final Widget child;
@@ -53,9 +49,6 @@ class ImpaktfullUiStatusBar extends StatelessWidget
       child: child,
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   static bool _isColorDark(Color color) {
     if (_isColorDarkCache.containsKey(color)) {

@@ -6,17 +6,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:impaktfull_ui/src/components/markdown/element_builder/code_element_builder.dart';
 import 'package:impaktfull_ui/src/components/markdown/markdown_style.dart';
 import 'package:impaktfull_ui/src/components/network_image/network_image.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'markdown_style.dart';
 
-part 'markdown.describe.dart';
-
 typedef ImpaktfullUiMarkdownLinkCallback = FutureOr<void> Function(String url);
 
-class ImpaktfullUiMarkdown extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiMarkdown extends StatelessWidget {
   final String data;
   final ImpaktfullUiMarkdownLinkCallback? onOpenLink;
   final ImpaktfullUiMarkdownTheme? theme;
@@ -29,8 +25,6 @@ class ImpaktfullUiMarkdown extends StatelessWidget
   });
 
   @override
-  String describe(BuildContext context) => _describeInstance(context, this);
-
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
