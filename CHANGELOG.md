@@ -1,3 +1,9 @@
+# 0.77.0
+
+## Feature
+
+- Added `ImpaktfullUiKanbanBoard` component with configurable columns, drag-and-drop support, and customizable cards with images
+
 # 0.76.0
 
 ## Feature

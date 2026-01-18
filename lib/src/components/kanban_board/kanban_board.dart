@@ -53,7 +53,8 @@ class ImpaktfullUiKanbanBoard<T> extends StatefulWidget
 class _ImpaktfullUiKanbanBoardState<T>
     extends State<ImpaktfullUiKanbanBoard<T>> {
   List<ImpaktfullUiKanbanBoardColumnConfig> get _sortedColumns {
-    final sorted = List<ImpaktfullUiKanbanBoardColumnConfig>.from(widget.columns);
+    final sorted =
+        List<ImpaktfullUiKanbanBoardColumnConfig>.from(widget.columns);
     sorted.sort((a, b) => a.index.compareTo(b.index));
     return sorted;
   }

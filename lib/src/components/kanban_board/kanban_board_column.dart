@@ -142,8 +142,8 @@ class ImpaktfullUiKanbanBoardColumn<T> extends StatelessWidget
         return AnimatedBuilder(
           animation: animation,
           builder: (context, child) {
-            final double elevation = Tween<double>(begin: 0, end: 8)
-                .evaluate(animation);
+            final double elevation =
+                Tween<double>(begin: 0, end: 8).evaluate(animation);
             return Material(
               elevation: elevation,
               color: Colors.transparent,
