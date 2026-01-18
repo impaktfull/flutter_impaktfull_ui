@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/switch/switch_style.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'switch_style.dart';
 
-part 'switch.describe.dart';
-
-class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSwitch extends StatelessWidget {
   final bool value;
   final ValueChanged<bool>? onChanged;
   final ImpaktfullUiSwitchTheme? theme;
@@ -119,7 +116,4 @@ class ImpaktfullUiSwitch extends StatelessWidget with ComponentDescriptorMixin {
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

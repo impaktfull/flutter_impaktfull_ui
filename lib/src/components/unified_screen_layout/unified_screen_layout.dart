@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
 import 'package:impaktfull_ui/src/components/unified_screen_layout/unified_screen_layout_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'unified_screen_layout_style.dart';
 
-part 'unified_screen_layout.describe.dart';
-
-class ImpaktfullUiUnifiedScreenLayout extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiUnifiedScreenLayout extends StatelessWidget {
   final Widget centerChild;
   final WidgetBuilder? topBuilder;
   final WidgetBuilder? bottomBuilder;
@@ -74,9 +70,6 @@ class ImpaktfullUiUnifiedScreenLayout extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   MainAxisAlignment _getMainAxisAlignment(Alignment alignment) {
     if (alignment == Alignment.center) {

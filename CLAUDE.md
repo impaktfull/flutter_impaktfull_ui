@@ -18,7 +18,9 @@ Learn how to work with this codebase:
 - [Theme System](.claude/skills/theme_system/SKILL.md) - How the theming architecture works
 - [Architecture Overview](.claude/skills/architecture/SKILL.md) - Project structure, patterns, and conventions
 
-## Changelog
+## Changelog (REQUIRED)
+
+**IMPORTANT: Always update CHANGELOG.md when making any code or documentation changes.**
 
 Update CHANGELOG.md to match what changed in the code:
 
@@ -27,6 +29,8 @@ Update CHANGELOG.md to match what changed in the code:
 | fix/chore/docs/ci | 0.0.x |
 | feat | 0.x.0 |
 | feat! | x.0.0 |
+
+Add a new version entry at the top of CHANGELOG.md with the appropriate section (Feature, Fix, Chore, etc.).
 
 ## Validate
 

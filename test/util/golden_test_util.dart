@@ -5,7 +5,6 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/container/container.dart';
 
 import 'font_loader.dart';
-import 'golden_test_describtor.dart';
 import 'golden_test_variant.dart';
 
 setupComponentTest() async {
@@ -45,23 +44,20 @@ Future<void> runComponentTest({
               columns: columns,
               children: goldenTests()
                   .map(
-                    (e) => GoldenTestDescribtor(
-                      description: e.description,
-                      child: Builder(builder: (context) {
-                        final child = e.child;
-                        if (child is ImpaktfullUiApp) {
-                          return child;
-                        }
-                        return ImpaktfullUiApp(
-                          showDebugFlag: false,
-                          title: 'impaktfull app',
-                          home: ImpaktfullUiContainer(
-                            color: Colors.transparent,
-                            child: child,
-                          ),
-                        );
-                      }),
-                    ),
+                    (e) => Builder(builder: (context) {
+                      final child = e.child;
+                      if (child is ImpaktfullUiApp) {
+                        return child;
+                      }
+                      return ImpaktfullUiApp(
+                        showDebugFlag: false,
+                        title: 'impaktfull app',
+                        home: ImpaktfullUiContainer(
+                          color: Colors.transparent,
+                          child: child,
+                        ),
+                      );
+                    }),
                   )
                   .toList(),
             ),

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/skeleton/skeleton_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'skeleton_style.dart';
 
-part 'skeleton.describe.dart';
-
-class ImpaktfullUiSkeleton extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSkeleton extends StatefulWidget {
   final double? height;
   final double? width;
   final double? widthFactor;
@@ -46,9 +42,6 @@ class ImpaktfullUiSkeleton extends StatefulWidget
 
   @override
   State<ImpaktfullUiSkeleton> createState() => _ImpaktfullUiSkeletonState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>

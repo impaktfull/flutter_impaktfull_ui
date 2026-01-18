@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
-
-part 'auto_layout.describe.dart';
 
 enum ImpaktfullUiAutoLayoutOrientation {
   horizontal,
   vertical,
 }
 
-class ImpaktfullUiAutoLayout extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiAutoLayout extends StatelessWidget {
   final ImpaktfullUiAutoLayoutOrientation orientation;
   final MainAxisAlignment mainAxisAlignment;
   final MainAxisSize mainAxisSize;
@@ -98,7 +94,4 @@ class ImpaktfullUiAutoLayout extends StatelessWidget
       );
     }
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

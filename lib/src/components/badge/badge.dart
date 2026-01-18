@@ -4,7 +4,6 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/badge/badge.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
@@ -12,9 +11,7 @@ export 'badge_style.dart';
 export 'badge_type.dart';
 export 'badge_size.dart';
 
-part 'badge.describe.dart';
-
-class ImpaktfullUiBadge extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiBadge extends StatefulWidget {
   final ImpaktfullUiBadgeType type;
   final ImpaktfullUiBadgeSize size;
   final String? label;
@@ -42,9 +39,6 @@ class ImpaktfullUiBadge extends StatefulWidget with ComponentDescriptorMixin {
 
   @override
   State<ImpaktfullUiBadge> createState() => _ImpaktfullUiBadgeState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {

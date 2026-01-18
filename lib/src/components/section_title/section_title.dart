@@ -4,16 +4,12 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/widget_list_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'section_title_style.dart';
 
-part 'section_title.describe.dart';
-
-class ImpaktfullUiSectionTitle extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSectionTitle extends StatelessWidget {
   final String title;
   final List<Widget> actions;
   final EdgeInsetsGeometry? margin;
@@ -59,9 +55,6 @@ class ImpaktfullUiSectionTitle extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   bool _areAllValidActions(List<Widget> actions) {
     if (actions.isEmpty) return false;

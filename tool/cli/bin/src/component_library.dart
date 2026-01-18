@@ -87,19 +87,6 @@ class ${className}TextStyleTheme {
 """;
 
   styleFile.writeAsStringSync(styleFileContent);
-  //Create describe file
-  final describeFile =
-      File(join(dir.path, '$snakeCaseComponentName.describe.dart'));
-
-  final describeFileContent = """part of '$snakeCaseComponentName.dart';
-
-String _describeInstance(BuildContext context, $className instance) {
-  final descriptor = ComponentDescriptor();
-  descriptor.add('theme', instance.theme);
-  return descriptor.describe();
-}""";
-
-  describeFile.writeAsStringSync(describeFileContent);
 
   // Component file
   final componentFile = File(join(dir.path, '$snakeCaseComponentName.dart'));
@@ -107,13 +94,10 @@ String _describeInstance(BuildContext context, $className instance) {
   final componentFileContent = """import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/$snakeCaseComponentName/${snakeCaseComponentName}_style.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export '${snakeCaseComponentName}_style.dart';
 
-part '$snakeCaseComponentName.describe.dart';
-
-class $className extends StatelessWidget with ComponentDescriptorMixin {
+class $className extends StatelessWidget {
   final ${className}Theme? theme;
 
   const $className({
@@ -128,9 +112,6 @@ class $className extends StatelessWidget with ComponentDescriptorMixin {
       builder: (context, componentTheme) => Container(),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }""";
   componentFile.writeAsStringSync(componentFileContent);
 }
