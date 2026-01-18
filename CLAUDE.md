@@ -2,6 +2,10 @@
 
 Use the same naming conventions and styles as the rest of the codebase.
 
+## Skills
+
+[Create a new component](.claude/skills/create_component/SKILL.md)
+
 ## Changelog
 
 Update CHANGELOG.md to match what changed in the code.
@@ -17,6 +21,7 @@ Make sure the formatting is correct.
 
 ```
 ./tool/format.sh
+./tool/analyze.sh
 ```
 
 ## Create Pull Request
