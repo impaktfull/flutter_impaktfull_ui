@@ -164,9 +164,10 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                               color: Colors.transparent,
                               child: Transform(
                                 transform: Matrix4.identity()
-                                  ..translate(_cropInfo.position.dx,
-                                      _cropInfo.position.dy)
-                                  ..scale(_cropInfo.scale),
+                                  ..setTranslationRaw(_cropInfo.position.dx,
+                                      _cropInfo.position.dy, 0)
+                                  ..scaleByDouble(_cropInfo.scale,
+                                      _cropInfo.scale, _cropInfo.scale, 1),
                                 alignment: Alignment.center,
                                 child: Builder(builder: (context) {
                                   if (widget.imageUrl != null) {
