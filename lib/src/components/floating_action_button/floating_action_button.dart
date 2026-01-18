@@ -4,15 +4,11 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/floating_action_button/floating_action_button_style.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'floating_action_button_style.dart';
 
-part 'floating_action_button.describe.dart';
-
-class ImpaktfullUiFloatingActionButton extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiFloatingActionButton extends StatefulWidget {
   final ImpaktfullUiAsset asset;
   final String? label;
   final bool expanded;
@@ -31,9 +27,6 @@ class ImpaktfullUiFloatingActionButton extends StatefulWidget
   @override
   State<ImpaktfullUiFloatingActionButton> createState() =>
       _ImpaktfullUiFloatingActionButtonState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiFloatingActionButtonState

@@ -3,15 +3,12 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/pin_code/pin_code_style.dart';
 import 'package:impaktfull_ui/src/components/pin_code/widget/pin_code_button.dart';
 import 'package:impaktfull_ui/src/components/pin_code/widget/pin_code_value.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/keyboard/keyboard_listener.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'pin_code_style.dart';
 
-part 'pin_code.describe.dart';
-
-class ImpaktfullUiPinCode extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiPinCode extends StatefulWidget {
   final ImpaktfullUiPinCodeTheme? theme;
   final String code;
   final int length;
@@ -29,9 +26,6 @@ class ImpaktfullUiPinCode extends StatefulWidget with ComponentDescriptorMixin {
 
   @override
   State<ImpaktfullUiPinCode> createState() => _ImpaktfullUiPinCodeState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {

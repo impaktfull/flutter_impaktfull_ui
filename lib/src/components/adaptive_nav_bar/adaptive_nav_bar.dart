@@ -5,15 +5,11 @@ import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dar
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export 'model/adaptive_nav_bar_action.dart';
 export 'model/adaptive_nav_bar_action_type.dart';
 
-part 'adaptive_nav_bar.describe.dart';
-
-class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiAdaptiveNavBar extends StatelessWidget {
   final String? title;
   final String? badge;
   final String? subtitle;
@@ -82,9 +78,6 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   bool _shouldAddPadding(Widget? bottomChild) {
     if (bottomChild == null) return false;

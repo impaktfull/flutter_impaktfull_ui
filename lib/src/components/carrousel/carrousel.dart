@@ -3,17 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/carrousel/carrousel_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'carrousel_style.dart';
 
-part 'carrousel.describe.dart';
-
 const _pageTransitionDuration = Duration(milliseconds: 300);
 
-class ImpaktfullUiCarrousel extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiCarrousel extends StatefulWidget {
   final List<Widget> items;
   final int index;
   final EdgeInsetsGeometry? itemMargin;
@@ -37,9 +33,6 @@ class ImpaktfullUiCarrousel extends StatefulWidget
 
   @override
   State<ImpaktfullUiCarrousel> createState() => _ImpaktfullUiCarrouselState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiCarrouselState extends State<ImpaktfullUiCarrousel> {

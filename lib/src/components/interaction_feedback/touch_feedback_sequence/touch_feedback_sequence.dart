@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'dart:async';
 
-part 'touch_feedback_sequence.describe.dart';
-
-class ImpaktfullUiTouchFeedbackSequence extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiTouchFeedbackSequence extends StatefulWidget {
   final Widget child;
   final VoidCallback onTap;
   final int requiredTaps;
@@ -20,8 +16,6 @@ class ImpaktfullUiTouchFeedbackSequence extends StatefulWidget
   }) : assert(requiredTaps >= 2, 'requiredTaps must be at least 2');
 
   @override
-  String describe(BuildContext context) => _describeInstance(context, this);
-
   @override
   State<ImpaktfullUiTouchFeedbackSequence> createState() =>
       _ImpaktfullUiTouchFeedbackSequenceState();

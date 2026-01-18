@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'dart:async';
 
-part 'morse_code_touch_feedback.describe.dart';
-
-class ImpaktfullUiMorseCodeTouchFeedback extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiMorseCodeTouchFeedback extends StatefulWidget {
   final VoidCallback onTap;
   final String text;
   final Widget child;
@@ -24,9 +20,6 @@ class ImpaktfullUiMorseCodeTouchFeedback extends StatefulWidget
   @override
   State<ImpaktfullUiMorseCodeTouchFeedback> createState() =>
       _ImpaktfullUiMorseCodeTouchFeedbackState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiMorseCodeTouchFeedbackState

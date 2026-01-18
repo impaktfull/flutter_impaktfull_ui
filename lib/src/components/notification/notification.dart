@@ -4,13 +4,10 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/notification/notification.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:snacky/snacky.dart';
 
 export 'notification_style.dart';
-
-part 'notification.describe.dart';
 
 enum ImpaktfullUiNotificationType {
   success(SnackyType.success),
@@ -40,8 +37,7 @@ class ImpaktfullUiNotificationTypeConfig {
   });
 }
 
-class ImpaktfullUiNotification extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiNotification extends StatelessWidget {
   final String title;
   final String? subtitle;
   final double? width;
@@ -272,9 +268,6 @@ class ImpaktfullUiNotification extends StatelessWidget
       color: config.color,
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   CrossAxisAlignment _getAlignment() {
     switch (alignment) {

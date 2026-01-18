@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'progress_indicator_style.dart';
@@ -9,10 +8,7 @@ export 'widget/cirlce_progress_indicator.dart';
 export 'widget/half_cirlce_progress_indicator.dart';
 export 'widget/line_progress_indicator.dart';
 
-part 'progress_indicator.describe.dart';
-
-class ImpaktfullUiProgressIndicator extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiProgressIndicator extends StatelessWidget {
   final double value;
   final bool showText;
   final ImpaktfullUiProgressIndicatorType type;
@@ -70,7 +66,4 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

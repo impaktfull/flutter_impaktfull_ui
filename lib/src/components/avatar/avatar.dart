@@ -4,14 +4,11 @@ import 'package:impaktfull_ui/src/components/avatar/avatar_style.dart';
 import 'package:impaktfull_ui/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'avatar_style.dart';
 
-part 'avatar.describe.dart';
-
-class ImpaktfullUiAvatar extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiAvatar extends StatelessWidget {
   final String? url;
   final ImpaktfullUiAsset? placeholderAsset;
   final double width;
@@ -103,7 +100,4 @@ class ImpaktfullUiAvatar extends StatelessWidget with ComponentDescriptorMixin {
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

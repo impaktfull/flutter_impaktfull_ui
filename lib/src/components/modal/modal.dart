@@ -8,14 +8,11 @@ import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/modal/modal_style.dart';
 import 'package:impaktfull_ui/src/components/modal/routes/default_modal_route.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'modal_style.dart';
 export 'routes/default_modal_route.dart';
-
-part 'modal.describe.dart';
 
 enum ImpaktfullUiModalHeaderChildLocation {
   leading,
@@ -27,7 +24,7 @@ enum ImpaktfullUiModalType {
   danger,
 }
 
-class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiModal extends StatelessWidget {
   final ImpaktfullUiModalTheme? theme;
   final ImpaktfullUiModalHeaderChildLocation? headerChildLocation;
   final ImpaktfullUiAsset? headerIcon;
@@ -389,9 +386,6 @@ class ImpaktfullUiModal extends StatelessWidget with ComponentDescriptorMixin {
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   Future<void> _onCloseTapped(BuildContext context) async {
     if (onCloseTapped == null) {

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/bottom_actions/bottom_actions_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'bottom_actions_style.dart';
 
-part 'bottom_actions.describe.dart';
-
-class ImpaktfullUiBottomActions extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiBottomActions extends StatelessWidget {
   final List<Widget> children;
   final ImpaktfullUiBottomActionsTheme? theme;
   final bool removeBottomSafeArea;
@@ -47,7 +43,4 @@ class ImpaktfullUiBottomActions extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

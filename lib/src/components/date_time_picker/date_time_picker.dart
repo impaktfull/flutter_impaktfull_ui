@@ -5,15 +5,11 @@ import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/components/date_time_picker/date_time_picker_style.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/components/time_picker/time_picker.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'date_time_picker_style.dart';
 
-part 'date_time_picker.describe.dart';
-
-class ImpaktfullUiDateTimePicker extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiDateTimePicker extends StatefulWidget {
   final DateTime? value;
   final void Function(DateTime) onChanged;
   final EdgeInsetsGeometry margin;
@@ -73,9 +69,6 @@ class ImpaktfullUiDateTimePicker extends StatefulWidget
   @override
   State<ImpaktfullUiDateTimePicker> createState() =>
       _ImpaktfullUiDateTimePickerState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiDateTimePickerState

@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/tab_bar_item/tab_bar_item_style.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'tab_bar_item_style.dart';
 
-part 'tab_bar_item.describe.dart';
-
-class ImpaktfullUiTabBarItem extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiTabBarItem extends StatefulWidget {
   final String label;
   final int index;
   final TabController controller;
@@ -26,9 +22,6 @@ class ImpaktfullUiTabBarItem extends StatefulWidget
 
   @override
   State<ImpaktfullUiTabBarItem> createState() => _ImpaktfullUiTabBarItemState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {

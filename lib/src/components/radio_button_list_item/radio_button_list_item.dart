@@ -4,15 +4,11 @@ import 'package:impaktfull_ui/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui/src/components/radio_button_list_item/radio_button_list_item_style.dart';
 import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'radio_button_list_item_style.dart';
 
-part 'radio_button_list_item.describe.dart';
-
-class ImpaktfullUiRadioButtonListItem<T> extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiRadioButtonListItem<T> extends StatelessWidget {
   final String title;
   final String? subtitle;
   final T value;
@@ -56,9 +52,6 @@ class ImpaktfullUiRadioButtonListItem<T> extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   void _onTap() => _onChanged(value);
 
