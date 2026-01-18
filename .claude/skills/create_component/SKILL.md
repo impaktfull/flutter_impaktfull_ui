@@ -130,29 +130,31 @@ class ImpaktfullUi<ComponentName> extends StatelessWidget with ComponentDescript
 
 #### Update `lib/src/theme/component_theme.dart`
 
-1. Add import:
+**Important: All additions must be in alphabetical order!**
+
+1. Add import (alphabetically):
 ```dart
 import 'package:impaktfull_ui/src/components/<component_name>/<component_name>.dart';
 ```
 
-2. Add field to `ImpaktfullUiComponentsTheme`:
+2. Add field to `ImpaktfullUiComponentsTheme` (alphabetically):
 ```dart
 final ImpaktfullUi<ComponentName>Theme <componentName>;
 ```
 
-3. Add to constructor:
+3. Add to constructor (alphabetically):
 ```dart
 required this.<componentName>,
 ```
 
-4. Add to `copyWith()`:
+4. Add to `copyWith()` (alphabetically in both parameter list and return statement):
 ```dart
 ImpaktfullUi<ComponentName>Theme? <componentName>,
 // In return:
 <componentName>: <componentName> ?? this.<componentName>,
 ```
 
-5. Add to `of<T>()`:
+5. Add to `of<T>()` (alphabetically):
 ```dart
 } else if (T == ImpaktfullUi<ComponentName>Theme) {
   return ImpaktfullUi<ComponentName>Theme.of(context) as T;
@@ -161,7 +163,7 @@ ImpaktfullUi<ComponentName>Theme? <componentName>,
 
 #### Update `lib/src/theme/theme_default.dart`
 
-Add in `DefaultTheme.withMinimalChanges()`:
+Add in `DefaultTheme.withMinimalChanges()` (alphabetically):
 
 ```dart
 <componentName>: ImpaktfullUi<ComponentName>Theme.getDefault(
@@ -176,7 +178,7 @@ Add in `DefaultTheme.withMinimalChanges()`:
 
 ### 6. Export the Component
 
-Add to `lib/impaktfull_ui.dart`:
+Add to `lib/impaktfull_ui.dart` (alphabetically within the Components section):
 
 ```dart
 export 'src/components/<component_name>/<component_name>.dart';
@@ -240,7 +242,9 @@ class <ComponentName>LibraryPrimaryInputs extends <ComponentName>LibraryInputs {
 #### Register in `example/lib/src/component_library/config/component_library.dart`
 
 ```dart
+// Add import (alphabetically):
 import 'package:impaktfull_ui_example/src/component_library/items/<component_name>/<component_name>_library_item.dart';
+
 // Add to items list (alphabetically):
 const <ComponentName>LibraryItem(),
 ```

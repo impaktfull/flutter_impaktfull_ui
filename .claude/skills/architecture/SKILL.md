@@ -47,6 +47,16 @@ All files use `snake_case`:
 - `button.describe.dart` - Component descriptor (part file)
 - `button_type.dart` - Enums/constants
 
+## Alphabetical Ordering
+
+**Always maintain alphabetical order for:**
+- Exports in `lib/impaktfull_ui.dart`
+- Fields in `lib/src/theme/component_theme.dart`
+- Constructor parameters in theme classes
+- Items in `copyWith()` methods
+- Items in library registration lists
+- Entries in `README.md` component/building block lists
+
 ## Key Patterns
 
 ### 1. Overridable Component Builder

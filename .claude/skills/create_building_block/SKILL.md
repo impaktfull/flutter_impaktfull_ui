@@ -104,7 +104,7 @@ class ImpaktfullUiBB<Name>Localizations extends ImpaktfullUiLocalizations {
 
 ### 4. Export the Building Block
 
-Add to `lib/impaktfull_ui.dart`:
+Add to `lib/impaktfull_ui.dart` (alphabetically within the Building Blocks section):
 
 ```dart
 export 'src/building_block/<name>/<name>.dart';
@@ -139,8 +139,10 @@ class <Name>BuildingBlock extends BuildingBlockLibraryItem {
 #### Register in `example/lib/src/building_block_library/config/building_block_library.dart`
 
 ```dart
+// Add import (alphabetically):
 import 'package:impaktfull_ui_example/src/building_block_library/items/<name>/<name>_building_block.dart';
-// Add to items list:
+
+// Add to items list (alphabetically):
 const <Name>BuildingBlock(),
 ```
 
