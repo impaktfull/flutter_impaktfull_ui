@@ -1,3 +1,9 @@
+# 0.76.3
+
+## Chore
+
+- Updated README.md component list with all current components
+
 # 0.76.1 - 0.76.2
 
 ## Chore
