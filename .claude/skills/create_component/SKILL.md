@@ -247,17 +247,21 @@ const <ComponentName>LibraryItem(),
 
 ### 8. Update README.md
 
-Add the component to the **Component List** section in `README.md` (alphabetically):
+Add the component to the **Component List** section in `README.md` (alphabetically, replace `<ComponentName>` with actual name):
 
 ```markdown
 - ImpaktfullUi<ComponentName>
+
+# Example: for a "Chip" component:
+- ImpaktfullUiChip
 ```
 
 If the component has sub-components, indent them:
 
 ```markdown
-- ImpaktfullUi<ComponentName>
-  - ImpaktfullUi<ComponentName>Item
+# Example: for a "Tabs" component with sub-components:
+- ImpaktfullUiTabs
+  - ImpaktfullUiTabsItem
 ```
 
 ## Checklist

@@ -146,10 +146,13 @@ const <Name>BuildingBlock(),
 
 ### 6. Update README.md
 
-Add the building block to the **Building Blocks** section in `README.md`:
+Add the building block to the **Building Blocks** section in `README.md` (replace `<Name>` with actual name):
 
 ```markdown
 - ImpaktfullUiBB<Name>
+
+# Example: for a "ResetPassword" building block:
+- ImpaktfullUiBBResetPassword
 ```
 
 ## Design Patterns
