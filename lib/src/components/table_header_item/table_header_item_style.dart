@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiTableHeaderItemTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTableHeaderItemColorTheme colors;
@@ -14,6 +15,22 @@ class ImpaktfullUiTableHeaderItemTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiTableHeaderItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.tableHeaderItem;
+
+  static ImpaktfullUiTableHeaderItemTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiTableHeaderItemTheme(
+        colors: const ImpaktfullUiTableHeaderItemColorTheme(),
+        dimens: const ImpaktfullUiTableHeaderItemDimensTheme(),
+        textStyles: ImpaktfullUiTableHeaderItemTextStylesTheme(
+          title: textStyles.onCard.text.small.semiBold,
+        ),
+      );
 }
 
 class ImpaktfullUiTableHeaderItemColorTheme {

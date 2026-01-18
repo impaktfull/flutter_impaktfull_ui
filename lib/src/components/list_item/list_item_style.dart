@@ -17,6 +17,26 @@ class ImpaktfullUiListItemTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.listItem;
+
+  static ImpaktfullUiListItemTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiListItemTheme(
+        assets: ImpaktfullUiListItemAssetsTheme(
+          chevronRight: assets.icons.chevronRight,
+        ),
+        colors: ImpaktfullUiListItemColorTheme(
+          icons: colors.primary,
+          danger: colors.destructive,
+        ),
+        dimens: const ImpaktfullUiListItemDimensTheme(),
+        textStyles: const ImpaktfullUiListItemTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiListItemAssetsTheme {

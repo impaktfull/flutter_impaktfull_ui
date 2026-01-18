@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
@@ -19,6 +19,30 @@ class ImpaktfullUiSelectableListItemTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSelectableListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.selectableListItem;
+
+  static ImpaktfullUiSelectableListItemTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiSelectableListItemTheme(
+        assets: ImpaktfullUiSelectableListItemAssetsTheme(
+          check: assets.icons.check,
+        ),
+        colors: ImpaktfullUiSelectableListItemColorTheme(
+          icons: colors.primary,
+          selected: colors.accent,
+          unselected: Colors.transparent,
+        ),
+        dimens: const ImpaktfullUiSelectableListItemDimensTheme(),
+        durations: ImpaktfullUiSelectableListItemDurationsTheme(
+          color: durations.short,
+        ),
+        textStyles: const ImpaktfullUiSelectableListItemTextStyleTheme(),
+      );
 
   ImpaktfullUiSelectableListItemTheme copyWith({
     ImpaktfullUiSelectableListItemAssetsTheme? assets,

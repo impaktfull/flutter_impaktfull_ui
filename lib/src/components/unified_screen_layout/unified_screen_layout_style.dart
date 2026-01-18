@@ -16,6 +16,26 @@ class ImpaktfullUiUnifiedScreenLayoutTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiUnifiedScreenLayoutTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.unifiedScreenLayout;
+
+  static ImpaktfullUiUnifiedScreenLayoutTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      const ImpaktfullUiUnifiedScreenLayoutTheme(
+        assets: ImpaktfullUiUnifiedScreenLayoutAssetsTheme(),
+        colors: ImpaktfullUiUnifiedScreenLayoutColorTheme(),
+        dimens: ImpaktfullUiUnifiedScreenLayoutDimensTheme(
+          centerWidthFactor: 0.8,
+          centerMinWidth: 400,
+          centerMaxWidth: 800,
+          centerPadding: EdgeInsetsDirectional.symmetric(horizontal: 16),
+        ),
+        textStyles: ImpaktfullUiUnifiedScreenLayoutTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiUnifiedScreenLayoutAssetsTheme {

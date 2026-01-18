@@ -19,6 +19,41 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSwitchTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.switchTheme;
+
+  static ImpaktfullUiSwitchTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiSwitchTheme(
+        colors: ImpaktfullUiSwitchColorTheme(
+          inactiveBackground: colors.card,
+          activeBackground: colors.accent,
+          active: colors.card,
+          inactive: colors.card,
+          border: colors.border,
+          accessibleInactiveIcon: colors.text,
+          accessibleActiveIcon: colors.accent,
+        ),
+        textStyles: const ImpaktfullUiSwitchTextStyleTheme(),
+        dimens: ImpaktfullUiSwitchDimensTheme(
+          verticalPadding: 2,
+          horizontalPadding: 2,
+          borderRadius: dimens.borderRadiusCircle,
+          thumbBorderRadius: dimens.borderRadiusCircle,
+          borderWidth: 1,
+        ),
+        durations: ImpaktfullUiSwitchDurationsTheme(
+          selected: durations.short,
+        ),
+        assets: ImpaktfullUiSwitchAssetsTheme(
+          active: assets.icons.check,
+          inactive: assets.icons.close,
+        ),
+      );
 }
 
 class ImpaktfullUiSwitchColorTheme {

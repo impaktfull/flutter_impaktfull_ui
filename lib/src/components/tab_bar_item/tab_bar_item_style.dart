@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTabBarItemAssetsTheme assets;
@@ -18,6 +19,30 @@ class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiTabBarItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.tabBarItem;
+
+  static ImpaktfullUiTabBarItemTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiTabBarItemTheme(
+        assets: const ImpaktfullUiTabBarItemAssetsTheme(),
+        colors: ImpaktfullUiTabBarItemColorTheme(
+          background: colors.accent,
+        ),
+        dimens: ImpaktfullUiTabBarItemDimensTheme(
+          selectedMarkerBorderRadius: dimens.borderRadiusExtraSmall,
+        ),
+        durations: ImpaktfullUiTabBarItemDurationsTheme(
+          selected: durations.short,
+        ),
+        textStyles: ImpaktfullUiTabBarItemTextStyleTheme(
+          label: textStyles.onCard.text.small.semiBold,
+        ),
+      );
 }
 
 class ImpaktfullUiTabBarItemAssetsTheme {

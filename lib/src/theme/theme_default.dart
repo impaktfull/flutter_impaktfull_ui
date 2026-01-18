@@ -624,7 +624,7 @@ class DefaultTheme {
           ),
           textStyles: ImpaktfullUiFluidPaddingTextStyleTheme(),
         ),
-        gallery: ImpaktfullUiGalleryTheme.defaultTheme(
+        gallery: ImpaktfullUiGalleryTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,

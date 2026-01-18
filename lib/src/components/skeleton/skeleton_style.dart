@@ -16,6 +16,25 @@ class ImpaktfullUiSkeletonTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSkeletonTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.skeleton;
+
+  static ImpaktfullUiSkeletonTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiSkeletonTheme(
+        assets: const ImpaktfullUiSkeletonAssetsTheme(),
+        colors: ImpaktfullUiSkeletonColorTheme(
+          background: colors.card2,
+        ),
+        dimens: ImpaktfullUiSkeletonDimensTheme(
+          borderRadius: dimens.borderRadius,
+        ),
+        textStyles: const ImpaktfullUiSkeletonTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiSkeletonAssetsTheme {

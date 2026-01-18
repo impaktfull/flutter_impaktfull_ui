@@ -17,6 +17,29 @@ class ImpaktfullUiAvatarTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiAvatarTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.avatar;
+
+  static ImpaktfullUiAvatarTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiAvatarTheme(
+        assets: ImpaktfullUiAvatarAssetsTheme(
+          placeholder: assets.icons.user,
+        ),
+        colors: ImpaktfullUiAvatarColorTheme(
+          border: colors.border,
+          background: colors.canvas,
+          placeholder: colors.text,
+        ),
+        dimens: ImpaktfullUiAvatarDimensTheme(
+          borderRadius: dimens.borderRadiusCircle,
+        ),
+        textStyles: const ImpaktfullUiAvatarTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiAvatarAssetsTheme {

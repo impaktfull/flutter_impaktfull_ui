@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiCmsHeaderAssetsTheme assets;
@@ -19,6 +20,34 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiCmsHeaderTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.cmsHeader;
+
+  static ImpaktfullUiCmsHeaderTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiCmsHeaderTheme(
+        assets: ImpaktfullUiCmsHeaderAssetsTheme(
+          back: assets.icons.arrowLeft,
+          drawerMenu: assets.icons.list,
+        ),
+        colors: ImpaktfullUiCmsHeaderColorTheme(
+          background: colors.card,
+          border: colors.border,
+          icons: colors.text,
+        ),
+        dimens: const ImpaktfullUiCmsHeaderDimensTheme(),
+        shadows: ImpaktfullUiCmsHeaderShadowsTheme(
+          background: shadows.extraSmall,
+        ),
+        textStyles: ImpaktfullUiCmsHeaderTextStylesTheme(
+          title: textStyles.onCard.text.large,
+          subtitle: textStyles.onCard.text.small.light,
+        ),
+      );
 }
 
 class ImpaktfullUiCmsHeaderAssetsTheme {

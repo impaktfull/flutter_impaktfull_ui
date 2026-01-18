@@ -18,6 +18,28 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiTooltipTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.tooltip;
+
+  static ImpaktfullUiTooltipTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiTooltipTheme(
+        colors: ImpaktfullUiTooltipColorTheme(
+          background: colors.card,
+        ),
+        textStyles: const ImpaktfullUiTooltipTextStyleTheme(),
+        dimens: ImpaktfullUiTooltipDimensTheme(
+          borderRadius: dimens.borderRadius,
+        ),
+        durations: ImpaktfullUiTooltipDurationTheme(
+          wait: durations.long,
+        ),
+        assets: const ImpaktfullUiTooltipAssetsTheme(),
+      );
 }
 
 class ImpaktfullUiTooltipColorTheme {

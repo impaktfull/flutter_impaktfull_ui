@@ -19,6 +19,33 @@ class ImpaktfullUiPinCodeTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiPinCodeTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.pinCode;
+
+  static ImpaktfullUiPinCodeTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiPinCodeTheme(
+        assets: ImpaktfullUiPinCodeAssetsTheme(
+          backspace: assets.icons.backspace,
+          check: assets.icons.check,
+        ),
+        colors: ImpaktfullUiPinCodeColorTheme(
+          valueBackgroundSelected: colors.accent,
+          valueBackground: colors.card,
+          valueBorder: colors.border,
+        ),
+        dimens: ImpaktfullUiPinCodeDimensTheme(
+          valueBorderRadius: dimens.borderRadius,
+        ),
+        durations: ImpaktfullUiPinCodeDurationsTheme(
+          submitOpacity: durations.short,
+        ),
+        textStyles: const ImpaktfullUiPinCodeTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiPinCodeAssetsTheme {
