@@ -1,15 +1,10 @@
-# 0.76.4
+# 0.76.3
 
 ## Chore
 
 - Removed `ComponentDescriptorMixin` and all `describe` functionality from components
 - Removed 93 `.describe.dart` part files
 - Updated CLAUDE skills documentation
-
-# 0.76.3
-
-## Chore
-
 - Updated README.md component list with all current components
 
 # 0.76.1 - 0.76.2
