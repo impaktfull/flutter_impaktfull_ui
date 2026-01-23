@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiRadioButtonTheme extends ImpaktfullUiComponentTheme {
@@ -16,6 +16,29 @@ class ImpaktfullUiRadioButtonTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiRadioButtonTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.radioButton;
+
+  static ImpaktfullUiRadioButtonTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiRadioButtonTheme(
+        assets: const ImpaktfullUiRadioButtonAssetsTheme(),
+        colors: ImpaktfullUiRadioButtonColorTheme(
+          selected: colors.accent,
+          unselected: colors.card,
+          border: colors.border,
+          centerSelectedBackground: colors.card,
+          centerUnSelectedBackground: Colors.transparent,
+        ),
+        dimens: ImpaktfullUiRadioButtonDimensTheme(
+          borderRadius: dimens.borderRadiusCircle,
+        ),
+        textStyles: const ImpaktfullUiRadioButtonTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiRadioButtonAssetsTheme {

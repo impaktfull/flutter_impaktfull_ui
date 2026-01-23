@@ -16,6 +16,23 @@ class ImpaktfullUiCommandMenuTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiCommandMenuTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.commandMenu;
+
+  static ImpaktfullUiCommandMenuTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiCommandMenuTheme(
+        assets: const ImpaktfullUiCommandMenuAssetsTheme(),
+        colors: const ImpaktfullUiCommandMenuColorTheme(),
+        dimens: ImpaktfullUiCommandMenuDimensTheme(
+          windowBorderRadius: dimens.borderRadiusLarge,
+        ),
+        textStyles: const ImpaktfullUiCommandMenuTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiCommandMenuAssetsTheme {

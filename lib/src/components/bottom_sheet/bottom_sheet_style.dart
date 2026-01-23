@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiBottomSheetTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiBottomSheetAssetsTheme assets;
@@ -17,6 +19,38 @@ class ImpaktfullUiBottomSheetTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiBottomSheetTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.bottomSheet;
+
+  static ImpaktfullUiBottomSheetTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiBottomSheetTheme(
+        assets: ImpaktfullUiBottomSheetAssetsTheme(
+          close: assets.icons.close,
+        ),
+        colors: ImpaktfullUiBottomSheetColorTheme(
+          background: colors.card,
+          handle: colors.text,
+          icons: colors.text,
+        ),
+        dimens: ImpaktfullUiBottomSheetDimensTheme(
+          borderRadius: dimens.borderRadius.copyWith(
+            bottomStart: Radius.zero,
+            bottomEnd: Radius.zero,
+          ),
+          padding: const EdgeInsetsDirectional.all(16),
+          closeIconButtonPadding: const EdgeInsetsDirectional.all(4),
+          handleBorderRadius: dimens.borderRadiusExtraSmall,
+        ),
+        textStyles: ImpaktfullUiBottomSheetTextStyleTheme(
+          title: textStyles.onCanvas.display.small.semiBold,
+          subtitle: textStyles.onCanvas.text.small,
+        ),
+      );
 }
 
 class ImpaktfullUiBottomSheetAssetsTheme {

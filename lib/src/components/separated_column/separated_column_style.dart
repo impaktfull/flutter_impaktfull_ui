@@ -16,6 +16,32 @@ class ImpaktfullUiSeparatedColumnTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSeparatedColumnTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.separatedColumn;
+
+  static ImpaktfullUiSeparatedColumnTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiSeparatedColumnTheme(
+        assets: const ImpaktfullUiSeparatedColumnAssetsTheme(),
+        colors: ImpaktfullUiSeparatedColumnColorTheme(
+          background: colors.card,
+          border: colors.border,
+        ),
+        dimens: ImpaktfullUiSeparatedColumnDimensTheme(
+          borderRadius: dimens.borderRadius,
+          titleMargin: const EdgeInsetsDirectional.only(
+            start: 16,
+            end: 16,
+            top: 16,
+          ),
+          separatorMargin: const EdgeInsets.symmetric(horizontal: 16),
+        ),
+        textStyles: const ImpaktfullUiSeparatedColumnTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiSeparatedColumnAssetsTheme {

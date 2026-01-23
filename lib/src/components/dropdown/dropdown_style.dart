@@ -17,6 +17,31 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiDropdownTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.dropdown;
+
+  static ImpaktfullUiDropdownTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiDropdownTheme(
+        colors: ImpaktfullUiDropdownColorTheme(
+          menuBackground: colors.card,
+          menuBorder: colors.border,
+        ),
+        shadows: ImpaktfullUiDropdownShadowTheme(
+          overlay: shadows.large,
+        ),
+        dimens: ImpaktfullUiDropdownDimensTheme(
+          borderRadius: dimens.borderRadius,
+        ),
+        assets: ImpaktfullUiDropdownAssetsTheme(
+          dropDown: assets.icons.chevronDown,
+          dropUp: assets.icons.chevronUp,
+        ),
+      );
 }
 
 class ImpaktfullUiDropdownColorTheme {

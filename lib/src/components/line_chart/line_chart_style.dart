@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiLineChartTheme extends ImpaktfullUiComponentTheme {
@@ -16,6 +16,26 @@ class ImpaktfullUiLineChartTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiLineChartTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.lineChart;
+
+  static ImpaktfullUiLineChartTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiLineChartTheme(
+        assets: const ImpaktfullUiLineChartAssetsTheme(),
+        colors: ImpaktfullUiLineChartColorTheme(
+          lineColor: colors.accent,
+          backgroundColor: Colors.transparent,
+        ),
+        dimens: const ImpaktfullUiLineChartDimensTheme(
+          strokeWidth: 2,
+        ),
+        textStyles: const ImpaktfullUiLineChartTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiLineChartAssetsTheme {

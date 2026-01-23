@@ -16,6 +16,23 @@ class ImpaktfullUiScreenTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiScreenTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.screen;
+
+  static ImpaktfullUiScreenTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiScreenTheme(
+        assets: const ImpaktfullUiScreenAssetsTheme(),
+        colors: ImpaktfullUiScreenColorTheme(
+          background: colors.canvas,
+        ),
+        dimens: const ImpaktfullUiScreenDimensTheme(),
+        textStyles: const ImpaktfullUiScreenTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiScreenAssetsTheme {

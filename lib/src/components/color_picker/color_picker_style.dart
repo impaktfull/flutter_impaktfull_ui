@@ -16,6 +16,24 @@ class ImpaktfullUiColorPickerTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiColorPickerTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.colorPicker;
+
+  static ImpaktfullUiColorPickerTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiColorPickerTheme(
+        assets: const ImpaktfullUiColorPickerAssetsTheme(),
+        colors: const ImpaktfullUiColorPickerColorTheme(),
+        dimens: ImpaktfullUiColorPickerDimensTheme(
+          simpleColorPickerItemBorderRadius: dimens.borderRadiusCircle,
+          simpleColorPickerItemSize: 32,
+        ),
+        textStyles: const ImpaktfullUiColorPickerTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiColorPickerAssetsTheme {

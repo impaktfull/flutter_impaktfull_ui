@@ -22,7 +22,7 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
   static ImpaktfullUiGalleryTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.gallery;
 
-  static ImpaktfullUiGalleryTheme defaultTheme({
+  static ImpaktfullUiGalleryTheme getDefault({
     required ImpaktfullUiAssetTheme assets,
     required ImpaktfullUiColorTheme colors,
     required ImpaktfullUiTextStylesTheme textStyles,

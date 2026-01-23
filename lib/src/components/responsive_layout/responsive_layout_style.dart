@@ -16,6 +16,26 @@ class ImpaktfullUiResponsiveLayoutTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiResponsiveLayoutTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.responsiveLayout;
+
+  static ImpaktfullUiResponsiveLayoutTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      const ImpaktfullUiResponsiveLayoutTheme(
+        assets: ImpaktfullUiResponsiveLayoutAssetsTheme(),
+        colors: ImpaktfullUiResponsiveLayoutColorTheme(),
+        dimens: ImpaktfullUiResponsiveLayoutDimensTheme(
+          breakpointSmall: 600,
+          breakpointMedium: 1024,
+          breakpointLarge: 1440,
+          breakpointExtraLarge: 1920,
+        ),
+        textStyles: ImpaktfullUiResponsiveLayoutTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiResponsiveLayoutAssetsTheme {

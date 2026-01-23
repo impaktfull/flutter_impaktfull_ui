@@ -14,6 +14,20 @@ class ImpaktfullUiTableRowTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiTableRowTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.tableRow;
+
+  static ImpaktfullUiTableRowTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      const ImpaktfullUiTableRowTheme(
+        colors: ImpaktfullUiTableRowColorTheme(),
+        dimens: ImpaktfullUiTableRowDimensTheme(),
+        textStyles: ImpaktfullUiTableRowTextStylesTheme(),
+      );
 }
 
 class ImpaktfullUiTableRowColorTheme {

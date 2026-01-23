@@ -16,6 +16,23 @@ class ImpaktfullUiSwitchListItemTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSwitchListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.switchListItem;
+
+  static ImpaktfullUiSwitchListItemTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiSwitchListItemTheme(
+        assets: const ImpaktfullUiSwitchListItemAssetsTheme(),
+        colors: ImpaktfullUiSwitchListItemColorTheme(
+          icons: colors.primary,
+        ),
+        dimens: const ImpaktfullUiSwitchListItemDimensTheme(),
+        textStyles: const ImpaktfullUiSwitchListItemTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiSwitchListItemAssetsTheme {
