@@ -72,10 +72,7 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
       padding: componentTheme.dimens.columnHeaderPadding,
       decoration: BoxDecoration(
         color: widget.config.color.withValues(alpha: 0.15),
-        borderRadius: BorderRadius.only(
-          topLeft: componentTheme.dimens.columnBorderRadius.topLeft,
-          topRight: componentTheme.dimens.columnBorderRadius.topRight,
-        ),
+        borderRadius: componentTheme.dimens.columnBorderRadius,
       ),
       child: ImpaktfullUiAutoLayout.horizontal(
         spacing: 8,
@@ -174,30 +171,25 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
                 : Colors.transparent,
             borderRadius: componentTheme.dimens.columnBorderRadius,
           ),
-          child: ListView.builder(
+          child: ListView.separated(
             padding: componentTheme.dimens.columnContentPadding,
             itemCount: widget.items.length +
                 (isHovering && _dragTargetIndex != null ? 1 : 0),
+            separatorBuilder: (context, index) =>
+                SizedBox(height: componentTheme.dimens.itemSpacing),
             itemBuilder: (context, index) {
-              // Show drop indicator
               if (isHovering &&
                   _dragTargetIndex != null &&
                   index == _dragTargetIndex) {
-                return Padding(
-                  padding: EdgeInsets.only(
-                      bottom: componentTheme.dimens.itemSpacing),
-                  child: Container(
-                    height: 4,
-                    margin: const EdgeInsets.symmetric(vertical: 4),
-                    decoration: BoxDecoration(
-                      color: widget.config.color,
-                      borderRadius: BorderRadius.circular(2),
-                    ),
+                return Container(
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: widget.config.color,
+                    borderRadius: BorderRadius.circular(2),
                   ),
                 );
               }
 
-              // Adjust index if drop indicator is shown before this item
               final itemIndex = isHovering &&
                       _dragTargetIndex != null &&
                       index > _dragTargetIndex!
@@ -210,32 +202,25 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
               final isDraggedItem = candidateData.isNotEmpty &&
                   candidateData.first?.id == item.id;
               final itemWidget = _itemBuilder(item);
-              return Padding(
-                padding: EdgeInsets.only(
-                  bottom: itemIndex < widget.items.length - 1
-                      ? componentTheme.dimens.itemSpacing
-                      : 0,
+              return Draggable<ImpaktfullUiKanbanBoardItem<T>>(
+                data: item,
+                feedback: Material(
+                  elevation: 8,
+                  borderRadius: componentTheme.dimens.cardBorderRadius,
+                  child: SizedBox(
+                    width: componentTheme.dimens.columnWidth -
+                        componentTheme.dimens.columnContentPadding.horizontal,
+                    child: itemWidget,
+                  ),
                 ),
-                child: Draggable<ImpaktfullUiKanbanBoardItem<T>>(
-                  data: item,
-                  feedback: Material(
-                    elevation: 8,
-                    borderRadius: componentTheme.dimens.cardBorderRadius,
-                    child: SizedBox(
-                      width: componentTheme.dimens.columnWidth -
-                          componentTheme.dimens.columnContentPadding.horizontal,
-                      child: itemWidget,
-                    ),
-                  ),
-                  childWhenDragging: Opacity(
-                    opacity: 0.3,
-                    child: itemWidget,
-                  ),
-                  child: AnimatedOpacity(
-                    duration: const Duration(milliseconds: 200),
-                    opacity: isDraggedItem ? 0.3 : 1.0,
-                    child: itemWidget,
-                  ),
+                childWhenDragging: Opacity(
+                  opacity: 0.3,
+                  child: itemWidget,
+                ),
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 200),
+                  opacity: isDraggedItem ? 0.3 : 1.0,
+                  child: itemWidget,
                 ),
               );
             },

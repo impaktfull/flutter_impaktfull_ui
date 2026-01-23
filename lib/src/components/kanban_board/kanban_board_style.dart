@@ -46,7 +46,7 @@ class ImpaktfullUiKanbanBoardTheme extends ImpaktfullUiComponentTheme {
           columnHeaderPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           columnContentPadding: const EdgeInsets.all(12),
-          cardBorderRadius: BorderRadius.circular(8),
+          cardBorderRadius: dimens.borderRadius,
           cardBorderWidth: 1,
           cardPadding: const EdgeInsets.all(12),
           cardSpacing: 4,
@@ -85,11 +85,11 @@ class ImpaktfullUiKanbanBoardDimensTheme {
   final EdgeInsets boardPadding;
   final double columnWidth;
   final double columnSpacing;
-  final BorderRadius columnBorderRadius;
+  final BorderRadiusGeometry columnBorderRadius;
   final double columnBorderWidth;
   final EdgeInsets columnHeaderPadding;
   final EdgeInsets columnContentPadding;
-  final BorderRadius cardBorderRadius;
+  final BorderRadiusGeometry cardBorderRadius;
   final double cardBorderWidth;
   final EdgeInsets cardPadding;
   final double cardSpacing;
