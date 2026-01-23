@@ -7,16 +7,12 @@ import 'package:impaktfull_ui/src/components/confetti/painter/asset_painter.dart
 import 'package:impaktfull_ui/src/components/confetti/painter/confetti_painter.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/after_layout/after_layout.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'confetti_style.dart';
 export 'model/confetti_type.dart';
 
-part 'confetti.describe.dart';
-
-class ImpaktfullUiConfetti extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiConfetti extends StatefulWidget {
   final ImpaktfullUiAsset? asset;
 
   /// The type of confetti to display. If not provided, a random type will be used.
@@ -46,9 +42,6 @@ class ImpaktfullUiConfetti extends StatefulWidget
 
   @override
   State<ImpaktfullUiConfetti> createState() => _ImpaktfullUiConfettiState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>

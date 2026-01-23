@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/slider/model/slider_legend_alignment.dart';
 import 'package:impaktfull_ui/src/components/slider/slider_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'slider_style.dart';
 export 'model/slider_legend_alignment.dart';
 
-part 'slider.describe.dart';
-
-class ImpaktfullUiSlider extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiSlider extends StatefulWidget {
   final ImpaktfullUiSliderTheme? theme;
   final double value;
   final double min;
@@ -32,9 +29,6 @@ class ImpaktfullUiSlider extends StatefulWidget with ComponentDescriptorMixin {
 
   @override
   State<ImpaktfullUiSlider> createState() => _ImpaktfullUiSliderState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {

@@ -6,15 +6,11 @@ import 'package:impaktfull_ui/src/components/screen/screen.dart';
 import 'package:impaktfull_ui/src/components/sidebar_navigation_item/sidebar_navigation_item_style.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'sidebar_navigation_item_style.dart';
 
-part 'sidebar_navigation_item.describe.dart';
-
-class ImpaktfullUiSidebarNavigationItem extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSidebarNavigationItem extends StatefulWidget {
   final ImpaktfullUiAsset? leading;
   final String title;
   final List<Widget> items;
@@ -35,9 +31,6 @@ class ImpaktfullUiSidebarNavigationItem extends StatefulWidget
   @override
   State<ImpaktfullUiSidebarNavigationItem> createState() =>
       _ImpaktfullUiSidebarNavigationItemState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiSidebarNavigationItemState

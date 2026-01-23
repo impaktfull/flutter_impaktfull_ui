@@ -27,19 +27,14 @@ class ComponentsLibraryVariantDescriptor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final child = this.child;
-    var text = title;
-    if (text == null && child is ComponentDescriptorMixin) {
-      text = (child as ComponentDescriptorMixin).describe(context);
-    }
     return ImpaktfullUiAutoLayout.vertical(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       spacing: 8,
       children: [
-        if (text != null) ...[
+        if (title != null) ...[
           Text(
-            text,
+            title!,
             style: ImpaktfullUiTheme.of(context)
                 .textStyles
                 .onCanvas

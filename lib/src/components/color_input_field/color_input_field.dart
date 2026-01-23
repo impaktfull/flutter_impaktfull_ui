@@ -6,15 +6,11 @@ import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'color_input_field_style.dart';
 
-part 'color_input_field.describe.dart';
-
-class ImpaktfullUiColorInputField extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiColorInputField extends StatefulWidget {
   final String? label;
   final Color? initialColor;
   final ValueChanged<Color>? onChanged;
@@ -37,8 +33,6 @@ class ImpaktfullUiColorInputField extends StatefulWidget
   @override
   State<ImpaktfullUiColorInputField> createState() =>
       _ImpaktfullUiColorInputFieldState();
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiColorInputFieldState

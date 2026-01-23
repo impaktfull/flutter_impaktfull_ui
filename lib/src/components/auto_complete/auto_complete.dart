@@ -9,10 +9,7 @@ import 'package:impaktfull_ui/src/components/auto_complete/widget/auto_complete_
 export 'auto_complete_style.dart';
 export 'controller/auto_complete_controller.dart';
 
-part 'auto_complete.describe.dart';
-
-class ImpaktfullUiAutoComplete<T> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiAutoComplete<T> extends StatefulWidget {
   final ImpaktfullUiAutoCompleteController? controller;
   final Widget? Function()? leadingBuilder;
   final List<Widget> Function()? topBuilder;
@@ -46,9 +43,6 @@ class ImpaktfullUiAutoComplete<T> extends StatefulWidget
   @override
   State<ImpaktfullUiAutoComplete<T>> createState() =>
       _ImpaktfullUiAutoCompleteState<T>();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiAutoCompleteState<T>

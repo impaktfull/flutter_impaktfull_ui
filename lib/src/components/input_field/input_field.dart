@@ -8,7 +8,6 @@ import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/controller/virtual_keyboard_text_edit_controller.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
 import 'package:impaktfull_ui/src/widget/input/base_input_field.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
@@ -17,13 +16,10 @@ export 'input_field_style.dart';
 export 'action/input_field_action.dart';
 export 'validator/input_field_validator.dart';
 
-part 'input_field.describe.dart';
-
 typedef InputFieldValidator = ImpaktfullUiInputFieldValidatorResult Function(
     String value);
 
-class ImpaktfullUiInputField extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiInputField extends StatefulWidget {
   final String? label;
   final List<Widget> labelActions;
   final String? placeholder;
@@ -91,9 +87,6 @@ class ImpaktfullUiInputField extends StatefulWidget
 
   @override
   State<ImpaktfullUiInputField> createState() => _ImpaktfullUiInputFieldState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {

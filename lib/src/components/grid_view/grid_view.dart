@@ -8,13 +8,10 @@ import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator
 import 'package:impaktfull_ui/src/components/localization/localization_provider.dart';
 import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'grid_view_style.dart';
 export 'model/grid_view_placeholder_state.dart';
-
-part 'grid_view.describe.dart';
 
 class ImpaktfullUiGridViewConfig {
   final double maxWidth;
@@ -26,8 +23,7 @@ class ImpaktfullUiGridViewConfig {
   });
 }
 
-class ImpaktfullUiGridView<T> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiGridView<T> extends StatefulWidget {
   final List<T> items;
   final int Function(BuildContext, ImpaktfullUiGridViewConfig) crossAxisCount;
   final double Function(BuildContext, ImpaktfullUiGridViewConfig)?
@@ -87,9 +83,6 @@ class ImpaktfullUiGridView<T> extends StatefulWidget
   @override
   State<ImpaktfullUiGridView<T>> createState() =>
       _ImpaktfullUiGridViewState<T>();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiGridViewState<T> extends State<ImpaktfullUiGridView<T>> {

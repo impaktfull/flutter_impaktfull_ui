@@ -4,15 +4,11 @@ import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.d
 import 'package:impaktfull_ui/src/components/switch/switch.dart';
 import 'package:impaktfull_ui/src/components/switch_list_item/switch_list_item_style.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'switch_list_item_style.dart';
 
-part 'switch_list_item.describe.dart';
-
-class ImpaktfullUiSwitchListItem extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSwitchListItem extends StatelessWidget {
   final String title;
   final String? subtitle;
   final bool value;
@@ -53,9 +49,6 @@ class ImpaktfullUiSwitchListItem extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   void _onTap() => _onChanged(!value);
 

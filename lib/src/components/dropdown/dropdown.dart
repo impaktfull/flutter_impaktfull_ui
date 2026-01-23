@@ -3,11 +3,9 @@ import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_overlay.dart';
 import 'package:impaktfull_ui/src/components/dropdown/dropdown_style.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'dropdown_style.dart';
-part 'dropdown.describe.dart';
 
 enum ImpaktfullUiAlignment {
   bottomCenter(Alignment.bottomCenter),
@@ -29,8 +27,7 @@ class ImpaktfullUiDropdownItem<T> {
   });
 }
 
-class ImpaktfullUiDropdown<T> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiDropdown<T> extends StatefulWidget {
   final double? childWidth;
   final double? height;
   final Widget? child;
@@ -84,8 +81,6 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget
             'Either button or buttonText must be provided');
 
   @override
-  String describe(BuildContext context) => _describeInstance(context, this);
-
   @override
   State<ImpaktfullUiDropdown<T>> createState() =>
       _ImpaktfullUiDropdownState<T>();

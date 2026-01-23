@@ -13,17 +13,13 @@ import 'package:impaktfull_ui/src/components/image_crop/model/crop_info.dart';
 import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_overlay.dart';
 import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_square_overlay.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 export 'image_crop_style.dart';
 
-part 'image_crop.describe.dart';
-
-class ImpaktfullUiImageCrop extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiImageCrop extends StatefulWidget {
   final ImpaktfullUiImageCropController? controller;
   final String? imageUrl;
   final double size;
@@ -44,9 +40,6 @@ class ImpaktfullUiImageCrop extends StatefulWidget
 
   @override
   State<ImpaktfullUiImageCrop> createState() => _ImpaktfullUiImageCropState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {

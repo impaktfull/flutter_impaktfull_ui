@@ -5,16 +5,12 @@ import 'package:impaktfull_ui/src/components/option_selector/option_selector.dar
 import 'package:impaktfull_ui/src/components/page_route/adaptive/adaptive_page_route.dart';
 import 'package:impaktfull_ui/src/components/screen/screen.dart';
 import 'package:impaktfull_ui/src/components/selectable_list_item/selectable_list_item.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/responsive/responsive_extension.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'option_selector_style.dart';
 
-part 'option_selector.describe.dart';
-
-class ImpaktfullUiOptionSelector<T> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
   final String Function(T)? titleBuilder;
   final List<T> options;
   final T? selectedValue;
@@ -77,9 +73,6 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget
   @override
   State<ImpaktfullUiOptionSelector<T>> createState() =>
       _ImpaktfullUiOptionSelectorState<T>();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiOptionSelectorState<T>

@@ -4,15 +4,11 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/components/time_picker/time_picker_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'time_picker_style.dart';
 
-part 'time_picker.describe.dart';
-
-class ImpaktfullUiTimePicker extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiTimePicker extends StatefulWidget {
   final String? label;
   final TimeOfDay? value;
   final ValueChanged<TimeOfDay> onChanged;
@@ -28,9 +24,6 @@ class ImpaktfullUiTimePicker extends StatefulWidget
 
   @override
   State<ImpaktfullUiTimePicker> createState() => _ImpaktfullUiTimePickerState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiTimePickerState extends State<ImpaktfullUiTimePicker> {

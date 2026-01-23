@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
-part 'responsive_row.describe.dart';
-
-class ImpaktfullUiResponsiveRow extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiResponsiveRow extends StatelessWidget {
   final List<Widget> children;
   final double verticalSpacing;
   final double horizontalSpacing;
@@ -91,7 +87,4 @@ class ImpaktfullUiResponsiveRow extends StatelessWidget
       ],
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

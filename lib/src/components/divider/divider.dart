@@ -1,13 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/components/divider/divider.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'divider_style.dart';
-part 'divider.describe.dart';
 
-class ImpaktfullUiDivider extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiDivider extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final ImpaktfullUiDividerTheme? theme;
   final bool vertical;
@@ -32,7 +29,4 @@ class ImpaktfullUiDivider extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

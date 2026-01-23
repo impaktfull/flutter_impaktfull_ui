@@ -6,16 +6,12 @@ import 'package:impaktfull_ui/src/components/date_input_field/date_input_field_s
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'date_input_field_style.dart';
 
-part 'date_input_field.describe.dart';
-
-class ImpaktfullUiDateInputField extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiDateInputField extends StatefulWidget {
   final DateTime? date;
   final ValueChanged<DateTime?> onDateSelected;
   final String dateFormat;
@@ -50,9 +46,6 @@ class ImpaktfullUiDateInputField extends StatefulWidget
   @override
   State<ImpaktfullUiDateInputField> createState() =>
       _ImpaktfullUiDateInputFieldState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiDateInputFieldState

@@ -3,15 +3,11 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/divider/divider.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/components/separated_column/separated_column_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'separated_column_style.dart';
 
-part 'separated_column.describe.dart';
-
-class ImpaktfullUiSeparatedColumn extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSeparatedColumn extends StatelessWidget {
   final String? title;
   final List<Widget> children;
   final bool showFirstDivider;
@@ -87,7 +83,4 @@ class ImpaktfullUiSeparatedColumn extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

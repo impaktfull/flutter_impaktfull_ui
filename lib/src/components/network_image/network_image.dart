@@ -1,15 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/network_image/network_image_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'network_image_style.dart';
 
-part 'network_image.describe.dart';
-
-class ImpaktfullUiNetworkImage extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiNetworkImage extends StatelessWidget {
   final String url;
   final double? height;
   final double? width;
@@ -76,7 +72,4 @@ class ImpaktfullUiNetworkImage extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

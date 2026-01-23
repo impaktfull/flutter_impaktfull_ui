@@ -3,15 +3,11 @@ import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/placeholder/placeholder_style.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'placeholder_style.dart';
 
-part 'placeholder.describe.dart';
-
-class ImpaktfullUiPlaceholder extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiPlaceholder extends StatelessWidget {
   final ImpaktfullUiAsset? asset;
   final WidgetBuilder? assetBuilder;
   final String? title;
@@ -96,7 +92,4 @@ class ImpaktfullUiPlaceholder extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

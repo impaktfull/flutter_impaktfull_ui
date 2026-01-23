@@ -2,15 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'horizontal_tabs_style.dart';
 
-part 'horizontal_tabs.describe.dart';
-
-class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
   final T selectedValue;
   final ValueChanged<T> onTabSelected;
   final List<ImpaktfullUiHorizontalTabConfig<T>> tabs;
@@ -56,7 +52,4 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget
     if (selectedValue == value) return;
     onTabSelected(value);
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

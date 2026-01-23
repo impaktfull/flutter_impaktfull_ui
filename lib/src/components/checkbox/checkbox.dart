@@ -3,15 +3,11 @@ import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox_style.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox_type.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'checkbox_style.dart';
 
-part 'checkbox.describe.dart';
-
-class ImpaktfullUiCheckBox extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiCheckBox extends StatelessWidget {
   final CheckboxType type;
   final bool? value;
   final ValueChanged<bool>? onChanged;
@@ -118,9 +114,6 @@ class ImpaktfullUiCheckBox extends StatelessWidget
     if (isSelected) return theme.colors.activeColor;
     return theme.colors.backgroundColor;
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   void _onTap() {
     if (value == true) {

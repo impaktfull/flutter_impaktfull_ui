@@ -6,17 +6,13 @@ import 'package:impaktfull_ui/src/components/date_picker/date_picker_style.dart'
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_type.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_page.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/edge_insets_geometry_extension.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:intl/intl.dart';
 
 export 'date_picker_style.dart';
 
-part 'date_picker.describe.dart';
-
-class ImpaktfullUiDatePicker extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiDatePicker extends StatefulWidget {
   final DateTime? selectedStartDate;
   final DateTime? selectedEndDate;
   final ValueChanged<DateTime?> onStartDateChanged;
@@ -145,9 +141,6 @@ class ImpaktfullUiDatePicker extends StatefulWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {

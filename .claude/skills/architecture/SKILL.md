@@ -44,7 +44,6 @@ tool/
 All files use `snake_case`:
 - `button.dart` - Main component file
 - `button_style.dart` - Theme/style definitions
-- `button.describe.dart` - Component descriptor (part file)
 - `button_type.dart` - Enums/constants
 
 ## Alphabetical Ordering
@@ -73,18 +72,7 @@ ImpaktfullUiOverridableComponentBuilder<ImpaktfullUiButtonTheme>(
 )
 ```
 
-### 2. Component Descriptor Mixin
-
-Components implement `ComponentDescriptorMixin` for debugging/inspection:
-
-```dart
-class ImpaktfullUiButton extends StatelessWidget with ComponentDescriptorMixin {
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
-}
-```
-
-### 3. Localization Provider
+### 2. Localization Provider
 
 Building blocks use `ImpaktfullUiLocalizationProvider` for i18n:
 
@@ -95,7 +83,7 @@ ImpaktfullUiLocalizationProvider(
 )
 ```
 
-### 4. Asset System
+### 3. Asset System
 
 ```dart
 // Defining assets
@@ -106,7 +94,7 @@ final svg = ImpaktfullUiAsset.svg('assets/icon.svg');
 ImpaktfullUiAssetWidget(asset: icon, color: Colors.blue, size: 24)
 ```
 
-### 5. Responsive Layout
+### 4. Responsive Layout
 
 ```dart
 if (ImpaktfullUiResponsiveLayout.isMediumOrSmaller(context)) {

@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/bottom_sheet/bottom_sheet_style.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'bottom_sheet_style.dart';
 
-part 'bottom_sheet.describe.dart';
-
-class ImpaktfullUiBottomSheet extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiBottomSheet extends StatelessWidget {
   final String? title;
   final String? subtitle;
   final bool hasClose;
@@ -234,9 +230,6 @@ class ImpaktfullUiBottomSheet extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   ImpaktfullUiAutoLayoutOrientation _getActionsOrientation(double width) {
     if (actions.length > 2) {
