@@ -32,6 +32,7 @@ import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart'
 import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/introduction/introduction.dart';
+import 'package:impaktfull_ui/src/components/kanban_board/kanban_board.dart';
 import 'package:impaktfull_ui/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui/src/components/loading_error_data/loading_error_data.dart';
@@ -124,6 +125,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiImageCropTheme imageCrop;
   final ImpaktfullUiInputFieldTheme inputField;
   final ImpaktfullUiIntroductionTheme introduction;
+  final ImpaktfullUiKanbanBoardTheme kanbanBoard;
   final ImpaktfullUiLineChartTheme lineChart;
   final ImpaktfullUiListItemTheme listItem;
   final ImpaktfullUiListViewTheme listView;
@@ -210,6 +212,7 @@ class ImpaktfullUiComponentsTheme {
     required this.imageCrop,
     required this.inputField,
     required this.introduction,
+    required this.kanbanBoard,
     required this.lineChart,
     required this.listItem,
     required this.listView,
@@ -297,6 +300,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiImageCropTheme? imageCrop,
     ImpaktfullUiInputFieldTheme? inputField,
     ImpaktfullUiIntroductionTheme? introduction,
+    ImpaktfullUiKanbanBoardTheme? kanbanBoard,
     ImpaktfullUiLineChartTheme? lineChart,
     ImpaktfullUiListItemTheme? listItem,
     ImpaktfullUiListViewTheme? listView,
@@ -383,6 +387,7 @@ class ImpaktfullUiComponentsTheme {
         imageCrop: imageCrop ?? this.imageCrop,
         inputField: inputField ?? this.inputField,
         introduction: introduction ?? this.introduction,
+        kanbanBoard: kanbanBoard ?? this.kanbanBoard,
         lineChart: lineChart ?? this.lineChart,
         listItem: listItem ?? this.listItem,
         listView: listView ?? this.listView,
@@ -507,6 +512,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiInputFieldTheme.of(context) as T;
     } else if (T == ImpaktfullUiIntroductionTheme) {
       return ImpaktfullUiIntroductionTheme.of(context) as T;
+    } else if (T == ImpaktfullUiKanbanBoardTheme) {
+      return ImpaktfullUiKanbanBoardTheme.of(context) as T;
     } else if (T == ImpaktfullUiLineChartTheme) {
       return ImpaktfullUiLineChartTheme.of(context) as T;
     } else if (T == ImpaktfullUiListItemTheme) {

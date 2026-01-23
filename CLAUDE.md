@@ -32,6 +32,8 @@ Update CHANGELOG.md to match what changed in the code:
 
 Add a new version entry at the top of CHANGELOG.md with the appropriate section (Feature, Fix, Chore, etc.).
 
+Do not update the `pubspec.yaml` version. This is handled by the CI/CD pipeline.
+
 ## Validate
 
 ```bash

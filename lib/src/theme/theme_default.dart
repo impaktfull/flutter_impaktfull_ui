@@ -34,6 +34,7 @@ import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dar
 import 'package:impaktfull_ui/src/components/image_crop/image_crop.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/introduction/introduction.dart';
+import 'package:impaktfull_ui/src/components/kanban_board/kanban_board.dart';
 import 'package:impaktfull_ui/src/components/line_chart/line_chart.dart';
 import 'package:impaktfull_ui/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
@@ -515,6 +516,14 @@ class DefaultTheme {
           shadows: shadows,
         ),
         introduction: ImpaktfullUiIntroductionTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
+        ),
+        kanbanBoard: ImpaktfullUiKanbanBoardTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,
