@@ -1,7 +1,7 @@
 class ImpaktfullUiKanbanBoardItem<T> {
   final String id;
   final String columnId;
-  final String title;
+  final String? title;
   final String? description;
   final String? imageUrl;
   final T? data;
@@ -9,7 +9,7 @@ class ImpaktfullUiKanbanBoardItem<T> {
   const ImpaktfullUiKanbanBoardItem({
     required this.id,
     required this.columnId,
-    required this.title,
+    this.title,
     this.description,
     this.imageUrl,
     this.data,

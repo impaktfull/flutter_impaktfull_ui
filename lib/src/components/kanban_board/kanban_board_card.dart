@@ -49,30 +49,34 @@ class ImpaktfullUiKanbanBoardCard<T> extends StatelessWidget {
                   ),
                 ),
               ],
-              Padding(
-                padding: componentTheme.dimens.cardPadding,
-                child: ImpaktfullUiAutoLayout.vertical(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  spacing: componentTheme.dimens.cardSpacing,
-                  children: [
-                    Text(
-                      item.title,
-                      style: componentTheme.textStyles.cardTitle,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    if (item.description != null) ...[
-                      Text(
-                        item.description!,
-                        style: componentTheme.textStyles.cardDescription,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+              if (item.title != null || item.description != null) ...[
+                Padding(
+                  padding: componentTheme.dimens.cardPadding,
+                  child: ImpaktfullUiAutoLayout.vertical(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: componentTheme.dimens.cardSpacing,
+                    children: [
+                      if (item.title != null) ...[
+                        Text(
+                          item.title!,
+                          style: componentTheme.textStyles.cardTitle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                      if (item.description != null) ...[
+                        Text(
+                          item.description!,
+                          style: componentTheme.textStyles.cardDescription,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ),
