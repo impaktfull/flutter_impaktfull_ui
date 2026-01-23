@@ -12,8 +12,11 @@ class ImpaktfullUiThemeConfigurator extends InheritedWidget {
     setImpaktfullUiTheme(theme);
   }
 
-  static ImpaktfullUiThemeConfigurator of(BuildContext context) => context
-      .dependOnInheritedWidgetOfExactType<ImpaktfullUiThemeConfigurator>()!;
+  static ImpaktfullUiThemeConfigurator of(BuildContext context) =>
+      maybeOf(context)!;
+
+  static ImpaktfullUiThemeConfigurator? maybeOf(BuildContext context) => context
+      .dependOnInheritedWidgetOfExactType<ImpaktfullUiThemeConfigurator>();
 
   @override
   bool updateShouldNotify(covariant ImpaktfullUiThemeConfigurator oldWidget) {

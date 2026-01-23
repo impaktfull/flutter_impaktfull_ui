@@ -1,3 +1,11 @@
+# 0.77.0
+
+## Feature
+
+- Added `ImpaktfullUiApp.of` to check if an app is available in the context
+- Added `ImpaktfullUiApp.maybeOf` to check if an app is available in the context
+- Added `ImpaktfullUiTheme.maybeOf` to check if a theme is available in the context
+
 # 0.76.3
 
 ## Chore
