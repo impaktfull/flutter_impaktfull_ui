@@ -17,8 +17,7 @@ class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiTabBarItemTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.tabBarItem;
+  static ImpaktfullUiTabBarItemTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.tabBarItem;
 
   static ImpaktfullUiTabBarItemTheme getDefault({
     required ImpaktfullUiAssetTheme assets,
@@ -31,16 +30,16 @@ class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
       ImpaktfullUiTabBarItemTheme(
         assets: const ImpaktfullUiTabBarItemAssetsTheme(),
         colors: ImpaktfullUiTabBarItemColorTheme(
-          background: colors.accent,
+          background: colors.card,
         ),
         dimens: ImpaktfullUiTabBarItemDimensTheme(
-          selectedMarkerBorderRadius: dimens.borderRadiusExtraSmall,
+          selectedMarkerBorderRadius: dimens.borderRadius,
         ),
         durations: ImpaktfullUiTabBarItemDurationsTheme(
           selected: durations.short,
         ),
         textStyles: ImpaktfullUiTabBarItemTextStyleTheme(
-          label: textStyles.onCard.text.small.semiBold,
+          label: textStyles.onCard.text.small.medium,
         ),
       );
 }
