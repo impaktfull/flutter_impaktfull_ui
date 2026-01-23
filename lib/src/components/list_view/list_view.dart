@@ -10,17 +10,13 @@ import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator
 import 'package:impaktfull_ui/src/components/localization/localization_provider.dart';
 import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'list_view.style.dart';
 export 'model/list_view_placeholder_state.dart';
 export 'list_view.localizations.dart';
 
-part 'list_view.describe.dart';
-
-class ImpaktfullUiListView<T> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiListView<T> extends StatefulWidget {
   final Widget? child;
   final List<Widget>? children;
   final List<T>? items;
@@ -167,9 +163,6 @@ class ImpaktfullUiListView<T> extends StatefulWidget
   @override
   State<ImpaktfullUiListView<T>> createState() =>
       _ImpaktfullUiListViewState<T>();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {

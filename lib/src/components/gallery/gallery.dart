@@ -5,7 +5,6 @@ import 'package:impaktfull_ui/src/components/gallery/widget/gallery_full_screen.
 import 'package:impaktfull_ui/src/components/gallery/widget/gallery_hero_item.dart';
 import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'gallery_style.dart';
@@ -13,10 +12,7 @@ export 'model/gallery_item.dart';
 export 'widget/gallery_full_screen.dart';
 export 'widget/gallery_hero_item.dart';
 
-part 'gallery.describe.dart';
-
-class ImpaktfullUiGallery extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiGallery extends StatelessWidget {
   final List<ImpaktfullUiGalleryItem> items;
   final BorderRadiusGeometry? itemBorderRadius;
   final int Function(BuildContext, ImpaktfullUiGridViewConfig)? crossAxisCount;
@@ -71,7 +67,4 @@ class ImpaktfullUiGallery extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

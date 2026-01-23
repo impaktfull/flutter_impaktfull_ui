@@ -1,14 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'refresh_indicator_style.dart';
-part 'refresh_indicator.describe.dart';
 
-class ImpaktfullUiRefreshIndicator extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiRefreshIndicator extends StatelessWidget {
   final AsyncCallback? onRefresh;
   final ImpaktfullUiRefreshIndicatorTheme? theme;
   final Widget child;
@@ -35,7 +32,4 @@ class ImpaktfullUiRefreshIndicator extends StatelessWidget
       ),
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

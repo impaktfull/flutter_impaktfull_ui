@@ -78,31 +78,16 @@ class ImpaktfullUi<ComponentName>TextStyleTheme {
 }
 ```
 
-### 3. Create the Describe File (`<component_name>.describe.dart`)
-
-```dart
-part of '<component_name>.dart';
-
-String _describeInstance(BuildContext context, ImpaktfullUi<ComponentName> instance) {
-  final descriptor = ComponentDescriptor();
-  descriptor.add('theme', instance.theme);
-  return descriptor.describe();
-}
-```
-
-### 4. Create the Main Component File (`<component_name>.dart`)
+### 3. Create the Main Component File (`<component_name>.dart`)
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/<component_name>/<component_name>_style.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
 export '<component_name>_style.dart';
 
-part '<component_name>.describe.dart';
-
-class ImpaktfullUi<ComponentName> extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUi<ComponentName> extends StatelessWidget {
   final ImpaktfullUi<ComponentName>Theme? theme;
 
   const ImpaktfullUi<ComponentName>({
@@ -120,13 +105,10 @@ class ImpaktfullUi<ComponentName> extends StatelessWidget with ComponentDescript
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 ```
 
-### 5. Register in Theme System
+### 4. Register in Theme System
 
 #### Update `lib/src/theme/component_theme.dart`
 
@@ -176,7 +158,7 @@ Add in `DefaultTheme.withMinimalChanges()` (alphabetically):
 ),
 ```
 
-### 6. Export the Component
+### 5. Export the Component
 
 Add to `lib/impaktfull_ui.dart` (alphabetically within the Components section):
 
@@ -184,7 +166,7 @@ Add to `lib/impaktfull_ui.dart` (alphabetically within the Components section):
 export 'src/components/<component_name>/<component_name>.dart';
 ```
 
-### 7. Add to Example App
+### 6. Add to Example App
 
 #### Create `example/lib/src/component_library/items/<component_name>/`
 
@@ -249,7 +231,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/<component_nam
 const <ComponentName>LibraryItem(),
 ```
 
-### 8. Update README.md
+### 7. Update README.md
 
 Add the component to the **Component List** section in `README.md` (alphabetically, replace `<ComponentName>` with actual name):
 
@@ -272,7 +254,6 @@ If the component has sub-components, indent them:
 
 - [ ] Create component directory
 - [ ] Create style file
-- [ ] Create describe file
 - [ ] Create main component file
 - [ ] Register in `component_theme.dart` (5 places)
 - [ ] Add default in `theme_default.dart`

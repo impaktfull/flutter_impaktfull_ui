@@ -7,16 +7,12 @@ import 'package:impaktfull_ui/src/components/divider/divider.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui/src/components/sidebar_navigation/sidebar_navigation_style.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/edge_insets_geometry_extension.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'sidebar_navigation_style.dart';
 
-part 'sidebar_navigation.describe.dart';
-
-class ImpaktfullUiSidebarNavigation extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiSidebarNavigation extends StatelessWidget {
   final ImpaktfullUiAsset? asset;
   final Widget? header;
   final Widget? content;
@@ -164,7 +160,4 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

@@ -4,15 +4,11 @@ import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/number_input/number_input_style.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'number_input_style.dart';
 
-part 'number_input.describe.dart';
-
-class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget {
   final ValueChanged<T> onChanged;
   final String? label;
   final T value;
@@ -35,9 +31,6 @@ class ImpaktfullUiNumberInput<T extends num> extends StatefulWidget
   @override
   State<ImpaktfullUiNumberInput<T>> createState() =>
       _ImpaktfullUiNumberInputState<T>();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiNumberInputState<T extends num>

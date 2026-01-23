@@ -4,7 +4,6 @@ import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_da
 import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_style.dart';
 import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_painter_data.dart';
 import 'package:impaktfull_ui/src/components/line_chart/painter/line_chart_painter.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'line_chart_style.dart';
@@ -12,10 +11,7 @@ export 'model/line_chart_item_data.dart';
 export 'model/line_chart_item_data_item.dart';
 export 'model/line_chart_item_style.dart';
 
-part 'line_chart.describe.dart';
-
-class ImpaktfullUiLineChart<T, E> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiLineChart<T, E> extends StatefulWidget {
   final double? width;
   final double? height;
   final List<ImpaktfullUiLineChartItemData<T, E>> data;
@@ -32,9 +28,6 @@ class ImpaktfullUiLineChart<T, E> extends StatefulWidget
   @override
   State<ImpaktfullUiLineChart<T, E>> createState() =>
       _ImpaktfullUiLineChartState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiLineChartState<T, E>

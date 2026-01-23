@@ -3,14 +3,11 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.dart';
 import 'package:impaktfull_ui/src/components/screen/screen.style.dart';
 import 'package:impaktfull_ui/src/components/status_bar/status_bar.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'screen.style.dart';
 
-part 'screen.describe.dart';
-
-class ImpaktfullUiScreen extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiScreen extends StatefulWidget {
   final String? title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
@@ -58,9 +55,6 @@ class ImpaktfullUiScreen extends StatefulWidget with ComponentDescriptorMixin {
 
   @override
   State<ImpaktfullUiScreen> createState() => ImpaktfullUiScreenState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {

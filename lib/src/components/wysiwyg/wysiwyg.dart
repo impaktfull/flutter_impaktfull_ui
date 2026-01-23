@@ -4,16 +4,13 @@ import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/widget/wysiwyg_input.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/widget/wysiwyg_preview.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'wysiwyg_style.dart';
 export 'model/wysiwyg_type.dart';
 export 'model/wysiwyg_action.dart';
 
-part 'wysiwyg.describe.dart';
-
-class ImpaktfullUiWysiwyg extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiWysiwyg extends StatefulWidget {
   final String text;
   final bool showPreview;
   final ImpaktfullUiWysiwygType type;
@@ -33,9 +30,6 @@ class ImpaktfullUiWysiwyg extends StatefulWidget with ComponentDescriptorMixin {
 
   @override
   State<ImpaktfullUiWysiwyg> createState() => _ImpaktfullUiWysiwygState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {

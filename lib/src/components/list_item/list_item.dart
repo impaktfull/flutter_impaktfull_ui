@@ -5,16 +5,12 @@ import 'package:impaktfull_ui/src/components/list_item/list_item.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'list_item_style.dart';
 export 'list_item_type.dart';
 
-part 'list_item.describe.dart';
-
-class ImpaktfullUiListItem extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiListItem extends StatefulWidget {
   final String title;
   final String? subtitle;
   final ImpaktfullUiAsset? leading;
@@ -38,9 +34,6 @@ class ImpaktfullUiListItem extends StatefulWidget
 
   @override
   State<ImpaktfullUiListItem> createState() => _ImpaktfullUiListItemState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiListItemState extends State<ImpaktfullUiListItem> {

@@ -2,20 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/color_picker/color_picker_style.dart';
 import 'package:impaktfull_ui/src/components/color_picker/type/color_picker_simple.dart';
 import 'package:impaktfull_ui/src/components/color_picker/type/color_picker_slider.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'color_picker_style.dart';
-
-part 'color_picker.describe.dart';
 
 enum ImpaktfullUiColorPickerType {
   simple,
   slider,
 }
 
-class ImpaktfullUiColorPicker extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiColorPicker extends StatelessWidget {
   final ImpaktfullUiColorPickerType type;
   final Color? selectedColor;
   final bool showActiveColor;
@@ -71,7 +67,4 @@ class ImpaktfullUiColorPicker extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

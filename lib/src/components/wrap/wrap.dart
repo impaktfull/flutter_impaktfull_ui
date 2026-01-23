@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 
-part 'wrap.describe.dart';
-
-class ImpaktfullUiWrap extends StatelessWidget with ComponentDescriptorMixin {
+class ImpaktfullUiWrap extends StatelessWidget {
   final List<Widget> children;
   final double spacing;
   final double runSpacing;
@@ -22,7 +19,4 @@ class ImpaktfullUiWrap extends StatelessWidget with ComponentDescriptorMixin {
       children: children,
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

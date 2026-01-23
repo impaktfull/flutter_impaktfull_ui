@@ -7,7 +7,6 @@ import 'package:impaktfull_ui/src/components/virtual_keyboard/model/virtual_keyb
 import 'package:impaktfull_ui/src/components/virtual_keyboard/virtual_keyboard_style.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/controller/virtual_keyboard_text_edit_controller.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/widget/virtual_keyboard_button.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'virtual_keyboard_style.dart';
@@ -16,10 +15,7 @@ export 'model/config/qwerty/virtual_qwerty_keyboard_config.dart';
 export 'model/virtual_keyboard_key.dart';
 export 'controller/virtual_keyboard_text_edit_controller.dart';
 
-part 'virtual_keyboard.describe.dart';
-
-class ImpaktfullUiVirtualKeyboard extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiVirtualKeyboard extends StatefulWidget {
   final ImpaktfullUiVirtualKeyboardTextEditController controller;
   final double? width;
   final ValueChanged<String>? onChanged;
@@ -69,9 +65,6 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget
   @override
   State<ImpaktfullUiVirtualKeyboard> createState() =>
       _ImpaktfullUiVirtualKeyboardState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 
   static void show({
     required BuildContext context,

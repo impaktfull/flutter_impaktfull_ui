@@ -3,15 +3,11 @@ import 'package:impaktfull_ui/src/components/loading_error_data/loading_error_da
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'loading_error_data_style.dart';
 
-part 'loading_error_data.describe.dart';
-
-class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget {
   final bool isLoading;
   final ImpaktfullUiAsset? noDataAsset;
   final WidgetBuilder? noDataAssetBuilder;
@@ -85,7 +81,4 @@ class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

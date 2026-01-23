@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'responsive_layout_style.dart';
 
-part 'responsive_layout.describe.dart';
-
-class ImpaktfullUiResponsiveLayout extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiResponsiveLayout extends StatelessWidget {
   final WidgetBuilder small;
   final WidgetBuilder? medium;
   final WidgetBuilder? large;
@@ -105,7 +101,4 @@ class ImpaktfullUiResponsiveLayout extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

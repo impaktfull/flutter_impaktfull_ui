@@ -38,10 +38,10 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 
 - ImpaktfullUiAccordion
 - ImpaktfullUiAdaptiveNavBar
-- ImpaktfullUiAdaptiveNavBarAction
-- ImpaktfullUiAdaptiveScreen
+  - ImpaktfullUiAdaptiveNavBarAction
 - ImpaktfullUiAdaptivePageRoute
 - ImpaktfullUiAdaptiveSafeArea
+- ImpaktfullUiAdaptiveScreen
 - ImpaktfullUiApp
 - ImpaktfullUiAssetWidget
   - ImpaktfullUiAsset.icon
@@ -61,41 +61,44 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiCalendar
   - ImpaktfullUiCalendarList
   - ImpaktfullUiCalendarWeek
+- ImpaktfullUiCard
 - ImpaktfullUiCarrousel
 - ImpaktfullUiChat
   - ImpaktfullUiChatListItem
-  - ImpaktfullUiChatListItemBackgroundd
   - ImpaktfullUiChatListItemAvatar
+  - ImpaktfullUiChatListItemBackground
 - ImpaktfullUiCheckBox
 - ImpaktfullUiCheckBoxListItem
+- ImpaktfullUiClampedFractionallySizedBox
 - ImpaktfullUiCmsHeader
+- ImpaktfullUiColorInputField
 - ImpaktfullUiColorPicker
-- ImpaktfullUiConfetti
 - ImpaktfullUiCommandMenu
-  - ImpaktfullUiCommandMenu
+- ImpaktfullUiConfetti
+- ImpaktfullUiContainer
 - ImpaktfullUiDateInputField
 - ImpaktfullUiDatePicker
   - ImpaktfullUiDatePicker.range
 - ImpaktfullUiDateTimePicker
-- ImpaktfullUiTimePicker
-- ImpaktfullUiDivider
 - ImpaktfullUiDesktopPageRoute
+- ImpaktfullUiDivider
 - ImpaktfullUiDropdown
-- ImpaktfullUiFocusFeedback
 - ImpaktfullUiFilePicker
 - ImpaktfullUiFloatingActionButton
 - ImpaktfullUiFluidPadding
+- ImpaktfullUiFocusFeedback
 - ImpaktfullUiGallery
   - ImpaktfullUiGalleryFullScreen
   - ImpaktfullUiGalleryFullScreenItem
   - ImpaktfullUiGalleryHeroItem
 - ImpaktfullUiGridView
+- ImpaktfullUiHorizontalTab
+  - ImpaktfullUiHorizontalTabs
 - ImpaktfullUiHoverFeedback
-- ImpaktfullUiHorizontalTabs
-  - ImpaktfullUiHorizontalTab
 - ImpaktfullUiIconButton
 - ImpaktfullUiImageCrop
 - ImpaktfullUiInputField
+- ImpaktfullUiIntroduction
 - ImpaktfullUiKanbanBoard
   - ImpaktfullUiKanbanBoardColumn
   - ImpaktfullUiKanbanBoardCard
@@ -122,9 +125,9 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiPinCode
 - ImpaktfullUiPlaceholder
 - ImpaktfullUiProgressIndicator
-  - ImpaktfullUiLineProgressIndicator
   - ImpaktfullUiCircleProgressIndicator
   - ImpaktfullUiHalfCircleProgressIndicator
+  - ImpaktfullUiLineProgressIndicator
 - ImpaktfullUiRadioButton
 - ImpaktfullUiRadioButtonListItem
 - ImpaktfullUiRefreshIndicator
@@ -135,11 +138,12 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiSegmentedControl
 - ImpaktfullUiSelectableListItem
 - ImpaktfullUiSeparatedColumn
-- ImpaktfullUiSideNavigation
-  - ImpaktfullUiSideNavigationItem
-- ImpaktfullUiSlider
+- ImpaktfullUiSidebarNavigation
+  - ImpaktfullUiSidebarNavigationItem
 - ImpaktfullUiSkeleton
+- ImpaktfullUiSlider
 - ImpaktfullUiSnackyConfigurator
+- ImpaktfullUiStatusBar
 - ImpaktfullUiStepper
 - ImpaktfullUiSwitch
 - ImpaktfullUiSwitchListItem
@@ -151,6 +155,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiTableRow
     - ImpaktfullUiTableRowItem
 - ImpaktfullUiTheme
+- ImpaktfullUiTimePicker
 - ImpaktfullUiTooltip
 - ImpaktfullUiTouchFeedback
 - ImpaktfullUiTouchFeedbackSequence
@@ -290,16 +295,14 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 
 ⌛️ Add extra components
 
-- ImpaktfullUiIntroduction
 - ImpaktfullUiBreadcrumbs
 - ImpaktfullUiQrCode
 - ImpaktfullUiBarCode
 - ImpaktfullUiBarChart
 - ImpaktfullUiPieChart
-- ImpaktfullUiPasswordStrengthIndicator
 - ImpaktfullUiStoryView
 - ImpaktfullUiStoryViewItem
-- ImpaktfullUiVidoPlayerControls
+- ImpaktfullUiVideoPlayerControls
 - ImpaktfullUiFileCropper
 - ImpaktfullUiSocialLoginsButton
 - ImpaktfullUiImageComparisonView

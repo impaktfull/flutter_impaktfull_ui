@@ -4,7 +4,6 @@ import 'package:impaktfull_ui/src/components/calendar/model/calendar_item.dart';
 import 'package:impaktfull_ui/src/components/calendar/model/calendar_type.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/calendar_list.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/calendar_week.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'calendar_style.dart';
@@ -13,10 +12,7 @@ export 'model/calendar_type.dart';
 export 'widget/calender_types/calendar_list.dart';
 export 'widget/calender_types/calendar_week.dart';
 
-part 'calendar.describe.dart';
-
-class ImpaktfullUiCalendar extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiCalendar extends StatelessWidget {
   final DateTime selectedDate;
   final ImpaktfullUiCalendarType type;
   final List<ImpaktfullUiCalendarEvent> events;
@@ -57,7 +53,4 @@ class ImpaktfullUiCalendar extends StatelessWidget
       },
     );
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

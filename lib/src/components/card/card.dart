@@ -3,14 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/components/card/card_style.dart';
 import 'package:impaktfull_ui/src/components/container/container.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'card_style.dart';
 
-part 'card.describe.dart';
-
-class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
+class ImpaktfullUiCard extends StatefulWidget {
   final Widget child;
   final double? width;
   final double? height;
@@ -42,9 +39,6 @@ class ImpaktfullUiCard extends StatefulWidget with ComponentDescriptorMixin {
 
   @override
   State<ImpaktfullUiCard> createState() => _ImpaktfullUiCardState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {

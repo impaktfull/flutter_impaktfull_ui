@@ -3,7 +3,6 @@ import 'package:impaktfull_ui/src/components/kanban_board/kanban_board_column.da
 import 'package:impaktfull_ui/src/components/kanban_board/kanban_board_style.dart';
 import 'package:impaktfull_ui/src/components/kanban_board/model/kanban_board_column_config.dart';
 import 'package:impaktfull_ui/src/components/kanban_board/model/kanban_board_item.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'kanban_board_card.dart';
@@ -12,10 +11,7 @@ export 'kanban_board_style.dart';
 export 'model/kanban_board_column_config.dart';
 export 'model/kanban_board_item.dart';
 
-part 'kanban_board.describe.dart';
-
-class ImpaktfullUiKanbanBoard<T> extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiKanbanBoard<T> extends StatefulWidget {
   final List<ImpaktfullUiKanbanBoardColumnConfig> columns;
   final List<ImpaktfullUiKanbanBoardItem<T>> items;
   final Widget Function(ImpaktfullUiKanbanBoardItem<T> item)? itemBuilder;
@@ -45,9 +41,6 @@ class ImpaktfullUiKanbanBoard<T> extends StatefulWidget
   @override
   State<ImpaktfullUiKanbanBoard<T>> createState() =>
       _ImpaktfullUiKanbanBoardState<T>();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiKanbanBoardState<T>

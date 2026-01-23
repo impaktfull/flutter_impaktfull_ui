@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/notification_badge/notification_badge_style.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'notification_badge_style.dart';
-
-part 'notification_badge.describe.dart';
 
 enum ImpaktfullUiNotificationBadgeLocation {
   bottomRight(Alignment.bottomRight),
@@ -18,8 +15,7 @@ enum ImpaktfullUiNotificationBadgeLocation {
   const ImpaktfullUiNotificationBadgeLocation(this.alignment);
 }
 
-class ImpaktfullUiNotificationBadge extends StatelessWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiNotificationBadge extends StatelessWidget {
   static const dotSize = 4.0;
 
   final bool show;
@@ -168,7 +164,4 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget
     if (text == null) return -(dotSize / 2);
     return -(textWidth / 2);
   }
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }

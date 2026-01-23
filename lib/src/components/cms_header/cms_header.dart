@@ -4,16 +4,12 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/badge/badge.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header_style.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
-import 'package:impaktfull_ui/src/util/descriptor/component_descriptor_mixin.dart';
 import 'package:impaktfull_ui/src/util/extension/widget_list_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'cms_header_style.dart';
 
-part 'cms_header.describe.dart';
-
-class ImpaktfullUiCmsHeader extends StatefulWidget
-    with ComponentDescriptorMixin {
+class ImpaktfullUiCmsHeader extends StatefulWidget {
   final String? title;
   final String? subtitle;
   final VoidCallback? onBackTapped;
@@ -39,9 +35,6 @@ class ImpaktfullUiCmsHeader extends StatefulWidget
 
   @override
   State<ImpaktfullUiCmsHeader> createState() => _ImpaktfullUiCmsHeaderState();
-
-  @override
-  String describe(BuildContext context) => _describeInstance(context, this);
 }
 
 class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
