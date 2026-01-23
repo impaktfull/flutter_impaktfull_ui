@@ -29,11 +29,11 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
   }) =>
       ImpaktfullUiTooltipTheme(
         colors: ImpaktfullUiTooltipColorTheme(
-          background: colors.card,
+          background: colors.primary,
         ),
         textStyles: const ImpaktfullUiTooltipTextStyleTheme(),
         dimens: ImpaktfullUiTooltipDimensTheme(
-          borderRadius: dimens.borderRadius,
+          borderRadius: dimens.borderRadiusSmall,
         ),
         durations: ImpaktfullUiTooltipDurationTheme(
           wait: durations.long,

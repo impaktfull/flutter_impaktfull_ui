@@ -29,10 +29,10 @@ class ImpaktfullUiUnifiedScreenLayoutTheme extends ImpaktfullUiComponentTheme {
         assets: ImpaktfullUiUnifiedScreenLayoutAssetsTheme(),
         colors: ImpaktfullUiUnifiedScreenLayoutColorTheme(),
         dimens: ImpaktfullUiUnifiedScreenLayoutDimensTheme(
-          centerWidthFactor: 0.8,
-          centerMinWidth: 400,
-          centerMaxWidth: 800,
-          centerPadding: EdgeInsetsDirectional.symmetric(horizontal: 16),
+          centerWidthFactor: 0.5,
+          centerMinWidth: 500,
+          centerMaxWidth: 700,
+          centerPadding: EdgeInsets.all(16),
         ),
         textStyles: ImpaktfullUiUnifiedScreenLayoutTextStyleTheme(),
       );

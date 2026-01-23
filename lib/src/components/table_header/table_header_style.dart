@@ -24,7 +24,7 @@ class ImpaktfullUiTableHeaderTheme extends ImpaktfullUiComponentTheme {
   }) =>
       ImpaktfullUiTableHeaderTheme(
         colors: ImpaktfullUiTableHeaderColorTheme(
-          background: colors.card2,
+          background: colors.canvas,
         ),
         dimens: ImpaktfullUiTableHeaderDimensTheme(
           borderRadius: dimens.borderRadius.copyWith(

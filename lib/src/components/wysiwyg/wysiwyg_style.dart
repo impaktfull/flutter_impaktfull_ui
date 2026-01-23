@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
-import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiWysiwygAssetsTheme assets;
@@ -42,7 +41,7 @@ class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
         colors: const ImpaktfullUiWysiwygColorTheme(),
         dimens: const ImpaktfullUiWysiwygDimensTheme(),
         textStyles: ImpaktfullUiWysiwygTextStyleTheme(
-          previewText: textStyles.onCard.text.small.light,
+          previewText: textStyles.onCanvas.text.small,
         ),
       );
 }

@@ -30,18 +30,18 @@ class ImpaktfullUiStepperTheme extends ImpaktfullUiComponentTheme {
         assets: const ImpaktfullUiStepperAssetsTheme(),
         colors: ImpaktfullUiStepperColorTheme(
           activeStep: colors.accent,
-          inactiveStep: colors.card,
+          inactiveStep: colors.border,
           assetBorder: colors.border,
           assetBackground: colors.card,
           assetColor: colors.text,
-          assetBorderCompleted: colors.success,
-          assetBackgroundCompleted: colors.success,
+          assetBorderCompleted: colors.accent,
+          assetBackgroundCompleted: colors.accent,
           assetColorCompleted: colors.textOnAccent,
         ),
         dimens: ImpaktfullUiStepperDimensTheme(
           spacing: 8,
-          height: 4,
-          borderRadius: dimens.borderRadiusExtraSmall,
+          height: 8,
+          borderRadius: dimens.borderRadius,
         ),
         textStyles: ImpaktfullUiStepperTextStyleTheme(
           title: textStyles.onCard.text.small.medium,

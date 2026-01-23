@@ -17,7 +17,8 @@ class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
-  static ImpaktfullUiTabBarItemTheme of(BuildContext context) => ImpaktfullUiTheme.of(context).components.tabBarItem;
+  static ImpaktfullUiTabBarItemTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.tabBarItem;
 
   static ImpaktfullUiTabBarItemTheme getDefault({
     required ImpaktfullUiAssetTheme assets,

@@ -28,8 +28,8 @@ class ImpaktfullUiTableRowItemTheme extends ImpaktfullUiComponentTheme {
         colors: const ImpaktfullUiTableRowItemColorTheme(),
         dimens: const ImpaktfullUiTableRowItemDimensTheme(),
         textStyles: ImpaktfullUiTableRowItemTextStylesTheme(
-          title: textStyles.onCard.text.small,
-          subtitle: textStyles.onCard.text.small.light,
+          title: textStyles.onCanvas.text.small.medium,
+          subtitle: textStyles.onCanvas.text.small,
         ),
       );
 }

@@ -30,7 +30,7 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
   }) =>
       ImpaktfullUiSwitchTheme(
         colors: ImpaktfullUiSwitchColorTheme(
-          inactiveBackground: colors.card,
+          inactiveBackground: colors.border,
           activeBackground: colors.accent,
           active: colors.card,
           inactive: colors.card,
@@ -40,11 +40,11 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiSwitchTextStyleTheme(),
         dimens: ImpaktfullUiSwitchDimensTheme(
-          verticalPadding: 2,
-          horizontalPadding: 2,
-          borderRadius: dimens.borderRadiusCircle,
-          thumbBorderRadius: dimens.borderRadiusCircle,
-          borderWidth: 1,
+          verticalPadding: 4,
+          horizontalPadding: 20,
+          borderRadius: dimens.borderRadius,
+          thumbBorderRadius: dimens.borderRadiusExtraSmall,
+          borderWidth: 0,
         ),
         durations: ImpaktfullUiSwitchDurationsTheme(
           selected: durations.short,

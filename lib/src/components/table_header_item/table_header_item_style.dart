@@ -28,7 +28,7 @@ class ImpaktfullUiTableHeaderItemTheme extends ImpaktfullUiComponentTheme {
         colors: const ImpaktfullUiTableHeaderItemColorTheme(),
         dimens: const ImpaktfullUiTableHeaderItemDimensTheme(),
         textStyles: ImpaktfullUiTableHeaderItemTextStylesTheme(
-          title: textStyles.onCard.text.small.semiBold,
+          title: textStyles.onCanvas.text.extraSmall.medium,
         ),
       );
 }
