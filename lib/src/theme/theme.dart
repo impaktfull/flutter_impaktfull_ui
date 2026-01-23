@@ -121,6 +121,12 @@ class ImpaktfullUiTheme<T extends Object> {
         customTheme: customTheme,
       );
 
+  static ImpaktfullUiTheme<T>? maybeOf<T extends Object>(BuildContext context) {
+    final theme = ImpaktfullUiThemeConfigurator.maybeOf(context);
+    if (theme == null) return null;
+    return theme.theme as ImpaktfullUiTheme<T>;
+  }
+
   static ImpaktfullUiTheme<T> of<T extends Object>(BuildContext context) {
     final theme = ImpaktfullUiThemeConfigurator.of(context).theme;
     if (theme.customThemeOrNull == null) {

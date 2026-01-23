@@ -67,6 +67,11 @@ class ImpaktfullUiApp extends StatelessWidget {
           'Either home or onGenerateRoute or builder must be provided',
         );
 
+  static ImpaktfullUiApp of(BuildContext context) => maybeOf(context)!;
+
+  static ImpaktfullUiApp? maybeOf(BuildContext context) =>
+      context.findAncestorWidgetOfExactType<ImpaktfullUiApp>();
+
   @override
   Widget build(BuildContext context) {
     final theme = impaktfullUiTheme ?? ImpaktfullUiTheme.getDefault();
