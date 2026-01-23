@@ -79,6 +79,7 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
       ),
       child: ImpaktfullUiAutoLayout.horizontal(
         spacing: 8,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             width: 12,
