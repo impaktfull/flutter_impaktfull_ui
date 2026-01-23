@@ -93,7 +93,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiGalleryHeroItem
 - ImpaktfullUiGridView
 - ImpaktfullUiHorizontalTab
-- ImpaktfullUiHorizontalTabs
+  - ImpaktfullUiHorizontalTabs
 - ImpaktfullUiHoverFeedback
 - ImpaktfullUiIconButton
 - ImpaktfullUiImageCrop
@@ -299,7 +299,7 @@ These icons can be overriden in the theme itself. By adding your own IconData.
 - ImpaktfullUiPieChart
 - ImpaktfullUiStoryView
 - ImpaktfullUiStoryViewItem
-- ImpaktfullUiVidoPlayerControls
+- ImpaktfullUiVideoPlayerControls
 - ImpaktfullUiFileCropper
 - ImpaktfullUiSocialLoginsButton
 - ImpaktfullUiImageComparisonView
