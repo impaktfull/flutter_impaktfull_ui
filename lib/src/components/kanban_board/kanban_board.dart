@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/kanban_board/kanban_board_column.dart';
 import 'package:impaktfull_ui/src/components/kanban_board/kanban_board_style.dart';
 import 'package:impaktfull_ui/src/components/kanban_board/model/kanban_board_column_config.dart';
@@ -83,13 +84,13 @@ class _ImpaktfullUiKanbanBoardState<T>
         builder: (context, constraints) => SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           padding: componentTheme.dimens.boardPadding,
-          child: Row(
+          child: ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: componentTheme.dimens.columnSpacing,
             children: [
               for (final column in widget.columns) ...[
                 SizedBox(
-                  height: constraints.maxHeight -
-                      componentTheme.dimens.boardPadding.vertical,
+                  height: constraints.maxHeight,
                   child: ImpaktfullUiKanbanBoardColumn<T>(
                     config: column,
                     items: _getItemsForColumn(column.id),
@@ -103,8 +104,6 @@ class _ImpaktfullUiKanbanBoardState<T>
                     },
                   ),
                 ),
-                if (column != widget.columns.last)
-                  SizedBox(width: componentTheme.dimens.columnSpacing),
               ],
             ],
           ),

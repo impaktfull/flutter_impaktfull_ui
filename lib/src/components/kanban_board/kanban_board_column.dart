@@ -53,6 +53,7 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
                   )
                 : null,
           ),
+          clipBehavior: Clip.antiAlias,
           child: ImpaktfullUiAutoLayout.vertical(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -72,7 +73,6 @@ class _ImpaktfullUiKanbanBoardColumnState<T>
       padding: componentTheme.dimens.columnHeaderPadding,
       decoration: BoxDecoration(
         color: widget.config.color.withValues(alpha: 0.15),
-        borderRadius: componentTheme.dimens.columnBorderRadius,
       ),
       child: ImpaktfullUiAutoLayout.horizontal(
         spacing: 8,

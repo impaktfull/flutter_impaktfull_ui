@@ -41,7 +41,7 @@ class ImpaktfullUiKanbanBoardTheme extends ImpaktfullUiComponentTheme {
           boardPadding: const EdgeInsets.all(16),
           columnWidth: 300,
           columnSpacing: 16,
-          columnBorderRadius: BorderRadius.circular(8),
+          columnBorderRadius: dimens.borderRadius,
           columnBorderWidth: 1,
           columnHeaderPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
