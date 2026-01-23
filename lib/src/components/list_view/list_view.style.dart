@@ -12,6 +12,24 @@ class ImpaktfullUiListViewTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiListViewTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.listView;
+
+  static ImpaktfullUiListViewTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiListViewTheme(
+        dimens: ImpaktfullUiListViewDimensTheme(
+          borderRadius: dimens.borderRadius,
+          padding: const EdgeInsets.all(16),
+        ),
+        textStyles: ImpaktfullUiListViewTextStylesTheme(
+          title: textStyles.onCanvas.display.small,
+        ),
+      );
 }
 
 class ImpaktfullUiListViewTextStylesTheme {

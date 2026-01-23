@@ -17,6 +17,26 @@ class ImpaktfullUiPaginationTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiPaginationTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.pagination;
+
+  static ImpaktfullUiPaginationTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiPaginationTheme(
+        assets: ImpaktfullUiPaginationAssetsTheme(
+          arrowLeft: assets.icons.arrowLeft,
+          arrowRight: assets.icons.arrowRight,
+        ),
+        colors: const ImpaktfullUiPaginationColorTheme(),
+        dimens: const ImpaktfullUiPaginationDimensTheme(),
+        textStyles: ImpaktfullUiPaginationTextStyleTheme(
+          text: textStyles.onCard.text.small,
+        ),
+      );
 }
 
 class ImpaktfullUiPaginationAssetsTheme {

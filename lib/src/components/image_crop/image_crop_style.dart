@@ -17,6 +17,25 @@ class ImpaktfullUiImageCropTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiImageCropTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.imageCrop;
+
+  static ImpaktfullUiImageCropTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiImageCropTheme(
+        assets: ImpaktfullUiImageCropAssetsTheme(
+          delete: assets.icons.delete,
+        ),
+        colors: ImpaktfullUiImageCropColorTheme(
+          deleteIcon: colors.card,
+        ),
+        dimens: const ImpaktfullUiImageCropDimensTheme(),
+        textStyles: const ImpaktfullUiImageCropTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiImageCropAssetsTheme {

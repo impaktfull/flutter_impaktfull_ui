@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiSimpleListItemTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSimpleListItemAssetsTheme assets;
@@ -16,6 +17,33 @@ class ImpaktfullUiSimpleListItemTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSimpleListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.simpleListItem;
+
+  static ImpaktfullUiSimpleListItemTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiSimpleListItemTheme(
+        assets: const ImpaktfullUiSimpleListItemAssetsTheme(),
+        colors: ImpaktfullUiSimpleListItemColorTheme(
+          background: colors.card,
+        ),
+        dimens: const ImpaktfullUiSimpleListItemDimensTheme(
+          padding: EdgeInsets.all(16),
+          borderRadius: BorderRadius.zero,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          spacing: 8,
+        ),
+        textStyles: ImpaktfullUiSimpleListItemTextStyleTheme(
+          title: textStyles.onCard.text.small.medium,
+          titleDanger: textStyles.onCardDestructive.text.small.medium,
+          subtitle: textStyles.onCard.text.small.light,
+          subtitleDanger: textStyles.onCardDestructive.text.small.light,
+        ),
+      );
 }
 
 class ImpaktfullUiSimpleListItemAssetsTheme {

@@ -16,6 +16,30 @@ class ImpaktfullUiCarrouselTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiCarrouselTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.carrousel;
+
+  static ImpaktfullUiCarrouselTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiCarrouselTheme(
+        assets: const ImpaktfullUiCarrouselAssetsTheme(),
+        colors: ImpaktfullUiCarrouselColorTheme(
+          indicatorBorder: colors.border,
+          activeIndicator: colors.accent,
+          inactiveIndicator: colors.card,
+        ),
+        dimens: ImpaktfullUiCarrouselDimensTheme(
+          indicatorBorderRadius: dimens.borderRadiusCircle,
+          indicatorPadding: const EdgeInsets.all(8),
+          indicatorSize: 8,
+          indicatorSpacing: const EdgeInsets.symmetric(horizontal: 4),
+        ),
+        textStyles: const ImpaktfullUiCarrouselTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiCarrouselAssetsTheme {

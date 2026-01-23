@@ -12,6 +12,24 @@ class ImpaktfullUiTableTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiTableTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.table;
+
+  static ImpaktfullUiTableTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiTableTheme(
+        colors: ImpaktfullUiTableColorTheme(
+          background: colors.card,
+          border: colors.border,
+        ),
+        dimens: ImpaktfullUiTableDimensTheme(
+          borderRadius: dimens.borderRadius,
+        ),
+      );
 }
 
 class ImpaktfullUiTableColorTheme {

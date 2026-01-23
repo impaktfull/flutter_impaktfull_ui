@@ -18,6 +18,34 @@ class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
   static ImpaktfullUiCheckboxTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.checkbox;
 
+  static ImpaktfullUiCheckboxTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiCheckboxTheme(
+        assets: ImpaktfullUiCheckboxAssetsTheme(
+          check: assets.icons.check,
+          indermediate: assets.icons.minus,
+        ),
+        colors: ImpaktfullUiCheckboxColorTheme(
+          borderColor: colors.border,
+          activeColor: colors.accent,
+          inactiveColor: colors.card,
+          checkMarkColor: colors.textOnAccent,
+          backgroundColor: colors.card,
+        ),
+        dimens: ImpaktfullUiCheckboxDimensTheme(
+          borderRadius: dimens.borderRadiusSmall,
+        ),
+        durations: ImpaktfullUiCheckboxDurationsTheme(
+          selected: durations.short,
+        ),
+      );
+
   ImpaktfullUiCheckboxTheme copyWith({
     ImpaktfullUiCheckboxColorTheme? colors,
     ImpaktfullUiCheckboxDimensTheme? dimens,

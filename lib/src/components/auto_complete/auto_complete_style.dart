@@ -18,6 +18,24 @@ class ImpaktfullUiAutoCompleteTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiAutoCompleteTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.autoComplete;
+
+  static ImpaktfullUiAutoCompleteTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiAutoCompleteTheme(
+        assets: const ImpaktfullUiAutoCompleteAssetsTheme(),
+        colors: const ImpaktfullUiAutoCompleteColorTheme(),
+        dimens: const ImpaktfullUiAutoCompleteDimensTheme(),
+        shadows: ImpaktfullUiAutoCompleteShadowTheme(
+          overlay: shadows.large,
+        ),
+        textStyles: const ImpaktfullUiAutoCompleteTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiAutoCompleteAssetsTheme {

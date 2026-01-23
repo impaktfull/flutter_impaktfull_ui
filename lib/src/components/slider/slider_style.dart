@@ -16,6 +16,30 @@ class ImpaktfullUiSliderTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSliderTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.slider;
+
+  static ImpaktfullUiSliderTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiSliderTheme(
+        assets: const ImpaktfullUiSliderAssetsTheme(),
+        colors: ImpaktfullUiSliderColorTheme(
+          thumb: colors.accent,
+          thumbBorder: colors.border,
+          track: colors.card,
+          trackBorder: colors.border,
+          activeTrack: colors.accent,
+        ),
+        dimens: ImpaktfullUiSliderDimensTheme(
+          trackBorderRadius: dimens.borderRadiusSmall,
+          thumbBorderRadius: dimens.borderRadiusExtraSmall,
+        ),
+        textStyles: const ImpaktfullUiSliderTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiSliderAssetsTheme {

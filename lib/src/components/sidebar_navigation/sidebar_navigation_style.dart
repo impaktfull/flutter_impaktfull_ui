@@ -16,6 +16,26 @@ class ImpaktfullUiSidebarNavigationTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSidebarNavigationTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.sidebarNavigation;
+
+  static ImpaktfullUiSidebarNavigationTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiSidebarNavigationTheme(
+        assets: const ImpaktfullUiSidebarNavigationAssetsTheme(),
+        colors: ImpaktfullUiSidebarNavigationColorTheme(
+          backgroundColor: colors.card,
+          border: colors.border,
+        ),
+        dimens: const ImpaktfullUiSidebarNavigationDimensTheme(
+          padding: EdgeInsetsDirectional.all(16),
+        ),
+        textStyles: const ImpaktfullUiSidebarNavigationTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiSidebarNavigationAssetsTheme {

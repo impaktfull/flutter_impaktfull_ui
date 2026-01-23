@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiFloatingActionButtonTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiFloatingActionButtonAssetsTheme assets;
@@ -16,6 +18,29 @@ class ImpaktfullUiFloatingActionButtonTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiFloatingActionButtonTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.floatingActionButton;
+
+  static ImpaktfullUiFloatingActionButtonTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiFloatingActionButtonTheme(
+        assets: const ImpaktfullUiFloatingActionButtonAssetsTheme(),
+        colors: ImpaktfullUiFloatingActionButtonColorTheme(
+          background: colors.accent,
+          backgroundDisabled: colors.accent.withOpacityPercentage(0.66),
+          icon: colors.textOnAccent,
+        ),
+        dimens: ImpaktfullUiFloatingActionButtonDimensTheme(
+          borderRadius: dimens.borderRadiusCircle,
+        ),
+        textStyles: ImpaktfullUiFloatingActionButtonTextStyleTheme(
+          label: textStyles.onAccent.text.small.bold,
+        ),
+      );
 }
 
 class ImpaktfullUiFloatingActionButtonAssetsTheme {

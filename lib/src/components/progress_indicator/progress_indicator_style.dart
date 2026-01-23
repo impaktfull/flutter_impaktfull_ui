@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiProgressIndicatorTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiProgressIndicatorAssetsTheme assets;
@@ -18,6 +19,33 @@ class ImpaktfullUiProgressIndicatorTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiProgressIndicatorTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.progressIndicator;
+
+  static ImpaktfullUiProgressIndicatorTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiProgressIndicatorTheme(
+        assets: const ImpaktfullUiProgressIndicatorAssetsTheme(),
+        colors: ImpaktfullUiProgressIndicatorColorTheme(
+          background: colors.canvas,
+          foreground: colors.accent,
+          border: colors.border,
+        ),
+        dimens: ImpaktfullUiProgressIndicatorDimensTheme(
+          width: 4,
+          borderRadius: dimens.borderRadiusExtraSmall,
+        ),
+        durations: ImpaktfullUiProgressIndicatorDurationsTheme(
+          progress: durations.short,
+        ),
+        textStyles: ImpaktfullUiProgressIndicatorTextStyleTheme(
+          text: textStyles.onCard.text.small.medium,
+        ),
+      );
 }
 
 class ImpaktfullUiProgressIndicatorAssetsTheme {

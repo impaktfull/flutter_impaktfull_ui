@@ -17,6 +17,23 @@ class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiAccordionTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.accordion;
+
+  static ImpaktfullUiAccordionTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiAccordionTheme(
+        assets: ImpaktfullUiAccordionAssetsTheme(
+          chevronDown: assets.icons.chevronDown,
+        ),
+        colors: const ImpaktfullUiAccordionColorTheme(),
+        dimens: const ImpaktfullUiAccordionDimensTheme(),
+        textStyles: const ImpaktfullUiAccordionTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiAccordionAssetsTheme {

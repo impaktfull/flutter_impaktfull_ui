@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiStepperTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiStepperAssetsTheme assets;
@@ -16,6 +17,37 @@ class ImpaktfullUiStepperTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiStepperTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.stepper;
+
+  static ImpaktfullUiStepperTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiStepperTheme(
+        assets: const ImpaktfullUiStepperAssetsTheme(),
+        colors: ImpaktfullUiStepperColorTheme(
+          activeStep: colors.accent,
+          inactiveStep: colors.border,
+          assetBorder: colors.border,
+          assetBackground: colors.card,
+          assetColor: colors.text,
+          assetBorderCompleted: colors.accent,
+          assetBackgroundCompleted: colors.accent,
+          assetColorCompleted: colors.textOnAccent,
+        ),
+        dimens: ImpaktfullUiStepperDimensTheme(
+          spacing: 8,
+          height: 8,
+          borderRadius: dimens.borderRadius,
+        ),
+        textStyles: ImpaktfullUiStepperTextStyleTheme(
+          title: textStyles.onCard.text.small.medium,
+          subtitle: textStyles.onCard.text.small.light,
+        ),
+      );
 }
 
 class ImpaktfullUiStepperAssetsTheme {

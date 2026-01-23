@@ -17,6 +17,24 @@ class ImpaktfullUiNumberInputTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiNumberInputTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.numberInput;
+
+  static ImpaktfullUiNumberInputTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiNumberInputTheme(
+        assets: ImpaktfullUiNumberInputAssetsTheme(
+          minus: assets.icons.minus,
+          plus: assets.icons.add,
+        ),
+        colors: const ImpaktfullUiNumberInputColorTheme(),
+        dimens: const ImpaktfullUiNumberInputDimensTheme(),
+        textStyles: const ImpaktfullUiNumberInputTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiNumberInputAssetsTheme {

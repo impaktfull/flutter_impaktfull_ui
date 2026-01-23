@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiFilePickerTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiFilePickerAssetsTheme assets;
@@ -17,6 +18,37 @@ class ImpaktfullUiFilePickerTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiFilePickerTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.filePicker;
+
+  static ImpaktfullUiFilePickerTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      ImpaktfullUiFilePickerTheme(
+        assets: ImpaktfullUiFilePickerAssetsTheme(
+          delete: assets.icons.delete,
+          file: assets.icons.file,
+          upload: assets.icons.cloudUpload,
+        ),
+        colors: ImpaktfullUiFilePickerColorTheme(
+          background: colors.card,
+          icons: colors.text,
+          progressIndicator: colors.accent,
+          border: colors.border,
+          borderDrop: colors.accent,
+          borderError: colors.error,
+        ),
+        dimens: ImpaktfullUiFilePickerDimensTheme(
+          borderRadius: dimens.borderRadius,
+        ),
+        textStyles: ImpaktfullUiFilePickerTextStyleTheme(
+          title: textStyles.onCard.text.medium,
+          subtitle: textStyles.onCard.text.small.light.withOpacity(0.66),
+        ),
+      );
 }
 
 class ImpaktfullUiFilePickerAssetsTheme {

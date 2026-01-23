@@ -16,6 +16,21 @@ class ImpaktfullUiNetworkImageTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiNetworkImageTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.networkImage;
+
+  static ImpaktfullUiNetworkImageTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+  }) =>
+      const ImpaktfullUiNetworkImageTheme(
+        assets: ImpaktfullUiNetworkImageAssetsTheme(),
+        colors: ImpaktfullUiNetworkImageColorTheme(),
+        dimens: ImpaktfullUiNetworkImageDimensTheme(),
+        textStyles: ImpaktfullUiNetworkImageTextStyleTheme(),
+      );
 }
 
 class ImpaktfullUiNetworkImageAssetsTheme {

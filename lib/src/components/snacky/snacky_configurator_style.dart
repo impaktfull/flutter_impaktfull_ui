@@ -17,6 +17,40 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
 
   static ImpaktfullUiSnackyConfiguratorTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.snackyConfigurator;
+
+  static ImpaktfullUiSnackyConfiguratorTheme getDefault({
+    required ImpaktfullUiAssetTheme assets,
+    required ImpaktfullUiColorTheme colors,
+    required ImpaktfullUiTextStylesTheme textStyles,
+    required ImpaktfullUiDimensTheme dimens,
+    required ImpaktfullUiDurationTheme durations,
+    required ImpaktfullUiShadowsTheme shadows,
+    required ImpaktfullUiAsset brandedIcon,
+  }) =>
+      ImpaktfullUiSnackyConfiguratorTheme(
+        colors: ImpaktfullUiSnackyConfiguratorColorTheme(
+          background: colors.card,
+          border: colors.border,
+          brand: colors.accent,
+          error: colors.error,
+          info: colors.info,
+          warning: colors.warning,
+          success: colors.success,
+        ),
+        dimens: ImpaktfullUiSnackyConfiguratorDimensTheme(
+          borderRadius: dimens.borderRadius,
+        ),
+        textStyles: const ImpaktfullUiSnackyConfiguratorTextStylesTheme(),
+        assets: ImpaktfullUiSnackyConfiguratorAssetsTheme(
+          close: assets.icons.close,
+          chevronRight: assets.icons.chevronRight,
+          success: assets.icons.success,
+          error: assets.icons.error,
+          warning: assets.icons.warning,
+          info: assets.icons.info,
+          branded: brandedIcon,
+        ),
+      );
 }
 
 class ImpaktfullUiSnackyConfiguratorColorTheme {
