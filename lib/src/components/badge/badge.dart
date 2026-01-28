@@ -56,77 +56,78 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
         final borderColor = _getBorderColor(componentTheme);
         final backgroundColor = _getBackgroundColor(componentTheme);
         final textStyle = _getTextStyle(componentTheme);
-        return Container(
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            border: Border.all(
-              color: borderColor,
-              width: componentTheme.dimens.borderWidth,
+        return ImpaktfullUiTouchFeedback(
+          onTap: widget.onTap,
+          color: backgroundColor,
+          border: Border.all(
+            color: borderColor,
+            width: componentTheme.dimens.borderWidth,
+          ),
+          borderRadius: componentTheme.dimens.borderRadius,
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: hasLeading
+                  ? (widget.size.horizontalPadding / 2) -
+                      widget.size.paddingOffset
+                  : widget.size.horizontalPadding,
+              right: hasTrailing
+                  ? (widget.size.horizontalPadding / 2) -
+                      widget.size.paddingOffset
+                  : widget.size.horizontalPadding,
+              top: widget.size.verticalPadding,
+              bottom: widget.size.verticalPadding,
             ),
-            borderRadius: componentTheme.dimens.borderRadius,
-          ),
-          padding: EdgeInsets.only(
-            left: hasLeading
-                ? (widget.size.horizontalPadding / 2) -
-                    widget.size.paddingOffset
-                : widget.size.horizontalPadding,
-            right: hasTrailing
-                ? (widget.size.horizontalPadding / 2) -
-                    widget.size.paddingOffset
-                : widget.size.horizontalPadding,
-            top: widget.size.verticalPadding,
-            bottom: widget.size.verticalPadding,
-          ),
-          child: ImpaktfullUiAutoLayout.horizontal(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              if (widget.leadingAsset != null) ...[
-                _getWidgetOrIcon(
-                  ImpaktfullUiAssetWidget(
-                    asset: widget.leadingAsset!,
+            child: ImpaktfullUiAutoLayout.horizontal(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (widget.leadingAsset != null) ...[
+                  _getWidgetOrIcon(
+                    ImpaktfullUiAssetWidget(
+                      asset: widget.leadingAsset!,
+                    ),
+                    textColor,
                   ),
-                  textColor,
-                ),
-                SizedBox(width: widget.size.spacing),
-              ],
-              if (widget.leading != null) ...[
-                _getWidgetOrIcon(widget.leading!, textColor),
-                SizedBox(width: widget.size.spacing),
-              ],
-              if (widget.label != null) ...[
-                Text(
-                  widget.label!,
-                  style: textStyle.copyWith(color: textColor),
-                ),
-              ],
-              if (widget.onCloseTap != null) ...[
-                const SizedBox(width: 2),
-                ImpaktfullUiTouchFeedback(
-                  borderRadius: componentTheme.dimens.borderRadius,
-                  onTap: widget.onCloseTap!,
-                  child: Padding(
-                    padding: const EdgeInsets.all(2),
-                    child: ImpaktfullUiAssetWidget(
-                      asset: componentTheme.assets.close,
-                      size: 16,
-                      color: textColor.withOpacityPercentage(0.66),
+                  SizedBox(width: widget.size.spacing),
+                ],
+                if (widget.leading != null) ...[
+                  _getWidgetOrIcon(widget.leading!, textColor),
+                  SizedBox(width: widget.size.spacing),
+                ],
+                if (widget.label != null) ...[
+                  Text(
+                    widget.label!,
+                    style: textStyle.copyWith(color: textColor),
+                  ),
+                ],
+                if (widget.onCloseTap != null) ...[
+                  const SizedBox(width: 2),
+                  ImpaktfullUiTouchFeedback(
+                    borderRadius: componentTheme.dimens.borderRadius,
+                    onTap: widget.onCloseTap!,
+                    child: Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: ImpaktfullUiAssetWidget(
+                        asset: componentTheme.assets.close,
+                        size: 16,
+                        color: textColor.withOpacityPercentage(0.66),
+                      ),
                     ),
                   ),
-                ),
-              ] else if (widget.trailingAsset != null) ...[
-                SizedBox(width: widget.size.spacing),
-                _getWidgetOrIcon(
-                  ImpaktfullUiAssetWidget(
-                    asset: widget.trailingAsset!,
+                ] else if (widget.trailingAsset != null) ...[
+                  SizedBox(width: widget.size.spacing),
+                  _getWidgetOrIcon(
+                    ImpaktfullUiAssetWidget(
+                      asset: widget.trailingAsset!,
+                    ),
+                    textColor,
                   ),
-                  textColor,
-                ),
-              ] else if (widget.trailing != null) ...[
-                SizedBox(width: widget.size.spacing),
-                _getWidgetOrIcon(widget.trailing!, textColor),
-              ]
-            ],
+                ] else if (widget.trailing != null) ...[
+                  SizedBox(width: widget.size.spacing),
+                  _getWidgetOrIcon(widget.trailing!, textColor),
+                ]
+              ],
+            ),
           ),
         );
       },
