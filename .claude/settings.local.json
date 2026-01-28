@@ -3,10 +3,10 @@
     "allow": [
       "WebSearch",
       "Bash(flutter pub:*)",
-      "Bash(./tools/analyze.sh:*)",
-      "Bash(./tools/format.sh:*)",
-      "Bash(./tools/build_runner_build.sh:*)",
-      "Bash(./tools/packges_get.sh:*)"
+      "Bash(./tool/analyze.sh:*)",
+      "Bash(./tool/format.sh:*)",
+      "Bash(./tool/build_runner_build.sh:*)",
+      "Bash(./tool/packges_get.sh:*)"
     ]
   }
 }
