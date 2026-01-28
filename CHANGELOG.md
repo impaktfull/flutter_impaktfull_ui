@@ -1,3 +1,9 @@
+# 0.78.1
+
+## Fix
+
+- `ImpaktfullUiBadge` now correctly handles the `onTap` callback
+
 # 0.77.0 - 0.78.0
 
 ## Feature
