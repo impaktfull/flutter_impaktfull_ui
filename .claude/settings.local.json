@@ -1,10 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(./tool/analyze.sh:*)",
-      "Bash(flutter pub:*)",
       "WebSearch",
-      "Bash(./tool/format.sh:*)"
+      "Bash(flutter pub:*)",
+      "Bash(./tools/analyze.sh:*)",
+      "Bash(./tools/format.sh:*)",
+      "Bash(./tools/build_runner_build.sh:*)",
+      "Bash(./tools/packges_get.sh:*)"
     ]
   }
 }
