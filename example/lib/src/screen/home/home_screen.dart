@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/screen/settings/settings_screen.dart';
+import 'package:impaktfull_ui_example/src/screen/ui_playground/ui_playground_screen.dart';
 import 'package:impaktfull_ui_example/src/widget/home/action_card.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -61,6 +63,12 @@ class HomeScreen extends StatelessWidget {
               directory: 'assets/images/supporting',
             ),
             onTap: () => ImpaktfullUiNavigator.instance.goToExamples(),
+          ),
+          ActionCard(
+            label: 'UI Playground',
+            asset: ImpaktfullUiAsset.icon(PhosphorIcons.book()),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const UiPlaygroundScreen())),
           ),
         ],
         itemBuilder: (context, item, index) => item,
