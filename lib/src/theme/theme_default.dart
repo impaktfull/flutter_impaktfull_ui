@@ -151,7 +151,7 @@ class DefaultTheme {
       borderRadiusExtraSmall:
           borderRadiusExtraSmall ?? BorderRadius.circular(4),
       borderRadiusSmall: borderRadiusSmall ?? BorderRadius.circular(6),
-      borderRadius: borderRadiusSmall ?? BorderRadius.circular(8),
+      borderRadius: borderRadius ?? BorderRadius.circular(8),
       borderRadiusLarge: borderRadiusLarge ?? BorderRadius.circular(12),
       borderRadiusExtraLarge:
           borderRadiusExtraLarge ?? BorderRadius.circular(16),
