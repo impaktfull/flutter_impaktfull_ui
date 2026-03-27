@@ -1,3 +1,9 @@
+# 0.78.2
+
+## Fix
+
+- `borderRadius` now uses `borderRadius` instead of `borderRadiusSmall` for the `withMinimalChanges` constructor
+
 # 0.78.1
 
 ## Fix
