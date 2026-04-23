@@ -17,6 +17,7 @@ class ImpaktfullUiScreen extends StatefulWidget {
   final VoidCallback? onPopInvoked;
   final Widget? drawer;
   final bool isDrawerEnabled;
+  final bool resizeToAvoidBottomInset;
   final Widget child;
   final List<Widget> actions;
   final Alignment fabAlignment;
@@ -35,6 +36,7 @@ class ImpaktfullUiScreen extends StatefulWidget {
     this.centerTitle = false,
     this.isFullScreen = false,
     this.canPop = true,
+    this.resizeToAvoidBottomInset = true,
     this.onPopInvoked,
     this.actions = const [],
     this.fabAlignment = Alignment.bottomRight,
@@ -86,6 +88,7 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                 child: Scaffold(
                   key: _scaffoldState,
                   backgroundColor: componentTheme.colors.background,
+                  resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
                   drawer: widget.drawer == null
                       ? null
                       : ConstrainedBox(
