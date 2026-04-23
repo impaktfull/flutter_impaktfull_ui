@@ -1,3 +1,9 @@
+# 0.79.0
+
+## Feature
+
+- Added `resizeToAvoidBottomInset` parameter to `ImpaktfullUiScreen`
+
 # 0.78.2
 
 ## Fix
