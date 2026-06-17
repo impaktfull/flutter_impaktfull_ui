@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:impaktfull_ui/src/components/asset/rive_asset.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:lottie/lottie.dart';
-import 'package:rive/rive.dart' hide Image;
 
 class ImpaktfullUiAssetWidget extends StatelessWidget {
   final ImpaktfullUiAsset? asset;
@@ -70,9 +70,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
           if (svgAsset != null) {
             return SvgPicture.asset(
               svgAsset,
-              colorFilter: color == null
-                  ? null
-                  : ColorFilter.mode(color, BlendMode.srcIn),
+              colorFilter: color == null ? null : ColorFilter.mode(color, BlendMode.srcIn),
               width: width ?? size,
               height: height ?? size,
               package: asset.package,
@@ -89,12 +87,11 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
             );
           }
           if (riveAsset != null) {
-            return SizedBox(
+            return RiveAsset(
+              asset: riveAsset,
               width: width ?? size,
               height: height ?? size,
-              child: RiveAnimation.asset(
-                riveAsset,
-              ),
+              fit: fit ?? BoxFit.contain,
             );
           }
           throw Exception('No asset provided (or asset type not supported)');

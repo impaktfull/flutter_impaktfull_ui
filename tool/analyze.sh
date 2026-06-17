@@ -1,3 +1,3 @@
 #!/bin/bash
 
-fvm flutter analyze . 
+flutter analyze . 

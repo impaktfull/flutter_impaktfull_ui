@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/components/accordion/model/accordion_reveal_type.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
@@ -29,12 +30,10 @@ class ImpaktfullUiSidebarNavigationItem extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiSidebarNavigationItem> createState() =>
-      _ImpaktfullUiSidebarNavigationItemState();
+  State<ImpaktfullUiSidebarNavigationItem> createState() => _ImpaktfullUiSidebarNavigationItemState();
 }
 
-class _ImpaktfullUiSidebarNavigationItemState
-    extends State<ImpaktfullUiSidebarNavigationItem>
+class _ImpaktfullUiSidebarNavigationItemState extends State<ImpaktfullUiSidebarNavigationItem>
     with SingleTickerProviderStateMixin {
   var _expanded = false;
   late AnimationController _controller;
@@ -88,13 +87,11 @@ class _ImpaktfullUiSidebarNavigationItemState
           children: [
             ImpaktfullUiTouchFeedback(
               onTap: _onTap,
-              color:
-                  widget.isSelected ? componentTheme.colors.background : null,
+              color: widget.isSelected ? componentTheme.colors.background : null,
               borderRadius: componentTheme.dimens.borderRadius,
               child: Padding(
-                padding: widget.items.isEmpty
-                    ? componentTheme.dimens.padding
-                    : componentTheme.dimens.paddingWithSubItems,
+                padding:
+                    widget.items.isEmpty ? componentTheme.dimens.padding : componentTheme.dimens.paddingWithSubItems,
                 child: ImpaktfullUiAutoLayout.horizontal(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 12,
@@ -134,7 +131,7 @@ class _ImpaktfullUiSidebarNavigationItemState
             if (widget.items.isNotEmpty) ...[
               SizeTransition(
                 sizeFactor: _expandAnimation,
-                axisAlignment: 1,
+                alignment: ImpaktfullUiAccordionRevealType.reveal.alignment,
                 child: Padding(
                   padding: const EdgeInsetsDirectional.only(start: 16),
                   child: ImpaktfullUiAutoLayout.vertical(

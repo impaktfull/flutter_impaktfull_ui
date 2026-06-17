@@ -1,28 +1,16 @@
 PODS:
   - Flutter (1.0.0)
-  - rive_common (0.0.1):
-    - Flutter
-  - url_launcher_ios (0.0.1):
-    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - rive_common (from `.symlinks/plugins/rive_common/ios`)
-  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  rive_common:
-    :path: ".symlinks/plugins/rive_common/ios"
-  url_launcher_ios:
-    :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  rive_common: cbbac3192af00d7341f19dae2f26298e9e37d99e
-  url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
 
 PODFILE CHECKSUM: 4f1c12611da7338d21589c0b2ecd6bd20b109694
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.16.2

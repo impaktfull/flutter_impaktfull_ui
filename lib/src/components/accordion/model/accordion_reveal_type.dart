@@ -1,9 +1,11 @@
+import 'package:flutter/widgets.dart';
+
 enum ImpaktfullUiAccordionRevealType {
-  expand(0),
-  topDown(1),
-  reveal(-1);
+  expand(AlignmentDirectional(0.0, 0.0)),
+  topDown(AlignmentDirectional(-1.0, 1.0)),
+  reveal(AlignmentDirectional(-1.0, -1.0));
 
-  final double axisAlignment;
+  final AlignmentGeometry alignment;
 
-  const ImpaktfullUiAccordionRevealType(this.axisAlignment);
+  const ImpaktfullUiAccordionRevealType(this.alignment);
 }
