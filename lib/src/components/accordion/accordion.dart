@@ -37,7 +37,8 @@ class ImpaktfullUiAccordion extends StatefulWidget {
   State<ImpaktfullUiAccordion> createState() => _ImpaktfullUiAccordionState();
 }
 
-class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion> with SingleTickerProviderStateMixin {
+class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _expandAnimation;
 

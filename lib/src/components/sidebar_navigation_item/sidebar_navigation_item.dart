@@ -30,10 +30,12 @@ class ImpaktfullUiSidebarNavigationItem extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiSidebarNavigationItem> createState() => _ImpaktfullUiSidebarNavigationItemState();
+  State<ImpaktfullUiSidebarNavigationItem> createState() =>
+      _ImpaktfullUiSidebarNavigationItemState();
 }
 
-class _ImpaktfullUiSidebarNavigationItemState extends State<ImpaktfullUiSidebarNavigationItem>
+class _ImpaktfullUiSidebarNavigationItemState
+    extends State<ImpaktfullUiSidebarNavigationItem>
     with SingleTickerProviderStateMixin {
   var _expanded = false;
   late AnimationController _controller;
@@ -87,11 +89,13 @@ class _ImpaktfullUiSidebarNavigationItemState extends State<ImpaktfullUiSidebarN
           children: [
             ImpaktfullUiTouchFeedback(
               onTap: _onTap,
-              color: widget.isSelected ? componentTheme.colors.background : null,
+              color:
+                  widget.isSelected ? componentTheme.colors.background : null,
               borderRadius: componentTheme.dimens.borderRadius,
               child: Padding(
-                padding:
-                    widget.items.isEmpty ? componentTheme.dimens.padding : componentTheme.dimens.paddingWithSubItems,
+                padding: widget.items.isEmpty
+                    ? componentTheme.dimens.padding
+                    : componentTheme.dimens.paddingWithSubItems,
                 child: ImpaktfullUiAutoLayout.horizontal(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 12,

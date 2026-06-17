@@ -70,7 +70,9 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
           if (svgAsset != null) {
             return SvgPicture.asset(
               svgAsset,
-              colorFilter: color == null ? null : ColorFilter.mode(color, BlendMode.srcIn),
+              colorFilter: color == null
+                  ? null
+                  : ColorFilter.mode(color, BlendMode.srcIn),
               width: width ?? size,
               height: height ?? size,
               package: asset.package,

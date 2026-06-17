@@ -25,7 +25,8 @@ class _RiveAssetState extends State<RiveAsset> {
   @override
   void initState() {
     super.initState();
-    _fileLoader = FileLoader.fromAsset("assets/vehicles.riv", riveFactory: Factory.rive);
+    _fileLoader =
+        FileLoader.fromAsset("assets/vehicles.riv", riveFactory: Factory.rive);
   }
 
   @override

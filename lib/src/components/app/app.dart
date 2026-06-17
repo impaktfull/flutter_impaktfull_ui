@@ -34,7 +34,9 @@ class ImpaktfullUiApp extends StatelessWidget {
   final bool showDebugFlag;
   final String? flavorBannerText;
   final Color? flavorBannerColor;
-  final List<ImpaktfullUiOverridableComponent<Widget, ImpaktfullUiComponentTheme>> overrideComponents;
+  final List<
+          ImpaktfullUiOverridableComponent<Widget, ImpaktfullUiComponentTheme>>
+      overrideComponents;
 
   const ImpaktfullUiApp({
     required this.title,
@@ -68,7 +70,8 @@ class ImpaktfullUiApp extends StatelessWidget {
 
   static ImpaktfullUiApp of(BuildContext context) => maybeOf(context)!;
 
-  static ImpaktfullUiApp? maybeOf(BuildContext context) => context.findAncestorWidgetOfExactType<ImpaktfullUiApp>();
+  static ImpaktfullUiApp? maybeOf(BuildContext context) =>
+      context.findAncestorWidgetOfExactType<ImpaktfullUiApp>();
 
   @override
   Widget build(BuildContext context) {
@@ -95,10 +98,12 @@ class ImpaktfullUiApp extends StatelessWidget {
                     home: home,
                     debugShowCheckedModeBanner: showDebugFlag,
                     locale: locale,
-                    theme: (materialLightTheme ?? Theme.of(context)).removeUnwantedBehavior(
+                    theme: (materialLightTheme ?? Theme.of(context))
+                        .removeUnwantedBehavior(
                       targetPlatform: targetPlatform,
                     ),
-                    darkTheme: (materialLightTheme ?? Theme.of(context)).removeUnwantedBehavior(
+                    darkTheme: (materialLightTheme ?? Theme.of(context))
+                        .removeUnwantedBehavior(
                       targetPlatform: targetPlatform,
                     ),
                     supportedLocales: supportedLocales,
@@ -106,7 +111,8 @@ class ImpaktfullUiApp extends StatelessWidget {
                     navigatorKey: navigatorKey,
                     initialRoute: initialRoute,
                     onGenerateRoute: onGenerateRoute,
-                    onGenerateInitialRoutes: onGenerateRoute == null && onGenerateInitialRoutes == null
+                    onGenerateInitialRoutes: onGenerateRoute == null &&
+                            onGenerateInitialRoutes == null
                         ? null
                         : onGenerateInitialRoutes ??
                             (initialRoute) {
@@ -115,7 +121,8 @@ class ImpaktfullUiApp extends StatelessWidget {
                               );
                               final route = onGenerateRoute!(settings);
                               if (route == null) {
-                                throw Exception('Route not found for $initialRoute');
+                                throw Exception(
+                                    'Route not found for $initialRoute');
                               }
                               return [route];
                             },
