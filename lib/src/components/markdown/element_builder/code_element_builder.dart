@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/markdown/markdown.dart';
 import 'package:markdown/markdown.dart' as md;
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 
 class ImpaktfullUiMarkdownCodeElementBuilder extends MarkdownElementBuilder {
   final ImpaktfullUiMarkdownTheme theme;
@@ -14,9 +14,7 @@ class ImpaktfullUiMarkdownCodeElementBuilder extends MarkdownElementBuilder {
   Widget visitElementAfter(md.Element element, TextStyle? preferredStyle) {
     final isMultiLine = element.textContent.split('\n').length > 1;
     return Container(
-      padding: isMultiLine
-          ? const EdgeInsets.all(8)
-          : const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      padding: isMultiLine ? const EdgeInsets.all(8) : const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
       decoration: BoxDecoration(
         color: theme.colors.code,
         borderRadius: theme.dimens.code,

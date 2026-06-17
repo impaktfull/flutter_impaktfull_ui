@@ -9,21 +9,30 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_markdown: ^0.7.7+1
-  flutter_svg: ^2.0.10+1
+  flutter_markdown_plus: ^1.0.7
+  flutter_svg: ^2.3.0
   impaktfull_ui_figma_sync: ^0.0.2
   intl: ^0.20.2
-  lottie: ^3.0.0
-  markdown: ^7.2.2
+  lottie: ^3.3.3
+  markdown: ^7.3.1
   phosphor_flutter: ^2.1.0
-  rive: ^0.13.14
-  snacky: ^0.6.2
+  rive: ^0.14.8
+  snacky: ^0.8.0
   web: ^1.1.1
 dev_dependencies:
-  alchemist: ^0.12.0
-  flutter_lints: ^5.0.0
+  alchemist: ^0.14.0
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
+dependency_overrides:
+  # Temporary override: phosphor_flutter 2.1.0 (latest published) extends IconData,
+  # which became a `final class` in recent Flutter, breaking the build.
+  # Pinned to phosphor-icons/flutter PR #62 (fix!: support Flutter 3.43+ IconData
+  # final-class change). Remove once the fix is published to pub.dev.
+  phosphor_flutter:
+    git:
+      url: https://github.com/subarnaPdl/phosphor_icons.git
+      ref: 514f0a883571c4453dbd6ee3041d1dcba4fb8fc7
 flutter:
   uses-material-design: true
   assets:

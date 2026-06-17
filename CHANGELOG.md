@@ -1,3 +1,10 @@
+# 0.80.0
+
+## Feat
+
+- Added support for flutter 3.44.x
+- Added a temporary `dependency_overrides` for `phosphor_flutter` (pinned to phosphor-icons/flutter PR #62) to fix the build with recent Flutter versions where `IconData` became a `final class`. Remove once the fix is published to pub.dev.
+
 # 0.79.0
 
 ## Feature

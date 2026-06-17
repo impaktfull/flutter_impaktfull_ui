@@ -7,7 +7,7 @@ import 'package:impaktfull_ui/src/components/container/container.dart';
 import 'font_loader.dart';
 import 'golden_test_variant.dart';
 
-setupComponentTest() async {
+void setupComponentTest() async {
   await loadImpaktfullUiFonts();
 }
 

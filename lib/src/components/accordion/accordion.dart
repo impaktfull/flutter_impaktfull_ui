@@ -37,8 +37,7 @@ class ImpaktfullUiAccordion extends StatefulWidget {
   State<ImpaktfullUiAccordion> createState() => _ImpaktfullUiAccordionState();
 }
 
-class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
-    with SingleTickerProviderStateMixin {
+class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _expandAnimation;
 
@@ -96,7 +95,7 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
           if (widget.animated) ...[
             SizeTransition(
               sizeFactor: _expandAnimation,
-              axisAlignment: widget.revealType.axisAlignment,
+              alignment: widget.revealType.alignment,
               child: widget.expandedBuilder(context),
             ),
           ] else ...[

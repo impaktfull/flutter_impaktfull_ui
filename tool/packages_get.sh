@@ -1,3 +1,3 @@
 #!/bin/bash
 
-fvm flutter packages get
+flutter packages get
