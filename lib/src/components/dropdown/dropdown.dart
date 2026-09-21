@@ -121,6 +121,17 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
   }
 
   @override
+  void didUpdateWidget(covariant ImpaktfullUiDropdown<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller == widget.controller) return;
+    if (_controller._listener == this) {
+      _controller._listener = null;
+    }
+    _controller = widget.controller ?? ImpaktfullUiDropdownController();
+    _controller._listener = this;
+  }
+
+  @override
   void dispose() {
     if (_controller._listener == this) {
       _controller._listener = null;

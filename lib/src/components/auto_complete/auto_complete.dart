@@ -184,6 +184,7 @@ class _ImpaktfullUiAutoCompleteState<T>
                 initialSearchQuery: _value,
                 noDataLabel: widget.noDataLabel,
                 debounceDuration: widget.debounceDuration,
+                theme: widget.theme,
               ),
             ),
           ),
