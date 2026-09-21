@@ -28,7 +28,7 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
         crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 8,
+        spacing: 16,
         children: [
           Expanded(
             child: Stack(
@@ -65,7 +65,6 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
             ),
           ),
           if (showText) ...[
-            const SizedBox(height: 4),
             Text(
               '${(value * 100).toStringAsFixed(0)}%',
               style: componentTheme.textStyles.text,

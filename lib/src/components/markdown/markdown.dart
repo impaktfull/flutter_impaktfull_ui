@@ -25,7 +25,6 @@ class ImpaktfullUiMarkdown extends StatelessWidget {
   });
 
   @override
-  @override
   Widget build(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,

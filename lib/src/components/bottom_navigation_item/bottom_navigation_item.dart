@@ -52,7 +52,8 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ImpaktfullUiNotificationBadge(
-                  show: badgeShow,
+                  // A badge with a text is shown, even when `badgeShow` is false.
+                  show: badgeShow || badgeText != null,
                   text: badgeText,
                   color: badgeColor ??
                       (isSelected

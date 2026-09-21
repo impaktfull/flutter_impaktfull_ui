@@ -190,9 +190,9 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
       case ImpaktfullUiBadgeSize.small:
         return componentTheme.textStyles.small;
       case ImpaktfullUiBadgeSize.medium:
-        return componentTheme.textStyles.small;
+        return componentTheme.textStyles.medium;
       case ImpaktfullUiBadgeSize.large:
-        return componentTheme.textStyles.small;
+        return componentTheme.textStyles.large;
     }
   }
 

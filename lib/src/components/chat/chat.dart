@@ -70,6 +70,19 @@ class _ImpaktfullUiChatState extends State<ImpaktfullUiChat> {
   }
 
   @override
+  void didUpdateWidget(covariant ImpaktfullUiChat oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // `items` is copied on every update: the parent can pass the same list
+    // instance after adding a message to it.
+    if (widget.items != null || widget.itemsStream != oldWidget.itemsStream) {
+      _setItems();
+    }
+    if (widget.senderIdsTypingStream != oldWidget.senderIdsTypingStream) {
+      _setSenderIdsTyping();
+    }
+  }
+
+  @override
   void dispose() {
     _streamSubscription?.cancel();
     _senderIdsTypingSubscription?.cancel();
@@ -103,18 +116,22 @@ class _ImpaktfullUiChatState extends State<ImpaktfullUiChat> {
   }
 
   void _setItems() {
-    List<ImpaktfullUiChatItem> newItems = [];
-    if (widget.items != null) {
-      newItems = widget.items!;
-    } else if (widget.itemsStream != null) {
-      _streamSubscription?.cancel();
-      _streamSubscription = widget.itemsStream!.listen((items) {
+    _streamSubscription?.cancel();
+    _streamSubscription = null;
+    _items.clear();
+    final items = widget.items;
+    final itemsStream = widget.itemsStream;
+    if (items != null) {
+      _items.addAll(items);
+    } else if (itemsStream != null) {
+      _streamSubscription = itemsStream.listen((items) {
         if (!mounted) return;
-        setState(() => newItems = items);
+        setState(() {
+          _items.clear();
+          _items.addAll(items);
+        });
       });
     }
-    _items.clear();
-    _items.addAll(newItems);
   }
 
   void _setSenderIdsTyping() {

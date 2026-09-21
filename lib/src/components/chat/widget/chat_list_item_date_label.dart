@@ -22,7 +22,7 @@ class ImpaktfullUiChatListItemDateLabel extends StatelessWidget {
       builder: (context, componentTheme) {
         final date = item.timestamp;
         final previousDate = previousItem?.timestamp;
-        if (previousDate == null || !date.isSameDay(date)) {
+        if (previousDate == null || !date.isSameDay(previousDate)) {
           return Center(
             child: Container(
               decoration: BoxDecoration(

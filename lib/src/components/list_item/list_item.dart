@@ -100,6 +100,8 @@ class _ImpaktfullUiListItemState extends State<ImpaktfullUiListItem> {
   }
 
   Future<void> _onAsyncTap() async {
+    // Ignore taps while the previous onAsyncTap is still running.
+    if (_isLoading) return;
     _isLoading = true;
     setState(() {});
     try {

@@ -34,7 +34,7 @@ class ImpaktfullUiCarouselTheme extends ImpaktfullUiComponentTheme {
         ),
         dimens: ImpaktfullUiCarouselDimensTheme(
           indicatorBorderRadius: dimens.borderRadiusCircle,
-          indicatorPadding: const EdgeInsets.all(8),
+          indicatorPadding: EdgeInsets.zero,
           indicatorSize: 8,
           indicatorSpacing: const EdgeInsets.symmetric(horizontal: 4),
         ),
