@@ -85,7 +85,13 @@ jobs:
       - run: flutter pub get
 
       - name: Test
-        run: flutter test
+        run: flutter test --coverage
+
+      # Prints the line coverage of `lib/` per directory and fails when the
+      # total drops below the minimum. The minimum only goes up: raise it when
+      # a pull request adds tests (see AGENTS.md).
+      - name: Coverage
+        run: dart run tool/coverage/bin/coverage_summary.dart --min 67.3
 
   # The component library is deployed to GitHub Pages from `main`. Building it
   # here means a pull request that breaks the example fails before it is
