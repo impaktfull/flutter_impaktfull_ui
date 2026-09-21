@@ -90,8 +90,13 @@ class ImpaktfullUiHalfCircleProgressPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height);
-    final radius = min(size.width / 2, size.height);
+    // Inset by the stroke width, so the stroke (and its round caps at the
+    // bottom) is drawn inside the bounds.
+    final center = Offset(size.width / 2, size.height - strokeWidth / 2);
+    final radius = max(
+      0.0,
+      min(size.width / 2 - strokeWidth / 2, size.height - strokeWidth),
+    );
 
     final borderPaint = Paint()
       ..color = borderColor

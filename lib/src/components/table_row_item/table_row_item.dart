@@ -22,6 +22,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
   final Widget Function(BuildContext, ImpaktfullUiTableRowItemTheme)? builder;
   final ImpaktfullUiTableRowItemTheme? theme;
   final EdgeInsets padding;
+  final EdgeInsets? _customPadding;
 
   const ImpaktfullUiTableRowItem.text({
     required String this.title,
@@ -33,6 +34,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableRowItemType.text,
+        _customPadding = null,
         builder = null,
         badgeType = null,
         onChanged = null,
@@ -50,6 +52,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableRowItemType.checkbox,
+        _customPadding = null,
         builder = null,
         badgeType = null;
 
@@ -62,20 +65,22 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableRowItemType.badge,
+        _customPadding = null,
         subtitle = null,
         builder = null,
         onTap = null,
         onChanged = null,
         isSelected = false;
 
+  /// Without a [padding], the custom cell only has 8px at the end.
   const ImpaktfullUiTableRowItem.custom({
     required this.builder,
-    this.padding = const EdgeInsets.symmetric(
-      horizontal: 16,
-    ),
+    EdgeInsets? padding,
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableRowItemType.custom,
+        padding = padding ?? const EdgeInsets.symmetric(horizontal: 16),
+        _customPadding = padding,
         title = null,
         subtitle = null,
         badgeType = null,
@@ -91,7 +96,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
       builder: (context, componentTheme) {
         if (builder != null) {
           return Padding(
-            padding: const EdgeInsetsDirectional.only(end: 8),
+            padding: _customPadding ?? const EdgeInsetsDirectional.only(end: 8),
             child: builder!(context, componentTheme),
           );
         }
@@ -126,30 +131,33 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
                     onChanged: onChanged,
                   ),
                 ],
-                Expanded(
-                  child: ImpaktfullUiAutoLayout.vertical(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (title != null) ...[
-                        Text(
-                          title!,
-                          style: componentTheme.textStyles.title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                // A checkbox without a text only needs the checkbox.
+                if (title != null || subtitle != null) ...[
+                  Expanded(
+                    child: ImpaktfullUiAutoLayout.vertical(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (title != null) ...[
+                          Text(
+                            title!,
+                            style: componentTheme.textStyles.title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                        if (subtitle != null) ...[
+                          Text(
+                            subtitle!,
+                            style: componentTheme.textStyles.subtitle
+                                .withOpacity(0.5),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ],
-                      if (subtitle != null) ...[
-                        Text(
-                          subtitle!,
-                          style: componentTheme.textStyles.subtitle
-                              .withOpacity(0.5),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),

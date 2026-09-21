@@ -52,7 +52,10 @@ class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget {
             child: ImpaktfullUiLoadingIndicator(),
           );
         }
-        if (errorAsset != null || errorTitle != null || errorMessage != null) {
+        if (errorAsset != null ||
+            errorAssetBuilder != null ||
+            errorTitle != null ||
+            errorMessage != null) {
           return ImpaktfullUiPlaceholder(
             asset: errorAsset,
             assetBuilder: errorAssetBuilder,
@@ -65,6 +68,7 @@ class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget {
         }
         if ((items != null && items!.isEmpty) &&
             (noDataAsset != null ||
+                noDataAssetBuilder != null ||
                 noDataTitle != null ||
                 noDataMessage != null)) {
           return ImpaktfullUiPlaceholder(

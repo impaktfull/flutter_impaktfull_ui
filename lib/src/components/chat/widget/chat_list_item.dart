@@ -46,24 +46,28 @@ class ImpaktfullUiChatListItem extends StatelessWidget {
                 previousSender: previousSender,
               ),
             ],
-            ImpaktfullUiChatListItemBackground(
-              previousItem: previousItem,
-              item: item,
-              nextItem: nextItem,
-              senderConfig: senderConfig,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (item.message != null) ...[
-                    Text(
-                      item.message!,
-                      style: isMyOwnMessage
-                          ? componentTheme.textStyles.ownMessage
-                          : componentTheme.textStyles.otherMessage,
-                    ),
+            // Flexible: the bubble is at most 300 wide, but never wider
+            // than the chat.
+            Flexible(
+              child: ImpaktfullUiChatListItemBackground(
+                previousItem: previousItem,
+                item: item,
+                nextItem: nextItem,
+                senderConfig: senderConfig,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (item.message != null) ...[
+                      Text(
+                        item.message!,
+                        style: isMyOwnMessage
+                            ? componentTheme.textStyles.ownMessage
+                            : componentTheme.textStyles.otherMessage,
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
           ],

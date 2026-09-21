@@ -75,7 +75,7 @@ class ImpaktfullUiChatListInternalItem extends StatelessWidget {
               );
             },
           ),
-          if (isLastItem && senderIdsTyping.isNotEmpty) ...[
+          if (isLastItem && sendersTyping.isNotEmpty) ...[
             ImpaktfullUiChatListTypingContainer(
               sendersTyping: sendersTyping,
               showAvatars: showAvatars,

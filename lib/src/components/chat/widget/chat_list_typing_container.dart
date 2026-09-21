@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
@@ -27,6 +29,8 @@ class _ImpaktfullUiChatListTypingContainerState
     extends State<ImpaktfullUiChatListTypingContainer>
     with TickerProviderStateMixin {
   late final List<AnimationController> _controllers;
+  // Timers instead of Future.delayed: they are cancelled on dispose.
+  final _startTimers = <Timer>[];
 
   @override
   void initState() {
@@ -36,16 +40,19 @@ class _ImpaktfullUiChatListTypingContainerState
         duration: const Duration(milliseconds: 800),
         vsync: this,
       );
-      Future.delayed(Duration(milliseconds: index * 200), () {
+      _startTimers.add(Timer(Duration(milliseconds: index * 200), () {
         if (!mounted) return;
         controller.repeat(reverse: true);
-      });
+      }));
       return controller;
     });
   }
 
   @override
   void dispose() {
+    for (final timer in _startTimers) {
+      timer.cancel();
+    }
     for (final controller in _controllers) {
       controller.dispose();
     }

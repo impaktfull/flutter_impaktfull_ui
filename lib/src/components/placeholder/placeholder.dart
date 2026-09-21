@@ -10,6 +10,9 @@ export 'placeholder_style.dart';
 class ImpaktfullUiPlaceholder extends StatelessWidget {
   final ImpaktfullUiAsset? asset;
   final WidgetBuilder? assetBuilder;
+
+  /// False hides the asset, also the asset of the theme.
+  final bool showAsset;
   final String? title;
   final String? subtitle;
   final TextStyle? titleStyle;
@@ -22,6 +25,7 @@ class ImpaktfullUiPlaceholder extends StatelessWidget {
     this.theme,
     this.asset,
     this.assetBuilder,
+    this.showAsset = true,
     this.title,
     this.subtitle,
     this.titleStyle,
@@ -46,7 +50,9 @@ class ImpaktfullUiPlaceholder extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             spacing: 16,
             children: [
-              if (assetBuilder != null) ...[
+              if (!showAsset) ...[
+                if (actions.isNotEmpty) const SizedBox(height: 40),
+              ] else if (assetBuilder != null) ...[
                 assetBuilder!(context),
               ] else if (asset != null) ...[
                 ImpaktfullUiAssetWidget(

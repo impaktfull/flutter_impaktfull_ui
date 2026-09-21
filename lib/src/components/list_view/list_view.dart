@@ -174,6 +174,12 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
     _scrollController = widget.controller ?? ScrollController();
   }
 
+  /// With [onRefresh] the list can always be pulled to refresh, also when
+  /// the items do not fill it.
+  ScrollPhysics? get _scrollPhysics => widget.onRefresh == null
+      ? widget.scrollPhysics
+      : AlwaysScrollableScrollPhysics(parent: widget.scrollPhysics);
+
   @override
   void dispose() {
     if (widget.controller == null) {
@@ -218,7 +224,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               child: ListView(
                 controller: _scrollController,
                 padding: padding,
-                physics: widget.scrollPhysics,
+                physics: _scrollPhysics,
                 shrinkWrap: widget.shrinkWrap,
                 reverse: widget.reversed,
                 scrollDirection: widget.scrollDirection,
@@ -247,7 +253,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               child: ListView(
                 controller: _scrollController,
                 padding: padding,
-                physics: widget.scrollPhysics,
+                physics: _scrollPhysics,
                 shrinkWrap: widget.shrinkWrap,
                 reverse: widget.reversed,
                 scrollDirection: widget.scrollDirection,
@@ -274,9 +280,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               child: LayoutBuilder(
                 builder: (context, constraints) => ListView(
                   controller: _scrollController,
-                  physics: widget.onRefresh == null
-                      ? widget.scrollPhysics
-                      : const AlwaysScrollableScrollPhysics(),
+                  physics: _scrollPhysics,
                   padding: const EdgeInsets.all(16),
                   shrinkWrap: widget.shrinkWrap,
                   children: [
@@ -284,10 +288,15 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                       leading,
                     ],
                     Container(
-                      height: widget.shrinkWrap ? null : constraints.maxHeight,
+                      // A min height: a large placeholder scrolls.
+                      constraints: BoxConstraints(
+                        minHeight:
+                            widget.shrinkWrap ? 0 : constraints.maxHeight,
+                      ),
                       alignment: Alignment.center,
                       child: ImpaktfullUiPlaceholder(
                         asset: placeholderData.asset,
+                        showAsset: placeholderData.showAsset,
                         title: placeholderData.title,
                         subtitle: placeholderData.subtitle,
                         actions: [
@@ -317,7 +326,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               child: ListView.separated(
                 controller: _scrollController,
                 padding: padding,
-                physics: widget.scrollPhysics,
+                physics: _scrollPhysics,
                 scrollDirection: widget.scrollDirection,
                 itemBuilder: (context, index) =>
                     _buildItem(context, index, leading, trailing),
@@ -340,14 +349,16 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
             child: ListView.separated(
               controller: _scrollController,
               padding: padding,
-              physics: widget.scrollPhysics,
+              physics: _scrollPhysics,
               scrollDirection: widget.scrollDirection,
               itemBuilder: (context, index) =>
                   _buildItem(context, index, leading, trailing),
               shrinkWrap: widget.shrinkWrap,
               reverse: widget.reversed,
               separatorBuilder: (context, index) =>
-                  SizedBox(height: widget.spacing),
+                  widget.scrollDirection == Axis.horizontal
+                      ? SizedBox(width: widget.spacing)
+                      : SizedBox(height: widget.spacing),
               itemCount: _rowCount,
             ),
           );

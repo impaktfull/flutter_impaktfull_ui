@@ -112,6 +112,22 @@ class _TableContainer extends StatelessWidget {
         if (constraints.maxWidth > minWidth) {
           return child;
         }
+        if (!constraints.hasBoundedHeight) {
+          // A shrinkWrap table in a scrollable parent: a horizontal ListView
+          // needs a bounded height, a SingleChildScrollView takes the height
+          // of the table.
+          return ClipRRect(
+            borderRadius: borderRadius,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const ClampingScrollPhysics(),
+              child: SizedBox(
+                width: minWidth,
+                child: child,
+              ),
+            ),
+          );
+        }
         return ClipRRect(
           borderRadius: borderRadius,
           child: SizedBox(
