@@ -1,4 +1,4 @@
-enum CheckboxType {
+enum ImpaktfullUiCheckboxType {
   normal,
   indeterminate,
 }

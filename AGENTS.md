@@ -85,13 +85,16 @@ The Flutter version is pinned in `.fvmrc`. Use that version locally (`fvm use`),
 ./tool/format.sh
 ./tool/analyze.sh
 flutter test
+(cd tool/public_api && dart pub get) && dart run tool/public_api/bin/check_public_api.dart
 ```
+
+`tool/public_api/bin/check_public_api.dart` uses the analyzer to check the public API. It fails when a type of this package is used in a public signature (constructor parameter, field, getter, method, supertype, typedef) but not exported from `lib/impaktfull_ui.dart`, when an implementation of an exported abstract type is not exported, or when the README component or building block list names something that is not exported, is not alphabetical or misses an exported widget. Export the type from the file of its component (`export 'model/<name>.dart';`) or make it private. Pass `--list-unexported` to print every public declaration under `lib/src` that is not exported.
 
 Every pull request and push to `main` runs `.github/workflows/validate.yml`, which must pass before merging:
 
 | Job | Runner | Checks |
 |-----|--------|--------|
-| `validate` | ubuntu | `dart format` (no changes allowed), `flutter analyze .` (package + example), `flutter pub publish --dry-run` |
+| `validate` | ubuntu | `dart format` (no changes allowed), `flutter analyze .` (package + example), public API exports (`tool/public_api`), `dart fix` migrations, `flutter pub publish --dry-run` |
 | `test` | macOS | `flutter test`, including the golden tests (they only run on a macOS host) |
 | `example` | ubuntu | `flutter build web` of the example app that is deployed to GitHub Pages |
 

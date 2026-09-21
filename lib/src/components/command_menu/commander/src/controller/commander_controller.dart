@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/command_menu/commander/src/controller/commander_controller_listener.dart';
 
-class CommanderController {
-  static final instance = CommanderController();
+class ImpaktfullUiCommandMenuController {
+  static final instance = ImpaktfullUiCommandMenuController();
 
   OverlayEntry? _entry;
 
-  CommanderListener? _listener;
+  ImpaktfullUiCommandMenuListener? _listener;
 
   OverlayState? get _overlayState => _listener?.getOverlayState();
 
@@ -27,11 +27,11 @@ class CommanderController {
     notifyListeners();
   }
 
-  void attach(CommanderListener listener) {
+  void attach(ImpaktfullUiCommandMenuListener listener) {
     _listener = listener;
   }
 
-  void detach(CommanderListener listener) {
+  void detach(ImpaktfullUiCommandMenuListener listener) {
     _listener = null;
   }
 

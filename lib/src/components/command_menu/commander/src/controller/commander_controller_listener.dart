@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-abstract class CommanderListener {
+abstract class ImpaktfullUiCommandMenuListener {
   void notifyListeners();
 
   OverlayState? getOverlayState();

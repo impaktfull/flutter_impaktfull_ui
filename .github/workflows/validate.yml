@@ -33,19 +33,26 @@ jobs:
           cache: true
 
       # Every package, not only the root: `flutter analyze .` walks into
-      # `example` and `tool/cli`, and a package without `pub get` is not
-      # analyzed properly.
+      # `example`, `tool/cli` and `tool/public_api`, and a package without
+      # `pub get` is not analyzed properly.
       - name: Install dependencies
         run: |
           flutter pub get
           (cd example && flutter pub get)
           (cd tool/cli && dart pub get)
+          (cd tool/public_api && dart pub get)
 
       - name: Format
         run: dart format --output=none --set-exit-if-changed .
 
       - name: Analyze
         run: flutter analyze .
+
+      # Every type of this package that a public signature uses (constructor
+      # parameters, fields, methods, supertypes, typedefs) must be exported
+      # from `lib/impaktfull_ui.dart`, or apps can not name it.
+      - name: Public API exports
+        run: dart run tool/public_api/bin/check_public_api.dart
 
       # `lib/fix_data.yaml` lets apps migrate off deprecated APIs with
       # `dart fix --apply`. This applies those fixes to `test_fixes/*.dart`

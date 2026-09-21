@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/components/command_menu/commander/src/controll
 
 class CommanderConfiguratorWidget extends StatefulWidget {
   final Widget child;
-  final CommanderController? commanderController;
+  final ImpaktfullUiCommandMenuController? commanderController;
   final WidgetBuilder builder;
   final TextDirection textDirection;
   final ShortcutActivator shortcutActivator;
@@ -24,9 +24,10 @@ class CommanderConfiguratorWidget extends StatefulWidget {
 }
 
 class _CommanderConfiguratorWidgetState
-    extends State<CommanderConfiguratorWidget> implements CommanderListener {
-  CommanderController get commanderController =>
-      widget.commanderController ?? CommanderController.instance;
+    extends State<CommanderConfiguratorWidget>
+    implements ImpaktfullUiCommandMenuListener {
+  ImpaktfullUiCommandMenuController get commanderController =>
+      widget.commanderController ?? ImpaktfullUiCommandMenuController.instance;
 
   @override
   void initState() {

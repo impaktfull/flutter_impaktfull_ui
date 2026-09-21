@@ -39,7 +39,7 @@ Every deprecation and its replacement is listed in the [1.0.0 migration guide](d
 ### Setup
 
 - Setup your theme (colors, textStyles, shadows, dimens, assets)
-- Use ImapktfullUiApp
+- Use ImpaktfullUiApp
 - Use the components provided in the UI library
 
 ### Component List
@@ -48,21 +48,22 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 
 - ImpaktfullUiAccordion
 - ImpaktfullUiAdaptiveNavBar
-  - ImpaktfullUiAdaptiveNavBarAction
+  - ImpaktfullUiAdaptiveNavBarActionItem
 - ImpaktfullUiAdaptivePageRoute
 - ImpaktfullUiAdaptiveSafeArea
 - ImpaktfullUiAdaptiveScreen
 - ImpaktfullUiApp
 - ImpaktfullUiAssetWidget
   - ImpaktfullUiAsset.icon
-  - ImpaktfullUiAsset.svg
-  - ImpaktfullUiAsset.image
   - ImpaktfullUiAsset.lottie
+  - ImpaktfullUiAsset.pixel
   - ImpaktfullUiAsset.rive
+  - ImpaktfullUiAsset.svg
 - ImpaktfullUiAutoComplete
 - ImpaktfullUiAutoLayout
 - ImpaktfullUiAvatar
 - ImpaktfullUiBadge
+  - ImpaktfullUiCustomBadgeWidget
 - ImpaktfullUiBottomActions
 - ImpaktfullUiBottomNavigation
   - ImpaktfullUiBottomNavigationItem
@@ -74,9 +75,6 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiCard
 - ImpaktfullUiCarousel
 - ImpaktfullUiChat
-  - ImpaktfullUiChatListItem
-  - ImpaktfullUiChatListItemAvatar
-  - ImpaktfullUiChatListItemBackground
 - ImpaktfullUiCheckbox
 - ImpaktfullUiCheckboxListItem
 - ImpaktfullUiClampedFractionallySizedBox
@@ -84,6 +82,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiColorInputField
 - ImpaktfullUiColorPicker
 - ImpaktfullUiCommandMenu
+  - ImpaktfullUiCommandMenuWindow
 - ImpaktfullUiConfetti
 - ImpaktfullUiContainer
 - ImpaktfullUiDateInputField
@@ -99,7 +98,6 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiFocusFeedback
 - ImpaktfullUiGallery
   - ImpaktfullUiGalleryFullScreen
-  - ImpaktfullUiGalleryFullScreenItem
   - ImpaktfullUiGalleryHeroItem
 - ImpaktfullUiGridView
 - ImpaktfullUiHorizontalTab
@@ -108,6 +106,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiIconButton
 - ImpaktfullUiImageCrop
 - ImpaktfullUiInputField
+  - ImpaktfullUiInputFieldAction
 - ImpaktfullUiIntroduction
 - ImpaktfullUiLineChart
 - ImpaktfullUiListItem
@@ -162,6 +161,8 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiTableRow
     - ImpaktfullUiTableRowItem
 - ImpaktfullUiTheme
+  - ImpaktfullUiComponentThemeBuilder
+  - ImpaktfullUiThemeBuilder
 - ImpaktfullUiTimePicker
 - ImpaktfullUiTooltip
 - ImpaktfullUiTouchFeedback
@@ -207,7 +208,7 @@ The `ImpaktfullUiApp` will configure the `ImpaktfullUiOverridableComponentConfig
 ### Building Blocks
 
 - ImpaktfullUiBBForgetPassword
-- ImpaktfullUiBBLicensesScreen
+- ImpaktfullUiBBLicenses
 - ImpaktfullUiBBLogin
 - ImpaktfullUiBBNotFound
 - ImpaktfullUiBBRegister

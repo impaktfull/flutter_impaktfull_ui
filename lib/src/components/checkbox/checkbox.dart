@@ -6,9 +6,10 @@ import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'checkbox_style.dart';
+export 'checkbox_type.dart';
 
 class ImpaktfullUiCheckbox extends StatelessWidget {
-  final CheckboxType type;
+  final ImpaktfullUiCheckboxType type;
   final bool? value;
   final ValueChanged<bool>? onChanged;
   final ValueChanged<bool?>? onChangedIndeterminate;
@@ -19,7 +20,7 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
     required this.onChanged,
     this.theme,
     super.key,
-  })  : type = CheckboxType.normal,
+  })  : type = ImpaktfullUiCheckboxType.normal,
         onChangedIndeterminate = null;
 
   const ImpaktfullUiCheckbox.indeterminate({
@@ -29,7 +30,7 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
     super.key,
   })  : onChangedIndeterminate = onChanged,
         onChanged = null,
-        type = CheckboxType.indeterminate;
+        type = ImpaktfullUiCheckboxType.indeterminate;
 
   @Deprecated(
       'Use ImpaktfullUiCheckbox.indeterminate instead. Will be removed in 1.0.0.')
@@ -106,7 +107,7 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
                       ),
                     ),
                   ),
-                ] else if (type == CheckboxType.indeterminate &&
+                ] else if (type == ImpaktfullUiCheckboxType.indeterminate &&
                     value == null) ...[
                   Positioned.fill(
                     child: Center(

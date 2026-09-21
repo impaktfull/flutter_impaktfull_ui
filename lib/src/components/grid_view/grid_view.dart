@@ -10,6 +10,7 @@ import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
+export 'grid_view.localizations.dart';
 export 'grid_view_style.dart';
 export 'model/grid_view_placeholder_state.dart';
 

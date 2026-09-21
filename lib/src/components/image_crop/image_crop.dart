@@ -17,7 +17,15 @@ import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+export 'controller/image_crop_controller.dart';
+export 'cropper/image_crop_cropper.dart';
 export 'image_crop_style.dart';
+export 'model/crop_info.dart';
+export 'overlay/image_crop_circle_overlay.dart'
+    show ImpaktfullUiImageCropCircleOverlay;
+export 'overlay/image_crop_overlay.dart';
+export 'overlay/image_crop_square_overlay.dart'
+    show ImpaktfullUiImageCropSquareOverlay;
 
 class ImpaktfullUiImageCrop extends StatefulWidget {
   final ImpaktfullUiImageCropController? controller;

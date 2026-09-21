@@ -166,6 +166,14 @@ Add to `lib/impaktfull_ui.dart` (alphabetically within the Components section):
 export 'src/components/<component_name>/<component_name>.dart';
 ```
 
+Every type of the package that the component uses in a public signature (constructor parameters, fields, callbacks, controllers, enums, models, localizations, implementations of an abstract type it accepts) must be exported too, from the component file:
+
+```dart
+export 'model/<component_name>_type.dart';
+```
+
+`dart run tool/public_api/bin/check_public_api.dart` (CI runs it) fails when one is missing.
+
 ### 6. Add to Example App
 
 #### Create `example/lib/src/component_library/items/<component_name>/`
@@ -262,3 +270,4 @@ If the component has sub-components, indent them:
 - [ ] Register in component library
 - [ ] Add to README.md Component List
 - [ ] Run `./tool/format.sh && ./tool/analyze.sh`
+- [ ] Run `dart run tool/public_api/bin/check_public_api.dart`

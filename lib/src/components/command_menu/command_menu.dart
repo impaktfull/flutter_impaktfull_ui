@@ -4,6 +4,8 @@ import 'package:impaktfull_ui/src/components/command_menu/commander/commander.da
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'command_menu_style.dart';
+export 'commander/src/controller/commander_controller.dart';
+export 'commander/src/controller/commander_controller_listener.dart';
 
 class ImpaktfullUiCommandMenu extends StatefulWidget {
   final ShortcutActivator? shortcutActivator;
@@ -11,7 +13,7 @@ class ImpaktfullUiCommandMenu extends StatefulWidget {
   final Widget Function(
       BuildContext context,
       ImpaktfullUiCommandMenuTheme theme,
-      CommanderController controller) builder;
+      ImpaktfullUiCommandMenuController controller) builder;
   final bool autofocus;
   final ImpaktfullUiCommandMenuTheme? theme;
 
@@ -30,7 +32,7 @@ class ImpaktfullUiCommandMenu extends StatefulWidget {
 }
 
 class _ImpaktfullUiCommandMenuState extends State<ImpaktfullUiCommandMenu> {
-  final _commanderController = CommanderController();
+  final _commanderController = ImpaktfullUiCommandMenuController();
 
   @override
   Widget build(BuildContext context) {

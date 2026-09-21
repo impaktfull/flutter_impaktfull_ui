@@ -10,6 +10,7 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 export 'chat_style.dart';
 export 'model/chat_item.dart';
+export 'model/chat_status.dart';
 export 'model/sender/chat_sender_config.dart';
 export 'model/sender/chat_sender.dart';
 
