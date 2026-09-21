@@ -9,9 +9,9 @@ import 'package:impaktfull_ui/src/components/bottom_sheet/bottom_sheet.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
-import 'package:impaktfull_ui/src/components/carrousel/carrousel.dart';
+import 'package:impaktfull_ui/src/components/carousel/carousel.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
-import 'package:impaktfull_ui/src/components/check_box_list_item/check_box_list_item.dart';
+import 'package:impaktfull_ui/src/components/checkbox_list_item/checkbox_list_item.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';
@@ -100,10 +100,10 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiButtonTheme button;
   final ImpaktfullUiCalendarTheme calendar;
   final ImpaktfullUiCardTheme card;
-  final ImpaktfullUiCarrouselTheme carrousel;
+  final ImpaktfullUiCarouselTheme carousel;
   final ImpaktfullUiChatTheme chat;
   final ImpaktfullUiCheckboxTheme checkbox;
-  final ImpaktfullUiCheckBoxListItemTheme checkBoxListItem;
+  final ImpaktfullUiCheckboxListItemTheme checkBoxListItem;
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
   final ImpaktfullUiColorInputFieldTheme colorInputField;
@@ -186,7 +186,10 @@ class ImpaktfullUiComponentsTheme {
     required this.button,
     required this.calendar,
     required this.card,
-    required this.carrousel,
+    // `carousel` becomes `required` again in 1.0.0, when `carrousel` is removed.
+    ImpaktfullUiCarouselTheme? carousel,
+    @Deprecated('Use carousel instead. Will be removed in 1.0.0.')
+    ImpaktfullUiCarouselTheme? carrousel,
     required this.chat,
     required this.checkbox,
     required this.checkBoxListItem,
@@ -259,7 +262,11 @@ class ImpaktfullUiComponentsTheme {
     required this.unifiedScreenLayout,
     required this.virtualKeyboard,
     required this.wysiwyg,
-  });
+  })  : assert(carousel != null || carrousel != null, 'carousel is required'),
+        carousel = (carousel ?? carrousel)!;
+
+  @Deprecated('Use carousel instead. Will be removed in 1.0.0.')
+  ImpaktfullUiCarouselTheme get carrousel => carousel;
 
   ImpaktfullUiComponentsTheme copyWith({
     ImpaktfullUiAccordionTheme? accordion,
@@ -273,10 +280,12 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiButtonTheme? button,
     ImpaktfullUiCalendarTheme? calendar,
     ImpaktfullUiCardTheme? card,
-    ImpaktfullUiCarrouselTheme? carrousel,
+    ImpaktfullUiCarouselTheme? carousel,
+    @Deprecated('Use carousel instead. Will be removed in 1.0.0.')
+    ImpaktfullUiCarouselTheme? carrousel,
     ImpaktfullUiChatTheme? chat,
     ImpaktfullUiCheckboxTheme? checkbox,
-    ImpaktfullUiCheckBoxListItemTheme? checkBoxListItem,
+    ImpaktfullUiCheckboxListItemTheme? checkBoxListItem,
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
     ImpaktfullUiColorInputFieldTheme? colorInputField,
@@ -359,7 +368,7 @@ class ImpaktfullUiComponentsTheme {
         button: button ?? this.button,
         calendar: calendar ?? this.calendar,
         card: card ?? this.card,
-        carrousel: carrousel ?? this.carrousel,
+        carousel: carousel ?? carrousel ?? this.carousel,
         chat: chat ?? this.chat,
         checkbox: checkbox ?? this.checkbox,
         checkBoxListItem: checkBoxListItem ?? this.checkBoxListItem,
@@ -459,14 +468,14 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiCalendarTheme.of(context) as T;
     } else if (T == ImpaktfullUiCardTheme) {
       return ImpaktfullUiCardTheme.of(context) as T;
-    } else if (T == ImpaktfullUiCarrouselTheme) {
-      return ImpaktfullUiCarrouselTheme.of(context) as T;
+    } else if (T == ImpaktfullUiCarouselTheme) {
+      return ImpaktfullUiCarouselTheme.of(context) as T;
     } else if (T == ImpaktfullUiChatTheme) {
       return ImpaktfullUiChatTheme.of(context) as T;
     } else if (T == ImpaktfullUiCheckboxTheme) {
       return ImpaktfullUiCheckboxTheme.of(context) as T;
-    } else if (T == ImpaktfullUiCheckBoxListItemTheme) {
-      return ImpaktfullUiCheckBoxListItemTheme.of(context) as T;
+    } else if (T == ImpaktfullUiCheckboxListItemTheme) {
+      return ImpaktfullUiCheckboxListItemTheme.of(context) as T;
     } else if (T == ImpaktfullUiCmsHeaderTheme) {
       return ImpaktfullUiCmsHeaderTheme.of(context) as T;
     } else if (T == ImpaktfullUiColorPickerTheme) {

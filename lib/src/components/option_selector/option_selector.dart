@@ -54,7 +54,7 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
       );
     }
     return Navigator.of(context).push<T>(
-      ImpaktfullUIAdaptivePageRoute.create(
+      ImpaktfullUiAdaptivePageRoute.create(
         builder: (context) => ImpaktfullUiScreen(
           title: title,
           subtitle: subtitle,

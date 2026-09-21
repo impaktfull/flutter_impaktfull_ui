@@ -4,8 +4,8 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 export 'progress_indicator_style.dart';
 export 'model/progress_indicator_type.dart';
-export 'widget/cirlce_progress_indicator.dart';
-export 'widget/half_cirlce_progress_indicator.dart';
+export 'widget/circle_progress_indicator.dart';
+export 'widget/half_circle_progress_indicator.dart';
 export 'widget/line_progress_indicator.dart';
 
 class ImpaktfullUiProgressIndicator extends StatelessWidget {

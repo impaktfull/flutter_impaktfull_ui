@@ -14,19 +14,19 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
   @override
   List<Widget> build(BuildContext context, TableLibraryVariantInputs inputs) {
     const columnConfig = [
-      TableColumnConfig(flex: 1),
-      TableColumnConfig(flex: 1),
-      TableColumnConfig(flex: 1),
-      TableColumnConfig(flex: 1),
-      TableColumnConfig.fixedSize(size: 44 * 3),
+      ImpaktfullUiTableColumnConfig(flex: 1),
+      ImpaktfullUiTableColumnConfig(flex: 1),
+      ImpaktfullUiTableColumnConfig(flex: 1),
+      ImpaktfullUiTableColumnConfig(flex: 1),
+      ImpaktfullUiTableColumnConfig.fixedSize(size: 44 * 3),
     ];
     return [
       ComponentsLibraryVariantDescriptor(
         height: 400,
         child: ImpaktfullUiTable(
           columnConfig: const [
-            TableColumnConfig(flex: 1),
-            TableColumnConfig(flex: 1),
+            ImpaktfullUiTableColumnConfig(flex: 1),
+            ImpaktfullUiTableColumnConfig(flex: 1),
           ],
           titles: [
             ImpaktfullUiTableHeaderItem(

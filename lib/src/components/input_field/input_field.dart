@@ -16,8 +16,8 @@ export 'input_field_style.dart';
 export 'action/input_field_action.dart';
 export 'validator/input_field_validator.dart';
 
-typedef InputFieldValidator = ImpaktfullUiInputFieldValidatorResult Function(
-    String value);
+typedef ImpaktfullUiInputFieldValidator = ImpaktfullUiInputFieldValidatorResult
+    Function(String value);
 
 class ImpaktfullUiInputField extends StatefulWidget {
   final String? label;
@@ -48,7 +48,7 @@ class ImpaktfullUiInputField extends StatefulWidget {
   final bool readOnly;
   final TextCapitalization textCapitalization;
   final List<TextInputFormatter> inputFormatters;
-  final InputFieldValidator? validator;
+  final ImpaktfullUiInputFieldValidator? validator;
   final ImpaktfullUiInputFieldTheme? theme;
 
   const ImpaktfullUiInputField({

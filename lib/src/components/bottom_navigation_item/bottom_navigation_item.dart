@@ -42,7 +42,7 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Expanded(
         child: ImpaktfullUiTouchFeedback(
-          toolTip: showLabel ? null : label,
+          tooltip: showLabel ? null : label,
           onTap: onTap,
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: showLabel ? 8 : 12),

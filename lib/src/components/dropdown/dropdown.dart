@@ -7,14 +7,14 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 export 'dropdown_style.dart';
 
-enum ImpaktfullUiAlignment {
+enum ImpaktfullUiDropdownAlignment {
   bottomCenter(Alignment.bottomCenter),
   bottomLeft(Alignment.bottomLeft),
   bottomRight(Alignment.bottomRight);
 
   final Alignment _alignment;
 
-  const ImpaktfullUiAlignment(this._alignment);
+  const ImpaktfullUiDropdownAlignment(this._alignment);
 }
 
 class ImpaktfullUiDropdownItem<T> {
@@ -42,7 +42,7 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget {
   )? itemBuilder;
   final String? noDataLabel;
   final bool fullWidth;
-  final ImpaktfullUiAlignment alignment;
+  final ImpaktfullUiDropdownAlignment alignment;
   final ImpaktfullUiDropdownTheme? theme;
   final ImpaktfullUiDropdownController? controller;
 
@@ -52,7 +52,7 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget {
     this.button,
     this.buttonText,
     this.childWidth,
-    this.alignment = ImpaktfullUiAlignment.bottomCenter,
+    this.alignment = ImpaktfullUiDropdownAlignment.bottomCenter,
     this.height = 300,
     this.fullWidth = false,
     this.theme,
@@ -71,7 +71,7 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget {
     this.button,
     this.buttonText,
     this.childWidth,
-    this.alignment = ImpaktfullUiAlignment.bottomCenter,
+    this.alignment = ImpaktfullUiDropdownAlignment.bottomCenter,
     this.height = 300,
     this.fullWidth = false,
     this.theme,
@@ -232,9 +232,9 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
 
   Offset _getTranslateOffset(double width) {
     switch (widget.alignment) {
-      case ImpaktfullUiAlignment.bottomRight:
+      case ImpaktfullUiDropdownAlignment.bottomRight:
         return Offset(-width, 0);
-      case ImpaktfullUiAlignment.bottomCenter:
+      case ImpaktfullUiDropdownAlignment.bottomCenter:
         return Offset(-(width / 2), 0);
       default:
         return const Offset(0, 0);

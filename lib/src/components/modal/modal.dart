@@ -208,7 +208,7 @@ class ImpaktfullUiModal extends StatelessWidget {
                         )
                         .toList();
                   }
-                  final headerChilderen = [
+                  final headerChildren = [
                     if (headerChild != null) ...[
                       headerChild!,
                     ],
@@ -263,8 +263,8 @@ class ImpaktfullUiModal extends StatelessWidget {
                                         if (headerChildLocation ==
                                                 ImpaktfullUiModalHeaderChildLocation
                                                     .leading &&
-                                            headerChilderen.isNotEmpty) ...[
-                                          ...headerChilderen,
+                                            headerChildren.isNotEmpty) ...[
+                                          ...headerChildren,
                                         ],
                                         Expanded(
                                           child:
@@ -275,9 +275,9 @@ class ImpaktfullUiModal extends StatelessWidget {
                                               if (headerChildLocation ==
                                                       ImpaktfullUiModalHeaderChildLocation
                                                           .top &&
-                                                  headerChilderen
+                                                  headerChildren
                                                       .isNotEmpty) ...[
-                                                ...headerChilderen,
+                                                ...headerChildren,
                                               ],
                                               if (title != null) ...[
                                                 Text(

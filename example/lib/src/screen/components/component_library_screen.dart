@@ -38,7 +38,8 @@ class _ComponentLibraryScreenState extends State<ComponentLibraryScreen> {
         meta: true,
       ),
       autofocus: true,
-      builder: (BuildContext context, theme, controller) => CommandMenuWindow(
+      builder: (BuildContext context, theme, controller) =>
+          ImpaktfullUiCommandMenuWindow(
         value: _searchQuery,
         onInputChanged: _onChanged,
         onCloseWindow: () => controller.hide(),

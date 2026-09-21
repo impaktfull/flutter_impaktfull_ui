@@ -4,17 +4,17 @@ import 'package:impaktfull_ui/src/components/snacky/snacky_configurator_style.da
 import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
 import 'package:snacky/snacky.dart';
 
-enum ImpaktfullSnackyTextType {
+enum ImpaktfullUiSnackyTextType {
   title,
   subtitle,
 }
 
-class ImpaktfullSnackyBuilder extends SnackyBuilder {
+class ImpaktfullUiSnackyBuilder extends SnackyBuilder {
   final EdgeInsets margin;
   final EdgeInsets padding;
   final ImpaktfullUiSnackyConfiguratorTheme componentTheme;
 
-  const ImpaktfullSnackyBuilder({
+  const ImpaktfullUiSnackyBuilder({
     required this.componentTheme,
     this.margin = const EdgeInsets.all(16),
     this.padding = const EdgeInsets.symmetric(

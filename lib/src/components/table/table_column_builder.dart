@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
 
 class TableColumnBuilder extends StatelessWidget {
-  final List<TableColumnConfig> config;
+  final List<ImpaktfullUiTableColumnConfig> config;
   final List<Widget> children;
 
   const TableColumnBuilder({
@@ -28,8 +28,9 @@ class TableColumnBuilder extends StatelessWidget {
   }
 
   Widget _buildItem(int i) {
-    final tableColumnConfig =
-        i > config.length - 1 ? const TableColumnConfig(flex: 1) : config[i];
+    final tableColumnConfig = i > config.length - 1
+        ? const ImpaktfullUiTableColumnConfig(flex: 1)
+        : config[i];
     final child = children[i];
     if (tableColumnConfig.flex != null) {
       return Expanded(

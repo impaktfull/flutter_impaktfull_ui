@@ -1,19 +1,19 @@
-class TableColumnConfig {
+class ImpaktfullUiTableColumnConfig {
   final int? flex;
   final double? minWidth;
   final double? maxWidth;
 
-  const TableColumnConfig({
+  const ImpaktfullUiTableColumnConfig({
     required int this.flex,
   })  : minWidth = null,
         maxWidth = null;
 
-  const TableColumnConfig.size({
+  const ImpaktfullUiTableColumnConfig.size({
     required double this.minWidth,
     required double this.maxWidth,
   }) : flex = null;
 
-  const TableColumnConfig.fixedSize({
+  const ImpaktfullUiTableColumnConfig.fixedSize({
     required double size,
   })  : flex = null,
         minWidth = size,

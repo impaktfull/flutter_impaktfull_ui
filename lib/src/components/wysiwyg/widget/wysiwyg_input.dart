@@ -5,7 +5,7 @@ import 'package:impaktfull_ui/src/components/divider/divider.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
-import 'package:impaktfull_ui/src/components/wysiwyg/widget/actions/wysiwig_actions.dart';
+import 'package:impaktfull_ui/src/components/wysiwyg/widget/actions/wysiwyg_actions.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
 import 'package:impaktfull_ui/src/widget/input/base_input_field.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';

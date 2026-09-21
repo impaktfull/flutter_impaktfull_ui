@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/calendar/model/calendar_list_item.dart';
-import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/list/calendar_list_item.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/list/calendar_list_item.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
@@ -27,7 +27,7 @@ class ImpaktfullUiCalendarList extends StatefulWidget {
 }
 
 class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
-  late List<ImpaktfulluiCalendarListItem> _events;
+  late List<ImpaktfullUiCalendarListItemModel> _events;
 
   @override
   void initState() {
@@ -70,10 +70,10 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
       final compareDate = e.endDate;
       return compareDate.isAfter(now);
     }).toList();
-    final weekEvents = <ImpaktfulluiCalendarListItem>[];
+    final weekEvents = <ImpaktfullUiCalendarListItemModel>[];
     for (final event in futureEvents) {
       final startDate = event.startDate;
-      final listItem = ImpaktfulluiCalendarListItem(
+      final listItem = ImpaktfullUiCalendarListItemModel(
         date: startDate,
         event: event,
       );
@@ -81,7 +81,7 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
       if (event.amountOfDaysCovered > 1) {
         for (int i = 1; i < event.amountOfDaysCovered; i++) {
           final date = startDate.add(Duration(days: i)).startOfTheDay;
-          final listItem = ImpaktfulluiCalendarListItem(
+          final listItem = ImpaktfullUiCalendarListItemModel(
             date: date,
             event: event,
           );

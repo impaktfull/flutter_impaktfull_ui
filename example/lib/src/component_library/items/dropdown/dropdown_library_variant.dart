@@ -16,7 +16,7 @@ class DropdownVariant
     final childWidth = [300.0, null];
     return [
       for (final width in childWidth) ...[
-        for (final alignment in ImpaktfullUiAlignment.values) ...[
+        for (final alignment in ImpaktfullUiDropdownAlignment.values) ...[
           Align(
             alignment: Alignment.center,
             child: ImpaktfullUiDropdown(

@@ -80,7 +80,7 @@ class ImpaktfullUiTheme<T extends Object> {
     String? assetSuffix,
     T? customTheme,
   }) =>
-      DefaultTheme.withMinimalChanges<T>(
+      ImpaktfullUiDefaultTheme.withMinimalChanges<T>(
         label: label,
         primary: primary,
         accent: accent,
@@ -112,7 +112,7 @@ class ImpaktfullUiTheme<T extends Object> {
     String? assetSuffix,
     T? customTheme,
   }) =>
-      DefaultTheme.withMinimalChanges<T>(
+      ImpaktfullUiDefaultTheme.withMinimalChanges<T>(
         label: 'impaktfull Theme',
         primary: const Color(0xFF1A1A1A),
         accent: const Color(0xFF7d64f2),

@@ -3,11 +3,14 @@ enum ImpaktfullUiWysiwygAction {
   bold(tooltip: 'Bold'),
   italic(tooltip: 'Italic'),
   unorderedList(tooltip: 'Unordered List'),
-  orderdList(tooltip: 'Ordered List'),
+  orderedList(tooltip: 'Ordered List'),
   link(tooltip: 'Link'),
   code(tooltip: 'Code'),
   codeBlock(tooltip: 'Code Block'),
   photo(tooltip: 'Photo');
+
+  @Deprecated('Use orderedList instead. Will be removed in 1.0.0.')
+  static const orderdList = orderedList;
 
   final String tooltip;
 

@@ -8,7 +8,7 @@ import 'package:impaktfull_ui/src/components/command_menu/command_menu.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
-class CommandMenuWindow extends StatefulWidget {
+class ImpaktfullUiCommandMenuWindow extends StatefulWidget {
   final String? value;
   final ValueChanged<String> onInputChanged;
   final VoidCallback onCloseWindow;
@@ -18,7 +18,7 @@ class CommandMenuWindow extends StatefulWidget {
   final ImpaktfullUiCommandMenuTheme? theme;
   final Widget? Function(BuildContext context)? bottomBuilder;
 
-  const CommandMenuWindow({
+  const ImpaktfullUiCommandMenuWindow({
     required this.onInputChanged,
     required this.onCloseWindow,
     this.value,
@@ -31,10 +31,11 @@ class CommandMenuWindow extends StatefulWidget {
   });
 
   @override
-  State<CommandMenuWindow> createState() => _CommandMenuWindowState();
+  State<ImpaktfullUiCommandMenuWindow> createState() =>
+      _CommandMenuWindowState();
 }
 
-class _CommandMenuWindowState extends State<CommandMenuWindow> {
+class _CommandMenuWindowState extends State<ImpaktfullUiCommandMenuWindow> {
   late final TextEditingController _textEditingController;
   final _foucsNode = FocusNode();
 

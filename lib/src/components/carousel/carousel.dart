@@ -2,24 +2,24 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
-import 'package:impaktfull_ui/src/components/carrousel/carrousel_style.dart';
+import 'package:impaktfull_ui/src/components/carousel/carousel_style.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
-export 'carrousel_style.dart';
+export 'carousel_style.dart';
 
 const _pageTransitionDuration = Duration(milliseconds: 300);
 
-class ImpaktfullUiCarrousel extends StatefulWidget {
+class ImpaktfullUiCarousel extends StatefulWidget {
   final List<Widget> items;
   final int index;
   final EdgeInsetsGeometry? itemMargin;
   final ValueChanged<int>? onItemChanged;
-  final ImpaktfullUiCarrouselTheme? theme;
+  final ImpaktfullUiCarouselTheme? theme;
   final bool autoplay;
   final bool loop;
   final Duration autoplayInterval;
 
-  const ImpaktfullUiCarrousel({
+  const ImpaktfullUiCarousel({
     required this.items,
     this.itemMargin,
     this.index = 0,
@@ -32,10 +32,10 @@ class ImpaktfullUiCarrousel extends StatefulWidget {
   });
 
   @override
-  State<ImpaktfullUiCarrousel> createState() => _ImpaktfullUiCarrouselState();
+  State<ImpaktfullUiCarousel> createState() => _ImpaktfullUiCarouselState();
 }
 
-class _ImpaktfullUiCarrouselState extends State<ImpaktfullUiCarrousel> {
+class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   late PageController _pageController;
   late int _currentPage;
   bool _isForward = true;
@@ -104,7 +104,7 @@ class _ImpaktfullUiCarrouselState extends State<ImpaktfullUiCarrousel> {
   }
 
   @override
-  void didUpdateWidget(ImpaktfullUiCarrousel oldWidget) {
+  void didUpdateWidget(ImpaktfullUiCarousel oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.index != widget.index) {
       _pageController.animateToPage(

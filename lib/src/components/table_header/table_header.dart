@@ -8,7 +8,7 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 export 'table_header_style.dart';
 
 class ImpaktfullUiTableHeader extends StatelessWidget {
-  final List<TableColumnConfig> columnConfig;
+  final List<ImpaktfullUiTableColumnConfig> columnConfig;
   final List<ImpaktfullUiTableHeaderItem> titles;
   final ImpaktfullUiTableHeaderTheme? theme;
 

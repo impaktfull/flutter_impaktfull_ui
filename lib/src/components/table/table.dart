@@ -12,7 +12,7 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 export 'table_style.dart';
 
 class ImpaktfullUiTable extends StatelessWidget {
-  final List<TableColumnConfig> columnConfig;
+  final List<ImpaktfullUiTableColumnConfig> columnConfig;
   final List<ImpaktfullUiTableHeaderItem> titles;
   final List<ImpaktfullUiTableRow> content;
   final bool shrinkWrap;
@@ -92,7 +92,7 @@ class ImpaktfullUiTable extends StatelessWidget {
 }
 
 class _TableContainer extends StatelessWidget {
-  final List<TableColumnConfig> columnConfig;
+  final List<ImpaktfullUiTableColumnConfig> columnConfig;
   final int amountOfColumns;
   final Widget child;
   final BorderRadiusGeometry borderRadius;
@@ -138,7 +138,7 @@ class _TableContainer extends StatelessWidget {
     var minWidth = 0.0;
     for (var i = 0; i < amountOfColumns; ++i) {
       final tableConfig = i > columnConfig.length - 1
-          ? const TableColumnConfig(flex: 1)
+          ? const ImpaktfullUiTableColumnConfig(flex: 1)
           : columnConfig[i];
       if (tableConfig.minWidth != null) {
         minWidth += tableConfig.minWidth!;

@@ -31,8 +31,8 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
   }) =>
       ImpaktfullUiPasswordStrengthIndicatorTheme(
         assets: ImpaktfullUiPasswordStrengthIndicatorAssetsTheme(
-          leadingRequerement: assets.icons.closeCircle,
-          leadingRequerementIsMet: assets.icons.checkCircle,
+          leadingRequirement: assets.icons.closeCircle,
+          leadingRequirementIsMet: assets.icons.checkCircle,
         ),
         colors: ImpaktfullUiPasswordStrengthIndicatorColorTheme(
           strengthIndicators: [
@@ -62,13 +62,26 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorAssetsTheme {
-  final ImpaktfullUiAsset? leadingRequerement;
-  final ImpaktfullUiAsset? leadingRequerementIsMet;
+  final ImpaktfullUiAsset? leadingRequirement;
+  final ImpaktfullUiAsset? leadingRequirementIsMet;
 
   const ImpaktfullUiPasswordStrengthIndicatorAssetsTheme({
-    required this.leadingRequerement,
-    required this.leadingRequerementIsMet,
-  });
+    ImpaktfullUiAsset? leadingRequirement,
+    ImpaktfullUiAsset? leadingRequirementIsMet,
+    @Deprecated('Use leadingRequirement instead. Will be removed in 1.0.0.')
+    ImpaktfullUiAsset? leadingRequerement,
+    @Deprecated(
+        'Use leadingRequirementIsMet instead. Will be removed in 1.0.0.')
+    ImpaktfullUiAsset? leadingRequerementIsMet,
+  })  : leadingRequirement = leadingRequirement ?? leadingRequerement,
+        leadingRequirementIsMet =
+            leadingRequirementIsMet ?? leadingRequerementIsMet;
+
+  @Deprecated('Use leadingRequirement instead. Will be removed in 1.0.0.')
+  ImpaktfullUiAsset? get leadingRequerement => leadingRequirement;
+
+  @Deprecated('Use leadingRequirementIsMet instead. Will be removed in 1.0.0.')
+  ImpaktfullUiAsset? get leadingRequerementIsMet => leadingRequirementIsMet;
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorColorTheme {

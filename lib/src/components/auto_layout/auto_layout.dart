@@ -53,11 +53,11 @@ class ImpaktfullUiAutoLayout extends StatelessWidget {
     final height = orientation == ImpaktfullUiAutoLayoutOrientation.vertical
         ? spacing.toDouble()
         : 0.0;
-    final childerenWithSpacing = <Widget>[];
+    final childrenWithSpacing = <Widget>[];
     for (var i = 0; i < children.length; ++i) {
-      childerenWithSpacing.add(children[i]);
+      childrenWithSpacing.add(children[i]);
       if (i < children.length - 1) {
-        childerenWithSpacing.add(SizedBox(
+        childrenWithSpacing.add(SizedBox(
           width: width,
           height: height,
         ));
@@ -69,28 +69,28 @@ class ImpaktfullUiAutoLayout extends StatelessWidget {
         return Wrap(
           direction: Axis.horizontal,
           runSpacing: spacing,
-          children: childerenWithSpacing,
+          children: childrenWithSpacing,
         );
       }
       return Row(
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
-        children: childerenWithSpacing,
+        children: childrenWithSpacing,
       );
     } else {
       if (wrap) {
         return Wrap(
           direction: Axis.vertical,
           runSpacing: spacing,
-          children: childerenWithSpacing,
+          children: childrenWithSpacing,
         );
       }
       return Column(
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
-        children: childerenWithSpacing,
+        children: childrenWithSpacing,
       );
     }
   }

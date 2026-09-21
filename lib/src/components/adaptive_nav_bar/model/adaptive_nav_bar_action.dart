@@ -27,7 +27,7 @@ class ImpaktfullUiAdaptiveNavBarActionItem {
         onTap: onTap,
         onAsyncTap: onAsyncTap,
         asset: asset,
-        toolTip: title,
+        tooltip: title,
       );
 
   Widget medium() => ImpaktfullUiButton(

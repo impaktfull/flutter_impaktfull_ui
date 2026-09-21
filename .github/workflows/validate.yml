@@ -47,6 +47,13 @@ jobs:
       - name: Analyze
         run: flutter analyze .
 
+      # `lib/fix_data.yaml` lets apps migrate off deprecated APIs with
+      # `dart fix --apply`. This applies those fixes to `test_fixes/*.dart`
+      # and fails if the result differs from the `.dart.expect` golden.
+      - name: dart fix migrations
+        working-directory: test_fixes
+        run: dart fix --compare-to-golden
+
       - name: Publish dry run
         run: flutter pub publish --dry-run
 

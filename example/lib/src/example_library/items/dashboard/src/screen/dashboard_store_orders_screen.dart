@@ -17,10 +17,10 @@ class DashboardStoreOrdersScreen extends StatefulWidget {
 class _DashboardStoreOrdersScreenState
     extends State<DashboardStoreOrdersScreen> {
   static const columnConfig = [
-    TableColumnConfig(flex: 1),
-    TableColumnConfig(flex: 1),
-    TableColumnConfig(flex: 1),
-    TableColumnConfig.fixedSize(size: 44 * 3),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig.fixedSize(size: 44 * 3),
   ];
 
   final orders = TestData.getOrders();

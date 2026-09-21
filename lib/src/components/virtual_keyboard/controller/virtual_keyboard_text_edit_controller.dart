@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/src/components/virtual_keyboard/virtual_keyboard.d
 
 class ImpaktfullUiVirtualKeyboardTextEditController
     extends TextEditingController {
-  final VirtualKeyboardConfig config;
+  final ImpaktfullUiVirtualKeyboardConfig config;
 
   ImpaktfullUiVirtualKeyboardTextEditController({
     super.text,

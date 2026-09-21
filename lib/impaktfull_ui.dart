@@ -23,11 +23,11 @@ export 'src/components/bottom_navigation_item/bottom_navigation_item.dart';
 export 'src/components/bottom_sheet/bottom_sheet.dart';
 export 'src/components/badge/badge.dart';
 export 'src/components/card/card.dart';
-export 'src/components/carrousel/carrousel.dart';
+export 'src/components/carousel/carousel.dart';
 export 'src/components/calendar/calendar.dart';
 export 'src/components/chat/chat.dart';
 export 'src/components/checkbox/checkbox.dart';
-export 'src/components/check_box_list_item/check_box_list_item.dart';
+export 'src/components/checkbox_list_item/checkbox_list_item.dart';
 export 'src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
 export 'src/components/cms_header/cms_header.dart';
 export 'src/components/color_input_field/color_input_field.dart';
@@ -110,6 +110,9 @@ export 'src/components/unified_screen_layout/unified_screen_layout.dart';
 export 'src/components/virtual_keyboard/virtual_keyboard.dart';
 export 'src/components/wrap/wrap.dart';
 export 'src/components/wysiwyg/wysiwyg.dart';
+
+// Deprecated
+export 'src/deprecated/deprecated_typedefs.dart';
 
 // Models
 export 'src/models/asset.dart';

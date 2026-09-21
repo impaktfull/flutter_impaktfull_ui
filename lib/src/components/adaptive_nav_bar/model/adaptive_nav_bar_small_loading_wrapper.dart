@@ -6,13 +6,13 @@ class ImpaktfullUiNavBarSmallLoadingWrapper extends StatefulWidget {
   final VoidCallback? onTap;
   final AsyncCallback? onAsyncTap;
   final ImpaktfullUiAsset asset;
-  final String toolTip;
+  final String tooltip;
 
   const ImpaktfullUiNavBarSmallLoadingWrapper({
     required this.onTap,
     required this.onAsyncTap,
     required this.asset,
-    required this.toolTip,
+    required this.tooltip,
     super.key,
   });
 
@@ -37,7 +37,7 @@ class _ImpaktfullUiNavBarSmallLoadingWrapperState
             onTap: _onTap,
             color: color,
             asset: widget.asset,
-            tooltip: widget.toolTip,
+            tooltip: widget.tooltip,
           ),
         ),
         if (_isLoading) ...[

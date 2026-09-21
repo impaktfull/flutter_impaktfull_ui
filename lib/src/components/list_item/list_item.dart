@@ -50,7 +50,7 @@ class _ImpaktfullUiListItemState extends State<ImpaktfullUiListItem> {
           title: widget.title,
           subtitle: widget.subtitle,
           onTap: isClickable ? _onTap : null,
-          type: widget.type.simpleLisItemType,
+          type: widget.type.simpleListItemType,
           leadingWidgetBuilder: widget.leading == null
               ? null
               : (context) => ImpaktfullUiAssetWidget(

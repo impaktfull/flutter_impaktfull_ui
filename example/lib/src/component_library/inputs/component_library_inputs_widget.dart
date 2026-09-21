@@ -29,7 +29,7 @@ class _ComponentsLibraryInputsWidgetState
   Widget build(BuildContext context) {
     if (inputs.isEmpty) return const SizedBox();
     return Expanded(
-      child: ImpaktfullUiThemeBuidler(
+      child: ImpaktfullUiThemeBuilder(
         builder: (context, theme) => ImpaktfullUiCard(
           padding: EdgeInsets.zero,
           child: ListView.builder(

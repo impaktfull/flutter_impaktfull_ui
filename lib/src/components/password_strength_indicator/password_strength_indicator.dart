@@ -11,7 +11,7 @@ export 'model/password_strength_indicator_requirement.dart';
 class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
   final int? strengthIndicatorIndex;
   final List<Color>? strengthIndicators;
-  final List<PasswordStrengthIndicatorRequirement> requirements;
+  final List<ImpaktfullUiPasswordStrengthIndicatorRequirement> requirements;
   final ImpaktfullUiPasswordStrengthIndicatorTheme? theme;
 
   const ImpaktfullUiPasswordStrengthIndicator({
@@ -64,13 +64,13 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
                     spacing: 8,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      if (componentTheme.assets.leadingRequerementIsMet !=
+                      if (componentTheme.assets.leadingRequirementIsMet !=
                               null &&
-                          componentTheme.assets.leadingRequerement != null) ...[
+                          componentTheme.assets.leadingRequirement != null) ...[
                         ImpaktfullUiAssetWidget(
                           asset: requirement.isMet
-                              ? componentTheme.assets.leadingRequerementIsMet
-                              : componentTheme.assets.leadingRequerement,
+                              ? componentTheme.assets.leadingRequirementIsMet
+                              : componentTheme.assets.leadingRequirement,
                           size: 16,
                           color: requirement.isMet
                               ? componentTheme.colors.requirementAssetIsMet

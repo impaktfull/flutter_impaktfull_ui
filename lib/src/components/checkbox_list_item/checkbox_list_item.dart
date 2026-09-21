@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
-import 'package:impaktfull_ui/src/components/check_box_list_item/check_box_list_item.dart';
+import 'package:impaktfull_ui/src/components/checkbox_list_item/checkbox_list_item.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
-export 'check_box_list_item_style.dart';
+export 'checkbox_list_item_style.dart';
 
-enum ImpaktfullUiCheckBoxListItemType {
+enum ImpaktfullUiCheckboxListItemType {
   normal,
   indeterminate,
 }
 
-class ImpaktfullUiCheckBoxListItem extends StatelessWidget {
+class ImpaktfullUiCheckboxListItem extends StatelessWidget {
   final String title;
   final String? subtitle;
   final bool? value;
   final ImpaktfullUiAsset? leading;
   final ValueChanged<bool>? onChanged;
-  final ValueChanged<bool?>? onChangedInterpediate;
-  final ImpaktfullUiCheckBoxListItemTheme? theme;
-  final ImpaktfullUiCheckBoxListItemType type;
+  final ValueChanged<bool?>? onChangedIndeterminate;
+  final ImpaktfullUiCheckboxListItemTheme? theme;
+  final ImpaktfullUiCheckboxListItemType type;
 
-  const ImpaktfullUiCheckBoxListItem({
+  const ImpaktfullUiCheckboxListItem({
     required this.title,
     required bool this.value,
     required this.onChanged,
@@ -31,10 +31,10 @@ class ImpaktfullUiCheckBoxListItem extends StatelessWidget {
     this.leading,
     this.theme,
     super.key,
-  })  : type = ImpaktfullUiCheckBoxListItemType.normal,
-        onChangedInterpediate = null;
+  })  : type = ImpaktfullUiCheckboxListItemType.normal,
+        onChangedIndeterminate = null;
 
-  const ImpaktfullUiCheckBoxListItem.indermediate({
+  const ImpaktfullUiCheckboxListItem.indeterminate({
     required this.title,
     required this.value,
     required ValueChanged<bool?>? onChanged,
@@ -42,9 +42,32 @@ class ImpaktfullUiCheckBoxListItem extends StatelessWidget {
     this.leading,
     this.theme,
     super.key,
-  })  : type = ImpaktfullUiCheckBoxListItemType.indeterminate,
-        onChangedInterpediate = onChanged,
+  })  : type = ImpaktfullUiCheckboxListItemType.indeterminate,
+        onChangedIndeterminate = onChanged,
         onChanged = null;
+
+  @Deprecated(
+      'Use ImpaktfullUiCheckboxListItem.indeterminate instead. Will be removed in 1.0.0.')
+  const ImpaktfullUiCheckboxListItem.indermediate({
+    required String title,
+    required bool? value,
+    required ValueChanged<bool?>? onChanged,
+    String? subtitle,
+    ImpaktfullUiAsset? leading,
+    ImpaktfullUiCheckboxListItemTheme? theme,
+    Key? key,
+  }) : this.indeterminate(
+          title: title,
+          value: value,
+          onChanged: onChanged,
+          subtitle: subtitle,
+          leading: leading,
+          theme: theme,
+          key: key,
+        );
+
+  @Deprecated('Use onChangedIndeterminate instead. Will be removed in 1.0.0.')
+  ValueChanged<bool?>? get onChangedInterpediate => onChangedIndeterminate;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +78,7 @@ class ImpaktfullUiCheckBoxListItem extends StatelessWidget {
         title: title,
         subtitle: subtitle,
         onTap:
-            onChanged == null && onChangedInterpediate == null ? null : _onTap,
+            onChanged == null && onChangedIndeterminate == null ? null : _onTap,
         type: ImpaktfullUiSimpleListItemType.neutral,
         leadingWidgetBuilder: leading == null
             ? null
@@ -64,15 +87,15 @@ class ImpaktfullUiCheckBoxListItem extends StatelessWidget {
                   color: componentTheme.colors.icons,
                 ),
         trailingWidgetBuilder: (context) {
-          if (type == ImpaktfullUiCheckBoxListItemType.normal) {
-            return ImpaktfullUiCheckBox(
+          if (type == ImpaktfullUiCheckboxListItemType.normal) {
+            return ImpaktfullUiCheckbox(
               value: value ?? false,
               onChanged: onChanged == null ? null : _onChanged,
             );
           } else {
-            return ImpaktfullUiCheckBox.indermediate(
+            return ImpaktfullUiCheckbox.indeterminate(
               value: value,
-              onChanged: onChangedInterpediate == null
+              onChanged: onChangedIndeterminate == null
                   ? null
                   : (value) => _onChanged(value),
             );
@@ -88,10 +111,10 @@ class ImpaktfullUiCheckBoxListItem extends StatelessWidget {
   }
 
   void _onChanged(bool? value) {
-    if (type == ImpaktfullUiCheckBoxListItemType.normal) {
+    if (type == ImpaktfullUiCheckboxListItemType.normal) {
       onChanged?.call(value ?? false);
     } else {
-      onChangedInterpediate?.call(value);
+      onChangedIndeterminate?.call(value);
     }
   }
 }

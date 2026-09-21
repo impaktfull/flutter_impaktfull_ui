@@ -36,7 +36,7 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
                 ? TextDirection.rtl
                 : TextDirection.ltr;
         final snackyBuilder = this.snackyBuilder ??
-            ImpaktfullSnackyBuilder(
+            ImpaktfullUiSnackyBuilder(
               componentTheme: componentTheme,
             );
 
