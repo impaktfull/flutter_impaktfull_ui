@@ -233,10 +233,10 @@ The provided theme contains the default impaktfull branding. But it is super imp
 
 #### Images
 
-These images animations can be overriden by adding your own files to your assets folder. The only thing you need to do extra is override `package` (in your own project)
+These images are not included in the package: add your own files to the assets folder of your project (and pass your own `package` when needed). The [example app](example/assets/images) contains sample files.
 
-- asssets/images/logo.svg
-- asssets/images/splash_logo.svg
+- assets/images/logo.svg
+- assets/images/splash_logo.svg
 
 #### Lottie Animations
 
