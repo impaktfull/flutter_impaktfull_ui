@@ -74,7 +74,9 @@ class ImpaktfullUiResponsiveRow extends StatelessWidget {
         column = [];
       }
     }
-    rows.add(column);
+    if (column.isNotEmpty) {
+      rows.add(column);
+    }
     return ImpaktfullUiAutoLayout.vertical(
       spacing: verticalSpacing,
       children: [

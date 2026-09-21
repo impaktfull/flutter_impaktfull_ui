@@ -58,6 +58,19 @@ class _ImpaktfullUiSidebarNavigationItemState
     }
   }
 
+  @override
+  void didUpdateWidget(covariant ImpaktfullUiSidebarNavigationItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Expand when a sub item becomes selected, but keep a group the user
+    // expanded or collapsed as it is otherwise.
+    if (!_expanded &&
+        _hasSelectedSubItem(widget.items) &&
+        !_hasSelectedSubItem(oldWidget.items)) {
+      _expanded = true;
+      _controller.forward();
+    }
+  }
+
   bool _hasSelectedSubItem(List<Widget> items) => items.any(
         (item) {
           if (item is! ImpaktfullUiSidebarNavigationItem) {
@@ -156,7 +169,7 @@ class _ImpaktfullUiSidebarNavigationItemState
     widget.onTap?.call();
     _onExpandedTapped();
     if (widget.items.isEmpty) {
-      ImpaktfullUiScreen.of(context).closeDrawer();
+      ImpaktfullUiScreen.maybeOf(context)?.closeDrawer();
     }
   }
 

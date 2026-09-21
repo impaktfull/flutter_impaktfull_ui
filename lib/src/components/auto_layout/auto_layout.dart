@@ -47,6 +47,20 @@ class ImpaktfullUiAutoLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (wrap) {
+      // Wrap spaces its children itself: spacer widgets would be wrapped like
+      // any other child (and could start a new run).
+      return Wrap(
+        direction: orientation == ImpaktfullUiAutoLayoutOrientation.horizontal
+            ? Axis.horizontal
+            : Axis.vertical,
+        spacing: spacing,
+        runSpacing: spacing,
+        alignment: _getWrapAlignment(mainAxisAlignment),
+        crossAxisAlignment: _getWrapCrossAlignment(crossAxisAlignment),
+        children: children,
+      );
+    }
     final width = orientation == ImpaktfullUiAutoLayoutOrientation.horizontal
         ? spacing.toDouble()
         : 0.0;
@@ -65,33 +79,41 @@ class ImpaktfullUiAutoLayout extends StatelessWidget {
     }
 
     if (orientation == ImpaktfullUiAutoLayoutOrientation.horizontal) {
-      if (wrap) {
-        return Wrap(
-          direction: Axis.horizontal,
-          runSpacing: spacing,
-          children: childrenWithSpacing,
-        );
-      }
       return Row(
         mainAxisAlignment: mainAxisAlignment,
         crossAxisAlignment: crossAxisAlignment,
         mainAxisSize: mainAxisSize,
         children: childrenWithSpacing,
       );
-    } else {
-      if (wrap) {
-        return Wrap(
-          direction: Axis.vertical,
-          runSpacing: spacing,
-          children: childrenWithSpacing,
-        );
-      }
-      return Column(
-        mainAxisAlignment: mainAxisAlignment,
-        crossAxisAlignment: crossAxisAlignment,
-        mainAxisSize: mainAxisSize,
-        children: childrenWithSpacing,
-      );
     }
+    return Column(
+      mainAxisAlignment: mainAxisAlignment,
+      crossAxisAlignment: crossAxisAlignment,
+      mainAxisSize: mainAxisSize,
+      children: childrenWithSpacing,
+    );
   }
+
+  static WrapAlignment _getWrapAlignment(MainAxisAlignment alignment) =>
+      switch (alignment) {
+        MainAxisAlignment.start => WrapAlignment.start,
+        MainAxisAlignment.end => WrapAlignment.end,
+        MainAxisAlignment.center => WrapAlignment.center,
+        MainAxisAlignment.spaceBetween => WrapAlignment.spaceBetween,
+        MainAxisAlignment.spaceAround => WrapAlignment.spaceAround,
+        MainAxisAlignment.spaceEvenly => WrapAlignment.spaceEvenly,
+      };
+
+  static WrapCrossAlignment _getWrapCrossAlignment(
+    CrossAxisAlignment alignment,
+  ) =>
+      switch (alignment) {
+        CrossAxisAlignment.end => WrapCrossAlignment.end,
+        CrossAxisAlignment.center => WrapCrossAlignment.center,
+        // Wrap has no stretch or baseline alignment.
+        CrossAxisAlignment.start ||
+        CrossAxisAlignment.stretch ||
+        CrossAxisAlignment.baseline =>
+          WrapCrossAlignment.start,
+      };
 }

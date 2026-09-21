@@ -72,12 +72,14 @@ class ImpaktfullUiUnifiedScreenLayout extends StatelessWidget {
   }
 
   MainAxisAlignment _getMainAxisAlignment(Alignment alignment) {
-    if (alignment == Alignment.center) {
-      return MainAxisAlignment.center;
-    }
-    if (alignment.y < 1) {
+    // The children are laid out vertically: only the vertical component of
+    // the alignment matters.
+    if (alignment.y < 0) {
       return MainAxisAlignment.start;
     }
-    return MainAxisAlignment.end;
+    if (alignment.y > 0) {
+      return MainAxisAlignment.end;
+    }
+    return MainAxisAlignment.center;
   }
 }

@@ -48,12 +48,15 @@ class ImpaktfullUiScreen extends StatefulWidget {
   });
 
   static ImpaktfullUiScreenState of(BuildContext context) {
-    final ImpaktfullUiScreenState? result =
-        context.findAncestorStateOfType<ImpaktfullUiScreenState>();
-    assert(result != null,
-        'No ImpaktfullUImpaktfullUiScreenStateiScreen found in context');
+    final result = maybeOf(context);
+    assert(result != null, 'No ImpaktfullUiScreen found in context');
     return result!;
   }
+
+  /// The closest [ImpaktfullUiScreenState], or null when [context] is not
+  /// inside an [ImpaktfullUiScreen].
+  static ImpaktfullUiScreenState? maybeOf(BuildContext context) =>
+      context.findAncestorStateOfType<ImpaktfullUiScreenState>();
 
   @override
   State<ImpaktfullUiScreen> createState() => ImpaktfullUiScreenState();

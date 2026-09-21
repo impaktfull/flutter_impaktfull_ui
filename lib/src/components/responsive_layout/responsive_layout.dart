@@ -44,13 +44,10 @@ class ImpaktfullUiResponsiveLayout extends StatelessWidget {
     return screenSize.width <= componentTheme.dimens.breakpointLarge;
   }
 
+  /// Always true: every screen width is small or bigger.
   static bool isSmallOrBigger(BuildContext context,
-      {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
-    final screenSize = MediaQuery.sizeOf(context);
-    final componentTheme =
-        overrideTheme ?? ImpaktfullUiResponsiveLayoutTheme.of(context);
-    return screenSize.width <= componentTheme.dimens.breakpointSmall;
-  }
+          {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) =>
+      true;
 
   static bool isMediumOrBigger(BuildContext context,
       {ImpaktfullUiResponsiveLayoutTheme? overrideTheme}) {
