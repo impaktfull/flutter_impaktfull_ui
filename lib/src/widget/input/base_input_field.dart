@@ -60,13 +60,13 @@ class BaseInputField extends StatefulWidget {
 }
 
 class _BaseInputFieldState extends State<BaseInputField> {
-  late final TextEditingController _controller;
   Timer? _debounceTimer;
+
+  TextEditingController get _controller => widget.controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = widget.controller;
     widget.focusNode.addListener(_onFocusChanged);
     if (widget.autofocus) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -78,10 +78,23 @@ class _BaseInputFieldState extends State<BaseInputField> {
   @override
   void didUpdateWidget(covariant BaseInputField oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.focusNode != widget.focusNode) {
+      oldWidget.focusNode.removeListener(_onFocusChanged);
+      widget.focusNode.addListener(_onFocusChanged);
+    }
     if (oldWidget.value != widget.value && _controller.text != widget.value) {
-      final currentSelection = _controller.selection;
-      _controller.text = widget.value ?? '';
-      _controller.selection = currentSelection;
+      final text = widget.value ?? '';
+      // Keep the selection, clamped to the new text
+      final selection = _controller.selection;
+      _controller.value = TextEditingValue(
+        text: text,
+        selection: selection.isValid
+            ? TextSelection(
+                baseOffset: selection.baseOffset.clamp(0, text.length),
+                extentOffset: selection.extentOffset.clamp(0, text.length),
+              )
+            : TextSelection.collapsed(offset: text.length),
+      );
     }
   }
 

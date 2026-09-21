@@ -130,7 +130,22 @@ class _WysiwygActionsState extends State<WysiwygActions> {
   void _onPhotoTapped() => _format(const ImpaktfullUiWysiwygPhotoFormatter());
 
   void _format(ImpaktfullUiWysiwygFormatter formatter) {
-    final result = formatter.format(widget.text, widget.textSelected);
+    final text = widget.text;
+    final result = formatter.format(
+      text,
+      _getValidSelection(text, widget.textSelected),
+    );
     widget.onChangedText(result.text, result.textSelection);
+  }
+
+  /// The selection is invalid (-1) when the text was set without a selection
+  /// (e.g. the text changed from outside). Fall back to the end of the text.
+  TextSelection _getValidSelection(String text, TextSelection selection) {
+    if (!selection.isValid) {
+      return TextSelection.collapsed(offset: text.length);
+    }
+    final start = selection.start.clamp(0, text.length);
+    final end = selection.end.clamp(start, text.length);
+    return TextSelection(baseOffset: start, extentOffset: end);
   }
 }

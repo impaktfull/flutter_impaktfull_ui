@@ -72,7 +72,7 @@ class _ImpaktfullUiDateInputFieldState
               child: ImpaktfullUiCard(
                 cursor: SystemMouseCursors.click,
                 error: widget.error != null && widget.error!.isNotEmpty,
-                onTap: widget.isDisabled ? null : _onTap,
+                onTap: widget.isDisabled || widget.readOnly ? null : _onTap,
                 padding: EdgeInsets.zero,
                 borderRadius: componentTheme.dimens.borderRadius,
                 child: ImpaktfullUiAutoLayout.vertical(

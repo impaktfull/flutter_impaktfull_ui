@@ -17,10 +17,17 @@ class ImpaktfullUiColorPicker extends StatelessWidget {
   final bool showActiveColor;
   final List<Color> allowedColors;
   final ValueChanged<Color> onColorChanged;
+
+  /// Called when the user finished picking a color: after tapping a color
+  /// ([ImpaktfullUiColorPickerType.simple]) or when releasing the slider
+  /// ([ImpaktfullUiColorPickerType.slider]). [onColorChanged] is called for
+  /// every change while dragging the slider.
+  final ValueChanged<Color>? onColorChangeEnd;
   final ImpaktfullUiColorPickerTheme? theme;
 
   const ImpaktfullUiColorPicker({
     required this.onColorChanged,
+    this.onColorChangeEnd,
     required this.selectedColor,
     this.showActiveColor = false,
     this.allowedColors = const [],
@@ -36,30 +43,37 @@ class ImpaktfullUiColorPicker extends StatelessWidget {
         Colors.cyan,
         Colors.blue,
         Colors.purple,
-        Colors.red,
       ];
+
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
-        final allowedColors =
-            this.allowedColors.isEmpty ? defaultColors : this.allowedColors;
         switch (type) {
           case ImpaktfullUiColorPickerType.simple:
             return ImpaktfullUiColorPickerSimple(
               selectedColor: selectedColor,
-              allowedColors: allowedColors,
-              onColorChanged: onColorChanged,
+              allowedColors:
+                  allowedColors.isEmpty ? defaultColors : allowedColors,
+              onColorChanged: (color) {
+                onColorChanged(color);
+                onColorChangeEnd?.call(color);
+              },
               componentTheme: componentTheme,
               showActiveColor: showActiveColor,
             );
           case ImpaktfullUiColorPickerType.slider:
             return ImpaktfullUiColorPickerSlider(
               selectedColor: selectedColor,
-              allowedColors: allowedColors,
+              // The slider picks a hue, the gradient ends with the first color
+              // to complete the hue circle.
+              allowedColors: allowedColors.isEmpty
+                  ? [...defaultColors, defaultColors.first]
+                  : allowedColors,
               onColorChanged: onColorChanged,
+              onColorChangeEnd: onColorChangeEnd,
               componentTheme: componentTheme,
               showActiveColor: showActiveColor,
             );

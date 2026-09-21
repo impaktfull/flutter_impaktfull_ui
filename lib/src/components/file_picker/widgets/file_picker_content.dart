@@ -82,7 +82,8 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
                                       ],
                                       if (showTextProgress) ...[
                                         TextSpan(
-                                            text: '${data.progress! * 100}%'),
+                                            text:
+                                                '${(data.progress! * 100).round()}%'),
                                       ]
                                     ],
                                   ),

@@ -135,6 +135,11 @@ class _ImpaktfullUiVirtualKeyboardState
     if (widget.obscureText != oldWidget.obscureText) {
       _obscureText = widget.obscureText;
     }
+    if (widget.controller != oldWidget.controller) {
+      oldWidget.controller.removeListener(_onControllerChanged);
+      widget.controller.addListener(_onControllerChanged);
+      _cursorPosition = widget.controller.text.length;
+    }
   }
 
   @override
@@ -150,9 +155,10 @@ class _ImpaktfullUiVirtualKeyboardState
       component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
-        final text = widget.obscureText
+        final text = _obscureText
             ? '•' * widget.controller.text.length
             : widget.controller.text;
+        final cursorPosition = _cursorPosition.clamp(0, text.length);
         return SizedBox(
           width: widget.width,
           child: FittedBox(
@@ -175,9 +181,7 @@ class _ImpaktfullUiVirtualKeyboardState
                             TextSpan(
                               children: [
                                 TextSpan(
-                                  text: _cursorPosition > 0
-                                      ? text.substring(0, _cursorPosition)
-                                      : '',
+                                  text: text.substring(0, cursorPosition),
                                 ),
                                 WidgetSpan(
                                   alignment: PlaceholderAlignment.middle,
@@ -190,7 +194,7 @@ class _ImpaktfullUiVirtualKeyboardState
                                     ),
                                   ),
                                 ),
-                                TextSpan(text: text.substring(_cursorPosition)),
+                                TextSpan(text: text.substring(cursorPosition)),
                               ],
                             ),
                           ),
@@ -239,11 +243,15 @@ class _ImpaktfullUiVirtualKeyboardState
   }
 
   void _onControllerChanged() {
-    setState(() {});
+    setState(() {
+      // The text can be changed outside of the keyboard (e.g. clear()).
+      _cursorPosition = _cursorPosition.clamp(0, widget.controller.text.length);
+    });
   }
 
   void _onTapKey(ImpaktfullUiVirtualKeyboardKey key) {
     final text = widget.controller.text;
+    _cursorPosition = _cursorPosition.clamp(0, text.length);
     final logicalKey = key.key;
     if (logicalKey == LogicalKeyboardKey.backspace) {
       if (text.isEmpty) return;

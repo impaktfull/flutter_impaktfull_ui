@@ -89,8 +89,6 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget {
 class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     with SingleTickerProviderStateMixin
     implements ImpaktfullUiDropdownControllerListener {
-  static OverlayPortalController? _globalToolTipController;
-
   late ImpaktfullUiDropdownController _controller;
 
   final _link = LayerLink();
@@ -98,6 +96,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
   late AnimationController _animationController;
   late Animation<double> _curvedAnimation;
   double? _buttonWidth;
+  var _isButtonWidthSyncScheduled = false;
 
   @override
   void initState() {
@@ -118,9 +117,12 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
 
   @override
   void dispose() {
-    _controller._listener = null;
+    if (_controller._listener == this) {
+      _controller._listener = null;
+    }
+    // The overlay is removed together with the OverlayPortal, so there is
+    // nothing to animate anymore.
     _animationController.dispose();
-    _hide();
     super.dispose();
   }
 
@@ -181,7 +183,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
             ),
             child: LayoutBuilder(
               builder: (context, constraints) {
-                _updateButtonWidth(constraints.maxWidth);
+                _scheduleButtonWidthSync();
                 if (widget.button != null) return widget.button!(context);
                 return ImpaktfullUiButton(
                   onTap: _onTapButton,
@@ -201,30 +203,28 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
   }
 
   Future<void> _hide() async {
-    if (_globalToolTipController == null) return;
-    if (_globalToolTipController != _tooltipController) return;
+    if (!_tooltipController.isShowing) return;
     await _animationController.reverse();
-    _globalToolTipController?.hide();
-    _globalToolTipController = null;
     if (!mounted) return;
+    // The dropdown could have been reopened while the reverse animation ran.
+    if (_animationController.status != AnimationStatus.dismissed) return;
+    _tooltipController.hide();
     setState(() {});
   }
 
   Future<void> _open() async {
+    if (!mounted) return;
     _setButtonWidth(context.size!.width);
-    await _animationController.forward();
-    _globalToolTipController = _tooltipController;
-    _globalToolTipController?.show();
+    // Show the overlay first so the fade in animation is visible.
+    _tooltipController.show();
     setState(() {});
+    await _animationController.forward();
   }
 
   Future<void> _onTapButton() async {
-    _setButtonWidth(context.size!.width);
-    if (_globalToolTipController == _tooltipController) {
-      await _animationController.reverse();
-      _globalToolTipController?.hide();
-      _globalToolTipController = null;
-      setState(() {});
+    if (_tooltipController.isShowing &&
+        _animationController.status != AnimationStatus.reverse) {
+      await _hide();
     } else {
       await _open();
     }
@@ -245,9 +245,16 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     setState(() => _buttonWidth = width);
   }
 
-  void _updateButtonWidth(double width) {
-    WidgetsBinding.instance.addPostFrameCallback((context) {
-      if (mounted) return;
+  void _scheduleButtonWidthSync() {
+    if (_isButtonWidthSyncScheduled) return;
+    _isButtonWidthSyncScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _isButtonWidthSyncScheduled = false;
+      if (!mounted) return;
+      final renderObject = context.findRenderObject();
+      if (renderObject is! RenderBox || !renderObject.hasSize) return;
+      final width = renderObject.size.width;
+      if (width == _buttonWidth) return;
       _setButtonWidth(width);
     });
   }

@@ -17,6 +17,22 @@ Future<void> pumpAndSettleComponent(WidgetTester tester, Widget widget) async {
   await tester.pumpAndSettle();
 }
 
+/// Pumps [widget] inside an [ImpaktfullUiApp] without waiting for the
+/// animations to settle (e.g. for components with a repeating animation).
+Future<void> pumpComponent(WidgetTester tester, Widget widget) async {
+  await tester.pumpWidget(
+    ImpaktfullUiApp(
+      showDebugFlag: false,
+      title: 'impaktfull app',
+      home: ImpaktfullUiContainer(
+        color: Colors.transparent,
+        child: widget,
+      ),
+    ),
+  );
+  await tester.pump();
+}
+
 extension CommonFindersExtension on CommonFinders {
   T findWidget<T extends Widget>(
       WidgetTester tester, Type type, bool Function(T) condition) {

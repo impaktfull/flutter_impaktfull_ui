@@ -40,6 +40,19 @@ class ImpaktfullUiKeyboardListener extends StatefulWidget {
     LogicalKeyboardKey.digit9,
   ];
 
+  static final _numpadDigits = {
+    LogicalKeyboardKey.numpad0: '0',
+    LogicalKeyboardKey.numpad1: '1',
+    LogicalKeyboardKey.numpad2: '2',
+    LogicalKeyboardKey.numpad3: '3',
+    LogicalKeyboardKey.numpad4: '4',
+    LogicalKeyboardKey.numpad5: '5',
+    LogicalKeyboardKey.numpad6: '6',
+    LogicalKeyboardKey.numpad7: '7',
+    LogicalKeyboardKey.numpad8: '8',
+    LogicalKeyboardKey.numpad9: '9',
+  };
+
   @override
   State<ImpaktfullUiKeyboardListener> createState() =>
       _ImpaktfullUiKeyboardListenerState();
@@ -81,7 +94,10 @@ class _ImpaktfullUiKeyboardListenerState
     }
 
     if (widget.allowedKeys.contains(event.logicalKey)) {
-      final key = event.logicalKey.keyLabel;
+      // The keyLabel of a numpad key is "Numpad 1", report the digit instead.
+      final key =
+          ImpaktfullUiKeyboardListener._numpadDigits[event.logicalKey] ??
+              event.logicalKey.keyLabel;
       widget.onNumberTap?.call(key);
       return KeyEventResult.handled;
     }

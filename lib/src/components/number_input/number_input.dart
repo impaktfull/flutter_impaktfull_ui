@@ -41,6 +41,10 @@ class _ImpaktfullUiNumberInputState<T extends num>
   late String _oldValue;
   late final TextEditingController _textController;
 
+  /// The last value passed to [ImpaktfullUiNumberInput.onChanged], used to
+  /// detect when the parent changes the value itself.
+  T? _lastEmittedValue;
+
   T get _step {
     final step = widget.step;
     if (step != null) {
@@ -62,6 +66,16 @@ class _ImpaktfullUiNumberInputState<T extends num>
     super.initState();
     _oldValue = widget.value.toString();
     _textController = TextEditingController(text: _oldValue);
+  }
+
+  @override
+  void didUpdateWidget(covariant ImpaktfullUiNumberInput<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.value == oldWidget.value) return;
+    // The parent passes back the value we emitted: keep the typed text
+    // (e.g. `1.` while typing `1.5`).
+    if (widget.value == _lastEmittedValue) return;
+    _syncTextWithValue(rebuild: false);
   }
 
   @override
@@ -95,6 +109,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
                   value: _oldValue,
                   controller: _textController,
                   onChanged: _onChanged,
+                  onFocusChanged: _onFocusChanged,
                   textInputType: TextInputType.numberWithOptions(
                     signed: T == int,
                     decimal: T == double,
@@ -118,6 +133,36 @@ class _ImpaktfullUiNumberInputState<T extends num>
         ],
       ),
     );
+  }
+
+  void _onFocusChanged(bool hasFocus) {
+    if (hasFocus) return;
+    // The typed text can be out of range (the emitted value is clamped) or
+    // incomplete (e.g. `-`), show the actual value when leaving the field.
+    if (_parse(_oldValue) == widget.value) return;
+    _syncTextWithValue();
+  }
+
+  num? _parse(String value) {
+    if (T == int) return int.tryParse(value);
+    return double.tryParse(value.replaceAll(',', '.'));
+  }
+
+  void _syncTextWithValue({bool rebuild = true}) {
+    final text = widget.value.toString();
+    _lastEmittedValue = null;
+    if (_oldValue == text && _textController.text == text) return;
+    _oldValue = text;
+    _textController.value = TextEditingValue(
+      text: text,
+      selection: TextSelection.collapsed(offset: text.length),
+    );
+    if (rebuild && mounted) setState(() {});
+  }
+
+  void _emit(T value) {
+    _lastEmittedValue = value;
+    widget.onChanged(value);
   }
 
   void _onDecrement() {
@@ -152,7 +197,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
     _oldValue = value;
     final intValue = int.tryParse(value);
     if (intValue == null) {
-      widget.onChanged(widget.value);
+      _emit(widget.value);
       return;
     }
 
@@ -165,7 +210,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
     if (max != null && intValue > max) {
       clampedValue = max;
     }
-    widget.onChanged(clampedValue as T);
+    _emit(clampedValue as T);
   }
 
   void _onChangedDouble(String value) {
@@ -174,9 +219,9 @@ class _ImpaktfullUiNumberInputState<T extends num>
       return;
     }
     _oldValue = value;
-    final doubleValue = double.tryParse(value);
+    final doubleValue = double.tryParse(value.replaceAll(',', '.'));
     if (doubleValue == null) {
-      widget.onChanged(widget.value);
+      _emit(widget.value);
       return;
     }
 
@@ -189,7 +234,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
     if (max != null && doubleValue > max) {
       clampedValue = max;
     }
-    widget.onChanged(clampedValue as T);
+    _emit(clampedValue as T);
   }
 
   void _resetToOldValue() {
