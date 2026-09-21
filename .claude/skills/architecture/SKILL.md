@@ -110,4 +110,4 @@ return DesktopLayout();
 3. **Export** - Add to `impaktfull_ui.dart`
 4. **Add to library** - Create showcase in example app
 5. **Validate** - Run `./tool/format.sh` and `./tool/analyze.sh`
-6. **Update changelog** - Document changes in `CHANGELOG.md`
+6. **Conventional PR title** - `feat:`/`fix:`/`feat!:`; release-please generates `CHANGELOG.md` from it (never edit it by hand)

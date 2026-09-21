@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "include-component-in-tag": false,
+  "bootstrap-sha": "3ff8881057cc6a4a1cf5f0cf73810223dce6d0c0",
+  "packages": {
+    ".": {
+      "release-type": "dart",
+      "package-name": "impaktfull_ui",
+      "changelog-path": "CHANGELOG.md"
+    }
+  }
+}

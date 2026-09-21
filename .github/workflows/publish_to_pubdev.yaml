@@ -1,5 +1,8 @@
 name: Publish to pub.dev
 
+# Triggered by the tag release-please pushes when its release PR is merged.
+# pub.dev is configured to accept tags matching `v{{version}}` from the
+# `pub.dev` environment; both must stay in sync with that setting.
 on:
   push:
     tags:

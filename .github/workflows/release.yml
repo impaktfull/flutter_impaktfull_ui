@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v5
+        with:
+          # A PAT, not GITHUB_TOKEN. pub.dev only accepts a publish from a
+          # workflow that was triggered by a tag push, and a tag pushed with
+          # GITHUB_TOKEN triggers no workflows at all, so `publish_to_pubdev.yaml`
+          # would never run.
+          #
+          # It needs, on this repository: Contents, Pull requests and Issues
+          # (release-please labels its PRs) as "Read and write".
+          token: ${{ secrets.IMPAKTFULL_GITHUB_PAT }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
