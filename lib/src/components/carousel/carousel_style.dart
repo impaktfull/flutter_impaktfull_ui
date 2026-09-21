@@ -1,23 +1,23 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
-class ImpaktfullUiCarrouselTheme extends ImpaktfullUiComponentTheme {
-  final ImpaktfullUiCarrouselAssetsTheme assets;
-  final ImpaktfullUiCarrouselColorTheme colors;
-  final ImpaktfullUiCarrouselDimensTheme dimens;
-  final ImpaktfullUiCarrouselTextStyleTheme textStyles;
+class ImpaktfullUiCarouselTheme extends ImpaktfullUiComponentTheme {
+  final ImpaktfullUiCarouselAssetsTheme assets;
+  final ImpaktfullUiCarouselColorTheme colors;
+  final ImpaktfullUiCarouselDimensTheme dimens;
+  final ImpaktfullUiCarouselTextStyleTheme textStyles;
 
-  const ImpaktfullUiCarrouselTheme({
+  const ImpaktfullUiCarouselTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
     required this.textStyles,
   });
 
-  static ImpaktfullUiCarrouselTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.carrousel;
+  static ImpaktfullUiCarouselTheme of(BuildContext context) =>
+      ImpaktfullUiTheme.of(context).components.carousel;
 
-  static ImpaktfullUiCarrouselTheme getDefault({
+  static ImpaktfullUiCarouselTheme getDefault({
     required ImpaktfullUiAssetTheme assets,
     required ImpaktfullUiColorTheme colors,
     required ImpaktfullUiTextStylesTheme textStyles,
@@ -25,46 +25,46 @@ class ImpaktfullUiCarrouselTheme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiDurationTheme durations,
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
-      ImpaktfullUiCarrouselTheme(
-        assets: const ImpaktfullUiCarrouselAssetsTheme(),
-        colors: ImpaktfullUiCarrouselColorTheme(
+      ImpaktfullUiCarouselTheme(
+        assets: const ImpaktfullUiCarouselAssetsTheme(),
+        colors: ImpaktfullUiCarouselColorTheme(
           indicatorBorder: colors.border,
           activeIndicator: colors.accent,
           inactiveIndicator: colors.card,
         ),
-        dimens: ImpaktfullUiCarrouselDimensTheme(
+        dimens: ImpaktfullUiCarouselDimensTheme(
           indicatorBorderRadius: dimens.borderRadiusCircle,
           indicatorPadding: const EdgeInsets.all(8),
           indicatorSize: 8,
           indicatorSpacing: const EdgeInsets.symmetric(horizontal: 4),
         ),
-        textStyles: const ImpaktfullUiCarrouselTextStyleTheme(),
+        textStyles: const ImpaktfullUiCarouselTextStyleTheme(),
       );
 }
 
-class ImpaktfullUiCarrouselAssetsTheme {
-  const ImpaktfullUiCarrouselAssetsTheme();
+class ImpaktfullUiCarouselAssetsTheme {
+  const ImpaktfullUiCarouselAssetsTheme();
 }
 
-class ImpaktfullUiCarrouselColorTheme {
+class ImpaktfullUiCarouselColorTheme {
   final Color activeIndicator;
   final Color inactiveIndicator;
   final Color indicatorBorder;
 
-  const ImpaktfullUiCarrouselColorTheme({
+  const ImpaktfullUiCarouselColorTheme({
     required this.activeIndicator,
     required this.inactiveIndicator,
     required this.indicatorBorder,
   });
 }
 
-class ImpaktfullUiCarrouselDimensTheme {
+class ImpaktfullUiCarouselDimensTheme {
   final BorderRadiusGeometry indicatorBorderRadius;
   final EdgeInsetsGeometry indicatorPadding;
   final double indicatorSize;
   final EdgeInsetsGeometry indicatorSpacing;
 
-  const ImpaktfullUiCarrouselDimensTheme({
+  const ImpaktfullUiCarouselDimensTheme({
     required this.indicatorBorderRadius,
     required this.indicatorPadding,
     required this.indicatorSize,
@@ -72,6 +72,6 @@ class ImpaktfullUiCarrouselDimensTheme {
   });
 }
 
-class ImpaktfullUiCarrouselTextStyleTheme {
-  const ImpaktfullUiCarrouselTextStyleTheme();
+class ImpaktfullUiCarouselTextStyleTheme {
+  const ImpaktfullUiCarouselTextStyleTheme();
 }

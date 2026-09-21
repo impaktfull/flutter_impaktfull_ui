@@ -74,7 +74,7 @@ class _ImpaktfullUiVirtualKeyboardButtonState
       secondaryKey = widget.virtualKeyboardKey.shiftKey;
     }
 
-    return ImpaktfullUiThemeBuidler(
+    return ImpaktfullUiThemeBuilder(
       builder: (context, theme) => GestureDetector(
         onVerticalDragUpdate: _handleVerticalDragUpdate,
         onVerticalDragEnd: _handleVerticalDragEnd,

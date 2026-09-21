@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/segmented_control/segmented_control_style.dart';
-import 'package:impaktfull_ui/src/components/segmented_control/widget/segment_control_item.dart';
+import 'package:impaktfull_ui/src/components/segmented_control/widget/segmented_control_item.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'segmented_control_style.dart';
@@ -82,7 +82,7 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
                 return Expanded(
                   child: GestureDetector(
                     onTap: () => onChanged(item),
-                    child: ImpaktfullUiSegmentControlItem(
+                    child: ImpaktfullUiSegmentedControlItem(
                       onTap: () => onChanged(item),
                       isSelected: value == item,
                       leading: leading,

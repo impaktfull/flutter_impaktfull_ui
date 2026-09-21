@@ -36,7 +36,7 @@ class MyAppState extends State<MyApp> {
           meta: true,
           control: true,
         ),
-        builder: (context, theme, controller) => CommandMenuWindow(
+        builder: (context, theme, controller) => ImpaktfullUiCommandMenuWindow(
           onCloseWindow: () => controller.hide(),
           onInputChanged: (value) {},
           hasBlurredBackground: true,

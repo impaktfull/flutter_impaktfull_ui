@@ -17,11 +17,11 @@ class DashboardStoreProductsScreen extends StatefulWidget {
 class _DashboardStoreProductsScreenState
     extends State<DashboardStoreProductsScreen> {
   static const columnConfig = [
-    TableColumnConfig(flex: 1),
-    TableColumnConfig(flex: 1),
-    TableColumnConfig(flex: 1),
-    TableColumnConfig(flex: 1),
-    TableColumnConfig.fixedSize(size: 44 * 3),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig.fixedSize(size: 44 * 3),
   ];
 
   final products = TestData.getProducts();

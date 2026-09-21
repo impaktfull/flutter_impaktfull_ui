@@ -14,12 +14,12 @@ class CheckBoxListItemLibraryVariant
   List<Widget> build(
       BuildContext context, CheckBoxListItemLibraryPrimaryInputs inputs) {
     return [
-      ImpaktfullUiCheckBoxListItem(
+      ImpaktfullUiCheckboxListItem(
         title: 'CheckBoxListItem',
         value: inputs.value.value ?? false,
         onChanged: inputs.value.updateState,
       ),
-      ImpaktfullUiCheckBoxListItem.indermediate(
+      ImpaktfullUiCheckboxListItem.indeterminate(
         title: 'CheckBoxListItem',
         value: inputs.value.value,
         onChanged: inputs.value.updateState,

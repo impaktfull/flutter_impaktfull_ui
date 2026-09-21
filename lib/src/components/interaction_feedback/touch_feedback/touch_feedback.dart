@@ -20,7 +20,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final BoxBorder? border;
   final MouseCursor cursor;
   final List<BoxShadow> shadow;
-  final String? toolTip;
+  final String? tooltip;
   final FocusNode? focusNode;
   final bool canRequestFocus;
   final bool autofocus;
@@ -38,7 +38,9 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     this.borderRadius,
     this.color,
     this.border,
-    this.toolTip,
+    String? tooltip,
+    @Deprecated('Use tooltip instead. Will be removed in 1.0.0.')
+    String? toolTip,
     this.focusNode,
     this.cursor = SystemMouseCursors.click,
     this.canRequestFocus = true,
@@ -46,7 +48,10 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     this.useFocusColor = true,
     this.shadow = const [],
     super.key,
-  });
+  }) : tooltip = tooltip ?? toolTip;
+
+  @Deprecated('Use tooltip instead. Will be removed in 1.0.0.')
+  String? get toolTip => tooltip;
 
   @override
   Widget build(BuildContext context) {
@@ -59,14 +64,14 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
         child: child,
       );
     }
-    return ImpaktfullUiThemeBuidler(
+    return ImpaktfullUiThemeBuilder(
       builder: (contex, theme) => ImpaktfullUiContainer(
         border: border,
         shadow: shadow,
         borderRadius: borderRadius,
         color: color ?? Colors.transparent,
         child: ImpaktfullUiTooltip(
-          message: toolTip,
+          message: tooltip,
           child: _PlatformTouchFeedback(
             borderRadius: borderRadius,
             onTap: onTap,

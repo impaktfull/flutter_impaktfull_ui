@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/calendar/model/calendar_list_item.dart';
-import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/list/calendar_list_event_item.dart';
-import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/list/calendar_list_section_title.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/list/calendar_list_event_item.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/list/calendar_list_section_title.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiCalendarListItem extends StatelessWidget {
-  final ImpaktfulluiCalendarListItem item;
-  final ImpaktfulluiCalendarListItem? previousItem;
+  final ImpaktfullUiCalendarListItemModel item;
+  final ImpaktfullUiCalendarListItemModel? previousItem;
   final VoidCallback onTap;
   final ImpaktfullUiCalendarTheme? theme;
   const ImpaktfullUiCalendarListItem({
@@ -64,14 +64,14 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
     );
   }
 
-  String? _createSectionTitle(ImpaktfulluiCalendarListItem? event) {
+  String? _createSectionTitle(ImpaktfullUiCalendarListItemModel? event) {
     if (event == null) return null;
     final minutes = event.date.minute;
     final roundedMinutes = minutes < 30 ? 0 : 30;
     return event.date.copyWith(minute: roundedMinutes).format('HH:mm');
   }
 
-  String? _createSectionSubTitle(ImpaktfulluiCalendarListItem? event) {
+  String? _createSectionSubTitle(ImpaktfullUiCalendarListItemModel? event) {
     if (event == null) return null;
     return event.date.format('dd/MM/yyyy');
   }

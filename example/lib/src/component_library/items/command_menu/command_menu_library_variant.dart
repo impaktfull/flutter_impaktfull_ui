@@ -20,7 +20,7 @@ class CommandMenuLibraryVariant
           LogicalKeyboardKey.keyK,
           meta: true,
         ),
-        builder: (context, theme, controller) => CommandMenuWindow(
+        builder: (context, theme, controller) => ImpaktfullUiCommandMenuWindow(
           onCloseWindow: () => controller.hide(),
           onInputChanged: (value) => inputs.input.updateState(value),
           hasBlurredBackground: inputs.blurBackground.value ?? false,

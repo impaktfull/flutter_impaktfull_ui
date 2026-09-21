@@ -69,7 +69,7 @@ class _WysiwygActionsState extends State<WysiwygActions> {
             onTap: _onUnorderedListTapped,
           ),
           WysiwygActionItem(
-            action: ImpaktfullUiWysiwygAction.orderdList,
+            action: ImpaktfullUiWysiwygAction.orderedList,
             actions: widget.actions,
             asset: widget.componentTheme.assets.orderedList,
             onTap: _onOrderedListTapped,

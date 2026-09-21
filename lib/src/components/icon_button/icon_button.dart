@@ -34,7 +34,7 @@ class ImpaktfullUiIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     //todo add theming
     return ImpaktfullUiTouchFeedback(
-      toolTip: tooltip,
+      tooltip: tooltip,
       borderRadius: BorderRadius.circular(9999),
       onTap: onTap,
       color: backgroundColor,

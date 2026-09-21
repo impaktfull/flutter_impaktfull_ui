@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
-class ImpaktfullUiThemeBuidler extends StatelessWidget {
+class ImpaktfullUiThemeBuilder extends StatelessWidget {
   final Widget Function(BuildContext context, ImpaktfullUiTheme theme) builder;
-  const ImpaktfullUiThemeBuidler({
+  const ImpaktfullUiThemeBuilder({
     required this.builder,
     super.key,
   });

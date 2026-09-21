@@ -1,0 +1,10 @@
+# The root analysis_options.yaml excludes this folder: these files use
+# deprecated APIs on purpose. `dart fix --compare-to-golden` runs from here.
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # This folder is inside the package, so using its deprecated APIs is only
+    # reported by this lint, and data-driven fixes only apply to what is
+    # reported.
+    - deprecated_member_use_from_same_package

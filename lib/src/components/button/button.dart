@@ -84,7 +84,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
               canRequestFocus: widget.canRequestFocus,
               borderRadius: componentTheme.dimens.borderRadius,
               shadow: _getShadow(componentTheme),
-              toolTip: widget.tooltip,
+              tooltip: widget.tooltip,
               border: borderColor == null
                   ? null
                   : Border.all(

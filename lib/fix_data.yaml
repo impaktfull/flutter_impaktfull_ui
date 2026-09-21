@@ -1,0 +1,416 @@
+# Data-driven fixes for `dart fix`.
+#
+# Apps that use a deprecated name can migrate automatically with
+#   dart fix --apply
+# Every deprecation in this package needs an entry here and a case in
+# test_fixes/ (checked by CI with `dart fix --compare-to-golden`).
+# Entries are removed together with the deprecated API in 1.0.0.
+#
+# Reference: https://github.com/flutter/flutter/blob/master/docs/contributing/Data-driven-Fixes.md
+version: 1
+transforms:
+
+  # Renamed classes (deprecated typedefs in lib/src/deprecated/deprecated_typedefs.dart)
+  - title: "Rename to 'ImpaktfullUiCarousel'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCarrousel'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCarousel'
+  - title: "Rename to 'ImpaktfullUiCarouselTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCarrouselTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCarouselTheme'
+  - title: "Rename to 'ImpaktfullUiCarouselAssetsTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCarrouselAssetsTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCarouselAssetsTheme'
+  - title: "Rename to 'ImpaktfullUiCarouselColorTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCarrouselColorTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCarouselColorTheme'
+  - title: "Rename to 'ImpaktfullUiCarouselDimensTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCarrouselDimensTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCarouselDimensTheme'
+  - title: "Rename to 'ImpaktfullUiCarouselTextStyleTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCarrouselTextStyleTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCarouselTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiCheckbox'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCheckBox'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCheckbox'
+  - title: "Rename to 'ImpaktfullUiCheckboxListItem'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCheckBoxListItem'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCheckboxListItem'
+  - title: "Rename to 'ImpaktfullUiCheckboxListItemType'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCheckBoxListItemType'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCheckboxListItemType'
+  - title: "Rename to 'ImpaktfullUiCheckboxListItemTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCheckBoxListItemTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCheckboxListItemTheme'
+  - title: "Rename to 'ImpaktfullUiCheckboxListItemAssetsTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCheckBoxListItemAssetsTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCheckboxListItemAssetsTheme'
+  - title: "Rename to 'ImpaktfullUiCheckboxListItemColorTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCheckBoxListItemColorTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCheckboxListItemColorTheme'
+  - title: "Rename to 'ImpaktfullUiCheckboxListItemDimensTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCheckBoxListItemDimensTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCheckboxListItemDimensTheme'
+  - title: "Rename to 'ImpaktfullUiCheckboxListItemTextStyleTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCheckBoxListItemTextStyleTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCheckboxListItemTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiAdaptivePageRoute'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUIAdaptivePageRoute'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiAdaptivePageRoute'
+  - title: "Rename to 'ImpaktfullUiThemeBuilder'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiThemeBuidler'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiThemeBuilder'
+  - title: "Rename to 'ImpaktfullUiDropdownAlignment'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiAlignment'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiDropdownAlignment'
+  - title: "Rename to 'ImpaktfullUiDefaultTheme'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'DefaultTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiDefaultTheme'
+  - title: "Rename to 'ImpaktfullUiTableColumnConfig'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'TableColumnConfig'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiTableColumnConfig'
+  - title: "Rename to 'ImpaktfullUiCustomBadgeWidget'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'CustomBadgeWidget'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCustomBadgeWidget'
+  - title: "Rename to 'ImpaktfullUiCommandMenuWindow'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'CommandMenuWindow'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCommandMenuWindow'
+  - title: "Rename to 'ImpaktfullUiInputFieldValidator'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'InputFieldValidator'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiInputFieldValidator'
+  - title: "Rename to 'ImpaktfullUiPasswordStrengthIndicatorRequirement'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'PasswordStrengthIndicatorRequirement'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiPasswordStrengthIndicatorRequirement'
+  - title: "Rename to 'ImpaktfullUiCircleProgressPainter'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'CircleProgressPainter'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCircleProgressPainter'
+  - title: "Rename to 'ImpaktfullUiHalfCircleProgressPainter'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'HalfCircleProgressPainter'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiHalfCircleProgressPainter'
+  - title: "Rename to 'ImpaktfullUiVirtualKeyboardConfig'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'VirtualKeyboardConfig'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiVirtualKeyboardConfig'
+
+  # Renamed constructors. Each one is listed under the deprecated class name too:
+  # without it, `OldClass.oldConstructor(...)` becomes `NewClass.NewClass(...)`.
+  - title: "Rename to 'ImpaktfullUiCheckbox.indeterminate'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'indermediate'
+      inClass: 'ImpaktfullUiCheckBox'
+    changes:
+      - kind: 'rename'
+        newName: 'indeterminate'
+  - title: "Rename to 'ImpaktfullUiCheckboxListItem.indeterminate'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'indermediate'
+      inClass: 'ImpaktfullUiCheckBoxListItem'
+    changes:
+      - kind: 'rename'
+        newName: 'indeterminate'
+  - title: "Rename to 'indeterminate'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'indermediate'
+      inClass: 'ImpaktfullUiCheckbox'
+    changes:
+      - kind: 'rename'
+        newName: 'indeterminate'
+  - title: "Rename to 'indeterminate'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'indermediate'
+      inClass: 'ImpaktfullUiCheckboxListItem'
+    changes:
+      - kind: 'rename'
+        newName: 'indeterminate'
+
+  # Renamed getters, fields and enum values.
+  # Members of an enum need `inClass`: `inEnum` does not match them.
+  - title: "Rename to 'onChangedIndeterminate'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onChangedInterpediate'
+      inClass: 'ImpaktfullUiCheckbox'
+    changes:
+      - kind: 'rename'
+        newName: 'onChangedIndeterminate'
+  - title: "Rename to 'onChangedIndeterminate'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onChangedInterpediate'
+      inClass: 'ImpaktfullUiCheckboxListItem'
+    changes:
+      - kind: 'rename'
+        newName: 'onChangedIndeterminate'
+  - title: "Rename to 'indeterminate'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'indermediate'
+      inClass: 'ImpaktfullUiCheckboxAssetsTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'indeterminate'
+  - title: "Rename to 'leadingRequirement'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'leadingRequerement'
+      inClass: 'ImpaktfullUiPasswordStrengthIndicatorAssetsTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'leadingRequirement'
+  - title: "Rename to 'leadingRequirementIsMet'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'leadingRequerementIsMet'
+      inClass: 'ImpaktfullUiPasswordStrengthIndicatorAssetsTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'leadingRequirementIsMet'
+  - title: "Rename to 'carousel'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'carrousel'
+      inClass: 'ImpaktfullUiComponentsTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'carousel'
+  - title: "Rename to 'tooltip'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'toolTip'
+      inClass: 'ImpaktfullUiTouchFeedback'
+    changes:
+      - kind: 'rename'
+        newName: 'tooltip'
+  - title: "Rename to 'simpleListItemType'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'simpleLisItemType'
+      inClass: 'ImpaktfullUiListItemType'
+    changes:
+      - kind: 'rename'
+        newName: 'simpleListItemType'
+  - title: "Rename to 'orderedList'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      field: 'orderdList'
+      inClass: 'ImpaktfullUiWysiwygAction'
+    changes:
+      - kind: 'rename'
+        newName: 'orderedList'
+
+  # Renamed parameters
+  - title: "Rename parameter 'indermediate' to 'indeterminate'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiCheckboxAssetsTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'indermediate'
+        newName: 'indeterminate'
+  - title: "Rename parameter 'leadingRequerement' to 'leadingRequirement'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiPasswordStrengthIndicatorAssetsTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'leadingRequerement'
+        newName: 'leadingRequirement'
+  - title: "Rename parameter 'leadingRequerementIsMet' to 'leadingRequirementIsMet'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiPasswordStrengthIndicatorAssetsTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'leadingRequerementIsMet'
+        newName: 'leadingRequirementIsMet'
+  - title: "Rename parameter 'carrousel' to 'carousel'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiComponentsTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'carrousel'
+        newName: 'carousel'
+  - title: "Rename parameter 'toolTip' to 'tooltip'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiTouchFeedback'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'toolTip'
+        newName: 'tooltip'
+  - title: "Rename parameter 'indermediate' to 'indeterminate'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      method: 'copyWith'
+      inClass: 'ImpaktfullUiCheckboxAssetsTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'indermediate'
+        newName: 'indeterminate'
+  - title: "Rename parameter 'carrousel' to 'carousel'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      method: 'copyWith'
+      inClass: 'ImpaktfullUiComponentsTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'carrousel'
+        newName: 'carousel'

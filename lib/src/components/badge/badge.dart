@@ -197,7 +197,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
   }
 
   Widget _getWidgetOrIcon(Widget widget, Color color) {
-    if (widget is CustomBadgeWidget) {
+    if (widget is ImpaktfullUiCustomBadgeWidget) {
       return widget;
     }
     if (widget is Icon) {
@@ -222,10 +222,10 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
   }
 }
 
-class CustomBadgeWidget extends StatelessWidget {
+class ImpaktfullUiCustomBadgeWidget extends StatelessWidget {
   final Widget child;
 
-  const CustomBadgeWidget({
+  const ImpaktfullUiCustomBadgeWidget({
     required this.child,
     super.key,
   });

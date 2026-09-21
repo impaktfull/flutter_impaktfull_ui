@@ -10,9 +10,9 @@ import 'package:impaktfull_ui/src/components/bottom_sheet/bottom_sheet.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
-import 'package:impaktfull_ui/src/components/carrousel/carrousel.dart';
+import 'package:impaktfull_ui/src/components/carousel/carousel.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
-import 'package:impaktfull_ui/src/components/check_box_list_item/check_box_list_item.dart';
+import 'package:impaktfull_ui/src/components/checkbox_list_item/checkbox_list_item.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';
@@ -89,7 +89,7 @@ import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class DefaultTheme {
+class ImpaktfullUiDefaultTheme {
   static ImpaktfullUiTheme<T> withMinimalChanges<T extends Object>({
     required Color primary,
     required Color accent,
@@ -330,7 +330,7 @@ class DefaultTheme {
           durations: durations,
           shadows: shadows,
         ),
-        carrousel: ImpaktfullUiCarrouselTheme.getDefault(
+        carousel: ImpaktfullUiCarouselTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,
@@ -354,7 +354,7 @@ class DefaultTheme {
           durations: durations,
           shadows: shadows,
         ),
-        checkBoxListItem: ImpaktfullUiCheckBoxListItemTheme.getDefault(
+        checkBoxListItem: ImpaktfullUiCheckboxListItemTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,

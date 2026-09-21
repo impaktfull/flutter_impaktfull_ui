@@ -32,12 +32,12 @@ class ComponentLibraryBoolInput extends ComponentLibraryInputItem<bool> {
   @override
   Widget build(BuildContext context) {
     if (allowNull) {
-      return ImpaktfullUiCheckBox.indermediate(
+      return ImpaktfullUiCheckbox.indeterminate(
         value: value,
         onChanged: updateState,
       );
     }
-    return ImpaktfullUiCheckBox(
+    return ImpaktfullUiCheckbox(
       value: value ?? false,
       onChanged: updateState,
     );

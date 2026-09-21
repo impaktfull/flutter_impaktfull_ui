@@ -1,10 +1,10 @@
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 
-class ImpaktfulluiCalendarListItem {
+class ImpaktfullUiCalendarListItemModel {
   final DateTime date;
   final ImpaktfullUiCalendarEvent event;
 
-  const ImpaktfulluiCalendarListItem({
+  const ImpaktfullUiCalendarListItemModel({
     required this.date,
     required this.event,
   });

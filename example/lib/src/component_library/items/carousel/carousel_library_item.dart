@@ -1,22 +1,22 @@
-import 'package:impaktfull_ui_example/src/component_library/items/carrousel/carrousel_library_variant.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/carousel/carousel_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 
-class CarrouselLibraryItem extends ComponentLibraryItem {
-  const CarrouselLibraryItem();
+class CarouselLibraryItem extends ComponentLibraryItem {
+  const CarouselLibraryItem();
 
   @override
-  String get title => 'ImpaktfullUiCarrousel';
+  String get title => 'ImpaktfullUiCarousel';
 
   @override
   List<ComponentLibraryVariant> getComponentVariants() {
     return [
-      const CarrouselLibraryVariant(),
+      const CarouselLibraryVariant(),
     ];
   }
 }
 
-class CarrouselLibraryInputs extends ComponentLibraryInputs {
+class CarouselLibraryInputs extends ComponentLibraryInputs {
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [];
 }

@@ -1,0 +1,90 @@
+// Every deprecated name with a data-driven fix in lib/fix_data.yaml.
+// `dart fix --compare-to-golden` (run from this folder) applies the fixes to
+// this file and compares the result with deprecated_names.dart.expect.
+import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart';
+
+void main() {
+  // Renamed classes
+  ImpaktfullUiCarousel? carousel;
+  ImpaktfullUiCarouselTheme? carouselTheme;
+  ImpaktfullUiCarouselAssetsTheme? carouselAssetsTheme;
+  ImpaktfullUiCarouselColorTheme? carouselColorTheme;
+  ImpaktfullUiCarouselDimensTheme? carouselDimensTheme;
+  ImpaktfullUiCarouselTextStyleTheme? carouselTextStyleTheme;
+  ImpaktfullUiCheckboxListItemType? checkboxListItemType;
+  ImpaktfullUiCheckboxListItemTheme? checkboxListItemTheme;
+  ImpaktfullUiCheckboxListItemAssetsTheme? checkboxListItemAssetsTheme;
+  ImpaktfullUiCheckboxListItemColorTheme? checkboxListItemColorTheme;
+  ImpaktfullUiCheckboxListItemDimensTheme? checkboxListItemDimensTheme;
+  ImpaktfullUiCheckboxListItemTextStyleTheme? checkboxListItemTextStyleTheme;
+  ImpaktfullUiThemeBuilder? themeBuilder;
+  ImpaktfullUiDropdownAlignment? alignment;
+  ImpaktfullUiDefaultTheme? defaultTheme;
+  ImpaktfullUiCustomBadgeWidget? customBadgeWidget;
+  ImpaktfullUiCommandMenuWindow? commandMenuWindow;
+  ImpaktfullUiInputFieldValidator? inputFieldValidator;
+  ImpaktfullUiCircleProgressPainter? circleProgressPainter;
+  ImpaktfullUiHalfCircleProgressPainter? halfCircleProgressPainter;
+  ImpaktfullUiVirtualKeyboardConfig? virtualKeyboardConfig;
+  ImpaktfullUiAdaptivePageRoute.create<void>(
+      builder: (context) => const SizedBox());
+  const ImpaktfullUiTableColumnConfig(flex: 1);
+  const ImpaktfullUiPasswordStrengthIndicatorRequirement(requirement: '', isMet: true);
+
+  // Renamed constructors, called through the old and the new class name
+  ImpaktfullUiCheckbox(value: true, onChanged: (_) {});
+  final checkbox =
+      ImpaktfullUiCheckbox.indeterminate(value: null, onChanged: (_) {});
+  ImpaktfullUiCheckbox.indeterminate(value: null, onChanged: (_) {});
+  final checkboxListItem = ImpaktfullUiCheckboxListItem.indeterminate(
+      title: '', value: null, onChanged: (_) {});
+  ImpaktfullUiCheckboxListItem.indeterminate(
+      title: '', value: null, onChanged: (_) {});
+
+  // Renamed getters, fields and enum values
+  checkbox.onChangedIndeterminate;
+  checkboxListItem.onChangedIndeterminate;
+  const checkboxAssets = ImpaktfullUiCheckboxAssetsTheme(
+      check: ImpaktfullUiAsset.icon(IconData(0)),
+      indeterminate: ImpaktfullUiAsset.icon(IconData(0)));
+  checkboxAssets.indeterminate;
+  checkboxAssets.copyWith(
+      indeterminate: const ImpaktfullUiAsset.icon(IconData(0)));
+  const passwordAssets = ImpaktfullUiPasswordStrengthIndicatorAssetsTheme(
+      leadingRequirement: null, leadingRequirementIsMet: null);
+  passwordAssets.leadingRequirement;
+  passwordAssets.leadingRequirementIsMet;
+  final components = ImpaktfullUiTheme.getDefault().components;
+  components.carousel;
+  components.copyWith(carousel: components.carousel);
+  final touchFeedback = ImpaktfullUiTouchFeedback(
+      onTap: null, tooltip: '', child: const SizedBox());
+  touchFeedback.tooltip;
+  ImpaktfullUiListItemType.neutral.simpleListItemType;
+  ImpaktfullUiWysiwygAction.orderedList;
+
+  debugPrint([
+    carousel,
+    carouselTheme,
+    carouselAssetsTheme,
+    carouselColorTheme,
+    carouselDimensTheme,
+    carouselTextStyleTheme,
+    checkboxListItemType,
+    checkboxListItemTheme,
+    checkboxListItemAssetsTheme,
+    checkboxListItemColorTheme,
+    checkboxListItemDimensTheme,
+    checkboxListItemTextStyleTheme,
+    themeBuilder,
+    alignment,
+    defaultTheme,
+    customBadgeWidget,
+    commandMenuWindow,
+    inputFieldValidator,
+    circleProgressPainter,
+    halfCircleProgressPainter,
+    virtualKeyboardConfig,
+  ].toString());
+}

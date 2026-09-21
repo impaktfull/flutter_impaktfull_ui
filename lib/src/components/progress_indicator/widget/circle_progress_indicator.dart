@@ -44,7 +44,7 @@ class ImpaktfullUiCircleProgressIndicator extends StatelessWidget {
                   curve: Curves.easeInOut,
                   tween: Tween(begin: 0, end: value),
                   builder: (context, animatedValue, child) => CustomPaint(
-                    painter: CircleProgressPainter(
+                    painter: ImpaktfullUiCircleProgressPainter(
                       progress: animatedValue,
                       strokeWidth: width ?? componentTheme.dimens.width,
                       backgroundColor: componentTheme.colors.background,
@@ -69,14 +69,14 @@ class ImpaktfullUiCircleProgressIndicator extends StatelessWidget {
   }
 }
 
-class CircleProgressPainter extends CustomPainter {
+class ImpaktfullUiCircleProgressPainter extends CustomPainter {
   final double progress;
   final double strokeWidth;
   final Color backgroundColor;
   final Color foregroundColor;
   final Color borderColor;
 
-  CircleProgressPainter({
+  ImpaktfullUiCircleProgressPainter({
     required this.progress,
     required this.strokeWidth,
     required this.backgroundColor,

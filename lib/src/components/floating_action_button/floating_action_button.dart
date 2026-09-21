@@ -76,7 +76,7 @@ class _ImpaktfullUiFloatingActionButtonState
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: widget.onTap,
-        toolTip: widget.label,
+        tooltip: widget.label,
         color: widget.onTap == null
             ? componentTheme.colors.backgroundDisabled
             : componentTheme.colors.background,

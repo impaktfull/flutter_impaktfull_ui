@@ -29,7 +29,7 @@ class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
       ImpaktfullUiCheckboxTheme(
         assets: ImpaktfullUiCheckboxAssetsTheme(
           check: assets.icons.check,
-          indermediate: assets.icons.minus,
+          indeterminate: assets.icons.minus,
         ),
         colors: ImpaktfullUiCheckboxColorTheme(
           borderColor: colors.border,
@@ -62,20 +62,33 @@ class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiCheckboxAssetsTheme {
   final ImpaktfullUiAsset check;
-  final ImpaktfullUiAsset indermediate;
+  final ImpaktfullUiAsset? _indeterminate;
 
+  // `indeterminate` becomes `required` again in 1.0.0, when `indermediate` is
+  // removed.
   const ImpaktfullUiCheckboxAssetsTheme({
     required this.check,
-    required this.indermediate,
-  });
+    ImpaktfullUiAsset? indeterminate,
+    @Deprecated('Use indeterminate instead. Will be removed in 1.0.0.')
+    ImpaktfullUiAsset? indermediate,
+  })  : assert(indeterminate != null || indermediate != null,
+            'indeterminate is required'),
+        _indeterminate = indeterminate ?? indermediate;
+
+  ImpaktfullUiAsset get indeterminate => _indeterminate!;
+
+  @Deprecated('Use indeterminate instead. Will be removed in 1.0.0.')
+  ImpaktfullUiAsset get indermediate => indeterminate;
 
   ImpaktfullUiCheckboxAssetsTheme copyWith({
     ImpaktfullUiAsset? check,
+    ImpaktfullUiAsset? indeterminate,
+    @Deprecated('Use indeterminate instead. Will be removed in 1.0.0.')
     ImpaktfullUiAsset? indermediate,
   }) =>
       ImpaktfullUiCheckboxAssetsTheme(
         check: check ?? this.check,
-        indermediate: indermediate ?? this.indermediate,
+        indeterminate: indeterminate ?? indermediate ?? this.indeterminate,
       );
 }
 

@@ -7,7 +7,7 @@ class CheckBoxListItemLibraryItem extends ComponentLibraryItem {
   const CheckBoxListItemLibraryItem();
 
   @override
-  String get title => 'ImpaktfullUiCheckBoxListItem';
+  String get title => 'ImpaktfullUiCheckboxListItem';
 
   @override
   List<ComponentLibraryVariant> getComponentVariants() {

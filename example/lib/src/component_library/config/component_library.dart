@@ -13,7 +13,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/bottomsheet/bo
 import 'package:impaktfull_ui_example/src/component_library/items/button/button_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/calendar/calendar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/card/card_library_item.dart';
-import 'package:impaktfull_ui_example/src/component_library/items/carrousel/carrousel_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/carousel/carousel_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/chat/chat_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/check_box_list_item/check_box_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/checkbox/checkbox_library_item.dart';
@@ -111,7 +111,7 @@ class ComponentLibrary {
     const ButtonLibraryItem(),
     const CalendarLibraryItem(),
     const CardLibraryItem(),
-    const CarrouselLibraryItem(),
+    const CarouselLibraryItem(),
     const ChatLibraryItem(),
     const CheckboxLibraryItem(),
     const CheckBoxListItemLibraryItem(),

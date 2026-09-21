@@ -63,7 +63,7 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
               spacing: 8,
               children: [
                 if (type == ImpaktfullUiTableHeaderItemType.checkbox) ...[
-                  ImpaktfullUiCheckBox.indermediate(
+                  ImpaktfullUiCheckbox.indeterminate(
                     value: isSelected,
                     onChanged: onChanged!,
                   ),

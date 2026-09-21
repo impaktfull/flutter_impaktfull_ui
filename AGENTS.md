@@ -41,6 +41,42 @@ How a release happens:
 
 To force a specific version (e.g. a pre-release), set `"release-as": "x.y.z"` in `release-please-config.json` and remove it again after that release is merged. `pubspec.yaml` must always hold a plain `x.y.z` version: release-please keeps anything after it as a build suffix (`1.0.0-dev.1` would become `1.0.0+-dev.1`).
 
+### More than one changelog entry per pull request
+
+A pull request that changes several things documents each of them in the changelog: put one Conventional Commit line per change in the **commit message body**, separated by blank lines. release-please turns every line into its own entry. The repository squash-merges with the commit messages as the body, so the lines must be in the branch's commits (check them in the squash dialog before merging).
+
+```
+feat: deprecate misspelled public APIs
+
+feat: add ImpaktfullUiCarousel
+
+deprecate: ImpaktfullUiCarrousel, use ImpaktfullUiCarousel
+
+fix: ImpaktfullUiCard no longer crashes without borderError
+```
+
+`deprecate:` lines are listed under **Deprecations** (configured in `changelog-sections` of `release-please-config.json`). They do not trigger a release on their own, so a pull request that deprecates something always also has a `feat:` title for the replacement.
+
+## Changing public API
+
+The package has many users: **never rename or remove a public API in one step.** Everything exported from `lib/impaktfull_ui.dart` is public API, including constructor parameters, fields, getters and enum values.
+
+1. **Add** the new API next to the old one.
+2. **Deprecate** the old one with `@Deprecated('Use <replacement> instead. Will be removed in 1.0.0.')`. Keep it working by forwarding to the new one:
+   - Class, enum or typedef: rename it, then add a deprecated `typedef OldName = NewName;` to `lib/src/deprecated/deprecated_typedefs.dart`.
+   - Named constructor: a deprecated redirecting constructor, `const Old.oldName(...) : this.newName(...)`.
+   - Field or getter: a deprecated getter that returns the new field.
+   - Constructor or `copyWith` parameter: accept both names (`newName ?? oldName`) and mark the old parameter `@Deprecated`. A `required` parameter becomes optional with an `assert` that one of the two is passed; note in the migration guide that it becomes `required` again at removal.
+   - Enum value: a deprecated `static const oldName = newName;` inside the enum.
+3. **Make it migrate automatically:** add a transform to `lib/fix_data.yaml` and a use of the old name to `test_fixes/deprecated_names.dart`, then regenerate `test_fixes/deprecated_names.dart.expect` by running `dart fix --apply` in `test_fixes/` on a copy. CI runs `dart fix --compare-to-golden` there. Two quirks:
+   - Members of an enum need `inClass`, not `inEnum`.
+   - A renamed constructor of a renamed class needs a second transform with the old class name in `inClass`, or `dart fix` produces `NewClass.NewClass(...)`.
+4. **Test that the old API still works** in `test/src/deprecated/deprecated_api_test.dart`.
+5. **Document it** in `doc/migrations/1.0.0.md` (old → new), including any internal change a user could notice (renamed files under `lib/src/`, changed defaults).
+6. **Changelog:** a `feat:` line for the new API and a `deprecate:` line per deprecated API in the commit body (see above).
+
+Deprecated APIs are removed together in the next major release (1.0.0), never in a minor or patch release. Removing them is a `feat!:` pull request that deletes the aliases, their `fix_data.yaml` transforms, `test_fixes` cases and tests, and keeps the migration guide.
+
 ## Validate
 
 The Flutter version is pinned in `.fvmrc`. Use that version locally (`fvm use`), CI reads the same file.

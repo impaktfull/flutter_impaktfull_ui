@@ -15,10 +15,10 @@ class DashboardStoreCouponScreen extends StatefulWidget {
 class _DashboardStoreCouponScreenState
     extends State<DashboardStoreCouponScreen> {
   static const columnConfig = [
-    TableColumnConfig(flex: 1),
-    TableColumnConfig(flex: 1),
-    TableColumnConfig(flex: 1),
-    TableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig(flex: 1),
+    ImpaktfullUiTableColumnConfig(flex: 1),
   ];
 
   final coupons = TestData.getCoupons();

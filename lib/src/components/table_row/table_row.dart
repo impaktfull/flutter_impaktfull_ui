@@ -9,7 +9,7 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 export 'table_row_style.dart';
 
 class ImpaktfullUiTableRow extends StatelessWidget {
-  final List<TableColumnConfig> columnConfig;
+  final List<ImpaktfullUiTableColumnConfig> columnConfig;
   final List<ImpaktfullUiTableRowItem> columns;
   final VoidCallback? onTap;
   final ImpaktfullUiTableRowTheme? theme;

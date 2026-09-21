@@ -64,7 +64,7 @@ class BadgeTypeLibraryVariant
           type: type,
           size: size,
           label: label,
-          leading: CustomBadgeWidget(
+          leading: ImpaktfullUiCustomBadgeWidget(
             child: Container(
               margin: EdgeInsets.only(left: size.spacing),
               width: 6,

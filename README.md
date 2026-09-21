@@ -22,6 +22,16 @@ This UI library was built to have a simple way to build UIs for impaktfull. This
 
 [Live Web Demo](https://example.impaktfull-ui.opensource.impaktfull.com)
 
+## Upgrading
+
+Public APIs are never renamed or removed in one step. A renamed API keeps its old name as a deprecated alias until 1.0.0, and `dart fix` migrates your code:
+
+```bash
+dart fix --apply
+```
+
+Every deprecation and its replacement is listed in the [1.0.0 migration guide](doc/migrations/1.0.0.md), and under **Deprecations** in the [CHANGELOG](CHANGELOG.md).
+
 ## Usage
 
 <!--[![pub package](https://img.shields.io/pub/v/impaktfull_ui.svg)](https://pub.dartlang.org/packages/impaktfull_ui)-->
@@ -62,13 +72,13 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
   - ImpaktfullUiCalendarList
   - ImpaktfullUiCalendarWeek
 - ImpaktfullUiCard
-- ImpaktfullUiCarrousel
+- ImpaktfullUiCarousel
 - ImpaktfullUiChat
   - ImpaktfullUiChatListItem
   - ImpaktfullUiChatListItemAvatar
   - ImpaktfullUiChatListItemBackground
-- ImpaktfullUiCheckBox
-- ImpaktfullUiCheckBoxListItem
+- ImpaktfullUiCheckbox
+- ImpaktfullUiCheckboxListItem
 - ImpaktfullUiClampedFractionallySizedBox
 - ImpaktfullUiCmsHeader
 - ImpaktfullUiColorInputField

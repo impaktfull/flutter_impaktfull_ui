@@ -2,7 +2,8 @@ import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/model/config/virtual_keyboard_config.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/model/virtual_keyboard_key.dart';
 
-class ImpaktfullUiVirtualQwertyKeyboardConfig extends VirtualKeyboardConfig {
+class ImpaktfullUiVirtualQwertyKeyboardConfig
+    extends ImpaktfullUiVirtualKeyboardConfig {
   @override
   List<List<ImpaktfullUiVirtualKeyboardKeyItem>> get keys => const [
         [

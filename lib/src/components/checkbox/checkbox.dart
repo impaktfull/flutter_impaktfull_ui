@@ -7,29 +7,46 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 export 'checkbox_style.dart';
 
-class ImpaktfullUiCheckBox extends StatelessWidget {
+class ImpaktfullUiCheckbox extends StatelessWidget {
   final CheckboxType type;
   final bool? value;
   final ValueChanged<bool>? onChanged;
-  final ValueChanged<bool?>? onChangedInterpediate;
+  final ValueChanged<bool?>? onChangedIndeterminate;
   final ImpaktfullUiCheckboxTheme? theme;
 
-  const ImpaktfullUiCheckBox({
+  const ImpaktfullUiCheckbox({
     required bool this.value,
     required this.onChanged,
     this.theme,
     super.key,
   })  : type = CheckboxType.normal,
-        onChangedInterpediate = null;
+        onChangedIndeterminate = null;
 
-  const ImpaktfullUiCheckBox.indermediate({
+  const ImpaktfullUiCheckbox.indeterminate({
     required this.value,
     required ValueChanged<bool?>? onChanged,
     this.theme,
     super.key,
-  })  : onChangedInterpediate = onChanged,
+  })  : onChangedIndeterminate = onChanged,
         onChanged = null,
         type = CheckboxType.indeterminate;
+
+  @Deprecated(
+      'Use ImpaktfullUiCheckbox.indeterminate instead. Will be removed in 1.0.0.')
+  const ImpaktfullUiCheckbox.indermediate({
+    required bool? value,
+    required ValueChanged<bool?>? onChanged,
+    ImpaktfullUiCheckboxTheme? theme,
+    Key? key,
+  }) : this.indeterminate(
+          value: value,
+          onChanged: onChanged,
+          theme: theme,
+          key: key,
+        );
+
+  @Deprecated('Use onChangedIndeterminate instead. Will be removed in 1.0.0.')
+  ValueChanged<bool?>? get onChangedInterpediate => onChangedIndeterminate;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +111,7 @@ class ImpaktfullUiCheckBox extends StatelessWidget {
                   Positioned.fill(
                     child: Center(
                       child: ImpaktfullUiAssetWidget(
-                        asset: componentTheme.assets.indermediate,
+                        asset: componentTheme.assets.indeterminate,
                         color: componentTheme.colors.checkMarkColor,
                         size: 20,
                       ),
@@ -126,8 +143,8 @@ class ImpaktfullUiCheckBox extends StatelessWidget {
   void _onChanged(bool value) {
     if (onChanged != null) {
       onChanged?.call(value);
-    } else if (onChangedInterpediate != null) {
-      onChangedInterpediate?.call(value);
+    } else if (onChangedIndeterminate != null) {
+      onChangedIndeterminate?.call(value);
     }
   }
 }

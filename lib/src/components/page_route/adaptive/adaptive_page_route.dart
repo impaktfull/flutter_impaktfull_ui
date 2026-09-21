@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/page_route/desktop_page_route.dart';
 import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 
-class ImpaktfullUIAdaptivePageRoute {
-  ImpaktfullUIAdaptivePageRoute._();
+class ImpaktfullUiAdaptivePageRoute {
+  ImpaktfullUiAdaptivePageRoute._();
   static PageRoute<T> create<T>({
     required WidgetBuilder builder,
     RouteSettings? settings,

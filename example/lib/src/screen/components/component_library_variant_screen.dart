@@ -40,7 +40,7 @@ class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
   @override
   Widget build(BuildContext context) {
     final widgets = widget.variant.build(context, inputs);
-    return ImpaktfullUiThemeBuidler(
+    return ImpaktfullUiThemeBuilder(
       builder: (context, theme) => ImpaktfullUiAutoLayout.vertical(
         children: [
           Expanded(

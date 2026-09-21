@@ -121,7 +121,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 if (type == ImpaktfullUiTableRowItemType.checkbox) ...[
-                  ImpaktfullUiCheckBox(
+                  ImpaktfullUiCheckbox(
                     value: isSelected ?? false,
                     onChanged: onChanged!,
                     theme: ImpaktfullUiCheckboxTheme.of(context).copyWith(

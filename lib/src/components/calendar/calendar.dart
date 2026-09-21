@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar_style.dart';
 import 'package:impaktfull_ui/src/components/calendar/model/calendar_item.dart';
 import 'package:impaktfull_ui/src/components/calendar/model/calendar_type.dart';
-import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/calendar_list.dart';
-import 'package:impaktfull_ui/src/components/calendar/widget/calender_types/calendar_week.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/calendar_list.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/calendar_week.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'calendar_style.dart';
 export 'model/calendar_item.dart';
 export 'model/calendar_type.dart';
-export 'widget/calender_types/calendar_list.dart';
-export 'widget/calender_types/calendar_week.dart';
+export 'widget/calendar_types/calendar_list.dart';
+export 'widget/calendar_types/calendar_week.dart';
 
 class ImpaktfullUiCalendar extends StatelessWidget {
   final DateTime selectedDate;

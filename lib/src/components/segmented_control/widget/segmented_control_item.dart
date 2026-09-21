@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback
 import 'package:impaktfull_ui/src/components/segmented_control/segmented_control.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
-class ImpaktfullUiSegmentControlItem extends StatelessWidget {
+class ImpaktfullUiSegmentedControlItem extends StatelessWidget {
   final String label;
   final Widget? leading;
   final Widget? trailing;
@@ -12,7 +12,7 @@ class ImpaktfullUiSegmentControlItem extends StatelessWidget {
   final VoidCallback? onTap;
   final ImpaktfullUiSegmentedControlTheme? theme;
 
-  const ImpaktfullUiSegmentControlItem({
+  const ImpaktfullUiSegmentedControlItem({
     required this.label,
     required this.isSelected,
     required this.onTap,
