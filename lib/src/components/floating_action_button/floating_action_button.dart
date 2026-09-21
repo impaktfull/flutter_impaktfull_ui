@@ -100,7 +100,9 @@ class _ImpaktfullUiFloatingActionButtonState
                       child: SizedBox(
                         width: _animation.value *
                             getSize(
-                                widget.label!, componentTheme.textStyles.label),
+                              widget.label!,
+                              componentTheme.textStyles.label,
+                            ),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.only(
                             start: 12,
@@ -125,14 +127,23 @@ class _ImpaktfullUiFloatingActionButtonState
     );
   }
 
+  /// The width of the label, including its padding.
+  ///
+  /// The label is measured like the [Text] widget renders it (with the
+  /// [DefaultTextStyle] and the text scaler), otherwise the expanded label is
+  /// clipped.
   double getSize(String text, TextStyle style) {
     final textPainter = TextPainter(
-      text: TextSpan(text: text, style: style),
+      text: TextSpan(
+        text: text,
+        style: DefaultTextStyle.of(context).style.merge(style),
+      ),
       maxLines: 1,
       textDirection: Directionality.of(context),
+      textScaler: MediaQuery.textScalerOf(context),
     );
     textPainter.layout(maxWidth: double.infinity);
-    final width = textPainter.width;
+    final width = textPainter.width.ceilToDouble();
     textPainter.dispose();
     return 12 + width + 8;
   }

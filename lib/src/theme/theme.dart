@@ -118,6 +118,7 @@ class ImpaktfullUiTheme<T extends Object> {
         accent: const Color(0xFF7d64f2),
         secondary: const Color(0xFF7d64f2),
         package: package,
+        assetSuffix: assetSuffix,
         customTheme: customTheme,
       );
 

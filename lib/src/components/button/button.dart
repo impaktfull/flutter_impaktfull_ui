@@ -6,6 +6,7 @@ import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/button/raised_button.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/focus_feedback/focus_feedback.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
@@ -56,6 +57,7 @@ class ImpaktfullUiButton extends StatefulWidget {
 
 class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
   var _isAsyncLoading = false;
+  var _showFocusHighlight = false;
 
   bool get _isLoading => widget.isLoading || _isAsyncLoading;
 
@@ -72,83 +74,34 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
         final borderColor = _getBorderColor(componentTheme);
         final isDisabled = widget.onTap == null && widget.onAsyncTap == null;
         final isClickable = !isDisabled && !_isLoading;
-        return Opacity(
-          opacity: isDisabled ? 0.5 : 1,
-          child: ImpaktfullUiRaisedButton(
-            type: widget.type,
-            isLoading: _isLoading,
-            theme: componentTheme,
-            onTap: isClickable && _getIsRaisedButtonAllowed(componentTheme)
-                ? () => _onTap(componentTheme)
-                : null,
-            child: ImpaktfullUiTouchFeedback(
-              color: backgroundColor,
-              canRequestFocus: widget.canRequestFocus,
-              borderRadius: componentTheme.dimens.borderRadius,
-              shadow: _getShadow(componentTheme),
-              tooltip: widget.tooltip,
-              border: borderColor == null
-                  ? null
-                  : Border.all(
-                      color: borderColor,
-                      width: componentTheme.dimens.borderWidth,
-                      strokeAlign: BorderSide.strokeAlignInside,
-                    ),
-              onTap: isClickable && !_getIsRaisedButtonAllowed(componentTheme)
-                  ? () => _onTap(componentTheme)
-                  : null,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Opacity(
-                    opacity: _isLoading ? 0 : 1,
-                    child: Padding(
-                      padding: _getPadding(componentTheme),
-                      child: ImpaktfullUiAutoLayout.horizontal(
-                        mainAxisSize: widget.fullWidth
-                            ? MainAxisSize.max
-                            : MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        spacing: 4,
-                        children: [
-                          if (widget.leadingChild != null) ...[
-                            widget.leadingChild!,
-                          ],
-                          if (widget.leadingAsset != null) ...[
-                            ImpaktfullUiAssetWidget(
-                              asset: widget.leadingAsset,
-                              color: color,
-                              size: iconSize,
-                            ),
-                          ],
-                          if (widget.title != null) ...[
-                            Expanded(
-                              flex: widget.fullWidth ? 1 : 0,
-                              child: Text(
-                                widget.title!,
-                                textAlign: TextAlign.center,
-                                style: textStyle,
-                              ),
-                            ),
-                          ],
-                          if (widget.trailingAsset != null) ...[
-                            ImpaktfullUiAssetWidget(
-                              asset: widget.trailingAsset,
-                              color: color,
-                              size: iconSize,
-                            ),
-                          ],
-                          if (widget.trailingChild != null) ...[
-                            widget.trailingChild!,
-                          ],
-                        ],
-                      ),
-                    ),
+        final isRaised = _getIsRaisedButtonAllowed(componentTheme);
+        final button = ImpaktfullUiRaisedButton(
+          type: widget.type,
+          isLoading: _isLoading,
+          theme: componentTheme,
+          onTap: isClickable && isRaised ? () => _onTap(componentTheme) : null,
+          child: ImpaktfullUiTouchFeedback(
+            color: backgroundColor,
+            canRequestFocus: widget.canRequestFocus,
+            borderRadius: componentTheme.dimens.borderRadius,
+            shadow: _getShadow(componentTheme),
+            tooltip: widget.tooltip,
+            border: borderColor == null
+                ? null
+                : Border.all(
+                    color: borderColor,
+                    width: componentTheme.dimens.borderWidth,
+                    strokeAlign: BorderSide.strokeAlignInside,
                   ),
-                  AnimatedOpacity(
-                    opacity: _isLoading ? 1 : 0,
-                    duration: componentTheme.durations.loading,
-                    curve: Curves.easeInOut,
+            onTap:
+                isClickable && !isRaised ? () => _onTap(componentTheme) : null,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Opacity(
+                  opacity: _isLoading ? 0 : 1,
+                  child: Padding(
+                    padding: _getPadding(componentTheme),
                     child: ImpaktfullUiAutoLayout.horizontal(
                       mainAxisSize: widget.fullWidth
                           ? MainAxisSize.max
@@ -156,24 +109,108 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       spacing: 4,
                       children: [
-                        Expanded(
-                          flex: widget.fullWidth ? 1 : 0,
-                          child: SizedBox(
-                            height: _getLoadingSize(),
-                            child: _isLoading
-                                ? ImpaktfullUiLoadingIndicator(color: color)
-                                : const SizedBox(),
+                        if (widget.leadingChild != null) ...[
+                          widget.leadingChild!,
+                        ],
+                        if (widget.leadingAsset != null) ...[
+                          ImpaktfullUiAssetWidget(
+                            asset: widget.leadingAsset,
+                            color: color,
+                            size: iconSize,
                           ),
-                        ),
+                        ],
+                        if (widget.title != null) ...[
+                          Expanded(
+                            flex: widget.fullWidth ? 1 : 0,
+                            child: Text(
+                              widget.title!,
+                              textAlign: TextAlign.center,
+                              style: textStyle,
+                            ),
+                          ),
+                        ],
+                        if (widget.trailingAsset != null) ...[
+                          ImpaktfullUiAssetWidget(
+                            asset: widget.trailingAsset,
+                            color: color,
+                            size: iconSize,
+                          ),
+                        ],
+                        if (widget.trailingChild != null) ...[
+                          widget.trailingChild!,
+                        ],
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+                AnimatedOpacity(
+                  opacity: _isLoading ? 1 : 0,
+                  duration: componentTheme.durations.loading,
+                  curve: Curves.easeInOut,
+                  child: ImpaktfullUiAutoLayout.horizontal(
+                    mainAxisSize:
+                        widget.fullWidth ? MainAxisSize.max : MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 4,
+                    children: [
+                      Expanded(
+                        flex: widget.fullWidth ? 1 : 0,
+                        child: SizedBox(
+                          height: _getLoadingSize(),
+                          child: _isLoading
+                              ? ImpaktfullUiLoadingIndicator(color: color)
+                              : const SizedBox(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         );
+        return Opacity(
+          opacity: isDisabled ? 0.5 : 1,
+          child: isRaised
+              ? _buildRaisedKeyboardActivator(
+                  componentTheme: componentTheme,
+                  isClickable: isClickable,
+                  child: button,
+                )
+              : button,
+        );
       },
+    );
+  }
+
+  /// A raised button handles pointer taps in [ImpaktfullUiRaisedButton] (for
+  /// the press animation), so the touch feedback can not be focused. Make it
+  /// focusable and activatable with the keyboard here.
+  Widget _buildRaisedKeyboardActivator({
+    required ImpaktfullUiButtonTheme componentTheme,
+    required bool isClickable,
+    required Widget child,
+  }) {
+    void onActivate() => _onTap(componentTheme);
+    return FocusableActionDetector(
+      enabled: isClickable && widget.canRequestFocus,
+      onShowFocusHighlight: (value) {
+        if (_showFocusHighlight == value) return;
+        setState(() => _showFocusHighlight = value);
+      },
+      actions: {
+        ActivateIntent: CallbackAction<ActivateIntent>(
+          onInvoke: (_) => onActivate(),
+        ),
+        ButtonActivateIntent: CallbackAction<ButtonActivateIntent>(
+          onInvoke: (_) => onActivate(),
+        ),
+      },
+      child: ImpaktfullUiFocusFeedback(
+        hasFocus: _showFocusHighlight && isClickable,
+        borderRadius: componentTheme.dimens.borderRadius,
+        child: child,
+      ),
     );
   }
 

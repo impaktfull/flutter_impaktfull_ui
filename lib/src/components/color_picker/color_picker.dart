@@ -45,6 +45,13 @@ class ImpaktfullUiColorPicker extends StatelessWidget {
         Colors.purple,
       ];
 
+  /// The full hue circle, used by the [ImpaktfullUiColorPickerType.slider]
+  /// without [allowedColors].
+  static List<Color> get _defaultSliderColors => [
+        for (var hue = 0; hue <= 360; hue += 60)
+          HSVColor.fromAHSV(1, hue.toDouble(), 1, 1).toColor(),
+      ];
+
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
@@ -67,11 +74,9 @@ class ImpaktfullUiColorPicker extends StatelessWidget {
           case ImpaktfullUiColorPickerType.slider:
             return ImpaktfullUiColorPickerSlider(
               selectedColor: selectedColor,
-              // The slider picks a hue, the gradient ends with the first color
-              // to complete the hue circle.
-              allowedColors: allowedColors.isEmpty
-                  ? [...defaultColors, defaultColors.first]
-                  : allowedColors,
+              // The slider picks a color of the gradient, by default every hue.
+              allowedColors:
+                  allowedColors.isEmpty ? _defaultSliderColors : allowedColors,
               onColorChanged: onColorChanged,
               onColorChangeEnd: onColorChangeEnd,
               componentTheme: componentTheme,

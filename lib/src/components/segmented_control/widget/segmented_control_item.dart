@@ -37,11 +37,15 @@ class ImpaktfullUiSegmentedControlItem extends StatelessWidget {
               if (leading != null) ...[
                 leading!,
               ],
-              Text(
-                label,
-                style: isSelected
-                    ? componentTheme.textStyles.activeLabel
-                    : componentTheme.textStyles.label,
+              Flexible(
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: isSelected
+                      ? componentTheme.textStyles.activeLabel
+                      : componentTheme.textStyles.label,
+                ),
               ),
               if (trailing != null) ...[
                 trailing!,
