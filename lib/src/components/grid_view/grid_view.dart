@@ -95,6 +95,12 @@ class _ImpaktfullUiGridViewState<T> extends State<ImpaktfullUiGridView<T>> {
     _scrollController = widget.controller ?? ScrollController();
   }
 
+  /// With [onRefresh] the list can always be pulled to refresh, also when
+  /// the items do not fill it.
+  ScrollPhysics? get _scrollPhysics => widget.onRefresh == null
+      ? widget.scrollPhysics
+      : AlwaysScrollableScrollPhysics(parent: widget.scrollPhysics);
+
   @override
   void dispose() {
     if (widget.controller == null) {
@@ -144,14 +150,18 @@ class _ImpaktfullUiGridViewState<T> extends State<ImpaktfullUiGridView<T>> {
                     controller: _scrollController,
                     shrinkWrap: widget.shrinkWrap,
                     padding: widget.padding,
-                    physics: widget.scrollPhysics,
+                    physics: _scrollPhysics,
                     children: [
                       Container(
-                        height:
-                            widget.shrinkWrap ? null : constraints.maxHeight,
+                        // A min height: a large placeholder scrolls.
+                        constraints: BoxConstraints(
+                          minHeight:
+                              widget.shrinkWrap ? 0 : constraints.maxHeight,
+                        ),
                         alignment: Alignment.center,
                         child: ImpaktfullUiPlaceholder(
                           asset: placeholderData.asset,
+                          showAsset: placeholderData.showAsset,
                           title: placeholderData.title,
                           subtitle: placeholderData.subtitle,
                           actions: [
@@ -181,7 +191,7 @@ class _ImpaktfullUiGridViewState<T> extends State<ImpaktfullUiGridView<T>> {
               child: GridView.builder(
                 controller: _scrollController,
                 padding: widget.padding,
-                physics: widget.scrollPhysics,
+                physics: _scrollPhysics,
                 shrinkWrap: widget.shrinkWrap,
                 itemCount: widget.items.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

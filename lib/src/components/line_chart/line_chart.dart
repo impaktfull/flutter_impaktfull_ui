@@ -81,7 +81,8 @@ class _ImpaktfullUiLineChartState<T, E>
               maxX: e.maxX,
               minY: e.minY,
               maxY: e.maxY,
-              lineColor: e.style?.lineColor ?? widget.theme?.colors.lineColor,
+              // Without a color the painter uses the line color of the theme.
+              lineColor: e.style?.lineColor,
               strokeWidth: e.style?.strokeWidth,
               isCurved: e.style?.isCurved ?? false,
               gradientEnabled: e.style?.gradientEnabled ?? false,
@@ -91,11 +92,10 @@ class _ImpaktfullUiLineChartState<T, E>
         .toList();
   }
 
-  List<double> _getGradientStops(ImpaktfullUiLineChartItemStyle? style) {
-    final defaultStops = <double>[0, 1];
-    if (style == null) return defaultStops;
-    if (style.gradientEnabled) return style.gradientStops ?? defaultStops;
-    return defaultStops;
+  /// Null spreads the gradient colors evenly, for any amount of colors.
+  List<double>? _getGradientStops(ImpaktfullUiLineChartItemStyle? style) {
+    if (style == null || !style.gradientEnabled) return null;
+    return style.gradientStops;
   }
 
   List<Color>? _getGradientColors(ImpaktfullUiLineChartItemStyle? style) {

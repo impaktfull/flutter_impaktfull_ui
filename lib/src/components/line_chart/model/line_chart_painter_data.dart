@@ -11,7 +11,7 @@ class ImpaktfullUiLineChartPainterData {
   final bool isCurved;
   final bool gradientEnabled;
   final List<Color>? gradientColors;
-  final List<double> gradientStops;
+  final List<double>? gradientStops;
 
   const ImpaktfullUiLineChartPainterData({
     required this.points,
