@@ -27,9 +27,9 @@ class ImpaktfullUiFocusFeedback extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         child,
-        Positioned(
-          left: -1,
-          right: -1,
+        PositionedDirectional(
+          start: -1,
+          end: -1,
           top: -1,
           bottom: -1,
           child: IgnorePointer(

@@ -7,12 +7,17 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 export 'dropdown_style.dart';
 
+/// The edge of the button the dropdown is aligned to.
+///
+/// Left and right follow the reading direction: in a right-to-left layout
+/// (e.g. Arabic or Hebrew) [bottomLeft] aligns the dropdown to the right edge
+/// of the button, the start of the reading direction.
 enum ImpaktfullUiDropdownAlignment {
-  bottomCenter(Alignment.bottomCenter),
-  bottomLeft(Alignment.bottomLeft),
-  bottomRight(Alignment.bottomRight);
+  bottomCenter(AlignmentDirectional.bottomCenter),
+  bottomLeft(AlignmentDirectional.bottomStart),
+  bottomRight(AlignmentDirectional.bottomEnd);
 
-  final Alignment _alignment;
+  final AlignmentDirectional _alignment;
 
   const ImpaktfullUiDropdownAlignment(this._alignment);
 }
@@ -129,6 +134,8 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
   @override
   Widget build(BuildContext context) {
     final width = widget.childWidth ?? _buttonWidth ?? 0;
+    final targetAnchor =
+        widget.alignment._alignment.resolve(Directionality.of(context));
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
@@ -144,12 +151,14 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                 color: Colors.transparent,
                 child: CompositedTransformFollower(
                   link: _link,
-                  targetAnchor: widget.alignment._alignment,
-                  offset: _getTranslateOffset(width),
+                  targetAnchor: targetAnchor,
+                  offset: _getTranslateOffset(targetAnchor, width),
                   child: FadeTransition(
                     opacity: _curvedAnimation,
                     child: Align(
-                      alignment: AlignmentDirectional.topStart,
+                      // rtl-ignore: the follower is positioned in physical
+                      // coordinates, the target anchor is already resolved.
+                      alignment: Alignment.topLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(top: 4),
                         child: ImpaktfullUiDropdownOverlay(
@@ -230,15 +239,12 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     }
   }
 
-  Offset _getTranslateOffset(double width) {
-    switch (widget.alignment) {
-      case ImpaktfullUiDropdownAlignment.bottomRight:
-        return Offset(-width, 0);
-      case ImpaktfullUiDropdownAlignment.bottomCenter:
-        return Offset(-(width / 2), 0);
-      default:
-        return const Offset(0, 0);
-    }
+  /// Moves the dropdown so it ends at the right edge of the button when it is
+  /// anchored there, or centers it below the button.
+  Offset _getTranslateOffset(Alignment targetAnchor, double width) {
+    if (targetAnchor.x == 1) return Offset(-width, 0);
+    if (targetAnchor.x == 0) return Offset(-(width / 2), 0);
+    return Offset.zero;
   }
 
   void _setButtonWidth(double width) {

@@ -46,6 +46,7 @@ class AssetPainter {
             color: paint.color,
           ),
         ),
+        // rtl-ignore: paints a single icon glyph, which has no direction.
         textDirection: TextDirection.ltr,
       );
       textPainter.layout();

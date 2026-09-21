@@ -149,6 +149,26 @@ class ImpaktfullUi<ComponentName> extends StatelessWidget {
 }
 ```
 
+#### Right-to-left support
+
+Components must work in right-to-left layouts (Arabic, Hebrew, ...). Use the directional APIs, which follow the `Directionality` of the widget tree:
+
+| Instead of | Use |
+|------------|-----|
+| `EdgeInsets.only(left:, right:)`, `EdgeInsets.fromLTRB` | `EdgeInsetsDirectional.only(start:, end:)`, `EdgeInsetsDirectional.fromSTEB` (symmetric paddings can stay `EdgeInsets.symmetric`/`all`) |
+| `Alignment.centerLeft`, `Alignment.topRight`, `Alignment(x, y)` | `AlignmentDirectional.centerStart`, `AlignmentDirectional.topEnd`, `AlignmentDirectional(x, y)` |
+| `Positioned(left:, right:)` | `PositionedDirectional(start:, end:)` |
+| `BorderRadius.only(topLeft: ...)`, `Border(left: ...)` | `BorderRadiusDirectional.only(topStart: ...)`, `BorderDirectional(start: ...)` |
+| `TextAlign.left` / `right` | `TextAlign.start` / `end` |
+| `TextDirection.ltr` (e.g. in a `TextPainter`) | `Directionality.of(context)` |
+
+- Accept `AlignmentGeometry`/`EdgeInsetsGeometry` in new public parameters, and default to a directional value.
+- Mirror directional assets (back, previous/next, chevrons): `componentTheme.assets.arrowRight.copyWith(matchTextDirection: true)`.
+- Mirror horizontal gestures and arrow keys when needed (e.g. a slider's minimum is on the right in a right-to-left layout).
+- Add a right-to-left case to the tests: pump the component inside `Directionality(textDirection: TextDirection.rtl, child: ...)` (see `test/src/rtl/rtl_layout_test.dart`).
+
+`test/src/rtl/rtl_source_guard_test.dart` fails on physical (left/right) layout code in `lib/src/components`. When the physical side is intended, add a `// rtl-ignore: <reason>` comment on the line above.
+
 ### 4. Register in Theme System
 
 #### Update `lib/src/theme/component_theme.dart`
@@ -303,7 +323,7 @@ If the component has sub-components, indent them:
 
 - [ ] Create component directory
 - [ ] Create style file
-- [ ] Create main component file
+- [ ] Create main component file (directional APIs only, see Right-to-left support)
 - [ ] Register in `component_theme.dart` (5 places)
 - [ ] Add default in `theme_default.dart`
 - [ ] Export in `impaktfull_ui.dart`

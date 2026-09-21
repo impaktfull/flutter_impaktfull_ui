@@ -43,14 +43,14 @@ class ImpaktfullUiChatListItemBackground extends StatelessWidget {
                   ? componentTheme.colors.ownMessageBorder
                   : componentTheme.colors.otherMessageBorder,
             ),
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(
+            borderRadius: BorderRadiusDirectional.only(
+              topStart: Radius.circular(
                   isMyOwnMessage || isDifferentSenderThanPrevious ? 8 : 4),
-              topRight: Radius.circular(
+              topEnd: Radius.circular(
                   isNotMyOwnMessage || isDifferentSenderThanPrevious ? 8 : 4),
-              bottomLeft: Radius.circular(
+              bottomStart: Radius.circular(
                   isMyOwnMessage || isDifferentSenderThanNext ? 8 : 4),
-              bottomRight: Radius.circular(
+              bottomEnd: Radius.circular(
                   isNotMyOwnMessage || isDifferentSenderThanNext ? 8 : 4),
             ),
           ),

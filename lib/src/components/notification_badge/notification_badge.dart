@@ -4,7 +4,14 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 export 'notification_badge_style.dart';
 
+/// The corner of the child where the badge is shown.
+///
+/// Left and right follow the reading direction: in a right-to-left layout
+/// (e.g. Arabic or Hebrew) [topRight] shows the badge in the top-left corner,
+/// the end of the reading direction.
 enum ImpaktfullUiNotificationBadgeLocation {
+  // rtl-ignore: public physical alignment, kept for compatibility. The badge
+  // itself follows the reading direction.
   bottomRight(Alignment.bottomRight),
   bottomLeft(Alignment.bottomLeft),
   topRight(Alignment.topRight),
@@ -58,11 +65,13 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             child,
-            Positioned(
+            // Left and right locations follow the reading direction: in a
+            // right-to-left layout `topRight` is the top-left corner.
+            PositionedDirectional(
               top: _getTop(dotSize, textWidth, textHeight),
               bottom: _getBottom(dotSize, textWidth, textHeight),
-              right: _getRight(dotSize, textWidth, textHeight),
-              left: _getLeft(dotSize, textWidth, textHeight),
+              end: _getEnd(dotSize, textWidth, textHeight),
+              start: _getStart(dotSize, textWidth, textHeight),
               child: AnimatedOpacity(
                 opacity: show ? 1 : 0,
                 duration: componentTheme.durations.opacity,
@@ -134,46 +143,34 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget {
     return size;
   }
 
+  bool get _isTop =>
+      location == ImpaktfullUiNotificationBadgeLocation.topLeft ||
+      location == ImpaktfullUiNotificationBadgeLocation.topRight;
+
+  bool get _isEnd =>
+      location == ImpaktfullUiNotificationBadgeLocation.topRight ||
+      location == ImpaktfullUiNotificationBadgeLocation.bottomRight;
+
   double? _getTop(double dotSize, double textWidth, double textHeight) {
-    final alignment = location.alignment;
-    if (alignment == Alignment.bottomCenter ||
-        alignment == Alignment.bottomLeft ||
-        alignment == Alignment.bottomRight) {
-      return null;
-    }
+    if (!_isTop) return null;
     if (text == null) return -(dotSize / 2);
     return -(textHeight / 2);
   }
 
   double? _getBottom(double dotSize, double textWidth, double textHeight) {
-    final alignment = location.alignment;
-    if (alignment == Alignment.topCenter ||
-        alignment == Alignment.topLeft ||
-        alignment == Alignment.topRight) {
-      return null;
-    }
+    if (_isTop) return null;
     if (text == null) return -(dotSize / 2);
     return -(textHeight / 2);
   }
 
-  double? _getRight(double dotSize, double textWidth, double textHeight) {
-    final alignment = location.alignment;
-    if (alignment == Alignment.centerLeft ||
-        alignment == Alignment.topLeft ||
-        alignment == Alignment.bottomLeft) {
-      return null;
-    }
+  double? _getEnd(double dotSize, double textWidth, double textHeight) {
+    if (!_isEnd) return null;
     if (text == null) return -(dotSize / 2);
     return -(textWidth / 2);
   }
 
-  double? _getLeft(double dotSize, double textWidth, double textHeight) {
-    final alignment = location.alignment;
-    if (alignment == Alignment.centerRight ||
-        alignment == Alignment.topRight ||
-        alignment == Alignment.bottomRight) {
-      return null;
-    }
+  double? _getStart(double dotSize, double textWidth, double textHeight) {
+    if (_isEnd) return null;
     if (text == null) return -(dotSize / 2);
     return -(textWidth / 2);
   }

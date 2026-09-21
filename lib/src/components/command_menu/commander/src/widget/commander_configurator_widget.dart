@@ -6,7 +6,6 @@ class CommanderConfiguratorWidget extends StatefulWidget {
   final Widget child;
   final ImpaktfullUiCommandMenuController? commanderController;
   final WidgetBuilder builder;
-  final TextDirection textDirection;
   final ShortcutActivator shortcutActivator;
 
   const CommanderConfiguratorWidget({
@@ -14,7 +13,6 @@ class CommanderConfiguratorWidget extends StatefulWidget {
     required this.builder,
     required this.shortcutActivator,
     this.commanderController,
-    this.textDirection = TextDirection.ltr,
     super.key,
   });
 
