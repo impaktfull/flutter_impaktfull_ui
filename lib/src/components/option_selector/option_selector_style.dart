@@ -14,6 +14,19 @@ class ImpaktfullUiOptionSelectorTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiOptionSelectorTheme copyWith({
+    ImpaktfullUiOptionSelectorAssetsTheme? assets,
+    ImpaktfullUiOptionSelectorColorTheme? colors,
+    ImpaktfullUiOptionSelectorDimensTheme? dimens,
+    ImpaktfullUiOptionSelectorTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiOptionSelectorTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiOptionSelectorTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.optionSelector;
 
@@ -35,16 +48,28 @@ class ImpaktfullUiOptionSelectorTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiOptionSelectorAssetsTheme {
   const ImpaktfullUiOptionSelectorAssetsTheme();
+
+  ImpaktfullUiOptionSelectorAssetsTheme copyWith() =>
+      const ImpaktfullUiOptionSelectorAssetsTheme();
 }
 
 class ImpaktfullUiOptionSelectorColorTheme {
   const ImpaktfullUiOptionSelectorColorTheme();
+
+  ImpaktfullUiOptionSelectorColorTheme copyWith() =>
+      const ImpaktfullUiOptionSelectorColorTheme();
 }
 
 class ImpaktfullUiOptionSelectorDimensTheme {
   const ImpaktfullUiOptionSelectorDimensTheme();
+
+  ImpaktfullUiOptionSelectorDimensTheme copyWith() =>
+      const ImpaktfullUiOptionSelectorDimensTheme();
 }
 
 class ImpaktfullUiOptionSelectorTextStyleTheme {
   const ImpaktfullUiOptionSelectorTextStyleTheme();
+
+  ImpaktfullUiOptionSelectorTextStyleTheme copyWith() =>
+      const ImpaktfullUiOptionSelectorTextStyleTheme();
 }

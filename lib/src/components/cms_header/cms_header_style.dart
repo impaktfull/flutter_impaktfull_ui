@@ -18,6 +18,21 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiCmsHeaderTheme copyWith({
+    ImpaktfullUiCmsHeaderAssetsTheme? assets,
+    ImpaktfullUiCmsHeaderColorTheme? colors,
+    ImpaktfullUiCmsHeaderDimensTheme? dimens,
+    ImpaktfullUiCmsHeaderShadowsTheme? shadows,
+    ImpaktfullUiCmsHeaderTextStylesTheme? textStyles,
+  }) =>
+      ImpaktfullUiCmsHeaderTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        shadows: shadows ?? this.shadows,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiCmsHeaderTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.cmsHeader;
 
@@ -58,6 +73,15 @@ class ImpaktfullUiCmsHeaderAssetsTheme {
     required this.back,
     required this.drawerMenu,
   });
+
+  ImpaktfullUiCmsHeaderAssetsTheme copyWith({
+    ImpaktfullUiAsset? back,
+    ImpaktfullUiAsset? drawerMenu,
+  }) =>
+      ImpaktfullUiCmsHeaderAssetsTheme(
+        back: back ?? this.back,
+        drawerMenu: drawerMenu ?? this.drawerMenu,
+      );
 }
 
 class ImpaktfullUiCmsHeaderColorTheme {
@@ -70,14 +94,31 @@ class ImpaktfullUiCmsHeaderColorTheme {
     required this.border,
     required this.icons,
   });
+
+  ImpaktfullUiCmsHeaderColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? icons,
+  }) =>
+      ImpaktfullUiCmsHeaderColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiCmsHeaderDimensTheme {
   const ImpaktfullUiCmsHeaderDimensTheme();
+
+  ImpaktfullUiCmsHeaderDimensTheme copyWith() =>
+      const ImpaktfullUiCmsHeaderDimensTheme();
 }
 
 class ImpaktfullUiCmsHeaderDurationsTheme {
   const ImpaktfullUiCmsHeaderDurationsTheme();
+
+  ImpaktfullUiCmsHeaderDurationsTheme copyWith() =>
+      const ImpaktfullUiCmsHeaderDurationsTheme();
 }
 
 class ImpaktfullUiCmsHeaderShadowsTheme {
@@ -85,6 +126,13 @@ class ImpaktfullUiCmsHeaderShadowsTheme {
   const ImpaktfullUiCmsHeaderShadowsTheme({
     required this.background,
   });
+
+  ImpaktfullUiCmsHeaderShadowsTheme copyWith({
+    List<BoxShadow>? background,
+  }) =>
+      ImpaktfullUiCmsHeaderShadowsTheme(
+        background: background ?? this.background,
+      );
 }
 
 class ImpaktfullUiCmsHeaderTextStylesTheme {
@@ -95,4 +143,13 @@ class ImpaktfullUiCmsHeaderTextStylesTheme {
     required this.title,
     required this.subtitle,
   });
+
+  ImpaktfullUiCmsHeaderTextStylesTheme copyWith({
+    TextStyle? subtitle,
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiCmsHeaderTextStylesTheme(
+        subtitle: subtitle ?? this.subtitle,
+        title: title ?? this.title,
+      );
 }

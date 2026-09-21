@@ -18,6 +18,21 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
     required this.textStyles,
   });
 
+  ImpaktfullUiPasswordStrengthIndicatorTheme copyWith({
+    ImpaktfullUiPasswordStrengthIndicatorAssetsTheme? assets,
+    ImpaktfullUiPasswordStrengthIndicatorColorTheme? colors,
+    ImpaktfullUiPasswordStrengthIndicatorDimensTheme? dimens,
+    ImpaktfullUiPasswordStrengthIndicatorDurationsTheme? durations,
+    ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiPasswordStrengthIndicatorTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiPasswordStrengthIndicatorTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.passwordStrengthIndicator;
 
@@ -77,6 +92,16 @@ class ImpaktfullUiPasswordStrengthIndicatorAssetsTheme {
         leadingRequirementIsMet =
             leadingRequirementIsMet ?? leadingRequerementIsMet;
 
+  ImpaktfullUiPasswordStrengthIndicatorAssetsTheme copyWith({
+    ImpaktfullUiAsset? leadingRequirement,
+    ImpaktfullUiAsset? leadingRequirementIsMet,
+  }) =>
+      ImpaktfullUiPasswordStrengthIndicatorAssetsTheme(
+        leadingRequirement: leadingRequirement ?? this.leadingRequirement,
+        leadingRequirementIsMet:
+            leadingRequirementIsMet ?? this.leadingRequirementIsMet,
+      );
+
   @Deprecated('Use leadingRequirement instead. Will be removed in 1.0.0.')
   ImpaktfullUiAsset? get leadingRequerement => leadingRequirement;
 
@@ -96,6 +121,21 @@ class ImpaktfullUiPasswordStrengthIndicatorColorTheme {
     required this.requirementAsset,
     required this.requirementAssetIsMet,
   });
+
+  ImpaktfullUiPasswordStrengthIndicatorColorTheme copyWith({
+    Color? requirementAsset,
+    Color? requirementAssetIsMet,
+    Color? strengthIndicatorBackground,
+    List<Color>? strengthIndicators,
+  }) =>
+      ImpaktfullUiPasswordStrengthIndicatorColorTheme(
+        requirementAsset: requirementAsset ?? this.requirementAsset,
+        requirementAssetIsMet:
+            requirementAssetIsMet ?? this.requirementAssetIsMet,
+        strengthIndicatorBackground:
+            strengthIndicatorBackground ?? this.strengthIndicatorBackground,
+        strengthIndicators: strengthIndicators ?? this.strengthIndicators,
+      );
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorDimensTheme {
@@ -107,6 +147,18 @@ class ImpaktfullUiPasswordStrengthIndicatorDimensTheme {
     required this.requirementSpacing,
     required this.strengthIndicatorBorderRadius,
   });
+
+  ImpaktfullUiPasswordStrengthIndicatorDimensTheme copyWith({
+    double? requirementSpacing,
+    double? spacing,
+    BorderRadiusGeometry? strengthIndicatorBorderRadius,
+  }) =>
+      ImpaktfullUiPasswordStrengthIndicatorDimensTheme(
+        requirementSpacing: requirementSpacing ?? this.requirementSpacing,
+        spacing: spacing ?? this.spacing,
+        strengthIndicatorBorderRadius:
+            strengthIndicatorBorderRadius ?? this.strengthIndicatorBorderRadius,
+      );
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorDurationsTheme {
@@ -114,6 +166,13 @@ class ImpaktfullUiPasswordStrengthIndicatorDurationsTheme {
   const ImpaktfullUiPasswordStrengthIndicatorDurationsTheme({
     required this.colorChangeDuration,
   });
+
+  ImpaktfullUiPasswordStrengthIndicatorDurationsTheme copyWith({
+    Duration? colorChangeDuration,
+  }) =>
+      ImpaktfullUiPasswordStrengthIndicatorDurationsTheme(
+        colorChangeDuration: colorChangeDuration ?? this.colorChangeDuration,
+      );
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme {
@@ -123,4 +182,13 @@ class ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme {
     required this.requirement,
     required this.requirementIsMet,
   });
+
+  ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme copyWith({
+    TextStyle? requirement,
+    TextStyle? requirementIsMet,
+  }) =>
+      ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme(
+        requirement: requirement ?? this.requirement,
+        requirementIsMet: requirementIsMet ?? this.requirementIsMet,
+      );
 }

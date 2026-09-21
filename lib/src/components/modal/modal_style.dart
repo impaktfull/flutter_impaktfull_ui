@@ -16,6 +16,19 @@ class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
+  ImpaktfullUiModalTheme copyWith({
+    ImpaktfullUiModalAssetsTheme? assets,
+    ImpaktfullUiModalColorTheme? colors,
+    ImpaktfullUiModalDimensTheme? dimens,
+    ImpaktfullUiModalTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiModalTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiModalTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.modal;
 
@@ -61,6 +74,17 @@ class ImpaktfullUiModalColorTheme {
     required this.closeIcon,
     required this.leadingHeaderIcon,
   });
+
+  ImpaktfullUiModalColorTheme copyWith({
+    Color? background,
+    Color? closeIcon,
+    Color? leadingHeaderIcon,
+  }) =>
+      ImpaktfullUiModalColorTheme(
+        background: background ?? this.background,
+        closeIcon: closeIcon ?? this.closeIcon,
+        leadingHeaderIcon: leadingHeaderIcon ?? this.leadingHeaderIcon,
+      );
 }
 
 class ImpaktfullUiModalTextStyleTheme {
@@ -73,6 +97,17 @@ class ImpaktfullUiModalTextStyleTheme {
     required this.subtitle,
     required this.content,
   });
+
+  ImpaktfullUiModalTextStyleTheme copyWith({
+    TextStyle? content,
+    TextStyle? subtitle,
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiModalTextStyleTheme(
+        content: content ?? this.content,
+        subtitle: subtitle ?? this.subtitle,
+        title: title ?? this.title,
+      );
 }
 
 class ImpaktfullUiModalDimensTheme {
@@ -89,6 +124,22 @@ class ImpaktfullUiModalDimensTheme {
     required this.leadingIconPadding,
     required this.padding,
   });
+
+  ImpaktfullUiModalDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
+    EdgeInsetsGeometry? closeIconButtonPadding,
+    EdgeInsetsGeometry? leadingIconPadding,
+    EdgeInsetsGeometry? padding,
+  }) =>
+      ImpaktfullUiModalDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+        closeIconButtonPadding:
+            closeIconButtonPadding ?? this.closeIconButtonPadding,
+        leadingIconPadding: leadingIconPadding ?? this.leadingIconPadding,
+        padding: padding ?? this.padding,
+      );
 }
 
 class ImpaktfullUiModalAssetsTheme {
@@ -97,4 +148,11 @@ class ImpaktfullUiModalAssetsTheme {
   const ImpaktfullUiModalAssetsTheme({
     required this.close,
   });
+
+  ImpaktfullUiModalAssetsTheme copyWith({
+    ImpaktfullUiAsset? close,
+  }) =>
+      ImpaktfullUiModalAssetsTheme(
+        close: close ?? this.close,
+      );
 }

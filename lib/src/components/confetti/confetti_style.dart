@@ -15,6 +15,19 @@ class ImpaktfullUiConfettiTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiConfettiTheme copyWith({
+    ImpaktfullUiConfettiAssetsTheme? assets,
+    ImpaktfullUiConfettiColorTheme? colors,
+    ImpaktfullUiConfettiDimensTheme? dimens,
+    ImpaktfullUiConfettiTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiConfettiTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiConfettiTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.confetti;
 
@@ -44,6 +57,13 @@ class ImpaktfullUiConfettiAssetsTheme {
   const ImpaktfullUiConfettiAssetsTheme({
     required this.leaf,
   });
+
+  ImpaktfullUiConfettiAssetsTheme copyWith({
+    ImpaktfullUiAsset? leaf,
+  }) =>
+      ImpaktfullUiConfettiAssetsTheme(
+        leaf: leaf ?? this.leaf,
+      );
 }
 
 class ImpaktfullUiConfettiColorTheme {
@@ -52,12 +72,25 @@ class ImpaktfullUiConfettiColorTheme {
   const ImpaktfullUiConfettiColorTheme({
     required this.particleColor,
   });
+
+  ImpaktfullUiConfettiColorTheme copyWith({
+    Color? particleColor,
+  }) =>
+      ImpaktfullUiConfettiColorTheme(
+        particleColor: particleColor ?? this.particleColor,
+      );
 }
 
 class ImpaktfullUiConfettiDimensTheme {
   const ImpaktfullUiConfettiDimensTheme();
+
+  ImpaktfullUiConfettiDimensTheme copyWith() =>
+      const ImpaktfullUiConfettiDimensTheme();
 }
 
 class ImpaktfullUiConfettiTextStyleTheme {
   const ImpaktfullUiConfettiTextStyleTheme();
+
+  ImpaktfullUiConfettiTextStyleTheme copyWith() =>
+      const ImpaktfullUiConfettiTextStyleTheme();
 }

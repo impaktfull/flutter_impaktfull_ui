@@ -14,6 +14,19 @@ class ImpaktfullUiDateTimePickerTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiDateTimePickerTheme copyWith({
+    ImpaktfullUiDateTimePickerAssetsTheme? assets,
+    ImpaktfullUiDateTimePickerColorTheme? colors,
+    ImpaktfullUiDateTimePickerDimensTheme? dimens,
+    ImpaktfullUiDateTimePickerTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiDateTimePickerTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiDateTimePickerTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.dateTimePicker;
 
@@ -35,16 +48,28 @@ class ImpaktfullUiDateTimePickerTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiDateTimePickerAssetsTheme {
   const ImpaktfullUiDateTimePickerAssetsTheme();
+
+  ImpaktfullUiDateTimePickerAssetsTheme copyWith() =>
+      const ImpaktfullUiDateTimePickerAssetsTheme();
 }
 
 class ImpaktfullUiDateTimePickerColorTheme {
   const ImpaktfullUiDateTimePickerColorTheme();
+
+  ImpaktfullUiDateTimePickerColorTheme copyWith() =>
+      const ImpaktfullUiDateTimePickerColorTheme();
 }
 
 class ImpaktfullUiDateTimePickerDimensTheme {
   const ImpaktfullUiDateTimePickerDimensTheme();
+
+  ImpaktfullUiDateTimePickerDimensTheme copyWith() =>
+      const ImpaktfullUiDateTimePickerDimensTheme();
 }
 
 class ImpaktfullUiDateTimePickerTextStyleTheme {
   const ImpaktfullUiDateTimePickerTextStyleTheme();
+
+  ImpaktfullUiDateTimePickerTextStyleTheme copyWith() =>
+      const ImpaktfullUiDateTimePickerTextStyleTheme();
 }

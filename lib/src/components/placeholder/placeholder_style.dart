@@ -16,6 +16,19 @@ class ImpaktfullUiPlaceholderTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiPlaceholderTheme copyWith({
+    ImpaktfullUiPlaceholderAssetsTheme? assets,
+    ImpaktfullUiPlaceholderColorTheme? colors,
+    ImpaktfullUiPlaceholderDimensTheme? dimens,
+    ImpaktfullUiPlaceholderTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiPlaceholderTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiPlaceholderTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.placeholder;
 
@@ -46,10 +59,20 @@ class ImpaktfullUiPlaceholderAssetsTheme {
   const ImpaktfullUiPlaceholderAssetsTheme({
     this.asset,
   });
+
+  ImpaktfullUiPlaceholderAssetsTheme copyWith({
+    ImpaktfullUiAsset? asset,
+  }) =>
+      ImpaktfullUiPlaceholderAssetsTheme(
+        asset: asset ?? this.asset,
+      );
 }
 
 class ImpaktfullUiPlaceholderColorTheme {
   const ImpaktfullUiPlaceholderColorTheme();
+
+  ImpaktfullUiPlaceholderColorTheme copyWith() =>
+      const ImpaktfullUiPlaceholderColorTheme();
 }
 
 class ImpaktfullUiPlaceholderDimensTheme {
@@ -62,6 +85,17 @@ class ImpaktfullUiPlaceholderDimensTheme {
     required this.assetWidth,
     required this.assetHeight,
   });
+
+  ImpaktfullUiPlaceholderDimensTheme copyWith({
+    double? assetHeight,
+    double? assetWidth,
+    EdgeInsets? margin,
+  }) =>
+      ImpaktfullUiPlaceholderDimensTheme(
+        assetHeight: assetHeight ?? this.assetHeight,
+        assetWidth: assetWidth ?? this.assetWidth,
+        margin: margin ?? this.margin,
+      );
 }
 
 class ImpaktfullUiPlaceholderTextStyleTheme {
@@ -71,4 +105,13 @@ class ImpaktfullUiPlaceholderTextStyleTheme {
     required this.title,
     required this.subtitle,
   });
+
+  ImpaktfullUiPlaceholderTextStyleTheme copyWith({
+    TextStyle? subtitle,
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiPlaceholderTextStyleTheme(
+        subtitle: subtitle ?? this.subtitle,
+        title: title ?? this.title,
+      );
 }

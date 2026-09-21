@@ -15,6 +15,19 @@ class ImpaktfullUiNumberInputTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiNumberInputTheme copyWith({
+    ImpaktfullUiNumberInputAssetsTheme? assets,
+    ImpaktfullUiNumberInputColorTheme? colors,
+    ImpaktfullUiNumberInputDimensTheme? dimens,
+    ImpaktfullUiNumberInputTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiNumberInputTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiNumberInputTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.numberInput;
 
@@ -45,16 +58,34 @@ class ImpaktfullUiNumberInputAssetsTheme {
     required this.minus,
     required this.plus,
   });
+
+  ImpaktfullUiNumberInputAssetsTheme copyWith({
+    ImpaktfullUiAsset? minus,
+    ImpaktfullUiAsset? plus,
+  }) =>
+      ImpaktfullUiNumberInputAssetsTheme(
+        minus: minus ?? this.minus,
+        plus: plus ?? this.plus,
+      );
 }
 
 class ImpaktfullUiNumberInputColorTheme {
   const ImpaktfullUiNumberInputColorTheme();
+
+  ImpaktfullUiNumberInputColorTheme copyWith() =>
+      const ImpaktfullUiNumberInputColorTheme();
 }
 
 class ImpaktfullUiNumberInputDimensTheme {
   const ImpaktfullUiNumberInputDimensTheme();
+
+  ImpaktfullUiNumberInputDimensTheme copyWith() =>
+      const ImpaktfullUiNumberInputDimensTheme();
 }
 
 class ImpaktfullUiNumberInputTextStyleTheme {
   const ImpaktfullUiNumberInputTextStyleTheme();
+
+  ImpaktfullUiNumberInputTextStyleTheme copyWith() =>
+      const ImpaktfullUiNumberInputTextStyleTheme();
 }

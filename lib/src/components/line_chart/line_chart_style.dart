@@ -14,6 +14,19 @@ class ImpaktfullUiLineChartTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiLineChartTheme copyWith({
+    ImpaktfullUiLineChartAssetsTheme? assets,
+    ImpaktfullUiLineChartColorTheme? colors,
+    ImpaktfullUiLineChartDimensTheme? dimens,
+    ImpaktfullUiLineChartTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiLineChartTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiLineChartTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.lineChart;
 
@@ -40,6 +53,9 @@ class ImpaktfullUiLineChartTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiLineChartAssetsTheme {
   const ImpaktfullUiLineChartAssetsTheme();
+
+  ImpaktfullUiLineChartAssetsTheme copyWith() =>
+      const ImpaktfullUiLineChartAssetsTheme();
 }
 
 class ImpaktfullUiLineChartColorTheme {
@@ -50,6 +66,15 @@ class ImpaktfullUiLineChartColorTheme {
     required this.lineColor,
     required this.backgroundColor,
   });
+
+  ImpaktfullUiLineChartColorTheme copyWith({
+    Color? backgroundColor,
+    Color? lineColor,
+  }) =>
+      ImpaktfullUiLineChartColorTheme(
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+        lineColor: lineColor ?? this.lineColor,
+      );
 }
 
 class ImpaktfullUiLineChartDimensTheme {
@@ -57,8 +82,18 @@ class ImpaktfullUiLineChartDimensTheme {
   const ImpaktfullUiLineChartDimensTheme({
     required this.strokeWidth,
   });
+
+  ImpaktfullUiLineChartDimensTheme copyWith({
+    double? strokeWidth,
+  }) =>
+      ImpaktfullUiLineChartDimensTheme(
+        strokeWidth: strokeWidth ?? this.strokeWidth,
+      );
 }
 
 class ImpaktfullUiLineChartTextStyleTheme {
   const ImpaktfullUiLineChartTextStyleTheme();
+
+  ImpaktfullUiLineChartTextStyleTheme copyWith() =>
+      const ImpaktfullUiLineChartTextStyleTheme();
 }

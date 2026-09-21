@@ -14,6 +14,19 @@ class ImpaktfullUiSkeletonTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiSkeletonTheme copyWith({
+    ImpaktfullUiSkeletonAssetsTheme? assets,
+    ImpaktfullUiSkeletonColorTheme? colors,
+    ImpaktfullUiSkeletonDimensTheme? dimens,
+    ImpaktfullUiSkeletonTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSkeletonTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSkeletonTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.skeleton;
 
@@ -39,6 +52,9 @@ class ImpaktfullUiSkeletonTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiSkeletonAssetsTheme {
   const ImpaktfullUiSkeletonAssetsTheme();
+
+  ImpaktfullUiSkeletonAssetsTheme copyWith() =>
+      const ImpaktfullUiSkeletonAssetsTheme();
 }
 
 class ImpaktfullUiSkeletonColorTheme {
@@ -46,6 +62,13 @@ class ImpaktfullUiSkeletonColorTheme {
   const ImpaktfullUiSkeletonColorTheme({
     required this.background,
   });
+
+  ImpaktfullUiSkeletonColorTheme copyWith({
+    Color? background,
+  }) =>
+      ImpaktfullUiSkeletonColorTheme(
+        background: background ?? this.background,
+      );
 }
 
 class ImpaktfullUiSkeletonDimensTheme {
@@ -53,8 +76,18 @@ class ImpaktfullUiSkeletonDimensTheme {
   const ImpaktfullUiSkeletonDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiSkeletonDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiSkeletonDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiSkeletonTextStyleTheme {
   const ImpaktfullUiSkeletonTextStyleTheme();
+
+  ImpaktfullUiSkeletonTextStyleTheme copyWith() =>
+      const ImpaktfullUiSkeletonTextStyleTheme();
 }

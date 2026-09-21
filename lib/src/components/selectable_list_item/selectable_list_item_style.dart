@@ -65,6 +65,13 @@ class ImpaktfullUiSelectableListItemAssetsTheme {
   const ImpaktfullUiSelectableListItemAssetsTheme({
     required this.check,
   });
+
+  ImpaktfullUiSelectableListItemAssetsTheme copyWith({
+    ImpaktfullUiAsset? check,
+  }) =>
+      ImpaktfullUiSelectableListItemAssetsTheme(
+        check: check ?? this.check,
+      );
 }
 
 class ImpaktfullUiSelectableListItemColorTheme {
@@ -76,6 +83,17 @@ class ImpaktfullUiSelectableListItemColorTheme {
     required this.selected,
     required this.unselected,
   });
+
+  ImpaktfullUiSelectableListItemColorTheme copyWith({
+    Color? icons,
+    Color? selected,
+    Color? unselected,
+  }) =>
+      ImpaktfullUiSelectableListItemColorTheme(
+        icons: icons ?? this.icons,
+        selected: selected ?? this.selected,
+        unselected: unselected ?? this.unselected,
+      );
 }
 
 class ImpaktfullUiSelectableListItemDimensTheme {
@@ -90,6 +108,19 @@ class ImpaktfullUiSelectableListItemDimensTheme {
     this.trailingHeight,
     this.trailingWidth,
   });
+
+  ImpaktfullUiSelectableListItemDimensTheme copyWith({
+    double? leadingHeight,
+    double? leadingWidth,
+    double? trailingHeight,
+    double? trailingWidth,
+  }) =>
+      ImpaktfullUiSelectableListItemDimensTheme(
+        leadingHeight: leadingHeight ?? this.leadingHeight,
+        leadingWidth: leadingWidth ?? this.leadingWidth,
+        trailingHeight: trailingHeight ?? this.trailingHeight,
+        trailingWidth: trailingWidth ?? this.trailingWidth,
+      );
 }
 
 class ImpaktfullUiSelectableListItemDurationsTheme {
@@ -97,8 +128,18 @@ class ImpaktfullUiSelectableListItemDurationsTheme {
   const ImpaktfullUiSelectableListItemDurationsTheme({
     required this.color,
   });
+
+  ImpaktfullUiSelectableListItemDurationsTheme copyWith({
+    Duration? color,
+  }) =>
+      ImpaktfullUiSelectableListItemDurationsTheme(
+        color: color ?? this.color,
+      );
 }
 
 class ImpaktfullUiSelectableListItemTextStyleTheme {
   const ImpaktfullUiSelectableListItemTextStyleTheme();
+
+  ImpaktfullUiSelectableListItemTextStyleTheme copyWith() =>
+      const ImpaktfullUiSelectableListItemTextStyleTheme();
 }

@@ -14,6 +14,19 @@ class ImpaktfullUiSwitchListItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiSwitchListItemTheme copyWith({
+    ImpaktfullUiSwitchListItemAssetsTheme? assets,
+    ImpaktfullUiSwitchListItemColorTheme? colors,
+    ImpaktfullUiSwitchListItemDimensTheme? dimens,
+    ImpaktfullUiSwitchListItemTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSwitchListItemTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSwitchListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.switchListItem;
 
@@ -37,6 +50,9 @@ class ImpaktfullUiSwitchListItemTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiSwitchListItemAssetsTheme {
   const ImpaktfullUiSwitchListItemAssetsTheme();
+
+  ImpaktfullUiSwitchListItemAssetsTheme copyWith() =>
+      const ImpaktfullUiSwitchListItemAssetsTheme();
 }
 
 class ImpaktfullUiSwitchListItemColorTheme {
@@ -44,12 +60,25 @@ class ImpaktfullUiSwitchListItemColorTheme {
   const ImpaktfullUiSwitchListItemColorTheme({
     required this.icons,
   });
+
+  ImpaktfullUiSwitchListItemColorTheme copyWith({
+    Color? icons,
+  }) =>
+      ImpaktfullUiSwitchListItemColorTheme(
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiSwitchListItemDimensTheme {
   const ImpaktfullUiSwitchListItemDimensTheme();
+
+  ImpaktfullUiSwitchListItemDimensTheme copyWith() =>
+      const ImpaktfullUiSwitchListItemDimensTheme();
 }
 
 class ImpaktfullUiSwitchListItemTextStyleTheme {
   const ImpaktfullUiSwitchListItemTextStyleTheme();
+
+  ImpaktfullUiSwitchListItemTextStyleTheme copyWith() =>
+      const ImpaktfullUiSwitchListItemTextStyleTheme();
 }

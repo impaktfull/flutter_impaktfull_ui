@@ -14,6 +14,19 @@ class ImpaktfullUiCheckboxListItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiCheckboxListItemTheme copyWith({
+    ImpaktfullUiCheckboxListItemAssetsTheme? assets,
+    ImpaktfullUiCheckboxListItemColorTheme? colors,
+    ImpaktfullUiCheckboxListItemDimensTheme? dimens,
+    ImpaktfullUiCheckboxListItemTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiCheckboxListItemTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiCheckboxListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.checkBoxListItem;
 
@@ -37,6 +50,9 @@ class ImpaktfullUiCheckboxListItemTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiCheckboxListItemAssetsTheme {
   const ImpaktfullUiCheckboxListItemAssetsTheme();
+
+  ImpaktfullUiCheckboxListItemAssetsTheme copyWith() =>
+      const ImpaktfullUiCheckboxListItemAssetsTheme();
 }
 
 class ImpaktfullUiCheckboxListItemColorTheme {
@@ -44,12 +60,25 @@ class ImpaktfullUiCheckboxListItemColorTheme {
   const ImpaktfullUiCheckboxListItemColorTheme({
     required this.icons,
   });
+
+  ImpaktfullUiCheckboxListItemColorTheme copyWith({
+    Color? icons,
+  }) =>
+      ImpaktfullUiCheckboxListItemColorTheme(
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiCheckboxListItemDimensTheme {
   const ImpaktfullUiCheckboxListItemDimensTheme();
+
+  ImpaktfullUiCheckboxListItemDimensTheme copyWith() =>
+      const ImpaktfullUiCheckboxListItemDimensTheme();
 }
 
 class ImpaktfullUiCheckboxListItemTextStyleTheme {
   const ImpaktfullUiCheckboxListItemTextStyleTheme();
+
+  ImpaktfullUiCheckboxListItemTextStyleTheme copyWith() =>
+      const ImpaktfullUiCheckboxListItemTextStyleTheme();
 }

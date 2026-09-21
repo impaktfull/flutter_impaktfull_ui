@@ -16,6 +16,21 @@ class ImpaktfullUiNotificationBadgeTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiNotificationBadgeTheme copyWith({
+    ImpaktfullUiNotificationBadgeAssetsTheme? assets,
+    ImpaktfullUiNotificationBadgeColorTheme? colors,
+    ImpaktfullUiNotificationBadgeDimensTheme? dimens,
+    ImpaktfullUiNotificationBadgeDurationTheme? durations,
+    ImpaktfullUiNotificationBadgeTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiNotificationBadgeTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiNotificationBadgeTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.notificationBadge;
 
@@ -49,6 +64,9 @@ class ImpaktfullUiNotificationBadgeTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiNotificationBadgeAssetsTheme {
   const ImpaktfullUiNotificationBadgeAssetsTheme();
+
+  ImpaktfullUiNotificationBadgeAssetsTheme copyWith() =>
+      const ImpaktfullUiNotificationBadgeAssetsTheme();
 }
 
 class ImpaktfullUiNotificationBadgeDimensTheme {
@@ -59,6 +77,15 @@ class ImpaktfullUiNotificationBadgeDimensTheme {
     required this.borderRadius,
     required this.textPadding,
   });
+
+  ImpaktfullUiNotificationBadgeDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    EdgeInsets? textPadding,
+  }) =>
+      ImpaktfullUiNotificationBadgeDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        textPadding: textPadding ?? this.textPadding,
+      );
 }
 
 class ImpaktfullUiNotificationBadgeDurationTheme {
@@ -67,6 +94,13 @@ class ImpaktfullUiNotificationBadgeDurationTheme {
   const ImpaktfullUiNotificationBadgeDurationTheme({
     required this.opacity,
   });
+
+  ImpaktfullUiNotificationBadgeDurationTheme copyWith({
+    Duration? opacity,
+  }) =>
+      ImpaktfullUiNotificationBadgeDurationTheme(
+        opacity: opacity ?? this.opacity,
+      );
 }
 
 class ImpaktfullUiNotificationBadgeColorTheme {
@@ -77,6 +111,15 @@ class ImpaktfullUiNotificationBadgeColorTheme {
     required this.background,
     required this.border,
   });
+
+  ImpaktfullUiNotificationBadgeColorTheme copyWith({
+    Color? background,
+    Color? border,
+  }) =>
+      ImpaktfullUiNotificationBadgeColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+      );
 }
 
 class ImpaktfullUiNotificationBadgeTextStyleTheme {
@@ -85,4 +128,11 @@ class ImpaktfullUiNotificationBadgeTextStyleTheme {
   const ImpaktfullUiNotificationBadgeTextStyleTheme({
     required this.text,
   });
+
+  ImpaktfullUiNotificationBadgeTextStyleTheme copyWith({
+    TextStyle? text,
+  }) =>
+      ImpaktfullUiNotificationBadgeTextStyleTheme(
+        text: text ?? this.text,
+      );
 }

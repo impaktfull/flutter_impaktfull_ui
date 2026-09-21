@@ -17,6 +17,21 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
+  ImpaktfullUiSwitchTheme copyWith({
+    ImpaktfullUiSwitchAssetsTheme? assets,
+    ImpaktfullUiSwitchColorTheme? colors,
+    ImpaktfullUiSwitchDimensTheme? dimens,
+    ImpaktfullUiSwitchDurationsTheme? durations,
+    ImpaktfullUiSwitchTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSwitchTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSwitchTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.switchTheme;
 
@@ -74,10 +89,33 @@ class ImpaktfullUiSwitchColorTheme {
     required this.accessibleInactiveIcon,
     required this.accessibleActiveIcon,
   });
+
+  ImpaktfullUiSwitchColorTheme copyWith({
+    Color? accessibleActiveIcon,
+    Color? accessibleInactiveIcon,
+    Color? active,
+    Color? activeBackground,
+    Color? border,
+    Color? inactive,
+    Color? inactiveBackground,
+  }) =>
+      ImpaktfullUiSwitchColorTheme(
+        accessibleActiveIcon: accessibleActiveIcon ?? this.accessibleActiveIcon,
+        accessibleInactiveIcon:
+            accessibleInactiveIcon ?? this.accessibleInactiveIcon,
+        active: active ?? this.active,
+        activeBackground: activeBackground ?? this.activeBackground,
+        border: border ?? this.border,
+        inactive: inactive ?? this.inactive,
+        inactiveBackground: inactiveBackground ?? this.inactiveBackground,
+      );
 }
 
 class ImpaktfullUiSwitchTextStyleTheme {
   const ImpaktfullUiSwitchTextStyleTheme();
+
+  ImpaktfullUiSwitchTextStyleTheme copyWith() =>
+      const ImpaktfullUiSwitchTextStyleTheme();
 }
 
 class ImpaktfullUiSwitchDimensTheme {
@@ -94,6 +132,21 @@ class ImpaktfullUiSwitchDimensTheme {
     this.thumbBorderRadius,
     this.borderWidth,
   });
+
+  ImpaktfullUiSwitchDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
+    double? horizontalPadding,
+    BorderRadiusGeometry? thumbBorderRadius,
+    double? verticalPadding,
+  }) =>
+      ImpaktfullUiSwitchDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+        horizontalPadding: horizontalPadding ?? this.horizontalPadding,
+        thumbBorderRadius: thumbBorderRadius ?? this.thumbBorderRadius,
+        verticalPadding: verticalPadding ?? this.verticalPadding,
+      );
 }
 
 class ImpaktfullUiSwitchDurationsTheme {
@@ -101,6 +154,13 @@ class ImpaktfullUiSwitchDurationsTheme {
   const ImpaktfullUiSwitchDurationsTheme({
     required this.selected,
   });
+
+  ImpaktfullUiSwitchDurationsTheme copyWith({
+    Duration? selected,
+  }) =>
+      ImpaktfullUiSwitchDurationsTheme(
+        selected: selected ?? this.selected,
+      );
 }
 
 class ImpaktfullUiSwitchAssetsTheme {
@@ -111,4 +171,13 @@ class ImpaktfullUiSwitchAssetsTheme {
     required this.active,
     required this.inactive,
   });
+
+  ImpaktfullUiSwitchAssetsTheme copyWith({
+    ImpaktfullUiAsset? active,
+    ImpaktfullUiAsset? inactive,
+  }) =>
+      ImpaktfullUiSwitchAssetsTheme(
+        active: active ?? this.active,
+        inactive: inactive ?? this.inactive,
+      );
 }

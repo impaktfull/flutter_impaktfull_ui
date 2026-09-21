@@ -16,6 +16,19 @@ class ImpaktfullUiMarkdownTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiMarkdownTheme copyWith({
+    ImpaktfullUiMarkdownAssetsTheme? assets,
+    ImpaktfullUiMarkdownColorTheme? colors,
+    ImpaktfullUiMarkdownDimensTheme? dimens,
+    ImpaktfullUiMarkdownTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiMarkdownTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiMarkdownTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.markdown;
 
@@ -66,6 +79,13 @@ class ImpaktfullUiMarkdownAssetsTheme {
   const ImpaktfullUiMarkdownAssetsTheme({
     required this.unorderedListBullet,
   });
+
+  ImpaktfullUiMarkdownAssetsTheme copyWith({
+    ImpaktfullUiAsset? unorderedListBullet,
+  }) =>
+      ImpaktfullUiMarkdownAssetsTheme(
+        unorderedListBullet: unorderedListBullet ?? this.unorderedListBullet,
+      );
 }
 
 class ImpaktfullUiMarkdownColorTheme {
@@ -75,6 +95,15 @@ class ImpaktfullUiMarkdownColorTheme {
     required this.code,
     required this.error,
   });
+
+  ImpaktfullUiMarkdownColorTheme copyWith({
+    Color? code,
+    Color? error,
+  }) =>
+      ImpaktfullUiMarkdownColorTheme(
+        code: code ?? this.code,
+        error: error ?? this.error,
+      );
 }
 
 class ImpaktfullUiMarkdownDimensTheme {
@@ -82,6 +111,13 @@ class ImpaktfullUiMarkdownDimensTheme {
   const ImpaktfullUiMarkdownDimensTheme({
     required this.code,
   });
+
+  ImpaktfullUiMarkdownDimensTheme copyWith({
+    BorderRadiusGeometry? code,
+  }) =>
+      ImpaktfullUiMarkdownDimensTheme(
+        code: code ?? this.code,
+      );
 }
 
 class ImpaktfullUiMarkdownTextStyleTheme {
@@ -114,4 +150,35 @@ class ImpaktfullUiMarkdownTextStyleTheme {
     required this.alt,
     required this.error,
   });
+
+  ImpaktfullUiMarkdownTextStyleTheme copyWith({
+    TextStyle? alt,
+    TextStyle? code,
+    TextStyle? error,
+    TextStyle? h1,
+    TextStyle? h2,
+    TextStyle? h3,
+    TextStyle? h4,
+    TextStyle? h5,
+    TextStyle? h6,
+    TextStyle? link,
+    TextStyle? orderedList,
+    TextStyle? paragraph,
+    TextStyle? unorderedList,
+  }) =>
+      ImpaktfullUiMarkdownTextStyleTheme(
+        alt: alt ?? this.alt,
+        code: code ?? this.code,
+        error: error ?? this.error,
+        h1: h1 ?? this.h1,
+        h2: h2 ?? this.h2,
+        h3: h3 ?? this.h3,
+        h4: h4 ?? this.h4,
+        h5: h5 ?? this.h5,
+        h6: h6 ?? this.h6,
+        link: link ?? this.link,
+        orderedList: orderedList ?? this.orderedList,
+        paragraph: paragraph ?? this.paragraph,
+        unorderedList: unorderedList ?? this.unorderedList,
+      );
 }

@@ -15,6 +15,19 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiChatTheme copyWith({
+    ImpaktfullUiChatAssetsTheme? assets,
+    ImpaktfullUiChatColorTheme? colors,
+    ImpaktfullUiChatDimensTheme? dimens,
+    ImpaktfullUiChatTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiChatTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiChatTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.chat;
 
@@ -54,6 +67,8 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiChatAssetsTheme {
   const ImpaktfullUiChatAssetsTheme();
+
+  ImpaktfullUiChatAssetsTheme copyWith() => const ImpaktfullUiChatAssetsTheme();
 }
 
 class ImpaktfullUiChatColorTheme {
@@ -76,6 +91,29 @@ class ImpaktfullUiChatColorTheme {
     required this.typingContainerDots,
     required this.onlineBadge,
   });
+
+  ImpaktfullUiChatColorTheme copyWith({
+    Color? dateLabelBackground,
+    Color? onlineBadge,
+    Color? otherMessageBackground,
+    Color? otherMessageBorder,
+    Color? ownMessageBackground,
+    Color? ownMessageBorder,
+    Color? typingContainerBackground,
+    Color? typingContainerDots,
+  }) =>
+      ImpaktfullUiChatColorTheme(
+        dateLabelBackground: dateLabelBackground ?? this.dateLabelBackground,
+        onlineBadge: onlineBadge ?? this.onlineBadge,
+        otherMessageBackground:
+            otherMessageBackground ?? this.otherMessageBackground,
+        otherMessageBorder: otherMessageBorder ?? this.otherMessageBorder,
+        ownMessageBackground: ownMessageBackground ?? this.ownMessageBackground,
+        ownMessageBorder: ownMessageBorder ?? this.ownMessageBorder,
+        typingContainerBackground:
+            typingContainerBackground ?? this.typingContainerBackground,
+        typingContainerDots: typingContainerDots ?? this.typingContainerDots,
+      );
 }
 
 class ImpaktfullUiChatDimensTheme {
@@ -90,6 +128,22 @@ class ImpaktfullUiChatDimensTheme {
     required this.typingContainerBorderRadius,
     required this.typingDotsBorderRadius,
   });
+
+  ImpaktfullUiChatDimensTheme copyWith({
+    BorderRadiusGeometry? dateLabelBorderRadius,
+    double? messagePadding,
+    BorderRadiusGeometry? typingContainerBorderRadius,
+    BorderRadiusGeometry? typingDotsBorderRadius,
+  }) =>
+      ImpaktfullUiChatDimensTheme(
+        dateLabelBorderRadius:
+            dateLabelBorderRadius ?? this.dateLabelBorderRadius,
+        messagePadding: messagePadding ?? this.messagePadding,
+        typingContainerBorderRadius:
+            typingContainerBorderRadius ?? this.typingContainerBorderRadius,
+        typingDotsBorderRadius:
+            typingDotsBorderRadius ?? this.typingDotsBorderRadius,
+      );
 }
 
 class ImpaktfullUiChatTextStyleTheme {
@@ -101,4 +155,15 @@ class ImpaktfullUiChatTextStyleTheme {
     required this.otherMessage,
     required this.dateLabel,
   });
+
+  ImpaktfullUiChatTextStyleTheme copyWith({
+    TextStyle? dateLabel,
+    TextStyle? otherMessage,
+    TextStyle? ownMessage,
+  }) =>
+      ImpaktfullUiChatTextStyleTheme(
+        dateLabel: dateLabel ?? this.dateLabel,
+        otherMessage: otherMessage ?? this.otherMessage,
+        ownMessage: ownMessage ?? this.ownMessage,
+      );
 }

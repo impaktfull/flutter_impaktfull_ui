@@ -18,6 +18,21 @@ class ImpaktfullUiNavBarTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiNavBarTheme copyWith({
+    ImpaktfullUiNavBarAssetsTheme? assets,
+    ImpaktfullUiNavBarColorTheme? colors,
+    ImpaktfullUiNavBarDimensTheme? dimens,
+    ImpaktfullUiNavBarShadowsTheme? shadows,
+    ImpaktfullUiNavBarTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiNavBarTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        shadows: shadows ?? this.shadows,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiNavBarTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.navBar;
 
@@ -60,6 +75,17 @@ class ImpaktfullUiNavBarAssetsTheme {
     required this.drawerMenu,
     required this.close,
   });
+
+  ImpaktfullUiNavBarAssetsTheme copyWith({
+    ImpaktfullUiAsset? back,
+    ImpaktfullUiAsset? close,
+    ImpaktfullUiAsset? drawerMenu,
+  }) =>
+      ImpaktfullUiNavBarAssetsTheme(
+        back: back ?? this.back,
+        close: close ?? this.close,
+        drawerMenu: drawerMenu ?? this.drawerMenu,
+      );
 }
 
 class ImpaktfullUiNavBarColorTheme {
@@ -71,10 +97,24 @@ class ImpaktfullUiNavBarColorTheme {
     required this.icons,
     required this.border,
   });
+
+  ImpaktfullUiNavBarColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? icons,
+  }) =>
+      ImpaktfullUiNavBarColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiNavBarDimensTheme {
   const ImpaktfullUiNavBarDimensTheme();
+
+  ImpaktfullUiNavBarDimensTheme copyWith() =>
+      const ImpaktfullUiNavBarDimensTheme();
 }
 
 class ImpaktfullUiNavBarShadowsTheme {
@@ -82,6 +122,13 @@ class ImpaktfullUiNavBarShadowsTheme {
   const ImpaktfullUiNavBarShadowsTheme({
     required this.shadow,
   });
+
+  ImpaktfullUiNavBarShadowsTheme copyWith({
+    List<BoxShadow>? shadow,
+  }) =>
+      ImpaktfullUiNavBarShadowsTheme(
+        shadow: shadow ?? this.shadow,
+      );
 }
 
 class ImpaktfullUiNavBarTextStyleTheme {
@@ -91,4 +138,13 @@ class ImpaktfullUiNavBarTextStyleTheme {
     required this.title,
     required this.subtitle,
   });
+
+  ImpaktfullUiNavBarTextStyleTheme copyWith({
+    TextStyle? subtitle,
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiNavBarTextStyleTheme(
+        subtitle: subtitle ?? this.subtitle,
+        title: title ?? this.title,
+      );
 }

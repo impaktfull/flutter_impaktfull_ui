@@ -14,6 +14,19 @@ class ImpaktfullUiRadioButtonTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiRadioButtonTheme copyWith({
+    ImpaktfullUiRadioButtonAssetsTheme? assets,
+    ImpaktfullUiRadioButtonColorTheme? colors,
+    ImpaktfullUiRadioButtonDimensTheme? dimens,
+    ImpaktfullUiRadioButtonTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiRadioButtonTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiRadioButtonTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.radioButton;
 
@@ -43,6 +56,9 @@ class ImpaktfullUiRadioButtonTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiRadioButtonAssetsTheme {
   const ImpaktfullUiRadioButtonAssetsTheme();
+
+  ImpaktfullUiRadioButtonAssetsTheme copyWith() =>
+      const ImpaktfullUiRadioButtonAssetsTheme();
 }
 
 class ImpaktfullUiRadioButtonColorTheme {
@@ -58,6 +74,23 @@ class ImpaktfullUiRadioButtonColorTheme {
     required this.centerSelectedBackground,
     required this.centerUnSelectedBackground,
   });
+
+  ImpaktfullUiRadioButtonColorTheme copyWith({
+    Color? border,
+    Color? centerSelectedBackground,
+    Color? centerUnSelectedBackground,
+    Color? selected,
+    Color? unselected,
+  }) =>
+      ImpaktfullUiRadioButtonColorTheme(
+        border: border ?? this.border,
+        centerSelectedBackground:
+            centerSelectedBackground ?? this.centerSelectedBackground,
+        centerUnSelectedBackground:
+            centerUnSelectedBackground ?? this.centerUnSelectedBackground,
+        selected: selected ?? this.selected,
+        unselected: unselected ?? this.unselected,
+      );
 }
 
 class ImpaktfullUiRadioButtonDimensTheme {
@@ -65,8 +98,18 @@ class ImpaktfullUiRadioButtonDimensTheme {
   const ImpaktfullUiRadioButtonDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiRadioButtonDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiRadioButtonDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiRadioButtonTextStyleTheme {
   const ImpaktfullUiRadioButtonTextStyleTheme();
+
+  ImpaktfullUiRadioButtonTextStyleTheme copyWith() =>
+      const ImpaktfullUiRadioButtonTextStyleTheme();
 }

@@ -15,6 +15,19 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
+  ImpaktfullUiDropdownTheme copyWith({
+    ImpaktfullUiDropdownAssetsTheme? assets,
+    ImpaktfullUiDropdownColorTheme? colors,
+    ImpaktfullUiDropdownDimensTheme? dimens,
+    ImpaktfullUiDropdownShadowTheme? shadows,
+  }) =>
+      ImpaktfullUiDropdownTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        shadows: shadows ?? this.shadows,
+      );
+
   static ImpaktfullUiDropdownTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.dropdown;
 
@@ -52,6 +65,15 @@ class ImpaktfullUiDropdownColorTheme {
     required this.menuBackground,
     required this.menuBorder,
   });
+
+  ImpaktfullUiDropdownColorTheme copyWith({
+    Color? menuBackground,
+    Color? menuBorder,
+  }) =>
+      ImpaktfullUiDropdownColorTheme(
+        menuBackground: menuBackground ?? this.menuBackground,
+        menuBorder: menuBorder ?? this.menuBorder,
+      );
 }
 
 class ImpaktfullUiDropdownShadowTheme {
@@ -59,6 +81,13 @@ class ImpaktfullUiDropdownShadowTheme {
   const ImpaktfullUiDropdownShadowTheme({
     required this.overlay,
   });
+
+  ImpaktfullUiDropdownShadowTheme copyWith({
+    List<BoxShadow>? overlay,
+  }) =>
+      ImpaktfullUiDropdownShadowTheme(
+        overlay: overlay ?? this.overlay,
+      );
 }
 
 class ImpaktfullUiDropdownDimensTheme {
@@ -67,6 +96,13 @@ class ImpaktfullUiDropdownDimensTheme {
   const ImpaktfullUiDropdownDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiDropdownDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiDropdownDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiDropdownAssetsTheme {
@@ -77,4 +113,13 @@ class ImpaktfullUiDropdownAssetsTheme {
     required this.dropDown,
     required this.dropUp,
   });
+
+  ImpaktfullUiDropdownAssetsTheme copyWith({
+    ImpaktfullUiAsset? dropDown,
+    ImpaktfullUiAsset? dropUp,
+  }) =>
+      ImpaktfullUiDropdownAssetsTheme(
+        dropDown: dropDown ?? this.dropDown,
+        dropUp: dropUp ?? this.dropUp,
+      );
 }

@@ -13,6 +13,17 @@ class ImpaktfullUiLoadingIndicatorTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
+  ImpaktfullUiLoadingIndicatorTheme copyWith({
+    ImpaktfullUiLoadingIndicatorAssetTheme? assets,
+    ImpaktfullUiLoadingIndicatorColorTheme? colors,
+    ImpaktfullUiLoadingIndicatorDimensTheme? dimens,
+  }) =>
+      ImpaktfullUiLoadingIndicatorTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+      );
+
   static ImpaktfullUiLoadingIndicatorTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.loadingIndicator;
 
@@ -43,6 +54,13 @@ class ImpaktfullUiLoadingIndicatorColorTheme {
   const ImpaktfullUiLoadingIndicatorColorTheme({
     required this.color,
   });
+
+  ImpaktfullUiLoadingIndicatorColorTheme copyWith({
+    Color? color,
+  }) =>
+      ImpaktfullUiLoadingIndicatorColorTheme(
+        color: color ?? this.color,
+      );
 }
 
 class ImpaktfullUiLoadingIndicatorDimensTheme {
@@ -51,6 +69,13 @@ class ImpaktfullUiLoadingIndicatorDimensTheme {
   const ImpaktfullUiLoadingIndicatorDimensTheme({
     required this.strokeWidth,
   });
+
+  ImpaktfullUiLoadingIndicatorDimensTheme copyWith({
+    double? strokeWidth,
+  }) =>
+      ImpaktfullUiLoadingIndicatorDimensTheme(
+        strokeWidth: strokeWidth ?? this.strokeWidth,
+      );
 }
 
 class ImpaktfullUiLoadingIndicatorAssetTheme {
@@ -58,4 +83,11 @@ class ImpaktfullUiLoadingIndicatorAssetTheme {
   const ImpaktfullUiLoadingIndicatorAssetTheme({
     required this.lottie,
   });
+
+  ImpaktfullUiLoadingIndicatorAssetTheme copyWith({
+    ImpaktfullUiAsset? lottie,
+  }) =>
+      ImpaktfullUiLoadingIndicatorAssetTheme(
+        lottie: lottie ?? this.lottie,
+      );
 }

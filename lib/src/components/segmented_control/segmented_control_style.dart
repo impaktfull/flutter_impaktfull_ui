@@ -14,6 +14,19 @@ class ImpaktfullUiSegmentedControlTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiSegmentedControlTheme copyWith({
+    ImpaktfullUiSegmentedControlAssetsTheme? assets,
+    ImpaktfullUiSegmentedControlColorTheme? colors,
+    ImpaktfullUiSegmentedControlDimensTheme? dimens,
+    ImpaktfullUiSegmentedControlTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSegmentedControlTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSegmentedControlTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.segmentedControl;
 
@@ -46,6 +59,9 @@ class ImpaktfullUiSegmentedControlTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiSegmentedControlAssetsTheme {
   const ImpaktfullUiSegmentedControlAssetsTheme();
+
+  ImpaktfullUiSegmentedControlAssetsTheme copyWith() =>
+      const ImpaktfullUiSegmentedControlAssetsTheme();
 }
 
 class ImpaktfullUiSegmentedControlColorTheme {
@@ -59,6 +75,19 @@ class ImpaktfullUiSegmentedControlColorTheme {
     required this.activeBackground,
     required this.activeBorder,
   });
+
+  ImpaktfullUiSegmentedControlColorTheme copyWith({
+    Color? activeBackground,
+    Color? activeBorder,
+    Color? background,
+    Color? border,
+  }) =>
+      ImpaktfullUiSegmentedControlColorTheme(
+        activeBackground: activeBackground ?? this.activeBackground,
+        activeBorder: activeBorder ?? this.activeBorder,
+        background: background ?? this.background,
+        border: border ?? this.border,
+      );
 }
 
 class ImpaktfullUiSegmentedControlDimensTheme {
@@ -68,6 +97,15 @@ class ImpaktfullUiSegmentedControlDimensTheme {
     required this.borderRadius,
     required this.padding,
   });
+
+  ImpaktfullUiSegmentedControlDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    EdgeInsets? padding,
+  }) =>
+      ImpaktfullUiSegmentedControlDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        padding: padding ?? this.padding,
+      );
 }
 
 class ImpaktfullUiSegmentedControlTextStyleTheme {
@@ -78,4 +116,13 @@ class ImpaktfullUiSegmentedControlTextStyleTheme {
     required this.label,
     required this.activeLabel,
   });
+
+  ImpaktfullUiSegmentedControlTextStyleTheme copyWith({
+    TextStyle? activeLabel,
+    TextStyle? label,
+  }) =>
+      ImpaktfullUiSegmentedControlTextStyleTheme(
+        activeLabel: activeLabel ?? this.activeLabel,
+        label: label ?? this.label,
+      );
 }

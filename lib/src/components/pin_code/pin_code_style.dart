@@ -17,6 +17,21 @@ class ImpaktfullUiPinCodeTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiPinCodeTheme copyWith({
+    ImpaktfullUiPinCodeAssetsTheme? assets,
+    ImpaktfullUiPinCodeColorTheme? colors,
+    ImpaktfullUiPinCodeDimensTheme? dimens,
+    ImpaktfullUiPinCodeDurationsTheme? durations,
+    ImpaktfullUiPinCodeTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiPinCodeTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiPinCodeTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.pinCode;
 
@@ -56,6 +71,15 @@ class ImpaktfullUiPinCodeAssetsTheme {
     required this.backspace,
     required this.check,
   });
+
+  ImpaktfullUiPinCodeAssetsTheme copyWith({
+    ImpaktfullUiAsset? backspace,
+    ImpaktfullUiAsset? check,
+  }) =>
+      ImpaktfullUiPinCodeAssetsTheme(
+        backspace: backspace ?? this.backspace,
+        check: check ?? this.check,
+      );
 }
 
 class ImpaktfullUiPinCodeColorTheme {
@@ -68,6 +92,18 @@ class ImpaktfullUiPinCodeColorTheme {
     required this.valueBackgroundSelected,
     required this.valueBorder,
   });
+
+  ImpaktfullUiPinCodeColorTheme copyWith({
+    Color? valueBackground,
+    Color? valueBackgroundSelected,
+    Color? valueBorder,
+  }) =>
+      ImpaktfullUiPinCodeColorTheme(
+        valueBackground: valueBackground ?? this.valueBackground,
+        valueBackgroundSelected:
+            valueBackgroundSelected ?? this.valueBackgroundSelected,
+        valueBorder: valueBorder ?? this.valueBorder,
+      );
 }
 
 class ImpaktfullUiPinCodeDimensTheme {
@@ -76,6 +112,13 @@ class ImpaktfullUiPinCodeDimensTheme {
   const ImpaktfullUiPinCodeDimensTheme({
     required this.valueBorderRadius,
   });
+
+  ImpaktfullUiPinCodeDimensTheme copyWith({
+    BorderRadiusGeometry? valueBorderRadius,
+  }) =>
+      ImpaktfullUiPinCodeDimensTheme(
+        valueBorderRadius: valueBorderRadius ?? this.valueBorderRadius,
+      );
 }
 
 class ImpaktfullUiPinCodeDurationsTheme {
@@ -84,8 +127,18 @@ class ImpaktfullUiPinCodeDurationsTheme {
   const ImpaktfullUiPinCodeDurationsTheme({
     required this.submitOpacity,
   });
+
+  ImpaktfullUiPinCodeDurationsTheme copyWith({
+    Duration? submitOpacity,
+  }) =>
+      ImpaktfullUiPinCodeDurationsTheme(
+        submitOpacity: submitOpacity ?? this.submitOpacity,
+      );
 }
 
 class ImpaktfullUiPinCodeTextStyleTheme {
   const ImpaktfullUiPinCodeTextStyleTheme();
+
+  ImpaktfullUiPinCodeTextStyleTheme copyWith() =>
+      const ImpaktfullUiPinCodeTextStyleTheme();
 }

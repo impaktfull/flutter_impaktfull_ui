@@ -15,6 +15,19 @@ class ImpaktfullUiPaginationTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiPaginationTheme copyWith({
+    ImpaktfullUiPaginationAssetsTheme? assets,
+    ImpaktfullUiPaginationColorTheme? colors,
+    ImpaktfullUiPaginationDimensTheme? dimens,
+    ImpaktfullUiPaginationTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiPaginationTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiPaginationTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.pagination;
 
@@ -46,14 +59,29 @@ class ImpaktfullUiPaginationAssetsTheme {
     required this.arrowLeft,
     required this.arrowRight,
   });
+
+  ImpaktfullUiPaginationAssetsTheme copyWith({
+    ImpaktfullUiAsset? arrowLeft,
+    ImpaktfullUiAsset? arrowRight,
+  }) =>
+      ImpaktfullUiPaginationAssetsTheme(
+        arrowLeft: arrowLeft ?? this.arrowLeft,
+        arrowRight: arrowRight ?? this.arrowRight,
+      );
 }
 
 class ImpaktfullUiPaginationColorTheme {
   const ImpaktfullUiPaginationColorTheme();
+
+  ImpaktfullUiPaginationColorTheme copyWith() =>
+      const ImpaktfullUiPaginationColorTheme();
 }
 
 class ImpaktfullUiPaginationDimensTheme {
   const ImpaktfullUiPaginationDimensTheme();
+
+  ImpaktfullUiPaginationDimensTheme copyWith() =>
+      const ImpaktfullUiPaginationDimensTheme();
 }
 
 class ImpaktfullUiPaginationTextStyleTheme {
@@ -62,4 +90,11 @@ class ImpaktfullUiPaginationTextStyleTheme {
   const ImpaktfullUiPaginationTextStyleTheme({
     required this.text,
   });
+
+  ImpaktfullUiPaginationTextStyleTheme copyWith({
+    TextStyle? text,
+  }) =>
+      ImpaktfullUiPaginationTextStyleTheme(
+        text: text ?? this.text,
+      );
 }

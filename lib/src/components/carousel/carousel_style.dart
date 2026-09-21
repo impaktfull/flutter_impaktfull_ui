@@ -14,6 +14,19 @@ class ImpaktfullUiCarouselTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiCarouselTheme copyWith({
+    ImpaktfullUiCarouselAssetsTheme? assets,
+    ImpaktfullUiCarouselColorTheme? colors,
+    ImpaktfullUiCarouselDimensTheme? dimens,
+    ImpaktfullUiCarouselTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiCarouselTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiCarouselTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.carousel;
 
@@ -44,6 +57,9 @@ class ImpaktfullUiCarouselTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiCarouselAssetsTheme {
   const ImpaktfullUiCarouselAssetsTheme();
+
+  ImpaktfullUiCarouselAssetsTheme copyWith() =>
+      const ImpaktfullUiCarouselAssetsTheme();
 }
 
 class ImpaktfullUiCarouselColorTheme {
@@ -56,6 +72,17 @@ class ImpaktfullUiCarouselColorTheme {
     required this.inactiveIndicator,
     required this.indicatorBorder,
   });
+
+  ImpaktfullUiCarouselColorTheme copyWith({
+    Color? activeIndicator,
+    Color? inactiveIndicator,
+    Color? indicatorBorder,
+  }) =>
+      ImpaktfullUiCarouselColorTheme(
+        activeIndicator: activeIndicator ?? this.activeIndicator,
+        inactiveIndicator: inactiveIndicator ?? this.inactiveIndicator,
+        indicatorBorder: indicatorBorder ?? this.indicatorBorder,
+      );
 }
 
 class ImpaktfullUiCarouselDimensTheme {
@@ -70,8 +97,25 @@ class ImpaktfullUiCarouselDimensTheme {
     required this.indicatorSize,
     required this.indicatorSpacing,
   });
+
+  ImpaktfullUiCarouselDimensTheme copyWith({
+    BorderRadiusGeometry? indicatorBorderRadius,
+    EdgeInsetsGeometry? indicatorPadding,
+    double? indicatorSize,
+    EdgeInsetsGeometry? indicatorSpacing,
+  }) =>
+      ImpaktfullUiCarouselDimensTheme(
+        indicatorBorderRadius:
+            indicatorBorderRadius ?? this.indicatorBorderRadius,
+        indicatorPadding: indicatorPadding ?? this.indicatorPadding,
+        indicatorSize: indicatorSize ?? this.indicatorSize,
+        indicatorSpacing: indicatorSpacing ?? this.indicatorSpacing,
+      );
 }
 
 class ImpaktfullUiCarouselTextStyleTheme {
   const ImpaktfullUiCarouselTextStyleTheme();
+
+  ImpaktfullUiCarouselTextStyleTheme copyWith() =>
+      const ImpaktfullUiCarouselTextStyleTheme();
 }

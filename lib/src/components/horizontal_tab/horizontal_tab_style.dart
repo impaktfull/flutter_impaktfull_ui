@@ -14,6 +14,17 @@ class ImpaktfullUiHorizontalTabTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiHorizontalTabTheme copyWith({
+    ImpaktfullUiHorizontalTabColorTheme? colors,
+    ImpaktfullUiHorizontalTabDimensTheme? dimens,
+    ImpaktfullUiHorizontalTabTextStylesTheme? textStyles,
+  }) =>
+      ImpaktfullUiHorizontalTabTheme(
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiHorizontalTabTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.horizontalTab;
 
@@ -48,6 +59,17 @@ class ImpaktfullUiHorizontalTabColorTheme {
     required this.backgroundUnSelectedTab,
     required this.backgroundSelectedTab,
   });
+
+  ImpaktfullUiHorizontalTabColorTheme copyWith({
+    Color? backgroundSelectedTab,
+    Color? backgroundUnSelectedTab,
+  }) =>
+      ImpaktfullUiHorizontalTabColorTheme(
+        backgroundSelectedTab:
+            backgroundSelectedTab ?? this.backgroundSelectedTab,
+        backgroundUnSelectedTab:
+            backgroundUnSelectedTab ?? this.backgroundUnSelectedTab,
+      );
 }
 
 class ImpaktfullUiHorizontalTabTextStylesTheme {
@@ -58,6 +80,15 @@ class ImpaktfullUiHorizontalTabTextStylesTheme {
     required this.selected,
     required this.unselected,
   });
+
+  ImpaktfullUiHorizontalTabTextStylesTheme copyWith({
+    TextStyle? selected,
+    TextStyle? unselected,
+  }) =>
+      ImpaktfullUiHorizontalTabTextStylesTheme(
+        selected: selected ?? this.selected,
+        unselected: unselected ?? this.unselected,
+      );
 }
 
 class ImpaktfullUiHorizontalTabDimensTheme {
@@ -65,4 +96,11 @@ class ImpaktfullUiHorizontalTabDimensTheme {
   const ImpaktfullUiHorizontalTabDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiHorizontalTabDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiHorizontalTabDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }

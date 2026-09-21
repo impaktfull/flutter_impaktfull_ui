@@ -15,6 +15,19 @@ class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiAccordionTheme copyWith({
+    ImpaktfullUiAccordionAssetsTheme? assets,
+    ImpaktfullUiAccordionColorTheme? colors,
+    ImpaktfullUiAccordionDimensTheme? dimens,
+    ImpaktfullUiAccordionTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiAccordionTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiAccordionTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.accordion;
 
@@ -41,16 +54,32 @@ class ImpaktfullUiAccordionAssetsTheme {
   const ImpaktfullUiAccordionAssetsTheme({
     required this.chevronDown,
   });
+
+  ImpaktfullUiAccordionAssetsTheme copyWith({
+    ImpaktfullUiAsset? chevronDown,
+  }) =>
+      ImpaktfullUiAccordionAssetsTheme(
+        chevronDown: chevronDown ?? this.chevronDown,
+      );
 }
 
 class ImpaktfullUiAccordionColorTheme {
   const ImpaktfullUiAccordionColorTheme();
+
+  ImpaktfullUiAccordionColorTheme copyWith() =>
+      const ImpaktfullUiAccordionColorTheme();
 }
 
 class ImpaktfullUiAccordionDimensTheme {
   const ImpaktfullUiAccordionDimensTheme();
+
+  ImpaktfullUiAccordionDimensTheme copyWith() =>
+      const ImpaktfullUiAccordionDimensTheme();
 }
 
 class ImpaktfullUiAccordionTextStyleTheme {
   const ImpaktfullUiAccordionTextStyleTheme();
+
+  ImpaktfullUiAccordionTextStyleTheme copyWith() =>
+      const ImpaktfullUiAccordionTextStyleTheme();
 }

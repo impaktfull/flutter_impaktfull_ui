@@ -143,4 +143,11 @@ class ImpaktfullUiCheckboxDurationsTheme {
   const ImpaktfullUiCheckboxDurationsTheme({
     required this.selected,
   });
+
+  ImpaktfullUiCheckboxDurationsTheme copyWith({
+    Duration? selected,
+  }) =>
+      ImpaktfullUiCheckboxDurationsTheme(
+        selected: selected ?? this.selected,
+      );
 }

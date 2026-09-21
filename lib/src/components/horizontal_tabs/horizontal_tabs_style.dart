@@ -10,6 +10,15 @@ class ImpaktfullUiHorizontalTabsTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
+  ImpaktfullUiHorizontalTabsTheme copyWith({
+    ImpaktfullUiHorizontalTabsColorTheme? colors,
+    ImpaktfullUiHorizontalTabsDimensTheme? dimens,
+  }) =>
+      ImpaktfullUiHorizontalTabsTheme(
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+      );
+
   static ImpaktfullUiHorizontalTabsTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.horizontalTabs;
 
@@ -31,6 +40,9 @@ class ImpaktfullUiHorizontalTabsTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiHorizontalTabsColorTheme {
   const ImpaktfullUiHorizontalTabsColorTheme();
+
+  ImpaktfullUiHorizontalTabsColorTheme copyWith() =>
+      const ImpaktfullUiHorizontalTabsColorTheme();
 }
 
 class ImpaktfullUiHorizontalTabsDimensTheme {
@@ -38,4 +50,11 @@ class ImpaktfullUiHorizontalTabsDimensTheme {
   const ImpaktfullUiHorizontalTabsDimensTheme({
     required this.padding,
   });
+
+  ImpaktfullUiHorizontalTabsDimensTheme copyWith({
+    EdgeInsets? padding,
+  }) =>
+      ImpaktfullUiHorizontalTabsDimensTheme(
+        padding: padding ?? this.padding,
+      );
 }

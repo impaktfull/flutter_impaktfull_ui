@@ -14,6 +14,19 @@ class ImpaktfullUiSliderTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiSliderTheme copyWith({
+    ImpaktfullUiSliderAssetsTheme? assets,
+    ImpaktfullUiSliderColorTheme? colors,
+    ImpaktfullUiSliderDimensTheme? dimens,
+    ImpaktfullUiSliderTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSliderTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSliderTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.slider;
 
@@ -44,6 +57,9 @@ class ImpaktfullUiSliderTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiSliderAssetsTheme {
   const ImpaktfullUiSliderAssetsTheme();
+
+  ImpaktfullUiSliderAssetsTheme copyWith() =>
+      const ImpaktfullUiSliderAssetsTheme();
 }
 
 class ImpaktfullUiSliderColorTheme {
@@ -60,6 +76,21 @@ class ImpaktfullUiSliderColorTheme {
     required this.thumb,
     required this.thumbBorder,
   });
+
+  ImpaktfullUiSliderColorTheme copyWith({
+    Color? activeTrack,
+    Color? thumb,
+    Color? thumbBorder,
+    Color? track,
+    Color? trackBorder,
+  }) =>
+      ImpaktfullUiSliderColorTheme(
+        activeTrack: activeTrack ?? this.activeTrack,
+        thumb: thumb ?? this.thumb,
+        thumbBorder: thumbBorder ?? this.thumbBorder,
+        track: track ?? this.track,
+        trackBorder: trackBorder ?? this.trackBorder,
+      );
 }
 
 class ImpaktfullUiSliderDimensTheme {
@@ -70,8 +101,20 @@ class ImpaktfullUiSliderDimensTheme {
     required this.trackBorderRadius,
     required this.thumbBorderRadius,
   });
+
+  ImpaktfullUiSliderDimensTheme copyWith({
+    BorderRadiusGeometry? thumbBorderRadius,
+    BorderRadiusGeometry? trackBorderRadius,
+  }) =>
+      ImpaktfullUiSliderDimensTheme(
+        thumbBorderRadius: thumbBorderRadius ?? this.thumbBorderRadius,
+        trackBorderRadius: trackBorderRadius ?? this.trackBorderRadius,
+      );
 }
 
 class ImpaktfullUiSliderTextStyleTheme {
   const ImpaktfullUiSliderTextStyleTheme();
+
+  ImpaktfullUiSliderTextStyleTheme copyWith() =>
+      const ImpaktfullUiSliderTextStyleTheme();
 }

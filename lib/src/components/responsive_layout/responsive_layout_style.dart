@@ -14,6 +14,19 @@ class ImpaktfullUiResponsiveLayoutTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiResponsiveLayoutTheme copyWith({
+    ImpaktfullUiResponsiveLayoutAssetsTheme? assets,
+    ImpaktfullUiResponsiveLayoutColorTheme? colors,
+    ImpaktfullUiResponsiveLayoutDimensTheme? dimens,
+    ImpaktfullUiResponsiveLayoutTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiResponsiveLayoutTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiResponsiveLayoutTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.responsiveLayout;
 
@@ -40,10 +53,16 @@ class ImpaktfullUiResponsiveLayoutTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiResponsiveLayoutAssetsTheme {
   const ImpaktfullUiResponsiveLayoutAssetsTheme();
+
+  ImpaktfullUiResponsiveLayoutAssetsTheme copyWith() =>
+      const ImpaktfullUiResponsiveLayoutAssetsTheme();
 }
 
 class ImpaktfullUiResponsiveLayoutColorTheme {
   const ImpaktfullUiResponsiveLayoutColorTheme();
+
+  ImpaktfullUiResponsiveLayoutColorTheme copyWith() =>
+      const ImpaktfullUiResponsiveLayoutColorTheme();
 }
 
 class ImpaktfullUiResponsiveLayoutDimensTheme {
@@ -57,8 +76,24 @@ class ImpaktfullUiResponsiveLayoutDimensTheme {
     required this.breakpointLarge,
     required this.breakpointExtraLarge,
   });
+
+  ImpaktfullUiResponsiveLayoutDimensTheme copyWith({
+    double? breakpointExtraLarge,
+    double? breakpointLarge,
+    double? breakpointMedium,
+    double? breakpointSmall,
+  }) =>
+      ImpaktfullUiResponsiveLayoutDimensTheme(
+        breakpointExtraLarge: breakpointExtraLarge ?? this.breakpointExtraLarge,
+        breakpointLarge: breakpointLarge ?? this.breakpointLarge,
+        breakpointMedium: breakpointMedium ?? this.breakpointMedium,
+        breakpointSmall: breakpointSmall ?? this.breakpointSmall,
+      );
 }
 
 class ImpaktfullUiResponsiveLayoutTextStyleTheme {
   const ImpaktfullUiResponsiveLayoutTextStyleTheme();
+
+  ImpaktfullUiResponsiveLayoutTextStyleTheme copyWith() =>
+      const ImpaktfullUiResponsiveLayoutTextStyleTheme();
 }

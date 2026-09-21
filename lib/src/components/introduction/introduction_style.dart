@@ -14,6 +14,19 @@ class ImpaktfullUiIntroductionTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiIntroductionTheme copyWith({
+    ImpaktfullUiIntroductionAssetsTheme? assets,
+    ImpaktfullUiIntroductionColorTheme? colors,
+    ImpaktfullUiIntroductionDimensTheme? dimens,
+    ImpaktfullUiIntroductionTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiIntroductionTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiIntroductionTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.introduction;
 
@@ -35,16 +48,28 @@ class ImpaktfullUiIntroductionTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiIntroductionAssetsTheme {
   const ImpaktfullUiIntroductionAssetsTheme();
+
+  ImpaktfullUiIntroductionAssetsTheme copyWith() =>
+      const ImpaktfullUiIntroductionAssetsTheme();
 }
 
 class ImpaktfullUiIntroductionColorTheme {
   const ImpaktfullUiIntroductionColorTheme();
+
+  ImpaktfullUiIntroductionColorTheme copyWith() =>
+      const ImpaktfullUiIntroductionColorTheme();
 }
 
 class ImpaktfullUiIntroductionDimensTheme {
   const ImpaktfullUiIntroductionDimensTheme();
+
+  ImpaktfullUiIntroductionDimensTheme copyWith() =>
+      const ImpaktfullUiIntroductionDimensTheme();
 }
 
 class ImpaktfullUiIntroductionTextStyleTheme {
   const ImpaktfullUiIntroductionTextStyleTheme();
+
+  ImpaktfullUiIntroductionTextStyleTheme copyWith() =>
+      const ImpaktfullUiIntroductionTextStyleTheme();
 }

@@ -15,6 +15,19 @@ class ImpaktfullUiImageCropTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiImageCropTheme copyWith({
+    ImpaktfullUiImageCropAssetsTheme? assets,
+    ImpaktfullUiImageCropColorTheme? colors,
+    ImpaktfullUiImageCropDimensTheme? dimens,
+    ImpaktfullUiImageCropTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiImageCropTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiImageCropTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.imageCrop;
 
@@ -43,6 +56,13 @@ class ImpaktfullUiImageCropAssetsTheme {
   const ImpaktfullUiImageCropAssetsTheme({
     required this.delete,
   });
+
+  ImpaktfullUiImageCropAssetsTheme copyWith({
+    ImpaktfullUiAsset? delete,
+  }) =>
+      ImpaktfullUiImageCropAssetsTheme(
+        delete: delete ?? this.delete,
+      );
 }
 
 class ImpaktfullUiImageCropColorTheme {
@@ -50,12 +70,25 @@ class ImpaktfullUiImageCropColorTheme {
   const ImpaktfullUiImageCropColorTheme({
     required this.deleteIcon,
   });
+
+  ImpaktfullUiImageCropColorTheme copyWith({
+    Color? deleteIcon,
+  }) =>
+      ImpaktfullUiImageCropColorTheme(
+        deleteIcon: deleteIcon ?? this.deleteIcon,
+      );
 }
 
 class ImpaktfullUiImageCropDimensTheme {
   const ImpaktfullUiImageCropDimensTheme();
+
+  ImpaktfullUiImageCropDimensTheme copyWith() =>
+      const ImpaktfullUiImageCropDimensTheme();
 }
 
 class ImpaktfullUiImageCropTextStyleTheme {
   const ImpaktfullUiImageCropTextStyleTheme();
+
+  ImpaktfullUiImageCropTextStyleTheme copyWith() =>
+      const ImpaktfullUiImageCropTextStyleTheme();
 }

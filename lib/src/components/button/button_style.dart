@@ -21,17 +21,19 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
 
   ImpaktfullUiButtonTheme copyWith({
     ImpaktfullUiButtonColorTheme? colors,
+    ImpaktfullUiButtonConfig? config,
     ImpaktfullUiButtonDimensTheme? dimens,
     ImpaktfullUiButtonDurationsTheme? durations,
+    ImpaktfullUiButtonShadowTheme? shadow,
     ImpaktfullUiButtonTextStylesTheme? textStyles,
-    ImpaktfullUiButtonConfig? config,
   }) =>
       ImpaktfullUiButtonTheme(
         colors: colors ?? this.colors,
+        config: config ?? this.config,
         dimens: dimens ?? this.dimens,
         durations: durations ?? this.durations,
+        shadow: shadow ?? this.shadow,
         textStyles: textStyles ?? this.textStyles,
-        config: config ?? this.config,
       );
 
   static ImpaktfullUiButtonTheme of(BuildContext context) =>

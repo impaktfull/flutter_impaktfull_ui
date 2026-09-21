@@ -16,6 +16,21 @@ class ImpaktfullUiBottomNavigationTheme extends ImpaktfullUiComponentTheme {
     required this.shadows,
   });
 
+  ImpaktfullUiBottomNavigationTheme copyWith({
+    ImpaktfullUiBottomNavigationAssetsTheme? assets,
+    ImpaktfullUiBottomNavigationColorTheme? colors,
+    ImpaktfullUiBottomNavigationDimensTheme? dimens,
+    ImpaktfullUiBottomNavigationShadowsTheme? shadows,
+    ImpaktfullUiBottomNavigationTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiBottomNavigationTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        shadows: shadows ?? this.shadows,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiBottomNavigationTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.bottomNavigation;
 
@@ -42,6 +57,9 @@ class ImpaktfullUiBottomNavigationTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiBottomNavigationAssetsTheme {
   const ImpaktfullUiBottomNavigationAssetsTheme();
+
+  ImpaktfullUiBottomNavigationAssetsTheme copyWith() =>
+      const ImpaktfullUiBottomNavigationAssetsTheme();
 }
 
 class ImpaktfullUiBottomNavigationColorTheme {
@@ -50,14 +68,27 @@ class ImpaktfullUiBottomNavigationColorTheme {
   const ImpaktfullUiBottomNavigationColorTheme({
     required this.background,
   });
+
+  ImpaktfullUiBottomNavigationColorTheme copyWith({
+    Color? background,
+  }) =>
+      ImpaktfullUiBottomNavigationColorTheme(
+        background: background ?? this.background,
+      );
 }
 
 class ImpaktfullUiBottomNavigationDimensTheme {
   const ImpaktfullUiBottomNavigationDimensTheme();
+
+  ImpaktfullUiBottomNavigationDimensTheme copyWith() =>
+      const ImpaktfullUiBottomNavigationDimensTheme();
 }
 
 class ImpaktfullUiBottomNavigationTextStyleTheme {
   const ImpaktfullUiBottomNavigationTextStyleTheme();
+
+  ImpaktfullUiBottomNavigationTextStyleTheme copyWith() =>
+      const ImpaktfullUiBottomNavigationTextStyleTheme();
 }
 
 class ImpaktfullUiBottomNavigationShadowsTheme {
@@ -66,4 +97,11 @@ class ImpaktfullUiBottomNavigationShadowsTheme {
   const ImpaktfullUiBottomNavigationShadowsTheme({
     required this.background,
   });
+
+  ImpaktfullUiBottomNavigationShadowsTheme copyWith({
+    List<BoxShadow>? background,
+  }) =>
+      ImpaktfullUiBottomNavigationShadowsTheme(
+        background: background ?? this.background,
+      );
 }

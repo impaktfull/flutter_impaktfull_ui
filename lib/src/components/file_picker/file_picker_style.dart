@@ -16,6 +16,19 @@ class ImpaktfullUiFilePickerTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiFilePickerTheme copyWith({
+    ImpaktfullUiFilePickerAssetsTheme? assets,
+    ImpaktfullUiFilePickerColorTheme? colors,
+    ImpaktfullUiFilePickerDimensTheme? dimens,
+    ImpaktfullUiFilePickerTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiFilePickerTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiFilePickerTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.filePicker;
 
@@ -60,6 +73,17 @@ class ImpaktfullUiFilePickerAssetsTheme {
     required this.file,
     required this.upload,
   });
+
+  ImpaktfullUiFilePickerAssetsTheme copyWith({
+    ImpaktfullUiAsset? delete,
+    ImpaktfullUiAsset? file,
+    ImpaktfullUiAsset? upload,
+  }) =>
+      ImpaktfullUiFilePickerAssetsTheme(
+        delete: delete ?? this.delete,
+        file: file ?? this.file,
+        upload: upload ?? this.upload,
+      );
 }
 
 class ImpaktfullUiFilePickerColorTheme {
@@ -78,6 +102,23 @@ class ImpaktfullUiFilePickerColorTheme {
     required this.borderDrop,
     required this.borderError,
   });
+
+  ImpaktfullUiFilePickerColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? borderDrop,
+    Color? borderError,
+    Color? icons,
+    Color? progressIndicator,
+  }) =>
+      ImpaktfullUiFilePickerColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        borderDrop: borderDrop ?? this.borderDrop,
+        borderError: borderError ?? this.borderError,
+        icons: icons ?? this.icons,
+        progressIndicator: progressIndicator ?? this.progressIndicator,
+      );
 }
 
 class ImpaktfullUiFilePickerDimensTheme {
@@ -85,6 +126,13 @@ class ImpaktfullUiFilePickerDimensTheme {
   const ImpaktfullUiFilePickerDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiFilePickerDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiFilePickerDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiFilePickerTextStyleTheme {
@@ -95,4 +143,13 @@ class ImpaktfullUiFilePickerTextStyleTheme {
     required this.title,
     required this.subtitle,
   });
+
+  ImpaktfullUiFilePickerTextStyleTheme copyWith({
+    TextStyle? subtitle,
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiFilePickerTextStyleTheme(
+        subtitle: subtitle ?? this.subtitle,
+        title: title ?? this.title,
+      );
 }

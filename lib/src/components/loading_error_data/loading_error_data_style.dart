@@ -15,6 +15,19 @@ class ImpaktfullUiLoadingErrorDataTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiLoadingErrorDataTheme copyWith({
+    ImpaktfullUiLoadingErrorDataAssetsTheme? assets,
+    ImpaktfullUiLoadingErrorDataColorTheme? colors,
+    ImpaktfullUiLoadingErrorDataDimensTheme? dimens,
+    ImpaktfullUiLoadingErrorDataTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiLoadingErrorDataTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiLoadingErrorDataTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.loadingErrorData;
 
@@ -42,14 +55,23 @@ class ImpaktfullUiLoadingErrorDataTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiLoadingErrorDataAssetsTheme {
   const ImpaktfullUiLoadingErrorDataAssetsTheme();
+
+  ImpaktfullUiLoadingErrorDataAssetsTheme copyWith() =>
+      const ImpaktfullUiLoadingErrorDataAssetsTheme();
 }
 
 class ImpaktfullUiLoadingErrorDataColorTheme {
   const ImpaktfullUiLoadingErrorDataColorTheme();
+
+  ImpaktfullUiLoadingErrorDataColorTheme copyWith() =>
+      const ImpaktfullUiLoadingErrorDataColorTheme();
 }
 
 class ImpaktfullUiLoadingErrorDataDimensTheme {
   const ImpaktfullUiLoadingErrorDataDimensTheme();
+
+  ImpaktfullUiLoadingErrorDataDimensTheme copyWith() =>
+      const ImpaktfullUiLoadingErrorDataDimensTheme();
 }
 
 class ImpaktfullUiLoadingErrorDataTextStyleTheme {
@@ -63,4 +85,17 @@ class ImpaktfullUiLoadingErrorDataTextStyleTheme {
     required this.errorTitle,
     required this.errorMessage,
   });
+
+  ImpaktfullUiLoadingErrorDataTextStyleTheme copyWith({
+    TextStyle? errorMessage,
+    TextStyle? errorTitle,
+    TextStyle? noDataMessage,
+    TextStyle? noDataTitle,
+  }) =>
+      ImpaktfullUiLoadingErrorDataTextStyleTheme(
+        errorMessage: errorMessage ?? this.errorMessage,
+        errorTitle: errorTitle ?? this.errorTitle,
+        noDataMessage: noDataMessage ?? this.noDataMessage,
+        noDataTitle: noDataTitle ?? this.noDataTitle,
+      );
 }

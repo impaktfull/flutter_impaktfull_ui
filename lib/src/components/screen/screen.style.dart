@@ -14,6 +14,19 @@ class ImpaktfullUiScreenTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiScreenTheme copyWith({
+    ImpaktfullUiScreenAssetsTheme? assets,
+    ImpaktfullUiScreenColorTheme? colors,
+    ImpaktfullUiScreenDimensTheme? dimens,
+    ImpaktfullUiScreenTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiScreenTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiScreenTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.screen;
 
@@ -37,6 +50,9 @@ class ImpaktfullUiScreenTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiScreenAssetsTheme {
   const ImpaktfullUiScreenAssetsTheme();
+
+  ImpaktfullUiScreenAssetsTheme copyWith() =>
+      const ImpaktfullUiScreenAssetsTheme();
 }
 
 class ImpaktfullUiScreenColorTheme {
@@ -44,12 +60,25 @@ class ImpaktfullUiScreenColorTheme {
   const ImpaktfullUiScreenColorTheme({
     required this.background,
   });
+
+  ImpaktfullUiScreenColorTheme copyWith({
+    Color? background,
+  }) =>
+      ImpaktfullUiScreenColorTheme(
+        background: background ?? this.background,
+      );
 }
 
 class ImpaktfullUiScreenDimensTheme {
   const ImpaktfullUiScreenDimensTheme();
+
+  ImpaktfullUiScreenDimensTheme copyWith() =>
+      const ImpaktfullUiScreenDimensTheme();
 }
 
 class ImpaktfullUiScreenTextStyleTheme {
   const ImpaktfullUiScreenTextStyleTheme();
+
+  ImpaktfullUiScreenTextStyleTheme copyWith() =>
+      const ImpaktfullUiScreenTextStyleTheme();
 }

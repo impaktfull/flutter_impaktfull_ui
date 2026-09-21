@@ -14,6 +14,19 @@ class ImpaktfullUiColorPickerTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiColorPickerTheme copyWith({
+    ImpaktfullUiColorPickerAssetsTheme? assets,
+    ImpaktfullUiColorPickerColorTheme? colors,
+    ImpaktfullUiColorPickerDimensTheme? dimens,
+    ImpaktfullUiColorPickerTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiColorPickerTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiColorPickerTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.colorPicker;
 
@@ -38,10 +51,16 @@ class ImpaktfullUiColorPickerTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiColorPickerAssetsTheme {
   const ImpaktfullUiColorPickerAssetsTheme();
+
+  ImpaktfullUiColorPickerAssetsTheme copyWith() =>
+      const ImpaktfullUiColorPickerAssetsTheme();
 }
 
 class ImpaktfullUiColorPickerColorTheme {
   const ImpaktfullUiColorPickerColorTheme();
+
+  ImpaktfullUiColorPickerColorTheme copyWith() =>
+      const ImpaktfullUiColorPickerColorTheme();
 }
 
 class ImpaktfullUiColorPickerDimensTheme {
@@ -52,8 +71,22 @@ class ImpaktfullUiColorPickerDimensTheme {
     required this.simpleColorPickerItemBorderRadius,
     required this.simpleColorPickerItemSize,
   });
+
+  ImpaktfullUiColorPickerDimensTheme copyWith({
+    BorderRadiusGeometry? simpleColorPickerItemBorderRadius,
+    double? simpleColorPickerItemSize,
+  }) =>
+      ImpaktfullUiColorPickerDimensTheme(
+        simpleColorPickerItemBorderRadius: simpleColorPickerItemBorderRadius ??
+            this.simpleColorPickerItemBorderRadius,
+        simpleColorPickerItemSize:
+            simpleColorPickerItemSize ?? this.simpleColorPickerItemSize,
+      );
 }
 
 class ImpaktfullUiColorPickerTextStyleTheme {
   const ImpaktfullUiColorPickerTextStyleTheme();
+
+  ImpaktfullUiColorPickerTextStyleTheme copyWith() =>
+      const ImpaktfullUiColorPickerTextStyleTheme();
 }

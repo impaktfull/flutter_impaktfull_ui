@@ -16,6 +16,19 @@ class ImpaktfullUiMetricTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiMetricTheme copyWith({
+    ImpaktfullUiMetricAssetsTheme? assets,
+    ImpaktfullUiMetricColorTheme? colors,
+    ImpaktfullUiMetricDimensTheme? dimens,
+    ImpaktfullUiMetricTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiMetricTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiMetricTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.metric;
 
@@ -55,14 +68,27 @@ class ImpaktfullUiMetricAssetsTheme {
   const ImpaktfullUiMetricAssetsTheme({
     required this.more,
   });
+
+  ImpaktfullUiMetricAssetsTheme copyWith({
+    ImpaktfullUiAsset? more,
+  }) =>
+      ImpaktfullUiMetricAssetsTheme(
+        more: more ?? this.more,
+      );
 }
 
 class ImpaktfullUiMetricColorTheme {
   const ImpaktfullUiMetricColorTheme();
+
+  ImpaktfullUiMetricColorTheme copyWith() =>
+      const ImpaktfullUiMetricColorTheme();
 }
 
 class ImpaktfullUiMetricDimensTheme {
   const ImpaktfullUiMetricDimensTheme();
+
+  ImpaktfullUiMetricDimensTheme copyWith() =>
+      const ImpaktfullUiMetricDimensTheme();
 }
 
 class ImpaktfullUiMetricTextStyleTheme {
@@ -82,4 +108,23 @@ class ImpaktfullUiMetricTextStyleTheme {
     required this.value2Branded,
     required this.value2Custom,
   });
+
+  ImpaktfullUiMetricTextStyleTheme copyWith({
+    TextStyle? title,
+    TextStyle? value,
+    TextStyle? value2Branded,
+    TextStyle? value2Custom,
+    TextStyle? value2Decline,
+    TextStyle? value2Growth,
+    TextStyle? value2Neutral,
+  }) =>
+      ImpaktfullUiMetricTextStyleTheme(
+        title: title ?? this.title,
+        value: value ?? this.value,
+        value2Branded: value2Branded ?? this.value2Branded,
+        value2Custom: value2Custom ?? this.value2Custom,
+        value2Decline: value2Decline ?? this.value2Decline,
+        value2Growth: value2Growth ?? this.value2Growth,
+        value2Neutral: value2Neutral ?? this.value2Neutral,
+      );
 }

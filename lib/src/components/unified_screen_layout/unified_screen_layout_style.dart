@@ -14,6 +14,19 @@ class ImpaktfullUiUnifiedScreenLayoutTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiUnifiedScreenLayoutTheme copyWith({
+    ImpaktfullUiUnifiedScreenLayoutAssetsTheme? assets,
+    ImpaktfullUiUnifiedScreenLayoutColorTheme? colors,
+    ImpaktfullUiUnifiedScreenLayoutDimensTheme? dimens,
+    ImpaktfullUiUnifiedScreenLayoutTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiUnifiedScreenLayoutTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiUnifiedScreenLayoutTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.unifiedScreenLayout;
 
@@ -40,10 +53,16 @@ class ImpaktfullUiUnifiedScreenLayoutTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiUnifiedScreenLayoutAssetsTheme {
   const ImpaktfullUiUnifiedScreenLayoutAssetsTheme();
+
+  ImpaktfullUiUnifiedScreenLayoutAssetsTheme copyWith() =>
+      const ImpaktfullUiUnifiedScreenLayoutAssetsTheme();
 }
 
 class ImpaktfullUiUnifiedScreenLayoutColorTheme {
   const ImpaktfullUiUnifiedScreenLayoutColorTheme();
+
+  ImpaktfullUiUnifiedScreenLayoutColorTheme copyWith() =>
+      const ImpaktfullUiUnifiedScreenLayoutColorTheme();
 }
 
 class ImpaktfullUiUnifiedScreenLayoutDimensTheme {
@@ -58,8 +77,24 @@ class ImpaktfullUiUnifiedScreenLayoutDimensTheme {
     required this.centerMaxWidth,
     required this.centerPadding,
   });
+
+  ImpaktfullUiUnifiedScreenLayoutDimensTheme copyWith({
+    double? centerMaxWidth,
+    double? centerMinWidth,
+    EdgeInsetsGeometry? centerPadding,
+    double? centerWidthFactor,
+  }) =>
+      ImpaktfullUiUnifiedScreenLayoutDimensTheme(
+        centerMaxWidth: centerMaxWidth ?? this.centerMaxWidth,
+        centerMinWidth: centerMinWidth ?? this.centerMinWidth,
+        centerPadding: centerPadding ?? this.centerPadding,
+        centerWidthFactor: centerWidthFactor ?? this.centerWidthFactor,
+      );
 }
 
 class ImpaktfullUiUnifiedScreenLayoutTextStyleTheme {
   const ImpaktfullUiUnifiedScreenLayoutTextStyleTheme();
+
+  ImpaktfullUiUnifiedScreenLayoutTextStyleTheme copyWith() =>
+      const ImpaktfullUiUnifiedScreenLayoutTextStyleTheme();
 }
