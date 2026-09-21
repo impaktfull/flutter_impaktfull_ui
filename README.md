@@ -230,6 +230,53 @@ Much more examples to come in the future.
 
 The provided theme contains the default impaktfull branding. But it is super important for us that the theme is easy to configure and highly configurable. That is why we choose for component based theming.
 
+Start from your brand with `ImpaktfullUiDefaultTheme.withMinimalChanges` and pass it to `ImpaktfullUiApp`:
+
+```dart
+final theme = ImpaktfullUiDefaultTheme.withMinimalChanges(
+  primary: const Color(0xFF007AFF),
+  accent: const Color(0xFF5856D6),
+  secondary: const Color(0xFFFF9500),
+  borderRadius: BorderRadius.circular(8),
+);
+
+ImpaktfullUiApp(
+  title: 'My App',
+  impaktfullUiTheme: theme,
+  home: const MyHomeScreen(),
+);
+```
+
+#### Changing a single token
+
+Every theme class (the theme, the components theme, every component theme and its `colors`, `dimens`, `textStyles`, ...) has a `copyWith`. Pass only what changes:
+
+```dart
+final customTheme = theme.copyWith(
+  components: theme.components.copyWith(
+    card: theme.components.card.copyWith(
+      dimens: theme.components.card.dimens.copyWith(
+        borderRadius: BorderRadius.circular(24),
+      ),
+    ),
+  ),
+);
+```
+
+The same works for a single widget with its `theme` parameter:
+
+```dart
+final cardTheme = ImpaktfullUiCardTheme.of(context);
+ImpaktfullUiCard(
+  theme: cardTheme.copyWith(
+    colors: cardTheme.colors.copyWith(background: Colors.yellow),
+  ),
+  child: ...,
+);
+```
+
+> **Note:** `theme.copyWith(colors: ...)` only replaces the colors on the root theme. The component themes were built from the old colors and keep them. To change a base color, border radius or font everywhere, build the theme again with `ImpaktfullUiDefaultTheme.withMinimalChanges(...)` and use `copyWith` for the component tokens on top of that.
+
 ### Assets
 
 #### Images

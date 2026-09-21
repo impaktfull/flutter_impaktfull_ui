@@ -15,6 +15,19 @@ class ImpaktfullUiSimpleListItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiSimpleListItemTheme copyWith({
+    ImpaktfullUiSimpleListItemAssetsTheme? assets,
+    ImpaktfullUiSimpleListItemColorTheme? colors,
+    ImpaktfullUiSimpleListItemDimensTheme? dimens,
+    ImpaktfullUiSimpleListItemTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSimpleListItemTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSimpleListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.simpleListItem;
 
@@ -48,6 +61,9 @@ class ImpaktfullUiSimpleListItemTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiSimpleListItemAssetsTheme {
   const ImpaktfullUiSimpleListItemAssetsTheme();
+
+  ImpaktfullUiSimpleListItemAssetsTheme copyWith() =>
+      const ImpaktfullUiSimpleListItemAssetsTheme();
 }
 
 class ImpaktfullUiSimpleListItemColorTheme {
@@ -56,6 +72,13 @@ class ImpaktfullUiSimpleListItemColorTheme {
   const ImpaktfullUiSimpleListItemColorTheme({
     required this.background,
   });
+
+  ImpaktfullUiSimpleListItemColorTheme copyWith({
+    Color? background,
+  }) =>
+      ImpaktfullUiSimpleListItemColorTheme(
+        background: background ?? this.background,
+      );
 }
 
 class ImpaktfullUiSimpleListItemDimensTheme {
@@ -70,6 +93,19 @@ class ImpaktfullUiSimpleListItemDimensTheme {
     required this.crossAxisAlignment,
     required this.spacing,
   });
+
+  ImpaktfullUiSimpleListItemDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    CrossAxisAlignment? crossAxisAlignment,
+    EdgeInsetsGeometry? padding,
+    double? spacing,
+  }) =>
+      ImpaktfullUiSimpleListItemDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        crossAxisAlignment: crossAxisAlignment ?? this.crossAxisAlignment,
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
+      );
 }
 
 class ImpaktfullUiSimpleListItemTextStyleTheme {
@@ -84,4 +120,17 @@ class ImpaktfullUiSimpleListItemTextStyleTheme {
     required this.subtitle,
     required this.subtitleDanger,
   });
+
+  ImpaktfullUiSimpleListItemTextStyleTheme copyWith({
+    TextStyle? subtitle,
+    TextStyle? subtitleDanger,
+    TextStyle? title,
+    TextStyle? titleDanger,
+  }) =>
+      ImpaktfullUiSimpleListItemTextStyleTheme(
+        subtitle: subtitle ?? this.subtitle,
+        subtitleDanger: subtitleDanger ?? this.subtitleDanger,
+        title: title ?? this.title,
+        titleDanger: titleDanger ?? this.titleDanger,
+      );
 }

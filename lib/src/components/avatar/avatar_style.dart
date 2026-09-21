@@ -15,6 +15,19 @@ class ImpaktfullUiAvatarTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiAvatarTheme copyWith({
+    ImpaktfullUiAvatarAssetsTheme? assets,
+    ImpaktfullUiAvatarColorTheme? colors,
+    ImpaktfullUiAvatarDimensTheme? dimens,
+    ImpaktfullUiAvatarTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiAvatarTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiAvatarTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.avatar;
 
@@ -47,6 +60,13 @@ class ImpaktfullUiAvatarAssetsTheme {
   const ImpaktfullUiAvatarAssetsTheme({
     required this.placeholder,
   });
+
+  ImpaktfullUiAvatarAssetsTheme copyWith({
+    ImpaktfullUiAsset? placeholder,
+  }) =>
+      ImpaktfullUiAvatarAssetsTheme(
+        placeholder: placeholder ?? this.placeholder,
+      );
 }
 
 class ImpaktfullUiAvatarColorTheme {
@@ -58,6 +78,17 @@ class ImpaktfullUiAvatarColorTheme {
     required this.background,
     required this.placeholder,
   });
+
+  ImpaktfullUiAvatarColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? placeholder,
+  }) =>
+      ImpaktfullUiAvatarColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        placeholder: placeholder ?? this.placeholder,
+      );
 }
 
 class ImpaktfullUiAvatarDimensTheme {
@@ -65,8 +96,18 @@ class ImpaktfullUiAvatarDimensTheme {
   const ImpaktfullUiAvatarDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiAvatarDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiAvatarDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiAvatarTextStyleTheme {
   const ImpaktfullUiAvatarTextStyleTheme();
+
+  ImpaktfullUiAvatarTextStyleTheme copyWith() =>
+      const ImpaktfullUiAvatarTextStyleTheme();
 }

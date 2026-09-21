@@ -14,6 +14,19 @@ class ImpaktfullUiTabBarTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiTabBarTheme copyWith({
+    ImpaktfullUiTabBarAssetsTheme? assets,
+    ImpaktfullUiTabBarColorTheme? colors,
+    ImpaktfullUiTabBarDimensTheme? dimens,
+    ImpaktfullUiTabBarTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiTabBarTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiTabBarTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.tabBar;
 
@@ -35,16 +48,28 @@ class ImpaktfullUiTabBarTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiTabBarAssetsTheme {
   const ImpaktfullUiTabBarAssetsTheme();
+
+  ImpaktfullUiTabBarAssetsTheme copyWith() =>
+      const ImpaktfullUiTabBarAssetsTheme();
 }
 
 class ImpaktfullUiTabBarColorTheme {
   const ImpaktfullUiTabBarColorTheme();
+
+  ImpaktfullUiTabBarColorTheme copyWith() =>
+      const ImpaktfullUiTabBarColorTheme();
 }
 
 class ImpaktfullUiTabBarDimensTheme {
   const ImpaktfullUiTabBarDimensTheme();
+
+  ImpaktfullUiTabBarDimensTheme copyWith() =>
+      const ImpaktfullUiTabBarDimensTheme();
 }
 
 class ImpaktfullUiTabBarTextStyleTheme {
   const ImpaktfullUiTabBarTextStyleTheme();
+
+  ImpaktfullUiTabBarTextStyleTheme copyWith() =>
+      const ImpaktfullUiTabBarTextStyleTheme();
 }

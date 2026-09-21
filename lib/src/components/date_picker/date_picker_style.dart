@@ -18,6 +18,19 @@ class ImpaktfullUiDatePickerTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiDatePickerTheme copyWith({
+    ImpaktfullUiDatePickerAssetsTheme? assets,
+    ImpaktfullUiDatePickerColorTheme? colors,
+    ImpaktfullUiDatePickerDimensTheme? dimens,
+    ImpaktfullUiDatePickerTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiDatePickerTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiDatePickerTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.datePicker;
 
@@ -67,6 +80,15 @@ class ImpaktfullUiDatePickerAssetsTheme {
     required this.arrowLeft,
     required this.arrowRight,
   });
+
+  ImpaktfullUiDatePickerAssetsTheme copyWith({
+    ImpaktfullUiAsset? arrowLeft,
+    ImpaktfullUiAsset? arrowRight,
+  }) =>
+      ImpaktfullUiDatePickerAssetsTheme(
+        arrowLeft: arrowLeft ?? this.arrowLeft,
+        arrowRight: arrowRight ?? this.arrowRight,
+      );
 }
 
 class ImpaktfullUiDatePickerColorTheme {
@@ -76,6 +98,15 @@ class ImpaktfullUiDatePickerColorTheme {
     required this.selected,
     required this.inRange,
   });
+
+  ImpaktfullUiDatePickerColorTheme copyWith({
+    Color? inRange,
+    Color? selected,
+  }) =>
+      ImpaktfullUiDatePickerColorTheme(
+        inRange: inRange ?? this.inRange,
+        selected: selected ?? this.selected,
+      );
 }
 
 class ImpaktfullUiDatePickerDimensTheme {
@@ -89,6 +120,21 @@ class ImpaktfullUiDatePickerDimensTheme {
     required this.borderRadiusRangeEnd,
     required this.borderRadiusRangeBetween,
   });
+
+  ImpaktfullUiDatePickerDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    BorderRadiusGeometry? borderRadiusRangeBetween,
+    BorderRadiusGeometry? borderRadiusRangeEnd,
+    BorderRadiusGeometry? borderRadiusRangeStart,
+  }) =>
+      ImpaktfullUiDatePickerDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        borderRadiusRangeBetween:
+            borderRadiusRangeBetween ?? this.borderRadiusRangeBetween,
+        borderRadiusRangeEnd: borderRadiusRangeEnd ?? this.borderRadiusRangeEnd,
+        borderRadiusRangeStart:
+            borderRadiusRangeStart ?? this.borderRadiusRangeStart,
+      );
 }
 
 class ImpaktfullUiDatePickerTextStyleTheme {
@@ -105,4 +151,19 @@ class ImpaktfullUiDatePickerTextStyleTheme {
     required this.cell,
     required this.cellSelected,
   });
+
+  ImpaktfullUiDatePickerTextStyleTheme copyWith({
+    TextStyle? cell,
+    TextStyle? cellInActive,
+    TextStyle? cellSelected,
+    TextStyle? headerTitle,
+    TextStyle? weekday,
+  }) =>
+      ImpaktfullUiDatePickerTextStyleTheme(
+        cell: cell ?? this.cell,
+        cellInActive: cellInActive ?? this.cellInActive,
+        cellSelected: cellSelected ?? this.cellSelected,
+        headerTitle: headerTitle ?? this.headerTitle,
+        weekday: weekday ?? this.weekday,
+      );
 }

@@ -15,6 +15,19 @@ class ImpaktfullUiListItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiListItemTheme copyWith({
+    ImpaktfullUiListItemAssetsTheme? assets,
+    ImpaktfullUiListItemColorTheme? colors,
+    ImpaktfullUiListItemDimensTheme? dimens,
+    ImpaktfullUiListItemTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiListItemTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.listItem;
 
@@ -45,6 +58,13 @@ class ImpaktfullUiListItemAssetsTheme {
   const ImpaktfullUiListItemAssetsTheme({
     required this.chevronRight,
   });
+
+  ImpaktfullUiListItemAssetsTheme copyWith({
+    ImpaktfullUiAsset? chevronRight,
+  }) =>
+      ImpaktfullUiListItemAssetsTheme(
+        chevronRight: chevronRight ?? this.chevronRight,
+      );
 }
 
 class ImpaktfullUiListItemColorTheme {
@@ -54,6 +74,15 @@ class ImpaktfullUiListItemColorTheme {
     required this.icons,
     required this.danger,
   });
+
+  ImpaktfullUiListItemColorTheme copyWith({
+    Color? danger,
+    Color? icons,
+  }) =>
+      ImpaktfullUiListItemColorTheme(
+        danger: danger ?? this.danger,
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiListItemDimensTheme {
@@ -61,8 +90,18 @@ class ImpaktfullUiListItemDimensTheme {
   const ImpaktfullUiListItemDimensTheme({
     this.leadingSize,
   });
+
+  ImpaktfullUiListItemDimensTheme copyWith({
+    double? leadingSize,
+  }) =>
+      ImpaktfullUiListItemDimensTheme(
+        leadingSize: leadingSize ?? this.leadingSize,
+      );
 }
 
 class ImpaktfullUiListItemTextStyleTheme {
   const ImpaktfullUiListItemTextStyleTheme();
+
+  ImpaktfullUiListItemTextStyleTheme copyWith() =>
+      const ImpaktfullUiListItemTextStyleTheme();
 }

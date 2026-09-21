@@ -10,6 +10,15 @@ class ImpaktfullUiTableTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
+  ImpaktfullUiTableTheme copyWith({
+    ImpaktfullUiTableColorTheme? colors,
+    ImpaktfullUiTableDimensTheme? dimens,
+  }) =>
+      ImpaktfullUiTableTheme(
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+      );
+
   static ImpaktfullUiTableTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.table;
 
@@ -40,6 +49,15 @@ class ImpaktfullUiTableColorTheme {
     required this.background,
     required this.border,
   });
+
+  ImpaktfullUiTableColorTheme copyWith({
+    Color? background,
+    Color? border,
+  }) =>
+      ImpaktfullUiTableColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+      );
 }
 
 class ImpaktfullUiTableDimensTheme {
@@ -47,4 +65,11 @@ class ImpaktfullUiTableDimensTheme {
   const ImpaktfullUiTableDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiTableDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiTableDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }

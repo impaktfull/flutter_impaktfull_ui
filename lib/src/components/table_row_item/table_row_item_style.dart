@@ -13,6 +13,17 @@ class ImpaktfullUiTableRowItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiTableRowItemTheme copyWith({
+    ImpaktfullUiTableRowItemColorTheme? colors,
+    ImpaktfullUiTableRowItemDimensTheme? dimens,
+    ImpaktfullUiTableRowItemTextStylesTheme? textStyles,
+  }) =>
+      ImpaktfullUiTableRowItemTheme(
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiTableRowItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.tableRowItem;
 
@@ -36,6 +47,9 @@ class ImpaktfullUiTableRowItemTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiTableRowItemColorTheme {
   const ImpaktfullUiTableRowItemColorTheme();
+
+  ImpaktfullUiTableRowItemColorTheme copyWith() =>
+      const ImpaktfullUiTableRowItemColorTheme();
 }
 
 class ImpaktfullUiTableRowItemTextStylesTheme {
@@ -46,8 +60,20 @@ class ImpaktfullUiTableRowItemTextStylesTheme {
     required this.title,
     required this.subtitle,
   });
+
+  ImpaktfullUiTableRowItemTextStylesTheme copyWith({
+    TextStyle? subtitle,
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiTableRowItemTextStylesTheme(
+        subtitle: subtitle ?? this.subtitle,
+        title: title ?? this.title,
+      );
 }
 
 class ImpaktfullUiTableRowItemDimensTheme {
   const ImpaktfullUiTableRowItemDimensTheme();
+
+  ImpaktfullUiTableRowItemDimensTheme copyWith() =>
+      const ImpaktfullUiTableRowItemDimensTheme();
 }

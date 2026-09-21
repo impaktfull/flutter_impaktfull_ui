@@ -16,6 +16,21 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
+  ImpaktfullUiTooltipTheme copyWith({
+    ImpaktfullUiTooltipAssetsTheme? assets,
+    ImpaktfullUiTooltipColorTheme? colors,
+    ImpaktfullUiTooltipDimensTheme? dimens,
+    ImpaktfullUiTooltipDurationTheme? durations,
+    ImpaktfullUiTooltipTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiTooltipTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiTooltipTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.tooltip;
 
@@ -48,10 +63,20 @@ class ImpaktfullUiTooltipColorTheme {
   const ImpaktfullUiTooltipColorTheme({
     required this.background,
   });
+
+  ImpaktfullUiTooltipColorTheme copyWith({
+    Color? background,
+  }) =>
+      ImpaktfullUiTooltipColorTheme(
+        background: background ?? this.background,
+      );
 }
 
 class ImpaktfullUiTooltipTextStyleTheme {
   const ImpaktfullUiTooltipTextStyleTheme();
+
+  ImpaktfullUiTooltipTextStyleTheme copyWith() =>
+      const ImpaktfullUiTooltipTextStyleTheme();
 }
 
 class ImpaktfullUiTooltipDimensTheme {
@@ -60,6 +85,13 @@ class ImpaktfullUiTooltipDimensTheme {
   const ImpaktfullUiTooltipDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiTooltipDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiTooltipDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiTooltipDurationTheme {
@@ -68,8 +100,18 @@ class ImpaktfullUiTooltipDurationTheme {
   const ImpaktfullUiTooltipDurationTheme({
     required this.wait,
   });
+
+  ImpaktfullUiTooltipDurationTheme copyWith({
+    Duration? wait,
+  }) =>
+      ImpaktfullUiTooltipDurationTheme(
+        wait: wait ?? this.wait,
+      );
 }
 
 class ImpaktfullUiTooltipAssetsTheme {
   const ImpaktfullUiTooltipAssetsTheme();
+
+  ImpaktfullUiTooltipAssetsTheme copyWith() =>
+      const ImpaktfullUiTooltipAssetsTheme();
 }

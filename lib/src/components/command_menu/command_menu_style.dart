@@ -14,6 +14,19 @@ class ImpaktfullUiCommandMenuTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiCommandMenuTheme copyWith({
+    ImpaktfullUiCommandMenuAssetsTheme? assets,
+    ImpaktfullUiCommandMenuColorTheme? colors,
+    ImpaktfullUiCommandMenuDimensTheme? dimens,
+    ImpaktfullUiCommandMenuTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiCommandMenuTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiCommandMenuTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.commandMenu;
 
@@ -37,10 +50,16 @@ class ImpaktfullUiCommandMenuTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiCommandMenuAssetsTheme {
   const ImpaktfullUiCommandMenuAssetsTheme();
+
+  ImpaktfullUiCommandMenuAssetsTheme copyWith() =>
+      const ImpaktfullUiCommandMenuAssetsTheme();
 }
 
 class ImpaktfullUiCommandMenuColorTheme {
   const ImpaktfullUiCommandMenuColorTheme();
+
+  ImpaktfullUiCommandMenuColorTheme copyWith() =>
+      const ImpaktfullUiCommandMenuColorTheme();
 }
 
 class ImpaktfullUiCommandMenuDimensTheme {
@@ -49,8 +68,18 @@ class ImpaktfullUiCommandMenuDimensTheme {
   const ImpaktfullUiCommandMenuDimensTheme({
     required this.windowBorderRadius,
   });
+
+  ImpaktfullUiCommandMenuDimensTheme copyWith({
+    BorderRadiusGeometry? windowBorderRadius,
+  }) =>
+      ImpaktfullUiCommandMenuDimensTheme(
+        windowBorderRadius: windowBorderRadius ?? this.windowBorderRadius,
+      );
 }
 
 class ImpaktfullUiCommandMenuTextStyleTheme {
   const ImpaktfullUiCommandMenuTextStyleTheme();
+
+  ImpaktfullUiCommandMenuTextStyleTheme copyWith() =>
+      const ImpaktfullUiCommandMenuTextStyleTheme();
 }

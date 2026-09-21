@@ -15,6 +15,19 @@ class ImpaktfullUiSectionTitleTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiSectionTitleTheme copyWith({
+    ImpaktfullUiSectionTitleAssetsTheme? assets,
+    ImpaktfullUiSectionTitleColorTheme? colors,
+    ImpaktfullUiSectionTitleDimensTheme? dimens,
+    ImpaktfullUiSectionTitleTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSectionTitleTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSectionTitleTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.sectionTitle;
 
@@ -50,6 +63,9 @@ class ImpaktfullUiSectionTitleTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiSectionTitleAssetsTheme {
   const ImpaktfullUiSectionTitleAssetsTheme();
+
+  ImpaktfullUiSectionTitleAssetsTheme copyWith() =>
+      const ImpaktfullUiSectionTitleAssetsTheme();
 }
 
 class ImpaktfullUiSectionTitleColorTheme {
@@ -57,6 +73,13 @@ class ImpaktfullUiSectionTitleColorTheme {
   const ImpaktfullUiSectionTitleColorTheme({
     required this.icons,
   });
+
+  ImpaktfullUiSectionTitleColorTheme copyWith({
+    Color? icons,
+  }) =>
+      ImpaktfullUiSectionTitleColorTheme(
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiSectionTitleDimensTheme {
@@ -66,6 +89,16 @@ class ImpaktfullUiSectionTitleDimensTheme {
     required this.margin,
     required this.marginWithIconButtonActions,
   });
+
+  ImpaktfullUiSectionTitleDimensTheme copyWith({
+    EdgeInsetsGeometry? margin,
+    EdgeInsetsGeometry? marginWithIconButtonActions,
+  }) =>
+      ImpaktfullUiSectionTitleDimensTheme(
+        margin: margin ?? this.margin,
+        marginWithIconButtonActions:
+            marginWithIconButtonActions ?? this.marginWithIconButtonActions,
+      );
 }
 
 class ImpaktfullUiSectionTitleTextStyleTheme {
@@ -73,4 +106,11 @@ class ImpaktfullUiSectionTitleTextStyleTheme {
   const ImpaktfullUiSectionTitleTextStyleTheme({
     required this.title,
   });
+
+  ImpaktfullUiSectionTitleTextStyleTheme copyWith({
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiSectionTitleTextStyleTheme(
+        title: title ?? this.title,
+      );
 }

@@ -14,6 +14,19 @@ class ImpaktfullUiSidebarNavigationTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiSidebarNavigationTheme copyWith({
+    ImpaktfullUiSidebarNavigationAssetsTheme? assets,
+    ImpaktfullUiSidebarNavigationColorTheme? colors,
+    ImpaktfullUiSidebarNavigationDimensTheme? dimens,
+    ImpaktfullUiSidebarNavigationTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSidebarNavigationTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSidebarNavigationTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.sidebarNavigation;
 
@@ -40,6 +53,9 @@ class ImpaktfullUiSidebarNavigationTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiSidebarNavigationAssetsTheme {
   const ImpaktfullUiSidebarNavigationAssetsTheme();
+
+  ImpaktfullUiSidebarNavigationAssetsTheme copyWith() =>
+      const ImpaktfullUiSidebarNavigationAssetsTheme();
 }
 
 class ImpaktfullUiSidebarNavigationColorTheme {
@@ -50,6 +66,15 @@ class ImpaktfullUiSidebarNavigationColorTheme {
     required this.backgroundColor,
     required this.border,
   });
+
+  ImpaktfullUiSidebarNavigationColorTheme copyWith({
+    Color? backgroundColor,
+    Color? border,
+  }) =>
+      ImpaktfullUiSidebarNavigationColorTheme(
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+        border: border ?? this.border,
+      );
 }
 
 class ImpaktfullUiSidebarNavigationDimensTheme {
@@ -58,8 +83,18 @@ class ImpaktfullUiSidebarNavigationDimensTheme {
   const ImpaktfullUiSidebarNavigationDimensTheme({
     required this.padding,
   });
+
+  ImpaktfullUiSidebarNavigationDimensTheme copyWith({
+    EdgeInsetsGeometry? padding,
+  }) =>
+      ImpaktfullUiSidebarNavigationDimensTheme(
+        padding: padding ?? this.padding,
+      );
 }
 
 class ImpaktfullUiSidebarNavigationTextStyleTheme {
   const ImpaktfullUiSidebarNavigationTextStyleTheme();
+
+  ImpaktfullUiSidebarNavigationTextStyleTheme copyWith() =>
+      const ImpaktfullUiSidebarNavigationTextStyleTheme();
 }

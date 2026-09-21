@@ -19,6 +19,21 @@ class ImpaktfullUiSidebarNavigationItemTheme
     required this.textStyles,
   });
 
+  ImpaktfullUiSidebarNavigationItemTheme copyWith({
+    ImpaktfullUiSidebarNavigationItemAssetsTheme? assets,
+    ImpaktfullUiSidebarNavigationItemColorTheme? colors,
+    ImpaktfullUiSidebarNavigationItemDimensTheme? dimens,
+    ImpaktfullUiSidebarNavigationItemDurationTheme? durations,
+    ImpaktfullUiSidebarNavigationItemTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSidebarNavigationItemTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSidebarNavigationItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.sidebarNavigationItem;
 
@@ -60,6 +75,13 @@ class ImpaktfullUiSidebarNavigationItemAssetsTheme {
   const ImpaktfullUiSidebarNavigationItemAssetsTheme({
     required this.chevronDown,
   });
+
+  ImpaktfullUiSidebarNavigationItemAssetsTheme copyWith({
+    ImpaktfullUiAsset? chevronDown,
+  }) =>
+      ImpaktfullUiSidebarNavigationItemAssetsTheme(
+        chevronDown: chevronDown ?? this.chevronDown,
+      );
 }
 
 class ImpaktfullUiSidebarNavigationItemColorTheme {
@@ -70,6 +92,15 @@ class ImpaktfullUiSidebarNavigationItemColorTheme {
     required this.background,
     required this.icons,
   });
+
+  ImpaktfullUiSidebarNavigationItemColorTheme copyWith({
+    Color? background,
+    Color? icons,
+  }) =>
+      ImpaktfullUiSidebarNavigationItemColorTheme(
+        background: background ?? this.background,
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiSidebarNavigationItemDimensTheme {
@@ -82,6 +113,17 @@ class ImpaktfullUiSidebarNavigationItemDimensTheme {
     required this.padding,
     required this.paddingWithSubItems,
   });
+
+  ImpaktfullUiSidebarNavigationItemDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    EdgeInsetsGeometry? padding,
+    EdgeInsetsGeometry? paddingWithSubItems,
+  }) =>
+      ImpaktfullUiSidebarNavigationItemDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        padding: padding ?? this.padding,
+        paddingWithSubItems: paddingWithSubItems ?? this.paddingWithSubItems,
+      );
 }
 
 class ImpaktfullUiSidebarNavigationItemTextStyleTheme {
@@ -90,6 +132,13 @@ class ImpaktfullUiSidebarNavigationItemTextStyleTheme {
   const ImpaktfullUiSidebarNavigationItemTextStyleTheme({
     required this.title,
   });
+
+  ImpaktfullUiSidebarNavigationItemTextStyleTheme copyWith({
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiSidebarNavigationItemTextStyleTheme(
+        title: title ?? this.title,
+      );
 }
 
 class ImpaktfullUiSidebarNavigationItemDurationTheme {
@@ -98,4 +147,11 @@ class ImpaktfullUiSidebarNavigationItemDurationTheme {
   const ImpaktfullUiSidebarNavigationItemDurationTheme({
     required this.dropdownRotation,
   });
+
+  ImpaktfullUiSidebarNavigationItemDurationTheme copyWith({
+    Duration? dropdownRotation,
+  }) =>
+      ImpaktfullUiSidebarNavigationItemDurationTheme(
+        dropdownRotation: dropdownRotation ?? this.dropdownRotation,
+      );
 }

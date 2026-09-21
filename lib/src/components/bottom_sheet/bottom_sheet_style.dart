@@ -17,6 +17,19 @@ class ImpaktfullUiBottomSheetTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiBottomSheetTheme copyWith({
+    ImpaktfullUiBottomSheetAssetsTheme? assets,
+    ImpaktfullUiBottomSheetColorTheme? colors,
+    ImpaktfullUiBottomSheetDimensTheme? dimens,
+    ImpaktfullUiBottomSheetTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiBottomSheetTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiBottomSheetTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.bottomSheet;
 
@@ -59,6 +72,13 @@ class ImpaktfullUiBottomSheetAssetsTheme {
   const ImpaktfullUiBottomSheetAssetsTheme({
     required this.close,
   });
+
+  ImpaktfullUiBottomSheetAssetsTheme copyWith({
+    ImpaktfullUiAsset? close,
+  }) =>
+      ImpaktfullUiBottomSheetAssetsTheme(
+        close: close ?? this.close,
+      );
 }
 
 class ImpaktfullUiBottomSheetColorTheme {
@@ -71,6 +91,17 @@ class ImpaktfullUiBottomSheetColorTheme {
     required this.handle,
     required this.icons,
   });
+
+  ImpaktfullUiBottomSheetColorTheme copyWith({
+    Color? background,
+    Color? handle,
+    Color? icons,
+  }) =>
+      ImpaktfullUiBottomSheetColorTheme(
+        background: background ?? this.background,
+        handle: handle ?? this.handle,
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiBottomSheetDimensTheme {
@@ -85,6 +116,20 @@ class ImpaktfullUiBottomSheetDimensTheme {
     required this.borderRadius,
     required this.handleBorderRadius,
   });
+
+  ImpaktfullUiBottomSheetDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    EdgeInsetsDirectional? closeIconButtonPadding,
+    BorderRadiusGeometry? handleBorderRadius,
+    EdgeInsetsDirectional? padding,
+  }) =>
+      ImpaktfullUiBottomSheetDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        closeIconButtonPadding:
+            closeIconButtonPadding ?? this.closeIconButtonPadding,
+        handleBorderRadius: handleBorderRadius ?? this.handleBorderRadius,
+        padding: padding ?? this.padding,
+      );
 }
 
 class ImpaktfullUiBottomSheetTextStyleTheme {
@@ -95,4 +140,13 @@ class ImpaktfullUiBottomSheetTextStyleTheme {
     required this.title,
     required this.subtitle,
   });
+
+  ImpaktfullUiBottomSheetTextStyleTheme copyWith({
+    TextStyle? subtitle,
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiBottomSheetTextStyleTheme(
+        subtitle: subtitle ?? this.subtitle,
+        title: title ?? this.title,
+      );
 }

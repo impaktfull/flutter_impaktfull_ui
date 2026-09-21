@@ -15,6 +15,19 @@ class ImpaktfullUiFluidPaddingTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiFluidPaddingTheme copyWith({
+    ImpaktfullUiFluidPaddingAssetsTheme? assets,
+    ImpaktfullUiFluidPaddingColorTheme? colors,
+    ImpaktfullUiFluidPaddingDimensTheme? dimens,
+    ImpaktfullUiFluidPaddingTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiFluidPaddingTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiFluidPaddingTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.fluidPadding;
 
@@ -71,10 +84,16 @@ class ImpaktfullUiFluidPaddingTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiFluidPaddingAssetsTheme {
   const ImpaktfullUiFluidPaddingAssetsTheme();
+
+  ImpaktfullUiFluidPaddingAssetsTheme copyWith() =>
+      const ImpaktfullUiFluidPaddingAssetsTheme();
 }
 
 class ImpaktfullUiFluidPaddingColorTheme {
   const ImpaktfullUiFluidPaddingColorTheme();
+
+  ImpaktfullUiFluidPaddingColorTheme copyWith() =>
+      const ImpaktfullUiFluidPaddingColorTheme();
 }
 
 class ImpaktfullUiFluidPaddingDimensTheme {
@@ -83,8 +102,18 @@ class ImpaktfullUiFluidPaddingDimensTheme {
   const ImpaktfullUiFluidPaddingDimensTheme({
     required this.breakPoints,
   });
+
+  ImpaktfullUiFluidPaddingDimensTheme copyWith({
+    List<ImpaktfullUiFluidPaddingBreakPoint>? breakPoints,
+  }) =>
+      ImpaktfullUiFluidPaddingDimensTheme(
+        breakPoints: breakPoints ?? this.breakPoints,
+      );
 }
 
 class ImpaktfullUiFluidPaddingTextStyleTheme {
   const ImpaktfullUiFluidPaddingTextStyleTheme();
+
+  ImpaktfullUiFluidPaddingTextStyleTheme copyWith() =>
+      const ImpaktfullUiFluidPaddingTextStyleTheme();
 }

@@ -38,7 +38,7 @@ ImpaktfullUiTheme (root)
 ### Basic Setup
 
 ```dart
-final theme = DefaultTheme.withMinimalChanges(
+final theme = ImpaktfullUiDefaultTheme.withMinimalChanges(
   primary: const Color(0xFF007AFF),
   accent: const Color(0xFF5856D6),
   secondary: const Color(0xFFFF9500),
@@ -48,7 +48,7 @@ final theme = DefaultTheme.withMinimalChanges(
 ### Full Customization
 
 ```dart
-final theme = DefaultTheme.withMinimalChanges<MyCustomTheme>(
+final theme = ImpaktfullUiDefaultTheme.withMinimalChanges<MyCustomTheme>(
   primary: const Color(0xFF007AFF),
   accent: const Color(0xFF5856D6),
   secondary: const Color(0xFFFF9500),
@@ -99,15 +99,66 @@ ImpaktfullUiOverridableComponentBuilder<ImpaktfullUiButtonTheme>(
 // Default theme
 ImpaktfullUiButton(type: ImpaktfullUiButtonType.primary, title: 'Click')
 
-// With override
+// With override: start from the current theme and change one token
+final buttonTheme = ImpaktfullUiButtonTheme.of(context);
 ImpaktfullUiButton(
   type: ImpaktfullUiButtonType.primary,
   title: 'Click',
-  theme: ImpaktfullUiButtonTheme(
-    colors: ImpaktfullUiButtonColorTheme(primary: Colors.red),
+  theme: buttonTheme.copyWith(
+    colors: buttonTheme.colors.copyWith(primary: Colors.red),
   ),
 )
 ```
+
+## Changing a Single Token (`copyWith`)
+
+Every theme class has a `copyWith`: `ImpaktfullUiTheme`, `ImpaktfullUiComponentsTheme`, every component theme (`ImpaktfullUiCardTheme`, ...) and every sub-theme (`assets`, `colors`, `dimens`, `textStyles`, `durations`, `shadows`, ...). Each parameter is nullable, so you only pass what changes and keep everything else:
+
+```dart
+final theme = ImpaktfullUiTheme.getDefault();
+final customTheme = theme.copyWith(
+  components: theme.components.copyWith(
+    card: theme.components.card.copyWith(
+      dimens: theme.components.card.dimens.copyWith(
+        borderRadius: BorderRadius.circular(24),
+      ),
+    ),
+  ),
+);
+```
+
+Because `copyWith` uses `value ?? this.value`, it cannot set a nullable field back to `null`. Build that sub-theme with its constructor instead.
+
+### Limitation: `ImpaktfullUiTheme.copyWith(colors:)` does not update the components
+
+`ImpaktfullUiTheme.copyWith(colors: ...)` (and `textStyles:`, `dimens:`, ...) only replaces that value on the root theme. The 84 component themes in `components` were built from the old base tokens and keep them, so e.g. `theme.components.button.colors.primary` still has the old accent color.
+
+To change a base token everywhere, build the theme again from the base tokens with `ImpaktfullUiDefaultTheme.withMinimalChanges` (colors, border radii, font families, ...) and apply `copyWith` for single component tokens afterwards:
+
+```dart
+final base = ImpaktfullUiDefaultTheme.withMinimalChanges(
+  primary: const Color(0xFF007AFF),
+  accent: const Color(0xFF5856D6),
+  secondary: const Color(0xFFFF9500),
+  borderRadius: BorderRadius.circular(8),
+);
+final theme = base.copyWith(
+  components: base.components.copyWith(
+    card: base.components.card.copyWith(
+      dimens: base.components.card.dimens.copyWith(
+        padding: const EdgeInsets.all(24),
+      ),
+    ),
+  ),
+);
+```
+
+`ImpaktfullUiTheme.getDefault()` is the impaktfull branding built with `withMinimalChanges`.
+
+### Rules for theme classes
+
+- Every `class ImpaktfullUi*Theme` has a `copyWith` with one nullable named parameter per field, in alphabetical order, forwarded as `field: field ?? this.field`.
+- `test/src/theme/theme_copy_with_source_test.dart` scans `lib/src` and fails when a theme class has no `copyWith`, or its `copyWith` misses a field.
 
 ## Text Style System
 
@@ -144,12 +195,13 @@ theme.colors
 void main() {
   runApp(
     ImpaktfullUiApp(
-      theme: DefaultTheme.withMinimalChanges(
+      title: 'My App',
+      impaktfullUiTheme: ImpaktfullUiDefaultTheme.withMinimalChanges(
         primary: const Color(0xFF007AFF),
         accent: const Color(0xFF5856D6),
         secondary: const Color(0xFFFF9500),
       ),
-      builder: (context) => const MyApp(),
+      home: const MyHomeScreen(),
     ),
   );
 }
@@ -159,5 +211,5 @@ void main() {
 
 1. **Use semantic colors** - Access via theme, not hardcoded
 2. **Prefer getDefault** - Inherit global values in component themes
-3. **Override sparingly** - Only change what's needed
+3. **Override sparingly** - Only change what's needed, with `copyWith`
 4. **Type safety** - Use typed theme classes

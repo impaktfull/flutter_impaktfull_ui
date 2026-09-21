@@ -15,6 +15,19 @@ class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiWysiwygTheme copyWith({
+    ImpaktfullUiWysiwygAssetsTheme? assets,
+    ImpaktfullUiWysiwygColorTheme? colors,
+    ImpaktfullUiWysiwygDimensTheme? dimens,
+    ImpaktfullUiWysiwygTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiWysiwygTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiWysiwygTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.wysiwyg;
 
@@ -67,14 +80,43 @@ class ImpaktfullUiWysiwygAssetsTheme {
     required this.link,
     required this.photo,
   });
+
+  ImpaktfullUiWysiwygAssetsTheme copyWith({
+    ImpaktfullUiAsset? bold,
+    ImpaktfullUiAsset? code,
+    ImpaktfullUiAsset? codeBlock,
+    ImpaktfullUiAsset? header,
+    ImpaktfullUiAsset? italic,
+    ImpaktfullUiAsset? link,
+    ImpaktfullUiAsset? orderedList,
+    ImpaktfullUiAsset? photo,
+    ImpaktfullUiAsset? unorderedList,
+  }) =>
+      ImpaktfullUiWysiwygAssetsTheme(
+        bold: bold ?? this.bold,
+        code: code ?? this.code,
+        codeBlock: codeBlock ?? this.codeBlock,
+        header: header ?? this.header,
+        italic: italic ?? this.italic,
+        link: link ?? this.link,
+        orderedList: orderedList ?? this.orderedList,
+        photo: photo ?? this.photo,
+        unorderedList: unorderedList ?? this.unorderedList,
+      );
 }
 
 class ImpaktfullUiWysiwygColorTheme {
   const ImpaktfullUiWysiwygColorTheme();
+
+  ImpaktfullUiWysiwygColorTheme copyWith() =>
+      const ImpaktfullUiWysiwygColorTheme();
 }
 
 class ImpaktfullUiWysiwygDimensTheme {
   const ImpaktfullUiWysiwygDimensTheme();
+
+  ImpaktfullUiWysiwygDimensTheme copyWith() =>
+      const ImpaktfullUiWysiwygDimensTheme();
 }
 
 class ImpaktfullUiWysiwygTextStyleTheme {
@@ -82,4 +124,11 @@ class ImpaktfullUiWysiwygTextStyleTheme {
   const ImpaktfullUiWysiwygTextStyleTheme({
     required this.previewText,
   });
+
+  ImpaktfullUiWysiwygTextStyleTheme copyWith({
+    TextStyle? previewText,
+  }) =>
+      ImpaktfullUiWysiwygTextStyleTheme(
+        previewText: previewText ?? this.previewText,
+      );
 }

@@ -14,6 +14,19 @@ class ImpaktfullUiSeparatedColumnTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiSeparatedColumnTheme copyWith({
+    ImpaktfullUiSeparatedColumnAssetsTheme? assets,
+    ImpaktfullUiSeparatedColumnColorTheme? colors,
+    ImpaktfullUiSeparatedColumnDimensTheme? dimens,
+    ImpaktfullUiSeparatedColumnTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiSeparatedColumnTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSeparatedColumnTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.separatedColumn;
 
@@ -46,6 +59,9 @@ class ImpaktfullUiSeparatedColumnTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiSeparatedColumnAssetsTheme {
   const ImpaktfullUiSeparatedColumnAssetsTheme();
+
+  ImpaktfullUiSeparatedColumnAssetsTheme copyWith() =>
+      const ImpaktfullUiSeparatedColumnAssetsTheme();
 }
 
 class ImpaktfullUiSeparatedColumnColorTheme {
@@ -55,6 +71,15 @@ class ImpaktfullUiSeparatedColumnColorTheme {
     required this.background,
     required this.border,
   });
+
+  ImpaktfullUiSeparatedColumnColorTheme copyWith({
+    Color? background,
+    Color? border,
+  }) =>
+      ImpaktfullUiSeparatedColumnColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+      );
 }
 
 class ImpaktfullUiSeparatedColumnDimensTheme {
@@ -66,8 +91,22 @@ class ImpaktfullUiSeparatedColumnDimensTheme {
     required this.titleMargin,
     required this.separatorMargin,
   });
+
+  ImpaktfullUiSeparatedColumnDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    EdgeInsetsGeometry? separatorMargin,
+    EdgeInsetsGeometry? titleMargin,
+  }) =>
+      ImpaktfullUiSeparatedColumnDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        separatorMargin: separatorMargin ?? this.separatorMargin,
+        titleMargin: titleMargin ?? this.titleMargin,
+      );
 }
 
 class ImpaktfullUiSeparatedColumnTextStyleTheme {
   const ImpaktfullUiSeparatedColumnTextStyleTheme();
+
+  ImpaktfullUiSeparatedColumnTextStyleTheme copyWith() =>
+      const ImpaktfullUiSeparatedColumnTextStyleTheme();
 }

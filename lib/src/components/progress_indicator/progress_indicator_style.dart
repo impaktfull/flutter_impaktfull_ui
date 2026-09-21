@@ -17,6 +17,21 @@ class ImpaktfullUiProgressIndicatorTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiProgressIndicatorTheme copyWith({
+    ImpaktfullUiProgressIndicatorAssetsTheme? assets,
+    ImpaktfullUiProgressIndicatorColorTheme? colors,
+    ImpaktfullUiProgressIndicatorDimensTheme? dimens,
+    ImpaktfullUiProgressIndicatorDurationsTheme? durations,
+    ImpaktfullUiProgressIndicatorTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiProgressIndicatorTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiProgressIndicatorTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.progressIndicator;
 
@@ -50,6 +65,9 @@ class ImpaktfullUiProgressIndicatorTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiProgressIndicatorAssetsTheme {
   const ImpaktfullUiProgressIndicatorAssetsTheme();
+
+  ImpaktfullUiProgressIndicatorAssetsTheme copyWith() =>
+      const ImpaktfullUiProgressIndicatorAssetsTheme();
 }
 
 class ImpaktfullUiProgressIndicatorColorTheme {
@@ -61,6 +79,17 @@ class ImpaktfullUiProgressIndicatorColorTheme {
     required this.foreground,
     required this.border,
   });
+
+  ImpaktfullUiProgressIndicatorColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? foreground,
+  }) =>
+      ImpaktfullUiProgressIndicatorColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        foreground: foreground ?? this.foreground,
+      );
 }
 
 class ImpaktfullUiProgressIndicatorDimensTheme {
@@ -70,6 +99,15 @@ class ImpaktfullUiProgressIndicatorDimensTheme {
     required this.width,
     required this.borderRadius,
   });
+
+  ImpaktfullUiProgressIndicatorDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    double? width,
+  }) =>
+      ImpaktfullUiProgressIndicatorDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        width: width ?? this.width,
+      );
 }
 
 class ImpaktfullUiProgressIndicatorDurationsTheme {
@@ -77,6 +115,13 @@ class ImpaktfullUiProgressIndicatorDurationsTheme {
   const ImpaktfullUiProgressIndicatorDurationsTheme({
     required this.progress,
   });
+
+  ImpaktfullUiProgressIndicatorDurationsTheme copyWith({
+    Duration? progress,
+  }) =>
+      ImpaktfullUiProgressIndicatorDurationsTheme(
+        progress: progress ?? this.progress,
+      );
 }
 
 class ImpaktfullUiProgressIndicatorTextStyleTheme {
@@ -84,4 +129,11 @@ class ImpaktfullUiProgressIndicatorTextStyleTheme {
   const ImpaktfullUiProgressIndicatorTextStyleTheme({
     required this.text,
   });
+
+  ImpaktfullUiProgressIndicatorTextStyleTheme copyWith({
+    TextStyle? text,
+  }) =>
+      ImpaktfullUiProgressIndicatorTextStyleTheme(
+        text: text ?? this.text,
+      );
 }

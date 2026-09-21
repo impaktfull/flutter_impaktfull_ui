@@ -14,6 +14,19 @@ class ImpaktfullUiGridViewTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiGridViewTheme copyWith({
+    ImpaktfullUiGridViewAssetsTheme? assets,
+    ImpaktfullUiGridViewColorTheme? colors,
+    ImpaktfullUiGridViewDimensTheme? dimens,
+    ImpaktfullUiGridViewTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiGridViewTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiGridViewTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.gridView;
 
@@ -37,14 +50,23 @@ class ImpaktfullUiGridViewTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiGridViewAssetsTheme {
   const ImpaktfullUiGridViewAssetsTheme();
+
+  ImpaktfullUiGridViewAssetsTheme copyWith() =>
+      const ImpaktfullUiGridViewAssetsTheme();
 }
 
 class ImpaktfullUiGridViewColorTheme {
   const ImpaktfullUiGridViewColorTheme();
+
+  ImpaktfullUiGridViewColorTheme copyWith() =>
+      const ImpaktfullUiGridViewColorTheme();
 }
 
 class ImpaktfullUiGridViewDimensTheme {
   const ImpaktfullUiGridViewDimensTheme();
+
+  ImpaktfullUiGridViewDimensTheme copyWith() =>
+      const ImpaktfullUiGridViewDimensTheme();
 }
 
 class ImpaktfullUiGridViewTextStyleTheme {
@@ -52,4 +74,11 @@ class ImpaktfullUiGridViewTextStyleTheme {
   const ImpaktfullUiGridViewTextStyleTheme({
     required this.title,
   });
+
+  ImpaktfullUiGridViewTextStyleTheme copyWith({
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiGridViewTextStyleTheme(
+        title: title ?? this.title,
+      );
 }

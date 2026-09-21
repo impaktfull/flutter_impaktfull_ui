@@ -14,6 +14,19 @@ class ImpaktfullUiRadioButtonListItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiRadioButtonListItemTheme copyWith({
+    ImpaktfullUiRadioButtonListItemAssetsTheme? assets,
+    ImpaktfullUiRadioButtonListItemColorTheme? colors,
+    ImpaktfullUiRadioButtonListItemDimensTheme? dimens,
+    ImpaktfullUiRadioButtonListItemTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiRadioButtonListItemTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiRadioButtonListItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.radioButtonListItem;
 
@@ -39,6 +52,9 @@ class ImpaktfullUiRadioButtonListItemTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiRadioButtonListItemAssetsTheme {
   const ImpaktfullUiRadioButtonListItemAssetsTheme();
+
+  ImpaktfullUiRadioButtonListItemAssetsTheme copyWith() =>
+      const ImpaktfullUiRadioButtonListItemAssetsTheme();
 }
 
 class ImpaktfullUiRadioButtonListItemColorTheme {
@@ -46,6 +62,13 @@ class ImpaktfullUiRadioButtonListItemColorTheme {
   const ImpaktfullUiRadioButtonListItemColorTheme({
     required this.icons,
   });
+
+  ImpaktfullUiRadioButtonListItemColorTheme copyWith({
+    Color? icons,
+  }) =>
+      ImpaktfullUiRadioButtonListItemColorTheme(
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiRadioButtonListItemDimensTheme {
@@ -53,8 +76,18 @@ class ImpaktfullUiRadioButtonListItemDimensTheme {
   const ImpaktfullUiRadioButtonListItemDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiRadioButtonListItemDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiRadioButtonListItemDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiRadioButtonListItemTextStyleTheme {
   const ImpaktfullUiRadioButtonListItemTextStyleTheme();
+
+  ImpaktfullUiRadioButtonListItemTextStyleTheme copyWith() =>
+      const ImpaktfullUiRadioButtonListItemTextStyleTheme();
 }

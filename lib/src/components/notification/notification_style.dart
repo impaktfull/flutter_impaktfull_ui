@@ -18,6 +18,21 @@ class ImpaktfullUiNotificationTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiNotificationTheme copyWith({
+    ImpaktfullUiNotificationAssetsTheme? assets,
+    ImpaktfullUiNotificationColorTheme? colors,
+    ImpaktfullUiNotificationDimensTheme? dimens,
+    ImpaktfullUiNotificationShadowsTheme? shadows,
+    ImpaktfullUiNotificationTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiNotificationTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        shadows: shadows ?? this.shadows,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiNotificationTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.notification;
 
@@ -79,6 +94,25 @@ class ImpaktfullUiNotificationAssetsTheme {
     required this.success,
     required this.warning,
   });
+
+  ImpaktfullUiNotificationAssetsTheme copyWith({
+    ImpaktfullUiAsset? branded,
+    ImpaktfullUiAsset? chevronRight,
+    ImpaktfullUiAsset? close,
+    ImpaktfullUiAsset? error,
+    ImpaktfullUiAsset? info,
+    ImpaktfullUiAsset? success,
+    ImpaktfullUiAsset? warning,
+  }) =>
+      ImpaktfullUiNotificationAssetsTheme(
+        branded: branded ?? this.branded,
+        chevronRight: chevronRight ?? this.chevronRight,
+        close: close ?? this.close,
+        error: error ?? this.error,
+        info: info ?? this.info,
+        success: success ?? this.success,
+        warning: warning ?? this.warning,
+      );
 }
 
 class ImpaktfullUiNotificationColorTheme {
@@ -103,6 +137,29 @@ class ImpaktfullUiNotificationColorTheme {
     required this.success,
     required this.warning,
   });
+
+  ImpaktfullUiNotificationColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? branded,
+    Color? error,
+    Color? info,
+    bool? matchBorderWithType,
+    Color? shadow,
+    Color? success,
+    Color? warning,
+  }) =>
+      ImpaktfullUiNotificationColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        branded: branded ?? this.branded,
+        error: error ?? this.error,
+        info: info ?? this.info,
+        matchBorderWithType: matchBorderWithType ?? this.matchBorderWithType,
+        shadow: shadow ?? this.shadow,
+        success: success ?? this.success,
+        warning: warning ?? this.warning,
+      );
 }
 
 class ImpaktfullUiNotificationDimensTheme {
@@ -111,6 +168,13 @@ class ImpaktfullUiNotificationDimensTheme {
   const ImpaktfullUiNotificationDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiNotificationDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiNotificationDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiNotificationShadowsTheme {
@@ -119,6 +183,13 @@ class ImpaktfullUiNotificationShadowsTheme {
   const ImpaktfullUiNotificationShadowsTheme({
     required this.card,
   });
+
+  ImpaktfullUiNotificationShadowsTheme copyWith({
+    List<BoxShadow>? card,
+  }) =>
+      ImpaktfullUiNotificationShadowsTheme(
+        card: card ?? this.card,
+      );
 }
 
 class ImpaktfullUiNotificationTextStyleTheme {
@@ -128,4 +199,13 @@ class ImpaktfullUiNotificationTextStyleTheme {
     required this.title,
     required this.subtitle,
   });
+
+  ImpaktfullUiNotificationTextStyleTheme copyWith({
+    TextStyle? subtitle,
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiNotificationTextStyleTheme(
+        subtitle: subtitle ?? this.subtitle,
+        title: title ?? this.title,
+      );
 }

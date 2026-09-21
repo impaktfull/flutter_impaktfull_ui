@@ -14,6 +14,19 @@ class ImpaktfullUiColorInputFieldTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiColorInputFieldTheme copyWith({
+    ImpaktfullUiColorInputFieldAssetsTheme? assets,
+    ImpaktfullUiColorInputFieldColorTheme? colors,
+    ImpaktfullUiColorInputFieldDimensTheme? dimens,
+    ImpaktfullUiColorInputFieldTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiColorInputFieldTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiColorInputFieldTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.colorInputField;
 
@@ -39,6 +52,9 @@ class ImpaktfullUiColorInputFieldTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiColorInputFieldAssetsTheme {
   const ImpaktfullUiColorInputFieldAssetsTheme();
+
+  ImpaktfullUiColorInputFieldAssetsTheme copyWith() =>
+      const ImpaktfullUiColorInputFieldAssetsTheme();
 }
 
 class ImpaktfullUiColorInputFieldColorTheme {
@@ -47,6 +63,13 @@ class ImpaktfullUiColorInputFieldColorTheme {
   const ImpaktfullUiColorInputFieldColorTheme({
     required this.border,
   });
+
+  ImpaktfullUiColorInputFieldColorTheme copyWith({
+    Color? border,
+  }) =>
+      ImpaktfullUiColorInputFieldColorTheme(
+        border: border ?? this.border,
+      );
 }
 
 class ImpaktfullUiColorInputFieldDimensTheme {
@@ -55,8 +78,18 @@ class ImpaktfullUiColorInputFieldDimensTheme {
   const ImpaktfullUiColorInputFieldDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiColorInputFieldDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiColorInputFieldDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiColorInputFieldTextStyleTheme {
   const ImpaktfullUiColorInputFieldTextStyleTheme();
+
+  ImpaktfullUiColorInputFieldTextStyleTheme copyWith() =>
+      const ImpaktfullUiColorInputFieldTextStyleTheme();
 }

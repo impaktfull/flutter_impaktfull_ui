@@ -16,6 +16,19 @@ class ImpaktfullUiDateInputFieldTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiDateInputFieldTheme copyWith({
+    ImpaktfullUiDateInputFieldAssetsTheme? assets,
+    ImpaktfullUiDateInputFieldColorTheme? colors,
+    ImpaktfullUiDateInputFieldDimensTheme? dimens,
+    ImpaktfullUiDateInputFieldTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiDateInputFieldTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiDateInputFieldTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.dateInputField;
 
@@ -52,6 +65,9 @@ class ImpaktfullUiDateInputFieldTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiDateInputFieldAssetsTheme {
   const ImpaktfullUiDateInputFieldAssetsTheme();
+
+  ImpaktfullUiDateInputFieldAssetsTheme copyWith() =>
+      const ImpaktfullUiDateInputFieldAssetsTheme();
 }
 
 class ImpaktfullUiDateInputFieldColorTheme {
@@ -64,6 +80,17 @@ class ImpaktfullUiDateInputFieldColorTheme {
     required this.border,
     required this.borderError,
   });
+
+  ImpaktfullUiDateInputFieldColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? borderError,
+  }) =>
+      ImpaktfullUiDateInputFieldColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        borderError: borderError ?? this.borderError,
+      );
 }
 
 class ImpaktfullUiDateInputFieldDimensTheme {
@@ -72,6 +99,13 @@ class ImpaktfullUiDateInputFieldDimensTheme {
   const ImpaktfullUiDateInputFieldDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiDateInputFieldDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiDateInputFieldDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiDateInputFieldTextStyleTheme {
@@ -88,4 +122,19 @@ class ImpaktfullUiDateInputFieldTextStyleTheme {
     required this.hint,
     required this.error,
   });
+
+  ImpaktfullUiDateInputFieldTextStyleTheme copyWith({
+    TextStyle? error,
+    TextStyle? hint,
+    TextStyle? label,
+    TextStyle? placeholder,
+    TextStyle? text,
+  }) =>
+      ImpaktfullUiDateInputFieldTextStyleTheme(
+        error: error ?? this.error,
+        hint: hint ?? this.hint,
+        label: label ?? this.label,
+        placeholder: placeholder ?? this.placeholder,
+        text: text ?? this.text,
+      );
 }

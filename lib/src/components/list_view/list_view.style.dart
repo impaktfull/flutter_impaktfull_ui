@@ -10,6 +10,15 @@ class ImpaktfullUiListViewTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiListViewTheme copyWith({
+    ImpaktfullUiListViewDimensTheme? dimens,
+    ImpaktfullUiListViewTextStylesTheme? textStyles,
+  }) =>
+      ImpaktfullUiListViewTheme(
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiListViewTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.listView;
 
@@ -38,6 +47,13 @@ class ImpaktfullUiListViewTextStylesTheme {
   const ImpaktfullUiListViewTextStylesTheme({
     required this.title,
   });
+
+  ImpaktfullUiListViewTextStylesTheme copyWith({
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiListViewTextStylesTheme(
+        title: title ?? this.title,
+      );
 }
 
 class ImpaktfullUiListViewDimensTheme {
@@ -48,4 +64,13 @@ class ImpaktfullUiListViewDimensTheme {
     required this.borderRadius,
     required this.padding,
   });
+
+  ImpaktfullUiListViewDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    EdgeInsets? padding,
+  }) =>
+      ImpaktfullUiListViewDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        padding: padding ?? this.padding,
+      );
 }

@@ -15,6 +15,19 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
+  ImpaktfullUiSnackyConfiguratorTheme copyWith({
+    ImpaktfullUiSnackyConfiguratorAssetsTheme? assets,
+    ImpaktfullUiSnackyConfiguratorColorTheme? colors,
+    ImpaktfullUiSnackyConfiguratorDimensTheme? dimens,
+    ImpaktfullUiSnackyConfiguratorTextStylesTheme? textStyles,
+  }) =>
+      ImpaktfullUiSnackyConfiguratorTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiSnackyConfiguratorTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.snackyConfigurator;
 
@@ -71,10 +84,32 @@ class ImpaktfullUiSnackyConfiguratorColorTheme {
     required this.warning,
     required this.success,
   });
+
+  ImpaktfullUiSnackyConfiguratorColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? brand,
+    Color? error,
+    Color? info,
+    Color? success,
+    Color? warning,
+  }) =>
+      ImpaktfullUiSnackyConfiguratorColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        brand: brand ?? this.brand,
+        error: error ?? this.error,
+        info: info ?? this.info,
+        success: success ?? this.success,
+        warning: warning ?? this.warning,
+      );
 }
 
 class ImpaktfullUiSnackyConfiguratorTextStylesTheme {
   const ImpaktfullUiSnackyConfiguratorTextStylesTheme();
+
+  ImpaktfullUiSnackyConfiguratorTextStylesTheme copyWith() =>
+      const ImpaktfullUiSnackyConfiguratorTextStylesTheme();
 }
 
 class ImpaktfullUiSnackyConfiguratorDimensTheme {
@@ -83,6 +118,13 @@ class ImpaktfullUiSnackyConfiguratorDimensTheme {
   const ImpaktfullUiSnackyConfiguratorDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiSnackyConfiguratorDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiSnackyConfiguratorDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiSnackyConfiguratorAssetsTheme {
@@ -103,4 +145,23 @@ class ImpaktfullUiSnackyConfiguratorAssetsTheme {
     required this.info,
     required this.branded,
   });
+
+  ImpaktfullUiSnackyConfiguratorAssetsTheme copyWith({
+    ImpaktfullUiAsset? branded,
+    ImpaktfullUiAsset? chevronRight,
+    ImpaktfullUiAsset? close,
+    ImpaktfullUiAsset? error,
+    ImpaktfullUiAsset? info,
+    ImpaktfullUiAsset? success,
+    ImpaktfullUiAsset? warning,
+  }) =>
+      ImpaktfullUiSnackyConfiguratorAssetsTheme(
+        branded: branded ?? this.branded,
+        chevronRight: chevronRight ?? this.chevronRight,
+        close: close ?? this.close,
+        error: error ?? this.error,
+        info: info ?? this.info,
+        success: success ?? this.success,
+        warning: warning ?? this.warning,
+      );
 }

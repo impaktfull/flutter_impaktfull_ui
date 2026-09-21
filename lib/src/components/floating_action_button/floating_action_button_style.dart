@@ -16,6 +16,19 @@ class ImpaktfullUiFloatingActionButtonTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiFloatingActionButtonTheme copyWith({
+    ImpaktfullUiFloatingActionButtonAssetsTheme? assets,
+    ImpaktfullUiFloatingActionButtonColorTheme? colors,
+    ImpaktfullUiFloatingActionButtonDimensTheme? dimens,
+    ImpaktfullUiFloatingActionButtonTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiFloatingActionButtonTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiFloatingActionButtonTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.floatingActionButton;
 
@@ -45,6 +58,9 @@ class ImpaktfullUiFloatingActionButtonTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiFloatingActionButtonAssetsTheme {
   const ImpaktfullUiFloatingActionButtonAssetsTheme();
+
+  ImpaktfullUiFloatingActionButtonAssetsTheme copyWith() =>
+      const ImpaktfullUiFloatingActionButtonAssetsTheme();
 }
 
 class ImpaktfullUiFloatingActionButtonColorTheme {
@@ -56,6 +72,17 @@ class ImpaktfullUiFloatingActionButtonColorTheme {
     required this.backgroundDisabled,
     required this.icon,
   });
+
+  ImpaktfullUiFloatingActionButtonColorTheme copyWith({
+    Color? background,
+    Color? backgroundDisabled,
+    Color? icon,
+  }) =>
+      ImpaktfullUiFloatingActionButtonColorTheme(
+        background: background ?? this.background,
+        backgroundDisabled: backgroundDisabled ?? this.backgroundDisabled,
+        icon: icon ?? this.icon,
+      );
 }
 
 class ImpaktfullUiFloatingActionButtonDimensTheme {
@@ -63,6 +90,13 @@ class ImpaktfullUiFloatingActionButtonDimensTheme {
   const ImpaktfullUiFloatingActionButtonDimensTheme({
     required this.borderRadius,
   });
+
+  ImpaktfullUiFloatingActionButtonDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+  }) =>
+      ImpaktfullUiFloatingActionButtonDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+      );
 }
 
 class ImpaktfullUiFloatingActionButtonTextStyleTheme {
@@ -70,4 +104,11 @@ class ImpaktfullUiFloatingActionButtonTextStyleTheme {
   const ImpaktfullUiFloatingActionButtonTextStyleTheme({
     required this.label,
   });
+
+  ImpaktfullUiFloatingActionButtonTextStyleTheme copyWith({
+    TextStyle? label,
+  }) =>
+      ImpaktfullUiFloatingActionButtonTextStyleTheme(
+        label: label ?? this.label,
+      );
 }

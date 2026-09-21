@@ -42,6 +42,19 @@ class ImpaktfullUi<ComponentName>Theme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUi<ComponentName>Theme copyWith({
+    ImpaktfullUi<ComponentName>AssetsTheme? assets,
+    ImpaktfullUi<ComponentName>ColorTheme? colors,
+    ImpaktfullUi<ComponentName>DimensTheme? dimens,
+    ImpaktfullUi<ComponentName>TextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUi<ComponentName>Theme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUi<ComponentName>Theme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.<componentName>;
 
@@ -63,20 +76,48 @@ class ImpaktfullUi<ComponentName>Theme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUi<ComponentName>AssetsTheme {
   const ImpaktfullUi<ComponentName>AssetsTheme();
+
+  ImpaktfullUi<ComponentName>AssetsTheme copyWith() =>
+      const ImpaktfullUi<ComponentName>AssetsTheme();
 }
 
 class ImpaktfullUi<ComponentName>ColorTheme {
   const ImpaktfullUi<ComponentName>ColorTheme();
+
+  ImpaktfullUi<ComponentName>ColorTheme copyWith() =>
+      const ImpaktfullUi<ComponentName>ColorTheme();
 }
 
 class ImpaktfullUi<ComponentName>DimensTheme {
   const ImpaktfullUi<ComponentName>DimensTheme();
+
+  ImpaktfullUi<ComponentName>DimensTheme copyWith() =>
+      const ImpaktfullUi<ComponentName>DimensTheme();
 }
 
 class ImpaktfullUi<ComponentName>TextStyleTheme {
   const ImpaktfullUi<ComponentName>TextStyleTheme();
+
+  ImpaktfullUi<ComponentName>TextStyleTheme copyWith() =>
+      const ImpaktfullUi<ComponentName>TextStyleTheme();
 }
 ```
+
+**Every theme class needs a `copyWith`** (the component theme and every sub-theme: assets, colors, dimens, textStyles, durations, shadows, ...), so users can change a single token without rebuilding the whole theme:
+
+- One nullable named parameter per field, in alphabetical order, forwarded as `field: field ?? this.field`. For example, once the color theme has a `background` field:
+
+  ```dart
+  ImpaktfullUi<ComponentName>ColorTheme copyWith({
+    Color? background,
+  }) =>
+      ImpaktfullUi<ComponentName>ColorTheme(
+        background: background ?? this.background,
+      );
+  ```
+
+- When you add a field to a theme class later, add it to its `copyWith` too.
+- `test/src/theme/theme_copy_with_source_test.dart` fails when a `class ImpaktfullUi*Theme` has no `copyWith` or its `copyWith` misses a field.
 
 ### 3. Create the Main Component File (`<component_name>.dart`)
 

@@ -15,6 +15,19 @@ class ImpaktfullUiBottomNavigationItemTheme extends ImpaktfullUiComponentTheme {
     required this.assets,
   });
 
+  ImpaktfullUiBottomNavigationItemTheme copyWith({
+    ImpaktfullUiBottomNavigationItemAssetsTheme? assets,
+    ImpaktfullUiBottomNavigationItemColorTheme? colors,
+    ImpaktfullUiBottomNavigationItemDimensTheme? dimens,
+    ImpaktfullUiBottomNavigationItemTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiBottomNavigationItemTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiBottomNavigationItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.bottomNavigationItem;
 
@@ -54,6 +67,19 @@ class ImpaktfullUiBottomNavigationItemColorTheme {
     required this.badgeActive,
     required this.badgeInActive,
   });
+
+  ImpaktfullUiBottomNavigationItemColorTheme copyWith({
+    Color? active,
+    Color? badgeActive,
+    Color? badgeInActive,
+    Color? inactive,
+  }) =>
+      ImpaktfullUiBottomNavigationItemColorTheme(
+        active: active ?? this.active,
+        badgeActive: badgeActive ?? this.badgeActive,
+        badgeInActive: badgeInActive ?? this.badgeInActive,
+        inactive: inactive ?? this.inactive,
+      );
 }
 
 class ImpaktfullUiBottomNavigationItemTextStyleTheme {
@@ -64,12 +90,27 @@ class ImpaktfullUiBottomNavigationItemTextStyleTheme {
     required this.activeLabel,
     required this.inActiveLabel,
   });
+
+  ImpaktfullUiBottomNavigationItemTextStyleTheme copyWith({
+    TextStyle? activeLabel,
+    TextStyle? inActiveLabel,
+  }) =>
+      ImpaktfullUiBottomNavigationItemTextStyleTheme(
+        activeLabel: activeLabel ?? this.activeLabel,
+        inActiveLabel: inActiveLabel ?? this.inActiveLabel,
+      );
 }
 
 class ImpaktfullUiBottomNavigationItemDimensTheme {
   const ImpaktfullUiBottomNavigationItemDimensTheme();
+
+  ImpaktfullUiBottomNavigationItemDimensTheme copyWith() =>
+      const ImpaktfullUiBottomNavigationItemDimensTheme();
 }
 
 class ImpaktfullUiBottomNavigationItemAssetsTheme {
   const ImpaktfullUiBottomNavigationItemAssetsTheme();
+
+  ImpaktfullUiBottomNavigationItemAssetsTheme copyWith() =>
+      const ImpaktfullUiBottomNavigationItemAssetsTheme();
 }

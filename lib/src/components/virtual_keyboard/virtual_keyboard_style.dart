@@ -15,6 +15,19 @@ class ImpaktfullUiVirtualKeyboardTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiVirtualKeyboardTheme copyWith({
+    ImpaktfullUiVirtualKeyboardAssetsTheme? assets,
+    ImpaktfullUiVirtualKeyboardColorTheme? colors,
+    ImpaktfullUiVirtualKeyboardDimensTheme? dimens,
+    ImpaktfullUiVirtualKeyboardTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiVirtualKeyboardTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiVirtualKeyboardTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.virtualKeyboard;
 
@@ -46,6 +59,15 @@ class ImpaktfullUiVirtualKeyboardAssetsTheme {
     required this.passwordHide,
     required this.passwordShow,
   });
+
+  ImpaktfullUiVirtualKeyboardAssetsTheme copyWith({
+    ImpaktfullUiAsset? passwordHide,
+    ImpaktfullUiAsset? passwordShow,
+  }) =>
+      ImpaktfullUiVirtualKeyboardAssetsTheme(
+        passwordHide: passwordHide ?? this.passwordHide,
+        passwordShow: passwordShow ?? this.passwordShow,
+      );
 }
 
 class ImpaktfullUiVirtualKeyboardColorTheme {
@@ -53,12 +75,25 @@ class ImpaktfullUiVirtualKeyboardColorTheme {
   const ImpaktfullUiVirtualKeyboardColorTheme({
     required this.cursor,
   });
+
+  ImpaktfullUiVirtualKeyboardColorTheme copyWith({
+    Color? cursor,
+  }) =>
+      ImpaktfullUiVirtualKeyboardColorTheme(
+        cursor: cursor ?? this.cursor,
+      );
 }
 
 class ImpaktfullUiVirtualKeyboardDimensTheme {
   const ImpaktfullUiVirtualKeyboardDimensTheme();
+
+  ImpaktfullUiVirtualKeyboardDimensTheme copyWith() =>
+      const ImpaktfullUiVirtualKeyboardDimensTheme();
 }
 
 class ImpaktfullUiVirtualKeyboardTextStyleTheme {
   const ImpaktfullUiVirtualKeyboardTextStyleTheme();
+
+  ImpaktfullUiVirtualKeyboardTextStyleTheme copyWith() =>
+      const ImpaktfullUiVirtualKeyboardTextStyleTheme();
 }

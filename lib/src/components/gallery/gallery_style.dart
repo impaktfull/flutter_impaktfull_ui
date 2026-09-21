@@ -19,6 +19,21 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiGalleryTheme copyWith({
+    ImpaktfullUiGalleryAssetsTheme? assets,
+    ImpaktfullUiGalleryColorTheme? colors,
+    ImpaktfullUiGalleryDimensTheme? dimens,
+    ImpaktfullUiGalleryDurationsTheme? durations,
+    ImpaktfullUiGalleryTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiGalleryTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiGalleryTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.gallery;
 
@@ -63,6 +78,17 @@ class ImpaktfullUiGalleryAssetsTheme {
     required this.arrowRight,
     required this.arrowLeft,
   });
+
+  ImpaktfullUiGalleryAssetsTheme copyWith({
+    ImpaktfullUiAsset? arrowLeft,
+    ImpaktfullUiAsset? arrowRight,
+    ImpaktfullUiAsset? close,
+  }) =>
+      ImpaktfullUiGalleryAssetsTheme(
+        arrowLeft: arrowLeft ?? this.arrowLeft,
+        arrowRight: arrowRight ?? this.arrowRight,
+        close: close ?? this.close,
+      );
 }
 
 class ImpaktfullUiGalleryColorTheme {
@@ -75,6 +101,17 @@ class ImpaktfullUiGalleryColorTheme {
     required this.background,
     required this.iconButtonBackground,
   });
+
+  ImpaktfullUiGalleryColorTheme copyWith({
+    Color? background,
+    Color? iconButtonBackground,
+    Color? icons,
+  }) =>
+      ImpaktfullUiGalleryColorTheme(
+        background: background ?? this.background,
+        iconButtonBackground: iconButtonBackground ?? this.iconButtonBackground,
+        icons: icons ?? this.icons,
+      );
 }
 
 class ImpaktfullUiGalleryDimensTheme {
@@ -82,6 +119,13 @@ class ImpaktfullUiGalleryDimensTheme {
   const ImpaktfullUiGalleryDimensTheme({
     required this.itemBorderRadius,
   });
+
+  ImpaktfullUiGalleryDimensTheme copyWith({
+    BorderRadiusGeometry? itemBorderRadius,
+  }) =>
+      ImpaktfullUiGalleryDimensTheme(
+        itemBorderRadius: itemBorderRadius ?? this.itemBorderRadius,
+      );
 }
 
 class ImpaktfullUiGalleryDurationsTheme {
@@ -89,6 +133,13 @@ class ImpaktfullUiGalleryDurationsTheme {
   const ImpaktfullUiGalleryDurationsTheme({
     required this.pageTransition,
   });
+
+  ImpaktfullUiGalleryDurationsTheme copyWith({
+    Duration? pageTransition,
+  }) =>
+      ImpaktfullUiGalleryDurationsTheme(
+        pageTransition: pageTransition ?? this.pageTransition,
+      );
 }
 
 class ImpaktfullUiGalleryTextStyleTheme {
@@ -99,4 +150,13 @@ class ImpaktfullUiGalleryTextStyleTheme {
     required this.itemTitle,
     required this.itemDescription,
   });
+
+  ImpaktfullUiGalleryTextStyleTheme copyWith({
+    TextStyle? itemDescription,
+    TextStyle? itemTitle,
+  }) =>
+      ImpaktfullUiGalleryTextStyleTheme(
+        itemDescription: itemDescription ?? this.itemDescription,
+        itemTitle: itemTitle ?? this.itemTitle,
+      );
 }

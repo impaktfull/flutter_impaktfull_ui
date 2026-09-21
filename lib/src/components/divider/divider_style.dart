@@ -10,6 +10,15 @@ class ImpaktfullUiDividerTheme extends ImpaktfullUiComponentTheme {
     required this.dimens,
   });
 
+  ImpaktfullUiDividerTheme copyWith({
+    ImpaktfullUiDividerColorTheme? colors,
+    ImpaktfullUiDividerDimensTheme? dimens,
+  }) =>
+      ImpaktfullUiDividerTheme(
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+      );
+
   static ImpaktfullUiDividerTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.divider;
 
@@ -38,6 +47,13 @@ class ImpaktfullUiDividerColorTheme {
   const ImpaktfullUiDividerColorTheme({
     required this.color,
   });
+
+  ImpaktfullUiDividerColorTheme copyWith({
+    Color? color,
+  }) =>
+      ImpaktfullUiDividerColorTheme(
+        color: color ?? this.color,
+      );
 }
 
 class ImpaktfullUiDividerDimensTheme {
@@ -48,4 +64,13 @@ class ImpaktfullUiDividerDimensTheme {
     required this.margin,
     required this.thickness,
   });
+
+  ImpaktfullUiDividerDimensTheme copyWith({
+    EdgeInsetsGeometry? margin,
+    double? thickness,
+  }) =>
+      ImpaktfullUiDividerDimensTheme(
+        margin: margin ?? this.margin,
+        thickness: thickness ?? this.thickness,
+      );
 }

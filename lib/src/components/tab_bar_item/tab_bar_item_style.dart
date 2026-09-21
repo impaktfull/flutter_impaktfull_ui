@@ -17,6 +17,21 @@ class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiTabBarItemTheme copyWith({
+    ImpaktfullUiTabBarItemAssetsTheme? assets,
+    ImpaktfullUiTabBarItemColorTheme? colors,
+    ImpaktfullUiTabBarItemDimensTheme? dimens,
+    ImpaktfullUiTabBarItemDurationsTheme? durations,
+    ImpaktfullUiTabBarItemTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiTabBarItemTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiTabBarItemTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.tabBarItem;
 
@@ -47,6 +62,9 @@ class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiTabBarItemAssetsTheme {
   const ImpaktfullUiTabBarItemAssetsTheme();
+
+  ImpaktfullUiTabBarItemAssetsTheme copyWith() =>
+      const ImpaktfullUiTabBarItemAssetsTheme();
 }
 
 class ImpaktfullUiTabBarItemColorTheme {
@@ -54,6 +72,13 @@ class ImpaktfullUiTabBarItemColorTheme {
   const ImpaktfullUiTabBarItemColorTheme({
     required this.background,
   });
+
+  ImpaktfullUiTabBarItemColorTheme copyWith({
+    Color? background,
+  }) =>
+      ImpaktfullUiTabBarItemColorTheme(
+        background: background ?? this.background,
+      );
 }
 
 class ImpaktfullUiTabBarItemDimensTheme {
@@ -61,6 +86,14 @@ class ImpaktfullUiTabBarItemDimensTheme {
   const ImpaktfullUiTabBarItemDimensTheme({
     required this.selectedMarkerBorderRadius,
   });
+
+  ImpaktfullUiTabBarItemDimensTheme copyWith({
+    BorderRadiusGeometry? selectedMarkerBorderRadius,
+  }) =>
+      ImpaktfullUiTabBarItemDimensTheme(
+        selectedMarkerBorderRadius:
+            selectedMarkerBorderRadius ?? this.selectedMarkerBorderRadius,
+      );
 }
 
 class ImpaktfullUiTabBarItemDurationsTheme {
@@ -68,6 +101,13 @@ class ImpaktfullUiTabBarItemDurationsTheme {
   const ImpaktfullUiTabBarItemDurationsTheme({
     required this.selected,
   });
+
+  ImpaktfullUiTabBarItemDurationsTheme copyWith({
+    Duration? selected,
+  }) =>
+      ImpaktfullUiTabBarItemDurationsTheme(
+        selected: selected ?? this.selected,
+      );
 }
 
 class ImpaktfullUiTabBarItemTextStyleTheme {
@@ -75,4 +115,11 @@ class ImpaktfullUiTabBarItemTextStyleTheme {
   const ImpaktfullUiTabBarItemTextStyleTheme({
     required this.label,
   });
+
+  ImpaktfullUiTabBarItemTextStyleTheme copyWith({
+    TextStyle? label,
+  }) =>
+      ImpaktfullUiTabBarItemTextStyleTheme(
+        label: label ?? this.label,
+      );
 }

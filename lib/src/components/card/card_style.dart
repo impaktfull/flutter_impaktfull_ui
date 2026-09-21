@@ -12,6 +12,17 @@ class ImpaktfullUiCardTheme extends ImpaktfullUiComponentTheme {
     required this.shadows,
   });
 
+  ImpaktfullUiCardTheme copyWith({
+    ImpaktfullUiCardColorTheme? colors,
+    ImpaktfullUiCardDimensTheme? dimens,
+    ImpaktfullUiCardShadowsTheme? shadows,
+  }) =>
+      ImpaktfullUiCardTheme(
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        shadows: shadows ?? this.shadows,
+      );
+
   static ImpaktfullUiCardTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.card;
 
@@ -50,6 +61,17 @@ class ImpaktfullUiCardColorTheme {
     required this.border,
     required this.borderError,
   });
+
+  ImpaktfullUiCardColorTheme copyWith({
+    Color? background,
+    Color? border,
+    Color? borderError,
+  }) =>
+      ImpaktfullUiCardColorTheme(
+        background: background ?? this.background,
+        border: border ?? this.border,
+        borderError: borderError ?? this.borderError,
+      );
 }
 
 class ImpaktfullUiCardDimensTheme {
@@ -62,6 +84,17 @@ class ImpaktfullUiCardDimensTheme {
     required this.padding,
     required this.borderWidth,
   });
+
+  ImpaktfullUiCardDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
+    EdgeInsets? padding,
+  }) =>
+      ImpaktfullUiCardDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+        padding: padding ?? this.padding,
+      );
 }
 
 class ImpaktfullUiCardShadowsTheme {
@@ -70,4 +103,11 @@ class ImpaktfullUiCardShadowsTheme {
   const ImpaktfullUiCardShadowsTheme({
     required this.card,
   });
+
+  ImpaktfullUiCardShadowsTheme copyWith({
+    List<BoxShadow>? card,
+  }) =>
+      ImpaktfullUiCardShadowsTheme(
+        card: card ?? this.card,
+      );
 }

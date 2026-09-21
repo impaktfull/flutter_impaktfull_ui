@@ -16,6 +16,21 @@ class ImpaktfullUiAutoCompleteTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiAutoCompleteTheme copyWith({
+    ImpaktfullUiAutoCompleteAssetsTheme? assets,
+    ImpaktfullUiAutoCompleteColorTheme? colors,
+    ImpaktfullUiAutoCompleteDimensTheme? dimens,
+    ImpaktfullUiAutoCompleteShadowTheme? shadows,
+    ImpaktfullUiAutoCompleteTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiAutoCompleteTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        shadows: shadows ?? this.shadows,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiAutoCompleteTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.autoComplete;
 
@@ -40,10 +55,16 @@ class ImpaktfullUiAutoCompleteTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiAutoCompleteAssetsTheme {
   const ImpaktfullUiAutoCompleteAssetsTheme();
+
+  ImpaktfullUiAutoCompleteAssetsTheme copyWith() =>
+      const ImpaktfullUiAutoCompleteAssetsTheme();
 }
 
 class ImpaktfullUiAutoCompleteColorTheme {
   const ImpaktfullUiAutoCompleteColorTheme();
+
+  ImpaktfullUiAutoCompleteColorTheme copyWith() =>
+      const ImpaktfullUiAutoCompleteColorTheme();
 }
 
 class ImpaktfullUiAutoCompleteShadowTheme {
@@ -51,12 +72,25 @@ class ImpaktfullUiAutoCompleteShadowTheme {
   const ImpaktfullUiAutoCompleteShadowTheme({
     required this.overlay,
   });
+
+  ImpaktfullUiAutoCompleteShadowTheme copyWith({
+    List<BoxShadow>? overlay,
+  }) =>
+      ImpaktfullUiAutoCompleteShadowTheme(
+        overlay: overlay ?? this.overlay,
+      );
 }
 
 class ImpaktfullUiAutoCompleteDimensTheme {
   const ImpaktfullUiAutoCompleteDimensTheme();
+
+  ImpaktfullUiAutoCompleteDimensTheme copyWith() =>
+      const ImpaktfullUiAutoCompleteDimensTheme();
 }
 
 class ImpaktfullUiAutoCompleteTextStyleTheme {
   const ImpaktfullUiAutoCompleteTextStyleTheme();
+
+  ImpaktfullUiAutoCompleteTextStyleTheme copyWith() =>
+      const ImpaktfullUiAutoCompleteTextStyleTheme();
 }

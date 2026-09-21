@@ -16,6 +16,21 @@ class ImpaktfullUiBottomActionsTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiBottomActionsTheme copyWith({
+    ImpaktfullUiBottomActionsAssetsTheme? assets,
+    ImpaktfullUiBottomActionsColorTheme? colors,
+    ImpaktfullUiBottomActionsDimensTheme? dimens,
+    ImpaktfullUiBottomActionsShadowsTheme? shadows,
+    ImpaktfullUiBottomActionsTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiBottomActionsTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        shadows: shadows ?? this.shadows,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiBottomActionsTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.bottomActions;
 
@@ -45,6 +60,9 @@ class ImpaktfullUiBottomActionsTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiBottomActionsAssetsTheme {
   const ImpaktfullUiBottomActionsAssetsTheme();
+
+  ImpaktfullUiBottomActionsAssetsTheme copyWith() =>
+      const ImpaktfullUiBottomActionsAssetsTheme();
 }
 
 class ImpaktfullUiBottomActionsColorTheme {
@@ -53,6 +71,13 @@ class ImpaktfullUiBottomActionsColorTheme {
   const ImpaktfullUiBottomActionsColorTheme({
     required this.background,
   });
+
+  ImpaktfullUiBottomActionsColorTheme copyWith({
+    Color? background,
+  }) =>
+      ImpaktfullUiBottomActionsColorTheme(
+        background: background ?? this.background,
+      );
 }
 
 class ImpaktfullUiBottomActionsDimensTheme {
@@ -63,6 +88,15 @@ class ImpaktfullUiBottomActionsDimensTheme {
     required this.padding,
     required this.spacing,
   });
+
+  ImpaktfullUiBottomActionsDimensTheme copyWith({
+    EdgeInsets? padding,
+    double? spacing,
+  }) =>
+      ImpaktfullUiBottomActionsDimensTheme(
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
+      );
 }
 
 class ImpaktfullUiBottomActionsShadowsTheme {
@@ -71,8 +105,18 @@ class ImpaktfullUiBottomActionsShadowsTheme {
   const ImpaktfullUiBottomActionsShadowsTheme({
     required this.shadow,
   });
+
+  ImpaktfullUiBottomActionsShadowsTheme copyWith({
+    List<BoxShadow>? shadow,
+  }) =>
+      ImpaktfullUiBottomActionsShadowsTheme(
+        shadow: shadow ?? this.shadow,
+      );
 }
 
 class ImpaktfullUiBottomActionsTextStyleTheme {
   const ImpaktfullUiBottomActionsTextStyleTheme();
+
+  ImpaktfullUiBottomActionsTextStyleTheme copyWith() =>
+      const ImpaktfullUiBottomActionsTextStyleTheme();
 }

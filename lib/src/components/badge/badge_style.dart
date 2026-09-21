@@ -16,6 +16,19 @@ class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiBadgeTheme copyWith({
+    ImpaktfullUiBadgeAssetsTheme? assets,
+    ImpaktfullUiBadgeColorTheme? colors,
+    ImpaktfullUiBadgeDimensTheme? dimens,
+    ImpaktfullUiBadgeTextStylesTheme? textStyles,
+  }) =>
+      ImpaktfullUiBadgeTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiBadgeTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.badge;
 
@@ -69,6 +82,13 @@ class ImpaktfullUiBadgeAssetsTheme {
   const ImpaktfullUiBadgeAssetsTheme({
     required this.close,
   });
+
+  ImpaktfullUiBadgeAssetsTheme copyWith({
+    ImpaktfullUiAsset? close,
+  }) =>
+      ImpaktfullUiBadgeAssetsTheme(
+        close: close ?? this.close,
+      );
 }
 
 class ImpaktfullUiBadgeColorTheme {
@@ -111,6 +131,47 @@ class ImpaktfullUiBadgeColorTheme {
     required this.successBorder,
     required this.successBackground,
   });
+
+  ImpaktfullUiBadgeColorTheme copyWith({
+    Color? errorBackground,
+    Color? errorBorder,
+    Color? errorText,
+    Color? neutralBackground,
+    Color? neutralBorder,
+    Color? neutralText,
+    Color? primaryBackground,
+    Color? primaryBorder,
+    Color? primaryText,
+    Color? secondaryBackground,
+    Color? secondaryBorder,
+    Color? secondaryText,
+    Color? successBackground,
+    Color? successBorder,
+    Color? successText,
+    Color? warningBackground,
+    Color? warningBorder,
+    Color? warningText,
+  }) =>
+      ImpaktfullUiBadgeColorTheme(
+        errorBackground: errorBackground ?? this.errorBackground,
+        errorBorder: errorBorder ?? this.errorBorder,
+        errorText: errorText ?? this.errorText,
+        neutralBackground: neutralBackground ?? this.neutralBackground,
+        neutralBorder: neutralBorder ?? this.neutralBorder,
+        neutralText: neutralText ?? this.neutralText,
+        primaryBackground: primaryBackground ?? this.primaryBackground,
+        primaryBorder: primaryBorder ?? this.primaryBorder,
+        primaryText: primaryText ?? this.primaryText,
+        secondaryBackground: secondaryBackground ?? this.secondaryBackground,
+        secondaryBorder: secondaryBorder ?? this.secondaryBorder,
+        secondaryText: secondaryText ?? this.secondaryText,
+        successBackground: successBackground ?? this.successBackground,
+        successBorder: successBorder ?? this.successBorder,
+        successText: successText ?? this.successText,
+        warningBackground: warningBackground ?? this.warningBackground,
+        warningBorder: warningBorder ?? this.warningBorder,
+        warningText: warningText ?? this.warningText,
+      );
 }
 
 class ImpaktfullUiBadgeDimensTheme {
@@ -121,6 +182,15 @@ class ImpaktfullUiBadgeDimensTheme {
     required this.borderRadius,
     required this.borderWidth,
   });
+
+  ImpaktfullUiBadgeDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
+  }) =>
+      ImpaktfullUiBadgeDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+      );
 }
 
 class ImpaktfullUiBadgeTextStylesTheme {
@@ -133,4 +203,15 @@ class ImpaktfullUiBadgeTextStylesTheme {
     required this.medium,
     required this.large,
   });
+
+  ImpaktfullUiBadgeTextStylesTheme copyWith({
+    TextStyle? large,
+    TextStyle? medium,
+    TextStyle? small,
+  }) =>
+      ImpaktfullUiBadgeTextStylesTheme(
+        large: large ?? this.large,
+        medium: medium ?? this.medium,
+        small: small ?? this.small,
+      );
 }

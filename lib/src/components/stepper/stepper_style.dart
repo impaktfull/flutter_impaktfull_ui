@@ -15,6 +15,19 @@ class ImpaktfullUiStepperTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiStepperTheme copyWith({
+    ImpaktfullUiStepperAssetsTheme? assets,
+    ImpaktfullUiStepperColorTheme? colors,
+    ImpaktfullUiStepperDimensTheme? dimens,
+    ImpaktfullUiStepperTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiStepperTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiStepperTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.stepper;
 
@@ -52,6 +65,9 @@ class ImpaktfullUiStepperTheme extends ImpaktfullUiComponentTheme {
 
 class ImpaktfullUiStepperAssetsTheme {
   const ImpaktfullUiStepperAssetsTheme();
+
+  ImpaktfullUiStepperAssetsTheme copyWith() =>
+      const ImpaktfullUiStepperAssetsTheme();
 }
 
 class ImpaktfullUiStepperColorTheme {
@@ -74,6 +90,28 @@ class ImpaktfullUiStepperColorTheme {
     required this.assetBackgroundCompleted,
     required this.assetColorCompleted,
   });
+
+  ImpaktfullUiStepperColorTheme copyWith({
+    Color? activeStep,
+    Color? assetBackground,
+    Color? assetBackgroundCompleted,
+    Color? assetBorder,
+    Color? assetBorderCompleted,
+    Color? assetColor,
+    Color? assetColorCompleted,
+    Color? inactiveStep,
+  }) =>
+      ImpaktfullUiStepperColorTheme(
+        activeStep: activeStep ?? this.activeStep,
+        assetBackground: assetBackground ?? this.assetBackground,
+        assetBackgroundCompleted:
+            assetBackgroundCompleted ?? this.assetBackgroundCompleted,
+        assetBorder: assetBorder ?? this.assetBorder,
+        assetBorderCompleted: assetBorderCompleted ?? this.assetBorderCompleted,
+        assetColor: assetColor ?? this.assetColor,
+        assetColorCompleted: assetColorCompleted ?? this.assetColorCompleted,
+        inactiveStep: inactiveStep ?? this.inactiveStep,
+      );
 }
 
 class ImpaktfullUiStepperDimensTheme {
@@ -85,6 +123,17 @@ class ImpaktfullUiStepperDimensTheme {
     required this.height,
     required this.borderRadius,
   });
+
+  ImpaktfullUiStepperDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    double? height,
+    double? spacing,
+  }) =>
+      ImpaktfullUiStepperDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        height: height ?? this.height,
+        spacing: spacing ?? this.spacing,
+      );
 }
 
 class ImpaktfullUiStepperTextStyleTheme {
@@ -94,4 +143,13 @@ class ImpaktfullUiStepperTextStyleTheme {
     required this.title,
     required this.subtitle,
   });
+
+  ImpaktfullUiStepperTextStyleTheme copyWith({
+    TextStyle? subtitle,
+    TextStyle? title,
+  }) =>
+      ImpaktfullUiStepperTextStyleTheme(
+        subtitle: subtitle ?? this.subtitle,
+        title: title ?? this.title,
+      );
 }

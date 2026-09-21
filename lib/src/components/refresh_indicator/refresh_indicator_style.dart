@@ -8,6 +8,13 @@ class ImpaktfullUiRefreshIndicatorTheme extends ImpaktfullUiComponentTheme {
     required this.colors,
   });
 
+  ImpaktfullUiRefreshIndicatorTheme copyWith({
+    ImpaktfullUiRefreshIndicatorColorTheme? colors,
+  }) =>
+      ImpaktfullUiRefreshIndicatorTheme(
+        colors: colors ?? this.colors,
+      );
+
   static ImpaktfullUiRefreshIndicatorTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.refreshIndicator;
 
@@ -35,4 +42,13 @@ class ImpaktfullUiRefreshIndicatorColorTheme {
     required this.loadingIndicator,
     required this.backgroundColor,
   });
+
+  ImpaktfullUiRefreshIndicatorColorTheme copyWith({
+    Color? backgroundColor,
+    Color? loadingIndicator,
+  }) =>
+      ImpaktfullUiRefreshIndicatorColorTheme(
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+        loadingIndicator: loadingIndicator ?? this.loadingIndicator,
+      );
 }

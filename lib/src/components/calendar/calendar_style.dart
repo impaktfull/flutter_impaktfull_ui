@@ -16,6 +16,19 @@ class ImpaktfullUiCalendarTheme extends ImpaktfullUiComponentTheme {
     required this.textStyles,
   });
 
+  ImpaktfullUiCalendarTheme copyWith({
+    ImpaktfullUiCalendarAssetsTheme? assets,
+    ImpaktfullUiCalendarColorTheme? colors,
+    ImpaktfullUiCalendarDimensTheme? dimens,
+    ImpaktfullUiCalendarTextStyleTheme? textStyles,
+  }) =>
+      ImpaktfullUiCalendarTheme(
+        assets: assets ?? this.assets,
+        colors: colors ?? this.colors,
+        dimens: dimens ?? this.dimens,
+        textStyles: textStyles ?? this.textStyles,
+      );
+
   static ImpaktfullUiCalendarTheme of(BuildContext context) =>
       ImpaktfullUiTheme.of(context).components.calendar;
 
@@ -66,6 +79,15 @@ class ImpaktfullUiCalendarAssetsTheme {
     required this.chevronLeft,
     required this.chevronRight,
   });
+
+  ImpaktfullUiCalendarAssetsTheme copyWith({
+    ImpaktfullUiAsset? chevronLeft,
+    ImpaktfullUiAsset? chevronRight,
+  }) =>
+      ImpaktfullUiCalendarAssetsTheme(
+        chevronLeft: chevronLeft ?? this.chevronLeft,
+        chevronRight: chevronRight ?? this.chevronRight,
+      );
 }
 
 class ImpaktfullUiCalendarColorTheme {
@@ -78,6 +100,17 @@ class ImpaktfullUiCalendarColorTheme {
     required this.eventBackground,
     required this.headerBackground,
   });
+
+  ImpaktfullUiCalendarColorTheme copyWith({
+    Color? divider,
+    Color? eventBackground,
+    Color? headerBackground,
+  }) =>
+      ImpaktfullUiCalendarColorTheme(
+        divider: divider ?? this.divider,
+        eventBackground: eventBackground ?? this.eventBackground,
+        headerBackground: headerBackground ?? this.headerBackground,
+      );
 }
 
 class ImpaktfullUiCalendarDimensTheme {
@@ -94,6 +127,23 @@ class ImpaktfullUiCalendarDimensTheme {
     required this.weekEventMinHeightSmall,
     required this.weekEventMinHeightExtraSmall,
   });
+
+  ImpaktfullUiCalendarDimensTheme copyWith({
+    double? dividerHeight,
+    double? sectionTitleWidth,
+    double? weekEventMinHeightExtraSmall,
+    double? weekEventMinHeightSmall,
+    double? weekHourHeight,
+  }) =>
+      ImpaktfullUiCalendarDimensTheme(
+        dividerHeight: dividerHeight ?? this.dividerHeight,
+        sectionTitleWidth: sectionTitleWidth ?? this.sectionTitleWidth,
+        weekEventMinHeightExtraSmall:
+            weekEventMinHeightExtraSmall ?? this.weekEventMinHeightExtraSmall,
+        weekEventMinHeightSmall:
+            weekEventMinHeightSmall ?? this.weekEventMinHeightSmall,
+        weekHourHeight: weekHourHeight ?? this.weekHourHeight,
+      );
 }
 
 class ImpaktfullUiCalendarTextStyleTheme {
@@ -116,4 +166,26 @@ class ImpaktfullUiCalendarTextStyleTheme {
     required this.dayTitle,
     required this.dayOfTheWeekTitle,
   });
+
+  ImpaktfullUiCalendarTextStyleTheme copyWith({
+    TextStyle? dayOfTheWeekTitle,
+    TextStyle? dayTitle,
+    TextStyle? listItemSubtitle,
+    TextStyle? listItemSubtitleSmall,
+    TextStyle? listItemTitle,
+    TextStyle? listItemTitleSmall,
+    TextStyle? sectionSubtitle,
+    TextStyle? sectionTitle,
+  }) =>
+      ImpaktfullUiCalendarTextStyleTheme(
+        dayOfTheWeekTitle: dayOfTheWeekTitle ?? this.dayOfTheWeekTitle,
+        dayTitle: dayTitle ?? this.dayTitle,
+        listItemSubtitle: listItemSubtitle ?? this.listItemSubtitle,
+        listItemSubtitleSmall:
+            listItemSubtitleSmall ?? this.listItemSubtitleSmall,
+        listItemTitle: listItemTitle ?? this.listItemTitle,
+        listItemTitleSmall: listItemTitleSmall ?? this.listItemTitleSmall,
+        sectionSubtitle: sectionSubtitle ?? this.sectionSubtitle,
+        sectionTitle: sectionTitle ?? this.sectionTitle,
+      );
 }
