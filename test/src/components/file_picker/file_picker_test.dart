@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/file_picker/model/file_picker_progress_type.dart';
 
 import '../../../util/test_util.dart';
 
