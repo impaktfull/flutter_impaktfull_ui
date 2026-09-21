@@ -12,12 +12,21 @@ dependencies:
   impaktfull_ui:
     path: ../
   phosphor_flutter: ^2.1.0
-  url_launcher: ^6.1.10
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^6.0.0
+# Temporary override: phosphor_flutter 2.1.0 (latest published) extends IconData,
+# which became a `final class` in recent Flutter, breaking the build.
+# Pinned to phosphor-icons/flutter PR #62 (fix!: support Flutter 3.43+ IconData
+# final-class change). Remove once the fix is published to pub.dev.
+dependency_overrides:
+  phosphor_flutter:
+    git:
+      url: https://github.com/subarnaPdl/phosphor_icons.git
+      ref: 514f0a883571c4453dbd6ee3041d1dcba4fb8fc7
 
 flutter:
   uses-material-design: true

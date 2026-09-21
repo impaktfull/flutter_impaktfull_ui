@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/markdown/markdown.dart';
 import 'package:markdown/markdown.dart' as md;
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 
 class ImpaktfullUiMarkdownCodeElementBuilder extends MarkdownElementBuilder {
   final ImpaktfullUiMarkdownTheme theme;

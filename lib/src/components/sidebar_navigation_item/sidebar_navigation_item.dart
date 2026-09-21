@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/components/accordion/model/accordion_reveal_type.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
@@ -134,7 +135,7 @@ class _ImpaktfullUiSidebarNavigationItemState
             if (widget.items.isNotEmpty) ...[
               SizeTransition(
                 sizeFactor: _expandAnimation,
-                axisAlignment: 1,
+                alignment: ImpaktfullUiAccordionRevealType.reveal.alignment,
                 child: Padding(
                   padding: const EdgeInsetsDirectional.only(start: 16),
                   child: ImpaktfullUiAutoLayout.vertical(

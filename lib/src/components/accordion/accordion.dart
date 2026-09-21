@@ -96,7 +96,7 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
           if (widget.animated) ...[
             SizeTransition(
               sizeFactor: _expandAnimation,
-              axisAlignment: widget.revealType.axisAlignment,
+              alignment: widget.revealType.alignment,
               child: widget.expandedBuilder(context),
             ),
           ] else ...[

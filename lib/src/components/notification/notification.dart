@@ -71,7 +71,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
     super.key,
   });
 
-  static show({
+  static void show({
     required String title,
     String? subtitle,
     Duration? showDuration,
