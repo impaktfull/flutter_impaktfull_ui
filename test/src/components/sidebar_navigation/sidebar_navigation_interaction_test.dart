@@ -180,4 +180,32 @@ void main() {
     expect(content.top, greaterThanOrEqualTo(30));
     expect(content.width, 200);
   });
+
+  testWidgets('scrollable content fills the height between header and footer',
+      (tester) async {
+    await pumpLayoutApp(
+      tester,
+      ImpaktfullUiSidebarNavigation(
+        header: const Text('Header'),
+        content: ListView(
+          key: const Key('content'),
+          children: [for (var i = 0; i < 50; i++) Text('Item $i')],
+        ),
+        footer: const Text('Footer'),
+      ),
+    );
+    expect(tester.takeException(), isNull);
+    final content = tester.getRect(find.byKey(const Key('content')));
+    expect(
+        content.top, greaterThan(tester.getRect(find.text('Header')).bottom));
+    expect(
+      content.bottom,
+      lessThanOrEqualTo(tester.getRect(find.text('Footer')).top),
+    );
+    // The footer stays at the bottom.
+    expect(
+      tester.getRect(find.text('Footer')).bottom,
+      greaterThan(smallScreenSize.height - 100),
+    );
+  });
 }

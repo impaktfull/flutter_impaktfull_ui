@@ -75,6 +75,14 @@ class ImpaktfullUiResponsiveRow extends StatelessWidget {
       }
     }
     if (column.isNotEmpty) {
+      // Below other rows, fill the last row with empty cells, so its children
+      // keep the width of a column and line up with the rows above. A single
+      // row keeps sharing the full width.
+      if (rows.isNotEmpty) {
+        column.addAll([
+          for (var i = column.length; i < maxColumns; i++) const Spacer(),
+        ]);
+      }
       rows.add(column);
     }
     return ImpaktfullUiAutoLayout.vertical(

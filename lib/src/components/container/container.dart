@@ -46,7 +46,10 @@ class ImpaktfullUiContainer extends StatelessWidget {
             ? null
             : BoxDecoration(
                 border: foregroundBorder,
-                borderRadius: borderRadius,
+                // Flutter can only round a border with one visible color (and
+                // without hairline sides): other borders get square corners.
+                borderRadius:
+                    _canRoundBorder(foregroundBorder) ? borderRadius : null,
               ),
         child: Material(
           shape: shapeBorder == null
@@ -65,5 +68,22 @@ class ImpaktfullUiContainer extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  static bool _canRoundBorder(BoxBorder border) {
+    final sides = switch (border) {
+      Border() => [border.top, border.right, border.bottom, border.left],
+      BorderDirectional() => [
+          border.top,
+          border.end,
+          border.bottom,
+          border.start,
+        ],
+      _ => null,
+    };
+    if (sides == null) return true;
+    final visibleSides = sides.where((side) => side.style != BorderStyle.none);
+    if (visibleSides.any((side) => side.width == 0)) return false;
+    return visibleSides.map((side) => side.color).toSet().length <= 1;
   }
 }

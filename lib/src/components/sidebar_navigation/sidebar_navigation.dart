@@ -90,7 +90,7 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget {
                         ),
                       ],
                       if (content != null) ...[
-                        content!
+                        Expanded(child: content!),
                       ] else ...[
                         if (items.isNotEmpty) ...[
                           Expanded(

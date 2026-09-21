@@ -14,7 +14,8 @@ void main() {
       ))
       .where((layout) =>
           layout.orientation == ImpaktfullUiAutoLayoutOrientation.horizontal)
-      .map((row) => row.children.length)
+      // The empty cells (Spacer) that fill the last row are not counted.
+      .map((row) => row.children.whereType<Expanded>().length)
       .toList();
 
   const cases = <int, List<int>>{

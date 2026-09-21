@@ -81,7 +81,12 @@ class ImpaktfullUiMasterDetailState extends State<ImpaktfullUiMasterDetail> {
   @override
   Widget build(BuildContext context) {
     final detail = widget.detail?.call(context);
-    final onBackTappedEnabled = _onBackTappedEnabled(detail);
+    if (detail == null) {
+      // The detail is closed (also when it is closed without the back
+      // button): the header shows the master again.
+      _clearOverrides();
+    }
+    final onBackTappedEnabled = _onBackTappedEnabled(context, detail);
     return ListenableBuilder(
       listenable: _overridesNotifier,
       builder: (context, _) => ImpaktfullUiAdaptiveScreen(
@@ -156,23 +161,28 @@ class ImpaktfullUiMasterDetailState extends State<ImpaktfullUiMasterDetail> {
     });
   }
 
-  bool _onBackTappedEnabled(Widget? detail) {
-    if (widget.onCloseDetail != null && detail != null) return true;
+  bool _onBackTappedEnabled(BuildContext context, Widget? detail) {
+    if (_closesDetailOnBack(context, detail)) return true;
     return widget.onBackTapped != null;
+  }
+
+  /// Whether back closes the detail: only when a detail is open, on smaller
+  /// screens (where the detail replaces the navigation) or when
+  /// [ImpaktfullUiMasterDetail.closeDetailBeforeMaster] is enabled.
+  bool _closesDetailOnBack(BuildContext context, Widget? detail) {
+    if (widget.onCloseDetail == null || detail == null) return false;
+    return context.isMediumScreenOrSmaller || widget.closeDetailBeforeMaster;
   }
 
   void _onBackTapped(BuildContext context) {
     final detail = widget.detail?.call(context);
-    if (widget.onCloseDetail != null) {
-      if (context.isMediumScreenOrSmaller ||
-          (widget.closeDetailBeforeMaster && detail != null)) {
-        widget.onCloseDetail?.call();
-        _clearOverrides();
-        _notifyOverridesChanged();
-        return;
-      }
+    if (_closesDetailOnBack(context, detail)) {
+      widget.onCloseDetail?.call();
+      _clearOverrides();
+      _notifyOverridesChanged();
+      return;
     }
-    return widget.onBackTapped?.call();
+    widget.onBackTapped?.call();
   }
 
   void _clearOverrides() {
