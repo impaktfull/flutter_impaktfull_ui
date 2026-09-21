@@ -112,13 +112,16 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
                           ),
                         ),
                         if (onDeleteTapped != null) ...[
-                          const SizedBox(width: 12),
+                          // Keep the text out of the delete button that is
+                          // positioned in the top end corner.
+                          const SizedBox(width: 32),
                         ],
                       ],
                     ),
                     if (onRetryTapped == null && showLineProgress) ...[
                       ImpaktfullUiProgressIndicator(
                         value: data.progress!,
+                        color: componentTheme.colors.progressIndicator,
                         showText: progressType.showText,
                         type: ImpaktfullUiProgressIndicatorType.line,
                       ),

@@ -95,10 +95,23 @@ Every pull request and push to `main` runs `.github/workflows/validate.yml`, whi
 | Job | Runner | Checks |
 |-----|--------|--------|
 | `validate` | ubuntu | `dart format` (no changes allowed), `flutter analyze .` (package + example), public API exports (`tool/public_api`), `dart fix` migrations, `flutter pub publish --dry-run` |
-| `test` | macOS | `flutter test`, including the golden tests (they only run on a macOS host) |
+| `test` | macOS | `flutter test --coverage`, including the golden tests (they only run on a macOS host), and the minimum line coverage of `lib/` |
 | `example` | ubuntu | `flutter build web` of the example app that is deployed to GitHub Pages |
 
 When a golden test fails because of an intended visual change, regenerate the goldens with `flutter test --update-goldens` on macOS using the pinned Flutter version, and review the image diff before committing.
+
+### Coverage
+
+CI fails when the line coverage of `lib/` drops below a minimum. Run it locally with:
+
+```bash
+flutter test --coverage
+dart run tool/coverage/bin/coverage_summary.dart --min 67.3
+```
+
+`tool/coverage/bin/coverage_summary.dart` reads `coverage/lcov.info` (ignored by git), prints the coverage per directory of `lib/src` and exits with an error below `--min`. The minimum is set in the `Coverage` step of `.github/workflows/validate.yml`, about 1% below the measured coverage so small refactors do not fail CI. **The minimum only goes up:** when a pull request raises the coverage, raise the minimum to the new total minus 1% in the same pull request. Never lower it to make CI pass, add tests instead.
+
+When a new test finds a bug in `lib/`, fix it in the same pull request (without breaking the public API) and add a `fix:` line for it to the commit body. Do not commit skipped tests.
 
 ## Create Pull Request
 

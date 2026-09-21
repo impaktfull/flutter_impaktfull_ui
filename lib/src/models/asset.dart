@@ -132,14 +132,19 @@ class ImpaktfullUiAsset {
     if (path.isNotEmpty && !path.endsWith('/')) {
       path += '/';
     }
-    path += asset;
-    if (suffix != null) {
-      final parts = path.split('.');
-      if (parts.length != 1) {
-        final extension = '.${parts.last}';
-        path = path.replaceAll(extension, '_$suffix$extension');
-      }
-    }
+    path += _addSuffix(asset);
     return path;
+  }
+
+  /// Adds the [suffix] before the extension of the file name of [asset]. The
+  /// directories of the path are never changed, even when they contain a dot.
+  String _addSuffix(String asset) {
+    final suffix = this.suffix;
+    if (suffix == null) return asset;
+    final fileNameStart = asset.lastIndexOf('/') + 1;
+    final extensionStart = asset.lastIndexOf('.');
+    if (extensionStart < fileNameStart) return asset;
+    return '${asset.substring(0, extensionStart)}_$suffix'
+        '${asset.substring(extensionStart)}';
   }
 }

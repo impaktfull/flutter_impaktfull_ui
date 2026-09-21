@@ -121,6 +121,16 @@ class ImpaktfullUiAssetTheme {
             ),
       );
 
+  static const _bundledPackage = 'impaktfull_ui';
+
+  /// The assetSuffix is for the variants of the app's own assets. The assets
+  /// bundled with impaktfull_ui have no variants, so they never get it.
+  static String? _getSuffix({
+    required String? package,
+    required String? assetSuffix,
+  }) =>
+      package == _bundledPackage ? null : assetSuffix;
+
   static String _getFullAssetDirectory({
     String? directory,
   }) {
@@ -142,12 +152,14 @@ class ImpaktfullUiAssetTheme {
     if (assetFileName.endsWith('.svg')) {
       return ImpaktfullUiAsset.svg(
         assetFileName,
+        suffix: _getSuffix(package: package, assetSuffix: assetSuffix),
         directory: directory,
         package: package,
       );
     }
     return ImpaktfullUiAsset.pixel(
       assetFileName,
+      suffix: _getSuffix(package: package, assetSuffix: assetSuffix),
       directory: directory,
       package: package,
     );
@@ -163,7 +175,7 @@ class ImpaktfullUiAssetTheme {
     );
     return ImpaktfullUiAsset.lottie(
       assetFileName,
-      suffix: assetSuffix,
+      suffix: _getSuffix(package: package, assetSuffix: assetSuffix),
       directory: directory,
       package: package,
     );

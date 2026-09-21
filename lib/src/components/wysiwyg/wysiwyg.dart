@@ -84,6 +84,7 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
               value: widget.text,
               onChanged: widget.onChanged,
               localizations: localizations,
+              theme: widget.theme,
             ),
           ],
         ],

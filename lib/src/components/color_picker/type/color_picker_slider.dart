@@ -38,14 +38,11 @@ class _ImpaktfullUiColorPickerSliderState
             final box = context.findRenderObject() as RenderBox;
             final localOffset = box.globalToLocal(details.globalPosition);
             final pickerHeight = box.size.height;
-            final hue = (localOffset.dy / pickerHeight) * 360;
-            if (hue < 0 || hue > 360) return;
-            final selectedColor = HSVColor.fromAHSV(
-              1.0,
-              hue,
-              1.0,
-              1.0,
-            ).toColor();
+            if (pickerHeight <= 0) return;
+            final fraction = localOffset.dy / pickerHeight;
+            if (fraction < 0 || fraction > 1) return;
+            final selectedColor = _getColorAt(fraction);
+            if (selectedColor == null) return;
             _lastColor = selectedColor;
             widget.onColorChanged(selectedColor);
           },
@@ -67,5 +64,16 @@ class _ImpaktfullUiColorPickerSliderState
         ),
       ),
     );
+  }
+
+  /// The color of the gradient of [ImpaktfullUiColorPickerSlider.allowedColors]
+  /// at [fraction] (0 is the top, 1 is the bottom).
+  Color? _getColorAt(double fraction) {
+    final colors = widget.allowedColors;
+    if (colors.isEmpty) return null;
+    if (colors.length == 1) return colors.first;
+    final position = fraction * (colors.length - 1);
+    final index = position.floor().clamp(0, colors.length - 2);
+    return Color.lerp(colors[index], colors[index + 1], position - index);
   }
 }
