@@ -37,7 +37,8 @@ tool/
 | Color Theme | `ImpaktfullUi*ColorTheme` | `ImpaktfullUiButtonColorTheme` |
 | Dimens Theme | `ImpaktfullUi*DimensTheme` | `ImpaktfullUiButtonDimensTheme` |
 | TextStyle Theme | `ImpaktfullUi*TextStyleTheme` | `ImpaktfullUiButtonTextStyleTheme` |
-| Localizations | `ImpaktfullUiBB*Localizations` | `ImpaktfullUiBBLoginLocalizations` |
+| Localizations (building block) | `ImpaktfullUiBB*Localizations` | `ImpaktfullUiBBLoginLocalizations` |
+| Localizations (component) | `ImpaktfullUi*Localizations` | `ImpaktfullUiDatePickerLocalizations` |
 
 ## File Naming
 
@@ -74,7 +75,7 @@ ImpaktfullUiOverridableComponentBuilder<ImpaktfullUiButtonTheme>(
 
 ### 2. Localization Provider
 
-Building blocks use `ImpaktfullUiLocalizationProvider` for i18n:
+Components and building blocks never hardcode user-facing texts: they come from an `ImpaktfullUi*Localizations` class (English defaults, registered in `ImpaktfullUiLocalizations`) and can be overridden per widget with a `localizations` parameter. Dates, times and numbers use `ImpaktfullUiLocaleUtil` (`lib/src/util/locale/locale_util.dart`). `ImpaktfullUiLocalizationProvider` resolves the localizations of a widget:
 
 ```dart
 ImpaktfullUiLocalizationProvider(

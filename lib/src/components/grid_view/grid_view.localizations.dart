@@ -7,4 +7,11 @@ class ImpaktfullUiGridViewLocalizations
   const ImpaktfullUiGridViewLocalizations({
     this.refreshBtnLabel = 'Refresh',
   });
+
+  ImpaktfullUiGridViewLocalizations copyWith({
+    String? refreshBtnLabel,
+  }) =>
+      ImpaktfullUiGridViewLocalizations(
+        refreshBtnLabel: refreshBtnLabel ?? this.refreshBtnLabel,
+      );
 }

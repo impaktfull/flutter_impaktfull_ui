@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item_avatar.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiChatListTypingContainer extends StatefulWidget {
   final List<ImpaktfullUiChatSender> sendersTyping;
   final bool showAvatars;
   final ImpaktfullUiChatTheme theme;
+  final ImpaktfullUiChatLocalizations? localizations;
   const ImpaktfullUiChatListTypingContainer({
     required this.sendersTyping,
     required this.theme,
     this.showAvatars = false,
+    this.localizations,
     super.key,
   });
 
@@ -74,6 +77,17 @@ class _ImpaktfullUiChatListTypingContainerState
 
   Widget _buildItem(BuildContext context, ImpaktfullUiChatTheme componentTheme,
       ImpaktfullUiChatSender sender) {
+    final localizations = widget.localizations ??
+        ImpaktfullUiLocalizations.of<ImpaktfullUiChatLocalizations>(context);
+    return Semantics(
+      container: true,
+      label: localizations.typingLabel(sender.name),
+      child: _buildItemContent(componentTheme, sender),
+    );
+  }
+
+  Widget _buildItemContent(
+      ImpaktfullUiChatTheme componentTheme, ImpaktfullUiChatSender sender) {
     return ImpaktfullUiAutoLayout.horizontal(
       spacing: 4,
       children: [

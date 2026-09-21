@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/color_input_field/color_input_field.localizations.dart';
 import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';
 import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
@@ -7,8 +8,10 @@ import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
+export 'color_input_field.localizations.dart';
 export 'color_input_field_style.dart';
 
 class ImpaktfullUiColorInputField extends StatefulWidget {
@@ -20,6 +23,10 @@ class ImpaktfullUiColorInputField extends StatefulWidget {
   final bool alphaEnabled;
   final ImpaktfullUiColorInputFieldTheme? theme;
 
+  /// The texts of the color input field. Defaults to the localizations of
+  /// the app.
+  final ImpaktfullUiColorInputFieldLocalizations? localizations;
+
   const ImpaktfullUiColorInputField({
     this.label,
     this.initialColor,
@@ -28,6 +35,7 @@ class ImpaktfullUiColorInputField extends StatefulWidget {
     this.colorPickerColors,
     this.colorPickerType,
     this.theme,
+    this.localizations,
     super.key,
   });
 
@@ -168,10 +176,13 @@ class _ImpaktfullUiColorInputFieldState
   }
 
   Future<void> _onTap() async {
+    final localizations = widget.localizations ??
+        ImpaktfullUiLocalizations.of<ImpaktfullUiColorInputFieldLocalizations>(
+            context);
     final color = await showDialog<Color>(
       context: context,
       builder: (context) => ImpaktfullUiModal(
-        title: 'Select a color',
+        title: localizations.colorPickerTitle,
         child: ImpaktfullUiColorPicker(
           allowedColors: widget.colorPickerColors ?? [],
           type: widget.colorPickerType ?? ImpaktfullUiColorPickerType.simple,

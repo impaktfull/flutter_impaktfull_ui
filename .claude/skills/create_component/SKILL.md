@@ -169,6 +169,51 @@ Components must work in right-to-left layouts (Arabic, Hebrew, ...). Use the dir
 
 `test/src/rtl/rtl_source_guard_test.dart` fails on physical (left/right) layout code in `lib/src/components`. When the physical side is intended, add a `// rtl-ignore: <reason>` comment on the line above.
 
+### 3b. User-facing texts go through localizations (REQUIRED)
+
+Never hardcode a text that users of an app see: `Text('...')`, `tooltip:`, `title:`, `label:`, `placeholder:`, empty states, semantics labels, notifications. `test/src/localizations/hardcoded_strings_test.dart` fails on them. Put them in a localizations class with the English default instead:
+
+```dart
+// lib/src/components/<component_name>/<component_name>.localizations.dart
+import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
+
+class ImpaktfullUi<ComponentName>Localizations
+    extends ImpaktfullUiComponentLocalizations {
+  /// Shown when there are no items.
+  final String noItems;
+
+  /// A text with a value is a function, so every language can place it.
+  final String Function(int amount) amountLabel;
+
+  const ImpaktfullUi<ComponentName>Localizations({
+    this.noItems = 'No items',
+    this.amountLabel = _defaultAmountLabel,
+  });
+
+  static ImpaktfullUi<ComponentName>Localizations of(BuildContext context) =>
+      ImpaktfullUiLocalizations.of<ImpaktfullUi<ComponentName>Localizations>(
+          context);
+
+  ImpaktfullUi<ComponentName>Localizations copyWith({
+    String? noItems,
+    String Function(int amount)? amountLabel,
+  }) =>
+      ImpaktfullUi<ComponentName>Localizations(
+        noItems: noItems ?? this.noItems,
+        amountLabel: amountLabel ?? this.amountLabel,
+      );
+}
+
+String _defaultAmountLabel(int amount) => '$amount items';
+```
+
+- Export it from the component file (`export '<component_name>.localizations.dart';`) and add an optional `final ImpaktfullUi<ComponentName>Localizations? localizations;` parameter to the component.
+- Register it in `ImpaktfullUiLocalizations` (`lib/src/util/localizations/localizations.dart`): a field with a `const` default, the `copyWith` parameter and a branch in `of<T>`.
+- Resolve it in `build`: `final localizations = widget.localizations ?? ImpaktfullUi<ComponentName>Localizations.of(context);` (or wrap the tree in `ImpaktfullUiLocalizationProvider`).
+- Dates, times and numbers use the locale of the app through `ImpaktfullUiLocaleUtil` (`lib/src/util/locale/locale_util.dart`), never a hardcoded pattern like `'dd/MM/yyyy'`, `'HH:mm'` or `'${value}%'`. Use `ImpaktfullUiLocaleUtil.firstDayOfWeek` for weeks and `ImpaktfullUiLocaleUtil.use24HourFormat` for times.
+- Add a test that a custom localization shows up to `test/src/localizations/component_localizations_test.dart`.
+
 ### 4. Register in Theme System
 
 #### Update `lib/src/theme/component_theme.dart`
@@ -324,6 +369,7 @@ If the component has sub-components, indent them:
 - [ ] Create component directory
 - [ ] Create style file
 - [ ] Create main component file (directional APIs only, see Right-to-left support)
+- [ ] Put user-facing texts in `<component_name>.localizations.dart` and register it in `ImpaktfullUiLocalizations`
 - [ ] Register in `component_theme.dart` (5 places)
 - [ ] Add default in `theme_default.dart`
 - [ ] Export in `impaktfull_ui.dart`

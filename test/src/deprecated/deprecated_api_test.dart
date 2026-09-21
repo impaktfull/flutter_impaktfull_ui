@@ -98,6 +98,10 @@ void main() {
         VirtualKeyboardConfig,
         ImpaktfullUiVirtualKeyboardConfig
       ),
+      'ImpaktfullUiBBLicenseLocalizations': (
+        ImpaktfullUiBBLicenseLocalizations,
+        ImpaktfullUiBBLicensesLocalizations
+      ),
     };
     for (final MapEntry(key: name, value: (deprecated, replacement))
         in aliases.entries) {

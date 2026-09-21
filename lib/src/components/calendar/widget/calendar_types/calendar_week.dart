@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calendar_locale_scope.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/week/calendar_week_events.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/week/calendar_week_full_day_events.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/week/calendar_week_legend_days.dart';
@@ -10,6 +11,7 @@ import 'package:impaktfull_ui/src/components/divider/divider.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiCalendarWeek extends StatefulWidget {
@@ -18,12 +20,21 @@ class ImpaktfullUiCalendarWeek extends StatefulWidget {
   final ValueChanged<ImpaktfullUiCalendarEvent> onEventTap;
 
   final ImpaktfullUiCalendarTheme? theme;
+  final ImpaktfullUiCalendarLocalizations? localizations;
+
+  /// The first day of the week ([DateTime.monday] ... [DateTime.sunday]).
+  /// Defaults to the first day of the week of the locale, or Monday.
+  final int? firstDayOfWeek;
+  final bool? use24HourFormat;
 
   const ImpaktfullUiCalendarWeek({
     required this.selectedDate,
     required this.events,
     required this.onEventTap,
     this.theme,
+    this.localizations,
+    this.firstDayOfWeek,
+    this.use24HourFormat,
     super.key,
   });
 
@@ -38,14 +49,33 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
   late List<ImpaktfullUiCalendarEvent> _events;
   late ScrollController _scrollController;
   late DateTime _currentWeekStart;
+  int? _firstDayOfWeek;
 
   @override
   void initState() {
     super.initState();
     _setEvents(widget.events);
     _scrollController = ScrollController();
-    _currentWeekStart = _getWeekStart(widget.selectedDate);
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollTo8AM());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _updateFirstDayOfWeek();
+  }
+
+  void _updateFirstDayOfWeek() {
+    final firstDayOfWeek = ImpaktfullUiLocaleUtil.firstDayOfWeek(
+      context,
+      override: widget.firstDayOfWeek,
+    );
+    if (firstDayOfWeek == _firstDayOfWeek) return;
+    final isFirstTime = _firstDayOfWeek == null;
+    _firstDayOfWeek = firstDayOfWeek;
+    _currentWeekStart = _getWeekStart(
+      isFirstTime ? widget.selectedDate : _currentWeekStart,
+    );
   }
 
   @override
@@ -63,14 +93,25 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
     if (widget.selectedDate != oldWidget.selectedDate) {
       _currentWeekStart = _getWeekStart(widget.selectedDate);
     }
+    if (widget.firstDayOfWeek != oldWidget.firstDayOfWeek) {
+      _updateFirstDayOfWeek();
+    }
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => ImpaktfullUiCalendarLocaleScope(
+        localizations: widget.localizations,
+        use24HourFormat: widget.use24HourFormat,
+        child: Builder(builder: _buildCalendar),
+      );
+
+  Widget _buildCalendar(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
+        final localizations =
+            ImpaktfullUiCalendarLocaleScope.localizationsOf(context);
         final dateRange = DateTimeRange(
           start: _currentWeekStart,
           end: _currentWeekStart.add(const Duration(days: 6)),
@@ -91,7 +132,7 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                         fullWidth: true,
                         type: ImpaktfullUiButtonType.secondaryGrey,
                         size: ImpaktfullUiButtonSize.extraSmall,
-                        title: 'Today',
+                        title: localizations.todayBtn,
                         onTap: _onNowTapped,
                       ),
                       ImpaktfullUiAutoLayout.horizontal(
@@ -201,5 +242,8 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
     setState(() => _currentWeekStart = _currentWeekStart.nextWeek);
   }
 
-  DateTime _getWeekStart(DateTime date) => date.beginningOfTheWeek;
+  DateTime _getWeekStart(DateTime date) => ImpaktfullUiLocaleUtil.startOfWeek(
+        date,
+        _firstDayOfWeek ?? DateTime.monday,
+      );
 }

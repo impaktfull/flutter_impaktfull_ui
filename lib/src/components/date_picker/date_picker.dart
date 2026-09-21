@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/date_picker/date_picker.localizations.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_active_type.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_style.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_type.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_page.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/util/extension/edge_insets_geometry_extension.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
-import 'package:intl/intl.dart';
 
+export 'date_picker.localizations.dart';
 export 'date_picker_style.dart';
 export 'date_picker_type.dart';
 
@@ -22,11 +25,23 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
   final EdgeInsetsGeometry margin;
   final ImpaktfullUiDatePickerTheme? theme;
 
+  /// The texts of the date picker. Defaults to the localizations of the app.
+  final ImpaktfullUiDatePickerLocalizations? localizations;
+
+  /// The first day of the week ([DateTime.monday] ... [DateTime.sunday]).
+  ///
+  /// Defaults to the first day of the week of the locale (see
+  /// `MaterialLocalizations.firstDayOfWeekIndex`), or Monday when the app has
+  /// no localized material localizations.
+  final int? firstDayOfWeek;
+
   const ImpaktfullUiDatePicker({
     required DateTime? selectedDate,
     required ValueChanged<DateTime?> onDateChanged,
     this.margin = EdgeInsets.zero,
     this.theme,
+    this.localizations,
+    this.firstDayOfWeek,
     super.key,
   })  : selectedStartDate = selectedDate,
         selectedEndDate = null,
@@ -41,6 +56,8 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
     required this.onEndDateChanged,
     this.margin = EdgeInsets.zero,
     this.theme,
+    this.localizations,
+    this.firstDayOfWeek,
     super.key,
   }) : type = ImpaktfullUiDatePickerType.range;
 
@@ -54,7 +71,12 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
     bool hasBlurredBackground = false,
     bool isDismissible = false,
     bool rootNavigator = false,
+    ImpaktfullUiDatePickerLocalizations? localizations,
+    int? firstDayOfWeek,
   }) {
+    final datePickerLocalizations = localizations ??
+        ImpaktfullUiLocalizations.of<ImpaktfullUiDatePickerLocalizations>(
+            context);
     var newDate = selectedDate;
     return ImpaktfullUiModal.showSimple(
       context: context,
@@ -71,14 +93,14 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
         Builder(
           builder: (context) => ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.secondaryGrey,
-            title: 'Cancel',
+            title: datePickerLocalizations.cancelBtn,
             onTap: () => Navigator.of(context).pop(),
           ),
         ),
         Builder(
           builder: (context) => ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
-            title: 'Apply',
+            title: datePickerLocalizations.applyBtn,
             onTap: () => Navigator.of(context).pop(newDate),
           ),
         ),
@@ -87,6 +109,8 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
         builder: (context, setState) => ImpaktfullUiDatePicker(
           selectedDate: newDate,
           margin: const EdgeInsets.symmetric(horizontal: 16),
+          localizations: datePickerLocalizations,
+          firstDayOfWeek: firstDayOfWeek,
           onDateChanged: (value) {
             setState(() => newDate = value);
           },
@@ -103,7 +127,12 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
     bool hasBlurredBackground = false,
     bool isDismissible = false,
     bool rootNavigator = false,
+    ImpaktfullUiDatePickerLocalizations? localizations,
+    int? firstDayOfWeek,
   }) {
+    final datePickerLocalizations = localizations ??
+        ImpaktfullUiLocalizations.of<ImpaktfullUiDatePickerLocalizations>(
+            context);
     var newStartDate = selectedStartDate;
     var newEndDate = selectedEndDate;
     return ImpaktfullUiModal.showSimple(
@@ -119,14 +148,14 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
         Builder(
           builder: (context) => ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.secondaryGrey,
-            title: 'Cancel',
+            title: datePickerLocalizations.cancelBtn,
             onTap: () => Navigator.of(context).pop(),
           ),
         ),
         Builder(
           builder: (context) => ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.primary,
-            title: 'Apply',
+            title: datePickerLocalizations.applyBtn,
             onTap: () {
               final startDate = newStartDate;
               final endDate = newEndDate;
@@ -146,6 +175,8 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
           selectedStartDate: newStartDate,
           selectedEndDate: newEndDate,
           margin: const EdgeInsets.symmetric(horizontal: 16),
+          localizations: datePickerLocalizations,
+          firstDayOfWeek: firstDayOfWeek,
           onStartDateChanged: (value) => setState(() => newStartDate = value),
           onEndDateChanged: (value) => setState(() => newEndDate = value),
         ),
@@ -254,6 +285,8 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
                     onEndDateChanged: widget.onEndDateChanged,
                     onChangeActiveType: _onActiveTypeChanged,
                     theme: componentTheme,
+                    firstDayOfWeek: widget.firstDayOfWeek,
+                    localizations: widget.localizations,
                   );
                 },
               ),
@@ -293,11 +326,14 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   String _formatDate(DateTime date) {
     switch (_activeType) {
       case ImpaktfullUiDatePickerActiveType.days:
-        return DateFormat.yMMMM().format(date);
+        return ImpaktfullUiLocaleUtil.formatMonthYear(context, date);
       case ImpaktfullUiDatePickerActiveType.months:
-        return DateFormat.y().format(date);
+        return ImpaktfullUiLocaleUtil.formatYear(context, date);
       case ImpaktfullUiDatePickerActiveType.years:
-        return 'Select a year';
+        final localizations = widget.localizations ??
+            ImpaktfullUiLocalizations.of<ImpaktfullUiDatePickerLocalizations>(
+                context);
+        return localizations.selectYearTitle;
     }
   }
 

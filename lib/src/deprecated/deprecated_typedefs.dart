@@ -120,3 +120,10 @@ typedef HalfCircleProgressPainter = ImpaktfullUiHalfCircleProgressPainter;
 @Deprecated(
     'Use ImpaktfullUiVirtualKeyboardConfig instead. Will be removed in 1.0.0.')
 typedef VirtualKeyboardConfig = ImpaktfullUiVirtualKeyboardConfig;
+
+// Licenses building block localizations (matches ImpaktfullUiBBLicenses)
+
+@Deprecated(
+    'Use ImpaktfullUiBBLicensesLocalizations instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiBBLicenseLocalizations
+    = ImpaktfullUiBBLicensesLocalizations;

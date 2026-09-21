@@ -88,19 +88,39 @@ class ImpaktfullUiBB<Name> extends StatelessWidget {
 
 ### 3. Create Localizations File (`<name>.localizations.dart`)
 
-```dart
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+Every text that users see (titles, labels, placeholders, buttons, tooltips) comes from this class, never from a string literal in the building block. `test/src/localizations/hardcoded_strings_test.dart` fails on hardcoded texts.
 
-class ImpaktfullUiBB<Name>Localizations extends ImpaktfullUiLocalizations {
+```dart
+import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
+
+class ImpaktfullUiBB<Name>Localizations extends ImpaktfullUiBBLocalizations {
   final String title;
   final String subtitle;
+
+  static ImpaktfullUiBB<Name>Localizations of(BuildContext context) =>
+      ImpaktfullUiLocalizations.of<ImpaktfullUiBB<Name>Localizations>(context);
 
   const ImpaktfullUiBB<Name>Localizations({
     this.title = 'Default Title',
     this.subtitle = 'Default subtitle',
   });
+
+  ImpaktfullUiBB<Name>Localizations copyWith({
+    String? title,
+    String? subtitle,
+  }) =>
+      ImpaktfullUiBB<Name>Localizations(
+        title: title ?? this.title,
+        subtitle: subtitle ?? this.subtitle,
+      );
 }
 ```
+
+- The English defaults are the texts of the building block.
+- Import it in `<name>.dart` and export it from there (`export '<name>.localizations.dart';`).
+- Register it in `ImpaktfullUiLocalizations` (`lib/src/util/localizations/localizations.dart`): a `bb<Name>` field with a `const` default, the `copyWith` parameter and a branch in `of<T>`.
+- Add a test that a custom localization shows up to `test/src/localizations/component_localizations_test.dart`.
 
 ### 4. Export the Building Block
 
@@ -192,7 +212,7 @@ endBuilder: (context) {
 
 - [ ] Create building block directory
 - [ ] Create main file
-- [ ] Create localizations file
+- [ ] Create localizations file (every user-facing text) and register it in `ImpaktfullUiLocalizations`
 - [ ] Export in `impaktfull_ui.dart`
 - [ ] Create library item
 - [ ] Register in building block library

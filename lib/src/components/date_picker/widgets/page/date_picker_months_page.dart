@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
-import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_weekdays.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
-import 'package:intl/intl.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 
 class ImpaktfullUiDatePickerMonthsPage extends StatelessWidget {
-  final ImpaktfullUiDatePickerWeekdaysStartDate weekdaysStartDate;
   final DateTime date;
   final DateTime? selectedStartDate;
   final ValueChanged<DateTime> onChanged;
@@ -19,7 +17,6 @@ class ImpaktfullUiDatePickerMonthsPage extends StatelessWidget {
     required this.selectedStartDate,
     required this.onChanged,
     required this.theme,
-    this.weekdaysStartDate = ImpaktfullUiDatePickerWeekdaysStartDate.monday,
     super.key,
   });
 
@@ -51,8 +48,8 @@ class ImpaktfullUiDatePickerMonthsPage extends StatelessWidget {
 
   Future<void> onSelected(DateTime item) async => onChanged(item);
 
-  String _formatDate(DateTime item) {
-    return DateFormat.MMMM().format(item);
+  String _formatDate(BuildContext context, DateTime item) {
+    return ImpaktfullUiLocaleUtil.formatMonth(context, item);
   }
 
   List<Widget> _getWidgetItems(
@@ -69,7 +66,7 @@ class ImpaktfullUiDatePickerMonthsPage extends StatelessWidget {
         rowChildren.add(
           Expanded(
             child: ImpaktfullUiDatePickerCell(
-              value: _formatDate(item),
+              value: _formatDate(context, item),
               fullWidth: true,
               isSelected: selectedStartDate?.isSameMonth(item) ?? false,
               onTap: () => onSelected(item),
