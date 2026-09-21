@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/components/chat/chat.localizations.dart';
 import 'package:impaktfull_ui/src/components/chat/chat_style.dart';
 import 'package:impaktfull_ui/src/components/chat/model/chat_item.dart';
 import 'package:impaktfull_ui/src/components/chat/model/sender/chat_sender_config.dart';
@@ -8,6 +9,7 @@ import 'package:impaktfull_ui/src/components/chat/widget/chat_list_internal_item
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
+export 'chat.localizations.dart';
 export 'chat_style.dart';
 export 'model/chat_item.dart';
 export 'model/chat_status.dart';
@@ -29,6 +31,9 @@ class ImpaktfullUiChat extends StatefulWidget {
   final bool shrinkWrap;
   final ImpaktfullUiChatTheme? theme;
 
+  /// The texts of the chat. Defaults to the localizations of the app.
+  final ImpaktfullUiChatLocalizations? localizations;
+
   const ImpaktfullUiChat({
     required List<ImpaktfullUiChatItem> this.items,
     required this.senderConfig,
@@ -37,6 +42,7 @@ class ImpaktfullUiChat extends StatefulWidget {
     this.itemBuilder,
     this.shrinkWrap = false,
     this.theme,
+    this.localizations,
     super.key,
   }) : itemsStream = null;
 
@@ -48,6 +54,7 @@ class ImpaktfullUiChat extends StatefulWidget {
     this.itemBuilder,
     this.shrinkWrap = false,
     this.theme,
+    this.localizations,
     super.key,
   }) : items = null;
 
@@ -110,6 +117,7 @@ class _ImpaktfullUiChatState extends State<ImpaktfullUiChat> {
           theme: componentTheme,
           itemBuilder: widget.itemBuilder,
           senderIdsTyping: _senderIdsTyping,
+          localizations: widget.localizations,
         ),
       ),
     );

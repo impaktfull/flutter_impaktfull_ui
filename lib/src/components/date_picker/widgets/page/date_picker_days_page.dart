@@ -6,9 +6,13 @@ import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_wee
 import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 
 class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
-  final ImpaktfullUiDatePickerWeekdaysStartDate weekdaysStartDate;
+  /// [DateTime.monday] ... [DateTime.sunday], defaults to the locale.
+  final int? firstDayOfWeek;
+  final ImpaktfullUiDatePickerLocalizations? localizations;
   final DateTime date;
   final DateTime? selectedStartDate;
   final DateTime? selectedEndDate;
@@ -21,7 +25,8 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
     required this.onSelected,
     required this.theme,
     this.selectedEndDate,
-    this.weekdaysStartDate = ImpaktfullUiDatePickerWeekdaysStartDate.monday,
+    this.firstDayOfWeek,
+    this.localizations,
     super.key,
   });
 
@@ -33,7 +38,7 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ImpaktfullUiDatePickerWeekdays(
-            startDate: weekdaysStartDate,
+            firstDayOfWeek: _getFirstDayOfWeek(context),
             theme: componentTheme,
           ),
           Flexible(
@@ -44,12 +49,12 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
               child: ImpaktfullUiGridView.builder(
                 scrollPhysics: const NeverScrollableScrollPhysics(),
                 items: _getItems(context),
-                placeholderData: const ImpaktfullUiGridViewPlaceholderData(
-                  title: 'No Days',
+                placeholderData: ImpaktfullUiGridViewPlaceholderData(
+                  title: _getLocalizations(context).noDays,
                 ),
                 itemBuilder: (context, item, index) =>
                     ImpaktfullUiDatePickerCell(
-                  value: item.day.toString(),
+                  value: ImpaktfullUiLocaleUtil.formatDay(context, item),
                   active: item.isSameMonth(date),
                   isSelected: _isSelected(item),
                   type: _getCellType(item),
@@ -65,18 +70,27 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
     );
   }
 
+  int _getFirstDayOfWeek(BuildContext context) =>
+      ImpaktfullUiLocaleUtil.firstDayOfWeek(context, override: firstDayOfWeek);
+
+  ImpaktfullUiDatePickerLocalizations _getLocalizations(BuildContext context) =>
+      localizations ??
+      ImpaktfullUiLocalizations.of<ImpaktfullUiDatePickerLocalizations>(
+          context);
+
   List<DateTime> _getItems(BuildContext context) {
     final dates = <DateTime>[];
     final daysPageDateMonth = date.getDaysInMonth();
     final days = List.generate(
         daysPageDateMonth, (index) => date.copyWith(day: index + 1));
-    final firstWeekday = days.first.weekday;
+    final amountOfDaysBeforeMonth = ImpaktfullUiLocaleUtil.daysSinceStartOfWeek(
+        days.first, _getFirstDayOfWeek(context));
 
     // Add days from previous month
-    if (firstWeekday != 0) {
+    if (amountOfDaysBeforeMonth != 0) {
       final previousMonth = date.getPreviousMonth();
       final daysPreviousMonth = previousMonth.getDaysInMonth();
-      final daysBeforeMonth = List.generate(firstWeekday - 1,
+      final daysBeforeMonth = List.generate(amountOfDaysBeforeMonth,
               (index) => previousMonth.copyWith(day: daysPreviousMonth - index))
           .reversed;
       dates.addAll(daysBeforeMonth);

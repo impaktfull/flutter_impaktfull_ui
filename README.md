@@ -285,6 +285,73 @@ Every component supports right-to-left layouts (e.g. Arabic or Hebrew). They fol
 - Directional icons (back, previous/next arrows and chevrons) point in the reading direction. Mark your own directional assets with `ImpaktfullUiAsset.icon(icon, matchTextDirection: true)` (or `asset.copyWith(matchTextDirection: true)`) to mirror them in a right-to-left layout.
 - Location enums with left and right in their name (`ImpaktfullUiNotificationBadgeLocation`, `ImpaktfullUiDropdownAlignment`) follow the reading direction: in a right-to-left layout `topRight` is the top left corner.
 
+### Localization
+
+Every text of the components and building blocks (buttons, tooltips, empty states, semantics labels) comes from a localizations class with English defaults, e.g. `ImpaktfullUiDatePickerLocalizations` or `ImpaktfullUiBBLoginLocalizations`. `ImpaktfullUiLocalizations` groups all of them.
+
+#### Translate the whole app
+
+Pass your translations to `ImpaktfullUiApp`. Only pass what you translate, the rest stays English:
+
+```dart
+ImpaktfullUiApp(
+  title: 'My App',
+  locale: const Locale('nl'),
+  supportedLocales: const [Locale('en'), Locale('nl')],
+  localizationsDelegates: GlobalMaterialLocalizations.delegates,
+  localizations: ImpaktfullUiLocalizations(
+    datePicker: const ImpaktfullUiDatePickerLocalizations(
+      cancelBtn: 'Annuleren',
+      applyBtn: 'Toepassen',
+      selectYearTitle: 'Kies een jaar',
+    ),
+    pagination: ImpaktfullUiPaginationLocalizations(
+      pageLabel: (page, amountOfPages) => 'Pagina $page van $amountOfPages',
+    ),
+    bbLogin: const ImpaktfullUiBBLoginLocalizations(
+      title: 'Welkom terug!',
+      loginBtn: 'Inloggen',
+    ),
+  ),
+  home: const MyHomeScreen(),
+);
+```
+
+Texts with a value (`Page 1 of 10`, `(2/3 days)`, `John is typing`) are functions, so every language can place the value (and handle plurals) where it needs to. To support more than one language, build `ImpaktfullUiLocalizations` for the current locale (e.g. from your own `AppLocalizations`) and pass it again when the locale changes. Use `copyWith` to change a single text:
+
+```dart
+const ImpaktfullUiLocalizations().copyWith(
+  navBar: const ImpaktfullUiNavBarLocalizations().copyWith(backTooltip: 'Terug'),
+);
+```
+
+#### Translate a single widget
+
+Every component with texts has a `localizations` parameter that wins over the ones of the app:
+
+```dart
+ImpaktfullUiPagination(
+  page: 0,
+  itemsPerPage: 20,
+  amountOfItems: 200,
+  onLoadPage: _onLoadPage,
+  localizations: ImpaktfullUiPaginationLocalizations(
+    pageLabel: (page, amountOfPages) => '$page / $amountOfPages',
+  ),
+);
+```
+
+`ImpaktfullUiDatePicker.showModal`, `ImpaktfullUiDateTimePicker.showModal` and `ImpaktfullUiOptionSelector.show` take a `localizations` parameter too.
+
+#### Dates, times and numbers
+
+Dates, times, weekday and month names and percentages are formatted with [intl](https://pub.dev/packages/intl) in the locale of the app (`Localizations.localeOf(context)`):
+
+- The locale needs `intl` date data. Register `GlobalMaterialLocalizations.delegates` (from `flutter_localizations`), which loads it for every supported locale, or call `initializeDateFormatting()` from `package:intl/date_symbol_data_local.dart`. Without data for the locale the components fall back to the default `intl` locale.
+- The first day of the week of `ImpaktfullUiDatePicker` and `ImpaktfullUiCalendar` comes from `MaterialLocalizations.firstDayOfWeekIndex` (Sunday for `en` and `en_US`, Monday for `nl`, `fr` and `en_GB`). Apps without localized material localizations keep Monday. Pass `firstDayOfWeek: DateTime.monday` to choose it yourself.
+- Short dates use `DateFormat.yMd` (`7/6/2023` for `en_US`, `6-7-2023` for `nl`). The plain `en` locale, the default of `ImpaktfullUiApp`, keeps `dd/MM/yyyy`. `ImpaktfullUiDateInputField(dateFormat: 'd MMMM y')` still takes a pattern.
+- Times use 24 hours when `MediaQuery.alwaysUse24HourFormat` is set or the locale uses 24 hours (the plain `en` locale keeps 24 hours). `ImpaktfullUiTimePicker`, `ImpaktfullUiDateTimePicker` and `ImpaktfullUiCalendar` take `use24HourFormat` to choose it yourself; with 12 hours the time picker shows an AM/PM toggle.
+
 ### Assets
 
 #### Images

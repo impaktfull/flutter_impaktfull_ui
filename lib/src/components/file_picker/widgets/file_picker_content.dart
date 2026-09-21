@@ -6,6 +6,8 @@ import 'package:impaktfull_ui/src/components/file_picker/file_picker.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
 import 'package:impaktfull_ui/src/util/file_size/file_size_calculation_util.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 
 class ImpaktfullUiFilePickerContent extends StatelessWidget {
   final ImpaktfullUiFilePickerData data;
@@ -14,6 +16,7 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
   final WidgetBuilder? leadingBuilder;
   final VoidCallback? onDeleteTapped;
   final VoidCallback? onRetryTapped;
+  final ImpaktfullUiFilePickerLocalizations? localizations;
 
   const ImpaktfullUiFilePickerContent({
     required this.data,
@@ -22,11 +25,15 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
     this.leadingBuilder,
     this.onDeleteTapped,
     this.onRetryTapped,
+    this.localizations,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final localizations = this.localizations ??
+        ImpaktfullUiLocalizations.of<ImpaktfullUiFilePickerLocalizations>(
+            context);
     final showTextProgress =
         data.progress != null && progressType.textProgressOnly;
     final showLineProgress = data.progress != null && progressType.showLine;
@@ -74,7 +81,8 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
                                       if (data.size != null) ...[
                                         TextSpan(
                                             text: FileSizeCalculationUtil
-                                                .calculateFileSize(data.size!)),
+                                                .calculateFileSize(data.size!,
+                                                    context: context)),
                                       ],
                                       if (data.size != null &&
                                           showTextProgress) ...[
@@ -82,20 +90,21 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
                                       ],
                                       if (showTextProgress) ...[
                                         TextSpan(
-                                            text:
-                                                '${(data.progress! * 100).round()}%'),
+                                            text: ImpaktfullUiLocaleUtil
+                                                .formatPercentage(
+                                                    context, data.progress!)),
                                       ]
                                     ],
                                   ),
                                 ),
                               ] else ...[
                                 Text(
-                                  'Failed to upload, please try again later',
+                                  localizations.uploadFailed,
                                   style: componentTheme.textStyles.subtitle,
                                 ),
                                 ImpaktfullUiButton(
                                   type: ImpaktfullUiButtonType.linkGrey,
-                                  title: 'Retry',
+                                  title: localizations.retryBtn,
                                   onTap: onRetryTapped,
                                 ),
                               ]

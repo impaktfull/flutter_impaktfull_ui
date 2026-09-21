@@ -72,7 +72,8 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
           ),
         ),
         Text(
-          FileSizeCalculationUtil.calculateFileSize(_imageBytes!.length),
+          FileSizeCalculationUtil.calculateFileSize(_imageBytes!.length,
+              context: context),
           style: theme.textStyles.onCanvas.text.small,
         ),
       ],

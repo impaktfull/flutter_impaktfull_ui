@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calendar_locale_scope.dart';
 import 'package:impaktfull_ui/src/components/divider/divider.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiCalendarWeekLegendHours extends StatelessWidget {
@@ -36,7 +38,12 @@ class ImpaktfullUiCalendarWeekLegendHours extends StatelessWidget {
                           Positioned(
                             top: -10,
                             child: Text(
-                              '${(i + 1).toString().padLeft(2, '0')}:00',
+                              ImpaktfullUiLocaleUtil.formatHour(
+                                context,
+                                DateTime(2000, 1, 1, i + 1),
+                                use24HourFormat: ImpaktfullUiCalendarLocaleScope
+                                    .use24HourFormatOf(context),
+                              ),
                               style: componentTheme.textStyles.sectionTitle,
                             ),
                           ),

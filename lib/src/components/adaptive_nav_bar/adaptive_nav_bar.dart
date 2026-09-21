@@ -19,6 +19,14 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget {
   final Widget? bottomChild;
   final List<ImpaktfullUiAdaptiveNavBarActionItem> actions;
 
+  /// The texts of the nav bar on small screens. Defaults to the localizations
+  /// of the app.
+  final ImpaktfullUiNavBarLocalizations? navBarLocalizations;
+
+  /// The texts of the header on medium and bigger screens. Defaults to the
+  /// localizations of the app.
+  final ImpaktfullUiCmsHeaderLocalizations? cmsHeaderLocalizations;
+
   const ImpaktfullUiAdaptiveNavBar({
     this.title,
     this.badge,
@@ -28,6 +36,8 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget {
     this.bottomChild,
     this.isDrawerOpen = false,
     this.actions = const [],
+    this.navBarLocalizations,
+    this.cmsHeaderLocalizations,
     super.key,
   });
 
@@ -66,6 +76,7 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget {
         onDrawerTapped: onDrawerTapped,
         isDrawerOpen: isDrawerOpen,
         actions: actions.map((e) => e.small()).toList(),
+        localizations: navBarLocalizations,
       ),
       medium: (context) => ImpaktfullUiCmsHeader(
         title: title,
@@ -76,6 +87,7 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget {
         onDrawerTapped: onDrawerTapped,
         isDrawerOpen: isDrawerOpen,
         actions: actions.map((e) => e.medium()).toList(),
+        localizations: cmsHeaderLocalizations,
       ),
     );
   }

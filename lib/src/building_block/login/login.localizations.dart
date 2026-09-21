@@ -24,4 +24,27 @@ class ImpaktfullUiBBLoginLocalizations extends ImpaktfullUiBBLocalizations {
     this.loginBtn = 'Login',
     this.createNewAccountBtn = 'Create new account',
   });
+
+  ImpaktfullUiBBLoginLocalizations copyWith({
+    String? title,
+    String? subtitle,
+    String? emailInputLabel,
+    String? emailInputPlaceholder,
+    String? passwordInputLabel,
+    String? passwordInputPlaceholder,
+    String? loginBtn,
+    String? createNewAccountBtn,
+  }) =>
+      ImpaktfullUiBBLoginLocalizations(
+        title: title ?? this.title,
+        subtitle: subtitle ?? this.subtitle,
+        emailInputLabel: emailInputLabel ?? this.emailInputLabel,
+        emailInputPlaceholder:
+            emailInputPlaceholder ?? this.emailInputPlaceholder,
+        passwordInputLabel: passwordInputLabel ?? this.passwordInputLabel,
+        passwordInputPlaceholder:
+            passwordInputPlaceholder ?? this.passwordInputPlaceholder,
+        loginBtn: loginBtn ?? this.loginBtn,
+        createNewAccountBtn: createNewAccountBtn ?? this.createNewAccountBtn,
+      );
 }

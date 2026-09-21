@@ -8,10 +8,15 @@ class ImpaktfullUiGalleryFullScreen extends StatefulWidget {
   final ImpaktfullUiGalleryItem initialItem;
   final ImpaktfullUiGalleryTheme theme;
 
+  /// The texts of the fullscreen gallery. Defaults to the localizations of
+  /// the app.
+  final ImpaktfullUiGalleryLocalizations? localizations;
+
   const ImpaktfullUiGalleryFullScreen({
     required this.items,
     required this.initialItem,
     required this.theme,
+    this.localizations,
     super.key,
   });
   static void show({
@@ -20,6 +25,7 @@ class ImpaktfullUiGalleryFullScreen extends StatefulWidget {
     required List<ImpaktfullUiGalleryItem> items,
     required ImpaktfullUiGalleryItem initialItem,
     bool barrierDismissible = true,
+    ImpaktfullUiGalleryLocalizations? localizations,
   }) =>
       Navigator.of(context).push(
         PageRouteBuilder(
@@ -29,6 +35,7 @@ class ImpaktfullUiGalleryFullScreen extends StatefulWidget {
             items: items,
             initialItem: initialItem,
             theme: componentTheme,
+            localizations: localizations,
           ),
         ),
       );
@@ -71,6 +78,8 @@ class _ImpaktfullUiGalleryFullScreenState
 
   @override
   Widget build(BuildContext context) {
+    final localizations =
+        widget.localizations ?? ImpaktfullUiGalleryLocalizations.of(context);
     return KeyboardListener(
       focusNode: _focusNode,
       onKeyEvent: (event) {
@@ -121,7 +130,7 @@ class _ImpaktfullUiGalleryFullScreenState
                 onTap: () => Navigator.of(context).pop(),
                 asset: componentTheme.assets.close,
                 color: componentTheme.colors.icons,
-                tooltip: 'Close fullscreen',
+                tooltip: localizations.closeFullscreenTooltip,
               ),
             ),
             if (_currentIndex > 0)
@@ -134,7 +143,7 @@ class _ImpaktfullUiGalleryFullScreenState
                     backgroundColor: componentTheme.colors.iconButtonBackground,
                     asset: componentTheme.assets.arrowLeft
                         .copyWith(matchTextDirection: true),
-                    tooltip: 'Previous',
+                    tooltip: localizations.previousTooltip,
                     color: componentTheme.colors.icons,
                   ),
                 ),
@@ -149,7 +158,7 @@ class _ImpaktfullUiGalleryFullScreenState
                     backgroundColor: componentTheme.colors.iconButtonBackground,
                     asset: componentTheme.assets.arrowRight
                         .copyWith(matchTextDirection: true),
-                    tooltip: 'Next',
+                    tooltip: localizations.nextTooltip,
                     color: componentTheme.colors.icons,
                   ),
                 ),

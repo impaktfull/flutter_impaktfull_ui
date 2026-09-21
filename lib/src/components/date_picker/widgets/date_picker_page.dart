@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_active_type.dart';
-import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_weekdays.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_days_page.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_months_page.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_years_page.dart';
@@ -9,7 +8,8 @@ import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiDatePickerPage extends StatelessWidget {
-  final ImpaktfullUiDatePickerWeekdaysStartDate weekdaysStartDate;
+  final int? firstDayOfWeek;
+  final ImpaktfullUiDatePickerLocalizations? localizations;
   final DateTime date;
   final ImpaktfullUiDatePickerActiveType activeType;
   final EdgeInsetsGeometry margin;
@@ -30,7 +30,8 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
     required this.onStartDateChanged,
     required this.onEndDateChanged,
     required this.theme,
-    this.weekdaysStartDate = ImpaktfullUiDatePickerWeekdaysStartDate.monday,
+    this.firstDayOfWeek,
+    this.localizations,
     this.onChangeActiveType,
     super.key,
   });
@@ -52,6 +53,8 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
                   selectedStartDate: selectedStartDate,
                   selectedEndDate: selectedEndDate,
                   onSelected: _onSelected,
+                  firstDayOfWeek: firstDayOfWeek,
+                  localizations: localizations,
                 );
               case ImpaktfullUiDatePickerActiveType.months:
                 return ImpaktfullUiDatePickerMonthsPage(

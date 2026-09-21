@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiChatListItemDateLabel extends StatelessWidget {
@@ -34,7 +35,7 @@ class ImpaktfullUiChatListItemDateLabel extends StatelessWidget {
                 vertical: 4,
               ),
               child: Text(
-                _getDateLabel(),
+                _getDateLabel(context),
                 style: componentTheme.textStyles.dateLabel,
               ),
             ),
@@ -45,5 +46,6 @@ class ImpaktfullUiChatListItemDateLabel extends StatelessWidget {
     );
   }
 
-  String _getDateLabel() => item.timestamp.format('dd/MM/yyyy');
+  String _getDateLabel(BuildContext context) =>
+      ImpaktfullUiLocaleUtil.formatShortDate(context, item.timestamp);
 }

@@ -17,4 +17,17 @@ class ImpaktfullUiNavBarLocalizations
     this.drawerOpenTooltip = 'Open Drawer',
     this.drawerCloseTooltip = 'Close Drawer',
   });
+
+  ImpaktfullUiNavBarLocalizations copyWith({
+    String? backTooltip,
+    String? closeTooltip,
+    String? drawerOpenTooltip,
+    String? drawerCloseTooltip,
+  }) =>
+      ImpaktfullUiNavBarLocalizations(
+        backTooltip: backTooltip ?? this.backTooltip,
+        closeTooltip: closeTooltip ?? this.closeTooltip,
+        drawerOpenTooltip: drawerOpenTooltip ?? this.drawerOpenTooltip,
+        drawerCloseTooltip: drawerCloseTooltip ?? this.drawerCloseTooltip,
+      );
 }

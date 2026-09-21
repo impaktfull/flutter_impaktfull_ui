@@ -8,12 +8,14 @@ class WysiwygActionItem extends StatelessWidget {
   final List<ImpaktfullUiWysiwygAction> actions;
   final ImpaktfullUiAsset asset;
   final VoidCallback onTap;
+  final ImpaktfullUiWysiwygLocalizations localizations;
 
   const WysiwygActionItem({
     required this.action,
     required this.actions,
     required this.asset,
     required this.onTap,
+    required this.localizations,
     super.key,
   });
 
@@ -22,7 +24,7 @@ class WysiwygActionItem extends StatelessWidget {
     if (!actions.contains(action)) return const SizedBox();
     return ImpaktfullUiIconButton(
       asset: asset,
-      tooltip: action.tooltip,
+      tooltip: localizations.tooltipFor(action),
       onTap: onTap,
     );
   }

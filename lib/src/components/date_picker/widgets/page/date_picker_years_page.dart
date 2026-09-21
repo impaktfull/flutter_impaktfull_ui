@@ -3,12 +3,10 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
-import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_weekdays.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
-import 'package:intl/intl.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 
 class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
-  final ImpaktfullUiDatePickerWeekdaysStartDate weekdaysStartDate;
   final DateTime date;
   final DateTime? selectedStartDate;
   final ValueChanged<DateTime> onChanged;
@@ -19,7 +17,6 @@ class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
     required this.selectedStartDate,
     required this.onChanged,
     required this.theme,
-    this.weekdaysStartDate = ImpaktfullUiDatePickerWeekdaysStartDate.monday,
     super.key,
   });
 
@@ -56,8 +53,8 @@ class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
 
   Future<void> onSelected(DateTime item) async => onChanged(item);
 
-  String _formatDate(DateTime item) {
-    return DateFormat.y().format(item);
+  String _formatDate(BuildContext context, DateTime item) {
+    return ImpaktfullUiLocaleUtil.formatYear(context, item);
   }
 
   List<Widget> _getWidgetItems(
@@ -74,7 +71,7 @@ class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
         rowChildren.add(
           Expanded(
             child: ImpaktfullUiDatePickerCell(
-              value: _formatDate(item),
+              value: _formatDate(context, item),
               fullWidth: true,
               isSelected: selectedStartDate?.isSameYear(item) ?? false,
               onTap: () => onSelected(item),

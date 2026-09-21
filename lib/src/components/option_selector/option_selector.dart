@@ -5,9 +5,11 @@ import 'package:impaktfull_ui/src/components/option_selector/option_selector.dar
 import 'package:impaktfull_ui/src/components/page_route/adaptive/adaptive_page_route.dart';
 import 'package:impaktfull_ui/src/components/screen/screen.dart';
 import 'package:impaktfull_ui/src/components/selectable_list_item/selectable_list_item.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 import 'package:impaktfull_ui/src/util/responsive/responsive_extension.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
+export 'option_selector.localizations.dart';
 export 'option_selector_style.dart';
 
 class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
@@ -17,12 +19,17 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
   final EdgeInsetsGeometry padding;
   final ImpaktfullUiOptionSelectorTheme? theme;
 
+  /// The texts of the option selector. Defaults to the localizations of the
+  /// app.
+  final ImpaktfullUiOptionSelectorLocalizations? localizations;
+
   const ImpaktfullUiOptionSelector({
     required this.options,
     this.titleBuilder,
     this.selectedValue,
     this.padding = EdgeInsets.zero,
     this.theme,
+    this.localizations,
     super.key,
   });
 
@@ -33,6 +40,7 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
     String Function(T)? titleBuilder,
     T? selectedValue,
     String? subtitle,
+    ImpaktfullUiOptionSelectorLocalizations? localizations,
   }) async {
     if (context.isMediumScreenOrBigger) {
       return ImpaktfullUiModal.showSimple(
@@ -49,6 +57,7 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
             titleBuilder: titleBuilder,
             options: options,
             selectedValue: selectedValue,
+            localizations: localizations,
           ),
         ),
       );
@@ -64,6 +73,7 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
             options: options,
             selectedValue: selectedValue,
             padding: const EdgeInsets.symmetric(vertical: 8),
+            localizations: localizations,
           ),
         ),
       ),
@@ -79,6 +89,9 @@ class _ImpaktfullUiOptionSelectorState<T>
     extends State<ImpaktfullUiOptionSelector<T>> {
   @override
   Widget build(BuildContext context) {
+    final localizations = widget.localizations ??
+        ImpaktfullUiLocalizations.of<ImpaktfullUiOptionSelectorLocalizations>(
+            context);
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
@@ -96,8 +109,8 @@ class _ImpaktfullUiOptionSelectorState<T>
             },
           );
         },
-        placeholderData: const ImpaktfullUiListViewPlaceholderData(
-          title: 'No options',
+        placeholderData: ImpaktfullUiListViewPlaceholderData(
+          title: localizations.noOptions,
         ),
       ),
     );

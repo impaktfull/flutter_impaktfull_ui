@@ -24,6 +24,7 @@ class ImpaktfullUiWysiwygInputField extends StatefulWidget {
   final ValueChanged<bool>? onFocusChanged;
   final ValueChanged<String>? onSubmit;
   final ImpaktfullUiWysiwygTheme? theme;
+  final ImpaktfullUiWysiwygLocalizations? localizations;
 
   const ImpaktfullUiWysiwygInputField({
     required this.value,
@@ -39,6 +40,7 @@ class ImpaktfullUiWysiwygInputField extends StatefulWidget {
     this.onSubmit,
     this.autofocus = false,
     this.theme,
+    this.localizations,
     super.key,
   });
 
@@ -169,6 +171,7 @@ class _ImpaktfullUiWysiwygInputFieldState
                     onChangedText: _onChangedTextFromAction,
                     componentTheme: componentTheme,
                     textSelected: _controller.selection,
+                    localizations: widget.localizations,
                   ),
                 ],
               ),

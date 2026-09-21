@@ -4,8 +4,10 @@ import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/widget/wysiwyg_input.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/widget/wysiwyg_preview.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
+export 'wysiwyg.localizations.dart';
 export 'wysiwyg_style.dart';
 export 'model/wysiwyg_type.dart';
 export 'model/wysiwyg_action.dart';
@@ -18,6 +20,9 @@ class ImpaktfullUiWysiwyg extends StatefulWidget {
   final List<ImpaktfullUiWysiwygAction> actions;
   final ImpaktfullUiWysiwygTheme? theme;
 
+  /// The texts of the editor. Defaults to the localizations of the app.
+  final ImpaktfullUiWysiwygLocalizations? localizations;
+
   const ImpaktfullUiWysiwyg({
     required this.text,
     required this.onChanged,
@@ -25,6 +30,7 @@ class ImpaktfullUiWysiwyg extends StatefulWidget {
     this.type = ImpaktfullUiWysiwygType.markdown,
     this.actions = ImpaktfullUiWysiwygAction.basicValues,
     this.theme,
+    this.localizations,
     super.key,
   });
 
@@ -37,6 +43,8 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = widget.localizations ??
+        ImpaktfullUiLocalizations.of<ImpaktfullUiWysiwygLocalizations>(context);
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
@@ -51,13 +59,13 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
                 if (_showPreview) ...[
                   ImpaktfullUiButton(
                     type: ImpaktfullUiButtonType.secondaryGrey,
-                    title: 'Editor',
+                    title: localizations.editorBtn,
                     onTap: _onEditorTapped,
                   ),
                 ] else ...[
                   ImpaktfullUiButton(
                     type: ImpaktfullUiButtonType.secondaryGrey,
-                    title: 'Preview',
+                    title: localizations.previewBtn,
                     onTap: _onPreviewTapped,
                   ),
                 ],
@@ -75,6 +83,7 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
               actions: widget.actions,
               value: widget.text,
               onChanged: widget.onChanged,
+              localizations: localizations,
             ),
           ],
         ],

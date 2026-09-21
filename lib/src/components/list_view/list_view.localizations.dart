@@ -7,4 +7,11 @@ class ImpaktfullUiListViewLocalizations
   const ImpaktfullUiListViewLocalizations({
     this.refreshBtnLabel = 'Refresh',
   });
+
+  ImpaktfullUiListViewLocalizations copyWith({
+    String? refreshBtnLabel,
+  }) =>
+      ImpaktfullUiListViewLocalizations(
+        refreshBtnLabel: refreshBtnLabel ?? this.refreshBtnLabel,
+      );
 }
