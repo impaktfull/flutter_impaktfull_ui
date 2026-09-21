@@ -8,8 +8,9 @@ import 'package:impaktfull_ui/src/components/interaction_feedback/hover_feedback
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
-export 'model/file_picker_data.dart';
 export 'file_picker_style.dart';
+export 'model/file_picker_data.dart';
+export 'model/file_picker_progress_type.dart';
 
 class ImpaktfullUiFilePicker extends StatelessWidget {
   final String? title;

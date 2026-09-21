@@ -3,7 +3,6 @@ import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/file_picker/file_picker.dart';
-import 'package:impaktfull_ui/src/components/file_picker/model/file_picker_progress_type.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
 import 'package:impaktfull_ui/src/util/file_size/file_size_calculation_util.dart';

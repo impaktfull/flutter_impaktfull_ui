@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/auto_complete/controller/auto_complete_controller_listener.dart';
 import 'package:impaktfull_ui/src/components/auto_complete/widget/auto_complete_overlay.dart';
 
 export 'auto_complete_style.dart';
 export 'controller/auto_complete_controller.dart';
+export 'controller/auto_complete_controller_listener.dart';
 
 class ImpaktfullUiAutoComplete<T> extends StatefulWidget {
   final ImpaktfullUiAutoCompleteController? controller;

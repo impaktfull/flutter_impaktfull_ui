@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/grid_view/grid_view.localizations.dart';
 import 'package:impaktfull_ui/src/components/localization/localization_configurator.dart';
 
 abstract class ImpaktfullUiCoreLocalizations {

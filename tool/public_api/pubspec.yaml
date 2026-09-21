@@ -1,0 +1,11 @@
+name: public_api_check
+description: "Fails when the public API of impaktfull_ui references a type of the package that is not exported."
+publish_to: none
+version: 0.0.1
+
+environment:
+  sdk: ">=3.4.1 <4.0.0"
+
+dependencies:
+  analyzer: ^14.4.0
+  path: ^1.9.0
