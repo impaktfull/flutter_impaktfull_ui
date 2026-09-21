@@ -48,7 +48,7 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
               AnimatedAlign(
                 duration: const Duration(milliseconds: 200),
                 curve: Curves.easeInOut,
-                alignment: Alignment(
+                alignment: AlignmentDirectional(
                   items.length == 1
                       ? 0
                       : -1 + (2 * selectedIndex / (items.length - 1)),
@@ -57,9 +57,9 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
                 child: FractionallySizedBox(
                   widthFactor: 1 / items.length,
                   child: Container(
-                    margin: EdgeInsets.only(
-                      left: selectedIndex == 0 ? 0 : 2,
-                      right: selectedIndex == items.length - 1 ? 0 : 2,
+                    margin: EdgeInsetsDirectional.only(
+                      start: selectedIndex == 0 ? 0 : 2,
+                      end: selectedIndex == items.length - 1 ? 0 : 2,
                     ),
                     decoration: BoxDecoration(
                       color: componentTheme.colors.activeBackground,

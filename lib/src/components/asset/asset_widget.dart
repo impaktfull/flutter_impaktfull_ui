@@ -28,7 +28,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final asset = this.asset;
     if (asset == null) return const SizedBox();
-    return SizedBox(
+    final child = SizedBox(
       width: width ?? size,
       height: height ?? size,
       child: Builder(
@@ -100,6 +100,20 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
         },
       ),
     );
+    if (_shouldMirror(context, asset)) {
+      return Transform.flip(
+        flipX: true,
+        child: child,
+      );
+    }
+    return child;
+  }
+
+  static bool _shouldMirror(BuildContext context, ImpaktfullUiAsset asset) {
+    if (!asset.matchTextDirection) return false;
+    // Icon already mirrors IconData with matchTextDirection itself.
+    if (asset.icon?.matchTextDirection == true) return false;
+    return Directionality.maybeOf(context) == TextDirection.rtl;
   }
 
   ImpaktfullUiAssetWidget overrideColor(Color color) {

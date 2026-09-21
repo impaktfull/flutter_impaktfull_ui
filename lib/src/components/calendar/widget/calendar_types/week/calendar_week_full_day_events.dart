@@ -77,11 +77,11 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
                             final dayOffset = _dayOffsets[dayIndex] ?? 0;
                             final amountOfDays =
                                 _getVisibleDays(event)!.$2 - dayIndex + 1;
-                            return Positioned(
+                            return PositionedDirectional(
                               top: (eventIndex + dayOffset) *
                                   componentTheme
                                       .dimens.weekEventMinHeightExtraSmall,
-                              left: dayIndex * widthPerDay,
+                              start: dayIndex * widthPerDay,
                               width: widthPerDay * amountOfDays,
                               child: Padding(
                                 padding:

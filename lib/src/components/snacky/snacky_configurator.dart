@@ -31,9 +31,10 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
       builder: (context, componentTheme) {
         final languageCode = locale?.languageCode;
         final textDirection = languageCode == null
-            ? TextDirection.ltr
+            ? Directionality.maybeOf(context) ?? TextDirection.ltr
             : intl.Bidi.isRtlLanguage(languageCode)
                 ? TextDirection.rtl
+                // rtl-ignore: the direction of a left-to-right locale.
                 : TextDirection.ltr;
         final snackyBuilder = this.snackyBuilder ??
             ImpaktfullUiSnackyBuilder(

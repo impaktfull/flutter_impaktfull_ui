@@ -224,19 +224,14 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                         children: [
                           if (widget.topBuilder != null) ...[
                             Padding(
-                              padding: const EdgeInsets.only(
-                                top: 8,
-                                bottom: 8,
-                                left: 8,
-                                right: 8,
-                              ),
+                              padding: const EdgeInsets.all(8),
                               child: widget.topBuilder!(context),
                             ),
                           ],
                           Padding(
-                            padding: EdgeInsets.only(
-                              left: 16,
-                              right: trailingInputActions.isEmpty ? 16 : 4,
+                            padding: EdgeInsetsDirectional.only(
+                              start: 16,
+                              end: trailingInputActions.isEmpty ? 16 : 4,
                             ),
                             child: ImpaktfullUiAutoLayout.horizontal(
                               crossAxisAlignment: CrossAxisAlignment.center,

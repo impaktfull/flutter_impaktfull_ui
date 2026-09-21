@@ -202,9 +202,9 @@ class ImpaktfullUiMetric extends StatelessWidget {
               ],
             ),
             if (onMoreTapped != null) ...[
-              Positioned(
+              PositionedDirectional(
                 top: 4,
-                right: 4,
+                end: 4,
                 child: ImpaktfullUiIconButton(
                   asset: componentTheme.assets.more,
                   onTap: onMoreTapped!,

@@ -97,11 +97,13 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                       ImpaktfullUiAutoLayout.horizontal(
                         children: [
                           ImpaktfullUiIconButton(
-                            asset: componentTheme.assets.chevronLeft,
+                            asset: componentTheme.assets.chevronLeft
+                                .copyWith(matchTextDirection: true),
                             onTap: _onPreviousWeekTapped,
                           ),
                           ImpaktfullUiIconButton(
-                            asset: componentTheme.assets.chevronRight,
+                            asset: componentTheme.assets.chevronRight
+                                .copyWith(matchTextDirection: true),
                             onTap: _onNextWeekTapped,
                           ),
                         ],

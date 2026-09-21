@@ -93,7 +93,7 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
                   widget.borderRadius ?? componentTheme.dimens.borderRadius,
               child: FractionallySizedBox(
                 widthFactor: 0.5,
-                alignment: Alignment(_animation.value, 0),
+                alignment: AlignmentDirectional(_animation.value, 0),
                 child: Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(

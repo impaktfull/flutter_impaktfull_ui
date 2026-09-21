@@ -55,11 +55,14 @@ extension BorderRadiusGeometryExtension on BorderRadiusGeometry {
         bottomEnd: bottomEnd ?? this.bottomEnd,
       );
     }
-    return BorderRadius.only(
-      topLeft: topStart ?? this.topStart,
-      topRight: topEnd ?? this.topEnd,
-      bottomLeft: bottomStart ?? this.bottomStart,
-      bottomRight: bottomEnd ?? this.bottomEnd,
+    // A physical BorderRadius becomes directional (left is start, right is
+    // end): identical in a left-to-right layout, and the corners passed as
+    // start/end mirror in a right-to-left layout, as their names promise.
+    return BorderRadiusDirectional.only(
+      topStart: topStart ?? this.topStart,
+      topEnd: topEnd ?? this.topEnd,
+      bottomStart: bottomStart ?? this.bottomStart,
+      bottomEnd: bottomEnd ?? this.bottomEnd,
     );
   }
 }

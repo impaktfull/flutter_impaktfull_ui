@@ -129,9 +129,11 @@ class _ImpaktfullUiFloatingActionButtonState
     final textPainter = TextPainter(
       text: TextSpan(text: text, style: style),
       maxLines: 1,
-      textDirection: TextDirection.ltr,
+      textDirection: Directionality.of(context),
     );
     textPainter.layout(maxWidth: double.infinity);
-    return 12 + textPainter.width + 8;
+    final width = textPainter.width;
+    textPainter.dispose();
+    return 12 + width + 8;
   }
 }

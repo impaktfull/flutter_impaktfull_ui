@@ -13,7 +13,13 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget {
   final bool isDrawerEnabled;
   final Widget? drawer;
   final Widget? fab;
-  final Alignment fabAlignment;
+
+  /// Where the [fab] is placed.
+  ///
+  /// Defaults to [AlignmentDirectional.bottomEnd]: the bottom right corner in
+  /// a left-to-right layout and the bottom left corner in a right-to-left
+  /// layout.
+  final AlignmentGeometry floatingActionButtonAlignment;
   final Widget? headerBottomChild;
   final WidgetBuilder builder;
   final WidgetBuilder? mediumBuilder;
@@ -29,14 +35,25 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget {
     this.isDrawerEnabled = false,
     this.drawer,
     this.fab,
-    this.fabAlignment = Alignment.bottomRight,
+    AlignmentGeometry? floatingActionButtonAlignment,
+    @Deprecated(
+        'Use floatingActionButtonAlignment instead. Will be removed in 1.0.0.')
+    Alignment? fabAlignment,
     this.headerBottomChild,
     this.mediumBuilder,
     this.largeBuilder,
     this.extraLargeBuilder,
     this.actions = const [],
     super.key,
-  });
+  }) : floatingActionButtonAlignment = floatingActionButtonAlignment ??
+            fabAlignment ??
+            AlignmentDirectional.bottomEnd;
+
+  @Deprecated(
+      'Use floatingActionButtonAlignment instead. Will be removed in 1.0.0.')
+  Alignment get fabAlignment =>
+      // rtl-ignore: the deprecated getter returns the left-to-right alignment.
+      floatingActionButtonAlignment.resolve(TextDirection.ltr);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +89,7 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget {
                     child: SizedBox(
                       width: double.infinity,
                       child: Stack(
-                        alignment: fabAlignment,
+                        alignment: floatingActionButtonAlignment,
                         children: [
                           Positioned.fill(
                             child: SizedBox(

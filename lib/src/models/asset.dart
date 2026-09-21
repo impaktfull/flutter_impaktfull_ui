@@ -10,11 +10,20 @@ class ImpaktfullUiAsset {
   final String? suffix;
   final String? package;
 
+  /// Whether the asset is mirrored horizontally in a right-to-left layout
+  /// (e.g. Arabic or Hebrew).
+  ///
+  /// Use it for directional assets such as back arrows and chevrons. An
+  /// [icon] whose [IconData.matchTextDirection] is true is already mirrored by
+  /// [Icon] and is not mirrored twice.
+  final bool matchTextDirection;
+
   const ImpaktfullUiAsset.svg(
     String this.svgAsset, {
     this.directory,
     this.package,
     this.suffix,
+    this.matchTextDirection = false,
   })  : pixelAsset = null,
         lottieAsset = null,
         icon = null,
@@ -25,14 +34,16 @@ class ImpaktfullUiAsset {
     this.directory,
     this.package,
     this.suffix,
+    this.matchTextDirection = false,
   })  : svgAsset = null,
         lottieAsset = null,
         icon = null,
         riveAsset = null;
 
   const ImpaktfullUiAsset.icon(
-    IconData this.icon,
-  )   : pixelAsset = null,
+    IconData this.icon, {
+    this.matchTextDirection = false,
+  })  : pixelAsset = null,
         lottieAsset = null,
         svgAsset = null,
         riveAsset = null,
@@ -45,6 +56,7 @@ class ImpaktfullUiAsset {
     this.directory,
     this.package,
     this.suffix,
+    this.matchTextDirection = false,
   })  : pixelAsset = null,
         svgAsset = null,
         icon = null,
@@ -55,10 +67,39 @@ class ImpaktfullUiAsset {
     this.directory,
     this.package,
     this.suffix,
+    this.matchTextDirection = false,
   })  : pixelAsset = null,
         svgAsset = null,
         icon = null,
         lottieAsset = null;
+
+  const ImpaktfullUiAsset._({
+    required this.svgAsset,
+    required this.pixelAsset,
+    required this.lottieAsset,
+    required this.riveAsset,
+    required this.icon,
+    required this.directory,
+    required this.suffix,
+    required this.package,
+    required this.matchTextDirection,
+  });
+
+  /// A copy of this asset with the given fields replaced.
+  ImpaktfullUiAsset copyWith({
+    bool? matchTextDirection,
+  }) =>
+      ImpaktfullUiAsset._(
+        svgAsset: svgAsset,
+        pixelAsset: pixelAsset,
+        lottieAsset: lottieAsset,
+        riveAsset: riveAsset,
+        icon: icon,
+        directory: directory,
+        suffix: suffix,
+        package: package,
+        matchTextDirection: matchTextDirection ?? this.matchTextDirection,
+      );
 
   String getAssetName() {
     if (svgAsset != null) return svgAsset!;

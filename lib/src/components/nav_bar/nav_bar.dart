@@ -66,7 +66,8 @@ class ImpaktfullUiNavBar extends StatelessWidget {
             ] else if (!isFullScreen && onBackTapped != null) ...[
               ImpaktfullUiIconButton(
                 onTap: onBackTapped!,
-                asset: componentTheme.assets.back,
+                asset: componentTheme.assets.back
+                    .copyWith(matchTextDirection: true),
                 color: componentTheme.colors.icons,
                 tooltip: localizations.backTooltip,
               ),

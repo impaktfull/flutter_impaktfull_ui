@@ -68,11 +68,9 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(
-                    top: 8,
-                    left: 16,
-                    right: 16,
-                    bottom: 8,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
                   ),
                   child: ImpaktfullUiAutoLayout.horizontal(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,7 +88,8 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                       ] else if (widget.onBackTapped != null) ...[
                         ImpaktfullUiIconButton(
                           onTap: widget.onBackTapped!,
-                          asset: componentTheme.assets.back,
+                          asset: componentTheme.assets.back
+                              .copyWith(matchTextDirection: true),
                           color: componentTheme.colors.icons,
                           tooltip: 'Back',
                         ),

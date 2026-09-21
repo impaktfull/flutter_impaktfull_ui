@@ -76,7 +76,8 @@ class _ImpaktfullUiListItemState extends State<ImpaktfullUiListItem> {
                     );
                   }
                   return ImpaktfullUiAssetWidget(
-                    asset: componentTheme.assets.chevronRight,
+                    asset: componentTheme.assets.chevronRight
+                        .copyWith(matchTextDirection: true),
                     color: componentTheme.colors.icons,
                   );
                 }

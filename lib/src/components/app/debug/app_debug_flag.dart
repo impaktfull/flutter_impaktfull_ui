@@ -19,6 +19,8 @@ class AppDebugFlag extends StatelessWidget {
     final showFlavorBannerFlag = flavorBannerText != null;
     if (!showDebugFlag && !showFlavorBannerFlag) return child;
     return Directionality(
+      // rtl-ignore: the debug banners sit above the app (and its locale), the
+      // app itself gets its direction from MaterialApp.
       textDirection: TextDirection.ltr,
       child: Builder(
         builder: (context) {

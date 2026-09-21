@@ -80,7 +80,7 @@ class _ImpaktfullUiDateInputFieldState
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: ImpaktfullUiAutoLayout.horizontal(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,

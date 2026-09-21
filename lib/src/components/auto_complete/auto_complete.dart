@@ -160,6 +160,8 @@ class _ImpaktfullUiAutoCompleteState<T>
           child: CompositedTransformFollower(
             link: _layerLink,
             showWhenUnlinked: false,
+            // rtl-ignore: the overlay has the width of the input field, so
+            // anchoring it to the left edge also works in right-to-left.
             targetAnchor: showAbove ? Alignment.topLeft : Alignment.bottomLeft,
             followerAnchor:
                 showAbove ? Alignment.bottomLeft : Alignment.topLeft,

@@ -305,7 +305,7 @@ class ImpaktfullUiModal extends StatelessWidget {
                               ],
                               if (hasClose || onCloseTapped != null) ...[
                                 Align(
-                                  alignment: Alignment.topRight,
+                                  alignment: AlignmentDirectional.topEnd,
                                   child: Padding(
                                     padding: componentTheme
                                         .dimens.closeIconButtonPadding,
