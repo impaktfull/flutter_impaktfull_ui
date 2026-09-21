@@ -70,9 +70,12 @@ class ImpaktfullUiCalendarWeekEventItem extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  // Events next to each other are narrow: keep the time on
+                  // one line.
                   ImpaktfullUiCalendarEventTime(
                     item: event,
                     style: componentTheme.textStyles.listItemSubtitle,
+                    maxLines: 1,
                   ),
                 ],
               ],

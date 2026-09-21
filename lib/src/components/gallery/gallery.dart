@@ -53,21 +53,28 @@ class ImpaktfullUiGallery extends StatelessWidget {
         placeholderData: ImpaktfullUiGridViewPlaceholderData(
           title: noDataLabel,
         ),
-        itemBuilder: (context, item, index) => ImpaktfullUiTouchFeedback(
-          borderRadius:
-              itemBorderRadius ?? componentTheme.dimens.itemBorderRadius,
-          onTap: () => ImpaktfullUiGalleryFullScreen.show(
-            context: context,
-            componentTheme: componentTheme,
-            items: items,
-            initialItem: item,
-            localizations: localizations,
-          ),
-          child: ImpaktfullUiGalleryHeroItem(
-            item: item,
-            fit: itemFit,
-          ),
-        ),
+        itemBuilder: (context, item, index) {
+          final borderRadius =
+              itemBorderRadius ?? componentTheme.dimens.itemBorderRadius;
+          return ImpaktfullUiTouchFeedback(
+            borderRadius: borderRadius,
+            onTap: () => ImpaktfullUiGalleryFullScreen.show(
+              context: context,
+              componentTheme: componentTheme,
+              items: items,
+              initialItem: item,
+              localizations: localizations,
+            ),
+            // The touch feedback does not clip its child: clip the image.
+            child: ClipRRect(
+              borderRadius: borderRadius,
+              child: ImpaktfullUiGalleryHeroItem(
+                item: item,
+                fit: itemFit,
+              ),
+            ),
+          );
+        },
         itemAspectRatio: itemAspectRatio,
         crossAxisCount:
             crossAxisCount ?? (context, config) => config.maxWidth ~/ 250,

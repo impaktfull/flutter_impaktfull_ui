@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
@@ -88,11 +90,23 @@ class _ImpaktfullUiCalendarWeekEventsState
     // Sort events by start time
     eventsForDay.sort((a, b) => a.startDate.compareTo(b.startDate));
 
-    final eventWidgets = <Widget>[];
-    final occupiedSlots = <List<double>>[];
+    // Place every event in the first column that is free at its start time.
+    // Events that overlap (directly or through other events) form a cluster
+    // and share the width of the day equally.
+    final layouts = <_EventLayout>[];
+    final cluster = <_EventLayout>[];
+    final columnEnds = <double>[];
+    var clusterEnd = double.negativeInfinity;
 
-    for (int i = 0; i < eventsForDay.length; i++) {
-      final event = eventsForDay[i];
+    void closeCluster() {
+      for (final layout in cluster) {
+        layout.columnCount = columnEnds.length;
+      }
+      cluster.clear();
+      columnEnds.clear();
+    }
+
+    for (final event in eventsForDay) {
       final startDateTime = event.startDate.isSameDay(currentDayDate)
           ? event.startDate
           : currentDayDate.startOfTheDay;
@@ -107,41 +121,46 @@ class _ImpaktfullUiCalendarWeekEventsState
               .clamp(0.0, 24.0);
       final height =
           maxDifferenceInHours * componentTheme.dimens.weekHourHeight;
+      // The event item is at least this high (see ImpaktfullUiCalendarWeekEventItem)
+      final bottom = top + max(height, _minEventHeight);
 
-      // Check if this event starts at the same time as the previous one
-      final sameStartAsLast =
-          i > 0 && eventsForDay[i - 1].startDate == event.startDate;
-
-      // Find a free slot for the event
-      int slot = 0;
-      if (sameStartAsLast) {
-        slot = occupiedSlots.length;
+      if (top >= clusterEnd) closeCluster();
+      var column = columnEnds.indexWhere((end) => end <= top);
+      if (column == -1) {
+        column = columnEnds.length;
+        columnEnds.add(bottom);
       } else {
-        while (slot < occupiedSlots.length &&
-            occupiedSlots[slot].any((end) => end > top)) {
-          slot++;
-        }
+        columnEnds[column] = bottom;
       }
+      clusterEnd = cluster.isEmpty ? bottom : max(clusterEnd, bottom);
 
-      if (slot == occupiedSlots.length) {
-        occupiedSlots.add([]);
-      }
-      occupiedSlots[slot].add(top + height);
+      final layout = _EventLayout(
+        event: event,
+        top: top,
+        height: height,
+        column: column,
+      );
+      cluster.add(layout);
+      layouts.add(layout);
+    }
+    closeCluster();
 
-      final width = sameStartAsLast ? 1.0 / (slot + 1) : 1.0;
-      final start = sameStartAsLast ? slot * (1.0 / (slot + 1)) : 0.0;
-
+    final eventWidgets = <Widget>[];
+    for (final layout in layouts) {
+      final event = layout.event;
+      // start & width are fractions of the width of the day column
+      final width = 1.0 / layout.columnCount;
+      final start = layout.column * width;
       eventWidgets.add(
         PositionedDirectional(
-          top: top,
-          // start & width are fractions of the width of the day column
+          top: layout.top,
           start: start * dayWidth,
           end: (1 - start - width) * dayWidth,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2),
             child: ImpaktfullUiCalendarWeekEventItem(
               event: event,
-              height: height,
+              height: layout.height,
               onTap: () => widget.onEventTap(event),
               theme: componentTheme,
             ),
@@ -173,4 +192,22 @@ class _ImpaktfullUiCalendarWeekEventsState
     _weekEvents.clear();
     _weekEvents.addAll(weekEvents);
   }
+}
+
+/// The minimum height of an event item in the week view.
+const _minEventHeight = 17.0;
+
+class _EventLayout {
+  final ImpaktfullUiCalendarEvent event;
+  final double top;
+  final double height;
+  final int column;
+  var columnCount = 1;
+
+  _EventLayout({
+    required this.event,
+    required this.top,
+    required this.height,
+    required this.column,
+  });
 }

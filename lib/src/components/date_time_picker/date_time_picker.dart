@@ -125,7 +125,9 @@ class _ImpaktfullUiDateTimePickerState
   void _setValue(DateTime? value) {
     if (value == null) {
       _date = null;
-      _time = null;
+      // The time picker shows the current time without a value: use the same
+      // time when only a date is picked (instead of midnight).
+      _time = TimeOfDay.now();
       return;
     }
     _date = DateTime(value.year, value.month, value.day);

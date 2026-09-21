@@ -8,10 +8,15 @@ class ImpaktfullUiCalendarEventTime extends StatelessWidget {
   final ImpaktfullUiCalendarEvent item;
   final DateTime? forDate;
   final TextStyle style;
+
+  /// Ellipsizes the time when it does not fit on this amount of lines.
+  final int? maxLines;
+
   const ImpaktfullUiCalendarEventTime({
     required this.item,
     required this.style,
     this.forDate,
+    this.maxLines,
     super.key,
   });
 
@@ -48,6 +53,8 @@ class ImpaktfullUiCalendarEventTime extends StatelessWidget {
     return Text(
       sb.toString(),
       style: style,
+      maxLines: maxLines,
+      overflow: maxLines == null ? null : TextOverflow.ellipsis,
     );
   }
 }
