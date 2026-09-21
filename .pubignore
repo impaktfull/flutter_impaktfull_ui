@@ -1,2 +1,48 @@
-tool/
-test_fixes/
+# A .pubignore replaces the .gitignore for `dart pub publish`, so everything
+# from .gitignore that must not be published is repeated here.
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ / VS Code
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# Flutter/Dart/Pub related
+/pubspec.lock
+**/doc/api/
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# FVM
+.fvm/
+.fvmrc
+
+# Not needed by consumers of the package
+/test/
+/test_fixes/
+/tool/
+/.claude/
+/.github/
+/AGENTS.md
+/CLAUDE.md
+/release-please-config.json
+/.release-please-manifest.json
+**/failures/
