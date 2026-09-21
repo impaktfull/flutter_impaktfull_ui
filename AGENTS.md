@@ -43,10 +43,23 @@ To force a specific version (e.g. a pre-release), set `"release-as": "x.y.z"` in
 
 ## Validate
 
+The Flutter version is pinned in `.fvmrc`. Use that version locally (`fvm use`), CI reads the same file.
+
 ```bash
 ./tool/format.sh
 ./tool/analyze.sh
+flutter test
 ```
+
+Every pull request and push to `main` runs `.github/workflows/validate.yml`, which must pass before merging:
+
+| Job | Runner | Checks |
+|-----|--------|--------|
+| `validate` | ubuntu | `dart format` (no changes allowed), `flutter analyze .` (package + example), `flutter pub publish --dry-run` |
+| `test` | macOS | `flutter test`, including the golden tests (they only run on a macOS host) |
+| `example` | ubuntu | `flutter build web` of the example app that is deployed to GitHub Pages |
+
+When a golden test fails because of an intended visual change, regenerate the goldens with `flutter test --update-goldens` on macOS using the pinned Flutter version, and review the image diff before committing.
 
 ## Create Pull Request
 

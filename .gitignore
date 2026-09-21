@@ -32,3 +32,6 @@ build/
 
 # Golden tests
 **/failures/**.png
+
+# FVM
+.fvm/

@@ -1,0 +1,101 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+# A new push to the same ref supersedes older runs instead of queueing them.
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Format, analyze and a publish dry run: everything that does not need a
+  # specific host platform.
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The Flutter version comes from `.fvmrc`, the same pin fvm uses locally,
+      # so `dart format` and `flutter analyze` never drift between CI and a
+      # developer's machine.
+      - name: Read Flutter version
+        id: fvm
+        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fvm.outputs.flutter }}
+          cache: true
+
+      # Every package, not only the root: `flutter analyze .` walks into
+      # `example` and `tool/cli`, and a package without `pub get` is not
+      # analyzed properly.
+      - name: Install dependencies
+        run: |
+          flutter pub get
+          (cd example && flutter pub get)
+          (cd tool/cli && dart pub get)
+
+      - name: Format
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze
+        run: flutter analyze .
+
+      - name: Publish dry run
+        run: flutter pub publish --dry-run
+
+  # macOS, because the golden tests are configured for `HostPlatform.macOS`
+  # (`test/util/golden_test_util.dart`): on any other host those goldens are
+  # skipped and a visual regression would pass unnoticed.
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read Flutter version
+        id: fvm
+        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fvm.outputs.flutter }}
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Test
+        run: flutter test
+
+  # The component library is deployed to GitHub Pages from `main`. Building it
+  # here means a pull request that breaks the example fails before it is
+  # merged, instead of on the deploy.
+  example:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: example
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read Flutter version
+        id: fvm
+        working-directory: .
+        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fvm.outputs.flutter }}
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Build web
+        run: flutter build web
