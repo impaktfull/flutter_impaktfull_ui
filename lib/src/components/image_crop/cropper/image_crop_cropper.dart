@@ -196,15 +196,21 @@ class ImpaktfullUiImageCropCropper {
 
   Future<ui.Image> downloadImage(String imageUrl) async {
     final completer = Completer<ui.Image>();
-    final networkImage = NetworkImage(imageUrl);
-    networkImage
-        .resolve(const ImageConfiguration())
-        .addListener(ImageStreamListener(
+    final stream = NetworkImage(imageUrl).resolve(const ImageConfiguration());
+    late final ImageStreamListener listener;
+    listener = ImageStreamListener(
       (info, _) {
-        final image = info.image;
-        completer.complete(image);
+        stream.removeListener(listener);
+        if (completer.isCompleted) return;
+        completer.complete(info.image);
       },
-    ));
+      onError: (error, stackTrace) {
+        stream.removeListener(listener);
+        if (completer.isCompleted) return;
+        completer.completeError(error, stackTrace);
+      },
+    );
+    stream.addListener(listener);
     return completer.future;
   }
 }

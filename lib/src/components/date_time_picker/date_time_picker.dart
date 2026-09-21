@@ -39,19 +39,24 @@ class ImpaktfullUiDateTimePicker extends StatefulWidget {
       isDismissible: isDismissible,
       width: 310,
       rootNavigator: rootNavigator,
+      showDividers: showDividers,
       childPadding: const EdgeInsets.only(top: 16),
       actions: [
-        ImpaktfullUiButton(
-          type: ImpaktfullUiButtonType.secondaryGrey,
-          title: 'Cancel',
-          onTap: () => Navigator.of(context).pop(),
+        // Use the context of the modal route, not the caller's context:
+        // with rootNavigator the modal is not on the caller's navigator.
+        Builder(
+          builder: (context) => ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.secondaryGrey,
+            title: 'Cancel',
+            onTap: () => Navigator.of(context).pop(),
+          ),
         ),
-        ImpaktfullUiButton(
-          type: ImpaktfullUiButtonType.primary,
-          title: 'Apply',
-          onTap: () {
-            Navigator.of(context).pop(newDate);
-          },
+        Builder(
+          builder: (context) => ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.primary,
+            title: 'Apply',
+            onTap: () => Navigator.of(context).pop(newDate),
+          ),
         ),
       ],
       child: StatefulBuilder(
@@ -75,6 +80,30 @@ class _ImpaktfullUiDateTimePickerState
     extends State<ImpaktfullUiDateTimePicker> {
   TimeOfDay? _time;
   DateTime? _date;
+
+  @override
+  void initState() {
+    super.initState();
+    _setValue(widget.value);
+  }
+
+  @override
+  void didUpdateWidget(covariant ImpaktfullUiDateTimePicker oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.value != widget.value) {
+      _setValue(widget.value);
+    }
+  }
+
+  void _setValue(DateTime? value) {
+    if (value == null) {
+      _date = null;
+      _time = null;
+      return;
+    }
+    _date = DateTime(value.year, value.month, value.day);
+    _time = TimeOfDay.fromDateTime(value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,10 +142,13 @@ class _ImpaktfullUiDateTimePickerState
   }
 
   void _onDateTimeChanged() {
+    // When only a time is picked (no date yet), use today
+    // instead of a date in year 0.
+    final date = _date ?? DateTime.now();
     final dateTime = DateTime(
-      _date?.year ?? 0,
-      _date?.month ?? 0,
-      _date?.day ?? 0,
+      date.year,
+      date.month,
+      date.day,
       _time?.hour ?? 0,
       _time?.minute ?? 0,
     );

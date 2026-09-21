@@ -54,7 +54,14 @@ class _ImpaktfullUiTimePickerState extends State<ImpaktfullUiTimePicker> {
   void didUpdateWidget(covariant ImpaktfullUiTimePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value) {
-      _changeTime(widget.value ?? TimeOfDay.now());
+      final newTime = widget.value ?? TimeOfDay.now();
+      // When the new value is the time the user just typed, keep the text as
+      // typed (e.g. an empty field or a leading zero).
+      if (newTime != _time) {
+        _hoursString = newTime.hour.toString();
+        _minutesString = newTime.minute.toString();
+      }
+      _changeTime(newTime);
     }
   }
 

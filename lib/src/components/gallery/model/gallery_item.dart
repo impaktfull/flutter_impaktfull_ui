@@ -14,7 +14,9 @@ class ImpaktfullUiGalleryItem {
   String get heroTag {
     if (id != null) return id!;
     if (imageUrl != null) return imageUrl!;
-    return '';
+    if (file != null) return file!.path;
+    // Every item needs its own tag: multiple heroes with the same tag throw.
+    return 'impaktfull_ui_gallery_item_$hashCode';
   }
 
   Widget child({

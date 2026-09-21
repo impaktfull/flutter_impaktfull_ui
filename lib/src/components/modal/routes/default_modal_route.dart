@@ -3,6 +3,11 @@ import 'package:impaktfull_ui/src/components/modal/routes/blurred_modal_route_wr
 import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 
 class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
+  final bool _hasBlurredBackground;
+
+  /// Created once per route (not on every rebuild) and disposed with the route.
+  CurvedAnimation? _curvedAnimation;
+
   ImpaktfullUiDefaultModalRoute({
     required BuildContext context,
     required WidgetBuilder builder,
@@ -15,7 +20,8 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
     super.settings,
     super.anchorPoint,
     super.traversalEdgeBehavior,
-  }) : super(
+  })  : _hasBlurredBackground = hasBlurredBackground,
+        super(
           pageBuilder: (BuildContext buildContext, Animation<double> animation,
               Animation<double> secondaryAnimation) {
             final Widget pageChild = Builder(builder: builder);
@@ -28,72 +34,65 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
           barrierLabel: barrierLabel ??
               MaterialLocalizations.of(context).modalBarrierDismissLabel,
           transitionDuration: const Duration(milliseconds: 150),
-          transitionBuilder: (BuildContext context, Animation<double> animation,
-                  Animation<double> secondaryAnimation, Widget child) =>
-              _customTransitionBuilder(context, animation, secondaryAnimation,
-                  child, hasBlurredBackground),
         );
-}
 
-Widget _customTransitionBuilder(
-  BuildContext context,
-  Animation<double> animation,
-  Animation<double> secondaryAnimation,
-  Widget child,
-  bool hasBlurredBackground,
-) {
-  if (DeviceUtil.isApple()) {
-    return _buildCupertinoDialogTransitions(
-      context,
-      animation,
-      secondaryAnimation,
-      child,
-      hasBlurredBackground,
+  @override
+  Widget buildTransitions(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    final isApple = DeviceUtil.isApple();
+    final curvedAnimation = _curvedAnimation ??= CurvedAnimation(
+      parent: animation,
+      curve: isApple ? Curves.easeInOut : Curves.easeOut,
+    );
+    if (isApple) {
+      return _buildCupertinoDialogTransitions(
+        animation,
+        curvedAnimation,
+        child,
+        _hasBlurredBackground,
+      );
+    }
+    return BlurredModalRouteWrapper(
+      animation: curvedAnimation,
+      hasBlurredBackground: _hasBlurredBackground,
+      child: child,
     );
   }
-  return BlurredModalRouteWrapper(
-    animation: CurvedAnimation(
-      parent: animation,
-      curve: Curves.easeOut,
-    ),
-    hasBlurredBackground: hasBlurredBackground,
-    child: child,
-  );
+
+  @override
+  void dispose() {
+    _curvedAnimation?.dispose();
+    super.dispose();
+  }
 }
+
+final _dialogScaleTween = Tween<double>(begin: 1.3, end: 1.0)
+    .chain(CurveTween(curve: Curves.linearToEaseOut));
 
 // iOS & macOS
 Widget _buildCupertinoDialogTransitions(
-  BuildContext context,
   Animation<double> animation,
-  Animation<double> secondaryAnimation,
+  Animation<double> curvedAnimation,
   Widget child,
   bool hasBlurredBackground,
 ) {
-  final dialogScaleTween = Tween<double>(begin: 1.3, end: 1.0)
-      .chain(CurveTween(curve: Curves.linearToEaseOut));
-  final curvesAnimation = CurvedAnimation(
-    parent: animation,
-    curve: Curves.easeInOut,
-  );
   if (animation.status == AnimationStatus.reverse) {
     return BlurredModalRouteWrapper(
-      animation: curvesAnimation,
+      animation: curvedAnimation,
       hasBlurredBackground: hasBlurredBackground,
-      child: FadeTransition(
-        opacity: curvesAnimation,
-        child: child,
-      ),
+      child: child,
     );
   }
   return BlurredModalRouteWrapper(
-    animation: curvesAnimation,
+    animation: curvedAnimation,
     hasBlurredBackground: hasBlurredBackground,
-    child: FadeTransition(
-      opacity: curvesAnimation,
-      child: ScaleTransition(
-        scale: animation.drive(dialogScaleTween),
-        child: child,
-      ),
+    child: ScaleTransition(
+      scale: animation.drive(_dialogScaleTween),
+      child: child,
     ),
   );
 }

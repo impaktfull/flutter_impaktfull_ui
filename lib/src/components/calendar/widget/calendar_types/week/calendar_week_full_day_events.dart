@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/week/calendar_week_event_item.dart';
-import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
@@ -76,10 +75,8 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
                           builder: (context) {
                             final event = _eventsPerDay[dayIndex]![eventIndex];
                             final dayOffset = _dayOffsets[dayIndex] ?? 0;
-                            final amountOfDays = event.endDate
-                                    .difference(event.startDate)
-                                    .inDays +
-                                1;
+                            final amountOfDays =
+                                _getVisibleDays(event)!.$2 - dayIndex + 1;
                             return Positioned(
                               top: (eventIndex + dayOffset) *
                                   componentTheme
@@ -114,30 +111,25 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
 
   void _setEventsPerDay() {
     final fullDayEvents = widget.events.where((event) {
-      final startDate = event.startDate;
-      final endDate = event.endDate;
-      return (startDate.isBefore(widget.dateRange.end) &&
-          endDate.isAfter(widget.dateRange.start));
-    });
+      final duration = event.endDate.difference(event.startDate);
+      if (duration < const Duration(hours: 23, minutes: 59, seconds: 59)) {
+        return false;
+      }
+      return _getVisibleDays(event) != null;
+    }).toList();
     _setFullDayEvents(fullDayEvents);
-    _setDayOffset();
+    _setDayOffset(fullDayEvents);
   }
 
-  void _setFullDayEvents(Iterable<ImpaktfullUiCalendarEvent> events) {
+  void _setFullDayEvents(List<ImpaktfullUiCalendarEvent> events) {
     final fullDayEvents = <int, List<ImpaktfullUiCalendarEvent>>{};
     for (var i = 0; i < widget.amountOfDays; i++) {
       fullDayEvents[i] = [];
     }
 
     for (final event in events) {
-      final startDate = event.startDate;
-      final endDate = event.endDate;
-      final duration = endDate.difference(startDate);
-      if (duration < const Duration(hours: 23, minutes: 59, seconds: 59)) {
-        continue;
-      }
-      final dayOfTheWeek = startDate.weekday - 1;
-      fullDayEvents[dayOfTheWeek]?.add(event);
+      final (firstDay, _) = _getVisibleDays(event)!;
+      fullDayEvents[firstDay]!.add(event);
     }
 
     for (final dayEvents in fullDayEvents.values) {
@@ -148,29 +140,38 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
     _eventsPerDay.addAll(fullDayEvents);
   }
 
-  void _setDayOffset() {
+  /// Only the events shown in this week push the events of the next days down.
+  void _setDayOffset(List<ImpaktfullUiCalendarEvent> events) {
     final dayOffsets = <int, int>{};
     for (var i = 0; i < widget.amountOfDays; i++) {
       dayOffsets[i] = 0;
     }
 
-    for (final event in widget.events) {
-      final startDate = event.startDate;
-      final endDate = event.endDate;
-      if (endDate.difference(startDate) < const Duration(hours: 24)) continue;
-      var currentDay = startDate;
-      while (currentDay.isBefore(endDate) || currentDay.isSameDay(endDate)) {
-        if (!currentDay.isSameDay(startDate)) {
-          final dayOfTheWeek = currentDay.weekday - 1;
-          final offset = dayOffsets[dayOfTheWeek] ?? 0;
-          dayOffsets[dayOfTheWeek] = offset + 1;
-        }
-        currentDay = currentDay.add(const Duration(hours: 24));
+    for (final event in events) {
+      final (firstDay, lastDay) = _getVisibleDays(event)!;
+      for (var day = firstDay + 1; day <= lastDay; day++) {
+        dayOffsets[day] = dayOffsets[day]! + 1;
       }
     }
     _dayOffsets.clear();
     _dayOffsets.addAll(dayOffsets);
   }
+
+  /// The first and last column (0 based, relative to the start of
+  /// [ImpaktfullUiCalendarWeekFullDayEvents.dateRange]) this event is shown in,
+  /// or null when the event is not visible in this date range.
+  (int, int)? _getVisibleDays(ImpaktfullUiCalendarEvent event) {
+    final startDay = _daysBetween(widget.dateRange.start, event.startDate);
+    final amountOfDays = event.endDate.difference(event.startDate).inDays + 1;
+    final endDay = startDay + amountOfDays - 1;
+    if (endDay < 0 || startDay > widget.amountOfDays - 1) return null;
+    return (max(0, startDay), min(widget.amountOfDays - 1, endDay));
+  }
+
+  static int _daysBetween(DateTime from, DateTime to) =>
+      DateTime.utc(to.year, to.month, to.day)
+          .difference(DateTime.utc(from.year, from.month, from.day))
+          .inDays;
 
   double _calculateHeight(double componentHeight) {
     var maxAmountOfEvents = 0;
@@ -179,6 +180,7 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
           (_eventsPerDay[i]?.length ?? 0) + (_dayOffsets[i] ?? 0);
       maxAmountOfEvents = max(maxAmountOfEvents, amountOfEvents);
     }
+    if (maxAmountOfEvents == 0) return 0;
     final spacing = (maxAmountOfEvents - 1) * 4;
     return (maxAmountOfEvents * componentHeight) + spacing;
   }

@@ -58,7 +58,7 @@ class _ImpaktfullUiGalleryFullScreenState
     super.didUpdateWidget(oldWidget);
     if (oldWidget.initialItem != widget.initialItem) {
       _currentIndex = widget.items.indexOf(widget.initialItem);
-      _pageController.jumpTo(_currentIndex.toDouble());
+      _pageController.jumpToPage(_currentIndex);
     }
   }
 

@@ -19,7 +19,10 @@ class ImpaktfullUiFocusFeedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (!enabled) return child;
+    final impaktfullUiTheme = ImpaktfullUiTheme.maybeOf(context) ?? theme;
     return Stack(
+      // Keep the constraints of the parent for the child (e.g. full width).
+      fit: StackFit.passthrough,
       clipBehavior: Clip.none,
       alignment: Alignment.center,
       children: [
@@ -35,7 +38,8 @@ class ImpaktfullUiFocusFeedback extends StatelessWidget {
                 borderRadius: borderRadius,
                 border: Border.all(
                   color: hasFocus
-                      ? theme.colors.accent.withOpacityPercentage(0.66)
+                      ? impaktfullUiTheme.colors.accent
+                          .withOpacityPercentage(0.66)
                       : Colors.transparent,
                   width: 2,
                   strokeAlign: BorderSide.strokeAlignOutside,

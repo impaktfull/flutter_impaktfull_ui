@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 
+/// Fades in [child] (and the optional blurred background) with [animation].
+///
+/// [animation] is used as is: apply the curve before passing it.
 class BlurredModalRouteWrapper extends StatelessWidget {
   final Widget child;
   final bool hasBlurredBackground;
@@ -19,10 +22,7 @@ class BlurredModalRouteWrapper extends StatelessWidget {
       children: [
         if (hasBlurredBackground) ...[
           AnimatedBuilder(
-            animation: CurvedAnimation(
-              parent: animation,
-              curve: Curves.easeOut,
-            ),
+            animation: animation,
             builder: (context, child) => Opacity(
               opacity: animation.value,
               child: BackdropFilter(
@@ -36,10 +36,7 @@ class BlurredModalRouteWrapper extends StatelessWidget {
           ),
         ],
         FadeTransition(
-          opacity: CurvedAnimation(
-            parent: animation,
-            curve: Curves.easeOut,
-          ),
+          opacity: animation,
           child: child,
         ),
       ],

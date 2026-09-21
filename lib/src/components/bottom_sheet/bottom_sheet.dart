@@ -183,13 +183,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget {
                                 padding: componentTheme
                                     .dimens.closeIconButtonPadding,
                                 child: ImpaktfullUiIconButton(
-                                  onTap: () {
-                                    if (onCloseTapped != null) {
-                                      onCloseTapped!.call();
-                                    } else {
-                                      Navigator.of(context).pop();
-                                    }
-                                  },
+                                  onTap: () => _onCloseTapped(context),
                                   asset: componentTheme.assets.close,
                                   color: componentTheme.colors.icons,
                                 ),
@@ -239,5 +233,18 @@ class ImpaktfullUiBottomSheet extends StatelessWidget {
       return ImpaktfullUiAutoLayoutOrientation.vertical;
     }
     return ImpaktfullUiAutoLayoutOrientation.horizontal;
+  }
+
+  Future<void> _onCloseTapped(BuildContext context) async {
+    final onCloseTapped = this.onCloseTapped;
+    if (onCloseTapped == null) {
+      Navigator.of(context).pop();
+      return;
+    }
+    final result = await onCloseTapped();
+    if (!result || !context.mounted) return;
+    // The callback might have closed the bottom sheet itself already.
+    if (ModalRoute.of(context)?.isCurrent == false) return;
+    Navigator.of(context).pop();
   }
 }

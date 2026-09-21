@@ -96,9 +96,11 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
       final asset = componentTheme.assets.leaf;
       await _assetPainter.load(asset);
     }
+    if (!mounted) return;
 
     _initializeParticles(componentTheme);
     await Future.delayed(widget.initialDelay);
+    if (!mounted) return;
     if (widget.duration != Duration.zero) {
       _dateTimeToStopAddingParticles = DateTime.now().add(widget.duration);
     }
@@ -202,6 +204,7 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
 
   @override
   void dispose() {
+    _resizeDebounceTimer?.cancel();
     _controller.dispose();
     super.dispose();
   }
@@ -211,24 +214,27 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => RepaintBoundary(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            _updateSize(constraints);
-            return CustomPaint(
-              size: Size(
-                _width ?? 0,
-                _height ?? 0,
-              ),
-              painter: ImpaktfullUiConfettiPainter(
-                particles: _particles,
-                assetPainter: _assetPainter,
-                repaint: _controller,
-              ),
-              isComplex: true,
-              willChange: true,
-            );
-          },
+      // The confetti is drawn on top of other widgets: never block their taps.
+      builder: (context, componentTheme) => IgnorePointer(
+        child: RepaintBoundary(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              _updateSize(constraints);
+              return CustomPaint(
+                size: Size(
+                  _width ?? 0,
+                  _height ?? 0,
+                ),
+                painter: ImpaktfullUiConfettiPainter(
+                  particles: _particles,
+                  assetPainter: _assetPainter,
+                  repaint: _controller,
+                ),
+                isComplex: true,
+                willChange: true,
+              );
+            },
+          ),
         ),
       ),
     );

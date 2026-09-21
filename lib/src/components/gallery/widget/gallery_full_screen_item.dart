@@ -25,7 +25,8 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
     with SingleTickerProviderStateMixin {
   late TransformationController _transformationController;
   late AnimationController _animationController;
-  late Animation<Matrix4> _animation;
+  late CurvedAnimation _curvedAnimation;
+  Animation<Matrix4>? _animation;
   TapDownDetails? _doubleTapDetails;
   final _interactiveViewerKey = GlobalKey();
   final _imageKey = GlobalKey();
@@ -38,11 +39,17 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
+    _curvedAnimation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
+    );
+    _animationController.addListener(_onAnimationTick);
   }
 
   @override
   void dispose() {
     _transformationController.dispose();
+    _curvedAnimation.dispose();
     _animationController.dispose();
     super.dispose();
   }
@@ -69,15 +76,15 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
     _animation = Matrix4Tween(
       begin: _transformationController.value,
       end: endMatrix,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,
-    ));
+    ).animate(_curvedAnimation);
 
     _animationController.forward(from: 0);
-    _animation.addListener(() {
-      _transformationController.value = _animation.value;
-    });
+  }
+
+  void _onAnimationTick() {
+    final animation = _animation;
+    if (animation == null) return;
+    _transformationController.value = animation.value;
   }
 
   @override

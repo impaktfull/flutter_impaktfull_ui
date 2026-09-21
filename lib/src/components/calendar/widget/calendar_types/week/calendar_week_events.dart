@@ -56,8 +56,14 @@ class _ImpaktfullUiCalendarWeekEventsState
               dayIndex < widget.amountOfDays;
               ++dayIndex) ...[
             Expanded(
-              child: Stack(
-                children: _buildEventsForDay(dayIndex, componentTheme),
+              child: LayoutBuilder(
+                builder: (context, constraints) => Stack(
+                  children: _buildEventsForDay(
+                    dayIndex,
+                    constraints.maxWidth,
+                    componentTheme,
+                  ),
+                ),
               ),
             ),
           ],
@@ -67,7 +73,10 @@ class _ImpaktfullUiCalendarWeekEventsState
   }
 
   List<Widget> _buildEventsForDay(
-      int dayIndex, ImpaktfullUiCalendarTheme componentTheme) {
+    int dayIndex,
+    double dayWidth,
+    ImpaktfullUiCalendarTheme componentTheme,
+  ) {
     final currentDayDate = widget.dateRange.start.add(Duration(days: dayIndex));
     final eventsForDay = _weekEvents.where((event) {
       final eventStartDate = event.startDate;
@@ -125,8 +134,9 @@ class _ImpaktfullUiCalendarWeekEventsState
       eventWidgets.add(
         Positioned(
           top: top,
-          left: left * 100,
-          right: (1 - left - width) * 100,
+          // left & width are fractions of the width of the day column
+          left: left * dayWidth,
+          right: (1 - left - width) * dayWidth,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2),
             child: ImpaktfullUiCalendarWeekEventItem(
