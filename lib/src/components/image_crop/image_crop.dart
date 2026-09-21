@@ -34,6 +34,9 @@ class ImpaktfullUiImageCrop extends StatefulWidget {
   final Color backgroundColor;
   final ImpaktfullUiImageCropOverlay cropOverlay;
   final bool showPreview = false;
+
+  /// Called with the cropped image (PNG bytes) after the crop button is tapped.
+  final ValueChanged<Uint8List>? onCropped;
   final ImpaktfullUiImageCropTheme? theme;
 
   const ImpaktfullUiImageCrop({
@@ -42,6 +45,7 @@ class ImpaktfullUiImageCrop extends StatefulWidget {
     this.imageUrl,
     this.backgroundColor = const Color(0x00000000),
     this.cropOverlay = const ImpaktfullUiImageCropSquareOverlay(),
+    this.onCropped,
     this.theme,
     super.key,
   });
@@ -81,7 +85,10 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    // Only dispose the controller created by this widget, not the one of the app
+    if (widget.controller == null) {
+      _controller.dispose();
+    }
     super.dispose();
   }
 
@@ -171,12 +178,11 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                                       _cropInfo.scale, _cropInfo.scale, 1),
                                 alignment: Alignment.center,
                                 child: Builder(builder: (context) {
-                                  if (widget.imageUrl != null) {
-                                    return Image.network(
-                                      widget.imageUrl!,
-                                    );
+                                  final imageUrl = widget.imageUrl;
+                                  if (imageUrl == null) {
+                                    return const SizedBox.shrink();
                                   }
-                                  throw Exception('Image not found');
+                                  return Image.network(imageUrl);
                                 }),
                               ),
                             ),
@@ -289,7 +295,10 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
       cropInfo: _cropInfo,
       imageUrl: imageUrl,
     );
-    final bytes = await result.toByteData(format: ui.ImageByteFormat.png);
-    setState(() => _croppedImageBytes = bytes?.buffer.asUint8List());
+    final byteData = await result.toByteData(format: ui.ImageByteFormat.png);
+    final bytes = byteData?.buffer.asUint8List();
+    if (!mounted) return;
+    setState(() => _croppedImageBytes = bytes);
+    if (bytes != null) widget.onCropped?.call(bytes);
   }
 }

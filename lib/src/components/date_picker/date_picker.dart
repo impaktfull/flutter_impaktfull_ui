@@ -63,19 +63,24 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
       isDismissible: isDismissible,
       width: 310,
       rootNavigator: rootNavigator,
+      showDividers: showDividers,
       childPadding: const EdgeInsets.only(top: 16),
       actions: [
-        ImpaktfullUiButton(
-          type: ImpaktfullUiButtonType.secondaryGrey,
-          title: 'Cancel',
-          onTap: () => Navigator.of(context).pop(),
+        // Use the context of the modal route, not the caller's context:
+        // with rootNavigator the modal is not on the caller's navigator.
+        Builder(
+          builder: (context) => ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.secondaryGrey,
+            title: 'Cancel',
+            onTap: () => Navigator.of(context).pop(),
+          ),
         ),
-        ImpaktfullUiButton(
-          type: ImpaktfullUiButtonType.primary,
-          title: 'Apply',
-          onTap: () {
-            Navigator.of(context).pop(newDate);
-          },
+        Builder(
+          builder: (context) => ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.primary,
+            title: 'Apply',
+            onTap: () => Navigator.of(context).pop(newDate),
+          ),
         ),
       ],
       child: StatefulBuilder(
@@ -111,24 +116,29 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
       width: 310,
       childPadding: const EdgeInsets.only(top: 16),
       actions: [
-        ImpaktfullUiButton(
-          type: ImpaktfullUiButtonType.secondaryGrey,
-          title: 'Cancel',
-          onTap: () => Navigator.of(context).pop(),
+        Builder(
+          builder: (context) => ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.secondaryGrey,
+            title: 'Cancel',
+            onTap: () => Navigator.of(context).pop(),
+          ),
         ),
-        ImpaktfullUiButton(
-          type: ImpaktfullUiButtonType.primary,
-          title: 'Apply',
-          onTap: () {
-            final startDate = newStartDate;
-            final endDate = newEndDate;
-            if (startDate == null || endDate == null) {
-              Navigator.of(context).pop();
-              return;
-            }
-            final dateTimeRange = DateTimeRange(start: startDate, end: endDate);
-            Navigator.of(context).pop(dateTimeRange);
-          },
+        Builder(
+          builder: (context) => ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.primary,
+            title: 'Apply',
+            onTap: () {
+              final startDate = newStartDate;
+              final endDate = newEndDate;
+              if (startDate == null || endDate == null) {
+                Navigator.of(context).pop();
+                return;
+              }
+              final dateTimeRange =
+                  DateTimeRange(start: startDate, end: endDate);
+              Navigator.of(context).pop(dateTimeRange);
+            },
+          ),
         ),
       ],
       child: StatefulBuilder(
@@ -255,23 +265,25 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   DateTime _getPageDate(int page) {
     final offset = page - initialPage;
     switch (_activeType) {
+      // Always use the first day of the month: DateTime overflows days that do
+      // not exist in the target month (Jan 31 + 1 month would be Mar 3).
       case ImpaktfullUiDatePickerActiveType.days:
         return DateTime(
           _initialStartDay.year,
           _initialStartDay.month + offset,
-          _initialStartDay.day,
+          1,
         );
       case ImpaktfullUiDatePickerActiveType.months:
         return DateTime(
           _initialStartDay.year + offset,
           _initialStartDay.month,
-          _initialStartDay.day,
+          1,
         );
       case ImpaktfullUiDatePickerActiveType.years:
         return DateTime(
           _initialStartDay.year + (offset * 10),
           _initialStartDay.month,
-          _initialStartDay.day,
+          1,
         );
     }
   }
@@ -309,12 +321,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
       setState(() {
         _activeType = ImpaktfullUiDatePickerActiveType.years;
       });
-      final currentDecade = (_initialStartDay.year ~/ 10) * 10;
-      final activeDecade = (_activeDate.year ~/ 10) * 10;
-      final decadeOffset = (activeDecade - currentDecade) ~/ 10;
-      if (decadeOffset != 0) {
-        _pageController.jumpToPage(initialPage + decadeOffset);
-      }
+      _pageController.jumpToPage(initialPage + _getDecadeOffset());
     }
   }
 
@@ -350,7 +357,14 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
             initialPage + (_activeDate.year - _initialStartDay.year));
         break;
       case ImpaktfullUiDatePickerActiveType.years:
-        throw UnimplementedError();
+        _pageController.jumpToPage(initialPage + _getDecadeOffset());
+        break;
     }
+  }
+
+  int _getDecadeOffset() {
+    final currentDecade = _initialStartDay.year ~/ 10;
+    final activeDecade = _activeDate.year ~/ 10;
+    return activeDecade - currentDecade;
   }
 }

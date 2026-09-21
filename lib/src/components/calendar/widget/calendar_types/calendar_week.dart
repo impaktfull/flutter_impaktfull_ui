@@ -170,10 +170,8 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
   }
 
   void _setEvents(List<ImpaktfullUiCalendarEvent> events) {
-    events.sortBy((e) => e.startDate);
-    setState(() {
-      _events = events;
-    });
+    // Sort a copy: never modify the (possibly unmodifiable) list of the app.
+    _events = List.of(events)..sortBy((e) => e.startDate);
   }
 
   void _scrollTo8AM() {

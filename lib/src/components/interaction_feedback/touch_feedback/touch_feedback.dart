@@ -144,10 +144,12 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
   void initState() {
     super.initState();
     _focusNode = widget.focusNode ?? FocusNode();
+    FocusManager.instance.addHighlightModeListener(_onHighlightModeChanged);
   }
 
   @override
   void dispose() {
+    FocusManager.instance.removeHighlightModeListener(_onHighlightModeChanged);
     if (widget.focusNode == null) {
       _focusNode.dispose();
     }
@@ -181,10 +183,14 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
     }
     final isAndroidTarget =
         Theme.of(context).platform == TargetPlatform.android;
+    // Only show the focus ring when navigating with a keyboard (like the
+    // focusColor of the InkWell), not after touch input.
+    final showFocus = _focusNode.hasFocus &&
+        FocusManager.instance.highlightMode == FocusHighlightMode.traditional;
     return ImpaktfullUiFocusFeedback(
-      hasFocus: _focusNode.hasFocus,
+      hasFocus: showFocus,
       borderRadius: widget.borderRadius,
-      enabled: false,
+      enabled: widget.useFocusColor,
       child: InkWell(
         borderRadius: widget.borderRadius?.value,
         onTap: widget.onTap,
@@ -214,5 +220,10 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
   void _onFocusChanged(bool value) {
     setState(() {});
     widget.onFocusChanged(value);
+  }
+
+  void _onHighlightModeChanged(FocusHighlightMode mode) {
+    if (!mounted || !_focusNode.hasFocus) return;
+    setState(() {});
   }
 }

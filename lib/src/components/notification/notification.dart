@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/components/notification/notification.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
@@ -104,7 +105,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
       builder: (context, componentTheme) {
         final crossAxisAlignment = _getAlignment();
         final config = _getNotificationTypeConfig(componentTheme);
-        return Container(
+        final notification = Container(
           width: width,
           decoration: BoxDecoration(
             color: componentTheme.colors.background,
@@ -202,6 +203,12 @@ class ImpaktfullUiNotification extends StatelessWidget {
               ],
             ),
           ),
+        );
+        if (onTap == null) return notification;
+        return ImpaktfullUiTouchFeedback(
+          onTap: onTap,
+          borderRadius: componentTheme.dimens.borderRadius,
+          child: notification,
         );
       },
     );

@@ -89,6 +89,7 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
     _image ??= await cropper.downloadImage(
       widget.imageUrl,
     );
+    if (!mounted) return;
     setState(() {
       _imageBytes = null;
     });

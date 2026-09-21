@@ -76,7 +76,7 @@ class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
             child: ImpaktfullUiDatePickerCell(
               value: _formatDate(item),
               fullWidth: true,
-              isSelected: selectedStartDate?.isSameMonth(item) ?? false,
+              isSelected: selectedStartDate?.isSameYear(item) ?? false,
               onTap: () => onSelected(item),
               theme: componentTheme,
             ),
