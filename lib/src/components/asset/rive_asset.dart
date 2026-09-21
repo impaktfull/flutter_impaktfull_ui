@@ -25,9 +25,26 @@ class _RiveAssetState extends State<RiveAsset> {
   @override
   void initState() {
     super.initState();
-    _fileLoader =
-        FileLoader.fromAsset("assets/vehicles.riv", riveFactory: Factory.rive);
+    _fileLoader = _createFileLoader();
   }
+
+  @override
+  void didUpdateWidget(covariant RiveAsset oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.asset != widget.asset) {
+      _fileLoader.dispose();
+      _fileLoader = _createFileLoader();
+    }
+  }
+
+  @override
+  void dispose() {
+    _fileLoader.dispose();
+    super.dispose();
+  }
+
+  FileLoader _createFileLoader() =>
+      FileLoader.fromAsset(widget.asset, riveFactory: Factory.rive);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +63,7 @@ class _RiveAssetState extends State<RiveAsset> {
           if (state is RiveFailed) {
             debugPrint(state.error.toString());
           }
-          return SizedBox();
+          return const SizedBox();
         },
       ),
     );
