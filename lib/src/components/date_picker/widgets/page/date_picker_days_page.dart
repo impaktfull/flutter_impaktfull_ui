@@ -135,10 +135,12 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
       return ImpaktfullUiDatePickerCellType.single;
     }
     if (item.isSameDay(startDate)) return ImpaktfullUiDatePickerCellType.start;
+    // Check the end day before the days in between: the end date can have a
+    // time, which makes the end day itself "before" the end date.
+    if (item.isSameDay(endDate)) return ImpaktfullUiDatePickerCellType.end;
     if (item.isAfter(startDate) && item.isBefore(endDate)) {
       return ImpaktfullUiDatePickerCellType.between;
     }
-    if (item.isSameDay(endDate)) return ImpaktfullUiDatePickerCellType.end;
     if (item.isSameDay(DateTime.now())) {
       return ImpaktfullUiDatePickerCellType.today;
     }

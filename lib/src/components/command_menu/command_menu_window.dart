@@ -133,8 +133,9 @@ class _CommandMenuWindowState extends State<ImpaktfullUiCommandMenuWindow> {
                                     ),
                                   ),
                                   if (bottomChild != null) ...[
-                                    Expanded(
-                                      flex: 0,
+                                    // At most 200 high, less when there
+                                    // is not enough space (small screens).
+                                    Flexible(
                                       child: SizedBox(
                                         height: 200,
                                         child: bottomChild,

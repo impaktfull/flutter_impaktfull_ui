@@ -13,6 +13,8 @@ class ImpaktfullUiCommandMenuController {
   bool get isShowingCommandMenu => _entry != null;
 
   void show() {
+    // Only one command menu at a time: a second entry could never be hidden.
+    if (_entry != null) return;
     final entry = OverlayEntry(
       builder: (context) =>
           _listener?.buildCommander(context) ?? const SizedBox(),
