@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
 
-class ImpaktfullUiColorPickerSlider extends StatelessWidget {
+class ImpaktfullUiColorPickerSlider extends StatefulWidget {
   final Color? selectedColor;
   final List<Color> allowedColors;
   final ValueChanged<Color> onColorChanged;
+  final ValueChanged<Color>? onColorChangeEnd;
   final bool showActiveColor;
   final ImpaktfullUiColorPickerTheme componentTheme;
 
@@ -14,8 +15,18 @@ class ImpaktfullUiColorPickerSlider extends StatelessWidget {
     required this.onColorChanged,
     required this.showActiveColor,
     required this.componentTheme,
+    this.onColorChangeEnd,
     super.key,
   });
+
+  @override
+  State<ImpaktfullUiColorPickerSlider> createState() =>
+      _ImpaktfullUiColorPickerSliderState();
+}
+
+class _ImpaktfullUiColorPickerSliderState
+    extends State<ImpaktfullUiColorPickerSlider> {
+  Color? _lastColor;
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +46,19 @@ class ImpaktfullUiColorPickerSlider extends StatelessWidget {
               1.0,
               1.0,
             ).toColor();
-            onColorChanged.call(selectedColor);
+            _lastColor = selectedColor;
+            widget.onColorChanged(selectedColor);
+          },
+          onPanEnd: (_) {
+            final lastColor = _lastColor;
+            _lastColor = null;
+            if (lastColor == null) return;
+            widget.onColorChangeEnd?.call(lastColor);
           },
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: allowedColors,
+                colors: widget.allowedColors,
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),

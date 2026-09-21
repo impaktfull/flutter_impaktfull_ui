@@ -30,8 +30,8 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
       builder: (context, componentTheme) {
         final strengthIndicators =
             this.strengthIndicators ?? componentTheme.colors.strengthIndicators;
-        final color = _getColor(
-            componentTheme, strengthIndicators, strengthIndicatorIndex);
+        final index = _getClampedIndex(strengthIndicators);
+        final color = _getColor(componentTheme, strengthIndicators, index);
         return ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
           spacing: 12,
@@ -44,7 +44,7 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
                     child: AnimatedContainer(
                       duration: componentTheme.durations.colorChangeDuration,
                       decoration: BoxDecoration(
-                        color: _hasColor(i)
+                        color: _hasColor(i, index)
                             ? color
                             : componentTheme.colors.strengthIndicatorBackground,
                         borderRadius:
@@ -99,26 +99,29 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
   Color _getColor(
     ImpaktfullUiPasswordStrengthIndicatorTheme componentTheme,
     List<Color> strengthIndicators,
-    int? strengthIndicatorIndex,
+    int? index,
   ) {
-    if (strengthIndicatorIndex == null) {
+    if (index == null) {
       return componentTheme.colors.strengthIndicatorBackground;
     }
-    if (strengthIndicatorIndex < 0) {
-      throw Exception('Strength indicator index cannot be negative');
-    }
-    if (strengthIndicators.length < strengthIndicatorIndex) {
-      throw Exception('Strength indicator index is out of bounds');
-    }
-
-    return strengthIndicators[strengthIndicatorIndex];
+    return strengthIndicators[index];
   }
 
-  bool _hasColor(int i) {
+  /// The [strengthIndicatorIndex] clamped to the available
+  /// [strengthIndicators], or null when no indicator should be colored.
+  int? _getClampedIndex(List<Color> strengthIndicators) {
     final strengthIndicatorIndex = this.strengthIndicatorIndex;
-    if (strengthIndicatorIndex == null) {
-      return false;
+    if (strengthIndicatorIndex == null) return null;
+    if (strengthIndicatorIndex < 0) return null;
+    if (strengthIndicators.isEmpty) return null;
+    if (strengthIndicatorIndex >= strengthIndicators.length) {
+      return strengthIndicators.length - 1;
     }
-    return i <= strengthIndicatorIndex;
+    return strengthIndicatorIndex;
+  }
+
+  bool _hasColor(int i, int? index) {
+    if (index == null) return false;
+    return i <= index;
   }
 }

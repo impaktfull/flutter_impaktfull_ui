@@ -56,7 +56,7 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Center(
         child: ImpaktfullUiTouchFeedback(
-          onTap: _onTap,
+          onTap: _isDisabled ? null : _onTap,
           borderRadius: componentTheme.dimens.borderRadius,
           color: _getBackgroundColor(componentTheme),
           child: SizedBox(
@@ -131,6 +131,8 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
     if (isSelected) return theme.colors.activeColor;
     return theme.colors.backgroundColor;
   }
+
+  bool get _isDisabled => onChanged == null && onChangedIndeterminate == null;
 
   void _onTap() {
     if (value == true) {

@@ -56,10 +56,14 @@ class _ImpaktfullUiWysiwygInputFieldState
   void initState() {
     super.initState();
     final widgetController = widget.controller;
-    _controller = widgetController ?? TextEditingController(text: widget.value);
     if (widgetController == null) {
-      _controller.selection = TextSelection(
-          baseOffset: widget.value!.length, extentOffset: widget.value!.length);
+      final value = widget.value ?? '';
+      _controller = TextEditingController.fromValue(TextEditingValue(
+        text: value,
+        selection: TextSelection.collapsed(offset: value.length),
+      ));
+    } else {
+      _controller = widgetController;
     }
     _focusNode = widget.focusNode ?? FocusNode();
     _controller.addListener(_onTextChanged);
@@ -74,16 +78,22 @@ class _ImpaktfullUiWysiwygInputFieldState
   void didUpdateWidget(covariant ImpaktfullUiWysiwygInputField oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value && _controller.text != widget.value) {
-      _controller.text = widget.value ?? '';
+      final value = widget.value ?? '';
+      // Setting `text` resets the selection to -1, keep a valid selection so
+      // the formatters can use it.
+      _controller.value = TextEditingValue(
+        text: value,
+        selection: TextSelection.collapsed(offset: value.length),
+      );
     }
   }
 
   @override
   void dispose() {
+    _controller.removeListener(_onTextChanged);
     if (widget.controller == null) {
       _controller.dispose();
     }
-    _controller.removeListener(_onTextChanged);
     if (widget.focusNode == null) {
       _focusNode.dispose();
     }

@@ -90,8 +90,8 @@ class ImpaktfullUiInputField extends StatefulWidget {
 }
 
 class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
-  late final TextEditingController _controller;
-  late final FocusNode _focusNode;
+  late TextEditingController _controller;
+  late FocusNode _focusNode;
 
   var _obscureText = false;
 
@@ -114,8 +114,37 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   @override
   void didUpdateWidget(covariant ImpaktfullUiInputField oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != widget.controller) {
+      final oldController = _controller;
+      _controller = widget.controller ??
+          TextEditingController(text: widget.value ?? oldController.text);
+      if (oldWidget.controller == null) {
+        // Children still reference the old controller during this frame.
+        WidgetsBinding.instance
+            .addPostFrameCallback((_) => oldController.dispose());
+      }
+    }
+    if (oldWidget.focusNode != widget.focusNode) {
+      final oldFocusNode = _focusNode;
+      _focusNode = widget.focusNode ?? FocusNode();
+      if (oldWidget.focusNode == null) {
+        WidgetsBinding.instance
+            .addPostFrameCallback((_) => oldFocusNode.dispose());
+      }
+    }
     if (oldWidget.value != widget.value && _controller.text != widget.value) {
-      _controller.text = widget.value ?? '';
+      final text = widget.value ?? '';
+      // Setting `text` directly would reset the selection
+      final selection = _controller.selection;
+      _controller.value = TextEditingValue(
+        text: text,
+        selection: selection.isValid
+            ? TextSelection(
+                baseOffset: selection.baseOffset.clamp(0, text.length),
+                extentOffset: selection.extentOffset.clamp(0, text.length),
+              )
+            : TextSelection.collapsed(offset: text.length),
+      );
     }
     if (oldWidget.obscureText != widget.obscureText) {
       _obscureText = widget.obscureText;

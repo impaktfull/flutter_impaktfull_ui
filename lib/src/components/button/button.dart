@@ -55,7 +55,9 @@ class ImpaktfullUiButton extends StatefulWidget {
 }
 
 class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
-  var _isLoading = false;
+  var _isAsyncLoading = false;
+
+  bool get _isLoading => widget.isLoading || _isAsyncLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -289,12 +291,13 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
   }
 
   Future<void> _onTap(ImpaktfullUiButtonTheme componentTheme) async {
+    if (_isLoading) return;
     final onAsyncTap = widget.onAsyncTap;
     if (componentTheme.config.vibrateOnTap) {
       Vibrate.vibrate();
     }
     if (onAsyncTap != null) {
-      setState(() => _isLoading = true);
+      setState(() => _isAsyncLoading = true);
       try {
         await onAsyncTap();
       } catch (error, trace) {
@@ -302,7 +305,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
         debugPrintStack(stackTrace: trace);
       }
       if (!mounted) return;
-      setState(() => _isLoading = false);
+      setState(() => _isAsyncLoading = false);
     } else if (widget.onTap != null) {
       widget.onTap?.call();
     }

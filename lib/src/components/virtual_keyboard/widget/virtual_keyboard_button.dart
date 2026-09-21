@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
@@ -35,7 +37,10 @@ class _ImpaktfullUiVirtualKeyboardButtonState
   late AnimationController _slideController;
   late Animation<Offset> _slideAnimation;
   var _isSliding = false;
-  bool _isPressed = false;
+  Timer? _repeatTimer;
+
+  static const _repeatDelay = Duration(milliseconds: 500);
+  static const _repeatInterval = Duration(milliseconds: 100);
 
   @override
   void initState() {
@@ -55,6 +60,7 @@ class _ImpaktfullUiVirtualKeyboardButtonState
 
   @override
   void dispose() {
+    _stopRepeatingTap();
     _slideController.dispose();
     super.dispose();
   }
@@ -173,27 +179,40 @@ class _ImpaktfullUiVirtualKeyboardButtonState
     return true;
   }
 
-  void _onTap() => widget.onTap(widget.virtualKeyboardKey.defaultKey);
-
-  void _handleTapDown(TapDownDetails details) {
-    setState(() => _isPressed = true);
-    _startRepeatingTap();
+  /// The key that is typed: the shifted key (e.g. `!` instead of `1`) when
+  /// shift is active.
+  ImpaktfullUiVirtualKeyboardKey get _currentKey {
+    final virtualKeyboardKey = widget.virtualKeyboardKey;
+    final shiftKey = virtualKeyboardKey.shiftKey;
+    if (widget.shift && shiftKey != null) return shiftKey;
+    return virtualKeyboardKey.defaultKey;
   }
 
-  void _handleTapUp(TapUpDetails details) {
-    setState(() => _isPressed = false);
+  void _handleTapDown(TapDownDetails details) => _startRepeatingTap();
+
+  void _handleTapUp(TapUpDetails details) => _stopRepeatingTap();
+
+  void _handleTapCancel() => _stopRepeatingTap();
+
+  void _startRepeatingTap() {
+    _stopRepeatingTap();
+    // Shift is released after the first character, keep repeating the key
+    // that was pressed.
+    final key = _currentKey;
+    widget.onTap(key);
+    _repeatTimer = Timer(_repeatDelay, () {
+      if (!mounted) return;
+      widget.onTap(key);
+      _repeatTimer = Timer.periodic(_repeatInterval, (_) {
+        if (!mounted) return;
+        widget.onTap(key);
+      });
+    });
   }
 
-  void _handleTapCancel() {
-    setState(() => _isPressed = false);
-  }
-
-  Future<void> _startRepeatingTap() async {
-    if (!_isPressed) return;
-    _onTap();
-    await Future.delayed(const Duration(milliseconds: 100));
-    if (!mounted) return;
-    await _startRepeatingTap();
+  void _stopRepeatingTap() {
+    _repeatTimer?.cancel();
+    _repeatTimer = null;
   }
 
   void _onSecondarySwipeAction() {

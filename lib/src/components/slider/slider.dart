@@ -58,10 +58,14 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
         focusNode: _focusNode,
         child: LayoutBuilder(
           builder: (context, constraints) => GestureDetector(
-            onHorizontalDragUpdate: (details) =>
-                _onUpdateThumb(details.localPosition.dx, constraints.maxWidth),
-            onTapDown: (details) =>
-                _onUpdateThumb(details.localPosition.dx, constraints.maxWidth),
+            onHorizontalDragUpdate: widget.onChanged == null
+                ? null
+                : (details) => _onUpdateThumb(
+                    details.localPosition.dx, constraints.maxWidth),
+            onTapDown: widget.onChanged == null
+                ? null
+                : (details) => _onUpdateThumb(
+                    details.localPosition.dx, constraints.maxWidth),
             child: Stack(
               children: [
                 if (widget.legendBuilder != null) ...[
@@ -121,8 +125,7 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                         ),
                       ),
                       FractionallySizedBox(
-                        widthFactor: (_currentValue - widget.min.toDouble()) /
-                            (widget.max.toDouble() - widget.min.toDouble()),
+                        widthFactor: _fraction,
                         child: Container(
                           height: 4,
                           decoration: BoxDecoration(
@@ -138,11 +141,7 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                         ),
                       ),
                       Positioned(
-                        left: (_currentValue - widget.min.toDouble()) /
-                                (widget.max.toDouble() -
-                                    widget.min.toDouble()) *
-                                constraints.maxWidth -
-                            8,
+                        left: _fraction * constraints.maxWidth - 8,
                         child: Container(
                           width: 16,
                           height: 16,
@@ -182,9 +181,19 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
     super.dispose();
   }
 
+  /// The position of the current value between min (0) and max (1).
+  double get _fraction {
+    final min = widget.min;
+    final max = widget.max;
+    if (max <= min) return 0;
+    return ((_currentValue - min) / (max - min)).clamp(0.0, 1.0);
+  }
+
   void _onUpdateThumb(double dx, double width) {
+    if (widget.onChanged == null) return;
     final min = widget.min.toDouble();
     final max = widget.max.toDouble();
+    if (max <= min || width <= 0) return;
     final localX = dx.clamp(0, width);
     final percent = localX / width;
     final newValue = min + (max - min) * percent;

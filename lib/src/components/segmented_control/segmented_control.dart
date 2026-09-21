@@ -28,6 +28,7 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final selectedIndex = items.indexOf(value);
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
@@ -41,55 +42,51 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // Animated selection indicator
-            AnimatedAlign(
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.easeInOut,
-              alignment: Alignment(
-                -1 + (2 * items.indexOf(value) / (items.length - 1)),
-                0,
-              ),
-              child: FractionallySizedBox(
-                widthFactor: 1 / items.length,
-                child: Container(
-                  margin: EdgeInsets.only(
-                    left: items.indexOf(value) == 0 ? 0 : 2,
-                    right: items.indexOf(value) == items.length - 1 ? 0 : 2,
-                  ),
-                  decoration: BoxDecoration(
-                    color: componentTheme.colors.activeBackground,
-                    borderRadius: componentTheme.dimens.borderRadius,
-                    border:
-                        Border.all(color: componentTheme.colors.activeBorder),
+            // Animated selection indicator, hidden when the value is not
+            // one of the items.
+            if (selectedIndex != -1) ...[
+              AnimatedAlign(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeInOut,
+                alignment: Alignment(
+                  items.length == 1
+                      ? 0
+                      : -1 + (2 * selectedIndex / (items.length - 1)),
+                  0,
+                ),
+                child: FractionallySizedBox(
+                  widthFactor: 1 / items.length,
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      left: selectedIndex == 0 ? 0 : 2,
+                      right: selectedIndex == items.length - 1 ? 0 : 2,
+                    ),
+                    decoration: BoxDecoration(
+                      color: componentTheme.colors.activeBackground,
+                      borderRadius: componentTheme.dimens.borderRadius,
+                      border:
+                          Border.all(color: componentTheme.colors.activeBorder),
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
             // Segments
             ImpaktfullUiAutoLayout.horizontal(
               spacing: 4,
               children: items.map((item) {
                 final leading = leadingBuilder?.call(context, item);
                 final trailing = trailingBuilder?.call(context, item);
-                var label = labelBuilder?.call(context, item);
-                if (label == null && item is String) {
-                  label = item;
-                }
-                if (label == null) {
-                  throw ArgumentError(
-                      'No item builder provided and item is not a String');
-                }
+                final label =
+                    labelBuilder?.call(context, item) ?? item.toString();
                 return Expanded(
-                  child: GestureDetector(
+                  child: ImpaktfullUiSegmentedControlItem(
                     onTap: () => onChanged(item),
-                    child: ImpaktfullUiSegmentedControlItem(
-                      onTap: () => onChanged(item),
-                      isSelected: value == item,
-                      leading: leading,
-                      label: label,
-                      trailing: trailing,
-                      theme: componentTheme,
-                    ),
+                    isSelected: value == item,
+                    leading: leading,
+                    label: label,
+                    trailing: trailing,
+                    theme: componentTheme,
                   ),
                 );
               }).toList(),

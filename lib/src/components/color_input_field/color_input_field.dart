@@ -6,6 +6,7 @@ import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'color_input_field_style.dart';
@@ -137,39 +138,33 @@ class _ImpaktfullUiColorInputFieldState
     });
   }
 
+  /// Parses `RGB`, `RRGGBB` and, when [ImpaktfullUiColorInputField.alphaEnabled]
+  /// is true, `RGBA` and `RRGGBBAA` (with or without a leading `#`).
   Color? _hexToColor(String hex) {
-    // Remove any leading # symbol
-    final cleanHex = hex.replaceAll('#', '').trim();
-
-    // Check if valid hex length (3 or 6 characters)
-    if (cleanHex.length != 6 && cleanHex.length != 3) {
-      return null;
+    var cleanHex = hex.replaceAll('#', '').trim();
+    final validLengths =
+        widget.alphaEnabled ? const [3, 4, 6, 8] : const [3, 6];
+    if (!validLengths.contains(cleanHex.length)) return null;
+    if (!RegExp(r'^[0-9a-fA-F]+$').hasMatch(cleanHex)) return null;
+    if (cleanHex.length == 3 || cleanHex.length == 4) {
+      // Convert the short notation to the long notation
+      cleanHex = cleanHex.split('').map((char) => '$char$char').join();
     }
-
-    try {
-      if (cleanHex.length == 6) {
-        final r = int.parse(cleanHex.substring(0, 2), radix: 16);
-        final g = int.parse(cleanHex.substring(2, 4), radix: 16);
-        final b = int.parse(cleanHex.substring(4, 6), radix: 16);
-        return Color.fromRGBO(r, g, b, 1);
-      } else {
-        // Convert 3 digit hex to 6 digit
-        final r = int.parse('${cleanHex[0]}${cleanHex[0]}', radix: 16);
-        final g = int.parse('${cleanHex[1]}${cleanHex[1]}', radix: 16);
-        final b = int.parse('${cleanHex[2]}${cleanHex[2]}', radix: 16);
-        return Color.fromRGBO(r, g, b, 1);
-      }
-    } catch (e) {
-      return null;
-    }
+    int? component(int index) =>
+        int.tryParse(cleanHex.substring(index * 2, index * 2 + 2), radix: 16);
+    final r = component(0);
+    final g = component(1);
+    final b = component(2);
+    final a = cleanHex.length == 8 ? component(3) : 255;
+    if (r == null || g == null || b == null || a == null) return null;
+    return Color.fromARGB(a, r, g, b);
   }
 
   String _colorToHex(Color? color) {
     if (color == null) return '';
-    final red = (color.r * 255).round().toRadixString(16).padLeft(2, '0');
-    final green = (color.g * 255).round().toRadixString(16).padLeft(2, '0');
-    final blue = (color.b * 255).round().toRadixString(16).padLeft(2, '0');
-    return '#$red$green$blue';
+    return color
+        .toHexString(includeAlpha: widget.alphaEnabled && color.a < 1)
+        .toLowerCase();
   }
 
   Future<void> _onTap() async {
@@ -180,7 +175,9 @@ class _ImpaktfullUiColorInputFieldState
         child: ImpaktfullUiColorPicker(
           allowedColors: widget.colorPickerColors ?? [],
           type: widget.colorPickerType ?? ImpaktfullUiColorPickerType.simple,
-          onColorChanged: (color) => Navigator.of(context).pop(color),
+          onColorChanged: (_) {},
+          // Only close when the user finished picking (tap or slider release)
+          onColorChangeEnd: (color) => Navigator.of(context).pop(color),
           selectedColor: _color,
         ),
       ),

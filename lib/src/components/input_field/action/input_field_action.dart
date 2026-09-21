@@ -30,7 +30,7 @@ class ImpaktfullUiInputFieldAction extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadiusDirectional.only(
           topEnd: componentTheme.dimens.borderRadius.topEnd,
-          bottomEnd: componentTheme.dimens.borderRadius.bottomStart,
+          bottomEnd: componentTheme.dimens.borderRadius.bottomEnd,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Container(
