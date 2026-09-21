@@ -26,6 +26,13 @@ class ImpaktfullUiContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final border = this.border;
+    // A uniform border is drawn by the Material shape (behind the child, like
+    // before). A border with different sides can not be expressed as a
+    // single BorderSide, so it is drawn as a foreground decoration.
+    final shapeBorder = border != null && border.isUniform ? border : null;
+    final foregroundBorder =
+        border != null && !border.isUniform ? border : null;
     return Padding(
       padding: margin,
       child: Container(
@@ -35,15 +42,21 @@ class ImpaktfullUiContainer extends StatelessWidget {
           borderRadius: borderRadius ?? BorderRadius.zero,
           boxShadow: shadow,
         ),
+        foregroundDecoration: foregroundBorder == null
+            ? null
+            : BoxDecoration(
+                border: foregroundBorder,
+                borderRadius: borderRadius,
+              ),
         child: Material(
-          shape: borderRadius == null || border == null
+          shape: shapeBorder == null
               ? null
               : RoundedRectangleBorder(
-                  borderRadius: borderRadius!,
-                  side: border!.top,
+                  borderRadius: borderRadius ?? BorderRadius.zero,
+                  side: shapeBorder.top,
                 ),
           borderOnForeground: false,
-          borderRadius: border == null ? borderRadius : null,
+          borderRadius: shapeBorder == null ? borderRadius : null,
           color: color ?? Colors.transparent,
           child: Padding(
             padding: padding,

@@ -102,7 +102,9 @@ class ImpaktfullUiApp extends StatelessWidget {
                         .removeUnwantedBehavior(
                       targetPlatform: targetPlatform,
                     ),
-                    darkTheme: (materialLightTheme ?? Theme.of(context))
+                    darkTheme: (materialDarkTheme ??
+                            materialLightTheme ??
+                            Theme.of(context))
                         .removeUnwantedBehavior(
                       targetPlatform: targetPlatform,
                     ),

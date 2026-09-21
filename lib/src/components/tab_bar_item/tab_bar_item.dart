@@ -32,6 +32,15 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
   }
 
   @override
+  void didUpdateWidget(covariant ImpaktfullUiTabBarItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != widget.controller) {
+      oldWidget.controller.removeListener(_onTabChanged);
+      widget.controller.addListener(_onTabChanged);
+    }
+  }
+
+  @override
   void dispose() {
     widget.controller.removeListener(_onTabChanged);
     super.dispose();

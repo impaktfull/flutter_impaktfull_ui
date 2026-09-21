@@ -1,6 +1,7 @@
-import 'device_util.dart'
-    if (dart.library.html) 'device_util_web.dart'
-    if (dart.library.io) 'device_util_io.dart' as platform;
+// dart.library.js_interop is available on every web target (JS and Wasm),
+// dart.library.html is not available when compiling to Wasm.
+import 'device_util_io.dart' if (dart.library.js_interop) 'device_util_web.dart'
+    as platform;
 
 class DeviceUtil {
   // Web

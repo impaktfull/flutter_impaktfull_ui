@@ -50,15 +50,18 @@ class ImpaktfullUiStepper extends StatelessWidget {
           autoLayoutOrientation = ImpaktfullUiAutoLayoutOrientation.vertical;
           spacing = spacing * 3;
         }
+        // All items before the first incomplete item are active. When every
+        // item is completed, [currentStep] is -1 and every item is active.
+        final activeSteps = currentStep == -1 ? items.length : currentStep;
         return ImpaktfullUiAutoLayout(
           orientation: autoLayoutOrientation,
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: spacing,
           children: [
-            for (final item in items) ...[
+            for (var i = 0; i < items.length; i++) ...[
               Builder(
                 builder: (context) {
-                  final i = items.indexOf(item);
+                  final item = items[i];
                   final crossAxisAlignment = item.asset == null
                       ? CrossAxisAlignment.start
                       : CrossAxisAlignment.center;
@@ -76,7 +79,7 @@ class ImpaktfullUiStepper extends StatelessWidget {
                           height: componentTheme.dimens.height,
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: i < currentStep
+                            color: i < activeSteps
                                 ? componentTheme.colors.activeStep
                                 : componentTheme.colors.inactiveStep,
                             borderRadius: componentTheme.dimens.borderRadius,
@@ -86,12 +89,12 @@ class ImpaktfullUiStepper extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: i < currentStep
+                              color: i < activeSteps
                                   ? componentTheme.colors.assetBorderCompleted
                                   : componentTheme.colors.assetBorder,
                               width: 1,
                             ),
-                            color: i < currentStep
+                            color: i < activeSteps
                                 ? componentTheme.colors.assetBackgroundCompleted
                                 : componentTheme.colors.assetBackground,
                             borderRadius: componentTheme.dimens.borderRadius,
@@ -99,7 +102,7 @@ class ImpaktfullUiStepper extends StatelessWidget {
                           padding: const EdgeInsets.all(8),
                           child: ImpaktfullUiAssetWidget(
                             asset: item.asset!,
-                            color: i < currentStep
+                            color: i < activeSteps
                                 ? componentTheme.colors.assetColorCompleted
                                 : componentTheme.colors.assetColor,
                           ),

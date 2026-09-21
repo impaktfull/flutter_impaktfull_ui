@@ -66,7 +66,8 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
           borderRadius:
               widget.borderRadius ?? componentTheme.dimens.borderRadius,
           child: ClipRRect(
-            borderRadius: componentTheme.dimens.borderRadius,
+            borderRadius:
+                widget.borderRadius ?? componentTheme.dimens.borderRadius,
             child: Padding(
               padding: widget.padding ?? componentTheme.dimens.padding,
               child: Builder(builder: (context) {
@@ -95,9 +96,8 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
     }
     if (componentTheme.colors.border != null) {
       return Border.all(
-        color: widget.error
-            ? componentTheme.colors.borderError!
-            : componentTheme.colors.border!,
+        // Without a borderError color, an error card keeps its normal border.
+        color: componentTheme.colors.border!,
         strokeAlign: BorderSide.strokeAlignOutside,
         width: componentTheme.dimens.borderWidth,
       );

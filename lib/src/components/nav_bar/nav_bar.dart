@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/adaptive_safe_area/adaptive_safe_area.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
+import 'package:impaktfull_ui/src/components/badge/badge.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/localization/localization_provider.dart';
 import 'package:impaktfull_ui/src/components/nav_bar/nav_bar.localization.dart';
@@ -16,6 +17,7 @@ export 'nav_bar.localization.dart';
 class ImpaktfullUiNavBar extends StatelessWidget {
   final String? title;
   final String? subtitle;
+  final String? badge;
   final VoidCallback? onBackTapped;
   final VoidCallback? onDrawerTapped;
   final bool isDrawerOpen;
@@ -29,6 +31,7 @@ class ImpaktfullUiNavBar extends StatelessWidget {
   const ImpaktfullUiNavBar({
     this.title,
     this.subtitle,
+    this.badge,
     this.onBackTapped,
     this.onDrawerTapped,
     this.isDrawerOpen = false,
@@ -134,10 +137,33 @@ class ImpaktfullUiNavBar extends StatelessWidget {
                                 : CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text(
-                                title ?? '',
-                                style: componentTheme.textStyles.title,
-                              ),
+                              if (badge == null) ...[
+                                Text(
+                                  title ?? '',
+                                  style: componentTheme.textStyles.title,
+                                ),
+                              ] else ...[
+                                ImpaktfullUiAutoLayout.horizontal(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  spacing: 8,
+                                  children: [
+                                    if (title != null) ...[
+                                      Flexible(
+                                        child: Text(
+                                          title!,
+                                          style:
+                                              componentTheme.textStyles.title,
+                                        ),
+                                      ),
+                                    ],
+                                    ImpaktfullUiBadge(
+                                      type: ImpaktfullUiBadgeType.primary,
+                                      label: badge!,
+                                    ),
+                                  ],
+                                ),
+                              ],
                               if (subtitle != null) ...[
                                 Text(
                                   subtitle ?? '',

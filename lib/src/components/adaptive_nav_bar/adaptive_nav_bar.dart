@@ -46,6 +46,7 @@ class ImpaktfullUiAdaptiveNavBar extends StatelessWidget {
       small: (context) => ImpaktfullUiNavBar(
         title: title,
         subtitle: subtitle,
+        badge: badge,
         onBackTapped: onBackTapped,
         bottomChild: bottomChild == null
             ? null

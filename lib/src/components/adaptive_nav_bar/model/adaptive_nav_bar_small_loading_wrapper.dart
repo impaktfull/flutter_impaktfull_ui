@@ -61,10 +61,8 @@ class _ImpaktfullUiNavBarSmallLoadingWrapperState
       setState(() => _isLoading = true);
       try {
         await widget.onAsyncTap!();
-        setState(() => _isLoading = false);
-      } catch (e) {
-        setState(() => _isLoading = false);
-        rethrow;
+      } finally {
+        if (mounted) setState(() => _isLoading = false);
       }
     }
   }
