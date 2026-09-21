@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/components/gallery/gallery.localizations.dart';
 import 'package:impaktfull_ui/src/components/gallery/gallery_style.dart';
 import 'package:impaktfull_ui/src/components/gallery/model/gallery_item.dart';
 import 'package:impaktfull_ui/src/components/gallery/widget/gallery_full_screen.dart';
@@ -7,6 +8,7 @@ import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
+export 'gallery.localizations.dart';
 export 'gallery_style.dart';
 export 'model/gallery_item.dart';
 export 'widget/gallery_full_screen.dart';
@@ -23,6 +25,9 @@ class ImpaktfullUiGallery extends StatelessWidget {
   final String noDataLabel;
   final ImpaktfullUiGalleryTheme? theme;
 
+  /// The texts of the gallery. Defaults to the localizations of the app.
+  final ImpaktfullUiGalleryLocalizations? localizations;
+
   const ImpaktfullUiGallery({
     required this.items,
     required this.noDataLabel,
@@ -32,6 +37,7 @@ class ImpaktfullUiGallery extends StatelessWidget {
     this.spacing = 16,
     this.itemFit,
     this.theme,
+    this.localizations,
     super.key,
   });
 
@@ -55,6 +61,7 @@ class ImpaktfullUiGallery extends StatelessWidget {
             componentTheme: componentTheme,
             items: items,
             initialItem: item,
+            localizations: localizations,
           ),
           child: ImpaktfullUiGalleryHeroItem(
             item: item,

@@ -6,7 +6,7 @@ import 'package:impaktfull_ui/src/components/date_input_field/date_input_field_s
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
-import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'date_input_field_style.dart';
@@ -14,7 +14,7 @@ export 'date_input_field_style.dart';
 class ImpaktfullUiDateInputField extends StatefulWidget {
   final DateTime? date;
   final ValueChanged<DateTime?> onDateSelected;
-  final String dateFormat;
+  final String? _dateFormat;
   final ImpaktfullUiAsset? leadingIcon;
   final WidgetBuilder? leadingBuilder;
   final String? label;
@@ -26,10 +26,26 @@ class ImpaktfullUiDateInputField extends StatefulWidget {
   final bool readOnly;
   final ImpaktfullUiDateInputFieldTheme? theme;
 
+  /// The first day of the week of the date picker
+  /// ([DateTime.monday] ... [DateTime.sunday]). Defaults to the locale.
+  final int? firstDayOfWeek;
+
+  /// The texts of the date picker. Defaults to the localizations of the app.
+  final ImpaktfullUiDatePickerLocalizations? datePickerLocalizations;
+
+  /// The `intl` pattern of the date, e.g. `dd/MM/yyyy`.
+  ///
+  /// When no pattern is passed, the date uses the short date format of the
+  /// locale (`dd/MM/yyyy` for the default `en` locale, `M/d/y` for `en_US`,
+  /// `d-M-y` for `nl`, ...).
+  String get dateFormat => _dateFormat ?? 'dd/MM/yyyy';
+
   const ImpaktfullUiDateInputField({
     required this.date,
     required this.onDateSelected,
-    this.dateFormat = 'dd/MM/yyyy',
+    String? dateFormat,
+    this.firstDayOfWeek,
+    this.datePickerLocalizations,
     this.leadingIcon,
     this.leadingBuilder,
     this.label,
@@ -41,7 +57,7 @@ class ImpaktfullUiDateInputField extends StatefulWidget {
     this.readOnly = false,
     this.theme,
     super.key,
-  });
+  }) : _dateFormat = dateFormat;
 
   @override
   State<ImpaktfullUiDateInputField> createState() =>
@@ -105,7 +121,7 @@ class _ImpaktfullUiDateInputFieldState
                               child: Align(
                                 alignment: AlignmentDirectional.topStart,
                                 child: Text(
-                                  widget.date?.format(widget.dateFormat) ??
+                                  _formatDate(context) ??
                                       widget.placeholder ??
                                       '',
                                   style: widget.date == null
@@ -139,10 +155,22 @@ class _ImpaktfullUiDateInputFieldState
     );
   }
 
+  String? _formatDate(BuildContext context) {
+    final date = widget.date;
+    if (date == null) return null;
+    final dateFormat = widget._dateFormat;
+    if (dateFormat == null) {
+      return ImpaktfullUiLocaleUtil.formatShortDate(context, date);
+    }
+    return ImpaktfullUiLocaleUtil.formatPattern(context, date, dateFormat);
+  }
+
   Future<void> _onTap() async {
     final result = await ImpaktfullUiDatePicker.showModal(
       context: context,
       selectedDate: widget.date,
+      localizations: widget.datePickerLocalizations,
+      firstDayOfWeek: widget.firstDayOfWeek,
     );
     if (result == null) return;
     widget.onDateSelected(result);

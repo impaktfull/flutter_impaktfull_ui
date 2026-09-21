@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/components/file_picker/file_picker.localizations.dart';
 import 'package:impaktfull_ui/src/components/file_picker/file_picker_style.dart';
 import 'package:impaktfull_ui/src/components/file_picker/model/file_picker_data.dart';
 import 'package:impaktfull_ui/src/components/file_picker/model/file_picker_progress_type.dart';
@@ -8,6 +9,7 @@ import 'package:impaktfull_ui/src/components/interaction_feedback/hover_feedback
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
+export 'file_picker.localizations.dart';
 export 'file_picker_style.dart';
 export 'model/file_picker_data.dart';
 export 'model/file_picker_progress_type.dart';
@@ -23,6 +25,9 @@ class ImpaktfullUiFilePicker extends StatelessWidget {
   final ImpaktfullUiFilePickerProgressType progressType;
   final ImpaktfullUiFilePickerTheme? theme;
 
+  /// The texts of the file picker. Defaults to the localizations of the app.
+  final ImpaktfullUiFilePickerLocalizations? localizations;
+
   const ImpaktfullUiFilePicker({
     this.title,
     this.subtitle,
@@ -33,6 +38,7 @@ class ImpaktfullUiFilePicker extends StatelessWidget {
     this.leadingBuilder,
     this.progressType = ImpaktfullUiFilePickerProgressType.progressLineWithText,
     this.theme,
+    this.localizations,
     super.key,
   });
 
@@ -66,6 +72,7 @@ class ImpaktfullUiFilePicker extends StatelessWidget {
                   onRetryTapped: onRetryTapped,
                   progressType: progressType,
                   componentTheme: componentTheme,
+                  localizations: localizations,
                 );
               },
             ),

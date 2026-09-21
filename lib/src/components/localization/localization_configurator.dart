@@ -11,8 +11,11 @@ class ImpaktfullUiLocalizationConfigurator extends InheritedWidget {
   });
 
   static ImpaktfullUiLocalizationConfigurator of(BuildContext context) =>
+      maybeOf(context)!;
+
+  static ImpaktfullUiLocalizationConfigurator? maybeOf(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<
-          ImpaktfullUiLocalizationConfigurator>()!;
+          ImpaktfullUiLocalizationConfigurator>();
 
   @override
   bool updateShouldNotify(

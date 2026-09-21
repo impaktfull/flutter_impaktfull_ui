@@ -34,7 +34,9 @@ class ImpaktfullUiMasterDetailItemScreen extends StatelessWidget {
       masterDetail.setTitle(title);
     } else if (keepOriginalMasterTitle) {
       if (subtitle != null) {
-        masterDetail.setSubtitle('$title > $subtitle');
+        final localizations = masterDetail.widget.localizations ??
+            ImpaktfullUiMasterDetailLocalizations.of(context);
+        masterDetail.setSubtitle(localizations.breadcrumb(title, subtitle!));
       } else {
         masterDetail.setSubtitle(title);
       }

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/adaptive_safe_area/adaptive_safe_area.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/badge/badge.dart';
+import 'package:impaktfull_ui/src/components/cms_header/cms_header.localizations.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header_style.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/util/extension/widget_list_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
+export 'cms_header.localizations.dart';
 export 'cms_header_style.dart';
 
 class ImpaktfullUiCmsHeader extends StatefulWidget {
@@ -20,6 +22,9 @@ class ImpaktfullUiCmsHeader extends StatefulWidget {
   final String? badge;
   final Widget? bottomChild;
 
+  /// The texts of the header. Defaults to the localizations of the app.
+  final ImpaktfullUiCmsHeaderLocalizations? localizations;
+
   const ImpaktfullUiCmsHeader({
     this.title,
     this.subtitle,
@@ -30,6 +35,7 @@ class ImpaktfullUiCmsHeader extends StatefulWidget {
     this.bottomChild,
     this.badge,
     this.theme,
+    this.localizations,
     super.key,
   });
 
@@ -40,6 +46,8 @@ class ImpaktfullUiCmsHeader extends StatefulWidget {
 class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
   @override
   Widget build(BuildContext context) {
+    final localizations =
+        widget.localizations ?? ImpaktfullUiCmsHeaderLocalizations.of(context);
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
@@ -82,8 +90,8 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                           asset: componentTheme.assets.drawerMenu,
                           color: componentTheme.colors.icons,
                           tooltip: widget.isDrawerOpen
-                              ? 'Close drawer'
-                              : 'Open drawer',
+                              ? localizations.drawerCloseTooltip
+                              : localizations.drawerOpenTooltip,
                         ),
                       ] else if (widget.onBackTapped != null) ...[
                         ImpaktfullUiIconButton(
@@ -91,7 +99,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                           asset: componentTheme.assets.back
                               .copyWith(matchTextDirection: true),
                           color: componentTheme.colors.icons,
-                          tooltip: 'Back',
+                          tooltip: localizations.backTooltip,
                         ),
                       ],
                       Expanded(

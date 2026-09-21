@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
-import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiCalendarWeekLegendDays extends StatelessWidget {
@@ -32,11 +32,13 @@ class ImpaktfullUiCalendarWeekLegendDays extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: firstDay.add(Duration(days: i)).format('dd'),
+                        text: ImpaktfullUiLocaleUtil.formatPattern(
+                            context, firstDay.add(Duration(days: i)), 'dd'),
                         style: componentTheme.textStyles.dayTitle,
                       ),
                       TextSpan(
-                        text: firstDay.add(Duration(days: i)).format(' EEE'),
+                        text:
+                            ' ${ImpaktfullUiLocaleUtil.formatWeekdayShort(context, firstDay.add(Duration(days: i)))}',
                         style: componentTheme.textStyles.dayOfTheWeekTitle,
                       ),
                     ],

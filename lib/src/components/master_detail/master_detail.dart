@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
+export 'master_detail.localizations.dart';
 export 'widget/master_detail_item_screen.dart';
 
 class ImpaktfullUiMasterDetail extends StatefulWidget {
@@ -17,6 +18,10 @@ class ImpaktfullUiMasterDetail extends StatefulWidget {
   final int detailFlex;
   final List<ImpaktfullUiAdaptiveNavBarActionItem> actions;
 
+  /// The texts of the master detail. Defaults to the localizations of the
+  /// app.
+  final ImpaktfullUiMasterDetailLocalizations? localizations;
+
   const ImpaktfullUiMasterDetail({
     required this.navigation,
     required this.detail,
@@ -29,6 +34,7 @@ class ImpaktfullUiMasterDetail extends StatefulWidget {
     this.onBackTapped,
     this.onCloseDetail,
     this.closeDetailBeforeMaster = false,
+    this.localizations,
     super.key,
   });
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
@@ -66,7 +67,7 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
           ),
           if (showText) ...[
             Text(
-              '${(value * 100).toStringAsFixed(0)}%',
+              ImpaktfullUiLocaleUtil.formatPercentage(context, value),
               style: componentTheme.textStyles.text,
             ),
           ],

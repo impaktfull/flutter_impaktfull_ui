@@ -20,7 +20,7 @@ export 'licenses.localizations.dart';
 
 class ImpaktfullUiBBLicenses extends StatefulWidget {
   final VoidCallback? onBackTapped;
-  final ImpaktfullUiBBLicenseLocalizations? localizations;
+  final ImpaktfullUiBBLicensesLocalizations? localizations;
 
   const ImpaktfullUiBBLicenses({
     this.onBackTapped,

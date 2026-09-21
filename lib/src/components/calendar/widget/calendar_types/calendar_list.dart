@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/calendar/model/calendar_list_item.dart';
+import 'package:impaktfull_ui/src/components/calendar/widget/calendar_locale_scope.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calendar_types/list/calendar_list_item.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
@@ -12,12 +13,16 @@ class ImpaktfullUiCalendarList extends StatefulWidget {
   final List<ImpaktfullUiCalendarEvent> events;
   final ValueChanged<ImpaktfullUiCalendarEvent> onEventTap;
   final ImpaktfullUiCalendarTheme? theme;
+  final ImpaktfullUiCalendarLocalizations? localizations;
+  final bool? use24HourFormat;
 
   const ImpaktfullUiCalendarList({
     required this.selectedDate,
     required this.events,
     required this.onEventTap,
     this.theme,
+    this.localizations,
+    this.use24HourFormat,
     super.key,
   });
 
@@ -42,7 +47,13 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => ImpaktfullUiCalendarLocaleScope(
+        localizations: widget.localizations,
+        use24HourFormat: widget.use24HourFormat,
+        child: Builder(builder: _buildCalendar),
+      );
+
+  Widget _buildCalendar(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
@@ -57,8 +68,9 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
             previousItem: previousItem,
           );
         },
-        placeholderData: const ImpaktfullUiListViewPlaceholderData(
-          title: 'No events found',
+        placeholderData: ImpaktfullUiListViewPlaceholderData(
+          title: ImpaktfullUiCalendarLocaleScope.localizationsOf(context)
+              .noEventsFound,
         ),
       ),
     );

@@ -18,6 +18,7 @@ class ImpaktfullUiChatListInternalItem extends StatelessWidget {
   final ImpaktfullUiChatSenderConfig senderConfig;
   final List<String> senderIdsTyping;
   final ImpaktfullUiChatTheme theme;
+  final ImpaktfullUiChatLocalizations? localizations;
 
   const ImpaktfullUiChatListInternalItem({
     required this.index,
@@ -26,6 +27,7 @@ class ImpaktfullUiChatListInternalItem extends StatelessWidget {
     required this.theme,
     required this.itemBuilder,
     required this.senderIdsTyping,
+    this.localizations,
     super.key,
   });
 
@@ -78,6 +80,7 @@ class ImpaktfullUiChatListInternalItem extends StatelessWidget {
               sendersTyping: sendersTyping,
               showAvatars: showAvatars,
               theme: componentTheme,
+              localizations: localizations,
             ),
           ],
         ],

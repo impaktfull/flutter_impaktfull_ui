@@ -12,6 +12,7 @@ import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_photo_for
 import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_unorderedlist_formatter.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/widget/actions/wysiwyg_action_item.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/wysiwyg.dart';
+import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 
 class WysiwygActions extends StatefulWidget {
   final List<ImpaktfullUiWysiwygAction> actions;
@@ -20,6 +21,7 @@ class WysiwygActions extends StatefulWidget {
   final Function(String, TextSelection) onChangedText;
   final ImpaktfullUiWysiwygTheme componentTheme;
   final TextSelection textSelected;
+  final ImpaktfullUiWysiwygLocalizations? localizations;
 
   const WysiwygActions({
     required this.text,
@@ -28,6 +30,7 @@ class WysiwygActions extends StatefulWidget {
     required this.onChangedText,
     required this.componentTheme,
     required this.textSelected,
+    this.localizations,
     super.key,
   });
 
@@ -38,6 +41,7 @@ class WysiwygActions extends StatefulWidget {
 class _WysiwygActionsState extends State<WysiwygActions> {
   @override
   Widget build(BuildContext context) {
+    final localizations = _getLocalizations(context);
     return Container(
       height: 48,
       padding: const EdgeInsets.all(4),
@@ -47,54 +51,63 @@ class _WysiwygActionsState extends State<WysiwygActions> {
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.header,
             actions: widget.actions,
+            localizations: localizations,
             asset: widget.componentTheme.assets.header,
             onTap: _onHeaderTapped,
           ),
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.bold,
             actions: widget.actions,
+            localizations: localizations,
             asset: widget.componentTheme.assets.bold,
             onTap: _onBoldTapped,
           ),
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.italic,
             actions: widget.actions,
+            localizations: localizations,
             asset: widget.componentTheme.assets.italic,
             onTap: _onItalicTapped,
           ),
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.unorderedList,
             actions: widget.actions,
+            localizations: localizations,
             asset: widget.componentTheme.assets.unorderedList,
             onTap: _onUnorderedListTapped,
           ),
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.orderedList,
             actions: widget.actions,
+            localizations: localizations,
             asset: widget.componentTheme.assets.orderedList,
             onTap: _onOrderedListTapped,
           ),
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.code,
             actions: widget.actions,
+            localizations: localizations,
             asset: widget.componentTheme.assets.code,
             onTap: _onCodeTapped,
           ),
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.codeBlock,
             actions: widget.actions,
+            localizations: localizations,
             asset: widget.componentTheme.assets.codeBlock,
             onTap: _onCodeBlockTapped,
           ),
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.link,
             actions: widget.actions,
+            localizations: localizations,
             asset: widget.componentTheme.assets.link,
             onTap: _onLinkTapped,
           ),
           WysiwygActionItem(
             action: ImpaktfullUiWysiwygAction.photo,
             actions: widget.actions,
+            localizations: localizations,
             asset: widget.componentTheme.assets.photo,
             onTap: _onPhotoTapped,
           ),
@@ -112,10 +125,15 @@ class _WysiwygActionsState extends State<WysiwygActions> {
   void _onUnorderedListTapped() =>
       _format(const ImpaktfullUiWysiwygUnorderedListFormatter());
 
+  ImpaktfullUiWysiwygLocalizations _getLocalizations(BuildContext context) =>
+      widget.localizations ??
+      ImpaktfullUiLocalizations.of<ImpaktfullUiWysiwygLocalizations>(context);
+
   void _onOrderedListTapped() {
+    final localizations = _getLocalizations(context);
     ImpaktfullUiNotification.show(
-      title: 'Not yet supported',
-      subtitle: 'Ordered list is not yet supported',
+      title: localizations.notYetSupportedTitle,
+      subtitle: localizations.orderedListNotYetSupported,
       type: ImpaktfullUiNotificationType.warning,
     );
   }

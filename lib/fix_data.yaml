@@ -219,6 +219,14 @@ transforms:
     changes:
       - kind: 'rename'
         newName: 'ImpaktfullUiVirtualKeyboardConfig'
+  - title: "Rename to 'ImpaktfullUiBBLicensesLocalizations'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiBBLicenseLocalizations'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiBBLicensesLocalizations'
 
   # Renamed constructors. Each one is listed under the deprecated class name too:
   # without it, `OldClass.oldConstructor(...)` becomes `NewClass.NewClass(...)`.

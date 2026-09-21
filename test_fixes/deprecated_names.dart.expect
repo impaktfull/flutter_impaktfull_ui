@@ -27,6 +27,7 @@ void main() {
   ImpaktfullUiCircleProgressPainter? circleProgressPainter;
   ImpaktfullUiHalfCircleProgressPainter? halfCircleProgressPainter;
   ImpaktfullUiVirtualKeyboardConfig? virtualKeyboardConfig;
+  ImpaktfullUiBBLicensesLocalizations? bbLicensesLocalizations;
   ImpaktfullUiAdaptivePageRoute.create<void>(
       builder: (context) => const SizedBox());
   const ImpaktfullUiTableColumnConfig(flex: 1);
@@ -91,5 +92,6 @@ void main() {
     circleProgressPainter,
     halfCircleProgressPainter,
     virtualKeyboardConfig,
+    bbLicensesLocalizations,
   ].toString());
 }
