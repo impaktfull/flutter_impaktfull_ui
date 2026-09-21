@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/network_image/network_image_style.dart';
+import 'package:impaktfull_ui/src/components/network_image/widget/network_image_error.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'network_image_style.dart';
@@ -45,29 +45,12 @@ class ImpaktfullUiNetworkImage extends StatelessWidget {
           height: height,
           width: width,
           fit: fit,
-          errorBuilder: (context, error, stackTrace) {
-            if (!kDebugMode) throw error;
-            return Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Placeholder(
-                  color: Colors.red,
-                  fallbackWidth: width ?? 300,
-                  fallbackHeight: height ?? 300,
-                ),
-                FractionallySizedBox(
-                  widthFactor: 0.5,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Text(
-                      'Error: $error',
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
+          errorBuilder: (context, error, stackTrace) =>
+              ImpaktfullUiNetworkImageError(
+            error: error,
+            width: width,
+            height: height,
+          ),
         );
       },
     );

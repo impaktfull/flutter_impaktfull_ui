@@ -43,10 +43,15 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
-        final showBadge = show || text != null;
         final color = this.color ?? componentTheme.colors.background;
         final textStyle = componentTheme.textStyles.text;
-        final textSize = _textWidth(text ?? '', textStyle);
+        final textSize = _textSize(
+          text ?? '',
+          textStyle,
+          textDirection: Directionality.maybeOf(context) ?? TextDirection.ltr,
+          textScaler:
+              MediaQuery.maybeTextScalerOf(context) ?? TextScaler.noScaling,
+        );
         final textWidth = textSize.width + 12;
         final textHeight = textSize.height;
         return Stack(
@@ -59,7 +64,7 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget {
               right: _getRight(dotSize, textWidth, textHeight),
               left: _getLeft(dotSize, textWidth, textHeight),
               child: AnimatedOpacity(
-                opacity: showBadge ? 1 : 0,
+                opacity: show ? 1 : 0,
                 duration: componentTheme.durations.opacity,
                 child: Transform.scale(
                   scale: 0.75,
@@ -112,13 +117,21 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget {
     );
   }
 
-  Size _textWidth(String text, TextStyle style) {
-    final TextPainter textPainter = TextPainter(
-        text: TextSpan(text: text, style: style),
-        maxLines: 1,
-        textDirection: TextDirection.ltr)
-      ..layout(minWidth: 0, maxWidth: double.infinity);
-    return textPainter.size;
+  Size _textSize(
+    String text,
+    TextStyle style, {
+    required TextDirection textDirection,
+    required TextScaler textScaler,
+  }) {
+    final textPainter = TextPainter(
+      text: TextSpan(text: text, style: style),
+      maxLines: 1,
+      textDirection: textDirection,
+      textScaler: textScaler,
+    )..layout(minWidth: 0, maxWidth: double.infinity);
+    final size = textPainter.size;
+    textPainter.dispose();
+    return size;
   }
 
   double? _getTop(double dotSize, double textWidth, double textHeight) {

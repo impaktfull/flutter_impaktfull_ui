@@ -42,7 +42,8 @@ class ImpaktfullUiIconButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: ImpaktfullUiNotificationBadge(
-          show: showNotificationBadge,
+          // A badge with a text is shown, even when `showNotificationBadge` is false.
+          show: showNotificationBadge || notificationBadgeText != null,
           color: notificationBadgeColor,
           text: notificationBadgeText,
           size: 8,

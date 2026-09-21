@@ -39,6 +39,7 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   late PageController _pageController;
   late int _currentPage;
   bool _isForward = true;
+  bool _isUserDragging = false;
   Timer? _autoplayTimer;
 
   @override
@@ -60,11 +61,19 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
 
   void _setupAutoplay() {
     _autoplayTimer?.cancel();
-    if (widget.autoplay) {
+    _autoplayTimer = null;
+    if (widget.autoplay && !_isUserDragging) {
       _autoplayTimer = Timer.periodic(widget.autoplayInterval, (_) {
         if (widget.items.length < 2) return;
+        if (!_pageController.hasClients) return;
         if (widget.loop) {
           final nextPage = (_currentPage + 1) % widget.items.length;
+          if (nextPage == 0) {
+            // Jump back to the first page instead of animating back through
+            // every page in between.
+            _pageController.jumpToPage(nextPage);
+            return;
+          }
           _pageController.animateToPage(
             nextPage,
             duration: _pageTransitionDuration,
@@ -129,37 +138,43 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
         spacing: 8,
         children: [
           Expanded(
-            child: PageView.builder(
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() => _currentPage = index);
-                widget.onItemChanged?.call(index);
-              },
-              itemCount: widget.items.length,
-              itemBuilder: (context, index) => Padding(
-                padding: widget.itemMargin ?? EdgeInsets.zero,
-                child: widget.items[index],
+            child: NotificationListener<ScrollNotification>(
+              onNotification: _onScrollNotification,
+              child: PageView.builder(
+                controller: _pageController,
+                onPageChanged: (index) {
+                  setState(() => _currentPage = index);
+                  widget.onItemChanged?.call(index);
+                },
+                itemCount: widget.items.length,
+                itemBuilder: (context, index) => Padding(
+                  padding: widget.itemMargin ?? EdgeInsets.zero,
+                  child: widget.items[index],
+                ),
               ),
             ),
           ),
           if (widget.items.length > 1)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: List.generate(
-                widget.items.length,
-                (index) => Container(
-                  width: componentTheme.dimens.indicatorSize,
-                  height: componentTheme.dimens.indicatorSize,
-                  margin: componentTheme.dimens.indicatorSpacing,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: componentTheme.colors.indicatorBorder,
+            Padding(
+              padding: componentTheme.dimens.indicatorPadding,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: List.generate(
+                  widget.items.length,
+                  (index) => Container(
+                    width: componentTheme.dimens.indicatorSize,
+                    height: componentTheme.dimens.indicatorSize,
+                    margin: componentTheme.dimens.indicatorSpacing,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: componentTheme.colors.indicatorBorder,
+                      ),
+                      borderRadius: componentTheme.dimens.indicatorBorderRadius,
+                      color: _currentPage == index
+                          ? componentTheme.colors.activeIndicator
+                          : componentTheme.colors.inactiveIndicator,
                     ),
-                    borderRadius: componentTheme.dimens.indicatorBorderRadius,
-                    color: _currentPage == index
-                        ? componentTheme.colors.activeIndicator
-                        : componentTheme.colors.inactiveIndicator,
                   ),
                 ),
               ),
@@ -167,5 +182,21 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
         ],
       ),
     );
+  }
+
+  /// Pauses autoplay while the user drags the carousel, and restarts the
+  /// interval once the user lets go.
+  bool _onScrollNotification(ScrollNotification notification) {
+    if (notification.depth != 0) return false;
+    if (notification is ScrollStartNotification &&
+        notification.dragDetails != null) {
+      _isUserDragging = true;
+      _autoplayTimer?.cancel();
+      _autoplayTimer = null;
+    } else if (notification is ScrollEndNotification && _isUserDragging) {
+      _isUserDragging = false;
+      _setupAutoplay();
+    }
+    return false;
   }
 }

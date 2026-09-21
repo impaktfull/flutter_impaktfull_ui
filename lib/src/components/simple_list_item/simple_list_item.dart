@@ -127,6 +127,11 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget {
       return ImpaktfullUiAssetWidget(
         asset: widget.asset,
         color: widget.color ?? _getTitleTextStyle(componentTheme).color,
+        width: widget.width,
+        height: widget.height,
+        size: widget.size,
+        fit: widget.fit,
+        key: widget.key,
       );
     }
     return widget;

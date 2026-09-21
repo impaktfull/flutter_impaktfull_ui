@@ -51,7 +51,8 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
-        if (title == null) return const SizedBox(height: 48);
+        final isCheckbox = type == ImpaktfullUiTableHeaderItemType.checkbox;
+        if (title == null && !isCheckbox) return const SizedBox(height: 48);
         return ImpaktfullUiTouchFeedback(
           onTap: onTap,
           child: Container(
@@ -62,46 +63,47 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 8,
               children: [
-                if (type == ImpaktfullUiTableHeaderItemType.checkbox) ...[
+                if (isCheckbox) ...[
                   ImpaktfullUiCheckbox.indeterminate(
                     value: isSelected,
-                    onChanged: onChanged!,
+                    onChanged: onChanged,
                   ),
                 ],
-                Expanded(
-                  child: Text.rich(
-                    style: componentTheme.textStyles.title,
-                    maxLines: 1,
-                    overflow: TextOverflow.visible,
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: title ?? '',
-                        ),
-                        if (ascending == true) ...[
-                          const WidgetSpan(child: SizedBox(width: 8)),
-                          WidgetSpan(
-                            alignment: PlaceholderAlignment.middle,
-                            child: Icon(
-                              PhosphorIcons.caretUp(),
-                              size: 16,
-                            ),
+                if (title != null) ...[
+                  Expanded(
+                    child: Text.rich(
+                      style: componentTheme.textStyles.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.visible,
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: title ?? '',
                           ),
-                        ] else if (ascending == false) ...[
-                          const WidgetSpan(child: SizedBox(width: 8)),
-                          WidgetSpan(
-                            alignment: PlaceholderAlignment.middle,
-                            child: Icon(
-                              PhosphorIcons.caretDown(),
-                              size: 16,
+                          if (ascending == true) ...[
+                            const WidgetSpan(child: SizedBox(width: 8)),
+                            WidgetSpan(
+                              alignment: PlaceholderAlignment.middle,
+                              child: Icon(
+                                PhosphorIcons.caretUp(),
+                                size: 16,
+                              ),
                             ),
-                          ),
+                          ] else if (ascending == false) ...[
+                            const WidgetSpan(child: SizedBox(width: 8)),
+                            WidgetSpan(
+                              alignment: PlaceholderAlignment.middle,
+                              child: Icon(
+                                PhosphorIcons.caretDown(),
+                                size: 16,
+                              ),
+                            ),
+                          ],
                         ],
-                      ],
+                      ),
                     ),
                   ),
-                ),
-                const Spacer(),
+                ],
               ],
             ),
           ),

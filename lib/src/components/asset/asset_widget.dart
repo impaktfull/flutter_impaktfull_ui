@@ -107,6 +107,11 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
     return ImpaktfullUiAssetWidget(
       asset: asset,
       color: color,
+      width: width,
+      height: height,
+      size: size,
+      fit: fit,
+      key: key,
     );
   }
 }

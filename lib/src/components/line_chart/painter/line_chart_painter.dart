@@ -16,6 +16,7 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
     required this.defaultStrokeWidth,
   });
 
+  // The axis always includes 0, unless the data sets its own min and max.
   double get _minX =>
       data.fold(0, (min, lineChartData) => math.min(min, lineChartData.minX));
   double get _maxX =>
@@ -46,6 +47,15 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
       size.height - _maxStrokeWidth,
     );
     final offset = Offset(_maxStrokeWidth / 2, _maxStrokeWidth / 2);
+    // Calculated once per paint instead of once per point.
+    final bounds = _ImpaktfullUiLineChartBounds(
+      minX: _minX,
+      maxX: _maxX,
+      minY: _minY,
+      maxY: _maxY,
+    );
+    double normalizeX(double x) => bounds.normalizeX(x, adjustedSize.width);
+    double normalizeY(double y) => bounds.normalizeY(y, adjustedSize.height);
 
     for (final lineChartData in data) {
       final points = lineChartData.points;
@@ -55,8 +65,8 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
 
       final path = Path();
       path.moveTo(
-        _normalizeX(points.first.dx, adjustedSize.width) + offset.dx,
-        _normalizeY(points.first.dy, adjustedSize.height) + offset.dy,
+        normalizeX(points.first.dx) + offset.dx,
+        normalizeY(points.first.dy) + offset.dy,
       );
 
       if (lineChartData.isCurved) {
@@ -68,27 +78,23 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
             (p0.dy + p1.dy) / 2,
           );
           path.quadraticBezierTo(
-            _normalizeX(p0.dx, adjustedSize.width) + offset.dx,
-            _normalizeY(p0.dy, adjustedSize.height) + offset.dy,
-            _normalizeX(midPoint.dx, adjustedSize.width) + offset.dx,
-            _normalizeY(midPoint.dy, adjustedSize.height) + offset.dy,
+            normalizeX(p0.dx) + offset.dx,
+            normalizeY(p0.dy) + offset.dy,
+            normalizeX(midPoint.dx) + offset.dx,
+            normalizeY(midPoint.dy) + offset.dy,
           );
         }
         path.quadraticBezierTo(
-          _normalizeX(points[points.length - 1].dx, adjustedSize.width) +
-              offset.dx,
-          _normalizeY(points[points.length - 1].dy, adjustedSize.height) +
-              offset.dy,
-          _normalizeX(points[points.length - 1].dx, adjustedSize.width) +
-              offset.dx,
-          _normalizeY(points[points.length - 1].dy, adjustedSize.height) +
-              offset.dy,
+          normalizeX(points[points.length - 1].dx) + offset.dx,
+          normalizeY(points[points.length - 1].dy) + offset.dy,
+          normalizeX(points[points.length - 1].dx) + offset.dx,
+          normalizeY(points[points.length - 1].dy) + offset.dy,
         );
       } else {
         for (int i = 1; i < points.length; i++) {
           path.lineTo(
-            _normalizeX(points[i].dx, adjustedSize.width) + offset.dx,
-            _normalizeY(points[i].dy, adjustedSize.height) + offset.dy,
+            normalizeX(points[i].dx) + offset.dx,
+            normalizeY(points[i].dy) + offset.dy,
           );
         }
       }
@@ -120,11 +126,38 @@ class ImpaktfullUiLineChartPainter extends CustomPainter {
     }
   }
 
-  double _normalizeX(double x, double width) =>
-      (x - _minX) / (_maxX - _minX) * width;
-  double _normalizeY(double y, double height) =>
-      height - (y - _minY) / (_maxY - _minY) * height;
-
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant ImpaktfullUiLineChartPainter oldDelegate) =>
+      oldDelegate.data != data ||
+      oldDelegate.backgroundColor != backgroundColor ||
+      oldDelegate.defaultLineColor != defaultLineColor ||
+      oldDelegate.defaultStrokeWidth != defaultStrokeWidth;
+}
+
+class _ImpaktfullUiLineChartBounds {
+  final double minX;
+  final double maxX;
+  final double minY;
+  final double maxY;
+
+  const _ImpaktfullUiLineChartBounds({
+    required this.minX,
+    required this.maxX,
+    required this.minY,
+    required this.maxY,
+  });
+
+  /// When every value is the same, there is no range to scale to: the line is
+  /// drawn in the middle instead of dividing by zero.
+  double normalizeX(double x, double width) {
+    final range = maxX - minX;
+    if (range == 0) return width / 2;
+    return (x - minX) / range * width;
+  }
+
+  double normalizeY(double y, double height) {
+    final range = maxY - minY;
+    if (range == 0) return height / 2;
+    return height - (y - minY) / range * height;
+  }
 }

@@ -125,7 +125,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget {
     this.localizations,
     this.theme,
     super.key,
-    required,
+    @Deprecated('Has no effect. Will be removed in 1.0.0.') Object? required,
   })  : spacing = 0,
         child = null,
         children = null,
@@ -149,7 +149,7 @@ class ImpaktfullUiListView<T> extends StatefulWidget {
     this.localizations,
     this.theme,
     super.key,
-    required,
+    @Deprecated('Has no effect. Will be removed in 1.0.0.') Object? required,
   })  : spacing = 0,
         items = null,
         // ignore: deprecated_member_use_from_same_package
@@ -324,11 +324,14 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
                 shrinkWrap: widget.shrinkWrap,
                 reverse: widget.reversed,
                 separatorBuilder: (context, index) {
-                  final item = widget.items![index];
-                  return widget.separatorBuilder?.call(context, item, index) ??
+                  // The separator after a row belongs to the last item of it.
+                  final itemIndex = _lastItemIndexOfRow(index);
+                  final item = widget.items![itemIndex];
+                  return widget.separatorBuilder
+                          ?.call(context, item, itemIndex) ??
                       const ImpaktfullUiDivider();
                 },
-                itemCount: widget.items!.length,
+                itemCount: _rowCount,
               ),
             );
           }
@@ -345,12 +348,26 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               reverse: widget.reversed,
               separatorBuilder: (context, index) =>
                   SizedBox(height: widget.spacing),
-              itemCount: widget.items!.length,
+              itemCount: _rowCount,
             ),
           );
         },
       ),
     );
+  }
+
+  /// The number of rows: every row shows [ImpaktfullUiListView.itemsPerRow]
+  /// items, the last row can have less.
+  int get _rowCount {
+    final itemsPerRow = widget.itemsPerRow < 1 ? 1 : widget.itemsPerRow;
+    return (widget.items!.length + itemsPerRow - 1) ~/ itemsPerRow;
+  }
+
+  int _lastItemIndexOfRow(int rowIndex) {
+    final itemsPerRow = widget.itemsPerRow < 1 ? 1 : widget.itemsPerRow;
+    final lastIndex = (rowIndex + 1) * itemsPerRow - 1;
+    final maxIndex = widget.items!.length - 1;
+    return lastIndex > maxIndex ? maxIndex : lastIndex;
   }
 
   Widget? _buildItem(
@@ -361,7 +378,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
   ) {
     final itemsPerRow = widget.itemsPerRow;
     Widget child;
-    if (itemsPerRow == 1) {
+    if (itemsPerRow <= 1) {
       child = widget.itemBuilder!(
         context,
         widget.items![index],
@@ -389,7 +406,7 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
       );
     }
     final isFirst = index == 0;
-    final isLast = index == widget.items!.length - 1;
+    final isLast = index == _rowCount - 1;
     return ImpaktfullUiAutoLayout.vertical(
       spacing: widget.spacing,
       children: [
@@ -401,9 +418,6 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
               widget.scrollDirection == Axis.vertical ? double.infinity : null,
           child: child,
         ),
-        if (widget.separatorBuilder != null) ...[
-          widget.separatorBuilder!(context, widget.items![index], index),
-        ],
         if (isLast && trailing != null) ...[
           trailing,
         ],

@@ -199,6 +199,22 @@ void main() {
       );
     });
 
+    test('ImpaktfullUiListView.separated/child(required:) has no effect', () {
+      final separated = ImpaktfullUiListView<int>.separated(
+        items: const [1],
+        itemBuilder: (context, item, index) => Text('$item'),
+        placeholderData: null,
+        required: 'ignored',
+      );
+      expect(separated.items, [1]);
+      expect(separated.separated, isTrue);
+      const child = ImpaktfullUiListView<void>.child(
+        required: true,
+        child: SizedBox(),
+      );
+      expect(child.child, isA<SizedBox>());
+    });
+
     test('ImpaktfullUiListItemType.simpleLisItemType', () {
       for (final type in ImpaktfullUiListItemType.values) {
         expect(type.simpleLisItemType, type.simpleListItemType);
