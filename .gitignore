@@ -35,3 +35,6 @@ build/
 
 # FVM
 .fvm/
+
+# Coverage (flutter test --coverage)
+/coverage/

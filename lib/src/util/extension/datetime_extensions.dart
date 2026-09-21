@@ -13,9 +13,11 @@ extension DateTimeExtensions on DateTime {
 
   DateTime get previousWeek => add(const Duration(days: -7));
 
-  DateTime get beginningOfTheWeek => subtract(Duration(days: weekday - 1));
+  // Calendar date arithmetic instead of a Duration: a day is not always 24
+  // hours in local time (daylight saving time).
+  DateTime get beginningOfTheWeek => copyWith(day: day - (weekday - 1));
 
-  DateTime get endOfTheWeek => add(Duration(days: 7 - weekday));
+  DateTime get endOfTheWeek => copyWith(day: day + (7 - weekday));
 
   DateTime get thisWeekMonday => beginningOfTheWeek;
 
@@ -38,13 +40,28 @@ extension DateTimeExtensions on DateTime {
 
   String format(String format) => DateFormat(format).format(this);
 
-  DateTime getPreviousMonth() => copyWith(month: month - 1);
+  /// The same day in the previous month, or its last day when the month is
+  /// shorter (31 March becomes 29 February 2024).
+  DateTime getPreviousMonth() => _addMonths(-1);
 
   DateTime getPreviousYear() => copyWith(year: year - 1);
 
   DateTime getNextYear() => copyWith(year: year + 1);
 
-  DateTime getNextMonth() => copyWith(month: month + 1);
+  /// The same day in the next month, or its last day when the month is
+  /// shorter (31 January becomes 29 February 2024).
+  DateTime getNextMonth() => _addMonths(1);
+
+  DateTime _addMonths(int months) {
+    final monthIndex = year * 12 + (month - 1) + months;
+    final newYear = monthIndex ~/ 12;
+    final newMonth = monthIndex % 12 + 1;
+    return copyWith(
+      year: newYear,
+      month: newMonth,
+      day: getDayForMonthWithFallback(newYear, newMonth, day),
+    );
+  }
 
   bool isSameYear(DateTime date) => year == date.year;
 

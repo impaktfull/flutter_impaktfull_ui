@@ -202,6 +202,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                   child: Opacity(
                     opacity: isDisabled && !widget.readOnly ? 0.66 : 1,
                     child: ImpaktfullUiCard(
+                      theme: _getCardTheme(context, componentTheme),
                       cursor: SystemMouseCursors.text,
                       error: widget.error != null && widget.error!.isNotEmpty,
                       onTap: isDisabled ? null : _onTap,
@@ -389,5 +390,20 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
       return;
     }
     setState(() => _validationError = validatorResult.errorMessage);
+  }
+
+  /// The card of the field uses the colors of the [ImpaktfullUiInputFieldTheme].
+  ImpaktfullUiCardTheme _getCardTheme(
+    BuildContext context,
+    ImpaktfullUiInputFieldTheme componentTheme,
+  ) {
+    final cardTheme = ImpaktfullUiCardTheme.of(context);
+    return cardTheme.copyWith(
+      colors: cardTheme.colors.copyWith(
+        background: componentTheme.colors.background,
+        border: componentTheme.colors.border,
+        borderError: componentTheme.colors.borderError,
+      ),
+    );
   }
 }

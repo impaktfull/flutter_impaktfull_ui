@@ -86,6 +86,7 @@ class _ImpaktfullUiDateInputFieldState
             Opacity(
               opacity: widget.isDisabled && !widget.readOnly ? 0.66 : 1,
               child: ImpaktfullUiCard(
+                theme: _getCardTheme(context, componentTheme),
                 cursor: SystemMouseCursors.click,
                 error: widget.error != null && widget.error!.isNotEmpty,
                 onTap: widget.isDisabled || widget.readOnly ? null : _onTap,
@@ -174,5 +175,20 @@ class _ImpaktfullUiDateInputFieldState
     );
     if (result == null) return;
     widget.onDateSelected(result);
+  }
+
+  /// The card of the field uses the colors of the [ImpaktfullUiDateInputFieldTheme].
+  ImpaktfullUiCardTheme _getCardTheme(
+    BuildContext context,
+    ImpaktfullUiDateInputFieldTheme componentTheme,
+  ) {
+    final cardTheme = ImpaktfullUiCardTheme.of(context);
+    return cardTheme.copyWith(
+      colors: cardTheme.colors.copyWith(
+        background: componentTheme.colors.background,
+        border: componentTheme.colors.border,
+        borderError: componentTheme.colors.borderError,
+      ),
+    );
   }
 }

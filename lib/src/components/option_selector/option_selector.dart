@@ -100,7 +100,9 @@ class _ImpaktfullUiOptionSelectorState<T>
         shrinkWrap: true,
         items: widget.options,
         itemBuilder: (context, item, index) {
-          final title = item is String ? item : widget.titleBuilder!.call(item);
+          final title = item is String
+              ? item
+              : widget.titleBuilder?.call(item) ?? item.toString();
           return ImpaktfullUiSelectableListItem(
             title: title,
             isSelected: item == widget.selectedValue,
