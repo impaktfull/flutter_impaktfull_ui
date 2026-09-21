@@ -129,14 +129,14 @@ class _ImpaktfullUiCalendarWeekEventsState
       occupiedSlots[slot].add(top + height);
 
       final width = sameStartAsLast ? 1.0 / (slot + 1) : 1.0;
-      final left = sameStartAsLast ? slot * (1.0 / (slot + 1)) : 0.0;
+      final start = sameStartAsLast ? slot * (1.0 / (slot + 1)) : 0.0;
 
       eventWidgets.add(
-        Positioned(
+        PositionedDirectional(
           top: top,
-          // left & width are fractions of the width of the day column
-          left: left * dayWidth,
-          right: (1 - left - width) * dayWidth,
+          // start & width are fractions of the width of the day column
+          start: start * dayWidth,
+          end: (1 - start - width) * dayWidth,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2),
             child: ImpaktfullUiCalendarWeekEventItem(

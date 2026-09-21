@@ -20,7 +20,13 @@ class ImpaktfullUiScreen extends StatefulWidget {
   final bool resizeToAvoidBottomInset;
   final Widget child;
   final List<Widget> actions;
-  final Alignment fabAlignment;
+
+  /// Where the [fab] is placed.
+  ///
+  /// Defaults to [AlignmentDirectional.bottomEnd]: the bottom right corner in
+  /// a left-to-right layout and the bottom left corner in a right-to-left
+  /// layout.
+  final AlignmentGeometry floatingActionButtonAlignment;
   final Widget? fab;
   final Widget? bottomNavBarChild;
   final Widget? bottomChild;
@@ -39,13 +45,24 @@ class ImpaktfullUiScreen extends StatefulWidget {
     this.resizeToAvoidBottomInset = true,
     this.onPopInvoked,
     this.actions = const [],
-    this.fabAlignment = Alignment.bottomRight,
+    AlignmentGeometry? floatingActionButtonAlignment,
+    @Deprecated(
+        'Use floatingActionButtonAlignment instead. Will be removed in 1.0.0.')
+    Alignment? fabAlignment,
     this.fab,
     this.bottomNavBarChild,
     this.bottomChild,
     this.theme,
     super.key,
-  });
+  }) : floatingActionButtonAlignment = floatingActionButtonAlignment ??
+            fabAlignment ??
+            AlignmentDirectional.bottomEnd;
+
+  @Deprecated(
+      'Use floatingActionButtonAlignment instead. Will be removed in 1.0.0.')
+  Alignment get fabAlignment =>
+      // rtl-ignore: the deprecated getter returns the left-to-right alignment.
+      floatingActionButtonAlignment.resolve(TextDirection.ltr);
 
   static ImpaktfullUiScreenState of(BuildContext context) {
     final result = maybeOf(context);
@@ -129,7 +146,7 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                             removeBottom: hasBottomChild,
                             child: Builder(
                               builder: (context) => Stack(
-                                alignment: widget.fabAlignment,
+                                alignment: widget.floatingActionButtonAlignment,
                                 children: [
                                   Positioned.fill(
                                     child: SizedBox(

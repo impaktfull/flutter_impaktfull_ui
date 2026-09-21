@@ -277,6 +277,14 @@ ImpaktfullUiCard(
 
 > **Note:** `theme.copyWith(colors: ...)` only replaces the colors on the root theme. The component themes were built from the old colors and keep them. To change a base color, border radius or font everywhere, build the theme again with `ImpaktfullUiDefaultTheme.withMinimalChanges(...)` and use `copyWith` for the component tokens on top of that.
 
+### Right-to-left
+
+Every component supports right-to-left layouts (e.g. Arabic or Hebrew). They follow the `Directionality` of the widget tree, which `ImpaktfullUiApp` sets from its `locale`:
+
+- Paddings, alignments and positions use start and end instead of left and right, so they mirror in a right-to-left layout.
+- Directional icons (back, previous/next arrows and chevrons) point in the reading direction. Mark your own directional assets with `ImpaktfullUiAsset.icon(icon, matchTextDirection: true)` (or `asset.copyWith(matchTextDirection: true)`) to mirror them in a right-to-left layout.
+- Location enums with left and right in their name (`ImpaktfullUiNotificationBadgeLocation`, `ImpaktfullUiDropdownAlignment`) follow the reading direction: in a right-to-left layout `topRight` is the top left corner.
+
 ### Assets
 
 #### Images

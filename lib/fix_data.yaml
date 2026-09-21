@@ -414,3 +414,23 @@ transforms:
       - kind: 'renameParameter'
         oldName: 'carrousel'
         newName: 'carousel'
+  - title: "Rename parameter 'fabAlignment' to 'floatingActionButtonAlignment'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiScreen'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'fabAlignment'
+        newName: 'floatingActionButtonAlignment'
+  - title: "Rename parameter 'fabAlignment' to 'floatingActionButtonAlignment'"
+    date: 2026-09-21
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiAdaptiveScreen'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'fabAlignment'
+        newName: 'floatingActionButtonAlignment'

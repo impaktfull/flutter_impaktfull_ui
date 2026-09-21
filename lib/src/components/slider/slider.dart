@@ -71,10 +71,10 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                 if (widget.legendBuilder != null) ...[
                   if (widget.legendAlignment ==
                       ImpaktfullUiSliderLegendAlignment.aboveSlider) ...[
-                    Positioned(
+                    PositionedDirectional(
                       top: 0,
-                      left: 0,
-                      right: 0,
+                      start: 0,
+                      end: 0,
                       child: SizedBox(
                         height: 24,
                         child: widget.legendBuilder!(context, _currentValue),
@@ -82,10 +82,10 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                     ),
                   ] else if (widget.legendAlignment ==
                       ImpaktfullUiSliderLegendAlignment.belowSlider) ...[
-                    Positioned(
+                    PositionedDirectional(
                       bottom: 0,
-                      left: 0,
-                      right: 0,
+                      start: 0,
+                      end: 0,
                       child: SizedBox(
                         height: 24,
                         child: widget.legendBuilder!(context, _currentValue),
@@ -93,11 +93,11 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                     ),
                   ] else if (widget.legendAlignment ==
                       ImpaktfullUiSliderLegendAlignment.behindSlider) ...[
-                    Positioned(
+                    PositionedDirectional(
                       top: 0,
                       bottom: 0,
-                      left: 0,
-                      right: 0,
+                      start: 0,
+                      end: 0,
                       child: SizedBox(
                         height: 48,
                         child: widget.legendBuilder!(context, _currentValue),
@@ -110,7 +110,7 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                   color: Colors.transparent,
                   child: Stack(
                     clipBehavior: Clip.none,
-                    alignment: Alignment.centerLeft,
+                    alignment: AlignmentDirectional.centerStart,
                     children: [
                       Container(
                         height: 4,
@@ -140,8 +140,8 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                           ),
                         ),
                       ),
-                      Positioned(
-                        left: _fraction * constraints.maxWidth - 8,
+                      PositionedDirectional(
+                        start: _fraction * constraints.maxWidth - 8,
                         child: Container(
                           width: 16,
                           height: 16,
@@ -195,7 +195,9 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
     final max = widget.max.toDouble();
     if (max <= min || width <= 0) return;
     final localX = dx.clamp(0, width);
-    final percent = localX / width;
+    // In right-to-left layouts the minimum value is on the right.
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final percent = isRtl ? (width - localX) / width : localX / width;
     final newValue = min + (max - min) * percent;
 
     setState(() => _currentValue = newValue.clamp(min, max));

@@ -21,7 +21,7 @@ void main() {
     );
     expect(tester.takeException(), isNull);
     final align = tester.widget<AnimatedAlign>(indicator());
-    expect((align.alignment as Alignment).x, 0);
+    expect((align.alignment as AlignmentDirectional).start, 0);
   });
 
   testWidgets('a value that is not an item does not show the indicator',

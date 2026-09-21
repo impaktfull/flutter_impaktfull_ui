@@ -215,6 +215,35 @@ void main() {
       expect(child.child, isA<SizedBox>());
     });
 
+    test('ImpaktfullUiScreen.fabAlignment', () {
+      const screen = ImpaktfullUiScreen(
+        fabAlignment: Alignment.bottomLeft,
+        child: SizedBox(),
+      );
+      expect(screen.floatingActionButtonAlignment, Alignment.bottomLeft);
+      expect(screen.fabAlignment, Alignment.bottomLeft);
+      // The default follows the reading direction, the deprecated getter
+      // returns its left-to-right value.
+      const defaultScreen = ImpaktfullUiScreen(child: SizedBox());
+      expect(defaultScreen.floatingActionButtonAlignment,
+          AlignmentDirectional.bottomEnd);
+      expect(defaultScreen.fabAlignment, Alignment.bottomRight);
+    });
+
+    test('ImpaktfullUiAdaptiveScreen.fabAlignment', () {
+      final screen = ImpaktfullUiAdaptiveScreen(
+        fabAlignment: Alignment.bottomLeft,
+        builder: (context) => const SizedBox(),
+      );
+      expect(screen.floatingActionButtonAlignment, Alignment.bottomLeft);
+      expect(screen.fabAlignment, Alignment.bottomLeft);
+      final defaultScreen =
+          ImpaktfullUiAdaptiveScreen(builder: (context) => const SizedBox());
+      expect(defaultScreen.floatingActionButtonAlignment,
+          AlignmentDirectional.bottomEnd);
+      expect(defaultScreen.fabAlignment, Alignment.bottomRight);
+    });
+
     test('ImpaktfullUiListItemType.simpleLisItemType', () {
       for (final type in ImpaktfullUiListItemType.values) {
         expect(type.simpleLisItemType, type.simpleListItemType);

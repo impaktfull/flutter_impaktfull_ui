@@ -75,9 +75,18 @@ class _ImpaktfullUiGalleryFullScreenState
       focusNode: _focusNode,
       onKeyEvent: (event) {
         if (event is KeyDownEvent) {
-          if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+          // The pages are laid out in the reading direction, so the arrow
+          // keys are mirrored in a right-to-left layout.
+          final isRtl = Directionality.of(context) == TextDirection.rtl;
+          final previousKey = isRtl
+              ? LogicalKeyboardKey.arrowRight
+              : LogicalKeyboardKey.arrowLeft;
+          final nextKey = isRtl
+              ? LogicalKeyboardKey.arrowLeft
+              : LogicalKeyboardKey.arrowRight;
+          if (event.logicalKey == previousKey) {
             _onTapPrevious(widget.theme);
-          } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+          } else if (event.logicalKey == nextKey) {
             _onTapNext(widget.theme);
           }
         }
@@ -105,9 +114,9 @@ class _ImpaktfullUiGalleryFullScreenState
                 );
               },
             ),
-            Positioned(
+            PositionedDirectional(
               top: 16,
-              right: 16,
+              end: 16,
               child: ImpaktfullUiIconButton(
                 onTap: () => Navigator.of(context).pop(),
                 asset: componentTheme.assets.close,
@@ -123,7 +132,8 @@ class _ImpaktfullUiGalleryFullScreenState
                   child: ImpaktfullUiIconButton(
                     onTap: () => _onTapPrevious(componentTheme),
                     backgroundColor: componentTheme.colors.iconButtonBackground,
-                    asset: componentTheme.assets.arrowLeft,
+                    asset: componentTheme.assets.arrowLeft
+                        .copyWith(matchTextDirection: true),
                     tooltip: 'Previous',
                     color: componentTheme.colors.icons,
                   ),
@@ -137,7 +147,8 @@ class _ImpaktfullUiGalleryFullScreenState
                   child: ImpaktfullUiIconButton(
                     onTap: () => _onTapNext(componentTheme),
                     backgroundColor: componentTheme.colors.iconButtonBackground,
-                    asset: componentTheme.assets.arrowRight,
+                    asset: componentTheme.assets.arrowRight
+                        .copyWith(matchTextDirection: true),
                     tooltip: 'Next',
                     color: componentTheme.colors.icons,
                   ),

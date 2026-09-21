@@ -32,8 +32,9 @@ class ImpaktfullUiChatListItem extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Align(
-        alignment:
-            isMyOwnMessage ? Alignment.centerRight : Alignment.centerLeft,
+        alignment: isMyOwnMessage
+            ? AlignmentDirectional.centerEnd
+            : AlignmentDirectional.centerStart,
         child: ImpaktfullUiAutoLayout.horizontal(
           mainAxisSize: MainAxisSize.min,
           spacing: 4,

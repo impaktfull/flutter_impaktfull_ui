@@ -188,7 +188,8 @@ class ImpaktfullUiNotification extends StatelessWidget {
                     ] else if (onTap != null) ...[
                       const SizedBox(width: 8),
                       ImpaktfullUiAssetWidget(
-                        asset: componentTheme.assets.chevronRight,
+                        asset: componentTheme.assets.chevronRight
+                            .copyWith(matchTextDirection: true),
                         color: componentTheme.textStyles.title.color,
                       ),
                       const SizedBox(width: 16),

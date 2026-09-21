@@ -63,6 +63,11 @@ void main() {
   touchFeedback.tooltip;
   ImpaktfullUiListItemType.neutral.simpleListItemType;
   ImpaktfullUiWysiwygAction.orderedList;
+  const ImpaktfullUiScreen(
+      floatingActionButtonAlignment: Alignment.bottomLeft, child: SizedBox());
+  ImpaktfullUiAdaptiveScreen(
+      floatingActionButtonAlignment: Alignment.bottomLeft,
+      builder: (context) => const SizedBox());
 
   debugPrint([
     carousel,

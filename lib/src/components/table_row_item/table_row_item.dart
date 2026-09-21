@@ -102,7 +102,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
           return Padding(
             padding: padding,
             child: Align(
-              alignment: Alignment.centerLeft,
+              alignment: AlignmentDirectional.centerStart,
               child: ImpaktfullUiBadge(
                 type: badgeType ?? ImpaktfullUiBadgeType.primary,
                 label: title!,

@@ -65,12 +65,12 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
           ),
           borderRadius: componentTheme.dimens.borderRadius,
           child: Padding(
-            padding: EdgeInsets.only(
-              left: hasLeading
+            padding: EdgeInsetsDirectional.only(
+              start: hasLeading
                   ? (widget.size.horizontalPadding / 2) -
                       widget.size.paddingOffset
                   : widget.size.horizontalPadding,
-              right: hasTrailing
+              end: hasTrailing
                   ? (widget.size.horizontalPadding / 2) -
                       widget.size.paddingOffset
                   : widget.size.horizontalPadding,
