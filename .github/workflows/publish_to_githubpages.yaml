@@ -9,6 +9,15 @@ permissions:
   pages: write
   id-token: write
 
+# One Pages deployment at a time. Merging several pull requests in a row
+# otherwise starts overlapping deployments, and GitHub rejects a deployment
+# while another one is in progress. Queued runs in between are skipped, so
+# the latest `main` is always the one that gets deployed. A running deploy is
+# never cancelled halfway.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     environment:
