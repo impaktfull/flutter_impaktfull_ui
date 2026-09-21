@@ -35,6 +35,7 @@ class ImpaktfullUiBottomActions extends StatelessWidget {
             padding: componentTheme.dimens.padding
                 .add(MediaQuery.paddingOf(context)),
             child: ImpaktfullUiAutoLayout.vertical(
+              mainAxisSize: MainAxisSize.min,
               spacing: componentTheme.dimens.spacing,
               children: children,
             ),

@@ -87,6 +87,9 @@ class ImpaktfullUiNavBar extends StatelessWidget {
           final maxAmountOfActions =
               max(leadingActions.length, trailingActions.length);
           final actionsSize = maxAmountOfActions * 44.0;
+          // A centered title reserves the same space on both sides: the
+          // padding has to be the same on both sides as well.
+          final hasCenteredActions = centerTitle && actionsSize > 0;
           return Container(
             decoration: BoxDecoration(
               color: componentTheme.colors.background,
@@ -107,8 +110,12 @@ class ImpaktfullUiNavBar extends StatelessWidget {
                 children: [
                   Container(
                     padding: EdgeInsetsDirectional.only(
-                      start: leadingActions.isEmpty ? 16 : 6,
-                      end: trailingActions.isEmpty ? 16 : 6,
+                      start: leadingActions.isEmpty && !hasCenteredActions
+                          ? 16
+                          : 6,
+                      end: trailingActions.isEmpty && !hasCenteredActions
+                          ? 16
+                          : 6,
                       top: 4,
                       bottom: 4,
                     ),
@@ -119,7 +126,7 @@ class ImpaktfullUiNavBar extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       spacing: 8,
                       children: [
-                        if (centerTitle && actionsSize > 0) ...[
+                        if (hasCenteredActions) ...[
                           SizedBox(
                             width: actionsSize,
                             child: ImpaktfullUiAutoLayout.horizontal(
@@ -174,7 +181,7 @@ class ImpaktfullUiNavBar extends StatelessWidget {
                             ],
                           ),
                         ),
-                        if (centerTitle && actionsSize > 0) ...[
+                        if (hasCenteredActions) ...[
                           SizedBox(
                             width: actionsSize,
                             child: ImpaktfullUiAutoLayout.horizontal(

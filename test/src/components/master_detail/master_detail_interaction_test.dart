@@ -131,21 +131,19 @@ void main() {
       expect(backTaps, 1);
     });
 
-    group(
-      'Bug',
-      skip: 'Bug: on small screens back without an open detail calls '
-          'onCloseDetail instead of onBackTapped, so the master can not be '
-          'left with back',
-      () {
-        testWidgets('back without a detail calls onBackTapped', (tester) async {
-          await pumpLayoutApp(tester, masterDetail(withOnBackTapped: true));
-          await tester.tap(find.byTooltip('Back'));
-          await tester.pumpAndSettle();
-          expect(backTaps, 1);
-          expect(closeDetailCalls, 0);
-        });
-      },
-    );
+    testWidgets('back without a detail calls onBackTapped', (tester) async {
+      await pumpLayoutApp(tester, masterDetail(withOnBackTapped: true));
+      await tester.tap(find.byTooltip('Back'));
+      await tester.pumpAndSettle();
+      expect(backTaps, 1);
+      expect(closeDetailCalls, 0);
+    });
+
+    testWidgets('no back button without a detail and onBackTapped',
+        (tester) async {
+      await pumpLayoutApp(tester, masterDetail());
+      expect(find.byTooltip('Back'), findsNothing);
+    });
 
     testWidgets('without onCloseDetail the detail (or empty detail) is shown',
         (tester) async {
@@ -154,29 +152,21 @@ void main() {
       expect(find.text('Item 0'), findsNothing);
     });
 
-    group(
-      'Bug',
-      skip: 'Bug: closing the detail without the back button (detail builder '
-          'returns null) keeps the title and actions of the detail, only '
-          'the back button clears the overrides',
-      () {
-        testWidgets('closing the detail from code restores the master',
-            (tester) async {
-          await pumpLayoutApp(tester, masterDetail());
-          await tester.tap(find.text('Item 0'));
-          await tester.pumpAndSettle();
-          expect(find.text('Detail 0'), findsOneWidget);
+    testWidgets('closing the detail from code restores the master',
+        (tester) async {
+      await pumpLayoutApp(tester, masterDetail());
+      await tester.tap(find.text('Item 0'));
+      await tester.pumpAndSettle();
+      expect(find.text('Detail 0'), findsOneWidget);
 
-          setState(() => selected = null);
-          await tester.pumpAndSettle();
-          expect(find.text('Item 0'), findsOneWidget);
-          expect(find.text('Detail 0'), findsNothing);
-          expect(find.text('Master'), findsOneWidget);
-          expect(action('Master action'), findsOneWidget);
-          expect(action('Detail action'), findsNothing);
-        });
-      },
-    );
+      setState(() => selected = null);
+      await tester.pumpAndSettle();
+      expect(find.text('Item 0'), findsOneWidget);
+      expect(find.text('Detail 0'), findsNothing);
+      expect(find.text('Master'), findsOneWidget);
+      expect(action('Master action'), findsOneWidget);
+      expect(action('Detail action'), findsNothing);
+    });
   });
 
   group('large screen', () {
@@ -274,24 +264,31 @@ void main() {
       expect(closeDetailCalls, 0);
     });
 
-    group(
-      'Bug',
-      skip: 'Bug: on large screens an open detail shows a back button (because '
-          'of onCloseDetail) that does nothing without onBackTapped and '
-          'closeDetailBeforeMaster',
-      () {
-        testWidgets('a visible back button does something', (tester) async {
-          await pumpLayoutApp(tester, masterDetail(), size: largeScreenSize);
-          await tester.tap(find.text('Item 0'));
-          await tester.pumpAndSettle();
-          final back = find.byTooltip('Back');
-          if (back.evaluate().isEmpty) return;
-          await tester.tap(back);
-          await tester.pumpAndSettle();
-          expect(closeDetailCalls + backTaps, 1);
-        });
-      },
-    );
+    testWidgets('no back button that does nothing for an open detail',
+        (tester) async {
+      await pumpLayoutApp(tester, masterDetail(), size: largeScreenSize);
+      await tester.tap(find.text('Item 0'));
+      await tester.pumpAndSettle();
+      // Back would not close the detail (no closeDetailBeforeMaster) and there
+      // is no onBackTapped.
+      expect(find.byTooltip('Back'), findsNothing);
+    });
+
+    testWidgets('closing the detail from code restores the master',
+        (tester) async {
+      await pumpLayoutApp(tester, masterDetail(), size: largeScreenSize);
+      await tester.tap(find.text('Item 0'));
+      await tester.pumpAndSettle();
+      expect(find.text('Detail 0'), findsOneWidget);
+      expect(action('Detail action'), findsOneWidget);
+
+      setState(() => selected = null);
+      await tester.pumpAndSettle();
+      expect(find.text('Master'), findsOneWidget);
+      expect(find.text('Detail 0'), findsNothing);
+      expect(action('Master action'), findsOneWidget);
+      expect(action('Detail action'), findsNothing);
+    });
   });
 
   testWidgets('of throws outside an ImpaktfullUiMasterDetail', (tester) async {

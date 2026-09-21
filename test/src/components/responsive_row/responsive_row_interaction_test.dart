@@ -92,12 +92,28 @@ void main() {
     }
   });
 
-  testWidgets('the last row is filled by its children', (tester) async {
+  testWidgets('the last row lines up with the columns above', (tester) async {
     await pumpLayoutApp(
       tester,
-      row(count: 3, maxColumns: 2),
+      row(count: 5, maxColumns: 3, horizontalSpacing: 10),
     );
-    // The children are Expanded: the last child takes the full row.
-    expect(rect(tester, 2).width, smallScreenSize.width);
+    // (400 - 2 * 10) / 3
+    const width = 380 / 3;
+    for (var i = 0; i < 5; i++) {
+      expect(rect(tester, i).width, moreOrLessEquals(width), reason: '$i');
+    }
+    expect(rect(tester, 3).left, rect(tester, 0).left);
+    expect(rect(tester, 4).left, moreOrLessEquals(rect(tester, 1).left));
+  });
+
+  testWidgets('a single incomplete row shares the full width', (tester) async {
+    await pumpLayoutApp(
+      tester,
+      row(count: 2, maxColumns: 4, horizontalSpacing: 10),
+    );
+    // (400 - 10) / 2: no empty cells in a single row.
+    expect(rect(tester, 0).width, 195);
+    expect(rect(tester, 1).width, 195);
+    expect(rect(tester, 1).right, smallScreenSize.width);
   });
 }

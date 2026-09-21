@@ -90,26 +90,55 @@ void main() {
     expect(taps, 1);
   });
 
-  group(
-    'Bug',
-    skip: 'Bug: a border with different colors per side and a borderRadius '
-        'throws while painting ("A borderRadius can only be given on borders '
-        'with uniform colors")',
-    () {
-      testWidgets('non uniform colors with a borderRadius', (tester) async {
-        await pump(
-          tester,
-          ImpaktfullUiContainer(
-            borderRadius: BorderRadius.circular(8),
-            border: const Border(
-              top: BorderSide(color: Colors.red),
-              bottom: BorderSide(color: Colors.blue),
-            ),
-            child: const SizedBox(width: 10, height: 10),
-          ),
-        );
-        expect(tester.takeException(), isNull);
-      });
-    },
-  );
+  testWidgets('non uniform colors with a borderRadius', (tester) async {
+    await pump(
+      tester,
+      ImpaktfullUiContainer(
+        borderRadius: BorderRadius.circular(8),
+        border: const Border(
+          top: BorderSide(color: Colors.red),
+          bottom: BorderSide(color: Colors.blue),
+        ),
+        child: const SizedBox(width: 10, height: 10),
+      ),
+    );
+    expect(tester.takeException(), isNull);
+    // The border is drawn with square corners, the background keeps the
+    // border radius.
+    final foreground = tester
+        .widget<Container>(find.descendant(
+          of: find.byType(ImpaktfullUiContainer),
+          matching: find.byType(Container),
+        ))
+        .foregroundDecoration as BoxDecoration;
+    expect(foreground.borderRadius, isNull);
+    expect(
+      tester.widget<Material>(find.byType(Material)).borderRadius,
+      BorderRadius.circular(8),
+    );
+  });
+
+  testWidgets('non uniform widths with one color keep the border radius',
+      (tester) async {
+    final borderRadius = BorderRadius.circular(8);
+    await pump(
+      tester,
+      ImpaktfullUiContainer(
+        borderRadius: borderRadius,
+        border: const Border(
+          top: BorderSide(color: Colors.red),
+          bottom: BorderSide(color: Colors.red, width: 3),
+        ),
+        child: const SizedBox(width: 10, height: 10),
+      ),
+    );
+    expect(tester.takeException(), isNull);
+    final foreground = tester
+        .widget<Container>(find.descendant(
+          of: find.byType(ImpaktfullUiContainer),
+          matching: find.byType(Container),
+        ))
+        .foregroundDecoration as BoxDecoration;
+    expect(foreground.borderRadius, borderRadius);
+  });
 }

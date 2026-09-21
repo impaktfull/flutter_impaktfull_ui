@@ -85,30 +85,22 @@ void main() {
     expect(taps, 1);
   });
 
-  group(
-    'Bug',
-    skip: 'Bug: ImpaktfullUiBottomActions fills all available height in a '
-        'loosely constrained parent (Align, Stack), its column uses '
-        'MainAxisSize.max',
-    () {
-      testWidgets('wraps its content in a loosely constrained parent',
-          (tester) async {
-        await pumpLayoutApp(
-          tester,
-          const Align(
-            alignment: Alignment.bottomCenter,
-            child: ImpaktfullUiBottomActions(
-              removeBottomSafeArea: true,
-              children: [SizedBox(height: 40)],
-            ),
-          ),
-        );
-        final dimens = actionsTheme(tester).dimens;
-        expect(
-          tester.getSize(find.byType(ImpaktfullUiBottomActions)).height,
-          40 + dimens.padding.vertical,
-        );
-      });
-    },
-  );
+  testWidgets('wraps its content in a loosely constrained parent',
+      (tester) async {
+    await pumpLayoutApp(
+      tester,
+      const Align(
+        alignment: Alignment.bottomCenter,
+        child: ImpaktfullUiBottomActions(
+          removeBottomSafeArea: true,
+          children: [SizedBox(height: 40)],
+        ),
+      ),
+    );
+    final dimens = actionsTheme(tester).dimens;
+    expect(
+      tester.getSize(find.byType(ImpaktfullUiBottomActions)).height,
+      40 + dimens.padding.vertical,
+    );
+  });
 }

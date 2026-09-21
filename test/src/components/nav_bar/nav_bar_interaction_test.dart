@@ -143,31 +143,23 @@ void main() {
     );
   });
 
-  group(
-    'Bug',
-    skip: 'Bug: a centered title is 5px off center when there are only '
-        'trailing actions (e.g. isFullScreen): the start padding is 16 '
-        'without leading actions, the end padding 6',
-    () {
-      testWidgets('centered title is centered with only trailing actions',
-          (tester) async {
-        await pumpLayoutApp(
-          tester,
-          ImpaktfullUiNavBar(
-            title: 'Title',
-            centerTitle: true,
-            isFullScreen: true,
-            onBackTapped: () {},
-          ),
-        );
-        final navBarCenter = tester.getCenter(find.byType(ImpaktfullUiNavBar));
-        expect(
-          tester.getCenter(find.text('Title')).dx,
-          moreOrLessEquals(navBarCenter.dx, epsilon: 0.5),
-        );
-      });
-    },
-  );
+  testWidgets('centered title is centered with only trailing actions',
+      (tester) async {
+    await pumpLayoutApp(
+      tester,
+      ImpaktfullUiNavBar(
+        title: 'Title',
+        centerTitle: true,
+        isFullScreen: true,
+        onBackTapped: () {},
+      ),
+    );
+    final navBarCenter = tester.getCenter(find.byType(ImpaktfullUiNavBar));
+    expect(
+      tester.getCenter(find.text('Title')).dx,
+      moreOrLessEquals(navBarCenter.dx, epsilon: 0.5),
+    );
+  });
 
   testWidgets('uses custom localizations', (tester) async {
     await pumpAndSettleComponent(
