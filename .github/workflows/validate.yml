@@ -119,3 +119,137 @@ jobs:
 
       - name: Build web
         run: flutter build web
+
+      # dart2wasm rejects code that dart2js accepts (dart:html, package:js,
+      # conditional imports on dart.library.html), so Wasm is built separately.
+      - name: Build web (Wasm)
+        run: flutter build web --wasm
+
+  # The tests in Chrome, compiled to JS and to Wasm, to prove that every
+  # component works on the web. Golden tests (alchemist does not compile for
+  # the web) and `@TestOn('vm')` files are left out by tool/test_web.sh;
+  # test/src/test_platform_test.dart makes sure nothing else needs the VM.
+  test_web:
+    # JS and Wasm in parallel: each takes a few minutes.
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - compiler: js
+            args: ""
+          - compiler: wasm
+            args: --wasm
+    name: test_web (${{ matrix.compiler }})
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read Flutter version
+        id: fvm
+        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fvm.outputs.flutter }}
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Test in Chrome (${{ matrix.compiler }})
+        run: ./tool/test_web.sh ${{ matrix.args }}
+
+  # Builds the example for the platforms that need a native build, to catch a
+  # dependency (plugin) that breaks the build of one of them. Both run on
+  # ubuntu. iOS, macOS and Windows are left out to keep CI fast and cheap:
+  # they share the Dart code with the others, and pana (below) checks that
+  # every dependency supports them.
+  example_platforms:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: android
+            os: ubuntu-latest
+            build: flutter build apk --debug
+          - platform: linux
+            os: ubuntu-latest
+            build: flutter build linux --debug
+    name: example (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read Flutter version
+        id: fvm
+        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fvm.outputs.flutter }}
+          cache: true
+
+      - uses: actions/setup-java@v4
+        if: matrix.platform == 'android'
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Install Linux build dependencies
+        if: matrix.platform == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build libgtk-3-dev
+
+      - name: Build
+        working-directory: example
+        run: |
+          flutter pub get
+          ${{ matrix.build }}
+
+  # pana is the tool that scores packages on pub.dev. Fails when it does not
+  # list every platform (and Wasm) as supported, or when the platform support
+  # score is not full, e.g. because lib/ imports dart:io without a
+  # conditional import.
+  pana:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read Flutter version
+        id: fvm
+        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fvm.outputs.flutter }}
+          cache: true
+
+      - name: Install pana
+        run: dart pub global activate pana
+
+      - name: Run pana
+        run: |
+          dart pub global run pana --no-warning --json \
+            --flutter-sdk "$(dirname "$(dirname "$(which flutter)")")" . > pana.json
+
+      - name: Check platform support
+        run: |
+          jq -r '.report.sections[] | select(.id == "platform") | .summary' pana.json
+          missing=0
+          for tag in platform:android platform:ios platform:macos platform:windows platform:linux platform:web is:wasm-ready; do
+            if ! jq -e --arg tag "$tag" '.tags | index($tag)' pana.json > /dev/null; then
+              echo "::error::pana does not report $tag"
+              missing=1
+            fi
+          done
+          granted=$(jq '.report.sections[] | select(.id == "platform") | .grantedPoints' pana.json)
+          max=$(jq '.report.sections[] | select(.id == "platform") | .maxPoints' pana.json)
+          echo "Platform support: $granted / $max"
+          if [ "$granted" != "$max" ]; then
+            echo "::error::pana platform support is $granted / $max"
+            missing=1
+          fi
+          exit $missing

@@ -178,6 +178,8 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
       debugPrint(error.toString());
       debugPrint(trace.toString());
     }
+    // The licenses are loaded asynchronously: the screen can be closed before
+    if (!mounted) return;
     setState(() {
       _isLoading = false;
     });

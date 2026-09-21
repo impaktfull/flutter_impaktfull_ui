@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 
 import '../../../util/screen_size_util.dart';
 
@@ -90,8 +89,8 @@ void main() {
         child: child,
       ),
     );
-    // The host platform decides (flutter test runs on the host).
-    final menuBar = Platform.isMacOS ? 22.0 : 0.0;
+    // The platform decides: the host on the VM, never on the web.
+    final menuBar = DeviceUtil.isMacOs() ? 22.0 : 0.0;
     expect(rect.top, 20 + menuBar);
     expect(rect.bottom, 800 - 40);
   });

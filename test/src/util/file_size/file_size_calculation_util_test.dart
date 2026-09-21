@@ -2,6 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/src/util/file_size/file_size_calculation_util.dart';
 
+/// 2^63 - 1, the largest int on the Dart VM. Parsed instead of a literal: the
+/// literal can not be compiled to JavaScript (tool/test_web.sh), where it is
+/// rounded to 2^63.
+final _largestInt = int.parse('9223372036854775807');
+
 void main() {
   String calculate(int bytes) =>
       FileSizeCalculationUtil.calculateFileSize(bytes);
@@ -35,7 +40,7 @@ void main() {
 
   test('the largest int stays in EB', () {
     // 2^63 - 1 bytes is just below 8 EB.
-    expect(calculate(0x7FFFFFFFFFFFFFFF), '8.00 EB');
+    expect(calculate(_largestInt), '8.00 EB');
   });
 
   group('with a locale', () {
@@ -68,7 +73,7 @@ void main() {
       expect(calculateNl(pb), '1,00 PB');
       expect(calculateNl(pb * 1536 ~/ 1024), '1,50 PB');
       expect(calculateNl(pb * 1024), '1,00 EB');
-      expect(calculateNl(0x7FFFFFFFFFFFFFFF), '8,00 EB');
+      expect(calculateNl(_largestInt), '8,00 EB');
     });
 
     testWidgets('formats PB with the English separator for en', (tester) async {

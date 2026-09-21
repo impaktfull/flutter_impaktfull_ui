@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
@@ -7,6 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+import '../../../util/network_image_util.dart';
+import '../../../util/test_image.dart';
 import '../../../util/test_util.dart';
 
 class _FakeImageCropController extends ImpaktfullUiImageCropController {
@@ -69,24 +70,26 @@ Future<void> _pumpCrop(
       ),
     ),
   );
-  // The network image can not be loaded in tests
-  tester.takeException();
+  if (imageUrl != null) await waitForBrokenNetworkImage(tester, imageUrl);
 }
 
 /// Taps the crop button and waits until the (real async) cropping is done.
 Future<void> _cropAndWait(WidgetTester tester) async {
   await tester.tap(_crop);
-  await tester.runAsync(() async {
-    for (var i = 0; i < 50; i++) {
-      await Future<void>.delayed(const Duration(milliseconds: 20));
-      if (find.byType(Image).evaluate().isNotEmpty) break;
-    }
-  });
+  // Encoding the PNG takes real time. The crop was started in the fake time
+  // of the widget test, so in Chrome it only continues after a pump.
+  for (var i = 0; i < 250 && _crop.evaluate().isNotEmpty; i++) {
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 20)),
+    );
+    await tester.pump();
+  }
   await tester.pumpAndSettle();
-  tester.takeException();
 }
 
 void main() {
+  setUpAll(warmUpImageEncoding);
+
   group('Zoom', () {
     testWidgets('zoom in and out scale the image by 10%', (tester) async {
       await _pumpCrop(tester);
@@ -157,7 +160,7 @@ void main() {
       final controller = _FakeImageCropController();
       await _pumpCrop(
         tester,
-        imageUrl: 'https://example.com/image.png',
+        imageUrl: brokenImageUrl,
         controller: controller,
       );
 
@@ -177,7 +180,7 @@ void main() {
       final controller = _FakeImageCropController();
       await _pumpCrop(
         tester,
-        imageUrl: 'https://example.com/image.png',
+        imageUrl: brokenImageUrl,
         controller: controller,
       );
       await tester.tap(_zoomIn);
@@ -198,7 +201,7 @@ void main() {
       final controller = _FakeImageCropController();
       await _pumpCrop(
         tester,
-        imageUrl: 'https://example.com/image.png',
+        imageUrl: brokenImageUrl,
         controller: controller,
       );
       await tester.tap(_zoomIn);
@@ -257,16 +260,6 @@ void main() {
     test('throws without an image', () async {
       await expectLater(
         ImpaktfullUiImageCropCropper().cropImage(cropInfo: cropInfo()),
-        throwsA(isA<Exception>()),
-      );
-    });
-
-    test('an image file is not supported yet', () async {
-      await expectLater(
-        ImpaktfullUiImageCropController().cropImageFile(
-          cropInfo: cropInfo(),
-          file: File('image.png'),
-        ),
         throwsA(isA<Exception>()),
       );
     });

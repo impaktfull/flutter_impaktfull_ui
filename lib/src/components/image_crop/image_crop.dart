@@ -182,7 +182,13 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                                   if (imageUrl == null) {
                                     return const SizedBox.shrink();
                                   }
-                                  return Image.network(imageUrl);
+                                  return Image.network(
+                                    imageUrl,
+                                    // A broken url shows nothing instead of
+                                    // reporting an error
+                                    errorBuilder: (context, error, trace) =>
+                                        const SizedBox.shrink(),
+                                  );
                                 }),
                               ),
                             ),

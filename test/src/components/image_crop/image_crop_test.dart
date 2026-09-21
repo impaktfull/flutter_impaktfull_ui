@@ -7,6 +7,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
+import '../../../util/network_image_util.dart';
+import '../../../util/test_image.dart';
 import '../../../util/test_util.dart';
 
 class _FakeImageCropController extends ImpaktfullUiImageCropController {
@@ -36,6 +38,8 @@ ui.Image _createImage() {
 Finder get _cropButton => find.byIcon(PhosphorIcons.crop());
 
 void main() {
+  setUpAll(warmUpImageEncoding);
+
   testWidgets('does not throw without an imageUrl', (tester) async {
     await pumpAndSettleComponent(
       tester,
@@ -61,22 +65,23 @@ void main() {
       tester,
       ImpaktfullUiImageCrop(
         size: 200,
-        imageUrl: 'https://example.com/image.png',
+        imageUrl: brokenImageUrl,
         controller: controller,
         onCropped: (bytes) => cropped = bytes,
       ),
     );
-    // The network image can not be loaded in tests
-    tester.takeException();
+    await waitForBrokenNetworkImage(tester, brokenImageUrl);
 
     await tester.tap(_cropButton);
-    await tester.runAsync(() async {
-      controller.result.complete(_createImage());
-      for (var i = 0; i < 50 && cropped == null; i++) {
-        await Future<void>.delayed(const Duration(milliseconds: 20));
-      }
-    });
-    await tester.pump();
+    controller.result.complete(_createImage());
+    // Encoding the PNG takes real time. The crop was started in the fake time
+    // of the widget test, so in Chrome it only continues after a pump.
+    for (var i = 0; i < 250 && cropped == null; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 20)),
+      );
+      await tester.pump();
+    }
     expect(cropped, isNotNull);
     expect(cropped, isNotEmpty);
   });
@@ -88,11 +93,11 @@ void main() {
       tester,
       ImpaktfullUiImageCrop(
         size: 200,
-        imageUrl: 'https://example.com/image.png',
+        imageUrl: brokenImageUrl,
         controller: controller,
       ),
     );
-    tester.takeException();
+    await waitForBrokenNetworkImage(tester, brokenImageUrl);
 
     await tester.tap(_cropButton);
     await tester.pump();
@@ -113,11 +118,21 @@ void main() {
     expect(logs, isEmpty);
   });
 
+  testWidgets('a broken imageUrl does not throw', (tester) async {
+    await pumpAndSettleComponent(
+      tester,
+      const ImpaktfullUiImageCrop(size: 200, imageUrl: brokenImageUrl),
+    );
+    await waitForBrokenNetworkImage(tester, brokenImageUrl);
+    expect(tester.takeException(), isNull);
+    expect(_cropButton, findsOneWidget);
+  });
+
   testWidgets('downloadImage completes with an error when loading fails',
       (tester) async {
     final result = await tester.runAsync(
       () => ImpaktfullUiImageCropCropper()
-          .downloadImage('https://example.com/image.png')
+          .downloadImage(brokenImageUrl)
           .then((_) => 'image', onError: (Object _) => 'error')
           .timeout(const Duration(seconds: 5), onTimeout: () => 'timeout'),
     );

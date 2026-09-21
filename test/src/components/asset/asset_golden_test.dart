@@ -6,7 +6,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 import '../../../util/golden_test_util.dart';
 import '../../../util/golden_test_variant.dart';
-import '../_data_display_test_helpers.dart';
+import '../_data_display_golden_helpers.dart';
 
 void main() {
   setUp(() => setupComponentTest());

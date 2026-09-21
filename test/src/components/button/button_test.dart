@@ -72,7 +72,8 @@ void main() {
       await tester.pump();
       expect(taps, 1);
       completer.complete();
-      await tester.pump();
+      // The web needs more than one frame for the awaited future to resume
+      await tester.pumpAndSettle();
       expect(find.byType(ImpaktfullUiLoadingIndicator), findsNothing);
     });
   });

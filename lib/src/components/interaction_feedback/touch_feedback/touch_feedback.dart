@@ -207,8 +207,7 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         focusColor: widget.useFocusColor
             ? Theme.of(context).hoverColor
             : Colors.transparent,
-        splashFactory:
-            isAndroidTarget ? InkSparkle.splashFactory : NoSplash.splashFactory,
+        splashFactory: _getSplashFactory(isAndroidTarget),
         child: ColoredBox(
           color: Colors.transparent,
           child: widget.child,
@@ -225,5 +224,13 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
   void _onHighlightModeChanged(FocusHighlightMode mode) {
     if (!mounted || !_focusNode.hasFocus) return;
     setState(() {});
+  }
+
+  /// InkSparkle loads a fragment shader, which the web does not support
+  /// reliably: like the default of [ThemeData], the web uses InkRipple.
+  InteractiveInkFeatureFactory _getSplashFactory(bool isAndroidTarget) {
+    if (!isAndroidTarget) return NoSplash.splashFactory;
+    if (DeviceUtil.isWeb()) return InkRipple.splashFactory;
+    return InkSparkle.splashFactory;
   }
 }

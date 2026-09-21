@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/network_image/widget/network_image_error.dart';
 
+import '../../../util/network_image_util.dart';
 import '../../../util/test_util.dart';
 
 void main() {
@@ -12,12 +13,13 @@ void main() {
       tester,
       const Center(
         child: ImpaktfullUiNetworkImage(
-          url: 'https://example.com/broken.png',
+          url: brokenImageUrl,
           width: 40,
           height: 40,
         ),
       ),
     );
+    await waitForBrokenNetworkImage(tester, brokenImageUrl);
     expect(tester.takeException(), isNull);
     expect(find.byType(ImpaktfullUiNetworkImageError), findsOneWidget);
   });

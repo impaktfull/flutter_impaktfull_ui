@@ -34,10 +34,16 @@ class ImpaktfullUiDatePickerWeekdays extends StatelessWidget {
           children: [
             for (final day in days) ...[
               Expanded(
-                child: Text(
-                  day,
-                  style: componentTheme.textStyles.weekday,
-                  textAlign: TextAlign.center,
+                // One line: a wrapped weekday makes the row taller and pushes
+                // the last week of the month out of the fixed height of the
+                // picker. A weekday that is too wide is scaled down.
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    day,
+                    style: componentTheme.textStyles.weekday,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ],
