@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/stepper/model/stepper_alignment.dart';
 import 'package:impaktfull_ui/src/components/stepper/model/stepper_item.dart';
 import 'package:impaktfull_ui/src/components/stepper/stepper_style.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'stepper_style.dart';
@@ -53,6 +54,8 @@ class ImpaktfullUiStepper extends StatelessWidget {
         // All items before the first incomplete item are active. When every
         // item is completed, [currentStep] is -1 and every item is active.
         final activeSteps = currentStep == -1 ? items.length : currentStep;
+        final localizations =
+            ImpaktfullUiAccessibilityLocalizations.of(context);
         return ImpaktfullUiAutoLayout(
           orientation: autoLayoutOrientation,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -69,65 +72,79 @@ class ImpaktfullUiStepper extends StatelessWidget {
                       item.asset == null ? TextAlign.start : TextAlign.center;
                   final useExpanded = autoLayoutOrientation ==
                       ImpaktfullUiAutoLayoutOrientation.horizontal;
-                  final child = ImpaktfullUiAutoLayout.vertical(
-                    crossAxisAlignment: crossAxisAlignment,
-                    mainAxisSize: MainAxisSize.min,
-                    spacing: 8,
-                    children: [
-                      if (item.asset == null) ...[
-                        Container(
-                          height: componentTheme.dimens.height,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: i < activeSteps
-                                ? componentTheme.colors.activeStep
-                                : componentTheme.colors.inactiveStep,
-                            borderRadius: componentTheme.dimens.borderRadius,
-                          ),
-                        ),
-                      ] else ...[
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
+                  final String? semanticValue;
+                  if (item.isCompleted) {
+                    semanticValue = localizations.stepCompleted;
+                  } else if (i == currentStep) {
+                    semanticValue = localizations.stepCurrent;
+                  } else {
+                    semanticValue = null;
+                  }
+                  final child = Semantics(
+                    container: true,
+                    label: localizations.stepLabel(i + 1, items.length),
+                    value: semanticValue,
+                    child: ImpaktfullUiAutoLayout.vertical(
+                      crossAxisAlignment: crossAxisAlignment,
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 8,
+                      children: [
+                        if (item.asset == null) ...[
+                          Container(
+                            height: componentTheme.dimens.height,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
                               color: i < activeSteps
-                                  ? componentTheme.colors.assetBorderCompleted
-                                  : componentTheme.colors.assetBorder,
-                              width: 1,
+                                  ? componentTheme.colors.activeStep
+                                  : componentTheme.colors.inactiveStep,
+                              borderRadius: componentTheme.dimens.borderRadius,
                             ),
-                            color: i < activeSteps
-                                ? componentTheme.colors.assetBackgroundCompleted
-                                : componentTheme.colors.assetBackground,
-                            borderRadius: componentTheme.dimens.borderRadius,
                           ),
-                          padding: const EdgeInsets.all(8),
-                          child: ImpaktfullUiAssetWidget(
-                            asset: item.asset!,
-                            color: i < activeSteps
-                                ? componentTheme.colors.assetColorCompleted
-                                : componentTheme.colors.assetColor,
-                          ),
-                        ),
-                      ],
-                      if (item.title != null) ...[
-                        ImpaktfullUiAutoLayout.vertical(
-                          crossAxisAlignment: crossAxisAlignment,
-                          children: [
-                            Text(
-                              item.title!,
-                              style: componentTheme.textStyles.title,
-                              textAlign: textAlign,
+                        ] else ...[
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: i < activeSteps
+                                    ? componentTheme.colors.assetBorderCompleted
+                                    : componentTheme.colors.assetBorder,
+                                width: 1,
+                              ),
+                              color: i < activeSteps
+                                  ? componentTheme
+                                      .colors.assetBackgroundCompleted
+                                  : componentTheme.colors.assetBackground,
+                              borderRadius: componentTheme.dimens.borderRadius,
                             ),
-                            if (item.subtitle != null) ...[
+                            padding: const EdgeInsets.all(8),
+                            child: ImpaktfullUiAssetWidget(
+                              asset: item.asset!,
+                              color: i < activeSteps
+                                  ? componentTheme.colors.assetColorCompleted
+                                  : componentTheme.colors.assetColor,
+                            ),
+                          ),
+                        ],
+                        if (item.title != null) ...[
+                          ImpaktfullUiAutoLayout.vertical(
+                            crossAxisAlignment: crossAxisAlignment,
+                            children: [
                               Text(
-                                item.subtitle!,
-                                style: componentTheme.textStyles.subtitle,
+                                item.title!,
+                                style: componentTheme.textStyles.title,
                                 textAlign: textAlign,
                               ),
+                              if (item.subtitle != null) ...[
+                                Text(
+                                  item.subtitle!,
+                                  style: componentTheme.textStyles.subtitle,
+                                  textAlign: textAlign,
+                                ),
+                              ],
                             ],
-                          ],
-                        ),
+                          ),
+                        ],
                       ],
-                    ],
+                    ),
                   );
                   if (useExpanded) {
                     return Expanded(child: child);

@@ -47,6 +47,13 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _animationController.duration = ImpaktfullUiAnimationUtil.duration(
+        context, const Duration(milliseconds: 300));
+  }
+
+  @override
   void dispose() {
     _transformationController.dispose();
     _curvedAnimation.dispose();

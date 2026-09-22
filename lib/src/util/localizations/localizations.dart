@@ -31,6 +31,7 @@ class ImpaktfullUiLocalizations {
   final ImpaktfullUiBBVerifyRegisterCodeLocalizations bbVerifyRegisterCode;
 
   // Components
+  final ImpaktfullUiAccessibilityLocalizations accessibility;
   final ImpaktfullUiCalendarLocalizations calendar;
   final ImpaktfullUiChatLocalizations chat;
   final ImpaktfullUiCmsHeaderLocalizations cmsHeader;
@@ -55,6 +56,7 @@ class ImpaktfullUiLocalizations {
     this.bbRegister = const ImpaktfullUiBBRegisterLocalizations(),
     this.bbVerifyRegisterCode =
         const ImpaktfullUiBBVerifyRegisterCodeLocalizations(),
+    this.accessibility = const ImpaktfullUiAccessibilityLocalizations(),
     this.calendar = const ImpaktfullUiCalendarLocalizations(),
     this.chat = const ImpaktfullUiChatLocalizations(),
     this.cmsHeader = const ImpaktfullUiCmsHeaderLocalizations(),
@@ -120,6 +122,8 @@ class ImpaktfullUiLocalizations {
       return localization.optionSelector as T;
     } else if (T == ImpaktfullUiPaginationLocalizations) {
       return localization.pagination as T;
+    } else if (T == ImpaktfullUiAccessibilityLocalizations) {
+      return localization.accessibility as T;
     } else if (T == ImpaktfullUiWysiwygLocalizations) {
       return localization.wysiwyg as T;
     } else {
@@ -128,6 +132,7 @@ class ImpaktfullUiLocalizations {
   }
 
   ImpaktfullUiLocalizations copyWith({
+    ImpaktfullUiAccessibilityLocalizations? accessibility,
     ImpaktfullUiBBForgetPasswordLocalizations? bbForgetPassword,
     ImpaktfullUiBBLicensesLocalizations? bbLicenses,
     ImpaktfullUiBBLoginLocalizations? bbLogin,
@@ -151,6 +156,7 @@ class ImpaktfullUiLocalizations {
     ImpaktfullUiWysiwygLocalizations? wysiwyg,
   }) =>
       ImpaktfullUiLocalizations(
+        accessibility: accessibility ?? this.accessibility,
         bbForgetPassword: bbForgetPassword ?? this.bbForgetPassword,
         bbLicenses: bbLicenses ?? this.bbLicenses,
         bbLogin: bbLogin ?? this.bbLogin,

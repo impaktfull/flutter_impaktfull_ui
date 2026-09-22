@@ -41,40 +41,45 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Expanded(
-        child: ImpaktfullUiTouchFeedback(
-          tooltip: showLabel ? null : label,
-          onTap: onTap,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: showLabel ? 8 : 12),
-            child: ImpaktfullUiAutoLayout.vertical(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ImpaktfullUiNotificationBadge(
-                  // A badge with a text is shown, even when `badgeShow` is false.
-                  show: badgeShow || badgeText != null,
-                  text: badgeText,
-                  color: badgeColor ??
-                      (isSelected
-                          ? componentTheme.colors.badgeActive
-                          : componentTheme.colors.badgeInActive),
-                  child: ImpaktfullUiAssetWidget(
-                    asset: isSelected ? (selectedAsset ?? asset) : asset,
-                    color: isSelected
-                        ? componentTheme.colors.active
-                        : componentTheme.colors.inactive,
+        child: Semantics(
+          container: true,
+          button: true,
+          selected: isSelected,
+          child: ImpaktfullUiTouchFeedback(
+            tooltip: showLabel ? null : label,
+            onTap: onTap,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: showLabel ? 8 : 12),
+              child: ImpaktfullUiAutoLayout.vertical(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ImpaktfullUiNotificationBadge(
+                    // A badge with a text is shown, even when `badgeShow` is false.
+                    show: badgeShow || badgeText != null,
+                    text: badgeText,
+                    color: badgeColor ??
+                        (isSelected
+                            ? componentTheme.colors.badgeActive
+                            : componentTheme.colors.badgeInActive),
+                    child: ImpaktfullUiAssetWidget(
+                      asset: isSelected ? (selectedAsset ?? asset) : asset,
+                      color: isSelected
+                          ? componentTheme.colors.active
+                          : componentTheme.colors.inactive,
+                    ),
                   ),
-                ),
-                if (label != null && showLabel) ...[
-                  Text(
-                    label!,
-                    style: _getLabelText(componentTheme),
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
-                  ),
+                  if (label != null && showLabel) ...[
+                    Text(
+                      label!,
+                      style: _getLabelText(componentTheme),
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
           ),
         ),

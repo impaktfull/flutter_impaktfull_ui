@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/floating_action_button/floating_action_button_style.dart';
@@ -49,6 +50,13 @@ class _ImpaktfullUiFloatingActionButtonState
     if (widget.expanded) {
       _controller.value = 1.0;
     }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _controller.duration = ImpaktfullUiAnimationUtil.duration(
+        context, const Duration(milliseconds: 200));
   }
 
   @override

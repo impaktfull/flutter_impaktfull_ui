@@ -26,31 +26,37 @@ class ImpaktfullUiSegmentedControlItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder(
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
-        onTap: onTap,
-        borderRadius: componentTheme.dimens.borderRadius,
-        child: Center(
-          child: ImpaktfullUiAutoLayout.horizontal(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 4,
-            children: [
-              if (leading != null) ...[
-                leading!,
-              ],
-              Flexible(
-                child: Text(
-                  label,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: isSelected
-                      ? componentTheme.textStyles.activeLabel
-                      : componentTheme.textStyles.label,
+      builder: (context, componentTheme) => Semantics(
+        container: true,
+        button: true,
+        selected: isSelected,
+        inMutuallyExclusiveGroup: true,
+        child: ImpaktfullUiTouchFeedback(
+          onTap: onTap,
+          borderRadius: componentTheme.dimens.borderRadius,
+          child: Center(
+            child: ImpaktfullUiAutoLayout.horizontal(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 4,
+              children: [
+                if (leading != null) ...[
+                  leading!,
+                ],
+                Flexible(
+                  child: Text(
+                    label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: isSelected
+                        ? componentTheme.textStyles.activeLabel
+                        : componentTheme.textStyles.label,
+                  ),
                 ),
-              ),
-              if (trailing != null) ...[
-                trailing!,
+                if (trailing != null) ...[
+                  trailing!,
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
@@ -207,6 +208,8 @@ class ImpaktfullUiMetric extends StatelessWidget {
                 end: 4,
                 child: ImpaktfullUiIconButton(
                   asset: componentTheme.assets.more,
+                  tooltip: ImpaktfullUiAccessibilityLocalizations.of(context)
+                      .moreOptions,
                   onTap: onMoreTapped!,
                 ),
               ),

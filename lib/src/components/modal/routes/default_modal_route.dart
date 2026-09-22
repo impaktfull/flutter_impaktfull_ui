@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/modal/routes/blurred_modal_route_wrapper.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 
 class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
@@ -35,6 +36,25 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
               MaterialLocalizations.of(context).modalBarrierDismissLabel,
           transitionDuration: const Duration(milliseconds: 150),
         );
+
+  /// No transition when the user asked to reduce motion.
+  @override
+  Duration get transitionDuration {
+    final context = navigator?.context;
+    if (context != null && ImpaktfullUiAnimationUtil.reduceMotion(context)) {
+      return Duration.zero;
+    }
+    return super.transitionDuration;
+  }
+
+  @override
+  Duration get reverseTransitionDuration {
+    final context = navigator?.context;
+    if (context != null && ImpaktfullUiAnimationUtil.reduceMotion(context)) {
+      return Duration.zero;
+    }
+    return super.reverseTransitionDuration;
+  }
 
   @override
   Widget buildTransitions(

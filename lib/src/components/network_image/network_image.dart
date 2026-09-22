@@ -12,12 +12,21 @@ class ImpaktfullUiNetworkImage extends StatelessWidget {
   final BoxFit? fit;
   final ImpaktfullUiNetworkImageTheme? theme;
 
+  /// What screen readers announce for the image (the alt text), e.g.
+  /// `Profile picture of Jane`.
+  final String? semanticLabel;
+
+  /// Hides the image from screen readers, for a decorative image.
+  final bool excludeFromSemantics;
+
   const ImpaktfullUiNetworkImage({
     required this.url,
     this.height,
     this.width,
     this.fit,
     this.theme,
+    this.semanticLabel,
+    this.excludeFromSemantics = false,
     super.key,
   });
 
@@ -26,6 +35,8 @@ class ImpaktfullUiNetworkImage extends StatelessWidget {
     this.width,
     this.fit,
     this.theme,
+    this.semanticLabel,
+    this.excludeFromSemantics = false,
     super.key,
   }) : url = 'https://picsum.photos';
 
@@ -45,6 +56,8 @@ class ImpaktfullUiNetworkImage extends StatelessWidget {
           height: height,
           width: width,
           fit: fit,
+          semanticLabel: semanticLabel,
+          excludeFromSemantics: excludeFromSemantics,
           errorBuilder: (context, error, stackTrace) =>
               ImpaktfullUiNetworkImageError(
             error: error,

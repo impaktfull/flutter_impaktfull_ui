@@ -14,6 +14,14 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
   final double? size;
   final BoxFit? fit;
 
+  /// What screen readers announce for the asset. Only needed when the asset
+  /// shows something that is not in a text next to it: leave it null for
+  /// decorative assets and icons next to a label.
+  final String? semanticLabel;
+
+  /// Hides the asset from screen readers (e.g. a decorative illustration).
+  final bool excludeFromSemantics;
+
   const ImpaktfullUiAssetWidget({
     required this.asset,
     this.color,
@@ -21,6 +29,8 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
     this.height,
     this.size,
     this.fit,
+    this.semanticLabel,
+    this.excludeFromSemantics = false,
     super.key,
   });
 
@@ -100,13 +110,25 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
         },
       ),
     );
-    if (_shouldMirror(context, asset)) {
-      return Transform.flip(
-        flipX: true,
-        child: child,
-      );
-    }
-    return child;
+    final mirrored = _shouldMirror(context, asset)
+        ? Transform.flip(
+            flipX: true,
+            child: child,
+          )
+        : child;
+    return _withSemantics(mirrored);
+  }
+
+  Widget _withSemantics(Widget child) {
+    if (excludeFromSemantics) return ExcludeSemantics(child: child);
+    final semanticLabel = this.semanticLabel;
+    if (semanticLabel == null) return child;
+    return Semantics(
+      container: true,
+      image: true,
+      label: semanticLabel,
+      child: ExcludeSemantics(child: child),
+    );
   }
 
   static bool _shouldMirror(BuildContext context, ImpaktfullUiAsset asset) {
@@ -125,6 +147,8 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
       height: height,
       size: size,
       fit: fit,
+      semanticLabel: semanticLabel,
+      excludeFromSemantics: excludeFromSemantics,
       key: key,
     );
   }

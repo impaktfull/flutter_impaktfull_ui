@@ -77,6 +77,15 @@ The package has many users: **never rename or remove a public API in one step.**
 
 Deprecated APIs are removed together in the next major release (1.0.0), never in a minor or patch release. Removing them is a `feat!:` pull request that deletes the aliases, their `fix_data.yaml` transforms, `test_fixes` cases and tests, and keeps the migration guide.
 
+## Accessibility
+
+Every component must work with screen readers, keyboards and the "reduce motion" setting (see the README "Accessibility" section and the Accessibility step in the [Create a Component](.claude/skills/create_component/SKILL.md) skill):
+
+- A new interactive component has semantics (role, state, label), is focusable and activatable with enter and space, and has a semantics test in `test/src/accessibility/` (or next to its other tests).
+- Every animation duration goes through `ImpaktfullUiAnimationUtil.duration(context, duration)`; endless decorative animations do not run when `ImpaktfullUiAnimationUtil.reduceMotion(context)` is true.
+- Semantics labels are user-facing texts: they go through localizations (`ImpaktfullUiAccessibilityLocalizations` or the localizations of the component).
+- Do not change the layout size of an existing component to meet a tap target guideline: add an opt-in (`minTapTargetSize` in its dimens theme).
+
 ## Every platform
 
 The package supports Android, iOS, macOS, Windows, Linux and the web, compiled to JS and to Wasm. Keep it that way:
@@ -133,7 +142,7 @@ CI fails when the line coverage of `lib/` drops below a minimum. Run it locally 
 
 ```bash
 flutter test --coverage
-dart run tool/coverage/bin/coverage_summary.dart --min 67.3
+dart run tool/coverage/bin/coverage_summary.dart --min 85.1
 ```
 
 `tool/coverage/bin/coverage_summary.dart` reads `coverage/lcov.info` (ignored by git), prints the coverage per directory of `lib/src` and exits with an error below `--min`. The minimum is set in the `Coverage` step of `.github/workflows/validate.yml`, about 1% below the measured coverage so small refactors do not fail CI. **The minimum only goes up:** when a pull request raises the coverage, raise the minimum to the new total minus 1% in the same pull request. Never lower it to make CI pass, add tests instead.

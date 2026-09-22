@@ -218,6 +218,16 @@ String _defaultAmountLabel(int amount) => '$amount items';
 - Dates, times and numbers use the locale of the app through `ImpaktfullUiLocaleUtil` (`lib/src/util/locale/locale_util.dart`), never a hardcoded pattern like `'dd/MM/yyyy'`, `'HH:mm'` or `'${value}%'`. Use `ImpaktfullUiLocaleUtil.firstDayOfWeek` for weeks and `ImpaktfullUiLocaleUtil.use24HourFormat` for times.
 - Add a test that a custom localization shows up to `test/src/localizations/component_localizations_test.dart`.
 
+### 3c. Accessibility (REQUIRED for interactive components)
+
+See the README "Accessibility" section for what the components support.
+
+- **Semantics:** wrap the component in `Semantics(container: true, ...)` with its role and state: `button`, `checked`/`mixed`, `toggled`, `selected`, `expanded`, `inMutuallyExclusiveGroup`, `enabled`, `slider` with `value`/`onIncrease`/`onDecrease`, `liveRegion` for content that changes. `ImpaktfullUiTouchFeedback` already adds the tap action and makes it focusable. Give an icon-only button a `tooltip`, add an optional `semanticLabel` parameter where only the app knows the meaning (images, charts, standalone controls), and hide decorative content with `ExcludeSemantics`. Texts that are only announced go through `ImpaktfullUiAccessibilityLocalizations` (or the localizations of the component).
+- **Keyboard:** the component is focusable with tab, shows the focus ring (`ImpaktfullUiTouchFeedback` or `ImpaktfullUiFocusFeedback`) and is activated with enter and space. Controls with a value (sliders, steppers) react to the arrow keys (mirrored in right-to-left). Overlays close with escape and give the focus back. Never force the focus back into a widget when it loses it.
+- **Reduce motion:** use `ImpaktfullUiAnimationUtil.duration(context, duration)` for every animation duration (set the duration of an `AnimationController` in `didChangeDependencies`), and do not start endless decorative animations when `ImpaktfullUiAnimationUtil.reduceMotion(context)` is true.
+- **Tap targets:** keep tappable areas at least 48x48 (44x44 on iOS). A small control gets an opt-in `minTapTargetSize` in its dimens theme (see `ImpaktfullUiMinTapTarget`) instead of a bigger default layout.
+- **Test:** add a semantics test (`tester.getSemantics(...)` with `matchesSemantics`/`containsSemantics`), a keyboard test and, for animations, a reduce motion test in `test/src/accessibility/`.
+
 ### 4. Register in Theme System
 
 #### Update `lib/src/theme/component_theme.dart`
@@ -373,6 +383,7 @@ If the component has sub-components, indent them:
 - [ ] Create component directory
 - [ ] Create style file
 - [ ] Create main component file (directional APIs only, see Right-to-left support)
+- [ ] Semantics, keyboard support, `ImpaktfullUiAnimationUtil` for animations and a semantics test (see Accessibility)
 - [ ] Put user-facing texts in `<component_name>.localizations.dart` and register it in `ImpaktfullUiLocalizations`
 - [ ] Register in `component_theme.dart` (5 places)
 - [ ] Add default in `theme_default.dart`

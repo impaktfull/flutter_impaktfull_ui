@@ -15,11 +15,19 @@ class ImpaktfullUiCalendarLocalizations
   /// Shown when the list has no events.
   final String noEventsFound;
 
+  /// The tooltip of the button that goes to the previous week.
+  final String previousWeek;
+
+  /// The tooltip of the button that goes to the next week.
+  final String nextWeek;
+
   const ImpaktfullUiCalendarLocalizations({
     this.todayBtn = 'Today',
     this.allDay = 'All day',
     this.multiDayProgress = _defaultMultiDayProgress,
     this.noEventsFound = 'No events found',
+    this.previousWeek = 'Previous week',
+    this.nextWeek = 'Next week',
   });
 
   static ImpaktfullUiCalendarLocalizations of(BuildContext context) =>
@@ -30,12 +38,16 @@ class ImpaktfullUiCalendarLocalizations
     String? allDay,
     String Function(int day, int amountOfDays)? multiDayProgress,
     String? noEventsFound,
+    String? previousWeek,
+    String? nextWeek,
   }) =>
       ImpaktfullUiCalendarLocalizations(
         todayBtn: todayBtn ?? this.todayBtn,
         allDay: allDay ?? this.allDay,
         multiDayProgress: multiDayProgress ?? this.multiDayProgress,
         noEventsFound: noEventsFound ?? this.noEventsFound,
+        previousWeek: previousWeek ?? this.previousWeek,
+        nextWeek: nextWeek ?? this.nextWeek,
       );
 }
 

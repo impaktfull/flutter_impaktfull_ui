@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/notification_badge/notification_badge_style.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'notification_badge_style.dart';
@@ -33,7 +35,13 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget {
   final ImpaktfullUiNotificationBadgeLocation location;
   final ImpaktfullUiNotificationBadgeTheme? theme;
 
+  /// What screen readers announce for the badge. Defaults to the amount of
+  /// notifications, e.g. `3 notifications`
+  /// (`ImpaktfullUiAccessibilityLocalizations.notificationBadge`).
+  final String? semanticLabel;
+
   const ImpaktfullUiNotificationBadge({
+    this.semanticLabel,
     required this.show,
     required this.child,
     required this.color,
@@ -72,49 +80,54 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget {
               bottom: _getBottom(dotSize, textWidth, textHeight),
               end: _getEnd(dotSize, textWidth, textHeight),
               start: _getStart(dotSize, textWidth, textHeight),
-              child: AnimatedOpacity(
-                opacity: show ? 1 : 0,
-                duration: componentTheme.durations.opacity,
-                child: Transform.scale(
-                  scale: 0.75,
-                  child: Container(
-                    constraints: BoxConstraints(
-                      minWidth: size,
-                      minHeight: size,
-                    ),
-                    decoration: BoxDecoration(
-                      color: color,
-                      borderRadius: componentTheme.dimens.borderRadius,
-                      border: componentTheme.colors.border == null
-                          ? null
-                          : Border.all(
-                              color: componentTheme.colors.border!,
-                              width: 2,
-                              strokeAlign: BorderSide.strokeAlignOutside,
-                            ),
-                    ),
-                    alignment: Alignment.center,
-                    child: Builder(
-                      builder: (context) {
-                        if (text == null) {
-                          return Container(
-                            width: dotSize,
-                            height: dotSize,
-                            decoration: BoxDecoration(
-                              color: color,
-                              borderRadius: componentTheme.dimens.borderRadius,
+              child: _withSemantics(
+                context,
+                AnimatedOpacity(
+                  opacity: show ? 1 : 0,
+                  duration: ImpaktfullUiAnimationUtil.duration(
+                      context, componentTheme.durations.opacity),
+                  child: Transform.scale(
+                    scale: 0.75,
+                    child: Container(
+                      constraints: BoxConstraints(
+                        minWidth: size,
+                        minHeight: size,
+                      ),
+                      decoration: BoxDecoration(
+                        color: color,
+                        borderRadius: componentTheme.dimens.borderRadius,
+                        border: componentTheme.colors.border == null
+                            ? null
+                            : Border.all(
+                                color: componentTheme.colors.border!,
+                                width: 2,
+                                strokeAlign: BorderSide.strokeAlignOutside,
+                              ),
+                      ),
+                      alignment: Alignment.center,
+                      child: Builder(
+                        builder: (context) {
+                          if (text == null) {
+                            return Container(
+                              width: dotSize,
+                              height: dotSize,
+                              decoration: BoxDecoration(
+                                color: color,
+                                borderRadius:
+                                    componentTheme.dimens.borderRadius,
+                              ),
+                            );
+                          }
+                          return Padding(
+                            padding: componentTheme.dimens.textPadding,
+                            child: Text(
+                              text ?? '',
+                              style: componentTheme.textStyles.text,
+                              textAlign: TextAlign.center,
                             ),
                           );
-                        }
-                        return Padding(
-                          padding: componentTheme.dimens.textPadding,
-                          child: Text(
-                            text ?? '',
-                            style: componentTheme.textStyles.text,
-                            textAlign: TextAlign.center,
-                          ),
-                        );
-                      },
+                        },
+                      ),
                     ),
                   ),
                 ),
@@ -123,6 +136,22 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+
+  /// A hidden badge is not announced. A visible badge is announced with the
+  /// element it is on (e.g. `Inbox, 3 notifications` for a navigation item).
+  ///
+  /// The widget tree stays the same when [show] changes, so the badge fades
+  /// in and out.
+  Widget _withSemantics(BuildContext context, Widget badge) {
+    return Semantics(
+      label: show
+          ? semanticLabel ??
+              ImpaktfullUiAccessibilityLocalizations.of(context)
+                  .notificationBadge(text)
+          : null,
+      child: ExcludeSemantics(child: badge),
     );
   }
 

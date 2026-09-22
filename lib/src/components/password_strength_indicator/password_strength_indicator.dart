@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/password_strength_indicator/model/password_strength_indicator_requirement.dart';
@@ -42,7 +43,8 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
                 for (var i = 0; i < strengthIndicators.length; i++) ...[
                   Expanded(
                     child: AnimatedContainer(
-                      duration: componentTheme.durations.colorChangeDuration,
+                      duration: ImpaktfullUiAnimationUtil.duration(context,
+                          componentTheme.durations.colorChangeDuration),
                       decoration: BoxDecoration(
                         color: _hasColor(i, index)
                             ? color

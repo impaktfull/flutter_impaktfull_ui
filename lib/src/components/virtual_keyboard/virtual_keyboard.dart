@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
@@ -204,6 +205,13 @@ class _ImpaktfullUiVirtualKeyboardState
                             asset: _obscureText
                                 ? componentTheme.assets.passwordHide
                                 : componentTheme.assets.passwordShow,
+                            tooltip: _obscureText
+                                ? ImpaktfullUiAccessibilityLocalizations.of(
+                                        context)
+                                    .showPassword
+                                : ImpaktfullUiAccessibilityLocalizations.of(
+                                        context)
+                                    .hidePassword,
                             onTap: _onObscureTextHideShowIconTapped,
                           ),
                         ],

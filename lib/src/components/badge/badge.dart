@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/badge/badge.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
@@ -23,9 +24,14 @@ class ImpaktfullUiBadge extends StatefulWidget {
   final VoidCallback? onCloseTap;
   final ImpaktfullUiBadgeTheme? theme;
 
+  /// What screen readers announce for the badge, when the [label] alone is
+  /// not clear, e.g. `3 unread messages` for a badge with the label `3`.
+  final String? semanticLabel;
+
   const ImpaktfullUiBadge({
     required this.type,
     required this.label,
+    this.semanticLabel,
     this.size = ImpaktfullUiBadgeSize.small,
     this.leading,
     this.leadingAsset,
@@ -56,81 +62,94 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
         final borderColor = _getBorderColor(componentTheme);
         final backgroundColor = _getBackgroundColor(componentTheme);
         final textStyle = _getTextStyle(componentTheme);
-        return ImpaktfullUiTouchFeedback(
-          onTap: widget.onTap,
-          color: backgroundColor,
-          border: Border.all(
-            color: borderColor,
-            width: componentTheme.dimens.borderWidth,
-          ),
-          borderRadius: componentTheme.dimens.borderRadius,
-          child: Padding(
-            padding: EdgeInsetsDirectional.only(
-              start: hasLeading
-                  ? (widget.size.horizontalPadding / 2) -
-                      widget.size.paddingOffset
-                  : widget.size.horizontalPadding,
-              end: hasTrailing
-                  ? (widget.size.horizontalPadding / 2) -
-                      widget.size.paddingOffset
-                  : widget.size.horizontalPadding,
-              top: widget.size.verticalPadding,
-              bottom: widget.size.verticalPadding,
+        return Semantics(
+          container: true,
+          button: widget.onTap != null,
+          // With a label, the text announces the semantic label.
+          label: widget.label == null ? widget.semanticLabel : null,
+          child: ImpaktfullUiTouchFeedback(
+            onTap: widget.onTap,
+            color: backgroundColor,
+            border: Border.all(
+              color: borderColor,
+              width: componentTheme.dimens.borderWidth,
             ),
-            // With a bounded width a long label is truncated. Without one
-            // (e.g. in a Row) the badge keeps the width of its content.
-            child: _ImpaktfullUiBadgeRow(
-              children: [
-                if (widget.leadingAsset != null) ...[
-                  _getWidgetOrIcon(
-                    ImpaktfullUiAssetWidget(
-                      asset: widget.leadingAsset!,
+            borderRadius: componentTheme.dimens.borderRadius,
+            child: Padding(
+              padding: EdgeInsetsDirectional.only(
+                start: hasLeading
+                    ? (widget.size.horizontalPadding / 2) -
+                        widget.size.paddingOffset
+                    : widget.size.horizontalPadding,
+                end: hasTrailing
+                    ? (widget.size.horizontalPadding / 2) -
+                        widget.size.paddingOffset
+                    : widget.size.horizontalPadding,
+                top: widget.size.verticalPadding,
+                bottom: widget.size.verticalPadding,
+              ),
+              // With a bounded width a long label is truncated. Without one
+              // (e.g. in a Row) the badge keeps the width of its content.
+              child: _ImpaktfullUiBadgeRow(
+                children: [
+                  if (widget.leadingAsset != null) ...[
+                    _getWidgetOrIcon(
+                      ImpaktfullUiAssetWidget(
+                        asset: widget.leadingAsset!,
+                      ),
+                      textColor,
                     ),
-                    textColor,
-                  ),
-                  SizedBox(width: widget.size.spacing),
-                ],
-                if (widget.leading != null) ...[
-                  _getWidgetOrIcon(widget.leading!, textColor),
-                  SizedBox(width: widget.size.spacing),
-                ],
-                if (widget.label != null) ...[
-                  Flexible(
-                    child: Text(
-                      widget.label!,
-                      style: textStyle.copyWith(color: textColor),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
-                if (widget.onCloseTap != null) ...[
-                  const SizedBox(width: 2),
-                  ImpaktfullUiTouchFeedback(
-                    borderRadius: componentTheme.dimens.borderRadius,
-                    onTap: widget.onCloseTap!,
-                    child: Padding(
-                      padding: const EdgeInsets.all(2),
-                      child: ImpaktfullUiAssetWidget(
-                        asset: componentTheme.assets.close,
-                        size: 16,
-                        color: textColor.withOpacityPercentage(0.66),
+                    SizedBox(width: widget.size.spacing),
+                  ],
+                  if (widget.leading != null) ...[
+                    _getWidgetOrIcon(widget.leading!, textColor),
+                    SizedBox(width: widget.size.spacing),
+                  ],
+                  if (widget.label != null) ...[
+                    Flexible(
+                      child: Text(
+                        widget.label!,
+                        semanticsLabel: widget.semanticLabel,
+                        style: textStyle.copyWith(color: textColor),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  ),
-                ] else if (widget.trailingAsset != null) ...[
-                  SizedBox(width: widget.size.spacing),
-                  _getWidgetOrIcon(
-                    ImpaktfullUiAssetWidget(
-                      asset: widget.trailingAsset!,
+                  ],
+                  if (widget.onCloseTap != null) ...[
+                    const SizedBox(width: 2),
+                    Semantics(
+                      container: true,
+                      button: true,
+                      label: ImpaktfullUiAccessibilityLocalizations.of(context)
+                          .remove,
+                      child: ImpaktfullUiTouchFeedback(
+                        borderRadius: componentTheme.dimens.borderRadius,
+                        onTap: widget.onCloseTap!,
+                        child: Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: ImpaktfullUiAssetWidget(
+                            asset: componentTheme.assets.close,
+                            size: 16,
+                            color: textColor.withOpacityPercentage(0.66),
+                          ),
+                        ),
+                      ),
                     ),
-                    textColor,
-                  ),
-                ] else if (widget.trailing != null) ...[
-                  SizedBox(width: widget.size.spacing),
-                  _getWidgetOrIcon(widget.trailing!, textColor),
-                ]
-              ],
+                  ] else if (widget.trailingAsset != null) ...[
+                    SizedBox(width: widget.size.spacing),
+                    _getWidgetOrIcon(
+                      ImpaktfullUiAssetWidget(
+                        asset: widget.trailingAsset!,
+                      ),
+                      textColor,
+                    ),
+                  ] else if (widget.trailing != null) ...[
+                    SizedBox(width: widget.size.spacing),
+                    _getWidgetOrIcon(widget.trailing!, textColor),
+                  ]
+                ],
+              ),
             ),
           ),
         );

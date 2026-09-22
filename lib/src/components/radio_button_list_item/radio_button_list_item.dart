@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/components/radio_button/radio_button.dart';
 import 'package:impaktfull_ui/src/components/radio_button_list_item/radio_button_list_item_style.dart';
 import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/widget/accessibility/list_item_control.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'radio_button_list_item_style.dart';
@@ -33,21 +34,30 @@ class ImpaktfullUiRadioButtonListItem<T> extends StatelessWidget {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
-        title: title,
-        subtitle: subtitle,
-        onTap: onChanged == null ? null : _onTap,
-        type: ImpaktfullUiSimpleListItemType.neutral,
-        leadingWidgetBuilder: leading == null
-            ? null
-            : (context) => ImpaktfullUiAssetWidget(
-                  asset: leading,
-                  color: componentTheme.colors.icons,
-                ),
-        trailingWidgetBuilder: (context) => ImpaktfullUiRadioButton(
-          value: value,
-          groupValue: groupValue,
-          onChanged: onChanged == null ? null : _onChanged,
+      builder: (context, componentTheme) => MergeSemantics(
+        child: Semantics(
+          checked: value == groupValue,
+          inMutuallyExclusiveGroup: true,
+          enabled: onChanged != null,
+          child: ImpaktfullUiSimpleListItem(
+            title: title,
+            subtitle: subtitle,
+            onTap: onChanged == null ? null : _onTap,
+            type: ImpaktfullUiSimpleListItemType.neutral,
+            leadingWidgetBuilder: leading == null
+                ? null
+                : (context) => ImpaktfullUiAssetWidget(
+                      asset: leading,
+                      color: componentTheme.colors.icons,
+                    ),
+            trailingWidgetBuilder: (context) => ImpaktfullUiListItemControl(
+              child: ImpaktfullUiRadioButton(
+                value: value,
+                groupValue: groupValue,
+                onChanged: onChanged == null ? null : _onChanged,
+              ),
+            ),
+          ),
         ),
       ),
     );

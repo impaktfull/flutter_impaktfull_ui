@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/segmented_control/segmented_control_style.dart';
 import 'package:impaktfull_ui/src/components/segmented_control/widget/segmented_control_item.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'segmented_control_style.dart';
@@ -46,7 +47,8 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
             // one of the items.
             if (selectedIndex != -1) ...[
               AnimatedAlign(
-                duration: const Duration(milliseconds: 200),
+                duration: ImpaktfullUiAnimationUtil.duration(
+                    context, const Duration(milliseconds: 200)),
                 curve: Curves.easeInOut,
                 alignment: AlignmentDirectional(
                   items.length == 1

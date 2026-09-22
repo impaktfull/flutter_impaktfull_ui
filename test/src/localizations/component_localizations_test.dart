@@ -141,6 +141,47 @@ void main() {
   });
 
   group('Components', () {
+    testWidgets('Calendar week: previous and next week tooltips',
+        (tester) async {
+      setScreenSize(tester, const Size(1400, 1000));
+      await pumpAndSettleComponent(
+        tester,
+        ImpaktfullUiCalendar(
+          type: ImpaktfullUiCalendarType.week,
+          selectedDate: DateTime(2024, 5, 15),
+          events: const [],
+          onEventTap: (_) {},
+          localizations: const ImpaktfullUiCalendarLocalizations(
+            previousWeek: 'Vorige week',
+            nextWeek: 'Volgende week',
+          ),
+        ),
+      );
+      expect(find.byTooltip('Vorige week'), findsOneWidget);
+      expect(find.byTooltip('Volgende week'), findsOneWidget);
+    });
+
+    testWidgets('Accessibility: semantics labels from the app', (tester) async {
+      final handle = tester.ensureSemantics();
+      await _pumpWithAppLocalizations(
+        tester,
+        const ImpaktfullUiLocalizations().copyWith(
+          accessibility: const ImpaktfullUiAccessibilityLocalizations()
+              .copyWith(notificationCount: (count) => '$count meldingen'),
+        ),
+        const Center(
+          child: ImpaktfullUiNotificationBadge(
+            show: true,
+            text: '2',
+            color: null,
+            child: SizedBox(width: 24, height: 24),
+          ),
+        ),
+      );
+      expect(find.bySemanticsLabel('2 meldingen'), findsOneWidget);
+      handle.dispose();
+    });
+
     testWidgets('Calendar week: today button', (tester) async {
       setScreenSize(tester, const Size(1400, 1000));
       await pumpAndSettleComponent(

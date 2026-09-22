@@ -134,6 +134,8 @@ export 'src/widget/override_components/overridable_component_builder.dart';
 export 'src/widget/override_components/overridable_component_configurator.dart';
 
 // Util
+export 'src/util/accessibility/accessibility.localizations.dart';
+export 'src/util/animation/animation_util.dart';
 export 'src/util/localizations/localizations.dart';
 export 'src/util/responsive/responsive_extension.dart';
 

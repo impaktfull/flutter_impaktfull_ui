@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/components/accordion/accordion_style.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'accordion_style.dart';
@@ -59,6 +60,13 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _controller.duration = ImpaktfullUiAnimationUtil.duration(
+        context, const Duration(milliseconds: 200));
+  }
+
+  @override
   void didUpdateWidget(ImpaktfullUiAccordion oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.expanded != oldWidget.expanded) {
@@ -80,18 +88,23 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ImpaktfullUiSimpleListItem(
-            title: widget.title,
-            subtitle: widget.subtitle,
-            onTap: _toggleExpanded,
-            trailingWidgetBuilder: widget.trailingWidgetBuilder ??
-                (context) => AnimatedRotation(
-                      turns: widget.expanded ? -0.5 : 0,
-                      duration: const Duration(milliseconds: 200),
-                      child: ImpaktfullUiAssetWidget(
-                        asset: componentTheme.assets.chevronDown,
+          Semantics(
+            container: true,
+            expanded: widget.expanded,
+            child: ImpaktfullUiSimpleListItem(
+              title: widget.title,
+              subtitle: widget.subtitle,
+              onTap: _toggleExpanded,
+              trailingWidgetBuilder: widget.trailingWidgetBuilder ??
+                  (context) => AnimatedRotation(
+                        turns: widget.expanded ? -0.5 : 0,
+                        duration: ImpaktfullUiAnimationUtil.duration(
+                            context, const Duration(milliseconds: 200)),
+                        child: ImpaktfullUiAssetWidget(
+                          asset: componentTheme.assets.chevronDown,
+                        ),
                       ),
-                    ),
+            ),
           ),
           if (widget.animated) ...[
             SizeTransition(
