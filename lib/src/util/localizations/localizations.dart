@@ -41,6 +41,7 @@ class ImpaktfullUiLocalizations {
   final ImpaktfullUiFilePickerLocalizations filePicker;
   final ImpaktfullUiGalleryLocalizations gallery;
   final ImpaktfullUiGridViewLocalizations gridView;
+  final ImpaktfullUiIntroductionLocalizations introduction;
   final ImpaktfullUiListViewLocalizations listView;
   final ImpaktfullUiMasterDetailLocalizations masterDetail;
   final ImpaktfullUiNavBarLocalizations navBar;
@@ -66,6 +67,7 @@ class ImpaktfullUiLocalizations {
     this.filePicker = const ImpaktfullUiFilePickerLocalizations(),
     this.gallery = const ImpaktfullUiGalleryLocalizations(),
     this.gridView = const ImpaktfullUiGridViewLocalizations(),
+    this.introduction = const ImpaktfullUiIntroductionLocalizations(),
     this.listView = const ImpaktfullUiListViewLocalizations(),
     this.masterDetail = const ImpaktfullUiMasterDetailLocalizations(),
     this.navBar = const ImpaktfullUiNavBarLocalizations(),
@@ -116,6 +118,8 @@ class ImpaktfullUiLocalizations {
       return localization.filePicker as T;
     } else if (T == ImpaktfullUiGalleryLocalizations) {
       return localization.gallery as T;
+    } else if (T == ImpaktfullUiIntroductionLocalizations) {
+      return localization.introduction as T;
     } else if (T == ImpaktfullUiMasterDetailLocalizations) {
       return localization.masterDetail as T;
     } else if (T == ImpaktfullUiOptionSelectorLocalizations) {
@@ -148,6 +152,7 @@ class ImpaktfullUiLocalizations {
     ImpaktfullUiFilePickerLocalizations? filePicker,
     ImpaktfullUiGalleryLocalizations? gallery,
     ImpaktfullUiGridViewLocalizations? gridView,
+    ImpaktfullUiIntroductionLocalizations? introduction,
     ImpaktfullUiListViewLocalizations? listView,
     ImpaktfullUiMasterDetailLocalizations? masterDetail,
     ImpaktfullUiNavBarLocalizations? navBar,
@@ -172,6 +177,7 @@ class ImpaktfullUiLocalizations {
         filePicker: filePicker ?? this.filePicker,
         gallery: gallery ?? this.gallery,
         gridView: gridView ?? this.gridView,
+        introduction: introduction ?? this.introduction,
         listView: listView ?? this.listView,
         masterDetail: masterDetail ?? this.masterDetail,
         navBar: navBar ?? this.navBar,

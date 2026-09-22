@@ -67,4 +67,46 @@ void main() {
       ),
     ],
   );
+
+  runComponentTest(
+    fileName: 'impaktfull_ui_icon_button_disabled_and_themed',
+    columns: 4,
+    goldenTests: () => [
+      GoldenTest(
+        description: 'enabled',
+        child: ImpaktfullUiIconButton(asset: icons.add, onTap: () {}),
+      ),
+      GoldenTest(
+        description: 'disabled',
+        child: ImpaktfullUiIconButton(asset: icons.add, onTap: null),
+      ),
+      GoldenTest(
+        description: 'disabled with background',
+        child: ImpaktfullUiIconButton(
+          asset: icons.edit,
+          color: Colors.white,
+          backgroundColor: Colors.deepPurple,
+          onTap: null,
+        ),
+      ),
+      GoldenTest(
+        description: 'themed',
+        child: ImpaktfullUiIconButton(
+          asset: icons.edit,
+          onTap: () {},
+          theme: ImpaktfullUiIconButtonTheme.fallback.copyWith(
+            colors: const ImpaktfullUiIconButtonColorTheme(
+              icon: Colors.white,
+              background: Colors.teal,
+            ),
+            dimens: const ImpaktfullUiIconButtonDimensTheme(
+              padding: EdgeInsets.all(8),
+              iconSize: 24,
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 }

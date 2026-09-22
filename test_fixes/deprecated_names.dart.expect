@@ -101,6 +101,12 @@ void main() {
       floatingActionButtonAlignment: Alignment.bottomLeft,
       builder: (context) => const SizedBox());
 
+  // Removed parameters that never had an effect
+  ImpaktfullUiAutoComplete<String>(
+      onSearchChanged: (query) => [],
+      itemBuilder: (context, item, index, controller) => Text(item),
+      noDataLabel: '');
+
   debugPrint([
     carousel,
     carouselTheme,

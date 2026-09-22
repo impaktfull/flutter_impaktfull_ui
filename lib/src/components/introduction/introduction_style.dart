@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiIntroductionTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiIntroductionAssetsTheme assets;
@@ -38,11 +39,16 @@ class ImpaktfullUiIntroductionTheme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiDurationTheme durations,
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
-      const ImpaktfullUiIntroductionTheme(
-        assets: ImpaktfullUiIntroductionAssetsTheme(),
-        colors: ImpaktfullUiIntroductionColorTheme(),
-        dimens: ImpaktfullUiIntroductionDimensTheme(),
-        textStyles: ImpaktfullUiIntroductionTextStyleTheme(),
+      ImpaktfullUiIntroductionTheme(
+        assets: const ImpaktfullUiIntroductionAssetsTheme(),
+        colors: ImpaktfullUiIntroductionColorTheme(
+          asset: colors.accent,
+        ),
+        dimens: const ImpaktfullUiIntroductionDimensTheme(),
+        textStyles: ImpaktfullUiIntroductionTextStyleTheme(
+          title: textStyles.onCanvas.display.small.semiBold,
+          subtitle: textStyles.onCanvasTertiary.text.medium,
+        ),
       );
 }
 
@@ -54,22 +60,77 @@ class ImpaktfullUiIntroductionAssetsTheme {
 }
 
 class ImpaktfullUiIntroductionColorTheme {
-  const ImpaktfullUiIntroductionColorTheme();
+  /// The color of the asset of a page. When null, the asset keeps its own
+  /// color.
+  final Color? asset;
 
-  ImpaktfullUiIntroductionColorTheme copyWith() =>
-      const ImpaktfullUiIntroductionColorTheme();
+  const ImpaktfullUiIntroductionColorTheme({
+    this.asset,
+  });
+
+  ImpaktfullUiIntroductionColorTheme copyWith({
+    Color? asset,
+  }) =>
+      ImpaktfullUiIntroductionColorTheme(
+        asset: asset ?? this.asset,
+      );
 }
 
 class ImpaktfullUiIntroductionDimensTheme {
-  const ImpaktfullUiIntroductionDimensTheme();
+  /// The padding around the content of a page.
+  final EdgeInsetsGeometry pagePadding;
 
-  ImpaktfullUiIntroductionDimensTheme copyWith() =>
-      const ImpaktfullUiIntroductionDimensTheme();
+  /// The padding around the buttons below the pages.
+  final EdgeInsetsGeometry actionsPadding;
+
+  /// The size of the asset of a page.
+  final double assetSize;
+
+  /// The space between the asset, the title, the subtitle and the child of a
+  /// page.
+  final double spacing;
+
+  const ImpaktfullUiIntroductionDimensTheme({
+    this.pagePadding = const EdgeInsets.all(24),
+    this.actionsPadding = const EdgeInsets.all(16),
+    this.assetSize = 120,
+    this.spacing = 16,
+  });
+
+  ImpaktfullUiIntroductionDimensTheme copyWith({
+    EdgeInsetsGeometry? pagePadding,
+    EdgeInsetsGeometry? actionsPadding,
+    double? assetSize,
+    double? spacing,
+  }) =>
+      ImpaktfullUiIntroductionDimensTheme(
+        pagePadding: pagePadding ?? this.pagePadding,
+        actionsPadding: actionsPadding ?? this.actionsPadding,
+        assetSize: assetSize ?? this.assetSize,
+        spacing: spacing ?? this.spacing,
+      );
 }
 
 class ImpaktfullUiIntroductionTextStyleTheme {
-  const ImpaktfullUiIntroductionTextStyleTheme();
+  /// The style of the title of a page. When null, the default text style is
+  /// used.
+  final TextStyle? title;
 
-  ImpaktfullUiIntroductionTextStyleTheme copyWith() =>
-      const ImpaktfullUiIntroductionTextStyleTheme();
+  /// The style of the subtitle of a page. When null, the default text style
+  /// is used.
+  final TextStyle? subtitle;
+
+  const ImpaktfullUiIntroductionTextStyleTheme({
+    this.title,
+    this.subtitle,
+  });
+
+  ImpaktfullUiIntroductionTextStyleTheme copyWith({
+    TextStyle? title,
+    TextStyle? subtitle,
+  }) =>
+      ImpaktfullUiIntroductionTextStyleTheme(
+        title: title ?? this.title,
+        subtitle: subtitle ?? this.subtitle,
+      );
 }

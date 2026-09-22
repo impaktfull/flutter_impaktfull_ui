@@ -13,8 +13,39 @@ class IntroductionLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, IntroductionLibraryPrimaryInputs inputs) {
+    final icons = ImpaktfullUiTheme.of(context).assets.icons;
     return [
-      const ImpaktfullUiIntroduction(),
+      SizedBox(
+        height: 500,
+        child: ImpaktfullUiIntroduction(
+          pages: [
+            ImpaktfullUiIntroductionPage(
+              title: 'Welcome',
+              subtitle:
+                  'Everything you need to build your app, in one library.',
+              asset: icons.home,
+            ),
+            ImpaktfullUiIntroductionPage(
+              title: 'Stay in control',
+              subtitle: 'Change every component with a theme.',
+              asset: icons.edit,
+            ),
+            ImpaktfullUiIntroductionPage(
+              title: 'Ready?',
+              subtitle: 'Let us get started.',
+              asset: icons.check,
+            ),
+          ],
+          onSkip: () => ImpaktfullUiNotification.show(
+            context: context,
+            title: 'Skipped',
+          ),
+          onDone: () => ImpaktfullUiNotification.show(
+            context: context,
+            title: 'Done',
+          ),
+        ),
+      ),
     ];
   }
 

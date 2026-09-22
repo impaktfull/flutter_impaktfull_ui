@@ -22,6 +22,13 @@ class IconButtonTypeLibraryVariant
         color: theme.colors.text,
         showNotificationBadge: true,
       ),
+      // Disabled: without onTap.
+      ImpaktfullUiIconButton(
+        onTap: null,
+        asset: ImpaktfullUiAsset.icon(inputs.icon.value!),
+        tooltip: inputs.tooltip.value,
+        color: theme.colors.text,
+      ),
     ];
   }
 

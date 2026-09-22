@@ -31,6 +31,7 @@ import 'package:impaktfull_ui/src/components/gallery/gallery.dart';
 import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
+import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/image_crop/image_crop.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/introduction/introduction.dart';
@@ -491,6 +492,14 @@ class ImpaktfullUiDefaultTheme {
           shadows: shadows,
         ),
         horizontalTabs: ImpaktfullUiHorizontalTabsTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
+        ),
+        iconButton: ImpaktfullUiIconButtonTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,

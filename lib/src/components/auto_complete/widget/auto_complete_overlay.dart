@@ -40,6 +40,51 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
   var _isLoading = true;
   late String _searchQuery;
   Timer? _debounceTimer;
+  int? _highlightedIndex;
+  final _highlightedItemKey = GlobalKey();
+
+  /// Whether the items are being loaded.
+  bool get isLoading => _isLoading;
+
+  /// The index of the item that is highlighted with the arrow keys.
+  int? get highlightedIndex => _highlightedIndex;
+
+  /// Whether an item is highlighted with the arrow keys.
+  bool get hasHighlightedItem {
+    final index = _highlightedIndex;
+    return index != null && !_isLoading && index < _items.length;
+  }
+
+  /// The item that is highlighted with the arrow keys. Only call it when
+  /// [hasHighlightedItem] is true.
+  T get highlightedItem => _items[_highlightedIndex!];
+
+  /// Moves the highlight one item down ([forward] is true) or up. It wraps
+  /// around at the start and the end of the list. The list is reversed when
+  /// it is shown above the input field, so down is always towards the input
+  /// field when it is shown above it.
+  void moveHighlight({required bool forward}) {
+    if (_isLoading || _items.isEmpty) return;
+    final towardsEnd = widget.isShownAboveInputField ? !forward : forward;
+    final current = _highlightedIndex;
+    final int next;
+    if (current == null) {
+      next = towardsEnd ? 0 : _items.length - 1;
+    } else {
+      next = (current + (towardsEnd ? 1 : -1)) % _items.length;
+    }
+    setState(() => _highlightedIndex = next);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final context = _highlightedItemKey.currentContext;
+      if (!mounted || context == null) return;
+      Scrollable.ensureVisible(
+        context,
+        alignmentPolicy: towardsEnd
+            ? ScrollPositionAlignmentPolicy.keepVisibleAtEnd
+            : ScrollPositionAlignmentPolicy.keepVisibleAtStart,
+      );
+    });
+  }
 
   @override
   void initState() {
@@ -70,8 +115,18 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
           items: _items,
           reversed: widget.isShownAboveInputField,
           isLoading: _isLoading,
-          itemBuilder: (contesxt, item, index) =>
-              widget.itemBuilder(context, item, index),
+          itemBuilder: (context, item, index) {
+            final child = widget.itemBuilder(context, item, index);
+            final highlightColor = componentTheme.colors.highlightedItem;
+            if (index != _highlightedIndex || highlightColor == null) {
+              return child;
+            }
+            return Container(
+              key: _highlightedItemKey,
+              foregroundDecoration: BoxDecoration(color: highlightColor),
+              child: child,
+            );
+          },
           placeholderData: ImpaktfullUiListViewPlaceholderData(
             title: widget.noDataLabel,
           ),
@@ -84,6 +139,7 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
     setState(() {
       _searchQuery = value;
       _isLoading = true;
+      _highlightedIndex = null;
     });
 
     _debounceTimer?.cancel();
@@ -105,6 +161,7 @@ class ImpaktfullUiAutoCompleteOverlayState<T>
       if (!mounted || _debounceTimer != null) return;
       _items.clear();
       _items.addAll(items);
+      _highlightedIndex = null;
     } catch (error, trace) {
       debugPrintStack(
         label: 'Error in _getData (ImpaktfullUiAutoCompleteOverlay): $error',

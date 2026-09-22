@@ -22,6 +22,14 @@ class ImpaktfullUiAutoComplete<T> extends StatefulWidget {
   ) itemBuilder;
   final String noDataLabel;
   final String? placeholder;
+
+  /// Called when an item is selected with the keyboard: highlight it with the
+  /// arrow keys and press enter. Use the controller to close the overlay or
+  /// clear the text, like in the `onTap` of the item of [itemBuilder].
+  final void Function(T item, ImpaktfullUiAutoCompleteController controller)?
+      onItemSelected;
+  @Deprecated(
+      'Has no effect: the overlay is always shown below (or above) the input field. Will be removed in 1.0.0.')
   final bool replaceWithOverlay;
   final Duration debounceDuration;
   final ImpaktfullUiAutoCompleteTheme? theme;
@@ -34,6 +42,9 @@ class ImpaktfullUiAutoComplete<T> extends StatefulWidget {
     this.topBuilder,
     this.placeholder,
     this.controller,
+    this.onItemSelected,
+    @Deprecated(
+        'Has no effect: the overlay is always shown below (or above) the input field. Will be removed in 1.0.0.')
     this.replaceWithOverlay = false,
     this.debounceDuration = const Duration(milliseconds: 300),
     this.theme,
@@ -57,11 +68,18 @@ class _ImpaktfullUiAutoCompleteState<T>
   Size? _size;
 
   late final FocusNode _foucsNode;
+  final _overlayFocusNode = FocusNode(
+    debugLabel: 'ImpaktfullUiAutoCompleteOverlay',
+    canRequestFocus: false,
+    skipTraversal: true,
+  );
+  final _tapRegionGroupId = Object();
 
   @override
   void initState() {
     super.initState();
     _foucsNode = FocusNode();
+    _foucsNode.addListener(_onFocusChanged);
     _controller = widget.controller ?? ImpaktfullUiAutoCompleteController();
     _controller.addListener(this);
   }
@@ -73,7 +91,9 @@ class _ImpaktfullUiAutoCompleteState<T>
     if (widget.controller == null) {
       _controller.dispose();
     }
+    _foucsNode.removeListener(_onFocusChanged);
     _foucsNode.dispose();
+    _overlayFocusNode.dispose();
     super.dispose();
   }
 
@@ -84,39 +104,80 @@ class _ImpaktfullUiAutoCompleteState<T>
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => CompositedTransformTarget(
         link: _layerLink,
-        child: CallbackShortcuts(
-          bindings: {
-            const SingleActivator(LogicalKeyboardKey.escape): () {
-              _removeOverlay();
-              _foucsNode.requestFocus();
-            },
-          },
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              _checkIfRebuildIsNeeded(constraints);
-              final leadingChild = widget.leadingBuilder?.call();
-              final topChildren = widget.topBuilder?.call() ?? [];
-              return ImpaktfullUiInputField(
-                key: _inputFieldKey,
-                placeholder: widget.placeholder,
-                focusNode: _foucsNode,
-                value: _value,
-                leadingBuilder:
-                    leadingChild == null ? null : (context) => leadingChild,
-                topBuilder: topChildren.isNotEmpty
-                    ? (context) => ImpaktfullUiWrap(
-                          spacing: 4,
-                          runSpacing: 4,
-                          children: topChildren,
-                        )
-                    : null,
-                onChanged: _onChanged,
-              );
-            },
+        child: TapRegion(
+          groupId: _tapRegionGroupId,
+          onTapOutside: (_) => _removeOverlay(),
+          child: Focus(
+            canRequestFocus: false,
+            skipTraversal: true,
+            onKeyEvent: _onKeyEvent,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                _checkIfRebuildIsNeeded(constraints);
+                final leadingChild = widget.leadingBuilder?.call();
+                final topChildren = widget.topBuilder?.call() ?? [];
+                return ImpaktfullUiInputField(
+                  key: _inputFieldKey,
+                  placeholder: widget.placeholder,
+                  focusNode: _foucsNode,
+                  value: _value,
+                  leadingBuilder:
+                      leadingChild == null ? null : (context) => leadingChild,
+                  topBuilder: topChildren.isNotEmpty
+                      ? (context) => ImpaktfullUiWrap(
+                            spacing: 4,
+                            runSpacing: 4,
+                            children: topChildren,
+                          )
+                      : null,
+                  onChanged: _onChanged,
+                );
+              },
+            ),
           ),
         ),
       ),
     );
+  }
+
+  KeyEventResult _onKeyEvent(FocusNode node, KeyEvent event) {
+    if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
+      return KeyEventResult.ignored;
+    }
+    final key = event.logicalKey;
+    if (key == LogicalKeyboardKey.escape) {
+      if (event is KeyRepeatEvent) return KeyEventResult.ignored;
+      _removeOverlay();
+      _foucsNode.requestFocus();
+      return KeyEventResult.handled;
+    }
+    final overlayState = _overlayKey?.currentState;
+    if (overlayState == null) return KeyEventResult.ignored;
+    if (key == LogicalKeyboardKey.arrowDown) {
+      overlayState.moveHighlight(forward: true);
+      return KeyEventResult.handled;
+    } else if (key == LogicalKeyboardKey.arrowUp) {
+      overlayState.moveHighlight(forward: false);
+      return KeyEventResult.handled;
+    } else if (key == LogicalKeyboardKey.enter ||
+        key == LogicalKeyboardKey.numpadEnter) {
+      if (event is KeyRepeatEvent) return KeyEventResult.ignored;
+      final onItemSelected = widget.onItemSelected;
+      if (onItemSelected == null) return KeyEventResult.ignored;
+      if (!overlayState.hasHighlightedItem) return KeyEventResult.ignored;
+      onItemSelected(overlayState.highlightedItem, _controller);
+      return KeyEventResult.handled;
+    }
+    return KeyEventResult.ignored;
+  }
+
+  /// Closes the overlay when the focus moves outside of the input field and
+  /// the overlay, e.g. with tab.
+  void _onFocusChanged() {
+    // The focus manager applies every focus change before it notifies the
+    // listeners, so the focus of the overlay is up to date.
+    if (_foucsNode.hasFocus || _overlayFocusNode.hasFocus) return;
+    _removeOverlay();
   }
 
   void _onChanged(String value) {
@@ -171,20 +232,29 @@ class _ImpaktfullUiAutoCompleteState<T>
                 maxHeight:
                     showAbove ? inputFieldPosition.dy - 8 : availableHeight - 8,
               ),
-              child: ImpaktfullUiAutoCompleteOverlay<T>(
-                key: _overlayKey,
-                isShownAboveInputField: showAbove,
-                onSearchChanged: widget.onSearchChanged,
-                itemBuilder: (context, item, index) => widget.itemBuilder(
-                  context,
-                  item,
-                  index,
-                  _controller,
+              child: TapRegion(
+                groupId: _tapRegionGroupId,
+                // Taps on the overlay do not unfocus the input field.
+                child: TextFieldTapRegion(
+                  child: Focus(
+                    focusNode: _overlayFocusNode,
+                    child: ImpaktfullUiAutoCompleteOverlay<T>(
+                      key: _overlayKey,
+                      isShownAboveInputField: showAbove,
+                      onSearchChanged: widget.onSearchChanged,
+                      itemBuilder: (context, item, index) => widget.itemBuilder(
+                        context,
+                        item,
+                        index,
+                        _controller,
+                      ),
+                      initialSearchQuery: _value,
+                      noDataLabel: widget.noDataLabel,
+                      debounceDuration: widget.debounceDuration,
+                      theme: widget.theme,
+                    ),
+                  ),
                 ),
-                initialSearchQuery: _value,
-                noDataLabel: widget.noDataLabel,
-                debounceDuration: widget.debounceDuration,
-                theme: widget.theme,
               ),
             ),
           ),

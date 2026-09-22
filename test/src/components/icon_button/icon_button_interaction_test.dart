@@ -151,4 +151,214 @@ void main() {
     await tester.pump();
     expect(taps, 0);
   });
+
+  group('disabled', () {
+    testWidgets('without onTap it can not be tapped or focused',
+        (tester) async {
+      await pumpAndSettleComponent(
+        tester,
+        ImpaktfullUiIconButton(asset: customTestAsset, onTap: null),
+      );
+      final button = tester
+          .widget<ImpaktfullUiIconButton>(find.byType(ImpaktfullUiIconButton));
+      expect(button.isDisabled, isTrue);
+      expect(button.isEnabled, isFalse);
+      final touchFeedback = tester.widget<ImpaktfullUiTouchFeedback>(
+          find.byType(ImpaktfullUiTouchFeedback));
+      expect(touchFeedback.onTap, isNull);
+      expect(touchFeedback.canRequestFocus, isFalse);
+      await tester.tap(find.byType(ImpaktfullUiIconButton));
+      await tester.pump();
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('is shown with the disabled opacity of the theme',
+        (tester) async {
+      await pumpAndSettleComponent(
+        tester,
+        ImpaktfullUiIconButton(asset: customTestAsset, onTap: null),
+      );
+      final opacity = tester.widget<Opacity>(find.descendant(
+        of: find.byType(ImpaktfullUiIconButton),
+        matching: find.byType(Opacity),
+      ));
+      expect(opacity.opacity, 0.5);
+    });
+
+    testWidgets('an enabled icon button has no opacity', (tester) async {
+      await pumpAndSettleComponent(
+        tester,
+        ImpaktfullUiIconButton(asset: customTestAsset, onTap: () {}),
+      );
+      expect(
+        find.descendant(
+          of: find.byType(ImpaktfullUiIconButton),
+          matching: find.byType(Opacity),
+        ),
+        findsNothing,
+      );
+    });
+  });
+
+  group('onTap getter', () {
+    test('calls the callback when enabled', () {
+      var taps = 0;
+      final button = ImpaktfullUiIconButton(
+        asset: customTestAsset,
+        onTap: () => taps++,
+      );
+      expect(button.isEnabled, isTrue);
+      expect(button.isDisabled, isFalse);
+      // The getter is not nullable, so existing code that calls it compiles.
+      button.onTap();
+      expect(taps, 1);
+    });
+
+    test('is a function that does nothing when disabled', () {
+      final button = ImpaktfullUiIconButton(
+        asset: customTestAsset,
+        onTap: null,
+      );
+      expect(button.isEnabled, isFalse);
+      button.onTap();
+      final VoidCallback callback = button.onTap;
+      expect(callback, isNotNull);
+    });
+
+    test('overrideColor keeps the callback', () {
+      var taps = 0;
+      final button = ImpaktfullUiIconButton(
+        asset: customTestAsset,
+        onTap: () => taps++,
+      ).overrideColor(customTestColor);
+      expect(button.isEnabled, isTrue);
+      button.onTap();
+      expect(taps, 1);
+    });
+  });
+
+  group('theme', () {
+    testWidgets('the default theme keeps the previous look', (tester) async {
+      await pumpAndSettleComponent(
+        tester,
+        ImpaktfullUiIconButton(asset: customTestAsset, onTap: () {}),
+      );
+      final assetWidget = tester.widget<ImpaktfullUiAssetWidget>(
+          find.byWidgetPredicate(isAssetWidget(customTestAsset)));
+      expect(assetWidget.size, 16);
+      expect(assetWidget.color, isNull);
+      final padding = tester.widget<Padding>(find
+          .ancestor(
+            of: find.byType(ImpaktfullUiNotificationBadge),
+            matching: find.byType(Padding),
+          )
+          .first);
+      expect(padding.padding, const EdgeInsets.all(12));
+      final touchFeedback = tester.widget<ImpaktfullUiTouchFeedback>(
+          find.byType(ImpaktfullUiTouchFeedback));
+      expect(touchFeedback.borderRadius,
+          const BorderRadius.all(Radius.circular(9999)));
+      expect(touchFeedback.color, isNull);
+    });
+
+    testWidgets('the theme override is used', (tester) async {
+      const theme = ImpaktfullUiIconButtonTheme(
+        assets: ImpaktfullUiIconButtonAssetsTheme(),
+        colors: ImpaktfullUiIconButtonColorTheme(
+          icon: customTestColor,
+          background: Colors.yellow,
+        ),
+        dimens: ImpaktfullUiIconButtonDimensTheme(
+          padding: EdgeInsets.all(4),
+          iconSize: 40,
+          borderRadius: BorderRadius.all(Radius.circular(2)),
+          disabledOpacity: 0.25,
+        ),
+      );
+      await pumpAndSettleComponent(
+        tester,
+        Center(
+          child: ImpaktfullUiIconButton(
+            asset: customTestAsset,
+            onTap: null,
+            theme: theme,
+          ),
+        ),
+      );
+      final assetWidget = tester.widget<ImpaktfullUiAssetWidget>(
+          find.byWidgetPredicate(isAssetWidget(customTestAsset)));
+      expect(assetWidget.size, 40);
+      expect(assetWidget.color, customTestColor);
+      final touchFeedback = tester.widget<ImpaktfullUiTouchFeedback>(
+          find.byType(ImpaktfullUiTouchFeedback));
+      expect(touchFeedback.borderRadius,
+          const BorderRadius.all(Radius.circular(2)));
+      expect(touchFeedback.color, Colors.yellow);
+      expect(tester.getSize(find.byType(ImpaktfullUiIconButton)),
+          const Size(48, 48));
+      final opacity = tester.widget<Opacity>(find.descendant(
+        of: find.byType(ImpaktfullUiIconButton),
+        matching: find.byType(Opacity),
+      ));
+      expect(opacity.opacity, 0.25);
+    });
+
+    testWidgets('the size and colors of the widget win over the theme',
+        (tester) async {
+      final theme = ImpaktfullUiIconButtonTheme.fallback.copyWith(
+        colors: const ImpaktfullUiIconButtonColorTheme(
+          icon: Colors.yellow,
+          background: Colors.yellow,
+        ),
+        dimens:
+            ImpaktfullUiIconButtonTheme.fallback.dimens.copyWith(iconSize: 40),
+      );
+      await pumpAndSettleComponent(
+        tester,
+        ImpaktfullUiIconButton(
+          asset: customTestAsset,
+          size: 20,
+          color: customTestColor,
+          backgroundColor: customTestColor,
+          onTap: () {},
+          theme: theme,
+        ),
+      );
+      final assetWidget = tester.widget<ImpaktfullUiAssetWidget>(
+          find.byWidgetPredicate(isAssetWidget(customTestAsset)));
+      expect(assetWidget.size, 20);
+      expect(assetWidget.color, customTestColor);
+      final touchFeedback = tester.widget<ImpaktfullUiTouchFeedback>(
+          find.byType(ImpaktfullUiTouchFeedback));
+      expect(touchFeedback.color, customTestColor);
+    });
+
+    test('size is 16 when none is passed', () {
+      expect(ImpaktfullUiIconButton(asset: customTestAsset, onTap: () {}).size,
+          16);
+    });
+
+    test('overrideColor keeps the theme and an unset size', () {
+      const theme = ImpaktfullUiIconButtonTheme.fallback;
+      final button = ImpaktfullUiIconButton(
+        asset: customTestAsset,
+        onTap: null,
+        theme: theme,
+      ).overrideColor(customTestColor);
+      expect(button.theme, same(theme));
+      expect(button.isDisabled, isTrue);
+      expect(button.size, 16);
+    });
+
+    test('ImpaktfullUiComponentsTheme falls back without iconButton', () {
+      final components = ImpaktfullUiTheme.getDefault().components;
+      expect(components.iconButton, same(ImpaktfullUiIconButtonTheme.fallback));
+      final copy = components.copyWith(
+        iconButton: ImpaktfullUiIconButtonTheme.fallback.copyWith(
+          dimens: const ImpaktfullUiIconButtonDimensTheme(iconSize: 24),
+        ),
+      );
+      expect(copy.iconButton.dimens.iconSize, 24);
+    });
+  });
 }

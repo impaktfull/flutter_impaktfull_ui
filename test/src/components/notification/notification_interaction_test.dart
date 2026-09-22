@@ -200,5 +200,132 @@ void main() {
 
       await _cancelAll(tester);
     });
+
+    testWidgets('with a context it uses the snackyController of the app',
+        (tester) async {
+      final controller = SnackyController();
+      final context =
+          await pumpOverlayApp(tester, snackyController: controller);
+
+      ImpaktfullUiNotification.show(
+        context: context,
+        title: 'Custom controller',
+        showDuration: _longDuration,
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Custom controller'), findsOneWidget);
+      expect(controller.activeSnacky.value, isNotNull);
+      expect(SnackyController.instance.activeSnacky.value, isNull);
+
+      controller.cancelAll();
+      await tester.pumpAndSettle();
+      await tester.pump(_longDuration);
+      await tester.pumpAndSettle();
+      expect(find.text('Custom controller'), findsNothing);
+    });
+
+    testWidgets('without a context it uses SnackyController.instance',
+        (tester) async {
+      final controller = SnackyController();
+      await pumpOverlayApp(tester, snackyController: controller);
+
+      ImpaktfullUiNotification.show(
+        title: 'Global controller',
+        showDuration: _longDuration,
+      );
+      await tester.pumpAndSettle();
+      // The global controller is not attached to the app, so nothing shows.
+      expect(find.text('Global controller'), findsNothing);
+      expect(controller.activeSnacky.value, isNull);
+    });
+
+    testWidgets('the controller argument is used without a context',
+        (tester) async {
+      final controller = SnackyController();
+      await pumpOverlayApp(tester, snackyController: controller);
+
+      ImpaktfullUiNotification.show(
+        controller: controller,
+        title: 'Explicit controller',
+        showDuration: _longDuration,
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Explicit controller'), findsOneWidget);
+      expect(controller.activeSnacky.value, isNotNull);
+
+      controller.cancelAll();
+      await tester.pumpAndSettle();
+      await tester.pump(_longDuration);
+      await tester.pumpAndSettle();
+    });
+
+    testWidgets('onTap, leading, trailing and width are passed',
+        (tester) async {
+      final context = await pumpOverlayApp(tester);
+      var taps = 0;
+
+      ImpaktfullUiNotification.show(
+        context: context,
+        title: 'Rich',
+        type: ImpaktfullUiNotificationType.warning,
+        showDuration: _longDuration,
+        onTap: () => taps++,
+        leading: const Text('Leading'),
+        trailing: const Text('Trailing'),
+        width: 280,
+      );
+      await tester.pumpAndSettle();
+      final notification = tester.widget<ImpaktfullUiNotification>(
+        find.byType(ImpaktfullUiNotification),
+      );
+      expect(notification.width, 280);
+      expect(notification.type, ImpaktfullUiNotificationType.warning);
+      expect(notification.onCloseTapped, isNotNull);
+      expect(find.text('Leading'), findsOneWidget);
+      expect(find.text('Trailing'), findsOneWidget);
+      expect(
+        tester.getSize(find.byType(ImpaktfullUiNotification)).width,
+        280,
+      );
+
+      await tester.tap(find.text('Rich'));
+      await tester.pumpAndSettle();
+      expect(taps, 1);
+
+      // The close button closes it and does not call onTap.
+      await tester.tap(find.descendant(
+        of: find.byType(ImpaktfullUiNotification),
+        matching: find.byType(ImpaktfullUiIconButton),
+      ));
+      await tester.pumpAndSettle();
+      await tester.pump(const Duration(seconds: 1));
+      await tester.pumpAndSettle();
+      expect(taps, 1);
+      expect(find.text('Rich'), findsNothing);
+
+      await _cancelAll(tester);
+    });
+
+    testWidgets('without width it takes the width of the snacky layout',
+        (tester) async {
+      final context = await pumpOverlayApp(tester);
+
+      ImpaktfullUiNotification.show(
+        context: context,
+        title: 'Tappable',
+        showDuration: _longDuration,
+        onTap: () {},
+      );
+      await tester.pumpAndSettle();
+      final notification = tester.widget<ImpaktfullUiNotification>(
+        find.byType(ImpaktfullUiNotification),
+      );
+      expect(notification.width, isNull);
+      expect(notification.onTap, isNotNull);
+      expect(tester.getSize(find.byType(ImpaktfullUiNotification)).width,
+          greaterThan(0));
+
+      await _cancelAll(tester);
+    });
   });
 }

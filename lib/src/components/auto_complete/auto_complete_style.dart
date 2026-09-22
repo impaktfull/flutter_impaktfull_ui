@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
 class ImpaktfullUiAutoCompleteTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiAutoCompleteAssetsTheme assets;
@@ -44,7 +45,9 @@ class ImpaktfullUiAutoCompleteTheme extends ImpaktfullUiComponentTheme {
   }) =>
       ImpaktfullUiAutoCompleteTheme(
         assets: const ImpaktfullUiAutoCompleteAssetsTheme(),
-        colors: const ImpaktfullUiAutoCompleteColorTheme(),
+        colors: ImpaktfullUiAutoCompleteColorTheme(
+          highlightedItem: colors.accent.withOpacityPercentage(0.1),
+        ),
         dimens: const ImpaktfullUiAutoCompleteDimensTheme(),
         shadows: ImpaktfullUiAutoCompleteShadowsTheme(
           overlay: shadows.large,
@@ -61,10 +64,20 @@ class ImpaktfullUiAutoCompleteAssetsTheme {
 }
 
 class ImpaktfullUiAutoCompleteColorTheme {
-  const ImpaktfullUiAutoCompleteColorTheme();
+  /// The color drawn over the item that is highlighted with the arrow keys.
+  /// When null, the highlighted item is not marked.
+  final Color? highlightedItem;
 
-  ImpaktfullUiAutoCompleteColorTheme copyWith() =>
-      const ImpaktfullUiAutoCompleteColorTheme();
+  const ImpaktfullUiAutoCompleteColorTheme({
+    this.highlightedItem,
+  });
+
+  ImpaktfullUiAutoCompleteColorTheme copyWith({
+    Color? highlightedItem,
+  }) =>
+      ImpaktfullUiAutoCompleteColorTheme(
+        highlightedItem: highlightedItem ?? this.highlightedItem,
+      );
 }
 
 class ImpaktfullUiAutoCompleteShadowsTheme {
