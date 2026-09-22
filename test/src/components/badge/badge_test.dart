@@ -29,7 +29,7 @@ void main() {
         Center(
           child: ImpaktfullUiBadge(
             type: ImpaktfullUiBadgeType.primary,
-            label: 'Label',
+            title: 'Label',
             size: size,
             theme: theme,
           ),

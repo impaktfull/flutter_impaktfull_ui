@@ -15,13 +15,13 @@ void main() {
         children: [
           ImpaktfullUiBottomNavigationItem(
             asset: ImpaktfullUiAsset.icon(Icons.home),
-            label: 'Home',
+            title: 'Home',
             isSelected: true,
             onTap: () {},
           ),
           ImpaktfullUiBottomNavigationItem(
             asset: ImpaktfullUiAsset.icon(Icons.mail),
-            label: 'Inbox',
+            title: 'Inbox',
             isSelected: false,
             badgeText: '3',
             onTap: () {},
@@ -64,12 +64,12 @@ void main() {
           builder: (context) => Row(
             children: [
               ImpaktfullUiTabBarItem(
-                label: 'Details',
+                title: 'Details',
                 index: 0,
                 controller: DefaultTabController.of(context),
               ),
               ImpaktfullUiTabBarItem(
-                label: 'Reviews',
+                title: 'Reviews',
                 index: 1,
                 controller: DefaultTabController.of(context),
               ),
@@ -103,12 +103,12 @@ void main() {
         mainAxisSize: MainAxisSize.min,
         children: [
           ImpaktfullUiHorizontalTab(
-            label: 'All',
+            title: 'All',
             isSelected: true,
             onTap: () {},
           ),
           ImpaktfullUiHorizontalTab(
-            label: 'Unread',
+            title: 'Unread',
             badge: '4',
             onTap: () {},
           ),
@@ -206,7 +206,7 @@ void main() {
         builder: (context, setState) => ImpaktfullUiAccordion(
           title: 'Shipping',
           expanded: expanded,
-          onExpandedChanged: (value) => setState(() => expanded = value),
+          onExpansionChanged: (value) => setState(() => expanded = value),
           expandedBuilder: (context) => const Text('3 to 5 days'),
         ),
       ),
@@ -267,7 +267,7 @@ void main() {
           page: page,
           itemsPerPage: 10,
           amountOfPages: 3,
-          onLoadPage: (value) => setState(() => page = value),
+          onPageChanged: (value) => setState(() => page = value),
         ),
       ),
     );
@@ -297,7 +297,7 @@ void main() {
         page: 0,
         itemsPerPage: 10,
         amountOfPages: 3,
-        onLoadPage: (_) {},
+        onPageChanged: (_) {},
       ),
       localizations: const ImpaktfullUiLocalizations(
         pagination: ImpaktfullUiPaginationLocalizations(

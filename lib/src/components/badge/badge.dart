@@ -15,22 +15,24 @@ export 'badge_size.dart';
 class ImpaktfullUiBadge extends StatefulWidget {
   final ImpaktfullUiBadgeType type;
   final ImpaktfullUiBadgeSize size;
-  final String? label;
+  final String? title;
   final Widget? leading;
   final ImpaktfullUiAsset? leadingAsset;
   final Widget? trailing;
   final ImpaktfullUiAsset? trailingAsset;
   final VoidCallback? onTap;
-  final VoidCallback? onCloseTap;
+  final VoidCallback? onCloseTapped;
   final ImpaktfullUiBadgeTheme? theme;
 
-  /// What screen readers announce for the badge, when the [label] alone is
-  /// not clear, e.g. `3 unread messages` for a badge with the label `3`.
+  /// What screen readers announce for the badge, when the [title] alone is
+  /// not clear, e.g. `3 unread messages` for a badge with the title `3`.
   final String? semanticLabel;
 
   const ImpaktfullUiBadge({
     required this.type,
-    required this.label,
+    // `title` becomes `required` again in 1.0.0, when `label` is removed.
+    String? title,
+    @Deprecated('Use title instead. Will be removed in 1.0.0.') String? label,
     this.semanticLabel,
     this.size = ImpaktfullUiBadgeSize.small,
     this.leading,
@@ -38,10 +40,19 @@ class ImpaktfullUiBadge extends StatefulWidget {
     this.trailing,
     this.trailingAsset,
     this.onTap,
-    this.onCloseTap,
+    VoidCallback? onCloseTapped,
+    @Deprecated('Use onCloseTapped instead. Will be removed in 1.0.0.')
+    VoidCallback? onCloseTap,
     this.theme,
     super.key,
-  });
+  })  : title = title ?? label,
+        onCloseTapped = onCloseTapped ?? onCloseTap;
+
+  @Deprecated('Use title instead. Will be removed in 1.0.0.')
+  String? get label => title;
+
+  @Deprecated('Use onCloseTapped instead. Will be removed in 1.0.0.')
+  VoidCallback? get onCloseTap => onCloseTapped;
 
   @override
   State<ImpaktfullUiBadge> createState() => _ImpaktfullUiBadgeState();
@@ -66,7 +77,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
           container: true,
           button: widget.onTap != null,
           // With a label, the text announces the semantic label.
-          label: widget.label == null ? widget.semanticLabel : null,
+          label: widget.title == null ? widget.semanticLabel : null,
           child: ImpaktfullUiTouchFeedback(
             onTap: widget.onTap,
             color: backgroundColor,
@@ -105,10 +116,10 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                     _getWidgetOrIcon(widget.leading!, textColor),
                     SizedBox(width: widget.size.spacing),
                   ],
-                  if (widget.label != null) ...[
+                  if (widget.title != null) ...[
                     Flexible(
                       child: Text(
-                        widget.label!,
+                        widget.title!,
                         semanticsLabel: widget.semanticLabel,
                         style: textStyle.copyWith(color: textColor),
                         maxLines: 1,
@@ -116,7 +127,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                       ),
                     ),
                   ],
-                  if (widget.onCloseTap != null) ...[
+                  if (widget.onCloseTapped != null) ...[
                     const SizedBox(width: 2),
                     Semantics(
                       container: true,
@@ -125,7 +136,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                           .remove,
                       child: ImpaktfullUiTouchFeedback(
                         borderRadius: componentTheme.dimens.borderRadius,
-                        onTap: widget.onCloseTap!,
+                        onTap: widget.onCloseTapped!,
                         child: Padding(
                           padding: const EdgeInsets.all(2),
                           child: ImpaktfullUiAssetWidget(

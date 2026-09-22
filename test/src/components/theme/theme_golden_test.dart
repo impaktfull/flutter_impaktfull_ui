@@ -42,7 +42,7 @@ void main() {
           padding: const EdgeInsets.all(8),
           child: ImpaktfullUiBadge(
             type: ImpaktfullUiBadgeType.primary,
-            label: 'Badge',
+            title: 'Badge',
             theme: componentTheme,
           ),
         ),
@@ -90,7 +90,7 @@ void main() {
             padding: const EdgeInsets.all(8),
             child: ImpaktfullUiBadge(
               type: ImpaktfullUiBadgeType.primary,
-              label: 'Badge',
+              title: 'Badge',
               theme: componentTheme,
             ),
           ),

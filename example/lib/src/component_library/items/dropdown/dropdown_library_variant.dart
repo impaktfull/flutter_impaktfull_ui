@@ -22,7 +22,7 @@ class DropdownVariant
             child: ImpaktfullUiDropdown(
               childWidth: width,
               alignment: alignment,
-              buttonText: inputs.selectedValue.value ?? 'No value selected',
+              buttonTitle: inputs.selectedValue.value ?? 'No value selected',
               child: ImpaktfullUiListView.builder(
                 items: List.generate(100, (e) => 'Item $e'),
                 itemBuilder: (context, item, index) => ImpaktfullUiListItem(

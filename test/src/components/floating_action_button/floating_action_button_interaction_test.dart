@@ -61,7 +61,7 @@ void main() {
       Center(
         child: ImpaktfullUiFloatingActionButton(
           asset: customTestAsset,
-          label: 'Add',
+          title: 'Add',
           onTap: () {},
         ),
       ),
@@ -80,7 +80,7 @@ void main() {
           builder: (context, isExpanded, child) =>
               ImpaktfullUiFloatingActionButton(
             asset: customTestAsset,
-            label: 'Add',
+            title: 'Add',
             expanded: isExpanded,
             onTap: () {},
           ),
@@ -114,7 +114,7 @@ void main() {
           Center(
             child: ImpaktfullUiFloatingActionButton(
               asset: customTestAsset,
-              label: label,
+              title: label,
               expanded: true,
               onTap: () {},
             ),
@@ -138,7 +138,7 @@ void main() {
       Center(
         child: ImpaktfullUiFloatingActionButton(
           asset: customTestAsset,
-          label: 'Add',
+          title: 'Add',
           onTap: () {},
         ),
       ),

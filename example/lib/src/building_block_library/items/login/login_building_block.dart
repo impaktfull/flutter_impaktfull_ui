@@ -15,8 +15,8 @@ class LoginBuildingBlock extends BuildingBlockLibraryItem {
     return ImpaktfullUiBBLogin(
       email: 'email',
       password: 'password',
-      onChangedEmail: (value) {},
-      onChangedPassword: (value) {},
+      onEmailChanged: (value) {},
+      onPasswordChanged: (value) {},
       onLoginTapped: () => Future.delayed(const Duration(seconds: 2)),
       onRegisterTapped: () => ImpaktfullUiNavigator.instance.goBack(),
       endBuilder: (context) {

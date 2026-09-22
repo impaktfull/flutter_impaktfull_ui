@@ -8,18 +8,22 @@ import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extensio
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 class ImpaktfullUiInputFieldAction extends StatelessWidget {
-  final String? label;
+  final String? title;
   final ImpaktfullUiInputFieldTheme? theme;
   final ImpaktfullUiAsset? asset;
   final VoidCallback onTap;
 
   const ImpaktfullUiInputFieldAction({
     required this.onTap,
-    this.label,
+    String? title,
+    @Deprecated('Use title instead. Will be removed in 1.0.0.') String? label,
     this.asset,
     this.theme,
     super.key,
-  });
+  }) : title = title ?? label;
+
+  @Deprecated('Use title instead. Will be removed in 1.0.0.')
+  String? get label => title;
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +53,9 @@ class ImpaktfullUiInputFieldAction extends StatelessWidget {
                   color: componentTheme.textStyles.action.color,
                 ),
               ],
-              if (label != null) ...[
+              if (title != null) ...[
                 Text(
-                  label!,
+                  title!,
                   style: componentTheme.textStyles.action,
                 ),
               ],

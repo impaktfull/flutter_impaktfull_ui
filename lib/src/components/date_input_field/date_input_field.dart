@@ -12,8 +12,8 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 export 'date_input_field_style.dart';
 
 class ImpaktfullUiDateInputField extends StatefulWidget {
-  final DateTime? date;
-  final ValueChanged<DateTime?> onDateSelected;
+  final DateTime? value;
+  final ValueChanged<DateTime?> onChanged;
   final String? _dateFormat;
   final ImpaktfullUiAsset? leadingIcon;
   final WidgetBuilder? leadingBuilder;
@@ -41,8 +41,13 @@ class ImpaktfullUiDateInputField extends StatefulWidget {
   String get dateFormat => _dateFormat ?? 'dd/MM/yyyy';
 
   const ImpaktfullUiDateInputField({
-    required this.date,
-    required this.onDateSelected,
+    // `value` and `onChanged` become `required` again in 1.0.0, when `date`
+    // and `onDateSelected` are removed.
+    DateTime? value,
+    @Deprecated('Use value instead. Will be removed in 1.0.0.') DateTime? date,
+    ValueChanged<DateTime?>? onChanged,
+    @Deprecated('Use onChanged instead. Will be removed in 1.0.0.')
+    ValueChanged<DateTime?>? onDateSelected,
     String? dateFormat,
     this.firstDayOfWeek,
     this.datePickerLocalizations,
@@ -57,7 +62,17 @@ class ImpaktfullUiDateInputField extends StatefulWidget {
     this.readOnly = false,
     this.theme,
     super.key,
-  }) : _dateFormat = dateFormat;
+  })  : _dateFormat = dateFormat,
+        value = value ?? date,
+        assert(onChanged != null || onDateSelected != null,
+            'onChanged is required'),
+        onChanged = (onChanged ?? onDateSelected) as ValueChanged<DateTime?>;
+
+  @Deprecated('Use value instead. Will be removed in 1.0.0.')
+  DateTime? get date => value;
+
+  @Deprecated('Use onChanged instead. Will be removed in 1.0.0.')
+  ValueChanged<DateTime?> get onDateSelected => onChanged;
 
   @override
   State<ImpaktfullUiDateInputField> createState() =>
@@ -125,7 +140,7 @@ class _ImpaktfullUiDateInputFieldState
                                   _formatDate(context) ??
                                       widget.placeholder ??
                                       '',
-                                  style: widget.date == null
+                                  style: widget.value == null
                                       ? componentTheme.textStyles.placeholder
                                       : componentTheme.textStyles.text,
                                 ),
@@ -157,7 +172,7 @@ class _ImpaktfullUiDateInputFieldState
   }
 
   String? _formatDate(BuildContext context) {
-    final date = widget.date;
+    final date = widget.value;
     if (date == null) return null;
     final dateFormat = widget._dateFormat;
     if (dateFormat == null) {
@@ -169,12 +184,12 @@ class _ImpaktfullUiDateInputFieldState
   Future<void> _onTap() async {
     final result = await ImpaktfullUiDatePicker.showModal(
       context: context,
-      selectedDate: widget.date,
+      selectedDate: widget.value,
       localizations: widget.datePickerLocalizations,
       firstDayOfWeek: widget.firstDayOfWeek,
     );
     if (result == null) return;
-    widget.onDateSelected(result);
+    widget.onChanged(result);
   }
 
   /// The card of the field uses the colors of the [ImpaktfullUiDateInputFieldTheme].

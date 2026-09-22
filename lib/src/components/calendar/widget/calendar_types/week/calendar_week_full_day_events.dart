@@ -10,14 +10,14 @@ class ImpaktfullUiCalendarWeekFullDayEvents extends StatefulWidget {
   final List<ImpaktfullUiCalendarEvent> events;
   final DateTimeRange dateRange;
   final ImpaktfullUiCalendarTheme theme;
-  final ValueChanged<ImpaktfullUiCalendarEvent> onEventTap;
+  final ValueChanged<ImpaktfullUiCalendarEvent> onEventTapped;
   final int amountOfDays;
 
   const ImpaktfullUiCalendarWeekFullDayEvents({
     required this.events,
     required this.dateRange,
     required this.theme,
-    required this.onEventTap,
+    required this.onEventTapped,
     this.amountOfDays = 7,
     super.key,
   });
@@ -90,7 +90,7 @@ class _ImpaktfullUiCalendarWeekFullDayEventsState
                                   event: event,
                                   height: componentTheme
                                       .dimens.weekEventMinHeightExtraSmall,
-                                  onTap: () => widget.onEventTap(event),
+                                  onTap: () => widget.onEventTapped(event),
                                   theme: widget.theme,
                                 ),
                               ),

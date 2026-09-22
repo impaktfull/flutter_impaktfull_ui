@@ -9,21 +9,27 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 export 'horizontal_tab_style.dart';
 
 class ImpaktfullUiHorizontalTabConfig<T> {
-  final String label;
+  final String title;
   final String? badge;
   final T value;
   final ImpaktfullUiBadgeType? badgeType;
 
   ImpaktfullUiHorizontalTabConfig({
-    required this.label,
+    // `title` becomes `required` again in 1.0.0, when `label` is removed.
+    String? title,
+    @Deprecated('Use title instead. Will be removed in 1.0.0.') String? label,
     required this.value,
     this.badge,
     this.badgeType,
-  });
+  })  : assert(title != null || label != null, 'title is required'),
+        title = (title ?? label) as String;
+
+  @Deprecated('Use title instead. Will be removed in 1.0.0.')
+  String get label => title;
 }
 
 class ImpaktfullUiHorizontalTab extends StatelessWidget {
-  final String label;
+  final String title;
   final String? badge;
   final ImpaktfullUiBadgeType? badgeType;
   final bool isSelected;
@@ -31,14 +37,20 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
   final ImpaktfullUiHorizontalTabTheme? theme;
 
   const ImpaktfullUiHorizontalTab({
-    required this.label,
+    // `title` becomes `required` again in 1.0.0, when `label` is removed.
+    String? title,
+    @Deprecated('Use title instead. Will be removed in 1.0.0.') String? label,
     required this.onTap,
     this.badge,
     this.badgeType,
     this.isSelected = false,
     this.theme,
     super.key,
-  });
+  })  : assert(title != null || label != null, 'title is required'),
+        title = (title ?? label) as String;
+
+  @Deprecated('Use title instead. Will be removed in 1.0.0.')
+  String get label => title;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +78,7 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  label,
+                  title,
                   style: isSelected
                       ? componentTheme.textStyles.selected
                       : componentTheme.textStyles.unselected,
@@ -78,7 +90,7 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
                         ? ImpaktfullUiBadgeType.primary
                         : badgeType ?? ImpaktfullUiBadgeType.primary,
                     size: ImpaktfullUiBadgeSize.small,
-                    label: badge,
+                    title: badge,
                   ),
                 ]
               ],

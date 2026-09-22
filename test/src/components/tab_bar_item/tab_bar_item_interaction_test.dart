@@ -15,7 +15,7 @@ void main() {
       tester,
       Center(
         child: ImpaktfullUiTabBarItem(
-          label: 'Tab',
+          title: 'Tab',
           index: index,
           controller: controller,
         ),

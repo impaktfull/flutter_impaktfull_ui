@@ -19,7 +19,7 @@ void main() {
             child: ImpaktfullUiBadge(
               type: type,
               size: size,
-              label: 'Badge',
+              title: 'Badge',
             ),
           ),
         ],
@@ -37,7 +37,7 @@ void main() {
           child: ImpaktfullUiBadge(
             type: ImpaktfullUiBadgeType.primary,
             size: size,
-            label: 'Leading',
+            title: 'Leading',
             leadingAsset: testIcon,
           ),
         ),
@@ -46,7 +46,7 @@ void main() {
           child: ImpaktfullUiBadge(
             type: ImpaktfullUiBadgeType.success,
             size: size,
-            label: 'Trailing',
+            title: 'Trailing',
             trailingAsset: testIcon,
           ),
         ),
@@ -55,8 +55,8 @@ void main() {
           child: ImpaktfullUiBadge(
             type: ImpaktfullUiBadgeType.error,
             size: size,
-            label: 'Close',
-            onCloseTap: () {},
+            title: 'Close',
+            onCloseTapped: () {},
           ),
         ),
       ],
@@ -70,7 +70,7 @@ void main() {
         description: 'no label, only a leading icon',
         child: ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.warning,
-          label: null,
+          title: null,
           leadingAsset: testIcon,
         ),
       ),

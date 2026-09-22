@@ -12,7 +12,7 @@ void main() {
         for (var i = 0; i < 7; i++)
           ImpaktfullUiBadge(
             type: ImpaktfullUiBadgeType.primary,
-            label: 'Badge ${'•' * i}',
+            title: 'Badge ${'•' * i}',
           ),
       ];
 

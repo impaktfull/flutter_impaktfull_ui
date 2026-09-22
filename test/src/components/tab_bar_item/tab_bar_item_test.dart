@@ -36,7 +36,7 @@ void main() {
       StatefulBuilder(builder: (context, setter) {
         setState = setter;
         return ImpaktfullUiTabBarItem(
-          label: 'b',
+          title: 'b',
           index: 1,
           controller: controller,
         );

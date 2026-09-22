@@ -12,8 +12,8 @@ void main() {
     builder: () => ImpaktfullUiBBLogin(
       email: 'hello@impaktfull.com',
       password: 'password',
-      onChangedEmail: (_) {},
-      onChangedPassword: (_) {},
+      onEmailChanged: (_) {},
+      onPasswordChanged: (_) {},
       onLoginTapped: () async {},
       onRegisterTapped: () {},
     ),
@@ -24,8 +24,8 @@ void main() {
     builder: () => ImpaktfullUiBBLogin(
       email: '',
       password: '',
-      onChangedEmail: (_) {},
-      onChangedPassword: (_) {},
+      onEmailChanged: (_) {},
+      onPasswordChanged: (_) {},
       onLoginTapped: () async {},
       localizations: const ImpaktfullUiBBLoginLocalizations(
         title: 'Welkom terug!',

@@ -19,7 +19,7 @@ void main() {
               for (var i = 0; i < 3; i++)
                 ImpaktfullUiBottomNavigationItem(
                   asset: testAsset,
-                  label: 'Item $i',
+                  title: 'Item $i',
                   isSelected: i == selected,
                   onTap: () {
                     selections.add(i);
@@ -59,7 +59,7 @@ void main() {
             for (var i = 0; i < 4; i++)
               ImpaktfullUiBottomNavigationItem(
                 asset: testAsset,
-                label: i == 0 ? 'A much longer label' : 'Item',
+                title: i == 0 ? 'A much longer label' : 'Item',
                 isSelected: false,
               ),
           ],

@@ -78,14 +78,14 @@ void main() {
       expect(doubleTaps, 1);
     });
 
-    testWidgets('calls onLongTap', (tester) async {
+    testWidgets('calls onLongPress', (tester) async {
       var longTaps = 0;
       var taps = 0;
       await _pump(
         tester,
         ImpaktfullUiTouchFeedback(
           onTap: () => taps++,
-          onLongTap: () => longTaps++,
+          onLongPress: () => longTaps++,
           child: _child,
         ),
       );

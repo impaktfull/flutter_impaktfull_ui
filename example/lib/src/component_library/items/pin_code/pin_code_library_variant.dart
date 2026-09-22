@@ -19,7 +19,7 @@ class PinCodeLibraryVariant
         child: ImpaktfullUiPinCode(
           code: inputs.code.value ?? '',
           onChanged: inputs.code.updateState,
-          onSubmit: (value) =>
+          onSubmitted: (value) =>
               ImpaktfullUiNotification.show(title: 'Pincode is: $value'),
           length: 5,
         ),

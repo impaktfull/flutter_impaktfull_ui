@@ -12,7 +12,7 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 class ImpaktfullUiCommandMenuWindow extends StatefulWidget {
   final String? value;
-  final ValueChanged<String> onInputChanged;
+  final ValueChanged<String> onChanged;
   final VoidCallback onCloseWindow;
   final bool hasBlurredBackground;
   final EdgeInsetsGeometry padding;
@@ -21,7 +21,11 @@ class ImpaktfullUiCommandMenuWindow extends StatefulWidget {
   final Widget? Function(BuildContext context)? bottomBuilder;
 
   const ImpaktfullUiCommandMenuWindow({
-    required this.onInputChanged,
+    // `onChanged` becomes `required` again in 1.0.0, when `onInputChanged` is
+    // removed.
+    ValueChanged<String>? onChanged,
+    @Deprecated('Use onChanged instead. Will be removed in 1.0.0.')
+    ValueChanged<String>? onInputChanged,
     required this.onCloseWindow,
     this.value,
     this.bottomBuilder,
@@ -30,7 +34,12 @@ class ImpaktfullUiCommandMenuWindow extends StatefulWidget {
     this.theme,
     this.hasBlurredBackground = false,
     super.key,
-  });
+  })  : assert(onChanged != null || onInputChanged != null,
+            'onChanged is required'),
+        onChanged = (onChanged ?? onInputChanged) as ValueChanged<String>;
+
+  @Deprecated('Use onChanged instead. Will be removed in 1.0.0.')
+  ValueChanged<String> get onInputChanged => onChanged;
 
   @override
   State<ImpaktfullUiCommandMenuWindow> createState() =>
@@ -192,7 +201,7 @@ class _CommandMenuWindowState extends State<ImpaktfullUiCommandMenuWindow> {
   }
 
   void _onInputChanged(String value) {
-    widget.onInputChanged(value);
+    widget.onChanged(value);
     setState(() {});
   }
 }

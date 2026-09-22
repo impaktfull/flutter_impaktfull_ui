@@ -17,65 +17,65 @@ void main() {
     goldenTests: () => [
       GoldenTest(
         child: goldenSized(ImpaktfullUiDateInputField(
-          date: null,
+          value: null,
           placeholder: 'Select a date',
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
         child: goldenSized(ImpaktfullUiDateInputField(
-          date: date,
-          onDateSelected: (_) {},
+          value: date,
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
         child: goldenSized(ImpaktfullUiDateInputField(
           label: 'Birthday',
-          date: date,
+          value: date,
           hint: 'Your date of birth',
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
         child: goldenSized(ImpaktfullUiDateInputField(
           label: 'Error',
-          date: date,
+          value: date,
           error: 'This date is not allowed',
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
         child: goldenSized(ImpaktfullUiDateInputField(
           label: 'Disabled',
-          date: date,
+          value: date,
           isDisabled: true,
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
         child: goldenSized(ImpaktfullUiDateInputField(
           label: 'Read only',
-          date: date,
+          value: date,
           readOnly: true,
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
         child: goldenSized(ImpaktfullUiDateInputField(
           label: 'Custom format',
-          date: date,
+          value: date,
           dateFormat: 'EEEE d MMMM yyyy',
           leadingIcon: icons.info,
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
         child: goldenSized(ImpaktfullUiDateInputField(
           label: 'A very long label that does not fit on a single line of '
               'the date input field',
-          date: null,
+          value: null,
           placeholder: 'A very long placeholder that does not fit on one line',
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       ),
     ],

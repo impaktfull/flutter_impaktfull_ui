@@ -9,17 +9,17 @@ void main() {
 
   ImpaktfullUiHorizontalTabs<int> tabs(int selected) =>
       ImpaktfullUiHorizontalTabs<int>(
-        selectedValue: selected,
-        onTabSelected: (_) {},
+        value: selected,
+        onChanged: (_) {},
         tabs: [
-          ImpaktfullUiHorizontalTabConfig(label: 'Overview', value: 0),
+          ImpaktfullUiHorizontalTabConfig(title: 'Overview', value: 0),
           ImpaktfullUiHorizontalTabConfig(
-            label: 'Inbox',
+            title: 'Inbox',
             value: 1,
             badge: '12',
           ),
           ImpaktfullUiHorizontalTabConfig(
-            label: 'Errors',
+            title: 'Errors',
             value: 2,
             badge: '3',
             badgeType: ImpaktfullUiBadgeType.error,

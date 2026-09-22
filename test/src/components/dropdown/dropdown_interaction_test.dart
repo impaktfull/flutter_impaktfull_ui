@@ -10,8 +10,8 @@ import '../_inputs_test_helpers.dart';
 
 void main() {
   const items = [
-    ImpaktfullUiDropdownItem(label: 'One', value: 1),
-    ImpaktfullUiDropdownItem(label: 'Two', value: 2),
+    ImpaktfullUiDropdownItem(title: 'One', value: 1),
+    ImpaktfullUiDropdownItem(title: 'Two', value: 2),
   ];
 
   Widget buildSut({
@@ -24,7 +24,7 @@ void main() {
       Align(
         alignment: Alignment.topLeft,
         child: ImpaktfullUiDropdown<int>.builder(
-          buttonText: 'Open',
+          buttonTitle: 'Open',
           controller: controller,
           alignment: ImpaktfullUiDropdownAlignment.bottomLeft,
           childWidth: childWidth,
@@ -33,7 +33,7 @@ void main() {
           noDataLabel: 'No items',
           itemBuilder: (context, item, index, controller) =>
               ImpaktfullUiSimpleListItem(
-            title: item.label,
+            title: item.title,
             onTap: () {
               onSelected?.call(item.value);
               controller.close();

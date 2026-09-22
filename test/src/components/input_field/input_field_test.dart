@@ -47,7 +47,7 @@ void main() {
           value: '',
           focusNode: current,
           onChanged: (_) {},
-          onFocusChanged: focusChanges.add,
+          onFocusChange: focusChanges.add,
         ),
       ),
     );

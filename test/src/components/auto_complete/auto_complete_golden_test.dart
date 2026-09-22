@@ -54,7 +54,7 @@ void main() {
             ])
               ImpaktfullUiBadge(
                 type: ImpaktfullUiBadgeType.neutral,
-                label: label,
+                title: label,
               ),
           ],
         ),

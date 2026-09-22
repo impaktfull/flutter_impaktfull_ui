@@ -54,7 +54,7 @@ void main() {
         'Fab and bottom child',
         ImpaktfullUiScreen(
           title: 'Title',
-          fab: ImpaktfullUiFloatingActionButton(
+          floatingActionButton: ImpaktfullUiFloatingActionButton(
             onTap: () {},
             asset: testAsset,
           ),

@@ -11,7 +11,7 @@ void main() {
     fileName: 'impaktfull_ui_bb_forget_password',
     builder: () => ImpaktfullUiBBForgetPassword(
       email: 'hello@impaktfull.com',
-      onChangedEmail: (_) {},
+      onEmailChanged: (_) {},
       onResetPasswordTapped: () async {},
       onBackToLoginTapped: () {},
     ),

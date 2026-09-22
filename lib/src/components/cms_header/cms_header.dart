@@ -119,7 +119,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                                 if (widget.badge != null) ...[
                                   ImpaktfullUiBadge(
                                     type: ImpaktfullUiBadgeType.primary,
-                                    label: widget.badge!,
+                                    title: widget.badge!,
                                   ),
                                 ],
                               ],

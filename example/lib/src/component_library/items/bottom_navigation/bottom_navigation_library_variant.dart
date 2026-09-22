@@ -19,13 +19,13 @@ class BottomNavigationLibraryVariant
         items: [
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.home,
-            label: 'Home',
+            title: 'Home',
             onTap: () => inputs.selectedIndex.updateState(0),
             isSelected: inputs.selectedIndex.value == 0,
           ),
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.search,
-            label: 'Search',
+            title: 'Search',
             onTap: () => inputs.selectedIndex.updateState(1),
             isSelected: inputs.selectedIndex.value == 1,
           ),
@@ -43,13 +43,13 @@ class BottomNavigationLibraryVariant
           ),
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.list,
-            label: 'List',
+            title: 'List',
             onTap: () => inputs.selectedIndex.updateState(2),
             isSelected: inputs.selectedIndex.value == 2,
           ),
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.settings,
-            label: 'Settings',
+            title: 'Settings',
             onTap: () => inputs.selectedIndex.updateState(3),
             isSelected: inputs.selectedIndex.value == 3,
             badgeShow: true,
@@ -61,15 +61,15 @@ class BottomNavigationLibraryVariant
         items: [
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.home,
-            label: 'Home',
-            showLabel: false,
+            title: 'Home',
+            showTitle: false,
             onTap: () => inputs.selectedIndex.updateState(0),
             isSelected: inputs.selectedIndex.value == 0,
           ),
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.search,
-            showLabel: false,
-            label: 'Search',
+            showTitle: false,
+            title: 'Search',
             onTap: () => inputs.selectedIndex.updateState(1),
             isSelected: inputs.selectedIndex.value == 1,
           ),
@@ -92,8 +92,8 @@ class BottomNavigationLibraryVariant
           ),
           ImpaktfullUiBottomNavigationItem(
             asset: theme.assets.icons.settings,
-            label: 'Settings',
-            showLabel: false,
+            title: 'Settings',
+            showTitle: false,
             onTap: () => inputs.selectedIndex.updateState(2),
             isSelected: inputs.selectedIndex.value == 2,
             badgeShow: true,

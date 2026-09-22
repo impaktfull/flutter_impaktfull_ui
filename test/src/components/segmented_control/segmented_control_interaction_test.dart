@@ -93,7 +93,7 @@ void main() {
       wrap(ImpaktfullUiSegmentedControl<int>(
         value: 1,
         items: const [1, 2],
-        labelBuilder: (context, item) => 'Item $item',
+        titleBuilder: (context, item) => 'Item $item',
         leadingBuilder: (context, item) => Text('L$item'),
         trailingBuilder: (context, item) => Text('T$item'),
         onChanged: (_) {},

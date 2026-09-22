@@ -11,19 +11,24 @@ export 'floating_action_button_style.dart';
 
 class ImpaktfullUiFloatingActionButton extends StatefulWidget {
   final ImpaktfullUiAsset asset;
-  final String? label;
+  final String? title;
   final bool expanded;
   final VoidCallback? onTap;
   final ImpaktfullUiFloatingActionButtonTheme? theme;
 
   const ImpaktfullUiFloatingActionButton({
     required this.asset,
-    this.label,
+    String? title,
+    @Deprecated('Use title instead. Will be removed in 1.0.0.') String? label,
     this.onTap,
     bool expanded = false,
     this.theme,
     super.key,
-  }) : expanded = label == null ? false : expanded;
+  })  : title = title ?? label,
+        expanded = (title ?? label) == null ? false : expanded;
+
+  @Deprecated('Use title instead. Will be removed in 1.0.0.')
+  String? get label => title;
 
   @override
   State<ImpaktfullUiFloatingActionButton> createState() =>
@@ -84,7 +89,7 @@ class _ImpaktfullUiFloatingActionButtonState
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: widget.onTap,
-        tooltip: widget.label,
+        tooltip: widget.title,
         color: widget.onTap == null
             ? componentTheme.colors.backgroundDisabled
             : componentTheme.colors.background,
@@ -100,7 +105,7 @@ class _ImpaktfullUiFloatingActionButtonState
                 color: componentTheme.colors.icon,
                 size: 24,
               ),
-              if (widget.label != null) ...[
+              if (widget.title != null) ...[
                 AnimatedBuilder(
                   animation: _animation,
                   builder: (context, child) {
@@ -108,7 +113,7 @@ class _ImpaktfullUiFloatingActionButtonState
                       child: SizedBox(
                         width: _animation.value *
                             getSize(
-                              widget.label!,
+                              widget.title!,
                               componentTheme.textStyles.label,
                             ),
                         child: Padding(
@@ -117,7 +122,7 @@ class _ImpaktfullUiFloatingActionButtonState
                             end: 8,
                           ),
                           child: Text(
-                            widget.label!,
+                            widget.title!,
                             style: componentTheme.textStyles.label,
                             overflow: TextOverflow.clip,
                             softWrap: false,

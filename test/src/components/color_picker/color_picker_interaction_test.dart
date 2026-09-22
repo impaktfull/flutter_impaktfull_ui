@@ -44,7 +44,7 @@ void main() {
         tester,
         wrap(ImpaktfullUiColorPicker(
           selectedColor: null,
-          onColorChanged: (_) {},
+          onChanged: (_) {},
         )),
       );
       expect(
@@ -63,7 +63,7 @@ void main() {
         wrap(ImpaktfullUiColorPicker(
           selectedColor: null,
           allowedColors: const [Colors.black, Colors.white, Colors.teal],
-          onColorChanged: colors.add,
+          onChanged: colors.add,
         )),
       );
       await tester.tap(swatches().at(2));
@@ -79,7 +79,7 @@ void main() {
         wrap(ImpaktfullUiColorPicker(
           selectedColor: customTestColor,
           showActiveColor: true,
-          onColorChanged: (_) {},
+          onChanged: (_) {},
         )),
       );
       expect(
@@ -100,7 +100,7 @@ void main() {
           builder: (context, value, child) => ImpaktfullUiColorPicker(
             selectedColor: value,
             showActiveColor: true,
-            onColorChanged: (color) => selected.value = color,
+            onChanged: (color) => selected.value = color,
           ),
         )),
       );
@@ -123,7 +123,7 @@ void main() {
         wrap(ImpaktfullUiColorPicker(
           selectedColor: null,
           allowedColors: const [Colors.black],
-          onColorChanged: (_) {},
+          onChanged: (_) {},
           theme: theme.copyWith(
             dimens: theme.dimens.copyWith(simpleColorPickerItemSize: 50),
           ),
@@ -141,7 +141,7 @@ void main() {
         wrap(ImpaktfullUiColorPicker(
           type: ImpaktfullUiColorPickerType.slider,
           selectedColor: null,
-          onColorChanged: colors.add,
+          onChanged: colors.add,
         )),
       );
       await dragSlider(tester, 0.2, 0.01);
@@ -157,7 +157,7 @@ void main() {
         wrap(ImpaktfullUiColorPicker(
           type: ImpaktfullUiColorPickerType.slider,
           selectedColor: null,
-          onColorChanged: colors.add,
+          onChanged: colors.add,
         )),
       );
       await dragSlider(tester, 0.3, 0.5);
@@ -172,7 +172,7 @@ void main() {
         wrap(ImpaktfullUiColorPicker(
           type: ImpaktfullUiColorPickerType.slider,
           selectedColor: null,
-          onColorChanged: colors.add,
+          onChanged: colors.add,
         )),
       );
       await dragSlider(tester, 0.5, 1.5);
@@ -190,7 +190,7 @@ void main() {
           isTrue);
     });
 
-    testWidgets('a tap without a drag does not call onColorChangeEnd',
+    testWidgets('a tap without a drag does not call onChangeEnd',
         (tester) async {
       final ended = <Color>[];
       await pumpAndSettleComponent(
@@ -198,8 +198,8 @@ void main() {
         wrap(ImpaktfullUiColorPicker(
           type: ImpaktfullUiColorPickerType.slider,
           selectedColor: null,
-          onColorChanged: (_) {},
-          onColorChangeEnd: ended.add,
+          onChanged: (_) {},
+          onChangeEnd: ended.add,
         )),
       );
       await tester.tap(find.byType(ImpaktfullUiColorPickerSlider));
@@ -219,7 +219,7 @@ void main() {
               type: ImpaktfullUiColorPickerType.slider,
               selectedColor: null,
               allowedColors: const [Colors.black, Colors.white],
-              onColorChanged: colors.add,
+              onChanged: colors.add,
             )),
           );
           await dragSlider(tester, 0.2, 0.01);

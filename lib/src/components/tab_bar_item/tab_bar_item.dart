@@ -9,18 +9,24 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 export 'tab_bar_item_style.dart';
 
 class ImpaktfullUiTabBarItem extends StatefulWidget {
-  final String label;
+  final String title;
   final int index;
   final TabController controller;
   final ImpaktfullUiTabBarItemTheme? theme;
 
   const ImpaktfullUiTabBarItem({
-    required this.label,
+    // `title` becomes `required` again in 1.0.0, when `label` is removed.
+    String? title,
+    @Deprecated('Use title instead. Will be removed in 1.0.0.') String? label,
     required this.index,
     required this.controller,
     this.theme,
     super.key,
-  });
+  })  : assert(title != null || label != null, 'title is required'),
+        title = (title ?? label) as String;
+
+  @Deprecated('Use title instead. Will be removed in 1.0.0.')
+  String get label => title;
 
   @override
   State<ImpaktfullUiTabBarItem> createState() => _ImpaktfullUiTabBarItemState();
@@ -78,7 +84,7 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  widget.label,
+                  widget.title,
                   style: componentTheme.textStyles.label,
                 ),
                 AnimatedOpacity(

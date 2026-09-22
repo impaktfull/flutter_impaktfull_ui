@@ -9,7 +9,7 @@ import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extensio
 class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final VoidCallback? onTap;
   final VoidCallback? onDoubleTap;
-  final VoidCallback? onLongTap;
+  final VoidCallback? onLongPress;
   final ValueChanged<TapDownDetails>? onTapDown;
   final ValueChanged<TapUpDetails>? onTapUp;
   final VoidCallback? onTapCancel;
@@ -33,7 +33,9 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     this.onTapUp,
     this.onTapCancel,
     this.onDoubleTap,
-    this.onLongTap,
+    VoidCallback? onLongPress,
+    @Deprecated('Use onLongPress instead. Will be removed in 1.0.0.')
+    VoidCallback? onLongTap,
     this.onFocus,
     this.borderRadius,
     this.color,
@@ -48,10 +50,14 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     this.useFocusColor = true,
     this.shadow = const [],
     super.key,
-  }) : tooltip = tooltip ?? toolTip;
+  })  : tooltip = tooltip ?? toolTip,
+        onLongPress = onLongPress ?? onLongTap;
 
   @Deprecated('Use tooltip instead. Will be removed in 1.0.0.')
   String? get toolTip => tooltip;
+
+  @Deprecated('Use onLongPress instead. Will be removed in 1.0.0.')
+  VoidCallback? get onLongTap => onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +90,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
             onTapUp: onTapUp,
             onTapCancel: onTapCancel,
             onDoubleTap: onDoubleTap,
-            onLongTap: onLongTap,
+            onLongPress: onLongPress,
             cursor: cursor,
             canRequestFocus: canRequestFocus,
             autofocus: autofocus,
@@ -110,7 +116,7 @@ class _PlatformTouchFeedback extends StatefulWidget {
   final BorderRadiusGeometry? borderRadius;
   final VoidCallback? onTap;
   final VoidCallback? onDoubleTap;
-  final VoidCallback? onLongTap;
+  final VoidCallback? onLongPress;
   final ValueChanged<TapDownDetails>? onTapDown;
   final ValueChanged<TapUpDetails>? onTapUp;
   final VoidCallback? onTapCancel;
@@ -129,7 +135,7 @@ class _PlatformTouchFeedback extends StatefulWidget {
     required this.onTapUp,
     required this.onTapCancel,
     required this.onDoubleTap,
-    required this.onLongTap,
+    required this.onLongPress,
     required this.cursor,
     required this.canRequestFocus,
     required this.autofocus,
@@ -172,7 +178,7 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
           onTapUp: widget.onTapUp,
           onTapCancel: widget.onTapCancel,
           onDoubleTap: widget.onDoubleTap,
-          onLongPress: widget.onLongTap,
+          onLongPress: widget.onLongPress,
           // Enter and space activate the focused element, like the InkWell
           // below does (e.g. with a keyboard connected to a tablet).
           child: Actions(
@@ -213,7 +219,7 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         onTapUp: widget.onTapUp,
         onTapCancel: widget.onTapCancel,
         onDoubleTap: widget.onDoubleTap,
-        onLongPress: widget.onLongTap,
+        onLongPress: widget.onLongPress,
         focusNode: _focusNode,
         mouseCursor: widget.cursor,
         onFocusChange: _onFocusChanged,

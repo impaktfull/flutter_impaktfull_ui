@@ -86,7 +86,7 @@ This code is something you could use to do everything with: `ImpaktfullUiApp.doE
         isScrollable: true,
         child: ImpaktfullUiMarkdown(
           data: markdownText,
-          onOpenLink: (url) => ImpaktfullUiNotification.show(
+          onLinkTapped: (url) => ImpaktfullUiNotification.show(
             title: 'On url tapped',
             subtitle: url,
           ),

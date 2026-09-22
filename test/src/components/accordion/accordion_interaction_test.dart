@@ -32,7 +32,7 @@ void main() {
         animated: animated,
         revealType: revealType,
         expandedBuilder: content,
-        onExpandedChanged: (value) {
+        onExpansionChanged: (value) {
           changes?.add(value);
           setState(() => expanded = value);
         },
@@ -49,7 +49,7 @@ void main() {
         title: 'Title',
         expanded: false,
         expandedBuilder: content,
-        onExpandedChanged: changes.add,
+        onExpansionChanged: changes.add,
       ),
     );
     await tester.tap(find.text('Title'));
@@ -110,7 +110,7 @@ void main() {
     expect(contentHeight(tester), 100);
   });
 
-  testWidgets('without onExpandedChanged a tap does not expand',
+  testWidgets('without onExpansionChanged a tap does not expand',
       (tester) async {
     await pumpAccordion(
       tester,

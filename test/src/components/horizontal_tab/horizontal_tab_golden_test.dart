@@ -15,7 +15,7 @@ void main() {
         layoutGoldenCase(
           isSelected ? 'Selected' : 'Unselected',
           ImpaktfullUiHorizontalTab(
-            label: 'Tab',
+            title: 'Tab',
             isSelected: isSelected,
             onTap: () {},
           ),
@@ -23,7 +23,7 @@ void main() {
         layoutGoldenCase(
           isSelected ? 'Selected, badge' : 'Unselected, badge',
           ImpaktfullUiHorizontalTab(
-            label: 'Tab',
+            title: 'Tab',
             badge: '3',
             isSelected: isSelected,
             onTap: () {},
@@ -36,7 +36,7 @@ void main() {
           layoutGoldenCase(
             '${isSelected ? 'Selected' : 'Unselected'}, ${badgeType.name}',
             ImpaktfullUiHorizontalTab(
-              label: 'Tab',
+              title: 'Tab',
               badge: '3',
               badgeType: badgeType,
               isSelected: isSelected,

@@ -12,9 +12,9 @@ export 'bottom_navigation_item_style.dart';
 class ImpaktfullUiBottomNavigationItem extends StatelessWidget {
   final ImpaktfullUiAsset asset;
   final ImpaktfullUiAsset? selectedAsset;
-  final String? label;
+  final String? title;
   final bool isSelected;
-  final bool showLabel;
+  final bool showTitle;
   final bool badgeShow;
   final String? badgeText;
   final Color? badgeColor;
@@ -24,16 +24,26 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget {
   const ImpaktfullUiBottomNavigationItem({
     required this.asset,
     required this.isSelected,
-    this.label,
+    String? title,
+    @Deprecated('Use title instead. Will be removed in 1.0.0.') String? label,
     this.selectedAsset,
     this.onTap,
-    this.showLabel = true,
+    bool? showTitle,
+    @Deprecated('Use showTitle instead. Will be removed in 1.0.0.')
+    bool? showLabel,
     this.badgeShow = false,
     this.badgeText,
     this.badgeColor,
     this.theme,
     super.key,
-  });
+  })  : title = title ?? label,
+        showTitle = showTitle ?? showLabel ?? true;
+
+  @Deprecated('Use title instead. Will be removed in 1.0.0.')
+  String? get label => title;
+
+  @Deprecated('Use showTitle instead. Will be removed in 1.0.0.')
+  bool get showLabel => showTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +56,10 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget {
           button: true,
           selected: isSelected,
           child: ImpaktfullUiTouchFeedback(
-            tooltip: showLabel ? null : label,
+            tooltip: showTitle ? null : title,
             onTap: onTap,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: showLabel ? 8 : 12),
+              padding: EdgeInsets.symmetric(vertical: showTitle ? 8 : 12),
               child: ImpaktfullUiAutoLayout.vertical(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -70,9 +80,9 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget {
                           : componentTheme.colors.inactive,
                     ),
                   ),
-                  if (label != null && showLabel) ...[
+                  if (title != null && showTitle) ...[
                     Text(
-                      label!,
+                      title!,
                       style: _getLabelText(componentTheme),
                       maxLines: 1,
                       textAlign: TextAlign.center,

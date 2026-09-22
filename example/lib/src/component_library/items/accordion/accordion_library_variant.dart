@@ -19,7 +19,7 @@ class AccordionLibraryVariant
         title: 'Item1',
         revealType: inputs.revealType.value!,
         expanded: inputs.expanded.value ?? false,
-        onExpandedChanged: inputs.expanded.updateState,
+        onExpansionChanged: inputs.expanded.updateState,
         expandedBuilder: (context) => Container(
           width: double.infinity,
           color: theme.colors.accent,
@@ -40,7 +40,7 @@ class AccordionLibraryVariant
         title: 'Item2',
         revealType: inputs.revealType.value!,
         expanded: inputs.expanded2.value ?? false,
-        onExpandedChanged: inputs.expanded2.updateState,
+        onExpansionChanged: inputs.expanded2.updateState,
         expandedBuilder: (context) => Container(
           width: double.infinity,
           color: theme.colors.accent,
@@ -61,7 +61,7 @@ class AccordionLibraryVariant
         title: 'Item2',
         revealType: inputs.revealType.value!,
         expanded: inputs.expanded2.value ?? false,
-        onExpandedChanged: inputs.expanded2.updateState,
+        onExpansionChanged: inputs.expanded2.updateState,
         trailingWidgetBuilder: (context) => ImpaktfullUiSwitch(
           value: inputs.expanded2.value ?? false,
           onChanged: inputs.expanded2.updateState,

@@ -421,7 +421,7 @@ ImpaktfullUiPagination(
   page: 0,
   itemsPerPage: 20,
   amountOfItems: 200,
-  onLoadPage: _onLoadPage,
+  onPageChanged: _onPageChanged,
   localizations: ImpaktfullUiPaginationLocalizations(
     pageLabel: (page, amountOfPages) => '$page / $amountOfPages',
   ),

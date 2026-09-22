@@ -13,16 +13,21 @@ class ImpaktfullUiPinCode extends StatefulWidget {
   final String code;
   final int length;
   final void Function(String) onChanged;
-  final void Function(String)? onSubmit;
+  final ValueChanged<String>? onSubmitted;
 
   const ImpaktfullUiPinCode({
     required this.code,
     required this.onChanged,
     this.length = 4,
     this.theme,
-    this.onSubmit,
+    ValueChanged<String>? onSubmitted,
+    @Deprecated('Use onSubmitted instead. Will be removed in 1.0.0.')
+    ValueChanged<String>? onSubmit,
     super.key,
-  });
+  }) : onSubmitted = onSubmitted ?? onSubmit;
+
+  @Deprecated('Use onSubmitted instead. Will be removed in 1.0.0.')
+  ValueChanged<String>? get onSubmit => onSubmitted;
 
   @override
   State<ImpaktfullUiPinCode> createState() => _ImpaktfullUiPinCodeState();
@@ -66,7 +71,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
 
   void _onSubmit() {
     if (!hasFullPin) return;
-    widget.onSubmit?.call(_code);
+    widget.onSubmitted?.call(_code);
   }
 
   @override
@@ -135,7 +140,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
                           ),
                         ),
                         _buildNumberButton('0'),
-                        if (widget.onSubmit != null) ...[
+                        if (widget.onSubmitted != null) ...[
                           Expanded(
                             child: AspectRatio(
                               aspectRatio: 1,

@@ -21,7 +21,8 @@ void main() {
               onTap: () {},
             ),
         ],
-        fab: ImpaktfullUiFloatingActionButton(asset: testAsset, onTap: () {}),
+        floatingActionButton:
+            ImpaktfullUiFloatingActionButton(asset: testAsset, onTap: () {}),
         builder: (context) => const Center(child: Text('small builder')),
         mediumBuilder: (context) => const Center(child: Text('medium builder')),
         largeBuilder: (context) => const Center(child: Text('large builder')),

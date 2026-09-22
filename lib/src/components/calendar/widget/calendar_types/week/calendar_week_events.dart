@@ -10,14 +10,14 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 class ImpaktfullUiCalendarWeekEvents extends StatefulWidget {
   final DateTimeRange dateRange;
   final List<ImpaktfullUiCalendarEvent> events;
-  final ValueChanged<ImpaktfullUiCalendarEvent> onEventTap;
+  final ValueChanged<ImpaktfullUiCalendarEvent> onEventTapped;
   final int amountOfDays;
   final ImpaktfullUiCalendarTheme? theme;
 
   const ImpaktfullUiCalendarWeekEvents({
     required this.events,
     required this.dateRange,
-    required this.onEventTap,
+    required this.onEventTapped,
     required this.amountOfDays,
     this.theme,
     super.key,
@@ -161,7 +161,7 @@ class _ImpaktfullUiCalendarWeekEventsState
             child: ImpaktfullUiCalendarWeekEventItem(
               event: event,
               height: layout.height,
-              onTap: () => widget.onEventTap(event),
+              onTap: () => widget.onEventTapped(event),
               theme: componentTheme,
             ),
           ),

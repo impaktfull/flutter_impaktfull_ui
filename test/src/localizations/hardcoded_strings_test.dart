@@ -134,7 +134,8 @@ const _allowlist = <String, Set<String>>{
 final _userFacingLiteral = RegExp(
   r'(Text\(|TextSpan\(\s*text:|\b(?:tooltip|message|title|subtitle|label|'
   r'placeholder|hint|hintText|semanticsLabel|semanticLabel|noDataLabel|'
-  r'buttonText|text|value|description|error)\s*:)\s*'
+  r'buttonText|buttonTitle|primaryActionTitle|secondaryActionTitle|text|'
+  r'value|description|error)\s*:)\s*'
   r'''(['"])((?:\\.|(?!\2).)*)\2''',
 );
 

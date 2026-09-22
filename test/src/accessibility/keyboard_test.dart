@@ -90,7 +90,7 @@ void main() {
           Center(
             child: ImpaktfullUiBadge(
               type: ImpaktfullUiBadgeType.primary,
-              label: 'Filter',
+              title: 'Filter',
               onTap: () => taps++,
             ),
           ),
@@ -105,7 +105,7 @@ void main() {
           tester,
           Center(
             child: ImpaktfullUiHorizontalTab(
-              label: 'Unread',
+              title: 'Unread',
               onTap: () => taps++,
             ),
           ),
@@ -122,7 +122,7 @@ void main() {
             children: [
               ImpaktfullUiBottomNavigationItem(
                 asset: ImpaktfullUiAsset.icon(Icons.home),
-                label: 'Home',
+                title: 'Home',
                 isSelected: false,
                 onTap: () => taps++,
               ),
@@ -144,12 +144,12 @@ void main() {
               return Row(
                 children: [
                   ImpaktfullUiTabBarItem(
-                    label: 'Details',
+                    title: 'Details',
                     index: 0,
                     controller: controller,
                   ),
                   ImpaktfullUiTabBarItem(
-                    label: 'Reviews',
+                    title: 'Reviews',
                     index: 1,
                     controller: controller,
                   ),
@@ -291,7 +291,7 @@ void main() {
           autofocus: true,
           builder: (context, theme, controller) =>
               ImpaktfullUiCommandMenuWindow(
-            onInputChanged: (_) {},
+            onChanged: (_) {},
             onCloseWindow: controller.hide,
             bottomBuilder: (context) => ListView(
               children: [
@@ -390,7 +390,7 @@ void main() {
         Align(
           alignment: Alignment.topCenter,
           child: ImpaktfullUiDropdown<String>(
-            buttonText: 'Sort',
+            buttonTitle: 'Sort',
             height: 150,
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -25,13 +25,19 @@ enum ImpaktfullUiDropdownAlignment {
 }
 
 class ImpaktfullUiDropdownItem<T> {
-  final String label;
+  final String title;
   final T value;
 
   const ImpaktfullUiDropdownItem({
-    required this.label,
+    // `title` becomes `required` again in 1.0.0, when `label` is removed.
+    String? title,
+    @Deprecated('Use title instead. Will be removed in 1.0.0.') String? label,
     required this.value,
-  });
+  })  : assert(title != null || label != null, 'title is required'),
+        title = (title ?? label) as String;
+
+  @Deprecated('Use title instead. Will be removed in 1.0.0.')
+  String get label => title;
 }
 
 class ImpaktfullUiDropdown<T> extends StatefulWidget {
@@ -39,7 +45,7 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget {
   final double? height;
   final Widget? child;
   final WidgetBuilder? button;
-  final String? buttonText;
+  final String? buttonTitle;
   final List<ImpaktfullUiDropdownItem<T>>? items;
   final Widget Function(
     BuildContext context,
@@ -57,7 +63,9 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget {
     required Widget this.child,
     this.controller,
     this.button,
-    this.buttonText,
+    String? buttonTitle,
+    @Deprecated('Use buttonTitle instead. Will be removed in 1.0.0.')
+    String? buttonText,
     this.childWidth,
     this.alignment = ImpaktfullUiDropdownAlignment.bottomCenter,
     this.height = 300,
@@ -67,8 +75,9 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget {
   })  : items = null,
         itemBuilder = null,
         noDataLabel = null,
-        assert(button != null || buttonText != null,
-            'Either button or buttonText must be provided');
+        buttonTitle = buttonTitle ?? buttonText,
+        assert(button != null || buttonTitle != null || buttonText != null,
+            'Either button or buttonTitle must be provided');
 
   const ImpaktfullUiDropdown.builder({
     required List<ImpaktfullUiDropdownItem<T>> this.items,
@@ -76,7 +85,9 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget {
     required String this.noDataLabel,
     this.controller,
     this.button,
-    this.buttonText,
+    String? buttonTitle,
+    @Deprecated('Use buttonTitle instead. Will be removed in 1.0.0.')
+    String? buttonText,
     this.childWidth,
     this.alignment = ImpaktfullUiDropdownAlignment.bottomCenter,
     this.height = 300,
@@ -84,8 +95,12 @@ class ImpaktfullUiDropdown<T> extends StatefulWidget {
     this.theme,
     super.key,
   })  : child = null,
-        assert(button != null || buttonText != null,
-            'Either button or buttonText must be provided');
+        buttonTitle = buttonTitle ?? buttonText,
+        assert(button != null || buttonTitle != null || buttonText != null,
+            'Either button or buttonTitle must be provided');
+
+  @Deprecated('Use buttonTitle instead. Will be removed in 1.0.0.')
+  String? get buttonText => buttonTitle;
 
   @override
   @override
@@ -236,7 +251,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                         trailingAsset: _tooltipController.isShowing
                             ? componentTheme.assets.dropUp
                             : componentTheme.assets.dropDown,
-                        title: widget.buttonText,
+                        title: widget.buttonTitle,
                       );
                     }),
                   ),
