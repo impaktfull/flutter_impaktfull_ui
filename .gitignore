@@ -33,8 +33,6 @@ build/
 # Golden tests
 **/failures/**.png
 
-# FVM
-.fvm/
 
 # Coverage (flutter test --coverage)
 /coverage/
