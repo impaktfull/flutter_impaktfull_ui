@@ -13,6 +13,7 @@ class RadioButtonListItemLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, RadioButtonListItemLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiRadioButtonListItem(
         title: inputs.title.value ?? '',

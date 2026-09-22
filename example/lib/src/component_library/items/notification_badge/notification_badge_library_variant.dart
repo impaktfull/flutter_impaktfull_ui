@@ -13,6 +13,7 @@ class NotificationBadgeLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, NotificationBadgeLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiNotificationBadge(
         show: inputs.show.value ?? false,

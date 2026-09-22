@@ -33,6 +33,7 @@ class _ComponentLibraryItemScreenState
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiAdaptiveScreen(
       title: widget.item.title,
       actions: [

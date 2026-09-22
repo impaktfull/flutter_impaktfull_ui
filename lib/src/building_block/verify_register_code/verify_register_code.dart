@@ -38,6 +38,7 @@ class ImpaktfullUiBBVerifyRegisterCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiLocalizationProvider<
         ImpaktfullUiBBVerifyRegisterCodeLocalizations>(
       localizations: localizations,

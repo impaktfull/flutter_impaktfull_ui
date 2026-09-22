@@ -5,7 +5,7 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTooltipColorTheme colors;
   final ImpaktfullUiTooltipTextStyleTheme textStyles;
   final ImpaktfullUiTooltipDimensTheme dimens;
-  final ImpaktfullUiTooltipDurationTheme durations;
+  final ImpaktfullUiTooltipDurationsTheme durations;
   final ImpaktfullUiTooltipAssetsTheme assets;
 
   const ImpaktfullUiTooltipTheme({
@@ -20,7 +20,7 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiTooltipAssetsTheme? assets,
     ImpaktfullUiTooltipColorTheme? colors,
     ImpaktfullUiTooltipDimensTheme? dimens,
-    ImpaktfullUiTooltipDurationTheme? durations,
+    ImpaktfullUiTooltipDurationsTheme? durations,
     ImpaktfullUiTooltipTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiTooltipTheme(
@@ -50,7 +50,7 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUiTooltipDimensTheme(
           borderRadius: dimens.borderRadiusSmall,
         ),
-        durations: ImpaktfullUiTooltipDurationTheme(
+        durations: ImpaktfullUiTooltipDurationsTheme(
           wait: durations.long,
         ),
         assets: const ImpaktfullUiTooltipAssetsTheme(),
@@ -94,17 +94,17 @@ class ImpaktfullUiTooltipDimensTheme {
       );
 }
 
-class ImpaktfullUiTooltipDurationTheme {
+class ImpaktfullUiTooltipDurationsTheme {
   final Duration wait;
 
-  const ImpaktfullUiTooltipDurationTheme({
+  const ImpaktfullUiTooltipDurationsTheme({
     required this.wait,
   });
 
-  ImpaktfullUiTooltipDurationTheme copyWith({
+  ImpaktfullUiTooltipDurationsTheme copyWith({
     Duration? wait,
   }) =>
-      ImpaktfullUiTooltipDurationTheme(
+      ImpaktfullUiTooltipDurationsTheme(
         wait: wait ?? this.wait,
       );
 }

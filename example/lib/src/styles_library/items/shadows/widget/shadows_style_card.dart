@@ -13,6 +13,7 @@ class ShadowsStyleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiCard(
       padding: EdgeInsets.zero,
       child: ImpaktfullUiAutoLayout.vertical(

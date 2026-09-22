@@ -5,7 +5,8 @@
 // See doc/migrations/1.0.0.md.
 // ignore_for_file: deprecated_member_use_from_same_package
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
@@ -101,6 +102,74 @@ void main() {
       'ImpaktfullUiBBLicenseLocalizations': (
         ImpaktfullUiBBLicenseLocalizations,
         ImpaktfullUiBBLicensesLocalizations
+      ),
+      'ImpaktfullUiTableHeaderItemTextStylesTheme': (
+        ImpaktfullUiTableHeaderItemTextStylesTheme,
+        ImpaktfullUiTableHeaderItemTextStyleTheme
+      ),
+      'ImpaktfullUiSnackyConfiguratorTextStylesTheme': (
+        ImpaktfullUiSnackyConfiguratorTextStylesTheme,
+        ImpaktfullUiSnackyConfiguratorTextStyleTheme
+      ),
+      'ImpaktfullUiTableRowItemTextStylesTheme': (
+        ImpaktfullUiTableRowItemTextStylesTheme,
+        ImpaktfullUiTableRowItemTextStyleTheme
+      ),
+      'ImpaktfullUiHorizontalTabTextStylesTheme': (
+        ImpaktfullUiHorizontalTabTextStylesTheme,
+        ImpaktfullUiHorizontalTabTextStyleTheme
+      ),
+      'ImpaktfullUiCmsHeaderTextStylesTheme': (
+        ImpaktfullUiCmsHeaderTextStylesTheme,
+        ImpaktfullUiCmsHeaderTextStyleTheme
+      ),
+      'ImpaktfullUiButtonTextStylesTheme': (
+        ImpaktfullUiButtonTextStylesTheme,
+        ImpaktfullUiButtonTextStyleTheme
+      ),
+      'ImpaktfullUiListViewTextStylesTheme': (
+        ImpaktfullUiListViewTextStylesTheme,
+        ImpaktfullUiListViewTextStyleTheme
+      ),
+      'ImpaktfullUiInputFieldTextStylesTheme': (
+        ImpaktfullUiInputFieldTextStylesTheme,
+        ImpaktfullUiInputFieldTextStyleTheme
+      ),
+      'ImpaktfullUiTableRowTextStylesTheme': (
+        ImpaktfullUiTableRowTextStylesTheme,
+        ImpaktfullUiTableRowTextStyleTheme
+      ),
+      'ImpaktfullUiBadgeTextStylesTheme': (
+        ImpaktfullUiBadgeTextStylesTheme,
+        ImpaktfullUiBadgeTextStyleTheme
+      ),
+      'ImpaktfullUiLoadingIndicatorAssetTheme': (
+        ImpaktfullUiLoadingIndicatorAssetTheme,
+        ImpaktfullUiLoadingIndicatorAssetsTheme
+      ),
+      'ImpaktfullUiTooltipDurationTheme': (
+        ImpaktfullUiTooltipDurationTheme,
+        ImpaktfullUiTooltipDurationsTheme
+      ),
+      'ImpaktfullUiNotificationBadgeDurationTheme': (
+        ImpaktfullUiNotificationBadgeDurationTheme,
+        ImpaktfullUiNotificationBadgeDurationsTheme
+      ),
+      'ImpaktfullUiSidebarNavigationItemDurationTheme': (
+        ImpaktfullUiSidebarNavigationItemDurationTheme,
+        ImpaktfullUiSidebarNavigationItemDurationsTheme
+      ),
+      'ImpaktfullUiDropdownShadowTheme': (
+        ImpaktfullUiDropdownShadowTheme,
+        ImpaktfullUiDropdownShadowsTheme
+      ),
+      'ImpaktfullUiButtonShadowTheme': (
+        ImpaktfullUiButtonShadowTheme,
+        ImpaktfullUiButtonShadowsTheme
+      ),
+      'ImpaktfullUiAutoCompleteShadowTheme': (
+        ImpaktfullUiAutoCompleteShadowTheme,
+        ImpaktfullUiAutoCompleteShadowsTheme
       ),
     };
     for (final MapEntry(key: name, value: (deprecated, replacement))
@@ -251,6 +320,198 @@ void main() {
     test('ImpaktfullUiListItemType.simpleLisItemType', () {
       for (final type in ImpaktfullUiListItemType.values) {
         expect(type.simpleLisItemType, type.simpleListItemType);
+      }
+    });
+
+    test('ImpaktfullUiButtonTheme.shadow', () {
+      final button = ImpaktfullUiTheme.getDefault().components.button;
+      const shadows = ImpaktfullUiButtonShadowsTheme(
+        primary: [BoxShadow(blurRadius: 4)],
+        secondary: null,
+        destructive: null,
+      );
+      final theme = ImpaktfullUiButtonTheme(
+        colors: button.colors,
+        dimens: button.dimens,
+        durations: button.durations,
+        textStyles: button.textStyles,
+        config: button.config,
+        shadow: shadows,
+      );
+      expect(theme.shadows, same(shadows));
+      expect(theme.shadow, same(shadows));
+      expect(button.copyWith(shadow: shadows).shadows, same(shadows));
+    });
+
+    test('ImpaktfullUiComponentsTheme.checkBoxListItem', () {
+      final components = ImpaktfullUiTheme.getDefault().components;
+      expect(components.checkBoxListItem, same(components.checkboxListItem));
+      final checkboxListItem = components.checkboxListItem.copyWith();
+      final replaced = components.copyWith(checkBoxListItem: checkboxListItem);
+      expect(replaced.checkboxListItem, same(checkboxListItem));
+    });
+  });
+
+  group('Deprecated global theme and locale', () {
+    // More cases in test/src/theme/theme_configurator_test.dart.
+    testWidgets('ImpaktfullUiApp still sets theme and locale', (tester) async {
+      final appTheme = ImpaktfullUiTheme.custom(
+        label: 'app',
+        primary: Colors.red,
+        accent: Colors.green,
+        secondary: Colors.blue,
+      );
+      await tester.pumpWidget(
+        ImpaktfullUiApp(
+          showDebugFlag: false,
+          title: 'impaktfull app',
+          impaktfullUiTheme: appTheme,
+          locale: const Locale('en', 'GB'),
+          supportedLocales: const [Locale('en', 'GB')],
+          home: const SizedBox(),
+        ),
+      );
+      expect(theme, same(appTheme));
+      expect(locale, const Locale('en', 'GB'));
+    });
+  });
+
+  group('Deprecated extensions are still exported', () {
+    // This file only imports package:impaktfull_ui/impaktfull_ui.dart, like
+    // an app: every member keeps working until 1.0.0.
+    final date = DateTime(2024, 6, 12, 14, 30);
+
+    test('DateTimeExtensions', () {
+      expect(date.startOfTheDay, DateTime(2024, 6, 12));
+      expect(date.endOfTheDay, DateTime(2024, 6, 12, 23, 59, 59));
+      expect(date.tomorrow, DateTime(2024, 6, 13, 14, 30));
+      expect(date.yesterday, DateTime(2024, 6, 11, 14, 30));
+      expect(date.nextWeek, DateTime(2024, 6, 19, 14, 30));
+      expect(date.previousWeek, DateTime(2024, 6, 5, 14, 30));
+      expect(date.beginningOfTheWeek, DateTime(2024, 6, 10, 14, 30));
+      expect(date.endOfTheWeek, DateTime(2024, 6, 16, 14, 30));
+      expect(date.thisWeekMonday, DateTime(2024, 6, 10, 14, 30));
+      expect(date.thisWeekTuesday, DateTime(2024, 6, 11, 14, 30));
+      expect(date.thisWeekWednesday, DateTime(2024, 6, 12, 14, 30));
+      expect(date.thisWeekThursday, DateTime(2024, 6, 13, 14, 30));
+      expect(date.thisWeekFriday, DateTime(2024, 6, 14, 14, 30));
+      expect(date.thisWeekSaturday, DateTime(2024, 6, 15, 14, 30));
+      expect(date.thisWeekSunday, DateTime(2024, 6, 16, 14, 30));
+      expect(date.format('yyyy-MM-dd'), '2024-06-12');
+      expect(date.getPreviousMonth(), DateTime(2024, 5, 12, 14, 30));
+      expect(date.getNextMonth(), DateTime(2024, 7, 12, 14, 30));
+      expect(date.getPreviousYear(), DateTime(2023, 6, 12, 14, 30));
+      expect(date.getNextYear(), DateTime(2025, 6, 12, 14, 30));
+      expect(date.isSameYear(DateTime(2024)), isTrue);
+      expect(date.isSameMonth(DateTime(2024, 6)), isTrue);
+      expect(date.isSameDay(DateTime(2024, 6, 12, 8)), isTrue);
+      expect(date.dateOnly(), DateTime(2024, 6, 12));
+      expect(date.getDaysInMonth(), 30);
+      expect(date.setTime(8, 15), DateTime(2024, 6, 12, 8, 15));
+      expect(DateTimeExtensions(date).isSameDay(date), isTrue);
+      expect(getDayForMonthWithFallback(2024, 2, 31), 29);
+    });
+
+    test('TextStyleExtension', () {
+      const style = TextStyle(color: Color(0xFF000000));
+      expect(style.light.fontWeight, FontWeight.w300);
+      expect(style.medium.fontWeight, FontWeight.w500);
+      expect(style.semiBold.fontWeight, FontWeight.w600);
+      expect(style.bold.fontWeight, FontWeight.w700);
+      expect(style.withOpacity(0.5).color!.a, closeTo(0.5, 0.01));
+      expect(TextStyleExtension(style).bold.fontWeight, FontWeight.w700);
+    });
+
+    test('BorderRadiusGeometryExtension', () {
+      const BorderRadiusGeometry radius = BorderRadius.only(
+        topLeft: Radius.circular(1),
+        topRight: Radius.circular(2),
+        bottomLeft: Radius.circular(3),
+        bottomRight: Radius.circular(4),
+      );
+      expect(radius.topStart, const Radius.circular(1));
+      expect(radius.topEnd, const Radius.circular(2));
+      expect(radius.bottomStart, const Radius.circular(3));
+      expect(radius.bottomEnd, const Radius.circular(4));
+      expect(radius.value, radius);
+      expect(
+        radius.copyWith(topStart: const Radius.circular(8)),
+        const BorderRadiusDirectional.only(
+          topStart: Radius.circular(8),
+          topEnd: Radius.circular(2),
+          bottomStart: Radius.circular(3),
+          bottomEnd: Radius.circular(4),
+        ),
+      );
+    });
+
+    test('EdgeInsetsGeometryExtension', () {
+      const EdgeInsetsGeometry insets =
+          EdgeInsetsDirectional.fromSTEB(1, 2, 3, 4);
+      expect(insets.start, 1);
+      expect(insets.top, 2);
+      expect(insets.end, 3);
+      expect(insets.bottom, 4);
+    });
+
+    test('ThemeDataExtension', () {
+      final themeData = ThemeData().removeUnwantedBehavior(
+        targetPlatform: TargetPlatform.iOS,
+      );
+      expect(themeData.platform, TargetPlatform.iOS);
+      expect(
+        themeData.pageTransitionsTheme.builders[TargetPlatform.iOS],
+        isA<CupertinoPageTransitionsBuilder>(),
+      );
+    });
+
+    testWidgets('ResponsiveExtension', (tester) async {
+      final results = <String, (bool, bool)>{};
+      await tester.pumpWidget(
+        ImpaktfullUiApp(
+          showDebugFlag: false,
+          title: 'impaktfull app',
+          home: Builder(
+            builder: (context) {
+              results.addAll({
+                'smallOrBigger': (
+                  context.isSmallScreenOrBigger,
+                  ImpaktfullUiResponsiveLayout.isSmallOrBigger(context)
+                ),
+                'mediumOrBigger': (
+                  context.isMediumScreenOrBigger,
+                  ImpaktfullUiResponsiveLayout.isMediumOrBigger(context)
+                ),
+                'largeOrBigger': (
+                  context.isLargeScreenOrBigger,
+                  ImpaktfullUiResponsiveLayout.isLargeOrBigger(context)
+                ),
+                'extraLargeOrBigger': (
+                  context.isExtraLargeScreenOrBigger,
+                  ImpaktfullUiResponsiveLayout.isExtraLargeOrBigger(context)
+                ),
+                'smallOrSmaller': (
+                  context.isSmallScreenOrSmaller,
+                  ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context)
+                ),
+                'mediumOrSmaller': (
+                  context.isMediumScreenOrSmaller,
+                  ImpaktfullUiResponsiveLayout.isMediumOrSmaller(context)
+                ),
+                'largeOrSmaller': (
+                  context.isLargeScreenOrSmaller,
+                  ImpaktfullUiResponsiveLayout.isLargeOrSmaller(context)
+                ),
+              });
+              return const SizedBox();
+            },
+          ),
+        ),
+      );
+      expect(results, hasLength(7));
+      for (final MapEntry(key: name, value: (deprecated, replacement))
+          in results.entries) {
+        expect(deprecated, replacement, reason: name);
       }
     });
   });

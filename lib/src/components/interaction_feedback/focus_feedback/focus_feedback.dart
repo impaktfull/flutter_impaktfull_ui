@@ -16,10 +16,15 @@ class ImpaktfullUiFocusFeedback extends StatelessWidget {
     super.key,
   });
 
+  static final _defaultTheme = ImpaktfullUiTheme.getDefault();
+
   @override
   Widget build(BuildContext context) {
     if (!enabled) return child;
-    final impaktfullUiTheme = ImpaktfullUiTheme.maybeOf(context) ?? theme;
+    // Without an ImpaktfullUiThemeConfigurator above it (e.g. a plain
+    // WidgetsApp), the focus ring uses the default theme.
+    final impaktfullUiTheme =
+        ImpaktfullUiTheme.maybeOf(context) ?? _defaultTheme;
     return Stack(
       // Keep the constraints of the parent for the child (e.g. full width).
       fit: StackFit.passthrough,

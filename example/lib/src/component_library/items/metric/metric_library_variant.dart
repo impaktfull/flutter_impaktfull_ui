@@ -15,6 +15,7 @@ class MetricLibraryVariant
 
   @override
   List<Widget> build(BuildContext context, MetricLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiMetric(
         title: 'Last 24 hour sales',

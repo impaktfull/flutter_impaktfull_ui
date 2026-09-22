@@ -14,6 +14,7 @@ class GridViewLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, GridViewLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         height: 500,

@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiDropdownColorTheme colors;
-  final ImpaktfullUiDropdownShadowTheme shadows;
+  final ImpaktfullUiDropdownShadowsTheme shadows;
   final ImpaktfullUiDropdownDimensTheme dimens;
   final ImpaktfullUiDropdownAssetsTheme assets;
 
@@ -19,7 +19,7 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiDropdownAssetsTheme? assets,
     ImpaktfullUiDropdownColorTheme? colors,
     ImpaktfullUiDropdownDimensTheme? dimens,
-    ImpaktfullUiDropdownShadowTheme? shadows,
+    ImpaktfullUiDropdownShadowsTheme? shadows,
   }) =>
       ImpaktfullUiDropdownTheme(
         assets: assets ?? this.assets,
@@ -44,7 +44,7 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
           menuBackground: colors.card,
           menuBorder: colors.border,
         ),
-        shadows: ImpaktfullUiDropdownShadowTheme(
+        shadows: ImpaktfullUiDropdownShadowsTheme(
           overlay: shadows.large,
         ),
         dimens: ImpaktfullUiDropdownDimensTheme(
@@ -76,16 +76,16 @@ class ImpaktfullUiDropdownColorTheme {
       );
 }
 
-class ImpaktfullUiDropdownShadowTheme {
+class ImpaktfullUiDropdownShadowsTheme {
   final List<BoxShadow> overlay;
-  const ImpaktfullUiDropdownShadowTheme({
+  const ImpaktfullUiDropdownShadowsTheme({
     required this.overlay,
   });
 
-  ImpaktfullUiDropdownShadowTheme copyWith({
+  ImpaktfullUiDropdownShadowsTheme copyWith({
     List<BoxShadow>? overlay,
   }) =>
-      ImpaktfullUiDropdownShadowTheme(
+      ImpaktfullUiDropdownShadowsTheme(
         overlay: overlay ?? this.overlay,
       );
 }

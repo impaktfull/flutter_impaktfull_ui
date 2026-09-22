@@ -17,6 +17,7 @@ class SimpleListItemLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, SimpleListItemLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiSimpleListItem(
         title: inputs.title.value ?? '',

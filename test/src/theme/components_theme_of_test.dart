@@ -49,7 +49,7 @@ final _entries = <_ThemeEntry>[
   _ThemeEntry<ImpaktfullUiChatTheme>('chat', (t) => t.chat),
   _ThemeEntry<ImpaktfullUiCheckboxTheme>('checkbox', (t) => t.checkbox),
   _ThemeEntry<ImpaktfullUiCheckboxListItemTheme>(
-      'checkBoxListItem', (t) => t.checkBoxListItem),
+      'checkboxListItem', (t) => t.checkboxListItem),
   _ThemeEntry<ImpaktfullUiCmsHeaderTheme>('cmsHeader', (t) => t.cmsHeader),
   _ThemeEntry<ImpaktfullUiColorPickerTheme>(
       'colorPicker', (t) => t.colorPicker),

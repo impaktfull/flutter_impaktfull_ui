@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-extension DateTimeExtensions on DateTime {
+extension InternalDateTimeExtension on DateTime {
   DateTime get startOfTheDay => DateTime(year, month, day);
 
   DateTime get endOfTheDay => DateTime(year, month, day, 23, 59, 59);
@@ -59,7 +59,7 @@ extension DateTimeExtensions on DateTime {
     return copyWith(
       year: newYear,
       month: newMonth,
-      day: getDayForMonthWithFallback(newYear, newMonth, day),
+      day: dayForMonthWithFallback(newYear, newMonth, day),
     );
   }
 
@@ -91,7 +91,7 @@ extension DateTimeExtensions on DateTime {
       );
 }
 
-int getDayForMonthWithFallback(int year, int month, int day) {
+int dayForMonthWithFallback(int year, int month, int day) {
   final daysInMonth = DateTime(year, month, 1).getDaysInMonth();
   return day > daysInMonth ? daysInMonth : day;
 }

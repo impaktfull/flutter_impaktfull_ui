@@ -14,6 +14,7 @@ class SidebarNavigationItemLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, SidebarNavigationItemLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiSidebarNavigationItem(
         leading: theme.assets.icons.home,

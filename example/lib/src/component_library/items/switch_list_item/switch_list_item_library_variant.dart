@@ -13,6 +13,7 @@ class SwitchListItemLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, SwitchListItemLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiSwitchListItem(
         title: inputs.title.value ?? '',

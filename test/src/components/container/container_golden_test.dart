@@ -5,6 +5,9 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import '../../../util/golden_test_util.dart';
 import '../_layout_test_helpers.dart';
 
+// The theme ImpaktfullUiApp uses when it gets none.
+final _theme = ImpaktfullUiTheme.getDefault();
+
 void main() {
   setUp(() => setupComponentTest());
 
@@ -17,12 +20,12 @@ void main() {
     goldenTests: () => [
       layoutGoldenCase(
         'Color',
-        ImpaktfullUiContainer(color: theme.colors.card, child: content),
+        ImpaktfullUiContainer(color: _theme.colors.card, child: content),
       ),
       layoutGoldenCase(
         'Border radius',
         ImpaktfullUiContainer(
-          color: theme.colors.card,
+          color: _theme.colors.card,
           borderRadius: BorderRadius.circular(12),
           child: content,
         ),
@@ -30,20 +33,20 @@ void main() {
       layoutGoldenCase(
         'Uniform border',
         ImpaktfullUiContainer(
-          color: theme.colors.card,
+          color: _theme.colors.card,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: theme.colors.accent, width: 2),
+          border: Border.all(color: _theme.colors.accent, width: 2),
           child: content,
         ),
       ),
       layoutGoldenCase(
         'Non uniform border',
         ImpaktfullUiContainer(
-          color: theme.colors.card,
+          color: _theme.colors.card,
           borderRadius: BorderRadius.circular(12),
           border: Border(
-            bottom: BorderSide(color: theme.colors.accent, width: 4),
-            top: BorderSide(color: theme.colors.accent, width: 1),
+            bottom: BorderSide(color: _theme.colors.accent, width: 4),
+            top: BorderSide(color: _theme.colors.accent, width: 1),
           ),
           child: content,
         ),
@@ -51,7 +54,7 @@ void main() {
       layoutGoldenCase(
         'Shadow',
         ImpaktfullUiContainer(
-          color: theme.colors.card,
+          color: _theme.colors.card,
           borderRadius: BorderRadius.circular(12),
           margin: const EdgeInsets.all(8),
           shadow: const [
@@ -67,7 +70,7 @@ void main() {
       layoutGoldenCase(
         'Padding and margin',
         ImpaktfullUiContainer(
-          color: theme.colors.card,
+          color: _theme.colors.card,
           padding: const EdgeInsets.all(12),
           margin: const EdgeInsets.all(12),
           child: content,
@@ -76,7 +79,7 @@ void main() {
       layoutGoldenCase(
         'Width and height',
         ImpaktfullUiContainer(
-          color: theme.colors.accent,
+          color: _theme.colors.accent,
           width: 120,
           height: 60,
           child: content,

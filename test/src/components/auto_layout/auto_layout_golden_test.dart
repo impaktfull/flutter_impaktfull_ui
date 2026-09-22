@@ -5,6 +5,9 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import '../../../util/golden_test_util.dart';
 import '../_layout_test_helpers.dart';
 
+// The theme ImpaktfullUiApp uses when it gets none.
+final _theme = ImpaktfullUiTheme.getDefault();
+
 void main() {
   setUp(() => setupComponentTest());
 
@@ -13,14 +16,14 @@ void main() {
           Container(
             width: 40 + i * 10.0,
             height: 30 + i * 5.0,
-            color: theme.colors.accent,
+            color: _theme.colors.accent,
           ),
       ];
 
   Widget frame(Widget child) => Container(
         width: 200,
         height: 120,
-        color: theme.colors.border,
+        color: _theme.colors.border,
         child: child,
       );
 

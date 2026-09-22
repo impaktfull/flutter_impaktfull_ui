@@ -48,8 +48,8 @@ class _ComponentsLibraryInputsWidgetState
                   if (input.extraInfo != null) ...[
                     Text(
                       input.extraInfo!,
-                      style:
-                          theme.textStyles.onCardTertiary.text.extraSmall.light,
+                      style: theme.textStyles.onCardTertiary.text.extraSmall
+                          .copyWith(fontWeight: FontWeight.w300),
                     ),
                   ],
                   const SizedBox(height: 4),

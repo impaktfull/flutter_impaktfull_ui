@@ -9,7 +9,7 @@ void main() {
   final defaultTheme =
       ImpaktfullUiTheme.getDefault().components.loadingIndicator;
   final circularTheme = ImpaktfullUiLoadingIndicatorTheme(
-    assets: const ImpaktfullUiLoadingIndicatorAssetTheme(lottie: null),
+    assets: const ImpaktfullUiLoadingIndicatorAssetsTheme(lottie: null),
     colors: defaultTheme.colors,
     dimens: defaultTheme.dimens,
   );

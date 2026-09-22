@@ -171,7 +171,8 @@ class ImpaktfullUiMasterDetailState extends State<ImpaktfullUiMasterDetail> {
   /// [ImpaktfullUiMasterDetail.closeDetailBeforeMaster] is enabled.
   bool _closesDetailOnBack(BuildContext context, Widget? detail) {
     if (widget.onCloseDetail == null || detail == null) return false;
-    return context.isMediumScreenOrSmaller || widget.closeDetailBeforeMaster;
+    return ImpaktfullUiResponsiveLayout.isMediumOrSmaller(context) ||
+        widget.closeDetailBeforeMaster;
   }
 
   void _onBackTapped(BuildContext context) {

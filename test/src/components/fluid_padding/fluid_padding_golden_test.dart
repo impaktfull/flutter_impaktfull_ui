@@ -5,17 +5,20 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import '../../../util/golden_test_util.dart';
 import '../_layout_test_helpers.dart';
 
+// The theme ImpaktfullUiApp uses when it gets none.
+final _theme = ImpaktfullUiTheme.getDefault();
+
 void main() {
   setUp(() => setupComponentTest());
 
   Widget padded() => ColoredBox(
-        color: theme.colors.border,
+        color: _theme.colors.border,
         child: ImpaktfullUiFluidPadding(
           topPadding: 8,
           bottomPadding: 8,
           child: Container(
             height: 40,
-            color: theme.colors.accent,
+            color: _theme.colors.accent,
           ),
         ),
       );

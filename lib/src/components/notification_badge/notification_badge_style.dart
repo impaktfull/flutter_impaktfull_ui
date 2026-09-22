@@ -5,7 +5,7 @@ class ImpaktfullUiNotificationBadgeTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiNotificationBadgeAssetsTheme assets;
   final ImpaktfullUiNotificationBadgeColorTheme colors;
   final ImpaktfullUiNotificationBadgeDimensTheme dimens;
-  final ImpaktfullUiNotificationBadgeDurationTheme durations;
+  final ImpaktfullUiNotificationBadgeDurationsTheme durations;
   final ImpaktfullUiNotificationBadgeTextStyleTheme textStyles;
 
   const ImpaktfullUiNotificationBadgeTheme({
@@ -20,7 +20,7 @@ class ImpaktfullUiNotificationBadgeTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiNotificationBadgeAssetsTheme? assets,
     ImpaktfullUiNotificationBadgeColorTheme? colors,
     ImpaktfullUiNotificationBadgeDimensTheme? dimens,
-    ImpaktfullUiNotificationBadgeDurationTheme? durations,
+    ImpaktfullUiNotificationBadgeDurationsTheme? durations,
     ImpaktfullUiNotificationBadgeTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiNotificationBadgeTheme(
@@ -52,7 +52,7 @@ class ImpaktfullUiNotificationBadgeTheme extends ImpaktfullUiComponentTheme {
         borderRadius: dimens.borderRadius,
         textPadding: const EdgeInsets.symmetric(horizontal: 8),
       ),
-      durations: ImpaktfullUiNotificationBadgeDurationTheme(
+      durations: ImpaktfullUiNotificationBadgeDurationsTheme(
         opacity: durations.short,
       ),
       textStyles: ImpaktfullUiNotificationBadgeTextStyleTheme(
@@ -88,17 +88,17 @@ class ImpaktfullUiNotificationBadgeDimensTheme {
       );
 }
 
-class ImpaktfullUiNotificationBadgeDurationTheme {
+class ImpaktfullUiNotificationBadgeDurationsTheme {
   final Duration opacity;
 
-  const ImpaktfullUiNotificationBadgeDurationTheme({
+  const ImpaktfullUiNotificationBadgeDurationsTheme({
     required this.opacity,
   });
 
-  ImpaktfullUiNotificationBadgeDurationTheme copyWith({
+  ImpaktfullUiNotificationBadgeDurationsTheme copyWith({
     Duration? opacity,
   }) =>
-      ImpaktfullUiNotificationBadgeDurationTheme(
+      ImpaktfullUiNotificationBadgeDurationsTheme(
         opacity: opacity ?? this.opacity,
       );
 }

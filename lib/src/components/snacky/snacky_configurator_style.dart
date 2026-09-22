@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSnackyConfiguratorColorTheme colors;
-  final ImpaktfullUiSnackyConfiguratorTextStylesTheme textStyles;
+  final ImpaktfullUiSnackyConfiguratorTextStyleTheme textStyles;
   final ImpaktfullUiSnackyConfiguratorDimensTheme dimens;
   final ImpaktfullUiSnackyConfiguratorAssetsTheme assets;
 
@@ -19,7 +19,7 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiSnackyConfiguratorAssetsTheme? assets,
     ImpaktfullUiSnackyConfiguratorColorTheme? colors,
     ImpaktfullUiSnackyConfiguratorDimensTheme? dimens,
-    ImpaktfullUiSnackyConfiguratorTextStylesTheme? textStyles,
+    ImpaktfullUiSnackyConfiguratorTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiSnackyConfiguratorTheme(
         assets: assets ?? this.assets,
@@ -53,7 +53,7 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUiSnackyConfiguratorDimensTheme(
           borderRadius: dimens.borderRadius,
         ),
-        textStyles: const ImpaktfullUiSnackyConfiguratorTextStylesTheme(),
+        textStyles: const ImpaktfullUiSnackyConfiguratorTextStyleTheme(),
         assets: ImpaktfullUiSnackyConfiguratorAssetsTheme(
           close: assets.icons.close,
           chevronRight: assets.icons.chevronRight,
@@ -105,11 +105,11 @@ class ImpaktfullUiSnackyConfiguratorColorTheme {
       );
 }
 
-class ImpaktfullUiSnackyConfiguratorTextStylesTheme {
-  const ImpaktfullUiSnackyConfiguratorTextStylesTheme();
+class ImpaktfullUiSnackyConfiguratorTextStyleTheme {
+  const ImpaktfullUiSnackyConfiguratorTextStyleTheme();
 
-  ImpaktfullUiSnackyConfiguratorTextStylesTheme copyWith() =>
-      const ImpaktfullUiSnackyConfiguratorTextStylesTheme();
+  ImpaktfullUiSnackyConfiguratorTextStyleTheme copyWith() =>
+      const ImpaktfullUiSnackyConfiguratorTextStyleTheme();
 }
 
 class ImpaktfullUiSnackyConfiguratorDimensTheme {

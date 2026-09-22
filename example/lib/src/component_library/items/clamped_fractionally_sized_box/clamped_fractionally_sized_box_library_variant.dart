@@ -13,6 +13,7 @@ class ClampedFractionallySizedBoxLibraryVariant extends ComponentLibraryVariant<
   @override
   List<Widget> build(BuildContext context,
       ClampedFractionallySizedBoxLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiClampedFractionallySizedBox(
         widthFactor: 0.5,

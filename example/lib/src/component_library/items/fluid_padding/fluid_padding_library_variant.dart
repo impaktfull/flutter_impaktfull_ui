@@ -14,6 +14,7 @@ class FluidPaddingLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, FluidPaddingLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         height: 400,

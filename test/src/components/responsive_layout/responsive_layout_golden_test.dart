@@ -5,20 +5,23 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import '../../../util/golden_test_util.dart';
 import '../_layout_test_helpers.dart';
 
+// The theme ImpaktfullUiApp uses when it gets none.
+final _theme = ImpaktfullUiTheme.getDefault();
+
 void main() {
   setUp(() => setupComponentTest());
 
   Widget block(String label, Color color) => Container(
         color: color,
         alignment: Alignment.center,
-        child: Text(label, style: theme.textStyles.onPrimary.text.medium),
+        child: Text(label, style: _theme.textStyles.onPrimary.text.medium),
       );
 
   Widget layout() => ImpaktfullUiResponsiveLayout(
-        small: (context) => block('small', theme.colors.primary),
-        medium: (context) => block('medium', theme.colors.accent),
-        large: (context) => block('large', theme.colors.secondary),
-        extraLarge: (context) => block('extraLarge', theme.colors.success),
+        small: (context) => block('small', _theme.colors.primary),
+        medium: (context) => block('medium', _theme.colors.accent),
+        large: (context) => block('large', _theme.colors.secondary),
+        extraLarge: (context) => block('extraLarge', _theme.colors.success),
       );
 
   runComponentTest(

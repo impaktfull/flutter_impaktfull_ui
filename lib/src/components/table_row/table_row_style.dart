@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiTableRowTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTableRowColorTheme colors;
-  final ImpaktfullUiTableRowTextStylesTheme textStyles;
+  final ImpaktfullUiTableRowTextStyleTheme textStyles;
   final ImpaktfullUiTableRowDimensTheme dimens;
 
   const ImpaktfullUiTableRowTheme({
@@ -15,7 +15,7 @@ class ImpaktfullUiTableRowTheme extends ImpaktfullUiComponentTheme {
   ImpaktfullUiTableRowTheme copyWith({
     ImpaktfullUiTableRowColorTheme? colors,
     ImpaktfullUiTableRowDimensTheme? dimens,
-    ImpaktfullUiTableRowTextStylesTheme? textStyles,
+    ImpaktfullUiTableRowTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiTableRowTheme(
         colors: colors ?? this.colors,
@@ -37,7 +37,7 @@ class ImpaktfullUiTableRowTheme extends ImpaktfullUiComponentTheme {
       const ImpaktfullUiTableRowTheme(
         colors: ImpaktfullUiTableRowColorTheme(),
         dimens: ImpaktfullUiTableRowDimensTheme(),
-        textStyles: ImpaktfullUiTableRowTextStylesTheme(),
+        textStyles: ImpaktfullUiTableRowTextStyleTheme(),
       );
 }
 
@@ -48,11 +48,11 @@ class ImpaktfullUiTableRowColorTheme {
       const ImpaktfullUiTableRowColorTheme();
 }
 
-class ImpaktfullUiTableRowTextStylesTheme {
-  const ImpaktfullUiTableRowTextStylesTheme();
+class ImpaktfullUiTableRowTextStyleTheme {
+  const ImpaktfullUiTableRowTextStyleTheme();
 
-  ImpaktfullUiTableRowTextStylesTheme copyWith() =>
-      const ImpaktfullUiTableRowTextStylesTheme();
+  ImpaktfullUiTableRowTextStyleTheme copyWith() =>
+      const ImpaktfullUiTableRowTextStyleTheme();
 }
 
 class ImpaktfullUiTableRowDimensTheme {

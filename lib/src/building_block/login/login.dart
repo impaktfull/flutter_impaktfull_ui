@@ -37,6 +37,7 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiLocalizationProvider(
       localizations: localizations,
       builder: (context, localizations) => ImpaktfullUiUnifiedScreenLayout(

@@ -5,6 +5,9 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import '../../../util/golden_test_util.dart';
 import '../_layout_test_helpers.dart';
 
+// The theme ImpaktfullUiApp uses when it gets none.
+final _theme = ImpaktfullUiTheme.getDefault();
+
 void main() {
   setUp(() => setupComponentTest());
 
@@ -22,8 +25,8 @@ void main() {
             width: 150,
             height: 150,
             child: ColoredBox(
-              color: theme.colors.border,
-              child: builder(ColoredBox(color: theme.colors.accent)),
+              color: _theme.colors.border,
+              child: builder(ColoredBox(color: _theme.colors.accent)),
             ),
           ),
         ),

@@ -14,6 +14,7 @@ class CarouselLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, CarouselLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         height: 500,

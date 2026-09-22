@@ -116,6 +116,7 @@ export 'src/components/wrap/wrap.dart';
 export 'src/components/wysiwyg/wysiwyg.dart';
 
 // Deprecated
+export 'src/deprecated/deprecated_extensions.dart';
 export 'src/deprecated/deprecated_typedefs.dart';
 
 // Models
@@ -131,12 +132,6 @@ export 'src/theme/theme.dart';
 // Widget Library
 export 'src/widget/override_components/overridable_component_builder.dart';
 export 'src/widget/override_components/overridable_component_configurator.dart';
-
-// Extensions
-export 'src/util/extension/border_radius_geometry_extension.dart';
-export 'src/util/extension/datetime_extensions.dart';
-export 'src/util/extension/edge_insets_geometry_extension.dart';
-export 'src/util/extension/text_style_extension.dart';
 
 // Util
 export 'src/util/accessibility/accessibility.localizations.dart';

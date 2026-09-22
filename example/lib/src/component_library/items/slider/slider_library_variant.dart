@@ -12,6 +12,7 @@ class SliderLibraryVariant
 
   @override
   List<Widget> build(BuildContext context, SliderLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiSlider(
         value: inputs.value.value!,

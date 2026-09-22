@@ -8,7 +8,7 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiCmsHeaderColorTheme colors;
   final ImpaktfullUiCmsHeaderDimensTheme dimens;
   final ImpaktfullUiCmsHeaderShadowsTheme shadows;
-  final ImpaktfullUiCmsHeaderTextStylesTheme textStyles;
+  final ImpaktfullUiCmsHeaderTextStyleTheme textStyles;
 
   const ImpaktfullUiCmsHeaderTheme({
     required this.assets,
@@ -23,7 +23,7 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiCmsHeaderColorTheme? colors,
     ImpaktfullUiCmsHeaderDimensTheme? dimens,
     ImpaktfullUiCmsHeaderShadowsTheme? shadows,
-    ImpaktfullUiCmsHeaderTextStylesTheme? textStyles,
+    ImpaktfullUiCmsHeaderTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiCmsHeaderTheme(
         assets: assets ?? this.assets,
@@ -58,7 +58,7 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
         shadows: ImpaktfullUiCmsHeaderShadowsTheme(
           background: shadows.extraSmall,
         ),
-        textStyles: ImpaktfullUiCmsHeaderTextStylesTheme(
+        textStyles: ImpaktfullUiCmsHeaderTextStyleTheme(
           title: textStyles.onCard.text.large,
           subtitle: textStyles.onCard.text.small.light,
         ),
@@ -135,20 +135,20 @@ class ImpaktfullUiCmsHeaderShadowsTheme {
       );
 }
 
-class ImpaktfullUiCmsHeaderTextStylesTheme {
+class ImpaktfullUiCmsHeaderTextStyleTheme {
   final TextStyle title;
   final TextStyle subtitle;
 
-  const ImpaktfullUiCmsHeaderTextStylesTheme({
+  const ImpaktfullUiCmsHeaderTextStyleTheme({
     required this.title,
     required this.subtitle,
   });
 
-  ImpaktfullUiCmsHeaderTextStylesTheme copyWith({
+  ImpaktfullUiCmsHeaderTextStyleTheme copyWith({
     TextStyle? subtitle,
     TextStyle? title,
   }) =>
-      ImpaktfullUiCmsHeaderTextStylesTheme(
+      ImpaktfullUiCmsHeaderTextStyleTheme(
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );

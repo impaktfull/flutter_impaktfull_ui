@@ -11,6 +11,7 @@ class ComponentLibraryColorInput extends ComponentLibraryInputItem<Color> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiCard(
       width: double.infinity,
       child: ImpaktfullUiColorPicker(

@@ -28,6 +28,25 @@ void main() {
   HalfCircleProgressPainter? halfCircleProgressPainter;
   VirtualKeyboardConfig? virtualKeyboardConfig;
   ImpaktfullUiBBLicenseLocalizations? bbLicensesLocalizations;
+  ImpaktfullUiTableHeaderItemTextStylesTheme? tableHeaderItemTextStylesTheme;
+  ImpaktfullUiSnackyConfiguratorTextStylesTheme?
+      snackyConfiguratorTextStylesTheme;
+  ImpaktfullUiTableRowItemTextStylesTheme? tableRowItemTextStylesTheme;
+  ImpaktfullUiHorizontalTabTextStylesTheme? horizontalTabTextStylesTheme;
+  ImpaktfullUiCmsHeaderTextStylesTheme? cmsHeaderTextStylesTheme;
+  ImpaktfullUiButtonTextStylesTheme? buttonTextStylesTheme;
+  ImpaktfullUiListViewTextStylesTheme? listViewTextStylesTheme;
+  ImpaktfullUiInputFieldTextStylesTheme? inputFieldTextStylesTheme;
+  ImpaktfullUiTableRowTextStylesTheme? tableRowTextStylesTheme;
+  ImpaktfullUiBadgeTextStylesTheme? badgeTextStylesTheme;
+  ImpaktfullUiLoadingIndicatorAssetTheme? loadingIndicatorAssetTheme;
+  ImpaktfullUiTooltipDurationTheme? tooltipDurationTheme;
+  ImpaktfullUiNotificationBadgeDurationTheme? notificationBadgeDurationTheme;
+  ImpaktfullUiSidebarNavigationItemDurationTheme?
+      sidebarNavigationItemDurationTheme;
+  ImpaktfullUiDropdownShadowTheme? dropdownShadowTheme;
+  ImpaktfullUiButtonShadowTheme? buttonShadowTheme;
+  ImpaktfullUiAutoCompleteShadowTheme? autoCompleteShadowTheme;
   ImpaktfullUIAdaptivePageRoute.create<void>(
       builder: (context) => const SizedBox());
   const TableColumnConfig(flex: 1);
@@ -62,6 +81,18 @@ void main() {
   final touchFeedback = ImpaktfullUiTouchFeedback(
       onTap: null, toolTip: '', child: const SizedBox());
   touchFeedback.toolTip;
+  components.checkBoxListItem;
+  components.copyWith(checkBoxListItem: components.checkBoxListItem);
+  final button = components.button;
+  button.shadow;
+  button.copyWith(shadow: button.shadow);
+  ImpaktfullUiButtonTheme(
+      colors: button.colors,
+      dimens: button.dimens,
+      durations: button.durations,
+      textStyles: button.textStyles,
+      config: button.config,
+      shadow: button.shadow);
   ImpaktfullUiListItemType.neutral.simpleLisItemType;
   ImpaktfullUiWysiwygAction.orderdList;
   const ImpaktfullUiScreen(
@@ -93,5 +124,22 @@ void main() {
     halfCircleProgressPainter,
     virtualKeyboardConfig,
     bbLicensesLocalizations,
+    tableHeaderItemTextStylesTheme,
+    snackyConfiguratorTextStylesTheme,
+    tableRowItemTextStylesTheme,
+    horizontalTabTextStylesTheme,
+    cmsHeaderTextStylesTheme,
+    buttonTextStylesTheme,
+    listViewTextStylesTheme,
+    inputFieldTextStylesTheme,
+    tableRowTextStylesTheme,
+    badgeTextStylesTheme,
+    loadingIndicatorAssetTheme,
+    tooltipDurationTheme,
+    notificationBadgeDurationTheme,
+    sidebarNavigationItemDurationTheme,
+    dropdownShadowTheme,
+    buttonShadowTheme,
+    autoCompleteShadowTheme,
   ].toString());
 }

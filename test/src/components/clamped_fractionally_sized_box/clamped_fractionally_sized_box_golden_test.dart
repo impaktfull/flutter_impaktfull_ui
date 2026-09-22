@@ -5,6 +5,9 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import '../../../util/golden_test_util.dart';
 import '../_layout_test_helpers.dart';
 
+// The theme ImpaktfullUiApp uses when it gets none.
+final _theme = ImpaktfullUiTheme.getDefault();
+
 void main() {
   setUp(() => setupComponentTest());
 
@@ -16,13 +19,13 @@ void main() {
   }) =>
       Container(
         height: 40,
-        color: theme.colors.border,
+        color: _theme.colors.border,
         child: ImpaktfullUiClampedFractionallySizedBox(
           widthFactor: widthFactor,
           minWidth: minWidth,
           maxWidth: maxWidth,
           alignment: alignment,
-          child: Container(color: theme.colors.accent),
+          child: Container(color: _theme.colors.accent),
         ),
       );
 

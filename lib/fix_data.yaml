@@ -442,3 +442,201 @@ transforms:
       - kind: 'renameParameter'
         oldName: 'fabAlignment'
         newName: 'floatingActionButtonAlignment'
+
+  # Component theme classes renamed to the naming of the others
+  - title: "Rename to 'ImpaktfullUiTableHeaderItemTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiTableHeaderItemTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiTableHeaderItemTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiSnackyConfiguratorTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiSnackyConfiguratorTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiSnackyConfiguratorTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiTableRowItemTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiTableRowItemTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiTableRowItemTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiHorizontalTabTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiHorizontalTabTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiHorizontalTabTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiCmsHeaderTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiCmsHeaderTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiCmsHeaderTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiButtonTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiButtonTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiButtonTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiListViewTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiListViewTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiListViewTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiInputFieldTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiInputFieldTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiInputFieldTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiTableRowTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiTableRowTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiTableRowTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiBadgeTextStyleTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiBadgeTextStylesTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiBadgeTextStyleTheme'
+  - title: "Rename to 'ImpaktfullUiLoadingIndicatorAssetsTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiLoadingIndicatorAssetTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiLoadingIndicatorAssetsTheme'
+  - title: "Rename to 'ImpaktfullUiTooltipDurationsTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiTooltipDurationTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiTooltipDurationsTheme'
+  - title: "Rename to 'ImpaktfullUiNotificationBadgeDurationsTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiNotificationBadgeDurationTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiNotificationBadgeDurationsTheme'
+  - title: "Rename to 'ImpaktfullUiSidebarNavigationItemDurationsTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiSidebarNavigationItemDurationTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiSidebarNavigationItemDurationsTheme'
+  - title: "Rename to 'ImpaktfullUiDropdownShadowsTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiDropdownShadowTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiDropdownShadowsTheme'
+  - title: "Rename to 'ImpaktfullUiButtonShadowsTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiButtonShadowTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiButtonShadowsTheme'
+  - title: "Rename to 'ImpaktfullUiAutoCompleteShadowsTheme'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      typedef: 'ImpaktfullUiAutoCompleteShadowTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'ImpaktfullUiAutoCompleteShadowsTheme'
+
+  # Renamed parameters and getters of component themes
+  - title: "Rename parameter 'shadow' to 'shadows'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiButtonTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'shadow'
+        newName: 'shadows'
+  - title: "Rename parameter 'shadow' to 'shadows'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      method: 'copyWith'
+      inClass: 'ImpaktfullUiButtonTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'shadow'
+        newName: 'shadows'
+  - title: "Rename to 'shadows'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'shadow'
+      inClass: 'ImpaktfullUiButtonTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'shadows'
+  - title: "Rename parameter 'checkBoxListItem' to 'checkboxListItem'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiComponentsTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'checkBoxListItem'
+        newName: 'checkboxListItem'
+  - title: "Rename parameter 'checkBoxListItem' to 'checkboxListItem'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      method: 'copyWith'
+      inClass: 'ImpaktfullUiComponentsTheme'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'checkBoxListItem'
+        newName: 'checkboxListItem'
+  - title: "Rename to 'checkboxListItem'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'checkBoxListItem'
+      inClass: 'ImpaktfullUiComponentsTheme'
+    changes:
+      - kind: 'rename'
+        newName: 'checkboxListItem'

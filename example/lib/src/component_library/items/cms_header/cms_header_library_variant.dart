@@ -13,6 +13,7 @@ class CmsHeaderVariant
   @override
   List<Widget> build(
       BuildContext context, CmsHeaderLibraryVariantInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiCmsHeader(
         title: inputs.title.value ?? '{fallback title}',
