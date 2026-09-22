@@ -137,11 +137,12 @@ jobs:
       - name: Test in Chrome (${{ matrix.compiler }})
         run: ./tool/test_web.sh ${{ matrix.args }}
 
-  # Builds the example for the platforms that need a native build, to catch a
-  # dependency (plugin) that breaks the build of one of them. Both run on
-  # ubuntu. iOS, macOS and Windows are left out to keep CI fast and cheap:
-  # they share the Dart code with the others, and pana (below) checks that
-  # every dependency supports them.
+  # Builds the example for every platform that needs a native build, to catch
+  # a dependency (plugin) or a native project setting (deployment target,
+  # CMake, Gradle) that breaks the build of one of them. Together with the web
+  # builds in `example`, every platform the package supports is built on each
+  # pull request. iOS is built for a device without code signing, so no
+  # certificates are needed.
   example_platforms:
     strategy:
       fail-fast: false
@@ -153,8 +154,22 @@ jobs:
           - platform: linux
             os: ubuntu-latest
             build: flutter build linux --debug
+          - platform: ios
+            os: macos-latest
+            build: flutter build ios --debug --no-codesign
+          - platform: macos
+            os: macos-latest
+            build: flutter build macos --debug
+          - platform: windows
+            os: windows-latest
+            build: flutter build windows --debug
     name: example (${{ matrix.platform }})
     runs-on: ${{ matrix.os }}
+    # bash on every runner, also on Windows (PowerShell by default), so the
+    # steps below are the same everywhere.
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v4
 
