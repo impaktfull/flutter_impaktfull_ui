@@ -23,6 +23,8 @@ void main() {
     ImpaktfullUiAutoCompleteController? controller,
     ImpaktfullUiAutoCompleteTheme? theme,
     void Function(String item)? onItemTapped,
+    void Function(String item, ImpaktfullUiAutoCompleteController controller)?
+        onItemSelected,
   }) =>
       Align(
         alignment: Alignment.topCenter,
@@ -33,6 +35,7 @@ void main() {
             noDataLabel: 'No results',
             controller: controller,
             theme: theme,
+            onItemSelected: onItemSelected,
             onSearchChanged: (query) {
               searches?.add(query);
               return countries
@@ -190,4 +193,209 @@ void main() {
       });
     },
   );
+
+  Finder overlayFinder() =>
+      find.byType(ImpaktfullUiAutoCompleteOverlay<String>);
+
+  group('closing', () {
+    testWidgets('tapping outside closes the overlay', (tester) async {
+      await pumpComponent(tester, buildSut());
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      expect(overlayFinder(), findsOneWidget);
+      await tester.tapAt(const Offset(10, 590));
+      await tester.pump();
+      expect(overlayFinder(), findsNothing);
+      // The text is kept.
+      expect(tester.widget<TextField>(find.byType(TextField)).controller!.text,
+          'b');
+    });
+
+    testWidgets('tapping the input field keeps the overlay open',
+        (tester) async {
+      await pumpComponent(tester, buildSut());
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      await tester.tap(find.byType(TextField));
+      await tester.pump();
+      expect(overlayFinder(), findsOneWidget);
+    });
+
+    testWidgets('tapping an item does not close the overlay by itself',
+        (tester) async {
+      final tapped = <String>[];
+      await pumpComponent(
+        tester,
+        Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+            width: 400,
+            child: ImpaktfullUiAutoComplete<String>(
+              noDataLabel: 'No results',
+              onSearchChanged: (query) => countries,
+              itemBuilder: (context, item, index, controller) =>
+                  ImpaktfullUiSimpleListItem(
+                title: item,
+                onTap: () => tapped.add(item),
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      await tester.tap(find.text('France'));
+      await tester.pump();
+      expect(tapped, ['France']);
+      expect(overlayFinder(), findsOneWidget);
+    });
+
+    testWidgets('losing the focus closes the overlay', (tester) async {
+      await pumpComponent(tester, buildSut());
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      expect(overlayFinder(), findsOneWidget);
+      FocusManager.instance.primaryFocus?.unfocus();
+      await tester.pump();
+      await tester.pump();
+      expect(overlayFinder(), findsNothing);
+    });
+  });
+
+  group('keyboard', () {
+    Color? highlightOf(WidgetTester tester, String item) {
+      final container = tester.widgetList<Container>(find.ancestor(
+        of: find.text(item),
+        matching: find.byType(Container),
+      ));
+      for (final widget in container) {
+        final decoration = widget.foregroundDecoration;
+        if (decoration is BoxDecoration && decoration.color != null) {
+          return decoration.color;
+        }
+      }
+      return null;
+    }
+
+    testWidgets('arrow down and up move the highlight and wrap around',
+        (tester) async {
+      await pumpComponent(tester, buildSut());
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      expect(highlightOf(tester, 'Belgium'), isNull);
+      expect(highlightOf(tester, 'Bulgaria'), isNull);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.pump();
+      expect(highlightOf(tester, 'Belgium'), isNotNull);
+      expect(highlightOf(tester, 'Bulgaria'), isNull);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.pump();
+      expect(highlightOf(tester, 'Belgium'), isNull);
+      expect(highlightOf(tester, 'Bulgaria'), isNotNull);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.pump();
+      expect(highlightOf(tester, 'Belgium'), isNotNull);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowUp);
+      await tester.pump();
+      expect(highlightOf(tester, 'Bulgaria'), isNotNull);
+    });
+
+    testWidgets('arrow up without a highlight highlights the last item',
+        (tester) async {
+      await pumpComponent(tester, buildSut());
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowUp);
+      await tester.pump();
+      expect(highlightOf(tester, 'Bulgaria'), isNotNull);
+      expect(highlightOf(tester, 'Belgium'), isNull);
+    });
+
+    testWidgets('enter selects the highlighted item', (tester) async {
+      final selected = <String>[];
+      await pumpComponent(
+        tester,
+        buildSut(
+          onItemSelected: (item, controller) {
+            selected.add(item);
+            controller.close(clear: true);
+          },
+        ),
+      );
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.pump();
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pump();
+      expect(selected, ['Bulgaria']);
+      expect(overlayFinder(), findsNothing);
+      expect(tester.widget<TextField>(find.byType(TextField)).controller!.text,
+          isEmpty);
+    });
+
+    testWidgets('enter without a highlighted item selects nothing',
+        (tester) async {
+      final selected = <String>[];
+      await pumpComponent(
+        tester,
+        buildSut(onItemSelected: (item, controller) => selected.add(item)),
+      );
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pump();
+      expect(selected, isEmpty);
+    });
+
+    testWidgets('a new search removes the highlight', (tester) async {
+      final selected = <String>[];
+      await pumpComponent(
+        tester,
+        buildSut(onItemSelected: (item, controller) => selected.add(item)),
+      );
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.pump();
+      await tester.enterText(find.byType(TextField), 'fr');
+      await waitForSearch(tester);
+      expect(highlightOf(tester, 'France'), isNull);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pump();
+      expect(selected, isEmpty);
+    });
+
+    testWidgets('the arrow keys do nothing without an overlay', (tester) async {
+      await pumpComponent(tester, buildSut());
+      await tester.tap(find.byType(TextField));
+      await tester.pump();
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.pump();
+      expect(overlayFinder(), findsNothing);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('the highlight uses the color of the theme', (tester) async {
+      final theme = defaultComponentsTheme.autoComplete;
+      await pumpComponent(
+        tester,
+        buildSut(
+          theme: theme.copyWith(
+            colors: theme.colors.copyWith(highlightedItem: customTestColor),
+          ),
+        ),
+      );
+      await tester.enterText(find.byType(TextField), 'b');
+      await waitForSearch(tester);
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.pump();
+      expect(highlightOf(tester, 'Belgium'), customTestColor);
+    });
+  });
 }

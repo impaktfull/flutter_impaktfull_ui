@@ -288,6 +288,17 @@ void main() {
       expect(child.child, isA<SizedBox>());
     });
 
+    test('ImpaktfullUiAutoComplete(replaceWithOverlay:) has no effect', () {
+      final autoComplete = ImpaktfullUiAutoComplete<String>(
+        onSearchChanged: (query) => [],
+        itemBuilder: (context, item, index, controller) => Text(item),
+        noDataLabel: 'No results',
+        replaceWithOverlay: true,
+      );
+      expect(autoComplete.replaceWithOverlay, isTrue);
+      expect(autoComplete.noDataLabel, 'No results');
+    });
+
     test('ImpaktfullUiScreen.fabAlignment', () {
       const screen = ImpaktfullUiScreen(
         fabAlignment: Alignment.bottomLeft,

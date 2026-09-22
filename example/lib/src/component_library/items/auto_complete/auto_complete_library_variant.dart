@@ -40,6 +40,11 @@ class AutoCompleteLibraryVariant
             controller.close(clear: true);
           },
         ),
+        // Highlight an item with the arrow keys and press enter.
+        onItemSelected: (item, controller) {
+          inputs.selectedIndex.updateState(int.parse(item.split(':').first));
+          controller.close(clear: true);
+        },
         noDataLabel: 'No data found',
       ),
       const SizedBox(height: 1000),

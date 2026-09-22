@@ -101,6 +101,13 @@ void main() {
       fabAlignment: Alignment.bottomLeft,
       builder: (context) => const SizedBox());
 
+  // Removed parameters that never had an effect
+  ImpaktfullUiAutoComplete<String>(
+      onSearchChanged: (query) => [],
+      itemBuilder: (context, item, index, controller) => Text(item),
+      replaceWithOverlay: true,
+      noDataLabel: '');
+
   debugPrint([
     carousel,
     carouselTheme,

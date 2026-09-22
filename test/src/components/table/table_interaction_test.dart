@@ -276,4 +276,84 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  group('columnConfig', () {
+    const tableConfig = [
+      ImpaktfullUiTableColumnConfig.fixedSize(size: 100),
+      ImpaktfullUiTableColumnConfig(flex: 1),
+    ];
+
+    Widget buildTable({
+      List<ImpaktfullUiTableColumnConfig> rowConfig = const [],
+    }) =>
+        ImpaktfullUiTable(
+          columnConfig: tableConfig,
+          titles: const [
+            ImpaktfullUiTableHeaderItem(title: 'Header 1'),
+            ImpaktfullUiTableHeaderItem(title: 'Header 2'),
+          ],
+          content: [
+            ImpaktfullUiTableRow(
+              columnConfig: rowConfig,
+              columns: const [
+                ImpaktfullUiTableRowItem.text(title: 'Cell 1'),
+                ImpaktfullUiTableRowItem.text(title: 'Cell 2'),
+              ],
+            ),
+          ],
+        );
+
+    testWidgets('a row without a columnConfig uses the one of the table',
+        (tester) async {
+      await pumpSized(tester, buildTable(), size: const Size(800, 400));
+      expect(
+        tester.getTopLeft(find.text('Cell 2')).dx,
+        tester.getTopLeft(find.text('Header 2')).dx,
+      );
+      expect(
+        tester.getSize(find.byType(ImpaktfullUiTableRowItem).first).width,
+        100,
+      );
+    });
+
+    testWidgets('the columnConfig of a row overrides the one of the table',
+        (tester) async {
+      await pumpSized(
+        tester,
+        buildTable(
+          rowConfig: const [
+            ImpaktfullUiTableColumnConfig.fixedSize(size: 200),
+            ImpaktfullUiTableColumnConfig(flex: 1),
+          ],
+        ),
+        size: const Size(800, 400),
+      );
+      expect(
+        tester.getSize(find.byType(ImpaktfullUiTableRowItem).first).width,
+        200,
+      );
+      expect(
+        tester.getSize(find.byType(ImpaktfullUiTableHeaderItem).first).width,
+        100,
+      );
+    });
+
+    testWidgets('a row outside of a table uses equal columns', (tester) async {
+      await pumpSized(
+        tester,
+        ImpaktfullUiTableRow(
+          columns: const [
+            ImpaktfullUiTableRowItem.text(title: 'Cell 1'),
+            ImpaktfullUiTableRowItem.text(title: 'Cell 2'),
+          ],
+        ),
+        size: const Size(800, 400),
+      );
+      final items = find.byType(ImpaktfullUiTableRowItem);
+      expect(
+        tester.getSize(items.first).width,
+        tester.getSize(items.last).width,
+      );
+    });
+  });
 }

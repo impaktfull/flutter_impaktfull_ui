@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/components/divider/divider.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator.dart';
 import 'package:impaktfull_ui/src/components/table/table.dart';
 import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
+import 'package:impaktfull_ui/src/components/table/table_column_config_scope.dart';
 import 'package:impaktfull_ui/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui/src/components/table_row/table_row.dart';
@@ -12,6 +13,8 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 export 'table_style.dart';
 
 class ImpaktfullUiTable extends StatelessWidget {
+  /// The width of every column. The header and every row of [content] use it,
+  /// unless they have a `columnConfig` of their own.
   final List<ImpaktfullUiTableColumnConfig> columnConfig;
   final List<ImpaktfullUiTableHeaderItem> titles;
   final List<ImpaktfullUiTableRow> content;
@@ -48,41 +51,44 @@ class ImpaktfullUiTable extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: componentTheme.dimens.borderRadius,
-          child: _TableContainer(
+          child: ImpaktfullUiTableColumnConfigScope(
             columnConfig: columnConfig,
-            amountOfColumns: titles.length,
-            borderRadius: componentTheme.dimens.borderRadius,
-            child: ImpaktfullUiAutoLayout.vertical(
-              mainAxisSize: shrinkWrap ? MainAxisSize.min : MainAxisSize.max,
-              children: [
-                ImpaktfullUiTableHeader(
-                  titles: titles,
-                  columnConfig: columnConfig,
-                ),
-                const ImpaktfullUiDivider(),
-                Builder(
-                  builder: (context) {
-                    Widget child;
-                    if (isLoading) {
-                      child = const Center(
-                        child: ImpaktfullUiLoadingIndicator(),
-                      );
-                    } else {
-                      child = ListView.separated(
-                        itemCount: content.length,
-                        shrinkWrap: shrinkWrap,
-                        itemBuilder: (context, index) => content[index],
-                        separatorBuilder: (contex, index) =>
-                            const ImpaktfullUiDivider(),
-                      );
-                    }
-                    if (shrinkWrap) {
-                      return child;
-                    }
-                    return Expanded(child: child);
-                  },
-                ),
-              ],
+            child: _TableContainer(
+              columnConfig: columnConfig,
+              amountOfColumns: titles.length,
+              borderRadius: componentTheme.dimens.borderRadius,
+              child: ImpaktfullUiAutoLayout.vertical(
+                mainAxisSize: shrinkWrap ? MainAxisSize.min : MainAxisSize.max,
+                children: [
+                  ImpaktfullUiTableHeader(
+                    titles: titles,
+                    columnConfig: columnConfig,
+                  ),
+                  const ImpaktfullUiDivider(),
+                  Builder(
+                    builder: (context) {
+                      Widget child;
+                      if (isLoading) {
+                        child = const Center(
+                          child: ImpaktfullUiLoadingIndicator(),
+                        );
+                      } else {
+                        child = ListView.separated(
+                          itemCount: content.length,
+                          shrinkWrap: shrinkWrap,
+                          itemBuilder: (context, index) => content[index],
+                          separatorBuilder: (contex, index) =>
+                              const ImpaktfullUiDivider(),
+                        );
+                      }
+                      if (shrinkWrap) {
+                        return child;
+                      }
+                      return Expanded(child: child);
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -23,6 +23,16 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
     super.key,
   });
 
+  /// The [SnackyController] of the closest [ImpaktfullUiSnackyConfigurator]
+  /// (or `ImpaktfullUiApp`), or null when there is none.
+  ///
+  /// This is the `snackyController` passed to the configurator, or
+  /// [SnackyController.instance] when none was passed.
+  static SnackyController? maybeSnackyControllerOf(BuildContext context) =>
+      context
+          .getInheritedWidgetOfExactType<_SnackyControllerScope>()
+          ?.snackyController;
+
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
@@ -68,9 +78,25 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
               ),
             ],
           ),
-          app: app,
+          app: _SnackyControllerScope(
+            snackyController: snackyController ?? SnackyController.instance,
+            child: app,
+          ),
         );
       },
     );
   }
+}
+
+class _SnackyControllerScope extends InheritedWidget {
+  final SnackyController snackyController;
+
+  const _SnackyControllerScope({
+    required this.snackyController,
+    required super.child,
+  });
+
+  @override
+  bool updateShouldNotify(_SnackyControllerScope oldWidget) =>
+      snackyController != oldWidget.snackyController;
 }

@@ -49,9 +49,7 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   void initState() {
     super.initState();
     _currentPage = widget.index;
-    _pageController = PageController(
-      initialPage: widget.index,
-    );
+    _pageController = PageController(initialPage: widget.index);
   }
 
   @override
@@ -127,7 +125,10 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   @override
   void didUpdateWidget(ImpaktfullUiCarousel oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.index != widget.index) {
+    // Only animate when the page is not shown yet: a parent that passes the
+    // index of `onItemChanged` back would otherwise interrupt the swipe of
+    // the user.
+    if (oldWidget.index != widget.index && widget.index != _currentPage) {
       if (_reduceMotion == true) {
         _pageController.jumpToPage(widget.index);
       } else {
@@ -175,8 +176,9 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
             Semantics(
               container: true,
               liveRegion: true,
-              label: ImpaktfullUiAccessibilityLocalizations.of(context)
-                  .slideLabel(_currentPage + 1, widget.items.length),
+              label: ImpaktfullUiAccessibilityLocalizations.of(
+                context,
+              ).slideLabel(_currentPage + 1, widget.items.length),
               child: Padding(
                 padding: componentTheme.dimens.indicatorPadding,
                 child: Row(

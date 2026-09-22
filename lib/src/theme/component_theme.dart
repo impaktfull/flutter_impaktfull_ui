@@ -30,6 +30,7 @@ import 'package:impaktfull_ui/src/components/gallery/gallery.dart';
 import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
+import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/introduction/introduction.dart';
 import 'package:impaktfull_ui/src/components/list_item/list_item.dart';
@@ -121,6 +122,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiGridViewTheme gridView;
   final ImpaktfullUiHorizontalTabTheme horizontalTab;
   final ImpaktfullUiHorizontalTabsTheme horizontalTabs;
+  final ImpaktfullUiIconButtonTheme iconButton;
   final ImpaktfullUiImageCropTheme imageCrop;
   final ImpaktfullUiInputFieldTheme inputField;
   final ImpaktfullUiIntroductionTheme introduction;
@@ -214,6 +216,9 @@ class ImpaktfullUiComponentsTheme {
     required this.gallery,
     required this.horizontalTab,
     required this.horizontalTabs,
+    // Optional, so adding it does not break code that creates this class.
+    // Defaults to ImpaktfullUiIconButtonTheme.fallback.
+    ImpaktfullUiIconButtonTheme? iconButton,
     required this.imageCrop,
     required this.inputField,
     required this.introduction,
@@ -270,7 +275,8 @@ class ImpaktfullUiComponentsTheme {
         carousel = (carousel ?? carrousel)!,
         assert(checkboxListItem != null || checkBoxListItem != null,
             'checkboxListItem is required'),
-        checkboxListItem = (checkboxListItem ?? checkBoxListItem)!;
+        checkboxListItem = (checkboxListItem ?? checkBoxListItem)!,
+        iconButton = iconButton ?? ImpaktfullUiIconButtonTheme.fallback;
 
   @Deprecated('Use carousel instead. Will be removed in 1.0.0.')
   ImpaktfullUiCarouselTheme get carrousel => carousel;
@@ -315,6 +321,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiGridViewTheme? gridView,
     ImpaktfullUiHorizontalTabTheme? horizontalTab,
     ImpaktfullUiHorizontalTabsTheme? horizontalTabs,
+    ImpaktfullUiIconButtonTheme? iconButton,
     ImpaktfullUiImageCropTheme? imageCrop,
     ImpaktfullUiInputFieldTheme? inputField,
     ImpaktfullUiIntroductionTheme? introduction,
@@ -402,6 +409,7 @@ class ImpaktfullUiComponentsTheme {
         gallery: gallery ?? this.gallery,
         horizontalTab: horizontalTab ?? this.horizontalTab,
         horizontalTabs: horizontalTabs ?? this.horizontalTabs,
+        iconButton: iconButton ?? this.iconButton,
         imageCrop: imageCrop ?? this.imageCrop,
         inputField: inputField ?? this.inputField,
         introduction: introduction ?? this.introduction,
@@ -523,6 +531,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiHorizontalTabTheme.of(context) as T;
     } else if (T == ImpaktfullUiHorizontalTabsTheme) {
       return ImpaktfullUiHorizontalTabsTheme.of(context) as T;
+    } else if (T == ImpaktfullUiIconButtonTheme) {
+      return ImpaktfullUiIconButtonTheme.of(context) as T;
     } else if (T == ImpaktfullUiImageCropTheme) {
       return ImpaktfullUiImageCropTheme.of(context) as T;
     } else if (T == ImpaktfullUiInputFieldTheme) {

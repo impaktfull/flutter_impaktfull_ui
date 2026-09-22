@@ -640,3 +640,14 @@ transforms:
     changes:
       - kind: 'rename'
         newName: 'checkboxListItem'
+
+  # Removed parameters that never had an effect
+  - title: "Remove 'replaceWithOverlay'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiAutoComplete'
+    changes:
+      - kind: 'removeParameter'
+        name: 'replaceWithOverlay'

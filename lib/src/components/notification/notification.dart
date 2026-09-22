@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/components/notification/notification.dart';
+import 'package:impaktfull_ui/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 import 'package:snacky/snacky.dart';
@@ -72,6 +73,24 @@ class ImpaktfullUiNotification extends StatelessWidget {
     super.key,
   });
 
+  /// Shows a notification with the snacky controller of the app.
+  ///
+  /// The controller is, in this order: [controller], the `snackyController`
+  /// of the `ImpaktfullUiApp` or `ImpaktfullUiSnackyConfigurator` above
+  /// [context], or [SnackyController.instance]. Pass [context] (or
+  /// [controller]) when you pass a custom `snackyController` to the app.
+  ///
+  /// By default ([cancelAll] is true) the new notification replaces every
+  /// notification: the one on screen and the ones that are waiting in the
+  /// queue. Pass `cancelAll: false` to queue it after the others instead, and
+  /// `cancelActive: true` (with `cancelAll: false`) to only replace the one
+  /// on screen and keep the queue.
+  ///
+  /// [onTap], [leading], [trailing] and [width] are passed to the
+  /// [ImpaktfullUiNotification]. Without [width] the notification takes the
+  /// width of the snacky layout of the configurator. When one of them is
+  /// passed, the notification is always an [ImpaktfullUiNotification], also
+  /// when the app has a custom `snackyBuilder`.
   static void show({
     required String title,
     String? subtitle,
@@ -79,20 +98,54 @@ class ImpaktfullUiNotification extends StatelessWidget {
     bool cancelActive = false,
     bool cancelAll = true,
     ImpaktfullUiNotificationType type = ImpaktfullUiNotificationType.success,
+    BuildContext? context,
+    SnackyController? controller,
+    VoidCallback? onTap,
+    Widget? leading,
+    Widget? trailing,
+    double? width,
   }) {
+    final snackyController = controller ??
+        (context == null
+            ? null
+            : ImpaktfullUiSnackyConfigurator.maybeSnackyControllerOf(
+                context)) ??
+        SnackyController.instance;
     if (cancelActive) {
-      SnackyController.instance.cancelActiveSnacky();
+      snackyController.cancelActiveSnacky();
     }
     if (cancelAll) {
-      SnackyController.instance.cancelAll();
+      snackyController.cancelAll();
     }
-    SnackyController.instance.showMessage(
-      (context) => Snacky(
-        title: title,
-        subtitle: subtitle,
-        type: type._snackyType,
-        showDuration: showDuration,
+    if (onTap == null && leading == null && trailing == null && width == null) {
+      snackyController.showMessage(
+        (context) => Snacky(
+          title: title,
+          subtitle: subtitle,
+          type: type._snackyType,
+          showDuration: showDuration,
+          canBeClosed: true,
+        ),
+      );
+      return;
+    }
+    snackyController.showMessage(
+      (context) => Snacky.widget(
+        showDuration: showDuration ??
+            Snacky(title: title, subtitle: subtitle).showDuration,
         canBeClosed: true,
+        builder: (context, cancelableSnacky) => ImpaktfullUiNotification(
+          title: title,
+          subtitle: subtitle,
+          width: width,
+          type: type,
+          onTap: onTap,
+          onCloseTapped: cancelableSnacky.cancel,
+          leadingWidgetBuilder:
+              leading == null ? null : (context, config) => leading,
+          trailingWidgetBuilder:
+              trailing == null ? null : (context, config) => trailing,
+        ),
       ),
     );
   }

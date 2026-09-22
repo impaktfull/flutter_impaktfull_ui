@@ -33,10 +33,10 @@ void main() {
     ('Max Power', longText, 'Blocked', ImpaktfullUiBadgeType.error),
   ];
 
-  List<ImpaktfullUiTableRow> rows() => [
+  List<ImpaktfullUiTableRow> rows({bool withColumnConfig = true}) => [
         for (final (index, (name, email, status, badgeType)) in people.indexed)
           ImpaktfullUiTableRow(
-            columnConfig: columnConfig,
+            columnConfig: withColumnConfig ? columnConfig : const [],
             onTap: () {},
             columns: [
               ImpaktfullUiTableRowItem.checkbox(
@@ -91,6 +91,24 @@ void main() {
             columnConfig: columnConfig,
             titles: titles(),
             content: const [],
+          ),
+        ),
+      ),
+    ],
+  );
+
+  runComponentTest(
+    fileName: 'impaktfull_ui_table_inherited_column_config',
+    goldenTests: () => [
+      GoldenTest(
+        description: 'rows without a columnConfig use the one of the table',
+        child: goldenBox(
+          width: 840,
+          height: 280,
+          child: ImpaktfullUiTable(
+            columnConfig: columnConfig,
+            titles: titles(),
+            content: rows(withColumnConfig: false),
           ),
         ),
       ),

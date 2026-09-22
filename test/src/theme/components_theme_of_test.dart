@@ -76,6 +76,7 @@ final _entries = <_ThemeEntry>[
       'horizontalTab', (t) => t.horizontalTab),
   _ThemeEntry<ImpaktfullUiHorizontalTabsTheme>(
       'horizontalTabs', (t) => t.horizontalTabs),
+  _ThemeEntry<ImpaktfullUiIconButtonTheme>('iconButton', (t) => t.iconButton),
   _ThemeEntry<ImpaktfullUiImageCropTheme>('imageCrop', (t) => t.imageCrop),
   _ThemeEntry<ImpaktfullUiInputFieldTheme>('inputField', (t) => t.inputField),
   _ThemeEntry<ImpaktfullUiIntroductionTheme>(
