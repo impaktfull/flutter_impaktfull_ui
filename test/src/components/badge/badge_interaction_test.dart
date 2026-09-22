@@ -15,7 +15,7 @@ void main() {
       Center(
         child: ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.primary,
-          label: 'Badge',
+          title: 'Badge',
           onTap: () => taps++,
         ),
       ),
@@ -24,7 +24,7 @@ void main() {
     expect(taps, 1);
   });
 
-  testWidgets('onCloseTap is called when the close icon is tapped',
+  testWidgets('onCloseTapped is called when the close icon is tapped',
       (tester) async {
     var taps = 0;
     var closeTaps = 0;
@@ -33,9 +33,9 @@ void main() {
       Center(
         child: ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.primary,
-          label: 'Badge',
+          title: 'Badge',
           onTap: () => taps++,
-          onCloseTap: () => closeTaps++,
+          onCloseTapped: () => closeTaps++,
         ),
       ),
     );
@@ -50,9 +50,9 @@ void main() {
       Center(
         child: ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.primary,
-          label: 'Badge',
+          title: 'Badge',
           trailingAsset: testIcon2,
-          onCloseTap: () {},
+          onCloseTapped: () {},
         ),
       ),
     );
@@ -68,7 +68,7 @@ void main() {
         Center(
           child: ImpaktfullUiBadge(
             type: ImpaktfullUiBadgeType.primary,
-            label: 'Badge',
+            title: 'Badge',
             size: size,
             leadingAsset: testIcon,
             trailingAsset: testIcon2,
@@ -94,7 +94,7 @@ void main() {
     testWidgets('$type uses its own text color', (tester) async {
       await pumpAndSettleComponent(
         tester,
-        Center(child: ImpaktfullUiBadge(type: type, label: 'Badge')),
+        Center(child: ImpaktfullUiBadge(type: type, title: 'Badge')),
       );
       expect(tester.widget<Text>(find.text('Badge')).style?.color, color);
     });
@@ -107,7 +107,7 @@ void main() {
       const Center(
         child: ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.primary,
-          label: 'Badge',
+          title: 'Badge',
           leading: ImpaktfullUiCustomBadgeWidget(
             child: SizedBox(width: 40, height: 10),
           ),
@@ -126,7 +126,7 @@ void main() {
       const Center(
         child: ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.primary,
-          label: 'Badge',
+          title: 'Badge',
           size: ImpaktfullUiBadgeSize.large,
           leading: ColoredBox(color: Colors.red),
         ),
@@ -147,9 +147,9 @@ void main() {
           width: 150,
           child: ImpaktfullUiBadge(
             type: ImpaktfullUiBadgeType.primary,
-            label: longText,
+            title: longText,
             leadingAsset: testIcon,
-            onCloseTap: () {},
+            onCloseTapped: () {},
           ),
         ),
       ),
@@ -173,7 +173,7 @@ void main() {
             alignment: AlignmentDirectional.centerStart,
             child: ImpaktfullUiBadge(
               type: ImpaktfullUiBadgeType.primary,
-              label: 'Badge',
+              title: 'Badge',
             ),
           ),
         ),
@@ -192,7 +192,7 @@ void main() {
           children: [
             ImpaktfullUiBadge(
               type: ImpaktfullUiBadgeType.primary,
-              label: longText,
+              title: longText,
             ),
           ],
         ),

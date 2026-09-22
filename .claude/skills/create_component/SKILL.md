@@ -153,6 +153,24 @@ class ImpaktfullUi<ComponentName> extends StatelessWidget {
 }
 ```
 
+#### Naming public parameters
+
+Name the parameters of a new component like Flutter and the other components do (the full rules are in `AGENTS.md`, "Naming public parameters"):
+
+| Concept | Name | Not |
+|---------|------|-----|
+| Tap on the component | `onTap`, `onDoubleTap`, `onLongPress` | `onPress`, `onClick`, `onLongTap` |
+| Tap on one part of it | `on<Thing>Tapped` (`onCloseTapped`, `onPrimaryActionTapped`) | `onCloseTap`, `primaryActionOnTap` |
+| New value | `value` + `onChanged` (+ `onChangeEnd`) | `onColorChanged`, `onDateSelected`, `onInputChanged` |
+| Second value | `on<Thing>Changed` (`onEmailChanged`) | `onChangedEmail` |
+| Selection | `value` (+ `groupValue`) | `selectedValue` |
+| Submit / focus / expand / page | `onSubmitted`, `onFocusChange`, `onExpansionChanged`, `onPageChanged` | `onSubmit`, `onFocusChanged`, `onExpandedChanged`, `onLoadPage` |
+| Main text of a display component | `title` (`subtitle`, `titleBuilder`, `buttonTitle`) | `label`, `text`, `buttonText`, `labelBuilder` |
+| Text above an input field | `label` (like `InputDecoration.labelText`) | `title` |
+| Disabled | `onTap: null` / `onChanged: null` | an extra `enabled` flag |
+
+Keep a domain name when Flutter uses one or there is no clearer equivalent (`code` of a pin code, `selectedDate` of a date picker). Component names are never renamed for these rules.
+
 #### Right-to-left support
 
 Components must work in right-to-left layouts (Arabic, Hebrew, ...). Use the directional APIs, which follow the `Directionality` of the widget tree:
@@ -382,7 +400,7 @@ If the component has sub-components, indent them:
 
 - [ ] Create component directory
 - [ ] Create style file
-- [ ] Create main component file (directional APIs only, see Right-to-left support)
+- [ ] Create main component file (parameter names per Naming public parameters, directional APIs only, see Right-to-left support)
 - [ ] Semantics, keyboard support, `ImpaktfullUiAnimationUtil` for animations and a semantics test (see Accessibility)
 - [ ] Put user-facing texts in `<component_name>.localizations.dart` and register it in `ImpaktfullUiLocalizations`
 - [ ] Register in `component_theme.dart` (5 places)

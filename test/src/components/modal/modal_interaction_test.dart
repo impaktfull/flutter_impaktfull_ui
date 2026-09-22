@@ -37,8 +37,8 @@ void main() {
           context: context,
           builder: (context) => ImpaktfullUiModal(
             title: 'Pick',
-            primaryActionLabel: 'Yes',
-            primaryActionOnTap: () => Navigator.of(context).pop('yes'),
+            primaryActionTitle: 'Yes',
+            onPrimaryActionTapped: () => Navigator.of(context).pop('yes'),
           ),
         ));
       await tester.pumpAndSettle();
@@ -260,10 +260,10 @@ void main() {
         tester,
         ImpaktfullUiModal.simple(
           title: 'Title',
-          secondaryActionLabel: 'Cancel',
-          secondaryActionOnTap: () {},
-          primaryActionLabel: 'Ok',
-          primaryActionOnTap: () {},
+          secondaryActionTitle: 'Cancel',
+          onSecondaryActionTapped: () {},
+          primaryActionTitle: 'Ok',
+          onPrimaryActionTapped: () {},
         ),
       );
       final cancel = tester.getRect(find.text('Cancel'));
@@ -278,10 +278,10 @@ void main() {
         ImpaktfullUiModal.simple(
           width: 500,
           title: 'Title',
-          secondaryActionLabel: 'Cancel',
-          secondaryActionOnTap: () {},
-          primaryActionLabel: 'Ok',
-          primaryActionOnTap: () {},
+          secondaryActionTitle: 'Cancel',
+          onSecondaryActionTapped: () {},
+          primaryActionTitle: 'Ok',
+          onPrimaryActionTapped: () {},
         ),
       );
       final cancel = tester.getRect(find.text('Cancel'));
@@ -297,8 +297,8 @@ void main() {
         ImpaktfullUiModal.simple(
           type: ImpaktfullUiModalType.danger,
           title: 'Title',
-          primaryActionLabel: 'Delete',
-          primaryActionOnTap: () {},
+          primaryActionTitle: 'Delete',
+          onPrimaryActionTapped: () {},
         ),
       );
       final button = tester.widget<ImpaktfullUiButton>(

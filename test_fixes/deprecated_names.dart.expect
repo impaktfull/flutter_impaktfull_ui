@@ -1,6 +1,7 @@
 // Every deprecated name with a data-driven fix in lib/fix_data.yaml.
 // `dart fix --compare-to-golden` (run from this folder) applies the fixes to
 // this file and compares the result with deprecated_names.dart.expect.
+import 'package:flutter/material.dart' show TabController;
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
@@ -106,6 +107,159 @@ void main() {
       onSearchChanged: (query) => [],
       itemBuilder: (context, item, index, controller) => Text(item),
       noDataLabel: '');
+
+  // Parameters renamed to consistent names, in line with Flutter
+  const asset = ImpaktfullUiAsset.icon(IconData(0));
+  final touchFeedback2 = ImpaktfullUiTouchFeedback(
+      onTap: null, onLongPress: () {}, child: const SizedBox());
+  touchFeedback2.onLongPress;
+  final inputField = ImpaktfullUiInputField(
+      value: null,
+      onChanged: null,
+      onSubmitted: (value) {},
+      onFocusChange: (hasFocus) {});
+  inputField.onSubmitted;
+  inputField.onFocusChange;
+  final pinCode =
+      ImpaktfullUiPinCode(code: '', onChanged: (_) {}, onSubmitted: (_) {});
+  pinCode.onSubmitted;
+  final keyboardController = ImpaktfullUiVirtualKeyboardTextEditController(
+      config: ImpaktfullUiVirtualQwertyKeyboardConfig());
+  final keyboard = ImpaktfullUiVirtualKeyboard(
+      controller: keyboardController, onSubmitted: () {});
+  keyboard.onSubmitted;
+  BuildContext? context;
+  ImpaktfullUiVirtualKeyboard.show(
+      context: context!, controller: keyboardController, onSubmitted: () {});
+  keyboardController.openKeyboard(context, onSubmitted: () {});
+  final accordion = ImpaktfullUiAccordion(
+      title: '',
+      expanded: false,
+      expandedBuilder: (context) => const SizedBox(),
+      onExpansionChanged: (_) {});
+  accordion.onExpansionChanged;
+  const screen = ImpaktfullUiScreen(floatingActionButton: SizedBox(), child: SizedBox());
+  screen.floatingActionButton;
+  final adaptiveScreen = ImpaktfullUiAdaptiveScreen(
+      floatingActionButton: const SizedBox(), builder: (context) => const SizedBox());
+  adaptiveScreen.floatingActionButton;
+  final horizontalTabs = ImpaktfullUiHorizontalTabs<int>(
+      value: 0, onChanged: (_) {}, tabs: const []);
+  horizontalTabs.value;
+  horizontalTabs.onChanged;
+  const optionSelector =
+      ImpaktfullUiOptionSelector<int>(options: [0], value: 0);
+  optionSelector.value;
+  ImpaktfullUiOptionSelector.show<int>(
+      context: context, title: '', options: [0], value: 0);
+  final commandMenuWindow2 = ImpaktfullUiCommandMenuWindow(
+      onChanged: (_) {}, onCloseWindow: () {});
+  commandMenuWindow2.onChanged;
+  final pagination = ImpaktfullUiPagination(
+      page: 0, itemsPerPage: 1, amountOfItems: 1, onPageChanged: (_) {});
+  pagination.onPageChanged;
+  ImpaktfullUiPagination.withAmountOfPages(
+      page: 0, itemsPerPage: 1, amountOfPages: 1, onPageChanged: (_) {});
+  final forgetPassword = ImpaktfullUiBBForgetPassword(
+      email: '', onEmailChanged: (_) {}, onResetPasswordTapped: () async {});
+  forgetPassword.onEmailChanged;
+  final login = ImpaktfullUiBBLogin(
+      email: '',
+      password: '',
+      onEmailChanged: (_) {},
+      onPasswordChanged: (_) {},
+      onLoginTapped: () async {});
+  login.onEmailChanged;
+  login.onPasswordChanged;
+  final register = ImpaktfullUiBBRegister(
+      email: '',
+      password: '',
+      onEmailChanged: (_) {},
+      onPasswordChanged: (_) {},
+      onRegisterTapped: () async {});
+  register.onEmailChanged;
+  register.onPasswordChanged;
+  final verifyRegisterCode = ImpaktfullUiBBVerifyRegisterCode(
+      code: '',
+      onCodeChanged: (_) {},
+      onVerifyCodeTapped: () async {});
+  verifyRegisterCode.onCodeChanged;
+  final badge = ImpaktfullUiBadge(
+      type: ImpaktfullUiBadgeType.primary, title: '', onCloseTapped: () {});
+  badge.title;
+  badge.onCloseTapped;
+  final modal = ImpaktfullUiModal(
+      primaryActionTitle: '',
+      onPrimaryActionTapped: () {},
+      secondaryActionTitle: '',
+      onSecondaryActionTapped: () {});
+  modal.primaryActionTitle;
+  modal.onPrimaryActionTapped;
+  modal.secondaryActionTitle;
+  modal.onSecondaryActionTapped;
+  ImpaktfullUiModal.simple(
+      primaryActionTitle: '',
+      onPrimaryActionTapped: () {},
+      secondaryActionTitle: '',
+      onSecondaryActionTapped: () {});
+  final calendar = ImpaktfullUiCalendar(
+      selectedDate: DateTime(2024),
+      events: const [],
+      type: ImpaktfullUiCalendarType.list,
+      onEventTapped: (_) {});
+  calendar.onEventTapped;
+  final calendarList = ImpaktfullUiCalendarList(
+      selectedDate: DateTime(2024), events: const [], onEventTapped: (_) {});
+  calendarList.onEventTapped;
+  final calendarWeek = ImpaktfullUiCalendarWeek(
+      selectedDate: DateTime(2024), events: const [], onEventTapped: (_) {});
+  calendarWeek.onEventTapped;
+  final markdown = ImpaktfullUiMarkdown(data: '', onLinkTapped: (_) {});
+  markdown.onLinkTapped;
+  const floatingActionButton =
+      ImpaktfullUiFloatingActionButton(asset: asset, title: '');
+  floatingActionButton.title;
+  const dropdown = ImpaktfullUiDropdown<int>(buttonTitle: '', child: SizedBox());
+  dropdown.buttonTitle;
+  const dropdownItem = ImpaktfullUiDropdownItem(title: '', value: 0);
+  dropdownItem.title;
+  ImpaktfullUiDropdown<int>.builder(
+      items: const [dropdownItem],
+      itemBuilder: null,
+      noDataLabel: '',
+      buttonTitle: '');
+  const bottomNavigationItem = ImpaktfullUiBottomNavigationItem(
+      asset: asset, isSelected: false, title: '', showTitle: false);
+  bottomNavigationItem.title;
+  bottomNavigationItem.showTitle;
+  final horizontalTab = ImpaktfullUiHorizontalTab(title: '', onTap: () {});
+  horizontalTab.title;
+  final horizontalTabConfig =
+      ImpaktfullUiHorizontalTabConfig(title: '', value: 0);
+  horizontalTabConfig.title;
+  TabController? tabController;
+  final tabBarItem =
+      ImpaktfullUiTabBarItem(title: '', index: 0, controller: tabController!);
+  tabBarItem.title;
+  final inputFieldAction =
+      ImpaktfullUiInputFieldAction(onTap: () {}, title: '');
+  inputFieldAction.title;
+  final segmentedControl = ImpaktfullUiSegmentedControl<int>(
+      value: 0,
+      items: const [0],
+      onChanged: (_) {},
+      titleBuilder: (context, item) => '');
+  segmentedControl.titleBuilder;
+  final dateInputField =
+      ImpaktfullUiDateInputField(value: null, onChanged: (_) {});
+  dateInputField.value;
+  dateInputField.onChanged;
+  final colorPicker = ImpaktfullUiColorPicker(
+      selectedColor: null, onChanged: (_) {}, onChangeEnd: (_) {});
+  colorPicker.onChanged;
+  colorPicker.onChangeEnd;
+  final wysiwyg = ImpaktfullUiWysiwyg(value: '', onChanged: (_) {});
+  wysiwyg.value;
 
   debugPrint([
     carousel,

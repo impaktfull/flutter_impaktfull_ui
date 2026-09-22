@@ -13,8 +13,8 @@ void main() {
           ImpaktfullUiBottomNavigationItem(
             asset: testAsset,
             selectedAsset: testSelectedAsset,
-            label: 'Item $i',
-            showLabel: showLabel,
+            title: 'Item $i',
+            showTitle: showLabel,
             isSelected: i == selected,
             badgeShow: i == 2,
             badgeText: i == 3 ? '3' : null,

@@ -14,7 +14,7 @@ void main() {
     ImpaktfullUiDropdownController? controller,
   }) =>
       ImpaktfullUiDropdown<void>(
-        buttonText: buttonText,
+        buttonTitle: buttonText,
         controller: controller,
         alignment: ImpaktfullUiDropdownAlignment.bottomLeft,
         child: Text(content),

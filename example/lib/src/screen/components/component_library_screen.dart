@@ -42,7 +42,7 @@ class _ComponentLibraryScreenState extends State<ComponentLibraryScreen> {
       builder: (BuildContext context, theme, controller) =>
           ImpaktfullUiCommandMenuWindow(
         value: _searchQuery,
-        onInputChanged: _onChanged,
+        onChanged: _onChanged,
         onCloseWindow: () => controller.hide(),
       ),
       child: ImpaktfullUiAdaptiveScreen(

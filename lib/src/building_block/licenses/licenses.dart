@@ -119,7 +119,7 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
             child: ImpaktfullUiAccordion(
               title: item.name,
               expanded: _expandedSet.contains(item),
-              onExpandedChanged: (value) => _onExpandedChanged(item),
+              onExpansionChanged: (value) => _onExpandedChanged(item),
               animated: item.licenses.length < 2,
               expandedBuilder: (context) => ImpaktfullUiAutoLayout.vertical(
                 mainAxisSize: MainAxisSize.min,

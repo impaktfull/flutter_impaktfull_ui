@@ -18,7 +18,7 @@ class ImpaktfullUiCalendar extends StatelessWidget {
   final DateTime selectedDate;
   final ImpaktfullUiCalendarType type;
   final List<ImpaktfullUiCalendarEvent> events;
-  final ValueChanged<ImpaktfullUiCalendarEvent> onEventTap;
+  final ValueChanged<ImpaktfullUiCalendarEvent> onEventTapped;
   final ImpaktfullUiCalendarTheme? theme;
 
   /// The texts of the calendar. Defaults to the localizations of the app.
@@ -39,13 +39,23 @@ class ImpaktfullUiCalendar extends StatelessWidget {
     required this.selectedDate,
     required this.events,
     required this.type,
-    required this.onEventTap,
+    // `onEventTapped` becomes `required` again in 1.0.0, when `onEventTap` is
+    // removed.
+    ValueChanged<ImpaktfullUiCalendarEvent>? onEventTapped,
+    @Deprecated('Use onEventTapped instead. Will be removed in 1.0.0.')
+    ValueChanged<ImpaktfullUiCalendarEvent>? onEventTap,
     this.theme,
     this.localizations,
     this.firstDayOfWeek,
     this.use24HourFormat,
     super.key,
-  });
+  })  : assert(onEventTapped != null || onEventTap != null,
+            'onEventTapped is required'),
+        onEventTapped = (onEventTapped ?? onEventTap)
+            as ValueChanged<ImpaktfullUiCalendarEvent>;
+
+  @Deprecated('Use onEventTapped instead. Will be removed in 1.0.0.')
+  ValueChanged<ImpaktfullUiCalendarEvent> get onEventTap => onEventTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +68,7 @@ class ImpaktfullUiCalendar extends StatelessWidget {
             return ImpaktfullUiCalendarList(
               selectedDate: selectedDate,
               events: events,
-              onEventTap: onEventTap,
+              onEventTapped: onEventTapped,
               theme: componentTheme,
               localizations: localizations,
               use24HourFormat: use24HourFormat,
@@ -67,7 +77,7 @@ class ImpaktfullUiCalendar extends StatelessWidget {
             return ImpaktfullUiCalendarWeek(
               selectedDate: selectedDate,
               events: events,
-              onEventTap: onEventTap,
+              onEventTapped: onEventTapped,
               theme: componentTheme,
               localizations: localizations,
               firstDayOfWeek: firstDayOfWeek,

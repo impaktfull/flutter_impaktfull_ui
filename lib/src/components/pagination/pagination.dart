@@ -16,7 +16,7 @@ class ImpaktfullUiPagination extends StatelessWidget {
   final int itemsPerPage;
   final int? _amountOfPages;
   final int? _amountOfItems;
-  final ValueChanged<int> onLoadPage;
+  final ValueChanged<int> onPageChanged;
   final ImpaktfullUiPaginationTheme? theme;
 
   /// The texts of the pagination. Defaults to the localizations of the app.
@@ -36,23 +36,40 @@ class ImpaktfullUiPagination extends StatelessWidget {
     required this.page,
     required this.itemsPerPage,
     required int amountOfItems,
-    required this.onLoadPage,
+    // `onPageChanged` becomes `required` again in 1.0.0, when `onLoadPage` is
+    // removed.
+    ValueChanged<int>? onPageChanged,
+    @Deprecated('Use onPageChanged instead. Will be removed in 1.0.0.')
+    ValueChanged<int>? onLoadPage,
     this.theme,
     this.localizations,
     super.key,
   })  : _amountOfItems = amountOfItems,
-        _amountOfPages = null;
+        _amountOfPages = null,
+        assert(onPageChanged != null || onLoadPage != null,
+            'onPageChanged is required'),
+        onPageChanged = (onPageChanged ?? onLoadPage) as ValueChanged<int>;
 
   const ImpaktfullUiPagination.withAmountOfPages({
     required this.page,
     required this.itemsPerPage,
-    required this.onLoadPage,
+    // `onPageChanged` becomes `required` again in 1.0.0, when `onLoadPage` is
+    // removed.
+    ValueChanged<int>? onPageChanged,
+    @Deprecated('Use onPageChanged instead. Will be removed in 1.0.0.')
+    ValueChanged<int>? onLoadPage,
     required int amountOfPages,
     this.theme,
     this.localizations,
     super.key,
   })  : _amountOfPages = amountOfPages,
-        _amountOfItems = null;
+        _amountOfItems = null,
+        assert(onPageChanged != null || onLoadPage != null,
+            'onPageChanged is required'),
+        onPageChanged = (onPageChanged ?? onLoadPage) as ValueChanged<int>;
+
+  @Deprecated('Use onPageChanged instead. Will be removed in 1.0.0.')
+  ValueChanged<int> get onLoadPage => onPageChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +89,7 @@ class ImpaktfullUiPagination extends StatelessWidget {
             leadingAsset: componentTheme.assets.arrowLeft
                 .copyWith(matchTextDirection: true),
             tooltip: localizations.previousPage,
-            onTap: page == 0 ? null : () => onLoadPage(page - 1),
+            onTap: page == 0 ? null : () => onPageChanged(page - 1),
           ),
           Expanded(
             // Announces the new page when it changes.
@@ -91,7 +108,7 @@ class ImpaktfullUiPagination extends StatelessWidget {
             leadingAsset: componentTheme.assets.arrowRight
                 .copyWith(matchTextDirection: true),
             tooltip: localizations.nextPage,
-            onTap: isFinalPage ? null : () => onLoadPage(page + 1),
+            onTap: isFinalPage ? null : () => onPageChanged(page + 1),
           ),
         ],
       ),

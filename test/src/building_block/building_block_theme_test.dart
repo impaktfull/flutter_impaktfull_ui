@@ -34,8 +34,8 @@ void main() {
       () => ImpaktfullUiBBLogin(
             email: '',
             password: '',
-            onChangedEmail: (_) {},
-            onChangedPassword: (_) {},
+            onEmailChanged: (_) {},
+            onPasswordChanged: (_) {},
             onLoginTapped: () async {},
           ),
     ),
@@ -44,8 +44,8 @@ void main() {
       () => ImpaktfullUiBBRegister(
             email: '',
             password: '',
-            onChangedEmail: (_) {},
-            onChangedPassword: (_) {},
+            onEmailChanged: (_) {},
+            onPasswordChanged: (_) {},
             onRegisterTapped: () async {},
           ),
     ),
@@ -53,7 +53,7 @@ void main() {
       'Forgot password?',
       () => ImpaktfullUiBBForgetPassword(
             email: '',
-            onChangedEmail: (_) {},
+            onEmailChanged: (_) {},
             onResetPasswordTapped: () async {},
           ),
     ),
@@ -61,7 +61,7 @@ void main() {
       "You've got mail",
       () => ImpaktfullUiBBVerifyRegisterCode(
             code: '',
-            onChangedVerificationCode: (_) {},
+            onCodeChanged: (_) {},
             onVerifyCodeTapped: () async {},
           ),
     ),

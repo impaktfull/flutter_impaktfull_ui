@@ -7,7 +7,7 @@ import '../../../util/test_util.dart';
 void main() {
   final tabs = [
     for (var i = 0; i < 3; i++)
-      ImpaktfullUiHorizontalTabConfig(label: 'Tab $i', value: i),
+      ImpaktfullUiHorizontalTabConfig(title: 'Tab $i', value: i),
   ];
 
   List<bool> selection(WidgetTester tester) => tester
@@ -16,15 +16,15 @@ void main() {
       .map((tab) => tab.isSelected)
       .toList();
 
-  testWidgets('onTabSelected changes the selected tab', (tester) async {
+  testWidgets('onChanged changes the selected tab', (tester) async {
     var selected = 0;
     final selections = <int>[];
     await pumpAndSettleComponent(
       tester,
       StatefulBuilder(
         builder: (context, setState) => ImpaktfullUiHorizontalTabs<int>(
-          selectedValue: selected,
-          onTabSelected: (value) {
+          value: selected,
+          onChanged: (value) {
             selections.add(value);
             setState(() => selected = value);
           },
@@ -45,14 +45,14 @@ void main() {
     expect(selection(tester), [true, false, false]);
   });
 
-  testWidgets('tapping the selected tab does not call onTabSelected',
+  testWidgets('tapping the selected tab does not call onChanged',
       (tester) async {
     final selections = <int>[];
     await pumpAndSettleComponent(
       tester,
       ImpaktfullUiHorizontalTabs<int>(
-        selectedValue: 1,
-        onTabSelected: selections.add,
+        value: 1,
+        onChanged: selections.add,
         tabs: tabs,
       ),
     );
@@ -65,15 +65,15 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       ImpaktfullUiHorizontalTabs<String>(
-        selectedValue: 'a',
-        onTabSelected: (_) {},
+        value: 'a',
+        onChanged: (_) {},
         tabs: [
           ImpaktfullUiHorizontalTabConfig(
-            label: 'A',
+            title: 'A',
             value: 'a',
           ),
           ImpaktfullUiHorizontalTabConfig(
-            label: 'B',
+            title: 'B',
             value: 'b',
             badge: '3',
             badgeType: ImpaktfullUiBadgeType.warning,
@@ -98,11 +98,11 @@ void main() {
         child: SizedBox(
           width: 150,
           child: ImpaktfullUiHorizontalTabs<int>(
-            selectedValue: 0,
-            onTabSelected: selections.add,
+            value: 0,
+            onChanged: selections.add,
             tabs: [
               for (var i = 0; i < 10; i++)
-                ImpaktfullUiHorizontalTabConfig(label: 'Tab $i', value: i),
+                ImpaktfullUiHorizontalTabConfig(title: 'Tab $i', value: i),
             ],
           ),
         ),

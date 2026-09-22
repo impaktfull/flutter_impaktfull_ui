@@ -18,7 +18,7 @@ void main() {
       ImpaktfullUiColorPicker(
         selectedColor: null,
         allowedColors: const [Color(0xFFF44336), Color(0x80123456)],
-        onColorChanged: (_) {},
+        onChanged: (_) {},
       ),
     );
     final tooltips = tester
@@ -29,8 +29,7 @@ void main() {
     expect(tooltips, ['#F44336', '#12345680']);
   });
 
-  testWidgets('the simple picker calls onColorChangeEnd on tap',
-      (tester) async {
+  testWidgets('the simple picker calls onChangeEnd on tap', (tester) async {
     final changed = <Color>[];
     final ended = <Color>[];
     await pumpAndSettleComponent(
@@ -38,8 +37,8 @@ void main() {
       ImpaktfullUiColorPicker(
         selectedColor: null,
         allowedColors: const [Color(0xFF123456)],
-        onColorChanged: changed.add,
-        onColorChangeEnd: ended.add,
+        onChanged: changed.add,
+        onChangeEnd: ended.add,
       ),
     );
     await tester.tap(find.byType(ImpaktfullUiTouchFeedback));
@@ -48,8 +47,7 @@ void main() {
     expect(ended, [const Color(0xFF123456)]);
   });
 
-  testWidgets('the slider picker calls onColorChangeEnd on release',
-      (tester) async {
+  testWidgets('the slider picker calls onChangeEnd on release', (tester) async {
     final changed = <Color>[];
     final ended = <Color>[];
     await pumpAndSettleComponent(
@@ -57,8 +55,8 @@ void main() {
       ImpaktfullUiColorPicker(
         type: ImpaktfullUiColorPickerType.slider,
         selectedColor: null,
-        onColorChanged: changed.add,
-        onColorChangeEnd: ended.add,
+        onChanged: changed.add,
+        onChangeEnd: ended.add,
       ),
     );
     final gesture = await tester.startGesture(

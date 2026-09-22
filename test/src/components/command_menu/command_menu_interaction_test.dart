@@ -28,7 +28,7 @@ Future<_Menu> _pumpMenu(
       builder: (context, theme, controller) {
         menu.controller = controller;
         return ImpaktfullUiCommandMenuWindow(
-          onInputChanged: menu.inputs.add,
+          onChanged: menu.inputs.add,
           onCloseWindow: () {
             menu.closeRequests++;
             controller.hide();

@@ -77,6 +77,21 @@ The package has many users: **never rename or remove a public API in one step.**
 
 Deprecated APIs are removed together in the next major release (1.0.0), never in a minor or patch release. Removing them is a `feat!:` pull request that deletes the aliases, their `fix_data.yaml` transforms, `test_fixes` cases and tests, and keeps the migration guide.
 
+## Naming public parameters
+
+Constructor parameters, fields, getters and callbacks follow these rules, so an app developer can guess a name without looking it up. Component names stay as they are: the rules are about parameters. Renaming an existing parameter always goes through "Changing public API" above.
+
+1. **Stay in line with Flutter** wherever Flutter has the same concept:
+   - `onTap` (not `onPress` or `onClick`), `onDoubleTap`, `onLongPress` (not `onLongTap`).
+   - `onSubmitted` (not `onSubmit`), `onFocusChange`, `onExpansionChanged`, `onPageChanged`.
+   - The callback that reports a new value of the component is `onChanged` (and `onChangeStart` / `onChangeEnd` like `Slider`). A second value of the same component is `on<Thing>Changed` (`onStartDateChanged`, `onEmailChanged`), never `onChanged<Thing>`.
+   - A selection uses `value` (and `groupValue` for radio buttons), not `selectedValue`.
+   - `controller`, `focusNode`, `tooltip`, `semanticLabel`, `floatingActionButton`.
+   - A component is disabled by passing `null` as its callback (`onTap: null`, `onChanged: null`), not with an extra `enabled` flag.
+2. **A tap on one part of a component is `on<Thing>Tapped`**: `onCloseTapped`, `onMoreTapped`, `onEventTapped`, `onPrimaryActionTapped`, `onLinkTapped`. Never `onCloseTap` or `primaryActionOnTap`. A tap on the component itself stays `onTap`.
+3. **The main text of a display component is `title`** (buttons, the floating action button, badges, tabs, navigation items, list items, cards, section titles, dropdown buttons: `buttonTitle`), with `subtitle` for a second line and `titleBuilder` for a builder. **Input fields keep `label`**, like Flutter's `InputDecoration.labelText`.
+4. **The value parameter** is recognizable next to the Flutter widget for the same job and consistent with the other components of this package: `value` / `onChanged` for inputs (`ImpaktfullUiInputField`, `ImpaktfullUiDateInputField`, `ImpaktfullUiTimePicker`, `ImpaktfullUiWysiwyg`), `value` / `groupValue` for selections. Keep a domain name when Flutter uses one or there is no clearer equivalent (`ImpaktfullUiPinCode.code`, `ImpaktfullUiDatePicker.selectedDate` with `onDateChanged` like `CalendarDatePicker`, `ImpaktfullUiPagination.page`). Do not rename for uniformity alone.
+
 ## Accessibility
 
 Every component must work with screen readers, keyboards and the "reduce motion" setting (see the README "Accessibility" section and the Accessibility step in the [Create a Component](.claude/skills/create_component/SKILL.md) skill):

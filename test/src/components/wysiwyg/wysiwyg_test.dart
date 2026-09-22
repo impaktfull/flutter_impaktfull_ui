@@ -48,7 +48,7 @@ void main() {
       ValueListenableBuilder<String>(
         valueListenable: text,
         builder: (context, value, child) => ImpaktfullUiWysiwyg(
-          text: value,
+          value: value,
           showPreview: false,
           onChanged: changes.add,
         ),

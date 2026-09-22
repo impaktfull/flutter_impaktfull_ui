@@ -27,8 +27,8 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       wrap(ImpaktfullUiDateInputField(
-        date: DateTime(2024, 3, 5),
-        onDateSelected: (_) {},
+        value: DateTime(2024, 3, 5),
+        onChanged: (_) {},
       )),
     );
     expect(find.text('05/03/2024'), findsOneWidget);
@@ -38,9 +38,9 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       wrap(ImpaktfullUiDateInputField(
-        date: DateTime(2024, 3, 5),
+        value: DateTime(2024, 3, 5),
         dateFormat: 'yyyy-MM-dd',
-        onDateSelected: (_) {},
+        onChanged: (_) {},
       )),
     );
     expect(find.text('2024-03-05'), findsOneWidget);
@@ -51,9 +51,9 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       wrap(ImpaktfullUiDateInputField(
-        date: null,
+        value: null,
         placeholder: 'Pick a date',
-        onDateSelected: (_) {},
+        onChanged: (_) {},
       )),
     );
     expect(tester.widget<Text>(find.text('Pick a date')).style,
@@ -67,9 +67,9 @@ void main() {
       wrap(ValueListenableBuilder<DateTime?>(
         valueListenable: date,
         builder: (context, value, child) => ImpaktfullUiDateInputField(
-          date: value,
+          value: value,
           placeholder: 'Empty',
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         ),
       )),
     );
@@ -82,14 +82,13 @@ void main() {
   });
 
   group('picker', () {
-    testWidgets('apply calls onDateSelected with the picked date',
-        (tester) async {
+    testWidgets('apply calls onChanged with the picked date', (tester) async {
       final dates = <DateTime?>[];
       await pumpAndSettleComponent(
         tester,
         wrap(ImpaktfullUiDateInputField(
-          date: DateTime(2024, 3, 5),
-          onDateSelected: dates.add,
+          value: DateTime(2024, 3, 5),
+          onChanged: dates.add,
         )),
       );
       await openPicker(tester);
@@ -105,13 +104,13 @@ void main() {
       expect(find.byType(ImpaktfullUiDatePicker), findsNothing);
     });
 
-    testWidgets('cancel does not call onDateSelected', (tester) async {
+    testWidgets('cancel does not call onChanged', (tester) async {
       final dates = <DateTime?>[];
       await pumpAndSettleComponent(
         tester,
         wrap(ImpaktfullUiDateInputField(
-          date: DateTime(2024, 3, 5),
-          onDateSelected: dates.add,
+          value: DateTime(2024, 3, 5),
+          onChanged: dates.add,
         )),
       );
       await openPicker(tester);
@@ -126,9 +125,9 @@ void main() {
       await pumpAndSettleComponent(
         tester,
         wrap(ImpaktfullUiDateInputField(
-          date: DateTime(2024, 3, 5),
+          value: DateTime(2024, 3, 5),
           isDisabled: true,
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       );
       await tester.tap(find.byType(ImpaktfullUiCard), warnIfMissed: false);
@@ -149,10 +148,10 @@ void main() {
       await pumpAndSettleComponent(
         tester,
         wrap(ImpaktfullUiDateInputField(
-          date: null,
+          value: null,
           hint: 'Hint',
           error: 'Error',
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       );
       expect(find.text('Hint'), findsNothing);
@@ -166,9 +165,9 @@ void main() {
       await pumpAndSettleComponent(
         tester,
         wrap(ImpaktfullUiDateInputField(
-          date: null,
+          value: null,
           hint: 'Hint',
-          onDateSelected: (_) {},
+          onChanged: (_) {},
         )),
       );
       expect(find.text('Hint'), findsOneWidget);
@@ -179,10 +178,10 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       wrap(ImpaktfullUiDateInputField(
-        date: null,
+        value: null,
         label: 'Birthday',
         labelActions: const [Text('Action')],
-        onDateSelected: (_) {},
+        onChanged: (_) {},
       )),
     );
     expect(find.text('Birthday'), findsOneWidget);
@@ -194,8 +193,8 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       wrap(ImpaktfullUiDateInputField(
-        date: DateTime(2024, 3, 5),
-        onDateSelected: (_) {},
+        value: DateTime(2024, 3, 5),
+        onChanged: (_) {},
         theme: theme.copyWith(
           textStyles: theme.textStyles.copyWith(
             text: theme.textStyles.text.copyWith(color: customTestColor),
@@ -216,8 +215,8 @@ void main() {
         await pumpAndSettleComponent(
           tester,
           wrap(ImpaktfullUiDateInputField(
-            date: null,
-            onDateSelected: (_) {},
+            value: null,
+            onChanged: (_) {},
             theme: theme.copyWith(
               colors: theme.colors.copyWith(background: customTestColor),
             ),

@@ -36,7 +36,7 @@ void main() {
         child: goldenBox(
           width: 400,
           child: ImpaktfullUiMarkdown(
-            onOpenLink: (_) {},
+            onLinkTapped: (_) {},
             data: 'A paragraph with **bold**, *italic* and '
                 '[a link](https://impaktfull.com).\n'
                 '\n'

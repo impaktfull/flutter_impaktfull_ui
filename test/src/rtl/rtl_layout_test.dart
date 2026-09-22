@@ -120,7 +120,7 @@ void main() {
       const Center(
         child: ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.primary,
-          label: 'Label',
+          title: 'Label',
           leadingAsset: _icon,
         ),
       ),
@@ -203,7 +203,7 @@ void main() {
         textDirection,
         Center(
           child: ImpaktfullUiDropdown<void>(
-            buttonText: 'Open',
+            buttonTitle: 'Open',
             childWidth: 300,
             alignment: alignment,
             child: const Text('Dropdown content'),
@@ -321,7 +321,7 @@ void main() {
       tester,
       textDirection,
       const ImpaktfullUiScreen(
-        fab: SizedBox(key: fabKey, width: 40, height: 40),
+        floatingActionButton: SizedBox(key: fabKey, width: 40, height: 40),
         child: SizedBox(),
       ),
     );
@@ -339,7 +339,8 @@ void main() {
       tester,
       textDirection,
       ImpaktfullUiAdaptiveScreen(
-        fab: const SizedBox(key: fabKey, width: 40, height: 40),
+        floatingActionButton:
+            const SizedBox(key: fabKey, width: 40, height: 40),
         builder: (context) => const SizedBox(),
       ),
     );
@@ -460,7 +461,7 @@ void main() {
           page: 1,
           itemsPerPage: 10,
           amountOfItems: 100,
-          onLoadPage: (_) {},
+          onPageChanged: (_) {},
         ),
       );
       expect(

@@ -18,7 +18,7 @@ void main() {
           const Align(
             alignment: AlignmentDirectional.centerStart,
             child: ImpaktfullUiDropdown<void>(
-              buttonText: 'Select an option',
+              buttonTitle: 'Select an option',
               child: SizedBox(),
             ),
           ),
@@ -27,7 +27,7 @@ void main() {
       GoldenTest(
         child: goldenSized(
           const ImpaktfullUiDropdown<void>(
-            buttonText: 'Full width',
+            buttonTitle: 'Full width',
             fullWidth: true,
             child: SizedBox(),
           ),
@@ -38,11 +38,11 @@ void main() {
           Align(
             alignment: AlignmentDirectional.centerStart,
             child: ImpaktfullUiDropdown<String>.builder(
-              buttonText: 'Builder',
+              buttonTitle: 'Builder',
               items: const [],
               noDataLabel: 'No items',
               itemBuilder: (context, item, index, controller) =>
-                  Text(item.label),
+                  Text(item.title),
             ),
           ),
         ),
@@ -52,7 +52,7 @@ void main() {
           ImpaktfullUiDropdown<void>(
             button: (context) => const ImpaktfullUiBadge(
               type: ImpaktfullUiBadgeType.primary,
-              label: 'Custom button',
+              title: 'Custom button',
             ),
             child: const SizedBox(),
           ),
@@ -61,7 +61,7 @@ void main() {
       GoldenTest(
         child: goldenSized(
           const ImpaktfullUiDropdown<void>(
-            buttonText: 'A very long dropdown button text that does not fit '
+            buttonTitle: 'A very long dropdown button text that does not fit '
                 'on a single line',
             fullWidth: true,
             child: SizedBox(),

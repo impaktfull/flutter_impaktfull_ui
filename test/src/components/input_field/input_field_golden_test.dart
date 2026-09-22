@@ -78,7 +78,7 @@ void main() {
         child: goldenSized(ImpaktfullUiInputField(
           value: 'With trailing action',
           trailingAction: ImpaktfullUiInputFieldAction(
-            label: 'Copy',
+            title: 'Copy',
             asset: icons.copy,
             onTap: () {},
           ),

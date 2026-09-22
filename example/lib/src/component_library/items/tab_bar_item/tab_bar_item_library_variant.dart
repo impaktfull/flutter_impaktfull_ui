@@ -18,7 +18,7 @@ class TabBarItemLibraryVariant
       TabBarControllerConfigurator(
         builder: (context, controller, setState) => ImpaktfullUiTabBarItem(
           controller: controller,
-          label: 'Tab 1',
+          title: 'Tab 1',
           index: 0,
         ),
       ),

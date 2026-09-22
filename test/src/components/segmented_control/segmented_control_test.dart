@@ -38,7 +38,7 @@ void main() {
     expect(indicator(), findsNothing);
   });
 
-  testWidgets('items that are not a String use toString without labelBuilder',
+  testWidgets('items that are not a String use toString without titleBuilder',
       (tester) async {
     await pumpAndSettleComponent(
       tester,

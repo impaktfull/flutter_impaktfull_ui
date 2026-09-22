@@ -14,15 +14,20 @@ typedef ImpaktfullUiMarkdownLinkCallback = FutureOr<void> Function(String url);
 
 class ImpaktfullUiMarkdown extends StatelessWidget {
   final String data;
-  final ImpaktfullUiMarkdownLinkCallback? onOpenLink;
+  final ImpaktfullUiMarkdownLinkCallback? onLinkTapped;
   final ImpaktfullUiMarkdownTheme? theme;
 
   const ImpaktfullUiMarkdown({
     required this.data,
-    this.onOpenLink,
+    ImpaktfullUiMarkdownLinkCallback? onLinkTapped,
+    @Deprecated('Use onLinkTapped instead. Will be removed in 1.0.0.')
+    ImpaktfullUiMarkdownLinkCallback? onOpenLink,
     this.theme,
     super.key,
-  });
+  }) : onLinkTapped = onLinkTapped ?? onOpenLink;
+
+  @Deprecated('Use onLinkTapped instead. Will be removed in 1.0.0.')
+  ImpaktfullUiMarkdownLinkCallback? get onOpenLink => onLinkTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +56,7 @@ class ImpaktfullUiMarkdown extends StatelessWidget {
             theme: componentTheme,
           ),
         },
-        onTapLink: onOpenLink == null ? null : _onTapLink,
+        onTapLink: onLinkTapped == null ? null : _onTapLink,
         // TODO THIS SHOULD BE FIXED
         // ignore: deprecated_member_use
         imageBuilder: (uri, title, alt) {
@@ -83,6 +88,6 @@ class ImpaktfullUiMarkdown extends StatelessWidget {
 
   void _onTapLink(String text, String? href, String title) {
     if (href == null) return;
-    onOpenLink?.call(href);
+    onLinkTapped?.call(href);
   }
 }

@@ -134,7 +134,7 @@ void main() {
       tester,
       ImpaktfullUiScreen(
         title: 'Title',
-        fab: ImpaktfullUiFloatingActionButton(
+        floatingActionButton: ImpaktfullUiFloatingActionButton(
           asset: testAsset,
           onTap: () => fabTaps++,
         ),
@@ -148,7 +148,7 @@ void main() {
       tester.getBottomLeft(find.text('bottom')).dy,
       moreOrLessEquals(smallScreenSize.height, epsilon: 0.5),
     );
-    // The fab is at the bottom right (default fabAlignment), above the bottom
+    // The fab is at the bottom right (default floatingActionButtonAlignment), above the bottom
     // child.
     final fab = find.byType(ImpaktfullUiFloatingActionButton);
     expect(tester.getBottomRight(fab).dx, smallScreenSize.width - 16);

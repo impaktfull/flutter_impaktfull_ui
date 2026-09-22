@@ -14,8 +14,8 @@ class RegisterBuildingBlock extends BuildingBlockLibraryItem {
     return ImpaktfullUiBBRegister(
       email: '',
       password: '',
-      onChangedEmail: (value) {},
-      onChangedPassword: (value) {},
+      onEmailChanged: (value) {},
+      onPasswordChanged: (value) {},
       onRegisterTapped: () async => Future.delayed(const Duration(seconds: 2)),
       onBackToLoginTapped: () => ImpaktfullUiNavigator.instance.goBack(),
     );

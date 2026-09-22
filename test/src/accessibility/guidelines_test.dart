@@ -46,7 +46,7 @@ void main() {
           page: 1,
           itemsPerPage: 10,
           amountOfPages: 3,
-          onLoadPage: (_) {},
+          onPageChanged: (_) {},
         ),
       ),
     );

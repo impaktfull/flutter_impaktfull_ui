@@ -20,7 +20,7 @@ void main() {
               items: [
                 for (var i = 0; i < length; i++)
                   ImpaktfullUiTabBarItem(
-                    label: 'Tab $i',
+                    title: 'Tab $i',
                     index: i,
                     controller: controller,
                   ),

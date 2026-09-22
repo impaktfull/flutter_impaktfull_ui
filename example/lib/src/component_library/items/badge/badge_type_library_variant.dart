@@ -29,7 +29,7 @@ class BadgeTypeLibraryVariant
             ImpaktfullUiBadge(
               type: type,
               size: size,
-              label: label,
+              title: label,
               leading: leadingIcon == null ? null : Icon(leadingIcon),
               trailing: trailingIcon == null ? null : Icon(trailingIcon),
             ),
@@ -38,7 +38,7 @@ class BadgeTypeLibraryVariant
         ImpaktfullUiBadge(
           type: type,
           size: size,
-          label: label,
+          title: label,
           leading: const ClipOval(
             child: ImpaktfullUiNetworkImage.random(),
           ),
@@ -46,7 +46,7 @@ class BadgeTypeLibraryVariant
         ImpaktfullUiBadge(
           type: type,
           size: size,
-          label: label,
+          title: label,
           trailing: const ClipOval(
             child: ImpaktfullUiNetworkImage.random(),
           ),
@@ -54,8 +54,8 @@ class BadgeTypeLibraryVariant
         ImpaktfullUiBadge(
           type: type,
           size: size,
-          label: label,
-          onCloseTap: () {},
+          title: label,
+          onCloseTapped: () {},
           trailing: const ClipOval(
             child: ImpaktfullUiNetworkImage.random(),
           ),
@@ -63,7 +63,7 @@ class BadgeTypeLibraryVariant
         ImpaktfullUiBadge(
           type: type,
           size: size,
-          label: label,
+          title: label,
           leading: ImpaktfullUiCustomBadgeWidget(
             child: Container(
               margin: EdgeInsets.only(left: size.spacing),

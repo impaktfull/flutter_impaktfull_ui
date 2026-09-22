@@ -41,7 +41,7 @@ export '<name>.localizations.dart';
 
 class ImpaktfullUiBB<Name> extends StatelessWidget {
   final String email;
-  final Function(String) onChangedEmail;
+  final ValueChanged<String> onEmailChanged;
   final AsyncCallback onSubmitTapped;
   final WidgetBuilder? topBuilder;
   final WidgetBuilder? bottomBuilder;
@@ -52,7 +52,7 @@ class ImpaktfullUiBB<Name> extends StatelessWidget {
 
   const ImpaktfullUiBB<Name>({
     required this.email,
-    required this.onChangedEmail,
+    required this.onEmailChanged,
     required this.onSubmitTapped,
     this.topBuilder,
     this.bottomBuilder,
@@ -149,7 +149,7 @@ class <Name>BuildingBlock extends BuildingBlockLibraryItem {
   Widget build(BuildContext context) {
     return ImpaktfullUiBB<Name>(
       email: 'example@email.com',
-      onChangedEmail: (value) {},
+      onEmailChanged: (value) {},
       onSubmitTapped: () => Future.delayed(const Duration(seconds: 2)),
     );
   }

@@ -13,7 +13,7 @@ void main() {
         initialIndex: selected ? 0 : 1,
         child: Builder(
           builder: (context) => ImpaktfullUiTabBarItem(
-            label: 'Tab',
+            title: 'Tab',
             index: 0,
             controller: DefaultTabController.of(context),
           ),

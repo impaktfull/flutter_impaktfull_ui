@@ -13,7 +13,7 @@ class VerifyRegisterCodeBuildingBlock extends BuildingBlockLibraryItem {
   Widget build(BuildContext context) {
     return ImpaktfullUiBBVerifyRegisterCode(
       code: '',
-      onChangedVerificationCode: (value) {},
+      onCodeChanged: (value) {},
       onVerifyCodeTapped: () => Future.delayed(const Duration(seconds: 2)),
       onBackTapped: () => ImpaktfullUiNavigator.instance.goBack(),
     );

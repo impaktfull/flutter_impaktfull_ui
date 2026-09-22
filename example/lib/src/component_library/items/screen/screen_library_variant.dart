@@ -22,7 +22,7 @@ class ScreenLibraryVariant
           title: inputs.title.value ?? '',
           subtitle: inputs.subtitle.value ?? '',
           onBackTapped: () => ImpaktfullUiNotification.show(title: 'Go back!'),
-          fab: ImpaktfullUiFloatingActionButton(
+          floatingActionButton: ImpaktfullUiFloatingActionButton(
             asset: theme.assets.icons.add,
             onTap: () => ImpaktfullUiNotification.show(title: 'On fab tapped'),
           ),
@@ -47,7 +47,7 @@ class ScreenLibraryVariant
           title: inputs.title.value ?? '',
           subtitle: inputs.subtitle.value ?? '',
           onBackTapped: () => ImpaktfullUiNotification.show(title: 'Go back!'),
-          fab: ImpaktfullUiFloatingActionButton(
+          floatingActionButton: ImpaktfullUiFloatingActionButton(
             asset: theme.assets.icons.add,
             onTap: () => ImpaktfullUiNotification.show(title: 'On fab tapped'),
           ),
@@ -55,14 +55,14 @@ class ScreenLibraryVariant
             items: [
               ImpaktfullUiBottomNavigationItem(
                 asset: theme.assets.icons.home,
-                label: 'Home',
+                title: 'Home',
                 onTap: () =>
                     ImpaktfullUiNotification.show(title: 'On home tapped'),
                 isSelected: true,
               ),
               ImpaktfullUiBottomNavigationItem(
                 asset: theme.assets.icons.settings,
-                label: 'Settings',
+                title: 'Settings',
                 onTap: () =>
                     ImpaktfullUiNotification.show(title: 'On settings tapped'),
                 isSelected: false,

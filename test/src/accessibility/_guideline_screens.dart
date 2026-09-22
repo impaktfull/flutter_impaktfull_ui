@@ -39,7 +39,7 @@ Widget settingsScreen() => ListView(
         ImpaktfullUiAccordion(
           title: 'Advanced',
           expanded: false,
-          onExpandedChanged: (_) {},
+          onExpansionChanged: (_) {},
           expandedBuilder: (context) => const SizedBox(),
         ),
       ],
@@ -104,13 +104,13 @@ Widget navigationScreen() => Column(
           children: [
             ImpaktfullUiBottomNavigationItem(
               asset: ImpaktfullUiAsset.icon(Icons.home),
-              label: 'Home',
+              title: 'Home',
               isSelected: true,
               onTap: () {},
             ),
             ImpaktfullUiBottomNavigationItem(
               asset: ImpaktfullUiAsset.icon(Icons.mail),
-              label: 'Inbox',
+              title: 'Inbox',
               isSelected: false,
               badgeText: '3',
               onTap: () {},

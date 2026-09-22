@@ -81,7 +81,7 @@ void main() {
       ImpaktfullUiBadgeType.primary,
       ImpaktfullUiBadgeType.error,
     ]);
-    expect(badges.map((badge) => badge.label), ['Default', 'Error']);
+    expect(badges.map((badge) => badge.title), ['Default', 'Error']);
   });
 
   for (final title in [null, '']) {

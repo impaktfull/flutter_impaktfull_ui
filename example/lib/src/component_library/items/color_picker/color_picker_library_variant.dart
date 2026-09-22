@@ -25,7 +25,7 @@ class ColorPickerLibraryVariant
         child: ImpaktfullUiColorPicker(
           type: type,
           selectedColor: theme.colors.accent,
-          onColorChanged: inputs.color.updateState,
+          onChanged: inputs.color.updateState,
         ),
       ),
       ComponentsLibraryVariantDescriptor(
@@ -47,7 +47,7 @@ class ColorPickerLibraryVariant
             theme.colors.canvas,
             theme.colors.card,
           ],
-          onColorChanged: inputs.color.updateState,
+          onChanged: inputs.color.updateState,
         ),
       ),
     ];

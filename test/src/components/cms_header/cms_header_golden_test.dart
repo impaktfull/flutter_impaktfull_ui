@@ -55,11 +55,11 @@ void main() {
         ImpaktfullUiCmsHeader(
           title: 'Title',
           bottomChild: ImpaktfullUiHorizontalTabs<int>(
-            selectedValue: 0,
-            onTabSelected: (_) {},
+            value: 0,
+            onChanged: (_) {},
             tabs: [
-              ImpaktfullUiHorizontalTabConfig(label: 'Tab 1', value: 0),
-              ImpaktfullUiHorizontalTabConfig(label: 'Tab 2', value: 1),
+              ImpaktfullUiHorizontalTabConfig(title: 'Tab 1', value: 0),
+              ImpaktfullUiHorizontalTabConfig(title: 'Tab 2', value: 1),
             ],
           ),
         ),

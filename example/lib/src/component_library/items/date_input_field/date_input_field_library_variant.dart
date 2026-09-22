@@ -17,8 +17,8 @@ class DateInputFieldLibraryVariant
       ImpaktfullUiDateInputField(
         label: 'Date',
         placeholder: 'Select date',
-        date: inputs.date.value,
-        onDateSelected: inputs.date.updateState,
+        value: inputs.date.value,
+        onChanged: inputs.date.updateState,
       ),
     ];
   }

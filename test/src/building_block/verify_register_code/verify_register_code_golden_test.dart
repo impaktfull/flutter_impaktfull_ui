@@ -11,7 +11,7 @@ void main() {
     fileName: 'impaktfull_ui_bb_verify_register_code',
     builder: () => ImpaktfullUiBBVerifyRegisterCode(
       code: '123456',
-      onChangedVerificationCode: (_) {},
+      onCodeChanged: (_) {},
       onVerifyCodeTapped: () async {},
       onBackTapped: () {},
     ),

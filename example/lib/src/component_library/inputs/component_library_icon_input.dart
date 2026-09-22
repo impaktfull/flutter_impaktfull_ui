@@ -7,7 +7,7 @@ class ComponentLibraryIconInput extends ComponentLibraryInputItem<IconData> {
   final _controller = ImpaktfullUiDropdownController();
   final items = AllIcons.allFlatIconsAsMap.values
       .map((e) =>
-          ImpaktfullUiDropdownItem(label: e.hashCode.toString(), value: e))
+          ImpaktfullUiDropdownItem(title: e.hashCode.toString(), value: e))
       .toList();
 
   ComponentLibraryIconInput(

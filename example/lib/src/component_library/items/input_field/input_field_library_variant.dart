@@ -46,7 +46,7 @@ class InputFieldVariant
         multiline: multiLine,
         trailingAction: showTrailingAction
             ? ImpaktfullUiInputFieldAction(
-                label: 'Copy',
+                title: 'Copy',
                 asset: theme.assets.icons.copy,
                 onTap: () => ImpaktfullUiNotification.show(
                   title: 'Copied to clipboard',
@@ -88,7 +88,7 @@ class InputFieldVariant
         multiline: multiLine,
         trailingAction: showTrailingAction
             ? ImpaktfullUiInputFieldAction(
-                label: 'Copy',
+                title: 'Copy',
                 asset: theme.assets.icons.copy,
                 onTap: () => ImpaktfullUiNotification.show(
                   title: 'Copied to clipboard',

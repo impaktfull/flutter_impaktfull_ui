@@ -28,7 +28,7 @@ void main() {
                 context: context,
                 title: 'Country',
                 options: options,
-                selectedValue: selectedValue,
+                value: selectedValue,
               );
               results.add(result);
             },
@@ -105,7 +105,7 @@ void main() {
       tester,
       ImpaktfullUiOptionSelector<int>(
         options: const [1, 2],
-        selectedValue: 2,
+        value: 2,
         titleBuilder: (item) => 'Option $item',
       ),
     );

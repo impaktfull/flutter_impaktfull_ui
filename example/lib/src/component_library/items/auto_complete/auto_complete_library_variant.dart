@@ -21,9 +21,9 @@ class AutoCompleteLibraryVariant
             return null;
           }
           return ImpaktfullUiBadge(
-            label: 'Selected index is `${inputs.selectedIndex.value}`',
+            title: 'Selected index is `${inputs.selectedIndex.value}`',
             type: ImpaktfullUiBadgeType.neutral,
-            onCloseTap: () => inputs.selectedIndex.updateState(null),
+            onCloseTapped: () => inputs.selectedIndex.updateState(null),
           );
         },
         onSearchChanged: (String value) async {
@@ -56,14 +56,14 @@ class AutoCompleteLibraryVariant
           }
           return [
             ImpaktfullUiBadge(
-              label: 'Selected index is `${inputs.selectedIndex.value}`',
+              title: 'Selected index is `${inputs.selectedIndex.value}`',
               type: ImpaktfullUiBadgeType.neutral,
-              onCloseTap: () => inputs.selectedIndex.updateState(null),
+              onCloseTapped: () => inputs.selectedIndex.updateState(null),
             ),
             ImpaktfullUiBadge(
-              label: 'Selected index is `${inputs.selectedIndex.value}`',
+              title: 'Selected index is `${inputs.selectedIndex.value}`',
               type: ImpaktfullUiBadgeType.neutral,
-              onCloseTap: () => inputs.selectedIndex.updateState(null),
+              onCloseTapped: () => inputs.selectedIndex.updateState(null),
             ),
           ];
         },

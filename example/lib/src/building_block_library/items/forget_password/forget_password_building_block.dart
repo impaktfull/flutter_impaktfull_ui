@@ -13,7 +13,7 @@ class ForgetPasswordBuildingBlock extends BuildingBlockLibraryItem {
   Widget build(BuildContext context) {
     return ImpaktfullUiBBForgetPassword(
       email: '',
-      onChangedEmail: (value) {},
+      onEmailChanged: (value) {},
       onResetPasswordTapped: () async =>
           Future.delayed(const Duration(seconds: 2)),
       onBackToLoginTapped: () => ImpaktfullUiNavigator.instance.goBack(),

@@ -21,7 +21,7 @@ void main() {
           page: page,
           itemsPerPage: 10,
           amountOfItems: 25,
-          onLoadPage: (value) {
+          onPageChanged: (value) {
             loaded.add(value);
             setState(() => page = value);
           },
@@ -53,7 +53,7 @@ void main() {
         page: 0,
         itemsPerPage: 10,
         amountOfItems: 25,
-        onLoadPage: loaded.add,
+        onPageChanged: loaded.add,
       ),
     );
     expect(isEnabled(tester, previous()), isFalse);
@@ -71,7 +71,7 @@ void main() {
         page: 4,
         itemsPerPage: 10,
         amountOfPages: 5,
-        onLoadPage: loaded.add,
+        onPageChanged: loaded.add,
       ),
     );
     expect(find.text('Page 5 of 5'), findsOneWidget);
@@ -89,7 +89,7 @@ void main() {
         page: 0,
         itemsPerPage: 10,
         amountOfItems: 0,
-        onLoadPage: (_) {},
+        onPageChanged: (_) {},
       ),
     );
     expect(find.text('Page 1 of 1'), findsOneWidget);
@@ -105,7 +105,7 @@ void main() {
           page: 0,
           itemsPerPage: 10,
           amountOfItems: entry.key,
-          onLoadPage: (_) {},
+          onPageChanged: (_) {},
         );
         expect(pagination.amountOfPages, entry.value);
       });
@@ -117,7 +117,7 @@ void main() {
             page: page,
             itemsPerPage: 10,
             amountOfPages: 3,
-            onLoadPage: (_) {},
+            onPageChanged: (_) {},
           );
       expect(pagination(0).isFinalPage, isFalse);
       expect(pagination(1).isFinalPage, isFalse);

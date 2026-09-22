@@ -23,7 +23,7 @@ class CommandMenuLibraryVariant
         ),
         builder: (context, theme, controller) => ImpaktfullUiCommandMenuWindow(
           onCloseWindow: () => controller.hide(),
-          onInputChanged: (value) => inputs.input.updateState(value),
+          onChanged: (value) => inputs.input.updateState(value),
           hasBlurredBackground: inputs.blurBackground.value ?? false,
           padding: EdgeInsets.zero,
           marginInputField: const EdgeInsetsDirectional.all(16),

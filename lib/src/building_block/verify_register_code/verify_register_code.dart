@@ -16,7 +16,7 @@ class ImpaktfullUiBBVerifyRegisterCode extends StatelessWidget {
   final Widget? Function(BuildContext)? startBuilder;
   final Widget? Function(BuildContext)? endBuilder;
   final String code;
-  final Function(String) onChangedVerificationCode;
+  final ValueChanged<String> onCodeChanged;
   final AsyncCallback onVerifyCodeTapped;
   final VoidCallback? onBackTapped;
   final Alignment alignment;
@@ -24,7 +24,11 @@ class ImpaktfullUiBBVerifyRegisterCode extends StatelessWidget {
 
   const ImpaktfullUiBBVerifyRegisterCode({
     required this.code,
-    required this.onChangedVerificationCode,
+    // `onCodeChanged` becomes `required` again in 1.0.0, when
+    // `onChangedVerificationCode` is removed.
+    ValueChanged<String>? onCodeChanged,
+    @Deprecated('Use onCodeChanged instead. Will be removed in 1.0.0.')
+    Function(String)? onChangedVerificationCode,
     required this.onVerifyCodeTapped,
     this.topBuilder,
     this.startBuilder,
@@ -34,7 +38,13 @@ class ImpaktfullUiBBVerifyRegisterCode extends StatelessWidget {
     this.alignment = Alignment.center,
     this.localizations,
     super.key,
-  });
+  })  : assert(onCodeChanged != null || onChangedVerificationCode != null,
+            'onCodeChanged is required'),
+        onCodeChanged = (onCodeChanged ?? onChangedVerificationCode)
+            as ValueChanged<String>;
+
+  @Deprecated('Use onCodeChanged instead. Will be removed in 1.0.0.')
+  Function(String) get onChangedVerificationCode => onCodeChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +85,7 @@ class ImpaktfullUiBBVerifyRegisterCode extends StatelessWidget {
                   autofill: const [
                     AutofillHints.oneTimeCode,
                   ],
-                  onChanged: onChangedVerificationCode,
+                  onChanged: onCodeChanged,
                   textInputType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                 ),

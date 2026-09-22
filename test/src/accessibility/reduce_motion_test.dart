@@ -130,7 +130,7 @@ void main() {
         builder: (context, setState) => ImpaktfullUiAccordion(
           title: 'Shipping',
           expanded: expanded,
-          onExpandedChanged: (value) => setState(() => expanded = value),
+          onExpansionChanged: (value) => setState(() => expanded = value),
           expandedBuilder: (context) => const Text('3 to 5 days'),
         ),
       ),
@@ -207,7 +207,7 @@ void main() {
       Align(
         alignment: Alignment.topCenter,
         child: ImpaktfullUiDropdown<String>(
-          buttonText: 'Sort',
+          buttonTitle: 'Sort',
           height: 100,
           child: const Text('Newest'),
         ),

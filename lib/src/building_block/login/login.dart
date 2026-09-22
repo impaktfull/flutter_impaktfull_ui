@@ -12,8 +12,8 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
   final Widget? Function(BuildContext)? endBuilder;
   final String email;
   final String password;
-  final Function(String) onChangedEmail;
-  final Function(String) onChangedPassword;
+  final ValueChanged<String> onEmailChanged;
+  final ValueChanged<String> onPasswordChanged;
   final AsyncCallback onLoginTapped;
   final VoidCallback? onRegisterTapped;
   final Alignment alignment;
@@ -22,8 +22,16 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
   const ImpaktfullUiBBLogin({
     required this.email,
     required this.password,
-    required this.onChangedEmail,
-    required this.onChangedPassword,
+    // `onEmailChanged` becomes `required` again in 1.0.0, when `onChangedEmail`
+    // is removed.
+    ValueChanged<String>? onEmailChanged,
+    @Deprecated('Use onEmailChanged instead. Will be removed in 1.0.0.')
+    Function(String)? onChangedEmail,
+    // `onPasswordChanged` becomes `required` again in 1.0.0, when
+    // `onChangedPassword` is removed.
+    ValueChanged<String>? onPasswordChanged,
+    @Deprecated('Use onPasswordChanged instead. Will be removed in 1.0.0.')
+    Function(String)? onChangedPassword,
     required this.onLoginTapped,
     this.topBuilder,
     this.startBuilder,
@@ -33,7 +41,20 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
     this.alignment = Alignment.center,
     this.localizations,
     super.key,
-  });
+  })  : assert(onEmailChanged != null || onChangedEmail != null,
+            'onEmailChanged is required'),
+        onEmailChanged =
+            (onEmailChanged ?? onChangedEmail) as ValueChanged<String>,
+        assert(onPasswordChanged != null || onChangedPassword != null,
+            'onPasswordChanged is required'),
+        onPasswordChanged =
+            (onPasswordChanged ?? onChangedPassword) as ValueChanged<String>;
+
+  @Deprecated('Use onEmailChanged instead. Will be removed in 1.0.0.')
+  Function(String) get onChangedEmail => onEmailChanged;
+
+  @Deprecated('Use onPasswordChanged instead. Will be removed in 1.0.0.')
+  Function(String) get onChangedPassword => onPasswordChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +91,7 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
                   label: localizations.emailInputLabel,
                   placeholder: localizations.emailInputPlaceholder,
                   value: email,
-                  onChanged: onChangedEmail,
+                  onChanged: onEmailChanged,
                   autofill: const [
                     AutofillHints.email,
                   ],
@@ -81,7 +102,7 @@ class ImpaktfullUiBBLogin extends StatelessWidget {
                   label: localizations.passwordInputLabel,
                   placeholder: localizations.passwordInputPlaceholder,
                   value: password,
-                  onChanged: onChangedPassword,
+                  onChanged: onPasswordChanged,
                   autofill: const [
                     AutofillHints.password,
                   ],

@@ -102,7 +102,8 @@ void main() {
     final changes = <String>[];
     await pumpAndSettleComponent(
       tester,
-      ImpaktfullUiWysiwyg(text: '', showPreview: false, onChanged: changes.add),
+      ImpaktfullUiWysiwyg(
+          value: '', showPreview: false, onChanged: changes.add),
     );
     await tester.enterText(find.byType(TextField), 'Hello');
     await tester.pump();
@@ -114,7 +115,7 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       ImpaktfullUiWysiwyg(
-        text: 'hello',
+        value: 'hello',
         showPreview: false,
         onChanged: changes.add,
       ),
@@ -133,7 +134,7 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       ImpaktfullUiWysiwyg(
-        text: '',
+        value: '',
         showPreview: false,
         actions: const [ImpaktfullUiWysiwygAction.bold],
         onChanged: (_) {},
@@ -147,7 +148,7 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       ImpaktfullUiWysiwyg(
-        text: '',
+        value: '',
         showPreview: false,
         actions: const [],
         onChanged: (_) {},
@@ -161,7 +162,7 @@ void main() {
         (tester) async {
       await pumpAndSettleComponent(
         tester,
-        ImpaktfullUiWysiwyg(text: '**bold**', onChanged: (_) {}),
+        ImpaktfullUiWysiwyg(value: '**bold**', onChanged: (_) {}),
       );
       expect(find.byType(TextField), findsOneWidget);
       expect(find.byType(ImpaktfullUiMarkdown), findsNothing);
@@ -180,7 +181,7 @@ void main() {
       await pumpAndSettleComponent(
         tester,
         ImpaktfullUiWysiwyg(
-          text: '',
+          value: '',
           showPreview: false,
           onChanged: (_) {},
         ),
@@ -196,7 +197,7 @@ void main() {
         ValueListenableBuilder<String>(
           valueListenable: text,
           builder: (context, value, child) =>
-              ImpaktfullUiWysiwyg(text: value, onChanged: (_) {}),
+              ImpaktfullUiWysiwyg(value: value, onChanged: (_) {}),
         ),
       );
       await tester.tap(find.text('Preview'));
@@ -219,7 +220,7 @@ void main() {
       ValueListenableBuilder<String>(
         valueListenable: text,
         builder: (context, value, child) => ImpaktfullUiWysiwyg(
-          text: value,
+          value: value,
           showPreview: false,
           onChanged: (_) {},
         ),
@@ -239,7 +240,7 @@ void main() {
         await pumpAndSettleComponent(
           tester,
           ImpaktfullUiWysiwyg(
-            text: '',
+            value: '',
             showPreview: false,
             onChanged: (_) {},
             theme: theme.copyWith(

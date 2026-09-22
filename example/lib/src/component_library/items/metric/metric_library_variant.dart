@@ -45,7 +45,7 @@ class MetricLibraryVariant
         leftValueBuilder: (context) => ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.success,
           leadingAsset: theme.assets.icons.arrowUp,
-          label: '100%',
+          title: '100%',
         ),
         type: type,
         impactType: inputs.impactType.value!,

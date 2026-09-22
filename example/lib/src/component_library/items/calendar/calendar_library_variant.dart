@@ -115,7 +115,7 @@ class CalendarLibraryVariant
               endDate: now.tomorrow.setTime(06, 30),
             ),
           ],
-          onEventTap: (event) =>
+          onEventTapped: (event) =>
               ImpaktfullUiNotification.show(title: event.title),
           type: type,
         ),

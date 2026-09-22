@@ -13,6 +13,8 @@ class ImpaktfullUiVirtualKeyboardTextEditController
   void openKeyboard(
     BuildContext context, {
     ValueChanged<String>? onChanged,
+    VoidCallback? onSubmitted,
+    @Deprecated('Use onSubmitted instead. Will be removed in 1.0.0.')
     VoidCallback? onSubmit,
     bool obscureText = false,
   }) {
@@ -20,7 +22,7 @@ class ImpaktfullUiVirtualKeyboardTextEditController
       context: context,
       controller: this,
       onChanged: onChanged,
-      onSubmit: onSubmit,
+      onSubmitted: onSubmitted ?? onSubmit,
       obscureText: obscureText,
     );
   }
