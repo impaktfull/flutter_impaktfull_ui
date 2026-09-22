@@ -21,7 +21,7 @@ class ComponentLibraryColorInput extends ComponentLibraryInputItem<Color> {
           theme.colors.accent,
           ...ImpaktfullUiColorPicker.defaultColors,
         ],
-        onColorChanged: updateState,
+        onChanged: updateState,
       ),
     );
   }

@@ -27,20 +27,20 @@ void main() {
     await tester.tapAt(offset);
   }
 
-  testWidgets('tapping a link calls onOpenLink with the url', (tester) async {
+  testWidgets('tapping a link calls onLinkTapped with the url', (tester) async {
     final links = <String>[];
     await pumpMarkdown(
       tester,
       ImpaktfullUiMarkdown(
         data: 'Go to [impaktfull](https://impaktfull.com) now',
-        onOpenLink: links.add,
+        onLinkTapped: links.add,
       ),
     );
     await tapSpan(tester, 'impaktfull');
     expect(links, ['https://impaktfull.com']);
   });
 
-  testWidgets('without onOpenLink tapping a link does not throw',
+  testWidgets('without onLinkTapped tapping a link does not throw',
       (tester) async {
     await pumpMarkdown(
       tester,

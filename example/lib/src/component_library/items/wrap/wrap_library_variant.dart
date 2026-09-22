@@ -20,7 +20,7 @@ class WrapLibraryVariant
           for (var i = 0; i < 100; ++i) ...[
             ImpaktfullUiBadge(
               type: ImpaktfullUiBadgeType.primary,
-              label: 'Item $i',
+              title: 'Item $i',
             ),
           ],
         ],

@@ -21,7 +21,7 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget {
   final double? width;
   final ValueChanged<String>? onChanged;
   final bool obscureText;
-  final VoidCallback? onSubmit;
+  final VoidCallback? onSubmitted;
   final ImpaktfullUiVirtualKeyboardTheme? theme;
 
   static final uppercaseKeys = [
@@ -57,11 +57,16 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget {
     required this.controller,
     this.width,
     this.onChanged,
-    this.onSubmit,
+    VoidCallback? onSubmitted,
+    @Deprecated('Use onSubmitted instead. Will be removed in 1.0.0.')
+    VoidCallback? onSubmit,
     this.obscureText = false,
     this.theme,
     super.key,
-  });
+  }) : onSubmitted = onSubmitted ?? onSubmit;
+
+  @Deprecated('Use onSubmitted instead. Will be removed in 1.0.0.')
+  VoidCallback? get onSubmit => onSubmitted;
 
   @override
   State<ImpaktfullUiVirtualKeyboard> createState() =>
@@ -72,6 +77,8 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget {
     required ImpaktfullUiVirtualKeyboardTextEditController controller,
     ValueChanged<String>? onChanged,
     bool obscureText = false,
+    VoidCallback? onSubmitted,
+    @Deprecated('Use onSubmitted instead. Will be removed in 1.0.0.')
     VoidCallback? onSubmit,
   }) {
     showModalBottomSheet(
@@ -88,7 +95,7 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget {
         padding: const EdgeInsets.all(16),
         child: ImpaktfullUiVirtualKeyboard(
           controller: controller,
-          onSubmit: onSubmit,
+          onSubmitted: onSubmitted ?? onSubmit,
           onChanged: onChanged,
           obscureText: obscureText,
         ),
@@ -279,7 +286,7 @@ class _ImpaktfullUiVirtualKeyboardState
       }
     } else if (logicalKey == LogicalKeyboardKey.enter ||
         logicalKey == LogicalKeyboardKey.numpadEnter) {
-      widget.onSubmit?.call();
+      widget.onSubmitted?.call();
     } else if (logicalKey == LogicalKeyboardKey.shift ||
         logicalKey == LogicalKeyboardKey.shiftLeft ||
         logicalKey == LogicalKeyboardKey.shiftRight) {

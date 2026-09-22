@@ -42,7 +42,7 @@ void main() {
         child: goldenSized(ImpaktfullUiSegmentedControl<int>(
           value: 2,
           items: const [1, 2],
-          labelBuilder: (context, item) => 'Item $item',
+          titleBuilder: (context, item) => 'Item $item',
           leadingBuilder: (context, item) =>
               ImpaktfullUiAssetWidget(asset: icons.home, size: 16),
           trailingBuilder: (context, item) =>

@@ -33,12 +33,12 @@ class ImpaktfullUiInputField extends StatefulWidget {
   final List<Widget> trailingInputActions;
   final String? value;
   final ValueChanged<String>? onChanged;
-  final ValueChanged<String>? onSubmit;
+  final ValueChanged<String>? onSubmitted;
   final TextEditingController? controller;
   final bool autofocus;
   final bool autocorrect;
   final FocusNode? focusNode;
-  final ValueChanged<bool>? onFocusChanged;
+  final ValueChanged<bool>? onFocusChange;
   final bool obscureText;
   final TextInputType textInputType;
   final TextInputAction textInputAction;
@@ -68,8 +68,12 @@ class ImpaktfullUiInputField extends StatefulWidget {
     this.autofill = const [],
     this.controller,
     this.focusNode,
-    this.onFocusChanged,
-    this.onSubmit,
+    ValueChanged<bool>? onFocusChange,
+    @Deprecated('Use onFocusChange instead. Will be removed in 1.0.0.')
+    ValueChanged<bool>? onFocusChanged,
+    ValueChanged<String>? onSubmitted,
+    @Deprecated('Use onSubmitted instead. Will be removed in 1.0.0.')
+    ValueChanged<String>? onSubmit,
     this.autofocus = false,
     this.autocorrect = true,
     this.obscureText = false,
@@ -84,7 +88,14 @@ class ImpaktfullUiInputField extends StatefulWidget {
     this.textCapitalization = TextCapitalization.none,
     this.theme,
     super.key,
-  });
+  })  : onFocusChange = onFocusChange ?? onFocusChanged,
+        onSubmitted = onSubmitted ?? onSubmit;
+
+  @Deprecated('Use onSubmitted instead. Will be removed in 1.0.0.')
+  ValueChanged<String>? get onSubmit => onSubmitted;
+
+  @Deprecated('Use onFocusChange instead. Will be removed in 1.0.0.')
+  ValueChanged<bool>? get onFocusChanged => onFocusChange;
 
   @override
   State<ImpaktfullUiInputField> createState() => _ImpaktfullUiInputFieldState();
@@ -283,7 +294,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                                     child: BaseInputField(
                                       value: widget.value,
                                       onChanged: _onChanged,
-                                      onSubmit: widget.onSubmit,
+                                      onSubmit: widget.onSubmitted,
                                       focusNode: _focusNode,
                                       controller: _controller,
                                       autofill: widget.autofill,
@@ -360,18 +371,18 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
       controller.openKeyboard(
         context,
         onChanged: widget.onChanged,
-        onSubmit: _onSubmitFromVirtualKeyboard,
+        onSubmitted: _onSubmitFromVirtualKeyboard,
         obscureText: widget.obscureText,
       );
     }
-    widget.onFocusChanged?.call(hasFocus);
+    widget.onFocusChange?.call(hasFocus);
   }
 
   void _onSubmitFromVirtualKeyboard() {
     Navigator.pop(context);
-    final onSubmit = widget.onSubmit;
-    if (onSubmit == null) return;
-    onSubmit(_controller.text);
+    final onSubmitted = widget.onSubmitted;
+    if (onSubmitted == null) return;
+    onSubmitted(_controller.text);
   }
 
   void _onObscureTextHideShowIconTapped() {

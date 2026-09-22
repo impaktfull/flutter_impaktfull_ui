@@ -19,7 +19,7 @@ void main() {
       ImpaktfullUiScreen(
         child: ImpaktfullUiBBForgetPassword(
           email: email,
-          onChangedEmail: emails.add,
+          onEmailChanged: emails.add,
           onResetPasswordTapped: () async => resetTaps++,
           onBackToLoginTapped: withBack ? () => backTaps++ : null,
         ),

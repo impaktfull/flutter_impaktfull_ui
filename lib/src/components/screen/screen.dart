@@ -21,13 +21,13 @@ class ImpaktfullUiScreen extends StatefulWidget {
   final Widget child;
   final List<Widget> actions;
 
-  /// Where the [fab] is placed.
+  /// Where the [floatingActionButton] is placed.
   ///
   /// Defaults to [AlignmentDirectional.bottomEnd]: the bottom right corner in
   /// a left-to-right layout and the bottom left corner in a right-to-left
   /// layout.
   final AlignmentGeometry floatingActionButtonAlignment;
-  final Widget? fab;
+  final Widget? floatingActionButton;
   final Widget? bottomNavBarChild;
   final Widget? bottomChild;
   final ImpaktfullUiScreenTheme? theme;
@@ -49,14 +49,20 @@ class ImpaktfullUiScreen extends StatefulWidget {
     @Deprecated(
         'Use floatingActionButtonAlignment instead. Will be removed in 1.0.0.')
     Alignment? fabAlignment,
-    this.fab,
+    Widget? floatingActionButton,
+    @Deprecated('Use floatingActionButton instead. Will be removed in 1.0.0.')
+    Widget? fab,
     this.bottomNavBarChild,
     this.bottomChild,
     this.theme,
     super.key,
-  }) : floatingActionButtonAlignment = floatingActionButtonAlignment ??
+  })  : floatingActionButtonAlignment = floatingActionButtonAlignment ??
             fabAlignment ??
-            AlignmentDirectional.bottomEnd;
+            AlignmentDirectional.bottomEnd,
+        floatingActionButton = floatingActionButton ?? fab;
+
+  @Deprecated('Use floatingActionButton instead. Will be removed in 1.0.0.')
+  Widget? get fab => floatingActionButton;
 
   @Deprecated(
       'Use floatingActionButtonAlignment instead. Will be removed in 1.0.0.')
@@ -153,11 +159,11 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                                       child: widget.child,
                                     ),
                                   ),
-                                  if (widget.fab != null) ...[
+                                  if (widget.floatingActionButton != null) ...[
                                     Padding(
                                       padding: const EdgeInsets.all(16)
                                           .add(MediaQuery.paddingOf(context)),
-                                      child: widget.fab!,
+                                      child: widget.floatingActionButton!,
                                     ),
                                   ],
                                 ],

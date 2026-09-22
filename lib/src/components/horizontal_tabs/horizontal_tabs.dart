@@ -7,18 +7,33 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 export 'horizontal_tabs_style.dart';
 
 class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
-  final T selectedValue;
-  final ValueChanged<T> onTabSelected;
+  final T value;
+  final ValueChanged<T> onChanged;
   final List<ImpaktfullUiHorizontalTabConfig<T>> tabs;
   final ImpaktfullUiHorizontalTabsTheme? theme;
 
   const ImpaktfullUiHorizontalTabs({
-    required this.selectedValue,
-    required this.onTabSelected,
+    // `value` and `onChanged` become `required` again in 1.0.0, when
+    // `selectedValue` and `onTabSelected` are removed.
+    T? value,
+    @Deprecated('Use value instead. Will be removed in 1.0.0.')
+    T? selectedValue,
+    ValueChanged<T>? onChanged,
+    @Deprecated('Use onChanged instead. Will be removed in 1.0.0.')
+    ValueChanged<T>? onTabSelected,
     required this.tabs,
     this.theme,
     super.key,
-  });
+  })  : value = (value ?? selectedValue) as T,
+        assert(onChanged != null || onTabSelected != null,
+            'onChanged is required'),
+        onChanged = (onChanged ?? onTabSelected) as ValueChanged<T>;
+
+  @Deprecated('Use value instead. Will be removed in 1.0.0.')
+  T get selectedValue => value;
+
+  @Deprecated('Use onChanged instead. Will be removed in 1.0.0.')
+  ValueChanged<T> get onTabSelected => onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +49,10 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             final tab = tabs[index];
             return ImpaktfullUiHorizontalTab(
-              label: tab.label,
+              title: tab.title,
               badge: tab.badge,
               badgeType: tab.badgeType,
-              isSelected: selectedValue == tab.value,
+              isSelected: value == tab.value,
               theme: ImpaktfullUiTheme.of(context).components.horizontalTab,
               onTap: () => _onTap(tab.value),
             );
@@ -49,7 +64,7 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
   }
 
   void _onTap(T value) {
-    if (selectedValue == value) return;
-    onTabSelected(value);
+    if (this.value == value) return;
+    onChanged(value);
   }
 }

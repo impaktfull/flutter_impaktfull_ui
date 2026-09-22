@@ -30,8 +30,8 @@ void main() {
         child: ImpaktfullUiBBLogin(
           email: email,
           password: password,
-          onChangedEmail: emails.add,
-          onChangedPassword: passwords.add,
+          onEmailChanged: emails.add,
+          onPasswordChanged: passwords.add,
           onLoginTapped: onLoginTapped ?? () async => loginTaps++,
           onRegisterTapped: withRegister ? () => registerTaps++ : null,
           localizations: localizations,
@@ -198,8 +198,8 @@ void main() {
         child: ImpaktfullUiBBLogin(
           email: '',
           password: '',
-          onChangedEmail: (_) {},
-          onChangedPassword: (_) {},
+          onEmailChanged: (_) {},
+          onPasswordChanged: (_) {},
           onLoginTapped: () async {},
           alignment: Alignment.topLeft,
           topBuilder: (context) => const Text('top'),

@@ -282,10 +282,10 @@ void main() {
         Center(
           child: ImpaktfullUiBadge(
             type: ImpaktfullUiBadgeType.primary,
-            label: '3',
+            title: '3',
             semanticLabel: '3 unread messages',
             onTap: () {},
-            onCloseTap: () => closed = true,
+            onCloseTapped: () => closed = true,
           ),
         ),
       );
@@ -527,7 +527,7 @@ void main() {
         Align(
           alignment: Alignment.topCenter,
           child: ImpaktfullUiDropdown<String>(
-            buttonText: 'Sort',
+            buttonTitle: 'Sort',
             height: 100,
             child: const Text('Newest'),
           ),

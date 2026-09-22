@@ -58,16 +58,16 @@ class _ComponentLibraryItemScreenState
       headerBottomChild: variants.length <= 1
           ? null
           : ImpaktfullUiHorizontalTabs(
-              selectedValue: _selectedTab,
+              value: _selectedTab,
               tabs: variants
                   .map(
                     (e) => ImpaktfullUiHorizontalTabConfig(
-                      label: e.title,
+                      title: e.title,
                       value: e,
                     ),
                   )
                   .toList(),
-              onTabSelected: (value) => setState(() => _selectedTab = value),
+              onChanged: (value) => setState(() => _selectedTab = value),
             ),
       builder: (context) => Directionality(
         textDirection: _isRtl ? TextDirection.rtl : TextDirection.ltr,

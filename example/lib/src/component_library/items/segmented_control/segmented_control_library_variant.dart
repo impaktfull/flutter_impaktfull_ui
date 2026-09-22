@@ -18,13 +18,13 @@ class SegmentedControlLibraryVariant
       ImpaktfullUiSegmentedControl<SegmentedControlLibraryTestValues>(
         value: inputs.values.value!,
         items: SegmentedControlLibraryTestValues.values,
-        labelBuilder: (context, item) => item.label,
+        titleBuilder: (context, item) => item.label,
         onChanged: inputs.values.updateState,
       ),
       ImpaktfullUiSegmentedControl<SegmentedControlLibraryTestValues>(
         value: inputs.values.value!,
         items: SegmentedControlLibraryTestValues.values,
-        labelBuilder: (context, item) => item.label,
+        titleBuilder: (context, item) => item.label,
         onChanged: inputs.values.updateState,
         theme: ImpaktfullUiSegmentedControlTheme(
           assets: const ImpaktfullUiSegmentedControlAssetsTheme(),

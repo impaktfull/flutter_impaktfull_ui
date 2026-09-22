@@ -130,10 +130,10 @@ void main() {
       tester,
       home: ImpaktfullUiModal(
         title: 'Title',
-        primaryActionLabel: 'Primary',
-        primaryActionOnTap: () => primaryTaps++,
-        secondaryActionLabel: 'Secondary',
-        secondaryActionOnTap: () => secondaryTaps++,
+        primaryActionTitle: 'Primary',
+        onPrimaryActionTapped: () => primaryTaps++,
+        secondaryActionTitle: 'Secondary',
+        onSecondaryActionTapped: () => secondaryTaps++,
       ),
     );
 

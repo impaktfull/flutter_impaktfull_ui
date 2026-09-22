@@ -14,7 +14,7 @@ void main() {
     await pumpAndSettleComponent(
       tester,
       Center(
-        child: ImpaktfullUiHorizontalTab(label: 'Tab', onTap: () => taps++),
+        child: ImpaktfullUiHorizontalTab(title: 'Tab', onTap: () => taps++),
       ),
     );
     await tester.tap(find.text('Tab'));
@@ -29,7 +29,7 @@ void main() {
         tester,
         Center(
           child: ImpaktfullUiHorizontalTab(
-            label: 'Tab',
+            title: 'Tab',
             isSelected: isSelected,
             onTap: () {},
           ),
@@ -55,7 +55,7 @@ void main() {
   testWidgets('no badge without a badge label', (tester) async {
     await pumpAndSettleComponent(
       tester,
-      Center(child: ImpaktfullUiHorizontalTab(label: 'Tab', onTap: () {})),
+      Center(child: ImpaktfullUiHorizontalTab(title: 'Tab', onTap: () {})),
     );
     expect(find.byType(ImpaktfullUiBadge), findsNothing);
   });
@@ -88,7 +88,7 @@ void main() {
         tester,
         Center(
           child: ImpaktfullUiHorizontalTab(
-            label: 'Tab',
+            title: 'Tab',
             badge: '3',
             badgeType: entry.value.badgeType,
             isSelected: entry.value.isSelected,

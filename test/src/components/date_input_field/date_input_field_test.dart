@@ -12,9 +12,9 @@ void main() {
           child: SizedBox(
               width: 300,
               child: ImpaktfullUiDateInputField(
-                date: DateTime(2024, 1, 1),
+                value: DateTime(2024, 1, 1),
                 readOnly: true,
-                onDateSelected: (_) {},
+                onChanged: (_) {},
               ))),
     );
     await tester.tap(find.byType(ImpaktfullUiDateInputField));
@@ -29,8 +29,8 @@ void main() {
         child: SizedBox(
           width: 300,
           child: ImpaktfullUiDateInputField(
-            date: DateTime(2024, 1, 1),
-            onDateSelected: (_) {},
+            value: DateTime(2024, 1, 1),
+            onChanged: (_) {},
           ),
         ),
       ),
@@ -46,9 +46,9 @@ void main() {
         child: SizedBox(
           width: 300,
           child: ImpaktfullUiDateInputField(
-            date: DateTime(2024, 1, 1),
+            value: DateTime(2024, 1, 1),
             readOnly: true,
-            onDateSelected: (_) {},
+            onChanged: (_) {},
           ),
         ),
       ),

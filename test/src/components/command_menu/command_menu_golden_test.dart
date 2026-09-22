@@ -24,7 +24,7 @@ Widget _window({
               child: ImpaktfullUiCommandMenuWindow(
                 value: value,
                 hasBlurredBackground: hasBlurredBackground,
-                onInputChanged: (_) {},
+                onChanged: (_) {},
                 onCloseWindow: () {},
                 bottomBuilder: withResults
                     ? (context) => ListView(

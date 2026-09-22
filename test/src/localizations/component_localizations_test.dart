@@ -150,7 +150,7 @@ void main() {
           type: ImpaktfullUiCalendarType.week,
           selectedDate: DateTime(2024, 5, 15),
           events: const [],
-          onEventTap: (_) {},
+          onEventTapped: (_) {},
           localizations: const ImpaktfullUiCalendarLocalizations(
             previousWeek: 'Vorige week',
             nextWeek: 'Volgende week',
@@ -190,7 +190,7 @@ void main() {
           type: ImpaktfullUiCalendarType.week,
           selectedDate: DateTime(2024, 5, 15),
           events: const [],
-          onEventTap: (_) {},
+          onEventTapped: (_) {},
           localizations: const ImpaktfullUiCalendarLocalizations(
             todayBtn: 'Vandaag',
           ),
@@ -213,7 +213,7 @@ void main() {
           type: ImpaktfullUiCalendarType.list,
           selectedDate: DateTime(2099, 1, 1),
           events: const [],
-          onEventTap: (_) {},
+          onEventTapped: (_) {},
           localizations: localizations,
         ),
       );
@@ -232,7 +232,7 @@ void main() {
               endDate: DateTime(2099, 1, 2).endOfTheDay,
             ),
           ],
-          onEventTap: (_) {},
+          onEventTapped: (_) {},
         ),
       );
       expect(find.text('[1 van 2] Hele dag'), findsOneWidget);
@@ -320,7 +320,7 @@ void main() {
           page: 1,
           itemsPerPage: 10,
           amountOfPages: 5,
-          onLoadPage: (_) {},
+          onPageChanged: (_) {},
           localizations: ImpaktfullUiPaginationLocalizations(
             pageLabel: (page, amountOfPages) =>
                 'Pagina $page van $amountOfPages',
@@ -410,7 +410,7 @@ void main() {
       await pumpAndSettleComponent(
         tester,
         ImpaktfullUiWysiwyg(
-          text: 'Hello',
+          value: 'Hello',
           onChanged: (_) {},
           localizations: const ImpaktfullUiWysiwygLocalizations(
             previewBtn: 'Voorbeeld',
@@ -542,7 +542,7 @@ void main() {
         tester,
         ImpaktfullUiBBForgetPassword(
           email: '',
-          onChangedEmail: (_) {},
+          onEmailChanged: (_) {},
           onResetPasswordTapped: () async {},
           onBackToLoginTapped: () {},
           localizations: const ImpaktfullUiBBForgetPasswordLocalizations(
@@ -570,8 +570,8 @@ void main() {
         ImpaktfullUiBBRegister(
           email: '',
           password: '',
-          onChangedEmail: (_) {},
-          onChangedPassword: (_) {},
+          onEmailChanged: (_) {},
+          onPasswordChanged: (_) {},
           onRegisterTapped: () async {},
         ),
       );
@@ -585,7 +585,7 @@ void main() {
         tester,
         ImpaktfullUiBBVerifyRegisterCode(
           code: '',
-          onChangedVerificationCode: (_) {},
+          onCodeChanged: (_) {},
           onVerifyCodeTapped: () async {},
           onBackTapped: () {},
           localizations: const ImpaktfullUiBBVerifyRegisterCodeLocalizations(
@@ -619,8 +619,8 @@ void main() {
         ImpaktfullUiBBLogin(
           email: '',
           password: '',
-          onChangedEmail: (_) {},
-          onChangedPassword: (_) {},
+          onEmailChanged: (_) {},
+          onPasswordChanged: (_) {},
           onLoginTapped: () async {},
           localizations: const ImpaktfullUiBBLoginLocalizations()
               .copyWith(title: 'Welkom terug!'),

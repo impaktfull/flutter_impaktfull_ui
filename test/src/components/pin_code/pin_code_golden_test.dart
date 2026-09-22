@@ -19,7 +19,7 @@ void main() {
           code: code,
           length: length,
           onChanged: (_) {},
-          onSubmit: withSubmit ? (_) {} : null,
+          onSubmitted: withSubmit ? (_) {} : null,
         ),
         width: 280,
         height: 380,

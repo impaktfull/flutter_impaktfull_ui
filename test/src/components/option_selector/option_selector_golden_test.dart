@@ -20,13 +20,13 @@ void main() {
       GoldenTest(
         child: goldenSized(const ImpaktfullUiOptionSelector<String>(
           options: ['Belgium', 'France', 'The Netherlands'],
-          selectedValue: 'France',
+          value: 'France',
         )),
       ),
       GoldenTest(
         child: goldenSized(ImpaktfullUiOptionSelector<int>(
           options: const [1, 2, 3],
-          selectedValue: 3,
+          value: 3,
           titleBuilder: (item) => 'Option $item',
         )),
       ),
@@ -37,7 +37,7 @@ void main() {
                 'option selector',
             'Short',
           ],
-          selectedValue: 'Short',
+          value: 'Short',
         )),
       ),
       GoldenTest(

@@ -15,29 +15,29 @@ class HorizontalTabsVariant
       BuildContext context, HorizontalTabsLibraryVariantInputs inputs) {
     return [
       ImpaktfullUiHorizontalTabs(
-        selectedValue: inputs.selectedIndex.value,
-        onTabSelected: inputs.selectedIndex.updateState,
+        value: inputs.selectedIndex.value,
+        onChanged: inputs.selectedIndex.updateState,
         tabs: [
           ImpaktfullUiHorizontalTabConfig(
-            label: 'Tab 1',
+            title: 'Tab 1',
             value: 0,
           ),
           ImpaktfullUiHorizontalTabConfig(
-            label: 'Tab 2',
+            title: 'Tab 2',
             value: 1,
           ),
           ImpaktfullUiHorizontalTabConfig(
-            label: 'Tab 3',
+            title: 'Tab 3',
             value: 2,
           ),
           ImpaktfullUiHorizontalTabConfig(
-            label: 'Tab 4',
+            title: 'Tab 4',
             value: 3,
             badge: '20',
             badgeType: ImpaktfullUiBadgeType.error,
           ),
           ImpaktfullUiHorizontalTabConfig(
-            label: 'Tab 5',
+            title: 'Tab 5',
             value: 4,
           ),
         ],

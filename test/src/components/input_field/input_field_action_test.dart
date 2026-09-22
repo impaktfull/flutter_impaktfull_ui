@@ -18,7 +18,7 @@ void main() {
         builder: (context) {
           final theme = ImpaktfullUiInputFieldTheme.of(context);
           return ImpaktfullUiInputFieldAction(
-            label: 'Action',
+            title: 'Action',
             onTap: () {},
             theme: ImpaktfullUiInputFieldTheme(
               assets: theme.assets,

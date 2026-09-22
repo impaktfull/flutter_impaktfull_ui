@@ -115,7 +115,7 @@ void main() {
     await pumpLayoutApp(
       tester,
       ImpaktfullUiAdaptiveScreen(
-        fab: ImpaktfullUiFloatingActionButton(
+        floatingActionButton: ImpaktfullUiFloatingActionButton(
           asset: testAsset,
           onTap: () => taps++,
         ),

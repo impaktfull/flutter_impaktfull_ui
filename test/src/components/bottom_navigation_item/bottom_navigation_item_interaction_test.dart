@@ -33,7 +33,7 @@ void main() {
       tester,
       ImpaktfullUiBottomNavigationItem(
         asset: testAsset,
-        label: 'Label',
+        title: 'Label',
         isSelected: false,
         onTap: () => taps++,
       ),
@@ -50,7 +50,7 @@ void main() {
       const ImpaktfullUiBottomNavigationItem(
         asset: testAsset,
         selectedAsset: testSelectedAsset,
-        label: 'Label',
+        title: 'Label',
         isSelected: true,
       ),
     );
@@ -69,7 +69,7 @@ void main() {
       const ImpaktfullUiBottomNavigationItem(
         asset: testAsset,
         selectedAsset: testSelectedAsset,
-        label: 'Label',
+        title: 'Label',
         isSelected: false,
       ),
     );
@@ -155,13 +155,13 @@ void main() {
     expect(badge.color, Colors.green);
   });
 
-  testWidgets('without showLabel the label is a tooltip', (tester) async {
+  testWidgets('without showTitle the title is a tooltip', (tester) async {
     await pumpItem(
       tester,
       const ImpaktfullUiBottomNavigationItem(
         asset: testAsset,
-        label: 'Label',
-        showLabel: false,
+        title: 'Label',
+        showTitle: false,
         isSelected: false,
         onTap: _noop,
       ),
@@ -170,12 +170,12 @@ void main() {
     expect(find.byTooltip('Label'), findsOneWidget);
   });
 
-  testWidgets('with showLabel there is no tooltip', (tester) async {
+  testWidgets('with showTitle there is no tooltip', (tester) async {
     await pumpItem(
       tester,
       const ImpaktfullUiBottomNavigationItem(
         asset: testAsset,
-        label: 'Label',
+        title: 'Label',
         isSelected: false,
         onTap: _noop,
       ),

@@ -186,9 +186,9 @@ class _ImpaktfullUiColorInputFieldState
         child: ImpaktfullUiColorPicker(
           allowedColors: widget.colorPickerColors ?? [],
           type: widget.colorPickerType ?? ImpaktfullUiColorPickerType.simple,
-          onColorChanged: (_) {},
+          onChanged: (_) {},
           // Only close when the user finished picking (tap or slider release)
-          onColorChangeEnd: (color) => Navigator.of(context).pop(color),
+          onChangeEnd: (color) => Navigator.of(context).pop(color),
           selectedColor: _color,
         ),
       ),

@@ -23,7 +23,7 @@ Future<void> _pumpCalendar(
       type: ImpaktfullUiCalendarType.week,
       selectedDate: _selectedDate,
       events: events,
-      onEventTap: (event) {},
+      onEventTapped: (event) {},
     ),
   );
 }

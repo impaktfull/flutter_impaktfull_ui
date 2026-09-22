@@ -16,7 +16,7 @@ void main() {
       GoldenTest(
         child: goldenSized(ImpaktfullUiColorPicker(
           selectedColor: null,
-          onColorChanged: (_) {},
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
@@ -35,14 +35,14 @@ void main() {
             Colors.grey,
             Colors.lime,
           ],
-          onColorChanged: (_) {},
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
         child: goldenSized(ImpaktfullUiColorPicker(
           type: ImpaktfullUiColorPickerType.slider,
           selectedColor: null,
-          onColorChanged: (_) {},
+          onChanged: (_) {},
         )),
       ),
       GoldenTest(
@@ -50,7 +50,7 @@ void main() {
           type: ImpaktfullUiColorPickerType.slider,
           selectedColor: null,
           allowedColors: const [Colors.black, Colors.white],
-          onColorChanged: (_) {},
+          onChanged: (_) {},
         )),
       ),
     ],

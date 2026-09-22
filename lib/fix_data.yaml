@@ -651,3 +651,932 @@ transforms:
     changes:
       - kind: 'removeParameter'
         name: 'replaceWithOverlay'
+
+  # Parameters renamed to consistent names, in line with Flutter
+  - title: "Rename parameter 'onLongTap' to 'onLongPress'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiTouchFeedback'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onLongTap'
+        newName: 'onLongPress'
+  - title: "Rename parameter 'onSubmit' to 'onSubmitted'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiInputField'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onSubmit'
+        newName: 'onSubmitted'
+  - title: "Rename parameter 'onFocusChanged' to 'onFocusChange'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiInputField'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onFocusChanged'
+        newName: 'onFocusChange'
+  - title: "Rename parameter 'onSubmit' to 'onSubmitted'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiPinCode'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onSubmit'
+        newName: 'onSubmitted'
+  - title: "Rename parameter 'onSubmit' to 'onSubmitted'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiVirtualKeyboard'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onSubmit'
+        newName: 'onSubmitted'
+  - title: "Rename parameter 'onSubmit' to 'onSubmitted'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      method: 'show'
+      inClass: 'ImpaktfullUiVirtualKeyboard'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onSubmit'
+        newName: 'onSubmitted'
+  - title: "Rename parameter 'onSubmit' to 'onSubmitted'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      method: 'openKeyboard'
+      inClass: 'ImpaktfullUiVirtualKeyboardTextEditController'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onSubmit'
+        newName: 'onSubmitted'
+  - title: "Rename parameter 'onExpandedChanged' to 'onExpansionChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiAccordion'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onExpandedChanged'
+        newName: 'onExpansionChanged'
+  - title: "Rename parameter 'fab' to 'floatingActionButton'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiScreen'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'fab'
+        newName: 'floatingActionButton'
+  - title: "Rename parameter 'fab' to 'floatingActionButton'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiAdaptiveScreen'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'fab'
+        newName: 'floatingActionButton'
+  - title: "Rename parameter 'selectedValue' to 'value'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiHorizontalTabs'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'selectedValue'
+        newName: 'value'
+  - title: "Rename parameter 'onTabSelected' to 'onChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiHorizontalTabs'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onTabSelected'
+        newName: 'onChanged'
+  - title: "Rename parameter 'selectedValue' to 'value'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiOptionSelector'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'selectedValue'
+        newName: 'value'
+  - title: "Rename parameter 'selectedValue' to 'value'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      method: 'show'
+      inClass: 'ImpaktfullUiOptionSelector'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'selectedValue'
+        newName: 'value'
+  - title: "Rename parameter 'onInputChanged' to 'onChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiCommandMenuWindow'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onInputChanged'
+        newName: 'onChanged'
+  - title: "Rename parameter 'onLoadPage' to 'onPageChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiPagination'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onLoadPage'
+        newName: 'onPageChanged'
+  - title: "Rename parameter 'onLoadPage' to 'onPageChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'withAmountOfPages'
+      inClass: 'ImpaktfullUiPagination'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onLoadPage'
+        newName: 'onPageChanged'
+  - title: "Rename parameter 'onChangedEmail' to 'onEmailChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBBForgetPassword'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onChangedEmail'
+        newName: 'onEmailChanged'
+  - title: "Rename parameter 'onChangedEmail' to 'onEmailChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBBLogin'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onChangedEmail'
+        newName: 'onEmailChanged'
+  - title: "Rename parameter 'onChangedPassword' to 'onPasswordChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBBLogin'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onChangedPassword'
+        newName: 'onPasswordChanged'
+  - title: "Rename parameter 'onChangedEmail' to 'onEmailChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBBRegister'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onChangedEmail'
+        newName: 'onEmailChanged'
+  - title: "Rename parameter 'onChangedPassword' to 'onPasswordChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBBRegister'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onChangedPassword'
+        newName: 'onPasswordChanged'
+  - title: "Rename parameter 'onChangedVerificationCode' to 'onCodeChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBBVerifyRegisterCode'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onChangedVerificationCode'
+        newName: 'onCodeChanged'
+  - title: "Rename parameter 'onCloseTap' to 'onCloseTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBadge'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onCloseTap'
+        newName: 'onCloseTapped'
+  - title: "Rename parameter 'primaryActionOnTap' to 'onPrimaryActionTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'primaryActionOnTap'
+        newName: 'onPrimaryActionTapped'
+  - title: "Rename parameter 'primaryActionOnTap' to 'onPrimaryActionTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'simple'
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'primaryActionOnTap'
+        newName: 'onPrimaryActionTapped'
+  - title: "Rename parameter 'secondaryActionOnTap' to 'onSecondaryActionTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'secondaryActionOnTap'
+        newName: 'onSecondaryActionTapped'
+  - title: "Rename parameter 'secondaryActionOnTap' to 'onSecondaryActionTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'simple'
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'secondaryActionOnTap'
+        newName: 'onSecondaryActionTapped'
+  - title: "Rename parameter 'onEventTap' to 'onEventTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiCalendar'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onEventTap'
+        newName: 'onEventTapped'
+  - title: "Rename parameter 'onEventTap' to 'onEventTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiCalendarList'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onEventTap'
+        newName: 'onEventTapped'
+  - title: "Rename parameter 'onEventTap' to 'onEventTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiCalendarWeek'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onEventTap'
+        newName: 'onEventTapped'
+  - title: "Rename parameter 'onOpenLink' to 'onLinkTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiMarkdown'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onOpenLink'
+        newName: 'onLinkTapped'
+  - title: "Rename parameter 'label' to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBadge'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'label'
+        newName: 'title'
+  - title: "Rename parameter 'label' to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiFloatingActionButton'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'label'
+        newName: 'title'
+  - title: "Rename parameter 'buttonText' to 'buttonTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiDropdown'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'buttonText'
+        newName: 'buttonTitle'
+  - title: "Rename parameter 'buttonText' to 'buttonTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'builder'
+      inClass: 'ImpaktfullUiDropdown'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'buttonText'
+        newName: 'buttonTitle'
+  - title: "Rename parameter 'label' to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiDropdownItem'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'label'
+        newName: 'title'
+  - title: "Rename parameter 'label' to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBottomNavigationItem'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'label'
+        newName: 'title'
+  - title: "Rename parameter 'showLabel' to 'showTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiBottomNavigationItem'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'showLabel'
+        newName: 'showTitle'
+  - title: "Rename parameter 'label' to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiHorizontalTab'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'label'
+        newName: 'title'
+  - title: "Rename parameter 'label' to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiHorizontalTabConfig'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'label'
+        newName: 'title'
+  - title: "Rename parameter 'label' to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiTabBarItem'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'label'
+        newName: 'title'
+  - title: "Rename parameter 'label' to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiInputFieldAction'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'label'
+        newName: 'title'
+  - title: "Rename parameter 'labelBuilder' to 'titleBuilder'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiSegmentedControl'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'labelBuilder'
+        newName: 'titleBuilder'
+  - title: "Rename parameter 'primaryActionLabel' to 'primaryActionTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'primaryActionLabel'
+        newName: 'primaryActionTitle'
+  - title: "Rename parameter 'primaryActionLabel' to 'primaryActionTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'simple'
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'primaryActionLabel'
+        newName: 'primaryActionTitle'
+  - title: "Rename parameter 'secondaryActionLabel' to 'secondaryActionTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'secondaryActionLabel'
+        newName: 'secondaryActionTitle'
+  - title: "Rename parameter 'secondaryActionLabel' to 'secondaryActionTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: 'simple'
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'secondaryActionLabel'
+        newName: 'secondaryActionTitle'
+  - title: "Rename parameter 'date' to 'value'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiDateInputField'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'date'
+        newName: 'value'
+  - title: "Rename parameter 'onDateSelected' to 'onChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiDateInputField'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onDateSelected'
+        newName: 'onChanged'
+  - title: "Rename parameter 'onColorChanged' to 'onChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiColorPicker'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onColorChanged'
+        newName: 'onChanged'
+  - title: "Rename parameter 'onColorChangeEnd' to 'onChangeEnd'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiColorPicker'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'onColorChangeEnd'
+        newName: 'onChangeEnd'
+  - title: "Rename parameter 'text' to 'value'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      constructor: ''
+      inClass: 'ImpaktfullUiWysiwyg'
+    changes:
+      - kind: 'renameParameter'
+        oldName: 'text'
+        newName: 'value'
+  - title: "Rename to 'onLongPress'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onLongTap'
+      inClass: 'ImpaktfullUiTouchFeedback'
+    changes:
+      - kind: 'rename'
+        newName: 'onLongPress'
+  - title: "Rename to 'onSubmitted'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onSubmit'
+      inClass: 'ImpaktfullUiInputField'
+    changes:
+      - kind: 'rename'
+        newName: 'onSubmitted'
+  - title: "Rename to 'onFocusChange'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onFocusChanged'
+      inClass: 'ImpaktfullUiInputField'
+    changes:
+      - kind: 'rename'
+        newName: 'onFocusChange'
+  - title: "Rename to 'onSubmitted'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onSubmit'
+      inClass: 'ImpaktfullUiPinCode'
+    changes:
+      - kind: 'rename'
+        newName: 'onSubmitted'
+  - title: "Rename to 'onSubmitted'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onSubmit'
+      inClass: 'ImpaktfullUiVirtualKeyboard'
+    changes:
+      - kind: 'rename'
+        newName: 'onSubmitted'
+  - title: "Rename to 'onExpansionChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onExpandedChanged'
+      inClass: 'ImpaktfullUiAccordion'
+    changes:
+      - kind: 'rename'
+        newName: 'onExpansionChanged'
+  - title: "Rename to 'floatingActionButton'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'fab'
+      inClass: 'ImpaktfullUiScreen'
+    changes:
+      - kind: 'rename'
+        newName: 'floatingActionButton'
+  - title: "Rename to 'floatingActionButton'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'fab'
+      inClass: 'ImpaktfullUiAdaptiveScreen'
+    changes:
+      - kind: 'rename'
+        newName: 'floatingActionButton'
+  - title: "Rename to 'value'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'selectedValue'
+      inClass: 'ImpaktfullUiHorizontalTabs'
+    changes:
+      - kind: 'rename'
+        newName: 'value'
+  - title: "Rename to 'onChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onTabSelected'
+      inClass: 'ImpaktfullUiHorizontalTabs'
+    changes:
+      - kind: 'rename'
+        newName: 'onChanged'
+  - title: "Rename to 'value'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'selectedValue'
+      inClass: 'ImpaktfullUiOptionSelector'
+    changes:
+      - kind: 'rename'
+        newName: 'value'
+  - title: "Rename to 'onChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onInputChanged'
+      inClass: 'ImpaktfullUiCommandMenuWindow'
+    changes:
+      - kind: 'rename'
+        newName: 'onChanged'
+  - title: "Rename to 'onPageChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onLoadPage'
+      inClass: 'ImpaktfullUiPagination'
+    changes:
+      - kind: 'rename'
+        newName: 'onPageChanged'
+  - title: "Rename to 'onEmailChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onChangedEmail'
+      inClass: 'ImpaktfullUiBBForgetPassword'
+    changes:
+      - kind: 'rename'
+        newName: 'onEmailChanged'
+  - title: "Rename to 'onEmailChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onChangedEmail'
+      inClass: 'ImpaktfullUiBBLogin'
+    changes:
+      - kind: 'rename'
+        newName: 'onEmailChanged'
+  - title: "Rename to 'onPasswordChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onChangedPassword'
+      inClass: 'ImpaktfullUiBBLogin'
+    changes:
+      - kind: 'rename'
+        newName: 'onPasswordChanged'
+  - title: "Rename to 'onEmailChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onChangedEmail'
+      inClass: 'ImpaktfullUiBBRegister'
+    changes:
+      - kind: 'rename'
+        newName: 'onEmailChanged'
+  - title: "Rename to 'onPasswordChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onChangedPassword'
+      inClass: 'ImpaktfullUiBBRegister'
+    changes:
+      - kind: 'rename'
+        newName: 'onPasswordChanged'
+  - title: "Rename to 'onCodeChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onChangedVerificationCode'
+      inClass: 'ImpaktfullUiBBVerifyRegisterCode'
+    changes:
+      - kind: 'rename'
+        newName: 'onCodeChanged'
+  - title: "Rename to 'onCloseTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onCloseTap'
+      inClass: 'ImpaktfullUiBadge'
+    changes:
+      - kind: 'rename'
+        newName: 'onCloseTapped'
+  - title: "Rename to 'onPrimaryActionTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'primaryActionOnTap'
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'rename'
+        newName: 'onPrimaryActionTapped'
+  - title: "Rename to 'onSecondaryActionTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'secondaryActionOnTap'
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'rename'
+        newName: 'onSecondaryActionTapped'
+  - title: "Rename to 'onEventTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onEventTap'
+      inClass: 'ImpaktfullUiCalendar'
+    changes:
+      - kind: 'rename'
+        newName: 'onEventTapped'
+  - title: "Rename to 'onEventTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onEventTap'
+      inClass: 'ImpaktfullUiCalendarList'
+    changes:
+      - kind: 'rename'
+        newName: 'onEventTapped'
+  - title: "Rename to 'onEventTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onEventTap'
+      inClass: 'ImpaktfullUiCalendarWeek'
+    changes:
+      - kind: 'rename'
+        newName: 'onEventTapped'
+  - title: "Rename to 'onLinkTapped'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onOpenLink'
+      inClass: 'ImpaktfullUiMarkdown'
+    changes:
+      - kind: 'rename'
+        newName: 'onLinkTapped'
+  - title: "Rename to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'label'
+      inClass: 'ImpaktfullUiBadge'
+    changes:
+      - kind: 'rename'
+        newName: 'title'
+  - title: "Rename to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'label'
+      inClass: 'ImpaktfullUiFloatingActionButton'
+    changes:
+      - kind: 'rename'
+        newName: 'title'
+  - title: "Rename to 'buttonTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'buttonText'
+      inClass: 'ImpaktfullUiDropdown'
+    changes:
+      - kind: 'rename'
+        newName: 'buttonTitle'
+  - title: "Rename to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'label'
+      inClass: 'ImpaktfullUiDropdownItem'
+    changes:
+      - kind: 'rename'
+        newName: 'title'
+  - title: "Rename to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'label'
+      inClass: 'ImpaktfullUiBottomNavigationItem'
+    changes:
+      - kind: 'rename'
+        newName: 'title'
+  - title: "Rename to 'showTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'showLabel'
+      inClass: 'ImpaktfullUiBottomNavigationItem'
+    changes:
+      - kind: 'rename'
+        newName: 'showTitle'
+  - title: "Rename to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'label'
+      inClass: 'ImpaktfullUiHorizontalTab'
+    changes:
+      - kind: 'rename'
+        newName: 'title'
+  - title: "Rename to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'label'
+      inClass: 'ImpaktfullUiHorizontalTabConfig'
+    changes:
+      - kind: 'rename'
+        newName: 'title'
+  - title: "Rename to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'label'
+      inClass: 'ImpaktfullUiTabBarItem'
+    changes:
+      - kind: 'rename'
+        newName: 'title'
+  - title: "Rename to 'title'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'label'
+      inClass: 'ImpaktfullUiInputFieldAction'
+    changes:
+      - kind: 'rename'
+        newName: 'title'
+  - title: "Rename to 'titleBuilder'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'labelBuilder'
+      inClass: 'ImpaktfullUiSegmentedControl'
+    changes:
+      - kind: 'rename'
+        newName: 'titleBuilder'
+  - title: "Rename to 'primaryActionTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'primaryActionLabel'
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'rename'
+        newName: 'primaryActionTitle'
+  - title: "Rename to 'secondaryActionTitle'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'secondaryActionLabel'
+      inClass: 'ImpaktfullUiModal'
+    changes:
+      - kind: 'rename'
+        newName: 'secondaryActionTitle'
+  - title: "Rename to 'value'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'date'
+      inClass: 'ImpaktfullUiDateInputField'
+    changes:
+      - kind: 'rename'
+        newName: 'value'
+  - title: "Rename to 'onChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onDateSelected'
+      inClass: 'ImpaktfullUiDateInputField'
+    changes:
+      - kind: 'rename'
+        newName: 'onChanged'
+  - title: "Rename to 'onChanged'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onColorChanged'
+      inClass: 'ImpaktfullUiColorPicker'
+    changes:
+      - kind: 'rename'
+        newName: 'onChanged'
+  - title: "Rename to 'onChangeEnd'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'onColorChangeEnd'
+      inClass: 'ImpaktfullUiColorPicker'
+    changes:
+      - kind: 'rename'
+        newName: 'onChangeEnd'
+  - title: "Rename to 'value'"
+    date: 2026-09-22
+    element:
+      uris: ['package:impaktfull_ui/impaktfull_ui.dart']
+      getter: 'text'
+      inClass: 'ImpaktfullUiWysiwyg'
+    changes:
+      - kind: 'rename'
+        newName: 'value'
+

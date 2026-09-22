@@ -19,7 +19,7 @@ class ImpaktfullUiAccordion extends StatefulWidget {
   final String? subtitle;
   final ImpaktfullUiAccordionRevealType revealType;
   final ImpaktfullUiAccordionTheme? theme;
-  final ValueChanged<bool>? onExpandedChanged;
+  final ValueChanged<bool>? onExpansionChanged;
 
   const ImpaktfullUiAccordion({
     required this.title,
@@ -29,10 +29,15 @@ class ImpaktfullUiAccordion extends StatefulWidget {
     this.subtitle,
     this.trailingWidgetBuilder,
     this.revealType = ImpaktfullUiAccordionRevealType.topDown,
-    this.onExpandedChanged,
+    ValueChanged<bool>? onExpansionChanged,
+    @Deprecated('Use onExpansionChanged instead. Will be removed in 1.0.0.')
+    ValueChanged<bool>? onExpandedChanged,
     this.theme,
     super.key,
-  });
+  }) : onExpansionChanged = onExpansionChanged ?? onExpandedChanged;
+
+  @Deprecated('Use onExpansionChanged instead. Will be removed in 1.0.0.')
+  ValueChanged<bool>? get onExpandedChanged => onExpansionChanged;
 
   @override
   State<ImpaktfullUiAccordion> createState() => _ImpaktfullUiAccordionState();
@@ -124,7 +129,7 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
 
   void _toggleExpanded() {
     final newValue = !widget.expanded;
-    widget.onExpandedChanged?.call(newValue);
+    widget.onExpansionChanged?.call(newValue);
   }
 
   void _setExpanded(bool expanded) {

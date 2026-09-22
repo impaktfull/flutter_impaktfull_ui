@@ -122,7 +122,7 @@ void main() {
       Center(
         child: ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.primary,
-          label: 'Badge',
+          title: 'Badge',
           theme: override,
         ),
       ),

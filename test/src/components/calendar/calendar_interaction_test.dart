@@ -41,7 +41,7 @@ Future<List<ImpaktfullUiCalendarEvent>> _pumpCalendar(
       type: type,
       selectedDate: selectedDate,
       events: events,
-      onEventTap: taps.add,
+      onEventTapped: taps.add,
     ),
   );
   return taps;
@@ -89,7 +89,7 @@ void main() {
       expect(firstDay.isSameDay(today.beginningOfTheWeek), isTrue);
     });
 
-    testWidgets('tapping an event calls onEventTap', (tester) async {
+    testWidgets('tapping an event calls onEventTapped', (tester) async {
       final taps = await pumpWeek(tester);
 
       await tapAndSettle(tester, find.text('Standup'));
@@ -122,7 +122,7 @@ void main() {
               type: ImpaktfullUiCalendarType.week,
               selectedDate: selectedDate,
               events: [_standup, _nextWeek],
-              onEventTap: (_) {},
+              onEventTapped: (_) {},
             );
           },
         ),
@@ -147,7 +147,7 @@ void main() {
               type: ImpaktfullUiCalendarType.week,
               selectedDate: DateTime(2024, 5, 15),
               events: events,
-              onEventTap: (_) {},
+              onEventTapped: (_) {},
             );
           },
         ),
@@ -268,7 +268,7 @@ void main() {
       );
     });
 
-    testWidgets('tapping an event calls onEventTap', (tester) async {
+    testWidgets('tapping an event calls onEventTapped', (tester) async {
       final taps = await _pumpCalendar(
         tester,
         type: ImpaktfullUiCalendarType.list,

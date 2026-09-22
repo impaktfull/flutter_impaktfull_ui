@@ -80,7 +80,7 @@ void main() {
     });
   });
 
-  testWidgets('onSubmit is called with the text on the done action',
+  testWidgets('onSubmitted is called with the text on the done action',
       (tester) async {
     final submitted = <String>[];
     await pumpAndSettleComponent(
@@ -88,7 +88,7 @@ void main() {
       ImpaktfullUiInputField(
         value: '',
         onChanged: (_) {},
-        onSubmit: submitted.add,
+        onSubmitted: submitted.add,
       ),
     );
     await tester.enterText(find.byType(TextField), 'done');
@@ -113,7 +113,7 @@ void main() {
     expect(textField(tester).controller!.text, 'Second');
   });
 
-  testWidgets('tapping the field focuses it and calls onFocusChanged',
+  testWidgets('tapping the field focuses it and calls onFocusChange',
       (tester) async {
     final focusChanges = <bool>[];
     await pumpAndSettleComponent(
@@ -121,7 +121,7 @@ void main() {
       ImpaktfullUiInputField(
         value: '',
         onChanged: (_) {},
-        onFocusChanged: focusChanges.add,
+        onFocusChange: focusChanges.add,
       ),
     );
     await tester.tap(find.byType(TextField));
@@ -297,7 +297,7 @@ void main() {
         value: '',
         multiline: true,
         trailingAction: ImpaktfullUiInputFieldAction(
-          label: 'Action',
+          title: 'Action',
           onTap: () {},
         ),
         onChanged: (_) {},
@@ -313,7 +313,7 @@ void main() {
       ImpaktfullUiInputField(
         value: '',
         trailingAction: ImpaktfullUiInputFieldAction(
-          label: 'Action',
+          title: 'Action',
           onTap: () => taps++,
         ),
         onChanged: (_) {},

@@ -15,7 +15,7 @@ export 'option_selector_style.dart';
 class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
   final String Function(T)? titleBuilder;
   final List<T> options;
-  final T? selectedValue;
+  final T? value;
   final EdgeInsetsGeometry padding;
   final ImpaktfullUiOptionSelectorTheme? theme;
 
@@ -26,18 +26,25 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
   const ImpaktfullUiOptionSelector({
     required this.options,
     this.titleBuilder,
-    this.selectedValue,
+    T? value,
+    @Deprecated('Use value instead. Will be removed in 1.0.0.')
+    T? selectedValue,
     this.padding = EdgeInsets.zero,
     this.theme,
     this.localizations,
     super.key,
-  });
+  }) : value = value ?? selectedValue;
+
+  @Deprecated('Use value instead. Will be removed in 1.0.0.')
+  T? get selectedValue => value;
 
   static Future<T?> show<T>({
     required BuildContext context,
     required String title,
     required List<T> options,
     String Function(T)? titleBuilder,
+    T? value,
+    @Deprecated('Use value instead. Will be removed in 1.0.0.')
     T? selectedValue,
     String? subtitle,
     ImpaktfullUiOptionSelectorLocalizations? localizations,
@@ -56,7 +63,7 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
           child: ImpaktfullUiOptionSelector<T>(
             titleBuilder: titleBuilder,
             options: options,
-            selectedValue: selectedValue,
+            value: value ?? selectedValue,
             localizations: localizations,
           ),
         ),
@@ -71,7 +78,7 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
           child: ImpaktfullUiOptionSelector<T>(
             titleBuilder: titleBuilder,
             options: options,
-            selectedValue: selectedValue,
+            value: value ?? selectedValue,
             padding: const EdgeInsets.symmetric(vertical: 8),
             localizations: localizations,
           ),
@@ -105,7 +112,7 @@ class _ImpaktfullUiOptionSelectorState<T>
               : widget.titleBuilder?.call(item) ?? item.toString();
           return ImpaktfullUiSelectableListItem(
             title: title,
-            isSelected: item == widget.selectedValue,
+            isSelected: item == widget.value,
             onChanged: (isSelected) {
               Navigator.of(context).pop(isSelected ? item : null);
             },

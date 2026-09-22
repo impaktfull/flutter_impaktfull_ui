@@ -111,13 +111,13 @@ void main() {
     expect(controller.text, 'ac');
   });
 
-  testWidgets('enter calls onSubmit', (tester) async {
+  testWidgets('enter calls onSubmitted', (tester) async {
     var submits = 0;
     await pumpComponent(
       tester,
       ImpaktfullUiVirtualKeyboard(
         controller: buildController('abc'),
-        onSubmit: () => submits++,
+        onSubmitted: () => submits++,
       ),
     );
     await tapKey(tester, LogicalKeyboardKey.enter);

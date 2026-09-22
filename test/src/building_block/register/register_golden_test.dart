@@ -12,8 +12,8 @@ void main() {
     builder: () => ImpaktfullUiBBRegister(
       email: 'hello@impaktfull.com',
       password: 'password',
-      onChangedEmail: (_) {},
-      onChangedPassword: (_) {},
+      onEmailChanged: (_) {},
+      onPasswordChanged: (_) {},
       onRegisterTapped: () async {},
       onBackToLoginTapped: () {},
     ),

@@ -37,10 +37,10 @@ class ImpaktfullUiModal extends StatelessWidget {
   final bool hasClose;
   final Future<bool> Function()? onCloseTapped;
   final Widget? child;
-  final String? primaryActionLabel;
-  final VoidCallback? primaryActionOnTap;
-  final String? secondaryActionLabel;
-  final VoidCallback? secondaryActionOnTap;
+  final String? primaryActionTitle;
+  final VoidCallback? onPrimaryActionTapped;
+  final String? secondaryActionTitle;
+  final VoidCallback? onSecondaryActionTapped;
   final List<Widget> actions;
   final bool isDismissible;
   final bool showDividers;
@@ -58,10 +58,19 @@ class ImpaktfullUiModal extends StatelessWidget {
     this.hasClose = true,
     this.onCloseTapped,
     this.child,
-    this.primaryActionLabel,
-    this.primaryActionOnTap,
-    this.secondaryActionLabel,
-    this.secondaryActionOnTap,
+    String? primaryActionTitle,
+    @Deprecated('Use primaryActionTitle instead. Will be removed in 1.0.0.')
+    String? primaryActionLabel,
+    VoidCallback? onPrimaryActionTapped,
+    @Deprecated('Use onPrimaryActionTapped instead. Will be removed in 1.0.0.')
+    VoidCallback? primaryActionOnTap,
+    String? secondaryActionTitle,
+    @Deprecated('Use secondaryActionTitle instead. Will be removed in 1.0.0.')
+    String? secondaryActionLabel,
+    VoidCallback? onSecondaryActionTapped,
+    @Deprecated(
+        'Use onSecondaryActionTapped instead. Will be removed in 1.0.0.')
+    VoidCallback? secondaryActionOnTap,
     this.actions = const [],
     this.isDismissible = true,
     this.showDividers = false,
@@ -70,7 +79,12 @@ class ImpaktfullUiModal extends StatelessWidget {
     this.theme,
     this.type = ImpaktfullUiModalType.neutral,
     super.key,
-  }) : content = null;
+  })  : content = null,
+        primaryActionTitle = primaryActionTitle ?? primaryActionLabel,
+        onPrimaryActionTapped = onPrimaryActionTapped ?? primaryActionOnTap,
+        secondaryActionTitle = secondaryActionTitle ?? secondaryActionLabel,
+        onSecondaryActionTapped =
+            onSecondaryActionTapped ?? secondaryActionOnTap;
 
   const ImpaktfullUiModal.simple({
     this.headerChildLocation,
@@ -80,10 +94,19 @@ class ImpaktfullUiModal extends StatelessWidget {
     this.title,
     this.subtitle,
     this.content,
-    this.primaryActionLabel,
-    this.secondaryActionLabel,
-    this.primaryActionOnTap,
-    this.secondaryActionOnTap,
+    String? primaryActionTitle,
+    @Deprecated('Use primaryActionTitle instead. Will be removed in 1.0.0.')
+    String? primaryActionLabel,
+    String? secondaryActionTitle,
+    @Deprecated('Use secondaryActionTitle instead. Will be removed in 1.0.0.')
+    String? secondaryActionLabel,
+    VoidCallback? onPrimaryActionTapped,
+    @Deprecated('Use onPrimaryActionTapped instead. Will be removed in 1.0.0.')
+    VoidCallback? primaryActionOnTap,
+    VoidCallback? onSecondaryActionTapped,
+    @Deprecated(
+        'Use onSecondaryActionTapped instead. Will be removed in 1.0.0.')
+    VoidCallback? secondaryActionOnTap,
     this.hasClose = true,
     this.onCloseTapped,
     this.isDismissible = true,
@@ -94,7 +117,24 @@ class ImpaktfullUiModal extends StatelessWidget {
     super.key,
   })  : child = null,
         actions = const [],
-        childPadding = null;
+        childPadding = null,
+        primaryActionTitle = primaryActionTitle ?? primaryActionLabel,
+        onPrimaryActionTapped = onPrimaryActionTapped ?? primaryActionOnTap,
+        secondaryActionTitle = secondaryActionTitle ?? secondaryActionLabel,
+        onSecondaryActionTapped =
+            onSecondaryActionTapped ?? secondaryActionOnTap;
+
+  @Deprecated('Use primaryActionTitle instead. Will be removed in 1.0.0.')
+  String? get primaryActionLabel => primaryActionTitle;
+
+  @Deprecated('Use onPrimaryActionTapped instead. Will be removed in 1.0.0.')
+  VoidCallback? get primaryActionOnTap => onPrimaryActionTapped;
+
+  @Deprecated('Use secondaryActionTitle instead. Will be removed in 1.0.0.')
+  String? get secondaryActionLabel => secondaryActionTitle;
+
+  @Deprecated('Use onSecondaryActionTapped instead. Will be removed in 1.0.0.')
+  VoidCallback? get secondaryActionOnTap => onSecondaryActionTapped;
 
   static Future<T?> show<T>({
     required BuildContext context,
@@ -181,20 +221,20 @@ class ImpaktfullUiModal extends StatelessWidget {
                 final actionsOrientation = _getActionsOrientation(width);
                 final allActions = [
                   ...this.actions,
-                  if (secondaryActionLabel != null) ...[
+                  if (secondaryActionTitle != null) ...[
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
-                      title: secondaryActionLabel!,
-                      onTap: secondaryActionOnTap,
+                      title: secondaryActionTitle!,
+                      onTap: onSecondaryActionTapped,
                     ),
                   ],
-                  if (primaryActionLabel != null) ...[
+                  if (primaryActionTitle != null) ...[
                     ImpaktfullUiButton(
                       type: type == ImpaktfullUiModalType.danger
                           ? ImpaktfullUiButtonType.destructivePrimary
                           : ImpaktfullUiButtonType.primary,
-                      title: primaryActionLabel!,
-                      onTap: primaryActionOnTap,
+                      title: primaryActionTitle!,
+                      onTap: onPrimaryActionTapped,
                     ),
                   ],
                 ];
@@ -359,8 +399,8 @@ class ImpaktfullUiModal extends StatelessWidget {
                             const ImpaktfullUiDivider(),
                           ],
                           if (actions.isNotEmpty ||
-                              primaryActionLabel != null ||
-                              secondaryActionLabel != null) ...[
+                              primaryActionTitle != null ||
+                              secondaryActionTitle != null) ...[
                             Padding(
                               padding: componentTheme.dimens.padding,
                               child: ImpaktfullUiAutoLayout(

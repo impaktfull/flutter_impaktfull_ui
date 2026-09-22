@@ -47,7 +47,7 @@ void main() {
         alignment: AlignmentDirectional.centerStart,
         child: ImpaktfullUiBadge(
           type: ImpaktfullUiBadgeType.primary,
-          label: 'Badge',
+          title: 'Badge',
           leadingAsset: ImpaktfullUiAsset.icon(Icons.star),
         ),
       ),

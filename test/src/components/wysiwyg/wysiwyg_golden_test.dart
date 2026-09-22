@@ -19,14 +19,14 @@ void main() {
     goldenTests: () => [
       GoldenTest(
         child: goldenSized(
-          ImpaktfullUiWysiwyg(text: markdown, onChanged: (_) {}),
+          ImpaktfullUiWysiwyg(value: markdown, onChanged: (_) {}),
           width: 400,
         ),
       ),
       GoldenTest(
         child: goldenSized(
           ImpaktfullUiWysiwyg(
-            text: '',
+            value: '',
             showPreview: false,
             onChanged: (_) {},
           ),
@@ -36,7 +36,7 @@ void main() {
       GoldenTest(
         child: goldenSized(
           ImpaktfullUiWysiwyg(
-            text: 'Only bold and italic',
+            value: 'Only bold and italic',
             showPreview: false,
             actions: const [
               ImpaktfullUiWysiwygAction.bold,

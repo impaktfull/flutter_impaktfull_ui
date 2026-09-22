@@ -33,7 +33,7 @@ void main() {
         child: Center(
           child: ImpaktfullUiFloatingActionButton(
             asset: icons.add,
-            label: 'Collapsed',
+            title: 'Collapsed',
             onTap: () {},
           ),
         ),
@@ -42,7 +42,7 @@ void main() {
         child: Center(
           child: ImpaktfullUiFloatingActionButton(
             asset: icons.add,
-            label: 'Add item',
+            title: 'Add item',
             expanded: true,
             onTap: () {},
           ),
@@ -52,7 +52,7 @@ void main() {
         child: Center(
           child: ImpaktfullUiFloatingActionButton(
             asset: icons.edit,
-            label: 'Disabled',
+            title: 'Disabled',
             expanded: true,
           ),
         ),
@@ -61,7 +61,7 @@ void main() {
         child: Center(
           child: ImpaktfullUiFloatingActionButton(
             asset: icons.edit,
-            label: 'A very long label for a floating action button',
+            title: 'A very long label for a floating action button',
             expanded: true,
             onTap: () {},
           ),

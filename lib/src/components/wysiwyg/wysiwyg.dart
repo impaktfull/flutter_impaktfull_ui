@@ -13,7 +13,7 @@ export 'model/wysiwyg_type.dart';
 export 'model/wysiwyg_action.dart';
 
 class ImpaktfullUiWysiwyg extends StatefulWidget {
-  final String text;
+  final String value;
   final bool showPreview;
   final ImpaktfullUiWysiwygType type;
   final ValueChanged<String> onChanged;
@@ -24,7 +24,9 @@ class ImpaktfullUiWysiwyg extends StatefulWidget {
   final ImpaktfullUiWysiwygLocalizations? localizations;
 
   const ImpaktfullUiWysiwyg({
-    required this.text,
+    // `value` becomes `required` again in 1.0.0, when `text` is removed.
+    String? value,
+    @Deprecated('Use value instead. Will be removed in 1.0.0.') String? text,
     required this.onChanged,
     this.showPreview = true,
     this.type = ImpaktfullUiWysiwygType.markdown,
@@ -32,7 +34,11 @@ class ImpaktfullUiWysiwyg extends StatefulWidget {
     this.theme,
     this.localizations,
     super.key,
-  });
+  })  : assert(value != null || text != null, 'value is required'),
+        value = (value ?? text) as String;
+
+  @Deprecated('Use value instead. Will be removed in 1.0.0.')
+  String get text => value;
 
   @override
   State<ImpaktfullUiWysiwyg> createState() => _ImpaktfullUiWysiwygState();
@@ -74,14 +80,14 @@ class _ImpaktfullUiWysiwygState extends State<ImpaktfullUiWysiwyg> {
           ],
           if (_showPreview) ...[
             WysiwygPreview(
-              text: widget.text,
+              text: widget.value,
               type: widget.type,
             ),
           ] else ...[
             ImpaktfullUiWysiwygInputField(
               type: widget.type,
               actions: widget.actions,
-              value: widget.text,
+              value: widget.value,
               onChanged: widget.onChanged,
               localizations: localizations,
               theme: widget.theme,

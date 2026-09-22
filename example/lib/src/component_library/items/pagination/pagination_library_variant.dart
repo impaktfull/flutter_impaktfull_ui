@@ -18,7 +18,7 @@ class PaginationLibraryVariant
         amountOfItems: inputs.amountOfItems.value ?? 0,
         itemsPerPage: inputs.itemsPerPage.value ?? 0,
         page: inputs.page.value ?? 0,
-        onLoadPage: (page) {
+        onPageChanged: (page) {
           inputs.page.updateState(page);
           ImpaktfullUiNotification.show(title: 'Load page $page');
         },

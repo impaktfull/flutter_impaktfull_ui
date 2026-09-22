@@ -121,9 +121,9 @@ void main() {
       ImpaktfullUiAdaptiveNavBar(
         title: 'Title',
         bottomChild: ImpaktfullUiHorizontalTabs<int>(
-          selectedValue: 0,
-          onTabSelected: (_) {},
-          tabs: [ImpaktfullUiHorizontalTabConfig(label: 'Tab', value: 0)],
+          value: 0,
+          onChanged: (_) {},
+          tabs: [ImpaktfullUiHorizontalTabConfig(title: 'Tab', value: 0)],
         ),
       ),
     );

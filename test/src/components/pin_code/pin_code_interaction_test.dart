@@ -90,7 +90,7 @@ void main() {
   });
 
   group('submit', () {
-    testWidgets('is hidden without onSubmit', (tester) async {
+    testWidgets('is hidden without onSubmitted', (tester) async {
       await pumpAndSettleComponent(
         tester,
         sized(ImpaktfullUiPinCode(code: '', onChanged: (_) {})),
@@ -105,7 +105,7 @@ void main() {
         sized(ImpaktfullUiPinCode(
           code: '123',
           onChanged: (_) {},
-          onSubmit: submitted.add,
+          onSubmitted: submitted.add,
         )),
       );
       expect(tester.widget<ImpaktfullUiPinCodeButton>(checkButton()).onTap,
@@ -141,7 +141,7 @@ void main() {
         sized(ImpaktfullUiPinCode(
           code: '123',
           onChanged: (_) {},
-          onSubmit: submitted.add,
+          onSubmitted: submitted.add,
         )),
       );
       await tester.sendKeyEvent(LogicalKeyboardKey.enter);

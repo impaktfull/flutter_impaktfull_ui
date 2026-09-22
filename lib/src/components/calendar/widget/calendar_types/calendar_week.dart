@@ -17,7 +17,7 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 class ImpaktfullUiCalendarWeek extends StatefulWidget {
   final DateTime selectedDate;
   final List<ImpaktfullUiCalendarEvent> events;
-  final ValueChanged<ImpaktfullUiCalendarEvent> onEventTap;
+  final ValueChanged<ImpaktfullUiCalendarEvent> onEventTapped;
 
   final ImpaktfullUiCalendarTheme? theme;
   final ImpaktfullUiCalendarLocalizations? localizations;
@@ -30,13 +30,23 @@ class ImpaktfullUiCalendarWeek extends StatefulWidget {
   const ImpaktfullUiCalendarWeek({
     required this.selectedDate,
     required this.events,
-    required this.onEventTap,
+    // `onEventTapped` becomes `required` again in 1.0.0, when `onEventTap` is
+    // removed.
+    ValueChanged<ImpaktfullUiCalendarEvent>? onEventTapped,
+    @Deprecated('Use onEventTapped instead. Will be removed in 1.0.0.')
+    ValueChanged<ImpaktfullUiCalendarEvent>? onEventTap,
     this.theme,
     this.localizations,
     this.firstDayOfWeek,
     this.use24HourFormat,
     super.key,
-  });
+  })  : assert(onEventTapped != null || onEventTap != null,
+            'onEventTapped is required'),
+        onEventTapped = (onEventTapped ?? onEventTap)
+            as ValueChanged<ImpaktfullUiCalendarEvent>;
+
+  @Deprecated('Use onEventTapped instead. Will be removed in 1.0.0.')
+  ValueChanged<ImpaktfullUiCalendarEvent> get onEventTap => onEventTapped;
 
   @override
   State<ImpaktfullUiCalendarWeek> createState() =>
@@ -165,7 +175,7 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                       ImpaktfullUiCalendarWeekFullDayEvents(
                         dateRange: dateRange,
                         events: _events,
-                        onEventTap: widget.onEventTap,
+                        onEventTapped: widget.onEventTapped,
                         amountOfDays: _amountOfDays,
                         theme: componentTheme,
                       ),
@@ -197,7 +207,7 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                           child: ImpaktfullUiCalendarWeekEvents(
                             dateRange: dateRange,
                             events: _events,
-                            onEventTap: widget.onEventTap,
+                            onEventTapped: widget.onEventTapped,
                             amountOfDays: _amountOfDays,
                             theme: componentTheme,
                           ),

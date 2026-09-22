@@ -25,7 +25,7 @@ class OptionSelectorLibraryVariant
               for (final index in List.generate(100, (index) => index))
                 'Option $index',
             ],
-            selectedValue: inputs.value.value,
+            value: inputs.value.value,
           );
           inputs.value.updateState(newValue);
         },

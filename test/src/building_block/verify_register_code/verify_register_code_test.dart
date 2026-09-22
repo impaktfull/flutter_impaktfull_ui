@@ -19,7 +19,7 @@ void main() {
       ImpaktfullUiScreen(
         child: ImpaktfullUiBBVerifyRegisterCode(
           code: code,
-          onChangedVerificationCode: codes.add,
+          onCodeChanged: codes.add,
           onVerifyCodeTapped: () async => verifyTaps++,
           onBackTapped: withBack ? () => backTaps++ : null,
         ),

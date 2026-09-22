@@ -4,18 +4,18 @@ import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
 class ImpaktfullUiColorPickerSlider extends StatefulWidget {
   final Color? selectedColor;
   final List<Color> allowedColors;
-  final ValueChanged<Color> onColorChanged;
-  final ValueChanged<Color>? onColorChangeEnd;
+  final ValueChanged<Color> onChanged;
+  final ValueChanged<Color>? onChangeEnd;
   final bool showActiveColor;
   final ImpaktfullUiColorPickerTheme componentTheme;
 
   const ImpaktfullUiColorPickerSlider({
     required this.selectedColor,
     required this.allowedColors,
-    required this.onColorChanged,
+    required this.onChanged,
     required this.showActiveColor,
     required this.componentTheme,
-    this.onColorChangeEnd,
+    this.onChangeEnd,
     super.key,
   });
 
@@ -44,13 +44,13 @@ class _ImpaktfullUiColorPickerSliderState
             final selectedColor = _getColorAt(fraction);
             if (selectedColor == null) return;
             _lastColor = selectedColor;
-            widget.onColorChanged(selectedColor);
+            widget.onChanged(selectedColor);
           },
           onPanEnd: (_) {
             final lastColor = _lastColor;
             _lastColor = null;
             if (lastColor == null) return;
-            widget.onColorChangeEnd?.call(lastColor);
+            widget.onChangeEnd?.call(lastColor);
           },
           child: Container(
             decoration: BoxDecoration(

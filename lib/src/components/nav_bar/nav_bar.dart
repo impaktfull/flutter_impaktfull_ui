@@ -167,7 +167,7 @@ class ImpaktfullUiNavBar extends StatelessWidget {
                                     ],
                                     ImpaktfullUiBadge(
                                       type: ImpaktfullUiBadgeType.primary,
-                                      label: badge!,
+                                      title: badge!,
                                     ),
                                   ],
                                 ),

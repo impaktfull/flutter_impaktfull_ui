@@ -24,7 +24,7 @@ void main() {
           item(ImpaktfullUiBottomNavigationItem(
             asset: testAsset,
             selectedAsset: testSelectedAsset,
-            label: 'Label',
+            title: 'Label',
             isSelected: isSelected,
             onTap: () {},
           )),
@@ -33,7 +33,7 @@ void main() {
           isSelected ? 'Selected, badge' : 'Unselected, badge',
           item(ImpaktfullUiBottomNavigationItem(
             asset: testAsset,
-            label: 'Label',
+            title: 'Label',
             isSelected: isSelected,
             badgeShow: true,
             onTap: () {},
@@ -43,7 +43,7 @@ void main() {
           isSelected ? 'Selected, badge text' : 'Unselected, badge text',
           item(ImpaktfullUiBottomNavigationItem(
             asset: testAsset,
-            label: 'Label',
+            title: 'Label',
             isSelected: isSelected,
             badgeText: '12',
             onTap: () {},
@@ -53,8 +53,8 @@ void main() {
           isSelected ? 'Selected, no label' : 'Unselected, no label',
           item(ImpaktfullUiBottomNavigationItem(
             asset: testAsset,
-            label: 'Label',
-            showLabel: false,
+            title: 'Label',
+            showTitle: false,
             isSelected: isSelected,
             onTap: () {},
           )),
@@ -64,7 +64,7 @@ void main() {
         'Custom badge color',
         item(const ImpaktfullUiBottomNavigationItem(
           asset: testAsset,
-          label: 'Label',
+          title: 'Label',
           isSelected: false,
           badgeShow: true,
           badgeColor: Colors.green,

@@ -12,9 +12,9 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget {
   final List<ImpaktfullUiAdaptiveNavBarActionItem> actions;
   final bool isDrawerEnabled;
   final Widget? drawer;
-  final Widget? fab;
+  final Widget? floatingActionButton;
 
-  /// Where the [fab] is placed.
+  /// Where the [floatingActionButton] is placed.
   ///
   /// Defaults to [AlignmentDirectional.bottomEnd]: the bottom right corner in
   /// a left-to-right layout and the bottom left corner in a right-to-left
@@ -34,7 +34,9 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget {
     this.badge,
     this.isDrawerEnabled = false,
     this.drawer,
-    this.fab,
+    Widget? floatingActionButton,
+    @Deprecated('Use floatingActionButton instead. Will be removed in 1.0.0.')
+    Widget? fab,
     AlignmentGeometry? floatingActionButtonAlignment,
     @Deprecated(
         'Use floatingActionButtonAlignment instead. Will be removed in 1.0.0.')
@@ -45,9 +47,13 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget {
     this.extraLargeBuilder,
     this.actions = const [],
     super.key,
-  }) : floatingActionButtonAlignment = floatingActionButtonAlignment ??
+  })  : floatingActionButtonAlignment = floatingActionButtonAlignment ??
             fabAlignment ??
-            AlignmentDirectional.bottomEnd;
+            AlignmentDirectional.bottomEnd,
+        floatingActionButton = floatingActionButton ?? fab;
+
+  @Deprecated('Use floatingActionButton instead. Will be removed in 1.0.0.')
+  Widget? get fab => floatingActionButton;
 
   @Deprecated(
       'Use floatingActionButtonAlignment instead. Will be removed in 1.0.0.')
@@ -101,10 +107,10 @@ class ImpaktfullUiAdaptiveScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          if (fab != null) ...[
+                          if (floatingActionButton != null) ...[
                             Padding(
                               padding: const EdgeInsets.all(16),
-                              child: fab!,
+                              child: floatingActionButton!,
                             ),
                           ],
                         ],

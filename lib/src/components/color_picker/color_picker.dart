@@ -16,25 +16,40 @@ class ImpaktfullUiColorPicker extends StatelessWidget {
   final Color? selectedColor;
   final bool showActiveColor;
   final List<Color> allowedColors;
-  final ValueChanged<Color> onColorChanged;
+  final ValueChanged<Color> onChanged;
 
   /// Called when the user finished picking a color: after tapping a color
   /// ([ImpaktfullUiColorPickerType.simple]) or when releasing the slider
-  /// ([ImpaktfullUiColorPickerType.slider]). [onColorChanged] is called for
+  /// ([ImpaktfullUiColorPickerType.slider]). [onChanged] is called for
   /// every change while dragging the slider.
-  final ValueChanged<Color>? onColorChangeEnd;
+  final ValueChanged<Color>? onChangeEnd;
   final ImpaktfullUiColorPickerTheme? theme;
 
   const ImpaktfullUiColorPicker({
-    required this.onColorChanged,
-    this.onColorChangeEnd,
+    // `onChanged` becomes `required` again in 1.0.0, when `onColorChanged` is
+    // removed.
+    ValueChanged<Color>? onChanged,
+    @Deprecated('Use onChanged instead. Will be removed in 1.0.0.')
+    ValueChanged<Color>? onColorChanged,
+    ValueChanged<Color>? onChangeEnd,
+    @Deprecated('Use onChangeEnd instead. Will be removed in 1.0.0.')
+    ValueChanged<Color>? onColorChangeEnd,
     required this.selectedColor,
     this.showActiveColor = false,
     this.allowedColors = const [],
     this.type = ImpaktfullUiColorPickerType.simple,
     this.theme,
     super.key,
-  });
+  })  : assert(onChanged != null || onColorChanged != null,
+            'onChanged is required'),
+        onChanged = (onChanged ?? onColorChanged) as ValueChanged<Color>,
+        onChangeEnd = onChangeEnd ?? onColorChangeEnd;
+
+  @Deprecated('Use onChanged instead. Will be removed in 1.0.0.')
+  ValueChanged<Color> get onColorChanged => onChanged;
+
+  @Deprecated('Use onChangeEnd instead. Will be removed in 1.0.0.')
+  ValueChanged<Color>? get onColorChangeEnd => onChangeEnd;
 
   static List<Color> get defaultColors => [
         Colors.red,
@@ -64,9 +79,9 @@ class ImpaktfullUiColorPicker extends StatelessWidget {
               selectedColor: selectedColor,
               allowedColors:
                   allowedColors.isEmpty ? defaultColors : allowedColors,
-              onColorChanged: (color) {
-                onColorChanged(color);
-                onColorChangeEnd?.call(color);
+              onChanged: (color) {
+                onChanged(color);
+                onChangeEnd?.call(color);
               },
               componentTheme: componentTheme,
               showActiveColor: showActiveColor,
@@ -77,8 +92,8 @@ class ImpaktfullUiColorPicker extends StatelessWidget {
               // The slider picks a color of the gradient, by default every hue.
               allowedColors:
                   allowedColors.isEmpty ? _defaultSliderColors : allowedColors,
-              onColorChanged: onColorChanged,
-              onColorChangeEnd: onColorChangeEnd,
+              onChanged: onChanged,
+              onChangeEnd: onChangeEnd,
               componentTheme: componentTheme,
               showActiveColor: showActiveColor,
             );

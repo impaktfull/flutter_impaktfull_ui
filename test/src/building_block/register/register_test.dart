@@ -26,8 +26,8 @@ void main() {
         child: ImpaktfullUiBBRegister(
           email: email,
           password: password,
-          onChangedEmail: emails.add,
-          onChangedPassword: passwords.add,
+          onEmailChanged: emails.add,
+          onPasswordChanged: passwords.add,
           onRegisterTapped: () async => registerTaps++,
           onBackToLoginTapped: withBack ? () => backTaps++ : null,
         ),

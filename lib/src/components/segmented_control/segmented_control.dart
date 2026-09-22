@@ -12,7 +12,7 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
   final List<T> items;
   final Widget Function(BuildContext context, T item)? leadingBuilder;
   final Widget Function(BuildContext context, T item)? trailingBuilder;
-  final String Function(BuildContext context, T item)? labelBuilder;
+  final String Function(BuildContext context, T item)? titleBuilder;
   final ValueChanged<T> onChanged;
   final ImpaktfullUiSegmentedControlTheme? theme;
 
@@ -21,11 +21,17 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
     required this.items,
     required this.onChanged,
     this.leadingBuilder,
-    this.labelBuilder,
+    String Function(BuildContext context, T item)? titleBuilder,
+    @Deprecated('Use titleBuilder instead. Will be removed in 1.0.0.')
+    String Function(BuildContext context, T item)? labelBuilder,
     this.trailingBuilder,
     this.theme,
     super.key,
-  });
+  }) : titleBuilder = titleBuilder ?? labelBuilder;
+
+  @Deprecated('Use titleBuilder instead. Will be removed in 1.0.0.')
+  String Function(BuildContext context, T item)? get labelBuilder =>
+      titleBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +86,7 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
                 final leading = leadingBuilder?.call(context, item);
                 final trailing = trailingBuilder?.call(context, item);
                 final label =
-                    labelBuilder?.call(context, item) ?? item.toString();
+                    titleBuilder?.call(context, item) ?? item.toString();
                 return Expanded(
                   child: ImpaktfullUiSegmentedControlItem(
                     onTap: () => onChanged(item),

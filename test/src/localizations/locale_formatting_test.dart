@@ -153,7 +153,7 @@ void main() {
           type: ImpaktfullUiCalendarType.list,
           selectedDate: DateTime(2099, 1, 2),
           events: [event],
-          onEventTap: (_) {},
+          onEventTapped: (_) {},
         );
 
     testWidgets('en: 24 hour time and dd/MM/yyyy, unchanged', (tester) async {
@@ -192,7 +192,7 @@ void main() {
           type: ImpaktfullUiCalendarType.list,
           selectedDate: DateTime(2099, 1, 2),
           events: [event],
-          onEventTap: (_) {},
+          onEventTapped: (_) {},
           use24HourFormat: false,
         ),
         // The plain en locale uses 24 hours by default.
@@ -217,7 +217,7 @@ void main() {
           // Wednesday
           selectedDate: DateTime(2024, 5, 15),
           events: const [],
-          onEventTap: (_) {},
+          onEventTapped: (_) {},
           firstDayOfWeek: firstDayOfWeek,
         ),
         locale: locale,
@@ -263,7 +263,7 @@ void main() {
           type: ImpaktfullUiCalendarType.week,
           selectedDate: DateTime(2024, 5, 15),
           events: const [],
-          onEventTap: (_) {},
+          onEventTapped: (_) {},
         ),
         locale: const Locale('en'),
       );
@@ -274,8 +274,8 @@ void main() {
 
   group('DateInputField', () {
     Widget dateInputField({String? dateFormat}) => ImpaktfullUiDateInputField(
-          date: DateTime(2023, 7, 6),
-          onDateSelected: (_) {},
+          value: DateTime(2023, 7, 6),
+          onChanged: (_) {},
           dateFormat: dateFormat,
         );
 
@@ -308,14 +308,13 @@ void main() {
 
     test('dateFormat keeps returning a pattern', () {
       expect(
-        ImpaktfullUiDateInputField(date: null, onDateSelected: (_) {})
-            .dateFormat,
+        ImpaktfullUiDateInputField(value: null, onChanged: (_) {}).dateFormat,
         'dd/MM/yyyy',
       );
       expect(
         ImpaktfullUiDateInputField(
-          date: null,
-          onDateSelected: (_) {},
+          value: null,
+          onChanged: (_) {},
           dateFormat: 'yyyy-MM-dd',
         ).dateFormat,
         'yyyy-MM-dd',

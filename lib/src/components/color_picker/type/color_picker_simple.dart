@@ -7,14 +7,14 @@ import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 class ImpaktfullUiColorPickerSimple extends StatelessWidget {
   final Color? selectedColor;
   final List<Color> allowedColors;
-  final ValueChanged<Color>? onColorChanged;
+  final ValueChanged<Color>? onChanged;
   final bool showActiveColor;
   final ImpaktfullUiColorPickerTheme componentTheme;
 
   const ImpaktfullUiColorPickerSimple({
     required this.selectedColor,
     required this.allowedColors,
-    required this.onColorChanged,
+    required this.onChanged,
     required this.showActiveColor,
     required this.componentTheme,
     super.key,
@@ -36,7 +36,7 @@ class ImpaktfullUiColorPickerSimple extends StatelessWidget {
                   color: allowedColor,
                   borderRadius:
                       componentTheme.dimens.simpleColorPickerItemBorderRadius,
-                  onTap: () => onColorChanged?.call(allowedColor),
+                  onTap: () => onChanged?.call(allowedColor),
                   tooltip: allowedColor.toHexString(
                     includeAlpha: allowedColor.a < 1,
                   ),

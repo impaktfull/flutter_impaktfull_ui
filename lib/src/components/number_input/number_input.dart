@@ -109,7 +109,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
                   value: _oldValue,
                   controller: _textController,
                   onChanged: _onChanged,
-                  onFocusChanged: _onFocusChanged,
+                  onFocusChange: _onFocusChanged,
                   textInputType: TextInputType.numberWithOptions(
                     signed: T == int,
                     decimal: T == double,

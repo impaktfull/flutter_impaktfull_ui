@@ -16,7 +16,7 @@ class ImpaktfullUiBBForgetPassword extends StatelessWidget {
   final Widget? Function(BuildContext)? startBuilder;
   final Widget? Function(BuildContext)? endBuilder;
   final String email;
-  final Function(String) onChangedEmail;
+  final ValueChanged<String> onEmailChanged;
   final AsyncCallback onResetPasswordTapped;
   final VoidCallback? onBackToLoginTapped;
   final Alignment alignment;
@@ -24,7 +24,11 @@ class ImpaktfullUiBBForgetPassword extends StatelessWidget {
 
   const ImpaktfullUiBBForgetPassword({
     required this.email,
-    required this.onChangedEmail,
+    // `onEmailChanged` becomes `required` again in 1.0.0, when `onChangedEmail`
+    // is removed.
+    ValueChanged<String>? onEmailChanged,
+    @Deprecated('Use onEmailChanged instead. Will be removed in 1.0.0.')
+    Function(String)? onChangedEmail,
     required this.onResetPasswordTapped,
     this.topBuilder,
     this.startBuilder,
@@ -34,7 +38,13 @@ class ImpaktfullUiBBForgetPassword extends StatelessWidget {
     this.alignment = Alignment.center,
     this.localizations,
     super.key,
-  });
+  })  : assert(onEmailChanged != null || onChangedEmail != null,
+            'onEmailChanged is required'),
+        onEmailChanged =
+            (onEmailChanged ?? onChangedEmail) as ValueChanged<String>;
+
+  @Deprecated('Use onEmailChanged instead. Will be removed in 1.0.0.')
+  Function(String) get onChangedEmail => onEmailChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +85,7 @@ class ImpaktfullUiBBForgetPassword extends StatelessWidget {
                   autofill: const [
                     AutofillHints.email,
                   ],
-                  onChanged: onChangedEmail,
+                  onChanged: onEmailChanged,
                   textInputType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                 ),

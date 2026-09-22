@@ -527,6 +527,486 @@ void main() {
     });
   });
 
+  group('Parameters renamed to consistent names', () {
+    const asset = ImpaktfullUiAsset.icon(IconData(0xe000));
+    void voidCallback() {}
+    void stringCallback(String value) {}
+    Future<void> asyncCallback() async {}
+
+    test('ImpaktfullUiTouchFeedback.onLongTap', () {
+      final feedback = ImpaktfullUiTouchFeedback(
+        onTap: null,
+        onLongTap: voidCallback,
+        child: const SizedBox(),
+      );
+      expect(feedback.onLongPress, voidCallback);
+      expect(feedback.onLongTap, voidCallback);
+    });
+
+    test('ImpaktfullUiInputField.onSubmit and onFocusChanged', () {
+      void onFocusChanged(bool hasFocus) {}
+      final inputField = ImpaktfullUiInputField(
+        value: null,
+        onChanged: null,
+        onSubmit: stringCallback,
+        onFocusChanged: onFocusChanged,
+      );
+      expect(inputField.onSubmitted, stringCallback);
+      expect(inputField.onSubmit, stringCallback);
+      expect(inputField.onFocusChange, onFocusChanged);
+      expect(inputField.onFocusChanged, onFocusChanged);
+    });
+
+    test('ImpaktfullUiPinCode.onSubmit', () {
+      final pinCode = ImpaktfullUiPinCode(
+        code: '',
+        onChanged: stringCallback,
+        onSubmit: stringCallback,
+      );
+      expect(pinCode.onSubmitted, stringCallback);
+      expect(pinCode.onSubmit, stringCallback);
+    });
+
+    test('ImpaktfullUiVirtualKeyboard.onSubmit', () {
+      final keyboard = ImpaktfullUiVirtualKeyboard(
+        controller: ImpaktfullUiVirtualKeyboardTextEditController(
+          config: ImpaktfullUiVirtualQwertyKeyboardConfig(),
+        ),
+        onSubmit: voidCallback,
+      );
+      expect(keyboard.onSubmitted, voidCallback);
+      expect(keyboard.onSubmit, voidCallback);
+    });
+
+    for (final useController in [false, true]) {
+      final name = useController
+          ? 'ImpaktfullUiVirtualKeyboardTextEditController.openKeyboard'
+          : 'ImpaktfullUiVirtualKeyboard.show';
+      testWidgets('$name(onSubmit:)', (tester) async {
+        final controller = ImpaktfullUiVirtualKeyboardTextEditController(
+          config: ImpaktfullUiVirtualQwertyKeyboardConfig(),
+        );
+        await tester.pumpWidget(
+          ImpaktfullUiApp(
+            showDebugFlag: false,
+            title: 'impaktfull app',
+            home: Builder(
+              builder: (context) => GestureDetector(
+                onTap: () {
+                  if (useController) {
+                    controller.openKeyboard(context, onSubmit: voidCallback);
+                  } else {
+                    ImpaktfullUiVirtualKeyboard.show(
+                      context: context,
+                      controller: controller,
+                      onSubmit: voidCallback,
+                    );
+                  }
+                },
+                child: const Text('open'),
+              ),
+            ),
+          ),
+        );
+        await tester.tap(find.text('open'));
+        // pumpAndSettle times out once the keyboard sheet is open.
+        await tester.pump();
+        await tester.pump(const Duration(seconds: 1));
+        final keyboard = tester.widget<ImpaktfullUiVirtualKeyboard>(
+          find.byType(ImpaktfullUiVirtualKeyboard),
+        );
+        expect(keyboard.onSubmitted, voidCallback);
+      });
+    }
+
+    test('ImpaktfullUiAccordion.onExpandedChanged', () {
+      void onExpandedChanged(bool expanded) {}
+      final accordion = ImpaktfullUiAccordion(
+        title: 'Title',
+        expanded: false,
+        expandedBuilder: (context) => const SizedBox(),
+        onExpandedChanged: onExpandedChanged,
+      );
+      expect(accordion.onExpansionChanged, onExpandedChanged);
+      expect(accordion.onExpandedChanged, onExpandedChanged);
+    });
+
+    test('ImpaktfullUiScreen.fab and ImpaktfullUiAdaptiveScreen.fab', () {
+      const fab = SizedBox();
+      const screen = ImpaktfullUiScreen(fab: fab, child: SizedBox());
+      expect(screen.floatingActionButton, same(fab));
+      expect(screen.fab, same(fab));
+      final adaptiveScreen = ImpaktfullUiAdaptiveScreen(
+        fab: fab,
+        builder: (context) => const SizedBox(),
+      );
+      expect(adaptiveScreen.floatingActionButton, same(fab));
+      expect(adaptiveScreen.fab, same(fab));
+    });
+
+    test('ImpaktfullUiHorizontalTabs.selectedValue and onTabSelected', () {
+      void onTabSelected(int value) {}
+      final tabs = ImpaktfullUiHorizontalTabs<int>(
+        selectedValue: 1,
+        onTabSelected: onTabSelected,
+        tabs: [ImpaktfullUiHorizontalTabConfig(label: 'One', value: 1)],
+      );
+      expect(tabs.value, 1);
+      expect(tabs.selectedValue, 1);
+      expect(tabs.onChanged, onTabSelected);
+      expect(tabs.onTabSelected, onTabSelected);
+    });
+
+    test('ImpaktfullUiOptionSelector.selectedValue', () {
+      const selector = ImpaktfullUiOptionSelector<String>(
+        options: ['A', 'B'],
+        selectedValue: 'B',
+      );
+      expect(selector.value, 'B');
+      expect(selector.selectedValue, 'B');
+    });
+
+    testWidgets('ImpaktfullUiOptionSelector.show(selectedValue:)',
+        (tester) async {
+      await tester.pumpWidget(
+        ImpaktfullUiApp(
+          showDebugFlag: false,
+          title: 'impaktfull app',
+          home: Builder(
+            builder: (context) => GestureDetector(
+              onTap: () => ImpaktfullUiOptionSelector.show<String>(
+                context: context,
+                title: 'Title',
+                options: ['A', 'B'],
+                selectedValue: 'B',
+              ),
+              child: const Text('open'),
+            ),
+          ),
+        ),
+      );
+      await tester.tap(find.text('open'));
+      await tester.pumpAndSettle();
+      final selector = tester.widget<ImpaktfullUiOptionSelector<String>>(
+        find.byType(ImpaktfullUiOptionSelector<String>),
+      );
+      expect(selector.value, 'B');
+    });
+
+    test('ImpaktfullUiCommandMenuWindow.onInputChanged', () {
+      final window = ImpaktfullUiCommandMenuWindow(
+        onInputChanged: stringCallback,
+        onCloseWindow: voidCallback,
+      );
+      expect(window.onChanged, stringCallback);
+      expect(window.onInputChanged, stringCallback);
+    });
+
+    test('ImpaktfullUiPagination.onLoadPage', () {
+      void onLoadPage(int page) {}
+      final pagination = ImpaktfullUiPagination(
+        page: 0,
+        itemsPerPage: 10,
+        amountOfItems: 100,
+        onLoadPage: onLoadPage,
+      );
+      expect(pagination.onPageChanged, onLoadPage);
+      expect(pagination.onLoadPage, onLoadPage);
+      final withAmountOfPages = ImpaktfullUiPagination.withAmountOfPages(
+        page: 0,
+        itemsPerPage: 10,
+        amountOfPages: 10,
+        onLoadPage: onLoadPage,
+      );
+      expect(withAmountOfPages.onPageChanged, onLoadPage);
+      expect(withAmountOfPages.onLoadPage, onLoadPage);
+    });
+
+    test(
+        'Building blocks: onChangedEmail, onChangedPassword and '
+        'onChangedVerificationCode', () {
+      void onChangedEmail(String value) {}
+      void onChangedPassword(String value) {}
+      final forgetPassword = ImpaktfullUiBBForgetPassword(
+        email: '',
+        onChangedEmail: onChangedEmail,
+        onResetPasswordTapped: asyncCallback,
+      );
+      expect(forgetPassword.onEmailChanged, onChangedEmail);
+      expect(forgetPassword.onChangedEmail, onChangedEmail);
+      final login = ImpaktfullUiBBLogin(
+        email: '',
+        password: '',
+        onChangedEmail: onChangedEmail,
+        onChangedPassword: onChangedPassword,
+        onLoginTapped: asyncCallback,
+      );
+      expect(login.onEmailChanged, onChangedEmail);
+      expect(login.onChangedEmail, onChangedEmail);
+      expect(login.onPasswordChanged, onChangedPassword);
+      expect(login.onChangedPassword, onChangedPassword);
+      final register = ImpaktfullUiBBRegister(
+        email: '',
+        password: '',
+        onChangedEmail: onChangedEmail,
+        onChangedPassword: onChangedPassword,
+        onRegisterTapped: asyncCallback,
+      );
+      expect(register.onEmailChanged, onChangedEmail);
+      expect(register.onChangedEmail, onChangedEmail);
+      expect(register.onPasswordChanged, onChangedPassword);
+      expect(register.onChangedPassword, onChangedPassword);
+      final verifyRegisterCode = ImpaktfullUiBBVerifyRegisterCode(
+        code: '',
+        onChangedVerificationCode: stringCallback,
+        onVerifyCodeTapped: asyncCallback,
+      );
+      expect(verifyRegisterCode.onCodeChanged, stringCallback);
+      expect(verifyRegisterCode.onChangedVerificationCode, stringCallback);
+    });
+
+    test('ImpaktfullUiBadge.label and onCloseTap', () {
+      final badge = ImpaktfullUiBadge(
+        type: ImpaktfullUiBadgeType.primary,
+        label: 'Badge',
+        onCloseTap: voidCallback,
+      );
+      expect(badge.title, 'Badge');
+      expect(badge.label, 'Badge');
+      expect(badge.onCloseTapped, voidCallback);
+      expect(badge.onCloseTap, voidCallback);
+    });
+
+    testWidgets('ImpaktfullUiBadge(onCloseTap:) is called on the close icon',
+        (tester) async {
+      var closeTaps = 0;
+      await tester.pumpWidget(
+        ImpaktfullUiApp(
+          showDebugFlag: false,
+          title: 'impaktfull app',
+          home: Center(
+            child: ImpaktfullUiBadge(
+              type: ImpaktfullUiBadgeType.primary,
+              label: 'Badge',
+              onCloseTap: () => closeTaps++,
+            ),
+          ),
+        ),
+      );
+      expect(find.text('Badge'), findsOneWidget);
+      await tester.tap(find.byType(ImpaktfullUiTouchFeedback).last);
+      expect(closeTaps, 1);
+    });
+
+    test('ImpaktfullUiModal action labels and callbacks', () {
+      void secondaryCallback() {}
+      final modals = [
+        ImpaktfullUiModal(
+          primaryActionLabel: 'Primary',
+          primaryActionOnTap: voidCallback,
+          secondaryActionLabel: 'Secondary',
+          secondaryActionOnTap: secondaryCallback,
+        ),
+        ImpaktfullUiModal.simple(
+          primaryActionLabel: 'Primary',
+          primaryActionOnTap: voidCallback,
+          secondaryActionLabel: 'Secondary',
+          secondaryActionOnTap: secondaryCallback,
+        ),
+      ];
+      for (final modal in modals) {
+        expect(modal.primaryActionTitle, 'Primary');
+        expect(modal.primaryActionLabel, 'Primary');
+        expect(modal.onPrimaryActionTapped, voidCallback);
+        expect(modal.primaryActionOnTap, voidCallback);
+        expect(modal.secondaryActionTitle, 'Secondary');
+        expect(modal.secondaryActionLabel, 'Secondary');
+        expect(modal.onSecondaryActionTapped, secondaryCallback);
+        expect(modal.secondaryActionOnTap, secondaryCallback);
+      }
+    });
+
+    test('ImpaktfullUiCalendar, List and Week .onEventTap', () {
+      void onEventTap(ImpaktfullUiCalendarEvent event) {}
+      final selectedDate = DateTime(2024, 6, 12);
+      final calendar = ImpaktfullUiCalendar(
+        selectedDate: selectedDate,
+        events: const [],
+        type: ImpaktfullUiCalendarType.list,
+        onEventTap: onEventTap,
+      );
+      expect(calendar.onEventTapped, onEventTap);
+      expect(calendar.onEventTap, onEventTap);
+      final list = ImpaktfullUiCalendarList(
+        selectedDate: selectedDate,
+        events: const [],
+        onEventTap: onEventTap,
+      );
+      expect(list.onEventTapped, onEventTap);
+      expect(list.onEventTap, onEventTap);
+      final week = ImpaktfullUiCalendarWeek(
+        selectedDate: selectedDate,
+        events: const [],
+        onEventTap: onEventTap,
+      );
+      expect(week.onEventTapped, onEventTap);
+      expect(week.onEventTap, onEventTap);
+    });
+
+    test('ImpaktfullUiMarkdown.onOpenLink', () {
+      final markdown = ImpaktfullUiMarkdown(
+        data: '',
+        onOpenLink: stringCallback,
+      );
+      expect(markdown.onLinkTapped, stringCallback);
+      expect(markdown.onOpenLink, stringCallback);
+    });
+
+    test('ImpaktfullUiFloatingActionButton.label', () {
+      const fab = ImpaktfullUiFloatingActionButton(
+        asset: asset,
+        label: 'Add',
+        expanded: true,
+      );
+      expect(fab.title, 'Add');
+      expect(fab.label, 'Add');
+      expect(fab.expanded, isTrue);
+    });
+
+    test('ImpaktfullUiDropdown.buttonText and ImpaktfullUiDropdownItem.label',
+        () {
+      const dropdown = ImpaktfullUiDropdown<void>(
+        buttonText: 'Open',
+        child: SizedBox(),
+      );
+      expect(dropdown.buttonTitle, 'Open');
+      expect(dropdown.buttonText, 'Open');
+      const item = ImpaktfullUiDropdownItem(label: 'Item', value: 1);
+      expect(item.title, 'Item');
+      expect(item.label, 'Item');
+      final builder = ImpaktfullUiDropdown<int>.builder(
+        items: const [item],
+        itemBuilder: (context, item, index, controller) => Text(item.title),
+        noDataLabel: 'No data',
+        buttonText: 'Open',
+      );
+      expect(builder.buttonTitle, 'Open');
+      expect(builder.buttonText, 'Open');
+    });
+
+    test('ImpaktfullUiBottomNavigationItem.label and showLabel', () {
+      const item = ImpaktfullUiBottomNavigationItem(
+        asset: asset,
+        isSelected: false,
+        label: 'Home',
+        showLabel: false,
+      );
+      expect(item.title, 'Home');
+      expect(item.label, 'Home');
+      expect(item.showTitle, isFalse);
+      expect(item.showLabel, isFalse);
+      expect(
+        const ImpaktfullUiBottomNavigationItem(asset: asset, isSelected: false)
+            .showTitle,
+        isTrue,
+      );
+    });
+
+    test('ImpaktfullUiHorizontalTab.label and its config', () {
+      final tab = ImpaktfullUiHorizontalTab(label: 'Tab', onTap: voidCallback);
+      expect(tab.title, 'Tab');
+      expect(tab.label, 'Tab');
+      final config = ImpaktfullUiHorizontalTabConfig(label: 'Tab', value: 1);
+      expect(config.title, 'Tab');
+      expect(config.label, 'Tab');
+    });
+
+    test('ImpaktfullUiTabBarItem.label', () {
+      final controller = TabController(length: 1, vsync: const TestVSync());
+      addTearDown(controller.dispose);
+      final item = ImpaktfullUiTabBarItem(
+        label: 'Tab',
+        index: 0,
+        controller: controller,
+      );
+      expect(item.title, 'Tab');
+      expect(item.label, 'Tab');
+    });
+
+    test('ImpaktfullUiInputFieldAction.label', () {
+      final action = ImpaktfullUiInputFieldAction(
+        onTap: voidCallback,
+        label: 'Action',
+      );
+      expect(action.title, 'Action');
+      expect(action.label, 'Action');
+    });
+
+    test('ImpaktfullUiSegmentedControl.labelBuilder', () {
+      String labelBuilder(BuildContext context, int item) => '$item';
+      final control = ImpaktfullUiSegmentedControl<int>(
+        value: 1,
+        items: const [1, 2],
+        onChanged: (_) {},
+        labelBuilder: labelBuilder,
+      );
+      expect(control.titleBuilder, labelBuilder);
+      expect(control.labelBuilder, labelBuilder);
+    });
+
+    test('ImpaktfullUiDateInputField.date and onDateSelected', () {
+      void onDateSelected(DateTime? date) {}
+      final date = DateTime(2024, 6, 12);
+      final inputField = ImpaktfullUiDateInputField(
+        date: date,
+        onDateSelected: onDateSelected,
+      );
+      expect(inputField.value, date);
+      expect(inputField.date, date);
+      expect(inputField.onChanged, onDateSelected);
+      expect(inputField.onDateSelected, onDateSelected);
+    });
+
+    test('ImpaktfullUiColorPicker.onColorChanged and onColorChangeEnd', () {
+      void onColorChanged(Color color) {}
+      void onColorChangeEnd(Color color) {}
+      final picker = ImpaktfullUiColorPicker(
+        selectedColor: null,
+        onColorChanged: onColorChanged,
+        onColorChangeEnd: onColorChangeEnd,
+      );
+      expect(picker.onChanged, onColorChanged);
+      expect(picker.onColorChanged, onColorChanged);
+      expect(picker.onChangeEnd, onColorChangeEnd);
+      expect(picker.onColorChangeEnd, onColorChangeEnd);
+    });
+
+    test('ImpaktfullUiWysiwyg.text', () {
+      final wysiwyg = ImpaktfullUiWysiwyg(
+        text: 'Text',
+        onChanged: stringCallback,
+      );
+      expect(wysiwyg.value, 'Text');
+      expect(wysiwyg.text, 'Text');
+    });
+
+    test('a parameter that becomes required again asserts one of both names',
+        () {
+      expect(
+        () => ImpaktfullUiWysiwyg(onChanged: stringCallback),
+        throwsAssertionError,
+      );
+      expect(
+        () => ImpaktfullUiPagination(
+          page: 0,
+          itemsPerPage: 10,
+          amountOfItems: 100,
+        ),
+        throwsAssertionError,
+      );
+    });
+  });
+
   testWidgets('a deprecated widget still renders and handles taps',
       (tester) async {
     bool? changed;
