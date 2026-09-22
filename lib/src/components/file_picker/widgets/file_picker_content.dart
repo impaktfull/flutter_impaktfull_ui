@@ -139,6 +139,7 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
               padding: const EdgeInsets.all(4),
               child: ImpaktfullUiIconButton(
                 onTap: onDeleteTapped!,
+                tooltip: localizations.deleteFile,
                 asset: componentTheme.assets.delete,
               ),
             ),

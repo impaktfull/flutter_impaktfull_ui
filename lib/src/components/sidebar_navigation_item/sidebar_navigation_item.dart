@@ -6,6 +6,7 @@ import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/screen/screen.dart';
 import 'package:impaktfull_ui/src/components/sidebar_navigation_item/sidebar_navigation_item_style.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
@@ -59,6 +60,13 @@ class _ImpaktfullUiSidebarNavigationItemState
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _controller.duration = ImpaktfullUiAnimationUtil.duration(
+        context, const Duration(milliseconds: 200));
+  }
+
+  @override
   void didUpdateWidget(covariant ImpaktfullUiSidebarNavigationItem oldWidget) {
     super.didUpdateWidget(oldWidget);
     // Expand when a sub item becomes selected, but keep a group the user
@@ -100,48 +108,61 @@ class _ImpaktfullUiSidebarNavigationItemState
           crossAxisAlignment: CrossAxisAlignment.center,
           spacing: 8,
           children: [
-            ImpaktfullUiTouchFeedback(
-              onTap: _onTap,
-              color:
-                  widget.isSelected ? componentTheme.colors.background : null,
-              borderRadius: componentTheme.dimens.borderRadius,
-              child: Padding(
-                padding: widget.items.isEmpty
-                    ? componentTheme.dimens.padding
-                    : componentTheme.dimens.paddingWithSubItems,
-                child: ImpaktfullUiAutoLayout.horizontal(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 12,
-                  children: [
-                    if (widget.leading != null) ...[
-                      ImpaktfullUiAssetWidget(
-                        asset: widget.leading,
-                        color: componentTheme.colors.icons,
-                      ),
-                    ],
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 12,
-                        ),
-                        child: Text(
-                          widget.title,
-                          style: componentTheme.textStyles.title,
-                        ),
-                      ),
-                    ),
-                    if (widget.items.isNotEmpty) ...[
-                      AnimatedRotation(
-                        turns: _expanded ? -0.5 : 0,
-                        duration: componentTheme.durations.dropdownRotation,
-                        child: ImpaktfullUiIconButton(
-                          asset: componentTheme.assets.chevronDown,
+            Semantics(
+              container: true,
+              button: true,
+              selected: widget.isSelected,
+              expanded: widget.items.isEmpty ? null : _expanded,
+              child: ImpaktfullUiTouchFeedback(
+                onTap: _onTap,
+                color:
+                    widget.isSelected ? componentTheme.colors.background : null,
+                borderRadius: componentTheme.dimens.borderRadius,
+                child: Padding(
+                  padding: widget.items.isEmpty
+                      ? componentTheme.dimens.padding
+                      : componentTheme.dimens.paddingWithSubItems,
+                  child: ImpaktfullUiAutoLayout.horizontal(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 12,
+                    children: [
+                      if (widget.leading != null) ...[
+                        ImpaktfullUiAssetWidget(
+                          asset: widget.leading,
                           color: componentTheme.colors.icons,
-                          onTap: _onExpandedTapped,
+                        ),
+                      ],
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                          ),
+                          child: Text(
+                            widget.title,
+                            style: componentTheme.textStyles.title,
+                          ),
                         ),
                       ),
+                      if (widget.items.isNotEmpty) ...[
+                        AnimatedRotation(
+                          turns: _expanded ? -0.5 : 0,
+                          duration: ImpaktfullUiAnimationUtil.duration(context,
+                              componentTheme.durations.dropdownRotation),
+                          // The item itself expands and collapses for keyboard
+                          // and screen reader users (see `expanded`).
+                          child: ExcludeFocus(
+                            child: ExcludeSemantics(
+                              child: ImpaktfullUiIconButton(
+                                asset: componentTheme.assets.chevronDown,
+                                color: componentTheme.colors.icons,
+                                onTap: _onExpandedTapped,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),

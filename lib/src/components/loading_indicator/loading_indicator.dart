@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator_style.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'loading_indicator_style.dart';
@@ -11,9 +12,14 @@ class ImpaktfullUiLoadingIndicator extends StatelessWidget {
   final Color? color;
   final ImpaktfullUiLoadingIndicatorTheme? theme;
 
+  /// What screen readers announce, e.g. `Loading messages`. Defaults to
+  /// `ImpaktfullUiAccessibilityLocalizations.loading`.
+  final String? semanticLabel;
+
   const ImpaktfullUiLoadingIndicator({
     this.theme,
     this.color,
+    this.semanticLabel,
     super.key,
   }) : asset = null;
 
@@ -21,6 +27,7 @@ class ImpaktfullUiLoadingIndicator extends StatelessWidget {
     required this.asset,
     this.color,
     this.theme,
+    this.semanticLabel,
     super.key,
   });
 
@@ -29,28 +36,35 @@ class ImpaktfullUiLoadingIndicator extends StatelessWidget {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) {
-        final lottie = asset ?? componentTheme.assets.lottie;
-        if (lottie != null) {
-          final lottieWidget = ImpaktfullUiAssetWidget(
-            asset: lottie,
-            width: 48,
-            height: 48,
-          );
-          if (color == null) return lottieWidget;
-          return ColorFiltered(
-            colorFilter: ColorFilter.mode(
-              color!,
-              BlendMode.srcATop,
-            ),
-            child: lottieWidget,
-          );
-        }
-        return CircularProgressIndicator(
-          color: color ?? componentTheme.colors.color,
-          strokeWidth: componentTheme.dimens.strokeWidth,
-        );
-      },
+      builder: (context, componentTheme) => Semantics(
+        container: true,
+        label: semanticLabel ??
+            ImpaktfullUiAccessibilityLocalizations.of(context).loading,
+        child: ExcludeSemantics(child: _buildIndicator(componentTheme)),
+      ),
+    );
+  }
+
+  Widget _buildIndicator(ImpaktfullUiLoadingIndicatorTheme componentTheme) {
+    final lottie = asset ?? componentTheme.assets.lottie;
+    if (lottie != null) {
+      final lottieWidget = ImpaktfullUiAssetWidget(
+        asset: lottie,
+        width: 48,
+        height: 48,
+      );
+      if (color == null) return lottieWidget;
+      return ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          color!,
+          BlendMode.srcATop,
+        ),
+        child: lottieWidget,
+      );
+    }
+    return CircularProgressIndicator(
+      color: color ?? componentTheme.colors.color,
+      strokeWidth: componentTheme.dimens.strokeWidth,
     );
   }
 }

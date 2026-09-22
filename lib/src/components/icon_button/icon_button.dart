@@ -33,24 +33,28 @@ class ImpaktfullUiIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //todo add theming
-    return ImpaktfullUiTouchFeedback(
-      tooltip: tooltip,
-      borderRadius: BorderRadius.circular(9999),
-      onTap: onTap,
-      color: backgroundColor,
-      canRequestFocus: canRequestFocus,
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: ImpaktfullUiNotificationBadge(
-          // A badge with a text is shown, even when `showNotificationBadge` is false.
-          show: showNotificationBadge || notificationBadgeText != null,
-          color: notificationBadgeColor,
-          text: notificationBadgeText,
-          size: 8,
-          child: ImpaktfullUiAssetWidget(
-            asset: asset,
-            color: color,
-            size: size,
+    return Semantics(
+      container: true,
+      button: true,
+      child: ImpaktfullUiTouchFeedback(
+        tooltip: tooltip,
+        borderRadius: BorderRadius.circular(9999),
+        onTap: onTap,
+        color: backgroundColor,
+        canRequestFocus: canRequestFocus,
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: ImpaktfullUiNotificationBadge(
+            // A badge with a text is shown, even when `showNotificationBadge` is false.
+            show: showNotificationBadge || notificationBadgeText != null,
+            color: notificationBadgeColor,
+            text: notificationBadgeText,
+            size: 8,
+            child: ImpaktfullUiAssetWidget(
+              asset: asset,
+              color: color,
+              size: size,
+            ),
           ),
         ),
       ),

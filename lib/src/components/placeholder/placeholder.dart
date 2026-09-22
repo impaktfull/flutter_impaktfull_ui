@@ -59,6 +59,8 @@ class ImpaktfullUiPlaceholder extends StatelessWidget {
                   asset: asset,
                   width: componentTheme.dimens.assetWidth,
                   height: componentTheme.dimens.assetHeight,
+                  // An illustration: the title and subtitle are announced.
+                  excludeFromSemantics: true,
                 ),
               ] else if (actions.isNotEmpty) ...[
                 const SizedBox(height: 40),

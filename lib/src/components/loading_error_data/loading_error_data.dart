@@ -56,14 +56,20 @@ class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget {
             errorAssetBuilder != null ||
             errorTitle != null ||
             errorMessage != null) {
-          return ImpaktfullUiPlaceholder(
-            asset: errorAsset,
-            assetBuilder: errorAssetBuilder,
-            title: errorTitle,
-            subtitle: errorMessage,
-            titleStyle: componentTheme.textStyles.errorTitle,
-            subtitleStyle: componentTheme.textStyles.errorMessage,
-            actions: errorActions,
+          // Announced when it appears: the title and message are one
+          // element, the actions are separate buttons.
+          return Semantics(
+            container: true,
+            liveRegion: true,
+            child: ImpaktfullUiPlaceholder(
+              asset: errorAsset,
+              assetBuilder: errorAssetBuilder,
+              title: errorTitle,
+              subtitle: errorMessage,
+              titleStyle: componentTheme.textStyles.errorTitle,
+              subtitleStyle: componentTheme.textStyles.errorMessage,
+              actions: errorActions,
+            ),
           );
         }
         if ((items != null && items!.isEmpty) &&
@@ -71,14 +77,17 @@ class ImpaktfullUiLoadingErrorData<T> extends StatelessWidget {
                 noDataAssetBuilder != null ||
                 noDataTitle != null ||
                 noDataMessage != null)) {
-          return ImpaktfullUiPlaceholder(
-            asset: noDataAsset,
-            assetBuilder: noDataAssetBuilder,
-            title: noDataTitle,
-            subtitle: noDataMessage,
-            titleStyle: componentTheme.textStyles.noDataTitle,
-            subtitleStyle: componentTheme.textStyles.noDataMessage,
-            actions: noDataActions,
+          return Semantics(
+            container: true,
+            child: ImpaktfullUiPlaceholder(
+              asset: noDataAsset,
+              assetBuilder: noDataAssetBuilder,
+              title: noDataTitle,
+              subtitle: noDataMessage,
+              titleStyle: componentTheme.textStyles.noDataTitle,
+              subtitleStyle: componentTheme.textStyles.noDataMessage,
+              actions: noDataActions,
+            ),
           );
         }
         return builder(context);

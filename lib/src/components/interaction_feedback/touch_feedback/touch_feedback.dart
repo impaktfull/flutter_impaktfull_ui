@@ -56,13 +56,18 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (onTap == null && onTapDown == null && onTapUp == null) {
-      return ImpaktfullUiContainer(
+      final container = ImpaktfullUiContainer(
         border: border,
         shadow: shadow,
         borderRadius: borderRadius,
         color: color ?? Colors.transparent,
         child: child,
       );
+      // A disabled element keeps its tooltip for screen readers (e.g. the
+      // label of a disabled icon button), without showing it on hover.
+      final tooltip = this.tooltip;
+      if (tooltip == null) return container;
+      return Semantics(tooltip: tooltip, child: container);
     }
     return ImpaktfullUiThemeBuilder(
       builder: (contex, theme) => ImpaktfullUiContainer(
@@ -168,14 +173,24 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
           onTapCancel: widget.onTapCancel,
           onDoubleTap: widget.onDoubleTap,
           onLongPress: widget.onLongTap,
-          child: Focus(
-            focusNode: _focusNode,
-            onFocusChange: widget.onFocusChanged,
-            canRequestFocus: widget.canRequestFocus,
-            autofocus: widget.autofocus,
-            child: ColoredBox(
-              color: Colors.transparent,
-              child: widget.child,
+          // Enter and space activate the focused element, like the InkWell
+          // below does (e.g. with a keyboard connected to a tablet).
+          child: Actions(
+            actions: <Type, Action<Intent>>{
+              if (widget.onTap != null)
+                ActivateIntent: CallbackAction<ActivateIntent>(
+                  onInvoke: (_) => widget.onTap?.call(),
+                ),
+            },
+            child: Focus(
+              focusNode: _focusNode,
+              onFocusChange: widget.onFocusChanged,
+              canRequestFocus: widget.canRequestFocus,
+              autofocus: widget.autofocus,
+              child: ColoredBox(
+                color: Colors.transparent,
+                child: widget.child,
+              ),
             ),
           ),
         ),

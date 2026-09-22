@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/components/slider/model/slider_legend_alignment.dart';
 import 'package:impaktfull_ui/src/components/slider/slider_style.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
+import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'slider_style.dart';
@@ -16,11 +19,25 @@ class ImpaktfullUiSlider extends StatefulWidget {
   final ImpaktfullUiSliderLegendAlignment? legendAlignment;
   final ValueChanged<double>? onChanged;
 
+  /// What screen readers announce for the slider, e.g. `Volume`.
+  final String? semanticLabel;
+
+  /// Formats the value for screen readers, e.g. `12 kg`. Defaults to the
+  /// number in the locale of the app.
+  final String Function(double value)? semanticFormatterCallback;
+
+  /// How much the arrow keys and the increase and decrease actions of screen
+  /// readers change the value. Defaults to a tenth of the range.
+  final double? step;
+
   const ImpaktfullUiSlider({
     required this.value,
     required this.min,
     required this.max,
     this.onChanged,
+    this.semanticLabel,
+    this.semanticFormatterCallback,
+    this.step,
     this.legendBuilder,
     this.legendAlignment = ImpaktfullUiSliderLegendAlignment.aboveSlider,
     this.theme,
@@ -54,125 +71,222 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => Focus(
-        focusNode: _focusNode,
-        child: LayoutBuilder(
-          builder: (context, constraints) => GestureDetector(
-            onHorizontalDragUpdate: widget.onChanged == null
-                ? null
-                : (details) => _onUpdateThumb(
-                    details.localPosition.dx, constraints.maxWidth),
-            onTapDown: widget.onChanged == null
-                ? null
-                : (details) => _onUpdateThumb(
-                    details.localPosition.dx, constraints.maxWidth),
-            child: Stack(
-              children: [
-                if (widget.legendBuilder != null) ...[
-                  if (widget.legendAlignment ==
-                      ImpaktfullUiSliderLegendAlignment.aboveSlider) ...[
-                    PositionedDirectional(
-                      top: 0,
-                      start: 0,
-                      end: 0,
-                      child: SizedBox(
-                        height: 24,
-                        child: widget.legendBuilder!(context, _currentValue),
-                      ),
-                    ),
-                  ] else if (widget.legendAlignment ==
-                      ImpaktfullUiSliderLegendAlignment.belowSlider) ...[
-                    PositionedDirectional(
-                      bottom: 0,
-                      start: 0,
-                      end: 0,
-                      child: SizedBox(
-                        height: 24,
-                        child: widget.legendBuilder!(context, _currentValue),
-                      ),
-                    ),
-                  ] else if (widget.legendAlignment ==
-                      ImpaktfullUiSliderLegendAlignment.behindSlider) ...[
-                    PositionedDirectional(
-                      top: 0,
-                      bottom: 0,
-                      start: 0,
-                      end: 0,
-                      child: SizedBox(
-                        height: 48,
-                        child: widget.legendBuilder!(context, _currentValue),
-                      ),
-                    ),
-                  ],
-                ],
-                Container(
-                  height: 48,
-                  color: Colors.transparent,
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    alignment: AlignmentDirectional.centerStart,
-                    children: [
-                      Container(
-                        height: 4,
-                        decoration: BoxDecoration(
-                          color: componentTheme.colors.track,
-                          borderRadius: componentTheme.dimens.trackBorderRadius,
-                          border: Border.all(
-                            color: componentTheme.colors.trackBorder,
-                            width: 1,
-                            strokeAlign: BorderSide.strokeAlignOutside,
-                          ),
-                        ),
-                      ),
-                      FractionallySizedBox(
-                        widthFactor: _fraction,
-                        child: Container(
-                          height: 4,
-                          decoration: BoxDecoration(
-                            color: componentTheme.colors.activeTrack,
-                            border: Border.all(
-                              color: componentTheme.colors.activeTrack,
-                              width: 1,
-                              strokeAlign: BorderSide.strokeAlignOutside,
-                            ),
-                            borderRadius:
-                                componentTheme.dimens.trackBorderRadius,
-                          ),
-                        ),
-                      ),
+      builder: (context, componentTheme) => Semantics(
+        container: true,
+        slider: true,
+        label: widget.semanticLabel,
+        enabled: _isEnabled,
+        value: _formatValue(_currentValue),
+        increasedValue: _formatValue(_steppedValue(1)),
+        decreasedValue: _formatValue(_steppedValue(-1)),
+        onIncrease: _isEnabled ? () => _step(1) : null,
+        onDecrease: _isEnabled ? () => _step(-1) : null,
+        child: Focus(
+          focusNode: _focusNode,
+          canRequestFocus: _isEnabled,
+          onKeyEvent: _onKeyEvent,
+          onFocusChange: (_) => setState(() {}),
+          child: LayoutBuilder(
+            builder: (context, constraints) => GestureDetector(
+              onHorizontalDragUpdate: widget.onChanged == null
+                  ? null
+                  : (details) => _onUpdateThumb(
+                      details.localPosition.dx, constraints.maxWidth),
+              onTapDown: widget.onChanged == null
+                  ? null
+                  : (details) => _onUpdateThumb(
+                      details.localPosition.dx, constraints.maxWidth),
+              child: Stack(
+                children: [
+                  if (widget.legendBuilder != null) ...[
+                    if (widget.legendAlignment ==
+                        ImpaktfullUiSliderLegendAlignment.aboveSlider) ...[
                       PositionedDirectional(
-                        start: _fraction * constraints.maxWidth - 8,
-                        child: Container(
-                          width: 16,
-                          height: 16,
-                          decoration: BoxDecoration(
-                            color: componentTheme.colors.thumb,
-                            borderRadius:
-                                componentTheme.dimens.thumbBorderRadius,
-                            border: Border.all(
-                              color: componentTheme.colors.thumbBorder,
-                              width: 1,
-                              strokeAlign: BorderSide.strokeAlignOutside,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacityPercentage(0.1),
-                                blurRadius: 4,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
-                          ),
+                        top: 0,
+                        start: 0,
+                        end: 0,
+                        child: SizedBox(
+                          height: 24,
+                          child: widget.legendBuilder!(context, _currentValue),
+                        ),
+                      ),
+                    ] else if (widget.legendAlignment ==
+                        ImpaktfullUiSliderLegendAlignment.belowSlider) ...[
+                      PositionedDirectional(
+                        bottom: 0,
+                        start: 0,
+                        end: 0,
+                        child: SizedBox(
+                          height: 24,
+                          child: widget.legendBuilder!(context, _currentValue),
+                        ),
+                      ),
+                    ] else if (widget.legendAlignment ==
+                        ImpaktfullUiSliderLegendAlignment.behindSlider) ...[
+                      PositionedDirectional(
+                        top: 0,
+                        bottom: 0,
+                        start: 0,
+                        end: 0,
+                        child: SizedBox(
+                          height: 48,
+                          child: widget.legendBuilder!(context, _currentValue),
                         ),
                       ),
                     ],
+                  ],
+                  Container(
+                    height: 48,
+                    color: Colors.transparent,
+                    // The focus ring, only while navigating with a keyboard.
+                    foregroundDecoration: _showFocus
+                        ? BoxDecoration(
+                            borderRadius:
+                                componentTheme.dimens.trackBorderRadius,
+                            border: Border.all(
+                              color: ImpaktfullUiTheme.of(context)
+                                  .colors
+                                  .accent
+                                  .withOpacityPercentage(0.66),
+                              width: 2,
+                            ),
+                          )
+                        : null,
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      alignment: AlignmentDirectional.centerStart,
+                      children: [
+                        Container(
+                          height: 4,
+                          decoration: BoxDecoration(
+                            color: componentTheme.colors.track,
+                            borderRadius:
+                                componentTheme.dimens.trackBorderRadius,
+                            border: Border.all(
+                              color: componentTheme.colors.trackBorder,
+                              width: 1,
+                              strokeAlign: BorderSide.strokeAlignOutside,
+                            ),
+                          ),
+                        ),
+                        FractionallySizedBox(
+                          widthFactor: _fraction,
+                          child: Container(
+                            height: 4,
+                            decoration: BoxDecoration(
+                              color: componentTheme.colors.activeTrack,
+                              border: Border.all(
+                                color: componentTheme.colors.activeTrack,
+                                width: 1,
+                                strokeAlign: BorderSide.strokeAlignOutside,
+                              ),
+                              borderRadius:
+                                  componentTheme.dimens.trackBorderRadius,
+                            ),
+                          ),
+                        ),
+                        PositionedDirectional(
+                          start: _fraction * constraints.maxWidth - 8,
+                          child: Container(
+                            width: 16,
+                            height: 16,
+                            decoration: BoxDecoration(
+                              color: componentTheme.colors.thumb,
+                              borderRadius:
+                                  componentTheme.dimens.thumbBorderRadius,
+                              border: Border.all(
+                                color: componentTheme.colors.thumbBorder,
+                                width: 1,
+                                strokeAlign: BorderSide.strokeAlignOutside,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color:
+                                      Colors.black.withOpacityPercentage(0.1),
+                                  blurRadius: 4,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  bool get _isEnabled => widget.onChanged != null;
+
+  /// Only show the focus ring when navigating with a keyboard.
+  bool get _showFocus =>
+      _focusNode.hasFocus &&
+      FocusManager.instance.highlightMode == FocusHighlightMode.traditional;
+
+  double get _stepSize {
+    final step = widget.step;
+    if (step != null && step > 0) return step;
+    return (widget.max - widget.min) / 10;
+  }
+
+  double _steppedValue(int direction) {
+    if (widget.max <= widget.min) return widget.min;
+    return (_currentValue + _stepSize * direction)
+        .clamp(widget.min, widget.max)
+        .toDouble();
+  }
+
+  String _formatValue(double value) {
+    final formatter = widget.semanticFormatterCallback;
+    if (formatter != null) return formatter(value);
+    final isWholeNumber = value == value.roundToDouble();
+    return ImpaktfullUiLocaleUtil.formatDecimal(
+      context,
+      value,
+      fractionDigits: isWholeNumber ? 0 : 2,
+    );
+  }
+
+  void _step(int direction) => _setValue(_steppedValue(direction));
+
+  void _setValue(double value) {
+    if (!_isEnabled || value == _currentValue) return;
+    setState(() => _currentValue = value);
+    widget.onChanged?.call(_currentValue);
+  }
+
+  /// The arrow keys change the value by [_stepSize], home and end go to the
+  /// minimum and maximum. Left and right follow the reading direction: in a
+  /// right-to-left layout the minimum is on the right.
+  KeyEventResult _onKeyEvent(FocusNode node, KeyEvent event) {
+    if (!_isEnabled) return KeyEventResult.ignored;
+    if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
+      return KeyEventResult.ignored;
+    }
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final key = event.logicalKey;
+    if (key == LogicalKeyboardKey.arrowUp) {
+      _step(1);
+    } else if (key == LogicalKeyboardKey.arrowDown) {
+      _step(-1);
+    } else if (key == LogicalKeyboardKey.arrowRight) {
+      _step(isRtl ? -1 : 1);
+    } else if (key == LogicalKeyboardKey.arrowLeft) {
+      _step(isRtl ? 1 : -1);
+    } else if (key == LogicalKeyboardKey.home) {
+      _setValue(widget.min);
+    } else if (key == LogicalKeyboardKey.end) {
+      _setValue(widget.max);
+    } else {
+      return KeyEventResult.ignored;
+    }
+    return KeyEventResult.handled;
   }
 
   @override

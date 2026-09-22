@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/bottom_sheet/bottom_sheet_style.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'bottom_sheet_style.dart';
@@ -50,6 +52,10 @@ class ImpaktfullUiBottomSheet extends StatelessWidget {
       isScrollControlled: true,
       useRootNavigator: rootNavigator,
       routeSettings: routeSettings,
+      // No slide in and out when the user asked to reduce motion.
+      sheetAnimationStyle: ImpaktfullUiAnimationUtil.reduceMotion(context)
+          ? AnimationStyle.noAnimation
+          : null,
     );
   }
 
@@ -184,6 +190,10 @@ class ImpaktfullUiBottomSheet extends StatelessWidget {
                                     .dimens.closeIconButtonPadding,
                                 child: ImpaktfullUiIconButton(
                                   onTap: () => _onCloseTapped(context),
+                                  tooltip:
+                                      ImpaktfullUiAccessibilityLocalizations.of(
+                                              context)
+                                          .close,
                                   asset: componentTheme.assets.close,
                                   color: componentTheme.colors.icons,
                                 ),

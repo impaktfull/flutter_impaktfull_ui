@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/skeleton/skeleton_style.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
@@ -55,8 +56,19 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
-    )..repeat();
+    );
     _animation = Tween<double>(begin: -3, end: 3).animate(_controller);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // No shimmer when the user asked to reduce motion.
+    if (ImpaktfullUiAnimationUtil.reduceMotion(context)) {
+      _controller.stop();
+    } else if (!_controller.isAnimating) {
+      _controller.repeat();
+    }
   }
 
   @override
@@ -70,42 +82,46 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) =>
-            AnimatedBuilder(
-          animation: _animation,
-          builder: (context, child) => Container(
-            width: widget.width ??
-                (widget.widthFactor != null
-                    ? constraints.maxWidth * widget.widthFactor!
-                    : null),
-            height: widget.height ??
-                (widget.heightFactor != null
-                    ? constraints.maxHeight * widget.heightFactor!
-                    : null),
-            decoration: BoxDecoration(
-              color: componentTheme.colors.background,
-              borderRadius:
-                  widget.borderRadius ?? componentTheme.dimens.borderRadius,
-            ),
-            child: ClipRRect(
-              borderRadius:
-                  widget.borderRadius ?? componentTheme.dimens.borderRadius,
-              child: FractionallySizedBox(
-                widthFactor: 0.5,
-                alignment: AlignmentDirectional(_animation.value, 0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        componentTheme.colors.background
-                            .withOpacityPercentage(0.0),
-                        componentTheme.colors.background
-                            .withOpacityPercentage(0.2),
-                        componentTheme.colors.background
-                            .withOpacityPercentage(0.0),
-                      ],
-                      stops: const [0.0, 0.5, 1.0],
+      // A placeholder for content that is loading: the loading state is
+      // announced by the screen that shows it, not by every skeleton.
+      builder: (context, componentTheme) => ExcludeSemantics(
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) =>
+              AnimatedBuilder(
+            animation: _animation,
+            builder: (context, child) => Container(
+              width: widget.width ??
+                  (widget.widthFactor != null
+                      ? constraints.maxWidth * widget.widthFactor!
+                      : null),
+              height: widget.height ??
+                  (widget.heightFactor != null
+                      ? constraints.maxHeight * widget.heightFactor!
+                      : null),
+              decoration: BoxDecoration(
+                color: componentTheme.colors.background,
+                borderRadius:
+                    widget.borderRadius ?? componentTheme.dimens.borderRadius,
+              ),
+              child: ClipRRect(
+                borderRadius:
+                    widget.borderRadius ?? componentTheme.dimens.borderRadius,
+                child: FractionallySizedBox(
+                  widthFactor: 0.5,
+                  alignment: AlignmentDirectional(_animation.value, 0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          componentTheme.colors.background
+                              .withOpacityPercentage(0.0),
+                          componentTheme.colors.background
+                              .withOpacityPercentage(0.2),
+                          componentTheme.colors.background
+                              .withOpacityPercentage(0.0),
+                        ],
+                        stops: const [0.0, 0.5, 1.0],
+                      ),
                     ),
                   ),
                 ),

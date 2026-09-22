@@ -3,6 +3,8 @@ import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox_style.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox_type.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
+import 'package:impaktfull_ui/src/widget/accessibility/min_tap_target.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'checkbox_style.dart';
@@ -15,10 +17,17 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
   final ValueChanged<bool?>? onChangedIndeterminate;
   final ImpaktfullUiCheckboxTheme? theme;
 
+  /// What screen readers announce for the checkbox, e.g. `Accept the terms`.
+  ///
+  /// Not needed in an `ImpaktfullUiCheckboxListItem`: the title of the list
+  /// item is the label.
+  final String? semanticLabel;
+
   const ImpaktfullUiCheckbox({
     required bool this.value,
     required this.onChanged,
     this.theme,
+    this.semanticLabel,
     super.key,
   })  : type = ImpaktfullUiCheckboxType.normal,
         onChangedIndeterminate = null;
@@ -27,6 +36,7 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
     required this.value,
     required ValueChanged<bool?>? onChanged,
     this.theme,
+    this.semanticLabel,
     super.key,
   })  : onChangedIndeterminate = onChanged,
         onChanged = null,
@@ -55,75 +65,93 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => Center(
-        child: ImpaktfullUiTouchFeedback(
-          onTap: _isDisabled ? null : _onTap,
-          borderRadius: componentTheme.dimens.borderRadius,
-          color: _getBackgroundColor(componentTheme),
-          child: SizedBox(
-            width: 24,
-            height: 24,
-            child: Stack(
-              children: [
-                Positioned.fill(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: componentTheme.dimens.borderRadius,
-                      border: Border.all(
-                        color: componentTheme.colors.borderColor,
-                        width: 1,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned.fill(
-                  child: AnimatedOpacity(
-                    duration: componentTheme.durations.selected,
-                    curve: Curves.easeInOut,
-                    opacity: isSelected ? 1 : 0,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: componentTheme.dimens.borderRadius,
-                        border: Border.all(
-                          color: componentTheme.colors.activeColor,
-                          width: 2,
+      builder: (context, componentTheme) {
+        final duration = ImpaktfullUiAnimationUtil.duration(
+            context, componentTheme.durations.selected);
+        return Center(
+          child: Semantics(
+            container: true,
+            checked: value ?? false,
+            mixed: type == ImpaktfullUiCheckboxType.indeterminate
+                ? value == null
+                : null,
+            enabled: !_isDisabled,
+            label: semanticLabel,
+            child: ImpaktfullUiMinTapTarget(
+              minSize: componentTheme.dimens.minTapTargetSize,
+              onTap: _isDisabled ? null : _onTap,
+              child: ImpaktfullUiTouchFeedback(
+                onTap: _isDisabled ? null : _onTap,
+                borderRadius: componentTheme.dimens.borderRadius,
+                color: _getBackgroundColor(componentTheme),
+                child: SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: componentTheme.dimens.borderRadius,
+                            border: Border.all(
+                              color: componentTheme.colors.borderColor,
+                              width: 1,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ),
-                if (value == true) ...[
-                  Positioned.fill(
-                    child: AnimatedOpacity(
-                      duration: componentTheme.durations.selected,
-                      curve: Curves.easeInOut,
-                      opacity: isSelected ? 1 : 0,
-                      child: Center(
-                        child: ImpaktfullUiAssetWidget(
-                          asset: componentTheme.assets.check,
-                          color: componentTheme.colors.checkMarkColor,
-                          size: 20,
+                      Positioned.fill(
+                        child: AnimatedOpacity(
+                          duration: duration,
+                          curve: Curves.easeInOut,
+                          opacity: isSelected ? 1 : 0,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: componentTheme.dimens.borderRadius,
+                              border: Border.all(
+                                color: componentTheme.colors.activeColor,
+                                width: 2,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      if (value == true) ...[
+                        Positioned.fill(
+                          child: AnimatedOpacity(
+                            duration: duration,
+                            curve: Curves.easeInOut,
+                            opacity: isSelected ? 1 : 0,
+                            child: Center(
+                              child: ImpaktfullUiAssetWidget(
+                                asset: componentTheme.assets.check,
+                                color: componentTheme.colors.checkMarkColor,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ] else if (type ==
+                              ImpaktfullUiCheckboxType.indeterminate &&
+                          value == null) ...[
+                        Positioned.fill(
+                          child: Center(
+                            child: ImpaktfullUiAssetWidget(
+                              asset: componentTheme.assets.indeterminate,
+                              color: componentTheme.colors.checkMarkColor,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
-                ] else if (type == ImpaktfullUiCheckboxType.indeterminate &&
-                    value == null) ...[
-                  Positioned.fill(
-                    child: Center(
-                      child: ImpaktfullUiAssetWidget(
-                        asset: componentTheme.assets.indeterminate,
-                        color: componentTheme.colors.checkMarkColor,
-                        size: 20,
-                      ),
-                    ),
-                  ),
-                ],
-              ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
@@ -311,6 +312,10 @@ class ImpaktfullUiModal extends StatelessWidget {
                                         .dimens.closeIconButtonPadding,
                                     child: ImpaktfullUiIconButton(
                                       onTap: () => _onCloseTapped(context),
+                                      tooltip:
+                                          ImpaktfullUiAccessibilityLocalizations
+                                                  .of(context)
+                                              .close,
                                       asset: componentTheme.assets.close,
                                       color: componentTheme.colors.closeIcon,
                                     ),

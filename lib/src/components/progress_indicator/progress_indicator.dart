@@ -17,6 +17,11 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget {
   final bool animate;
   final ImpaktfullUiProgressIndicatorTheme? theme;
 
+  /// What screen readers announce before the percentage, e.g.
+  /// `Upload progress`. Defaults to
+  /// `ImpaktfullUiAccessibilityLocalizations.progress`.
+  final String? semanticLabel;
+
   const ImpaktfullUiProgressIndicator({
     required this.value,
     this.type = ImpaktfullUiProgressIndicatorType.line,
@@ -25,6 +30,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget {
     this.animate = true,
     this.width,
     this.theme,
+    this.semanticLabel,
     super.key,
   });
 
@@ -43,6 +49,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget {
               animate: animate,
               width: width,
               theme: componentTheme,
+              semanticLabel: semanticLabel,
             );
           case ImpaktfullUiProgressIndicatorType.circle:
             return ImpaktfullUiCircleProgressIndicator(
@@ -52,6 +59,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget {
               animate: animate,
               width: width,
               theme: componentTheme,
+              semanticLabel: semanticLabel,
             );
           case ImpaktfullUiProgressIndicatorType.halfCircle:
             return ImpaktfullUiHalfCircleProgressIndicator(
@@ -61,6 +69,7 @@ class ImpaktfullUiProgressIndicator extends StatelessWidget {
               animate: animate,
               width: width,
               theme: componentTheme,
+              semanticLabel: semanticLabel,
             );
         }
       },

@@ -140,11 +140,13 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                           ImpaktfullUiIconButton(
                             asset: componentTheme.assets.chevronLeft
                                 .copyWith(matchTextDirection: true),
+                            tooltip: localizations.previousWeek,
                             onTap: _onPreviousWeekTapped,
                           ),
                           ImpaktfullUiIconButton(
                             asset: componentTheme.assets.chevronRight
                                 .copyWith(matchTextDirection: true),
+                            tooltip: localizations.nextWeek,
                             onTap: _onNextWeekTapped,
                           ),
                         ],

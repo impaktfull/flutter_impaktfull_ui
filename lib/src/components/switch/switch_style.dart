@@ -125,18 +125,27 @@ class ImpaktfullUiSwitchDimensTheme {
   final double verticalPadding;
   final double horizontalPadding;
 
+  /// Opt-in: the minimum size of the tap area, e.g. `Size.square(48)` for
+  /// the Android and `Size.square(44)` for the iOS tap target guideline.
+  ///
+  /// The switch looks the same, but takes at least this much space in the
+  /// layout. Null (the default) keeps the size of the switch.
+  final Size? minTapTargetSize;
+
   const ImpaktfullUiSwitchDimensTheme({
     required this.verticalPadding,
     required this.horizontalPadding,
     this.borderRadius,
     this.thumbBorderRadius,
     this.borderWidth,
+    this.minTapTargetSize,
   });
 
   ImpaktfullUiSwitchDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
     double? borderWidth,
     double? horizontalPadding,
+    Size? minTapTargetSize,
     BorderRadiusGeometry? thumbBorderRadius,
     double? verticalPadding,
   }) =>
@@ -144,6 +153,7 @@ class ImpaktfullUiSwitchDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         borderWidth: borderWidth ?? this.borderWidth,
         horizontalPadding: horizontalPadding ?? this.horizontalPadding,
+        minTapTargetSize: minTapTargetSize ?? this.minTapTargetSize,
         thumbBorderRadius: thumbBorderRadius ?? this.thumbBorderRadius,
         verticalPadding: verticalPadding ?? this.verticalPadding,
       );

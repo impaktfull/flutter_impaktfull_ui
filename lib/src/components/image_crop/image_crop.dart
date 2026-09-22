@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
@@ -125,6 +126,10 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                             children: [
                               ImpaktfullUiIconButton(
                                 onTap: _onBackToEditingTapped,
+                                tooltip:
+                                    ImpaktfullUiAccessibilityLocalizations.of(
+                                            context)
+                                        .backToEditing,
                                 asset: ImpaktfullUiAsset.icon(
                                     PhosphorIcons.arrowClockwise()),
                                 color: componentTheme.colors.deleteIcon,
@@ -133,6 +138,10 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                               ),
                               ImpaktfullUiIconButton(
                                 onTap: _onResetAllTapped,
+                                tooltip:
+                                    ImpaktfullUiAccessibilityLocalizations.of(
+                                            context)
+                                        .reset,
                                 asset: componentTheme.assets.delete,
                                 color: componentTheme.colors.deleteIcon,
                                 backgroundColor:

@@ -139,6 +139,8 @@ export 'src/util/extension/edge_insets_geometry_extension.dart';
 export 'src/util/extension/text_style_extension.dart';
 
 // Util
+export 'src/util/accessibility/accessibility.localizations.dart';
+export 'src/util/animation/animation_util.dart';
 export 'src/util/localizations/localizations.dart';
 export 'src/util/responsive/responsive_extension.dart';
 

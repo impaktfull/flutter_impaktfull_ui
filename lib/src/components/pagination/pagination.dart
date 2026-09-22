@@ -71,20 +71,26 @@ class ImpaktfullUiPagination extends StatelessWidget {
             type: ImpaktfullUiButtonType.secondaryGrey,
             leadingAsset: componentTheme.assets.arrowLeft
                 .copyWith(matchTextDirection: true),
+            tooltip: localizations.previousPage,
             onTap: page == 0 ? null : () => onLoadPage(page - 1),
           ),
           Expanded(
-            child: Text(
-              localizations.pageLabel(
-                  humanReadablePage, humanReadableAmountOfPages),
-              style: componentTheme.textStyles.text,
-              textAlign: TextAlign.center,
+            // Announces the new page when it changes.
+            child: Semantics(
+              liveRegion: true,
+              child: Text(
+                localizations.pageLabel(
+                    humanReadablePage, humanReadableAmountOfPages),
+                style: componentTheme.textStyles.text,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
           ImpaktfullUiButton(
             type: ImpaktfullUiButtonType.secondaryGrey,
             leadingAsset: componentTheme.assets.arrowRight
                 .copyWith(matchTextDirection: true),
+            tooltip: localizations.nextPage,
             onTap: isFinalPage ? null : () => onLoadPage(page + 1),
           ),
         ],

@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/components/checkbox_list_item/checkbox_list_it
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/widget/accessibility/list_item_control.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'checkbox_list_item_style.dart';
@@ -74,33 +75,47 @@ class ImpaktfullUiCheckboxListItem extends StatelessWidget {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
-        title: title,
-        subtitle: subtitle,
-        onTap:
-            onChanged == null && onChangedIndeterminate == null ? null : _onTap,
-        type: ImpaktfullUiSimpleListItemType.neutral,
-        leadingWidgetBuilder: leading == null
-            ? null
-            : (context) => ImpaktfullUiAssetWidget(
-                  asset: leading,
-                  color: componentTheme.colors.icons,
-                ),
-        trailingWidgetBuilder: (context) {
-          if (type == ImpaktfullUiCheckboxListItemType.normal) {
-            return ImpaktfullUiCheckbox(
-              value: value ?? false,
-              onChanged: onChanged == null ? null : _onChanged,
-            );
-          } else {
-            return ImpaktfullUiCheckbox.indeterminate(
-              value: value,
-              onChanged: onChangedIndeterminate == null
-                  ? null
-                  : (value) => _onChanged(value),
-            );
-          }
-        },
+      builder: (context, componentTheme) => MergeSemantics(
+        child: Semantics(
+          checked: value ?? false,
+          mixed: type == ImpaktfullUiCheckboxListItemType.indeterminate
+              ? value == null
+              : null,
+          enabled: onChanged != null || onChangedIndeterminate != null,
+          child: ImpaktfullUiSimpleListItem(
+            title: title,
+            subtitle: subtitle,
+            onTap: onChanged == null && onChangedIndeterminate == null
+                ? null
+                : _onTap,
+            type: ImpaktfullUiSimpleListItemType.neutral,
+            leadingWidgetBuilder: leading == null
+                ? null
+                : (context) => ImpaktfullUiAssetWidget(
+                      asset: leading,
+                      color: componentTheme.colors.icons,
+                    ),
+            trailingWidgetBuilder: (context) {
+              if (type == ImpaktfullUiCheckboxListItemType.normal) {
+                return ImpaktfullUiListItemControl(
+                  child: ImpaktfullUiCheckbox(
+                    value: value ?? false,
+                    onChanged: onChanged == null ? null : _onChanged,
+                  ),
+                );
+              } else {
+                return ImpaktfullUiListItemControl(
+                  child: ImpaktfullUiCheckbox.indeterminate(
+                    value: value,
+                    onChanged: onChangedIndeterminate == null
+                        ? null
+                        : (value) => _onChanged(value),
+                  ),
+                );
+              }
+            },
+          ),
+        ),
       ),
     );
   }

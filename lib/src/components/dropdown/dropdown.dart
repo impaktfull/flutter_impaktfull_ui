@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_overlay.dart';
 import 'package:impaktfull_ui/src/components/dropdown/dropdown_style.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'dropdown_style.dart';
@@ -102,6 +104,8 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
   late Animation<double> _curvedAnimation;
   double? _buttonWidth;
   var _isButtonWidthSyncScheduled = false;
+  final _overlayFocusNode = FocusNode(debugLabel: 'ImpaktfullUiDropdown');
+  FocusNode? _focusBeforeOpen;
 
   @override
   void initState() {
@@ -118,6 +122,15 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
       curve: Curves.easeOut,
       reverseCurve: Curves.easeIn,
     );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final duration = ImpaktfullUiAnimationUtil.duration(
+        context, const Duration(milliseconds: 200));
+    _animationController.duration = duration;
+    _animationController.reverseDuration = duration;
   }
 
   @override
@@ -139,6 +152,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     // The overlay is removed together with the OverlayPortal, so there is
     // nothing to animate anymore.
     _animationController.dispose();
+    _overlayFocusNode.dispose();
     super.dispose();
   }
 
@@ -158,6 +172,9 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
             controller: _tooltipController,
             overlayChildBuilder: (BuildContext context) => GestureDetector(
               onTap: _hide,
+              // Screen readers dismiss the dropdown with the dismiss action
+              // of the overlay (and the escape key closes it).
+              excludeFromSemantics: true,
               child: ColoredBox(
                 color: Colors.transparent,
                 child: CompositedTransformFollower(
@@ -172,27 +189,29 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                       alignment: Alignment.topLeft,
                       child: Padding(
                         padding: const EdgeInsets.only(top: 4),
-                        child: ImpaktfullUiDropdownOverlay(
-                          width: width,
-                          height: widget.height,
-                          theme: componentTheme,
-                          borderRadius: componentTheme.dimens.borderRadius,
-                          child: Builder(
-                            builder: (context) {
-                              if (widget.child != null) return widget.child!;
-                              return ImpaktfullUiListView<
-                                  ImpaktfullUiDropdownItem<T>>.builder(
-                                items: widget.items!,
-                                itemBuilder: (context, item, index) =>
-                                    widget.itemBuilder!(
-                                        context, item, index, _controller),
-                                placeholderData:
-                                    ImpaktfullUiListViewPlaceholderData(
-                                  title: widget.noDataLabel!,
-                                ),
-                                shrinkWrap: true,
-                              );
-                            },
+                        child: _buildOverlaySemantics(
+                          ImpaktfullUiDropdownOverlay(
+                            width: width,
+                            height: widget.height,
+                            theme: componentTheme,
+                            borderRadius: componentTheme.dimens.borderRadius,
+                            child: Builder(
+                              builder: (context) {
+                                if (widget.child != null) return widget.child!;
+                                return ImpaktfullUiListView<
+                                    ImpaktfullUiDropdownItem<T>>.builder(
+                                  items: widget.items!,
+                                  itemBuilder: (context, item, index) =>
+                                      widget.itemBuilder!(
+                                          context, item, index, _controller),
+                                  placeholderData:
+                                      ImpaktfullUiListViewPlaceholderData(
+                                    title: widget.noDataLabel!,
+                                  ),
+                                  shrinkWrap: true,
+                                );
+                              },
+                            ),
                           ),
                         ),
                       ),
@@ -204,17 +223,57 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
             child: LayoutBuilder(
               builder: (context, constraints) {
                 _scheduleButtonWidthSync();
-                if (widget.button != null) return widget.button!(context);
-                return ImpaktfullUiButton(
-                  onTap: _onTapButton,
-                  type: ImpaktfullUiButtonType.secondaryGrey,
-                  fullWidth: widget.fullWidth,
-                  trailingAsset: _tooltipController.isShowing
-                      ? componentTheme.assets.dropUp
-                      : componentTheme.assets.dropDown,
-                  title: widget.buttonText,
+                // The button announces whether the dropdown is open.
+                return MergeSemantics(
+                  child: Semantics(
+                    expanded: _tooltipController.isShowing,
+                    child: Builder(builder: (context) {
+                      if (widget.button != null) return widget.button!(context);
+                      return ImpaktfullUiButton(
+                        onTap: _onTapButton,
+                        type: ImpaktfullUiButtonType.secondaryGrey,
+                        fullWidth: widget.fullWidth,
+                        trailingAsset: _tooltipController.isShowing
+                            ? componentTheme.assets.dropUp
+                            : componentTheme.assets.dropDown,
+                        title: widget.buttonText,
+                      );
+                    }),
+                  ),
                 );
               },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// The overlay is a dismissible group for screen readers. It takes the
+  /// keyboard focus when it opens: the arrow keys and tab move through the
+  /// items, escape closes it and gives the focus back to the button.
+  Widget _buildOverlaySemantics(Widget child) {
+    return Semantics(
+      container: true,
+      explicitChildNodes: true,
+      onDismiss: _hide,
+      child: Shortcuts(
+        shortcuts: const <ShortcutActivator, Intent>{
+          SingleActivator(LogicalKeyboardKey.escape): DismissIntent(),
+          SingleActivator(LogicalKeyboardKey.arrowDown): NextFocusIntent(),
+          SingleActivator(LogicalKeyboardKey.arrowUp): PreviousFocusIntent(),
+        },
+        child: Actions(
+          actions: <Type, Action<Intent>>{
+            DismissIntent: CallbackAction<DismissIntent>(
+              onInvoke: (_) => _hide(),
+            ),
+          },
+          child: FocusTraversalGroup(
+            child: Focus(
+              focusNode: _overlayFocusNode,
+              skipTraversal: true,
+              child: child,
             ),
           ),
         ),
@@ -228,6 +287,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     if (!mounted) return;
     // The dropdown could have been reopened while the reverse animation ran.
     if (_animationController.status != AnimationStatus.dismissed) return;
+    _restoreFocus();
     _tooltipController.hide();
     setState(() {});
   }
@@ -238,7 +298,31 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     // Show the overlay first so the fade in animation is visible.
     _tooltipController.show();
     setState(() {});
+    _moveFocusToOverlay();
     await _animationController.forward();
+  }
+
+  /// Keyboard users continue in the dropdown after opening it.
+  void _moveFocusToOverlay() {
+    _focusBeforeOpen = FocusManager.instance.primaryFocus;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_tooltipController.isShowing) return;
+      _overlayFocusNode.requestFocus();
+    });
+  }
+
+  /// Gives the focus back to the element that had it before the dropdown
+  /// opened (the button), when the focus is still in the dropdown.
+  void _restoreFocus() {
+    final focusBeforeOpen = _focusBeforeOpen;
+    _focusBeforeOpen = null;
+    final isFocusInOverlay = _overlayFocusNode.hasFocus;
+    if (!isFocusInOverlay) return;
+    if (focusBeforeOpen != null && focusBeforeOpen.context != null) {
+      focusBeforeOpen.requestFocus();
+    } else {
+      _overlayFocusNode.unfocus();
+    }
   }
 
   Future<void> _onTapButton() async {

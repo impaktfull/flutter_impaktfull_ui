@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/carousel/carousel_style.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
@@ -41,6 +43,7 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   bool _isForward = true;
   bool _isUserDragging = false;
   Timer? _autoplayTimer;
+  bool? _reduceMotion;
 
   @override
   void initState() {
@@ -49,6 +52,14 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
     _pageController = PageController(
       initialPage: widget.index,
     );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final reduceMotion = ImpaktfullUiAnimationUtil.reduceMotion(context);
+    if (reduceMotion == _reduceMotion) return;
+    _reduceMotion = reduceMotion;
     _setupAutoplay();
   }
 
@@ -62,7 +73,8 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   void _setupAutoplay() {
     _autoplayTimer?.cancel();
     _autoplayTimer = null;
-    if (widget.autoplay && !_isUserDragging) {
+    // No autoplay when the user asked to reduce motion.
+    if (widget.autoplay && !_isUserDragging && _reduceMotion != true) {
       _autoplayTimer = Timer.periodic(widget.autoplayInterval, (_) {
         if (widget.items.length < 2) return;
         if (!_pageController.hasClients) return;
@@ -116,11 +128,15 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   void didUpdateWidget(ImpaktfullUiCarousel oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.index != widget.index) {
-      _pageController.animateToPage(
-        widget.index,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
+      if (_reduceMotion == true) {
+        _pageController.jumpToPage(widget.index);
+      } else {
+        _pageController.animateToPage(
+          widget.index,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      }
     }
     if (oldWidget.autoplay != widget.autoplay ||
         oldWidget.autoplayInterval != widget.autoplayInterval) {
@@ -155,25 +171,33 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
             ),
           ),
           if (widget.items.length > 1)
-            Padding(
-              padding: componentTheme.dimens.indicatorPadding,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: List.generate(
-                  widget.items.length,
-                  (index) => Container(
-                    width: componentTheme.dimens.indicatorSize,
-                    height: componentTheme.dimens.indicatorSize,
-                    margin: componentTheme.dimens.indicatorSpacing,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: componentTheme.colors.indicatorBorder,
+            // The dots are announced as the current slide.
+            Semantics(
+              container: true,
+              liveRegion: true,
+              label: ImpaktfullUiAccessibilityLocalizations.of(context)
+                  .slideLabel(_currentPage + 1, widget.items.length),
+              child: Padding(
+                padding: componentTheme.dimens.indicatorPadding,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(
+                    widget.items.length,
+                    (index) => Container(
+                      width: componentTheme.dimens.indicatorSize,
+                      height: componentTheme.dimens.indicatorSize,
+                      margin: componentTheme.dimens.indicatorSpacing,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: componentTheme.colors.indicatorBorder,
+                        ),
+                        borderRadius:
+                            componentTheme.dimens.indicatorBorderRadius,
+                        color: _currentPage == index
+                            ? componentTheme.colors.activeIndicator
+                            : componentTheme.colors.inactiveIndicator,
                       ),
-                      borderRadius: componentTheme.dimens.indicatorBorderRadius,
-                      color: _currentPage == index
-                          ? componentTheme.colors.activeIndicator
-                          : componentTheme.colors.inactiveIndicator,
                     ),
                   ),
                 ),

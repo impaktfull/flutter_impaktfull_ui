@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
+import 'package:impaktfull_ui/src/components/progress_indicator/widget/progress_indicator_semantics.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
@@ -13,6 +15,11 @@ class ImpaktfullUiHalfCircleProgressIndicator extends StatelessWidget {
   final bool animate;
   final ImpaktfullUiProgressIndicatorTheme? theme;
 
+  /// What screen readers announce before the percentage, e.g.
+  /// `Upload progress`. Defaults to
+  /// `ImpaktfullUiAccessibilityLocalizations.progress`.
+  final String? semanticLabel;
+
   const ImpaktfullUiHalfCircleProgressIndicator({
     required this.value,
     this.showText = false,
@@ -20,6 +27,7 @@ class ImpaktfullUiHalfCircleProgressIndicator extends StatelessWidget {
     this.animate = true,
     this.width,
     this.theme,
+    this.semanticLabel,
     super.key,
   });
 
@@ -29,46 +37,51 @@ class ImpaktfullUiHalfCircleProgressIndicator extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) =>
-          LayoutBuilder(builder: (context, constraints) {
-        final size = min(constraints.maxWidth, constraints.maxHeight);
-        return SizedBox(
-          width: size,
-          height: size / 2,
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              Positioned.fill(
-                child: TweenAnimationBuilder<double>(
-                  duration: animate
-                      ? componentTheme.durations.progress
-                      : Duration.zero,
-                  curve: Curves.easeInOut,
-                  tween: Tween(begin: 0, end: value),
-                  builder: (context, animatedValue, child) => CustomPaint(
-                    painter: ImpaktfullUiHalfCircleProgressPainter(
-                      progress: animatedValue,
-                      strokeWidth: width ?? componentTheme.dimens.width,
-                      backgroundColor: componentTheme.colors.background,
-                      foregroundColor:
-                          color ?? componentTheme.colors.foreground,
-                      borderColor: componentTheme.colors.border,
+          ImpaktfullUiProgressIndicatorSemantics(
+        value: value,
+        semanticLabel: semanticLabel,
+        child: LayoutBuilder(builder: (context, constraints) {
+          final size = min(constraints.maxWidth, constraints.maxHeight);
+          return SizedBox(
+            width: size,
+            height: size / 2,
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Positioned.fill(
+                  child: TweenAnimationBuilder<double>(
+                    duration: animate
+                        ? ImpaktfullUiAnimationUtil.duration(
+                            context, componentTheme.durations.progress)
+                        : Duration.zero,
+                    curve: Curves.easeInOut,
+                    tween: Tween(begin: 0, end: value),
+                    builder: (context, animatedValue, child) => CustomPaint(
+                      painter: ImpaktfullUiHalfCircleProgressPainter(
+                        progress: animatedValue,
+                        strokeWidth: width ?? componentTheme.dimens.width,
+                        backgroundColor: componentTheme.colors.background,
+                        foregroundColor:
+                            color ?? componentTheme.colors.foreground,
+                        borderColor: componentTheme.colors.border,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              if (showText) ...[
-                Positioned(
-                  bottom: 8,
-                  child: Text(
-                    ImpaktfullUiLocaleUtil.formatPercentage(context, value),
-                    style: componentTheme.textStyles.text,
+                if (showText) ...[
+                  Positioned(
+                    bottom: 8,
+                    child: Text(
+                      ImpaktfullUiLocaleUtil.formatPercentage(context, value),
+                      style: componentTheme.textStyles.text,
+                    ),
                   ),
-                ),
+                ],
               ],
-            ],
-          ),
-        );
-      }),
+            ),
+          );
+        }),
+      ),
     );
   }
 }

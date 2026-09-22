@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/components/chat/widget/chat_list_item_avatar.dart';
@@ -31,6 +32,7 @@ class _ImpaktfullUiChatListTypingContainerState
   late final List<AnimationController> _controllers;
   // Timers instead of Future.delayed: they are cancelled on dispose.
   final _startTimers = <Timer>[];
+  var _reduceMotion = false;
 
   @override
   void initState() {
@@ -41,11 +43,28 @@ class _ImpaktfullUiChatListTypingContainerState
         vsync: this,
       );
       _startTimers.add(Timer(Duration(milliseconds: index * 200), () {
-        if (!mounted) return;
+        if (!mounted || _reduceMotion) return;
         controller.repeat(reverse: true);
       }));
       return controller;
     });
+  }
+
+  /// The dots do not bounce when the user asked to reduce motion.
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final reduceMotion = ImpaktfullUiAnimationUtil.reduceMotion(context);
+    if (reduceMotion == _reduceMotion) return;
+    _reduceMotion = reduceMotion;
+    for (final controller in _controllers) {
+      if (reduceMotion) {
+        controller.stop();
+        controller.value = 0;
+      } else {
+        controller.repeat(reverse: true);
+      }
+    }
   }
 
   @override

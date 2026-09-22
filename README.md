@@ -304,6 +304,74 @@ Every component supports right-to-left layouts (e.g. Arabic or Hebrew). They fol
 - Directional icons (back, previous/next arrows and chevrons) point in the reading direction. Mark your own directional assets with `ImpaktfullUiAsset.icon(icon, matchTextDirection: true)` (or `asset.copyWith(matchTextDirection: true)`) to mirror them in a right-to-left layout.
 - Location enums with left and right in their name (`ImpaktfullUiNotificationBadgeLocation`, `ImpaktfullUiDropdownAlignment`) follow the reading direction: in a right-to-left layout `topRight` is the top left corner.
 
+### Accessibility
+
+The components work with screen readers (TalkBack, VoiceOver, NVDA, ...), keyboards and the "reduce motion" setting of the platform.
+
+#### Screen readers
+
+- Checkboxes, radio buttons and switches announce their state (`checked`, `mixed`, `toggled`, in a mutually exclusive group), whether they are enabled, and can be activated. In `ImpaktfullUiCheckboxListItem`, `ImpaktfullUiRadioButtonListItem`, `ImpaktfullUiSwitchListItem` and `ImpaktfullUiSelectableListItem` the whole row is one element with the title as label.
+- Buttons, navigation items (bottom navigation, tab bar, horizontal tabs, sidebar), segmented control segments and tappable badges and avatars are buttons with a `selected` state where it applies. Tabs have the tab role. Accordions, sidebar groups and the dropdown button announce whether they are expanded.
+- A stepper announces every step (`Step 2 of 4`) and which step is completed or current, pagination announces the page when it changes, a carousel the current slide, a progress indicator its value as a percentage, a slider its value with increase and decrease actions, a notification badge the amount (`3 notifications`).
+- Loading indicators announce `Loading`, skeletons and illustrations of placeholders are hidden. The error of `ImpaktfullUiLoadingErrorData` is announced when it appears.
+- Modals, bottom sheets and the command menu hide the screen behind them. The command menu and the dropdown can be dismissed by screen readers.
+- Icon-only buttons of the library have a tooltip, which screen readers announce.
+
+Add a label where only you know what something means:
+
+```dart
+ImpaktfullUiCheckbox(value: accepted, onChanged: _onChanged, semanticLabel: 'Accept the terms');
+ImpaktfullUiSlider(value: volume, min: 0, max: 10, onChanged: _onChanged, semanticLabel: 'Volume');
+ImpaktfullUiAvatar(url: user.avatarUrl, semanticLabel: user.name); // decorative without a label
+ImpaktfullUiNetworkImage(url: url, semanticLabel: 'A red bicycle'); // or excludeFromSemantics: true
+ImpaktfullUiAssetWidget(asset: asset, semanticLabel: 'Warning'); // or excludeFromSemantics: true
+ImpaktfullUiLineChart(data: data, semanticLabel: 'Revenue rose from 10k to 25k this year');
+ImpaktfullUiProgressIndicator(value: 0.4, semanticLabel: 'Upload');
+ImpaktfullUiIconButton(asset: asset, onTap: _onTap, tooltip: 'Add'); // always pass a tooltip
+```
+
+The texts that are only announced (`Loading`, `3 notifications`, `Step 2 of 4`, ...) come from `ImpaktfullUiAccessibilityLocalizations` (`ImpaktfullUiLocalizations(accessibility: ...)`), see [Localization](#localization).
+
+#### Keyboard
+
+Every interactive component can be focused with tab, shows a focus ring while navigating with a keyboard and is activated with enter or space. The slider changes with the arrow keys (left and right follow the reading direction) and goes to its minimum and maximum with home and end. The dropdown moves the focus into its items when it opens (arrow keys or tab to move, escape to close). The command menu keeps the focus in its window: tab and the arrow keys move between the input and the results, enter selects a result, escape closes it.
+
+#### Reduce motion
+
+When the user turns on "Remove animations" (Android), "Reduce motion" (iOS, macOS) or turns off "Show animations" (Windows), `MediaQuery.disableAnimations` is true and the components do not animate: skeletons do not shimmer, confetti is not shown, carousels do not autoplay, and accordions, the sidebar, dropdowns, modals, bottom sheets, switches, the segmented control and progress indicators change without a transition. Use the same helper in your own widgets:
+
+```dart
+AnimatedContainer(
+  duration: ImpaktfullUiAnimationUtil.duration(context, const Duration(milliseconds: 200)),
+  ...
+);
+if (!ImpaktfullUiAnimationUtil.reduceMotion(context)) _controller.repeat();
+```
+
+#### Tap targets
+
+The Android guideline asks for tap targets of at least 48x48, iOS for 44x44. List items, bottom navigation items and large buttons meet both. The standalone checkbox (24x24), radio button (20x20) and switch keep their size by default, to not change the layout of existing apps. Opt in to a bigger tap area with the theme: the control looks the same, but takes (and reacts to taps in) at least this much space.
+
+```dart
+final theme = ImpaktfullUiTheme.getDefault();
+final components = theme.components;
+theme.copyWith(
+  components: components.copyWith(
+    checkbox: components.checkbox.copyWith(
+      dimens: components.checkbox.dimens.copyWith(minTapTargetSize: const Size.square(48)),
+    ),
+    radioButton: components.radioButton.copyWith(
+      dimens: components.radioButton.dimens.copyWith(minTapTargetSize: const Size.square(48)),
+    ),
+    switchTheme: components.switchTheme.copyWith(
+      dimens: components.switchTheme.dimens.copyWith(minTapTargetSize: const Size.square(48)),
+    ),
+  ),
+);
+```
+
+Inside the list items the control keeps its size: the row is the tap target. Medium buttons are 44 high (the iOS guideline), use `ImpaktfullUiButtonSize.large` for 48.
+
 ### Localization
 
 Every text of the components and building blocks (buttons, tooltips, empty states, semantics labels) comes from a localizations class with English defaults, e.g. `ImpaktfullUiDatePickerLocalizations` or `ImpaktfullUiBBLoginLocalizations`. `ImpaktfullUiLocalizations` groups all of them.

@@ -126,15 +126,25 @@ class ImpaktfullUiCheckboxColorTheme {
 class ImpaktfullUiCheckboxDimensTheme {
   final BorderRadiusGeometry borderRadius;
 
+  /// Opt-in: the minimum size of the tap area, e.g. `Size.square(48)` for
+  /// the Android and `Size.square(44)` for the iOS tap target guideline.
+  ///
+  /// The checkbox looks the same, but takes at least this much space in the
+  /// layout. Null (the default) keeps the size of the checkbox.
+  final Size? minTapTargetSize;
+
   const ImpaktfullUiCheckboxDimensTheme({
     required this.borderRadius,
+    this.minTapTargetSize,
   });
 
   ImpaktfullUiCheckboxDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    Size? minTapTargetSize,
   }) =>
       ImpaktfullUiCheckboxDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        minTapTargetSize: minTapTargetSize ?? this.minTapTargetSize,
       );
 }
 

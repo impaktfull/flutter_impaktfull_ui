@@ -131,6 +131,8 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget {
         height: widget.height,
         size: widget.size,
         fit: widget.fit,
+        semanticLabel: widget.semanticLabel,
+        excludeFromSemantics: widget.excludeFromSemantics,
         key: widget.key,
       );
     }

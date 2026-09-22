@@ -7,6 +7,7 @@ import 'package:impaktfull_ui/src/components/confetti/painter/asset_painter.dart
 import 'package:impaktfull_ui/src/components/confetti/painter/confetti_painter.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/after_layout/after_layout.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'confetti_style.dart';
@@ -87,6 +88,8 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
   void afterFirstLayout(BuildContext context) => _setupParticles();
 
   Future<void> _setupParticles() async {
+    // No confetti when the user asked to reduce motion.
+    if (ImpaktfullUiAnimationUtil.reduceMotion(context)) return;
     _isAddingParticles = true;
     final componentTheme =
         widget.theme ?? ImpaktfullUiConfettiTheme.of(context);
@@ -215,28 +218,36 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
       component: widget,
       overrideComponentTheme: widget.theme,
       // The confetti is drawn on top of other widgets: never block their taps.
-      builder: (context, componentTheme) => IgnorePointer(
-        child: RepaintBoundary(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              _updateSize(constraints);
-              return CustomPaint(
-                size: Size(
-                  _width ?? 0,
-                  _height ?? 0,
-                ),
-                painter: ImpaktfullUiConfettiPainter(
-                  particles: _particles,
-                  assetPainter: _assetPainter,
-                  repaint: _controller,
-                ),
-                isComplex: true,
-                willChange: true,
-              );
-            },
+      builder: (context, componentTheme) {
+        if (ImpaktfullUiAnimationUtil.reduceMotion(context)) {
+          if (_controller.isAnimating) _controller.stop();
+          _particles.clear();
+          return const IgnorePointer(child: SizedBox.shrink());
+        }
+        // Decorative: never announced by screen readers.
+        return IgnorePointer(
+          child: RepaintBoundary(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                _updateSize(constraints);
+                return CustomPaint(
+                  size: Size(
+                    _width ?? 0,
+                    _height ?? 0,
+                  ),
+                  painter: ImpaktfullUiConfettiPainter(
+                    particles: _particles,
+                    assetPainter: _assetPainter,
+                    repaint: _controller,
+                  ),
+                  isComplex: true,
+                  willChange: true,
+                );
+              },
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

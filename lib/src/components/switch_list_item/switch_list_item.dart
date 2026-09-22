@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/components/simple_list_item/simple_list_item.d
 import 'package:impaktfull_ui/src/components/switch/switch.dart';
 import 'package:impaktfull_ui/src/components/switch_list_item/switch_list_item_style.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
+import 'package:impaktfull_ui/src/widget/accessibility/list_item_control.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'switch_list_item_style.dart';
@@ -31,20 +32,28 @@ class ImpaktfullUiSwitchListItem extends StatelessWidget {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => ImpaktfullUiSimpleListItem(
-        title: title,
-        subtitle: subtitle,
-        onTap: onChanged == null ? null : _onTap,
-        type: ImpaktfullUiSimpleListItemType.neutral,
-        leadingWidgetBuilder: leading == null
-            ? null
-            : (context) => ImpaktfullUiAssetWidget(
-                  asset: leading,
-                  color: componentTheme.colors.icons,
-                ),
-        trailingWidgetBuilder: (context) => ImpaktfullUiSwitch(
-          value: value,
-          onChanged: onChanged == null ? null : _onChanged,
+      builder: (context, componentTheme) => MergeSemantics(
+        child: Semantics(
+          toggled: value,
+          enabled: onChanged != null,
+          child: ImpaktfullUiSimpleListItem(
+            title: title,
+            subtitle: subtitle,
+            onTap: onChanged == null ? null : _onTap,
+            type: ImpaktfullUiSimpleListItemType.neutral,
+            leadingWidgetBuilder: leading == null
+                ? null
+                : (context) => ImpaktfullUiAssetWidget(
+                      asset: leading,
+                      color: componentTheme.colors.icons,
+                    ),
+            trailingWidgetBuilder: (context) => ImpaktfullUiListItemControl(
+              child: ImpaktfullUiSwitch(
+                value: value,
+                onChanged: onChanged == null ? null : _onChanged,
+              ),
+            ),
+          ),
         ),
       ),
     );

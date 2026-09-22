@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
@@ -151,7 +152,8 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                 ),
                 AnimatedOpacity(
                   opacity: _isLoading ? 1 : 0,
-                  duration: componentTheme.durations.loading,
+                  duration: ImpaktfullUiAnimationUtil.duration(
+                      context, componentTheme.durations.loading),
                   curve: Curves.easeInOut,
                   child: ImpaktfullUiAutoLayout.horizontal(
                     mainAxisSize:
@@ -175,15 +177,20 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
             ),
           ),
         );
-        return Opacity(
-          opacity: isDisabled ? 0.5 : 1,
-          child: isRaised
-              ? _buildRaisedKeyboardActivator(
-                  componentTheme: componentTheme,
-                  isClickable: isClickable,
-                  child: button,
-                )
-              : button,
+        return Semantics(
+          container: true,
+          button: true,
+          enabled: !isDisabled,
+          child: Opacity(
+            opacity: isDisabled ? 0.5 : 1,
+            child: isRaised
+                ? _buildRaisedKeyboardActivator(
+                    componentTheme: componentTheme,
+                    isClickable: isClickable,
+                    child: button,
+                  )
+                : button,
+          ),
         );
       },
     );
