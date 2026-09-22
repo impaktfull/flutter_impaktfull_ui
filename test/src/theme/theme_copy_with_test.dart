@@ -67,14 +67,14 @@ void main() {
       expect(copy.successBackground, colors.successBackground);
     });
 
-    test('ImpaktfullUiButtonTheme.shadow', () {
-      const shadow = ImpaktfullUiButtonShadowTheme(
+    test('ImpaktfullUiButtonTheme.shadows', () {
+      const shadow = ImpaktfullUiButtonShadowsTheme(
         primary: [BoxShadow(blurRadius: 4)],
         secondary: [],
         destructive: [],
       );
-      final copy = theme.components.button.copyWith(shadow: shadow);
-      expect(copy.shadow, same(shadow));
+      final copy = theme.components.button.copyWith(shadows: shadow);
+      expect(copy.shadows, same(shadow));
     });
   });
 

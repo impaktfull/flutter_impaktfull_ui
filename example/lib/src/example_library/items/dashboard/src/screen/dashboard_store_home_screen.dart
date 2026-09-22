@@ -14,6 +14,7 @@ class DashboardStoreHomeScreen extends StatefulWidget {
 class _DashboardStoreHomeScreenState extends State<DashboardStoreHomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiAdaptiveScreen(
       title: 'Dashboard',
       isDrawerEnabled: true,

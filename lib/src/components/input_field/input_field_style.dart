@@ -8,7 +8,7 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiInputFieldAssetsTheme assets;
   final ImpaktfullUiInputFieldColorTheme colors;
   final ImpaktfullUiInputFieldDimensTheme dimens;
-  final ImpaktfullUiInputFieldTextStylesTheme textStyles;
+  final ImpaktfullUiInputFieldTextStyleTheme textStyles;
 
   const ImpaktfullUiInputFieldTheme({
     required this.assets,
@@ -21,7 +21,7 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiInputFieldAssetsTheme? assets,
     ImpaktfullUiInputFieldColorTheme? colors,
     ImpaktfullUiInputFieldDimensTheme? dimens,
-    ImpaktfullUiInputFieldTextStylesTheme? textStyles,
+    ImpaktfullUiInputFieldTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiInputFieldTheme(
         assets: assets ?? this.assets,
@@ -58,7 +58,7 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
           borderRadius: dimens.borderRadius,
           labelMargin: EdgeInsets.zero,
         ),
-        textStyles: ImpaktfullUiInputFieldTextStylesTheme(
+        textStyles: ImpaktfullUiInputFieldTextStyleTheme(
           label: textStyles.onCard.text.small.medium,
           text: textStyles.onCard.text.medium,
           placeholder: textStyles.onCardTertiary.text.medium.copyWith(
@@ -144,7 +144,7 @@ class ImpaktfullUiInputFieldDimensTheme {
       );
 }
 
-class ImpaktfullUiInputFieldTextStylesTheme {
+class ImpaktfullUiInputFieldTextStyleTheme {
   final TextStyle label;
   final TextStyle text;
   final TextStyle placeholder;
@@ -152,7 +152,7 @@ class ImpaktfullUiInputFieldTextStylesTheme {
   final TextStyle error;
   final TextStyle action;
 
-  const ImpaktfullUiInputFieldTextStylesTheme({
+  const ImpaktfullUiInputFieldTextStyleTheme({
     required this.label,
     required this.text,
     required this.placeholder,
@@ -161,7 +161,7 @@ class ImpaktfullUiInputFieldTextStylesTheme {
     required this.action,
   });
 
-  ImpaktfullUiInputFieldTextStylesTheme copyWith({
+  ImpaktfullUiInputFieldTextStyleTheme copyWith({
     TextStyle? label,
     TextStyle? text,
     TextStyle? placeholder,
@@ -169,7 +169,7 @@ class ImpaktfullUiInputFieldTextStylesTheme {
     TextStyle? error,
     TextStyle? action,
   }) =>
-      ImpaktfullUiInputFieldTextStylesTheme(
+      ImpaktfullUiInputFieldTextStyleTheme(
         label: label ?? this.label,
         text: text ?? this.text,
         placeholder: placeholder ?? this.placeholder,

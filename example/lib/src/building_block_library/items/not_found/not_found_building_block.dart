@@ -11,6 +11,7 @@ class NotFoundBuildingBlock extends BuildingBlockLibraryItem {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiBBNotFound(
       actions: [
         ImpaktfullUiButton(

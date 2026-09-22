@@ -111,7 +111,7 @@ void main() {
       assets: badgeTheme.assets,
       colors: badgeTheme.colors,
       dimens: badgeTheme.dimens,
-      textStyles: ImpaktfullUiBadgeTextStylesTheme(
+      textStyles: ImpaktfullUiBadgeTextStyleTheme(
         small: badgeTheme.textStyles.small.copyWith(fontSize: 33),
         medium: badgeTheme.textStyles.medium,
         large: badgeTheme.textStyles.large,

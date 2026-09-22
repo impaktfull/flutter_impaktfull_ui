@@ -6,7 +6,7 @@ import 'package:impaktfull_ui/src/components/page_route/adaptive/adaptive_page_r
 import 'package:impaktfull_ui/src/components/screen/screen.dart';
 import 'package:impaktfull_ui/src/components/selectable_list_item/selectable_list_item.dart';
 import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
-import 'package:impaktfull_ui/src/util/responsive/responsive_extension.dart';
+import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'option_selector.localizations.dart';
@@ -42,7 +42,7 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
     String? subtitle,
     ImpaktfullUiOptionSelectorLocalizations? localizations,
   }) async {
-    if (context.isMediumScreenOrBigger) {
+    if (ImpaktfullUiResponsiveLayout.isMediumOrBigger(context)) {
       return ImpaktfullUiModal.showSimple(
         context: context,
         title: title,

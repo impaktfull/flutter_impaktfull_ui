@@ -11,6 +11,7 @@ class LoginBuildingBlock extends BuildingBlockLibraryItem {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiBBLogin(
       email: 'email',
       password: 'password',
@@ -45,8 +46,9 @@ class LoginBuildingBlock extends BuildingBlockLibraryItem {
                 ),
                 Text(
                   'Make an impakt on your customers!',
-                  style:
-                      theme.textStyles.onAccent.text.medium.withOpacity(0.66),
+                  style: theme.textStyles.onAccent.text.medium.copyWith(
+                    color: theme.colors.textOnAccent.withValues(alpha: 0.66),
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],

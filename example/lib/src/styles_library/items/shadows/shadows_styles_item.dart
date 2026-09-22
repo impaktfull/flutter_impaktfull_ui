@@ -11,6 +11,7 @@ class ShadowStyleItem extends StylesLibraryItem {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiGridView(
       padding: const EdgeInsets.all(16),
       spacing: 8,

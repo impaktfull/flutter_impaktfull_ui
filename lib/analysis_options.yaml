@@ -1,0 +1,9 @@
+include: ../analysis_options.yaml
+
+linter:
+  rules:
+    # The library itself never uses its own deprecated APIs: they are only
+    # kept for apps until 1.0.0 (see doc/migrations/1.0.0.md). Without this
+    # lint the analyzer does not report the use of a deprecated API of the
+    # same package.
+    - deprecated_member_use_from_same_package

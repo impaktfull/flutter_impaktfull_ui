@@ -21,6 +21,7 @@ class _ComponentLibraryScreenState extends State<ComponentLibraryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     final filteredComponents = ComponentLibrary.instance.items.where((e) {
       if (_fixedSearchQuery.isNotEmpty) {
         for (final fixedQuery in _fixedSearchQuery) {

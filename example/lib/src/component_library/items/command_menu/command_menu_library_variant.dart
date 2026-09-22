@@ -14,6 +14,7 @@ class CommandMenuLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, CommandMenuLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiCommandMenu(
         shortcutActivator: const SingleActivator(

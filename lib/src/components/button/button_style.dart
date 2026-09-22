@@ -6,8 +6,8 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiButtonColorTheme colors;
   final ImpaktfullUiButtonDimensTheme dimens;
   final ImpaktfullUiButtonDurationsTheme durations;
-  final ImpaktfullUiButtonTextStylesTheme textStyles;
-  final ImpaktfullUiButtonShadowTheme? shadow;
+  final ImpaktfullUiButtonTextStyleTheme textStyles;
+  final ImpaktfullUiButtonShadowsTheme? shadows;
   final ImpaktfullUiButtonConfig config;
 
   const ImpaktfullUiButtonTheme({
@@ -16,23 +16,30 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
     required this.durations,
     required this.textStyles,
     required this.config,
-    this.shadow,
-  });
+    ImpaktfullUiButtonShadowsTheme? shadows,
+    @Deprecated('Use shadows instead. Will be removed in 1.0.0.')
+    ImpaktfullUiButtonShadowsTheme? shadow,
+  }) : shadows = shadows ?? shadow;
+
+  @Deprecated('Use shadows instead. Will be removed in 1.0.0.')
+  ImpaktfullUiButtonShadowsTheme? get shadow => shadows;
 
   ImpaktfullUiButtonTheme copyWith({
     ImpaktfullUiButtonColorTheme? colors,
     ImpaktfullUiButtonConfig? config,
     ImpaktfullUiButtonDimensTheme? dimens,
     ImpaktfullUiButtonDurationsTheme? durations,
-    ImpaktfullUiButtonShadowTheme? shadow,
-    ImpaktfullUiButtonTextStylesTheme? textStyles,
+    ImpaktfullUiButtonShadowsTheme? shadows,
+    @Deprecated('Use shadows instead. Will be removed in 1.0.0.')
+    ImpaktfullUiButtonShadowsTheme? shadow,
+    ImpaktfullUiButtonTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiButtonTheme(
         colors: colors ?? this.colors,
         config: config ?? this.config,
         dimens: dimens ?? this.dimens,
         durations: durations ?? this.durations,
-        shadow: shadow ?? this.shadow,
+        shadows: shadows ?? shadow ?? this.shadows,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -72,14 +79,14 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
         durations: ImpaktfullUiButtonDurationsTheme(
           loading: durations.short,
         ),
-        textStyles: ImpaktfullUiButtonTextStylesTheme(
+        textStyles: ImpaktfullUiButtonTextStyleTheme(
           primary: textStyles.onAccent.text.small.bold,
           alternative: textStyles.onCardAccent.text.small.bold,
           grey: textStyles.onCard.text.small.bold,
           destructivePrimary: textStyles.onDestructive.text.small.bold,
           destructiveAlternative: textStyles.onCardDestructive.text.small.bold,
         ),
-        shadow: ImpaktfullUiButtonShadowTheme(
+        shadows: ImpaktfullUiButtonShadowsTheme(
           primary: [],
           secondary: [],
           destructive: [],
@@ -195,14 +202,14 @@ class ImpaktfullUiButtonDurationsTheme {
       );
 }
 
-class ImpaktfullUiButtonTextStylesTheme {
+class ImpaktfullUiButtonTextStyleTheme {
   final TextStyle primary;
   final TextStyle alternative;
   final TextStyle grey;
   final TextStyle destructivePrimary;
   final TextStyle destructiveAlternative;
 
-  const ImpaktfullUiButtonTextStylesTheme({
+  const ImpaktfullUiButtonTextStyleTheme({
     required this.primary,
     required this.alternative,
     required this.grey,
@@ -210,14 +217,14 @@ class ImpaktfullUiButtonTextStylesTheme {
     required this.destructiveAlternative,
   });
 
-  ImpaktfullUiButtonTextStylesTheme copyWith({
+  ImpaktfullUiButtonTextStyleTheme copyWith({
     TextStyle? primary,
     TextStyle? alternative,
     TextStyle? grey,
     TextStyle? destructivePrimary,
     TextStyle? destructiveAlternative,
   }) =>
-      ImpaktfullUiButtonTextStylesTheme(
+      ImpaktfullUiButtonTextStyleTheme(
         primary: primary ?? this.primary,
         alternative: alternative ?? this.alternative,
         grey: grey ?? this.grey,
@@ -227,23 +234,23 @@ class ImpaktfullUiButtonTextStylesTheme {
       );
 }
 
-class ImpaktfullUiButtonShadowTheme {
+class ImpaktfullUiButtonShadowsTheme {
   final List<BoxShadow>? primary;
   final List<BoxShadow>? secondary;
   final List<BoxShadow>? destructive;
 
-  const ImpaktfullUiButtonShadowTheme({
+  const ImpaktfullUiButtonShadowsTheme({
     required this.primary,
     required this.secondary,
     required this.destructive,
   });
 
-  ImpaktfullUiButtonShadowTheme copyWith({
+  ImpaktfullUiButtonShadowsTheme copyWith({
     List<BoxShadow>? primary,
     List<BoxShadow>? secondary,
     List<BoxShadow>? destructive,
   }) =>
-      ImpaktfullUiButtonShadowTheme(
+      ImpaktfullUiButtonShadowsTheme(
         primary: primary ?? this.primary,
         secondary: secondary ?? this.secondary,
         destructive: destructive ?? this.destructive,

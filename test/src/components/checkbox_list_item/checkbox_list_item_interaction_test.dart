@@ -152,7 +152,7 @@ void main() {
 
   testWidgets('the theme override is used for the leading icon',
       (tester) async {
-    final theme = defaultComponentsTheme.checkBoxListItem;
+    final theme = defaultComponentsTheme.checkboxListItem;
     await pumpAndSettleComponent(
       tester,
       ImpaktfullUiCheckboxListItem(

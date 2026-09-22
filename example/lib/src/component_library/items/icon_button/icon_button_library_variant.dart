@@ -13,6 +13,7 @@ class IconButtonTypeLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, IconButtonLibraryVariantInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiIconButton(
         onTap: () => ImpaktfullUiNotification.show(title: 'IconButton tapped'),

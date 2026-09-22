@@ -84,6 +84,7 @@ class ImpaktfullUiGalleryItem {
         imageFit = null,
         bytes = null,
         xFile = null,
+        // ignore: deprecated_member_use_from_same_package
         file = null;
 
   const ImpaktfullUiGalleryItem.image({
@@ -95,6 +96,7 @@ class ImpaktfullUiGalleryItem {
   })  : _child = null,
         bytes = null,
         xFile = null,
+        // ignore: deprecated_member_use_from_same_package
         file = null;
 
   /// An image from its encoded [bytes] (e.g. PNG or JPEG). Works on every
@@ -108,6 +110,7 @@ class ImpaktfullUiGalleryItem {
   })  : _child = null,
         imageUrl = null,
         xFile = null,
+        // ignore: deprecated_member_use_from_same_package
         file = null;
 
   /// An image from an [XFile] (e.g. from image_picker or file_selector). Works
@@ -121,6 +124,7 @@ class ImpaktfullUiGalleryItem {
   })  : _child = null,
         imageUrl = null,
         bytes = null,
+        // ignore: deprecated_member_use_from_same_package
         file = null;
 
   /// A `File` of `dart:io`. It can not be shown on the web.

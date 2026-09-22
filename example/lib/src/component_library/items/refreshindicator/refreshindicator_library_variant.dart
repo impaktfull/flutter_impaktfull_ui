@@ -13,6 +13,7 @@ class RefreshIndicatorLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, RefreshIndicatorLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       SizedBox(
         width: double.infinity,

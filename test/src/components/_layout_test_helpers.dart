@@ -30,7 +30,12 @@ GoldenTest layoutGoldenCase(
           children: [
             Text(
               label,
-              style: theme.textStyles.onCanvas.text.small.semiBold,
+              style: ImpaktfullUiTheme.of(context)
+                  .textStyles
+                  .onCanvas
+                  .text
+                  .small
+                  .copyWith(fontWeight: FontWeight.w600),
             ),
             if (size != null) ...[
               screenSized(size, child),

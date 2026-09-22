@@ -13,6 +13,7 @@ class StepperLibraryVariant
 
   @override
   List<Widget> build(BuildContext context, StepperLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         wrapWithCard: true,

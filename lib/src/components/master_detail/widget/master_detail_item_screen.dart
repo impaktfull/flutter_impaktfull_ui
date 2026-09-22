@@ -29,7 +29,7 @@ class ImpaktfullUiMasterDetailItemScreen extends StatelessWidget {
 
   void _overrideMasterScreen(BuildContext context) {
     final masterDetail = ImpaktfullUiMasterDetail.of(context);
-    if (context.isMediumScreenOrSmaller) {
+    if (ImpaktfullUiResponsiveLayout.isMediumOrSmaller(context)) {
       masterDetail.setSubtitle(subtitle);
       masterDetail.setTitle(title);
     } else if (keepOriginalMasterTitle) {

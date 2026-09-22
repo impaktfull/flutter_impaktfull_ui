@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiTableRowItemTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTableRowItemColorTheme colors;
-  final ImpaktfullUiTableRowItemTextStylesTheme textStyles;
+  final ImpaktfullUiTableRowItemTextStyleTheme textStyles;
   final ImpaktfullUiTableRowItemDimensTheme dimens;
 
   const ImpaktfullUiTableRowItemTheme({
@@ -16,7 +16,7 @@ class ImpaktfullUiTableRowItemTheme extends ImpaktfullUiComponentTheme {
   ImpaktfullUiTableRowItemTheme copyWith({
     ImpaktfullUiTableRowItemColorTheme? colors,
     ImpaktfullUiTableRowItemDimensTheme? dimens,
-    ImpaktfullUiTableRowItemTextStylesTheme? textStyles,
+    ImpaktfullUiTableRowItemTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiTableRowItemTheme(
         colors: colors ?? this.colors,
@@ -38,7 +38,7 @@ class ImpaktfullUiTableRowItemTheme extends ImpaktfullUiComponentTheme {
       ImpaktfullUiTableRowItemTheme(
         colors: const ImpaktfullUiTableRowItemColorTheme(),
         dimens: const ImpaktfullUiTableRowItemDimensTheme(),
-        textStyles: ImpaktfullUiTableRowItemTextStylesTheme(
+        textStyles: ImpaktfullUiTableRowItemTextStyleTheme(
           title: textStyles.onCanvas.text.small.medium,
           subtitle: textStyles.onCanvas.text.small,
         ),
@@ -52,20 +52,20 @@ class ImpaktfullUiTableRowItemColorTheme {
       const ImpaktfullUiTableRowItemColorTheme();
 }
 
-class ImpaktfullUiTableRowItemTextStylesTheme {
+class ImpaktfullUiTableRowItemTextStyleTheme {
   final TextStyle title;
   final TextStyle subtitle;
 
-  const ImpaktfullUiTableRowItemTextStylesTheme({
+  const ImpaktfullUiTableRowItemTextStyleTheme({
     required this.title,
     required this.subtitle,
   });
 
-  ImpaktfullUiTableRowItemTextStylesTheme copyWith({
+  ImpaktfullUiTableRowItemTextStyleTheme copyWith({
     TextStyle? subtitle,
     TextStyle? title,
   }) =>
-      ImpaktfullUiTableRowItemTextStylesTheme(
+      ImpaktfullUiTableRowItemTextStyleTheme(
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );

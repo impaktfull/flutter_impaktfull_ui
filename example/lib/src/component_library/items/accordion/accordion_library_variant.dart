@@ -13,6 +13,7 @@ class AccordionLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, AccordionLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiAccordion(
         title: 'Item1',
@@ -28,7 +29,8 @@ class AccordionLibraryVariant
             children: [
               Text(
                 'Disclaimer 1',
-                style: theme.textStyles.onAccent.text.small.medium,
+                style: theme.textStyles.onAccent.text.small
+                    .copyWith(fontWeight: FontWeight.w500),
               ),
             ],
           ),
@@ -48,7 +50,8 @@ class AccordionLibraryVariant
             children: [
               Text(
                 'Disclaimer 2',
-                style: theme.textStyles.onAccent.text.small.medium,
+                style: theme.textStyles.onAccent.text.small
+                    .copyWith(fontWeight: FontWeight.w500),
               ),
             ],
           ),
@@ -72,7 +75,8 @@ class AccordionLibraryVariant
             children: [
               Text(
                 'Disclaimer 2',
-                style: theme.textStyles.onAccent.text.small.medium,
+                style: theme.textStyles.onAccent.text.small
+                    .copyWith(fontWeight: FontWeight.w500),
               ),
             ],
           ),

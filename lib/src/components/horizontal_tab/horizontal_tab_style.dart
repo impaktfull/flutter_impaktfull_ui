@@ -5,7 +5,7 @@ import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiHorizontalTabTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiHorizontalTabColorTheme colors;
-  final ImpaktfullUiHorizontalTabTextStylesTheme textStyles;
+  final ImpaktfullUiHorizontalTabTextStyleTheme textStyles;
   final ImpaktfullUiHorizontalTabDimensTheme dimens;
 
   const ImpaktfullUiHorizontalTabTheme({
@@ -17,7 +17,7 @@ class ImpaktfullUiHorizontalTabTheme extends ImpaktfullUiComponentTheme {
   ImpaktfullUiHorizontalTabTheme copyWith({
     ImpaktfullUiHorizontalTabColorTheme? colors,
     ImpaktfullUiHorizontalTabDimensTheme? dimens,
-    ImpaktfullUiHorizontalTabTextStylesTheme? textStyles,
+    ImpaktfullUiHorizontalTabTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiHorizontalTabTheme(
         colors: colors ?? this.colors,
@@ -44,7 +44,7 @@ class ImpaktfullUiHorizontalTabTheme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUiHorizontalTabDimensTheme(
           borderRadius: dimens.borderRadius,
         ),
-        textStyles: ImpaktfullUiHorizontalTabTextStylesTheme(
+        textStyles: ImpaktfullUiHorizontalTabTextStyleTheme(
           selected: textStyles.onCardAccent.text.small.semiBold,
           unselected: textStyles.onCard.text.small.semiBold,
         ),
@@ -72,20 +72,20 @@ class ImpaktfullUiHorizontalTabColorTheme {
       );
 }
 
-class ImpaktfullUiHorizontalTabTextStylesTheme {
+class ImpaktfullUiHorizontalTabTextStyleTheme {
   final TextStyle selected;
   final TextStyle unselected;
 
-  const ImpaktfullUiHorizontalTabTextStylesTheme({
+  const ImpaktfullUiHorizontalTabTextStyleTheme({
     required this.selected,
     required this.unselected,
   });
 
-  ImpaktfullUiHorizontalTabTextStylesTheme copyWith({
+  ImpaktfullUiHorizontalTabTextStyleTheme copyWith({
     TextStyle? selected,
     TextStyle? unselected,
   }) =>
-      ImpaktfullUiHorizontalTabTextStylesTheme(
+      ImpaktfullUiHorizontalTabTextStyleTheme(
         selected: selected ?? this.selected,
         unselected: unselected ?? this.unselected,
       );

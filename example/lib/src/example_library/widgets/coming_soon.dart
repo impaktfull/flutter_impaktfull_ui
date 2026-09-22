@@ -9,6 +9,7 @@ class ExampleComingSoon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiAdaptiveScreen(
       title: 'Coming soon',
       isDrawerEnabled: true,

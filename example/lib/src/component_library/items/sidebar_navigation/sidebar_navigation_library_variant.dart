@@ -15,6 +15,7 @@ class SidebarNavigationLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, SidebarNavigationLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         height: 250,

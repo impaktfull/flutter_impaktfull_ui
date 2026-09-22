@@ -13,6 +13,7 @@ class FloatingActionButtonLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, FloatingActionButtonLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiFloatingActionButton(
         asset: theme.assets.icons.add,

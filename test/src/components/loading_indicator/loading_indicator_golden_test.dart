@@ -15,7 +15,7 @@ void main() {
   // Without a lottie file the loading indicator falls back to a
   // CircularProgressIndicator.
   final circularTheme = ImpaktfullUiLoadingIndicatorTheme(
-    assets: const ImpaktfullUiLoadingIndicatorAssetTheme(lottie: null),
+    assets: const ImpaktfullUiLoadingIndicatorAssetsTheme(lottie: null),
     colors: defaultTheme.colors,
     dimens: defaultTheme.dimens,
   );

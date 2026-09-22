@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/impaktfull_ui.dart';
+import 'package:impaktfull_ui/impaktfull_ui.dart' hide DateTimeExtensions;
 import 'package:impaktfull_ui_example/src/component_library/items/calendar/calendar_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
@@ -128,3 +128,34 @@ class CalendarLibraryVariant
 }
 
 class CalendarLibraryPrimaryInputs extends CalendarLibraryInputs {}
+
+// Copied from the DateTimeExtensions of impaktfull_ui, which is no longer
+// exported in 1.0.0. The barrel import above hides it: two extensions with the
+// same members would make every use ambiguous.
+extension _DateTimeExtension on DateTime {
+  DateTime get startOfTheDay => DateTime(year, month, day);
+
+  DateTime get endOfTheDay => DateTime(year, month, day, 23, 59, 59);
+
+  DateTime get tomorrow => add(const Duration(days: 1));
+
+  DateTime get nextWeek => add(const Duration(days: 7));
+
+  // Calendar date arithmetic instead of a Duration: a day is not always 24
+  // hours in local time (daylight saving time).
+  DateTime get beginningOfTheWeek => copyWith(day: day - (weekday - 1));
+
+  DateTime get thisWeekMonday => beginningOfTheWeek;
+
+  DateTime get thisWeekWednesday =>
+      beginningOfTheWeek.add(const Duration(days: 2));
+
+  DateTime get thisWeekThursday =>
+      beginningOfTheWeek.add(const Duration(days: 3));
+
+  DateTime get thisWeekSaturday =>
+      beginningOfTheWeek.add(const Duration(days: 5));
+
+  DateTime setTime(int hour, int minute) =>
+      DateTime(year, month, day, hour, minute);
+}

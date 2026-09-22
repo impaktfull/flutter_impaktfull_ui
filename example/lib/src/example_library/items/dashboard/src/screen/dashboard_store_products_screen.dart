@@ -39,6 +39,7 @@ class _DashboardStoreProductsScreenState
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiAdaptiveScreen(
       title: 'Products',
       badge: '${products.length} products',

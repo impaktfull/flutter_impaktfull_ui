@@ -13,6 +13,7 @@ class SelectableListItemLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, SelectableListItemLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiSelectableListItem(
         title: inputs.title.value ?? '',

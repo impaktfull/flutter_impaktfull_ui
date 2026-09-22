@@ -1,6 +1,6 @@
 import 'package:flutter/rendering.dart';
 
-extension EdgeInsetsGeometryExtension on EdgeInsetsGeometry {
+extension InternalEdgeInsetsGeometryExtension on EdgeInsetsGeometry {
   double get start {
     if (this is EdgeInsetsDirectional) {
       return (this as EdgeInsetsDirectional).start;

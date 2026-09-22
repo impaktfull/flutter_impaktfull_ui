@@ -8,6 +8,10 @@ import 'package:impaktfull_ui/src/theme/theme_configurator.dart'
 // The theme and locale of theme_configurator.dart are global. Every test file
 // runs in its own isolate, so this file starts without a theme or locale. The
 // tests depend on their order.
+//
+// The global getters and setters are deprecated (components read the theme
+// with ImpaktfullUiTheme.of(context)), but keep working until 1.0.0.
+// ignore_for_file: deprecated_member_use_from_same_package
 void main() {
   test('theme and locale throw before they are set', () {
     expect(() => configurator.theme, throwsException);

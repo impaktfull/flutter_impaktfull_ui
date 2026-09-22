@@ -16,6 +16,7 @@ class ComponentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     var isScrollable = false;
     var correctChild = child;
     if (correctChild is ComponentsLibraryVariantDescriptor) {

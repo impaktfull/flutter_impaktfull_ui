@@ -354,7 +354,7 @@ class ImpaktfullUiDefaultTheme {
           durations: durations,
           shadows: shadows,
         ),
-        checkBoxListItem: ImpaktfullUiCheckboxListItemTheme.getDefault(
+        checkboxListItem: ImpaktfullUiCheckboxListItemTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,

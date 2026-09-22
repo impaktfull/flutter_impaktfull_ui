@@ -7,7 +7,7 @@ class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiBadgeAssetsTheme assets;
   final ImpaktfullUiBadgeColorTheme colors;
   final ImpaktfullUiBadgeDimensTheme dimens;
-  final ImpaktfullUiBadgeTextStylesTheme textStyles;
+  final ImpaktfullUiBadgeTextStyleTheme textStyles;
 
   const ImpaktfullUiBadgeTheme({
     required this.assets,
@@ -20,7 +20,7 @@ class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiBadgeAssetsTheme? assets,
     ImpaktfullUiBadgeColorTheme? colors,
     ImpaktfullUiBadgeDimensTheme? dimens,
-    ImpaktfullUiBadgeTextStylesTheme? textStyles,
+    ImpaktfullUiBadgeTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiBadgeTheme(
         assets: assets ?? this.assets,
@@ -68,7 +68,7 @@ class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
           borderRadius: dimens.borderRadiusCircle,
           borderWidth: 1,
         ),
-        textStyles: ImpaktfullUiBadgeTextStylesTheme(
+        textStyles: ImpaktfullUiBadgeTextStyleTheme(
           small: textStyles.onCard.text.small,
           medium: textStyles.onCard.text.small,
           large: textStyles.onCard.text.small,
@@ -193,23 +193,23 @@ class ImpaktfullUiBadgeDimensTheme {
       );
 }
 
-class ImpaktfullUiBadgeTextStylesTheme {
+class ImpaktfullUiBadgeTextStyleTheme {
   final TextStyle small;
   final TextStyle medium;
   final TextStyle large;
 
-  const ImpaktfullUiBadgeTextStylesTheme({
+  const ImpaktfullUiBadgeTextStyleTheme({
     required this.small,
     required this.medium,
     required this.large,
   });
 
-  ImpaktfullUiBadgeTextStylesTheme copyWith({
+  ImpaktfullUiBadgeTextStyleTheme copyWith({
     TextStyle? large,
     TextStyle? medium,
     TextStyle? small,
   }) =>
-      ImpaktfullUiBadgeTextStylesTheme(
+      ImpaktfullUiBadgeTextStyleTheme(
         large: large ?? this.large,
         medium: medium ?? this.medium,
         small: small ?? this.small,

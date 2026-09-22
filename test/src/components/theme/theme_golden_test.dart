@@ -79,7 +79,7 @@ void main() {
             assets: defaultTheme.components.badge.assets,
             colors: defaultTheme.components.badge.colors,
             dimens: defaultTheme.components.badge.dimens,
-            textStyles: ImpaktfullUiBadgeTextStylesTheme(
+            textStyles: ImpaktfullUiBadgeTextStyleTheme(
               small: defaultTheme.components.badge.textStyles.small
                   .copyWith(fontSize: 20),
               medium: defaultTheme.components.badge.textStyles.medium,

@@ -13,6 +13,7 @@ class BottomNavigationLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, BottomNavigationLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiBottomNavigation(
         items: [

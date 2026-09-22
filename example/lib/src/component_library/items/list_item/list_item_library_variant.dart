@@ -15,6 +15,7 @@ class ListItemLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, ListItemLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiListItem(
         leading: theme.assets.icons.settings,

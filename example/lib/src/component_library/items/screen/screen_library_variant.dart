@@ -13,6 +13,7 @@ class ScreenLibraryVariant
 
   @override
   List<Widget> build(BuildContext context, ScreenLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         height: 500,
