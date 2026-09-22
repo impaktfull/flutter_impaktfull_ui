@@ -131,8 +131,12 @@ Every pull request and push to `main` runs `.github/workflows/validate.yml`, whi
 | `test` | macOS | `flutter test --coverage`, including the golden tests (they only run on a macOS host), and the minimum line coverage of `lib/` |
 | `test_web (js)`, `test_web (wasm)` | ubuntu | `tool/test_web.sh` and `tool/test_web.sh --wasm`: the tests in Chrome, compiled to JS and to Wasm |
 | `example` | ubuntu | `flutter build web` and `flutter build web --wasm` of the example app that is deployed to GitHub Pages |
-| `example_platforms` | ubuntu | `flutter build apk` and `flutter build linux` of the example app, to catch plugin and native build breakage |
+| `example (android)`, `example (linux)` | ubuntu | `flutter build apk --debug` and `flutter build linux --debug` of the example app |
+| `example (ios)`, `example (macos)` | macOS | `flutter build ios --debug --no-codesign` and `flutter build macos --debug` of the example app |
+| `example (windows)` | windows | `flutter build windows --debug` of the example app |
 | `pana` | ubuntu | [pana](https://pub.dev/packages/pana) must report Android, iOS, macOS, Windows, Linux, web and Wasm as supported, with full platform points |
+
+The `example (<platform>)` jobs catch a plugin or native project setting (deployment target, CMake, Gradle) that breaks the build of one platform. Together with the web builds, the example app is built for every supported platform on each pull request. The native projects live in `example/android`, `example/ios`, `example/macos`, `example/linux` and `example/windows`; regenerate a missing one with `flutter create --platforms=<platform> .` in `example/` (Windows needs `flutter config --enable-windows-desktop` for that).
 
 When a golden test fails because of an intended visual change, regenerate the goldens with `flutter test --update-goldens` on macOS using the pinned Flutter version, and review the image diff before committing.
 

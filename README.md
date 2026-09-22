@@ -28,7 +28,7 @@ This UI library was built to have a simple way to build UIs for impaktfull. This
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-Every component works on every platform. CI proves it on each pull request: the tests run on the Dart VM and in Chrome (`tool/test_web.sh`, compiled to JS and to Wasm), the example app is built for the web (JS and Wasm), Android and Linux, and [pana](https://pub.dev/packages/pana) must report every platform and Wasm as supported.
+Every component works on every platform. CI proves it on each pull request: the tests run on the Dart VM and in Chrome (`tool/test_web.sh`, compiled to JS and to Wasm), the example app is built for every platform (Android, iOS, macOS, Windows, Linux and the web, JS and Wasm), and [pana](https://pub.dev/packages/pana) must report every platform and Wasm as supported.
 
 Local files work on every platform when you pass bytes or an `XFile` (from [`cross_file`](https://pub.dev/packages/cross_file), which `image_picker` and `file_selector` return):
 
