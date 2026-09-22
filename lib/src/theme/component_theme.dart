@@ -103,7 +103,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiCarouselTheme carousel;
   final ImpaktfullUiChatTheme chat;
   final ImpaktfullUiCheckboxTheme checkbox;
-  final ImpaktfullUiCheckboxListItemTheme checkBoxListItem;
+  final ImpaktfullUiCheckboxListItemTheme checkboxListItem;
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
   final ImpaktfullUiColorInputFieldTheme colorInputField;
@@ -192,7 +192,11 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCarouselTheme? carrousel,
     required this.chat,
     required this.checkbox,
-    required this.checkBoxListItem,
+    // `checkboxListItem` becomes `required` again in 1.0.0, when
+    // `checkBoxListItem` is removed.
+    ImpaktfullUiCheckboxListItemTheme? checkboxListItem,
+    @Deprecated('Use checkboxListItem instead. Will be removed in 1.0.0.')
+    ImpaktfullUiCheckboxListItemTheme? checkBoxListItem,
     required this.cmsHeader,
     required this.colorPicker,
     required this.colorInputField,
@@ -263,10 +267,16 @@ class ImpaktfullUiComponentsTheme {
     required this.virtualKeyboard,
     required this.wysiwyg,
   })  : assert(carousel != null || carrousel != null, 'carousel is required'),
-        carousel = (carousel ?? carrousel)!;
+        carousel = (carousel ?? carrousel)!,
+        assert(checkboxListItem != null || checkBoxListItem != null,
+            'checkboxListItem is required'),
+        checkboxListItem = (checkboxListItem ?? checkBoxListItem)!;
 
   @Deprecated('Use carousel instead. Will be removed in 1.0.0.')
   ImpaktfullUiCarouselTheme get carrousel => carousel;
+
+  @Deprecated('Use checkboxListItem instead. Will be removed in 1.0.0.')
+  ImpaktfullUiCheckboxListItemTheme get checkBoxListItem => checkboxListItem;
 
   ImpaktfullUiComponentsTheme copyWith({
     ImpaktfullUiAccordionTheme? accordion,
@@ -285,6 +295,8 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCarouselTheme? carrousel,
     ImpaktfullUiChatTheme? chat,
     ImpaktfullUiCheckboxTheme? checkbox,
+    ImpaktfullUiCheckboxListItemTheme? checkboxListItem,
+    @Deprecated('Use checkboxListItem instead. Will be removed in 1.0.0.')
     ImpaktfullUiCheckboxListItemTheme? checkBoxListItem,
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
@@ -371,7 +383,8 @@ class ImpaktfullUiComponentsTheme {
         carousel: carousel ?? carrousel ?? this.carousel,
         chat: chat ?? this.chat,
         checkbox: checkbox ?? this.checkbox,
-        checkBoxListItem: checkBoxListItem ?? this.checkBoxListItem,
+        checkboxListItem:
+            checkboxListItem ?? checkBoxListItem ?? this.checkboxListItem,
         cmsHeader: cmsHeader ?? this.cmsHeader,
         colorPicker: colorPicker ?? this.colorPicker,
         colorInputField: colorInputField ?? this.colorInputField,

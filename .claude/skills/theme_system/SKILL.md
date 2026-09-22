@@ -173,10 +173,14 @@ theme.textStyles
 
 ### Modifiers
 
+Inside `lib/`, import the internal extension `package:impaktfull_ui/src/util/extension/text_style_extension.dart` (`InternalTextStyleExtension`):
+
 ```dart
 theme.textStyles.onCanvas.text.medium.semiBold
 theme.textStyles.onCanvas.text.medium.withOpacity(0.66)
 ```
+
+The internal extensions in `lib/src/util/extension/` are not exported. The exported `TextStyleExtension`, `DateTimeExtensions`, `BorderRadiusGeometryExtension` and `EdgeInsetsGeometryExtension` (`lib/src/deprecated/deprecated_extensions.dart`) are deprecated and only kept for apps until 1.0.0. Never import both in one file: their members have the same names, so every use is ambiguous. Apps use `copyWith(fontWeight: ...)` instead.
 
 ## Color System
 

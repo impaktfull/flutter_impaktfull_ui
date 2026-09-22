@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiListViewTheme extends ImpaktfullUiComponentTheme {
-  final ImpaktfullUiListViewTextStylesTheme textStyles;
+  final ImpaktfullUiListViewTextStyleTheme textStyles;
   final ImpaktfullUiListViewDimensTheme dimens;
 
   const ImpaktfullUiListViewTheme({
@@ -12,7 +12,7 @@ class ImpaktfullUiListViewTheme extends ImpaktfullUiComponentTheme {
 
   ImpaktfullUiListViewTheme copyWith({
     ImpaktfullUiListViewDimensTheme? dimens,
-    ImpaktfullUiListViewTextStylesTheme? textStyles,
+    ImpaktfullUiListViewTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiListViewTheme(
         dimens: dimens ?? this.dimens,
@@ -35,23 +35,23 @@ class ImpaktfullUiListViewTheme extends ImpaktfullUiComponentTheme {
           borderRadius: dimens.borderRadius,
           padding: const EdgeInsets.all(16),
         ),
-        textStyles: ImpaktfullUiListViewTextStylesTheme(
+        textStyles: ImpaktfullUiListViewTextStyleTheme(
           title: textStyles.onCanvas.display.small,
         ),
       );
 }
 
-class ImpaktfullUiListViewTextStylesTheme {
+class ImpaktfullUiListViewTextStyleTheme {
   final TextStyle title;
 
-  const ImpaktfullUiListViewTextStylesTheme({
+  const ImpaktfullUiListViewTextStyleTheme({
     required this.title,
   });
 
-  ImpaktfullUiListViewTextStylesTheme copyWith({
+  ImpaktfullUiListViewTextStyleTheme copyWith({
     TextStyle? title,
   }) =>
-      ImpaktfullUiListViewTextStylesTheme(
+      ImpaktfullUiListViewTextStyleTheme(
         title: title ?? this.title,
       );
 }

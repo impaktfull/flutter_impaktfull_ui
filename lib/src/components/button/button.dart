@@ -355,7 +355,7 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
   }
 
   List<BoxShadow> _getShadow(ImpaktfullUiButtonTheme componentTheme) {
-    final shadowTheme = componentTheme.shadow;
+    final shadowTheme = componentTheme.shadows;
     if (shadowTheme == null) return [];
     switch (widget.type) {
       case ImpaktfullUiButtonType.primary:

@@ -5,7 +5,7 @@ import 'package:impaktfull_ui/src/theme/theme.dart';
 class ImpaktfullUiLoadingIndicatorTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiLoadingIndicatorColorTheme colors;
   final ImpaktfullUiLoadingIndicatorDimensTheme dimens;
-  final ImpaktfullUiLoadingIndicatorAssetTheme assets;
+  final ImpaktfullUiLoadingIndicatorAssetsTheme assets;
 
   const ImpaktfullUiLoadingIndicatorTheme({
     required this.colors,
@@ -14,7 +14,7 @@ class ImpaktfullUiLoadingIndicatorTheme extends ImpaktfullUiComponentTheme {
   });
 
   ImpaktfullUiLoadingIndicatorTheme copyWith({
-    ImpaktfullUiLoadingIndicatorAssetTheme? assets,
+    ImpaktfullUiLoadingIndicatorAssetsTheme? assets,
     ImpaktfullUiLoadingIndicatorColorTheme? colors,
     ImpaktfullUiLoadingIndicatorDimensTheme? dimens,
   }) =>
@@ -39,7 +39,7 @@ class ImpaktfullUiLoadingIndicatorTheme extends ImpaktfullUiComponentTheme {
       colors: ImpaktfullUiLoadingIndicatorColorTheme(
         color: colors.accent,
       ),
-      assets: ImpaktfullUiLoadingIndicatorAssetTheme(
+      assets: ImpaktfullUiLoadingIndicatorAssetsTheme(
         lottie: assets.lotties.loading,
       ),
       dimens: ImpaktfullUiLoadingIndicatorDimensTheme(
@@ -78,16 +78,16 @@ class ImpaktfullUiLoadingIndicatorDimensTheme {
       );
 }
 
-class ImpaktfullUiLoadingIndicatorAssetTheme {
+class ImpaktfullUiLoadingIndicatorAssetsTheme {
   final ImpaktfullUiAsset? lottie;
-  const ImpaktfullUiLoadingIndicatorAssetTheme({
+  const ImpaktfullUiLoadingIndicatorAssetsTheme({
     required this.lottie,
   });
 
-  ImpaktfullUiLoadingIndicatorAssetTheme copyWith({
+  ImpaktfullUiLoadingIndicatorAssetsTheme copyWith({
     ImpaktfullUiAsset? lottie,
   }) =>
-      ImpaktfullUiLoadingIndicatorAssetTheme(
+      ImpaktfullUiLoadingIndicatorAssetsTheme(
         lottie: lottie ?? this.lottie,
       );
 }

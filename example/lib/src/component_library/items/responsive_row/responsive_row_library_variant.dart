@@ -14,6 +14,7 @@ class ResponsiveRowLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, ResponsiveRowLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         isScrollable: true,

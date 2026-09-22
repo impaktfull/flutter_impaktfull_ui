@@ -13,6 +13,7 @@ class TooltipLibraryVariant
 
   @override
   List<Widget> build(BuildContext context, TooltipLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiTooltip(
         message: 'Confetti icon',

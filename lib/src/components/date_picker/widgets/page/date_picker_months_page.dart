@@ -40,7 +40,7 @@ class ImpaktfullUiDatePickerMonthsPage extends StatelessWidget {
         DateTime(
           date.year,
           month,
-          getDayForMonthWithFallback(date.year, month, date.day),
+          dayForMonthWithFallback(date.year, month, date.day),
         ),
       ],
     ];

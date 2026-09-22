@@ -70,15 +70,20 @@ class ExampleThemes {
           durations: ImpaktfullUiButtonDurationsTheme(
             loading: theme.durations.short,
           ),
-          textStyles: ImpaktfullUiButtonTextStylesTheme(
-            primary: theme.textStyles.onAccent.text.small.bold,
-            alternative: theme.textStyles.onCardAccent.text.small.bold,
-            grey: theme.textStyles.onCard.text.small.bold,
-            destructivePrimary: theme.textStyles.onDestructive.text.small.bold,
-            destructiveAlternative:
-                theme.textStyles.onCardDestructive.text.small.bold,
+          textStyles: ImpaktfullUiButtonTextStyleTheme(
+            primary: theme.textStyles.onAccent.text.small
+                .copyWith(fontWeight: FontWeight.w700),
+            alternative: theme.textStyles.onCardAccent.text.small
+                .copyWith(fontWeight: FontWeight.w700),
+            grey: theme.textStyles.onCard.text.small
+                .copyWith(fontWeight: FontWeight.w700),
+            destructivePrimary: theme.textStyles.onDestructive.text.small
+                .copyWith(fontWeight: FontWeight.w700),
+            destructiveAlternative: theme
+                .textStyles.onCardDestructive.text.small
+                .copyWith(fontWeight: FontWeight.w700),
           ),
-          shadow: const ImpaktfullUiButtonShadowTheme(
+          shadows: const ImpaktfullUiButtonShadowsTheme(
             primary: [],
             secondary: [],
             destructive: [],

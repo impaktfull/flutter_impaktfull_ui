@@ -71,6 +71,7 @@ class _ImpaktfullUiBBLicensesState extends State<ImpaktfullUiBBLicenses> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     final showSearch =
         _search || !ImpaktfullUiResponsiveLayout.isSmallOrSmaller(context);
     return ImpaktfullUiLocalizationProvider(

@@ -13,6 +13,7 @@ class NavBarLibraryVariant
 
   @override
   List<Widget> build(BuildContext context, NavBarLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiNavBar(
         title: inputs.title.value ?? '',

@@ -29,7 +29,7 @@ void main() {
       ImpaktfullUiSnackyConfiguratorAssetsTheme,
       ImpaktfullUiSnackyConfiguratorColorTheme,
       ImpaktfullUiSnackyConfiguratorDimensTheme,
-      ImpaktfullUiSnackyConfiguratorTextStylesTheme,
+      ImpaktfullUiSnackyConfiguratorTextStyleTheme,
       ImpaktfullUiTableHeaderItemType,
       ImpaktfullUiTableRowItemType,
     ];

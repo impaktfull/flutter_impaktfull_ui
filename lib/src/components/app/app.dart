@@ -5,6 +5,7 @@ import 'package:impaktfull_ui/src/components/app/debug/app_debug_flag.dart';
 import 'package:impaktfull_ui/src/components/localization/localization_configurator.dart';
 import 'package:impaktfull_ui/src/components/snacky/snacky_configurator.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_configurator.dart';
+import 'package:impaktfull_ui/src/theme/global_theme.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/localizations/localizations.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
@@ -76,7 +77,8 @@ class ImpaktfullUiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = impaktfullUiTheme ?? ImpaktfullUiTheme.getDefault();
-    setImpaktfullUiLocale(locale);
+    // Keeps the deprecated global `locale` getter working until 1.0.0.
+    updateGlobalImpaktfullUiLocale(locale);
     return ImpaktfullUiThemeConfigurator(
       theme: theme,
       child: ImpaktfullUiOverridableComponentConfigurator(
@@ -98,14 +100,14 @@ class ImpaktfullUiApp extends StatelessWidget {
                     home: home,
                     debugShowCheckedModeBanner: showDebugFlag,
                     locale: locale,
-                    theme: (materialLightTheme ?? Theme.of(context))
-                        .removeUnwantedBehavior(
+                    theme: _removeUnwantedBehavior(
+                      materialLightTheme ?? Theme.of(context),
                       targetPlatform: targetPlatform,
                     ),
-                    darkTheme: (materialDarkTheme ??
-                            materialLightTheme ??
-                            Theme.of(context))
-                        .removeUnwantedBehavior(
+                    darkTheme: _removeUnwantedBehavior(
+                      materialDarkTheme ??
+                          materialLightTheme ??
+                          Theme.of(context),
                       targetPlatform: targetPlatform,
                     ),
                     supportedLocales: supportedLocales,
@@ -146,19 +148,29 @@ class ImpaktfullUiApp extends StatelessWidget {
   }
 }
 
+ThemeData _removeUnwantedBehavior(
+  ThemeData theme, {
+  required TargetPlatform? targetPlatform,
+}) =>
+    theme.copyWith(
+      platform: targetPlatform,
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: <TargetPlatform, PageTransitionsBuilder>{
+          TargetPlatform.android: ZoomPageTransitionsBuilder(
+            allowEnterRouteSnapshotting: false,
+          ),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        },
+      ),
+    );
+
+@Deprecated(
+    'This extension will no longer be exported in 1.0.0. Copy it into your app if you use it.')
 extension ThemeDataExtension on ThemeData {
+  @Deprecated(
+      'This extension will no longer be exported in 1.0.0. Copy it into your app if you use it.')
   ThemeData removeUnwantedBehavior({
     required TargetPlatform? targetPlatform,
   }) =>
-      copyWith(
-        platform: targetPlatform,
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: <TargetPlatform, PageTransitionsBuilder>{
-            TargetPlatform.android: ZoomPageTransitionsBuilder(
-              allowEnterRouteSnapshotting: false,
-            ),
-            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-          },
-        ),
-      );
+      _removeUnwantedBehavior(this, targetPlatform: targetPlatform);
 }

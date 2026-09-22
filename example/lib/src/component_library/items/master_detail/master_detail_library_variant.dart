@@ -15,6 +15,7 @@ class MasterDetailLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, MasterDetailLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         height: 500,

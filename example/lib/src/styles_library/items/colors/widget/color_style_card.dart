@@ -15,6 +15,7 @@ class ColorStyleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     final hexColor = color.getHexColor();
     return ImpaktfullUiCard(
       padding: EdgeInsets.zero,

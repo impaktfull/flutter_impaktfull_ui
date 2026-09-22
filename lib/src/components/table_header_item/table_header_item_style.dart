@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
 
 class ImpaktfullUiTableHeaderItemTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTableHeaderItemColorTheme colors;
-  final ImpaktfullUiTableHeaderItemTextStylesTheme textStyles;
+  final ImpaktfullUiTableHeaderItemTextStyleTheme textStyles;
   final ImpaktfullUiTableHeaderItemDimensTheme dimens;
 
   const ImpaktfullUiTableHeaderItemTheme({
@@ -16,7 +16,7 @@ class ImpaktfullUiTableHeaderItemTheme extends ImpaktfullUiComponentTheme {
   ImpaktfullUiTableHeaderItemTheme copyWith({
     ImpaktfullUiTableHeaderItemColorTheme? colors,
     ImpaktfullUiTableHeaderItemDimensTheme? dimens,
-    ImpaktfullUiTableHeaderItemTextStylesTheme? textStyles,
+    ImpaktfullUiTableHeaderItemTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiTableHeaderItemTheme(
         colors: colors ?? this.colors,
@@ -38,7 +38,7 @@ class ImpaktfullUiTableHeaderItemTheme extends ImpaktfullUiComponentTheme {
       ImpaktfullUiTableHeaderItemTheme(
         colors: const ImpaktfullUiTableHeaderItemColorTheme(),
         dimens: const ImpaktfullUiTableHeaderItemDimensTheme(),
-        textStyles: ImpaktfullUiTableHeaderItemTextStylesTheme(
+        textStyles: ImpaktfullUiTableHeaderItemTextStyleTheme(
           title: textStyles.onCanvas.text.extraSmall.medium,
         ),
       );
@@ -51,17 +51,17 @@ class ImpaktfullUiTableHeaderItemColorTheme {
       const ImpaktfullUiTableHeaderItemColorTheme();
 }
 
-class ImpaktfullUiTableHeaderItemTextStylesTheme {
+class ImpaktfullUiTableHeaderItemTextStyleTheme {
   final TextStyle title;
 
-  const ImpaktfullUiTableHeaderItemTextStylesTheme({
+  const ImpaktfullUiTableHeaderItemTextStyleTheme({
     required this.title,
   });
 
-  ImpaktfullUiTableHeaderItemTextStylesTheme copyWith({
+  ImpaktfullUiTableHeaderItemTextStyleTheme copyWith({
     TextStyle? title,
   }) =>
-      ImpaktfullUiTableHeaderItemTextStylesTheme(
+      ImpaktfullUiTableHeaderItemTextStyleTheme(
         title: title ?? this.title,
       );
 }

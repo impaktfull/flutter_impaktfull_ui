@@ -15,6 +15,7 @@ class StylesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ImpaktfullUiTheme.of(context);
     return ImpaktfullUiCard(
       onTap: onTap,
       padding: EdgeInsets.zero,

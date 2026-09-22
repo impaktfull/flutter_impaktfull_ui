@@ -28,7 +28,7 @@ class ImpaktfullUiCheckboxListItemTheme extends ImpaktfullUiComponentTheme {
       );
 
   static ImpaktfullUiCheckboxListItemTheme of(BuildContext context) =>
-      ImpaktfullUiTheme.of(context).components.checkBoxListItem;
+      ImpaktfullUiTheme.of(context).components.checkboxListItem;
 
   static ImpaktfullUiCheckboxListItemTheme getDefault({
     required ImpaktfullUiAssetTheme assets,

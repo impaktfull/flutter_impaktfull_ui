@@ -10,7 +10,7 @@ void main() {
     assets: defaultTheme.assets,
     colors: defaultTheme.colors,
     dimens: defaultTheme.dimens,
-    textStyles: ImpaktfullUiBadgeTextStylesTheme(
+    textStyles: ImpaktfullUiBadgeTextStyleTheme(
       small: defaultTheme.textStyles.small.copyWith(fontSize: 10),
       medium: defaultTheme.textStyles.medium.copyWith(fontSize: 20),
       large: defaultTheme.textStyles.large.copyWith(fontSize: 30),

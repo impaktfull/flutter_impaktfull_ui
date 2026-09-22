@@ -5,7 +5,7 @@ class ImpaktfullUiAutoCompleteTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiAutoCompleteAssetsTheme assets;
   final ImpaktfullUiAutoCompleteColorTheme colors;
   final ImpaktfullUiAutoCompleteDimensTheme dimens;
-  final ImpaktfullUiAutoCompleteShadowTheme shadows;
+  final ImpaktfullUiAutoCompleteShadowsTheme shadows;
   final ImpaktfullUiAutoCompleteTextStyleTheme textStyles;
 
   const ImpaktfullUiAutoCompleteTheme({
@@ -20,7 +20,7 @@ class ImpaktfullUiAutoCompleteTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiAutoCompleteAssetsTheme? assets,
     ImpaktfullUiAutoCompleteColorTheme? colors,
     ImpaktfullUiAutoCompleteDimensTheme? dimens,
-    ImpaktfullUiAutoCompleteShadowTheme? shadows,
+    ImpaktfullUiAutoCompleteShadowsTheme? shadows,
     ImpaktfullUiAutoCompleteTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiAutoCompleteTheme(
@@ -46,7 +46,7 @@ class ImpaktfullUiAutoCompleteTheme extends ImpaktfullUiComponentTheme {
         assets: const ImpaktfullUiAutoCompleteAssetsTheme(),
         colors: const ImpaktfullUiAutoCompleteColorTheme(),
         dimens: const ImpaktfullUiAutoCompleteDimensTheme(),
-        shadows: ImpaktfullUiAutoCompleteShadowTheme(
+        shadows: ImpaktfullUiAutoCompleteShadowsTheme(
           overlay: shadows.large,
         ),
         textStyles: const ImpaktfullUiAutoCompleteTextStyleTheme(),
@@ -67,16 +67,16 @@ class ImpaktfullUiAutoCompleteColorTheme {
       const ImpaktfullUiAutoCompleteColorTheme();
 }
 
-class ImpaktfullUiAutoCompleteShadowTheme {
+class ImpaktfullUiAutoCompleteShadowsTheme {
   final List<BoxShadow> overlay;
-  const ImpaktfullUiAutoCompleteShadowTheme({
+  const ImpaktfullUiAutoCompleteShadowsTheme({
     required this.overlay,
   });
 
-  ImpaktfullUiAutoCompleteShadowTheme copyWith({
+  ImpaktfullUiAutoCompleteShadowsTheme copyWith({
     List<BoxShadow>? overlay,
   }) =>
-      ImpaktfullUiAutoCompleteShadowTheme(
+      ImpaktfullUiAutoCompleteShadowsTheme(
         overlay: overlay ?? this.overlay,
       );
 }

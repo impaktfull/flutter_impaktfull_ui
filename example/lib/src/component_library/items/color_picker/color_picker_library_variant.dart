@@ -17,6 +17,7 @@ class ColorPickerLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, ColorPickerLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         width: 500,

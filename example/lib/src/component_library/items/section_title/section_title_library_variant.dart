@@ -14,6 +14,7 @@ class SectionTitleLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, SectionTitleLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ComponentsLibraryVariantDescriptor(
         wrapWithCard: true,

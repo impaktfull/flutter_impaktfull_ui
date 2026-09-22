@@ -8,7 +8,7 @@ class ImpaktfullUiSidebarNavigationItemTheme
   final ImpaktfullUiSidebarNavigationItemAssetsTheme assets;
   final ImpaktfullUiSidebarNavigationItemColorTheme colors;
   final ImpaktfullUiSidebarNavigationItemDimensTheme dimens;
-  final ImpaktfullUiSidebarNavigationItemDurationTheme durations;
+  final ImpaktfullUiSidebarNavigationItemDurationsTheme durations;
   final ImpaktfullUiSidebarNavigationItemTextStyleTheme textStyles;
 
   const ImpaktfullUiSidebarNavigationItemTheme({
@@ -23,7 +23,7 @@ class ImpaktfullUiSidebarNavigationItemTheme
     ImpaktfullUiSidebarNavigationItemAssetsTheme? assets,
     ImpaktfullUiSidebarNavigationItemColorTheme? colors,
     ImpaktfullUiSidebarNavigationItemDimensTheme? dimens,
-    ImpaktfullUiSidebarNavigationItemDurationTheme? durations,
+    ImpaktfullUiSidebarNavigationItemDurationsTheme? durations,
     ImpaktfullUiSidebarNavigationItemTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiSidebarNavigationItemTheme(
@@ -61,7 +61,7 @@ class ImpaktfullUiSidebarNavigationItemTheme
             end: 4,
           ),
         ),
-        durations: ImpaktfullUiSidebarNavigationItemDurationTheme(
+        durations: ImpaktfullUiSidebarNavigationItemDurationsTheme(
           dropdownRotation: durations.short,
         ),
         textStyles: ImpaktfullUiSidebarNavigationItemTextStyleTheme(
@@ -141,17 +141,17 @@ class ImpaktfullUiSidebarNavigationItemTextStyleTheme {
       );
 }
 
-class ImpaktfullUiSidebarNavigationItemDurationTheme {
+class ImpaktfullUiSidebarNavigationItemDurationsTheme {
   final Duration dropdownRotation;
 
-  const ImpaktfullUiSidebarNavigationItemDurationTheme({
+  const ImpaktfullUiSidebarNavigationItemDurationsTheme({
     required this.dropdownRotation,
   });
 
-  ImpaktfullUiSidebarNavigationItemDurationTheme copyWith({
+  ImpaktfullUiSidebarNavigationItemDurationsTheme copyWith({
     Duration? dropdownRotation,
   }) =>
-      ImpaktfullUiSidebarNavigationItemDurationTheme(
+      ImpaktfullUiSidebarNavigationItemDurationsTheme(
         dropdownRotation: dropdownRotation ?? this.dropdownRotation,
       );
 }

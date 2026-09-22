@@ -171,12 +171,12 @@ void main() {
       expect(DateTime(2100, 2).getDaysInMonth(), 28);
     });
 
-    test('getDayForMonthWithFallback clamps to the last day of the month', () {
-      expect(getDayForMonthWithFallback(2024, 2, 31), 29);
-      expect(getDayForMonthWithFallback(2023, 2, 31), 28);
-      expect(getDayForMonthWithFallback(2024, 4, 31), 30);
-      expect(getDayForMonthWithFallback(2024, 1, 31), 31);
-      expect(getDayForMonthWithFallback(2024, 6, 12), 12);
+    test('dayForMonthWithFallback clamps to the last day of the month', () {
+      expect(dayForMonthWithFallback(2024, 2, 31), 29);
+      expect(dayForMonthWithFallback(2023, 2, 31), 28);
+      expect(dayForMonthWithFallback(2024, 4, 31), 30);
+      expect(dayForMonthWithFallback(2024, 1, 31), 31);
+      expect(dayForMonthWithFallback(2024, 6, 12), 12);
     });
   });
 

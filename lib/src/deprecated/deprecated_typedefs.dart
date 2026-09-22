@@ -127,3 +127,86 @@ typedef VirtualKeyboardConfig = ImpaktfullUiVirtualKeyboardConfig;
     'Use ImpaktfullUiBBLicensesLocalizations instead. Will be removed in 1.0.0.')
 typedef ImpaktfullUiBBLicenseLocalizations
     = ImpaktfullUiBBLicensesLocalizations;
+
+// Component theme classes that did not follow the naming of the others
+// (`*TextStyleTheme`, `*AssetsTheme`, `*DurationsTheme`, `*ShadowsTheme`)
+
+@Deprecated(
+    'Use ImpaktfullUiTableHeaderItemTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiTableHeaderItemTextStylesTheme
+    = ImpaktfullUiTableHeaderItemTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiSnackyConfiguratorTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiSnackyConfiguratorTextStylesTheme
+    = ImpaktfullUiSnackyConfiguratorTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiTableRowItemTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiTableRowItemTextStylesTheme
+    = ImpaktfullUiTableRowItemTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiHorizontalTabTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiHorizontalTabTextStylesTheme
+    = ImpaktfullUiHorizontalTabTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiCmsHeaderTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiCmsHeaderTextStylesTheme
+    = ImpaktfullUiCmsHeaderTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiButtonTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiButtonTextStylesTheme = ImpaktfullUiButtonTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiListViewTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiListViewTextStylesTheme
+    = ImpaktfullUiListViewTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiInputFieldTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiInputFieldTextStylesTheme
+    = ImpaktfullUiInputFieldTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiTableRowTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiTableRowTextStylesTheme
+    = ImpaktfullUiTableRowTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiBadgeTextStyleTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiBadgeTextStylesTheme = ImpaktfullUiBadgeTextStyleTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiLoadingIndicatorAssetsTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiLoadingIndicatorAssetTheme
+    = ImpaktfullUiLoadingIndicatorAssetsTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiTooltipDurationsTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiTooltipDurationTheme = ImpaktfullUiTooltipDurationsTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiNotificationBadgeDurationsTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiNotificationBadgeDurationTheme
+    = ImpaktfullUiNotificationBadgeDurationsTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiSidebarNavigationItemDurationsTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiSidebarNavigationItemDurationTheme
+    = ImpaktfullUiSidebarNavigationItemDurationsTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiDropdownShadowsTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiDropdownShadowTheme = ImpaktfullUiDropdownShadowsTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiButtonShadowsTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiButtonShadowTheme = ImpaktfullUiButtonShadowsTheme;
+
+@Deprecated(
+    'Use ImpaktfullUiAutoCompleteShadowsTheme instead. Will be removed in 1.0.0.')
+typedef ImpaktfullUiAutoCompleteShadowTheme
+    = ImpaktfullUiAutoCompleteShadowsTheme;

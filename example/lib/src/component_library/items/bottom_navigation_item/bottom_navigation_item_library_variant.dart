@@ -13,6 +13,7 @@ class BottomNavigationItemLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, BottomNavigationItemLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiAutoLayout.horizontal(
         children: [

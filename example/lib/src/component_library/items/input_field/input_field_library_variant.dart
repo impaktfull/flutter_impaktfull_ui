@@ -13,6 +13,7 @@ class InputFieldVariant
   @override
   List<Widget> build(
       BuildContext context, InputFieldLibraryVariantInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     final label = inputs.label.value;
     final hint = inputs.hint.value;
     final placholder = inputs.placholder.value;

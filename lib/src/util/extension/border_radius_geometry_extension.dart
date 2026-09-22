@@ -1,6 +1,6 @@
 import 'package:flutter/rendering.dart';
 
-extension BorderRadiusGeometryExtension on BorderRadiusGeometry {
+extension InternalBorderRadiusGeometryExtension on BorderRadiusGeometry {
   Radius get topStart {
     if (this is BorderRadiusDirectional) {
       return (this as BorderRadiusDirectional).topStart;

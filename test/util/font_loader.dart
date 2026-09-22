@@ -12,7 +12,6 @@ Future<void> loadImpaktfullUiFonts({
   TestWidgetsFlutterBinding.ensureInitialized();
   final testFontLoader = fontLoader ?? ImpaktfullUiTestFontLoader();
   final testTheme = theme ?? ImpaktfullUiTheme.getDefault();
-  setImpaktfullUiTestTheme(testTheme);
   final textStyles = _getTextStyles(testTheme.textStyles.all);
   for (final textStyle in textStyles) {
     await testFontLoader.loadFontForTextStyle(textStyle);
@@ -36,10 +35,10 @@ List<TextStyle> _getTextStyles(List<ImpaktfullUiTextStyleTheme> textStyles) {
     fonts.add(textStyle.text.extraSmall);
   }
   for (final font in fonts.toList()) {
-    fonts.add(font.light);
-    fonts.add(font.medium);
-    fonts.add(font.semiBold);
-    fonts.add(font.bold);
+    fonts.add(font.copyWith(fontWeight: FontWeight.w300));
+    fonts.add(font.copyWith(fontWeight: FontWeight.w500));
+    fonts.add(font.copyWith(fontWeight: FontWeight.w600));
+    fonts.add(font.copyWith(fontWeight: FontWeight.w700));
   }
   return fonts.toList();
 }

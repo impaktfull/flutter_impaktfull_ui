@@ -14,6 +14,7 @@ class ImageCropLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, ImageCropLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiImageCrop(
         size: 120,

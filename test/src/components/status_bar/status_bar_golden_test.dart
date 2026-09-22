@@ -5,6 +5,9 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import '../../../util/golden_test_util.dart';
 import '../_layout_test_helpers.dart';
 
+// The theme ImpaktfullUiApp uses when it gets none.
+final _theme = ImpaktfullUiTheme.getDefault();
+
 /// The status bar only sets the system overlay style: the golden checks that
 /// the child is rendered unchanged.
 void main() {
@@ -33,8 +36,8 @@ void main() {
       layoutGoldenCase(
         'On background color',
         ImpaktfullUiStatusBar.onBackgroundColor(
-          backgroundColor: theme.colors.accent,
-          child: child(theme.colors.accent),
+          backgroundColor: _theme.colors.accent,
+          child: child(_theme.colors.accent),
         ),
       ),
     ],

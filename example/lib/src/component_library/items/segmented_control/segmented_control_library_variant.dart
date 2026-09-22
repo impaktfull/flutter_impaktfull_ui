@@ -13,6 +13,7 @@ class SegmentedControlLibraryVariant
   @override
   List<Widget> build(
       BuildContext context, SegmentedControlLibraryPrimaryInputs inputs) {
+    final theme = ImpaktfullUiTheme.of(context);
     return [
       ImpaktfullUiSegmentedControl<SegmentedControlLibraryTestValues>(
         value: inputs.values.value!,

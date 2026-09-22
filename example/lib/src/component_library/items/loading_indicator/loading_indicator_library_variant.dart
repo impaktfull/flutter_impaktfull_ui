@@ -22,7 +22,7 @@ class LoadingIndicatorVariant
         theme: ImpaktfullUiLoadingIndicatorTheme(
           colors: ImpaktfullUiLoadingIndicatorColorTheme(color: Colors.black),
           dimens: ImpaktfullUiLoadingIndicatorDimensTheme(strokeWidth: 10),
-          assets: ImpaktfullUiLoadingIndicatorAssetTheme(lottie: null),
+          assets: ImpaktfullUiLoadingIndicatorAssetsTheme(lottie: null),
         ),
       ),
       ImpaktfullUiLoadingIndicator(
@@ -30,7 +30,7 @@ class LoadingIndicatorVariant
         theme: const ImpaktfullUiLoadingIndicatorTheme(
           colors: ImpaktfullUiLoadingIndicatorColorTheme(color: Colors.black),
           dimens: ImpaktfullUiLoadingIndicatorDimensTheme(strokeWidth: 10),
-          assets: ImpaktfullUiLoadingIndicatorAssetTheme(lottie: null),
+          assets: ImpaktfullUiLoadingIndicatorAssetsTheme(lottie: null),
         ),
       ),
     ];

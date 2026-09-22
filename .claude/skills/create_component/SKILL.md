@@ -103,6 +103,10 @@ class ImpaktfullUi<ComponentName>TextStyleTheme {
 }
 ```
 
+Name the sub-themes and their fields like every other component: `assets` (`*AssetsTheme`), `colors` (`*ColorTheme`), `dimens` (`*DimensTheme`), `durations` (`*DurationsTheme`), `shadows` (`*ShadowsTheme`) and `textStyles` (`*TextStyleTheme`).
+
+Read the theme from the widget tree (`ImpaktfullUiTheme.of(context)` or the component theme passed to `ImpaktfullUiComponentThemeBuilder`), never with the deprecated global `theme` getter: a global does not follow theme overrides and does not rebuild when the theme changes. `lib/analysis_options.yaml` enables `deprecated_member_use_from_same_package`, so `flutter analyze` fails when the library uses one of its own deprecated APIs.
+
 **Every theme class needs a `copyWith`** (the component theme and every sub-theme: assets, colors, dimens, textStyles, durations, shadows, ...), so users can change a single token without rebuilding the whole theme:
 
 - One nullable named parameter per field, in alphabetical order, forwarded as `field: field ?? this.field`. For example, once the color theme has a `background` field:
