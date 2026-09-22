@@ -229,9 +229,11 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
+      // Only the pages have a fixed height: a header with a title that wraps
+      // (a long month name, a large text scale) makes the picker taller
+      // instead of cutting off the last week of the month.
       builder: (context, componentTheme) => SizedBox(
         width: 280 + widget.margin.horizontal,
-        height: 312 + widget.margin.vertical,
         child: ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -265,8 +267,8 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
                 ],
               ),
             ),
-            Flexible(
-              fit: FlexFit.loose,
+            SizedBox(
+              height: 260,
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: initialPage * 2,

@@ -10,6 +10,10 @@
 // Fix a failure by adding the missing `copyWith` (parameters in alphabetical
 // order, see .claude/skills/create_component/SKILL.md).
 
+// Reads the sources with dart:io, so it only runs on the Dart VM.
+@TestOn('vm')
+library;
+
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';

@@ -1,3 +1,8 @@
+// Uses dart:io, so it only runs on the Dart VM. device_util_platform_test.dart
+// covers every platform, including the web.
+@TestOn('vm')
+library;
+
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';

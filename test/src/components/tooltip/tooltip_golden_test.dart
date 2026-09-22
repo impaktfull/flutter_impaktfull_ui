@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 import '../../../util/golden_test_util.dart';
 import '../../../util/golden_test_variant.dart';
-import '../_overlays_test_helpers.dart';
+import '../_overlays_golden_helpers.dart';
 
 Widget _tooltip({
   required String? message,

@@ -22,6 +22,25 @@ This UI library was built to have a simple way to build UIs for impaktfull. This
 
 [Live Web Demo](https://example.impaktfull-ui.opensource.impaktfull.com)
 
+## Platform support
+
+| Android | iOS | macOS | Windows | Linux | Web (JS) | Web (Wasm) |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+Every component works on every platform. CI proves it on each pull request: the tests run on the Dart VM and in Chrome (`tool/test_web.sh`, compiled to JS and to Wasm), the example app is built for the web (JS and Wasm), Android and Linux, and [pana](https://pub.dev/packages/pana) must report every platform and Wasm as supported.
+
+Local files work on every platform when you pass bytes or an `XFile` (from [`cross_file`](https://pub.dev/packages/cross_file), which `image_picker` and `file_selector` return):
+
+```dart
+ImpaktfullUiGalleryItem.bytes(bytes: pngBytes);
+ImpaktfullUiGalleryItem.xFile(xFile: pickedFile);
+await imageCropController.cropImageBytes(cropInfo: cropInfo, bytes: pngBytes);
+await imageCropController.cropXFile(cropInfo: cropInfo, xFile: pickedFile);
+```
+
+The `dart:io` `File` APIs (`ImpaktfullUiGalleryItem.file`, `ImpaktfullUiImageCropController.cropImageFile`) are deprecated: they keep working on Android, iOS, macOS, Windows and Linux, but can not read a file on the web.
+
 ## Upgrading
 
 Public APIs are never renamed or removed in one step. A renamed API keeps its old name as a deprecated alias until 1.0.0, and `dart fix` migrates your code:

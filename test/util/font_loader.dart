@@ -1,9 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
+
+import 'test_file/test_file.dart';
 
 Future<void> loadImpaktfullUiFonts({
   ImpaktfullUiTheme? theme,
@@ -78,8 +78,8 @@ class ImpaktfullUiTestFontLoader {
   }
 
   Future<ByteData> loadFont(String path) async {
-    final file = File(path);
-    final bytes = file.readAsBytesSync();
+    // dart:io on the VM, a fetch from the test server in Chrome
+    final bytes = readTestFile(path);
     return ByteData.sublistView(bytes);
   }
 }

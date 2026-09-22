@@ -1,10 +1,12 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:math';
+import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/image_crop/model/crop_info.dart';
+import 'package:impaktfull_ui/src/util/io_file/io_file.dart';
 
 class ImpaktfullUiImageCropCropper {
   /// Crops the image based on the crop info.
@@ -13,14 +15,23 @@ class ImpaktfullUiImageCropCropper {
   ///
   /// If the image is bigger than the crop rect, the image should be scaled down to fit the crop rect.
   /// If the image is smaller than the crop rect, the biggest possible image size should be used.
+  ///
+  /// Pass one image source: [image], [imageBytes] (an encoded image, e.g. PNG
+  /// or JPEG), [xFile] or [imageUrl].
   Future<ui.Image> cropImage({
     required ImpaktfullUiImageCropInfo cropInfo,
     ui.Image? image,
+    Uint8List? imageBytes,
+    XFile? xFile,
+    @Deprecated(
+        'Use imageBytes or xFile instead, they work on every platform including the web. Will be removed in 1.0.0.')
     File? imageFile,
     String? imageUrl,
   }) async {
     final params = {
       'image': image,
+      'imageBytes': imageBytes,
+      'xFile': xFile,
       'imageUrl': imageUrl,
       'imageFile': imageFile,
       'cropInfo': cropInfo,
@@ -31,6 +42,8 @@ class ImpaktfullUiImageCropCropper {
   Future<ui.Image> isolateCropImage(Map<String, dynamic> params) async {
     final originalImageUrl = params['imageUrl'] as String?;
     final originalImageFile = params['imageFile'] as File?;
+    final originalImageBytes = params['imageBytes'] as Uint8List?;
+    final originalXFile = params['xFile'] as XFile?;
     final originalImage = params['image'] as ui.Image?;
     final cropInfo = params['cropInfo'] as ImpaktfullUiImageCropInfo;
     final cropRect = cropInfo.cropRect;
@@ -40,11 +53,16 @@ class ImpaktfullUiImageCropCropper {
       imageToCrop = await downloadImage(originalImageUrl);
     } else if (originalImage != null) {
       imageToCrop = originalImage;
+    } else if (originalImageBytes != null) {
+      imageToCrop = await decodeImage(originalImageBytes);
+    } else if (originalXFile != null) {
+      imageToCrop = await decodeImage(await originalXFile.readAsBytes());
     } else if (originalImageFile != null) {
-      // imageToCrop = await loadImage(imageFile.path);
-      throw Exception('imageFile is not supported yet');
+      // Only works on platforms with dart:io, throws an UnsupportedError on the web
+      imageToCrop = await decodeImage(await readIoFileBytes(originalImageFile));
     } else {
-      throw Exception('Either image or imageUrl must be provided');
+      throw Exception(
+          'Either image, imageBytes, xFile or imageUrl must be provided');
     }
 
     final recorder = ui.PictureRecorder();
@@ -192,6 +210,17 @@ class ImpaktfullUiImageCropCropper {
   void _setUserChanges(ui.Canvas canvas, ImpaktfullUiImageCropInfo cropInfo) {
     // Scale the image
     canvas.scale(cropInfo.scale);
+  }
+
+  /// Decodes an encoded image (e.g. PNG or JPEG) into its first frame.
+  Future<ui.Image> decodeImage(Uint8List bytes) async {
+    final codec = await ui.instantiateImageCodec(bytes);
+    try {
+      final frame = await codec.getNextFrame();
+      return frame.image;
+    } finally {
+      codec.dispose();
+    }
   }
 
   Future<ui.Image> downloadImage(String imageUrl) async {

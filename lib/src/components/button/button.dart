@@ -120,8 +120,14 @@ class _ImpaktfullUiButtonState extends State<ImpaktfullUiButton> {
                           ),
                         ],
                         if (widget.title != null) ...[
-                          Expanded(
-                            flex: widget.fullWidth ? 1 : 0,
+                          // Loose, not flex 0: a title that is wider than the
+                          // button can be wraps instead of overflowing. A
+                          // loose flexible child is allowed in a
+                          // MainAxisSize.min row without a width bound.
+                          Flexible(
+                            fit: widget.fullWidth
+                                ? FlexFit.tight
+                                : FlexFit.loose,
                             child: Text(
                               widget.title!,
                               textAlign: TextAlign.center,

@@ -77,6 +77,29 @@ The package has many users: **never rename or remove a public API in one step.**
 
 Deprecated APIs are removed together in the next major release (1.0.0), never in a minor or patch release. Removing them is a `feat!:` pull request that deletes the aliases, their `fix_data.yaml` transforms, `test_fixes` cases and tests, and keeps the migration guide.
 
+## Every platform
+
+The package supports Android, iOS, macOS, Windows, Linux and the web, compiled to JS and to Wasm. Keep it that way:
+
+- **No `dart:io` in `lib/`**, except in `lib/src/util/io_file/io_file_io.dart` and `lib/src/util/device_util/device_util_io.dart`, which are only reached through a conditional import: `import 'x_io.dart' if (dart.library.js_interop) 'x_web.dart'`. Keep the `dart:io` file as the default: the analyzer and `tool/public_api` resolve the default, the web (JS and Wasm) resolves `dart.library.js_interop`. pana reports a package that imports `dart:io` on the web as not supporting the web.
+- **No `dart:html`, `dart:js`, `dart:js_util` or `package:js`**: they do not compile to Wasm. Use `package:web` and `dart:js_interop`, behind a conditional import on `dart.library.js_interop` (not `dart.library.html`, which is not available with Wasm).
+- **No `Platform.isX`**: use `DeviceUtil` (`lib/src/util/device_util/device_util.dart`) or `defaultTargetPlatform`.
+- **No `Image.file`, `File` or isolates in a public API**: take bytes (`Uint8List`) or an `XFile` (`package:cross_file`), and read them asynchronously. `compute` and isolates do not run on the web.
+- A new dependency must support every platform, including Wasm (check its pub.dev page, or run pana).
+
+### Tests on every platform
+
+`flutter test` runs the tests on the Dart VM. `tool/test_web.sh` runs them in Chrome (`tool/test_web.sh --wasm` for Wasm). It leaves out two kinds of test files, and `test/src/test_platform_test.dart` fails when a test file that needs the VM is not left out:
+
+- **Golden tests must be named `*_golden_test.dart`.** alchemist does not compile for the web, and the goldens only run on macOS. Shared helpers that use alchemist go in a `*_golden_helpers.dart` file that only golden tests import (e.g. `test/src/_core_golden_helpers.dart` next to `_core_test_helpers.dart`): the guard follows the imports of every test file.
+- **A test file that uses `dart:io` must start with `@TestOn('vm')`** (followed by `library;`).
+
+Do not skip a test on the web: a test that fails in Chrome found a bug (text metrics differ from the VM, so an overflow shows up there first) or depends on the VM. Helpers for the second case:
+
+- `test/util/test_file/test_file.dart`: `readTestFile` reads a file of the repository synchronously: with `dart:io` on the VM, from the test server in Chrome.
+- `test/util/test_image.dart`: `warmUpImageEncoding` in `setUpAll` of a test that encodes images (`toByteData`) inside `testWidgets`. With Wasm the first encoding binds its results to the zone of the caller, so without it every later widget test waits forever.
+- `test/util/network_image_util.dart`: `brokenImageUrl` fails to load on both, and `waitForBrokenNetworkImage` waits until it failed. In Chrome, images, image decoding and other real I/O started by a widget only complete after a pump: wait with `tester.runAsync(() => Future.delayed(...))` followed by `tester.pump()` in a loop, not with a single `runAsync`.
+
 ## Validate
 
 The Flutter version is pinned in `.fvmrc`. Use that version locally (`fvm use`), CI reads the same file.
@@ -85,6 +108,7 @@ The Flutter version is pinned in `.fvmrc`. Use that version locally (`fvm use`),
 ./tool/format.sh
 ./tool/analyze.sh
 flutter test
+./tool/test_web.sh
 (cd tool/public_api && dart pub get) && dart run tool/public_api/bin/check_public_api.dart
 ```
 
@@ -96,7 +120,10 @@ Every pull request and push to `main` runs `.github/workflows/validate.yml`, whi
 |-----|--------|--------|
 | `validate` | ubuntu | `dart format` (no changes allowed), `flutter analyze .` (package + example), public API exports (`tool/public_api`), `dart fix` migrations, `flutter pub publish --dry-run` |
 | `test` | macOS | `flutter test --coverage`, including the golden tests (they only run on a macOS host), and the minimum line coverage of `lib/` |
-| `example` | ubuntu | `flutter build web` of the example app that is deployed to GitHub Pages |
+| `test_web (js)`, `test_web (wasm)` | ubuntu | `tool/test_web.sh` and `tool/test_web.sh --wasm`: the tests in Chrome, compiled to JS and to Wasm |
+| `example` | ubuntu | `flutter build web` and `flutter build web --wasm` of the example app that is deployed to GitHub Pages |
+| `example_platforms` | ubuntu | `flutter build apk` and `flutter build linux` of the example app, to catch plugin and native build breakage |
+| `pana` | ubuntu | [pana](https://pub.dev/packages/pana) must report Android, iOS, macOS, Windows, Linux, web and Wasm as supported, with full platform points |
 
 When a golden test fails because of an intended visual change, regenerate the goldens with `flutter test --update-goldens` on macOS using the pinned Flutter version, and review the image diff before committing.
 

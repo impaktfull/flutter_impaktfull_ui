@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 import '../../../util/font_loader.dart';
-import '../../_core_test_helpers.dart';
+import '../../_core_golden_helpers.dart';
 
 void main() {
   setUp(() async {
