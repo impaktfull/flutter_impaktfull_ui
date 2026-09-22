@@ -19,17 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # The Flutter version comes from `.fvmrc`, the same pin fvm uses locally,
-      # so `dart format` and `flutter analyze` never drift between CI and a
-      # developer's machine.
-      - name: Read Flutter version
-        id: fvm
-        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
-
+      # Always the latest stable Flutter release: the package supports it
+      # without a pinned version, the same as the apps that depend on it.
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: ${{ steps.fvm.outputs.flutter }}
           cache: true
 
       # Every package, not only the root: `flutter analyze .` walks into
@@ -72,14 +66,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Read Flutter version
-        id: fvm
-        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
-
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: ${{ steps.fvm.outputs.flutter }}
           cache: true
 
       - run: flutter pub get
@@ -104,15 +93,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Read Flutter version
-        id: fvm
-        working-directory: .
-        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
-
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: ${{ steps.fvm.outputs.flutter }}
           cache: true
 
       - run: flutter pub get
@@ -144,14 +127,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Read Flutter version
-        id: fvm
-        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
-
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: ${{ steps.fvm.outputs.flutter }}
           cache: true
 
       - run: flutter pub get
@@ -180,14 +158,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Read Flutter version
-        id: fvm
-        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
-
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: ${{ steps.fvm.outputs.flutter }}
           cache: true
 
       - uses: actions/setup-java@v4
@@ -217,14 +190,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Read Flutter version
-        id: fvm
-        run: echo "flutter=$(jq -r .flutter .fvmrc)" >> "$GITHUB_OUTPUT"
-
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: ${{ steps.fvm.outputs.flutter }}
           cache: true
 
       - name: Install pana

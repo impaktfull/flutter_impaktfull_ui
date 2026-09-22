@@ -8,6 +8,7 @@ analyzer:
     - "**.config.dart"
     - "**.navigator.dart"
     - "test_fixes/**"
+    - build/**
   language:
     strict-casts: true
     strict-raw-types: true

@@ -111,7 +111,7 @@ Do not skip a test on the web: a test that fails in Chrome found a bug (text met
 
 ## Validate
 
-The Flutter version is pinned in `.fvmrc`. Use that version locally (`fvm use`), CI reads the same file.
+Use the latest stable Flutter release (`flutter channel stable && flutter upgrade`); CI does the same. There is no pinned version: when a new stable release changes the output of `dart format` or the golden images, update them in their own pull request.
 
 ```bash
 ./tool/format.sh
