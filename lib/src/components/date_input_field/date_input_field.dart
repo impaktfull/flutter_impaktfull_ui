@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/date_input_field/date_input_field_style.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui/src/components/date_picker/util/date_picker_bounds.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/locale/locale_util.dart';
@@ -33,6 +34,21 @@ class ImpaktfullUiDateInputField extends StatefulWidget {
   /// The texts of the date picker. Defaults to the localizations of the app.
   final ImpaktfullUiDatePickerLocalizations? datePickerLocalizations;
 
+  /// The earliest date the user can pick in the date picker of the field,
+  /// `null` (the default) for no limit.
+  ///
+  /// Named like `CalendarDatePicker.firstDate` of Flutter. Only the calendar
+  /// day counts, the time of day is ignored.
+  final DateTime? firstDate;
+
+  /// The latest date the user can pick in the date picker of the field,
+  /// `null` (the default) for no limit.
+  ///
+  /// Named like `CalendarDatePicker.lastDate` of Flutter. Only the calendar
+  /// day counts, so a [lastDate] of 23/09/2026 10:00 still allows picking
+  /// 23/09/2026.
+  final DateTime? lastDate;
+
   /// The `intl` pattern of the date, e.g. `dd/MM/yyyy`.
   ///
   /// When no pattern is passed, the date uses the short date format of the
@@ -51,6 +67,8 @@ class ImpaktfullUiDateInputField extends StatefulWidget {
     String? dateFormat,
     this.firstDayOfWeek,
     this.datePickerLocalizations,
+    this.firstDate,
+    this.lastDate,
     this.leadingIcon,
     this.leadingBuilder,
     this.label,
@@ -81,6 +99,12 @@ class ImpaktfullUiDateInputField extends StatefulWidget {
 
 class _ImpaktfullUiDateInputFieldState
     extends State<ImpaktfullUiDateInputField> {
+  @override
+  void initState() {
+    super.initState();
+    assertValidDatePickerBounds(widget.firstDate, widget.lastDate);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
@@ -187,6 +211,8 @@ class _ImpaktfullUiDateInputFieldState
       selectedDate: widget.value,
       localizations: widget.datePickerLocalizations,
       firstDayOfWeek: widget.firstDayOfWeek,
+      firstDate: widget.firstDate,
+      lastDate: widget.lastDate,
     );
     if (result == null) return;
     widget.onChanged(result);

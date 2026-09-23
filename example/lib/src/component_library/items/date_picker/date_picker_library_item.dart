@@ -1,3 +1,4 @@
+import 'package:impaktfull_ui_example/src/component_library/items/date_picker/date_picker_bounds_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/date_picker/date_picker_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
@@ -13,6 +14,7 @@ class DatePickerLibraryItem extends ComponentLibraryItem {
   List<ComponentLibraryVariant> getComponentVariants() {
     return [
       const DatePickerLibraryVariant(),
+      const DatePickerBoundsLibraryVariant(),
     ];
   }
 }

@@ -86,4 +86,73 @@ void main() {
       return null;
     },
   );
+
+  runComponentTest(
+    fileName: 'impaktfull_ui_date_picker_bounds',
+    columns: 2,
+    goldenTests: () => [
+      GoldenTest(
+        description: 'firstDate and lastDate',
+        child: ImpaktfullUiDatePicker(
+          selectedDate: DateTime(2023, 7, 14),
+          firstDate: DateTime(2023, 7, 5),
+          lastDate: DateTime(2023, 7, 21),
+          onDateChanged: (_) {},
+        ),
+      ),
+      GoldenTest(
+        description: 'Only a firstDate',
+        child: ImpaktfullUiDatePicker(
+          selectedDate: DateTime(2023, 7, 14),
+          firstDate: DateTime(2023, 7, 10),
+          onDateChanged: (_) {},
+        ),
+      ),
+      GoldenTest(
+        description: 'Only a lastDate',
+        child: ImpaktfullUiDatePicker(
+          selectedDate: DateTime(2023, 7, 6),
+          lastDate: DateTime(2023, 7, 18),
+          onDateChanged: (_) {},
+        ),
+      ),
+      GoldenTest(
+        description: 'Range inside the bounds',
+        child: ImpaktfullUiDatePicker.range(
+          selectedStartDate: DateTime(2023, 7, 10),
+          selectedEndDate: DateTime(2023, 7, 17),
+          firstDate: DateTime(2023, 7, 5),
+          lastDate: DateTime(2023, 7, 21),
+          onStartDateChanged: (_) {},
+          onEndDateChanged: (_) {},
+        ),
+      ),
+    ],
+  );
+
+  runOverlayGoldenTest(
+    fileName: 'impaktfull_ui_date_picker_bounds_months',
+    builder: () => ImpaktfullUiDatePicker(
+      selectedDate: DateTime(2023, 7, 6),
+      firstDate: DateTime(2023, 4, 5),
+      lastDate: DateTime(2023, 10, 21),
+      onDateChanged: (_) {},
+    ),
+    whilePerforming: tapAndSettleInteraction(find.text('July 2023')),
+  );
+
+  runOverlayGoldenTest(
+    fileName: 'impaktfull_ui_date_picker_bounds_years',
+    builder: () => ImpaktfullUiDatePicker(
+      selectedDate: DateTime(2023, 7, 6),
+      firstDate: DateTime(2022, 4, 5),
+      lastDate: DateTime(2026, 10, 21),
+      onDateChanged: (_) {},
+    ),
+    whilePerforming: (tester) async {
+      await tapAndSettle(tester, find.text('July 2023'));
+      await tapAndSettle(tester, find.text('2023'));
+      return null;
+    },
+  );
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui/src/components/date_picker/util/date_picker_bounds.dart';
 import 'package:impaktfull_ui/src/components/date_time_picker/date_time_picker.localizations.dart';
 import 'package:impaktfull_ui/src/components/date_time_picker/date_time_picker_style.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
@@ -29,6 +30,20 @@ class ImpaktfullUiDateTimePicker extends StatefulWidget {
   /// `MediaQuery.alwaysUse24HourFormat` and the time format of the locale.
   final bool? use24HourFormat;
 
+  /// The earliest date the user can pick, `null` (the default) for no limit.
+  ///
+  /// Named like `CalendarDatePicker.firstDate` of Flutter. Only the calendar
+  /// day counts: the time picker is never limited, every time of day can be
+  /// picked on the first day.
+  final DateTime? firstDate;
+
+  /// The latest date the user can pick, `null` (the default) for no limit.
+  ///
+  /// Named like `CalendarDatePicker.lastDate` of Flutter. Only the calendar
+  /// day counts: the time picker is never limited, so a [lastDate] of
+  /// 23/09/2026 10:00 still allows picking 23/09/2026 18:00.
+  final DateTime? lastDate;
+
   const ImpaktfullUiDateTimePicker({
     required this.value,
     required this.onChanged,
@@ -37,6 +52,8 @@ class ImpaktfullUiDateTimePicker extends StatefulWidget {
     this.datePickerLocalizations,
     this.firstDayOfWeek,
     this.use24HourFormat,
+    this.firstDate,
+    this.lastDate,
     super.key,
   });
 
@@ -51,7 +68,10 @@ class ImpaktfullUiDateTimePicker extends StatefulWidget {
     ImpaktfullUiDatePickerLocalizations? datePickerLocalizations,
     int? firstDayOfWeek,
     bool? use24HourFormat,
+    DateTime? firstDate,
+    DateTime? lastDate,
   }) {
+    assertValidDatePickerBounds(firstDate, lastDate);
     final dateTimePickerLocalizations = localizations ??
         ImpaktfullUiLocalizations.of<ImpaktfullUiDateTimePickerLocalizations>(
             context);
@@ -90,6 +110,8 @@ class ImpaktfullUiDateTimePicker extends StatefulWidget {
           datePickerLocalizations: datePickerLocalizations,
           firstDayOfWeek: firstDayOfWeek,
           use24HourFormat: use24HourFormat,
+          firstDate: firstDate,
+          lastDate: lastDate,
           onChanged: (value) {
             setState(() => newDate = value);
           },
@@ -111,6 +133,7 @@ class _ImpaktfullUiDateTimePickerState
   @override
   void initState() {
     super.initState();
+    assertValidDatePickerBounds(widget.firstDate, widget.lastDate);
     _setValue(widget.value);
   }
 
@@ -151,6 +174,8 @@ class _ImpaktfullUiDateTimePickerState
               onDateChanged: _onDateChanged,
               localizations: widget.datePickerLocalizations,
               firstDayOfWeek: widget.firstDayOfWeek,
+              firstDate: widget.firstDate,
+              lastDate: widget.lastDate,
             ),
             ImpaktfullUiTimePicker(
               value: _time,
@@ -174,9 +199,14 @@ class _ImpaktfullUiDateTimePickerState
   }
 
   void _onDateTimeChanged() {
-    // When only a time is picked (no date yet), use today
-    // instead of a date in year 0.
-    final date = _date ?? DateTime.now();
+    // When only a time is picked (no date yet), use today instead of a date
+    // in year 0, moved inside `firstDate` / `lastDate` so the picker never
+    // reports a date it does not allow.
+    final date = _date ??
+        ImpaktfullUiDatePickerBounds(
+          firstDate: widget.firstDate,
+          lastDate: widget.lastDate,
+        ).clamp(DateTime.now());
     final dateTime = DateTime(
       date.year,
       date.month,

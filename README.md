@@ -466,6 +466,29 @@ Dates, times, weekday and month names and percentages are formatted with [intl](
 - Short dates use `DateFormat.yMd` (`7/6/2023` for `en_US`, `6-7-2023` for `nl`). The plain `en` locale, the default of `ImpaktfullUiApp`, keeps `dd/MM/yyyy`. `ImpaktfullUiDateInputField(dateFormat: 'd MMMM y')` still takes a pattern.
 - Times use 24 hours when `MediaQuery.alwaysUse24HourFormat` is set or the locale uses 24 hours (the plain `en` locale keeps 24 hours). `ImpaktfullUiTimePicker`, `ImpaktfullUiDateTimePicker` and `ImpaktfullUiCalendar` take `use24HourFormat` to choose it yourself; with 12 hours the time picker shows an AM/PM toggle.
 
+#### Limiting the dates a user can pick
+
+Every date picker takes `firstDate` and `lastDate`, named like `CalendarDatePicker` and `showDatePicker` of Flutter. Both are optional and `null` (the default) means no limit:
+
+```dart
+ImpaktfullUiDateInputField(
+  label: 'Date of birth',
+  value: _dateOfBirth,
+  firstDate: DateTime(1900),
+  lastDate: DateTime.now(),
+  onChanged: _onDateOfBirthChanged,
+);
+```
+
+They work the same way on `ImpaktfullUiDatePicker`, `ImpaktfullUiDatePicker.range`, `ImpaktfullUiDateTimePicker`, `ImpaktfullUiDateInputField` and the `showModal` / `showRangeModal` helpers of the pickers:
+
+- Days outside the range are dimmed (`textStyles.cellDisabled` of the date picker theme), are not tappable, are not focusable with a keyboard and are announced as a disabled button (`ImpaktfullUiAccessibilityLocalizations.unavailableDate`).
+- The month, year and decade navigation stops at the range: the arrows are disabled at the edge, the page view can not be swiped past it, the months outside the range are disabled and the years list only shows the years inside the range.
+- The range picker can never report a start or an end outside the range.
+- Only the calendar day counts, the time of day is ignored: a `lastDate` of `DateTime(2026, 9, 23, 10, 0)` still allows picking 23 September 2026, and `ImpaktfullUiDateTimePicker` keeps every time of day on that last day.
+- A `selectedDate` / `value` outside the range does not throw: the picker opens on the closest month inside the range and does not show that date as the selection. It stays the value of the field until the user picks a date inside the range.
+- `firstDate` must be on or before `lastDate`, asserted in debug mode.
+
 ### Assets
 
 #### Images
