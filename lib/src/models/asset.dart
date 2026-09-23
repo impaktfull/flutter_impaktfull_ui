@@ -73,6 +73,37 @@ class ImpaktfullUiAsset {
         directory = null,
         suffix = null;
 
+  /// An asset that shows nothing.
+  ///
+  /// It is the default of [ImpaktfullUiImageTheme.logo] and
+  /// [ImpaktfullUiImageTheme.splashLogo] when the theme reads its assets from
+  /// the impaktfull_ui package: the package ships no logo. Set them to your
+  /// own asset, or build the theme with `package: null` to read
+  /// `assets/images/logo.svg` from your own app.
+  ///
+  /// `ImpaktfullUiAssetWidget` renders nothing for it, like it does for a
+  /// null asset.
+  const ImpaktfullUiAsset.none({
+    this.matchTextDirection = false,
+  })  : pixelAsset = null,
+        lottieAsset = null,
+        svgAsset = null,
+        icon = null,
+        riveAsset = null,
+        networkUrl = null,
+        package = null,
+        directory = null,
+        suffix = null;
+
+  /// Whether this asset shows nothing ([ImpaktfullUiAsset.none]).
+  bool get isNone =>
+      svgAsset == null &&
+      pixelAsset == null &&
+      lottieAsset == null &&
+      riveAsset == null &&
+      networkUrl == null &&
+      icon == null;
+
   const ImpaktfullUiAsset.lottie(
     String this.lottieAsset, {
     this.directory,

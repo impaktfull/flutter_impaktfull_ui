@@ -86,6 +86,7 @@ import 'package:impaktfull_ui/src/components/number_input/number_input.dart';
 import 'package:impaktfull_ui/src/components/placeholder/placeholder.dart';
 import 'package:impaktfull_ui/src/components/metric/metric.dart';
 import 'package:impaktfull_ui/src/components/line_chart/line_chart.dart';
+import 'package:impaktfull_ui/src/theme/theme.dart';
 
 abstract class ImpaktfullUiComponentTheme {
   const ImpaktfullUiComponentTheme();
@@ -480,183 +481,118 @@ class ImpaktfullUiComponentsTheme {
         wysiwyg: wysiwyg ?? this.wysiwyg,
       );
 
+  /// Every component theme by the type that [of] looks it up with.
+  ///
+  /// Built once per [ImpaktfullUiComponentsTheme] (a theme is immutable), so
+  /// [of] is a single map lookup instead of a walk over every component
+  /// theme.
+  late final Map<Type, ImpaktfullUiComponentTheme> _componentThemesByType = {
+    ImpaktfullUiAccordionTheme: accordion,
+    ImpaktfullUiAvatarTheme: avatar,
+    ImpaktfullUiAutoCompleteTheme: autoComplete,
+    ImpaktfullUiBadgeTheme: badge,
+    ImpaktfullUiBBLicensesTheme: bbLicenses,
+    ImpaktfullUiBottomActionsTheme: bottomActions,
+    ImpaktfullUiBottomNavigationTheme: bottomNavigation,
+    ImpaktfullUiBottomNavigationItemTheme: bottomNavigationItem,
+    ImpaktfullUiBottomSheetTheme: bottomSheet,
+    ImpaktfullUiButtonTheme: button,
+    ImpaktfullUiCalendarTheme: calendar,
+    ImpaktfullUiCardTheme: card,
+    ImpaktfullUiCarouselTheme: carousel,
+    ImpaktfullUiChatTheme: chat,
+    ImpaktfullUiCheckboxTheme: checkbox,
+    ImpaktfullUiCheckboxListItemTheme: checkboxListItem,
+    ImpaktfullUiCmsHeaderTheme: cmsHeader,
+    ImpaktfullUiColorPickerTheme: colorPicker,
+    ImpaktfullUiColorInputFieldTheme: colorInputField,
+    ImpaktfullUiCommandMenuTheme: commandMenu,
+    ImpaktfullUiConfettiTheme: confetti,
+    ImpaktfullUiDateInputFieldTheme: dateInputField,
+    ImpaktfullUiDatePickerTheme: datePicker,
+    ImpaktfullUiDateTimePickerTheme: dateTimePicker,
+    ImpaktfullUiDividerTheme: divider,
+    ImpaktfullUiDropdownTheme: dropdown,
+    ImpaktfullUiFilePickerTheme: filePicker,
+    ImpaktfullUiFloatingActionButtonTheme: floatingActionButton,
+    ImpaktfullUiFluidPaddingTheme: fluidPadding,
+    ImpaktfullUiGalleryTheme: gallery,
+    ImpaktfullUiGridViewTheme: gridView,
+    ImpaktfullUiHorizontalTabTheme: horizontalTab,
+    ImpaktfullUiHorizontalTabsTheme: horizontalTabs,
+    ImpaktfullUiIconButtonTheme: iconButton,
+    ImpaktfullUiImageCropTheme: imageCrop,
+    ImpaktfullUiInputFieldTheme: inputField,
+    ImpaktfullUiIntroductionTheme: introduction,
+    ImpaktfullUiLineChartTheme: lineChart,
+    ImpaktfullUiListItemTheme: listItem,
+    ImpaktfullUiListViewTheme: listView,
+    ImpaktfullUiLoadingErrorDataTheme: loadingErrorData,
+    ImpaktfullUiLoadingIndicatorTheme: loadingIndicator,
+    ImpaktfullUiMarkdownTheme: markdown,
+    ImpaktfullUiMetricTheme: metric,
+    ImpaktfullUiModalTheme: modal,
+    ImpaktfullUiNavBarTheme: navBar,
+    ImpaktfullUiNetworkImageTheme: networkImage,
+    ImpaktfullUiNotificationTheme: notification,
+    ImpaktfullUiNotificationBadgeTheme: notificationBadge,
+    ImpaktfullUiNumberInputTheme: numberInput,
+    ImpaktfullUiOptionSelectorTheme: optionSelector,
+    ImpaktfullUiPaginationTheme: pagination,
+    ImpaktfullUiPasswordStrengthIndicatorTheme: passwordStrengthIndicator,
+    ImpaktfullUiPinCodeTheme: pinCode,
+    ImpaktfullUiPlaceholderTheme: placeholder,
+    ImpaktfullUiProgressIndicatorTheme: progressIndicator,
+    ImpaktfullUiRadioButtonTheme: radioButton,
+    ImpaktfullUiRadioButtonListItemTheme: radioButtonListItem,
+    ImpaktfullUiRefreshIndicatorTheme: refreshIndicator,
+    ImpaktfullUiResponsiveLayoutTheme: responsiveLayout,
+    ImpaktfullUiScreenTheme: screen,
+    ImpaktfullUiSectionTitleTheme: sectionTitle,
+    ImpaktfullUiSegmentedControlTheme: segmentedControl,
+    ImpaktfullUiSelectableListItemTheme: selectableListItem,
+    ImpaktfullUiSeparatedColumnTheme: separatedColumn,
+    ImpaktfullUiSidebarNavigationTheme: sidebarNavigation,
+    ImpaktfullUiSidebarNavigationItemTheme: sidebarNavigationItem,
+    ImpaktfullUiSimpleListItemTheme: simpleListItem,
+    ImpaktfullUiSkeletonTheme: skeleton,
+    ImpaktfullUiSliderTheme: slider,
+    ImpaktfullUiSnackyConfiguratorTheme: snackyConfigurator,
+    ImpaktfullUiStepperTheme: stepper,
+    ImpaktfullUiSwitchTheme: switchTheme,
+    ImpaktfullUiSwitchListItemTheme: switchListItem,
+    ImpaktfullUiTabBarTheme: tabBar,
+    ImpaktfullUiTabBarItemTheme: tabBarItem,
+    ImpaktfullUiTableTheme: table,
+    ImpaktfullUiTableHeaderTheme: tableHeader,
+    ImpaktfullUiTableHeaderItemTheme: tableHeaderItem,
+    ImpaktfullUiTableRowTheme: tableRow,
+    ImpaktfullUiTableRowItemTheme: tableRowItem,
+    ImpaktfullUiTimePickerTheme: timePicker,
+    ImpaktfullUiTooltipTheme: tooltip,
+    ImpaktfullUiTouchFeedbackTheme: touchFeedback,
+    ImpaktfullUiUnifiedScreenLayoutTheme: unifiedScreenLayout,
+    ImpaktfullUiVirtualKeyboardTheme: virtualKeyboard,
+    ImpaktfullUiWysiwygTheme: wysiwyg,
+  };
+
+  /// The component theme of type [T] of the [ImpaktfullUiTheme] of [context].
+  ///
+  /// Throws an [ArgumentError] when [T] is not one of the component themes of
+  /// [ImpaktfullUiComponentsTheme].
   static T of<T extends ImpaktfullUiComponentTheme>(BuildContext context) {
-    if (T == ImpaktfullUiAccordionTheme) {
-      return ImpaktfullUiAccordionTheme.of(context) as T;
-    } else if (T == ImpaktfullUiAvatarTheme) {
-      return ImpaktfullUiAvatarTheme.of(context) as T;
-    } else if (T == ImpaktfullUiAutoCompleteTheme) {
-      return ImpaktfullUiAutoCompleteTheme.of(context) as T;
-    } else if (T == ImpaktfullUiBadgeTheme) {
-      return ImpaktfullUiBadgeTheme.of(context) as T;
-    } else if (T == ImpaktfullUiBBLicensesTheme) {
-      return ImpaktfullUiBBLicensesTheme.of(context) as T;
-    } else if (T == ImpaktfullUiBottomActionsTheme) {
-      return ImpaktfullUiBottomActionsTheme.of(context) as T;
-    } else if (T == ImpaktfullUiBottomNavigationTheme) {
-      return ImpaktfullUiBottomNavigationTheme.of(context) as T;
-    } else if (T == ImpaktfullUiBottomNavigationItemTheme) {
-      return ImpaktfullUiBottomNavigationItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiBottomSheetTheme) {
-      return ImpaktfullUiBottomSheetTheme.of(context) as T;
-    } else if (T == ImpaktfullUiButtonTheme) {
-      return ImpaktfullUiButtonTheme.of(context) as T;
-    } else if (T == ImpaktfullUiCalendarTheme) {
-      return ImpaktfullUiCalendarTheme.of(context) as T;
-    } else if (T == ImpaktfullUiCardTheme) {
-      return ImpaktfullUiCardTheme.of(context) as T;
-    } else if (T == ImpaktfullUiCarouselTheme) {
-      return ImpaktfullUiCarouselTheme.of(context) as T;
-    } else if (T == ImpaktfullUiChatTheme) {
-      return ImpaktfullUiChatTheme.of(context) as T;
-    } else if (T == ImpaktfullUiCheckboxTheme) {
-      return ImpaktfullUiCheckboxTheme.of(context) as T;
-    } else if (T == ImpaktfullUiCheckboxListItemTheme) {
-      return ImpaktfullUiCheckboxListItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiCmsHeaderTheme) {
-      return ImpaktfullUiCmsHeaderTheme.of(context) as T;
-    } else if (T == ImpaktfullUiColorPickerTheme) {
-      return ImpaktfullUiColorPickerTheme.of(context) as T;
-    } else if (T == ImpaktfullUiColorInputFieldTheme) {
-      return ImpaktfullUiColorInputFieldTheme.of(context) as T;
-    } else if (T == ImpaktfullUiCommandMenuTheme) {
-      return ImpaktfullUiCommandMenuTheme.of(context) as T;
-    } else if (T == ImpaktfullUiConfettiTheme) {
-      return ImpaktfullUiConfettiTheme.of(context) as T;
-    } else if (T == ImpaktfullUiDateInputFieldTheme) {
-      return ImpaktfullUiDateInputFieldTheme.of(context) as T;
-    } else if (T == ImpaktfullUiDatePickerTheme) {
-      return ImpaktfullUiDatePickerTheme.of(context) as T;
-    } else if (T == ImpaktfullUiDateTimePickerTheme) {
-      return ImpaktfullUiDateTimePickerTheme.of(context) as T;
-    } else if (T == ImpaktfullUiDividerTheme) {
-      return ImpaktfullUiDividerTheme.of(context) as T;
-    } else if (T == ImpaktfullUiDropdownTheme) {
-      return ImpaktfullUiDropdownTheme.of(context) as T;
-    } else if (T == ImpaktfullUiFilePickerTheme) {
-      return ImpaktfullUiFilePickerTheme.of(context) as T;
-    } else if (T == ImpaktfullUiFloatingActionButtonTheme) {
-      return ImpaktfullUiFloatingActionButtonTheme.of(context) as T;
-    } else if (T == ImpaktfullUiFluidPaddingTheme) {
-      return ImpaktfullUiFluidPaddingTheme.of(context) as T;
-    } else if (T == ImpaktfullUiGalleryTheme) {
-      return ImpaktfullUiGalleryTheme.of(context) as T;
-    } else if (T == ImpaktfullUiGridViewTheme) {
-      return ImpaktfullUiGridViewTheme.of(context) as T;
-    } else if (T == ImpaktfullUiHorizontalTabTheme) {
-      return ImpaktfullUiHorizontalTabTheme.of(context) as T;
-    } else if (T == ImpaktfullUiHorizontalTabsTheme) {
-      return ImpaktfullUiHorizontalTabsTheme.of(context) as T;
-    } else if (T == ImpaktfullUiIconButtonTheme) {
-      return ImpaktfullUiIconButtonTheme.of(context) as T;
-    } else if (T == ImpaktfullUiImageCropTheme) {
-      return ImpaktfullUiImageCropTheme.of(context) as T;
-    } else if (T == ImpaktfullUiInputFieldTheme) {
-      return ImpaktfullUiInputFieldTheme.of(context) as T;
-    } else if (T == ImpaktfullUiIntroductionTheme) {
-      return ImpaktfullUiIntroductionTheme.of(context) as T;
-    } else if (T == ImpaktfullUiLineChartTheme) {
-      return ImpaktfullUiLineChartTheme.of(context) as T;
-    } else if (T == ImpaktfullUiListItemTheme) {
-      return ImpaktfullUiListItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiListViewTheme) {
-      return ImpaktfullUiListViewTheme.of(context) as T;
-    } else if (T == ImpaktfullUiLoadingErrorDataTheme) {
-      return ImpaktfullUiLoadingErrorDataTheme.of(context) as T;
-    } else if (T == ImpaktfullUiLoadingIndicatorTheme) {
-      return ImpaktfullUiLoadingIndicatorTheme.of(context) as T;
-    } else if (T == ImpaktfullUiMarkdownTheme) {
-      return ImpaktfullUiMarkdownTheme.of(context) as T;
-    } else if (T == ImpaktfullUiMetricTheme) {
-      return ImpaktfullUiMetricTheme.of(context) as T;
-    } else if (T == ImpaktfullUiModalTheme) {
-      return ImpaktfullUiModalTheme.of(context) as T;
-    } else if (T == ImpaktfullUiNavBarTheme) {
-      return ImpaktfullUiNavBarTheme.of(context) as T;
-    } else if (T == ImpaktfullUiNetworkImageTheme) {
-      return ImpaktfullUiNetworkImageTheme.of(context) as T;
-    } else if (T == ImpaktfullUiNotificationTheme) {
-      return ImpaktfullUiNotificationTheme.of(context) as T;
-    } else if (T == ImpaktfullUiNotificationBadgeTheme) {
-      return ImpaktfullUiNotificationBadgeTheme.of(context) as T;
-    } else if (T == ImpaktfullUiNumberInputTheme) {
-      return ImpaktfullUiNumberInputTheme.of(context) as T;
-    } else if (T == ImpaktfullUiOptionSelectorTheme) {
-      return ImpaktfullUiOptionSelectorTheme.of(context) as T;
-    } else if (T == ImpaktfullUiProgressIndicatorTheme) {
-      return ImpaktfullUiProgressIndicatorTheme.of(context) as T;
-    } else if (T == ImpaktfullUiPaginationTheme) {
-      return ImpaktfullUiPaginationTheme.of(context) as T;
-    } else if (T == ImpaktfullUiPasswordStrengthIndicatorTheme) {
-      return ImpaktfullUiPasswordStrengthIndicatorTheme.of(context) as T;
-    } else if (T == ImpaktfullUiPinCodeTheme) {
-      return ImpaktfullUiPinCodeTheme.of(context) as T;
-    } else if (T == ImpaktfullUiPlaceholderTheme) {
-      return ImpaktfullUiPlaceholderTheme.of(context) as T;
-    } else if (T == ImpaktfullUiRadioButtonTheme) {
-      return ImpaktfullUiRadioButtonTheme.of(context) as T;
-    } else if (T == ImpaktfullUiRadioButtonListItemTheme) {
-      return ImpaktfullUiRadioButtonListItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiRefreshIndicatorTheme) {
-      return ImpaktfullUiRefreshIndicatorTheme.of(context) as T;
-    } else if (T == ImpaktfullUiResponsiveLayoutTheme) {
-      return ImpaktfullUiResponsiveLayoutTheme.of(context) as T;
-    } else if (T == ImpaktfullUiScreenTheme) {
-      return ImpaktfullUiScreenTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSectionTitleTheme) {
-      return ImpaktfullUiSectionTitleTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSegmentedControlTheme) {
-      return ImpaktfullUiSegmentedControlTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSelectableListItemTheme) {
-      return ImpaktfullUiSelectableListItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSeparatedColumnTheme) {
-      return ImpaktfullUiSeparatedColumnTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSidebarNavigationTheme) {
-      return ImpaktfullUiSidebarNavigationTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSidebarNavigationItemTheme) {
-      return ImpaktfullUiSidebarNavigationItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSimpleListItemTheme) {
-      return ImpaktfullUiSimpleListItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSkeletonTheme) {
-      return ImpaktfullUiSkeletonTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSliderTheme) {
-      return ImpaktfullUiSliderTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSnackyConfiguratorTheme) {
-      return ImpaktfullUiSnackyConfiguratorTheme.of(context) as T;
-    } else if (T == ImpaktfullUiStepperTheme) {
-      return ImpaktfullUiStepperTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSwitchTheme) {
-      return ImpaktfullUiSwitchTheme.of(context) as T;
-    } else if (T == ImpaktfullUiSwitchListItemTheme) {
-      return ImpaktfullUiSwitchListItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTabBarItemTheme) {
-      return ImpaktfullUiTabBarItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTabBarTheme) {
-      return ImpaktfullUiTabBarTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTableTheme) {
-      return ImpaktfullUiTableTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTableHeaderTheme) {
-      return ImpaktfullUiTableHeaderTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTableHeaderItemTheme) {
-      return ImpaktfullUiTableHeaderItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTableRowTheme) {
-      return ImpaktfullUiTableRowTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTableRowItemTheme) {
-      return ImpaktfullUiTableRowItemTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTimePickerTheme) {
-      return ImpaktfullUiTimePickerTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTooltipTheme) {
-      return ImpaktfullUiTooltipTheme.of(context) as T;
-    } else if (T == ImpaktfullUiTouchFeedbackTheme) {
-      return ImpaktfullUiTouchFeedbackTheme.of(context) as T;
-    } else if (T == ImpaktfullUiUnifiedScreenLayoutTheme) {
-      return ImpaktfullUiUnifiedScreenLayoutTheme.of(context) as T;
-    } else if (T == ImpaktfullUiVirtualKeyboardTheme) {
-      return ImpaktfullUiVirtualKeyboardTheme.of(context) as T;
-    } else if (T == ImpaktfullUiWysiwygTheme) {
-      return ImpaktfullUiWysiwygTheme.of(context) as T;
-    } else {
-      throw ArgumentError('$T is not configured in the impaktfull ui theme');
+    final components = ImpaktfullUiTheme.of(context).components;
+    final componentTheme = components._componentThemesByType[T];
+    if (componentTheme == null) {
+      throw ArgumentError(
+        '$T is not configured in the impaktfull ui theme. Every component '
+        'theme of impaktfull_ui is a field of ImpaktfullUiComponentsTheme and '
+        'is registered in `_componentThemesByType` of '
+        'lib/src/theme/component_theme.dart. Register $T there, or pass your '
+        'own theme to the `theme` parameter of the component instead of '
+        'reading it from the impaktfull ui theme.',
+      );
     }
+    return componentTheme as T;
   }
 }

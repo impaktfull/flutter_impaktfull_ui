@@ -8,6 +8,7 @@ import 'package:impaktfull_ui/src/theme/duration_theme.dart';
 import 'package:impaktfull_ui/src/theme/shadow_theme.dart';
 import 'package:impaktfull_ui/src/theme/textstyle_theme.dart';
 import 'package:impaktfull_ui/src/theme/theme_default.dart';
+import 'package:impaktfull_ui/src/theme/theme_mode.dart';
 
 export 'asset_theme.dart';
 export 'color_theme.dart';
@@ -18,11 +19,20 @@ export 'shadow_theme.dart';
 export 'textstyle_theme.dart';
 export 'theme_configurator.dart';
 export 'theme_default.dart';
+export 'theme_mode.dart';
 
 class ImpaktfullUiTheme<T extends Object> {
   static const _packageName = 'impaktfull_ui';
 
   final String? label;
+
+  /// Whether this theme is meant for a light or a dark background.
+  ///
+  /// `ImpaktfullUiApp` picks between its `impaktfullUiTheme` and its
+  /// `impaktfullUiDarkTheme` with [ImpaktfullUiThemeMode], it does not read
+  /// this value. It is here so a component (or an app) can tell which variant
+  /// it is rendering on, e.g. to pick an asset.
+  final Brightness brightness;
   final ImpaktfullUiAssetTheme assets;
   final ImpaktfullUiColorTheme colors;
   final ImpaktfullUiTextStylesTheme textStyles;
@@ -45,6 +55,7 @@ class ImpaktfullUiTheme<T extends Object> {
   const ImpaktfullUiTheme({
     required this.label,
     required this.assets,
+    this.brightness = Brightness.light,
     required this.colors,
     required this.textStyles,
     required this.dimens,
@@ -74,14 +85,16 @@ class ImpaktfullUiTheme<T extends Object> {
     BorderRadiusGeometry? borderRadius,
     BorderRadiusGeometry? borderRadiusLarge,
     BorderRadiusGeometry? borderRadiusExtraLarge,
-    String fontFamilyDisplay = 'Ubuntu',
-    String fontFamilyText = 'Geologica',
+    String? fontFamilyDisplay = 'Ubuntu',
+    String? fontFamilyText = 'Geologica',
     String? package = _packageName,
     String? assetSuffix,
+    Brightness brightness = Brightness.light,
     T? customTheme,
   }) =>
       ImpaktfullUiDefaultTheme.withMinimalChanges<T>(
         label: label,
+        brightness: brightness,
         primary: primary,
         accent: accent,
         secondary: secondary,
@@ -107,9 +120,18 @@ class ImpaktfullUiTheme<T extends Object> {
         customTheme: customTheme,
       );
 
+  /// The impaktfull branding on a light background.
+  ///
+  /// [fontFamilyDisplay] and [fontFamilyText] default to the Ubuntu and
+  /// Geologica of the impaktfull branding. The package does not ship those
+  /// fonts: an app that wants them declares them in its own `pubspec.yaml`
+  /// (see the example app). Pass your own families, or `null` for the font of
+  /// the platform.
   static ImpaktfullUiTheme<T> getDefault<T extends Object>({
     String? package = _packageName,
     String? assetSuffix,
+    String? fontFamilyDisplay = 'Ubuntu',
+    String? fontFamilyText = 'Geologica',
     T? customTheme,
   }) =>
       ImpaktfullUiDefaultTheme.withMinimalChanges<T>(
@@ -119,6 +141,48 @@ class ImpaktfullUiTheme<T extends Object> {
         secondary: const Color(0xFF7d64f2),
         package: package,
         assetSuffix: assetSuffix,
+        fontFamilyDisplay: fontFamilyDisplay,
+        fontFamilyText: fontFamilyText,
+        customTheme: customTheme,
+      );
+
+  /// The impaktfull branding on a dark background: [getDefault] with the dark
+  /// defaults of [ImpaktfullUiDefaultTheme.withMinimalChanges].
+  ///
+  /// The accent stays the same, the neutral tokens (canvas, card, border,
+  /// text) move to the other end of the grey scale. `primary` of the light
+  /// theme is a near-black neutral instead of a brand color, so the dark
+  /// theme flips it to a near-white one (with near-black text on it).
+  ///
+  /// Pass it to `ImpaktfullUiApp(impaktfullUiDarkTheme:)` to follow the
+  /// brightness of the platform:
+  ///
+  /// ```dart
+  /// ImpaktfullUiApp(
+  ///   title: 'My App',
+  ///   impaktfullUiTheme: ImpaktfullUiTheme.getDefault(),
+  ///   impaktfullUiDarkTheme: ImpaktfullUiTheme.getDefaultDark(),
+  ///   home: const MyHomeScreen(),
+  /// );
+  /// ```
+  static ImpaktfullUiTheme<T> getDefaultDark<T extends Object>({
+    String? package = _packageName,
+    String? assetSuffix,
+    String? fontFamilyDisplay = 'Ubuntu',
+    String? fontFamilyText = 'Geologica',
+    T? customTheme,
+  }) =>
+      ImpaktfullUiDefaultTheme.withMinimalChanges<T>(
+        label: 'impaktfull Dark Theme',
+        brightness: Brightness.dark,
+        primary: const Color(0xFFF5F5F5),
+        textOnPrimary: const Color(0xFF1A1A1A),
+        accent: const Color(0xFF7d64f2),
+        secondary: const Color(0xFF7d64f2),
+        package: package,
+        assetSuffix: assetSuffix,
+        fontFamilyDisplay: fontFamilyDisplay,
+        fontFamilyText: fontFamilyText,
         customTheme: customTheme,
       );
 
@@ -142,6 +206,7 @@ class ImpaktfullUiTheme<T extends Object> {
   ImpaktfullUiTheme<T> copyWith({
     String? label,
     ImpaktfullUiAssetTheme? assets,
+    Brightness? brightness,
     ImpaktfullUiColorTheme? colors,
     ImpaktfullUiTextStylesTheme? textStyles,
     ImpaktfullUiDimensTheme? dimens,
@@ -153,6 +218,7 @@ class ImpaktfullUiTheme<T extends Object> {
       ImpaktfullUiTheme<T>(
         label: label ?? this.label,
         assets: assets ?? this.assets,
+        brightness: brightness ?? this.brightness,
         colors: colors ?? this.colors,
         textStyles: textStyles ?? this.textStyles,
         dimens: dimens ?? this.dimens,

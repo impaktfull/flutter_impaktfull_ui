@@ -53,6 +53,9 @@ Future<void> runComponentTest({
                       return ImpaktfullUiApp(
                         showDebugFlag: false,
                         title: 'impaktfull app',
+                        // Null for almost every golden: the app then uses the
+                        // default theme of the package.
+                        impaktfullUiTheme: theme,
                         home: ImpaktfullUiContainer(
                           color: Colors.transparent,
                           child: child,

@@ -93,10 +93,40 @@ import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class ImpaktfullUiDefaultTheme {
+  /// A full [ImpaktfullUiTheme] built from a handful of base tokens: every
+  /// color, border radius and font that is not given falls back to the
+  /// default for [brightness].
+  ///
+  /// The dark defaults are the light defaults with the neutral tokens moved to
+  /// the other end of the same grey scale. Everything with a meaning of its
+  /// own (the given [primary], [accent] and [secondary], and the semantic
+  /// [warning], [error], [info], [success] and [destructive] colors) stays the
+  /// same, so a brand keeps its identity in both variants:
+  ///
+  /// | token         | light      | dark       |
+  /// |---------------|------------|------------|
+  /// | canvas        | 0xFFF9FAFB | 0xFF0C0E12 |
+  /// | card          | 0xFFFFFFFF | 0xFF16181D |
+  /// | card2         | grey 20%   | white 20%  |
+  /// | border        | grey 20%   | white 20%  |
+  /// | shadow        | black 12%  | black 45%  |
+  /// | text          | 0xFF344054 | 0xFFECEFF3 |
+  /// | tertiary      | 0xFF475467 | 0xFFB4BCC8 |
+  /// | textTertiary  | 0xFF999b9e | 0xFF9DA4AE |
+  ///
+  /// Every one of them stays overridable: pass the token to keep full control
+  /// over it in both variants.
+  ///
+  /// [fontFamilyDisplay] and [fontFamilyText] default to the Ubuntu and
+  /// Geologica families of the impaktfull branding. The package does not ship
+  /// those fonts: an app that wants them declares them in its own
+  /// `pubspec.yaml` (see the example app). Pass your own families, or `null`
+  /// for the font of the platform.
   static ImpaktfullUiTheme<T> withMinimalChanges<T extends Object>({
     required Color primary,
     required Color accent,
     required Color secondary,
+    Brightness brightness = Brightness.light,
     String? label,
     Color? tertiary,
     Color? canvas,
@@ -121,25 +151,33 @@ class ImpaktfullUiDefaultTheme {
     BorderRadiusGeometry? borderRadius,
     BorderRadiusGeometry? borderRadiusLarge,
     BorderRadiusGeometry? borderRadiusExtraLarge,
-    String fontFamilyDisplay = 'Ubuntu',
-    String fontFamilyText = 'Geologica',
+    String? fontFamilyDisplay = 'Ubuntu',
+    String? fontFamilyText = 'Geologica',
     String? package,
     String? assetSuffix,
     T? customTheme,
   }) {
+    final isDark = brightness == Brightness.dark;
+    final neutral = isDark ? Colors.white : Colors.grey;
     final colors = ImpaktfullUiColorTheme(
       primary: primary,
       accent: accent,
       secondary: secondary,
-      tertiary: tertiary ?? const Color(0xFF475467),
-      canvas: canvas ?? const Color(0xFFF9FAFB),
-      card: card ?? const Color(0xFFFFFFFF),
-      border: border ?? Colors.grey.withOpacityPercentage(0.2),
-      card2: card2 ?? Colors.grey.withOpacityPercentage(0.2),
-      shadow: shadow ?? Colors.black12,
-      text: text ?? const Color(0xFF344054),
+      tertiary: tertiary ??
+          (isDark ? const Color(0xFFB4BCC8) : const Color(0xFF475467)),
+      canvas: canvas ??
+          (isDark ? const Color(0xFF0C0E12) : const Color(0xFFF9FAFB)),
+      card:
+          card ?? (isDark ? const Color(0xFF16181D) : const Color(0xFFFFFFFF)),
+      border: border ?? neutral.withOpacityPercentage(0.2),
+      card2: card2 ?? neutral.withOpacityPercentage(0.2),
+      shadow: shadow ?? (isDark ? Colors.black45 : Colors.black12),
+      text:
+          text ?? (isDark ? const Color(0xFFECEFF3) : const Color(0xFF344054)),
       textSecondary: textSecondary ?? secondary,
-      textTertiary: textTertiary ?? tertiary ?? const Color(0xFF999b9e),
+      textTertiary: textTertiary ??
+          tertiary ??
+          (isDark ? const Color(0xFF9DA4AE) : const Color(0xFF999b9e)),
       textOnPrimary: textOnPrimary ?? const Color(0xFFFFFFFF),
       textOnAccent: textOnAccent ?? const Color(0xFFFFFFFF),
       textOnSecondary: textOnSecondary ?? const Color(0xFFFFFFFF),
@@ -237,6 +275,7 @@ class ImpaktfullUiDefaultTheme {
     final durations = ImpaktfullUiDurationTheme.getDefault();
     return ImpaktfullUiTheme(
       label: label,
+      brightness: brightness,
       customTheme: customTheme,
       assets: assets,
       colors: colors,
