@@ -47,6 +47,18 @@ class ImpaktfullUiColorPickerTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiColorPickerTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiColorPickerTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiColorPickerAssetsTheme {
@@ -54,6 +66,12 @@ class ImpaktfullUiColorPickerAssetsTheme {
 
   ImpaktfullUiColorPickerAssetsTheme copyWith() =>
       const ImpaktfullUiColorPickerAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiColorPickerAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiColorPickerColorTheme {
@@ -61,6 +79,12 @@ class ImpaktfullUiColorPickerColorTheme {
 
   ImpaktfullUiColorPickerColorTheme copyWith() =>
       const ImpaktfullUiColorPickerColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiColorPickerColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiColorPickerDimensTheme {
@@ -82,6 +106,18 @@ class ImpaktfullUiColorPickerDimensTheme {
         simpleColorPickerItemSize:
             simpleColorPickerItemSize ?? this.simpleColorPickerItemSize,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiColorPickerDimensTheme &&
+          simpleColorPickerItemBorderRadius ==
+              other.simpleColorPickerItemBorderRadius &&
+          simpleColorPickerItemSize == other.simpleColorPickerItemSize;
+
+  @override
+  int get hashCode =>
+      Object.hash(simpleColorPickerItemBorderRadius, simpleColorPickerItemSize);
 }
 
 class ImpaktfullUiColorPickerTextStyleTheme {
@@ -89,4 +125,11 @@ class ImpaktfullUiColorPickerTextStyleTheme {
 
   ImpaktfullUiColorPickerTextStyleTheme copyWith() =>
       const ImpaktfullUiColorPickerTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiColorPickerTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

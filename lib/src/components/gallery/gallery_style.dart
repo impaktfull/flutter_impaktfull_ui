@@ -67,6 +67,20 @@ class ImpaktfullUiGalleryTheme extends ImpaktfullUiComponentTheme {
           itemDescription: textStyles.onAccent.text.small.withOpacity(0.5),
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiGalleryTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiGalleryAssetsTheme {
@@ -89,6 +103,17 @@ class ImpaktfullUiGalleryAssetsTheme {
         arrowRight: arrowRight ?? this.arrowRight,
         close: close ?? this.close,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiGalleryAssetsTheme &&
+          close == other.close &&
+          arrowRight == other.arrowRight &&
+          arrowLeft == other.arrowLeft;
+
+  @override
+  int get hashCode => Object.hash(close, arrowRight, arrowLeft);
 }
 
 class ImpaktfullUiGalleryColorTheme {
@@ -112,6 +137,17 @@ class ImpaktfullUiGalleryColorTheme {
         iconButtonBackground: iconButtonBackground ?? this.iconButtonBackground,
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiGalleryColorTheme &&
+          icons == other.icons &&
+          background == other.background &&
+          iconButtonBackground == other.iconButtonBackground;
+
+  @override
+  int get hashCode => Object.hash(icons, background, iconButtonBackground);
 }
 
 class ImpaktfullUiGalleryDimensTheme {
@@ -126,6 +162,15 @@ class ImpaktfullUiGalleryDimensTheme {
       ImpaktfullUiGalleryDimensTheme(
         itemBorderRadius: itemBorderRadius ?? this.itemBorderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiGalleryDimensTheme &&
+          itemBorderRadius == other.itemBorderRadius;
+
+  @override
+  int get hashCode => itemBorderRadius.hashCode;
 }
 
 class ImpaktfullUiGalleryDurationsTheme {
@@ -147,6 +192,16 @@ class ImpaktfullUiGalleryDurationsTheme {
         pageTransition: pageTransition ?? this.pageTransition,
         zoom: zoom ?? this.zoom,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiGalleryDurationsTheme &&
+          pageTransition == other.pageTransition &&
+          zoom == other.zoom;
+
+  @override
+  int get hashCode => Object.hash(pageTransition, zoom);
 }
 
 class ImpaktfullUiGalleryTextStyleTheme {
@@ -166,4 +221,14 @@ class ImpaktfullUiGalleryTextStyleTheme {
         itemDescription: itemDescription ?? this.itemDescription,
         itemTitle: itemTitle ?? this.itemTitle,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiGalleryTextStyleTheme &&
+          itemTitle == other.itemTitle &&
+          itemDescription == other.itemDescription;
+
+  @override
+  int get hashCode => Object.hash(itemTitle, itemDescription);
 }

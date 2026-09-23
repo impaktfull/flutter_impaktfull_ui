@@ -48,6 +48,18 @@ class ImpaktfullUiNumberInputTheme extends ImpaktfullUiComponentTheme {
         dimens: const ImpaktfullUiNumberInputDimensTheme(),
         textStyles: const ImpaktfullUiNumberInputTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNumberInputTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiNumberInputAssetsTheme {
@@ -67,6 +79,16 @@ class ImpaktfullUiNumberInputAssetsTheme {
         minus: minus ?? this.minus,
         plus: plus ?? this.plus,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNumberInputAssetsTheme &&
+          minus == other.minus &&
+          plus == other.plus;
+
+  @override
+  int get hashCode => Object.hash(minus, plus);
 }
 
 class ImpaktfullUiNumberInputColorTheme {
@@ -74,6 +96,12 @@ class ImpaktfullUiNumberInputColorTheme {
 
   ImpaktfullUiNumberInputColorTheme copyWith() =>
       const ImpaktfullUiNumberInputColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiNumberInputColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiNumberInputDimensTheme {
@@ -81,6 +109,12 @@ class ImpaktfullUiNumberInputDimensTheme {
 
   ImpaktfullUiNumberInputDimensTheme copyWith() =>
       const ImpaktfullUiNumberInputDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiNumberInputDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiNumberInputTextStyleTheme {
@@ -88,4 +122,11 @@ class ImpaktfullUiNumberInputTextStyleTheme {
 
   ImpaktfullUiNumberInputTextStyleTheme copyWith() =>
       const ImpaktfullUiNumberInputTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiNumberInputTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

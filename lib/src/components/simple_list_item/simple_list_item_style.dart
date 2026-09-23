@@ -57,6 +57,18 @@ class ImpaktfullUiSimpleListItemTheme extends ImpaktfullUiComponentTheme {
           subtitleDanger: textStyles.onCardDestructive.text.small.light,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSimpleListItemTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiSimpleListItemAssetsTheme {
@@ -64,6 +76,13 @@ class ImpaktfullUiSimpleListItemAssetsTheme {
 
   ImpaktfullUiSimpleListItemAssetsTheme copyWith() =>
       const ImpaktfullUiSimpleListItemAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSimpleListItemAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSimpleListItemColorTheme {
@@ -79,6 +98,15 @@ class ImpaktfullUiSimpleListItemColorTheme {
       ImpaktfullUiSimpleListItemColorTheme(
         background: background ?? this.background,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSimpleListItemColorTheme &&
+          background == other.background;
+
+  @override
+  int get hashCode => background.hashCode;
 }
 
 class ImpaktfullUiSimpleListItemDimensTheme {
@@ -106,6 +134,19 @@ class ImpaktfullUiSimpleListItemDimensTheme {
         padding: padding ?? this.padding,
         spacing: spacing ?? this.spacing,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSimpleListItemDimensTheme &&
+          padding == other.padding &&
+          borderRadius == other.borderRadius &&
+          crossAxisAlignment == other.crossAxisAlignment &&
+          spacing == other.spacing;
+
+  @override
+  int get hashCode =>
+      Object.hash(padding, borderRadius, crossAxisAlignment, spacing);
 }
 
 class ImpaktfullUiSimpleListItemTextStyleTheme {
@@ -133,4 +174,16 @@ class ImpaktfullUiSimpleListItemTextStyleTheme {
         title: title ?? this.title,
         titleDanger: titleDanger ?? this.titleDanger,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSimpleListItemTextStyleTheme &&
+          title == other.title &&
+          titleDanger == other.titleDanger &&
+          subtitle == other.subtitle &&
+          subtitleDanger == other.subtitleDanger;
+
+  @override
+  int get hashCode => Object.hash(title, titleDanger, subtitle, subtitleDanger);
 }

@@ -50,6 +50,18 @@ class ImpaktfullUiListItemTheme extends ImpaktfullUiComponentTheme {
         dimens: const ImpaktfullUiListItemDimensTheme(),
         textStyles: const ImpaktfullUiListItemTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiListItemTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiListItemAssetsTheme {
@@ -65,6 +77,15 @@ class ImpaktfullUiListItemAssetsTheme {
       ImpaktfullUiListItemAssetsTheme(
         chevronRight: chevronRight ?? this.chevronRight,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiListItemAssetsTheme &&
+          chevronRight == other.chevronRight;
+
+  @override
+  int get hashCode => chevronRight.hashCode;
 }
 
 class ImpaktfullUiListItemColorTheme {
@@ -83,6 +104,16 @@ class ImpaktfullUiListItemColorTheme {
         danger: danger ?? this.danger,
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiListItemColorTheme &&
+          icons == other.icons &&
+          danger == other.danger;
+
+  @override
+  int get hashCode => Object.hash(icons, danger);
 }
 
 class ImpaktfullUiListItemDimensTheme {
@@ -97,6 +128,15 @@ class ImpaktfullUiListItemDimensTheme {
       ImpaktfullUiListItemDimensTheme(
         leadingSize: leadingSize ?? this.leadingSize,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiListItemDimensTheme &&
+          leadingSize == other.leadingSize;
+
+  @override
+  int get hashCode => leadingSize.hashCode;
 }
 
 class ImpaktfullUiListItemTextStyleTheme {
@@ -104,4 +144,10 @@ class ImpaktfullUiListItemTextStyleTheme {
 
   ImpaktfullUiListItemTextStyleTheme copyWith() =>
       const ImpaktfullUiListItemTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiListItemTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

@@ -68,12 +68,32 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
           dateLabel: textStyles.onPrimary.text.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiChatTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiChatAssetsTheme {
   const ImpaktfullUiChatAssetsTheme();
 
   ImpaktfullUiChatAssetsTheme copyWith() => const ImpaktfullUiChatAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiChatAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiChatColorTheme {
@@ -119,6 +139,30 @@ class ImpaktfullUiChatColorTheme {
             typingContainerBackground ?? this.typingContainerBackground,
         typingContainerDots: typingContainerDots ?? this.typingContainerDots,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiChatColorTheme &&
+          ownMessageBackground == other.ownMessageBackground &&
+          ownMessageBorder == other.ownMessageBorder &&
+          otherMessageBackground == other.otherMessageBackground &&
+          otherMessageBorder == other.otherMessageBorder &&
+          dateLabelBackground == other.dateLabelBackground &&
+          typingContainerBackground == other.typingContainerBackground &&
+          typingContainerDots == other.typingContainerDots &&
+          onlineBadge == other.onlineBadge;
+
+  @override
+  int get hashCode => Object.hash(
+      ownMessageBackground,
+      ownMessageBorder,
+      otherMessageBackground,
+      otherMessageBorder,
+      dateLabelBackground,
+      typingContainerBackground,
+      typingContainerDots,
+      onlineBadge);
 }
 
 class ImpaktfullUiChatDimensTheme {
@@ -149,6 +193,19 @@ class ImpaktfullUiChatDimensTheme {
         typingDotsBorderRadius:
             typingDotsBorderRadius ?? this.typingDotsBorderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiChatDimensTheme &&
+          messagePadding == other.messagePadding &&
+          dateLabelBorderRadius == other.dateLabelBorderRadius &&
+          typingContainerBorderRadius == other.typingContainerBorderRadius &&
+          typingDotsBorderRadius == other.typingDotsBorderRadius;
+
+  @override
+  int get hashCode => Object.hash(messagePadding, dateLabelBorderRadius,
+      typingContainerBorderRadius, typingDotsBorderRadius);
 }
 
 class ImpaktfullUiChatDurationsTheme {
@@ -171,6 +228,16 @@ class ImpaktfullUiChatDurationsTheme {
         typingDot: typingDot ?? this.typingDot,
         typingDotDelay: typingDotDelay ?? this.typingDotDelay,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiChatDurationsTheme &&
+          typingDot == other.typingDot &&
+          typingDotDelay == other.typingDotDelay;
+
+  @override
+  int get hashCode => Object.hash(typingDot, typingDotDelay);
 }
 
 class ImpaktfullUiChatTextStyleTheme {
@@ -193,4 +260,15 @@ class ImpaktfullUiChatTextStyleTheme {
         otherMessage: otherMessage ?? this.otherMessage,
         ownMessage: ownMessage ?? this.ownMessage,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiChatTextStyleTheme &&
+          ownMessage == other.ownMessage &&
+          otherMessage == other.otherMessage &&
+          dateLabel == other.dateLabel;
+
+  @override
+  int get hashCode => Object.hash(ownMessage, otherMessage, dateLabel);
 }

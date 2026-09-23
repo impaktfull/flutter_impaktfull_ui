@@ -46,6 +46,18 @@ class ImpaktfullUiCommandMenuTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiCommandMenuTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCommandMenuTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiCommandMenuAssetsTheme {
@@ -53,6 +65,12 @@ class ImpaktfullUiCommandMenuAssetsTheme {
 
   ImpaktfullUiCommandMenuAssetsTheme copyWith() =>
       const ImpaktfullUiCommandMenuAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiCommandMenuAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiCommandMenuColorTheme {
@@ -60,6 +78,12 @@ class ImpaktfullUiCommandMenuColorTheme {
 
   ImpaktfullUiCommandMenuColorTheme copyWith() =>
       const ImpaktfullUiCommandMenuColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiCommandMenuColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiCommandMenuDimensTheme {
@@ -75,6 +99,15 @@ class ImpaktfullUiCommandMenuDimensTheme {
       ImpaktfullUiCommandMenuDimensTheme(
         windowBorderRadius: windowBorderRadius ?? this.windowBorderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCommandMenuDimensTheme &&
+          windowBorderRadius == other.windowBorderRadius;
+
+  @override
+  int get hashCode => windowBorderRadius.hashCode;
 }
 
 class ImpaktfullUiCommandMenuTextStyleTheme {
@@ -82,4 +115,11 @@ class ImpaktfullUiCommandMenuTextStyleTheme {
 
   ImpaktfullUiCommandMenuTextStyleTheme copyWith() =>
       const ImpaktfullUiCommandMenuTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiCommandMenuTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

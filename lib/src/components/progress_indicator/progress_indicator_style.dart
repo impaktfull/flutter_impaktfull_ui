@@ -61,6 +61,20 @@ class ImpaktfullUiProgressIndicatorTheme extends ImpaktfullUiComponentTheme {
           text: textStyles.onCard.text.small.medium,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiProgressIndicatorTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiProgressIndicatorAssetsTheme {
@@ -68,6 +82,13 @@ class ImpaktfullUiProgressIndicatorAssetsTheme {
 
   ImpaktfullUiProgressIndicatorAssetsTheme copyWith() =>
       const ImpaktfullUiProgressIndicatorAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiProgressIndicatorAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiProgressIndicatorColorTheme {
@@ -90,6 +111,17 @@ class ImpaktfullUiProgressIndicatorColorTheme {
         border: border ?? this.border,
         foreground: foreground ?? this.foreground,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiProgressIndicatorColorTheme &&
+          background == other.background &&
+          border == other.border &&
+          foreground == other.foreground;
+
+  @override
+  int get hashCode => Object.hash(background, border, foreground);
 }
 
 class ImpaktfullUiProgressIndicatorDimensTheme {
@@ -108,6 +140,16 @@ class ImpaktfullUiProgressIndicatorDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         width: width ?? this.width,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiProgressIndicatorDimensTheme &&
+          width == other.width &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => Object.hash(width, borderRadius);
 }
 
 class ImpaktfullUiProgressIndicatorDurationsTheme {
@@ -122,6 +164,15 @@ class ImpaktfullUiProgressIndicatorDurationsTheme {
       ImpaktfullUiProgressIndicatorDurationsTheme(
         progress: progress ?? this.progress,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiProgressIndicatorDurationsTheme &&
+          progress == other.progress;
+
+  @override
+  int get hashCode => progress.hashCode;
 }
 
 class ImpaktfullUiProgressIndicatorTextStyleTheme {
@@ -136,4 +187,13 @@ class ImpaktfullUiProgressIndicatorTextStyleTheme {
       ImpaktfullUiProgressIndicatorTextStyleTheme(
         text: text ?? this.text,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiProgressIndicatorTextStyleTheme &&
+          text == other.text;
+
+  @override
+  int get hashCode => text.hashCode;
 }

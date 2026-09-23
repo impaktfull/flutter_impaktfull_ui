@@ -49,6 +49,18 @@ class ImpaktfullUiLineChartTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiLineChartTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLineChartTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiLineChartAssetsTheme {
@@ -56,6 +68,12 @@ class ImpaktfullUiLineChartAssetsTheme {
 
   ImpaktfullUiLineChartAssetsTheme copyWith() =>
       const ImpaktfullUiLineChartAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiLineChartAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiLineChartColorTheme {
@@ -75,6 +93,16 @@ class ImpaktfullUiLineChartColorTheme {
         backgroundColor: backgroundColor ?? this.backgroundColor,
         lineColor: lineColor ?? this.lineColor,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLineChartColorTheme &&
+          lineColor == other.lineColor &&
+          backgroundColor == other.backgroundColor;
+
+  @override
+  int get hashCode => Object.hash(lineColor, backgroundColor);
 }
 
 class ImpaktfullUiLineChartDimensTheme {
@@ -89,6 +117,15 @@ class ImpaktfullUiLineChartDimensTheme {
       ImpaktfullUiLineChartDimensTheme(
         strokeWidth: strokeWidth ?? this.strokeWidth,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLineChartDimensTheme &&
+          strokeWidth == other.strokeWidth;
+
+  @override
+  int get hashCode => strokeWidth.hashCode;
 }
 
 class ImpaktfullUiLineChartTextStyleTheme {
@@ -96,4 +133,11 @@ class ImpaktfullUiLineChartTextStyleTheme {
 
   ImpaktfullUiLineChartTextStyleTheme copyWith() =>
       const ImpaktfullUiLineChartTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiLineChartTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

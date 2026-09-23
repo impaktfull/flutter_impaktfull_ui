@@ -54,6 +54,20 @@ class ImpaktfullUiImageCropTheme extends ImpaktfullUiComponentTheme {
         durations: const ImpaktfullUiImageCropDurationsTheme(),
         textStyles: const ImpaktfullUiImageCropTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiImageCropTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiImageCropAssetsTheme {
@@ -68,6 +82,14 @@ class ImpaktfullUiImageCropAssetsTheme {
       ImpaktfullUiImageCropAssetsTheme(
         delete: delete ?? this.delete,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiImageCropAssetsTheme && delete == other.delete;
+
+  @override
+  int get hashCode => delete.hashCode;
 }
 
 class ImpaktfullUiImageCropColorTheme {
@@ -82,6 +104,15 @@ class ImpaktfullUiImageCropColorTheme {
       ImpaktfullUiImageCropColorTheme(
         deleteIcon: deleteIcon ?? this.deleteIcon,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiImageCropColorTheme &&
+          deleteIcon == other.deleteIcon;
+
+  @override
+  int get hashCode => deleteIcon.hashCode;
 }
 
 class ImpaktfullUiImageCropDimensTheme {
@@ -89,6 +120,12 @@ class ImpaktfullUiImageCropDimensTheme {
 
   ImpaktfullUiImageCropDimensTheme copyWith() =>
       const ImpaktfullUiImageCropDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiImageCropDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiImageCropDurationsTheme {
@@ -105,6 +142,15 @@ class ImpaktfullUiImageCropDurationsTheme {
       ImpaktfullUiImageCropDurationsTheme(
         cropDebounce: cropDebounce ?? this.cropDebounce,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiImageCropDurationsTheme &&
+          cropDebounce == other.cropDebounce;
+
+  @override
+  int get hashCode => cropDebounce.hashCode;
 }
 
 class ImpaktfullUiImageCropTextStyleTheme {
@@ -112,4 +158,11 @@ class ImpaktfullUiImageCropTextStyleTheme {
 
   ImpaktfullUiImageCropTextStyleTheme copyWith() =>
       const ImpaktfullUiImageCropTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiImageCropTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

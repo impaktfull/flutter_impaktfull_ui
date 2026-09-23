@@ -52,6 +52,20 @@ class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
         durations: const ImpaktfullUiAccordionDurationsTheme(),
         textStyles: const ImpaktfullUiAccordionTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAccordionTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiAccordionAssetsTheme {
@@ -66,6 +80,15 @@ class ImpaktfullUiAccordionAssetsTheme {
       ImpaktfullUiAccordionAssetsTheme(
         chevronDown: chevronDown ?? this.chevronDown,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAccordionAssetsTheme &&
+          chevronDown == other.chevronDown;
+
+  @override
+  int get hashCode => chevronDown.hashCode;
 }
 
 class ImpaktfullUiAccordionDurationsTheme {
@@ -83,6 +106,14 @@ class ImpaktfullUiAccordionDurationsTheme {
       ImpaktfullUiAccordionDurationsTheme(
         expand: expand ?? this.expand,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAccordionDurationsTheme && expand == other.expand;
+
+  @override
+  int get hashCode => expand.hashCode;
 }
 
 class ImpaktfullUiAccordionColorTheme {
@@ -90,6 +121,12 @@ class ImpaktfullUiAccordionColorTheme {
 
   ImpaktfullUiAccordionColorTheme copyWith() =>
       const ImpaktfullUiAccordionColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiAccordionColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiAccordionDimensTheme {
@@ -97,6 +134,12 @@ class ImpaktfullUiAccordionDimensTheme {
 
   ImpaktfullUiAccordionDimensTheme copyWith() =>
       const ImpaktfullUiAccordionDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiAccordionDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiAccordionTextStyleTheme {
@@ -104,4 +147,11 @@ class ImpaktfullUiAccordionTextStyleTheme {
 
   ImpaktfullUiAccordionTextStyleTheme copyWith() =>
       const ImpaktfullUiAccordionTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiAccordionTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

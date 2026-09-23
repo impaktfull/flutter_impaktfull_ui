@@ -77,6 +77,40 @@ class ImpaktfullUiTextStylesTheme {
         onSecondary: onSecondary ?? this.onSecondary,
         onDestructive: onDestructive ?? this.onDestructive,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTextStylesTheme &&
+          onCanvas == other.onCanvas &&
+          onCanvasAccent == other.onCanvasAccent &&
+          onCanvasSecondary == other.onCanvasSecondary &&
+          onCanvasTertiary == other.onCanvasTertiary &&
+          onCard == other.onCard &&
+          onCardAccent == other.onCardAccent &&
+          onCardSecondary == other.onCardSecondary &&
+          onCardTertiary == other.onCardTertiary &&
+          onCardDestructive == other.onCardDestructive &&
+          onPrimary == other.onPrimary &&
+          onAccent == other.onAccent &&
+          onSecondary == other.onSecondary &&
+          onDestructive == other.onDestructive;
+
+  @override
+  int get hashCode => Object.hash(
+      onCanvas,
+      onCanvasAccent,
+      onCanvasSecondary,
+      onCanvasTertiary,
+      onCard,
+      onCardAccent,
+      onCardSecondary,
+      onCardTertiary,
+      onCardDestructive,
+      onPrimary,
+      onAccent,
+      onSecondary,
+      onDestructive);
 }
 
 class ImpaktfullUiTextStyleTheme {
@@ -112,6 +146,16 @@ class ImpaktfullUiTextStyleTheme {
           fontFamily: fontFamilyText,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTextStyleTheme &&
+          display == other.display &&
+          text == other.text;
+
+  @override
+  int get hashCode => Object.hash(display, text);
 }
 
 class ImpaktfullUiTextStyleDisplayTheme {
@@ -162,6 +206,21 @@ class ImpaktfullUiTextStyleDisplayTheme {
       extraSmall: TextStyle(fontSize: 20, color: color, fontFamily: fontFamily),
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTextStyleDisplayTheme &&
+          extraLarge2 == other.extraLarge2 &&
+          extraLarge == other.extraLarge &&
+          large == other.large &&
+          medium == other.medium &&
+          small == other.small &&
+          extraSmall == other.extraSmall;
+
+  @override
+  int get hashCode =>
+      Object.hash(extraLarge2, extraLarge, large, medium, small, extraSmall);
 }
 
 class ImpaktfullUiTextStyleTextTheme {
@@ -207,4 +266,17 @@ class ImpaktfullUiTextStyleTextTheme {
         extraSmall:
             TextStyle(fontSize: 12, color: color, fontFamily: fontFamily),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTextStyleTextTheme &&
+          extraLarge == other.extraLarge &&
+          large == other.large &&
+          medium == other.medium &&
+          small == other.small &&
+          extraSmall == other.extraSmall;
+
+  @override
+  int get hashCode => Object.hash(extraLarge, large, medium, small, extraSmall);
 }

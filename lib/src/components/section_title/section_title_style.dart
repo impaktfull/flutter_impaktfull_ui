@@ -59,6 +59,18 @@ class ImpaktfullUiSectionTitleTheme extends ImpaktfullUiComponentTheme {
           title: textStyles.onCard.text.small.medium,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSectionTitleTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiSectionTitleAssetsTheme {
@@ -66,6 +78,13 @@ class ImpaktfullUiSectionTitleAssetsTheme {
 
   ImpaktfullUiSectionTitleAssetsTheme copyWith() =>
       const ImpaktfullUiSectionTitleAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSectionTitleAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSectionTitleColorTheme {
@@ -80,6 +99,14 @@ class ImpaktfullUiSectionTitleColorTheme {
       ImpaktfullUiSectionTitleColorTheme(
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSectionTitleColorTheme && icons == other.icons;
+
+  @override
+  int get hashCode => icons.hashCode;
 }
 
 class ImpaktfullUiSectionTitleDimensTheme {
@@ -99,6 +126,16 @@ class ImpaktfullUiSectionTitleDimensTheme {
         marginWithIconButtonActions:
             marginWithIconButtonActions ?? this.marginWithIconButtonActions,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSectionTitleDimensTheme &&
+          margin == other.margin &&
+          marginWithIconButtonActions == other.marginWithIconButtonActions;
+
+  @override
+  int get hashCode => Object.hash(margin, marginWithIconButtonActions);
 }
 
 class ImpaktfullUiSectionTitleTextStyleTheme {
@@ -113,4 +150,12 @@ class ImpaktfullUiSectionTitleTextStyleTheme {
       ImpaktfullUiSectionTitleTextStyleTheme(
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSectionTitleTextStyleTheme && title == other.title;
+
+  @override
+  int get hashCode => title.hashCode;
 }

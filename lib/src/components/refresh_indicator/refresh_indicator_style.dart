@@ -32,6 +32,14 @@ class ImpaktfullUiRefreshIndicatorTheme extends ImpaktfullUiComponentTheme {
           backgroundColor: colors.canvas,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiRefreshIndicatorTheme && colors == other.colors;
+
+  @override
+  int get hashCode => colors.hashCode;
 }
 
 class ImpaktfullUiRefreshIndicatorColorTheme {
@@ -51,4 +59,14 @@ class ImpaktfullUiRefreshIndicatorColorTheme {
         backgroundColor: backgroundColor ?? this.backgroundColor,
         loadingIndicator: loadingIndicator ?? this.loadingIndicator,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiRefreshIndicatorColorTheme &&
+          loadingIndicator == other.loadingIndicator &&
+          backgroundColor == other.backgroundColor;
+
+  @override
+  int get hashCode => Object.hash(loadingIndicator, backgroundColor);
 }

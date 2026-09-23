@@ -58,6 +58,20 @@ class ImpaktfullUiSelectableListItemTheme extends ImpaktfullUiComponentTheme {
         durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSelectableListItemTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiSelectableListItemAssetsTheme {
@@ -72,6 +86,15 @@ class ImpaktfullUiSelectableListItemAssetsTheme {
       ImpaktfullUiSelectableListItemAssetsTheme(
         check: check ?? this.check,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSelectableListItemAssetsTheme &&
+          check == other.check;
+
+  @override
+  int get hashCode => check.hashCode;
 }
 
 class ImpaktfullUiSelectableListItemColorTheme {
@@ -94,6 +117,17 @@ class ImpaktfullUiSelectableListItemColorTheme {
         selected: selected ?? this.selected,
         unselected: unselected ?? this.unselected,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSelectableListItemColorTheme &&
+          icons == other.icons &&
+          selected == other.selected &&
+          unselected == other.unselected;
+
+  @override
+  int get hashCode => Object.hash(icons, selected, unselected);
 }
 
 class ImpaktfullUiSelectableListItemDimensTheme {
@@ -121,6 +155,19 @@ class ImpaktfullUiSelectableListItemDimensTheme {
         trailingHeight: trailingHeight ?? this.trailingHeight,
         trailingWidth: trailingWidth ?? this.trailingWidth,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSelectableListItemDimensTheme &&
+          leadingHeight == other.leadingHeight &&
+          leadingWidth == other.leadingWidth &&
+          trailingHeight == other.trailingHeight &&
+          trailingWidth == other.trailingWidth;
+
+  @override
+  int get hashCode =>
+      Object.hash(leadingHeight, leadingWidth, trailingHeight, trailingWidth);
 }
 
 class ImpaktfullUiSelectableListItemDurationsTheme {
@@ -135,6 +182,15 @@ class ImpaktfullUiSelectableListItemDurationsTheme {
       ImpaktfullUiSelectableListItemDurationsTheme(
         color: color ?? this.color,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSelectableListItemDurationsTheme &&
+          color == other.color;
+
+  @override
+  int get hashCode => color.hashCode;
 }
 
 class ImpaktfullUiSelectableListItemTextStyleTheme {
@@ -142,4 +198,11 @@ class ImpaktfullUiSelectableListItemTextStyleTheme {
 
   ImpaktfullUiSelectableListItemTextStyleTheme copyWith() =>
       const ImpaktfullUiSelectableListItemTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSelectableListItemTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

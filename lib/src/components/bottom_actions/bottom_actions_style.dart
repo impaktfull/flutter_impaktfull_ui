@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
@@ -56,6 +57,19 @@ class ImpaktfullUiBottomActionsTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiBottomActionsTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomActionsTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          shadows == other.shadows &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, shadows, textStyles);
 }
 
 class ImpaktfullUiBottomActionsAssetsTheme {
@@ -63,6 +77,13 @@ class ImpaktfullUiBottomActionsAssetsTheme {
 
   ImpaktfullUiBottomActionsAssetsTheme copyWith() =>
       const ImpaktfullUiBottomActionsAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiBottomActionsAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiBottomActionsColorTheme {
@@ -78,6 +99,15 @@ class ImpaktfullUiBottomActionsColorTheme {
       ImpaktfullUiBottomActionsColorTheme(
         background: background ?? this.background,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomActionsColorTheme &&
+          background == other.background;
+
+  @override
+  int get hashCode => background.hashCode;
 }
 
 class ImpaktfullUiBottomActionsDimensTheme {
@@ -97,6 +127,16 @@ class ImpaktfullUiBottomActionsDimensTheme {
         padding: padding ?? this.padding,
         spacing: spacing ?? this.spacing,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomActionsDimensTheme &&
+          padding == other.padding &&
+          spacing == other.spacing;
+
+  @override
+  int get hashCode => Object.hash(padding, spacing);
 }
 
 class ImpaktfullUiBottomActionsShadowsTheme {
@@ -112,6 +152,15 @@ class ImpaktfullUiBottomActionsShadowsTheme {
       ImpaktfullUiBottomActionsShadowsTheme(
         shadow: shadow ?? this.shadow,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomActionsShadowsTheme &&
+          listEquals(shadow, other.shadow);
+
+  @override
+  int get hashCode => Object.hashAll(shadow ?? const []);
 }
 
 class ImpaktfullUiBottomActionsTextStyleTheme {
@@ -119,4 +168,11 @@ class ImpaktfullUiBottomActionsTextStyleTheme {
 
   ImpaktfullUiBottomActionsTextStyleTheme copyWith() =>
       const ImpaktfullUiBottomActionsTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiBottomActionsTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

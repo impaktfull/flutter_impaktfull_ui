@@ -36,6 +36,16 @@ class ImpaktfullUiHorizontalTabsTheme extends ImpaktfullUiComponentTheme {
           padding: EdgeInsets.symmetric(horizontal: 16),
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiHorizontalTabsTheme &&
+          colors == other.colors &&
+          dimens == other.dimens;
+
+  @override
+  int get hashCode => Object.hash(colors, dimens);
 }
 
 class ImpaktfullUiHorizontalTabsColorTheme {
@@ -43,6 +53,13 @@ class ImpaktfullUiHorizontalTabsColorTheme {
 
   ImpaktfullUiHorizontalTabsColorTheme copyWith() =>
       const ImpaktfullUiHorizontalTabsColorTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiHorizontalTabsColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiHorizontalTabsDimensTheme {
@@ -70,4 +87,15 @@ class ImpaktfullUiHorizontalTabsDimensTheme {
         padding: padding ?? this.padding,
         spacing: spacing ?? this.spacing,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiHorizontalTabsDimensTheme &&
+          padding == other.padding &&
+          height == other.height &&
+          spacing == other.spacing;
+
+  @override
+  int get hashCode => Object.hash(padding, height, spacing);
 }

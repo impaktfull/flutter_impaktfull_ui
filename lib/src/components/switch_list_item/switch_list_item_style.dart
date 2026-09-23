@@ -46,6 +46,18 @@ class ImpaktfullUiSwitchListItemTheme extends ImpaktfullUiComponentTheme {
         dimens: const ImpaktfullUiSwitchListItemDimensTheme(),
         textStyles: const ImpaktfullUiSwitchListItemTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSwitchListItemTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiSwitchListItemAssetsTheme {
@@ -53,6 +65,13 @@ class ImpaktfullUiSwitchListItemAssetsTheme {
 
   ImpaktfullUiSwitchListItemAssetsTheme copyWith() =>
       const ImpaktfullUiSwitchListItemAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSwitchListItemAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSwitchListItemColorTheme {
@@ -67,6 +86,14 @@ class ImpaktfullUiSwitchListItemColorTheme {
       ImpaktfullUiSwitchListItemColorTheme(
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSwitchListItemColorTheme && icons == other.icons;
+
+  @override
+  int get hashCode => icons.hashCode;
 }
 
 class ImpaktfullUiSwitchListItemDimensTheme {
@@ -74,6 +101,13 @@ class ImpaktfullUiSwitchListItemDimensTheme {
 
   ImpaktfullUiSwitchListItemDimensTheme copyWith() =>
       const ImpaktfullUiSwitchListItemDimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSwitchListItemDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSwitchListItemTextStyleTheme {
@@ -81,4 +115,11 @@ class ImpaktfullUiSwitchListItemTextStyleTheme {
 
   ImpaktfullUiSwitchListItemTextStyleTheme copyWith() =>
       const ImpaktfullUiSwitchListItemTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSwitchListItemTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

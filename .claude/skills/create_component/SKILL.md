@@ -72,6 +72,18 @@ class ImpaktfullUi<ComponentName>Theme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUi<ComponentName>DimensTheme(),
         textStyles: ImpaktfullUi<ComponentName>TextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUi<ComponentName>Theme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUi<ComponentName>AssetsTheme {
@@ -79,6 +91,13 @@ class ImpaktfullUi<ComponentName>AssetsTheme {
 
   ImpaktfullUi<ComponentName>AssetsTheme copyWith() =>
       const ImpaktfullUi<ComponentName>AssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUi<ComponentName>AssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUi<ComponentName>ColorTheme {
@@ -86,6 +105,13 @@ class ImpaktfullUi<ComponentName>ColorTheme {
 
   ImpaktfullUi<ComponentName>ColorTheme copyWith() =>
       const ImpaktfullUi<ComponentName>ColorTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUi<ComponentName>ColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUi<ComponentName>DimensTheme {
@@ -93,6 +119,13 @@ class ImpaktfullUi<ComponentName>DimensTheme {
 
   ImpaktfullUi<ComponentName>DimensTheme copyWith() =>
       const ImpaktfullUi<ComponentName>DimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUi<ComponentName>DimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUi<ComponentName>TextStyleTheme {
@@ -100,6 +133,13 @@ class ImpaktfullUi<ComponentName>TextStyleTheme {
 
   ImpaktfullUi<ComponentName>TextStyleTheme copyWith() =>
       const ImpaktfullUi<ComponentName>TextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUi<ComponentName>TextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 ```
 
@@ -150,6 +190,24 @@ An object without a `BuildContext` (a `PageRoute`) takes the value as a construc
 
 - When you add a field to a theme class later, add it to its `copyWith` too.
 - `test/src/theme/theme_copy_with_source_test.dart` fails when a `class ImpaktfullUi*Theme` has no `copyWith` or its `copyWith` misses a field.
+
+**Every theme class needs `==` and `hashCode`** as well, at the end of the class. A theme that only compares by identity makes `ImpaktfullUiThemeConfigurator.updateShouldNotify` return true for a theme that did not change, which rebuilds every widget that reads it:
+
+```dart
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUi<ComponentName>ColorTheme &&
+          background == other.background;
+
+  @override
+  int get hashCode => background.hashCode;
+```
+
+- Compare every field of the class. A `List` field uses `listEquals(field, other.field)` (from `package:flutter/foundation.dart`) and `Object.hashAll(field)`, never `==`.
+- `Object.hash(a, b, ...)` takes 2 to 20 arguments: a class with one field uses `field.hashCode`, a class with more than 20 fields uses `Object.hashAll([...])`. A theme without tokens is `other is <TheTheme>` with `runtimeType.hashCode`.
+- When you add a field to a theme class later, add it to its `==` too.
+- `test/src/theme/theme_equality_source_test.dart` fails when a `class ImpaktfullUi*Theme` has no `operator ==` or `hashCode`, or its `==` misses a field.
 
 ### 3. Create the Main Component File (`<component_name>.dart`)
 
@@ -307,6 +365,13 @@ ImpaktfullUi<ComponentName>Theme? <componentName>,
 } else if (T == ImpaktfullUi<ComponentName>Theme) {
   return ImpaktfullUi<ComponentName>Theme.of(context) as T;
 }
+```
+
+6. Add to `operator ==` and to `hashCode` (alphabetically):
+```dart
+<componentName> == other.<componentName> &&
+// In hashCode:
+<componentName>,
 ```
 
 #### Update `lib/src/theme/theme_default.dart`

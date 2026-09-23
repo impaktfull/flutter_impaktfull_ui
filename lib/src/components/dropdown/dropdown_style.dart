@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
@@ -60,6 +61,19 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
         ),
         durations: const ImpaktfullUiDropdownDurationsTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDropdownTheme &&
+          colors == other.colors &&
+          shadows == other.shadows &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          assets == other.assets;
+
+  @override
+  int get hashCode => Object.hash(colors, shadows, dimens, durations, assets);
 }
 
 class ImpaktfullUiDropdownColorTheme {
@@ -79,6 +93,16 @@ class ImpaktfullUiDropdownColorTheme {
         menuBackground: menuBackground ?? this.menuBackground,
         menuBorder: menuBorder ?? this.menuBorder,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDropdownColorTheme &&
+          menuBackground == other.menuBackground &&
+          menuBorder == other.menuBorder;
+
+  @override
+  int get hashCode => Object.hash(menuBackground, menuBorder);
 }
 
 class ImpaktfullUiDropdownDurationsTheme {
@@ -95,6 +119,14 @@ class ImpaktfullUiDropdownDurationsTheme {
       ImpaktfullUiDropdownDurationsTheme(
         overlay: overlay ?? this.overlay,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDropdownDurationsTheme && overlay == other.overlay;
+
+  @override
+  int get hashCode => overlay.hashCode;
 }
 
 class ImpaktfullUiDropdownShadowsTheme {
@@ -109,6 +141,15 @@ class ImpaktfullUiDropdownShadowsTheme {
       ImpaktfullUiDropdownShadowsTheme(
         overlay: overlay ?? this.overlay,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDropdownShadowsTheme &&
+          listEquals(overlay, other.overlay);
+
+  @override
+  int get hashCode => Object.hashAll(overlay);
 }
 
 class ImpaktfullUiDropdownDimensTheme {
@@ -131,6 +172,16 @@ class ImpaktfullUiDropdownDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         overlayWidth: overlayWidth ?? this.overlayWidth,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDropdownDimensTheme &&
+          borderRadius == other.borderRadius &&
+          overlayWidth == other.overlayWidth;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, overlayWidth);
 }
 
 class ImpaktfullUiDropdownAssetsTheme {
@@ -150,4 +201,14 @@ class ImpaktfullUiDropdownAssetsTheme {
         dropDown: dropDown ?? this.dropDown,
         dropUp: dropUp ?? this.dropUp,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDropdownAssetsTheme &&
+          dropDown == other.dropDown &&
+          dropUp == other.dropUp;
+
+  @override
+  int get hashCode => Object.hash(dropDown, dropUp);
 }

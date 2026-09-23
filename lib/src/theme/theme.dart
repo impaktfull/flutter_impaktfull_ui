@@ -227,4 +227,24 @@ class ImpaktfullUiTheme<T extends Object> {
         components: components ?? this.components,
         customTheme: customTheme ?? customThemeOrNull,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other.runtimeType == runtimeType &&
+          other is ImpaktfullUiTheme<T> &&
+          label == other.label &&
+          brightness == other.brightness &&
+          assets == other.assets &&
+          colors == other.colors &&
+          textStyles == other.textStyles &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          shadows == other.shadows &&
+          components == other.components &&
+          _customTheme == other._customTheme;
+
+  @override
+  int get hashCode => Object.hash(label, brightness, assets, colors, textStyles,
+      dimens, durations, shadows, components, _customTheme);
 }

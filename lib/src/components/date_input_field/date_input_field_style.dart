@@ -61,6 +61,18 @@ class ImpaktfullUiDateInputFieldTheme extends ImpaktfullUiComponentTheme {
               .copyWith(color: colors.error),
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDateInputFieldTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiDateInputFieldAssetsTheme {
@@ -68,6 +80,13 @@ class ImpaktfullUiDateInputFieldAssetsTheme {
 
   ImpaktfullUiDateInputFieldAssetsTheme copyWith() =>
       const ImpaktfullUiDateInputFieldAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiDateInputFieldAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiDateInputFieldColorTheme {
@@ -91,6 +110,17 @@ class ImpaktfullUiDateInputFieldColorTheme {
         border: border ?? this.border,
         borderError: borderError ?? this.borderError,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDateInputFieldColorTheme &&
+          background == other.background &&
+          border == other.border &&
+          borderError == other.borderError;
+
+  @override
+  int get hashCode => Object.hash(background, border, borderError);
 }
 
 class ImpaktfullUiDateInputFieldDimensTheme {
@@ -106,6 +136,15 @@ class ImpaktfullUiDateInputFieldDimensTheme {
       ImpaktfullUiDateInputFieldDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDateInputFieldDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiDateInputFieldTextStyleTheme {
@@ -137,4 +176,17 @@ class ImpaktfullUiDateInputFieldTextStyleTheme {
         placeholder: placeholder ?? this.placeholder,
         text: text ?? this.text,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDateInputFieldTextStyleTheme &&
+          label == other.label &&
+          text == other.text &&
+          placeholder == other.placeholder &&
+          hint == other.hint &&
+          error == other.error;
+
+  @override
+  int get hashCode => Object.hash(label, text, placeholder, hint, error);
 }

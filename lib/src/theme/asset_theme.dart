@@ -197,6 +197,17 @@ class ImpaktfullUiAssetTheme {
       package: package,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAssetTheme &&
+          icons == other.icons &&
+          images == other.images &&
+          lotties == other.lotties;
+
+  @override
+  int get hashCode => Object.hash(icons, images, lotties);
 }
 
 class ImpaktfullUiIconTheme {
@@ -417,6 +428,119 @@ class ImpaktfullUiIconTheme {
         wysiwygUnorderedListItem:
             wysiwygUnorderedListItem ?? this.wysiwygUnorderedListItem,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiIconTheme &&
+          add == other.add &&
+          arrowLeft == other.arrowLeft &&
+          arrowRight == other.arrowRight &&
+          arrowUp == other.arrowUp &&
+          arrowDown == other.arrowDown &&
+          backspace == other.backspace &&
+          check == other.check &&
+          checkCircle == other.checkCircle &&
+          chevronDown == other.chevronDown &&
+          chevronLeft == other.chevronLeft &&
+          chevronRight == other.chevronRight &&
+          chevronUp == other.chevronUp &&
+          circle == other.circle &&
+          close == other.close &&
+          closeCircle == other.closeCircle &&
+          cloudUpload == other.cloudUpload &&
+          confetti == other.confetti &&
+          copy == other.copy &&
+          delete == other.delete &&
+          dot == other.dot &&
+          cloudDownload == other.cloudDownload &&
+          edit == other.edit &&
+          error == other.error &&
+          file == other.file &&
+          home == other.home &&
+          info == other.info &&
+          leaf == other.leaf &&
+          lineVertical == other.lineVertical &&
+          list == other.list &&
+          logout == other.logout &&
+          minus == other.minus &&
+          moreHorizontal == other.moreHorizontal &&
+          moreVertical == other.moreVertical &&
+          passwordHide == other.passwordHide &&
+          passwordShow == other.passwordShow &&
+          refresh == other.refresh &&
+          search == other.search &&
+          settings == other.settings &&
+          share == other.share &&
+          success == other.success &&
+          user == other.user &&
+          warning == other.warning &&
+          wysiwygBold == other.wysiwygBold &&
+          wysiwygCode == other.wysiwygCode &&
+          wysiwygCodeBlock == other.wysiwygCodeBlock &&
+          wysiwygHeader == other.wysiwygHeader &&
+          wysiwygItalic == other.wysiwygItalic &&
+          wysiwygLink == other.wysiwygLink &&
+          wysiwygOrderedList == other.wysiwygOrderedList &&
+          wysiwygPhoto == other.wysiwygPhoto &&
+          wysiwygUnorderedList == other.wysiwygUnorderedList &&
+          wysiwygUnorderedListItem == other.wysiwygUnorderedListItem;
+
+  @override
+  int get hashCode => Object.hashAll([
+        add,
+        arrowLeft,
+        arrowRight,
+        arrowUp,
+        arrowDown,
+        backspace,
+        check,
+        checkCircle,
+        chevronDown,
+        chevronLeft,
+        chevronRight,
+        chevronUp,
+        circle,
+        close,
+        closeCircle,
+        cloudUpload,
+        confetti,
+        copy,
+        delete,
+        dot,
+        cloudDownload,
+        edit,
+        error,
+        file,
+        home,
+        info,
+        leaf,
+        lineVertical,
+        list,
+        logout,
+        minus,
+        moreHorizontal,
+        moreVertical,
+        passwordHide,
+        passwordShow,
+        refresh,
+        search,
+        settings,
+        share,
+        success,
+        user,
+        warning,
+        wysiwygBold,
+        wysiwygCode,
+        wysiwygCodeBlock,
+        wysiwygHeader,
+        wysiwygItalic,
+        wysiwygLink,
+        wysiwygOrderedList,
+        wysiwygPhoto,
+        wysiwygUnorderedList,
+        wysiwygUnorderedListItem,
+      ]);
 }
 
 class ImpaktfullUiImageTheme {
@@ -436,6 +560,16 @@ class ImpaktfullUiImageTheme {
         logo: logo ?? this.logo,
         splashLogo: splashLogo ?? this.splashLogo,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiImageTheme &&
+          logo == other.logo &&
+          splashLogo == other.splashLogo;
+
+  @override
+  int get hashCode => Object.hash(logo, splashLogo);
 }
 
 class ImpaktfullUiLottieTheme {
@@ -451,4 +585,12 @@ class ImpaktfullUiLottieTheme {
       ImpaktfullUiLottieTheme(
         loading: loading ?? this.loading,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLottieTheme && loading == other.loading;
+
+  @override
+  int get hashCode => loading.hashCode;
 }

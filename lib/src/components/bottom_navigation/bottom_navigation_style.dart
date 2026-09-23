@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
@@ -53,6 +54,19 @@ class ImpaktfullUiBottomNavigationTheme extends ImpaktfullUiComponentTheme {
           background: shadows.medium,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomNavigationTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles &&
+          shadows == other.shadows;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles, shadows);
 }
 
 class ImpaktfullUiBottomNavigationAssetsTheme {
@@ -60,6 +74,13 @@ class ImpaktfullUiBottomNavigationAssetsTheme {
 
   ImpaktfullUiBottomNavigationAssetsTheme copyWith() =>
       const ImpaktfullUiBottomNavigationAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiBottomNavigationAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiBottomNavigationColorTheme {
@@ -75,6 +96,15 @@ class ImpaktfullUiBottomNavigationColorTheme {
       ImpaktfullUiBottomNavigationColorTheme(
         background: background ?? this.background,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomNavigationColorTheme &&
+          background == other.background;
+
+  @override
+  int get hashCode => background.hashCode;
 }
 
 class ImpaktfullUiBottomNavigationDimensTheme {
@@ -82,6 +112,13 @@ class ImpaktfullUiBottomNavigationDimensTheme {
 
   ImpaktfullUiBottomNavigationDimensTheme copyWith() =>
       const ImpaktfullUiBottomNavigationDimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiBottomNavigationDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiBottomNavigationTextStyleTheme {
@@ -89,6 +126,13 @@ class ImpaktfullUiBottomNavigationTextStyleTheme {
 
   ImpaktfullUiBottomNavigationTextStyleTheme copyWith() =>
       const ImpaktfullUiBottomNavigationTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiBottomNavigationTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiBottomNavigationShadowsTheme {
@@ -104,4 +148,13 @@ class ImpaktfullUiBottomNavigationShadowsTheme {
       ImpaktfullUiBottomNavigationShadowsTheme(
         background: background ?? this.background,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomNavigationShadowsTheme &&
+          listEquals(background, other.background);
+
+  @override
+  int get hashCode => Object.hashAll(background ?? const []);
 }

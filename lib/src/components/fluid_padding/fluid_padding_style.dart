@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/components/fluid_padding/fluid_padding.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
@@ -80,6 +81,18 @@ class ImpaktfullUiFluidPaddingTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: ImpaktfullUiFluidPaddingTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFluidPaddingTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiFluidPaddingAssetsTheme {
@@ -87,6 +100,13 @@ class ImpaktfullUiFluidPaddingAssetsTheme {
 
   ImpaktfullUiFluidPaddingAssetsTheme copyWith() =>
       const ImpaktfullUiFluidPaddingAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiFluidPaddingAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiFluidPaddingColorTheme {
@@ -94,6 +114,12 @@ class ImpaktfullUiFluidPaddingColorTheme {
 
   ImpaktfullUiFluidPaddingColorTheme copyWith() =>
       const ImpaktfullUiFluidPaddingColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiFluidPaddingColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiFluidPaddingDimensTheme {
@@ -109,6 +135,15 @@ class ImpaktfullUiFluidPaddingDimensTheme {
       ImpaktfullUiFluidPaddingDimensTheme(
         breakPoints: breakPoints ?? this.breakPoints,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFluidPaddingDimensTheme &&
+          listEquals(breakPoints, other.breakPoints);
+
+  @override
+  int get hashCode => Object.hashAll(breakPoints);
 }
 
 class ImpaktfullUiFluidPaddingTextStyleTheme {
@@ -116,4 +151,11 @@ class ImpaktfullUiFluidPaddingTextStyleTheme {
 
   ImpaktfullUiFluidPaddingTextStyleTheme copyWith() =>
       const ImpaktfullUiFluidPaddingTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiFluidPaddingTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

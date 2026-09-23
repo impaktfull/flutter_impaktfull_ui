@@ -55,6 +55,20 @@ class ImpaktfullUiTooltipTheme extends ImpaktfullUiComponentTheme {
         ),
         assets: const ImpaktfullUiTooltipAssetsTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTooltipTheme &&
+          colors == other.colors &&
+          textStyles == other.textStyles &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          assets == other.assets;
+
+  @override
+  int get hashCode =>
+      Object.hash(colors, textStyles, dimens, durations, assets);
 }
 
 class ImpaktfullUiTooltipColorTheme {
@@ -70,6 +84,14 @@ class ImpaktfullUiTooltipColorTheme {
       ImpaktfullUiTooltipColorTheme(
         background: background ?? this.background,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTooltipColorTheme && background == other.background;
+
+  @override
+  int get hashCode => background.hashCode;
 }
 
 class ImpaktfullUiTooltipTextStyleTheme {
@@ -77,6 +99,12 @@ class ImpaktfullUiTooltipTextStyleTheme {
 
   ImpaktfullUiTooltipTextStyleTheme copyWith() =>
       const ImpaktfullUiTooltipTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiTooltipTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiTooltipDimensTheme {
@@ -92,6 +120,15 @@ class ImpaktfullUiTooltipDimensTheme {
       ImpaktfullUiTooltipDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTooltipDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiTooltipDurationsTheme {
@@ -107,6 +144,14 @@ class ImpaktfullUiTooltipDurationsTheme {
       ImpaktfullUiTooltipDurationsTheme(
         wait: wait ?? this.wait,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTooltipDurationsTheme && wait == other.wait;
+
+  @override
+  int get hashCode => wait.hashCode;
 }
 
 class ImpaktfullUiTooltipAssetsTheme {
@@ -114,4 +159,10 @@ class ImpaktfullUiTooltipAssetsTheme {
 
   ImpaktfullUiTooltipAssetsTheme copyWith() =>
       const ImpaktfullUiTooltipAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiTooltipAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

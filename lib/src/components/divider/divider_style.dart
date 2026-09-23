@@ -39,6 +39,16 @@ class ImpaktfullUiDividerTheme extends ImpaktfullUiComponentTheme {
           thickness: 1,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDividerTheme &&
+          colors == other.colors &&
+          dimens == other.dimens;
+
+  @override
+  int get hashCode => Object.hash(colors, dimens);
 }
 
 class ImpaktfullUiDividerColorTheme {
@@ -54,6 +64,14 @@ class ImpaktfullUiDividerColorTheme {
       ImpaktfullUiDividerColorTheme(
         color: color ?? this.color,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDividerColorTheme && color == other.color;
+
+  @override
+  int get hashCode => color.hashCode;
 }
 
 class ImpaktfullUiDividerDimensTheme {
@@ -73,4 +91,14 @@ class ImpaktfullUiDividerDimensTheme {
         margin: margin ?? this.margin,
         thickness: thickness ?? this.thickness,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDividerDimensTheme &&
+          margin == other.margin &&
+          thickness == other.thickness;
+
+  @override
+  int get hashCode => Object.hash(margin, thickness);
 }

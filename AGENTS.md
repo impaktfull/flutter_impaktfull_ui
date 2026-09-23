@@ -94,6 +94,16 @@ Constructor parameters, fields, getters and callbacks follow these rules, so an 
 3. **The main text of a display component is `title`** (buttons, the floating action button, badges, tabs, navigation items, list items, cards, section titles, dropdown buttons: `buttonTitle`), with `subtitle` for a second line and `titleBuilder` for a builder. **Input fields keep `label`**, like Flutter's `InputDecoration.labelText`.
 4. **The value parameter** is recognizable next to the Flutter widget for the same job and consistent with the other components of this package: `value` / `onChanged` for inputs (`ImpaktfullUiInputField`, `ImpaktfullUiDateInputField`, `ImpaktfullUiTimePicker`, `ImpaktfullUiWysiwyg`), `value` / `groupValue` for selections. Keep a domain name when Flutter uses one or there is no clearer equivalent (`ImpaktfullUiPinCode.code`, `ImpaktfullUiDatePicker.selectedDate` with `onDateChanged` like `CalendarDatePicker`, `ImpaktfullUiPagination.page`). Do not rename for uniformity alone.
 
+## Theme classes
+
+A theme is a value: an app that builds its theme again with the same tokens gets an equal theme, and `ImpaktfullUiThemeConfigurator.updateShouldNotify` then rebuilds nothing that reads it. Every `class ImpaktfullUi*Theme` under `lib/src` (and the value classes a theme holds: `ImpaktfullUiAsset`, `ImpaktfullUiButtonConfig`, `ImpaktfullUiFluidPaddingBreakPoint`) therefore has three things, and a new field is added to all of them:
+
+- a `copyWith` with one nullable named parameter per field, in alphabetical order, forwarded as `field: field ?? this.field`;
+- an `operator ==` that compares every field: `identical(this, other) || other is <TheTheme> && a == other.a && ...`, with `listEquals(a, other.a)` for a `List` field;
+- a `hashCode` over the same fields: `Object.hash(...)` (2 to 20 arguments), `field.hashCode` for a single field, `Object.hashAll([...])` above 20 and `Object.hashAll(field)` for a list. A theme without tokens is `other is <TheTheme>` with `runtimeType.hashCode`.
+
+`test/src/theme/theme_copy_with_source_test.dart` and `test/src/theme/theme_equality_source_test.dart` scan the sources and fail with the class and the field that is missing. Details and the caveats (the `customTheme` of an app and the type argument of `ImpaktfullUiTheme<T>` are compared by reference) are in the [Theme System](.claude/skills/theme_system/SKILL.md) skill.
+
 ## Accessibility
 
 Every component must work with screen readers, keyboards and the "reduce motion" setting (see the README "Accessibility" section and the Accessibility step in the [Create a Component](.claude/skills/create_component/SKILL.md) skill):
@@ -164,7 +174,7 @@ CI fails when the line coverage of `lib/` drops below a minimum. Run it locally 
 
 ```bash
 flutter test --coverage
-dart run tool/coverage/bin/coverage_summary.dart --min 86.7
+dart run tool/coverage/bin/coverage_summary.dart --min 87.7
 ```
 
 `tool/coverage/bin/coverage_summary.dart` reads `coverage/lcov.info` (ignored by git), prints the coverage per directory of `lib/src` and exits with an error below `--min`. The minimum is set in the `Coverage` step of `.github/workflows/validate.yml`, about 1% below the measured coverage so small refactors do not fail CI. **The minimum only goes up:** when a pull request raises the coverage, raise the minimum to the new total minus 1% in the same pull request. Never lower it to make CI pass, add tests instead.

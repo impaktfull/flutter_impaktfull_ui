@@ -52,6 +52,18 @@ class ImpaktfullUiRadioButtonTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiRadioButtonTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiRadioButtonTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiRadioButtonAssetsTheme {
@@ -59,6 +71,12 @@ class ImpaktfullUiRadioButtonAssetsTheme {
 
   ImpaktfullUiRadioButtonAssetsTheme copyWith() =>
       const ImpaktfullUiRadioButtonAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiRadioButtonAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiRadioButtonColorTheme {
@@ -91,6 +109,20 @@ class ImpaktfullUiRadioButtonColorTheme {
         selected: selected ?? this.selected,
         unselected: unselected ?? this.unselected,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiRadioButtonColorTheme &&
+          selected == other.selected &&
+          unselected == other.unselected &&
+          border == other.border &&
+          centerSelectedBackground == other.centerSelectedBackground &&
+          centerUnSelectedBackground == other.centerUnSelectedBackground;
+
+  @override
+  int get hashCode => Object.hash(selected, unselected, border,
+      centerSelectedBackground, centerUnSelectedBackground);
 }
 
 class ImpaktfullUiRadioButtonDimensTheme {
@@ -115,6 +147,16 @@ class ImpaktfullUiRadioButtonDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         minTapTargetSize: minTapTargetSize ?? this.minTapTargetSize,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiRadioButtonDimensTheme &&
+          borderRadius == other.borderRadius &&
+          minTapTargetSize == other.minTapTargetSize;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, minTapTargetSize);
 }
 
 class ImpaktfullUiRadioButtonTextStyleTheme {
@@ -122,4 +164,11 @@ class ImpaktfullUiRadioButtonTextStyleTheme {
 
   ImpaktfullUiRadioButtonTextStyleTheme copyWith() =>
       const ImpaktfullUiRadioButtonTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiRadioButtonTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

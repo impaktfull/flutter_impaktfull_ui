@@ -595,4 +595,187 @@ class ImpaktfullUiComponentsTheme {
     }
     return componentTheme as T;
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiComponentsTheme &&
+          accordion == other.accordion &&
+          avatar == other.avatar &&
+          autoComplete == other.autoComplete &&
+          badge == other.badge &&
+          bbLicenses == other.bbLicenses &&
+          bottomActions == other.bottomActions &&
+          bottomNavigation == other.bottomNavigation &&
+          bottomNavigationItem == other.bottomNavigationItem &&
+          bottomSheet == other.bottomSheet &&
+          button == other.button &&
+          calendar == other.calendar &&
+          card == other.card &&
+          carousel == other.carousel &&
+          chat == other.chat &&
+          checkbox == other.checkbox &&
+          checkboxListItem == other.checkboxListItem &&
+          cmsHeader == other.cmsHeader &&
+          colorPicker == other.colorPicker &&
+          colorInputField == other.colorInputField &&
+          commandMenu == other.commandMenu &&
+          confetti == other.confetti &&
+          dateInputField == other.dateInputField &&
+          datePicker == other.datePicker &&
+          dateTimePicker == other.dateTimePicker &&
+          divider == other.divider &&
+          dropdown == other.dropdown &&
+          filePicker == other.filePicker &&
+          floatingActionButton == other.floatingActionButton &&
+          fluidPadding == other.fluidPadding &&
+          gallery == other.gallery &&
+          gridView == other.gridView &&
+          horizontalTab == other.horizontalTab &&
+          horizontalTabs == other.horizontalTabs &&
+          iconButton == other.iconButton &&
+          imageCrop == other.imageCrop &&
+          inputField == other.inputField &&
+          introduction == other.introduction &&
+          lineChart == other.lineChart &&
+          listItem == other.listItem &&
+          listView == other.listView &&
+          loadingErrorData == other.loadingErrorData &&
+          loadingIndicator == other.loadingIndicator &&
+          markdown == other.markdown &&
+          metric == other.metric &&
+          modal == other.modal &&
+          navBar == other.navBar &&
+          networkImage == other.networkImage &&
+          notification == other.notification &&
+          notificationBadge == other.notificationBadge &&
+          numberInput == other.numberInput &&
+          optionSelector == other.optionSelector &&
+          pagination == other.pagination &&
+          passwordStrengthIndicator == other.passwordStrengthIndicator &&
+          pinCode == other.pinCode &&
+          placeholder == other.placeholder &&
+          progressIndicator == other.progressIndicator &&
+          radioButton == other.radioButton &&
+          radioButtonListItem == other.radioButtonListItem &&
+          refreshIndicator == other.refreshIndicator &&
+          responsiveLayout == other.responsiveLayout &&
+          screen == other.screen &&
+          sectionTitle == other.sectionTitle &&
+          segmentedControl == other.segmentedControl &&
+          selectableListItem == other.selectableListItem &&
+          separatedColumn == other.separatedColumn &&
+          sidebarNavigation == other.sidebarNavigation &&
+          sidebarNavigationItem == other.sidebarNavigationItem &&
+          simpleListItem == other.simpleListItem &&
+          skeleton == other.skeleton &&
+          slider == other.slider &&
+          snackyConfigurator == other.snackyConfigurator &&
+          stepper == other.stepper &&
+          switchTheme == other.switchTheme &&
+          switchListItem == other.switchListItem &&
+          tabBar == other.tabBar &&
+          tabBarItem == other.tabBarItem &&
+          table == other.table &&
+          tableHeader == other.tableHeader &&
+          tableHeaderItem == other.tableHeaderItem &&
+          tableRow == other.tableRow &&
+          tableRowItem == other.tableRowItem &&
+          timePicker == other.timePicker &&
+          tooltip == other.tooltip &&
+          touchFeedback == other.touchFeedback &&
+          unifiedScreenLayout == other.unifiedScreenLayout &&
+          virtualKeyboard == other.virtualKeyboard &&
+          wysiwyg == other.wysiwyg;
+
+  @override
+  int get hashCode => Object.hashAll([
+        accordion,
+        avatar,
+        autoComplete,
+        badge,
+        bbLicenses,
+        bottomActions,
+        bottomNavigation,
+        bottomNavigationItem,
+        bottomSheet,
+        button,
+        calendar,
+        card,
+        carousel,
+        chat,
+        checkbox,
+        checkboxListItem,
+        cmsHeader,
+        colorPicker,
+        colorInputField,
+        commandMenu,
+        confetti,
+        dateInputField,
+        datePicker,
+        dateTimePicker,
+        divider,
+        dropdown,
+        filePicker,
+        floatingActionButton,
+        fluidPadding,
+        gallery,
+        gridView,
+        horizontalTab,
+        horizontalTabs,
+        iconButton,
+        imageCrop,
+        inputField,
+        introduction,
+        lineChart,
+        listItem,
+        listView,
+        loadingErrorData,
+        loadingIndicator,
+        markdown,
+        metric,
+        modal,
+        navBar,
+        networkImage,
+        notification,
+        notificationBadge,
+        numberInput,
+        optionSelector,
+        pagination,
+        passwordStrengthIndicator,
+        pinCode,
+        placeholder,
+        progressIndicator,
+        radioButton,
+        radioButtonListItem,
+        refreshIndicator,
+        responsiveLayout,
+        screen,
+        sectionTitle,
+        segmentedControl,
+        selectableListItem,
+        separatedColumn,
+        sidebarNavigation,
+        sidebarNavigationItem,
+        simpleListItem,
+        skeleton,
+        slider,
+        snackyConfigurator,
+        stepper,
+        switchTheme,
+        switchListItem,
+        tabBar,
+        tabBarItem,
+        table,
+        tableHeader,
+        tableHeaderItem,
+        tableRow,
+        tableRowItem,
+        timePicker,
+        tooltip,
+        touchFeedback,
+        unifiedScreenLayout,
+        virtualKeyboard,
+        wysiwyg,
+      ]);
 }

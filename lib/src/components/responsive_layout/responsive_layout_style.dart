@@ -49,6 +49,18 @@ class ImpaktfullUiResponsiveLayoutTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: ImpaktfullUiResponsiveLayoutTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiResponsiveLayoutTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiResponsiveLayoutAssetsTheme {
@@ -56,6 +68,13 @@ class ImpaktfullUiResponsiveLayoutAssetsTheme {
 
   ImpaktfullUiResponsiveLayoutAssetsTheme copyWith() =>
       const ImpaktfullUiResponsiveLayoutAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiResponsiveLayoutAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiResponsiveLayoutColorTheme {
@@ -63,6 +82,13 @@ class ImpaktfullUiResponsiveLayoutColorTheme {
 
   ImpaktfullUiResponsiveLayoutColorTheme copyWith() =>
       const ImpaktfullUiResponsiveLayoutColorTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiResponsiveLayoutColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiResponsiveLayoutDimensTheme {
@@ -89,6 +115,19 @@ class ImpaktfullUiResponsiveLayoutDimensTheme {
         breakpointMedium: breakpointMedium ?? this.breakpointMedium,
         breakpointSmall: breakpointSmall ?? this.breakpointSmall,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiResponsiveLayoutDimensTheme &&
+          breakpointSmall == other.breakpointSmall &&
+          breakpointMedium == other.breakpointMedium &&
+          breakpointLarge == other.breakpointLarge &&
+          breakpointExtraLarge == other.breakpointExtraLarge;
+
+  @override
+  int get hashCode => Object.hash(
+      breakpointSmall, breakpointMedium, breakpointLarge, breakpointExtraLarge);
 }
 
 class ImpaktfullUiResponsiveLayoutTextStyleTheme {
@@ -96,4 +135,11 @@ class ImpaktfullUiResponsiveLayoutTextStyleTheme {
 
   ImpaktfullUiResponsiveLayoutTextStyleTheme copyWith() =>
       const ImpaktfullUiResponsiveLayoutTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiResponsiveLayoutTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

@@ -60,6 +60,20 @@ class ImpaktfullUiNotificationBadgeTheme extends ImpaktfullUiComponentTheme {
       ),
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationBadgeTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiNotificationBadgeAssetsTheme {
@@ -67,6 +81,13 @@ class ImpaktfullUiNotificationBadgeAssetsTheme {
 
   ImpaktfullUiNotificationBadgeAssetsTheme copyWith() =>
       const ImpaktfullUiNotificationBadgeAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiNotificationBadgeAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiNotificationBadgeDimensTheme {
@@ -86,6 +107,16 @@ class ImpaktfullUiNotificationBadgeDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         textPadding: textPadding ?? this.textPadding,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationBadgeDimensTheme &&
+          borderRadius == other.borderRadius &&
+          textPadding == other.textPadding;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, textPadding);
 }
 
 class ImpaktfullUiNotificationBadgeDurationsTheme {
@@ -101,6 +132,15 @@ class ImpaktfullUiNotificationBadgeDurationsTheme {
       ImpaktfullUiNotificationBadgeDurationsTheme(
         opacity: opacity ?? this.opacity,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationBadgeDurationsTheme &&
+          opacity == other.opacity;
+
+  @override
+  int get hashCode => opacity.hashCode;
 }
 
 class ImpaktfullUiNotificationBadgeColorTheme {
@@ -120,6 +160,16 @@ class ImpaktfullUiNotificationBadgeColorTheme {
         background: background ?? this.background,
         border: border ?? this.border,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationBadgeColorTheme &&
+          background == other.background &&
+          border == other.border;
+
+  @override
+  int get hashCode => Object.hash(background, border);
 }
 
 class ImpaktfullUiNotificationBadgeTextStyleTheme {
@@ -135,4 +185,13 @@ class ImpaktfullUiNotificationBadgeTextStyleTheme {
       ImpaktfullUiNotificationBadgeTextStyleTheme(
         text: text ?? this.text,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationBadgeTextStyleTheme &&
+          text == other.text;
+
+  @override
+  int get hashCode => text.hashCode;
 }

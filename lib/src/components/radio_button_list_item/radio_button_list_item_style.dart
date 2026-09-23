@@ -48,6 +48,18 @@ class ImpaktfullUiRadioButtonListItemTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiRadioButtonListItemTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiRadioButtonListItemTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiRadioButtonListItemAssetsTheme {
@@ -55,6 +67,13 @@ class ImpaktfullUiRadioButtonListItemAssetsTheme {
 
   ImpaktfullUiRadioButtonListItemAssetsTheme copyWith() =>
       const ImpaktfullUiRadioButtonListItemAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiRadioButtonListItemAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiRadioButtonListItemColorTheme {
@@ -69,6 +88,15 @@ class ImpaktfullUiRadioButtonListItemColorTheme {
       ImpaktfullUiRadioButtonListItemColorTheme(
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiRadioButtonListItemColorTheme &&
+          icons == other.icons;
+
+  @override
+  int get hashCode => icons.hashCode;
 }
 
 class ImpaktfullUiRadioButtonListItemDimensTheme {
@@ -83,6 +111,15 @@ class ImpaktfullUiRadioButtonListItemDimensTheme {
       ImpaktfullUiRadioButtonListItemDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiRadioButtonListItemDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiRadioButtonListItemTextStyleTheme {
@@ -90,4 +127,11 @@ class ImpaktfullUiRadioButtonListItemTextStyleTheme {
 
   ImpaktfullUiRadioButtonListItemTextStyleTheme copyWith() =>
       const ImpaktfullUiRadioButtonListItemTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiRadioButtonListItemTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

@@ -43,6 +43,17 @@ class ImpaktfullUiIconButtonTheme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
       fallback;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiIconButtonTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens);
 }
 
 class ImpaktfullUiIconButtonAssetsTheme {
@@ -50,6 +61,12 @@ class ImpaktfullUiIconButtonAssetsTheme {
 
   ImpaktfullUiIconButtonAssetsTheme copyWith() =>
       const ImpaktfullUiIconButtonAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiIconButtonAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiIconButtonColorTheme {
@@ -81,6 +98,17 @@ class ImpaktfullUiIconButtonColorTheme {
         background: background ?? this.background,
         notificationBadge: notificationBadge ?? this.notificationBadge,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiIconButtonColorTheme &&
+          icon == other.icon &&
+          background == other.background &&
+          notificationBadge == other.notificationBadge;
+
+  @override
+  int get hashCode => Object.hash(icon, background, notificationBadge);
 }
 
 class ImpaktfullUiIconButtonDimensTheme {
@@ -122,4 +150,18 @@ class ImpaktfullUiIconButtonDimensTheme {
             notificationBadgeSize ?? this.notificationBadgeSize,
         disabledOpacity: disabledOpacity ?? this.disabledOpacity,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiIconButtonDimensTheme &&
+          padding == other.padding &&
+          iconSize == other.iconSize &&
+          borderRadius == other.borderRadius &&
+          notificationBadgeSize == other.notificationBadgeSize &&
+          disabledOpacity == other.disabledOpacity;
+
+  @override
+  int get hashCode => Object.hash(
+      padding, iconSize, borderRadius, notificationBadgeSize, disabledOpacity);
 }

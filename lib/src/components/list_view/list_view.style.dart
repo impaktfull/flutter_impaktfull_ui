@@ -39,6 +39,16 @@ class ImpaktfullUiListViewTheme extends ImpaktfullUiComponentTheme {
           title: textStyles.onCanvas.display.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiListViewTheme &&
+          textStyles == other.textStyles &&
+          dimens == other.dimens;
+
+  @override
+  int get hashCode => Object.hash(textStyles, dimens);
 }
 
 class ImpaktfullUiListViewTextStyleTheme {
@@ -54,6 +64,14 @@ class ImpaktfullUiListViewTextStyleTheme {
       ImpaktfullUiListViewTextStyleTheme(
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiListViewTextStyleTheme && title == other.title;
+
+  @override
+  int get hashCode => title.hashCode;
 }
 
 class ImpaktfullUiListViewDimensTheme {
@@ -73,4 +91,14 @@ class ImpaktfullUiListViewDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         padding: padding ?? this.padding,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiListViewDimensTheme &&
+          borderRadius == other.borderRadius &&
+          padding == other.padding;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, padding);
 }

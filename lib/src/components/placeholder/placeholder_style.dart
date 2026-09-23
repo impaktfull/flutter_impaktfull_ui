@@ -52,6 +52,18 @@ class ImpaktfullUiPlaceholderTheme extends ImpaktfullUiComponentTheme {
           subtitle: textStyles.onCanvas.text.small.light,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPlaceholderTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiPlaceholderAssetsTheme {
@@ -66,6 +78,14 @@ class ImpaktfullUiPlaceholderAssetsTheme {
       ImpaktfullUiPlaceholderAssetsTheme(
         asset: asset ?? this.asset,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPlaceholderAssetsTheme && asset == other.asset;
+
+  @override
+  int get hashCode => asset.hashCode;
 }
 
 class ImpaktfullUiPlaceholderColorTheme {
@@ -73,6 +93,12 @@ class ImpaktfullUiPlaceholderColorTheme {
 
   ImpaktfullUiPlaceholderColorTheme copyWith() =>
       const ImpaktfullUiPlaceholderColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiPlaceholderColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiPlaceholderDimensTheme {
@@ -96,6 +122,17 @@ class ImpaktfullUiPlaceholderDimensTheme {
         assetWidth: assetWidth ?? this.assetWidth,
         margin: margin ?? this.margin,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPlaceholderDimensTheme &&
+          margin == other.margin &&
+          assetWidth == other.assetWidth &&
+          assetHeight == other.assetHeight;
+
+  @override
+  int get hashCode => Object.hash(margin, assetWidth, assetHeight);
 }
 
 class ImpaktfullUiPlaceholderTextStyleTheme {
@@ -114,4 +151,14 @@ class ImpaktfullUiPlaceholderTextStyleTheme {
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPlaceholderTextStyleTheme &&
+          title == other.title &&
+          subtitle == other.subtitle;
+
+  @override
+  int get hashCode => Object.hash(title, subtitle);
 }

@@ -58,6 +58,20 @@ class ImpaktfullUiTabBarItemTheme extends ImpaktfullUiComponentTheme {
           label: textStyles.onCard.text.small.medium,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTabBarItemTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiTabBarItemAssetsTheme {
@@ -65,6 +79,12 @@ class ImpaktfullUiTabBarItemAssetsTheme {
 
   ImpaktfullUiTabBarItemAssetsTheme copyWith() =>
       const ImpaktfullUiTabBarItemAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiTabBarItemAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiTabBarItemColorTheme {
@@ -79,6 +99,15 @@ class ImpaktfullUiTabBarItemColorTheme {
       ImpaktfullUiTabBarItemColorTheme(
         background: background ?? this.background,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTabBarItemColorTheme &&
+          background == other.background;
+
+  @override
+  int get hashCode => background.hashCode;
 }
 
 class ImpaktfullUiTabBarItemDimensTheme {
@@ -94,6 +123,15 @@ class ImpaktfullUiTabBarItemDimensTheme {
         selectedMarkerBorderRadius:
             selectedMarkerBorderRadius ?? this.selectedMarkerBorderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTabBarItemDimensTheme &&
+          selectedMarkerBorderRadius == other.selectedMarkerBorderRadius;
+
+  @override
+  int get hashCode => selectedMarkerBorderRadius.hashCode;
 }
 
 class ImpaktfullUiTabBarItemDurationsTheme {
@@ -108,6 +146,15 @@ class ImpaktfullUiTabBarItemDurationsTheme {
       ImpaktfullUiTabBarItemDurationsTheme(
         selected: selected ?? this.selected,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTabBarItemDurationsTheme &&
+          selected == other.selected;
+
+  @override
+  int get hashCode => selected.hashCode;
 }
 
 class ImpaktfullUiTabBarItemTextStyleTheme {
@@ -122,4 +169,12 @@ class ImpaktfullUiTabBarItemTextStyleTheme {
       ImpaktfullUiTabBarItemTextStyleTheme(
         label: label ?? this.label,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTabBarItemTextStyleTheme && label == other.label;
+
+  @override
+  int get hashCode => label.hashCode;
 }

@@ -46,6 +46,18 @@ class ImpaktfullUiScreenTheme extends ImpaktfullUiComponentTheme {
         dimens: const ImpaktfullUiScreenDimensTheme(),
         textStyles: const ImpaktfullUiScreenTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiScreenTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiScreenAssetsTheme {
@@ -53,6 +65,12 @@ class ImpaktfullUiScreenAssetsTheme {
 
   ImpaktfullUiScreenAssetsTheme copyWith() =>
       const ImpaktfullUiScreenAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiScreenAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiScreenColorTheme {
@@ -67,6 +85,14 @@ class ImpaktfullUiScreenColorTheme {
       ImpaktfullUiScreenColorTheme(
         background: background ?? this.background,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiScreenColorTheme && background == other.background;
+
+  @override
+  int get hashCode => background.hashCode;
 }
 
 class ImpaktfullUiScreenDimensTheme {
@@ -85,6 +111,15 @@ class ImpaktfullUiScreenDimensTheme {
         floatingActionButtonPadding:
             floatingActionButtonPadding ?? this.floatingActionButtonPadding,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiScreenDimensTheme &&
+          floatingActionButtonPadding == other.floatingActionButtonPadding;
+
+  @override
+  int get hashCode => floatingActionButtonPadding.hashCode;
 }
 
 class ImpaktfullUiScreenTextStyleTheme {
@@ -92,4 +127,10 @@ class ImpaktfullUiScreenTextStyleTheme {
 
   ImpaktfullUiScreenTextStyleTheme copyWith() =>
       const ImpaktfullUiScreenTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiScreenTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

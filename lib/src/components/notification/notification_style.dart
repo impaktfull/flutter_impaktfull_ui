@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
@@ -74,6 +75,19 @@ class ImpaktfullUiNotificationTheme extends ImpaktfullUiComponentTheme {
           subtitle: textStyles.onCard.text.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          shadows == other.shadows &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, shadows, textStyles);
 }
 
 class ImpaktfullUiNotificationAssetsTheme {
@@ -113,6 +127,22 @@ class ImpaktfullUiNotificationAssetsTheme {
         success: success ?? this.success,
         warning: warning ?? this.warning,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationAssetsTheme &&
+          branded == other.branded &&
+          chevronRight == other.chevronRight &&
+          close == other.close &&
+          error == other.error &&
+          info == other.info &&
+          success == other.success &&
+          warning == other.warning;
+
+  @override
+  int get hashCode =>
+      Object.hash(branded, chevronRight, close, error, info, success, warning);
 }
 
 class ImpaktfullUiNotificationColorTheme {
@@ -160,6 +190,24 @@ class ImpaktfullUiNotificationColorTheme {
         success: success ?? this.success,
         warning: warning ?? this.warning,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationColorTheme &&
+          background == other.background &&
+          border == other.border &&
+          shadow == other.shadow &&
+          branded == other.branded &&
+          error == other.error &&
+          info == other.info &&
+          matchBorderWithType == other.matchBorderWithType &&
+          success == other.success &&
+          warning == other.warning;
+
+  @override
+  int get hashCode => Object.hash(background, border, shadow, branded, error,
+      info, matchBorderWithType, success, warning);
 }
 
 class ImpaktfullUiNotificationDimensTheme {
@@ -175,6 +223,15 @@ class ImpaktfullUiNotificationDimensTheme {
       ImpaktfullUiNotificationDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiNotificationShadowsTheme {
@@ -190,6 +247,15 @@ class ImpaktfullUiNotificationShadowsTheme {
       ImpaktfullUiNotificationShadowsTheme(
         card: card ?? this.card,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationShadowsTheme &&
+          listEquals(card, other.card);
+
+  @override
+  int get hashCode => Object.hashAll(card);
 }
 
 class ImpaktfullUiNotificationTextStyleTheme {
@@ -208,4 +274,14 @@ class ImpaktfullUiNotificationTextStyleTheme {
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNotificationTextStyleTheme &&
+          title == other.title &&
+          subtitle == other.subtitle;
+
+  @override
+  int get hashCode => Object.hash(title, subtitle);
 }

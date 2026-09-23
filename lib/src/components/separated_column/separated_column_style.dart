@@ -55,6 +55,18 @@ class ImpaktfullUiSeparatedColumnTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiSeparatedColumnTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSeparatedColumnTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiSeparatedColumnAssetsTheme {
@@ -62,6 +74,13 @@ class ImpaktfullUiSeparatedColumnAssetsTheme {
 
   ImpaktfullUiSeparatedColumnAssetsTheme copyWith() =>
       const ImpaktfullUiSeparatedColumnAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSeparatedColumnAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSeparatedColumnColorTheme {
@@ -80,6 +99,16 @@ class ImpaktfullUiSeparatedColumnColorTheme {
         background: background ?? this.background,
         border: border ?? this.border,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSeparatedColumnColorTheme &&
+          background == other.background &&
+          border == other.border;
+
+  @override
+  int get hashCode => Object.hash(background, border);
 }
 
 class ImpaktfullUiSeparatedColumnDimensTheme {
@@ -102,6 +131,17 @@ class ImpaktfullUiSeparatedColumnDimensTheme {
         separatorMargin: separatorMargin ?? this.separatorMargin,
         titleMargin: titleMargin ?? this.titleMargin,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSeparatedColumnDimensTheme &&
+          borderRadius == other.borderRadius &&
+          titleMargin == other.titleMargin &&
+          separatorMargin == other.separatorMargin;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, titleMargin, separatorMargin);
 }
 
 class ImpaktfullUiSeparatedColumnTextStyleTheme {
@@ -109,4 +149,11 @@ class ImpaktfullUiSeparatedColumnTextStyleTheme {
 
   ImpaktfullUiSeparatedColumnTextStyleTheme copyWith() =>
       const ImpaktfullUiSeparatedColumnTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSeparatedColumnTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

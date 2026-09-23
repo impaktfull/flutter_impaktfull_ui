@@ -51,6 +51,18 @@ class ImpaktfullUiLoadingErrorDataTheme extends ImpaktfullUiComponentTheme {
       ),
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLoadingErrorDataTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiLoadingErrorDataAssetsTheme {
@@ -58,6 +70,13 @@ class ImpaktfullUiLoadingErrorDataAssetsTheme {
 
   ImpaktfullUiLoadingErrorDataAssetsTheme copyWith() =>
       const ImpaktfullUiLoadingErrorDataAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiLoadingErrorDataAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiLoadingErrorDataColorTheme {
@@ -65,6 +84,13 @@ class ImpaktfullUiLoadingErrorDataColorTheme {
 
   ImpaktfullUiLoadingErrorDataColorTheme copyWith() =>
       const ImpaktfullUiLoadingErrorDataColorTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiLoadingErrorDataColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiLoadingErrorDataDimensTheme {
@@ -72,6 +98,13 @@ class ImpaktfullUiLoadingErrorDataDimensTheme {
 
   ImpaktfullUiLoadingErrorDataDimensTheme copyWith() =>
       const ImpaktfullUiLoadingErrorDataDimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiLoadingErrorDataDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiLoadingErrorDataTextStyleTheme {
@@ -98,4 +131,17 @@ class ImpaktfullUiLoadingErrorDataTextStyleTheme {
         noDataMessage: noDataMessage ?? this.noDataMessage,
         noDataTitle: noDataTitle ?? this.noDataTitle,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLoadingErrorDataTextStyleTheme &&
+          noDataTitle == other.noDataTitle &&
+          noDataMessage == other.noDataMessage &&
+          errorTitle == other.errorTitle &&
+          errorMessage == other.errorMessage;
+
+  @override
+  int get hashCode =>
+      Object.hash(noDataTitle, noDataMessage, errorTitle, errorMessage);
 }

@@ -44,6 +44,18 @@ class ImpaktfullUiDateTimePickerTheme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUiDateTimePickerDimensTheme(),
         textStyles: ImpaktfullUiDateTimePickerTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDateTimePickerTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiDateTimePickerAssetsTheme {
@@ -51,6 +63,13 @@ class ImpaktfullUiDateTimePickerAssetsTheme {
 
   ImpaktfullUiDateTimePickerAssetsTheme copyWith() =>
       const ImpaktfullUiDateTimePickerAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiDateTimePickerAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiDateTimePickerColorTheme {
@@ -58,6 +77,13 @@ class ImpaktfullUiDateTimePickerColorTheme {
 
   ImpaktfullUiDateTimePickerColorTheme copyWith() =>
       const ImpaktfullUiDateTimePickerColorTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiDateTimePickerColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiDateTimePickerDimensTheme {
@@ -65,6 +91,13 @@ class ImpaktfullUiDateTimePickerDimensTheme {
 
   ImpaktfullUiDateTimePickerDimensTheme copyWith() =>
       const ImpaktfullUiDateTimePickerDimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiDateTimePickerDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiDateTimePickerTextStyleTheme {
@@ -72,4 +105,11 @@ class ImpaktfullUiDateTimePickerTextStyleTheme {
 
   ImpaktfullUiDateTimePickerTextStyleTheme copyWith() =>
       const ImpaktfullUiDateTimePickerTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiDateTimePickerTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

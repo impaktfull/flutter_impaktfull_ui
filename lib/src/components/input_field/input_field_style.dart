@@ -70,6 +70,18 @@ class ImpaktfullUiInputFieldTheme extends ImpaktfullUiComponentTheme {
           action: textStyles.onCard.text.small.medium,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiInputFieldTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiInputFieldAssetsTheme {
@@ -89,6 +101,16 @@ class ImpaktfullUiInputFieldAssetsTheme {
         passwordHide: passwordHide ?? this.passwordHide,
         passwordShow: passwordShow ?? this.passwordShow,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiInputFieldAssetsTheme &&
+          passwordHide == other.passwordHide &&
+          passwordShow == other.passwordShow;
+
+  @override
+  int get hashCode => Object.hash(passwordHide, passwordShow);
 }
 
 class ImpaktfullUiInputFieldColorTheme {
@@ -124,6 +146,21 @@ class ImpaktfullUiInputFieldColorTheme {
         selection: selection ?? this.selection,
         selectionHandle: selectionHandle ?? this.selectionHandle,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiInputFieldColorTheme &&
+          background == other.background &&
+          border == other.border &&
+          borderError == other.borderError &&
+          cursor == other.cursor &&
+          selection == other.selection &&
+          selectionHandle == other.selectionHandle;
+
+  @override
+  int get hashCode => Object.hash(
+      background, border, borderError, cursor, selection, selectionHandle);
 }
 
 class ImpaktfullUiInputFieldDimensTheme {
@@ -142,6 +179,16 @@ class ImpaktfullUiInputFieldDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         labelMargin: labelMargin ?? this.labelMargin,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiInputFieldDimensTheme &&
+          borderRadius == other.borderRadius &&
+          labelMargin == other.labelMargin;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, labelMargin);
 }
 
 class ImpaktfullUiInputFieldTextStyleTheme {
@@ -177,4 +224,19 @@ class ImpaktfullUiInputFieldTextStyleTheme {
         error: error ?? this.error,
         action: action ?? this.action,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiInputFieldTextStyleTheme &&
+          label == other.label &&
+          text == other.text &&
+          placeholder == other.placeholder &&
+          hint == other.hint &&
+          error == other.error &&
+          action == other.action;
+
+  @override
+  int get hashCode =>
+      Object.hash(label, text, placeholder, hint, error, action);
 }

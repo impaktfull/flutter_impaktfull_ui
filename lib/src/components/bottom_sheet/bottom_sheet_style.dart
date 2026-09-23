@@ -64,6 +64,18 @@ class ImpaktfullUiBottomSheetTheme extends ImpaktfullUiComponentTheme {
           subtitle: textStyles.onCanvas.text.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomSheetTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiBottomSheetAssetsTheme {
@@ -79,6 +91,14 @@ class ImpaktfullUiBottomSheetAssetsTheme {
       ImpaktfullUiBottomSheetAssetsTheme(
         close: close ?? this.close,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomSheetAssetsTheme && close == other.close;
+
+  @override
+  int get hashCode => close.hashCode;
 }
 
 class ImpaktfullUiBottomSheetColorTheme {
@@ -102,6 +122,17 @@ class ImpaktfullUiBottomSheetColorTheme {
         handle: handle ?? this.handle,
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomSheetColorTheme &&
+          background == other.background &&
+          handle == other.handle &&
+          icons == other.icons;
+
+  @override
+  int get hashCode => Object.hash(background, handle, icons);
 }
 
 class ImpaktfullUiBottomSheetDimensTheme {
@@ -130,6 +161,19 @@ class ImpaktfullUiBottomSheetDimensTheme {
         handleBorderRadius: handleBorderRadius ?? this.handleBorderRadius,
         padding: padding ?? this.padding,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomSheetDimensTheme &&
+          closeIconButtonPadding == other.closeIconButtonPadding &&
+          padding == other.padding &&
+          borderRadius == other.borderRadius &&
+          handleBorderRadius == other.handleBorderRadius;
+
+  @override
+  int get hashCode => Object.hash(
+      closeIconButtonPadding, padding, borderRadius, handleBorderRadius);
 }
 
 class ImpaktfullUiBottomSheetTextStyleTheme {
@@ -149,4 +193,14 @@ class ImpaktfullUiBottomSheetTextStyleTheme {
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomSheetTextStyleTheme &&
+          title == other.title &&
+          subtitle == other.subtitle;
+
+  @override
+  int get hashCode => Object.hash(title, subtitle);
 }

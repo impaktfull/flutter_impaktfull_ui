@@ -67,6 +67,20 @@ class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
           close: assets.icons.close,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiModalTheme &&
+          colors == other.colors &&
+          textStyles == other.textStyles &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          assets == other.assets;
+
+  @override
+  int get hashCode =>
+      Object.hash(colors, textStyles, dimens, durations, assets);
 }
 
 class ImpaktfullUiModalColorTheme {
@@ -90,6 +104,17 @@ class ImpaktfullUiModalColorTheme {
         closeIcon: closeIcon ?? this.closeIcon,
         leadingHeaderIcon: leadingHeaderIcon ?? this.leadingHeaderIcon,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiModalColorTheme &&
+          background == other.background &&
+          closeIcon == other.closeIcon &&
+          leadingHeaderIcon == other.leadingHeaderIcon;
+
+  @override
+  int get hashCode => Object.hash(background, closeIcon, leadingHeaderIcon);
 }
 
 class ImpaktfullUiModalDurationsTheme {
@@ -106,6 +131,15 @@ class ImpaktfullUiModalDurationsTheme {
       ImpaktfullUiModalDurationsTheme(
         transition: transition ?? this.transition,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiModalDurationsTheme &&
+          transition == other.transition;
+
+  @override
+  int get hashCode => transition.hashCode;
 }
 
 class ImpaktfullUiModalTextStyleTheme {
@@ -129,6 +163,17 @@ class ImpaktfullUiModalTextStyleTheme {
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiModalTextStyleTheme &&
+          title == other.title &&
+          subtitle == other.subtitle &&
+          content == other.content;
+
+  @override
+  int get hashCode => Object.hash(title, subtitle, content);
 }
 
 class ImpaktfullUiModalDimensTheme {
@@ -161,6 +206,20 @@ class ImpaktfullUiModalDimensTheme {
         leadingIconPadding: leadingIconPadding ?? this.leadingIconPadding,
         padding: padding ?? this.padding,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiModalDimensTheme &&
+          borderRadius == other.borderRadius &&
+          borderWidth == other.borderWidth &&
+          closeIconButtonPadding == other.closeIconButtonPadding &&
+          leadingIconPadding == other.leadingIconPadding &&
+          padding == other.padding;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, borderWidth,
+      closeIconButtonPadding, leadingIconPadding, padding);
 }
 
 class ImpaktfullUiModalAssetsTheme {
@@ -176,4 +235,12 @@ class ImpaktfullUiModalAssetsTheme {
       ImpaktfullUiModalAssetsTheme(
         close: close ?? this.close,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiModalAssetsTheme && close == other.close;
+
+  @override
+  int get hashCode => close.hashCode;
 }

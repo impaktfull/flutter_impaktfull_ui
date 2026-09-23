@@ -26,4 +26,15 @@ class ImpaktfullUiDurationTheme {
         medium: Duration(milliseconds: 350),
         long: Duration(milliseconds: 500),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDurationTheme &&
+          short == other.short &&
+          medium == other.medium &&
+          long == other.long;
+
+  @override
+  int get hashCode => Object.hash(short, medium, long);
 }

@@ -61,6 +61,20 @@ class ImpaktfullUiPinCodeTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiPinCodeTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPinCodeTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiPinCodeAssetsTheme {
@@ -80,6 +94,16 @@ class ImpaktfullUiPinCodeAssetsTheme {
         backspace: backspace ?? this.backspace,
         check: check ?? this.check,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPinCodeAssetsTheme &&
+          backspace == other.backspace &&
+          check == other.check;
+
+  @override
+  int get hashCode => Object.hash(backspace, check);
 }
 
 class ImpaktfullUiPinCodeColorTheme {
@@ -104,6 +128,18 @@ class ImpaktfullUiPinCodeColorTheme {
             valueBackgroundSelected ?? this.valueBackgroundSelected,
         valueBorder: valueBorder ?? this.valueBorder,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPinCodeColorTheme &&
+          valueBackground == other.valueBackground &&
+          valueBackgroundSelected == other.valueBackgroundSelected &&
+          valueBorder == other.valueBorder;
+
+  @override
+  int get hashCode =>
+      Object.hash(valueBackground, valueBackgroundSelected, valueBorder);
 }
 
 class ImpaktfullUiPinCodeDimensTheme {
@@ -119,6 +155,15 @@ class ImpaktfullUiPinCodeDimensTheme {
       ImpaktfullUiPinCodeDimensTheme(
         valueBorderRadius: valueBorderRadius ?? this.valueBorderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPinCodeDimensTheme &&
+          valueBorderRadius == other.valueBorderRadius;
+
+  @override
+  int get hashCode => valueBorderRadius.hashCode;
 }
 
 class ImpaktfullUiPinCodeDurationsTheme {
@@ -134,6 +179,15 @@ class ImpaktfullUiPinCodeDurationsTheme {
       ImpaktfullUiPinCodeDurationsTheme(
         submitOpacity: submitOpacity ?? this.submitOpacity,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPinCodeDurationsTheme &&
+          submitOpacity == other.submitOpacity;
+
+  @override
+  int get hashCode => submitOpacity.hashCode;
 }
 
 class ImpaktfullUiPinCodeTextStyleTheme {
@@ -141,4 +195,10 @@ class ImpaktfullUiPinCodeTextStyleTheme {
 
   ImpaktfullUiPinCodeTextStyleTheme copyWith() =>
       const ImpaktfullUiPinCodeTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiPinCodeTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

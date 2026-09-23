@@ -50,6 +50,18 @@ class ImpaktfullUiIntroductionTheme extends ImpaktfullUiComponentTheme {
           subtitle: textStyles.onCanvasTertiary.text.medium,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiIntroductionTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiIntroductionAssetsTheme {
@@ -57,6 +69,13 @@ class ImpaktfullUiIntroductionAssetsTheme {
 
   ImpaktfullUiIntroductionAssetsTheme copyWith() =>
       const ImpaktfullUiIntroductionAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiIntroductionAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiIntroductionColorTheme {
@@ -74,6 +93,14 @@ class ImpaktfullUiIntroductionColorTheme {
       ImpaktfullUiIntroductionColorTheme(
         asset: asset ?? this.asset,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiIntroductionColorTheme && asset == other.asset;
+
+  @override
+  int get hashCode => asset.hashCode;
 }
 
 class ImpaktfullUiIntroductionDimensTheme {
@@ -109,6 +136,19 @@ class ImpaktfullUiIntroductionDimensTheme {
         assetSize: assetSize ?? this.assetSize,
         spacing: spacing ?? this.spacing,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiIntroductionDimensTheme &&
+          pagePadding == other.pagePadding &&
+          actionsPadding == other.actionsPadding &&
+          assetSize == other.assetSize &&
+          spacing == other.spacing;
+
+  @override
+  int get hashCode =>
+      Object.hash(pagePadding, actionsPadding, assetSize, spacing);
 }
 
 class ImpaktfullUiIntroductionTextStyleTheme {
@@ -133,4 +173,14 @@ class ImpaktfullUiIntroductionTextStyleTheme {
         title: title ?? this.title,
         subtitle: subtitle ?? this.subtitle,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiIntroductionTextStyleTheme &&
+          title == other.title &&
+          subtitle == other.subtitle;
+
+  @override
+  int get hashCode => Object.hash(title, subtitle);
 }

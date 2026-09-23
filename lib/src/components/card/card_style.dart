@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
@@ -49,6 +50,17 @@ class ImpaktfullUiCardTheme extends ImpaktfullUiComponentTheme {
           card: shadows.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCardTheme &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          shadows == other.shadows;
+
+  @override
+  int get hashCode => Object.hash(colors, dimens, shadows);
 }
 
 class ImpaktfullUiCardColorTheme {
@@ -72,6 +84,17 @@ class ImpaktfullUiCardColorTheme {
         border: border ?? this.border,
         borderError: borderError ?? this.borderError,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCardColorTheme &&
+          background == other.background &&
+          border == other.border &&
+          borderError == other.borderError;
+
+  @override
+  int get hashCode => Object.hash(background, border, borderError);
 }
 
 class ImpaktfullUiCardDimensTheme {
@@ -95,6 +118,17 @@ class ImpaktfullUiCardDimensTheme {
         borderWidth: borderWidth ?? this.borderWidth,
         padding: padding ?? this.padding,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCardDimensTheme &&
+          borderRadius == other.borderRadius &&
+          padding == other.padding &&
+          borderWidth == other.borderWidth;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, padding, borderWidth);
 }
 
 class ImpaktfullUiCardShadowsTheme {
@@ -110,4 +144,12 @@ class ImpaktfullUiCardShadowsTheme {
       ImpaktfullUiCardShadowsTheme(
         card: card ?? this.card,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCardShadowsTheme && listEquals(card, other.card);
+
+  @override
+  int get hashCode => Object.hashAll(card);
 }

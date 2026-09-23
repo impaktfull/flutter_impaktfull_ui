@@ -38,6 +38,14 @@ class ImpaktfullUiBBLicensesTheme extends ImpaktfullUiComponentTheme {
           imageSpacing: 16,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBBLicensesTheme && dimens == other.dimens;
+
+  @override
+  int get hashCode => dimens.hashCode;
 }
 
 class ImpaktfullUiBBLicensesDimensTheme {
@@ -67,4 +75,15 @@ class ImpaktfullUiBBLicensesDimensTheme {
         imageBorderRadius: imageBorderRadius ?? this.imageBorderRadius,
         imageSpacing: imageSpacing ?? this.imageSpacing,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBBLicensesDimensTheme &&
+          imageHeight == other.imageHeight &&
+          imageBorderRadius == other.imageBorderRadius &&
+          imageSpacing == other.imageSpacing;
+
+  @override
+  int get hashCode => Object.hash(imageHeight, imageBorderRadius, imageSpacing);
 }
