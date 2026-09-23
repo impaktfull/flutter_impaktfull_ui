@@ -16,6 +16,7 @@ Future<void> runComponentTest({
   ImpaktfullUiTheme? theme,
   ImpaktfullUiTestFontLoader? fontLoader,
   int columns = 1,
+  PumpAction? pumpBeforeTest,
 }) async {
   AlchemistConfig.runWithConfig(
     config: AlchemistConfig(
@@ -36,6 +37,7 @@ Future<void> runComponentTest({
       goldenTest(
         'renders correctly',
         fileName: fileName,
+        pumpBeforeTest: pumpBeforeTest ?? onlyPumpAndSettle,
         builder: () => ImpaktfullUiAutoLayout.vertical(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

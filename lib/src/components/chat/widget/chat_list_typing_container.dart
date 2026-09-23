@@ -39,10 +39,10 @@ class _ImpaktfullUiChatListTypingContainerState
     super.initState();
     _controllers = List.generate(3, (index) {
       final controller = AnimationController(
-        duration: const Duration(milliseconds: 800),
+        duration: widget.theme.durations.typingDot,
         vsync: this,
       );
-      _startTimers.add(Timer(Duration(milliseconds: index * 200), () {
+      _startTimers.add(Timer(widget.theme.durations.typingDotDelay * index, () {
         if (!mounted || _reduceMotion) return;
         controller.repeat(reverse: true);
       }));

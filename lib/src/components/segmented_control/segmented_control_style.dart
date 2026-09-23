@@ -5,12 +5,14 @@ class ImpaktfullUiSegmentedControlTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSegmentedControlAssetsTheme assets;
   final ImpaktfullUiSegmentedControlColorTheme colors;
   final ImpaktfullUiSegmentedControlDimensTheme dimens;
+  final ImpaktfullUiSegmentedControlDurationsTheme durations;
   final ImpaktfullUiSegmentedControlTextStyleTheme textStyles;
 
   const ImpaktfullUiSegmentedControlTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
+    this.durations = const ImpaktfullUiSegmentedControlDurationsTheme(),
     required this.textStyles,
   });
 
@@ -18,12 +20,14 @@ class ImpaktfullUiSegmentedControlTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiSegmentedControlAssetsTheme? assets,
     ImpaktfullUiSegmentedControlColorTheme? colors,
     ImpaktfullUiSegmentedControlDimensTheme? dimens,
+    ImpaktfullUiSegmentedControlDurationsTheme? durations,
     ImpaktfullUiSegmentedControlTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiSegmentedControlTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -50,6 +54,7 @@ class ImpaktfullUiSegmentedControlTheme extends ImpaktfullUiComponentTheme {
           borderRadius: dimens.borderRadius,
           padding: EdgeInsets.zero,
         ),
+        durations: const ImpaktfullUiSegmentedControlDurationsTheme(),
         textStyles: ImpaktfullUiSegmentedControlTextStyleTheme(
           label: textStyles.onCanvas.text.small,
           activeLabel: textStyles.onCard.text.small,
@@ -93,18 +98,41 @@ class ImpaktfullUiSegmentedControlColorTheme {
 class ImpaktfullUiSegmentedControlDimensTheme {
   final BorderRadiusGeometry borderRadius;
   final EdgeInsets padding;
+
+  /// The height of the control.
+  final double height;
+
   const ImpaktfullUiSegmentedControlDimensTheme({
     required this.borderRadius,
     required this.padding,
+    this.height = 56,
   });
 
   ImpaktfullUiSegmentedControlDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? height,
     EdgeInsets? padding,
   }) =>
       ImpaktfullUiSegmentedControlDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        height: height ?? this.height,
         padding: padding ?? this.padding,
+      );
+}
+
+class ImpaktfullUiSegmentedControlDurationsTheme {
+  /// How long the indicator takes to slide to the selected item.
+  final Duration selected;
+
+  const ImpaktfullUiSegmentedControlDurationsTheme({
+    this.selected = const Duration(milliseconds: 200),
+  });
+
+  ImpaktfullUiSegmentedControlDurationsTheme copyWith({
+    Duration? selected,
+  }) =>
+      ImpaktfullUiSegmentedControlDurationsTheme(
+        selected: selected ?? this.selected,
       );
 }
 

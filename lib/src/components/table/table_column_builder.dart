@@ -5,17 +5,19 @@ import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
 class TableColumnBuilder extends StatelessWidget {
   final List<ImpaktfullUiTableColumnConfig> config;
   final List<Widget> children;
+  final double minHeight;
 
   const TableColumnBuilder({
     required this.config,
     required this.children,
+    required this.minHeight,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: 48),
+      constraints: BoxConstraints(minHeight: minHeight),
       child: ImpaktfullUiAutoLayout.horizontal(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

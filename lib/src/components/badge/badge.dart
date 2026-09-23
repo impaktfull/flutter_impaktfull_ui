@@ -128,7 +128,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                     ),
                   ],
                   if (widget.onCloseTapped != null) ...[
-                    const SizedBox(width: 2),
+                    SizedBox(width: componentTheme.dimens.closeSpacing),
                     Semantics(
                       container: true,
                       button: true,
@@ -138,10 +138,10 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                         borderRadius: componentTheme.dimens.borderRadius,
                         onTap: widget.onCloseTapped!,
                         child: Padding(
-                          padding: const EdgeInsets.all(2),
+                          padding: componentTheme.dimens.closePadding,
                           child: ImpaktfullUiAssetWidget(
                             asset: componentTheme.assets.close,
-                            size: 16,
+                            size: componentTheme.dimens.closeIconSize,
                             color: textColor.withOpacityPercentage(0.66),
                           ),
                         ),

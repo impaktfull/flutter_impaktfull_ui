@@ -126,15 +126,26 @@ class _ImpaktfullUiVirtualKeyboardState
     super.initState();
     _obscureText = widget.obscureText;
     widget.controller.addListener(_onControllerChanged);
-    _cursorController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 200),
-    )..repeat(reverse: true);
+    // The duration comes from the theme in `didChangeDependencies`, which
+    // also starts the blinking.
+    _cursorController = AnimationController(vsync: this);
     _cursorAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
     ).animate(_cursorController);
     _cursorPosition = widget.controller.text.length;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiVirtualKeyboardTheme.of(context);
+    final cursorBlink = componentTheme.durations.cursorBlink;
+    if (_cursorController.duration == cursorBlink) return;
+    _cursorController.duration = cursorBlink;
+    // Restart the cursor, so it blinks with the duration of the theme.
+    _cursorController.repeat(reverse: true);
   }
 
   @override

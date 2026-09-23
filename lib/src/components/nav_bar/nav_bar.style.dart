@@ -111,10 +111,45 @@ class ImpaktfullUiNavBarColorTheme {
 }
 
 class ImpaktfullUiNavBarDimensTheme {
-  const ImpaktfullUiNavBarDimensTheme();
+  /// The width that is reserved for one action button next to the title.
+  final double actionSize;
 
-  ImpaktfullUiNavBarDimensTheme copyWith() =>
-      const ImpaktfullUiNavBarDimensTheme();
+  /// The minimum height of the bar, without its `bottomChild`.
+  final double minHeight;
+
+  /// The padding above and below the content of the bar.
+  final double verticalPadding;
+
+  /// The padding at a side of the bar without an action button.
+  final double sidePadding;
+
+  /// The padding at a side of the bar with an action button: the button
+  /// brings its own padding.
+  final double sidePaddingWithActions;
+
+  const ImpaktfullUiNavBarDimensTheme({
+    this.actionSize = 44,
+    this.minHeight = 56,
+    this.verticalPadding = 4,
+    this.sidePadding = 16,
+    this.sidePaddingWithActions = 6,
+  });
+
+  ImpaktfullUiNavBarDimensTheme copyWith({
+    double? actionSize,
+    double? minHeight,
+    double? sidePadding,
+    double? sidePaddingWithActions,
+    double? verticalPadding,
+  }) =>
+      ImpaktfullUiNavBarDimensTheme(
+        actionSize: actionSize ?? this.actionSize,
+        minHeight: minHeight ?? this.minHeight,
+        sidePadding: sidePadding ?? this.sidePadding,
+        sidePaddingWithActions:
+            sidePaddingWithActions ?? this.sidePaddingWithActions,
+        verticalPadding: verticalPadding ?? this.verticalPadding,
+      );
 }
 
 class ImpaktfullUiNavBarShadowsTheme {

@@ -118,20 +118,27 @@ class ImpaktfullUiStepperDimensTheme {
   final double spacing;
   final double height;
   final BorderRadiusGeometry borderRadius;
+
+  /// The padding around the asset of a step.
+  final EdgeInsetsGeometry padding;
+
   const ImpaktfullUiStepperDimensTheme({
     required this.spacing,
     required this.height,
     required this.borderRadius,
+    this.padding = const EdgeInsets.all(8),
   });
 
   ImpaktfullUiStepperDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
     double? height,
+    EdgeInsetsGeometry? padding,
     double? spacing,
   }) =>
       ImpaktfullUiStepperDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
         height: height ?? this.height,
+        padding: padding ?? this.padding,
         spacing: spacing ?? this.spacing,
       );
 }

@@ -86,7 +86,8 @@ class ImpaktfullUiNavBar extends StatelessWidget {
           ];
           final maxAmountOfActions =
               max(leadingActions.length, trailingActions.length);
-          final actionsSize = maxAmountOfActions * 44.0;
+          final actionsSize =
+              maxAmountOfActions * componentTheme.dimens.actionSize;
           // A centered title reserves the same space on both sides: the
           // padding has to be the same on both sides as well.
           final hasCenteredActions = centerTitle && actionsSize > 0;
@@ -111,16 +112,16 @@ class ImpaktfullUiNavBar extends StatelessWidget {
                   Container(
                     padding: EdgeInsetsDirectional.only(
                       start: leadingActions.isEmpty && !hasCenteredActions
-                          ? 16
-                          : 6,
+                          ? componentTheme.dimens.sidePadding
+                          : componentTheme.dimens.sidePaddingWithActions,
                       end: trailingActions.isEmpty && !hasCenteredActions
-                          ? 16
-                          : 6,
-                      top: 4,
-                      bottom: 4,
+                          ? componentTheme.dimens.sidePadding
+                          : componentTheme.dimens.sidePaddingWithActions,
+                      top: componentTheme.dimens.verticalPadding,
+                      bottom: componentTheme.dimens.verticalPadding,
                     ),
-                    constraints: const BoxConstraints(
-                      minHeight: 56,
+                    constraints: BoxConstraints(
+                      minHeight: componentTheme.dimens.minHeight,
                     ),
                     child: ImpaktfullUiAutoLayout.horizontal(
                       crossAxisAlignment: CrossAxisAlignment.center,

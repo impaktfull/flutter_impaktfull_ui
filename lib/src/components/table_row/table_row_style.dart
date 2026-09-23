@@ -56,8 +56,17 @@ class ImpaktfullUiTableRowTextStyleTheme {
 }
 
 class ImpaktfullUiTableRowDimensTheme {
-  const ImpaktfullUiTableRowDimensTheme();
+  /// The minimum height of a row.
+  final double minHeight;
 
-  ImpaktfullUiTableRowDimensTheme copyWith() =>
-      const ImpaktfullUiTableRowDimensTheme();
+  const ImpaktfullUiTableRowDimensTheme({
+    this.minHeight = 48,
+  });
+
+  ImpaktfullUiTableRowDimensTheme copyWith({
+    double? minHeight,
+  }) =>
+      ImpaktfullUiTableRowDimensTheme(
+        minHeight: minHeight ?? this.minHeight,
+      );
 }

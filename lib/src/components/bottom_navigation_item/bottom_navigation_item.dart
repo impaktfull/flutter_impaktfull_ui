@@ -59,7 +59,9 @@ class ImpaktfullUiBottomNavigationItem extends StatelessWidget {
             tooltip: showTitle ? null : title,
             onTap: onTap,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: showTitle ? 8 : 12),
+              padding: showTitle
+                  ? componentTheme.dimens.padding
+                  : componentTheme.dimens.paddingWithoutTitle,
               child: ImpaktfullUiAutoLayout.vertical(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,

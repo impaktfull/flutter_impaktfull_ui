@@ -46,24 +46,27 @@ class _ImpaktfullUiSidebarNavigationItemState
   void initState() {
     super.initState();
     _expanded = _hasSelectedSubItem(widget.items);
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 200),
-      vsync: this,
-    );
+    // The duration comes from the theme in `didChangeDependencies`, which
+    // runs before the first build.
+    _controller = AnimationController(vsync: this);
     _expandAnimation = CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOut,
     );
     if (_expanded) {
-      _controller.forward(from: 1);
+      // Fully expanded without animating: `forward` needs a duration, which
+      // only arrives in `didChangeDependencies`.
+      _controller.value = 1;
     }
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiSidebarNavigationItemTheme.of(context);
     _controller.duration = ImpaktfullUiAnimationUtil.duration(
-        context, const Duration(milliseconds: 200));
+        context, componentTheme.durations.dropdownRotation);
   }
 
   @override

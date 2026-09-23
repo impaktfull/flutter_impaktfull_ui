@@ -21,7 +21,7 @@ class ImpaktfullUiDropdownOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiCard(
-      width: width ?? 200,
+      width: width ?? theme.dimens.overlayWidth,
       height: height,
       shadow: theme.shadows.overlay,
       borderRadius: borderRadius,

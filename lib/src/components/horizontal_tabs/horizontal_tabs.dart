@@ -41,7 +41,7 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => SizedBox(
-        height: 48,
+        height: componentTheme.dimens.height,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           padding: componentTheme.dimens.padding,
@@ -57,7 +57,8 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
               onTap: () => _onTap(tab.value),
             );
           },
-          separatorBuilder: (context, index) => const SizedBox(width: 8),
+          separatorBuilder: (context, index) =>
+              SizedBox(width: componentTheme.dimens.spacing),
         ),
       ),
     );

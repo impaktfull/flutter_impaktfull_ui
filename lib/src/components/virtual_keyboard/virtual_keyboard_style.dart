@@ -6,12 +6,14 @@ class ImpaktfullUiVirtualKeyboardTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiVirtualKeyboardAssetsTheme assets;
   final ImpaktfullUiVirtualKeyboardColorTheme colors;
   final ImpaktfullUiVirtualKeyboardDimensTheme dimens;
+  final ImpaktfullUiVirtualKeyboardDurationsTheme durations;
   final ImpaktfullUiVirtualKeyboardTextStyleTheme textStyles;
 
   const ImpaktfullUiVirtualKeyboardTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
+    this.durations = const ImpaktfullUiVirtualKeyboardDurationsTheme(),
     required this.textStyles,
   });
 
@@ -19,12 +21,14 @@ class ImpaktfullUiVirtualKeyboardTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiVirtualKeyboardAssetsTheme? assets,
     ImpaktfullUiVirtualKeyboardColorTheme? colors,
     ImpaktfullUiVirtualKeyboardDimensTheme? dimens,
+    ImpaktfullUiVirtualKeyboardDurationsTheme? durations,
     ImpaktfullUiVirtualKeyboardTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiVirtualKeyboardTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -48,6 +52,7 @@ class ImpaktfullUiVirtualKeyboardTheme extends ImpaktfullUiComponentTheme {
           cursor: colors.accent,
         ),
         dimens: const ImpaktfullUiVirtualKeyboardDimensTheme(),
+        durations: const ImpaktfullUiVirtualKeyboardDurationsTheme(),
         textStyles: const ImpaktfullUiVirtualKeyboardTextStyleTheme(),
       );
 }
@@ -89,6 +94,40 @@ class ImpaktfullUiVirtualKeyboardDimensTheme {
 
   ImpaktfullUiVirtualKeyboardDimensTheme copyWith() =>
       const ImpaktfullUiVirtualKeyboardDimensTheme();
+}
+
+class ImpaktfullUiVirtualKeyboardDurationsTheme {
+  /// How long one blink of the cursor takes.
+  final Duration cursorBlink;
+
+  /// How long a key takes to slide down to its secondary key.
+  final Duration keySlide;
+
+  /// How long a key has to be held before it starts repeating.
+  final Duration repeatDelay;
+
+  /// The time between two repeats of a held key.
+  final Duration repeatInterval;
+
+  const ImpaktfullUiVirtualKeyboardDurationsTheme({
+    this.cursorBlink = const Duration(milliseconds: 200),
+    this.keySlide = const Duration(milliseconds: 200),
+    this.repeatDelay = const Duration(milliseconds: 500),
+    this.repeatInterval = const Duration(milliseconds: 100),
+  });
+
+  ImpaktfullUiVirtualKeyboardDurationsTheme copyWith({
+    Duration? cursorBlink,
+    Duration? keySlide,
+    Duration? repeatDelay,
+    Duration? repeatInterval,
+  }) =>
+      ImpaktfullUiVirtualKeyboardDurationsTheme(
+        cursorBlink: cursorBlink ?? this.cursorBlink,
+        keySlide: keySlide ?? this.keySlide,
+        repeatDelay: repeatDelay ?? this.repeatDelay,
+        repeatInterval: repeatInterval ?? this.repeatInterval,
+      );
 }
 
 class ImpaktfullUiVirtualKeyboardTextStyleTheme {

@@ -80,15 +80,27 @@ class ImpaktfullUiSidebarNavigationColorTheme {
 class ImpaktfullUiSidebarNavigationDimensTheme {
   final EdgeInsetsGeometry padding;
 
+  /// The width of the secondary column with `secondaryItems`.
+  final double secondaryWidth;
+
+  /// The maximum size of the asset (the logo) in the header.
+  final BoxConstraints assetConstraints;
+
   const ImpaktfullUiSidebarNavigationDimensTheme({
     required this.padding,
+    this.secondaryWidth = 300,
+    this.assetConstraints = const BoxConstraints(maxWidth: 150, maxHeight: 40),
   });
 
   ImpaktfullUiSidebarNavigationDimensTheme copyWith({
+    BoxConstraints? assetConstraints,
     EdgeInsetsGeometry? padding,
+    double? secondaryWidth,
   }) =>
       ImpaktfullUiSidebarNavigationDimensTheme(
+        assetConstraints: assetConstraints ?? this.assetConstraints,
         padding: padding ?? this.padding,
+        secondaryWidth: secondaryWidth ?? this.secondaryWidth,
       );
 }
 

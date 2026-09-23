@@ -6,12 +6,14 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiDropdownColorTheme colors;
   final ImpaktfullUiDropdownShadowsTheme shadows;
   final ImpaktfullUiDropdownDimensTheme dimens;
+  final ImpaktfullUiDropdownDurationsTheme durations;
   final ImpaktfullUiDropdownAssetsTheme assets;
 
   const ImpaktfullUiDropdownTheme({
     required this.colors,
     required this.shadows,
     required this.dimens,
+    this.durations = const ImpaktfullUiDropdownDurationsTheme(),
     required this.assets,
   });
 
@@ -19,12 +21,14 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiDropdownAssetsTheme? assets,
     ImpaktfullUiDropdownColorTheme? colors,
     ImpaktfullUiDropdownDimensTheme? dimens,
+    ImpaktfullUiDropdownDurationsTheme? durations,
     ImpaktfullUiDropdownShadowsTheme? shadows,
   }) =>
       ImpaktfullUiDropdownTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         shadows: shadows ?? this.shadows,
       );
 
@@ -54,6 +58,7 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
           dropDown: assets.icons.chevronDown,
           dropUp: assets.icons.chevronUp,
         ),
+        durations: const ImpaktfullUiDropdownDurationsTheme(),
       );
 }
 
@@ -76,6 +81,22 @@ class ImpaktfullUiDropdownColorTheme {
       );
 }
 
+class ImpaktfullUiDropdownDurationsTheme {
+  /// How long the overlay takes to open and to close.
+  final Duration overlay;
+
+  const ImpaktfullUiDropdownDurationsTheme({
+    this.overlay = const Duration(milliseconds: 200),
+  });
+
+  ImpaktfullUiDropdownDurationsTheme copyWith({
+    Duration? overlay,
+  }) =>
+      ImpaktfullUiDropdownDurationsTheme(
+        overlay: overlay ?? this.overlay,
+      );
+}
+
 class ImpaktfullUiDropdownShadowsTheme {
   final List<BoxShadow> overlay;
   const ImpaktfullUiDropdownShadowsTheme({
@@ -93,15 +114,22 @@ class ImpaktfullUiDropdownShadowsTheme {
 class ImpaktfullUiDropdownDimensTheme {
   final BorderRadiusGeometry borderRadius;
 
+  /// The width of the overlay when the dropdown has no `childWidth` and the
+  /// button has no width yet.
+  final double overlayWidth;
+
   const ImpaktfullUiDropdownDimensTheme({
     required this.borderRadius,
+    this.overlayWidth = 200,
   });
 
   ImpaktfullUiDropdownDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? overlayWidth,
   }) =>
       ImpaktfullUiDropdownDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        overlayWidth: overlayWidth ?? this.overlayWidth,
       );
 }
 

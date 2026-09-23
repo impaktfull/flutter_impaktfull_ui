@@ -7,12 +7,14 @@ class ImpaktfullUiFloatingActionButtonTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiFloatingActionButtonAssetsTheme assets;
   final ImpaktfullUiFloatingActionButtonColorTheme colors;
   final ImpaktfullUiFloatingActionButtonDimensTheme dimens;
+  final ImpaktfullUiFloatingActionButtonDurationsTheme durations;
   final ImpaktfullUiFloatingActionButtonTextStyleTheme textStyles;
 
   const ImpaktfullUiFloatingActionButtonTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
+    this.durations = const ImpaktfullUiFloatingActionButtonDurationsTheme(),
     required this.textStyles,
   });
 
@@ -20,12 +22,14 @@ class ImpaktfullUiFloatingActionButtonTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiFloatingActionButtonAssetsTheme? assets,
     ImpaktfullUiFloatingActionButtonColorTheme? colors,
     ImpaktfullUiFloatingActionButtonDimensTheme? dimens,
+    ImpaktfullUiFloatingActionButtonDurationsTheme? durations,
     ImpaktfullUiFloatingActionButtonTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiFloatingActionButtonTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -50,6 +54,7 @@ class ImpaktfullUiFloatingActionButtonTheme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUiFloatingActionButtonDimensTheme(
           borderRadius: dimens.borderRadiusCircle,
         ),
+        durations: const ImpaktfullUiFloatingActionButtonDurationsTheme(),
         textStyles: ImpaktfullUiFloatingActionButtonTextStyleTheme(
           label: textStyles.onAccent.text.small.bold,
         ),
@@ -96,6 +101,22 @@ class ImpaktfullUiFloatingActionButtonDimensTheme {
   }) =>
       ImpaktfullUiFloatingActionButtonDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+      );
+}
+
+class ImpaktfullUiFloatingActionButtonDurationsTheme {
+  /// How long the button takes to expand to its title and back.
+  final Duration expand;
+
+  const ImpaktfullUiFloatingActionButtonDurationsTheme({
+    this.expand = const Duration(milliseconds: 200),
+  });
+
+  ImpaktfullUiFloatingActionButtonDurationsTheme copyWith({
+    Duration? expand,
+  }) =>
+      ImpaktfullUiFloatingActionButtonDurationsTheme(
+        expand: expand ?? this.expand,
       );
 }
 

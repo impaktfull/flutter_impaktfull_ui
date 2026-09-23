@@ -6,12 +6,14 @@ class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiAccordionAssetsTheme assets;
   final ImpaktfullUiAccordionColorTheme colors;
   final ImpaktfullUiAccordionDimensTheme dimens;
+  final ImpaktfullUiAccordionDurationsTheme durations;
   final ImpaktfullUiAccordionTextStyleTheme textStyles;
 
   const ImpaktfullUiAccordionTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
+    this.durations = const ImpaktfullUiAccordionDurationsTheme(),
     required this.textStyles,
   });
 
@@ -19,12 +21,14 @@ class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiAccordionAssetsTheme? assets,
     ImpaktfullUiAccordionColorTheme? colors,
     ImpaktfullUiAccordionDimensTheme? dimens,
+    ImpaktfullUiAccordionDurationsTheme? durations,
     ImpaktfullUiAccordionTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiAccordionTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -45,6 +49,7 @@ class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
         ),
         colors: const ImpaktfullUiAccordionColorTheme(),
         dimens: const ImpaktfullUiAccordionDimensTheme(),
+        durations: const ImpaktfullUiAccordionDurationsTheme(),
         textStyles: const ImpaktfullUiAccordionTextStyleTheme(),
       );
 }
@@ -60,6 +65,23 @@ class ImpaktfullUiAccordionAssetsTheme {
   }) =>
       ImpaktfullUiAccordionAssetsTheme(
         chevronDown: chevronDown ?? this.chevronDown,
+      );
+}
+
+class ImpaktfullUiAccordionDurationsTheme {
+  /// How long the accordion takes to expand or collapse, and how long the
+  /// chevron takes to turn.
+  final Duration expand;
+
+  const ImpaktfullUiAccordionDurationsTheme({
+    this.expand = const Duration(milliseconds: 200),
+  });
+
+  ImpaktfullUiAccordionDurationsTheme copyWith({
+    Duration? expand,
+  }) =>
+      ImpaktfullUiAccordionDurationsTheme(
+        expand: expand ?? this.expand,
       );
 }
 

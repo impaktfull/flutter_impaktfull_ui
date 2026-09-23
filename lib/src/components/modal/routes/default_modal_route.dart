@@ -12,6 +12,10 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
   ImpaktfullUiDefaultModalRoute({
     required BuildContext context,
     required WidgetBuilder builder,
+
+    /// The caller resolves it from the modal theme: a route has no context of
+    /// its own to read a theme from.
+    required super.transitionDuration,
     CapturedThemes? themes,
     super.barrierColor = Colors.black54,
     super.barrierDismissible,
@@ -34,7 +38,6 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
           },
           barrierLabel: barrierLabel ??
               MaterialLocalizations.of(context).modalBarrierDismissLabel,
-          transitionDuration: const Duration(milliseconds: 150),
         );
 
   /// No transition when the user asked to reduce motion.

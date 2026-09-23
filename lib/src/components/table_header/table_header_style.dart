@@ -61,14 +61,21 @@ class ImpaktfullUiTableHeaderColorTheme {
 
 class ImpaktfullUiTableHeaderDimensTheme {
   final BorderRadiusGeometry borderRadius;
+
+  /// The minimum height of the header row.
+  final double minHeight;
+
   const ImpaktfullUiTableHeaderDimensTheme({
     required this.borderRadius,
+    this.minHeight = 48,
   });
 
   ImpaktfullUiTableHeaderDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? minHeight,
   }) =>
       ImpaktfullUiTableHeaderDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        minHeight: minHeight ?? this.minHeight,
       );
 }

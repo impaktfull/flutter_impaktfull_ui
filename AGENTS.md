@@ -100,6 +100,7 @@ Every component must work with screen readers, keyboards and the "reduce motion"
 
 - A new interactive component has semantics (role, state, label), is focusable and activatable with enter and space, and has a semantics test in `test/src/accessibility/` (or next to its other tests).
 - Every animation duration goes through `ImpaktfullUiAnimationUtil.duration(context, duration)`; endless decorative animations do not run when `ImpaktfullUiAnimationUtil.reduceMotion(context)` is true.
+- **A widget never constructs a theme to read a value from it.** `const ImpaktfullUiAccordionDurationsTheme().expand` is a hardcoded default wearing a token's clothes: it ignores `widget.theme` and the theme of the app. Read every value from `widget.theme ?? ImpaktfullUi<Component>Theme.of(context)` or the `componentTheme` of `ImpaktfullUiOverridableComponentBuilder`, and keep the default in the `*_style.dart` theme class. An `AnimationController` created in `initState` gets no `duration` there: create it as `AnimationController(vsync: this)` and set `duration` in `didChangeDependencies`, which runs before the first build. An object without a `BuildContext` (a `PageRoute`) takes the value as a parameter from the caller that has one. `test/src/theme/theme_construction_source_guard_test.dart` fails on a theme that is built under `lib/src/components` or `lib/src/building_block`.
 - Semantics labels are user-facing texts: they go through localizations (`ImpaktfullUiAccessibilityLocalizations` or the localizations of the component).
 - Do not change the layout size of an existing component to meet a tap target guideline: add an opt-in (`minTapTargetSize` in its dimens theme).
 
@@ -163,7 +164,7 @@ CI fails when the line coverage of `lib/` drops below a minimum. Run it locally 
 
 ```bash
 flutter test --coverage
-dart run tool/coverage/bin/coverage_summary.dart --min 85.6
+dart run tool/coverage/bin/coverage_summary.dart --min 86.7
 ```
 
 `tool/coverage/bin/coverage_summary.dart` reads `coverage/lcov.info` (ignored by git), prints the coverage per directory of `lib/src` and exits with an error below `--min`. The minimum is set in the `Coverage` step of `.github/workflows/validate.yml`, about 1% below the measured coverage so small refactors do not fail CI. **The minimum only goes up:** when a pull request raises the coverage, raise the minimum to the new total minus 1% in the same pull request. Never lower it to make CI pass, add tests instead.

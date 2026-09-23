@@ -6,12 +6,14 @@ class ImpaktfullUiImageCropTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiImageCropAssetsTheme assets;
   final ImpaktfullUiImageCropColorTheme colors;
   final ImpaktfullUiImageCropDimensTheme dimens;
+  final ImpaktfullUiImageCropDurationsTheme durations;
   final ImpaktfullUiImageCropTextStyleTheme textStyles;
 
   const ImpaktfullUiImageCropTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
+    this.durations = const ImpaktfullUiImageCropDurationsTheme(),
     required this.textStyles,
   });
 
@@ -19,12 +21,14 @@ class ImpaktfullUiImageCropTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiImageCropAssetsTheme? assets,
     ImpaktfullUiImageCropColorTheme? colors,
     ImpaktfullUiImageCropDimensTheme? dimens,
+    ImpaktfullUiImageCropDurationsTheme? durations,
     ImpaktfullUiImageCropTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiImageCropTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -47,6 +51,7 @@ class ImpaktfullUiImageCropTheme extends ImpaktfullUiComponentTheme {
           deleteIcon: colors.card,
         ),
         dimens: const ImpaktfullUiImageCropDimensTheme(),
+        durations: const ImpaktfullUiImageCropDurationsTheme(),
         textStyles: const ImpaktfullUiImageCropTextStyleTheme(),
       );
 }
@@ -84,6 +89,22 @@ class ImpaktfullUiImageCropDimensTheme {
 
   ImpaktfullUiImageCropDimensTheme copyWith() =>
       const ImpaktfullUiImageCropDimensTheme();
+}
+
+class ImpaktfullUiImageCropDurationsTheme {
+  /// How long the preview waits after a change before it crops again.
+  final Duration cropDebounce;
+
+  const ImpaktfullUiImageCropDurationsTheme({
+    this.cropDebounce = const Duration(milliseconds: 300),
+  });
+
+  ImpaktfullUiImageCropDurationsTheme copyWith({
+    Duration? cropDebounce,
+  }) =>
+      ImpaktfullUiImageCropDurationsTheme(
+        cropDebounce: cropDebounce ?? this.cropDebounce,
+      );
 }
 
 class ImpaktfullUiImageCropTextStyleTheme {

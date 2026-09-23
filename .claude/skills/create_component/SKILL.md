@@ -107,6 +107,34 @@ Name the sub-themes and their fields like every other component: `assets` (`*Ass
 
 Read the theme from the widget tree (`ImpaktfullUiTheme.of(context)` or the component theme passed to `ImpaktfullUiComponentThemeBuilder`), never with the deprecated global `theme` getter: a global does not follow theme overrides and does not rebuild when the theme changes. `lib/analysis_options.yaml` enables `deprecated_member_use_from_same_package`, so `flutter analyze` fails when the library uses one of its own deprecated APIs.
 
+**Never build a theme inside a widget to read a value from it.** `const ImpaktfullUi<ComponentName>DurationsTheme().expand` looks like a token but is a hardcoded default: it ignores the `theme` parameter of the widget and the theme of the app, so changing the token does nothing. Every value comes from `widget.theme ?? ImpaktfullUi<ComponentName>Theme.of(context)` (or the `componentTheme` of the builder), and the default lives in `getDefault` / the field default of the `*_style.dart` class.
+
+```dart
+// Wrong: the app can not change this.
+_controller = AnimationController(
+  duration: const ImpaktfullUi<ComponentName>DurationsTheme().expand,
+  vsync: this,
+);
+
+// Right: `didChangeDependencies` runs before the first build.
+@override
+void initState() {
+  super.initState();
+  _controller = AnimationController(vsync: this);
+}
+
+@override
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  final componentTheme =
+      widget.theme ?? ImpaktfullUi<ComponentName>Theme.of(context);
+  _controller.duration = ImpaktfullUiAnimationUtil.duration(
+      context, componentTheme.durations.expand);
+}
+```
+
+An object without a `BuildContext` (a `PageRoute`) takes the value as a constructor parameter from the caller that has one. `test/src/theme/theme_construction_source_guard_test.dart` fails when a file under `lib/src/components` or `lib/src/building_block` that is not a theme file constructs a theme.
+
 **Every theme class needs a `copyWith`** (the component theme and every sub-theme: assets, colors, dimens, textStyles, durations, shadows, ...), so users can change a single token without rebuilding the whole theme:
 
 - One nullable named parameter per field, in alphabetical order, forwarded as `field: field ?? this.field`. For example, once the color theme has a `background` field:

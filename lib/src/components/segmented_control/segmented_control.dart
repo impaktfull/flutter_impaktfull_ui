@@ -41,7 +41,7 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => Container(
         padding: componentTheme.dimens.padding,
-        height: 56,
+        height: componentTheme.dimens.height,
         decoration: BoxDecoration(
           color: componentTheme.colors.background,
           borderRadius: componentTheme.dimens.borderRadius,
@@ -54,7 +54,7 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
             if (selectedIndex != -1) ...[
               AnimatedAlign(
                 duration: ImpaktfullUiAnimationUtil.duration(
-                    context, const Duration(milliseconds: 200)),
+                    context, componentTheme.durations.selected),
                 curve: Curves.easeInOut,
                 alignment: AlignmentDirectional(
                   items.length == 1

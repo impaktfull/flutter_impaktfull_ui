@@ -148,6 +148,8 @@ class ImpaktfullUiModal extends StatelessWidget {
         ImpaktfullUiDefaultModalRoute<T>(
           context: context,
           builder: builder,
+          transitionDuration:
+              ImpaktfullUiModalTheme.of(context).durations.transition,
           settings: routeSettings,
           barrierDismissible: barrierDismissible,
           hasBlurredBackground: hasBlurredBackground,

@@ -115,7 +115,7 @@ class ImpaktfullUiStepper extends StatelessWidget {
                                   : componentTheme.colors.assetBackground,
                               borderRadius: componentTheme.dimens.borderRadius,
                             ),
-                            padding: const EdgeInsets.all(8),
+                            padding: componentTheme.dimens.padding,
                             child: ImpaktfullUiAssetWidget(
                               asset: item.asset!,
                               color: i < activeSteps

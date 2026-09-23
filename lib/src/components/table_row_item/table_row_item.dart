@@ -118,7 +118,8 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
         return ImpaktfullUiTouchFeedback(
           onTap: onTap,
           child: Container(
-            constraints: const BoxConstraints(minHeight: 48),
+            constraints:
+                BoxConstraints(minHeight: componentTheme.dimens.minHeight),
             padding: padding,
             alignment: AlignmentDirectional.centerStart,
             child: ImpaktfullUiAutoLayout.horizontal(

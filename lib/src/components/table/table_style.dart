@@ -62,14 +62,22 @@ class ImpaktfullUiTableColorTheme {
 
 class ImpaktfullUiTableDimensTheme {
   final BorderRadiusGeometry borderRadius;
+
+  /// The width a column gets at least before the table starts to scroll
+  /// horizontally.
+  final double minColumnWidth;
+
   const ImpaktfullUiTableDimensTheme({
     required this.borderRadius,
+    this.minColumnWidth = 250,
   });
 
   ImpaktfullUiTableDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? minColumnWidth,
   }) =>
       ImpaktfullUiTableDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        minColumnWidth: minColumnWidth ?? this.minColumnWidth,
       );
 }

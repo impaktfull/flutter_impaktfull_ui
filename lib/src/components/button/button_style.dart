@@ -190,15 +190,28 @@ class ImpaktfullUiButtonDimensTheme {
 
 class ImpaktfullUiButtonDurationsTheme {
   final Duration loading;
+
+  /// How long a raised button takes to move down when it is pressed.
+  final Duration raisedPress;
+
+  /// How long a raised button waits before it moves back up after a press.
+  final Duration raisedRelease;
+
   const ImpaktfullUiButtonDurationsTheme({
     required this.loading,
+    this.raisedPress = const Duration(milliseconds: 25),
+    this.raisedRelease = const Duration(milliseconds: 30),
   });
 
   ImpaktfullUiButtonDurationsTheme copyWith({
     Duration? loading,
+    Duration? raisedPress,
+    Duration? raisedRelease,
   }) =>
       ImpaktfullUiButtonDurationsTheme(
         loading: loading ?? this.loading,
+        raisedPress: raisedPress ?? this.raisedPress,
+        raisedRelease: raisedRelease ?? this.raisedRelease,
       );
 }
 

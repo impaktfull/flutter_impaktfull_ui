@@ -33,6 +33,7 @@ class ImpaktfullUiTableRow extends StatelessWidget {
       builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
         onTap: onTap,
         child: TableColumnBuilder(
+          minHeight: componentTheme.dimens.minHeight,
           config: ImpaktfullUiTableColumnConfigScope.resolve(
             context,
             columnConfig,

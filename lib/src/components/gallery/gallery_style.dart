@@ -130,15 +130,22 @@ class ImpaktfullUiGalleryDimensTheme {
 
 class ImpaktfullUiGalleryDurationsTheme {
   final Duration pageTransition;
+
+  /// How long a double tap takes to zoom the image in or out.
+  final Duration zoom;
+
   const ImpaktfullUiGalleryDurationsTheme({
     required this.pageTransition,
+    this.zoom = const Duration(milliseconds: 300),
   });
 
   ImpaktfullUiGalleryDurationsTheme copyWith({
     Duration? pageTransition,
+    Duration? zoom,
   }) =>
       ImpaktfullUiGalleryDurationsTheme(
         pageTransition: pageTransition ?? this.pageTransition,
+        zoom: zoom ?? this.zoom,
       );
 }
 

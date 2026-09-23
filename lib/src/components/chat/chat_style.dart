@@ -6,12 +6,14 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiChatAssetsTheme assets;
   final ImpaktfullUiChatColorTheme colors;
   final ImpaktfullUiChatDimensTheme dimens;
+  final ImpaktfullUiChatDurationsTheme durations;
   final ImpaktfullUiChatTextStyleTheme textStyles;
 
   const ImpaktfullUiChatTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
+    this.durations = const ImpaktfullUiChatDurationsTheme(),
     required this.textStyles,
   });
 
@@ -19,12 +21,14 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiChatAssetsTheme? assets,
     ImpaktfullUiChatColorTheme? colors,
     ImpaktfullUiChatDimensTheme? dimens,
+    ImpaktfullUiChatDurationsTheme? durations,
     ImpaktfullUiChatTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiChatTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -57,6 +61,7 @@ class ImpaktfullUiChatTheme extends ImpaktfullUiComponentTheme {
           typingContainerBorderRadius: dimens.borderRadius,
           typingDotsBorderRadius: dimens.borderRadius,
         ),
+        durations: const ImpaktfullUiChatDurationsTheme(),
         textStyles: ImpaktfullUiChatTextStyleTheme(
           otherMessage: textStyles.onCard.text.small,
           ownMessage: textStyles.onAccent.text.small,
@@ -143,6 +148,28 @@ class ImpaktfullUiChatDimensTheme {
             typingContainerBorderRadius ?? this.typingContainerBorderRadius,
         typingDotsBorderRadius:
             typingDotsBorderRadius ?? this.typingDotsBorderRadius,
+      );
+}
+
+class ImpaktfullUiChatDurationsTheme {
+  /// How long one bounce of a dot of the typing indicator takes.
+  final Duration typingDot;
+
+  /// The delay between the bounce of one typing dot and the next one.
+  final Duration typingDotDelay;
+
+  const ImpaktfullUiChatDurationsTheme({
+    this.typingDot = const Duration(milliseconds: 800),
+    this.typingDotDelay = const Duration(milliseconds: 200),
+  });
+
+  ImpaktfullUiChatDurationsTheme copyWith({
+    Duration? typingDot,
+    Duration? typingDotDelay,
+  }) =>
+      ImpaktfullUiChatDurationsTheme(
+        typingDot: typingDot ?? this.typingDot,
+        typingDotDelay: typingDotDelay ?? this.typingDotDelay,
       );
 }
 

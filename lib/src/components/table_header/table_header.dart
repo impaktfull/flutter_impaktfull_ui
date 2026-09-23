@@ -33,6 +33,7 @@ class ImpaktfullUiTableHeader extends StatelessWidget {
           borderRadius: componentTheme.dimens.borderRadius,
         ),
         child: TableColumnBuilder(
+          minHeight: componentTheme.dimens.minHeight,
           config: ImpaktfullUiTableColumnConfigScope.resolve(
             context,
             columnConfig,
