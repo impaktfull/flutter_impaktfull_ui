@@ -38,7 +38,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final asset = this.asset;
-    if (asset == null) return const SizedBox();
+    if (asset == null || asset.isNone) return const SizedBox();
     final child = SizedBox(
       width: width ?? size,
       height: height ?? size,

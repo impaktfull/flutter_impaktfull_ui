@@ -43,16 +43,56 @@ void main() {
 
     test('uses the impaktfull_ui package for its assets', () {
       final theme = ImpaktfullUiTheme.getDefault();
-      expect(theme.assets.images.logo.package, 'impaktfull_ui');
       expect(theme.assets.lotties.loading.package, 'impaktfull_ui');
-      expect(
-          theme.assets.images.logo.getFullSvgAsset(), 'assets/images/logo.svg');
+      expect(theme.assets.lotties.loading.getFullLottieAsset(),
+          'assets/lottie/loading.json');
+    });
+
+    // impaktfull_ui ships no images, so its logo shows nothing instead of
+    // pointing at an asset that is not in the package.
+    test('has no logo of its own', () {
+      final theme = ImpaktfullUiTheme.getDefault();
+      expect(theme.assets.images.logo.isNone, isTrue);
+      expect(theme.assets.images.splashLogo.isNone, isTrue);
+      expect(theme.assets.images.logo.getFullSvgAsset(), isNull);
     });
 
     test('uses another package for its assets', () {
       final theme = ImpaktfullUiTheme.getDefault(package: 'my_app');
       expect(theme.assets.images.logo.package, 'my_app');
       expect(theme.assets.lotties.loading.package, 'my_app');
+      expect(
+          theme.assets.images.logo.getFullSvgAsset(), 'assets/images/logo.svg');
+    });
+
+    test('uses the logo of the app itself without a package', () {
+      final theme = ImpaktfullUiTheme.getDefault(package: null);
+      expect(theme.assets.images.logo.package, isNull);
+      expect(
+          theme.assets.images.logo.getFullSvgAsset(), 'assets/images/logo.svg');
+      expect(theme.assets.images.splashLogo.getFullSvgAsset(),
+          'assets/images/splash_logo.svg');
+    });
+
+    // The package asks for these families but does not ship them: an app
+    // bundles them itself (like the example app), passes its own, or passes
+    // null for the font of the platform.
+    test('asks for the impaktfull font families', () {
+      final theme = ImpaktfullUiTheme.getDefault();
+      expect(theme.textStyles.onCanvas.display.large.fontFamily, 'Ubuntu');
+      expect(theme.textStyles.onCanvas.text.medium.fontFamily, 'Geologica');
+      final withFonts = ImpaktfullUiTheme.getDefault(
+        fontFamilyDisplay: 'Display',
+        fontFamilyText: 'Text',
+      );
+      expect(withFonts.textStyles.onCanvas.display.large.fontFamily, 'Display');
+      expect(withFonts.textStyles.onCanvas.text.medium.fontFamily, 'Text');
+      final systemFont = ImpaktfullUiTheme.getDefault(
+        fontFamilyDisplay: null,
+        fontFamilyText: null,
+      );
+      expect(systemFont.textStyles.onCanvas.display.large.fontFamily, isNull);
+      expect(systemFont.textStyles.onCanvas.text.medium.fontFamily, isNull);
     });
 
     test('keeps the custom theme', () {
@@ -75,10 +115,8 @@ void main() {
       expect(loading.package, 'impaktfull_ui');
       expect(loading.suffix, isNull);
       expect(loading.getFullLottieAsset(), 'assets/lottie/loading.json');
-      expect(
-          theme.assets.images.logo.getFullSvgAsset(), 'assets/images/logo.svg');
-      expect(theme.assets.images.splashLogo.getFullSvgAsset(),
-          'assets/images/splash_logo.svg');
+      expect(theme.assets.images.logo.isNone, isTrue);
+      expect(theme.assets.images.splashLogo.isNone, isTrue);
     });
 
     test('passes the asset suffix to the assets of another package', () {
@@ -88,6 +126,36 @@ void main() {
           'assets/lottie/loading_dark.json');
       expect(theme.assets.images.logo.getFullSvgAsset(),
           'assets/images/logo_dark.svg');
+    });
+  });
+
+  group('getDefaultDark', () {
+    test('keeps the accent and flips the neutral colors', () {
+      final light = ImpaktfullUiTheme.getDefault();
+      final dark = ImpaktfullUiTheme.getDefaultDark();
+      expect(dark.label, 'impaktfull Dark Theme');
+      expect(dark.brightness, Brightness.dark);
+      expect(dark.colors.accent, light.colors.accent);
+      expect(dark.colors.secondary, light.colors.secondary);
+      expect(dark.colors.error, light.colors.error);
+      expect(dark.colors.success, light.colors.success);
+      expect(dark.colors.canvas, isNot(light.colors.canvas));
+      expect(dark.colors.card, isNot(light.colors.card));
+      expect(dark.colors.text, isNot(light.colors.text));
+      // The light primary is a near-black neutral, the dark one a
+      // near-white one with dark text on it.
+      expect(dark.colors.primary, const Color(0xFFF5F5F5));
+      expect(dark.colors.textOnPrimary, const Color(0xFF1A1A1A));
+      // The fonts are the same in both variants.
+      expect(dark.textStyles.onCanvas.text.medium.fontFamily,
+          light.textStyles.onCanvas.text.medium.fontFamily);
+    });
+
+    test('the component themes follow the dark colors', () {
+      final dark = ImpaktfullUiTheme.getDefaultDark();
+      expect(dark.components.card.colors.background, dark.colors.card);
+      expect(dark.components.screen.colors.background, dark.colors.canvas);
+      expect(dark.textStyles.onCanvas.text.medium.color, dark.colors.text);
     });
   });
 
@@ -184,8 +252,19 @@ void main() {
       );
       expect(theme.assets.lotties.loading.getFullLottieAsset(),
           'assets/lottie/loading.json');
-      expect(
-          theme.assets.images.logo.getFullSvgAsset(), 'assets/images/logo.svg');
+      expect(theme.assets.images.logo.isNone, isTrue);
+    });
+
+    test('a dark brightness uses the dark defaults', () {
+      final theme = ImpaktfullUiTheme.custom(
+        primary: Colors.red,
+        accent: Colors.green,
+        secondary: Colors.blue,
+        brightness: Brightness.dark,
+      );
+      expect(theme.brightness, Brightness.dark);
+      expect(theme.colors.canvas, const Color(0xFF0C0E12));
+      expect(theme.colors.card, const Color(0xFF16181D));
     });
 
     test('an app asset with a suffix and a dot in its directory', () {
