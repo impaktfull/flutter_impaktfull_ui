@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/table/table_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
   TableVariant();
@@ -120,7 +120,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                           size: 20,
                           color: Colors.green,
                           asset:
-                              ImpaktfullUiAsset.icon(PhosphorIcons.sealCheck()),
+                              ImpaktfullUiAsset.icon(PhosphorIcons.sealCheck),
                         ),
                         ImpaktfullUiIconButton(
                           onTap: () {
@@ -136,7 +136,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                           },
                           size: 20,
                           asset: ImpaktfullUiAsset.icon(
-                              PhosphorIcons.pencilSimple()),
+                              PhosphorIcons.pencilSimple),
                         ),
                         ImpaktfullUiIconButton(
                           onTap: () {
@@ -152,7 +152,7 @@ class TableVariant extends ComponentLibraryVariant<TableLibraryVariantInputs> {
                             );
                           },
                           size: 20,
-                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
+                          asset: ImpaktfullUiAsset.icon(PhosphorIcons.trash),
                         ),
                       ],
                     ),

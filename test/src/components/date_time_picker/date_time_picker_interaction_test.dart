@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../../../util/font_loader.dart';
 import '../../../util/test_util.dart';
@@ -61,7 +61,7 @@ void main() {
   testWidgets('a date of another month after paging', (tester) async {
     final changes = await pump(tester, DateTime(2023, 7, 6, 14, 30));
 
-    await tapAndSettle(tester, find.byIcon(PhosphorIcons.arrowRight()));
+    await tapAndSettle(tester, find.byIcon(PhosphorIcons.arrowRight));
     await tapAndSettle(tester, _dayCell('2'));
     expect(changes, [DateTime(2023, 8, 2, 14, 30)]);
   });

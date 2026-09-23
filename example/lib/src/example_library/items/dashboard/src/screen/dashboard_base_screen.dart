@@ -7,7 +7,7 @@ import 'package:impaktfull_ui_example/src/example_library/items/dashboard/src/sc
 import 'package:impaktfull_ui_example/src/example_library/widgets/coming_soon.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/util/network_images.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class DashboardBaseScreen extends StatefulWidget {
   const DashboardBaseScreen({
@@ -29,38 +29,38 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
         asset: theme.assets.images.logo,
         items: [
           ImpaktfullUiSidebarNavigationItem(
-            leading: ImpaktfullUiAsset.icon(PhosphorIcons.house()),
+            leading: ImpaktfullUiAsset.icon(PhosphorIcons.house),
             title: 'Home',
             isSelected: _activeScreen == DashboardScreen.home,
             onTap: () => setState(() => _activeScreen = DashboardScreen.home),
           ),
           ImpaktfullUiSidebarNavigationItem(
-            leading: ImpaktfullUiAsset.icon(PhosphorIcons.basket()),
+            leading: ImpaktfullUiAsset.icon(PhosphorIcons.basket),
             title: 'Store',
             items: [
               ImpaktfullUiSidebarNavigationItem(
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.tShirt()),
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.tShirt),
                 title: 'Products',
                 isSelected: _activeScreen == DashboardScreen.storeProducts,
                 onTap: () => setState(
                     () => _activeScreen = DashboardScreen.storeProducts),
               ),
               ImpaktfullUiSidebarNavigationItem(
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.money()),
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.money),
                 title: 'Orders',
                 isSelected: _activeScreen == DashboardScreen.storeOrders,
                 onTap: () =>
                     setState(() => _activeScreen = DashboardScreen.storeOrders),
               ),
               ImpaktfullUiSidebarNavigationItem(
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.sealPercent()),
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.sealPercent),
                 title: 'Coupons',
                 isSelected: _activeScreen == DashboardScreen.storeCoupons,
                 onTap: () => setState(
                     () => _activeScreen = DashboardScreen.storeCoupons),
               ),
               ImpaktfullUiSidebarNavigationItem(
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix),
                 title: 'Settings',
                 isSelected: _activeScreen == DashboardScreen.storeSettings,
                 onTap: () => setState(
@@ -71,7 +71,7 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
         ],
         footerItems: [
           ImpaktfullUiSidebarNavigationItem(
-            leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
+            leading: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix),
             title: 'Settings',
             isSelected: _activeScreen == DashboardScreen.settings,
             onTap: () =>
@@ -85,7 +85,7 @@ class _DashboardBaseScreenState extends State<DashboardBaseScreen> {
           title: 'Koen Van Looveren',
           subtitle: 'koen@impaktfull.com',
           trailingWidgetBuilder: (context) => ImpaktfullUiIconButton(
-            asset: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
+            asset: ImpaktfullUiAsset.icon(PhosphorIcons.signOut),
             onTap: () => ImpaktfullUiNavigator.instance.goBack(),
           ),
         ),

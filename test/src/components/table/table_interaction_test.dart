@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../_data_display_test_helpers.dart';
 
@@ -125,12 +125,12 @@ void main() {
     await tester.tap(find.textContaining('Name'));
     await tester.pumpAndSettle();
     expect(shownNames(tester), ['Alice', 'Bob', 'Charlie']);
-    expect(find.byIcon(PhosphorIcons.caretUp()), findsOneWidget);
+    expect(find.byIcon(PhosphorIcons.caretUp), findsOneWidget);
 
     await tester.tap(find.textContaining('Name'));
     await tester.pumpAndSettle();
     expect(shownNames(tester), ['Charlie', 'Bob', 'Alice']);
-    expect(find.byIcon(PhosphorIcons.caretDown()), findsOneWidget);
+    expect(find.byIcon(PhosphorIcons.caretDown), findsOneWidget);
   });
 
   testWidgets('row checkboxes update the select-all checkbox', (tester) async {

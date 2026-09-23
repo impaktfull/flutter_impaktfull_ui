@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class ExampleComingSoon extends StatelessWidget {
   const ExampleComingSoon({
@@ -24,7 +24,7 @@ class ExampleComingSoon extends StatelessWidget {
             ),
             padding: const EdgeInsets.all(32),
             child: Icon(
-              PhosphorIcons.craneTower(),
+              PhosphorIcons.craneTower,
               color: theme.colors.textOnAccent,
             ),
           ),

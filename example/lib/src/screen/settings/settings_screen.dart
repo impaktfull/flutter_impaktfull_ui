@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/app.dart';
 import 'package:impaktfull_ui_example/src/util/themes.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -73,17 +73,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: [
               ImpaktfullUiListItem(
                 title: 'Open git repo',
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.githubLogo()),
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.githubLogo),
                 onTap: _onGitRepoPressed,
               ),
               ImpaktfullUiListItem(
                 title: 'Open Linkedin',
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.linkedinLogo()),
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.linkedinLogo),
                 onTap: _onLinkedinTapped,
               ),
               ImpaktfullUiListItem(
                 title: 'Open impaktfull.com',
-                leading: ImpaktfullUiAsset.icon(PhosphorIcons.globe()),
+                leading: ImpaktfullUiAsset.icon(PhosphorIcons.globe),
                 onTap: _onWebsiteTapped,
               ),
             ],

@@ -56,13 +56,17 @@ void main() {
       ),
     );
 
-    await tester.enterText(hoursField, '9');
-    await tester.pumpAndSettle();
+    // Without a value the picker starts at the current time, and entering the
+    // hour it already shows changes nothing. Pick an hour that is never the
+    // current one, so this does not fail for an hour every day.
     final now = DateTime.now();
+    final hour = (now.hour + 5) % 24;
+    await tester.enterText(hoursField, hour.toString().padLeft(2, '0'));
+    await tester.pumpAndSettle();
     expect(result?.year, now.year);
     expect(result?.month, now.month);
     expect(result?.day, now.day);
-    expect(result?.hour, 9);
+    expect(result?.hour, hour);
   });
 
   group('showModal', () {

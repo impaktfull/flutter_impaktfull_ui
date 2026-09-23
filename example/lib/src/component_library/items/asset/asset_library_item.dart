@@ -2,7 +2,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/asset/asset_library_variant.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_inputs.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class AssetLibraryItem extends ComponentLibraryItem {
   const AssetLibraryItem();
@@ -13,7 +13,7 @@ class AssetLibraryItem extends ComponentLibraryItem {
   @override
   List<ComponentLibraryVariant> getComponentVariants() {
     final assets = [
-      ImpaktfullUiAsset.icon(PhosphorIcons.heart(PhosphorIconsStyle.fill)),
+      ImpaktfullUiAsset.icon(PhosphorIcons.heartFill),
       const ImpaktfullUiAsset.svg('heart.svg', directory: 'assets/images'),
       const ImpaktfullUiAsset.pixel('heart.webp', directory: 'assets/images'),
       const ImpaktfullUiAsset.pixel('heart.png', directory: 'assets/images'),
