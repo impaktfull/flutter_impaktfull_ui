@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui/src/components/date_picker/util/date_picker_bounds.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
@@ -12,11 +13,15 @@ class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
   final ValueChanged<DateTime> onChanged;
   final ImpaktfullUiDatePickerTheme theme;
 
+  /// The dates the user can pick.
+  final ImpaktfullUiDatePickerBounds bounds;
+
   const ImpaktfullUiDatePickerYearsPage({
     required this.date,
     required this.selectedStartDate,
     required this.onChanged,
     required this.theme,
+    this.bounds = ImpaktfullUiDatePickerBounds.unbounded,
     super.key,
   });
 
@@ -39,15 +44,21 @@ class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
     );
   }
 
-  List<DateTime> _getItems(BuildContext context) {
+  /// The 10 years of the decade, `null` for a year outside the bounds: the
+  /// list only shows years the user can pick, on the same grid as a decade
+  /// that is completely inside the bounds.
+  List<DateTime?> _getItems(BuildContext context) {
     final startYear = (date.year ~/ 10) * 10;
     return [
       for (int year = startYear; year < startYear + 10; year++)
-        DateTime(
-          year,
-          date.month,
-          dayForMonthWithFallback(year, date.month, date.day),
-        ),
+        if (!bounds.isYearEnabled(year))
+          null
+        else
+          DateTime(
+            year,
+            date.month,
+            dayForMonthWithFallback(year, date.month, date.day),
+          ),
     ];
   }
 
@@ -59,7 +70,7 @@ class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
 
   List<Widget> _getWidgetItems(
     BuildContext context,
-    List<DateTime> items,
+    List<DateTime?> items,
     ImpaktfullUiDatePickerTheme componentTheme,
   ) {
     final rowItems = <Widget>[];
@@ -68,6 +79,10 @@ class ImpaktfullUiDatePickerYearsPage extends StatelessWidget {
       final rowChildren = <Widget>[];
       for (var j = 0; j < itemsPerRow && i + j < items.length; j++) {
         final item = items[i + j];
+        if (item == null) {
+          rowChildren.add(const Expanded(child: SizedBox()));
+          continue;
+        }
         rowChildren.add(
           Expanded(
             child: ImpaktfullUiDatePickerCell(

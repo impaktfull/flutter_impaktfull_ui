@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
+import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations.dart';
 
 enum ImpaktfullUiDatePickerCellType {
   single,
@@ -20,6 +21,10 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
   final bool fullWidth;
   final ImpaktfullUiDatePickerTheme theme;
 
+  /// Whether the date is outside `firstDate` / `lastDate`: the cell is not
+  /// tappable, not focusable and announced as a disabled button.
+  final bool isDisabled;
+
   const ImpaktfullUiDatePickerCell({
     required this.value,
     required this.theme,
@@ -27,6 +32,7 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
     required this.onTap,
     this.active = true,
     this.fullWidth = false,
+    this.isDisabled = false,
     this.type = ImpaktfullUiDatePickerCellType.single,
     super.key,
   });
@@ -35,24 +41,37 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return ImpaktfullUiComponentThemeBuilder(
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => ImpaktfullUiTouchFeedback(
-        onTap: onTap,
-        color: _getBackgroundColor(componentTheme),
-        borderRadius: _getBorderRadius(componentTheme),
-        border: _getBorder(componentTheme),
-        child: Center(
-          child: SizedBox(
-            width: fullWidth ? double.infinity : 40,
-            height: fullWidth ? 40 : 40,
-            child: Center(
-              child: Text(
-                value,
-                style: _getTextStyle(componentTheme),
+      builder: (context, componentTheme) {
+        final cell = ImpaktfullUiTouchFeedback(
+          onTap: isDisabled ? null : onTap,
+          color: _getBackgroundColor(componentTheme),
+          borderRadius: _getBorderRadius(componentTheme),
+          border: _getBorder(componentTheme),
+          tooltip: isDisabled
+              ? ImpaktfullUiAccessibilityLocalizations.of(context)
+                  .unavailableDate
+              : null,
+          child: Center(
+            child: SizedBox(
+              width: fullWidth ? double.infinity : 40,
+              height: fullWidth ? 40 : 40,
+              child: Center(
+                child: Text(
+                  value,
+                  style: _getTextStyle(componentTheme),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+        if (!isDisabled) return cell;
+        return Semantics(
+          container: true,
+          button: true,
+          enabled: false,
+          child: cell,
+        );
+      },
     );
   }
 
@@ -73,6 +92,7 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
   }
 
   Border? _getBorder(ImpaktfullUiDatePickerTheme componentTheme) {
+    if (isDisabled) return null;
     switch (type) {
       case ImpaktfullUiDatePickerCellType.today:
         return Border.all(
@@ -88,6 +108,10 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
   }
 
   TextStyle _getTextStyle(ImpaktfullUiDatePickerTheme componentTheme) {
+    if (isDisabled) {
+      return componentTheme.textStyles.cellDisabled ??
+          componentTheme.textStyles.cellInActive;
+    }
     if (isSelected) {
       return componentTheme.textStyles.cellSelected;
     }
@@ -98,6 +122,7 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
   }
 
   Color _getBackgroundColor(ImpaktfullUiDatePickerTheme componentTheme) {
+    if (isDisabled) return Colors.transparent;
     if (isSelected) {
       return componentTheme.colors.selected;
     }

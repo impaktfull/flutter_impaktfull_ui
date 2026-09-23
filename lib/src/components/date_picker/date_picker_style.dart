@@ -67,6 +67,7 @@ class ImpaktfullUiDatePickerTheme extends ImpaktfullUiComponentTheme {
           headerTitle: textStyles.onCard.text.small.semiBold,
           weekday: textStyles.onCard.text.small.medium,
           cellInActive: textStyles.onCardTertiary.text.small.withOpacity(0.5),
+          cellDisabled: textStyles.onCardTertiary.text.small.withOpacity(0.25),
           cell: textStyles.onCard.text.small,
           cellSelected: textStyles.onPrimary.text.small.semiBold,
         ),
@@ -144,17 +145,25 @@ class ImpaktfullUiDatePickerTextStyleTheme {
   final TextStyle cell;
   final TextStyle cellSelected;
 
+  /// The day, month or year that is outside `firstDate` / `lastDate`.
+  ///
+  /// Falls back to [cellInActive] when it is not set, so a theme that was
+  /// written before `firstDate` / `lastDate` existed keeps working.
+  final TextStyle? cellDisabled;
+
   const ImpaktfullUiDatePickerTextStyleTheme({
     required this.headerTitle,
     required this.weekday,
     required this.cellInActive,
     required this.cell,
     required this.cellSelected,
+    this.cellDisabled,
   });
 
   ImpaktfullUiDatePickerTextStyleTheme copyWith({
     TextStyle? cell,
     TextStyle? cellInActive,
+    TextStyle? cellDisabled,
     TextStyle? cellSelected,
     TextStyle? headerTitle,
     TextStyle? weekday,
@@ -162,6 +171,7 @@ class ImpaktfullUiDatePickerTextStyleTheme {
       ImpaktfullUiDatePickerTextStyleTheme(
         cell: cell ?? this.cell,
         cellInActive: cellInActive ?? this.cellInActive,
+        cellDisabled: cellDisabled ?? this.cellDisabled,
         cellSelected: cellSelected ?? this.cellSelected,
         headerTitle: headerTitle ?? this.headerTitle,
         weekday: weekday ?? this.weekday,

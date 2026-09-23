@@ -5,6 +5,7 @@ import 'package:impaktfull_ui/src/components/date_picker/date_picker.localizatio
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_active_type.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_style.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_type.dart';
+import 'package:impaktfull_ui/src/components/date_picker/util/date_picker_bounds.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_page.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/util/extension/edge_insets_geometry_extension.dart';
@@ -35,6 +36,21 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
   /// no localized material localizations.
   final int? firstDayOfWeek;
 
+  /// The earliest date the user can pick, `null` (the default) for no limit.
+  ///
+  /// Named like `CalendarDatePicker.firstDate` of Flutter. Days before it are
+  /// disabled and the picker can not navigate to a month, year or decade
+  /// before it. Only the calendar day counts, the time of day is ignored.
+  final DateTime? firstDate;
+
+  /// The latest date the user can pick, `null` (the default) for no limit.
+  ///
+  /// Named like `CalendarDatePicker.lastDate` of Flutter. Days after it are
+  /// disabled and the picker can not navigate to a month, year or decade
+  /// after it. Only the calendar day counts, so a [lastDate] of 23/09/2026
+  /// 10:00 still allows picking 23/09/2026.
+  final DateTime? lastDate;
+
   const ImpaktfullUiDatePicker({
     required DateTime? selectedDate,
     required ValueChanged<DateTime?> onDateChanged,
@@ -42,6 +58,8 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
     this.theme,
     this.localizations,
     this.firstDayOfWeek,
+    this.firstDate,
+    this.lastDate,
     super.key,
   })  : selectedStartDate = selectedDate,
         selectedEndDate = null,
@@ -58,6 +76,8 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
     this.theme,
     this.localizations,
     this.firstDayOfWeek,
+    this.firstDate,
+    this.lastDate,
     super.key,
   }) : type = ImpaktfullUiDatePickerType.range;
 
@@ -73,7 +93,10 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
     bool rootNavigator = false,
     ImpaktfullUiDatePickerLocalizations? localizations,
     int? firstDayOfWeek,
+    DateTime? firstDate,
+    DateTime? lastDate,
   }) {
+    assertValidDatePickerBounds(firstDate, lastDate);
     final datePickerLocalizations = localizations ??
         ImpaktfullUiLocalizations.of<ImpaktfullUiDatePickerLocalizations>(
             context);
@@ -111,6 +134,8 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           localizations: datePickerLocalizations,
           firstDayOfWeek: firstDayOfWeek,
+          firstDate: firstDate,
+          lastDate: lastDate,
           onDateChanged: (value) {
             setState(() => newDate = value);
           },
@@ -129,7 +154,10 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
     bool rootNavigator = false,
     ImpaktfullUiDatePickerLocalizations? localizations,
     int? firstDayOfWeek,
+    DateTime? firstDate,
+    DateTime? lastDate,
   }) {
+    assertValidDatePickerBounds(firstDate, lastDate);
     final datePickerLocalizations = localizations ??
         ImpaktfullUiLocalizations.of<ImpaktfullUiDatePickerLocalizations>(
             context);
@@ -177,6 +205,8 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           localizations: datePickerLocalizations,
           firstDayOfWeek: firstDayOfWeek,
+          firstDate: firstDate,
+          lastDate: lastDate,
           onStartDateChanged: (value) => setState(() => newStartDate = value),
           onEndDateChanged: (value) => setState(() => newEndDate = value),
         ),
@@ -186,33 +216,62 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
 }
 
 class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
-  static const int initialPage = 10000;
+  /// The amount of pages before and after the page of [_initialStartDay] when
+  /// there is no [ImpaktfullUiDatePicker.firstDate] / `lastDate`.
+  static const int _unboundedPages = 10000;
 
-  late final PageController _pageController;
+  late PageController _pageController;
 
-  var _pageIndex = initialPage;
+  /// The controllers of the pages that are being replaced this frame: the old
+  /// [PageView] still holds them until the next frame.
+  final _staleControllers = <PageController>[];
+
+  /// Changes whenever the [PageView] needs a fresh scroll position, so it
+  /// starts at the page of the new controller instead of keeping its pixels.
+  var _pageViewGeneration = 0;
+  late int _pageIndex;
   var _activeType = ImpaktfullUiDatePickerActiveType.days;
   late DateTime _initialStartDay;
   late DateTime _activeDate;
 
+  ImpaktfullUiDatePickerBounds get _bounds => ImpaktfullUiDatePickerBounds(
+        firstDate: widget.firstDate,
+        lastDate: widget.lastDate,
+      );
+
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: initialPage);
-    _pageController.addListener(_onPageControllerUpdated);
-    _initialStartDay = widget.selectedStartDate ?? DateTime.now();
-    _activeDate = widget.selectedStartDate ?? DateTime.now();
+    assertValidDatePickerBounds(widget.firstDate, widget.lastDate);
+    // A selected date outside the bounds does not crash: the picker opens on
+    // the closest date inside the bounds.
+    final startDay = _bounds.clamp(widget.selectedStartDate ?? DateTime.now());
+    _initialStartDay = startDay;
+    _activeDate = startDay;
+    _pageIndex = _anchorPage;
+    _pageController = PageController(initialPage: _pageIndex)
+      ..addListener(_onPageControllerUpdated);
   }
 
   @override
   void didUpdateWidget(covariant ImpaktfullUiDatePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (widget.firstDate != oldWidget.firstDate ||
+        widget.lastDate != oldWidget.lastDate) {
+      assertValidDatePickerBounds(widget.firstDate, widget.lastDate);
+      // Every page is indexed from `_initialStartDay` and the first date, so
+      // new bounds mean new page indexes: start the page view over.
+      _initialStartDay = _bounds.clamp(_initialStartDay);
+      _activeDate = _bounds.clamp(_activeDate);
+      _resetPageView(_activeType, _activeDate);
+      return;
+    }
     final selectedStartDate = widget.selectedStartDate;
     if (selectedStartDate != null &&
         selectedStartDate != oldWidget.selectedStartDate) {
       final oldActiveDate = _activeDate;
       if (oldActiveDate != selectedStartDate) {
-        _activeDate = selectedStartDate;
+        _activeDate = _bounds.clamp(selectedStartDate);
         _setCorrectPage();
       }
     }
@@ -220,6 +279,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
 
   @override
   void dispose() {
+    _disposeStaleControllers();
     _pageController.dispose();
     super.dispose();
   }
@@ -249,7 +309,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
                     type: ImpaktfullUiButtonType.tertiaryGrey,
                     leadingAsset: componentTheme.assets.arrowLeft
                         .copyWith(matchTextDirection: true),
-                    onTap: _onPreviousTapped,
+                    onTap: _hasPreviousPage ? _onPreviousTapped : null,
                   ),
                   Expanded(
                     child: ImpaktfullUiButton(
@@ -262,7 +322,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
                     type: ImpaktfullUiButtonType.tertiaryGrey,
                     leadingAsset: componentTheme.assets.arrowRight
                         .copyWith(matchTextDirection: true),
-                    onTap: _onNextTapped,
+                    onTap: _hasNextPage ? _onNextTapped : null,
                   ),
                 ],
               ),
@@ -270,8 +330,9 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
             SizedBox(
               height: 260,
               child: PageView.builder(
+                key: ValueKey(_pageViewGeneration),
                 controller: _pageController,
-                itemCount: initialPage * 2,
+                itemCount: _pageCount,
                 itemBuilder: (context, index) {
                   final date = _getPageDate(index);
                   return ImpaktfullUiDatePickerPage(
@@ -289,6 +350,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
                     theme: componentTheme,
                     firstDayOfWeek: widget.firstDayOfWeek,
                     localizations: widget.localizations,
+                    bounds: _bounds,
                   );
                 },
               ),
@@ -299,8 +361,69 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
     );
   }
 
+  /// The page of [_initialStartDay] for the active type.
+  ///
+  /// Without a `firstDate` every type keeps [_unboundedPages] pages in front
+  /// of it. With a `firstDate` the first page of the [PageView] is the first
+  /// month, year or decade inside the bounds, so the user can not scroll or
+  /// swipe before it.
+  int get _anchorPage => _anchorPageFor(_activeType);
+
+  int _anchorPageFor(ImpaktfullUiDatePickerActiveType type) {
+    switch (type) {
+      case ImpaktfullUiDatePickerActiveType.days:
+        return _bounds.monthsSinceFirstDate(_initialStartDay) ??
+            _unboundedPages;
+      case ImpaktfullUiDatePickerActiveType.months:
+        return _bounds.yearsSinceFirstDate(_initialStartDay) ?? _unboundedPages;
+      case ImpaktfullUiDatePickerActiveType.years:
+        return _bounds.decadesSinceFirstDate(_initialStartDay) ??
+            _unboundedPages;
+    }
+  }
+
+  /// The amount of pages of the [PageView] for the active type: the last page
+  /// is the month, year or decade of the `lastDate`.
+  int get _pageCount {
+    final int pagesAfterAnchor;
+    switch (_activeType) {
+      case ImpaktfullUiDatePickerActiveType.days:
+        pagesAfterAnchor =
+            _bounds.monthsUntilLastDate(_initialStartDay) ?? _unboundedPages;
+        break;
+      case ImpaktfullUiDatePickerActiveType.months:
+        pagesAfterAnchor =
+            _bounds.yearsUntilLastDate(_initialStartDay) ?? _unboundedPages;
+        break;
+      case ImpaktfullUiDatePickerActiveType.years:
+        pagesAfterAnchor =
+            _bounds.decadesUntilLastDate(_initialStartDay) ?? _unboundedPages;
+        break;
+    }
+    return _anchorPage + pagesAfterAnchor + 1;
+  }
+
+  bool get _hasPreviousPage => _pageIndex > 0;
+
+  bool get _hasNextPage => _pageIndex < _pageCount - 1;
+
+  /// The page that shows [date] with [type] active.
+  int _pageIndexFor(ImpaktfullUiDatePickerActiveType type, DateTime date) {
+    final anchor = _anchorPageFor(type);
+    switch (type) {
+      case ImpaktfullUiDatePickerActiveType.days:
+        final yearsOffset = (date.year - _initialStartDay.year) * 12;
+        final monthsOffset = date.month - _initialStartDay.month;
+        return anchor + yearsOffset + monthsOffset;
+      case ImpaktfullUiDatePickerActiveType.months:
+        return anchor + (date.year - _initialStartDay.year);
+      case ImpaktfullUiDatePickerActiveType.years:
+        return anchor + (date.year ~/ 10) - (_initialStartDay.year ~/ 10);
+    }
+  }
+
   DateTime _getPageDate(int page) {
-    final offset = page - initialPage;
+    final offset = page - _anchorPage;
     switch (_activeType) {
       // Always use the first day of the month: DateTime overflows days that do
       // not exist in the target month (Jan 31 + 1 month would be Mar 3).
@@ -340,11 +463,13 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   }
 
   void _onPreviousTapped() {
+    if (!_hasPreviousPage) return;
     final newPageIndex = _pageIndex - 1;
     _pageController.jumpToPage(newPageIndex);
   }
 
   void _onNextTapped() {
+    if (!_hasNextPage) return;
     final newPageIndex = _pageIndex + 1;
     _pageController.jumpToPage(newPageIndex);
   }
@@ -352,16 +477,9 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   void _onHeaderTitleTapped() {
     if (_activeType == ImpaktfullUiDatePickerActiveType.days ||
         _activeType == ImpaktfullUiDatePickerActiveType.years) {
-      setState(() {
-        _activeType = ImpaktfullUiDatePickerActiveType.months;
-      });
-      final offset = _activeDate.year - _initialStartDay.year;
-      _pageController.jumpToPage(initialPage + offset);
+      _resetPageView(ImpaktfullUiDatePickerActiveType.months, _activeDate);
     } else if (_activeType == ImpaktfullUiDatePickerActiveType.months) {
-      setState(() {
-        _activeType = ImpaktfullUiDatePickerActiveType.years;
-      });
-      _pageController.jumpToPage(initialPage + _getDecadeOffset());
+      _resetPageView(ImpaktfullUiDatePickerActiveType.years, _activeDate);
     }
   }
 
@@ -377,34 +495,39 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
   }
 
   void _onActiveTypeChanged(
-      ImpaktfullUiDatePickerActiveType value, DateTime date) {
+          ImpaktfullUiDatePickerActiveType value, DateTime date) =>
+      _resetPageView(value, date);
+
+  void _setCorrectPage() =>
+      _pageController.jumpToPage(_pageIndexFor(_activeType, _activeDate));
+
+  /// Shows [date] with [type] active.
+  ///
+  /// A page is a month, a year or a decade depending on the active type, and
+  /// with a `firstDate` / `lastDate` each of them has its own amount of pages,
+  /// so switching between them can not `jumpToPage`: the page view starts over
+  /// with a controller on the right page.
+  void _resetPageView(
+      ImpaktfullUiDatePickerActiveType type, DateTime activeDate) {
+    final oldController = _pageController;
+    oldController.removeListener(_onPageControllerUpdated);
+    _staleControllers.add(oldController);
     setState(() {
-      _activeType = value;
-      _activeDate = date;
+      _activeType = type;
+      _activeDate = activeDate;
+      _pageIndex = _pageIndexFor(type, activeDate);
+      _pageViewGeneration++;
+      _pageController = PageController(initialPage: _pageIndex)
+        ..addListener(_onPageControllerUpdated);
     });
-    _setCorrectPage();
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => _disposeStaleControllers());
   }
 
-  void _setCorrectPage() {
-    switch (_activeType) {
-      case ImpaktfullUiDatePickerActiveType.days:
-        final yearsOffset = (_activeDate.year - _initialStartDay.year) * 12;
-        final monthsOffset = _activeDate.month - _initialStartDay.month;
-        _pageController.jumpToPage(initialPage + yearsOffset + monthsOffset);
-        break;
-      case ImpaktfullUiDatePickerActiveType.months:
-        _pageController.jumpToPage(
-            initialPage + (_activeDate.year - _initialStartDay.year));
-        break;
-      case ImpaktfullUiDatePickerActiveType.years:
-        _pageController.jumpToPage(initialPage + _getDecadeOffset());
-        break;
+  void _disposeStaleControllers() {
+    for (final controller in _staleControllers) {
+      controller.dispose();
     }
-  }
-
-  int _getDecadeOffset() {
-    final currentDecade = _initialStartDay.year ~/ 10;
-    final activeDecade = _activeDate.year ~/ 10;
-    return activeDecade - currentDecade;
+    _staleControllers.clear();
   }
 }

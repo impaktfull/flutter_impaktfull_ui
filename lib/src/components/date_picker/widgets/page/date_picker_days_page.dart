@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui/src/components/date_picker/util/date_picker_bounds.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_weekdays.dart';
 import 'package:impaktfull_ui/src/components/grid_view/grid_view.dart';
@@ -19,11 +20,15 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
   final ValueChanged<DateTime> onSelected;
   final ImpaktfullUiDatePickerTheme theme;
 
+  /// The dates the user can pick.
+  final ImpaktfullUiDatePickerBounds bounds;
+
   const ImpaktfullUiDatePickerDaysPage({
     required this.date,
     required this.selectedStartDate,
     required this.onSelected,
     required this.theme,
+    this.bounds = ImpaktfullUiDatePickerBounds.unbounded,
     this.selectedEndDate,
     this.firstDayOfWeek,
     this.localizations,
@@ -52,15 +57,18 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
                 placeholderData: ImpaktfullUiGridViewPlaceholderData(
                   title: _getLocalizations(context).noDays,
                 ),
-                itemBuilder: (context, item, index) =>
-                    ImpaktfullUiDatePickerCell(
-                  value: ImpaktfullUiLocaleUtil.formatDay(context, item),
-                  active: item.isSameMonth(date),
-                  isSelected: _isSelected(item),
-                  type: _getCellType(item),
-                  onTap: () => onSelected(item),
-                  theme: componentTheme,
-                ),
+                itemBuilder: (context, item, index) {
+                  final isDisabled = !bounds.isDayEnabled(item);
+                  return ImpaktfullUiDatePickerCell(
+                    value: ImpaktfullUiLocaleUtil.formatDay(context, item),
+                    active: item.isSameMonth(date),
+                    isDisabled: isDisabled,
+                    isSelected: _isSelected(item),
+                    type: _getCellType(item),
+                    onTap: isDisabled ? null : () => onSelected(item),
+                    theme: componentTheme,
+                  );
+                },
                 crossAxisCount: (context, config) => 7,
               ),
             ),
@@ -110,6 +118,9 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
   }
 
   bool _isSelected(DateTime item) {
+    // A date outside the bounds can not be picked, so it is never shown as
+    // the selection either.
+    if (!bounds.isDayEnabled(item)) return false;
     if (selectedStartDate != null && item.isSameDay(selectedStartDate!)) {
       return true;
     }
@@ -120,6 +131,9 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
   }
 
   ImpaktfullUiDatePickerCellType _getCellType(DateTime item) {
+    if (!bounds.isDayEnabled(item)) {
+      return ImpaktfullUiDatePickerCellType.single;
+    }
     final startDate = selectedStartDate;
     final endDate = selectedEndDate;
     if (startDate == null) {

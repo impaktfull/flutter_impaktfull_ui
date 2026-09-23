@@ -163,7 +163,7 @@ CI fails when the line coverage of `lib/` drops below a minimum. Run it locally 
 
 ```bash
 flutter test --coverage
-dart run tool/coverage/bin/coverage_summary.dart --min 85.1
+dart run tool/coverage/bin/coverage_summary.dart --min 85.6
 ```
 
 `tool/coverage/bin/coverage_summary.dart` reads `coverage/lcov.info` (ignored by git), prints the coverage per directory of `lib/src` and exits with an error below `--min`. The minimum is set in the `Coverage` step of `.github/workflows/validate.yml`, about 1% below the measured coverage so small refactors do not fail CI. **The minimum only goes up:** when a pull request raises the coverage, raise the minimum to the new total minus 1% in the same pull request. Never lower it to make CI pass, add tests instead.

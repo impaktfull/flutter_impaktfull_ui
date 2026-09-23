@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_active_type.dart';
+import 'package:impaktfull_ui/src/components/date_picker/util/date_picker_bounds.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_days_page.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_months_page.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/page/date_picker_years_page.dart';
@@ -21,6 +22,9 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
       onChangeActiveType;
   final ImpaktfullUiDatePickerTheme theme;
 
+  /// The dates the user can pick.
+  final ImpaktfullUiDatePickerBounds bounds;
+
   const ImpaktfullUiDatePickerPage({
     required this.margin,
     required this.date,
@@ -30,6 +34,7 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
     required this.onStartDateChanged,
     required this.onEndDateChanged,
     required this.theme,
+    this.bounds = ImpaktfullUiDatePickerBounds.unbounded,
     this.firstDayOfWeek,
     this.localizations,
     this.onChangeActiveType,
@@ -55,6 +60,7 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
                   onSelected: _onSelected,
                   firstDayOfWeek: firstDayOfWeek,
                   localizations: localizations,
+                  bounds: bounds,
                 );
               case ImpaktfullUiDatePickerActiveType.months:
                 return ImpaktfullUiDatePickerMonthsPage(
@@ -62,6 +68,7 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
                   selectedStartDate: selectedStartDate,
                   theme: componentTheme,
                   onChanged: _onMonthChanged,
+                  bounds: bounds,
                 );
               case ImpaktfullUiDatePickerActiveType.years:
                 return ImpaktfullUiDatePickerYearsPage(
@@ -69,6 +76,7 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
                   selectedStartDate: selectedStartDate,
                   theme: componentTheme,
                   onChanged: _onYearChanged,
+                  bounds: bounds,
                 );
             }
           },
@@ -78,6 +86,9 @@ class ImpaktfullUiDatePickerPage extends StatelessWidget {
   }
 
   void _onSelected(DateTime value) {
+    // A day outside the bounds is not tappable, but a range can never report
+    // a start or an end outside them either.
+    if (!bounds.isDayEnabled(value)) return;
     final startDate = selectedStartDate;
     final onEndDateChanged = this.onEndDateChanged;
     if (onEndDateChanged == null) {

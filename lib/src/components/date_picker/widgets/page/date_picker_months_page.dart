@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
+import 'package:impaktfull_ui/src/components/date_picker/util/date_picker_bounds.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
@@ -12,11 +13,15 @@ class ImpaktfullUiDatePickerMonthsPage extends StatelessWidget {
   final ValueChanged<DateTime> onChanged;
   final ImpaktfullUiDatePickerTheme theme;
 
+  /// The dates the user can pick.
+  final ImpaktfullUiDatePickerBounds bounds;
+
   const ImpaktfullUiDatePickerMonthsPage({
     required this.date,
     required this.selectedStartDate,
     required this.onChanged,
     required this.theme,
+    this.bounds = ImpaktfullUiDatePickerBounds.unbounded,
     super.key,
   });
 
@@ -63,13 +68,16 @@ class ImpaktfullUiDatePickerMonthsPage extends StatelessWidget {
       final rowChildren = <Widget>[];
       for (var j = 0; j < itemsPerRow && i + j < items.length; j++) {
         final item = items[i + j];
+        final isDisabled = !bounds.isMonthEnabled(item);
         rowChildren.add(
           Expanded(
             child: ImpaktfullUiDatePickerCell(
               value: _formatDate(context, item),
               fullWidth: true,
-              isSelected: selectedStartDate?.isSameMonth(item) ?? false,
-              onTap: () => onSelected(item),
+              isDisabled: isDisabled,
+              isSelected: !isDisabled &&
+                  (selectedStartDate?.isSameMonth(item) ?? false),
+              onTap: isDisabled ? null : () => onSelected(item),
               theme: componentTheme,
             ),
           ),

@@ -62,6 +62,10 @@ class ImpaktfullUiAccessibilityLocalizations
   /// The tooltip of the button that undoes every change (image crop).
   final String reset;
 
+  /// Announced for a day, month or year of a date picker that can not be
+  /// picked because it is outside `firstDate` / `lastDate`.
+  final String unavailableDate;
+
   const ImpaktfullUiAccessibilityLocalizations({
     this.loading = 'Loading',
     this.progress = 'Progress',
@@ -81,6 +85,7 @@ class ImpaktfullUiAccessibilityLocalizations
     this.hidePassword = 'Hide password',
     this.backToEditing = 'Back to editing',
     this.reset = 'Reset',
+    this.unavailableDate = 'Unavailable',
   });
 
   static ImpaktfullUiAccessibilityLocalizations of(BuildContext context) =>
@@ -114,6 +119,7 @@ class ImpaktfullUiAccessibilityLocalizations
     String? hidePassword,
     String? backToEditing,
     String? reset,
+    String? unavailableDate,
   }) =>
       ImpaktfullUiAccessibilityLocalizations(
         loading: loading ?? this.loading,
@@ -134,6 +140,7 @@ class ImpaktfullUiAccessibilityLocalizations
         hidePassword: hidePassword ?? this.hidePassword,
         backToEditing: backToEditing ?? this.backToEditing,
         reset: reset ?? this.reset,
+        unavailableDate: unavailableDate ?? this.unavailableDate,
       );
 }
 
