@@ -81,6 +81,7 @@ import 'package:impaktfull_ui/src/components/table_header_item/table_header_item
 import 'package:impaktfull_ui/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui/src/components/table_row_item/table_row_item.dart';
 import 'package:impaktfull_ui/src/components/time_picker/time_picker.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui/src/components/unified_screen_layout/unified_screen_layout.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/virtual_keyboard.dart';
@@ -905,6 +906,14 @@ class ImpaktfullUiDefaultTheme {
           shadows: shadows,
         ),
         tooltip: ImpaktfullUiTooltipTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
+        ),
+        touchFeedback: ImpaktfullUiTouchFeedbackTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,
