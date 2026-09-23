@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/building_block/licenses/licenses.theme.dart';
 import 'package:impaktfull_ui/src/components/accordion/accordion.dart';
 import 'package:impaktfull_ui/src/components/avatar/avatar.dart';
 import 'package:impaktfull_ui/src/components/badge/badge.dart';
@@ -94,6 +95,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiAvatarTheme avatar;
   final ImpaktfullUiAutoCompleteTheme autoComplete;
   final ImpaktfullUiBadgeTheme badge;
+  final ImpaktfullUiBBLicensesTheme bbLicenses;
   final ImpaktfullUiBottomActionsTheme bottomActions;
   final ImpaktfullUiBottomNavigationTheme bottomNavigation;
   final ImpaktfullUiBottomNavigationItemTheme bottomNavigationItem;
@@ -181,6 +183,7 @@ class ImpaktfullUiComponentsTheme {
     required this.avatar,
     required this.autoComplete,
     required this.badge,
+    required this.bbLicenses,
     required this.bottomActions,
     required this.bottomNavigation,
     required this.bottomNavigationItem,
@@ -289,6 +292,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiAvatarTheme? avatar,
     ImpaktfullUiAutoCompleteTheme? autoComplete,
     ImpaktfullUiBadgeTheme? badge,
+    ImpaktfullUiBBLicensesTheme? bbLicenses,
     ImpaktfullUiBottomActionsTheme? bottomActions,
     ImpaktfullUiBottomNavigationTheme? bottomNavigation,
     ImpaktfullUiBottomNavigationItemTheme? bottomNavigationItem,
@@ -380,6 +384,7 @@ class ImpaktfullUiComponentsTheme {
         avatar: avatar ?? this.avatar,
         autoComplete: autoComplete ?? this.autoComplete,
         badge: badge ?? this.badge,
+        bbLicenses: bbLicenses ?? this.bbLicenses,
         bottomActions: bottomActions ?? this.bottomActions,
         bottomNavigation: bottomNavigation ?? this.bottomNavigation,
         bottomNavigationItem: bottomNavigationItem ?? this.bottomNavigationItem,
@@ -475,6 +480,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiAutoCompleteTheme.of(context) as T;
     } else if (T == ImpaktfullUiBadgeTheme) {
       return ImpaktfullUiBadgeTheme.of(context) as T;
+    } else if (T == ImpaktfullUiBBLicensesTheme) {
+      return ImpaktfullUiBBLicensesTheme.of(context) as T;
     } else if (T == ImpaktfullUiBottomActionsTheme) {
       return ImpaktfullUiBottomActionsTheme.of(context) as T;
     } else if (T == ImpaktfullUiBottomNavigationTheme) {

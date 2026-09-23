@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
+import '../../../util/network_image_util.dart';
 import '../../_core_test_helpers.dart';
+import '../../components/_data_display_test_helpers.dart';
 
 /// Pumps the licenses and waits until they are loaded.
 ///
@@ -17,12 +19,14 @@ Future<void> _pumpLicenses(
   WidgetTester tester,
   Widget home, {
   ImpaktfullUiLocalizations localizations = const ImpaktfullUiLocalizations(),
+  ImpaktfullUiTheme? theme,
   Size? screenSize,
 }) async {
   await pumpImpaktfullUiApp(
     tester,
     home,
     localizations: localizations,
+    theme: theme,
     screenSize: screenSize,
   );
   final loading = find.byType(ImpaktfullUiLoadingIndicator);
@@ -99,6 +103,197 @@ void main() {
     await tester.enterText(find.byType(TextField), 'impaktfull');
     await tester.pumpAndSettle();
     expect(shownPackages(tester), ['impaktfull_ui', 'other']);
+  });
+
+  group('custom licenses', () {
+    const custom = ImpaktfullUiLicense(
+      name: 'Photo by Jane Doe',
+      licenses: ['Free to use under the Pexels license'],
+    );
+
+    testWidgets('are shown above the licenses of the packages', (tester) async {
+      await _pumpLicenses(
+        tester,
+        const ImpaktfullUiBBLicenses(customLicenses: [custom]),
+        screenSize: desktopSize,
+      );
+      expect(shownPackages(tester), [
+        'Photo by Jane Doe',
+        'alchemist',
+        'beta',
+        'impaktfull_ui',
+        'other',
+        'zeta',
+      ]);
+    });
+
+    testWidgets('keep the order they are passed in', (tester) async {
+      await _pumpLicenses(
+        tester,
+        const ImpaktfullUiBBLicenses(customLicenses: [
+          ImpaktfullUiLicense(name: 'zzz photo', licenses: ['a']),
+          custom,
+        ]),
+        screenSize: desktopSize,
+      );
+      expect(shownPackages(tester).take(2), ['zzz photo', 'Photo by Jane Doe']);
+    });
+
+    testWidgets('are searched on their name like the packages', (tester) async {
+      await _pumpLicenses(
+        tester,
+        const ImpaktfullUiBBLicenses(customLicenses: [custom]),
+        screenSize: desktopSize,
+      );
+      await tester.enterText(find.byType(TextField), 'JANE');
+      await tester.pumpAndSettle();
+      expect(shownPackages(tester), ['Photo by Jane Doe']);
+
+      await tester.enterText(find.byType(TextField), 'alch');
+      await tester.pumpAndSettle();
+      expect(shownPackages(tester), ['alchemist']);
+    });
+
+    testWidgets('expanding one shows its license text', (tester) async {
+      await _pumpLicenses(
+        tester,
+        const ImpaktfullUiBBLicenses(customLicenses: [custom]),
+        screenSize: desktopSize,
+      );
+      await tester.tap(find.text('Photo by Jane Doe'));
+      await tester.pumpAndSettle();
+      expect(
+        find.byWidgetPredicate((widget) =>
+            widget is ImpaktfullUiMarkdown &&
+            widget.data == 'Free to use under the Pexels license'),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('licenses added to the LicenseRegistry still show up',
+        (tester) async {
+      LicenseRegistry.addLicense(
+        () => Stream.fromIterable([
+          const LicenseEntryWithLineBreaks(['registered'], 'Registered'),
+        ]),
+      );
+      await _pumpLicenses(
+        tester,
+        const ImpaktfullUiBBLicenses(customLicenses: [custom]),
+        screenSize: desktopSize,
+      );
+      expect(shownPackages(tester), contains('registered'));
+      expect(shownPackages(tester).first, 'Photo by Jane Doe');
+    });
+  });
+
+  group('a license with an image', () {
+    final bundle = TestAssetBundle({'assets/photo.png': testPngBytes});
+
+    const imageLicense = ImpaktfullUiLicense(
+      name: 'Photo by Jane Doe',
+      licenses: ['Free to use under the Pexels license'],
+      image: ImpaktfullUiAsset.pixel('photo.png', directory: 'assets'),
+      imageSemanticLabel: 'A mountain at sunrise',
+    );
+
+    Future<void> pumpExpanded(
+      WidgetTester tester, {
+      ImpaktfullUiLicense license = imageLicense,
+      ImpaktfullUiTheme? theme,
+    }) async {
+      await _pumpLicenses(
+        tester,
+        DefaultAssetBundle(
+          bundle: bundle,
+          child: ImpaktfullUiBBLicenses(customLicenses: [license]),
+        ),
+        theme: theme,
+        screenSize: desktopSize,
+      );
+      await tester.tap(find.text(license.name));
+      await tester.pumpAndSettle();
+    }
+
+    /// The asset widget of the image of the license, not the icons of the
+    /// screen around it.
+    ImpaktfullUiAssetWidget licenseImage(WidgetTester tester) =>
+        tester.widget<ImpaktfullUiAssetWidget>(find.byWidgetPredicate(
+          (widget) =>
+              widget is ImpaktfullUiAssetWidget &&
+              (widget.asset?.pixelAsset == 'photo.png' ||
+                  widget.asset?.networkUrl != null),
+        ));
+
+    testWidgets('renders the image with its semantics label', (tester) async {
+      await pumpExpanded(tester);
+      final asset = licenseImage(tester);
+      expect(asset.asset?.pixelAsset, 'photo.png');
+      expect(asset.semanticLabel, 'A mountain at sunrise');
+      // Contain keeps the aspect ratio of the image.
+      expect(asset.fit, BoxFit.contain);
+      expect(asset.height, 160);
+      expect(find.bySemanticsLabel('A mountain at sunrise'), findsOneWidget);
+    });
+
+    testWidgets('falls back to the name as the semantics label',
+        (tester) async {
+      await pumpExpanded(
+        tester,
+        license: const ImpaktfullUiLicense(
+          name: 'Photo by John Doe',
+          licenses: ['Free to use'],
+          image: ImpaktfullUiAsset.pixel('photo.png', directory: 'assets'),
+        ),
+      );
+      expect(licenseImage(tester).semanticLabel, 'Photo by John Doe');
+    });
+
+    testWidgets('sizes the image with the theme tokens', (tester) async {
+      final base = ImpaktfullUiTheme.getDefault();
+      final theme = base.copyWith(
+        components: base.components.copyWith(
+          bbLicenses: base.components.bbLicenses.copyWith(
+            dimens: base.components.bbLicenses.dimens.copyWith(imageHeight: 64),
+          ),
+        ),
+      );
+      await pumpExpanded(tester, theme: theme);
+      expect(licenseImage(tester).height, 64);
+    });
+
+    testWidgets('a broken network image does not throw', (tester) async {
+      await pumpExpanded(
+        tester,
+        license: const ImpaktfullUiLicense(
+          name: 'Photo by Jane Doe',
+          licenses: ['Free to use'],
+          image: ImpaktfullUiAsset.network(brokenImageUrl),
+        ),
+      );
+      await waitForBrokenNetworkImage(tester, brokenImageUrl);
+      expect(tester.takeException(), isNull);
+      expect(find.text('Photo by Jane Doe'), findsOneWidget);
+    });
+
+    testWidgets('expanding a license without an image adds no asset',
+        (tester) async {
+      await _pumpLicenses(
+        tester,
+        const ImpaktfullUiBBLicenses(),
+        screenSize: desktopSize,
+      );
+      final assets = find.byType(ImpaktfullUiAssetWidget);
+      final before = assets.evaluate().length;
+      await tester.tap(find.text('alchemist'));
+      await tester.pumpAndSettle();
+      expect(assets.evaluate().length, before);
+      expect(
+        find.byWidgetPredicate((widget) =>
+            widget is ImpaktfullUiMarkdown && widget.data == 'MIT License'),
+        findsOneWidget,
+      );
+    });
   });
 
   testWidgets('shows the placeholder when nothing matches', (tester) async {

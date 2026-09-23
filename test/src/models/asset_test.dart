@@ -51,6 +51,27 @@ void main() {
       expect(asset.icon, isNull);
     });
 
+    test('network only sets the url, without directory, package or suffix', () {
+      const asset = ImpaktfullUiAsset.network('https://example.com/a.png');
+      expect(asset.networkUrl, 'https://example.com/a.png');
+      expect(asset.svgAsset, isNull);
+      expect(asset.pixelAsset, isNull);
+      expect(asset.lottieAsset, isNull);
+      expect(asset.riveAsset, isNull);
+      expect(asset.icon, isNull);
+      expect(asset.directory, isNull);
+      expect(asset.package, isNull);
+      expect(asset.suffix, isNull);
+    });
+
+    test('the other constructors do not set a network url', () {
+      expect(const ImpaktfullUiAsset.svg('a.svg').networkUrl, isNull);
+      expect(const ImpaktfullUiAsset.pixel('a.png').networkUrl, isNull);
+      expect(const ImpaktfullUiAsset.lottie('a.json').networkUrl, isNull);
+      expect(const ImpaktfullUiAsset.rive('a.riv').networkUrl, isNull);
+      expect(const ImpaktfullUiAsset.icon(Icons.add).networkUrl, isNull);
+    });
+
     test('icon only sets the icon, without directory, package or suffix', () {
       const asset = ImpaktfullUiAsset.icon(Icons.add);
       expect(asset.icon, Icons.add);
@@ -70,6 +91,11 @@ void main() {
       expect(const ImpaktfullUiAsset.pixel('a.png').getAssetName(), 'a.png');
       expect(const ImpaktfullUiAsset.lottie('a.json').getAssetName(), 'a.json');
       expect(const ImpaktfullUiAsset.rive('a.riv').getAssetName(), 'a.riv');
+      expect(
+        const ImpaktfullUiAsset.network('https://example.com/a.png')
+            .getAssetName(),
+        'https://example.com/a.png',
+      );
     });
 
     test('does not include the directory or suffix', () {
@@ -84,12 +110,26 @@ void main() {
     });
   });
 
+  group('copyWith', () {
+    test('keeps the network url and changes matchTextDirection', () {
+      const asset = ImpaktfullUiAsset.network('https://example.com/a.png');
+      final copy = asset.copyWith(matchTextDirection: true);
+      expect(copy.networkUrl, 'https://example.com/a.png');
+      expect(copy.matchTextDirection, isTrue);
+      expect(copy.svgAsset, isNull);
+      expect(copy.pixelAsset, isNull);
+    });
+  });
+
   group('full path', () {
     test('returns null for another asset type', () {
       const asset = ImpaktfullUiAsset.svg('a.svg');
       expect(asset.getFullPixelAsset(), isNull);
       expect(asset.getFullLottieAsset(), isNull);
       expect(asset.getFullRiveAsset(), isNull);
+      const network = ImpaktfullUiAsset.network('https://example.com/a.png');
+      expect(network.getFullPixelAsset(), isNull);
+      expect(network.getFullSvgAsset(), isNull);
       expect(const ImpaktfullUiAsset.icon(Icons.add).getFullSvgAsset(), isNull);
     });
 

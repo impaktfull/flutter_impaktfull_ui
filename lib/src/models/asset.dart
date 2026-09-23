@@ -5,6 +5,9 @@ class ImpaktfullUiAsset {
   final String? pixelAsset;
   final String? lottieAsset;
   final String? riveAsset;
+
+  /// The url of a network image, set by [ImpaktfullUiAsset.network].
+  final String? networkUrl;
   final IconData? icon;
   final String? directory;
   final String? suffix;
@@ -27,7 +30,8 @@ class ImpaktfullUiAsset {
   })  : pixelAsset = null,
         lottieAsset = null,
         icon = null,
-        riveAsset = null;
+        riveAsset = null,
+        networkUrl = null;
 
   const ImpaktfullUiAsset.pixel(
     String this.pixelAsset, {
@@ -38,7 +42,24 @@ class ImpaktfullUiAsset {
   })  : svgAsset = null,
         lottieAsset = null,
         icon = null,
-        riveAsset = null;
+        riveAsset = null,
+        networkUrl = null;
+
+  /// An image that is loaded from the network.
+  ///
+  /// It is rendered with `ImpaktfullUiNetworkImage`, which shows a fallback
+  /// when the image can not be loaded.
+  const ImpaktfullUiAsset.network(
+    String this.networkUrl, {
+    this.matchTextDirection = false,
+  })  : svgAsset = null,
+        pixelAsset = null,
+        lottieAsset = null,
+        icon = null,
+        riveAsset = null,
+        package = null,
+        directory = null,
+        suffix = null;
 
   const ImpaktfullUiAsset.icon(
     IconData this.icon, {
@@ -47,6 +68,7 @@ class ImpaktfullUiAsset {
         lottieAsset = null,
         svgAsset = null,
         riveAsset = null,
+        networkUrl = null,
         package = null,
         directory = null,
         suffix = null;
@@ -60,7 +82,8 @@ class ImpaktfullUiAsset {
   })  : pixelAsset = null,
         svgAsset = null,
         icon = null,
-        riveAsset = null;
+        riveAsset = null,
+        networkUrl = null;
 
   const ImpaktfullUiAsset.rive(
     String this.riveAsset, {
@@ -71,13 +94,15 @@ class ImpaktfullUiAsset {
   })  : pixelAsset = null,
         svgAsset = null,
         icon = null,
-        lottieAsset = null;
+        lottieAsset = null,
+        networkUrl = null;
 
   const ImpaktfullUiAsset._({
     required this.svgAsset,
     required this.pixelAsset,
     required this.lottieAsset,
     required this.riveAsset,
+    required this.networkUrl,
     required this.icon,
     required this.directory,
     required this.suffix,
@@ -94,6 +119,7 @@ class ImpaktfullUiAsset {
         pixelAsset: pixelAsset,
         lottieAsset: lottieAsset,
         riveAsset: riveAsset,
+        networkUrl: networkUrl,
         icon: icon,
         directory: directory,
         suffix: suffix,
@@ -106,6 +132,7 @@ class ImpaktfullUiAsset {
     if (pixelAsset != null) return pixelAsset!;
     if (lottieAsset != null) return lottieAsset!;
     if (riveAsset != null) return riveAsset!;
+    if (networkUrl != null) return networkUrl!;
     return icon!.toString();
   }
 

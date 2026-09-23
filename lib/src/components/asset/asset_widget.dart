@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:impaktfull_ui/src/components/asset/rive_asset.dart';
+import 'package:impaktfull_ui/src/components/network_image/network_image.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:lottie/lottie.dart';
 
@@ -49,6 +50,7 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
           final pixelAsset = asset.getFullPixelAsset();
           final lottieAsset = asset.getFullLottieAsset();
           final riveAsset = asset.getFullRiveAsset();
+          final networkUrl = asset.networkUrl;
           if (icon != null) {
             double? size = this.size;
             if (size == null) {
@@ -74,6 +76,18 @@ class ImpaktfullUiAssetWidget extends StatelessWidget {
               height: height ?? size,
               package: asset.package,
               fit: fit,
+            );
+          }
+
+          if (networkUrl != null) {
+            // The semantics are added by `_withSemantics` below, so the image
+            // itself never announces anything twice.
+            return ImpaktfullUiNetworkImage(
+              url: networkUrl,
+              width: width ?? size,
+              height: height ?? size,
+              fit: fit ?? BoxFit.contain,
+              excludeFromSemantics: true,
             );
           }
 

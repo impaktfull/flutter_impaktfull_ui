@@ -102,6 +102,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiAssetWidget
   - ImpaktfullUiAsset.icon
   - ImpaktfullUiAsset.lottie
+  - ImpaktfullUiAsset.network
   - ImpaktfullUiAsset.pixel
   - ImpaktfullUiAsset.rive
   - ImpaktfullUiAsset.svg
@@ -259,6 +260,33 @@ The `ImpaktfullUiApp` will configure the `ImpaktfullUiOverridableComponentConfig
 - ImpaktfullUiBBNotFound
 - ImpaktfullUiBBRegister
 - ImpaktfullUiBBVerifyRegisterCode
+
+#### Custom licenses
+
+`ImpaktfullUiBBLicenses` shows the license of every package of your app, read from Flutter's `LicenseRegistry`. Pass `customLicenses` to add the licenses of the app itself, for example to credit the author of a photo. A custom license can show that photo with `image`:
+
+```dart
+ImpaktfullUiBBLicenses(
+  customLicenses: const [
+    ImpaktfullUiLicense(
+      name: 'Photo by stein egil liland',
+      licenses: [
+        'Free to use under the [Pexels license](https://www.pexels.com/license/).',
+      ],
+      image: ImpaktfullUiAsset.network('https://example.com/northern-lights.jpg'),
+      imageSemanticLabel: 'Time lapse photo of northern lights',
+    ),
+  ],
+)
+```
+
+- The custom licenses are shown first, in the order you pass them, above the licenses of the packages (which are sorted by package name). So their position never changes when you add a package.
+- They are searched like the packages, on their `name`.
+- The license texts are markdown, the same as for a package.
+- `image` takes any `ImpaktfullUiAsset`: `ImpaktfullUiAsset.pixel`, `ImpaktfullUiAsset.svg` or `ImpaktfullUiAsset.network`. It is shown above the texts when the license is expanded, at `theme.components.bbLicenses.dimens.imageHeight` (160 by default), with its own aspect ratio. A network image that can not be loaded falls back to the placeholder of `ImpaktfullUiNetworkImage`.
+- `imageSemanticLabel` is the alt text that screen readers announce. It defaults to `name`.
+
+`LicenseRegistry.addLicense` is the alternative for a license that belongs to code: Flutter's own `LicensePage` shows those too, and `ImpaktfullUiBBLicenses` reads them like the licenses of any other package. Use `customLicenses` for a license that only belongs to this screen, or that shows an image.
 
 #### Future
 

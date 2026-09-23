@@ -34,6 +34,7 @@ final _entries = <_ThemeEntry>[
   _ThemeEntry<ImpaktfullUiAutoCompleteTheme>(
       'autoComplete', (t) => t.autoComplete),
   _ThemeEntry<ImpaktfullUiBadgeTheme>('badge', (t) => t.badge),
+  _ThemeEntry<ImpaktfullUiBBLicensesTheme>('bbLicenses', (t) => t.bbLicenses),
   _ThemeEntry<ImpaktfullUiBottomActionsTheme>(
       'bottomActions', (t) => t.bottomActions),
   _ThemeEntry<ImpaktfullUiBottomNavigationTheme>(
