@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/container/container.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/focus_feedback/focus_feedback.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_builder.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback_style.dart';
+import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 import 'package:impaktfull_ui/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 import 'package:impaktfull_ui/src/util/extension/border_radius_geometry_extension.dart';
+
+export 'touch_feedback_style.dart';
 
 class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final VoidCallback? onTap;
@@ -25,6 +28,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
   final bool canRequestFocus;
   final bool autofocus;
   final bool useFocusColor;
+  final ImpaktfullUiTouchFeedbackTheme? theme;
 
   const ImpaktfullUiTouchFeedback({
     required this.onTap,
@@ -49,6 +53,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
     this.autofocus = false,
     this.useFocusColor = true,
     this.shadow = const [],
+    this.theme,
     super.key,
   })  : tooltip = tooltip ?? toolTip,
         onLongPress = onLongPress ?? onLongTap;
@@ -75,8 +80,9 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
       if (tooltip == null) return container;
       return Semantics(tooltip: tooltip, child: container);
     }
-    return ImpaktfullUiThemeBuilder(
-      builder: (contex, theme) => ImpaktfullUiContainer(
+    return ImpaktfullUiComponentThemeBuilder<ImpaktfullUiTouchFeedbackTheme>(
+      overrideComponentTheme: theme,
+      builder: (context, componentTheme) => ImpaktfullUiContainer(
         border: border,
         shadow: shadow,
         borderRadius: borderRadius,
@@ -95,6 +101,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
             canRequestFocus: canRequestFocus,
             autofocus: autofocus,
             useFocusColor: useFocusColor,
+            colors: componentTheme.colors,
             focusNode: focusNode,
             onFocusChanged: _onFocusChanged,
             child: child,
@@ -124,6 +131,7 @@ class _PlatformTouchFeedback extends StatefulWidget {
   final bool canRequestFocus;
   final bool autofocus;
   final bool useFocusColor;
+  final ImpaktfullUiTouchFeedbackColorTheme colors;
   final FocusNode? focusNode;
   final ValueChanged<bool> onFocusChanged;
 
@@ -140,6 +148,7 @@ class _PlatformTouchFeedback extends StatefulWidget {
     required this.canRequestFocus,
     required this.autofocus,
     required this.useFocusColor,
+    required this.colors,
     required this.onFocusChanged,
     required this.focusNode,
   });
@@ -225,8 +234,12 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
         onFocusChange: _onFocusChanged,
         canRequestFocus: widget.canRequestFocus,
         autofocus: widget.autofocus,
+        // A null color falls back to the color of the Material ThemeData.
+        highlightColor: widget.colors.highlight,
+        hoverColor: widget.colors.hover,
+        splashColor: widget.colors.splash,
         focusColor: widget.useFocusColor
-            ? Theme.of(context).hoverColor
+            ? widget.colors.focus ?? Theme.of(context).hoverColor
             : Colors.transparent,
         splashFactory: _getSplashFactory(isAndroidTarget),
         child: ColoredBox(
