@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/building_block/licenses/licenses.theme.dart';
 import 'package:impaktfull_ui/src/components/accordion/accordion.dart';
 import 'package:impaktfull_ui/src/components/auto_complete/auto_complete.dart';
 import 'package:impaktfull_ui/src/components/avatar/avatar.dart';
@@ -268,6 +269,14 @@ class ImpaktfullUiDefaultTheme {
           shadows: shadows,
         ),
         badge: ImpaktfullUiBadgeTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
+        ),
+        bbLicenses: ImpaktfullUiBBLicensesTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,

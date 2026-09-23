@@ -121,6 +121,7 @@ export 'src/deprecated/deprecated_typedefs.dart';
 
 // Models
 export 'src/models/asset.dart';
+export 'src/models/license.dart';
 
 // Navigator
 export 'src/navigator/observer/path_route_observer.dart';
