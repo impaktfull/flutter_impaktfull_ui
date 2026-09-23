@@ -110,6 +110,100 @@ void main() {
     expect(theme.textStyles.onCanvas.text.medium.fontFamily, 'Geologica');
   });
 
+  // The package asks for the impaktfull families but does not ship them, so
+  // an app names its own or asks for the font of the platform.
+  test('uses the given font families, or none at all', () {
+    final withFonts = ImpaktfullUiDefaultTheme.withMinimalChanges(
+      primary: primary,
+      accent: accent,
+      secondary: secondary,
+      fontFamilyDisplay: 'Display',
+      fontFamilyText: 'Text',
+    );
+    expect(withFonts.textStyles.onCanvas.display.large.fontFamily, 'Display');
+    expect(withFonts.textStyles.onCanvas.text.medium.fontFamily, 'Text');
+    final systemFont = ImpaktfullUiDefaultTheme.withMinimalChanges(
+      primary: primary,
+      accent: accent,
+      secondary: secondary,
+      fontFamilyDisplay: null,
+      fontFamilyText: null,
+    );
+    expect(systemFont.textStyles.onCanvas.display.large.fontFamily, isNull);
+    expect(systemFont.textStyles.onCanvas.text.medium.fontFamily, isNull);
+  });
+
+  group('brightness', () {
+    final light = ImpaktfullUiDefaultTheme.withMinimalChanges(
+      primary: primary,
+      accent: accent,
+      secondary: secondary,
+    );
+    final dark = ImpaktfullUiDefaultTheme.withMinimalChanges(
+      primary: primary,
+      accent: accent,
+      secondary: secondary,
+      brightness: Brightness.dark,
+    );
+
+    test('defaults to light', () {
+      expect(light.brightness, Brightness.light);
+      expect(dark.brightness, Brightness.dark);
+    });
+
+    test('the dark defaults are the light defaults on a dark grey scale', () {
+      expect(light.colors.canvas, const Color(0xFFF9FAFB));
+      expect(dark.colors.canvas, const Color(0xFF0C0E12));
+      expect(light.colors.card, const Color(0xFFFFFFFF));
+      expect(dark.colors.card, const Color(0xFF16181D));
+      expect(light.colors.text, const Color(0xFF344054));
+      expect(dark.colors.text, const Color(0xFFECEFF3));
+      expect(light.colors.tertiary, const Color(0xFF475467));
+      expect(dark.colors.tertiary, const Color(0xFFB4BCC8));
+      expect(light.colors.textTertiary, const Color(0xFF999b9e));
+      expect(dark.colors.textTertiary, const Color(0xFF9DA4AE));
+      expect(light.colors.border, Colors.grey.withAlpha(51));
+      expect(dark.colors.border, Colors.white.withAlpha(51));
+      expect(light.colors.card2, Colors.grey.withAlpha(51));
+      expect(dark.colors.card2, Colors.white.withAlpha(51));
+      expect(light.colors.shadow, Colors.black12);
+      expect(dark.colors.shadow, Colors.black45);
+    });
+
+    test('the given and semantic colors are the same in both', () {
+      expect(dark.colors.primary, light.colors.primary);
+      expect(dark.colors.accent, light.colors.accent);
+      expect(dark.colors.secondary, light.colors.secondary);
+      expect(dark.colors.warning, light.colors.warning);
+      expect(dark.colors.error, light.colors.error);
+      expect(dark.colors.info, light.colors.info);
+      expect(dark.colors.success, light.colors.success);
+      expect(dark.colors.destructive, light.colors.destructive);
+    });
+
+    test('every color stays overridable', () {
+      final custom = ImpaktfullUiDefaultTheme.withMinimalChanges(
+        primary: primary,
+        accent: accent,
+        secondary: secondary,
+        brightness: Brightness.dark,
+        canvas: card,
+        card: text,
+        shadow: error,
+      );
+      expect(custom.colors.canvas, card);
+      expect(custom.colors.card, text);
+      expect(custom.colors.shadow, error);
+    });
+
+    test('the component themes follow the dark colors', () {
+      expect(dark.components.card.colors.background, dark.colors.card);
+      expect(dark.components.screen.colors.background, dark.colors.canvas);
+      expect(dark.textStyles.onCanvas.text.medium.color, dark.colors.text);
+      expect(dark.components.button.colors.secondary, dark.colors.card);
+    });
+  });
+
   test('uses the default border radius', () {
     final defaults = ImpaktfullUiDefaultTheme.withMinimalChanges(
       primary: primary,

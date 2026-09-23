@@ -96,12 +96,12 @@ class ImpaktfullUiAssetTheme {
             ),
         images: images ??
             ImpaktfullUiImageTheme(
-              logo: getImageAssetForPackage(
+              logo: _getBundledImageAsset(
                 assetFileName: 'logo.svg',
                 package: package,
                 assetSuffix: assetSuffix,
               ),
-              splashLogo: getImageAssetForPackage(
+              splashLogo: _getBundledImageAsset(
                 assetFileName: 'splash_logo.svg',
                 package: package,
                 assetSuffix: assetSuffix,
@@ -118,6 +118,27 @@ class ImpaktfullUiAssetTheme {
       );
 
   static const _bundledPackage = 'impaktfull_ui';
+
+  /// impaktfull_ui ships no images, so the default logo of the bundled theme
+  /// shows nothing ([ImpaktfullUiAsset.none]) instead of pointing at an asset
+  /// that is not there.
+  ///
+  /// An app gets its own logo by building the theme with `package: null` (or
+  /// with the name of the package that holds the asset), which points at
+  /// `assets/images/<name>` of that package, or by setting
+  /// `assets.images` itself.
+  static ImpaktfullUiAsset _getBundledImageAsset({
+    required String assetFileName,
+    required String? package,
+    required String? assetSuffix,
+  }) {
+    if (package == _bundledPackage) return const ImpaktfullUiAsset.none();
+    return getImageAssetForPackage(
+      assetFileName: assetFileName,
+      package: package,
+      assetSuffix: assetSuffix,
+    );
+  }
 
   /// The assetSuffix is for the variants of the app's own assets. The assets
   /// bundled with impaktfull_ui have no variants, so they never get it.

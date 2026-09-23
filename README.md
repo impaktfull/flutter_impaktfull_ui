@@ -351,6 +351,78 @@ ImpaktfullUiCard(
 
 > **Note:** `theme.copyWith(colors: ...)` only replaces the colors on the root theme. The component themes were built from the old colors and keep them. To change a base color, border radius or font everywhere, build the theme again with `ImpaktfullUiDefaultTheme.withMinimalChanges(...)` and use `copyWith` for the component tokens on top of that.
 
+#### Light and dark
+
+Pass a second theme as `impaktfullUiDarkTheme` and `ImpaktfullUiApp` uses it when `MediaQuery.platformBrightness` is dark, like `MaterialApp` with a `darkTheme`:
+
+```dart
+ImpaktfullUiApp(
+  title: 'My App',
+  impaktfullUiTheme: ImpaktfullUiTheme.getDefault(),
+  impaktfullUiDarkTheme: ImpaktfullUiTheme.getDefaultDark(),
+  home: const MyHomeScreen(),
+);
+```
+
+`themeMode` (`ImpaktfullUiThemeMode.system`, `.light` or `.dark`) overrules the platform and is passed to the `MaterialApp` as well. Without an `impaktfullUiDarkTheme` the app always uses `impaktfullUiTheme`, so nothing changes for an app that has only one theme.
+
+Build the dark variant of your own brand with `brightness: Brightness.dark`:
+
+```dart
+final darkTheme = ImpaktfullUiDefaultTheme.withMinimalChanges(
+  brightness: Brightness.dark,
+  primary: const Color(0xFF007AFF),
+  accent: const Color(0xFF5856D6),
+  secondary: const Color(0xFFFF9500),
+);
+```
+
+The dark defaults are the light defaults with the neutral tokens moved to the other end of the same grey scale; the colors with a meaning of their own (`primary`, `accent`, `secondary` and `warning`, `error`, `info`, `success`, `destructive`) stay the same:
+
+| token | light | dark |
+| --- | --- | --- |
+| `canvas` | `0xFFF9FAFB` | `0xFF0C0E12` |
+| `card` | `0xFFFFFFFF` | `0xFF16181D` |
+| `card2`, `border` | grey 20% | white 20% |
+| `shadow` | black 12% | black 45% |
+| `text` | `0xFF344054` | `0xFFECEFF3` |
+| `tertiary` | `0xFF475467` | `0xFFB4BCC8` |
+| `textTertiary` | `0xFF999b9e` | `0xFF9DA4AE` |
+
+Every one of them stays overridable: pass the token to `withMinimalChanges` to keep full control. `ImpaktfullUiTheme.of(context).brightness` tells a widget which variant it renders on, e.g. to pick an asset.
+
+#### Fonts and images
+
+The package ships no fonts and no images (only `assets/lottie/loading.json`). What the theme asks for, your app provides:
+
+- `fontFamilyDisplay` defaults to `'Ubuntu'` and `fontFamilyText` to `'Geologica'`, the impaktfull branding. A font family is resolved against the fonts of your app, so **bundle those fonts in your own `pubspec.yaml`** (the example app does) to get that typography. Pass your own families, or `null` for the font of the platform:
+
+```dart
+ImpaktfullUiTheme.getDefault(
+  fontFamilyDisplay: 'Inter', // your own font, declared in your pubspec.yaml
+  fontFamilyText: 'Inter',
+);
+ImpaktfullUiTheme.getDefault(
+  fontFamilyDisplay: null, // the font of the platform
+  fontFamilyText: null,
+);
+```
+
+- `assets.images.logo` and `assets.images.splashLogo` render nothing by default: the package has no logo to ship. Build the theme with `package: null` to read `assets/images/logo.svg` and `assets/images/splash_logo.svg` of your own app, or set `assets.images` yourself:
+
+```dart
+final theme = ImpaktfullUiTheme.getDefault(package: null);
+// or
+final theme = base.copyWith(
+  assets: base.assets.copyWith(
+    images: ImpaktfullUiImageTheme(
+      logo: const ImpaktfullUiAsset.svg('logo.svg', directory: 'assets/images/'),
+      splashLogo: const ImpaktfullUiAsset.svg('splash.svg', directory: 'assets/images/'),
+    ),
+  ),
+);
+```
+
 ### Right-to-left
 
 Every component supports right-to-left layouts (e.g. Arabic or Hebrew). They follow the `Directionality` of the widget tree, which `ImpaktfullUiApp` sets from its `locale`:

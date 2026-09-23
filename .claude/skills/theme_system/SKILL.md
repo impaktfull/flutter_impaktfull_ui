@@ -52,16 +52,59 @@ final theme = ImpaktfullUiDefaultTheme.withMinimalChanges<MyCustomTheme>(
   primary: const Color(0xFF007AFF),
   accent: const Color(0xFF5856D6),
   secondary: const Color(0xFFFF9500),
+  brightness: Brightness.light,
   canvas: const Color(0xFFF9FAFB),
   card: const Color(0xFFFFFFFF),
   text: const Color(0xFF344054),
-  fontFamilyDisplay: 'Ubuntu',
+  fontFamilyDisplay: 'Ubuntu', // the default; your app bundles the font
   fontFamilyText: 'Geologica',
   borderRadius: BorderRadius.circular(8),
   label: 'My App Theme',
   customTheme: MyCustomTheme(),
 );
 ```
+
+### Light and dark
+
+`withMinimalChanges` takes a `brightness`. The dark defaults are the light
+defaults with the neutral tokens (`canvas`, `card`, `card2`, `border`,
+`shadow`, `text`, `tertiary`, `textTertiary`) moved to the other end of the
+same grey scale; the given `primary`, `accent` and `secondary` and the
+semantic colors stay the same. Every token stays overridable, and the table
+with both values is in the doc comment of `withMinimalChanges` and in the
+README.
+
+`ImpaktfullUiTheme.getDefault()` and `ImpaktfullUiTheme.getDefaultDark()` are
+the impaktfull branding for both. `ImpaktfullUiApp` picks between them:
+
+```dart
+ImpaktfullUiApp(
+  impaktfullUiTheme: ImpaktfullUiTheme.getDefault(),
+  impaktfullUiDarkTheme: ImpaktfullUiTheme.getDefaultDark(),
+  themeMode: ImpaktfullUiThemeMode.system, // the default
+  ...
+);
+```
+
+Without an `impaktfullUiDarkTheme` the app always uses `impaktfullUiTheme`,
+like a `MaterialApp` without a `darkTheme`. `ImpaktfullUiTheme.of(context)`
+keeps returning the theme of the tree, the app only picks which one it
+provides. `theme.brightness` says which variant a widget renders on.
+
+### No bundled fonts or images
+
+The package ships no fonts and no images (only `assets/lottie/loading.json`).
+
+- The default theme asks for the `Ubuntu` and `Geologica` families. A family
+  name resolves against the fonts of the **app**, so an app bundles them in its
+  own `pubspec.yaml` (the example app does, and `test/assets/fonts` holds them
+  for the goldens). `fontFamilyDisplay` and `fontFamilyText` are `String?`:
+  pass your own families, or `null` for the font of the platform.
+- `assets.images.logo` and `splashLogo` are `ImpaktfullUiAsset.none()` when the
+  theme takes its assets from impaktfull_ui (`package: 'impaktfull_ui'`, the
+  default), because the package has no logo to ship;
+  `ImpaktfullUiAssetWidget` renders nothing for it. With `package: null` they
+  still point at `assets/images/logo.svg` of the app, as before.
 
 ## Accessing Theme
 
@@ -80,6 +123,12 @@ final buttonTheme = ImpaktfullUiButtonTheme.of(context);
 // Or generic:
 final theme = ImpaktfullUiComponentsTheme.of<ImpaktfullUiButtonTheme>(context);
 ```
+
+`ImpaktfullUiComponentsTheme.of<T>` looks `T` up in
+`_componentThemesByType`, a map that is built once per
+`ImpaktfullUiComponentsTheme`. A new component theme is a new field **and** a
+new entry in that map; `test/src/theme/components_theme_of_test.dart` fails
+when one of the two is missing.
 
 ### Inside Components
 
@@ -210,6 +259,10 @@ void main() {
   );
 }
 ```
+
+Build the theme once (a `static final`, or `ImpaktfullUiApp` without a theme,
+which shares one default). A theme built inside `build()` is a new instance on
+every build, which rebuilds every widget that reads it.
 
 ## Best Practices
 
