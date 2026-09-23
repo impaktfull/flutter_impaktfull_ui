@@ -27,10 +27,19 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
   ui.Image? _image;
   Uint8List? _imageBytes;
   Timer? _debounceTimer;
+  Duration _cropDebounce =
+      const ImpaktfullUiImageCropDurationsTheme().cropDebounce;
+  var _startedInitialCrop = false;
 
+  // The theme is only available once the dependencies are there, so the first
+  // crop starts here instead of in `initState`.
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _cropDebounce =
+        ImpaktfullUiImageCropTheme.of(context).durations.cropDebounce;
+    if (_startedInitialCrop) return;
+    _startedInitialCrop = true;
     _debouncedCrop();
   }
 
@@ -83,7 +92,7 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
   void _debouncedCrop() {
     setState(() => _imageBytes = null);
     _debounceTimer?.cancel();
-    _debounceTimer = Timer(const Duration(milliseconds: 300), _crop);
+    _debounceTimer = Timer(_cropDebounce, _crop);
   }
 
   Future<void> _crop() async {

@@ -52,11 +52,14 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final isCheckbox = type == ImpaktfullUiTableHeaderItemType.checkbox;
-        if (title == null && !isCheckbox) return const SizedBox(height: 48);
+        if (title == null && !isCheckbox) {
+          return SizedBox(height: componentTheme.dimens.minHeight);
+        }
         return ImpaktfullUiTouchFeedback(
           onTap: onTap,
           child: Container(
-            constraints: const BoxConstraints(minHeight: 48),
+            constraints:
+                BoxConstraints(minHeight: componentTheme.dimens.minHeight),
             padding: padding,
             child: ImpaktfullUiAutoLayout.horizontal(
               mainAxisSize: MainAxisSize.min,

@@ -7,12 +7,14 @@ class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiModalColorTheme colors;
   final ImpaktfullUiModalTextStyleTheme textStyles;
   final ImpaktfullUiModalDimensTheme dimens;
+  final ImpaktfullUiModalDurationsTheme durations;
   final ImpaktfullUiModalAssetsTheme assets;
 
   const ImpaktfullUiModalTheme({
     required this.colors,
     required this.textStyles,
     required this.dimens,
+    this.durations = const ImpaktfullUiModalDurationsTheme(),
     required this.assets,
   });
 
@@ -20,12 +22,14 @@ class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiModalAssetsTheme? assets,
     ImpaktfullUiModalColorTheme? colors,
     ImpaktfullUiModalDimensTheme? dimens,
+    ImpaktfullUiModalDurationsTheme? durations,
     ImpaktfullUiModalTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiModalTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -46,6 +50,7 @@ class ImpaktfullUiModalTheme extends ImpaktfullUiComponentTheme {
           closeIcon: colors.text,
           leadingHeaderIcon: colors.accent,
         ),
+        durations: const ImpaktfullUiModalDurationsTheme(),
         textStyles: ImpaktfullUiModalTextStyleTheme(
           title: textStyles.onCanvas.display.small.semiBold,
           subtitle: textStyles.onCanvas.text.small,
@@ -84,6 +89,22 @@ class ImpaktfullUiModalColorTheme {
         background: background ?? this.background,
         closeIcon: closeIcon ?? this.closeIcon,
         leadingHeaderIcon: leadingHeaderIcon ?? this.leadingHeaderIcon,
+      );
+}
+
+class ImpaktfullUiModalDurationsTheme {
+  /// How long the modal takes to appear and to disappear.
+  final Duration transition;
+
+  const ImpaktfullUiModalDurationsTheme({
+    this.transition = const Duration(milliseconds: 150),
+  });
+
+  ImpaktfullUiModalDurationsTheme copyWith({
+    Duration? transition,
+  }) =>
+      ImpaktfullUiModalDurationsTheme(
+        transition: transition ?? this.transition,
       );
 }
 

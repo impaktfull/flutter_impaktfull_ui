@@ -67,8 +67,17 @@ class ImpaktfullUiTableHeaderItemTextStyleTheme {
 }
 
 class ImpaktfullUiTableHeaderItemDimensTheme {
-  const ImpaktfullUiTableHeaderItemDimensTheme();
+  /// The minimum height of a header item.
+  final double minHeight;
 
-  ImpaktfullUiTableHeaderItemDimensTheme copyWith() =>
-      const ImpaktfullUiTableHeaderItemDimensTheme();
+  const ImpaktfullUiTableHeaderItemDimensTheme({
+    this.minHeight = 48,
+  });
+
+  ImpaktfullUiTableHeaderItemDimensTheme copyWith({
+    double? minHeight,
+  }) =>
+      ImpaktfullUiTableHeaderItemDimensTheme(
+        minHeight: minHeight ?? this.minHeight,
+      );
 }

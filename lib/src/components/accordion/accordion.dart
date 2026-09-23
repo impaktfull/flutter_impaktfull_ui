@@ -52,7 +52,7 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 200),
+      duration: const ImpaktfullUiAccordionDurationsTheme().expand,
       vsync: this,
     );
     _expandAnimation = CurvedAnimation(
@@ -67,8 +67,10 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiAccordionTheme.of(context);
     _controller.duration = ImpaktfullUiAnimationUtil.duration(
-        context, const Duration(milliseconds: 200));
+        context, componentTheme.durations.expand);
   }
 
   @override
@@ -104,7 +106,7 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
                   (context) => AnimatedRotation(
                         turns: widget.expanded ? -0.5 : 0,
                         duration: ImpaktfullUiAnimationUtil.duration(
-                            context, const Duration(milliseconds: 200)),
+                            context, componentTheme.durations.expand),
                         child: ImpaktfullUiAssetWidget(
                           asset: componentTheme.assets.chevronDown,
                         ),

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_builder.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/virtual_keyboard.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
@@ -39,14 +40,13 @@ class _ImpaktfullUiVirtualKeyboardButtonState
   var _isSliding = false;
   Timer? _repeatTimer;
 
-  static const _repeatDelay = Duration(milliseconds: 500);
-  static const _repeatInterval = Duration(milliseconds: 100);
+  var _durations = const ImpaktfullUiVirtualKeyboardDurationsTheme();
 
   @override
   void initState() {
     super.initState();
     _slideController = AnimationController(
-      duration: const Duration(milliseconds: 200),
+      duration: _durations.keySlide,
       vsync: this,
     );
     _slideAnimation = Tween<Offset>(
@@ -56,6 +56,14 @@ class _ImpaktfullUiVirtualKeyboardButtonState
       parent: _slideController,
       curve: Curves.easeOut,
     ));
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _durations = ImpaktfullUiVirtualKeyboardTheme.of(context).durations;
+    _slideController.duration =
+        ImpaktfullUiAnimationUtil.duration(context, _durations.keySlide);
   }
 
   @override
@@ -200,10 +208,10 @@ class _ImpaktfullUiVirtualKeyboardButtonState
     // that was pressed.
     final key = _currentKey;
     widget.onTap(key);
-    _repeatTimer = Timer(_repeatDelay, () {
+    _repeatTimer = Timer(_durations.repeatDelay, () {
       if (!mounted) return;
       widget.onTap(key);
-      _repeatTimer = Timer.periodic(_repeatInterval, (_) {
+      _repeatTimer = Timer.periodic(_durations.repeatInterval, (_) {
         if (!mounted) return;
         widget.onTap(key);
       });

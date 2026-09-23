@@ -73,10 +73,8 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget {
                             children: [
                               if (asset != null) ...[
                                 ConstrainedBox(
-                                  constraints: const BoxConstraints(
-                                    maxWidth: 150,
-                                    maxHeight: 40,
-                                  ),
+                                  constraints:
+                                      componentTheme.dimens.assetConstraints,
                                   child: ImpaktfullUiAssetWidget(
                                     asset: asset!,
                                   ),
@@ -144,7 +142,7 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget {
                     secondaryContent!,
                   ] else ...[
                     SizedBox(
-                      width: 300,
+                      width: componentTheme.dimens.secondaryWidth,
                       child: ImpaktfullUiListView(
                         spacing: 8,
                         padding: componentTheme.dimens.padding,

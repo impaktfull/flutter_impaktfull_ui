@@ -6,12 +6,14 @@ class ImpaktfullUiConfettiTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiConfettiAssetsTheme assets;
   final ImpaktfullUiConfettiColorTheme colors;
   final ImpaktfullUiConfettiDimensTheme dimens;
+  final ImpaktfullUiConfettiDurationsTheme durations;
   final ImpaktfullUiConfettiTextStyleTheme textStyles;
 
   const ImpaktfullUiConfettiTheme({
     required this.assets,
     required this.colors,
     required this.dimens,
+    this.durations = const ImpaktfullUiConfettiDurationsTheme(),
     required this.textStyles,
   });
 
@@ -19,12 +21,14 @@ class ImpaktfullUiConfettiTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiConfettiAssetsTheme? assets,
     ImpaktfullUiConfettiColorTheme? colors,
     ImpaktfullUiConfettiDimensTheme? dimens,
+    ImpaktfullUiConfettiDurationsTheme? durations,
     ImpaktfullUiConfettiTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiConfettiTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        durations: durations ?? this.durations,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -47,6 +51,7 @@ class ImpaktfullUiConfettiTheme extends ImpaktfullUiComponentTheme {
           particleColor: colors.accent,
         ),
         dimens: const ImpaktfullUiConfettiDimensTheme(),
+        durations: const ImpaktfullUiConfettiDurationsTheme(),
         textStyles: const ImpaktfullUiConfettiTextStyleTheme(),
       );
 }
@@ -86,6 +91,23 @@ class ImpaktfullUiConfettiDimensTheme {
 
   ImpaktfullUiConfettiDimensTheme copyWith() =>
       const ImpaktfullUiConfettiDimensTheme();
+}
+
+class ImpaktfullUiConfettiDurationsTheme {
+  /// How long the confetti waits after a resize before it lays the particles
+  /// out again.
+  final Duration resizeDebounce;
+
+  const ImpaktfullUiConfettiDurationsTheme({
+    this.resizeDebounce = const Duration(milliseconds: 100),
+  });
+
+  ImpaktfullUiConfettiDurationsTheme copyWith({
+    Duration? resizeDebounce,
+  }) =>
+      ImpaktfullUiConfettiDurationsTheme(
+        resizeDebounce: resizeDebounce ?? this.resizeDebounce,
+      );
 }
 
 class ImpaktfullUiConfettiTextStyleTheme {

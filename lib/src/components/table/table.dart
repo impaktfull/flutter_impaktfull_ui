@@ -57,6 +57,7 @@ class ImpaktfullUiTable extends StatelessWidget {
               columnConfig: columnConfig,
               amountOfColumns: titles.length,
               borderRadius: componentTheme.dimens.borderRadius,
+              minColumnWidth: componentTheme.dimens.minColumnWidth,
               child: ImpaktfullUiAutoLayout.vertical(
                 mainAxisSize: shrinkWrap ? MainAxisSize.min : MainAxisSize.max,
                 children: [
@@ -102,12 +103,14 @@ class _TableContainer extends StatelessWidget {
   final int amountOfColumns;
   final Widget child;
   final BorderRadiusGeometry borderRadius;
+  final double minColumnWidth;
 
   const _TableContainer({
     required this.columnConfig,
     required this.amountOfColumns,
     required this.child,
     required this.borderRadius,
+    required this.minColumnWidth,
   });
 
   @override
@@ -155,8 +158,7 @@ class _TableContainer extends StatelessWidget {
   }
 
   double _getMinWidth() {
-    const minWidthColumn = 250.0;
-    if (columnConfig.isEmpty) return amountOfColumns * minWidthColumn;
+    if (columnConfig.isEmpty) return amountOfColumns * minColumnWidth;
     var minWidth = 0.0;
     for (var i = 0; i < amountOfColumns; ++i) {
       final tableConfig = i > columnConfig.length - 1
@@ -165,7 +167,7 @@ class _TableContainer extends StatelessWidget {
       if (tableConfig.minWidth != null) {
         minWidth += tableConfig.minWidth!;
       } else if (tableConfig.flex != null) {
-        minWidth += minWidthColumn * tableConfig.flex!;
+        minWidth += minColumnWidth * tableConfig.flex!;
       } else {}
     }
     return minWidth;

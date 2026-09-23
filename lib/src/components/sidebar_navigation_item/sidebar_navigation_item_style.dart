@@ -142,10 +142,11 @@ class ImpaktfullUiSidebarNavigationItemTextStyleTheme {
 }
 
 class ImpaktfullUiSidebarNavigationItemDurationsTheme {
+  /// How long the chevron of an item with sub items takes to turn.
   final Duration dropdownRotation;
 
   const ImpaktfullUiSidebarNavigationItemDurationsTheme({
-    required this.dropdownRotation,
+    this.dropdownRotation = const Duration(milliseconds: 200),
   });
 
   ImpaktfullUiSidebarNavigationItemDurationsTheme copyWith({

@@ -229,7 +229,10 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
           child: RepaintBoundary(
             child: LayoutBuilder(
               builder: (context, constraints) {
-                _updateSize(constraints);
+                _updateSize(
+                  constraints,
+                  componentTheme.durations.resizeDebounce,
+                );
                 return CustomPaint(
                   size: Size(
                     _width ?? 0,
@@ -251,12 +254,12 @@ class _ImpaktfullUiConfettiState extends State<ImpaktfullUiConfetti>
     );
   }
 
-  void _updateSize(BoxConstraints constraints) {
+  void _updateSize(BoxConstraints constraints, Duration resizeDebounce) {
     if (_width == constraints.maxWidth && _height == constraints.maxHeight) {
       return;
     }
     _resizeDebounceTimer?.cancel();
-    _resizeDebounceTimer = Timer(const Duration(milliseconds: 100), () {
+    _resizeDebounceTimer = Timer(resizeDebounce, () {
       if (!mounted) return;
       setState(() {
         _width = constraints.maxWidth;

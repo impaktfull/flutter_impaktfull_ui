@@ -70,10 +70,21 @@ class ImpaktfullUiScreenColorTheme {
 }
 
 class ImpaktfullUiScreenDimensTheme {
-  const ImpaktfullUiScreenDimensTheme();
+  /// The space between the floating action button and the edges of the
+  /// screen. The safe area of the device is added to it.
+  final EdgeInsetsGeometry floatingActionButtonPadding;
 
-  ImpaktfullUiScreenDimensTheme copyWith() =>
-      const ImpaktfullUiScreenDimensTheme();
+  const ImpaktfullUiScreenDimensTheme({
+    this.floatingActionButtonPadding = const EdgeInsets.all(16),
+  });
+
+  ImpaktfullUiScreenDimensTheme copyWith({
+    EdgeInsetsGeometry? floatingActionButtonPadding,
+  }) =>
+      ImpaktfullUiScreenDimensTheme(
+        floatingActionButtonPadding:
+            floatingActionButtonPadding ?? this.floatingActionButtonPadding,
+      );
 }
 
 class ImpaktfullUiScreenTextStyleTheme {

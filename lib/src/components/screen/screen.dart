@@ -161,7 +161,8 @@ class ImpaktfullUiScreenState extends State<ImpaktfullUiScreen> {
                                   ),
                                   if (widget.floatingActionButton != null) ...[
                                     Padding(
-                                      padding: const EdgeInsets.all(16)
+                                      padding: componentTheme
+                                          .dimens.floatingActionButtonPadding
                                           .add(MediaQuery.paddingOf(context)),
                                       child: widget.floatingActionButton!,
                                     ),

@@ -31,6 +31,16 @@ void main() {
       .alignment
       .resolve(TextDirection.ltr);
 
+  /// The colours of the gradient that sweeps over the skeleton.
+  List<Color> shimmerColors(WidgetTester tester) {
+    final container = tester.widget<Container>(find.descendant(
+      of: find.byType(FractionallySizedBox),
+      matching: find.byType(Container),
+    ));
+    final gradient = (container.decoration as BoxDecoration).gradient!;
+    return gradient.colors;
+  }
+
   testWidgets('box has the size that is passed', (tester) async {
     await pumpSkeleton(
       tester,
@@ -113,5 +123,69 @@ void main() {
     );
     await tester.pump(const Duration(milliseconds: 750));
     expect(shimmerAlignment(tester).x, -3);
+  });
+
+  testWidgets('the shimmer is drawn with the highlight of the theme',
+      (tester) async {
+    await pumpSkeleton(
+      tester,
+      const ImpaktfullUiSkeleton.box(width: 120, height: 40),
+    );
+    final highlight = skeletonTheme.colors.highlight;
+    expect(
+      shimmerColors(tester),
+      [highlight.withAlpha(0), highlight, highlight.withAlpha(0)],
+    );
+  });
+
+  testWidgets('the default highlight is visible on the background',
+      (tester) async {
+    // A shimmer in the colour of the background it sweeps over would not be
+    // visible at all: the default highlight has to differ from it.
+    expect(
+      skeletonTheme.colors.highlight,
+      isNot(skeletonTheme.colors.background),
+    );
+  });
+
+  testWidgets('a highlight from the theme is used for the shimmer',
+      (tester) async {
+    const highlight = Color(0xFF00FF00);
+    await pumpSkeleton(
+      tester,
+      ImpaktfullUiSkeleton.box(
+        width: 120,
+        height: 40,
+        theme: skeletonTheme.copyWith(
+          colors: skeletonTheme.colors.copyWith(highlight: highlight),
+        ),
+      ),
+    );
+    expect(
+      shimmerColors(tester),
+      const [Color(0x0000FF00), highlight, Color(0x0000FF00)],
+    );
+  });
+
+  testWidgets('the shimmer duration comes from the theme', (tester) async {
+    await pumpSkeleton(
+      tester,
+      ImpaktfullUiSkeleton.box(
+        width: 120,
+        height: 40,
+        theme: skeletonTheme.copyWith(
+          durations: const ImpaktfullUiSkeletonDurationsTheme(
+            shimmer: Duration(seconds: 4),
+          ),
+        ),
+      ),
+    );
+    expect(shimmerAlignment(tester).x, -3);
+    // Half of the default duration: with a sweep of 4 seconds the shimmer is
+    // only a quarter of the way.
+    await tester.pump(const Duration(milliseconds: 750));
+    expect(shimmerAlignment(tester).x, closeTo(-1.875, 0.01));
+    await tester.pump(const Duration(milliseconds: 1250));
+    expect(shimmerAlignment(tester).x, closeTo(0, 0.01));
   });
 }

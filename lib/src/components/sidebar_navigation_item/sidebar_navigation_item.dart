@@ -47,7 +47,8 @@ class _ImpaktfullUiSidebarNavigationItemState
     super.initState();
     _expanded = _hasSelectedSubItem(widget.items);
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 200),
+      duration: const ImpaktfullUiSidebarNavigationItemDurationsTheme()
+          .dropdownRotation,
       vsync: this,
     );
     _expandAnimation = CurvedAnimation(
@@ -62,8 +63,10 @@ class _ImpaktfullUiSidebarNavigationItemState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiSidebarNavigationItemTheme.of(context);
     _controller.duration = ImpaktfullUiAnimationUtil.duration(
-        context, const Duration(milliseconds: 200));
+        context, componentTheme.durations.dropdownRotation);
   }
 
   @override

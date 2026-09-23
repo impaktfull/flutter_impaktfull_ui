@@ -47,14 +47,27 @@ class ImpaktfullUiHorizontalTabsColorTheme {
 
 class ImpaktfullUiHorizontalTabsDimensTheme {
   final EdgeInsets padding;
+
+  /// The height of the row of tabs.
+  final double height;
+
+  /// The space between two tabs.
+  final double spacing;
+
   const ImpaktfullUiHorizontalTabsDimensTheme({
     required this.padding,
+    this.height = 48,
+    this.spacing = 8,
   });
 
   ImpaktfullUiHorizontalTabsDimensTheme copyWith({
+    double? height,
     EdgeInsets? padding,
+    double? spacing,
   }) =>
       ImpaktfullUiHorizontalTabsDimensTheme(
+        height: height ?? this.height,
         padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
       );
 }

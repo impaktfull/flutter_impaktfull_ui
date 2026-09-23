@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 
 class ImpaktfullUiRaisedButton extends StatefulWidget {
   final Widget child;
@@ -38,7 +39,7 @@ class _ImpaktfullUiRaisedButtonState extends State<ImpaktfullUiRaisedButton>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 25),
+      duration: widget.theme.durations.raisedPress,
       vsync: this,
     );
     _createAnimation();
@@ -55,10 +56,26 @@ class _ImpaktfullUiRaisedButtonState extends State<ImpaktfullUiRaisedButton>
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _controller.duration = ImpaktfullUiAnimationUtil.duration(
+      context,
+      widget.theme.durations.raisedPress,
+    );
+  }
+
+  @override
   void didUpdateWidget(ImpaktfullUiRaisedButton oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.theme.config.elevation != widget.theme.config.elevation) {
       _createAnimation();
+    }
+    if (oldWidget.theme.durations.raisedPress !=
+        widget.theme.durations.raisedPress) {
+      _controller.duration = ImpaktfullUiAnimationUtil.duration(
+        context,
+        widget.theme.durations.raisedPress,
+      );
     }
   }
 
@@ -133,7 +150,7 @@ class _ImpaktfullUiRaisedButtonState extends State<ImpaktfullUiRaisedButton>
   void _onTapCancel() {
     if (!_isTappable) return;
     _timer?.cancel();
-    _timer = Timer(const Duration(milliseconds: 30), () {
+    _timer = Timer(widget.theme.durations.raisedRelease, () {
       _controller.reverse();
     });
   }

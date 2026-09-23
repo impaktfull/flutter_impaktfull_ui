@@ -45,7 +45,7 @@ class _ImpaktfullUiFloatingActionButtonState
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 200),
+      duration: const ImpaktfullUiFloatingActionButtonDurationsTheme().expand,
       vsync: this,
     );
     _animation = CurvedAnimation(
@@ -60,8 +60,10 @@ class _ImpaktfullUiFloatingActionButtonState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiFloatingActionButtonTheme.of(context);
     _controller.duration = ImpaktfullUiAnimationUtil.duration(
-        context, const Duration(milliseconds: 200));
+        context, componentTheme.durations.expand);
   }
 
   @override

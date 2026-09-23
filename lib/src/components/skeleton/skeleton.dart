@@ -55,7 +55,7 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1500),
+      duration: const ImpaktfullUiSkeletonDurationsTheme().shimmer,
     );
     _animation = Tween<double>(begin: -3, end: 3).animate(_controller);
   }
@@ -63,6 +63,12 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiSkeletonTheme.of(context);
+    _controller.duration = ImpaktfullUiAnimationUtil.duration(
+      context,
+      componentTheme.durations.shimmer,
+    );
     // No shimmer when the user asked to reduce motion.
     if (ImpaktfullUiAnimationUtil.reduceMotion(context)) {
       _controller.stop();
@@ -113,11 +119,10 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          componentTheme.colors.background
+                          componentTheme.colors.highlight
                               .withOpacityPercentage(0.0),
-                          componentTheme.colors.background
-                              .withOpacityPercentage(0.2),
-                          componentTheme.colors.background
+                          componentTheme.colors.highlight,
+                          componentTheme.colors.highlight
                               .withOpacityPercentage(0.0),
                         ],
                         stops: const [0.0, 0.5, 1.0],

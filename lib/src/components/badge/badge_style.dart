@@ -178,18 +178,36 @@ class ImpaktfullUiBadgeDimensTheme {
   final BorderRadiusGeometry borderRadius;
   final double borderWidth;
 
+  /// The size of the icon of the close button.
+  final double closeIconSize;
+
+  /// The padding around the icon of the close button.
+  final EdgeInsetsGeometry closePadding;
+
+  /// The space between the title and the close button.
+  final double closeSpacing;
+
   const ImpaktfullUiBadgeDimensTheme({
     required this.borderRadius,
     required this.borderWidth,
+    this.closeIconSize = 16,
+    this.closePadding = const EdgeInsets.all(2),
+    this.closeSpacing = 2,
   });
 
   ImpaktfullUiBadgeDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
     double? borderWidth,
+    double? closeIconSize,
+    EdgeInsetsGeometry? closePadding,
+    double? closeSpacing,
   }) =>
       ImpaktfullUiBadgeDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
         borderWidth: borderWidth ?? this.borderWidth,
+        closeIconSize: closeIconSize ?? this.closeIconSize,
+        closePadding: closePadding ?? this.closePadding,
+        closeSpacing: closeSpacing ?? this.closeSpacing,
       );
 }
 

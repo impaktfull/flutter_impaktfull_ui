@@ -128,13 +128,26 @@ class _ImpaktfullUiVirtualKeyboardState
     widget.controller.addListener(_onControllerChanged);
     _cursorController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 200),
+      duration: const ImpaktfullUiVirtualKeyboardDurationsTheme().cursorBlink,
     )..repeat(reverse: true);
     _cursorAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
     ).animate(_cursorController);
     _cursorPosition = widget.controller.text.length;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiVirtualKeyboardTheme.of(context);
+    final cursorBlink = componentTheme.durations.cursorBlink;
+    if (_cursorController.duration == cursorBlink) return;
+    _cursorController.duration = cursorBlink;
+    // The controller is already repeating: restart it so the new duration is
+    // used for the next blink.
+    _cursorController.repeat(reverse: true);
   }
 
   @override

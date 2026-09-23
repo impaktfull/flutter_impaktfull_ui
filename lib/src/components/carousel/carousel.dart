@@ -9,8 +9,6 @@ import 'package:impaktfull_ui/src/widget/override_components/overridable_compone
 
 export 'carousel_style.dart';
 
-const _pageTransitionDuration = Duration(milliseconds: 300);
-
 class ImpaktfullUiCarousel extends StatefulWidget {
   final List<Widget> items;
   final int index;
@@ -44,6 +42,8 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   bool _isUserDragging = false;
   Timer? _autoplayTimer;
   bool? _reduceMotion;
+  Duration _pageTransitionDuration =
+      const ImpaktfullUiCarouselDurationsTheme().pageTransition;
 
   @override
   void initState() {
@@ -55,6 +55,9 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    final componentTheme =
+        widget.theme ?? ImpaktfullUiCarouselTheme.of(context);
+    _pageTransitionDuration = componentTheme.durations.pageTransition;
     final reduceMotion = ImpaktfullUiAnimationUtil.reduceMotion(context);
     if (reduceMotion == _reduceMotion) return;
     _reduceMotion = reduceMotion;
@@ -134,7 +137,7 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
       } else {
         _pageController.animateToPage(
           widget.index,
-          duration: const Duration(milliseconds: 300),
+          duration: _pageTransitionDuration,
           curve: Curves.easeInOut,
         );
       }

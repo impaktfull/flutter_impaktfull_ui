@@ -37,7 +37,7 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
     _transformationController = TransformationController();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: widget.theme.durations.zoom,
     );
     _curvedAnimation = CurvedAnimation(
       parent: _animationController,
@@ -50,7 +50,7 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
   void didChangeDependencies() {
     super.didChangeDependencies();
     _animationController.duration = ImpaktfullUiAnimationUtil.duration(
-        context, const Duration(milliseconds: 300));
+        context, widget.theme.durations.zoom);
   }
 
   @override

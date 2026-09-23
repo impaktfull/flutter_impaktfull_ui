@@ -102,10 +102,25 @@ class ImpaktfullUiBottomNavigationItemTextStyleTheme {
 }
 
 class ImpaktfullUiBottomNavigationItemDimensTheme {
-  const ImpaktfullUiBottomNavigationItemDimensTheme();
+  /// The padding around the icon and the title of the item.
+  final EdgeInsetsGeometry padding;
 
-  ImpaktfullUiBottomNavigationItemDimensTheme copyWith() =>
-      const ImpaktfullUiBottomNavigationItemDimensTheme();
+  /// The padding around the icon of an item without a title.
+  final EdgeInsetsGeometry paddingWithoutTitle;
+
+  const ImpaktfullUiBottomNavigationItemDimensTheme({
+    this.padding = const EdgeInsets.symmetric(vertical: 8),
+    this.paddingWithoutTitle = const EdgeInsets.symmetric(vertical: 12),
+  });
+
+  ImpaktfullUiBottomNavigationItemDimensTheme copyWith({
+    EdgeInsetsGeometry? padding,
+    EdgeInsetsGeometry? paddingWithoutTitle,
+  }) =>
+      ImpaktfullUiBottomNavigationItemDimensTheme(
+        padding: padding ?? this.padding,
+        paddingWithoutTitle: paddingWithoutTitle ?? this.paddingWithoutTitle,
+      );
 }
 
 class ImpaktfullUiBottomNavigationItemAssetsTheme {
