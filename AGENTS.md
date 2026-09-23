@@ -75,7 +75,9 @@ The package has many users: **never rename or remove a public API in one step.**
 5. **Document it** in `doc/migrations/1.0.0.md` (old → new), including any internal change a user could notice (renamed files under `lib/src/`, changed defaults).
 6. **Changelog:** a `feat:` line for the new API and a `deprecate:` line per deprecated API in the commit body (see above).
 
-Deprecated APIs are removed together in the next major release (1.0.0), never in a minor or patch release. Removing them is a `feat!:` pull request that deletes the aliases, their `fix_data.yaml` transforms, `test_fixes` cases and tests, and keeps the migration guide.
+Deprecated APIs are removed together in the next major release (1.0.0), never in a minor or patch release.
+
+**The release that deprecates is the upgrade step.** Users can only migrate automatically on a release where the old and the new name both exist. So the README and `doc/migrations/1.0.0.md` tell users to upgrade to that release first (today: 0.80.0), run `dart fix --apply` there, and only then move on. When a later release deprecates more API, say in the migration guide which release introduced it, so users know which version to step through. Removing them is a `feat!:` pull request that deletes the aliases, their `fix_data.yaml` transforms, `test_fixes` cases and tests, and keeps the migration guide.
 
 ## Naming public parameters
 

@@ -43,11 +43,38 @@ The `dart:io` `File` APIs (`ImpaktfullUiGalleryItem.file`, `ImpaktfullUiImageCro
 
 ## Upgrading
 
-Public APIs are never renamed or removed in one step. A renamed API keeps its old name as a deprecated alias until 1.0.0, and `dart fix` migrates your code:
+Public APIs are never renamed or removed in one step. A renamed API keeps its old name as a deprecated alias, and `dart fix` migrates your code. 1.0.0 removes every alias at once.
+
+### Coming from 0.79.x or older: upgrade to 0.80.0 first
+
+**0.80.0 is the release that renamed a lot of public API.** It is also the only release where both the old and the new names exist, so it is the one that can migrate your code for you. Do not jump straight from 0.79.x to a later version: the old names are gone there, and `dart fix` has nothing left to match.
+
+```yaml
+# 1. pubspec.yaml: go to 0.80.0 first, exactly
+dependencies:
+  impaktfull_ui: 0.80.0
+```
 
 ```bash
+# 2. see what changes, then apply it
+dart fix --dry-run
 dart fix --apply
+
+# 3. check what is left: every remaining warning names its replacement
+flutter analyze
 ```
+
+Anything `dart fix` cannot migrate on its own (the global `theme` getter and the unprefixed extensions, which need a `BuildContext` or a copy in your own code) is listed in the [1.0.0 migration guide](doc/migrations/1.0.0.md).
+
+```yaml
+# 4. only then move to the latest version
+dependencies:
+  impaktfull_ui: ^0.80.0
+```
+
+### Already on 0.80.0 or newer
+
+Run `dart fix --apply` whenever the analyzer reports a deprecation, and you stay ready for 1.0.0.
 
 Every deprecation and its replacement is listed in the [1.0.0 migration guide](doc/migrations/1.0.0.md), and under **Deprecations** in the [CHANGELOG](CHANGELOG.md).
 
