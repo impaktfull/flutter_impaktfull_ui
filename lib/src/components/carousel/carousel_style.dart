@@ -58,6 +58,20 @@ class ImpaktfullUiCarouselTheme extends ImpaktfullUiComponentTheme {
         durations: const ImpaktfullUiCarouselDurationsTheme(),
         textStyles: const ImpaktfullUiCarouselTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCarouselTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiCarouselAssetsTheme {
@@ -65,6 +79,12 @@ class ImpaktfullUiCarouselAssetsTheme {
 
   ImpaktfullUiCarouselAssetsTheme copyWith() =>
       const ImpaktfullUiCarouselAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiCarouselAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiCarouselColorTheme {
@@ -88,6 +108,18 @@ class ImpaktfullUiCarouselColorTheme {
         inactiveIndicator: inactiveIndicator ?? this.inactiveIndicator,
         indicatorBorder: indicatorBorder ?? this.indicatorBorder,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCarouselColorTheme &&
+          activeIndicator == other.activeIndicator &&
+          inactiveIndicator == other.inactiveIndicator &&
+          indicatorBorder == other.indicatorBorder;
+
+  @override
+  int get hashCode =>
+      Object.hash(activeIndicator, inactiveIndicator, indicatorBorder);
 }
 
 class ImpaktfullUiCarouselDimensTheme {
@@ -116,6 +148,19 @@ class ImpaktfullUiCarouselDimensTheme {
         indicatorSize: indicatorSize ?? this.indicatorSize,
         indicatorSpacing: indicatorSpacing ?? this.indicatorSpacing,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCarouselDimensTheme &&
+          indicatorBorderRadius == other.indicatorBorderRadius &&
+          indicatorPadding == other.indicatorPadding &&
+          indicatorSize == other.indicatorSize &&
+          indicatorSpacing == other.indicatorSpacing;
+
+  @override
+  int get hashCode => Object.hash(
+      indicatorBorderRadius, indicatorPadding, indicatorSize, indicatorSpacing);
 }
 
 class ImpaktfullUiCarouselDurationsTheme {
@@ -132,6 +177,15 @@ class ImpaktfullUiCarouselDurationsTheme {
       ImpaktfullUiCarouselDurationsTheme(
         pageTransition: pageTransition ?? this.pageTransition,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCarouselDurationsTheme &&
+          pageTransition == other.pageTransition;
+
+  @override
+  int get hashCode => pageTransition.hashCode;
 }
 
 class ImpaktfullUiCarouselTextStyleTheme {
@@ -139,4 +193,10 @@ class ImpaktfullUiCarouselTextStyleTheme {
 
   ImpaktfullUiCarouselTextStyleTheme copyWith() =>
       const ImpaktfullUiCarouselTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiCarouselTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

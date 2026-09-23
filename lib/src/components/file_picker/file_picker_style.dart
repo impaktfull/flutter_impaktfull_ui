@@ -62,6 +62,18 @@ class ImpaktfullUiFilePickerTheme extends ImpaktfullUiComponentTheme {
           subtitle: textStyles.onCard.text.small.light.withOpacity(0.66),
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFilePickerTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiFilePickerAssetsTheme {
@@ -84,6 +96,17 @@ class ImpaktfullUiFilePickerAssetsTheme {
         file: file ?? this.file,
         upload: upload ?? this.upload,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFilePickerAssetsTheme &&
+          delete == other.delete &&
+          file == other.file &&
+          upload == other.upload;
+
+  @override
+  int get hashCode => Object.hash(delete, file, upload);
 }
 
 class ImpaktfullUiFilePickerColorTheme {
@@ -119,6 +142,21 @@ class ImpaktfullUiFilePickerColorTheme {
         icons: icons ?? this.icons,
         progressIndicator: progressIndicator ?? this.progressIndicator,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFilePickerColorTheme &&
+          background == other.background &&
+          icons == other.icons &&
+          progressIndicator == other.progressIndicator &&
+          border == other.border &&
+          borderDrop == other.borderDrop &&
+          borderError == other.borderError;
+
+  @override
+  int get hashCode => Object.hash(
+      background, icons, progressIndicator, border, borderDrop, borderError);
 }
 
 class ImpaktfullUiFilePickerDimensTheme {
@@ -133,6 +171,15 @@ class ImpaktfullUiFilePickerDimensTheme {
       ImpaktfullUiFilePickerDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFilePickerDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiFilePickerTextStyleTheme {
@@ -152,4 +199,14 @@ class ImpaktfullUiFilePickerTextStyleTheme {
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFilePickerTextStyleTheme &&
+          title == other.title &&
+          subtitle == other.subtitle;
+
+  @override
+  int get hashCode => Object.hash(title, subtitle);
 }

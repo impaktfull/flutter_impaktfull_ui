@@ -44,6 +44,18 @@ class ImpaktfullUiOptionSelectorTheme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUiOptionSelectorDimensTheme(),
         textStyles: ImpaktfullUiOptionSelectorTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiOptionSelectorTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiOptionSelectorAssetsTheme {
@@ -51,6 +63,13 @@ class ImpaktfullUiOptionSelectorAssetsTheme {
 
   ImpaktfullUiOptionSelectorAssetsTheme copyWith() =>
       const ImpaktfullUiOptionSelectorAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiOptionSelectorAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiOptionSelectorColorTheme {
@@ -58,6 +77,13 @@ class ImpaktfullUiOptionSelectorColorTheme {
 
   ImpaktfullUiOptionSelectorColorTheme copyWith() =>
       const ImpaktfullUiOptionSelectorColorTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiOptionSelectorColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiOptionSelectorDimensTheme {
@@ -65,6 +91,13 @@ class ImpaktfullUiOptionSelectorDimensTheme {
 
   ImpaktfullUiOptionSelectorDimensTheme copyWith() =>
       const ImpaktfullUiOptionSelectorDimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiOptionSelectorDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiOptionSelectorTextStyleTheme {
@@ -72,4 +105,11 @@ class ImpaktfullUiOptionSelectorTextStyleTheme {
 
   ImpaktfullUiOptionSelectorTextStyleTheme copyWith() =>
       const ImpaktfullUiOptionSelectorTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiOptionSelectorTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

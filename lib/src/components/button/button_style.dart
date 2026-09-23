@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
@@ -93,6 +94,21 @@ class ImpaktfullUiButtonTheme extends ImpaktfullUiComponentTheme {
         ),
         config: const ImpaktfullUiButtonConfig(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiButtonTheme &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles &&
+          shadows == other.shadows &&
+          config == other.config;
+
+  @override
+  int get hashCode =>
+      Object.hash(colors, dimens, durations, textStyles, shadows, config);
 }
 
 class ImpaktfullUiButtonColorTheme {
@@ -140,6 +156,32 @@ class ImpaktfullUiButtonColorTheme {
         destructiveBorder: destructiveBorder ?? this.destructiveBorder,
         raisedBackground: raisedBackground ?? this.raisedBackground,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiButtonColorTheme &&
+          primary == other.primary &&
+          primaryBorder == other.primaryBorder &&
+          secondary == other.secondary &&
+          secondaryBorder == other.secondaryBorder &&
+          tertiary == other.tertiary &&
+          tertiaryBorder == other.tertiaryBorder &&
+          destructive == other.destructive &&
+          destructiveBorder == other.destructiveBorder &&
+          raisedBackground == other.raisedBackground;
+
+  @override
+  int get hashCode => Object.hash(
+      primary,
+      primaryBorder,
+      secondary,
+      secondaryBorder,
+      tertiary,
+      tertiaryBorder,
+      destructive,
+      destructiveBorder,
+      raisedBackground);
 }
 
 class ImpaktfullUiRaisedButtonColorTheme {
@@ -167,6 +209,19 @@ class ImpaktfullUiRaisedButtonColorTheme {
         destructive: destructive ?? this.destructive,
         destructiveSecondary: destructiveSecondary ?? this.destructiveSecondary,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiRaisedButtonColorTheme &&
+          primary == other.primary &&
+          secondary == other.secondary &&
+          destructive == other.destructive &&
+          destructiveSecondary == other.destructiveSecondary;
+
+  @override
+  int get hashCode =>
+      Object.hash(primary, secondary, destructive, destructiveSecondary);
 }
 
 class ImpaktfullUiButtonDimensTheme {
@@ -186,6 +241,16 @@ class ImpaktfullUiButtonDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         borderWidth: borderWidth ?? this.borderWidth,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiButtonDimensTheme &&
+          borderRadius == other.borderRadius &&
+          borderWidth == other.borderWidth;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, borderWidth);
 }
 
 class ImpaktfullUiButtonDurationsTheme {
@@ -213,6 +278,17 @@ class ImpaktfullUiButtonDurationsTheme {
         raisedPress: raisedPress ?? this.raisedPress,
         raisedRelease: raisedRelease ?? this.raisedRelease,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiButtonDurationsTheme &&
+          loading == other.loading &&
+          raisedPress == other.raisedPress &&
+          raisedRelease == other.raisedRelease;
+
+  @override
+  int get hashCode => Object.hash(loading, raisedPress, raisedRelease);
 }
 
 class ImpaktfullUiButtonTextStyleTheme {
@@ -245,6 +321,20 @@ class ImpaktfullUiButtonTextStyleTheme {
         destructiveAlternative:
             destructiveAlternative ?? this.destructiveAlternative,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiButtonTextStyleTheme &&
+          primary == other.primary &&
+          alternative == other.alternative &&
+          grey == other.grey &&
+          destructivePrimary == other.destructivePrimary &&
+          destructiveAlternative == other.destructiveAlternative;
+
+  @override
+  int get hashCode => Object.hash(
+      primary, alternative, grey, destructivePrimary, destructiveAlternative);
 }
 
 class ImpaktfullUiButtonShadowsTheme {
@@ -268,6 +358,20 @@ class ImpaktfullUiButtonShadowsTheme {
         secondary: secondary ?? this.secondary,
         destructive: destructive ?? this.destructive,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiButtonShadowsTheme &&
+          listEquals(primary, other.primary) &&
+          listEquals(secondary, other.secondary) &&
+          listEquals(destructive, other.destructive);
+
+  @override
+  int get hashCode => Object.hash(
+      Object.hashAll(primary ?? const []),
+      Object.hashAll(secondary ?? const []),
+      Object.hashAll(destructive ?? const []));
 }
 
 class ImpaktfullUiButtonConfig {
@@ -291,4 +395,15 @@ class ImpaktfullUiButtonConfig {
         elevation: elevation ?? this.elevation,
         vibrateOnTap: vibrateOnTap ?? this.vibrateOnTap,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiButtonConfig &&
+          isRaised == other.isRaised &&
+          elevation == other.elevation &&
+          vibrateOnTap == other.vibrateOnTap;
+
+  @override
+  int get hashCode => Object.hash(isRaised, elevation, vibrateOnTap);
 }

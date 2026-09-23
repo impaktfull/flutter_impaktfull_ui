@@ -34,6 +34,14 @@ class ImpaktfullUiTouchFeedbackTheme extends ImpaktfullUiComponentTheme {
     required ImpaktfullUiShadowsTheme shadows,
   }) =>
       fallback;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTouchFeedbackTheme && colors == other.colors;
+
+  @override
+  int get hashCode => colors.hashCode;
 }
 
 /// The colors of the touch feedback, named after the colors of an InkWell.
@@ -72,4 +80,16 @@ class ImpaktfullUiTouchFeedbackColorTheme {
         hover: hover ?? this.hover,
         splash: splash ?? this.splash,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTouchFeedbackColorTheme &&
+          highlight == other.highlight &&
+          hover == other.hover &&
+          focus == other.focus &&
+          splash == other.splash;
+
+  @override
+  int get hashCode => Object.hash(highlight, hover, focus, splash);
 }

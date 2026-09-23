@@ -46,6 +46,18 @@ class ImpaktfullUiTimePickerTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: ImpaktfullUiTimePickerTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTimePickerTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiTimePickerAssetsTheme {
@@ -53,6 +65,12 @@ class ImpaktfullUiTimePickerAssetsTheme {
 
   ImpaktfullUiTimePickerAssetsTheme copyWith() =>
       const ImpaktfullUiTimePickerAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiTimePickerAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiTimePickerColorTheme {
@@ -60,6 +78,12 @@ class ImpaktfullUiTimePickerColorTheme {
 
   ImpaktfullUiTimePickerColorTheme copyWith() =>
       const ImpaktfullUiTimePickerColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiTimePickerColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiTimePickerDimensTheme {
@@ -73,6 +97,15 @@ class ImpaktfullUiTimePickerDimensTheme {
   }) =>
       ImpaktfullUiTimePickerDimensTheme(
           labelMargin: labelMargin ?? this.labelMargin);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTimePickerDimensTheme &&
+          labelMargin == other.labelMargin;
+
+  @override
+  int get hashCode => labelMargin.hashCode;
 }
 
 class ImpaktfullUiTimePickerTextStyleTheme {
@@ -80,4 +113,11 @@ class ImpaktfullUiTimePickerTextStyleTheme {
 
   ImpaktfullUiTimePickerTextStyleTheme copyWith() =>
       const ImpaktfullUiTimePickerTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiTimePickerTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

@@ -57,6 +57,18 @@ class ImpaktfullUiWysiwygTheme extends ImpaktfullUiComponentTheme {
           previewText: textStyles.onCanvas.text.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiWysiwygTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiWysiwygAssetsTheme {
@@ -103,6 +115,24 @@ class ImpaktfullUiWysiwygAssetsTheme {
         photo: photo ?? this.photo,
         unorderedList: unorderedList ?? this.unorderedList,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiWysiwygAssetsTheme &&
+          bold == other.bold &&
+          code == other.code &&
+          codeBlock == other.codeBlock &&
+          header == other.header &&
+          italic == other.italic &&
+          orderedList == other.orderedList &&
+          unorderedList == other.unorderedList &&
+          link == other.link &&
+          photo == other.photo;
+
+  @override
+  int get hashCode => Object.hash(bold, code, codeBlock, header, italic,
+      orderedList, unorderedList, link, photo);
 }
 
 class ImpaktfullUiWysiwygColorTheme {
@@ -110,6 +140,12 @@ class ImpaktfullUiWysiwygColorTheme {
 
   ImpaktfullUiWysiwygColorTheme copyWith() =>
       const ImpaktfullUiWysiwygColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiWysiwygColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiWysiwygDimensTheme {
@@ -117,6 +153,12 @@ class ImpaktfullUiWysiwygDimensTheme {
 
   ImpaktfullUiWysiwygDimensTheme copyWith() =>
       const ImpaktfullUiWysiwygDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiWysiwygDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiWysiwygTextStyleTheme {
@@ -131,4 +173,13 @@ class ImpaktfullUiWysiwygTextStyleTheme {
       ImpaktfullUiWysiwygTextStyleTheme(
         previewText: previewText ?? this.previewText,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiWysiwygTextStyleTheme &&
+          previewText == other.previewText;
+
+  @override
+  int get hashCode => previewText.hashCode;
 }

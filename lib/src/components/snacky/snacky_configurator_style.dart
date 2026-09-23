@@ -64,6 +64,18 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
           branded: brandedIcon,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSnackyConfiguratorTheme &&
+          colors == other.colors &&
+          textStyles == other.textStyles &&
+          dimens == other.dimens &&
+          assets == other.assets;
+
+  @override
+  int get hashCode => Object.hash(colors, textStyles, dimens, assets);
 }
 
 class ImpaktfullUiSnackyConfiguratorColorTheme {
@@ -103,6 +115,22 @@ class ImpaktfullUiSnackyConfiguratorColorTheme {
         success: success ?? this.success,
         warning: warning ?? this.warning,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSnackyConfiguratorColorTheme &&
+          background == other.background &&
+          border == other.border &&
+          brand == other.brand &&
+          error == other.error &&
+          info == other.info &&
+          warning == other.warning &&
+          success == other.success;
+
+  @override
+  int get hashCode =>
+      Object.hash(background, border, brand, error, info, warning, success);
 }
 
 class ImpaktfullUiSnackyConfiguratorTextStyleTheme {
@@ -110,6 +138,13 @@ class ImpaktfullUiSnackyConfiguratorTextStyleTheme {
 
   ImpaktfullUiSnackyConfiguratorTextStyleTheme copyWith() =>
       const ImpaktfullUiSnackyConfiguratorTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSnackyConfiguratorTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSnackyConfiguratorDimensTheme {
@@ -125,6 +160,15 @@ class ImpaktfullUiSnackyConfiguratorDimensTheme {
       ImpaktfullUiSnackyConfiguratorDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSnackyConfiguratorDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiSnackyConfiguratorAssetsTheme {
@@ -164,4 +208,20 @@ class ImpaktfullUiSnackyConfiguratorAssetsTheme {
         success: success ?? this.success,
         warning: warning ?? this.warning,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSnackyConfiguratorAssetsTheme &&
+          close == other.close &&
+          chevronRight == other.chevronRight &&
+          success == other.success &&
+          error == other.error &&
+          warning == other.warning &&
+          info == other.info &&
+          branded == other.branded;
+
+  @override
+  int get hashCode =>
+      Object.hash(close, chevronRight, success, error, warning, info, branded);
 }

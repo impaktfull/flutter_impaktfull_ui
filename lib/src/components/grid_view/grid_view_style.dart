@@ -46,6 +46,18 @@ class ImpaktfullUiGridViewTheme extends ImpaktfullUiComponentTheme {
           title: textStyles.onCanvas.display.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiGridViewTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiGridViewAssetsTheme {
@@ -53,6 +65,12 @@ class ImpaktfullUiGridViewAssetsTheme {
 
   ImpaktfullUiGridViewAssetsTheme copyWith() =>
       const ImpaktfullUiGridViewAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiGridViewAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiGridViewColorTheme {
@@ -60,6 +78,12 @@ class ImpaktfullUiGridViewColorTheme {
 
   ImpaktfullUiGridViewColorTheme copyWith() =>
       const ImpaktfullUiGridViewColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiGridViewColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiGridViewDimensTheme {
@@ -67,6 +91,12 @@ class ImpaktfullUiGridViewDimensTheme {
 
   ImpaktfullUiGridViewDimensTheme copyWith() =>
       const ImpaktfullUiGridViewDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiGridViewDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiGridViewTextStyleTheme {
@@ -81,4 +111,12 @@ class ImpaktfullUiGridViewTextStyleTheme {
       ImpaktfullUiGridViewTextStyleTheme(
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiGridViewTextStyleTheme && title == other.title;
+
+  @override
+  int get hashCode => title.hashCode;
 }

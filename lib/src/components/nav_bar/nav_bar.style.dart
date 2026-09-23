@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
@@ -64,6 +65,19 @@ class ImpaktfullUiNavBarTheme extends ImpaktfullUiComponentTheme {
           shadow: shadows.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNavBarTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          shadows == other.shadows &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, shadows, textStyles);
 }
 
 class ImpaktfullUiNavBarAssetsTheme {
@@ -86,6 +100,17 @@ class ImpaktfullUiNavBarAssetsTheme {
         close: close ?? this.close,
         drawerMenu: drawerMenu ?? this.drawerMenu,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNavBarAssetsTheme &&
+          back == other.back &&
+          drawerMenu == other.drawerMenu &&
+          close == other.close;
+
+  @override
+  int get hashCode => Object.hash(back, drawerMenu, close);
 }
 
 class ImpaktfullUiNavBarColorTheme {
@@ -108,6 +133,17 @@ class ImpaktfullUiNavBarColorTheme {
         border: border ?? this.border,
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNavBarColorTheme &&
+          background == other.background &&
+          icons == other.icons &&
+          border == other.border;
+
+  @override
+  int get hashCode => Object.hash(background, icons, border);
 }
 
 class ImpaktfullUiNavBarDimensTheme {
@@ -150,6 +186,20 @@ class ImpaktfullUiNavBarDimensTheme {
             sidePaddingWithActions ?? this.sidePaddingWithActions,
         verticalPadding: verticalPadding ?? this.verticalPadding,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNavBarDimensTheme &&
+          actionSize == other.actionSize &&
+          minHeight == other.minHeight &&
+          verticalPadding == other.verticalPadding &&
+          sidePadding == other.sidePadding &&
+          sidePaddingWithActions == other.sidePaddingWithActions;
+
+  @override
+  int get hashCode => Object.hash(actionSize, minHeight, verticalPadding,
+      sidePadding, sidePaddingWithActions);
 }
 
 class ImpaktfullUiNavBarShadowsTheme {
@@ -164,6 +214,15 @@ class ImpaktfullUiNavBarShadowsTheme {
       ImpaktfullUiNavBarShadowsTheme(
         shadow: shadow ?? this.shadow,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNavBarShadowsTheme &&
+          listEquals(shadow, other.shadow);
+
+  @override
+  int get hashCode => Object.hashAll(shadow);
 }
 
 class ImpaktfullUiNavBarTextStyleTheme {
@@ -182,4 +241,14 @@ class ImpaktfullUiNavBarTextStyleTheme {
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNavBarTextStyleTheme &&
+          title == other.title &&
+          subtitle == other.subtitle;
+
+  @override
+  int get hashCode => Object.hash(title, subtitle);
 }

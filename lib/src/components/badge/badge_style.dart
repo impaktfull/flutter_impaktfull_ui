@@ -74,6 +74,18 @@ class ImpaktfullUiBadgeTheme extends ImpaktfullUiComponentTheme {
           large: textStyles.onCard.text.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBadgeTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiBadgeAssetsTheme {
@@ -89,6 +101,14 @@ class ImpaktfullUiBadgeAssetsTheme {
       ImpaktfullUiBadgeAssetsTheme(
         close: close ?? this.close,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBadgeAssetsTheme && close == other.close;
+
+  @override
+  int get hashCode => close.hashCode;
 }
 
 class ImpaktfullUiBadgeColorTheme {
@@ -172,6 +192,50 @@ class ImpaktfullUiBadgeColorTheme {
         warningBorder: warningBorder ?? this.warningBorder,
         warningText: warningText ?? this.warningText,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBadgeColorTheme &&
+          primaryText == other.primaryText &&
+          primaryBorder == other.primaryBorder &&
+          primaryBackground == other.primaryBackground &&
+          secondaryText == other.secondaryText &&
+          secondaryBorder == other.secondaryBorder &&
+          secondaryBackground == other.secondaryBackground &&
+          neutralText == other.neutralText &&
+          neutralBorder == other.neutralBorder &&
+          neutralBackground == other.neutralBackground &&
+          errorText == other.errorText &&
+          errorBorder == other.errorBorder &&
+          errorBackground == other.errorBackground &&
+          warningText == other.warningText &&
+          warningBorder == other.warningBorder &&
+          warningBackground == other.warningBackground &&
+          successText == other.successText &&
+          successBorder == other.successBorder &&
+          successBackground == other.successBackground;
+
+  @override
+  int get hashCode => Object.hash(
+      primaryText,
+      primaryBorder,
+      primaryBackground,
+      secondaryText,
+      secondaryBorder,
+      secondaryBackground,
+      neutralText,
+      neutralBorder,
+      neutralBackground,
+      errorText,
+      errorBorder,
+      errorBackground,
+      warningText,
+      warningBorder,
+      warningBackground,
+      successText,
+      successBorder,
+      successBackground);
 }
 
 class ImpaktfullUiBadgeDimensTheme {
@@ -209,6 +273,20 @@ class ImpaktfullUiBadgeDimensTheme {
         closePadding: closePadding ?? this.closePadding,
         closeSpacing: closeSpacing ?? this.closeSpacing,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBadgeDimensTheme &&
+          borderRadius == other.borderRadius &&
+          borderWidth == other.borderWidth &&
+          closeIconSize == other.closeIconSize &&
+          closePadding == other.closePadding &&
+          closeSpacing == other.closeSpacing;
+
+  @override
+  int get hashCode => Object.hash(
+      borderRadius, borderWidth, closeIconSize, closePadding, closeSpacing);
 }
 
 class ImpaktfullUiBadgeTextStyleTheme {
@@ -232,4 +310,15 @@ class ImpaktfullUiBadgeTextStyleTheme {
         medium: medium ?? this.medium,
         small: small ?? this.small,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBadgeTextStyleTheme &&
+          small == other.small &&
+          medium == other.medium &&
+          large == other.large;
+
+  @override
+  int get hashCode => Object.hash(small, medium, large);
 }

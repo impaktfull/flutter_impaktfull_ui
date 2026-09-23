@@ -93,4 +93,55 @@ class ImpaktfullUiColorTheme {
         success: success ?? this.success,
         destructive: destructive ?? this.destructive,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiColorTheme &&
+          primary == other.primary &&
+          accent == other.accent &&
+          secondary == other.secondary &&
+          tertiary == other.tertiary &&
+          canvas == other.canvas &&
+          card == other.card &&
+          card2 == other.card2 &&
+          border == other.border &&
+          shadow == other.shadow &&
+          text == other.text &&
+          textSecondary == other.textSecondary &&
+          textTertiary == other.textTertiary &&
+          textOnPrimary == other.textOnPrimary &&
+          textOnAccent == other.textOnAccent &&
+          textOnSecondary == other.textOnSecondary &&
+          textOnDestructive == other.textOnDestructive &&
+          warning == other.warning &&
+          error == other.error &&
+          info == other.info &&
+          success == other.success &&
+          destructive == other.destructive;
+
+  @override
+  int get hashCode => Object.hashAll([
+        primary,
+        accent,
+        secondary,
+        tertiary,
+        canvas,
+        card,
+        card2,
+        border,
+        shadow,
+        text,
+        textSecondary,
+        textTertiary,
+        textOnPrimary,
+        textOnAccent,
+        textOnSecondary,
+        textOnDestructive,
+        warning,
+        error,
+        info,
+        success,
+        destructive,
+      ]);
 }

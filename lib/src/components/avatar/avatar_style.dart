@@ -53,6 +53,18 @@ class ImpaktfullUiAvatarTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiAvatarTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAvatarTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiAvatarAssetsTheme {
@@ -67,6 +79,15 @@ class ImpaktfullUiAvatarAssetsTheme {
       ImpaktfullUiAvatarAssetsTheme(
         placeholder: placeholder ?? this.placeholder,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAvatarAssetsTheme &&
+          placeholder == other.placeholder;
+
+  @override
+  int get hashCode => placeholder.hashCode;
 }
 
 class ImpaktfullUiAvatarColorTheme {
@@ -89,6 +110,17 @@ class ImpaktfullUiAvatarColorTheme {
         border: border ?? this.border,
         placeholder: placeholder ?? this.placeholder,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAvatarColorTheme &&
+          border == other.border &&
+          background == other.background &&
+          placeholder == other.placeholder;
+
+  @override
+  int get hashCode => Object.hash(border, background, placeholder);
 }
 
 class ImpaktfullUiAvatarDimensTheme {
@@ -103,6 +135,15 @@ class ImpaktfullUiAvatarDimensTheme {
       ImpaktfullUiAvatarDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAvatarDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiAvatarTextStyleTheme {
@@ -110,4 +151,10 @@ class ImpaktfullUiAvatarTextStyleTheme {
 
   ImpaktfullUiAvatarTextStyleTheme copyWith() =>
       const ImpaktfullUiAvatarTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiAvatarTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

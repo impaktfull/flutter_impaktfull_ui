@@ -59,6 +59,20 @@ class ImpaktfullUiFloatingActionButtonTheme extends ImpaktfullUiComponentTheme {
           label: textStyles.onAccent.text.small.bold,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFloatingActionButtonTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiFloatingActionButtonAssetsTheme {
@@ -66,6 +80,13 @@ class ImpaktfullUiFloatingActionButtonAssetsTheme {
 
   ImpaktfullUiFloatingActionButtonAssetsTheme copyWith() =>
       const ImpaktfullUiFloatingActionButtonAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiFloatingActionButtonAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiFloatingActionButtonColorTheme {
@@ -88,6 +109,17 @@ class ImpaktfullUiFloatingActionButtonColorTheme {
         backgroundDisabled: backgroundDisabled ?? this.backgroundDisabled,
         icon: icon ?? this.icon,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFloatingActionButtonColorTheme &&
+          background == other.background &&
+          backgroundDisabled == other.backgroundDisabled &&
+          icon == other.icon;
+
+  @override
+  int get hashCode => Object.hash(background, backgroundDisabled, icon);
 }
 
 class ImpaktfullUiFloatingActionButtonDimensTheme {
@@ -102,6 +134,15 @@ class ImpaktfullUiFloatingActionButtonDimensTheme {
       ImpaktfullUiFloatingActionButtonDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFloatingActionButtonDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiFloatingActionButtonDurationsTheme {
@@ -118,6 +159,15 @@ class ImpaktfullUiFloatingActionButtonDurationsTheme {
       ImpaktfullUiFloatingActionButtonDurationsTheme(
         expand: expand ?? this.expand,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFloatingActionButtonDurationsTheme &&
+          expand == other.expand;
+
+  @override
+  int get hashCode => expand.hashCode;
 }
 
 class ImpaktfullUiFloatingActionButtonTextStyleTheme {
@@ -132,4 +182,13 @@ class ImpaktfullUiFloatingActionButtonTextStyleTheme {
       ImpaktfullUiFloatingActionButtonTextStyleTheme(
         label: label ?? this.label,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFloatingActionButtonTextStyleTheme &&
+          label == other.label;
+
+  @override
+  int get hashCode => label.hashCode;
 }

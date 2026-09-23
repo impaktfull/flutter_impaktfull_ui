@@ -61,6 +61,18 @@ class ImpaktfullUiStepperTheme extends ImpaktfullUiComponentTheme {
           subtitle: textStyles.onCard.text.small.light,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiStepperTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiStepperAssetsTheme {
@@ -68,6 +80,12 @@ class ImpaktfullUiStepperAssetsTheme {
 
   ImpaktfullUiStepperAssetsTheme copyWith() =>
       const ImpaktfullUiStepperAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiStepperAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiStepperColorTheme {
@@ -112,6 +130,30 @@ class ImpaktfullUiStepperColorTheme {
         assetColorCompleted: assetColorCompleted ?? this.assetColorCompleted,
         inactiveStep: inactiveStep ?? this.inactiveStep,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiStepperColorTheme &&
+          activeStep == other.activeStep &&
+          inactiveStep == other.inactiveStep &&
+          assetBorder == other.assetBorder &&
+          assetBackground == other.assetBackground &&
+          assetColor == other.assetColor &&
+          assetBorderCompleted == other.assetBorderCompleted &&
+          assetBackgroundCompleted == other.assetBackgroundCompleted &&
+          assetColorCompleted == other.assetColorCompleted;
+
+  @override
+  int get hashCode => Object.hash(
+      activeStep,
+      inactiveStep,
+      assetBorder,
+      assetBackground,
+      assetColor,
+      assetBorderCompleted,
+      assetBackgroundCompleted,
+      assetColorCompleted);
 }
 
 class ImpaktfullUiStepperDimensTheme {
@@ -141,6 +183,18 @@ class ImpaktfullUiStepperDimensTheme {
         padding: padding ?? this.padding,
         spacing: spacing ?? this.spacing,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiStepperDimensTheme &&
+          spacing == other.spacing &&
+          height == other.height &&
+          borderRadius == other.borderRadius &&
+          padding == other.padding;
+
+  @override
+  int get hashCode => Object.hash(spacing, height, borderRadius, padding);
 }
 
 class ImpaktfullUiStepperTextStyleTheme {
@@ -159,4 +213,14 @@ class ImpaktfullUiStepperTextStyleTheme {
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiStepperTextStyleTheme &&
+          title == other.title &&
+          subtitle == other.subtitle;
+
+  @override
+  int get hashCode => Object.hash(title, subtitle);
 }

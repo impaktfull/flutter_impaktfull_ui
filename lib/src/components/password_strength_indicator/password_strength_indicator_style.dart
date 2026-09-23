@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
@@ -74,6 +75,20 @@ class ImpaktfullUiPasswordStrengthIndicatorTheme
               textStyles.onCard.text.small.copyWith(color: colors.success),
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPasswordStrengthIndicatorTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorAssetsTheme {
@@ -107,6 +122,16 @@ class ImpaktfullUiPasswordStrengthIndicatorAssetsTheme {
 
   @Deprecated('Use leadingRequirementIsMet instead. Will be removed in 1.0.0.')
   ImpaktfullUiAsset? get leadingRequerementIsMet => leadingRequirementIsMet;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPasswordStrengthIndicatorAssetsTheme &&
+          leadingRequirement == other.leadingRequirement &&
+          leadingRequirementIsMet == other.leadingRequirementIsMet;
+
+  @override
+  int get hashCode => Object.hash(leadingRequirement, leadingRequirementIsMet);
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorColorTheme {
@@ -136,6 +161,19 @@ class ImpaktfullUiPasswordStrengthIndicatorColorTheme {
             strengthIndicatorBackground ?? this.strengthIndicatorBackground,
         strengthIndicators: strengthIndicators ?? this.strengthIndicators,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPasswordStrengthIndicatorColorTheme &&
+          listEquals(strengthIndicators, other.strengthIndicators) &&
+          strengthIndicatorBackground == other.strengthIndicatorBackground &&
+          requirementAsset == other.requirementAsset &&
+          requirementAssetIsMet == other.requirementAssetIsMet;
+
+  @override
+  int get hashCode => Object.hash(Object.hashAll(strengthIndicators),
+      strengthIndicatorBackground, requirementAsset, requirementAssetIsMet);
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorDimensTheme {
@@ -159,6 +197,18 @@ class ImpaktfullUiPasswordStrengthIndicatorDimensTheme {
         strengthIndicatorBorderRadius:
             strengthIndicatorBorderRadius ?? this.strengthIndicatorBorderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPasswordStrengthIndicatorDimensTheme &&
+          spacing == other.spacing &&
+          requirementSpacing == other.requirementSpacing &&
+          strengthIndicatorBorderRadius == other.strengthIndicatorBorderRadius;
+
+  @override
+  int get hashCode =>
+      Object.hash(spacing, requirementSpacing, strengthIndicatorBorderRadius);
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorDurationsTheme {
@@ -173,6 +223,15 @@ class ImpaktfullUiPasswordStrengthIndicatorDurationsTheme {
       ImpaktfullUiPasswordStrengthIndicatorDurationsTheme(
         colorChangeDuration: colorChangeDuration ?? this.colorChangeDuration,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPasswordStrengthIndicatorDurationsTheme &&
+          colorChangeDuration == other.colorChangeDuration;
+
+  @override
+  int get hashCode => colorChangeDuration.hashCode;
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme {
@@ -191,4 +250,14 @@ class ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme {
         requirement: requirement ?? this.requirement,
         requirementIsMet: requirementIsMet ?? this.requirementIsMet,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPasswordStrengthIndicatorTextStyleTheme &&
+          requirement == other.requirement &&
+          requirementIsMet == other.requirementIsMet;
+
+  @override
+  int get hashCode => Object.hash(requirement, requirementIsMet);
 }

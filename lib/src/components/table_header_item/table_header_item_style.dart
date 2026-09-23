@@ -42,6 +42,17 @@ class ImpaktfullUiTableHeaderItemTheme extends ImpaktfullUiComponentTheme {
           title: textStyles.onCanvas.text.extraSmall.medium,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTableHeaderItemTheme &&
+          colors == other.colors &&
+          textStyles == other.textStyles &&
+          dimens == other.dimens;
+
+  @override
+  int get hashCode => Object.hash(colors, textStyles, dimens);
 }
 
 class ImpaktfullUiTableHeaderItemColorTheme {
@@ -49,6 +60,13 @@ class ImpaktfullUiTableHeaderItemColorTheme {
 
   ImpaktfullUiTableHeaderItemColorTheme copyWith() =>
       const ImpaktfullUiTableHeaderItemColorTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiTableHeaderItemColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiTableHeaderItemTextStyleTheme {
@@ -64,6 +82,15 @@ class ImpaktfullUiTableHeaderItemTextStyleTheme {
       ImpaktfullUiTableHeaderItemTextStyleTheme(
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTableHeaderItemTextStyleTheme &&
+          title == other.title;
+
+  @override
+  int get hashCode => title.hashCode;
 }
 
 class ImpaktfullUiTableHeaderItemDimensTheme {
@@ -80,4 +107,13 @@ class ImpaktfullUiTableHeaderItemDimensTheme {
       ImpaktfullUiTableHeaderItemDimensTheme(
         minHeight: minHeight ?? this.minHeight,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTableHeaderItemDimensTheme &&
+          minHeight == other.minHeight;
+
+  @override
+  int get hashCode => minHeight.hashCode;
 }

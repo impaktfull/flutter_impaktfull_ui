@@ -46,6 +46,18 @@ class ImpaktfullUiCheckboxListItemTheme extends ImpaktfullUiComponentTheme {
         dimens: const ImpaktfullUiCheckboxListItemDimensTheme(),
         textStyles: const ImpaktfullUiCheckboxListItemTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCheckboxListItemTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiCheckboxListItemAssetsTheme {
@@ -53,6 +65,13 @@ class ImpaktfullUiCheckboxListItemAssetsTheme {
 
   ImpaktfullUiCheckboxListItemAssetsTheme copyWith() =>
       const ImpaktfullUiCheckboxListItemAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiCheckboxListItemAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiCheckboxListItemColorTheme {
@@ -67,6 +86,14 @@ class ImpaktfullUiCheckboxListItemColorTheme {
       ImpaktfullUiCheckboxListItemColorTheme(
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCheckboxListItemColorTheme && icons == other.icons;
+
+  @override
+  int get hashCode => icons.hashCode;
 }
 
 class ImpaktfullUiCheckboxListItemDimensTheme {
@@ -74,6 +101,13 @@ class ImpaktfullUiCheckboxListItemDimensTheme {
 
   ImpaktfullUiCheckboxListItemDimensTheme copyWith() =>
       const ImpaktfullUiCheckboxListItemDimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiCheckboxListItemDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiCheckboxListItemTextStyleTheme {
@@ -81,4 +115,11 @@ class ImpaktfullUiCheckboxListItemTextStyleTheme {
 
   ImpaktfullUiCheckboxListItemTextStyleTheme copyWith() =>
       const ImpaktfullUiCheckboxListItemTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiCheckboxListItemTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

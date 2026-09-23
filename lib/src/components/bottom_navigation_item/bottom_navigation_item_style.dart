@@ -53,6 +53,18 @@ class ImpaktfullUiBottomNavigationItemTheme extends ImpaktfullUiComponentTheme {
           inActiveLabel: textStyles.onCardTertiary.text.small.bold,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomNavigationItemTheme &&
+          colors == other.colors &&
+          textStyles == other.textStyles &&
+          dimens == other.dimens &&
+          assets == other.assets;
+
+  @override
+  int get hashCode => Object.hash(colors, textStyles, dimens, assets);
 }
 
 class ImpaktfullUiBottomNavigationItemColorTheme {
@@ -80,6 +92,18 @@ class ImpaktfullUiBottomNavigationItemColorTheme {
         badgeInActive: badgeInActive ?? this.badgeInActive,
         inactive: inactive ?? this.inactive,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomNavigationItemColorTheme &&
+          active == other.active &&
+          inactive == other.inactive &&
+          badgeActive == other.badgeActive &&
+          badgeInActive == other.badgeInActive;
+
+  @override
+  int get hashCode => Object.hash(active, inactive, badgeActive, badgeInActive);
 }
 
 class ImpaktfullUiBottomNavigationItemTextStyleTheme {
@@ -99,6 +123,16 @@ class ImpaktfullUiBottomNavigationItemTextStyleTheme {
         activeLabel: activeLabel ?? this.activeLabel,
         inActiveLabel: inActiveLabel ?? this.inActiveLabel,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomNavigationItemTextStyleTheme &&
+          inActiveLabel == other.inActiveLabel &&
+          activeLabel == other.activeLabel;
+
+  @override
+  int get hashCode => Object.hash(inActiveLabel, activeLabel);
 }
 
 class ImpaktfullUiBottomNavigationItemDimensTheme {
@@ -121,6 +155,16 @@ class ImpaktfullUiBottomNavigationItemDimensTheme {
         padding: padding ?? this.padding,
         paddingWithoutTitle: paddingWithoutTitle ?? this.paddingWithoutTitle,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBottomNavigationItemDimensTheme &&
+          padding == other.padding &&
+          paddingWithoutTitle == other.paddingWithoutTitle;
+
+  @override
+  int get hashCode => Object.hash(padding, paddingWithoutTitle);
 }
 
 class ImpaktfullUiBottomNavigationItemAssetsTheme {
@@ -128,4 +172,11 @@ class ImpaktfullUiBottomNavigationItemAssetsTheme {
 
   ImpaktfullUiBottomNavigationItemAssetsTheme copyWith() =>
       const ImpaktfullUiBottomNavigationItemAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiBottomNavigationItemAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

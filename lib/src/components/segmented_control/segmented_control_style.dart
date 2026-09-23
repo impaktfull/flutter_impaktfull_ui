@@ -60,6 +60,20 @@ class ImpaktfullUiSegmentedControlTheme extends ImpaktfullUiComponentTheme {
           activeLabel: textStyles.onCard.text.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSegmentedControlTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiSegmentedControlAssetsTheme {
@@ -67,6 +81,13 @@ class ImpaktfullUiSegmentedControlAssetsTheme {
 
   ImpaktfullUiSegmentedControlAssetsTheme copyWith() =>
       const ImpaktfullUiSegmentedControlAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSegmentedControlAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSegmentedControlColorTheme {
@@ -93,6 +114,19 @@ class ImpaktfullUiSegmentedControlColorTheme {
         background: background ?? this.background,
         border: border ?? this.border,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSegmentedControlColorTheme &&
+          background == other.background &&
+          border == other.border &&
+          activeBackground == other.activeBackground &&
+          activeBorder == other.activeBorder;
+
+  @override
+  int get hashCode =>
+      Object.hash(background, border, activeBackground, activeBorder);
 }
 
 class ImpaktfullUiSegmentedControlDimensTheme {
@@ -118,6 +152,17 @@ class ImpaktfullUiSegmentedControlDimensTheme {
         height: height ?? this.height,
         padding: padding ?? this.padding,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSegmentedControlDimensTheme &&
+          borderRadius == other.borderRadius &&
+          padding == other.padding &&
+          height == other.height;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, padding, height);
 }
 
 class ImpaktfullUiSegmentedControlDurationsTheme {
@@ -134,6 +179,15 @@ class ImpaktfullUiSegmentedControlDurationsTheme {
       ImpaktfullUiSegmentedControlDurationsTheme(
         selected: selected ?? this.selected,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSegmentedControlDurationsTheme &&
+          selected == other.selected;
+
+  @override
+  int get hashCode => selected.hashCode;
 }
 
 class ImpaktfullUiSegmentedControlTextStyleTheme {
@@ -153,4 +207,14 @@ class ImpaktfullUiSegmentedControlTextStyleTheme {
         activeLabel: activeLabel ?? this.activeLabel,
         label: label ?? this.label,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSegmentedControlTextStyleTheme &&
+          label == other.label &&
+          activeLabel == other.activeLabel;
+
+  @override
+  int get hashCode => Object.hash(label, activeLabel);
 }

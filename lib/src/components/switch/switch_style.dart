@@ -69,6 +69,20 @@ class ImpaktfullUiSwitchTheme extends ImpaktfullUiComponentTheme {
           inactive: assets.icons.close,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSwitchTheme &&
+          colors == other.colors &&
+          textStyles == other.textStyles &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          assets == other.assets;
+
+  @override
+  int get hashCode =>
+      Object.hash(colors, textStyles, dimens, durations, assets);
 }
 
 class ImpaktfullUiSwitchColorTheme {
@@ -109,6 +123,22 @@ class ImpaktfullUiSwitchColorTheme {
         inactive: inactive ?? this.inactive,
         inactiveBackground: inactiveBackground ?? this.inactiveBackground,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSwitchColorTheme &&
+          inactiveBackground == other.inactiveBackground &&
+          activeBackground == other.activeBackground &&
+          active == other.active &&
+          inactive == other.inactive &&
+          border == other.border &&
+          accessibleInactiveIcon == other.accessibleInactiveIcon &&
+          accessibleActiveIcon == other.accessibleActiveIcon;
+
+  @override
+  int get hashCode => Object.hash(inactiveBackground, activeBackground, active,
+      inactive, border, accessibleInactiveIcon, accessibleActiveIcon);
 }
 
 class ImpaktfullUiSwitchTextStyleTheme {
@@ -116,6 +146,12 @@ class ImpaktfullUiSwitchTextStyleTheme {
 
   ImpaktfullUiSwitchTextStyleTheme copyWith() =>
       const ImpaktfullUiSwitchTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiSwitchTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSwitchDimensTheme {
@@ -157,6 +193,21 @@ class ImpaktfullUiSwitchDimensTheme {
         thumbBorderRadius: thumbBorderRadius ?? this.thumbBorderRadius,
         verticalPadding: verticalPadding ?? this.verticalPadding,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSwitchDimensTheme &&
+          borderRadius == other.borderRadius &&
+          thumbBorderRadius == other.thumbBorderRadius &&
+          borderWidth == other.borderWidth &&
+          verticalPadding == other.verticalPadding &&
+          horizontalPadding == other.horizontalPadding &&
+          minTapTargetSize == other.minTapTargetSize;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, thumbBorderRadius, borderWidth,
+      verticalPadding, horizontalPadding, minTapTargetSize);
 }
 
 class ImpaktfullUiSwitchDurationsTheme {
@@ -171,6 +222,14 @@ class ImpaktfullUiSwitchDurationsTheme {
       ImpaktfullUiSwitchDurationsTheme(
         selected: selected ?? this.selected,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSwitchDurationsTheme && selected == other.selected;
+
+  @override
+  int get hashCode => selected.hashCode;
 }
 
 class ImpaktfullUiSwitchAssetsTheme {
@@ -190,4 +249,14 @@ class ImpaktfullUiSwitchAssetsTheme {
         active: active ?? this.active,
         inactive: inactive ?? this.inactive,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSwitchAssetsTheme &&
+          active == other.active &&
+          inactive == other.inactive;
+
+  @override
+  int get hashCode => Object.hash(active, inactive);
 }

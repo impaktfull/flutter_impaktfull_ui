@@ -47,6 +47,17 @@ class ImpaktfullUiLoadingIndicatorTheme extends ImpaktfullUiComponentTheme {
       ),
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLoadingIndicatorTheme &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          assets == other.assets;
+
+  @override
+  int get hashCode => Object.hash(colors, dimens, assets);
 }
 
 class ImpaktfullUiLoadingIndicatorColorTheme {
@@ -61,6 +72,14 @@ class ImpaktfullUiLoadingIndicatorColorTheme {
       ImpaktfullUiLoadingIndicatorColorTheme(
         color: color ?? this.color,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLoadingIndicatorColorTheme && color == other.color;
+
+  @override
+  int get hashCode => color.hashCode;
 }
 
 class ImpaktfullUiLoadingIndicatorDimensTheme {
@@ -76,6 +95,15 @@ class ImpaktfullUiLoadingIndicatorDimensTheme {
       ImpaktfullUiLoadingIndicatorDimensTheme(
         strokeWidth: strokeWidth ?? this.strokeWidth,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLoadingIndicatorDimensTheme &&
+          strokeWidth == other.strokeWidth;
+
+  @override
+  int get hashCode => strokeWidth.hashCode;
 }
 
 class ImpaktfullUiLoadingIndicatorAssetsTheme {
@@ -90,4 +118,13 @@ class ImpaktfullUiLoadingIndicatorAssetsTheme {
       ImpaktfullUiLoadingIndicatorAssetsTheme(
         lottie: lottie ?? this.lottie,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiLoadingIndicatorAssetsTheme &&
+          lottie == other.lottie;
+
+  @override
+  int get hashCode => lottie.hashCode;
 }

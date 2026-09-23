@@ -181,11 +181,43 @@ void main() {
       expect(await buildsAfterRebuild(tester, () => light), 0);
     });
 
-    testWidgets('a new theme instance does rebuild them', (tester) async {
-      // The control of the two tests above: a theme that is built again on
-      // every build notifies every widget that reads it on every build.
+    // Every theme class compares by value (theme_equality_test.dart), so a
+    // theme that is built again in `build()` is equal to the one before it.
+    // Before that, this rebuilt every widget that reads the theme.
+    testWidgets('a new but equal theme instance does not rebuild them',
+        (tester) async {
       expect(
         await buildsAfterRebuild(tester, () => ImpaktfullUiTheme.getDefault()),
+        0,
+      );
+    });
+
+    testWidgets('a changed token does rebuild them, once', (tester) async {
+      // The control of the tests above: a theme that really changes notifies
+      // every widget that reads it.
+      final changed = light.copyWith(
+        colors: light.colors.copyWith(accent: const Color(0xFF34C759)),
+      );
+      var builds = 0;
+      expect(
+        await buildsAfterRebuild(tester, () => builds++ == 0 ? light : changed),
+        1,
+      );
+    });
+
+    testWidgets('a changed component token rebuilds them too', (tester) async {
+      final changed = light.copyWith(
+        components: light.components.copyWith(
+          button: light.components.button.copyWith(
+            dimens: light.components.button.dimens.copyWith(
+              borderWidth: 42,
+            ),
+          ),
+        ),
+      );
+      var builds = 0;
+      expect(
+        await buildsAfterRebuild(tester, () => builds++ == 0 ? light : changed),
         1,
       );
     });

@@ -55,6 +55,20 @@ class ImpaktfullUiVirtualKeyboardTheme extends ImpaktfullUiComponentTheme {
         durations: const ImpaktfullUiVirtualKeyboardDurationsTheme(),
         textStyles: const ImpaktfullUiVirtualKeyboardTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiVirtualKeyboardTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiVirtualKeyboardAssetsTheme {
@@ -73,6 +87,16 @@ class ImpaktfullUiVirtualKeyboardAssetsTheme {
         passwordHide: passwordHide ?? this.passwordHide,
         passwordShow: passwordShow ?? this.passwordShow,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiVirtualKeyboardAssetsTheme &&
+          passwordHide == other.passwordHide &&
+          passwordShow == other.passwordShow;
+
+  @override
+  int get hashCode => Object.hash(passwordHide, passwordShow);
 }
 
 class ImpaktfullUiVirtualKeyboardColorTheme {
@@ -87,6 +111,14 @@ class ImpaktfullUiVirtualKeyboardColorTheme {
       ImpaktfullUiVirtualKeyboardColorTheme(
         cursor: cursor ?? this.cursor,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiVirtualKeyboardColorTheme && cursor == other.cursor;
+
+  @override
+  int get hashCode => cursor.hashCode;
 }
 
 class ImpaktfullUiVirtualKeyboardDimensTheme {
@@ -94,6 +126,13 @@ class ImpaktfullUiVirtualKeyboardDimensTheme {
 
   ImpaktfullUiVirtualKeyboardDimensTheme copyWith() =>
       const ImpaktfullUiVirtualKeyboardDimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiVirtualKeyboardDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiVirtualKeyboardDurationsTheme {
@@ -128,6 +167,19 @@ class ImpaktfullUiVirtualKeyboardDurationsTheme {
         repeatDelay: repeatDelay ?? this.repeatDelay,
         repeatInterval: repeatInterval ?? this.repeatInterval,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiVirtualKeyboardDurationsTheme &&
+          cursorBlink == other.cursorBlink &&
+          keySlide == other.keySlide &&
+          repeatDelay == other.repeatDelay &&
+          repeatInterval == other.repeatInterval;
+
+  @override
+  int get hashCode =>
+      Object.hash(cursorBlink, keySlide, repeatDelay, repeatInterval);
 }
 
 class ImpaktfullUiVirtualKeyboardTextStyleTheme {
@@ -135,4 +187,11 @@ class ImpaktfullUiVirtualKeyboardTextStyleTheme {
 
   ImpaktfullUiVirtualKeyboardTextStyleTheme copyWith() =>
       const ImpaktfullUiVirtualKeyboardTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiVirtualKeyboardTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

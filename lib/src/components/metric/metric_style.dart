@@ -61,6 +61,18 @@ class ImpaktfullUiMetricTheme extends ImpaktfullUiComponentTheme {
           value2Custom: textStyles.onCard.text.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiMetricTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiMetricAssetsTheme {
@@ -75,6 +87,14 @@ class ImpaktfullUiMetricAssetsTheme {
       ImpaktfullUiMetricAssetsTheme(
         more: more ?? this.more,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiMetricAssetsTheme && more == other.more;
+
+  @override
+  int get hashCode => more.hashCode;
 }
 
 class ImpaktfullUiMetricColorTheme {
@@ -82,6 +102,12 @@ class ImpaktfullUiMetricColorTheme {
 
   ImpaktfullUiMetricColorTheme copyWith() =>
       const ImpaktfullUiMetricColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiMetricColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiMetricDimensTheme {
@@ -89,6 +115,12 @@ class ImpaktfullUiMetricDimensTheme {
 
   ImpaktfullUiMetricDimensTheme copyWith() =>
       const ImpaktfullUiMetricDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiMetricDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiMetricTextStyleTheme {
@@ -127,4 +159,20 @@ class ImpaktfullUiMetricTextStyleTheme {
         value2Growth: value2Growth ?? this.value2Growth,
         value2Neutral: value2Neutral ?? this.value2Neutral,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiMetricTextStyleTheme &&
+          title == other.title &&
+          value == other.value &&
+          value2Growth == other.value2Growth &&
+          value2Neutral == other.value2Neutral &&
+          value2Decline == other.value2Decline &&
+          value2Branded == other.value2Branded &&
+          value2Custom == other.value2Custom;
+
+  @override
+  int get hashCode => Object.hash(title, value, value2Growth, value2Neutral,
+      value2Decline, value2Branded, value2Custom);
 }

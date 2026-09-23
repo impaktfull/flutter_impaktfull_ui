@@ -54,6 +54,20 @@ class ImpaktfullUiSkeletonTheme extends ImpaktfullUiComponentTheme {
         durations: const ImpaktfullUiSkeletonDurationsTheme(),
         textStyles: const ImpaktfullUiSkeletonTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSkeletonTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiSkeletonAssetsTheme {
@@ -61,6 +75,12 @@ class ImpaktfullUiSkeletonAssetsTheme {
 
   ImpaktfullUiSkeletonAssetsTheme copyWith() =>
       const ImpaktfullUiSkeletonAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiSkeletonAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSkeletonColorTheme {
@@ -85,6 +105,16 @@ class ImpaktfullUiSkeletonColorTheme {
         background: background ?? this.background,
         highlight: highlight ?? this.highlight,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSkeletonColorTheme &&
+          background == other.background &&
+          highlight == other.highlight;
+
+  @override
+  int get hashCode => Object.hash(background, highlight);
 }
 
 class ImpaktfullUiSkeletonDimensTheme {
@@ -99,6 +129,15 @@ class ImpaktfullUiSkeletonDimensTheme {
       ImpaktfullUiSkeletonDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSkeletonDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiSkeletonDurationsTheme {
@@ -115,6 +154,14 @@ class ImpaktfullUiSkeletonDurationsTheme {
       ImpaktfullUiSkeletonDurationsTheme(
         shimmer: shimmer ?? this.shimmer,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSkeletonDurationsTheme && shimmer == other.shimmer;
+
+  @override
+  int get hashCode => shimmer.hashCode;
 }
 
 class ImpaktfullUiSkeletonTextStyleTheme {
@@ -122,4 +169,10 @@ class ImpaktfullUiSkeletonTextStyleTheme {
 
   ImpaktfullUiSkeletonTextStyleTheme copyWith() =>
       const ImpaktfullUiSkeletonTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiSkeletonTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

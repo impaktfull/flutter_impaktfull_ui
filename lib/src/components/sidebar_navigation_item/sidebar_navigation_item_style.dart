@@ -68,6 +68,20 @@ class ImpaktfullUiSidebarNavigationItemTheme
           title: textStyles.onCard.text.medium.medium,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSidebarNavigationItemTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiSidebarNavigationItemAssetsTheme {
@@ -82,6 +96,15 @@ class ImpaktfullUiSidebarNavigationItemAssetsTheme {
       ImpaktfullUiSidebarNavigationItemAssetsTheme(
         chevronDown: chevronDown ?? this.chevronDown,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSidebarNavigationItemAssetsTheme &&
+          chevronDown == other.chevronDown;
+
+  @override
+  int get hashCode => chevronDown.hashCode;
 }
 
 class ImpaktfullUiSidebarNavigationItemColorTheme {
@@ -101,6 +124,16 @@ class ImpaktfullUiSidebarNavigationItemColorTheme {
         background: background ?? this.background,
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSidebarNavigationItemColorTheme &&
+          background == other.background &&
+          icons == other.icons;
+
+  @override
+  int get hashCode => Object.hash(background, icons);
 }
 
 class ImpaktfullUiSidebarNavigationItemDimensTheme {
@@ -124,6 +157,17 @@ class ImpaktfullUiSidebarNavigationItemDimensTheme {
         padding: padding ?? this.padding,
         paddingWithSubItems: paddingWithSubItems ?? this.paddingWithSubItems,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSidebarNavigationItemDimensTheme &&
+          borderRadius == other.borderRadius &&
+          padding == other.padding &&
+          paddingWithSubItems == other.paddingWithSubItems;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, padding, paddingWithSubItems);
 }
 
 class ImpaktfullUiSidebarNavigationItemTextStyleTheme {
@@ -139,6 +183,15 @@ class ImpaktfullUiSidebarNavigationItemTextStyleTheme {
       ImpaktfullUiSidebarNavigationItemTextStyleTheme(
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSidebarNavigationItemTextStyleTheme &&
+          title == other.title;
+
+  @override
+  int get hashCode => title.hashCode;
 }
 
 class ImpaktfullUiSidebarNavigationItemDurationsTheme {
@@ -155,4 +208,13 @@ class ImpaktfullUiSidebarNavigationItemDurationsTheme {
       ImpaktfullUiSidebarNavigationItemDurationsTheme(
         dropdownRotation: dropdownRotation ?? this.dropdownRotation,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSidebarNavigationItemDurationsTheme &&
+          dropdownRotation == other.dropdownRotation;
+
+  @override
+  int get hashCode => dropdownRotation.hashCode;
 }

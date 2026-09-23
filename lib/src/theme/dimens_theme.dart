@@ -35,4 +35,24 @@ class ImpaktfullUiDimensTheme {
             borderRadiusExtraLarge ?? this.borderRadiusExtraLarge,
         borderRadiusCircle: borderRadiusCircle ?? this.borderRadiusCircle,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDimensTheme &&
+          borderRadiusExtraSmall == other.borderRadiusExtraSmall &&
+          borderRadiusSmall == other.borderRadiusSmall &&
+          borderRadius == other.borderRadius &&
+          borderRadiusLarge == other.borderRadiusLarge &&
+          borderRadiusExtraLarge == other.borderRadiusExtraLarge &&
+          borderRadiusCircle == other.borderRadiusCircle;
+
+  @override
+  int get hashCode => Object.hash(
+      borderRadiusExtraSmall,
+      borderRadiusSmall,
+      borderRadius,
+      borderRadiusLarge,
+      borderRadiusExtraLarge,
+      borderRadiusCircle);
 }

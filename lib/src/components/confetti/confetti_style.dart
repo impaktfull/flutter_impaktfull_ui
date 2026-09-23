@@ -54,6 +54,20 @@ class ImpaktfullUiConfettiTheme extends ImpaktfullUiComponentTheme {
         durations: const ImpaktfullUiConfettiDurationsTheme(),
         textStyles: const ImpaktfullUiConfettiTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiConfettiTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode =>
+      Object.hash(assets, colors, dimens, durations, textStyles);
 }
 
 class ImpaktfullUiConfettiAssetsTheme {
@@ -69,6 +83,14 @@ class ImpaktfullUiConfettiAssetsTheme {
       ImpaktfullUiConfettiAssetsTheme(
         leaf: leaf ?? this.leaf,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiConfettiAssetsTheme && leaf == other.leaf;
+
+  @override
+  int get hashCode => leaf.hashCode;
 }
 
 class ImpaktfullUiConfettiColorTheme {
@@ -84,6 +106,15 @@ class ImpaktfullUiConfettiColorTheme {
       ImpaktfullUiConfettiColorTheme(
         particleColor: particleColor ?? this.particleColor,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiConfettiColorTheme &&
+          particleColor == other.particleColor;
+
+  @override
+  int get hashCode => particleColor.hashCode;
 }
 
 class ImpaktfullUiConfettiDimensTheme {
@@ -91,6 +122,12 @@ class ImpaktfullUiConfettiDimensTheme {
 
   ImpaktfullUiConfettiDimensTheme copyWith() =>
       const ImpaktfullUiConfettiDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiConfettiDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiConfettiDurationsTheme {
@@ -108,6 +145,15 @@ class ImpaktfullUiConfettiDurationsTheme {
       ImpaktfullUiConfettiDurationsTheme(
         resizeDebounce: resizeDebounce ?? this.resizeDebounce,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiConfettiDurationsTheme &&
+          resizeDebounce == other.resizeDebounce;
+
+  @override
+  int get hashCode => resizeDebounce.hashCode;
 }
 
 class ImpaktfullUiConfettiTextStyleTheme {
@@ -115,4 +161,10 @@ class ImpaktfullUiConfettiTextStyleTheme {
 
   ImpaktfullUiConfettiTextStyleTheme copyWith() =>
       const ImpaktfullUiConfettiTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiConfettiTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

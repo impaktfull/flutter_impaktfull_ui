@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
@@ -63,6 +64,19 @@ class ImpaktfullUiCmsHeaderTheme extends ImpaktfullUiComponentTheme {
           subtitle: textStyles.onCard.text.small.light,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCmsHeaderTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          shadows == other.shadows &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, shadows, textStyles);
 }
 
 class ImpaktfullUiCmsHeaderAssetsTheme {
@@ -82,6 +96,16 @@ class ImpaktfullUiCmsHeaderAssetsTheme {
         back: back ?? this.back,
         drawerMenu: drawerMenu ?? this.drawerMenu,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCmsHeaderAssetsTheme &&
+          back == other.back &&
+          drawerMenu == other.drawerMenu;
+
+  @override
+  int get hashCode => Object.hash(back, drawerMenu);
 }
 
 class ImpaktfullUiCmsHeaderColorTheme {
@@ -105,6 +129,17 @@ class ImpaktfullUiCmsHeaderColorTheme {
         border: border ?? this.border,
         icons: icons ?? this.icons,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCmsHeaderColorTheme &&
+          background == other.background &&
+          border == other.border &&
+          icons == other.icons;
+
+  @override
+  int get hashCode => Object.hash(background, border, icons);
 }
 
 class ImpaktfullUiCmsHeaderDimensTheme {
@@ -112,6 +147,12 @@ class ImpaktfullUiCmsHeaderDimensTheme {
 
   ImpaktfullUiCmsHeaderDimensTheme copyWith() =>
       const ImpaktfullUiCmsHeaderDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiCmsHeaderDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiCmsHeaderDurationsTheme {
@@ -119,6 +160,13 @@ class ImpaktfullUiCmsHeaderDurationsTheme {
 
   ImpaktfullUiCmsHeaderDurationsTheme copyWith() =>
       const ImpaktfullUiCmsHeaderDurationsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiCmsHeaderDurationsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiCmsHeaderShadowsTheme {
@@ -133,6 +181,15 @@ class ImpaktfullUiCmsHeaderShadowsTheme {
       ImpaktfullUiCmsHeaderShadowsTheme(
         background: background ?? this.background,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCmsHeaderShadowsTheme &&
+          listEquals(background, other.background);
+
+  @override
+  int get hashCode => Object.hashAll(background);
 }
 
 class ImpaktfullUiCmsHeaderTextStyleTheme {
@@ -152,4 +209,14 @@ class ImpaktfullUiCmsHeaderTextStyleTheme {
         subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCmsHeaderTextStyleTheme &&
+          title == other.title &&
+          subtitle == other.subtitle;
+
+  @override
+  int get hashCode => Object.hash(title, subtitle);
 }

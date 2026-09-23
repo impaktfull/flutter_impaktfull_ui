@@ -205,4 +205,23 @@ class ImpaktfullUiAsset {
     return '${asset.substring(0, extensionStart)}_$suffix'
         '${asset.substring(extensionStart)}';
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAsset &&
+          svgAsset == other.svgAsset &&
+          pixelAsset == other.pixelAsset &&
+          lottieAsset == other.lottieAsset &&
+          riveAsset == other.riveAsset &&
+          networkUrl == other.networkUrl &&
+          icon == other.icon &&
+          directory == other.directory &&
+          suffix == other.suffix &&
+          package == other.package &&
+          matchTextDirection == other.matchTextDirection;
+
+  @override
+  int get hashCode => Object.hash(svgAsset, pixelAsset, lottieAsset, riveAsset,
+      networkUrl, icon, directory, suffix, package, matchTextDirection);
 }

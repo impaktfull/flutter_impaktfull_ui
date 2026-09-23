@@ -44,6 +44,18 @@ class ImpaktfullUiNetworkImageTheme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUiNetworkImageDimensTheme(),
         textStyles: ImpaktfullUiNetworkImageTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNetworkImageTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiNetworkImageAssetsTheme {
@@ -51,6 +63,13 @@ class ImpaktfullUiNetworkImageAssetsTheme {
 
   ImpaktfullUiNetworkImageAssetsTheme copyWith() =>
       const ImpaktfullUiNetworkImageAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiNetworkImageAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiNetworkImageColorTheme {
@@ -58,6 +77,12 @@ class ImpaktfullUiNetworkImageColorTheme {
 
   ImpaktfullUiNetworkImageColorTheme copyWith() =>
       const ImpaktfullUiNetworkImageColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiNetworkImageColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiNetworkImageDimensTheme {
@@ -65,6 +90,13 @@ class ImpaktfullUiNetworkImageDimensTheme {
 
   ImpaktfullUiNetworkImageDimensTheme copyWith() =>
       const ImpaktfullUiNetworkImageDimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiNetworkImageDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiNetworkImageTextStyleTheme {
@@ -72,4 +104,11 @@ class ImpaktfullUiNetworkImageTextStyleTheme {
 
   ImpaktfullUiNetworkImageTextStyleTheme copyWith() =>
       const ImpaktfullUiNetworkImageTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiNetworkImageTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

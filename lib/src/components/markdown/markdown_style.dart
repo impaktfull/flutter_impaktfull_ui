@@ -72,6 +72,18 @@ class ImpaktfullUiMarkdownTheme extends ImpaktfullUiComponentTheme {
               textStyles.onCanvas.text.extraSmall.copyWith(color: colors.error),
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiMarkdownTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiMarkdownAssetsTheme {
@@ -86,6 +98,15 @@ class ImpaktfullUiMarkdownAssetsTheme {
       ImpaktfullUiMarkdownAssetsTheme(
         unorderedListBullet: unorderedListBullet ?? this.unorderedListBullet,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiMarkdownAssetsTheme &&
+          unorderedListBullet == other.unorderedListBullet;
+
+  @override
+  int get hashCode => unorderedListBullet.hashCode;
 }
 
 class ImpaktfullUiMarkdownColorTheme {
@@ -104,6 +125,16 @@ class ImpaktfullUiMarkdownColorTheme {
         code: code ?? this.code,
         error: error ?? this.error,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiMarkdownColorTheme &&
+          code == other.code &&
+          error == other.error;
+
+  @override
+  int get hashCode => Object.hash(code, error);
 }
 
 class ImpaktfullUiMarkdownDimensTheme {
@@ -118,6 +149,14 @@ class ImpaktfullUiMarkdownDimensTheme {
       ImpaktfullUiMarkdownDimensTheme(
         code: code ?? this.code,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiMarkdownDimensTheme && code == other.code;
+
+  @override
+  int get hashCode => code.hashCode;
 }
 
 class ImpaktfullUiMarkdownTextStyleTheme {
@@ -181,4 +220,26 @@ class ImpaktfullUiMarkdownTextStyleTheme {
         paragraph: paragraph ?? this.paragraph,
         unorderedList: unorderedList ?? this.unorderedList,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiMarkdownTextStyleTheme &&
+          h1 == other.h1 &&
+          h2 == other.h2 &&
+          h3 == other.h3 &&
+          h4 == other.h4 &&
+          h5 == other.h5 &&
+          h6 == other.h6 &&
+          paragraph == other.paragraph &&
+          link == other.link &&
+          orderedList == other.orderedList &&
+          unorderedList == other.unorderedList &&
+          code == other.code &&
+          alt == other.alt &&
+          error == other.error;
+
+  @override
+  int get hashCode => Object.hash(h1, h2, h3, h4, h5, h6, paragraph, link,
+      orderedList, unorderedList, code, alt, error);
 }

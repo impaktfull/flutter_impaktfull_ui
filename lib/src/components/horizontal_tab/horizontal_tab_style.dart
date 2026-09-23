@@ -49,6 +49,17 @@ class ImpaktfullUiHorizontalTabTheme extends ImpaktfullUiComponentTheme {
           unselected: textStyles.onCard.text.small.semiBold,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiHorizontalTabTheme &&
+          colors == other.colors &&
+          textStyles == other.textStyles &&
+          dimens == other.dimens;
+
+  @override
+  int get hashCode => Object.hash(colors, textStyles, dimens);
 }
 
 class ImpaktfullUiHorizontalTabColorTheme {
@@ -70,6 +81,17 @@ class ImpaktfullUiHorizontalTabColorTheme {
         backgroundUnSelectedTab:
             backgroundUnSelectedTab ?? this.backgroundUnSelectedTab,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiHorizontalTabColorTheme &&
+          backgroundUnSelectedTab == other.backgroundUnSelectedTab &&
+          backgroundSelectedTab == other.backgroundSelectedTab;
+
+  @override
+  int get hashCode =>
+      Object.hash(backgroundUnSelectedTab, backgroundSelectedTab);
 }
 
 class ImpaktfullUiHorizontalTabTextStyleTheme {
@@ -89,6 +111,16 @@ class ImpaktfullUiHorizontalTabTextStyleTheme {
         selected: selected ?? this.selected,
         unselected: unselected ?? this.unselected,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiHorizontalTabTextStyleTheme &&
+          selected == other.selected &&
+          unselected == other.unselected;
+
+  @override
+  int get hashCode => Object.hash(selected, unselected);
 }
 
 class ImpaktfullUiHorizontalTabDimensTheme {
@@ -103,4 +135,13 @@ class ImpaktfullUiHorizontalTabDimensTheme {
       ImpaktfullUiHorizontalTabDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiHorizontalTabDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }

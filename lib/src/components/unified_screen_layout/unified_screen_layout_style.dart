@@ -49,6 +49,18 @@ class ImpaktfullUiUnifiedScreenLayoutTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: ImpaktfullUiUnifiedScreenLayoutTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiUnifiedScreenLayoutTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiUnifiedScreenLayoutAssetsTheme {
@@ -56,6 +68,13 @@ class ImpaktfullUiUnifiedScreenLayoutAssetsTheme {
 
   ImpaktfullUiUnifiedScreenLayoutAssetsTheme copyWith() =>
       const ImpaktfullUiUnifiedScreenLayoutAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiUnifiedScreenLayoutAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiUnifiedScreenLayoutColorTheme {
@@ -63,6 +82,13 @@ class ImpaktfullUiUnifiedScreenLayoutColorTheme {
 
   ImpaktfullUiUnifiedScreenLayoutColorTheme copyWith() =>
       const ImpaktfullUiUnifiedScreenLayoutColorTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiUnifiedScreenLayoutColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiUnifiedScreenLayoutDimensTheme {
@@ -90,6 +116,19 @@ class ImpaktfullUiUnifiedScreenLayoutDimensTheme {
         centerPadding: centerPadding ?? this.centerPadding,
         centerWidthFactor: centerWidthFactor ?? this.centerWidthFactor,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiUnifiedScreenLayoutDimensTheme &&
+          centerWidthFactor == other.centerWidthFactor &&
+          centerMinWidth == other.centerMinWidth &&
+          centerMaxWidth == other.centerMaxWidth &&
+          centerPadding == other.centerPadding;
+
+  @override
+  int get hashCode => Object.hash(
+      centerWidthFactor, centerMinWidth, centerMaxWidth, centerPadding);
 }
 
 class ImpaktfullUiUnifiedScreenLayoutTextStyleTheme {
@@ -97,4 +136,11 @@ class ImpaktfullUiUnifiedScreenLayoutTextStyleTheme {
 
   ImpaktfullUiUnifiedScreenLayoutTextStyleTheme copyWith() =>
       const ImpaktfullUiUnifiedScreenLayoutTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiUnifiedScreenLayoutTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

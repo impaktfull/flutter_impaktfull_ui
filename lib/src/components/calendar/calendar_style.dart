@@ -69,6 +69,18 @@ class ImpaktfullUiCalendarTheme extends ImpaktfullUiComponentTheme {
           dayOfTheWeekTitle: textStyles.onCanvas.text.extraSmall,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCalendarTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiCalendarAssetsTheme {
@@ -88,6 +100,16 @@ class ImpaktfullUiCalendarAssetsTheme {
         chevronLeft: chevronLeft ?? this.chevronLeft,
         chevronRight: chevronRight ?? this.chevronRight,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCalendarAssetsTheme &&
+          chevronLeft == other.chevronLeft &&
+          chevronRight == other.chevronRight;
+
+  @override
+  int get hashCode => Object.hash(chevronLeft, chevronRight);
 }
 
 class ImpaktfullUiCalendarColorTheme {
@@ -111,6 +133,17 @@ class ImpaktfullUiCalendarColorTheme {
         eventBackground: eventBackground ?? this.eventBackground,
         headerBackground: headerBackground ?? this.headerBackground,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCalendarColorTheme &&
+          divider == other.divider &&
+          eventBackground == other.eventBackground &&
+          headerBackground == other.headerBackground;
+
+  @override
+  int get hashCode => Object.hash(divider, eventBackground, headerBackground);
 }
 
 class ImpaktfullUiCalendarDimensTheme {
@@ -144,6 +177,20 @@ class ImpaktfullUiCalendarDimensTheme {
             weekEventMinHeightSmall ?? this.weekEventMinHeightSmall,
         weekHourHeight: weekHourHeight ?? this.weekHourHeight,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCalendarDimensTheme &&
+          dividerHeight == other.dividerHeight &&
+          sectionTitleWidth == other.sectionTitleWidth &&
+          weekHourHeight == other.weekHourHeight &&
+          weekEventMinHeightSmall == other.weekEventMinHeightSmall &&
+          weekEventMinHeightExtraSmall == other.weekEventMinHeightExtraSmall;
+
+  @override
+  int get hashCode => Object.hash(dividerHeight, sectionTitleWidth,
+      weekHourHeight, weekEventMinHeightSmall, weekEventMinHeightExtraSmall);
 }
 
 class ImpaktfullUiCalendarTextStyleTheme {
@@ -188,4 +235,28 @@ class ImpaktfullUiCalendarTextStyleTheme {
         sectionSubtitle: sectionSubtitle ?? this.sectionSubtitle,
         sectionTitle: sectionTitle ?? this.sectionTitle,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCalendarTextStyleTheme &&
+          sectionTitle == other.sectionTitle &&
+          sectionSubtitle == other.sectionSubtitle &&
+          listItemTitle == other.listItemTitle &&
+          listItemTitleSmall == other.listItemTitleSmall &&
+          listItemSubtitle == other.listItemSubtitle &&
+          listItemSubtitleSmall == other.listItemSubtitleSmall &&
+          dayTitle == other.dayTitle &&
+          dayOfTheWeekTitle == other.dayOfTheWeekTitle;
+
+  @override
+  int get hashCode => Object.hash(
+      sectionTitle,
+      sectionSubtitle,
+      listItemTitle,
+      listItemTitleSmall,
+      listItemSubtitle,
+      listItemSubtitleSmall,
+      dayTitle,
+      dayOfTheWeekTitle);
 }

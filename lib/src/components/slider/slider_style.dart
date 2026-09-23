@@ -53,6 +53,18 @@ class ImpaktfullUiSliderTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiSliderTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSliderTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiSliderAssetsTheme {
@@ -60,6 +72,12 @@ class ImpaktfullUiSliderAssetsTheme {
 
   ImpaktfullUiSliderAssetsTheme copyWith() =>
       const ImpaktfullUiSliderAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiSliderAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSliderColorTheme {
@@ -91,6 +109,20 @@ class ImpaktfullUiSliderColorTheme {
         track: track ?? this.track,
         trackBorder: trackBorder ?? this.trackBorder,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSliderColorTheme &&
+          track == other.track &&
+          activeTrack == other.activeTrack &&
+          trackBorder == other.trackBorder &&
+          thumb == other.thumb &&
+          thumbBorder == other.thumbBorder;
+
+  @override
+  int get hashCode =>
+      Object.hash(track, activeTrack, trackBorder, thumb, thumbBorder);
 }
 
 class ImpaktfullUiSliderDimensTheme {
@@ -110,6 +142,16 @@ class ImpaktfullUiSliderDimensTheme {
         thumbBorderRadius: thumbBorderRadius ?? this.thumbBorderRadius,
         trackBorderRadius: trackBorderRadius ?? this.trackBorderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSliderDimensTheme &&
+          trackBorderRadius == other.trackBorderRadius &&
+          thumbBorderRadius == other.thumbBorderRadius;
+
+  @override
+  int get hashCode => Object.hash(trackBorderRadius, thumbBorderRadius);
 }
 
 class ImpaktfullUiSliderTextStyleTheme {
@@ -117,4 +159,10 @@ class ImpaktfullUiSliderTextStyleTheme {
 
   ImpaktfullUiSliderTextStyleTheme copyWith() =>
       const ImpaktfullUiSliderTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiSliderTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

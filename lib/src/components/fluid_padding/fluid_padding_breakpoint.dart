@@ -46,4 +46,19 @@ class ImpaktfullUiFluidPaddingBreakPoint {
     }
     return false;
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiFluidPaddingBreakPoint &&
+          label == other.label &&
+          minWidth == other.minWidth &&
+          maxWidth == other.maxWidth &&
+          padding == other.padding &&
+          paddingMin == other.paddingMin &&
+          paddingMax == other.paddingMax;
+
+  @override
+  int get hashCode =>
+      Object.hash(label, minWidth, maxWidth, padding, paddingMin, paddingMax);
 }

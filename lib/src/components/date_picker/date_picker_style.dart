@@ -72,6 +72,18 @@ class ImpaktfullUiDatePickerTheme extends ImpaktfullUiComponentTheme {
           cellSelected: textStyles.onPrimary.text.small.semiBold,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDatePickerTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiDatePickerAssetsTheme {
@@ -90,6 +102,16 @@ class ImpaktfullUiDatePickerAssetsTheme {
         arrowLeft: arrowLeft ?? this.arrowLeft,
         arrowRight: arrowRight ?? this.arrowRight,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDatePickerAssetsTheme &&
+          arrowLeft == other.arrowLeft &&
+          arrowRight == other.arrowRight;
+
+  @override
+  int get hashCode => Object.hash(arrowLeft, arrowRight);
 }
 
 class ImpaktfullUiDatePickerColorTheme {
@@ -108,6 +130,16 @@ class ImpaktfullUiDatePickerColorTheme {
         inRange: inRange ?? this.inRange,
         selected: selected ?? this.selected,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDatePickerColorTheme &&
+          selected == other.selected &&
+          inRange == other.inRange;
+
+  @override
+  int get hashCode => Object.hash(selected, inRange);
 }
 
 class ImpaktfullUiDatePickerDimensTheme {
@@ -136,6 +168,19 @@ class ImpaktfullUiDatePickerDimensTheme {
         borderRadiusRangeStart:
             borderRadiusRangeStart ?? this.borderRadiusRangeStart,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDatePickerDimensTheme &&
+          borderRadius == other.borderRadius &&
+          borderRadiusRangeStart == other.borderRadiusRangeStart &&
+          borderRadiusRangeEnd == other.borderRadiusRangeEnd &&
+          borderRadiusRangeBetween == other.borderRadiusRangeBetween;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, borderRadiusRangeStart,
+      borderRadiusRangeEnd, borderRadiusRangeBetween);
 }
 
 class ImpaktfullUiDatePickerTextStyleTheme {
@@ -176,4 +221,19 @@ class ImpaktfullUiDatePickerTextStyleTheme {
         headerTitle: headerTitle ?? this.headerTitle,
         weekday: weekday ?? this.weekday,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiDatePickerTextStyleTheme &&
+          headerTitle == other.headerTitle &&
+          weekday == other.weekday &&
+          cellInActive == other.cellInActive &&
+          cell == other.cell &&
+          cellSelected == other.cellSelected &&
+          cellDisabled == other.cellDisabled;
+
+  @override
+  int get hashCode => Object.hash(
+      headerTitle, weekday, cellInActive, cell, cellSelected, cellDisabled);
 }

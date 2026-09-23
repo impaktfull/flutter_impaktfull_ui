@@ -50,6 +50,18 @@ class ImpaktfullUiPaginationTheme extends ImpaktfullUiComponentTheme {
           text: textStyles.onCard.text.small,
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPaginationTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiPaginationAssetsTheme {
@@ -68,6 +80,16 @@ class ImpaktfullUiPaginationAssetsTheme {
         arrowLeft: arrowLeft ?? this.arrowLeft,
         arrowRight: arrowRight ?? this.arrowRight,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPaginationAssetsTheme &&
+          arrowLeft == other.arrowLeft &&
+          arrowRight == other.arrowRight;
+
+  @override
+  int get hashCode => Object.hash(arrowLeft, arrowRight);
 }
 
 class ImpaktfullUiPaginationColorTheme {
@@ -75,6 +97,12 @@ class ImpaktfullUiPaginationColorTheme {
 
   ImpaktfullUiPaginationColorTheme copyWith() =>
       const ImpaktfullUiPaginationColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiPaginationColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiPaginationDimensTheme {
@@ -82,6 +110,12 @@ class ImpaktfullUiPaginationDimensTheme {
 
   ImpaktfullUiPaginationDimensTheme copyWith() =>
       const ImpaktfullUiPaginationDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiPaginationDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiPaginationTextStyleTheme {
@@ -97,4 +131,12 @@ class ImpaktfullUiPaginationTextStyleTheme {
       ImpaktfullUiPaginationTextStyleTheme(
         text: text ?? this.text,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPaginationTextStyleTheme && text == other.text;
+
+  @override
+  int get hashCode => text.hashCode;
 }

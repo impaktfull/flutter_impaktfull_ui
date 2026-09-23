@@ -42,6 +42,16 @@ class ImpaktfullUiTableHeaderTheme extends ImpaktfullUiComponentTheme {
           ),
         ),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTableHeaderTheme &&
+          colors == other.colors &&
+          dimens == other.dimens;
+
+  @override
+  int get hashCode => Object.hash(colors, dimens);
 }
 
 class ImpaktfullUiTableHeaderColorTheme {
@@ -57,6 +67,15 @@ class ImpaktfullUiTableHeaderColorTheme {
       ImpaktfullUiTableHeaderColorTheme(
         background: background ?? this.background,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTableHeaderColorTheme &&
+          background == other.background;
+
+  @override
+  int get hashCode => background.hashCode;
 }
 
 class ImpaktfullUiTableHeaderDimensTheme {
@@ -78,4 +97,14 @@ class ImpaktfullUiTableHeaderDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         minHeight: minHeight ?? this.minHeight,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTableHeaderDimensTheme &&
+          borderRadius == other.borderRadius &&
+          minHeight == other.minHeight;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, minHeight);
 }

@@ -208,6 +208,41 @@ final theme = base.copyWith(
 
 - Every `class ImpaktfullUi*Theme` has a `copyWith` with one nullable named parameter per field, in alphabetical order, forwarded as `field: field ?? this.field`.
 - `test/src/theme/theme_copy_with_source_test.dart` scans `lib/src` and fails when a theme class has no `copyWith`, or its `copyWith` misses a field.
+- Every theme class also has an `operator ==` and a `hashCode` that cover every field, so a theme compares by value (see below).
+- `test/src/theme/theme_equality_source_test.dart` scans `lib/src` and fails when a theme class has no `==` or `hashCode`, or its `==` misses a field.
+
+## Value equality
+
+Every theme class, `ImpaktfullUiAsset` and the other value classes of a theme (`ImpaktfullUiButtonConfig`, `ImpaktfullUiFluidPaddingBreakPoint`) compare by value:
+
+```dart
+ImpaktfullUiTheme.getDefault() == ImpaktfullUiTheme.getDefault(); // true
+```
+
+`ImpaktfullUiThemeConfigurator.updateShouldNotify` compares the themes with `!=`, so an app that builds its theme again with the same tokens (even inside `build()`) rebuilds nothing that reads the theme. Only a theme with a changed token notifies its dependents.
+
+Two things are compared by reference, because there is nothing else to compare:
+
+- the `customTheme` of an app: it is compared with its own `==`, so a custom theme class without one is only equal to itself. Give it a `==` to profit from this.
+- the type argument of `ImpaktfullUiTheme<T>`: two themes with a different `T` are never equal.
+
+The lookup map of `ImpaktfullUiComponentsTheme` is derived from its fields, so it is not part of the value (and not of the `hashCode`).
+
+Write the members at the end of the class:
+
+```dart
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCardDimensTheme &&
+          borderRadius == other.borderRadius &&
+          padding == other.padding;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, padding);
+```
+
+A `List` field is compared with `listEquals(field, other.field)` and hashed with `Object.hashAll(field)`. `Object.hash` takes at most 20 arguments: a class with more fields uses `Object.hashAll([...])`.
 
 ## Text Style System
 
@@ -261,8 +296,10 @@ void main() {
 ```
 
 Build the theme once (a `static final`, or `ImpaktfullUiApp` without a theme,
-which shares one default). A theme built inside `build()` is a new instance on
-every build, which rebuilds every widget that reads it.
+which shares one default). A theme that is built inside `build()` no longer
+rebuilds the widgets that read it, because an equal theme notifies nobody (see
+"Value equality"), but building the 84 component themes again on every build
+is still work that nothing needs.
 
 ## Best Practices
 

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
@@ -54,6 +55,19 @@ class ImpaktfullUiAutoCompleteTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiAutoCompleteTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAutoCompleteTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          shadows == other.shadows &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, shadows, textStyles);
 }
 
 class ImpaktfullUiAutoCompleteAssetsTheme {
@@ -61,6 +75,13 @@ class ImpaktfullUiAutoCompleteAssetsTheme {
 
   ImpaktfullUiAutoCompleteAssetsTheme copyWith() =>
       const ImpaktfullUiAutoCompleteAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiAutoCompleteAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiAutoCompleteColorTheme {
@@ -78,6 +99,15 @@ class ImpaktfullUiAutoCompleteColorTheme {
       ImpaktfullUiAutoCompleteColorTheme(
         highlightedItem: highlightedItem ?? this.highlightedItem,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAutoCompleteColorTheme &&
+          highlightedItem == other.highlightedItem;
+
+  @override
+  int get hashCode => highlightedItem.hashCode;
 }
 
 class ImpaktfullUiAutoCompleteShadowsTheme {
@@ -92,6 +122,15 @@ class ImpaktfullUiAutoCompleteShadowsTheme {
       ImpaktfullUiAutoCompleteShadowsTheme(
         overlay: overlay ?? this.overlay,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiAutoCompleteShadowsTheme &&
+          listEquals(overlay, other.overlay);
+
+  @override
+  int get hashCode => Object.hashAll(overlay);
 }
 
 class ImpaktfullUiAutoCompleteDimensTheme {
@@ -99,6 +138,13 @@ class ImpaktfullUiAutoCompleteDimensTheme {
 
   ImpaktfullUiAutoCompleteDimensTheme copyWith() =>
       const ImpaktfullUiAutoCompleteDimensTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiAutoCompleteDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiAutoCompleteTextStyleTheme {
@@ -106,4 +152,11 @@ class ImpaktfullUiAutoCompleteTextStyleTheme {
 
   ImpaktfullUiAutoCompleteTextStyleTheme copyWith() =>
       const ImpaktfullUiAutoCompleteTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiAutoCompleteTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

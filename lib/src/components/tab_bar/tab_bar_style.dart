@@ -44,6 +44,18 @@ class ImpaktfullUiTabBarTheme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUiTabBarDimensTheme(),
         textStyles: ImpaktfullUiTabBarTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTabBarTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiTabBarAssetsTheme {
@@ -51,6 +63,12 @@ class ImpaktfullUiTabBarAssetsTheme {
 
   ImpaktfullUiTabBarAssetsTheme copyWith() =>
       const ImpaktfullUiTabBarAssetsTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiTabBarAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiTabBarColorTheme {
@@ -58,6 +76,12 @@ class ImpaktfullUiTabBarColorTheme {
 
   ImpaktfullUiTabBarColorTheme copyWith() =>
       const ImpaktfullUiTabBarColorTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiTabBarColorTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiTabBarDimensTheme {
@@ -65,6 +89,12 @@ class ImpaktfullUiTabBarDimensTheme {
 
   ImpaktfullUiTabBarDimensTheme copyWith() =>
       const ImpaktfullUiTabBarDimensTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiTabBarDimensTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiTabBarTextStyleTheme {
@@ -72,4 +102,10 @@ class ImpaktfullUiTabBarTextStyleTheme {
 
   ImpaktfullUiTabBarTextStyleTheme copyWith() =>
       const ImpaktfullUiTabBarTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) => other is ImpaktfullUiTabBarTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

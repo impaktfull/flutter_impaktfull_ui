@@ -58,6 +58,18 @@ class ImpaktfullUiCheckboxTheme extends ImpaktfullUiComponentTheme {
         durations: durations ?? this.durations,
         assets: assets ?? this.assets,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCheckboxTheme &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          durations == other.durations &&
+          assets == other.assets;
+
+  @override
+  int get hashCode => Object.hash(colors, dimens, durations, assets);
 }
 
 class ImpaktfullUiCheckboxAssetsTheme {
@@ -90,6 +102,16 @@ class ImpaktfullUiCheckboxAssetsTheme {
         check: check ?? this.check,
         indeterminate: indeterminate ?? indermediate ?? this.indeterminate,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCheckboxAssetsTheme &&
+          check == other.check &&
+          _indeterminate == other._indeterminate;
+
+  @override
+  int get hashCode => Object.hash(check, _indeterminate);
 }
 
 class ImpaktfullUiCheckboxColorTheme {
@@ -121,6 +143,20 @@ class ImpaktfullUiCheckboxColorTheme {
         checkMarkColor: checkMarkColor ?? this.checkMarkColor,
         backgroundColor: backgroundColor ?? this.backgroundColor,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCheckboxColorTheme &&
+          borderColor == other.borderColor &&
+          activeColor == other.activeColor &&
+          inactiveColor == other.inactiveColor &&
+          checkMarkColor == other.checkMarkColor &&
+          backgroundColor == other.backgroundColor;
+
+  @override
+  int get hashCode => Object.hash(
+      borderColor, activeColor, inactiveColor, checkMarkColor, backgroundColor);
 }
 
 class ImpaktfullUiCheckboxDimensTheme {
@@ -146,6 +182,16 @@ class ImpaktfullUiCheckboxDimensTheme {
         borderRadius: borderRadius ?? this.borderRadius,
         minTapTargetSize: minTapTargetSize ?? this.minTapTargetSize,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCheckboxDimensTheme &&
+          borderRadius == other.borderRadius &&
+          minTapTargetSize == other.minTapTargetSize;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, minTapTargetSize);
 }
 
 class ImpaktfullUiCheckboxDurationsTheme {
@@ -160,4 +206,12 @@ class ImpaktfullUiCheckboxDurationsTheme {
       ImpaktfullUiCheckboxDurationsTheme(
         selected: selected ?? this.selected,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCheckboxDurationsTheme && selected == other.selected;
+
+  @override
+  int get hashCode => selected.hashCode;
 }

@@ -48,6 +48,18 @@ class ImpaktfullUiColorInputFieldTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiColorInputFieldTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiColorInputFieldTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiColorInputFieldAssetsTheme {
@@ -55,6 +67,13 @@ class ImpaktfullUiColorInputFieldAssetsTheme {
 
   ImpaktfullUiColorInputFieldAssetsTheme copyWith() =>
       const ImpaktfullUiColorInputFieldAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiColorInputFieldAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiColorInputFieldColorTheme {
@@ -70,6 +89,14 @@ class ImpaktfullUiColorInputFieldColorTheme {
       ImpaktfullUiColorInputFieldColorTheme(
         border: border ?? this.border,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiColorInputFieldColorTheme && border == other.border;
+
+  @override
+  int get hashCode => border.hashCode;
 }
 
 class ImpaktfullUiColorInputFieldDimensTheme {
@@ -85,6 +112,15 @@ class ImpaktfullUiColorInputFieldDimensTheme {
       ImpaktfullUiColorInputFieldDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiColorInputFieldDimensTheme &&
+          borderRadius == other.borderRadius;
+
+  @override
+  int get hashCode => borderRadius.hashCode;
 }
 
 class ImpaktfullUiColorInputFieldTextStyleTheme {
@@ -92,4 +128,11 @@ class ImpaktfullUiColorInputFieldTextStyleTheme {
 
   ImpaktfullUiColorInputFieldTextStyleTheme copyWith() =>
       const ImpaktfullUiColorInputFieldTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiColorInputFieldTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

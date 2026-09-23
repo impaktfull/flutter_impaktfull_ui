@@ -49,6 +49,18 @@ class ImpaktfullUiSidebarNavigationTheme extends ImpaktfullUiComponentTheme {
         ),
         textStyles: const ImpaktfullUiSidebarNavigationTextStyleTheme(),
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSidebarNavigationTheme &&
+          assets == other.assets &&
+          colors == other.colors &&
+          dimens == other.dimens &&
+          textStyles == other.textStyles;
+
+  @override
+  int get hashCode => Object.hash(assets, colors, dimens, textStyles);
 }
 
 class ImpaktfullUiSidebarNavigationAssetsTheme {
@@ -56,6 +68,13 @@ class ImpaktfullUiSidebarNavigationAssetsTheme {
 
   ImpaktfullUiSidebarNavigationAssetsTheme copyWith() =>
       const ImpaktfullUiSidebarNavigationAssetsTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSidebarNavigationAssetsTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }
 
 class ImpaktfullUiSidebarNavigationColorTheme {
@@ -75,6 +94,16 @@ class ImpaktfullUiSidebarNavigationColorTheme {
         backgroundColor: backgroundColor ?? this.backgroundColor,
         border: border ?? this.border,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSidebarNavigationColorTheme &&
+          backgroundColor == other.backgroundColor &&
+          border == other.border;
+
+  @override
+  int get hashCode => Object.hash(backgroundColor, border);
 }
 
 class ImpaktfullUiSidebarNavigationDimensTheme {
@@ -102,6 +131,17 @@ class ImpaktfullUiSidebarNavigationDimensTheme {
         padding: padding ?? this.padding,
         secondaryWidth: secondaryWidth ?? this.secondaryWidth,
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiSidebarNavigationDimensTheme &&
+          padding == other.padding &&
+          secondaryWidth == other.secondaryWidth &&
+          assetConstraints == other.assetConstraints;
+
+  @override
+  int get hashCode => Object.hash(padding, secondaryWidth, assetConstraints);
 }
 
 class ImpaktfullUiSidebarNavigationTextStyleTheme {
@@ -109,4 +149,11 @@ class ImpaktfullUiSidebarNavigationTextStyleTheme {
 
   ImpaktfullUiSidebarNavigationTextStyleTheme copyWith() =>
       const ImpaktfullUiSidebarNavigationTextStyleTheme();
+
+  @override
+  bool operator ==(Object other) =>
+      other is ImpaktfullUiSidebarNavigationTextStyleTheme;
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 }

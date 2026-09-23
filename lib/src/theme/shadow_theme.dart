@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 
@@ -71,4 +72,22 @@ class ImpaktfullUiShadowsTheme {
           ),
         ],
       );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiShadowsTheme &&
+          listEquals(extraSmall, other.extraSmall) &&
+          listEquals(small, other.small) &&
+          listEquals(medium, other.medium) &&
+          listEquals(large, other.large) &&
+          listEquals(extraLarge, other.extraLarge);
+
+  @override
+  int get hashCode => Object.hash(
+      Object.hashAll(extraSmall),
+      Object.hashAll(small),
+      Object.hashAll(medium),
+      Object.hashAll(large),
+      Object.hashAll(extraLarge));
 }
