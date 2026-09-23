@@ -75,6 +75,7 @@ import 'package:impaktfull_ui/src/components/table_header_item/table_header_item
 import 'package:impaktfull_ui/src/components/table_row/table_row.dart';
 import 'package:impaktfull_ui/src/components/table_row_item/table_row_item.dart';
 import 'package:impaktfull_ui/src/components/time_picker/time_picker.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/components/tooltip/tooltip.dart';
 import 'package:impaktfull_ui/src/components/unified_screen_layout/unified_screen_layout.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/virtual_keyboard.dart';
@@ -174,6 +175,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiTableRowItemTheme tableRowItem;
   final ImpaktfullUiTimePickerTheme timePicker;
   final ImpaktfullUiTooltipTheme tooltip;
+  final ImpaktfullUiTouchFeedbackTheme touchFeedback;
   final ImpaktfullUiUnifiedScreenLayoutTheme unifiedScreenLayout;
   final ImpaktfullUiVirtualKeyboardTheme virtualKeyboard;
   final ImpaktfullUiWysiwygTheme wysiwyg;
@@ -271,6 +273,9 @@ class ImpaktfullUiComponentsTheme {
     required this.tableRowItem,
     required this.timePicker,
     required this.tooltip,
+    // Optional, so adding it does not break code that creates this class.
+    // Defaults to ImpaktfullUiTouchFeedbackTheme.fallback.
+    ImpaktfullUiTouchFeedbackTheme? touchFeedback,
     required this.unifiedScreenLayout,
     required this.virtualKeyboard,
     required this.wysiwyg,
@@ -279,7 +284,9 @@ class ImpaktfullUiComponentsTheme {
         assert(checkboxListItem != null || checkBoxListItem != null,
             'checkboxListItem is required'),
         checkboxListItem = (checkboxListItem ?? checkBoxListItem)!,
-        iconButton = iconButton ?? ImpaktfullUiIconButtonTheme.fallback;
+        iconButton = iconButton ?? ImpaktfullUiIconButtonTheme.fallback,
+        touchFeedback =
+            touchFeedback ?? ImpaktfullUiTouchFeedbackTheme.fallback;
 
   @Deprecated('Use carousel instead. Will be removed in 1.0.0.')
   ImpaktfullUiCarouselTheme get carrousel => carousel;
@@ -375,6 +382,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiTableRowItemTheme? tableRowItem,
     ImpaktfullUiTimePickerTheme? timePicker,
     ImpaktfullUiTooltipTheme? tooltip,
+    ImpaktfullUiTouchFeedbackTheme? touchFeedback,
     ImpaktfullUiUnifiedScreenLayoutTheme? unifiedScreenLayout,
     ImpaktfullUiVirtualKeyboardTheme? virtualKeyboard,
     ImpaktfullUiWysiwygTheme? wysiwyg,
@@ -466,6 +474,7 @@ class ImpaktfullUiComponentsTheme {
         tableRowItem: tableRowItem ?? this.tableRowItem,
         timePicker: timePicker ?? this.timePicker,
         tooltip: tooltip ?? this.tooltip,
+        touchFeedback: touchFeedback ?? this.touchFeedback,
         unifiedScreenLayout: unifiedScreenLayout ?? this.unifiedScreenLayout,
         virtualKeyboard: virtualKeyboard ?? this.virtualKeyboard,
         wysiwyg: wysiwyg ?? this.wysiwyg,
@@ -638,6 +647,8 @@ class ImpaktfullUiComponentsTheme {
       return ImpaktfullUiTimePickerTheme.of(context) as T;
     } else if (T == ImpaktfullUiTooltipTheme) {
       return ImpaktfullUiTooltipTheme.of(context) as T;
+    } else if (T == ImpaktfullUiTouchFeedbackTheme) {
+      return ImpaktfullUiTouchFeedbackTheme.of(context) as T;
     } else if (T == ImpaktfullUiUnifiedScreenLayoutTheme) {
       return ImpaktfullUiUnifiedScreenLayoutTheme.of(context) as T;
     } else if (T == ImpaktfullUiVirtualKeyboardTheme) {

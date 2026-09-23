@@ -154,6 +154,8 @@ final _entries = <_ThemeEntry>[
       'tableRowItem', (t) => t.tableRowItem),
   _ThemeEntry<ImpaktfullUiTimePickerTheme>('timePicker', (t) => t.timePicker),
   _ThemeEntry<ImpaktfullUiTooltipTheme>('tooltip', (t) => t.tooltip),
+  _ThemeEntry<ImpaktfullUiTouchFeedbackTheme>(
+      'touchFeedback', (t) => t.touchFeedback),
   _ThemeEntry<ImpaktfullUiUnifiedScreenLayoutTheme>(
       'unifiedScreenLayout', (t) => t.unifiedScreenLayout),
   _ThemeEntry<ImpaktfullUiVirtualKeyboardTheme>(
