@@ -127,13 +127,9 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
     super.initState();
     _controller = widget.controller ?? ImpaktfullUiDropdownController();
     _controller._listener = this;
-    final defaultOverlayDuration =
-        const ImpaktfullUiDropdownDurationsTheme().overlay;
-    _animationController = AnimationController(
-      duration: defaultOverlayDuration,
-      reverseDuration: defaultOverlayDuration,
-      vsync: this,
-    );
+    // The durations come from the theme in `didChangeDependencies`, which
+    // runs before the first build.
+    _animationController = AnimationController(vsync: this);
     _curvedAnimation = CurvedAnimation(
       parent: _animationController,
       curve: Curves.easeOut,

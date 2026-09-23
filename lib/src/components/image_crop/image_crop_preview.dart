@@ -27,8 +27,9 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
   ui.Image? _image;
   Uint8List? _imageBytes;
   Timer? _debounceTimer;
-  Duration _cropDebounce =
-      const ImpaktfullUiImageCropDurationsTheme().cropDebounce;
+
+  /// Set from the theme in `didChangeDependencies`, before it is used.
+  late Duration _cropDebounce;
   var _startedInitialCrop = false;
 
   // The theme is only available once the dependencies are there, so the first

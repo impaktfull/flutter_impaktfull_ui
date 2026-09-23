@@ -51,10 +51,9 @@ class _ImpaktfullUiAccordionState extends State<ImpaktfullUiAccordion>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: const ImpaktfullUiAccordionDurationsTheme().expand,
-      vsync: this,
-    );
+    // The duration comes from the theme in `didChangeDependencies`, which
+    // runs before the first build.
+    _controller = AnimationController(vsync: this);
     _expandAnimation = CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOut,

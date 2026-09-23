@@ -40,15 +40,15 @@ class _ImpaktfullUiVirtualKeyboardButtonState
   var _isSliding = false;
   Timer? _repeatTimer;
 
-  var _durations = const ImpaktfullUiVirtualKeyboardDurationsTheme();
+  /// Set from the theme in `didChangeDependencies`, before it is used.
+  late ImpaktfullUiVirtualKeyboardDurationsTheme _durations;
 
   @override
   void initState() {
     super.initState();
-    _slideController = AnimationController(
-      duration: _durations.keySlide,
-      vsync: this,
-    );
+    // The duration comes from the theme in `didChangeDependencies`, which
+    // runs before the first build.
+    _slideController = AnimationController(vsync: this);
     _slideAnimation = Tween<Offset>(
       begin: Offset.zero,
       end: const Offset(0, 0.3),

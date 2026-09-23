@@ -42,8 +42,9 @@ class _ImpaktfullUiCarouselState extends State<ImpaktfullUiCarousel> {
   bool _isUserDragging = false;
   Timer? _autoplayTimer;
   bool? _reduceMotion;
-  Duration _pageTransitionDuration =
-      const ImpaktfullUiCarouselDurationsTheme().pageTransition;
+
+  /// Set from the theme in `didChangeDependencies`, before it is used.
+  late Duration _pageTransitionDuration;
 
   @override
   void initState() {

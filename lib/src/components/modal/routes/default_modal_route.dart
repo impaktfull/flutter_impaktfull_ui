@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:impaktfull_ui/src/components/modal/modal_style.dart';
 import 'package:impaktfull_ui/src/components/modal/routes/blurred_modal_route_wrapper.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/animation/animation_util.dart';
 import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 
@@ -14,6 +12,10 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
   ImpaktfullUiDefaultModalRoute({
     required BuildContext context,
     required WidgetBuilder builder,
+
+    /// The caller resolves it from the modal theme: a route has no context of
+    /// its own to read a theme from.
+    required super.transitionDuration,
     CapturedThemes? themes,
     super.barrierColor = Colors.black54,
     super.barrierDismissible,
@@ -36,18 +38,7 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
           },
           barrierLabel: barrierLabel ??
               MaterialLocalizations.of(context).modalBarrierDismissLabel,
-          transitionDuration: _resolveTransitionDuration(context),
         );
-
-  /// The transition of the modal theme, or its default when the modal is
-  /// opened without an `ImpaktfullUiApp` above it.
-  static Duration _resolveTransitionDuration(BuildContext context) =>
-      ImpaktfullUiTheme.maybeOf(context)
-          ?.components
-          .modal
-          .durations
-          .transition ??
-      const ImpaktfullUiModalDurationsTheme().transition;
 
   /// No transition when the user asked to reduce motion.
   @override

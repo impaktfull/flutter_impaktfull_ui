@@ -53,10 +53,9 @@ class _ImpaktfullUiSkeletonState extends State<ImpaktfullUiSkeleton>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const ImpaktfullUiSkeletonDurationsTheme().shimmer,
-    );
+    // The duration comes from the theme in `didChangeDependencies`, which
+    // runs before the first build.
+    _controller = AnimationController(vsync: this);
     _animation = Tween<double>(begin: -3, end: 3).animate(_controller);
   }
 
