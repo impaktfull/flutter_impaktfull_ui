@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../../../util/golden_test_util.dart';
 import '../../../util/golden_test_variant.dart';
@@ -54,7 +54,7 @@ void main() {
         'Leading header icon',
         ImpaktfullUiModal.simple(
           headerChildLocation: ImpaktfullUiModalHeaderChildLocation.leading,
-          headerIcon: ImpaktfullUiAsset.icon(PhosphorIcons.trash()),
+          headerIcon: ImpaktfullUiAsset.icon(PhosphorIcons.trash),
           title: 'Delete project',
           subtitle: 'This can not be undone',
           primaryActionTitle: 'Delete',
@@ -65,7 +65,7 @@ void main() {
         'Header icon on top',
         ImpaktfullUiModal.simple(
           headerChildLocation: ImpaktfullUiModalHeaderChildLocation.top,
-          headerIcon: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
+          headerIcon: ImpaktfullUiAsset.icon(PhosphorIcons.info),
           headerIconColor: Colors.blue,
           title: 'Information',
           content: 'The header icon is shown above the title.',

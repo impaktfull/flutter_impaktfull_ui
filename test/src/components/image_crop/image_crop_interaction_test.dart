@@ -4,7 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../../../util/network_image_util.dart';
 import '../../../util/test_image.dart';
@@ -32,11 +32,11 @@ ui.Image _createImage(int width, int height) {
   return recorder.endRecording().toImageSync(width, height);
 }
 
-Finder get _zoomIn => find.byIcon(PhosphorIcons.magnifyingGlassPlus());
+Finder get _zoomIn => find.byIcon(PhosphorIcons.magnifyingGlassPlus);
 
-Finder get _zoomOut => find.byIcon(PhosphorIcons.magnifyingGlassMinus());
+Finder get _zoomOut => find.byIcon(PhosphorIcons.magnifyingGlassMinus);
 
-Finder get _crop => find.byIcon(PhosphorIcons.crop());
+Finder get _crop => find.byIcon(PhosphorIcons.crop);
 
 /// The transform that moves and scales the image.
 Matrix4 _imageTransform(WidgetTester tester) => tester
@@ -190,7 +190,7 @@ void main() {
       expect(_crop, findsNothing);
       expect(find.byType(Image), findsOneWidget);
 
-      await tester.tap(find.byIcon(PhosphorIcons.arrowClockwise()));
+      await tester.tap(find.byIcon(PhosphorIcons.arrowClockwise));
       await tester.pumpAndSettle();
       tester.takeException();
       expect(_crop, findsOneWidget);

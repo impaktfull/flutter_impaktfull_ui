@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../../../util/font_loader.dart';
 import '../../../util/navigator_test_util.dart';
@@ -30,11 +30,11 @@ void main() {
     );
     expect(find.text('January 2023'), findsOneWidget);
 
-    await tester.tap(find.byIcon(PhosphorIcons.arrowRight()));
+    await tester.tap(find.byIcon(PhosphorIcons.arrowRight));
     await tester.pumpAndSettle();
     expect(find.text('February 2023'), findsOneWidget);
 
-    await tester.tap(find.byIcon(PhosphorIcons.arrowRight()));
+    await tester.tap(find.byIcon(PhosphorIcons.arrowRight));
     await tester.pumpAndSettle();
     expect(find.text('March 2023'), findsOneWidget);
   });
@@ -106,7 +106,7 @@ void main() {
       );
       await tester.tap(find.text('July 2023'));
       await tester.pumpAndSettle();
-      await tester.tap(find.byIcon(PhosphorIcons.arrowRight()));
+      await tester.tap(find.byIcon(PhosphorIcons.arrowRight));
       await tester.pumpAndSettle();
       await tester.tap(find.text('2024'));
       await tester.pumpAndSettle();

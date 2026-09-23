@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 /// The components theme of the default theme, used as a base for the theme
 /// overrides in the inputs & controls tests.
@@ -9,7 +9,7 @@ ImpaktfullUiComponentsTheme get defaultComponentsTheme =>
 
 /// A custom asset that is not used by any default theme, to verify that a
 /// theme override is applied.
-final customTestAsset = ImpaktfullUiAsset.icon(PhosphorIcons.star());
+final customTestAsset = ImpaktfullUiAsset.icon(PhosphorIcons.star);
 
 /// A color that is not used by the default theme.
 const customTestColor = Color(0xFF00FF7F);

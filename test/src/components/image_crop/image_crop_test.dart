@@ -5,7 +5,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../../../util/network_image_util.dart';
 import '../../../util/test_image.dart';
@@ -35,7 +35,7 @@ ui.Image _createImage() {
   return recorder.endRecording().toImageSync(4, 4);
 }
 
-Finder get _cropButton => find.byIcon(PhosphorIcons.crop());
+Finder get _cropButton => find.byIcon(PhosphorIcons.crop);
 
 void main() {
   setUpAll(warmUpImageEncoding);

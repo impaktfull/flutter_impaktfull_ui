@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
 import 'package:impaktfull_ui/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 export 'table_header_item_style.dart';
 export 'table_header_item_type.dart';
@@ -85,7 +85,7 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
                             WidgetSpan(
                               alignment: PlaceholderAlignment.middle,
                               child: Icon(
-                                PhosphorIcons.caretUp(),
+                                PhosphorIcons.caretUp,
                                 size: 16,
                               ),
                             ),
@@ -94,7 +94,7 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
                             WidgetSpan(
                               alignment: PlaceholderAlignment.middle,
                               child: Icon(
-                                PhosphorIcons.caretDown(),
+                                PhosphorIcons.caretDown,
                                 size: 16,
                               ),
                             ),

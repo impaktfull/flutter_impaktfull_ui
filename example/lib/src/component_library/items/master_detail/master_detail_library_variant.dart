@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/master_detail/master_detail_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/widget/component/components_library_variant_descriptor.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class MasterDetailLibraryVariant
     extends ComponentLibraryVariant<MasterDetailLibraryPrimaryInputs> {
@@ -26,7 +26,7 @@ class MasterDetailLibraryVariant
             padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             child: ImpaktfullUiButton(
-              leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.folderOpen()),
+              leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.folderOpen),
               onTap: () => inputs.hasDetail.updateState(true),
               type: ImpaktfullUiButtonType.secondaryGrey,
             ),

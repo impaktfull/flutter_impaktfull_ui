@@ -4,7 +4,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/confetti/model/confetti_particle.dart';
 import 'package:impaktfull_ui/src/components/confetti/painter/asset_painter.dart';
 import 'package:impaktfull_ui/src/components/confetti/painter/confetti_painter.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../../../util/golden_test_util.dart';
 import '../../../util/golden_test_variant.dart';
@@ -17,7 +17,7 @@ Widget _particles({
   double rotation = 0,
 }) {
   final assetPainter = AssetPainter()
-    ..load(ImpaktfullUiAsset.icon(PhosphorIcons.leaf()));
+    ..load(ImpaktfullUiAsset.icon(PhosphorIcons.leaf));
   return SizedBox(
     width: 240,
     height: 80,

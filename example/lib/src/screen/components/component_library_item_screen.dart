@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';
 import 'package:impaktfull_ui_example/src/navigator/navigator.dart';
 import 'package:impaktfull_ui_example/src/screen/components/component_library_variant_screen.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class ComponentLibraryItemScreen extends StatefulWidget {
   final ComponentLibraryItem item;
@@ -50,7 +50,7 @@ class _ComponentLibraryItemScreenState
           type: _isRtl
               ? ImpaktfullUiAdaptiveNavBarActionItemType.primary
               : ImpaktfullUiAdaptiveNavBarActionItemType.secondary,
-          asset: ImpaktfullUiAsset.icon(PhosphorIcons.arrowsLeftRight()),
+          asset: ImpaktfullUiAsset.icon(PhosphorIcons.arrowsLeftRight),
           title: 'Right-to-left',
         ),
       ],

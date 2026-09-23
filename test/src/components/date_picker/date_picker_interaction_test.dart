@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../../../util/font_loader.dart';
 import '../../../util/test_util.dart';
@@ -22,9 +22,9 @@ Finder _dayCell(String day) => find.byWidgetPredicate(
 ImpaktfullUiDatePickerCell _cell(WidgetTester tester, String day) =>
     tester.widget<ImpaktfullUiDatePickerCell>(_dayCell(day));
 
-Finder get _next => find.byIcon(PhosphorIcons.arrowRight());
+Finder get _next => find.byIcon(PhosphorIcons.arrowRight);
 
-Finder get _previous => find.byIcon(PhosphorIcons.arrowLeft());
+Finder get _previous => find.byIcon(PhosphorIcons.arrowLeft);
 
 /// The picker has a fixed size: center it so it does not get the tight
 /// constraints of the screen.

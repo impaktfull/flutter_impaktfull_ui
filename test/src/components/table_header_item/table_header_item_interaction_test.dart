@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../../../util/test_util.dart';
 
@@ -18,8 +18,8 @@ void main() {
   });
 
   for (final (ascending, icon) in [
-    (true, PhosphorIcons.caretUp()),
-    (false, PhosphorIcons.caretDown()),
+    (true, PhosphorIcons.caretUp),
+    (false, PhosphorIcons.caretDown),
   ]) {
     testWidgets('ascending: $ascending shows the sort direction',
         (tester) async {
@@ -36,8 +36,8 @@ void main() {
       tester,
       const ImpaktfullUiTableHeaderItem(title: 'Name'),
     );
-    expect(find.byIcon(PhosphorIcons.caretUp()), findsNothing);
-    expect(find.byIcon(PhosphorIcons.caretDown()), findsNothing);
+    expect(find.byIcon(PhosphorIcons.caretUp), findsNothing);
+    expect(find.byIcon(PhosphorIcons.caretDown), findsNothing);
   });
 
   testWidgets('the sort direction follows the parent', (tester) async {
@@ -54,10 +54,10 @@ void main() {
     );
     await tester.tap(find.textContaining('Name'));
     await tester.pumpAndSettle();
-    expect(find.byIcon(PhosphorIcons.caretUp()), findsOneWidget);
+    expect(find.byIcon(PhosphorIcons.caretUp), findsOneWidget);
     await tester.tap(find.textContaining('Name'));
     await tester.pumpAndSettle();
-    expect(find.byIcon(PhosphorIcons.caretDown()), findsOneWidget);
+    expect(find.byIcon(PhosphorIcons.caretDown), findsOneWidget);
   });
 
   for (final (isSelected, expected) in [

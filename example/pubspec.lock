@@ -263,15 +263,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.2"
-  phosphor_flutter:
+  phosphoricons_flutter:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "514f0a883571c4453dbd6ee3041d1dcba4fb8fc7"
-      resolved-ref: "514f0a883571c4453dbd6ee3041d1dcba4fb8fc7"
-      url: "https://github.com/subarnaPdl/phosphor_icons.git"
-    source: git
-    version: "2.1.0"
+      name: phosphoricons_flutter
+      sha256: "34e4a00cc1a4be87c60edfcfcd5de23c005dc69945a5d77e08d33e6d23c0e793"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   plugin_platform_interface:
     dependency: transitive
     description:

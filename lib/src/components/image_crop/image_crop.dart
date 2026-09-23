@@ -16,7 +16,7 @@ import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_squar
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 export 'controller/image_crop_controller.dart';
 export 'cropper/image_crop_cropper.dart';
@@ -131,7 +131,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                                             context)
                                         .backToEditing,
                                 asset: ImpaktfullUiAsset.icon(
-                                    PhosphorIcons.arrowClockwise()),
+                                    PhosphorIcons.arrowClockwise),
                                 color: componentTheme.colors.deleteIcon,
                                 backgroundColor:
                                     Colors.black.withOpacityPercentage(0.33),
@@ -224,19 +224,18 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onTap: _onZoomInTapped,
                       leadingAsset: ImpaktfullUiAsset.icon(
-                          PhosphorIcons.magnifyingGlassPlus()),
+                          PhosphorIcons.magnifyingGlassPlus),
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onTap: _onZoomOutTapped,
                       leadingAsset: ImpaktfullUiAsset.icon(
-                          PhosphorIcons.magnifyingGlassMinus()),
+                          PhosphorIcons.magnifyingGlassMinus),
                     ),
                     ImpaktfullUiButton(
                       type: ImpaktfullUiButtonType.secondaryGrey,
                       onAsyncTap: _onCropTapped,
-                      leadingAsset:
-                          ImpaktfullUiAsset.icon(PhosphorIcons.crop()),
+                      leadingAsset: ImpaktfullUiAsset.icon(PhosphorIcons.crop),
                     ),
                   ],
                 ),
