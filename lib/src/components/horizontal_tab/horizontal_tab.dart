@@ -69,10 +69,7 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
               ? componentTheme.colors.backgroundSelectedTab
               : componentTheme.colors.backgroundUnSelectedTab,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 8,
-            ),
+            padding: componentTheme.dimens.padding,
             child: ImpaktfullUiAutoLayout.horizontal(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -84,7 +81,7 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
                       : componentTheme.textStyles.unselected,
                 ),
                 if (badge != null) ...[
-                  const SizedBox(width: 8),
+                  SizedBox(width: componentTheme.dimens.badgeSpacing),
                   ImpaktfullUiBadge(
                     type: isSelected
                         ? ImpaktfullUiBadgeType.primary

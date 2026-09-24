@@ -40,27 +40,32 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => SizedBox(
-        height: componentTheme.dimens.height,
-        child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          padding: componentTheme.dimens.padding,
-          itemCount: tabs.length,
-          itemBuilder: (BuildContext context, int index) {
-            final tab = tabs[index];
-            return ImpaktfullUiHorizontalTab(
-              title: tab.title,
-              badge: tab.badge,
-              badgeType: tab.badgeType,
-              isSelected: value == tab.value,
-              theme: ImpaktfullUiTheme.of(context).components.horizontalTab,
-              onTap: () => _onTap(tab.value),
-            );
-          },
-          separatorBuilder: (context, index) =>
-              SizedBox(width: componentTheme.dimens.spacing),
-        ),
-      ),
+      builder: (context, componentTheme) {
+        final background = componentTheme.colors.background;
+        final row = SizedBox(
+          height: componentTheme.dimens.height,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            padding: componentTheme.dimens.padding,
+            itemCount: tabs.length,
+            itemBuilder: (BuildContext context, int index) {
+              final tab = tabs[index];
+              return ImpaktfullUiHorizontalTab(
+                title: tab.title,
+                badge: tab.badge,
+                badgeType: tab.badgeType,
+                isSelected: value == tab.value,
+                theme: ImpaktfullUiTheme.of(context).components.horizontalTab,
+                onTap: () => _onTap(tab.value),
+              );
+            },
+            separatorBuilder: (context, index) =>
+                SizedBox(width: componentTheme.dimens.spacing),
+          ),
+        );
+        if (background == null) return row;
+        return ColoredBox(color: background, child: row);
+      },
     );
   }
 

@@ -49,17 +49,29 @@ class ImpaktfullUiHorizontalTabsTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiHorizontalTabsColorTheme {
-  const ImpaktfullUiHorizontalTabsColorTheme();
+  /// The background behind the row of tabs (shadcn/ui's muted tab list).
+  /// `null` (the default) draws none: the tabs paint their own background.
+  final Color? background;
 
-  ImpaktfullUiHorizontalTabsColorTheme copyWith() =>
-      const ImpaktfullUiHorizontalTabsColorTheme();
+  const ImpaktfullUiHorizontalTabsColorTheme({
+    this.background,
+  });
+
+  ImpaktfullUiHorizontalTabsColorTheme copyWith({
+    Color? background,
+  }) =>
+      ImpaktfullUiHorizontalTabsColorTheme(
+        background: background ?? this.background,
+      );
 
   @override
   bool operator ==(Object other) =>
-      other is ImpaktfullUiHorizontalTabsColorTheme;
+      identical(this, other) ||
+      other is ImpaktfullUiHorizontalTabsColorTheme &&
+          background == other.background;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => background.hashCode;
 }
 
 class ImpaktfullUiHorizontalTabsDimensTheme {

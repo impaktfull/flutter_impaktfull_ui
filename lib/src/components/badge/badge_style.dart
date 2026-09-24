@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/src/components/badge/badge_size.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
@@ -251,12 +252,16 @@ class ImpaktfullUiBadgeDimensTheme {
   /// The space between the title and the close button.
   final double closeSpacing;
 
+  /// The geometry of the badge per [ImpaktfullUiBadgeSize].
+  final ImpaktfullUiBadgeSizesDimensTheme sizes;
+
   const ImpaktfullUiBadgeDimensTheme({
     required this.borderRadius,
     required this.borderWidth,
     this.closeIconSize = 16,
     this.closePadding = const EdgeInsets.all(2),
     this.closeSpacing = 2,
+    this.sizes = const ImpaktfullUiBadgeSizesDimensTheme(),
   });
 
   ImpaktfullUiBadgeDimensTheme copyWith({
@@ -265,6 +270,7 @@ class ImpaktfullUiBadgeDimensTheme {
     double? closeIconSize,
     EdgeInsetsGeometry? closePadding,
     double? closeSpacing,
+    ImpaktfullUiBadgeSizesDimensTheme? sizes,
   }) =>
       ImpaktfullUiBadgeDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
@@ -272,6 +278,7 @@ class ImpaktfullUiBadgeDimensTheme {
         closeIconSize: closeIconSize ?? this.closeIconSize,
         closePadding: closePadding ?? this.closePadding,
         closeSpacing: closeSpacing ?? this.closeSpacing,
+        sizes: sizes ?? this.sizes,
       );
 
   @override
@@ -282,11 +289,137 @@ class ImpaktfullUiBadgeDimensTheme {
           borderWidth == other.borderWidth &&
           closeIconSize == other.closeIconSize &&
           closePadding == other.closePadding &&
-          closeSpacing == other.closeSpacing;
+          closeSpacing == other.closeSpacing &&
+          sizes == other.sizes;
+
+  @override
+  int get hashCode => Object.hash(borderRadius, borderWidth, closeIconSize,
+      closePadding, closeSpacing, sizes);
+}
+
+/// The geometry of `ImpaktfullUiBadge` per [ImpaktfullUiBadgeSize].
+class ImpaktfullUiBadgeSizesDimensTheme {
+  final ImpaktfullUiBadgeSizeDimensTheme small;
+  final ImpaktfullUiBadgeSizeDimensTheme medium;
+  final ImpaktfullUiBadgeSizeDimensTheme large;
+
+  const ImpaktfullUiBadgeSizesDimensTheme({
+    this.small = const ImpaktfullUiBadgeSizeDimensTheme(
+      horizontalPadding: 8,
+      verticalPadding: 2,
+      paddingOffset: 0,
+      spacing: 4,
+      widgetSize: 16,
+    ),
+    this.medium = const ImpaktfullUiBadgeSizeDimensTheme(
+      horizontalPadding: 10,
+      verticalPadding: 2,
+      paddingOffset: 1,
+      spacing: 6,
+      widgetSize: 18,
+    ),
+    this.large = const ImpaktfullUiBadgeSizeDimensTheme(
+      horizontalPadding: 12,
+      verticalPadding: 4,
+      paddingOffset: 2,
+      spacing: 6,
+      widgetSize: 24,
+    ),
+  });
+
+  /// The geometry of [size].
+  ImpaktfullUiBadgeSizeDimensTheme bySize(ImpaktfullUiBadgeSize size) {
+    switch (size) {
+      case ImpaktfullUiBadgeSize.small:
+        return small;
+      case ImpaktfullUiBadgeSize.medium:
+        return medium;
+      case ImpaktfullUiBadgeSize.large:
+        return large;
+    }
+  }
+
+  ImpaktfullUiBadgeSizesDimensTheme copyWith({
+    ImpaktfullUiBadgeSizeDimensTheme? large,
+    ImpaktfullUiBadgeSizeDimensTheme? medium,
+    ImpaktfullUiBadgeSizeDimensTheme? small,
+  }) =>
+      ImpaktfullUiBadgeSizesDimensTheme(
+        large: large ?? this.large,
+        medium: medium ?? this.medium,
+        small: small ?? this.small,
+      );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBadgeSizesDimensTheme &&
+          small == other.small &&
+          medium == other.medium &&
+          large == other.large;
+
+  @override
+  int get hashCode => Object.hash(small, medium, large);
+}
+
+/// The geometry of one [ImpaktfullUiBadgeSize]. Before these tokens existed
+/// the values lived on the [ImpaktfullUiBadgeSize] enum, which an app can not
+/// change.
+class ImpaktfullUiBadgeSizeDimensTheme {
+  /// The padding before and after the content of the badge. A side with a
+  /// leading or a trailing widget uses `horizontalPadding / 2 - paddingOffset`
+  /// instead, because the icon brings its own whitespace.
+  final double horizontalPadding;
+
+  /// The padding above and below the content of the badge.
+  final double verticalPadding;
+
+  /// How much the padding of a side with a leading or a trailing widget is
+  /// pulled in, see [horizontalPadding].
+  final double paddingOffset;
+
+  /// The space between the title and a leading or a trailing widget.
+  final double spacing;
+
+  /// The size of a leading or a trailing widget, icon or asset.
+  final double widgetSize;
+
+  const ImpaktfullUiBadgeSizeDimensTheme({
+    required this.horizontalPadding,
+    required this.verticalPadding,
+    required this.spacing,
+    required this.widgetSize,
+    this.paddingOffset = 0,
+  });
+
+  ImpaktfullUiBadgeSizeDimensTheme copyWith({
+    double? horizontalPadding,
+    double? paddingOffset,
+    double? spacing,
+    double? verticalPadding,
+    double? widgetSize,
+  }) =>
+      ImpaktfullUiBadgeSizeDimensTheme(
+        horizontalPadding: horizontalPadding ?? this.horizontalPadding,
+        paddingOffset: paddingOffset ?? this.paddingOffset,
+        spacing: spacing ?? this.spacing,
+        verticalPadding: verticalPadding ?? this.verticalPadding,
+        widgetSize: widgetSize ?? this.widgetSize,
+      );
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiBadgeSizeDimensTheme &&
+          horizontalPadding == other.horizontalPadding &&
+          verticalPadding == other.verticalPadding &&
+          paddingOffset == other.paddingOffset &&
+          spacing == other.spacing &&
+          widgetSize == other.widgetSize;
 
   @override
   int get hashCode => Object.hash(
-      borderRadius, borderWidth, closeIconSize, closePadding, closeSpacing);
+      horizontalPadding, verticalPadding, paddingOffset, spacing, widgetSize);
 }
 
 class ImpaktfullUiBadgeTextStyleTheme {

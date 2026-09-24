@@ -69,6 +69,7 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
             widget.leading != null || widget.leadingAsset != null;
         final hasTrailing =
             widget.trailing != null || widget.trailingAsset != null;
+        final sizeDimens = componentTheme.dimens.sizes.bySize(widget.size);
         final textColor = _getColor(componentTheme);
         final borderColor = _getBorderColor(componentTheme);
         final backgroundColor = _getBackgroundColor(componentTheme);
@@ -89,15 +90,15 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
             child: Padding(
               padding: EdgeInsetsDirectional.only(
                 start: hasLeading
-                    ? (widget.size.horizontalPadding / 2) -
-                        widget.size.paddingOffset
-                    : widget.size.horizontalPadding,
+                    ? (sizeDimens.horizontalPadding / 2) -
+                        sizeDimens.paddingOffset
+                    : sizeDimens.horizontalPadding,
                 end: hasTrailing
-                    ? (widget.size.horizontalPadding / 2) -
-                        widget.size.paddingOffset
-                    : widget.size.horizontalPadding,
-                top: widget.size.verticalPadding,
-                bottom: widget.size.verticalPadding,
+                    ? (sizeDimens.horizontalPadding / 2) -
+                        sizeDimens.paddingOffset
+                    : sizeDimens.horizontalPadding,
+                top: sizeDimens.verticalPadding,
+                bottom: sizeDimens.verticalPadding,
               ),
               // With a bounded width a long label is truncated. Without one
               // (e.g. in a Row) the badge keeps the width of its content.
@@ -109,12 +110,13 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                         asset: widget.leadingAsset!,
                       ),
                       textColor,
+                      sizeDimens,
                     ),
-                    SizedBox(width: widget.size.spacing),
+                    SizedBox(width: sizeDimens.spacing),
                   ],
                   if (widget.leading != null) ...[
-                    _getWidgetOrIcon(widget.leading!, textColor),
-                    SizedBox(width: widget.size.spacing),
+                    _getWidgetOrIcon(widget.leading!, textColor, sizeDimens),
+                    SizedBox(width: sizeDimens.spacing),
                   ],
                   if (widget.title != null) ...[
                     Flexible(
@@ -148,16 +150,17 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
                       ),
                     ),
                   ] else if (widget.trailingAsset != null) ...[
-                    SizedBox(width: widget.size.spacing),
+                    SizedBox(width: sizeDimens.spacing),
                     _getWidgetOrIcon(
                       ImpaktfullUiAssetWidget(
                         asset: widget.trailingAsset!,
                       ),
                       textColor,
+                      sizeDimens,
                     ),
                   ] else if (widget.trailing != null) ...[
-                    SizedBox(width: widget.size.spacing),
-                    _getWidgetOrIcon(widget.trailing!, textColor),
+                    SizedBox(width: sizeDimens.spacing),
+                    _getWidgetOrIcon(widget.trailing!, textColor, sizeDimens),
                   ]
                 ],
               ),
@@ -230,27 +233,31 @@ class _ImpaktfullUiBadgeState extends State<ImpaktfullUiBadge> {
     }
   }
 
-  Widget _getWidgetOrIcon(Widget widget, Color color) {
+  Widget _getWidgetOrIcon(
+    Widget widget,
+    Color color,
+    ImpaktfullUiBadgeSizeDimensTheme sizeDimens,
+  ) {
     if (widget is ImpaktfullUiCustomBadgeWidget) {
       return widget;
     }
     if (widget is Icon) {
       return Icon(
         widget.icon,
-        size: this.widget.size.widgetSize,
+        size: sizeDimens.widgetSize,
         color: color.withOpacityPercentage(0.66),
       );
     }
     if (widget is ImpaktfullUiAssetWidget) {
       return ImpaktfullUiAssetWidget(
         asset: widget.asset,
-        size: this.widget.size.widgetSize,
+        size: sizeDimens.widgetSize,
         color: color.withOpacityPercentage(0.66),
       );
     }
     return SizedBox(
-      width: this.widget.size.widgetSize,
-      height: this.widget.size.widgetSize,
+      width: sizeDimens.widgetSize,
+      height: sizeDimens.widgetSize,
       child: widget,
     );
   }

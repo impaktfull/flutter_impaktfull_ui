@@ -49,8 +49,22 @@ class _ImpaktfullUiTabBarState extends State<ImpaktfullUiTabBar> {
       component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => Builder(
-        builder: (context) => ImpaktfullUiAutoLayout.horizontal(
+        builder: (context) => _buildBar(componentTheme),
+      ),
+    );
+  }
+
+  Widget _buildBar(ImpaktfullUiTabBarTheme componentTheme) {
+    final colors = componentTheme.colors;
+    final dimens = componentTheme.dimens;
+    final divider = colors.divider;
+    Widget bar = SizedBox(
+      height: dimens.height,
+      child: Padding(
+        padding: dimens.padding,
+        child: ImpaktfullUiAutoLayout.horizontal(
           mainAxisSize: MainAxisSize.min,
+          spacing: dimens.spacing,
           children: widget.items
               .map(
                 (item) => Expanded(child: item),
@@ -58,6 +72,22 @@ class _ImpaktfullUiTabBarState extends State<ImpaktfullUiTabBar> {
               .toList(),
         ),
       ),
+    );
+    if (colors.background == null && divider == null) return bar;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: colors.background,
+        borderRadius: dimens.borderRadius,
+        border: divider == null
+            ? null
+            : Border(
+                bottom: BorderSide(
+                  color: divider,
+                  width: dimens.dividerHeight,
+                ),
+              ),
+      ),
+      child: bar,
     );
   }
 
