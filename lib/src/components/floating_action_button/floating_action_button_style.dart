@@ -54,7 +54,9 @@ class ImpaktfullUiFloatingActionButtonTheme extends ImpaktfullUiComponentTheme {
         dimens: ImpaktfullUiFloatingActionButtonDimensTheme(
           borderRadius: dimens.borderRadiusCircle,
         ),
-        durations: const ImpaktfullUiFloatingActionButtonDurationsTheme(),
+        durations: ImpaktfullUiFloatingActionButtonDurationsTheme(
+          expand: durations.short,
+        ),
         textStyles: ImpaktfullUiFloatingActionButtonTextStyleTheme(
           label: textStyles.onAccent.text.small.bold,
         ),

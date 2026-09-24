@@ -36,3 +36,6 @@ build/
 
 # Coverage (flutter test --coverage)
 /coverage/
+
+# Worktrees of background agents
+.claude/worktrees/

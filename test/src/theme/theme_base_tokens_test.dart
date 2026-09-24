@@ -113,6 +113,28 @@ void main() {
           const Duration(milliseconds: 100));
       expect(theme.components.tooltip.durations.wait,
           const Duration(milliseconds: 300));
+      // The four component themes that built their own durations instead of
+      // taking `short` from the scale, until they were mapped onto it.
+      expect(theme.components.accordion.durations.expand,
+          const Duration(milliseconds: 100));
+      expect(theme.components.dropdown.durations.overlay,
+          const Duration(milliseconds: 100));
+      expect(theme.components.floatingActionButton.durations.expand,
+          const Duration(milliseconds: 100));
+      expect(theme.components.segmentedControl.durations.selected,
+          const Duration(milliseconds: 100));
+    });
+
+    test('durations, without changing what they are by default', () {
+      final theme = build();
+      expect(theme.components.accordion.durations.expand,
+          const Duration(milliseconds: 200));
+      expect(theme.components.dropdown.durations.overlay,
+          const Duration(milliseconds: 200));
+      expect(theme.components.floatingActionButton.durations.expand,
+          const Duration(milliseconds: 200));
+      expect(theme.components.segmentedControl.durations.selected,
+          const Duration(milliseconds: 200));
     });
 
     testWidgets('durations, in the widget that animates', (tester) async {
