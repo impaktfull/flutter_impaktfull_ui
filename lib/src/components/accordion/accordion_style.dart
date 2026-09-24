@@ -49,7 +49,9 @@ class ImpaktfullUiAccordionTheme extends ImpaktfullUiComponentTheme {
         ),
         colors: const ImpaktfullUiAccordionColorTheme(),
         dimens: const ImpaktfullUiAccordionDimensTheme(),
-        durations: const ImpaktfullUiAccordionDurationsTheme(),
+        durations: ImpaktfullUiAccordionDurationsTheme(
+          expand: durations.short,
+        ),
         textStyles: const ImpaktfullUiAccordionTextStyleTheme(),
       );
 

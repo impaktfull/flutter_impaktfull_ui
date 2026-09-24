@@ -80,7 +80,7 @@ jobs:
       # total drops below the minimum. The minimum only goes up: raise it when
       # a pull request adds tests (see AGENTS.md).
       - name: Coverage
-        run: dart run tool/coverage/bin/coverage_summary.dart --min 87.7
+        run: dart run tool/coverage/bin/coverage_summary.dart --min 88.2
 
   # The component library is deployed to GitHub Pages from `main`. Building it
   # here means a pull request that breaks the example fails before it is

@@ -59,7 +59,9 @@ class ImpaktfullUiDropdownTheme extends ImpaktfullUiComponentTheme {
           dropDown: assets.icons.chevronDown,
           dropUp: assets.icons.chevronUp,
         ),
-        durations: const ImpaktfullUiDropdownDurationsTheme(),
+        durations: ImpaktfullUiDropdownDurationsTheme(
+          overlay: durations.short,
+        ),
       );
 
   @override

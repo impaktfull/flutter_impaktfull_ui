@@ -54,7 +54,9 @@ class ImpaktfullUiSegmentedControlTheme extends ImpaktfullUiComponentTheme {
           borderRadius: dimens.borderRadius,
           padding: EdgeInsets.zero,
         ),
-        durations: const ImpaktfullUiSegmentedControlDurationsTheme(),
+        durations: ImpaktfullUiSegmentedControlDurationsTheme(
+          selected: durations.short,
+        ),
         textStyles: ImpaktfullUiSegmentedControlTextStyleTheme(
           label: textStyles.onCanvas.text.small,
           activeLabel: textStyles.onCard.text.small,
