@@ -55,18 +55,25 @@ class ImpaktfullUiTableColorTheme {
   final Color background;
   final Color? border;
 
+  /// The color of the divider below the header and between two rows. When
+  /// null, the divider uses the `ImpaktfullUiDividerTheme` of the theme.
+  final Color? divider;
+
   const ImpaktfullUiTableColorTheme({
     required this.background,
     required this.border,
+    this.divider,
   });
 
   ImpaktfullUiTableColorTheme copyWith({
     Color? background,
     Color? border,
+    Color? divider,
   }) =>
       ImpaktfullUiTableColorTheme(
         background: background ?? this.background,
         border: border ?? this.border,
+        divider: divider ?? this.divider,
       );
 
   @override
@@ -74,14 +81,19 @@ class ImpaktfullUiTableColorTheme {
       identical(this, other) ||
       other is ImpaktfullUiTableColorTheme &&
           background == other.background &&
-          border == other.border;
+          border == other.border &&
+          divider == other.divider;
 
   @override
-  int get hashCode => Object.hash(background, border);
+  int get hashCode => Object.hash(background, border, divider);
 }
 
 class ImpaktfullUiTableDimensTheme {
   final BorderRadiusGeometry borderRadius;
+
+  /// The thickness of the border around the table, when
+  /// `ImpaktfullUiTableColorTheme.border` is set.
+  final double borderWidth;
 
   /// The width a column gets at least before the table starts to scroll
   /// horizontally.
@@ -89,15 +101,18 @@ class ImpaktfullUiTableDimensTheme {
 
   const ImpaktfullUiTableDimensTheme({
     required this.borderRadius,
+    this.borderWidth = 1,
     this.minColumnWidth = 250,
   });
 
   ImpaktfullUiTableDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
     double? minColumnWidth,
   }) =>
       ImpaktfullUiTableDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
         minColumnWidth: minColumnWidth ?? this.minColumnWidth,
       );
 
@@ -106,8 +121,9 @@ class ImpaktfullUiTableDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiTableDimensTheme &&
           borderRadius == other.borderRadius &&
+          borderWidth == other.borderWidth &&
           minColumnWidth == other.minColumnWidth;
 
   @override
-  int get hashCode => Object.hash(borderRadius, minColumnWidth);
+  int get hashCode => Object.hash(borderRadius, borderWidth, minColumnWidth);
 }

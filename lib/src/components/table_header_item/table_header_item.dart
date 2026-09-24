@@ -14,21 +14,23 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
   final String? title;
   final VoidCallback? onTap;
   final bool? ascending;
-  final EdgeInsets? padding;
   final ImpaktfullUiTableHeaderItemTheme? theme;
   final bool? isSelected;
   final ValueChanged<bool?>? onChanged;
+  final EdgeInsets? _padding;
 
   const ImpaktfullUiTableHeaderItem({
     this.title,
     this.onTap,
     this.ascending,
-    this.padding = const EdgeInsets.symmetric(
-      horizontal: 16,
-    ),
+
+    /// The padding of the header cell. Without one, the `padding` of the
+    /// [ImpaktfullUiTableHeaderItemTheme] is used (16 horizontal by default).
+    EdgeInsets? padding,
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableHeaderItemType.text,
+        _padding = padding,
         isSelected = false,
         onChanged = null;
 
@@ -38,12 +40,25 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
     this.title,
     this.onTap,
     this.ascending,
-    this.padding = const EdgeInsets.symmetric(
-      horizontal: 16,
-    ),
+
+    /// The padding of the header cell. Without one, the `padding` of the
+    /// [ImpaktfullUiTableHeaderItemTheme] is used (16 horizontal by default).
+    EdgeInsets? padding,
     this.theme,
     super.key,
-  }) : type = ImpaktfullUiTableHeaderItemType.checkbox;
+  })  : type = ImpaktfullUiTableHeaderItemType.checkbox,
+        _padding = padding;
+
+  /// The padding that was passed to the constructor, or
+  /// `EdgeInsets.symmetric(horizontal: 16)` (the padding of the default
+  /// theme) when none was passed. Without a padding, the header cell uses the
+  /// `padding` of the [ImpaktfullUiTableHeaderItemTheme].
+  ///
+  /// It is nullable because it was a nullable field before the padding became
+  /// a token, so code that reads it keeps compiling without a warning. It
+  /// never returns null.
+  EdgeInsets? get padding =>
+      _padding ?? const EdgeInsets.symmetric(horizontal: 16);
 
   @override
   Widget build(BuildContext context) {
@@ -60,11 +75,11 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
           child: Container(
             constraints:
                 BoxConstraints(minHeight: componentTheme.dimens.minHeight),
-            padding: padding,
+            padding: _padding ?? componentTheme.dimens.padding,
             child: ImpaktfullUiAutoLayout.horizontal(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: 8,
+              spacing: componentTheme.dimens.spacing,
               children: [
                 if (isCheckbox) ...[
                   ImpaktfullUiCheckbox.indeterminate(
@@ -84,21 +99,31 @@ class ImpaktfullUiTableHeaderItem extends StatelessWidget {
                             text: title ?? '',
                           ),
                           if (ascending == true) ...[
-                            const WidgetSpan(child: SizedBox(width: 8)),
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: componentTheme.dimens.sortIconSpacing,
+                              ),
+                            ),
                             WidgetSpan(
                               alignment: PlaceholderAlignment.middle,
                               child: Icon(
                                 PhosphorIcons.caretUp,
-                                size: 16,
+                                size: componentTheme.dimens.sortIconSize,
+                                color: componentTheme.colors.sortIcon,
                               ),
                             ),
                           ] else if (ascending == false) ...[
-                            const WidgetSpan(child: SizedBox(width: 8)),
+                            WidgetSpan(
+                              child: SizedBox(
+                                width: componentTheme.dimens.sortIconSpacing,
+                              ),
+                            ),
                             WidgetSpan(
                               alignment: PlaceholderAlignment.middle,
                               child: Icon(
                                 PhosphorIcons.caretDown,
-                                size: 16,
+                                size: componentTheme.dimens.sortIconSize,
+                                color: componentTheme.colors.sortIcon,
                               ),
                             ),
                           ],

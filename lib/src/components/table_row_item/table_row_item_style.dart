@@ -102,23 +102,47 @@ class ImpaktfullUiTableRowItemDimensTheme {
   /// The minimum height of a row item.
   final double minHeight;
 
+  /// The padding of a cell that is not built by a `builder`, when the cell
+  /// itself has no `padding`.
+  final EdgeInsetsGeometry padding;
+
+  /// The padding of a `ImpaktfullUiTableRowItem.custom` cell without a
+  /// `padding`: a custom cell only gets space at its end, so it can paint to
+  /// the edge of the row.
+  final EdgeInsetsGeometry customPadding;
+
+  /// The space between the checkbox and the title of a cell.
+  final double spacing;
+
   const ImpaktfullUiTableRowItemDimensTheme({
     this.minHeight = 48,
+    this.padding = const EdgeInsets.symmetric(horizontal: 16),
+    this.customPadding = const EdgeInsetsDirectional.only(end: 8),
+    this.spacing = 8,
   });
 
   ImpaktfullUiTableRowItemDimensTheme copyWith({
+    EdgeInsetsGeometry? customPadding,
     double? minHeight,
+    EdgeInsetsGeometry? padding,
+    double? spacing,
   }) =>
       ImpaktfullUiTableRowItemDimensTheme(
+        customPadding: customPadding ?? this.customPadding,
         minHeight: minHeight ?? this.minHeight,
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiTableRowItemDimensTheme &&
-          minHeight == other.minHeight;
+          minHeight == other.minHeight &&
+          padding == other.padding &&
+          customPadding == other.customPadding &&
+          spacing == other.spacing;
 
   @override
-  int get hashCode => minHeight.hashCode;
+  int get hashCode => Object.hash(minHeight, padding, customPadding, spacing);
 }

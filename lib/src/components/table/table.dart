@@ -5,6 +5,7 @@ import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator
 import 'package:impaktfull_ui/src/components/table/table.dart';
 import 'package:impaktfull_ui/src/components/table/table_column_config.dart';
 import 'package:impaktfull_ui/src/components/table/table_column_config_scope.dart';
+import 'package:impaktfull_ui/src/components/table/table_row_index_scope.dart';
 import 'package:impaktfull_ui/src/components/table_header/table_header.dart';
 import 'package:impaktfull_ui/src/components/table_header_item/table_header_item.dart';
 import 'package:impaktfull_ui/src/components/table_row/table_row.dart';
@@ -37,63 +38,86 @@ class ImpaktfullUiTable extends StatelessWidget {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => Container(
-        decoration: BoxDecoration(
-          color: componentTheme.colors.background,
-          borderRadius: componentTheme.dimens.borderRadius,
-          border: componentTheme.colors.border == null
-              ? null
-              : Border.all(
-                  color: componentTheme.colors.border!,
-                  strokeAlign: BorderSide.strokeAlignInside,
-                  width: 1,
-                ),
-        ),
-        child: ClipRRect(
-          borderRadius: componentTheme.dimens.borderRadius,
-          child: ImpaktfullUiTableColumnConfigScope(
-            columnConfig: columnConfig,
-            child: _TableContainer(
+      builder: (context, componentTheme) {
+        final dividerTheme = _getDividerTheme(context, componentTheme);
+        return Container(
+          decoration: BoxDecoration(
+            color: componentTheme.colors.background,
+            borderRadius: componentTheme.dimens.borderRadius,
+            border: componentTheme.colors.border == null
+                ? null
+                : Border.all(
+                    color: componentTheme.colors.border!,
+                    strokeAlign: BorderSide.strokeAlignInside,
+                    width: componentTheme.dimens.borderWidth,
+                  ),
+          ),
+          child: ClipRRect(
+            borderRadius: componentTheme.dimens.borderRadius,
+            child: ImpaktfullUiTableColumnConfigScope(
               columnConfig: columnConfig,
-              amountOfColumns: titles.length,
-              borderRadius: componentTheme.dimens.borderRadius,
-              minColumnWidth: componentTheme.dimens.minColumnWidth,
-              child: ImpaktfullUiAutoLayout.vertical(
-                mainAxisSize: shrinkWrap ? MainAxisSize.min : MainAxisSize.max,
-                children: [
-                  ImpaktfullUiTableHeader(
-                    titles: titles,
-                    columnConfig: columnConfig,
-                  ),
-                  const ImpaktfullUiDivider(),
-                  Builder(
-                    builder: (context) {
-                      Widget child;
-                      if (isLoading) {
-                        child = const Center(
-                          child: ImpaktfullUiLoadingIndicator(),
-                        );
-                      } else {
-                        child = ListView.separated(
-                          itemCount: content.length,
-                          shrinkWrap: shrinkWrap,
-                          itemBuilder: (context, index) => content[index],
-                          separatorBuilder: (contex, index) =>
-                              const ImpaktfullUiDivider(),
-                        );
-                      }
-                      if (shrinkWrap) {
-                        return child;
-                      }
-                      return Expanded(child: child);
-                    },
-                  ),
-                ],
+              child: _TableContainer(
+                columnConfig: columnConfig,
+                amountOfColumns: titles.length,
+                borderRadius: componentTheme.dimens.borderRadius,
+                minColumnWidth: componentTheme.dimens.minColumnWidth,
+                child: ImpaktfullUiAutoLayout.vertical(
+                  mainAxisSize:
+                      shrinkWrap ? MainAxisSize.min : MainAxisSize.max,
+                  children: [
+                    ImpaktfullUiTableHeader(
+                      titles: titles,
+                      columnConfig: columnConfig,
+                    ),
+                    ImpaktfullUiDivider(theme: dividerTheme),
+                    Builder(
+                      builder: (context) {
+                        Widget child;
+                        if (isLoading) {
+                          child = const Center(
+                            child: ImpaktfullUiLoadingIndicator(),
+                          );
+                        } else {
+                          child = ListView.separated(
+                            itemCount: content.length,
+                            shrinkWrap: shrinkWrap,
+                            itemBuilder: (context, index) =>
+                                ImpaktfullUiTableRowIndexScope(
+                              index: index,
+                              child: content[index],
+                            ),
+                            separatorBuilder: (contex, index) =>
+                                ImpaktfullUiDivider(theme: dividerTheme),
+                          );
+                        }
+                        if (shrinkWrap) {
+                          return child;
+                        }
+                        return Expanded(child: child);
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
+    );
+  }
+
+  /// The theme of the dividers of the table: the divider theme of the theme
+  /// with the `divider` color of the table, or null (the divider theme
+  /// itself) when the table has no `divider` color.
+  ImpaktfullUiDividerTheme? _getDividerTheme(
+    BuildContext context,
+    ImpaktfullUiTableTheme componentTheme,
+  ) {
+    final color = componentTheme.colors.divider;
+    if (color == null) return null;
+    final dividerTheme = ImpaktfullUiDividerTheme.of(context);
+    return dividerTheme.copyWith(
+      colors: dividerTheme.colors.copyWith(color: color),
     );
   }
 }

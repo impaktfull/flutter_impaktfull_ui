@@ -9,10 +9,16 @@ class BlurredModalRouteWrapper extends StatelessWidget {
   final Widget child;
   final bool hasBlurredBackground;
   final Animation<double> animation;
+
+  /// How much the page below is blurred. The caller resolves it from the
+  /// modal theme.
+  final double blurSigma;
+
   const BlurredModalRouteWrapper({
     required this.child,
     required this.animation,
     required this.hasBlurredBackground,
+    this.blurSigma = 8,
     super.key,
   });
 
@@ -27,8 +33,8 @@ class BlurredModalRouteWrapper extends StatelessWidget {
               opacity: animation.value,
               child: BackdropFilter(
                 filter: ImageFilter.blur(
-                  sigmaX: 8,
-                  sigmaY: 8,
+                  sigmaX: blurSigma,
+                  sigmaY: blurSigma,
                 ),
                 child: Container(),
               ),

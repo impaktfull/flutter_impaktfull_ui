@@ -21,20 +21,20 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
   final ValueChanged<bool>? onChanged;
   final Widget Function(BuildContext, ImpaktfullUiTableRowItemTheme)? builder;
   final ImpaktfullUiTableRowItemTheme? theme;
-  final EdgeInsets padding;
-  final EdgeInsets? _customPadding;
+  final EdgeInsets? _padding;
 
   const ImpaktfullUiTableRowItem.text({
     required String this.title,
     this.subtitle,
     this.onTap,
-    this.padding = const EdgeInsets.symmetric(
-      horizontal: 16,
-    ),
+
+    /// The padding of the cell. Without one, the `padding` of the
+    /// [ImpaktfullUiTableRowItemTheme] is used (16 horizontal by default).
+    EdgeInsets? padding,
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableRowItemType.text,
-        _customPadding = null,
+        _padding = padding,
         builder = null,
         badgeType = null,
         onChanged = null,
@@ -46,41 +46,43 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
     this.title,
     this.subtitle,
     this.onTap,
-    this.padding = const EdgeInsets.symmetric(
-      horizontal: 16,
-    ),
+
+    /// The padding of the cell. Without one, the `padding` of the
+    /// [ImpaktfullUiTableRowItemTheme] is used (16 horizontal by default).
+    EdgeInsets? padding,
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableRowItemType.checkbox,
-        _customPadding = null,
+        _padding = padding,
         builder = null,
         badgeType = null;
 
   const ImpaktfullUiTableRowItem.badge({
     required this.title,
     this.badgeType,
-    this.padding = const EdgeInsets.symmetric(
-      horizontal: 16,
-    ),
+
+    /// The padding of the cell. Without one, the `padding` of the
+    /// [ImpaktfullUiTableRowItemTheme] is used (16 horizontal by default).
+    EdgeInsets? padding,
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableRowItemType.badge,
-        _customPadding = null,
+        _padding = padding,
         subtitle = null,
         builder = null,
         onTap = null,
         onChanged = null,
         isSelected = false;
 
-  /// Without a [padding], the custom cell only has 8px at the end.
+  /// Without a [padding], the custom cell uses the `customPadding` of the
+  /// [ImpaktfullUiTableRowItemTheme] (8px at the end by default).
   const ImpaktfullUiTableRowItem.custom({
     required this.builder,
     EdgeInsets? padding,
     this.theme,
     super.key,
   })  : type = ImpaktfullUiTableRowItemType.custom,
-        padding = padding ?? const EdgeInsets.symmetric(horizontal: 16),
-        _customPadding = padding,
+        _padding = padding,
         title = null,
         subtitle = null,
         badgeType = null,
@@ -88,15 +90,23 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
         onChanged = null,
         isSelected = false;
 
+  /// The padding that was passed to the constructor, or
+  /// `EdgeInsets.symmetric(horizontal: 16)` (the padding of the default
+  /// theme) when none was passed. Without a padding, the cell uses the
+  /// `padding` (or `customPadding`) of the [ImpaktfullUiTableRowItemTheme].
+  EdgeInsets get padding =>
+      _padding ?? const EdgeInsets.symmetric(horizontal: 16);
+
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
+        final padding = _padding ?? componentTheme.dimens.padding;
         if (builder != null) {
           return Padding(
-            padding: _customPadding ?? const EdgeInsetsDirectional.only(end: 8),
+            padding: _padding ?? componentTheme.dimens.customPadding,
             child: builder!(context, componentTheme),
           );
         }
@@ -123,7 +133,7 @@ class ImpaktfullUiTableRowItem extends StatelessWidget {
             padding: padding,
             alignment: AlignmentDirectional.centerStart,
             child: ImpaktfullUiAutoLayout.horizontal(
-              spacing: 8,
+              spacing: componentTheme.dimens.spacing,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 if (type == ImpaktfullUiTableRowItemType.checkbox) ...[

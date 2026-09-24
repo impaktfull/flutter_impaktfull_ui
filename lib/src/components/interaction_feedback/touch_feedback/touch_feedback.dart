@@ -102,6 +102,7 @@ class ImpaktfullUiTouchFeedback extends StatelessWidget {
             autofocus: autofocus,
             useFocusColor: useFocusColor,
             colors: componentTheme.colors,
+            focusRing: componentTheme.focusRing,
             focusNode: focusNode,
             onFocusChanged: _onFocusChanged,
             child: child,
@@ -132,6 +133,7 @@ class _PlatformTouchFeedback extends StatefulWidget {
   final bool autofocus;
   final bool useFocusColor;
   final ImpaktfullUiTouchFeedbackColorTheme colors;
+  final ImpaktfullUiFocusRingTheme focusRing;
   final FocusNode? focusNode;
   final ValueChanged<bool> onFocusChanged;
 
@@ -149,6 +151,7 @@ class _PlatformTouchFeedback extends StatefulWidget {
     required this.autofocus,
     required this.useFocusColor,
     required this.colors,
+    required this.focusRing,
     required this.onFocusChanged,
     required this.focusNode,
   });
@@ -221,6 +224,7 @@ class _PlatformTouchFeedbackState extends State<_PlatformTouchFeedback> {
       hasFocus: showFocus,
       borderRadius: widget.borderRadius,
       enabled: widget.useFocusColor,
+      theme: widget.focusRing,
       child: InkWell(
         borderRadius: widget.borderRadius?.value,
         onTap: widget.onTap,

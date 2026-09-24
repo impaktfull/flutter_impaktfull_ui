@@ -88,19 +88,26 @@ class ImpaktfullUiModalColorTheme {
   final Color closeIcon;
   final Color leadingHeaderIcon;
 
+  /// The color of the barrier behind the modal: everything below the modal is
+  /// covered with it. `Colors.black54` by default.
+  final Color barrier;
+
   const ImpaktfullUiModalColorTheme({
     required this.background,
     required this.closeIcon,
     required this.leadingHeaderIcon,
+    this.barrier = const Color(0x8A000000),
   });
 
   ImpaktfullUiModalColorTheme copyWith({
     Color? background,
+    Color? barrier,
     Color? closeIcon,
     Color? leadingHeaderIcon,
   }) =>
       ImpaktfullUiModalColorTheme(
         background: background ?? this.background,
+        barrier: barrier ?? this.barrier,
         closeIcon: closeIcon ?? this.closeIcon,
         leadingHeaderIcon: leadingHeaderIcon ?? this.leadingHeaderIcon,
       );
@@ -111,10 +118,12 @@ class ImpaktfullUiModalColorTheme {
       other is ImpaktfullUiModalColorTheme &&
           background == other.background &&
           closeIcon == other.closeIcon &&
-          leadingHeaderIcon == other.leadingHeaderIcon;
+          leadingHeaderIcon == other.leadingHeaderIcon &&
+          barrier == other.barrier;
 
   @override
-  int get hashCode => Object.hash(background, closeIcon, leadingHeaderIcon);
+  int get hashCode =>
+      Object.hash(background, closeIcon, leadingHeaderIcon, barrier);
 }
 
 class ImpaktfullUiModalDurationsTheme {
@@ -183,15 +192,21 @@ class ImpaktfullUiModalDimensTheme {
   final EdgeInsetsGeometry leadingIconPadding;
   final EdgeInsetsGeometry padding;
 
+  /// How much the page behind the modal is blurred, when the modal is shown
+  /// with `hasBlurredBackground`. 8 by default.
+  final double barrierBlurSigma;
+
   const ImpaktfullUiModalDimensTheme({
     required this.borderRadius,
     required this.borderWidth,
     required this.closeIconButtonPadding,
     required this.leadingIconPadding,
     required this.padding,
+    this.barrierBlurSigma = 8,
   });
 
   ImpaktfullUiModalDimensTheme copyWith({
+    double? barrierBlurSigma,
     BorderRadiusGeometry? borderRadius,
     double? borderWidth,
     EdgeInsetsGeometry? closeIconButtonPadding,
@@ -199,6 +214,7 @@ class ImpaktfullUiModalDimensTheme {
     EdgeInsetsGeometry? padding,
   }) =>
       ImpaktfullUiModalDimensTheme(
+        barrierBlurSigma: barrierBlurSigma ?? this.barrierBlurSigma,
         borderRadius: borderRadius ?? this.borderRadius,
         borderWidth: borderWidth ?? this.borderWidth,
         closeIconButtonPadding:
@@ -215,11 +231,12 @@ class ImpaktfullUiModalDimensTheme {
           borderWidth == other.borderWidth &&
           closeIconButtonPadding == other.closeIconButtonPadding &&
           leadingIconPadding == other.leadingIconPadding &&
-          padding == other.padding;
+          padding == other.padding &&
+          barrierBlurSigma == other.barrierBlurSigma;
 
   @override
   int get hashCode => Object.hash(borderRadius, borderWidth,
-      closeIconButtonPadding, leadingIconPadding, padding);
+      closeIconButtonPadding, leadingIconPadding, padding, barrierBlurSigma);
 }
 
 class ImpaktfullUiModalAssetsTheme {
