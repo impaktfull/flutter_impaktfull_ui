@@ -72,29 +72,98 @@ class ImpaktfullUiTabBarAssetsTheme {
 }
 
 class ImpaktfullUiTabBarColorTheme {
-  const ImpaktfullUiTabBarColorTheme();
+  /// The background behind the items of the bar. `null` (the default) draws
+  /// none: the items paint their own background
+  /// (`ImpaktfullUiTabBarItemColorTheme.background`).
+  ///
+  /// A design system with a track behind its tabs (shadcn/ui's
+  /// `bg-muted` list) sets it here.
+  final Color? background;
 
-  ImpaktfullUiTabBarColorTheme copyWith() =>
-      const ImpaktfullUiTabBarColorTheme();
+  /// The colour of the line under the bar (Ant Design's `colorSplit`). `null`
+  /// (the default) draws no line.
+  final Color? divider;
+
+  const ImpaktfullUiTabBarColorTheme({
+    this.background,
+    this.divider,
+  });
+
+  ImpaktfullUiTabBarColorTheme copyWith({
+    Color? background,
+    Color? divider,
+  }) =>
+      ImpaktfullUiTabBarColorTheme(
+        background: background ?? this.background,
+        divider: divider ?? this.divider,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiTabBarColorTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTabBarColorTheme &&
+          background == other.background &&
+          divider == other.divider;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(background, divider);
 }
 
 class ImpaktfullUiTabBarDimensTheme {
-  const ImpaktfullUiTabBarDimensTheme();
+  /// The padding around the items of the bar.
+  final EdgeInsetsGeometry padding;
 
-  ImpaktfullUiTabBarDimensTheme copyWith() =>
-      const ImpaktfullUiTabBarDimensTheme();
+  /// The height of the bar. `null` (the default) lets the height follow from
+  /// the items.
+  final double? height;
+
+  /// The space between two items of the bar.
+  final double spacing;
+
+  /// The height of the line under the bar, drawn when
+  /// [ImpaktfullUiTabBarColorTheme.divider] is set.
+  final double dividerHeight;
+
+  /// The border radius of the background and of the line under the bar, used
+  /// when [ImpaktfullUiTabBarColorTheme.background] is set.
+  final BorderRadiusGeometry? borderRadius;
+
+  const ImpaktfullUiTabBarDimensTheme({
+    this.padding = EdgeInsets.zero,
+    this.height,
+    this.spacing = 0,
+    this.dividerHeight = 1,
+    this.borderRadius,
+  });
+
+  ImpaktfullUiTabBarDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
+    double? dividerHeight,
+    double? height,
+    EdgeInsetsGeometry? padding,
+    double? spacing,
+  }) =>
+      ImpaktfullUiTabBarDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
+        dividerHeight: dividerHeight ?? this.dividerHeight,
+        height: height ?? this.height,
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiTabBarDimensTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTabBarDimensTheme &&
+          padding == other.padding &&
+          height == other.height &&
+          spacing == other.spacing &&
+          dividerHeight == other.dividerHeight &&
+          borderRadius == other.borderRadius;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(padding, height, spacing, dividerHeight, borderRadius);
 }
 
 class ImpaktfullUiTabBarTextStyleTheme {

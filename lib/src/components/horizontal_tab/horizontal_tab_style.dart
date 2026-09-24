@@ -125,23 +125,38 @@ class ImpaktfullUiHorizontalTabTextStyleTheme {
 
 class ImpaktfullUiHorizontalTabDimensTheme {
   final BorderRadiusGeometry borderRadius;
+
+  /// The padding around the title of the tab.
+  final EdgeInsetsGeometry padding;
+
+  /// The space between the title of the tab and its badge.
+  final double badgeSpacing;
+
   const ImpaktfullUiHorizontalTabDimensTheme({
     required this.borderRadius,
+    this.padding = const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+    this.badgeSpacing = 8,
   });
 
   ImpaktfullUiHorizontalTabDimensTheme copyWith({
+    double? badgeSpacing,
     BorderRadiusGeometry? borderRadius,
+    EdgeInsetsGeometry? padding,
   }) =>
       ImpaktfullUiHorizontalTabDimensTheme(
+        badgeSpacing: badgeSpacing ?? this.badgeSpacing,
         borderRadius: borderRadius ?? this.borderRadius,
+        padding: padding ?? this.padding,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiHorizontalTabDimensTheme &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          padding == other.padding &&
+          badgeSpacing == other.badgeSpacing;
 
   @override
-  int get hashCode => borderRadius.hashCode;
+  int get hashCode => Object.hash(borderRadius, padding, badgeSpacing);
 }

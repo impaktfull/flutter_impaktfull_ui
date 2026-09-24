@@ -59,54 +59,65 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => Semantics(
-        container: true,
-        role: SemanticsRole.tab,
-        button: true,
-        selected: widget.index == widget.controller.index,
-        child: ImpaktfullUiTouchFeedback(
-          useFocusColor: false,
-          onTap: () => widget.controller.animateTo(
-            widget.index,
-            duration: ImpaktfullUiAnimationUtil.reduceMotion(context)
-                ? Duration.zero
-                : null,
-          ),
-          child: Container(
-            color: componentTheme.colors.background,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 12,
+      builder: (context, componentTheme) {
+        final colors = componentTheme.colors;
+        final dimens = componentTheme.dimens;
+        final isSelected = widget.index == widget.controller.index;
+        final textStyle = isSelected
+            ? componentTheme.textStyles.selectedLabel ??
+                componentTheme.textStyles.label
+            : componentTheme.textStyles.label;
+        return Semantics(
+          container: true,
+          role: SemanticsRole.tab,
+          button: true,
+          selected: isSelected,
+          child: ImpaktfullUiTouchFeedback(
+            useFocusColor: false,
+            borderRadius: dimens.borderRadius,
+            onTap: () => widget.controller.animateTo(
+              widget.index,
+              duration: ImpaktfullUiAnimationUtil.reduceMotion(context)
+                  ? Duration.zero
+                  : null,
             ),
-            child: ImpaktfullUiAutoLayout.vertical(
-              spacing: 4,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  widget.title,
-                  style: componentTheme.textStyles.label,
-                ),
-                AnimatedOpacity(
-                  opacity: widget.index == widget.controller.index ? 1 : 0,
-                  duration: ImpaktfullUiAnimationUtil.duration(
-                      context, componentTheme.durations.selected),
-                  curve: Curves.easeInOut,
-                  child: Container(
-                    height: 4,
-                    width: 4,
-                    decoration: BoxDecoration(
-                      color: componentTheme.textStyles.label.color,
-                      borderRadius:
-                          componentTheme.dimens.selectedMarkerBorderRadius,
+            child: Container(
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? colors.selectedBackground ?? colors.background
+                    : colors.background,
+                borderRadius: dimens.borderRadius,
+              ),
+              padding: dimens.padding,
+              child: ImpaktfullUiAutoLayout.vertical(
+                spacing: dimens.spacing,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    widget.title,
+                    style: textStyle,
+                  ),
+                  AnimatedOpacity(
+                    opacity: isSelected ? 1 : 0,
+                    duration: ImpaktfullUiAnimationUtil.duration(
+                        context, componentTheme.durations.selected),
+                    curve: Curves.easeInOut,
+                    child: Container(
+                      height: dimens.selectedMarkerHeight,
+                      width: dimens.selectedMarkerWidth ?? double.infinity,
+                      decoration: BoxDecoration(
+                        color: colors.selectedMarker ?? textStyle.color,
+                        borderRadius: dimens.selectedMarkerBorderRadius,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
