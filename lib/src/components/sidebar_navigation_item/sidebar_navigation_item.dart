@@ -106,6 +106,7 @@ class _ImpaktfullUiSidebarNavigationItemState
       component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
+        final touchFeedback = ImpaktfullUiTouchFeedbackTheme.of(context);
         return ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -117,6 +118,13 @@ class _ImpaktfullUiSidebarNavigationItemState
               selected: widget.isSelected,
               expanded: widget.items.isEmpty ? null : _expanded,
               child: ImpaktfullUiTouchFeedback(
+                // The item lives in the scrolling list of
+                // `ImpaktfullUiSidebarNavigation`, which clips to its
+                // viewport, so the focus ring is drawn against the inside of
+                // the item instead of around it.
+                theme: touchFeedback.copyWith(
+                  focusRing: touchFeedback.focusRing.inset,
+                ),
                 onTap: _onTap,
                 color:
                     widget.isSelected ? componentTheme.colors.background : null,

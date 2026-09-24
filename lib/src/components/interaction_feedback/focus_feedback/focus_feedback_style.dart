@@ -36,6 +36,16 @@ class ImpaktfullUiFocusRingTheme {
         width: width ?? this.width,
       );
 
+  /// The same ring, drawn against the inside edge of the component instead of
+  /// around it.
+  ///
+  /// A component inside a scroller that clips (a tab of
+  /// [ImpaktfullUiHorizontalTabs], a row of a table, an item of a list) has no
+  /// room outside itself: the viewport cuts an outside ring off, and what is
+  /// left of it is the part that runs along the sides. This ring has the same
+  /// color and thickness and always fits.
+  ImpaktfullUiFocusRingTheme get inset => copyWith(offset: -width);
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
