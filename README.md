@@ -311,7 +311,7 @@ final theme = ImpaktfullUiDefaultTheme.withMinimalChanges(
   primary: const Color(0xFF007AFF),
   accent: const Color(0xFF5856D6),
   secondary: const Color(0xFFFF9500),
-  borderRadius: BorderRadius.circular(8),
+  radius: 8,
 );
 
 ImpaktfullUiApp(
@@ -320,6 +320,51 @@ ImpaktfullUiApp(
   home: const MyHomeScreen(),
 );
 ```
+
+Everything `withMinimalChanges` builds is a **base token**: the colors, the text
+styles, the border radius and spacing scale, the animation durations, the
+shadows and the assets. It builds the 87 component themes from them with
+`ImpaktfullUiComponentsTheme.getDefault`, so a base token you change reaches
+every component.
+
+#### Base tokens
+
+| Token | Parameter | Default |
+| --- | --- | --- |
+| colors | `primary`, `accent`, `secondary`, `canvas`, `card`, `border`, `text`, `warning`, ... or a whole `colors:` group | the impaktfull palette per `brightness` |
+| border radius | `radius` (the seed), or a single step: `borderRadius`, `borderRadiusSmall`, `borderRadiusLarge`, ..., `borderRadiusCircle` | `radius: 8` → 4 / 6 / 8 / 12 / 16 |
+| spacing | `spacingUnit`, or a whole `dimens:` group | `4` → 4 / 8 / 12 / 16 / 24 / 32 |
+| typography | `fontFamilyDisplay`, `fontFamilyText`, `heightDisplay`, `heightText`, `letterSpacingDisplay`, `letterSpacingText`, `fontWeightDisplay`, `fontWeightText` | Ubuntu / Geologica, and Flutter's defaults for the rest |
+| durations | `durations:` | 200 / 350 / 500 ms |
+| shadows | `shadows:` | derived from `colors.shadow` |
+| assets | `package`, `assetSuffix`, or a whole `assets:` group | the assets of this package |
+
+`radius` is one value for the whole radius scale, the way shadcn/ui's `--radius`
+and Ant Design's `borderRadius` are: the steps are `radius - 4`, `radius - 2`,
+`radius`, `radius + 4` and `radius + 8`, and a step you pass wins over the seed.
+Almost every radius of the package reads `dimens.borderRadius`, the radius of a
+control.
+
+`colors`, `textStyles`, `dimens`, `durations`, `shadows` and `assets` take a
+fully built token group and replace what the individual parameters would build,
+for a token that has no parameter of its own:
+
+```dart
+final theme = ImpaktfullUiDefaultTheme.withMinimalChanges(
+  primary: const Color(0xFF1677FF),
+  accent: const Color(0xFF1677FF),
+  secondary: const Color(0xFF1677FF),
+  radius: 6,           // Ant Design's radius scale
+  heightText: 1.5714,  // and its line height
+  durations: const ImpaktfullUiDurationTheme(
+    short: Duration(milliseconds: 100),
+    medium: Duration(milliseconds: 200),
+    long: Duration(milliseconds: 300),
+  ),
+);
+```
+
+With a `colors:` group, `primary`, `accent` and `secondary` can be left out.
 
 #### Changing a single token
 
@@ -349,7 +394,47 @@ ImpaktfullUiCard(
 );
 ```
 
-> **Note:** `theme.copyWith(colors: ...)` only replaces the colors on the root theme. The component themes were built from the old colors and keep them. To change a base color, border radius or font everywhere, build the theme again with `ImpaktfullUiDefaultTheme.withMinimalChanges(...)` and use `copyWith` for the component tokens on top of that.
+#### Changing a base token everywhere: `copyWithBaseTokens`
+
+`copyWith` replaces exactly what you pass it, so `theme.copyWith(colors: ...)` changes `theme.colors` and leaves the 87 component themes alone: they were built from the old colors and keep them. That is on purpose — `copyWith` never throws away a per-component token you layered on top.
+
+To change a base token *everywhere*, use `copyWithBaseTokens`. It replaces the base token groups and builds every component theme again from them:
+
+```dart
+final base = ImpaktfullUiTheme.getDefault();
+final theme = base.copyWithBaseTokens(
+  colors: base.colors.copyWith(accent: const Color(0xFF00B894)),
+  durations: const ImpaktfullUiDurationTheme(
+    short: Duration(milliseconds: 100),
+    medium: Duration(milliseconds: 200),
+    long: Duration(milliseconds: 300),
+  ),
+);
+// theme.components.button.colors.primary is the new accent
+```
+
+Because it builds the component themes from scratch, it discards a change you made to a component theme of that theme. Apply those after it:
+
+```dart
+final theme = base
+    .copyWithBaseTokens(colors: colors)
+    .copyWith(components: ...); // the per-component tokens, on top
+```
+
+`ImpaktfullUiComponentsTheme.getDefault({assets, colors, textStyles, dimens, durations, shadows})` is what both `withMinimalChanges` and `copyWithBaseTokens` build the component themes with, if you want to build them yourself.
+
+#### A theme for part of the tree
+
+`ImpaktfullUiApp(impaktfullUiTheme:)` sets the theme of the whole app. Wrap a subtree in `ImpaktfullUiThemeConfigurator` to give it its own theme, e.g. for a preview pane:
+
+```dart
+ImpaktfullUiThemeConfigurator(
+  theme: previewTheme,
+  child: const MyPreview(),
+);
+```
+
+`ImpaktfullUiTheme.of(context)` returns the nearest one, and a subtree rebuilds only when its own theme changes.
 
 #### Light and dark
 

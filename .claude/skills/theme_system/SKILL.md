@@ -13,25 +13,28 @@ ImpaktfullUI uses a hierarchical theme system:
 
 ```
 ImpaktfullUiTheme (root)
-├── assets (ImpaktfullUiAssetTheme)
-├── colors (ImpaktfullUiColorTheme)
-├── textStyles (ImpaktfullUiTextStylesTheme)
-├── dimens (ImpaktfullUiDimensTheme)
-├── durations (ImpaktfullUiDurationTheme)
-├── shadows (ImpaktfullUiShadowsTheme)
-└── components (ImpaktfullUiComponentsTheme)
-    ├── button, card, ... (80+ component themes)
+├── assets (ImpaktfullUiAssetTheme)          ─┐
+├── colors (ImpaktfullUiColorTheme)           │
+├── textStyles (ImpaktfullUiTextStylesTheme)  │ the base tokens
+├── dimens (ImpaktfullUiDimensTheme)          │  └── spacing (ImpaktfullUiSpacingTheme)
+├── durations (ImpaktfullUiDurationTheme)     │
+├── shadows (ImpaktfullUiShadowsTheme)       ─┘
+└── components (ImpaktfullUiComponentsTheme)  ← built from the base tokens by
+    ├── button, card, ... (80+ component themes)  ImpaktfullUiComponentsTheme.getDefault
 ```
 
 ## Key Files
 
 | File | Purpose |
 |------|---------|
-| `lib/src/theme/theme.dart` | Main `ImpaktfullUiTheme` class |
-| `lib/src/theme/component_theme.dart` | Component themes container |
-| `lib/src/theme/theme_default.dart` | Default theme creation |
+| `lib/src/theme/theme.dart` | Main `ImpaktfullUiTheme` class, `copyWith` and `copyWithBaseTokens` |
+| `lib/src/theme/component_theme.dart` | Component themes container, and `ImpaktfullUiComponentsTheme.getDefault` (the 87 component themes) |
+| `lib/src/theme/theme_default.dart` | `ImpaktfullUiDefaultTheme.withMinimalChanges`: the base tokens |
 | `lib/src/theme/color_theme.dart` | Color definitions |
 | `lib/src/theme/textstyle_theme.dart` | Typography definitions |
+| `lib/src/theme/dimens_theme.dart` | The border radius scale (grown from one `radius` seed) |
+| `lib/src/theme/spacing_theme.dart` | The spacing scale (grown from one `unit`) |
+| `lib/src/components/theme/theme_configurator.dart` | `ImpaktfullUiThemeConfigurator`, the `InheritedWidget` that scopes a theme to a subtree |
 
 ## Creating a Theme
 
@@ -58,11 +61,47 @@ final theme = ImpaktfullUiDefaultTheme.withMinimalChanges<MyCustomTheme>(
   text: const Color(0xFF344054),
   fontFamilyDisplay: 'Ubuntu', // the default; your app bundles the font
   fontFamilyText: 'Geologica',
-  borderRadius: BorderRadius.circular(8),
+  radius: 8,
   label: 'My App Theme',
   customTheme: MyCustomTheme(),
 );
 ```
+
+### Base tokens
+
+Everything `withMinimalChanges` builds is a base token, and it builds the 87
+component themes from them with `ImpaktfullUiComponentsTheme.getDefault`. A base
+token that no component theme reads is not a token: **thread a new base token
+through `ImpaktfullUiComponentsTheme.getDefault` into the `*_style.dart` of the
+components that need it.**
+
+| Group | Individual parameters | Whole group |
+|---|---|---|
+| `colors` | `primary`, `accent`, `secondary`, `canvas`, `card`, `border`, `text`, `warning`, ... | `colors:` |
+| `dimens` | `radius` (the seed of the radius scale), `borderRadius` and the other steps, `spacingUnit` | `dimens:` |
+| `textStyles` | `fontFamilyDisplay` / `fontFamilyText`, `heightDisplay` / `heightText`, `letterSpacingDisplay` / `letterSpacingText`, `fontWeightDisplay` / `fontWeightText` | `textStyles:` |
+| `durations` | — | `durations:` |
+| `shadows` | — (derived from `colors.shadow`) | `shadows:` |
+| `assets` | `package`, `assetSuffix` | `assets:` |
+
+A group that is passed wins over the individual parameters of that group; a
+group that is not passed is still derived from the ones that are (the text
+styles take their colors from `colors`). With a `colors:` group, `primary`,
+`accent` and `secondary` may be left out: an `assert` keeps them required
+without one, and they become `required` again in 1.0.0.
+
+`radius` grows the whole scale (`radius - 4` / `radius - 2` / `radius` /
+`radius + 4` / `radius + 8`, clamped at 0), the way shadcn/ui's `--radius` and
+Ant Design's `borderRadius` do. 97 of the ~110 radius reads in `lib/` go through
+`dimens.borderRadius`, the middle step. `ImpaktfullUiSpacingTheme`
+(`dimens.spacing`) is the same idea for gaps and paddings; the components do not
+read it yet, their paddings are still in their own `*DimensTheme`.
+
+`ImpaktfullUiDimensTheme.borderRadiusCircle` is
+`BorderRadius.circular(ImpaktfullUiDimensTheme.borderRadiusCircleMax)` (999).
+Do not raise it: Flutter clamps a radius to half the shortest side when it
+paints, and an `InkWell` with an absurd radius makes a software rendered frame
+take minutes.
 
 ### Light and dark
 
@@ -178,31 +217,66 @@ final customTheme = theme.copyWith(
 
 Because `copyWith` uses `value ?? this.value`, it cannot set a nullable field back to `null`. Build that sub-theme with its constructor instead.
 
-### Limitation: `ImpaktfullUiTheme.copyWith(colors:)` does not update the components
+### `copyWith` does not rebuild the components, `copyWithBaseTokens` does
 
-`ImpaktfullUiTheme.copyWith(colors: ...)` (and `textStyles:`, `dimens:`, ...) only replaces that value on the root theme. The 84 component themes in `components` were built from the old base tokens and keep them, so e.g. `theme.components.button.colors.primary` still has the old accent color.
+`ImpaktfullUiTheme.copyWith` replaces exactly the values it is given, so
+`copyWith(colors: ...)` changes `theme.colors` and leaves `components` alone:
+`theme.components.button.colors.primary` still holds the old accent. **That is
+deliberate, not a bug:** `copyWith` must never throw away a per-component token
+an app layered on top of the theme.
 
-To change a base token everywhere, build the theme again from the base tokens with `ImpaktfullUiDefaultTheme.withMinimalChanges` (colors, border radii, font families, ...) and apply `copyWith` for single component tokens afterwards:
+`ImpaktfullUiTheme.copyWithBaseTokens` is the one that rebuilds. It replaces the
+base token groups and builds every component theme again from them with
+`ImpaktfullUiComponentsTheme.getDefault`:
 
 ```dart
-final base = ImpaktfullUiDefaultTheme.withMinimalChanges(
-  primary: const Color(0xFF007AFF),
-  accent: const Color(0xFF5856D6),
-  secondary: const Color(0xFFFF9500),
-  borderRadius: BorderRadius.circular(8),
-);
-final theme = base.copyWith(
-  components: base.components.copyWith(
-    card: base.components.card.copyWith(
-      dimens: base.components.card.dimens.copyWith(
-        padding: const EdgeInsets.all(24),
-      ),
-    ),
+final base = ImpaktfullUiTheme.getDefault();
+final theme = base.copyWithBaseTokens(
+  colors: base.colors.copyWith(accent: const Color(0xFF00B894)),
+  durations: const ImpaktfullUiDurationTheme(
+    short: Duration(milliseconds: 100),
+    medium: Duration(milliseconds: 200),
+    long: Duration(milliseconds: 300),
   ),
 );
+// theme.components.button.colors.primary is the new accent
 ```
 
+It builds the component themes from scratch, so it drops a change that was
+applied to a component theme of that theme. Apply those with `copyWith` after
+it:
+
+```dart
+final theme = base
+    .copyWithBaseTokens(colors: colors)
+    .copyWith(components: ...); // the per-component tokens, on top
+```
+
+It does not derive `textStyles` from `colors` (a copied theme already has its
+text styles, and their colors are not always the ones of `colors`): pass both,
+or build the theme again with `withMinimalChanges`, which derives everything
+from nothing.
+
+`test/src/theme/theme_base_tokens_test.dart` guards all of this: every base
+token group reaching the component themes and the widgets, the radius seed, the
+spacing scale, the bounded `borderRadiusCircle` and the difference between the
+two copies.
+
 `ImpaktfullUiTheme.getDefault()` is the impaktfull branding built with `withMinimalChanges`.
+
+### Scoping a theme to a subtree
+
+`ImpaktfullUiThemeConfigurator` is the exported `InheritedWidget` that provides
+the theme. `ImpaktfullUiApp` builds one around the app; wrap a subtree in
+another one to give it its own theme (a preview pane, a side-by-side
+comparison, a test):
+
+```dart
+ImpaktfullUiThemeConfigurator(
+  theme: previewTheme,
+  child: const MyPreview(),
+);
+```
 
 ### Rules for theme classes
 
@@ -254,6 +328,16 @@ theme.textStyles
     └── display / text
         └── extraSmall / small / medium / large / extraLarge
 ```
+
+`ImpaktfullUiTextStylesTheme.getDefault({colors, ...})` builds all 13 groups
+from a color theme. The font size of each step is fixed (display 72 / 60 / 48 /
+30 / 24 / 20, text 20 / 18 / 16 / 14 / 12); everything else about the typography
+is a parameter of `getDefault`, of `ImpaktfullUiTextStyleTheme.getByColor`
+(`heightDisplay` / `heightText`, `letterSpacingDisplay` / `letterSpacingText`,
+`fontWeightDisplay` / `fontWeightText`) and of
+`ImpaktfullUiTextStyle{Display,Text}Theme.getByColor` (`height`,
+`letterSpacing`, `fontWeight`). They apply to every step of that scale and
+default to `null`, which is Flutter's default.
 
 ### Modifiers
 

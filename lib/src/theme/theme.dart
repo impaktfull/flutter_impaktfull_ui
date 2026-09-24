@@ -16,6 +16,7 @@ export 'component_theme.dart';
 export 'dimens_theme.dart';
 export 'duration_theme.dart';
 export 'shadow_theme.dart';
+export 'spacing_theme.dart';
 export 'textstyle_theme.dart';
 export 'theme_configurator.dart';
 export 'theme_default.dart';
@@ -65,11 +66,17 @@ class ImpaktfullUiTheme<T extends Object> {
     T? customTheme,
   }) : _customTheme = customTheme;
 
+  /// [ImpaktfullUiDefaultTheme.withMinimalChanges] with the assets of this
+  /// package, which documents every parameter.
+  ///
+  /// [primary], [accent] and [secondary] are only optional so a theme can be
+  /// built from a [colors] group instead; without one they are required (and
+  /// `required` again in 1.0.0).
   static ImpaktfullUiTheme<T> custom<T extends Object>({
     String? label,
-    required Color primary,
-    required Color accent,
-    required Color secondary,
+    Color? primary,
+    Color? accent,
+    Color? secondary,
     Color? tertiary,
     Color? canvas,
     Color? card,
@@ -80,15 +87,30 @@ class ImpaktfullUiTheme<T extends Object> {
     Color? textTertiary,
     Color? textOnAccent,
     Color? textOnSecondary,
+    double radius = 8,
     BorderRadiusGeometry? borderRadiusExtraSmall,
     BorderRadiusGeometry? borderRadiusSmall,
     BorderRadiusGeometry? borderRadius,
     BorderRadiusGeometry? borderRadiusLarge,
     BorderRadiusGeometry? borderRadiusExtraLarge,
+    BorderRadiusGeometry? borderRadiusCircle,
+    double spacingUnit = 4,
     String? fontFamilyDisplay = 'Ubuntu',
     String? fontFamilyText = 'Geologica',
+    double? heightDisplay,
+    double? heightText,
+    double? letterSpacingDisplay,
+    double? letterSpacingText,
+    FontWeight? fontWeightDisplay,
+    FontWeight? fontWeightText,
     String? package = _packageName,
     String? assetSuffix,
+    ImpaktfullUiAssetTheme? assets,
+    ImpaktfullUiColorTheme? colors,
+    ImpaktfullUiTextStylesTheme? textStyles,
+    ImpaktfullUiDimensTheme? dimens,
+    ImpaktfullUiDurationTheme? durations,
+    ImpaktfullUiShadowsTheme? shadows,
     Brightness brightness = Brightness.light,
     T? customTheme,
   }) =>
@@ -108,15 +130,30 @@ class ImpaktfullUiTheme<T extends Object> {
         textTertiary: textTertiary,
         textOnAccent: textOnAccent,
         textOnSecondary: textOnSecondary,
+        radius: radius,
         borderRadius: borderRadius,
         borderRadiusExtraSmall: borderRadiusExtraSmall,
         borderRadiusSmall: borderRadiusSmall,
         borderRadiusLarge: borderRadiusLarge,
         borderRadiusExtraLarge: borderRadiusExtraLarge,
+        borderRadiusCircle: borderRadiusCircle,
+        spacingUnit: spacingUnit,
         package: package,
         assetSuffix: assetSuffix,
         fontFamilyDisplay: fontFamilyDisplay,
         fontFamilyText: fontFamilyText,
+        heightDisplay: heightDisplay,
+        heightText: heightText,
+        letterSpacingDisplay: letterSpacingDisplay,
+        letterSpacingText: letterSpacingText,
+        fontWeightDisplay: fontWeightDisplay,
+        fontWeightText: fontWeightText,
+        assets: assets,
+        colors: colors,
+        textStyles: textStyles,
+        dimens: dimens,
+        durations: durations,
+        shadows: shadows,
         customTheme: customTheme,
       );
 
@@ -203,6 +240,16 @@ class ImpaktfullUiTheme<T extends Object> {
     throw Exception('Custom theme is not of type $T');
   }
 
+  /// This theme with the given values replaced, and nothing else.
+  ///
+  /// It replaces exactly what it is given, so `copyWith(colors: ...)` changes
+  /// `theme.colors` and leaves [components] alone: the 87 component themes
+  /// were built from the old base tokens and keep them. That is on purpose —
+  /// `copyWith` never throws away a per-component customisation that was
+  /// layered on top.
+  ///
+  /// To change a base token *everywhere*, use [copyWithBaseTokens], which
+  /// builds the component themes again from the new base tokens.
   ImpaktfullUiTheme<T> copyWith({
     String? label,
     ImpaktfullUiAssetTheme? assets,
@@ -227,6 +274,82 @@ class ImpaktfullUiTheme<T extends Object> {
         components: components ?? this.components,
         customTheme: customTheme ?? customThemeOrNull,
       );
+
+  /// This theme with the given base token groups replaced **and** every
+  /// component theme built again from them.
+  ///
+  /// This is the difference with [copyWith]: `copyWith(colors: ...)` replaces
+  /// `theme.colors` and leaves the 87 component themes as they were, so
+  /// `theme.components.button.colors.primary` still holds the old accent.
+  /// `copyWithBaseTokens(colors: ...)` rebuilds them with
+  /// [ImpaktfullUiComponentsTheme.getDefault], so the new token reaches every
+  /// component:
+  ///
+  /// ```dart
+  /// final base = ImpaktfullUiTheme.getDefault();
+  /// final theme = base.copyWithBaseTokens(
+  ///   colors: base.colors.copyWith(accent: Colors.teal),
+  ///   durations: const ImpaktfullUiDurationTheme(
+  ///     short: Duration(milliseconds: 100),
+  ///     medium: Duration(milliseconds: 200),
+  ///     long: Duration(milliseconds: 300),
+  ///   ),
+  /// );
+  /// ```
+  ///
+  /// Because the component themes are built from scratch, this **discards
+  /// every change that was made to a component theme** of this theme. Apply
+  /// those with [copyWith] afterwards:
+  ///
+  /// ```dart
+  /// final theme = base
+  ///     .copyWithBaseTokens(colors: colors)
+  ///     .copyWith(components: ...); // the per-component tokens, on top
+  /// ```
+  ///
+  /// [textStyles] is not derived from [colors] here (unlike in
+  /// [ImpaktfullUiDefaultTheme.withMinimalChanges], which builds a theme from
+  /// nothing): a theme that is copied already has its text styles, and their
+  /// colors are not always the ones of [colors]. Pass both, or build the theme
+  /// again with `withMinimalChanges` to have the text styles follow the
+  /// colors.
+  ImpaktfullUiTheme<T> copyWithBaseTokens({
+    String? label,
+    Brightness? brightness,
+    ImpaktfullUiAssetTheme? assets,
+    ImpaktfullUiColorTheme? colors,
+    ImpaktfullUiTextStylesTheme? textStyles,
+    ImpaktfullUiDimensTheme? dimens,
+    ImpaktfullUiDurationTheme? durations,
+    ImpaktfullUiShadowsTheme? shadows,
+    T? customTheme,
+  }) {
+    final newAssets = assets ?? this.assets;
+    final newColors = colors ?? this.colors;
+    final newTextStyles = textStyles ?? this.textStyles;
+    final newDimens = dimens ?? this.dimens;
+    final newDurations = durations ?? this.durations;
+    final newShadows = shadows ?? this.shadows;
+    return ImpaktfullUiTheme<T>(
+      label: label ?? this.label,
+      brightness: brightness ?? this.brightness,
+      assets: newAssets,
+      colors: newColors,
+      textStyles: newTextStyles,
+      dimens: newDimens,
+      durations: newDurations,
+      shadows: newShadows,
+      components: ImpaktfullUiComponentsTheme.getDefault(
+        assets: newAssets,
+        colors: newColors,
+        textStyles: newTextStyles,
+        dimens: newDimens,
+        durations: newDurations,
+        shadows: newShadows,
+      ),
+      customTheme: customTheme ?? customThemeOrNull,
+    );
+  }
 
   @override
   bool operator ==(Object other) =>
