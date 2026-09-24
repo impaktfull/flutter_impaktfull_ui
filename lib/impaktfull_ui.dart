@@ -128,6 +128,7 @@ export 'src/navigator/observer/path_route_observer.dart';
 
 // Theme
 export 'src/components/theme/theme_builder.dart';
+export 'src/components/theme/theme_configurator.dart';
 export 'src/theme/theme.dart';
 
 // Widget Library

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:impaktfull_ui/src/theme/color_theme.dart';
 
 class ImpaktfullUiTextStylesTheme {
   final ImpaktfullUiTextStyleTheme onCanvas;
@@ -78,6 +79,55 @@ class ImpaktfullUiTextStylesTheme {
         onDestructive: onDestructive ?? this.onDestructive,
       );
 
+  /// The 13 text style groups of a theme, one per background and text color
+  /// of [colors].
+  ///
+  /// This is what [ImpaktfullUiDefaultTheme.withMinimalChanges] builds
+  /// `textStyles` with. The typography that is not the font size
+  /// ([heightDisplay] / [heightText], [letterSpacingDisplay] /
+  /// [letterSpacingText], [fontWeightDisplay] / [fontWeightText]) applies to
+  /// every style of every group, so a design system's line height is one
+  /// value. `null` (the default) leaves it to Flutter.
+  static ImpaktfullUiTextStylesTheme getDefault({
+    required ImpaktfullUiColorTheme colors,
+    String? fontFamilyDisplay,
+    String? fontFamilyText,
+    double? heightDisplay,
+    double? heightText,
+    double? letterSpacingDisplay,
+    double? letterSpacingText,
+    FontWeight? fontWeightDisplay,
+    FontWeight? fontWeightText,
+  }) {
+    ImpaktfullUiTextStyleTheme byColor(Color color) =>
+        ImpaktfullUiTextStyleTheme.getByColor(
+          color: color,
+          fontFamilyDisplay: fontFamilyDisplay,
+          fontFamilyText: fontFamilyText,
+          heightDisplay: heightDisplay,
+          heightText: heightText,
+          letterSpacingDisplay: letterSpacingDisplay,
+          letterSpacingText: letterSpacingText,
+          fontWeightDisplay: fontWeightDisplay,
+          fontWeightText: fontWeightText,
+        );
+    return ImpaktfullUiTextStylesTheme(
+      onCanvas: byColor(colors.text),
+      onCanvasAccent: byColor(colors.accent),
+      onCanvasSecondary: byColor(colors.textSecondary),
+      onCanvasTertiary: byColor(colors.textTertiary),
+      onCard: byColor(colors.text),
+      onCardAccent: byColor(colors.accent),
+      onCardSecondary: byColor(colors.textSecondary),
+      onCardTertiary: byColor(colors.textTertiary),
+      onCardDestructive: byColor(colors.destructive),
+      onPrimary: byColor(colors.textOnPrimary),
+      onAccent: byColor(colors.textOnAccent),
+      onSecondary: byColor(colors.textOnSecondary),
+      onDestructive: byColor(colors.textOnDestructive),
+    );
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -131,19 +181,39 @@ class ImpaktfullUiTextStyleTheme {
         text: text ?? this.text,
       );
 
+  /// The display and text scale in [color].
+  ///
+  /// [heightDisplay] / [heightText] ([TextStyle.height], a multiple of the
+  /// font size), [letterSpacingDisplay] / [letterSpacingText] and
+  /// [fontWeightDisplay] / [fontWeightText] are the typography of a design
+  /// system that is not its font size: they apply to every style of that
+  /// scale. `null` (the default) leaves them to Flutter, which is what every
+  /// style of this package looked like before they existed.
   static ImpaktfullUiTextStyleTheme getByColor({
     required Color color,
     String? fontFamilyDisplay,
     String? fontFamilyText,
+    double? heightDisplay,
+    double? heightText,
+    double? letterSpacingDisplay,
+    double? letterSpacingText,
+    FontWeight? fontWeightDisplay,
+    FontWeight? fontWeightText,
   }) =>
       ImpaktfullUiTextStyleTheme(
         display: ImpaktfullUiTextStyleDisplayTheme.getByColor(
           color: color,
           fontFamily: fontFamilyDisplay,
+          height: heightDisplay,
+          letterSpacing: letterSpacingDisplay,
+          fontWeight: fontWeightDisplay,
         ),
         text: ImpaktfullUiTextStyleTextTheme.getByColor(
           color: color,
           fontFamily: fontFamilyText,
+          height: heightText,
+          letterSpacing: letterSpacingText,
+          fontWeight: fontWeightText,
         ),
       );
 
@@ -192,18 +262,33 @@ class ImpaktfullUiTextStyleDisplayTheme {
         extraSmall: extraSmall ?? this.extraSmall,
       );
 
+  /// The display scale (72 / 60 / 48 / 30 / 24 / 20) in [color].
+  ///
+  /// [height] ([TextStyle.height], a multiple of the font size),
+  /// [letterSpacing] and [fontWeight] apply to every size of the scale.
+  /// `null` (the default) leaves them to Flutter.
   static ImpaktfullUiTextStyleDisplayTheme getByColor({
     required Color color,
     String? fontFamily,
+    double? height,
+    double? letterSpacing,
+    FontWeight? fontWeight,
   }) {
+    TextStyle style(double fontSize) => TextStyle(
+          fontSize: fontSize,
+          color: color,
+          fontFamily: fontFamily,
+          height: height,
+          letterSpacing: letterSpacing,
+          fontWeight: fontWeight,
+        );
     return ImpaktfullUiTextStyleDisplayTheme(
-      extraLarge2:
-          TextStyle(fontSize: 72, color: color, fontFamily: fontFamily),
-      extraLarge: TextStyle(fontSize: 60, color: color, fontFamily: fontFamily),
-      large: TextStyle(fontSize: 48, color: color, fontFamily: fontFamily),
-      medium: TextStyle(fontSize: 30, color: color, fontFamily: fontFamily),
-      small: TextStyle(fontSize: 24, color: color, fontFamily: fontFamily),
-      extraSmall: TextStyle(fontSize: 20, color: color, fontFamily: fontFamily),
+      extraLarge2: style(72),
+      extraLarge: style(60),
+      large: style(48),
+      medium: style(30),
+      small: style(24),
+      extraSmall: style(20),
     );
   }
 
@@ -253,19 +338,34 @@ class ImpaktfullUiTextStyleTextTheme {
         extraSmall: extraSmall ?? this.extraSmall,
       );
 
+  /// The text scale (20 / 18 / 16 / 14 / 12) in [color].
+  ///
+  /// [height] ([TextStyle.height], a multiple of the font size),
+  /// [letterSpacing] and [fontWeight] apply to every size of the scale.
+  /// `null` (the default) leaves them to Flutter.
   static ImpaktfullUiTextStyleTextTheme getByColor({
     required Color color,
     String? fontFamily,
-  }) =>
-      ImpaktfullUiTextStyleTextTheme(
-        extraLarge:
-            TextStyle(fontSize: 20, color: color, fontFamily: fontFamily),
-        large: TextStyle(fontSize: 18, color: color, fontFamily: fontFamily),
-        medium: TextStyle(fontSize: 16, color: color, fontFamily: fontFamily),
-        small: TextStyle(fontSize: 14, color: color, fontFamily: fontFamily),
-        extraSmall:
-            TextStyle(fontSize: 12, color: color, fontFamily: fontFamily),
-      );
+    double? height,
+    double? letterSpacing,
+    FontWeight? fontWeight,
+  }) {
+    TextStyle style(double fontSize) => TextStyle(
+          fontSize: fontSize,
+          color: color,
+          fontFamily: fontFamily,
+          height: height,
+          letterSpacing: letterSpacing,
+          fontWeight: fontWeight,
+        );
+    return ImpaktfullUiTextStyleTextTheme(
+      extraLarge: style(20),
+      large: style(18),
+      medium: style(16),
+      small: style(14),
+      extraSmall: style(12),
+    );
+  }
 
   @override
   bool operator ==(Object other) =>

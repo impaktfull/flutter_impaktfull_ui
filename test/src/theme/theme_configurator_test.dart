@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_configurator.dart';
 import 'package:impaktfull_ui/src/theme/theme_configurator.dart'
     as configurator;
 

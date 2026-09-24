@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
-import 'package:impaktfull_ui/src/components/theme/theme_configurator.dart';
 
 const _focusedAccent = Color(0xFF00FF00);
 const _otherAccent = Color(0xFFFF0000);
