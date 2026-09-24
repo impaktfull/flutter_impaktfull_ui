@@ -69,8 +69,15 @@ class ImpaktfullUiTableRow extends StatelessWidget {
     required int? index,
     required bool isHovered,
   }) {
+    final touchFeedback = ImpaktfullUiTouchFeedbackTheme.of(context);
     final row = ImpaktfullUiTouchFeedback(
       onTap: onTap,
+      // A row lives in the scrolling body of `ImpaktfullUiTable`, which clips
+      // to its viewport, so the focus ring is drawn against the inside of the
+      // row instead of around it.
+      theme: touchFeedback.copyWith(
+        focusRing: touchFeedback.focusRing.inset,
+      ),
       color: _getBackground(
         componentTheme.colors,
         index: index,

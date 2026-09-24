@@ -57,44 +57,55 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
     return ImpaktfullUiOverridableComponentBuilder(
       component: this,
       overrideComponentTheme: theme,
-      builder: (context, componentTheme) => Semantics(
-        container: true,
-        role: SemanticsRole.tab,
-        button: true,
-        selected: isSelected,
-        child: ImpaktfullUiTouchFeedback(
-          onTap: onTap,
-          borderRadius: componentTheme.dimens.borderRadius,
-          color: isSelected
-              ? componentTheme.colors.backgroundSelectedTab
-              : componentTheme.colors.backgroundUnSelectedTab,
-          child: Padding(
-            padding: componentTheme.dimens.padding,
-            child: ImpaktfullUiAutoLayout.horizontal(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  style: isSelected
-                      ? componentTheme.textStyles.selected
-                      : componentTheme.textStyles.unselected,
-                ),
-                if (badge != null) ...[
-                  SizedBox(width: componentTheme.dimens.badgeSpacing),
-                  ImpaktfullUiBadge(
-                    type: isSelected
-                        ? ImpaktfullUiBadgeType.primary
-                        : badgeType ?? ImpaktfullUiBadgeType.primary,
-                    size: ImpaktfullUiBadgeSize.small,
-                    title: badge,
+      builder: (context, componentTheme) {
+        final touchFeedback = ImpaktfullUiTouchFeedbackTheme.of(context);
+        return Semantics(
+          container: true,
+          role: SemanticsRole.tab,
+          button: true,
+          selected: isSelected,
+          child: ImpaktfullUiTouchFeedback(
+            onTap: onTap,
+            // A tab lives in the scrolling strip of
+            // `ImpaktfullUiHorizontalTabs`, which clips to its viewport, so
+            // the focus ring is drawn against the inside of the tab instead
+            // of around it. Around it, only its left and right sides would
+            // survive the clip.
+            theme: touchFeedback.copyWith(
+              focusRing: touchFeedback.focusRing.inset,
+            ),
+            borderRadius: componentTheme.dimens.borderRadius,
+            color: isSelected
+                ? componentTheme.colors.backgroundSelectedTab
+                : componentTheme.colors.backgroundUnSelectedTab,
+            child: Padding(
+              padding: componentTheme.dimens.padding,
+              child: ImpaktfullUiAutoLayout.horizontal(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: isSelected
+                        ? componentTheme.textStyles.selected
+                        : componentTheme.textStyles.unselected,
                   ),
-                ]
-              ],
+                  if (badge != null) ...[
+                    SizedBox(width: componentTheme.dimens.badgeSpacing),
+                    ImpaktfullUiBadge(
+                      type: isSelected
+                          ? ImpaktfullUiBadgeType.primary
+                          : badgeType ?? ImpaktfullUiBadgeType.primary,
+                      size: ImpaktfullUiBadgeSize.small,
+                      title: badge,
+                    ),
+                  ]
+                ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
