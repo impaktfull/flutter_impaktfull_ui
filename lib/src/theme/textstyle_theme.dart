@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/src/theme/color_theme.dart';
 
@@ -83,11 +85,12 @@ class ImpaktfullUiTextStylesTheme {
   /// of [colors].
   ///
   /// This is what [ImpaktfullUiDefaultTheme.withMinimalChanges] builds
-  /// `textStyles` with. The typography that is not the font size
-  /// ([heightDisplay] / [heightText], [letterSpacingDisplay] /
-  /// [letterSpacingText], [fontWeightDisplay] / [fontWeightText]) applies to
-  /// every style of every group, so a design system's line height is one
-  /// value. `null` (the default) leaves it to Flutter.
+  /// `textStyles` with. The typography ([heightDisplay] / [heightText],
+  /// [letterSpacingDisplay] / [letterSpacingText], [fontWeightDisplay] /
+  /// [fontWeightText] and [fontSizeText]) applies to every style of every
+  /// group, so a design system's line height or body font size is one value.
+  /// `null` (the default) leaves it to Flutter, or keeps the scale of the
+  /// default theme for [fontSizeText].
   static ImpaktfullUiTextStylesTheme getDefault({
     required ImpaktfullUiColorTheme colors,
     String? fontFamilyDisplay,
@@ -98,6 +101,7 @@ class ImpaktfullUiTextStylesTheme {
     double? letterSpacingText,
     FontWeight? fontWeightDisplay,
     FontWeight? fontWeightText,
+    double? fontSizeText,
   }) {
     ImpaktfullUiTextStyleTheme byColor(Color color) =>
         ImpaktfullUiTextStyleTheme.getByColor(
@@ -110,6 +114,7 @@ class ImpaktfullUiTextStylesTheme {
           letterSpacingText: letterSpacingText,
           fontWeightDisplay: fontWeightDisplay,
           fontWeightText: fontWeightText,
+          fontSizeText: fontSizeText,
         );
     return ImpaktfullUiTextStylesTheme(
       onCanvas: byColor(colors.text),
@@ -199,6 +204,7 @@ class ImpaktfullUiTextStyleTheme {
     double? letterSpacingText,
     FontWeight? fontWeightDisplay,
     FontWeight? fontWeightText,
+    double? fontSizeText,
   }) =>
       ImpaktfullUiTextStyleTheme(
         display: ImpaktfullUiTextStyleDisplayTheme.getByColor(
@@ -214,6 +220,7 @@ class ImpaktfullUiTextStyleTheme {
           height: heightText,
           letterSpacing: letterSpacingText,
           fontWeight: fontWeightText,
+          fontSize: fontSizeText ?? 16,
         ),
       );
 
@@ -338,7 +345,14 @@ class ImpaktfullUiTextStyleTextTheme {
         extraSmall: extraSmall ?? this.extraSmall,
       );
 
-  /// The text scale (20 / 18 / 16 / 14 / 12) in [color].
+  /// The text scale in [color], grown from [fontSize] in steps of 2:
+  /// `fontSize + 4` / `+ 2` / `fontSize` / `- 2` / `- 4`, so the default of 16
+  /// is 20 / 18 / 16 / 14 / 12.
+  ///
+  /// [fontSize] is the size of body text and of the text in a control, which
+  /// is what a design system declares: `fontSize: 14` is both Ant Design's
+  /// `fontSize` (with `fontSizeSM: 12` and `fontSizeLG: 16`) and the
+  /// `text-sm` of a shadcn/ui control.
   ///
   /// [height] ([TextStyle.height], a multiple of the font size),
   /// [letterSpacing] and [fontWeight] apply to every size of the scale.
@@ -349,6 +363,7 @@ class ImpaktfullUiTextStyleTextTheme {
     double? height,
     double? letterSpacing,
     FontWeight? fontWeight,
+    double fontSize = 16,
   }) {
     TextStyle style(double fontSize) => TextStyle(
           fontSize: fontSize,
@@ -359,11 +374,11 @@ class ImpaktfullUiTextStyleTextTheme {
           fontWeight: fontWeight,
         );
     return ImpaktfullUiTextStyleTextTheme(
-      extraLarge: style(20),
-      large: style(18),
-      medium: style(16),
-      small: style(14),
-      extraSmall: style(12),
+      extraLarge: style(max(0, fontSize + 4)),
+      large: style(max(0, fontSize + 2)),
+      medium: style(fontSize),
+      small: style(max(0, fontSize - 2)),
+      extraSmall: style(max(0, fontSize - 4)),
     );
   }
 

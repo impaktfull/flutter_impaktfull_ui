@@ -27,6 +27,7 @@ void main() {
     double? letterSpacingText,
     FontWeight? fontWeightDisplay,
     FontWeight? fontWeightText,
+    double? fontSizeText,
     ImpaktfullUiColorTheme? colors,
     ImpaktfullUiTextStylesTheme? textStyles,
     ImpaktfullUiDimensTheme? dimens,
@@ -48,6 +49,7 @@ void main() {
         letterSpacingText: letterSpacingText,
         fontWeightDisplay: fontWeightDisplay,
         fontWeightText: fontWeightText,
+        fontSizeText: fontSizeText,
         colors: colors,
         textStyles: textStyles,
         dimens: dimens,
@@ -310,6 +312,51 @@ void main() {
       final text = tester.widget<Text>(find.text('Save'));
       expect(text.style?.height, 1.5714);
       expect(text.style?.letterSpacing, 0.2);
+    });
+  });
+
+  group('the font size seed', () {
+    test('grows the text scale in steps of 2, clamped at 0', () {
+      final scale = ImpaktfullUiTextStyleTextTheme.getByColor(
+        color: const Color(0xFF000000),
+        fontSize: 14,
+      );
+      expect(scale.extraLarge.fontSize, 18);
+      expect(scale.large.fontSize, 16);
+      expect(scale.medium.fontSize, 14);
+      expect(scale.small.fontSize, 12);
+      expect(scale.extraSmall.fontSize, 10);
+
+      final tiny = ImpaktfullUiTextStyleTextTheme.getByColor(
+        color: const Color(0xFF000000),
+        fontSize: 2,
+      );
+      expect(tiny.small.fontSize, 0);
+      expect(tiny.extraSmall.fontSize, 0);
+    });
+
+    test('defaults to the scale of today', () {
+      final text = build().textStyles.onCanvas.text;
+      expect(text.extraLarge.fontSize, 20);
+      expect(text.large.fontSize, 18);
+      expect(text.medium.fontSize, 16);
+      expect(text.small.fontSize, 14);
+      expect(text.extraSmall.fontSize, 12);
+    });
+
+    test('reaches every color group and the component themes', () {
+      final theme = build(fontSizeText: 14);
+      expect(theme.textStyles.onCanvas.text.medium.fontSize, 14);
+      expect(theme.textStyles.onAccent.text.medium.fontSize, 14);
+      expect(theme.textStyles.onCardSecondary.text.small.fontSize, 12);
+      // A component theme is built from those styles, so it follows: the
+      // title of a button is the `small` step of the scale.
+      expect(theme.components.button.textStyles.primary.fontSize, 12);
+    });
+
+    test('leaves the display scale alone', () {
+      final display = build(fontSizeText: 14).textStyles.onCanvas.display;
+      expect(display.medium.fontSize, 30);
     });
   });
 

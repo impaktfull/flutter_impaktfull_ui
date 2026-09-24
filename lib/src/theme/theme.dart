@@ -15,6 +15,8 @@ export 'color_theme.dart';
 export 'component_theme.dart';
 export 'dimens_theme.dart';
 export 'duration_theme.dart';
+export 'presets/ant_design_theme.dart';
+export 'presets/shadcn_theme.dart';
 export 'shadow_theme.dart';
 export 'spacing_theme.dart';
 export 'textstyle_theme.dart';

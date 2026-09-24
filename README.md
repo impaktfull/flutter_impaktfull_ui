@@ -334,7 +334,7 @@ every component.
 | colors | `primary`, `accent`, `secondary`, `canvas`, `card`, `border`, `text`, `warning`, ... or a whole `colors:` group | the impaktfull palette per `brightness` |
 | border radius | `radius` (the seed), or a single step: `borderRadius`, `borderRadiusSmall`, `borderRadiusLarge`, ..., `borderRadiusCircle` | `radius: 8` → 4 / 6 / 8 / 12 / 16 |
 | spacing | `spacingUnit`, or a whole `dimens:` group | `4` → 4 / 8 / 12 / 16 / 24 / 32 |
-| typography | `fontFamilyDisplay`, `fontFamilyText`, `heightDisplay`, `heightText`, `letterSpacingDisplay`, `letterSpacingText`, `fontWeightDisplay`, `fontWeightText` | Ubuntu / Geologica, and Flutter's defaults for the rest |
+| typography | `fontSizeText` (the seed of the text scale), `fontFamilyDisplay`, `fontFamilyText`, `heightDisplay`, `heightText`, `letterSpacingDisplay`, `letterSpacingText`, `fontWeightDisplay`, `fontWeightText` | `fontSizeText: 16` → 20 / 18 / 16 / 14 / 12, Ubuntu / Geologica, and Flutter's defaults for the rest |
 | durations | `durations:` | 200 / 350 / 500 ms |
 | shadows | `shadows:` | derived from `colors.shadow` |
 | assets | `package`, `assetSuffix`, or a whole `assets:` group | the assets of this package |
@@ -365,6 +365,20 @@ final theme = ImpaktfullUiDefaultTheme.withMinimalChanges(
 ```
 
 With a `colors:` group, `primary`, `accent` and `secondary` can be left out.
+
+#### Design system themes
+
+Two themes in the style of a well known design system ship with the package, built with the same public API:
+
+```dart
+ImpaktfullUiApp(
+  impaktfullUiTheme: ImpaktfullUiShadcnTheme.light(fontFamily: 'Geist'),
+  // or ImpaktfullUiAntDesignTheme.light(), and `.dark()` for both
+  home: const MyHomeScreen(),
+);
+```
+
+They are not ports and not affiliated with those design systems: what a theme can and cannot reach is in [doc/design-system-themes.md](doc/design-system-themes.md), together with the token tables. Both are in the theme picker of the example app, and each has a golden test, so a component that starts hardcoding a size or a color breaks them.
 
 #### Changing a single token
 
