@@ -85,8 +85,8 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
                 borderRadius: componentTheme.dimens.borderRadius,
                 color: _getBackgroundColor(componentTheme),
                 child: SizedBox(
-                  width: 24,
-                  height: 24,
+                  width: componentTheme.dimens.size,
+                  height: componentTheme.dimens.size,
                   child: Stack(
                     children: [
                       Positioned.fill(
@@ -95,7 +95,7 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
                             borderRadius: componentTheme.dimens.borderRadius,
                             border: Border.all(
                               color: componentTheme.colors.borderColor,
-                              width: 1,
+                              width: componentTheme.dimens.borderWidth,
                             ),
                           ),
                         ),
@@ -110,7 +110,7 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
                               borderRadius: componentTheme.dimens.borderRadius,
                               border: Border.all(
                                 color: componentTheme.colors.activeColor,
-                                width: 2,
+                                width: componentTheme.dimens.activeBorderWidth,
                               ),
                             ),
                           ),
@@ -126,7 +126,7 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
                               child: ImpaktfullUiAssetWidget(
                                 asset: componentTheme.assets.check,
                                 color: componentTheme.colors.checkMarkColor,
-                                size: 20,
+                                size: componentTheme.dimens.iconSize,
                               ),
                             ),
                           ),
@@ -139,7 +139,7 @@ class ImpaktfullUiCheckbox extends StatelessWidget {
                             child: ImpaktfullUiAssetWidget(
                               asset: componentTheme.assets.indeterminate,
                               color: componentTheme.colors.checkMarkColor,
-                              size: 20,
+                              size: componentTheme.dimens.iconSize,
                             ),
                           ),
                         ),

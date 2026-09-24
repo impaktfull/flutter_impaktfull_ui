@@ -102,7 +102,7 @@ class _ImpaktfullUiNumberInputState<T extends num>
           ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisSize: MainAxisSize.min,
-            spacing: 8,
+            spacing: componentTheme.dimens.spacing,
             children: [
               Expanded(
                 child: ImpaktfullUiInputField(

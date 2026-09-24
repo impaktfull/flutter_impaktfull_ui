@@ -6,6 +6,7 @@ import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/hover_feedback/hover_feedback.dart';
 import 'package:impaktfull_ui/src/components/section_title/section_title.dart';
 import 'package:impaktfull_ui/src/components/virtual_keyboard/controller/virtual_keyboard_text_edit_controller.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
@@ -218,109 +219,136 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                 Expanded(
                   child: Opacity(
                     opacity: isDisabled && !widget.readOnly ? 0.66 : 1,
-                    child: ImpaktfullUiCard(
-                      theme: _getCardTheme(context, componentTheme),
-                      cursor: SystemMouseCursors.text,
-                      error: widget.error != null && widget.error!.isNotEmpty,
-                      onTap: isDisabled ? null : _onTap,
-                      onFocus: isDisabled ? null : _onFocus,
-                      padding: EdgeInsets.zero,
-                      borderRadius: BorderRadiusDirectional.only(
-                        topStart: componentTheme.dimens.borderRadius.topStart,
-                        bottomStart:
-                            componentTheme.dimens.borderRadius.bottomStart,
-                        topEnd: trailingActionAllowed
-                            ? Radius.zero
-                            : componentTheme.dimens.borderRadius.topEnd,
-                        bottomEnd: trailingActionAllowed
-                            ? Radius.zero
-                            : componentTheme.dimens.borderRadius.bottomEnd,
-                      ),
-                      child: ImpaktfullUiAutoLayout.vertical(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (widget.topBuilder != null) ...[
-                            Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: widget.topBuilder!(context),
-                            ),
-                          ],
-                          Padding(
-                            padding: EdgeInsetsDirectional.only(
-                              start: 16,
-                              end: trailingInputActions.isEmpty ? 16 : 4,
-                            ),
-                            child: ImpaktfullUiAutoLayout.horizontal(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              spacing: 8,
-                              children: [
-                                if (widget.leadingIcon != null) ...[
-                                  ImpaktfullUiAssetWidget(
-                                    asset: widget.leadingIcon,
-                                    size: 20,
-                                    color: componentTheme.textStyles.text.color,
-                                  ),
-                                ],
-                                if (widget.leadingBuilder != null) ...[
-                                  widget.leadingBuilder!(context),
-                                ],
-                                if (widget.onChanged == null &&
-                                    !widget.readOnly) ...[
-                                  Expanded(
-                                    child: Container(
-                                      constraints: BoxConstraints(
-                                        minHeight: widget.multiline ? 88 : 40,
+                    child: _HoverBuilder(
+                      // Only a theme with a hovered border has to know about
+                      // the pointer: without it, nothing changes on hover.
+                      enabled: componentTheme.colors.borderHover != null,
+                      builder: (context, isHovered) => ImpaktfullUiCard(
+                        theme: _getCardTheme(
+                          context,
+                          componentTheme,
+                          isHovered: isHovered,
+                        ),
+                        cursor: SystemMouseCursors.text,
+                        error: widget.error != null && widget.error!.isNotEmpty,
+                        onTap: isDisabled ? null : _onTap,
+                        onFocus: isDisabled ? null : _onFocus,
+                        padding: EdgeInsets.zero,
+                        borderRadius: BorderRadiusDirectional.only(
+                          topStart: componentTheme.dimens.borderRadius.topStart,
+                          bottomStart:
+                              componentTheme.dimens.borderRadius.bottomStart,
+                          topEnd: trailingActionAllowed
+                              ? Radius.zero
+                              : componentTheme.dimens.borderRadius.topEnd,
+                          bottomEnd: trailingActionAllowed
+                              ? Radius.zero
+                              : componentTheme.dimens.borderRadius.bottomEnd,
+                        ),
+                        child: ImpaktfullUiAutoLayout.vertical(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (widget.topBuilder != null) ...[
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: widget.topBuilder!(context),
+                              ),
+                            ],
+                            ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minHeight: widget.multiline
+                                    ? componentTheme.dimens.multilineMinHeight
+                                    : componentTheme.dimens.minHeight,
+                              ),
+                              child: Padding(
+                                padding: trailingInputActions.isEmpty
+                                    ? componentTheme.dimens.padding
+                                    : componentTheme.dimens.paddingWithActions,
+                                child: ImpaktfullUiAutoLayout.horizontal(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  spacing: componentTheme.dimens.spacing,
+                                  children: [
+                                    if (widget.leadingIcon != null) ...[
+                                      ImpaktfullUiAssetWidget(
+                                        asset: widget.leadingIcon,
+                                        size: componentTheme.dimens.iconSize,
+                                        color: componentTheme
+                                            .textStyles.text.color,
                                       ),
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 8,
-                                      ),
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional.topStart,
-                                        child: Text(
-                                          _controller.text,
-                                          maxLines: widget.multiline
-                                              ? widget.maxLines
-                                              : 1,
-                                          style: componentTheme.textStyles.text,
+                                    ],
+                                    if (widget.leadingBuilder != null) ...[
+                                      widget.leadingBuilder!(context),
+                                    ],
+                                    if (widget.onChanged == null &&
+                                        !widget.readOnly) ...[
+                                      Expanded(
+                                        // The value is aligned to the top of
+                                        // the field, so it fills the height of
+                                        // the field instead of centering in it.
+                                        child: ConstrainedBox(
+                                          constraints: BoxConstraints(
+                                            minHeight: widget.multiline
+                                                ? componentTheme
+                                                    .dimens.multilineMinHeight
+                                                : componentTheme
+                                                    .dimens.minHeight,
+                                          ),
+                                          child: Padding(
+                                            padding: componentTheme
+                                                .dimens.readOnlyContentPadding,
+                                            child: Align(
+                                              alignment:
+                                                  AlignmentDirectional.topStart,
+                                              child: Text(
+                                                _controller.text,
+                                                maxLines: widget.multiline
+                                                    ? widget.maxLines
+                                                    : 1,
+                                                style: componentTheme
+                                                    .textStyles.text,
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                ] else ...[
-                                  Expanded(
-                                    child: BaseInputField(
-                                      value: widget.value,
-                                      onChanged: _onChanged,
-                                      onSubmit: widget.onSubmitted,
-                                      focusNode: _focusNode,
-                                      controller: _controller,
-                                      autofill: widget.autofill,
-                                      theme: componentTheme,
-                                      maxLines: widget.maxLines,
-                                      textInputAction: widget.textInputAction,
-                                      textInputType: widget.textInputType,
-                                      obscureText: _obscureText,
-                                      placeholder: widget.placeholder,
-                                      autofocus: widget.autofocus,
-                                      autocorrect: widget.autocorrect,
-                                      multiline: widget.multiline,
-                                      inputFormatters: widget.inputFormatters,
-                                      textCapitalization:
-                                          widget.textCapitalization,
-                                      onFocusChanged: _onFocusChanged,
-                                      readOnly: widget.readOnly,
-                                      textAlign: widget.textAlign,
-                                    ),
-                                  ),
-                                  ...trailingInputActions,
-                                ],
-                              ],
+                                    ] else ...[
+                                      Expanded(
+                                        child: BaseInputField(
+                                          value: widget.value,
+                                          onChanged: _onChanged,
+                                          onSubmit: widget.onSubmitted,
+                                          focusNode: _focusNode,
+                                          controller: _controller,
+                                          autofill: widget.autofill,
+                                          theme: componentTheme,
+                                          maxLines: widget.maxLines,
+                                          textInputAction:
+                                              widget.textInputAction,
+                                          textInputType: widget.textInputType,
+                                          obscureText: _obscureText,
+                                          placeholder: widget.placeholder,
+                                          autofocus: widget.autofocus,
+                                          autocorrect: widget.autocorrect,
+                                          multiline: widget.multiline,
+                                          inputFormatters:
+                                              widget.inputFormatters,
+                                          textCapitalization:
+                                              widget.textCapitalization,
+                                          onFocusChanged: _onFocusChanged,
+                                          readOnly: widget.readOnly,
+                                          textAlign: widget.textAlign,
+                                        ),
+                                      ),
+                                      ...trailingInputActions,
+                                    ],
+                                  ],
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -363,6 +391,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
 
   void _onFocusChanged(bool hasFocus) {
     final hasFocus = _focusNode.hasFocus;
+    // The border and the focus ring of the field follow its focus
+    // (`ImpaktfullUiInputFieldColorTheme.borderFocused` / `focusRing`).
+    if (mounted) setState(() {});
     final controller = widget.controller;
     if (hasFocus &&
         controller != null &&
@@ -410,17 +441,74 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   }
 
   /// The card of the field uses the colors of the [ImpaktfullUiInputFieldTheme].
+  ///
+  /// The field draws its background, its border and its radius with an
+  /// `ImpaktfullUiCard`, so every token of the field that ends up on that card
+  /// (the border of a focused or hovered field, the border width and the focus
+  /// ring) is passed through here. It starts from the card theme that is
+  /// already in the tree (`ImpaktfullUiCardTheme.of`) and only replaces the
+  /// tokens the field owns, so an app that themes its cards keeps the rest.
   ImpaktfullUiCardTheme _getCardTheme(
     BuildContext context,
-    ImpaktfullUiInputFieldTheme componentTheme,
-  ) {
+    ImpaktfullUiInputFieldTheme componentTheme, {
+    required bool isHovered,
+  }) {
     final cardTheme = ImpaktfullUiCardTheme.of(context);
+    final colors = componentTheme.colors;
+    final dimens = componentTheme.dimens;
+    final hasFocus = _focusNode.hasFocus;
+    final borderWidth = dimens.borderWidth ?? cardTheme.dimens.borderWidth;
+    final focusRing = colors.focusRing;
     return cardTheme.copyWith(
       colors: cardTheme.colors.copyWith(
-        background: componentTheme.colors.background,
-        border: componentTheme.colors.border,
-        borderError: componentTheme.colors.borderError,
+        background: colors.background,
+        // A focused border wins over a hovered one, like `:focus` over
+        // `:hover`. An erroneous field keeps `borderError`: the card picks
+        // that one itself, from `ImpaktfullUiCard.error`.
+        border: (hasFocus ? colors.borderFocused : null) ??
+            (isHovered ? colors.borderHover : null) ??
+            colors.border,
+        borderError: colors.borderError,
       ),
+      dimens: dimens.borderWidth == null
+          ? null
+          : cardTheme.dimens.copyWith(borderWidth: dimens.borderWidth),
+      shadows: !hasFocus || focusRing == null
+          ? null
+          : cardTheme.shadows.copyWith(
+              card: [
+                ...cardTheme.shadows.card,
+                // A ring, not a shadow: no blur, no offset, and spread out
+                // from behind the border so `focusRingWidth` of it is visible
+                // outside the border of the field.
+                BoxShadow(
+                  color: focusRing,
+                  spreadRadius: dimens.focusRingWidth + borderWidth,
+                ),
+              ],
+            ),
+    );
+  }
+}
+
+/// Rebuilds [builder] with whether the pointer is over it, or builds it once
+/// with `false` when [enabled] is false.
+class _HoverBuilder extends StatelessWidget {
+  final bool enabled;
+  final Widget Function(BuildContext context, bool isHovered) builder;
+
+  const _HoverBuilder({
+    required this.enabled,
+    required this.builder,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (!enabled) return builder(context, false);
+    return ImpaktfullUiHoverFeedback(
+      // The card of the field sets the cursor itself.
+      cursor: MouseCursor.defer,
+      builder: builder,
     );
   }
 }

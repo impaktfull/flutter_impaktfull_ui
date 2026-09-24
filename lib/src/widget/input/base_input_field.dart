@@ -157,7 +157,7 @@ class _BaseInputFieldState extends State<BaseInputField> {
               focusedBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
               focusedErrorBorder: InputBorder.none,
-              contentPadding: const EdgeInsets.symmetric(vertical: 12),
+              contentPadding: componentTheme.dimens.contentPadding,
             ),
           ),
         ),

@@ -168,6 +168,23 @@ class ImpaktfullUiSwitchDimensTheme {
   /// layout. Null (the default) keeps the size of the switch.
   final Size? minTapTargetSize;
 
+  /// The width and the height of the knob of the switch, e.g. 18 for Ant
+  /// Design's `handleSize` or 16 for shadcn/ui's `size-4`.
+  ///
+  /// The track of the switch is [thumbSize] plus its padding, so this also
+  /// decides its size: `thumbSize + verticalPadding * 2` high and
+  /// `thumbSize + verticalPadding + horizontalPadding` wide. Ant Design's
+  /// 44 × 22 track with an 18 knob is `verticalPadding: 2`,
+  /// `horizontalPadding: 24`, `thumbSize: 18`.
+  final double thumbSize;
+
+  /// The size of the check and the close icon that the knob shows when the
+  /// "accessible navigation" setting of the platform is on.
+  final double iconSize;
+
+  // `thumbSize` and `iconSize` are optional, with the value the widget
+  // hardcoded before they were tokens as their default. They become `required`
+  // in 1.0.0.
   const ImpaktfullUiSwitchDimensTheme({
     required this.verticalPadding,
     required this.horizontalPadding,
@@ -175,22 +192,28 @@ class ImpaktfullUiSwitchDimensTheme {
     this.thumbBorderRadius,
     this.borderWidth,
     this.minTapTargetSize,
+    this.thumbSize = 16,
+    this.iconSize = 12,
   });
 
   ImpaktfullUiSwitchDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
     double? borderWidth,
     double? horizontalPadding,
+    double? iconSize,
     Size? minTapTargetSize,
     BorderRadiusGeometry? thumbBorderRadius,
+    double? thumbSize,
     double? verticalPadding,
   }) =>
       ImpaktfullUiSwitchDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
         borderWidth: borderWidth ?? this.borderWidth,
         horizontalPadding: horizontalPadding ?? this.horizontalPadding,
+        iconSize: iconSize ?? this.iconSize,
         minTapTargetSize: minTapTargetSize ?? this.minTapTargetSize,
         thumbBorderRadius: thumbBorderRadius ?? this.thumbBorderRadius,
+        thumbSize: thumbSize ?? this.thumbSize,
         verticalPadding: verticalPadding ?? this.verticalPadding,
       );
 
@@ -203,11 +226,20 @@ class ImpaktfullUiSwitchDimensTheme {
           borderWidth == other.borderWidth &&
           verticalPadding == other.verticalPadding &&
           horizontalPadding == other.horizontalPadding &&
-          minTapTargetSize == other.minTapTargetSize;
+          minTapTargetSize == other.minTapTargetSize &&
+          thumbSize == other.thumbSize &&
+          iconSize == other.iconSize;
 
   @override
-  int get hashCode => Object.hash(borderRadius, thumbBorderRadius, borderWidth,
-      verticalPadding, horizontalPadding, minTapTargetSize);
+  int get hashCode => Object.hash(
+      borderRadius,
+      thumbBorderRadius,
+      borderWidth,
+      verticalPadding,
+      horizontalPadding,
+      minTapTargetSize,
+      thumbSize,
+      iconSize);
 }
 
 class ImpaktfullUiSwitchDurationsTheme {

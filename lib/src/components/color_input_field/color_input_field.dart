@@ -81,7 +81,7 @@ class _ImpaktfullUiColorInputFieldState
               ),
             ],
             ImpaktfullUiAutoLayout.horizontal(
-              spacing: 8,
+              spacing: componentTheme.dimens.spacing,
               children: [
                 ImpaktfullUiTouchFeedback(
                   onTap: widget.colorPickerType == null ? null : _onTap,
@@ -89,12 +89,12 @@ class _ImpaktfullUiColorInputFieldState
                   border: Border.all(
                     color: componentTheme.colors.border,
                     strokeAlign: BorderSide.strokeAlignOutside,
-                    width: 1,
+                    width: componentTheme.dimens.borderWidth,
                   ),
                   color: _color ?? Colors.transparent,
-                  child: const SizedBox(
-                    width: 40,
-                    height: 40,
+                  child: SizedBox(
+                    width: componentTheme.dimens.swatchSize,
+                    height: componentTheme.dimens.swatchSize,
                   ),
                 ),
                 Expanded(

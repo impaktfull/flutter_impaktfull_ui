@@ -126,25 +126,79 @@ class ImpaktfullUiDateInputFieldColorTheme {
 class ImpaktfullUiDateInputFieldDimensTheme {
   final BorderRadiusGeometry borderRadius;
 
+  /// The padding between the border of the field and its content.
+  final EdgeInsetsGeometry padding;
+
+  /// The space above and below the date.
+  ///
+  /// Set it to `EdgeInsets.zero` together with [minHeight] for a field whose
+  /// height is declared instead of derived, like Ant Design's
+  /// `controlHeight: 32`.
+  final EdgeInsetsGeometry contentPadding;
+
+  /// The minimum height of the field, without its label, hint and error.
+  final double minHeight;
+
+  /// The space between the leading icon and the date.
+  final double spacing;
+
+  /// The size of the `leadingIcon`.
+  final double iconSize;
+
+  /// The width of the border of the field.
+  ///
+  /// Null (the default) keeps the `borderWidth` of
+  /// `ImpaktfullUiCardDimensTheme`: the field draws its border with an
+  /// `ImpaktfullUiCard`.
+  final double? borderWidth;
+
+  // Every parameter below `borderRadius` is optional, with the value the widget
+  // hardcoded before it was a token as its default. They become `required` in
+  // 1.0.0.
   const ImpaktfullUiDateInputFieldDimensTheme({
     required this.borderRadius,
+    this.padding = const EdgeInsets.symmetric(horizontal: 16),
+    this.contentPadding = const EdgeInsets.symmetric(vertical: 8),
+    this.minHeight = 40,
+    this.spacing = 8,
+    this.iconSize = 20,
+    this.borderWidth,
   });
 
   ImpaktfullUiDateInputFieldDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
+    EdgeInsetsGeometry? contentPadding,
+    double? iconSize,
+    double? minHeight,
+    EdgeInsetsGeometry? padding,
+    double? spacing,
   }) =>
       ImpaktfullUiDateInputFieldDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+        contentPadding: contentPadding ?? this.contentPadding,
+        iconSize: iconSize ?? this.iconSize,
+        minHeight: minHeight ?? this.minHeight,
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiDateInputFieldDimensTheme &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          padding == other.padding &&
+          contentPadding == other.contentPadding &&
+          minHeight == other.minHeight &&
+          spacing == other.spacing &&
+          iconSize == other.iconSize &&
+          borderWidth == other.borderWidth;
 
   @override
-  int get hashCode => borderRadius.hashCode;
+  int get hashCode => Object.hash(borderRadius, padding, contentPadding,
+      minHeight, spacing, iconSize, borderWidth);
 }
 
 class ImpaktfullUiDateInputFieldTextStyleTheme {
