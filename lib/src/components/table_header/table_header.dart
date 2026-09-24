@@ -31,6 +31,15 @@ class ImpaktfullUiTableHeader extends StatelessWidget {
         decoration: BoxDecoration(
           color: componentTheme.colors.background,
           borderRadius: componentTheme.dimens.borderRadius,
+          border: componentTheme.colors.border == null
+              ? null
+              : Border(
+                  bottom: BorderSide(
+                    color: componentTheme.colors.border!,
+                    width: componentTheme.dimens.borderWidth,
+                    strokeAlign: BorderSide.strokeAlignInside,
+                  ),
+                ),
         ),
         child: TableColumnBuilder(
           minHeight: componentTheme.dimens.minHeight,

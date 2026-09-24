@@ -6,6 +6,13 @@ import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
   final bool _hasBlurredBackground;
 
+  /// How much the page below the modal is blurred, when
+  /// [hasBlurredBackground] is true.
+  ///
+  /// The caller resolves it from the modal theme: a route has no context of
+  /// its own to read a theme from.
+  final double blurSigma;
+
   /// Created once per route (not on every rebuild) and disposed with the route.
   CurvedAnimation? _curvedAnimation;
 
@@ -22,6 +29,7 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
     String? barrierLabel,
     bool useSafeArea = true,
     bool hasBlurredBackground = true,
+    this.blurSigma = 8,
     super.settings,
     super.anchorPoint,
     super.traversalEdgeBehavior,
@@ -77,11 +85,13 @@ class ImpaktfullUiDefaultModalRoute<T> extends RawDialogRoute<T> {
         curvedAnimation,
         child,
         _hasBlurredBackground,
+        blurSigma,
       );
     }
     return BlurredModalRouteWrapper(
       animation: curvedAnimation,
       hasBlurredBackground: _hasBlurredBackground,
+      blurSigma: blurSigma,
       child: child,
     );
   }
@@ -102,17 +112,20 @@ Widget _buildCupertinoDialogTransitions(
   Animation<double> curvedAnimation,
   Widget child,
   bool hasBlurredBackground,
+  double blurSigma,
 ) {
   if (animation.status == AnimationStatus.reverse) {
     return BlurredModalRouteWrapper(
       animation: curvedAnimation,
       hasBlurredBackground: hasBlurredBackground,
+      blurSigma: blurSigma,
       child: child,
     );
   }
   return BlurredModalRouteWrapper(
     animation: curvedAnimation,
     hasBlurredBackground: hasBlurredBackground,
+    blurSigma: blurSigma,
     child: ScaleTransition(
       scale: animation.drive(_dialogScaleTween),
       child: child,

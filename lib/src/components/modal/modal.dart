@@ -143,18 +143,23 @@ class ImpaktfullUiModal extends StatelessWidget {
     bool hasBlurredBackground = false,
     bool barrierDismissible = true,
     bool rootNavigator = false,
-  }) =>
-      Navigator.of(context, rootNavigator: rootNavigator).push<T>(
-        ImpaktfullUiDefaultModalRoute<T>(
-          context: context,
-          builder: builder,
-          transitionDuration:
-              ImpaktfullUiModalTheme.of(context).durations.transition,
-          settings: routeSettings,
-          barrierDismissible: barrierDismissible,
-          hasBlurredBackground: hasBlurredBackground,
-        ),
-      );
+  }) {
+    // The route has no context of its own to read a theme from, so the tokens
+    // of the modal theme are resolved here.
+    final modalTheme = ImpaktfullUiModalTheme.of(context);
+    return Navigator.of(context, rootNavigator: rootNavigator).push<T>(
+      ImpaktfullUiDefaultModalRoute<T>(
+        context: context,
+        builder: builder,
+        transitionDuration: modalTheme.durations.transition,
+        barrierColor: modalTheme.colors.barrier,
+        blurSigma: modalTheme.dimens.barrierBlurSigma,
+        settings: routeSettings,
+        barrierDismissible: barrierDismissible,
+        hasBlurredBackground: hasBlurredBackground,
+      ),
+    );
+  }
 
   static Future<T?> showSimple<T>({
     required BuildContext context,

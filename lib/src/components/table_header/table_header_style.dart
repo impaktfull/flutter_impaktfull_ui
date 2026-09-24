@@ -57,44 +57,59 @@ class ImpaktfullUiTableHeaderTheme extends ImpaktfullUiComponentTheme {
 class ImpaktfullUiTableHeaderColorTheme {
   final Color background;
 
+  /// The color of the border below the header. When null, the header draws no
+  /// border: an `ImpaktfullUiTable` puts an `ImpaktfullUiDivider` below it.
+  final Color? border;
+
   const ImpaktfullUiTableHeaderColorTheme({
     required this.background,
+    this.border,
   });
 
   ImpaktfullUiTableHeaderColorTheme copyWith({
     Color? background,
+    Color? border,
   }) =>
       ImpaktfullUiTableHeaderColorTheme(
         background: background ?? this.background,
+        border: border ?? this.border,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiTableHeaderColorTheme &&
-          background == other.background;
+          background == other.background &&
+          border == other.border;
 
   @override
-  int get hashCode => background.hashCode;
+  int get hashCode => Object.hash(background, border);
 }
 
 class ImpaktfullUiTableHeaderDimensTheme {
   final BorderRadiusGeometry borderRadius;
+
+  /// The thickness of the border below the header, when
+  /// `ImpaktfullUiTableHeaderColorTheme.border` is set.
+  final double borderWidth;
 
   /// The minimum height of the header row.
   final double minHeight;
 
   const ImpaktfullUiTableHeaderDimensTheme({
     required this.borderRadius,
+    this.borderWidth = 1,
     this.minHeight = 48,
   });
 
   ImpaktfullUiTableHeaderDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
     double? minHeight,
   }) =>
       ImpaktfullUiTableHeaderDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
         minHeight: minHeight ?? this.minHeight,
       );
 
@@ -103,8 +118,9 @@ class ImpaktfullUiTableHeaderDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiTableHeaderDimensTheme &&
           borderRadius == other.borderRadius &&
+          borderWidth == other.borderWidth &&
           minHeight == other.minHeight;
 
   @override
-  int get hashCode => Object.hash(borderRadius, minHeight);
+  int get hashCode => Object.hash(borderRadius, borderWidth, minHeight);
 }

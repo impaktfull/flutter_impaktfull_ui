@@ -56,17 +56,30 @@ class ImpaktfullUiTableHeaderItemTheme extends ImpaktfullUiComponentTheme {
 }
 
 class ImpaktfullUiTableHeaderItemColorTheme {
-  const ImpaktfullUiTableHeaderItemColorTheme();
+  /// The color of the caret that shows the sort direction. When null, the
+  /// color of the `IconTheme` around the table is used, like before this
+  /// token existed.
+  final Color? sortIcon;
 
-  ImpaktfullUiTableHeaderItemColorTheme copyWith() =>
-      const ImpaktfullUiTableHeaderItemColorTheme();
+  const ImpaktfullUiTableHeaderItemColorTheme({
+    this.sortIcon,
+  });
+
+  ImpaktfullUiTableHeaderItemColorTheme copyWith({
+    Color? sortIcon,
+  }) =>
+      ImpaktfullUiTableHeaderItemColorTheme(
+        sortIcon: sortIcon ?? this.sortIcon,
+      );
 
   @override
   bool operator ==(Object other) =>
-      other is ImpaktfullUiTableHeaderItemColorTheme;
+      identical(this, other) ||
+      other is ImpaktfullUiTableHeaderItemColorTheme &&
+          sortIcon == other.sortIcon;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => sortIcon.hashCode;
 }
 
 class ImpaktfullUiTableHeaderItemTextStyleTheme {
@@ -97,23 +110,57 @@ class ImpaktfullUiTableHeaderItemDimensTheme {
   /// The minimum height of a header item.
   final double minHeight;
 
+  /// The padding of a header cell, when the cell itself has no `padding`.
+  final EdgeInsetsGeometry padding;
+
+  /// The size of the caret that shows the sort direction.
+  final double sortIconSize;
+
+  /// The space between the title and the caret that shows the sort direction.
+  final double sortIconSpacing;
+
+  /// The space between the checkbox and the title of a header cell.
+  final double spacing;
+
   const ImpaktfullUiTableHeaderItemDimensTheme({
     this.minHeight = 48,
+    this.padding = const EdgeInsets.symmetric(horizontal: 16),
+    this.sortIconSize = 16,
+    this.sortIconSpacing = 8,
+    this.spacing = 8,
   });
 
   ImpaktfullUiTableHeaderItemDimensTheme copyWith({
     double? minHeight,
+    EdgeInsetsGeometry? padding,
+    double? sortIconSize,
+    double? sortIconSpacing,
+    double? spacing,
   }) =>
       ImpaktfullUiTableHeaderItemDimensTheme(
         minHeight: minHeight ?? this.minHeight,
+        padding: padding ?? this.padding,
+        sortIconSize: sortIconSize ?? this.sortIconSize,
+        sortIconSpacing: sortIconSpacing ?? this.sortIconSpacing,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiTableHeaderItemDimensTheme &&
-          minHeight == other.minHeight;
+          minHeight == other.minHeight &&
+          padding == other.padding &&
+          sortIconSize == other.sortIconSize &&
+          sortIconSpacing == other.sortIconSpacing &&
+          spacing == other.spacing;
 
   @override
-  int get hashCode => minHeight.hashCode;
+  int get hashCode => Object.hash(
+        minHeight,
+        padding,
+        sortIconSize,
+        sortIconSpacing,
+        spacing,
+      );
 }

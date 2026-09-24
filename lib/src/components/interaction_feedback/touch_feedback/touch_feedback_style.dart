@@ -1,11 +1,17 @@
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/focus_feedback/focus_feedback_style.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 
 class ImpaktfullUiTouchFeedbackTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiTouchFeedbackColorTheme colors;
 
+  /// The ring that `ImpaktfullUiFocusFeedback` draws around a focused
+  /// element.
+  final ImpaktfullUiFocusRingTheme focusRing;
+
   const ImpaktfullUiTouchFeedbackTheme({
     required this.colors,
+    this.focusRing = const ImpaktfullUiFocusRingTheme(),
   });
 
   /// The default look of the touch feedback: the colors of the Material
@@ -13,13 +19,16 @@ class ImpaktfullUiTouchFeedbackTheme extends ImpaktfullUiComponentTheme {
   /// base tokens of the theme.
   static const fallback = ImpaktfullUiTouchFeedbackTheme(
     colors: ImpaktfullUiTouchFeedbackColorTheme(),
+    focusRing: ImpaktfullUiFocusRingTheme(),
   );
 
   ImpaktfullUiTouchFeedbackTheme copyWith({
     ImpaktfullUiTouchFeedbackColorTheme? colors,
+    ImpaktfullUiFocusRingTheme? focusRing,
   }) =>
       ImpaktfullUiTouchFeedbackTheme(
         colors: colors ?? this.colors,
+        focusRing: focusRing ?? this.focusRing,
       );
 
   static ImpaktfullUiTouchFeedbackTheme of(BuildContext context) =>
@@ -38,10 +47,12 @@ class ImpaktfullUiTouchFeedbackTheme extends ImpaktfullUiComponentTheme {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ImpaktfullUiTouchFeedbackTheme && colors == other.colors;
+      other is ImpaktfullUiTouchFeedbackTheme &&
+          colors == other.colors &&
+          focusRing == other.focusRing;
 
   @override
-  int get hashCode => colors.hashCode;
+  int get hashCode => Object.hash(colors, focusRing);
 }
 
 /// The colors of the touch feedback, named after the colors of an InkWell.
