@@ -85,8 +85,8 @@ class ImpaktfullUiSwitch extends StatelessWidget {
                     child: AnimatedContainer(
                       duration: duration,
                       curve: Curves.easeInOut,
-                      height: 16,
-                      width: 16,
+                      height: componentTheme.dimens.thumbSize,
+                      width: componentTheme.dimens.thumbSize,
                       decoration: BoxDecoration(
                         color: color,
                         borderRadius: componentTheme.dimens.thumbBorderRadius,
@@ -111,7 +111,7 @@ class ImpaktfullUiSwitch extends StatelessWidget {
                             child: ImpaktfullUiAssetWidget(
                               asset: componentTheme.assets.active,
                               color: componentTheme.colors.accessibleActiveIcon,
-                              size: 12,
+                              size: componentTheme.dimens.iconSize,
                             ),
                           ),
                           AnimatedOpacity(
@@ -126,7 +126,7 @@ class ImpaktfullUiSwitch extends StatelessWidget {
                               asset: componentTheme.assets.inactive,
                               color:
                                   componentTheme.colors.accessibleInactiveIcon,
-                              size: 12,
+                              size: componentTheme.dimens.iconSize,
                             ),
                           ),
                         ],

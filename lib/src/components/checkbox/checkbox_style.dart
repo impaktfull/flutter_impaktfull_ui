@@ -169,18 +169,50 @@ class ImpaktfullUiCheckboxDimensTheme {
   /// layout. Null (the default) keeps the size of the checkbox.
   final Size? minTapTargetSize;
 
+  /// The width and the height of the box of the checkbox, e.g. 16 for both
+  /// shadcn/ui's `size-4` and Ant Design's `controlInteractiveSize`.
+  ///
+  /// [minTapTargetSize] keeps the tap area of the checkbox large enough
+  /// without changing this.
+  final double size;
+
+  /// The size of the check mark and of the indeterminate mark inside the box.
+  final double iconSize;
+
+  /// The width of the border of an unchecked box.
+  final double borderWidth;
+
+  /// The width of the border of a checked (or indeterminate) box, which is
+  /// drawn in `activeColor` over the background.
+  final double activeBorderWidth;
+
+  // `size`, `iconSize`, `borderWidth` and `activeBorderWidth` are optional,
+  // with the value the widget hardcoded before they were tokens as their
+  // default. They become `required` in 1.0.0.
   const ImpaktfullUiCheckboxDimensTheme({
     required this.borderRadius,
     this.minTapTargetSize,
+    this.size = 24,
+    this.iconSize = 20,
+    this.borderWidth = 1,
+    this.activeBorderWidth = 2,
   });
 
   ImpaktfullUiCheckboxDimensTheme copyWith({
+    double? activeBorderWidth,
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
+    double? iconSize,
     Size? minTapTargetSize,
+    double? size,
   }) =>
       ImpaktfullUiCheckboxDimensTheme(
+        activeBorderWidth: activeBorderWidth ?? this.activeBorderWidth,
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+        iconSize: iconSize ?? this.iconSize,
         minTapTargetSize: minTapTargetSize ?? this.minTapTargetSize,
+        size: size ?? this.size,
       );
 
   @override
@@ -188,10 +220,15 @@ class ImpaktfullUiCheckboxDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiCheckboxDimensTheme &&
           borderRadius == other.borderRadius &&
-          minTapTargetSize == other.minTapTargetSize;
+          minTapTargetSize == other.minTapTargetSize &&
+          size == other.size &&
+          iconSize == other.iconSize &&
+          borderWidth == other.borderWidth &&
+          activeBorderWidth == other.activeBorderWidth;
 
   @override
-  int get hashCode => Object.hash(borderRadius, minTapTargetSize);
+  int get hashCode => Object.hash(borderRadius, minTapTargetSize, size,
+      iconSize, borderWidth, activeBorderWidth);
 }
 
 class ImpaktfullUiCheckboxDurationsTheme {

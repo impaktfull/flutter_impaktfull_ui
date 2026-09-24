@@ -105,16 +105,31 @@ class ImpaktfullUiNumberInputColorTheme {
 }
 
 class ImpaktfullUiNumberInputDimensTheme {
-  const ImpaktfullUiNumberInputDimensTheme();
+  /// The space between the input field and the decrement and increment
+  /// buttons.
+  ///
+  /// It is optional, with the value the widget hardcoded before it was a token
+  /// as its default. It becomes `required` in 1.0.0.
+  final double spacing;
 
-  ImpaktfullUiNumberInputDimensTheme copyWith() =>
-      const ImpaktfullUiNumberInputDimensTheme();
+  const ImpaktfullUiNumberInputDimensTheme({
+    this.spacing = 8,
+  });
+
+  ImpaktfullUiNumberInputDimensTheme copyWith({
+    double? spacing,
+  }) =>
+      ImpaktfullUiNumberInputDimensTheme(
+        spacing: spacing ?? this.spacing,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiNumberInputDimensTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiNumberInputDimensTheme && spacing == other.spacing;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => spacing.hashCode;
 }
 
 class ImpaktfullUiNumberInputTextStyleTheme {

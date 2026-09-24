@@ -102,25 +102,50 @@ class ImpaktfullUiColorInputFieldColorTheme {
 class ImpaktfullUiColorInputFieldDimensTheme {
   final BorderRadiusGeometry borderRadius;
 
+  /// The width and the height of the swatch that shows (and opens) the color.
+  final double swatchSize;
+
+  /// The width of the border of the swatch.
+  final double borderWidth;
+
+  /// The space between the swatch and the hex input field.
+  final double spacing;
+
+  // Every parameter below `borderRadius` is optional, with the value the widget
+  // hardcoded before it was a token as its default. They become `required` in
+  // 1.0.0.
   const ImpaktfullUiColorInputFieldDimensTheme({
     required this.borderRadius,
+    this.swatchSize = 40,
+    this.borderWidth = 1,
+    this.spacing = 8,
   });
 
   ImpaktfullUiColorInputFieldDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
+    double? spacing,
+    double? swatchSize,
   }) =>
       ImpaktfullUiColorInputFieldDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+        spacing: spacing ?? this.spacing,
+        swatchSize: swatchSize ?? this.swatchSize,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiColorInputFieldDimensTheme &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          swatchSize == other.swatchSize &&
+          borderWidth == other.borderWidth &&
+          spacing == other.spacing;
 
   @override
-  int get hashCode => borderRadius.hashCode;
+  int get hashCode =>
+      Object.hash(borderRadius, swatchSize, borderWidth, spacing);
 }
 
 class ImpaktfullUiColorInputFieldTextStyleTheme {

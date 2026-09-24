@@ -136,16 +136,16 @@ class _ImpaktfullUiDateInputFieldState
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      padding: componentTheme.dimens.padding,
                       child: ImpaktfullUiAutoLayout.horizontal(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
-                        spacing: 8,
+                        spacing: componentTheme.dimens.spacing,
                         children: [
                           if (widget.leadingIcon != null) ...[
                             ImpaktfullUiAssetWidget(
                               asset: widget.leadingIcon,
-                              size: 20,
+                              size: componentTheme.dimens.iconSize,
                               color: componentTheme.textStyles.text.color,
                             ),
                           ],
@@ -154,10 +154,10 @@ class _ImpaktfullUiDateInputFieldState
                           ],
                           Expanded(
                             child: Container(
-                              constraints: const BoxConstraints(minHeight: 40),
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 8,
+                              constraints: BoxConstraints(
+                                minHeight: componentTheme.dimens.minHeight,
                               ),
+                              padding: componentTheme.dimens.contentPadding,
                               child: Align(
                                 alignment: AlignmentDirectional.topStart,
                                 child: Text(
@@ -224,12 +224,16 @@ class _ImpaktfullUiDateInputFieldState
     ImpaktfullUiDateInputFieldTheme componentTheme,
   ) {
     final cardTheme = ImpaktfullUiCardTheme.of(context);
+    final borderWidth = componentTheme.dimens.borderWidth;
     return cardTheme.copyWith(
       colors: cardTheme.colors.copyWith(
         background: componentTheme.colors.background,
         border: componentTheme.colors.border,
         borderError: componentTheme.colors.borderError,
       ),
+      dimens: borderWidth == null
+          ? null
+          : cardTheme.dimens.copyWith(borderWidth: borderWidth),
     );
   }
 }
