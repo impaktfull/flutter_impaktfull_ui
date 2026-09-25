@@ -15,6 +15,8 @@ void main() {
   setUp(() => setupComponentTest());
 
   runComponentTest(
+    // One golden: the showcase renders the themes itself.
+    perTheme: false,
     fileName: 'impaktfull_ui_theme',
     goldenTests: () => [
       for (final theme in [

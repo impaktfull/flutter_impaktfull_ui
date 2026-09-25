@@ -55,6 +55,8 @@ void main() {
       );
 
   runComponentTest(
+    // One golden: this golden is about the localizations, and half of it builds its own app.
+    perTheme: false,
     fileName: 'impaktfull_ui_localization',
     columns: 3,
     goldenTests: () => [

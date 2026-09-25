@@ -124,6 +124,14 @@ The package supports Android, iOS, macOS, Windows, Linux and the web, compiled t
 - **No `Image.file`, `File` or isolates in a public API**: take bytes (`Uint8List`) or an `XFile` (`package:cross_file`), and read them asynchronously. `compute` and isolates do not run on the web.
 - A new dependency must support every platform, including Wasm (check its pub.dev page, or run pana).
 
+### A golden per shipped theme
+
+`runComponentTest` (`test/util/golden_test_util.dart`) renders every component golden **once per theme this package ships**, in light and in dark: `<fileName>.png` is the default theme, next to `<fileName>_dark.png`, `<fileName>_shadcn.png`, `<fileName>_shadcn_dark.png`, `<fileName>_ant_design.png` and `<fileName>_ant_design_dark.png`. A component that hardcodes a colour, a radius or a size shows up in the diff of the design system goldens.
+
+The list of themes is `shippedThemes` in `test/util/shipped_themes.dart`, and `test/src/theme/shipped_themes_source_test.dart` fails when a theme under `lib/src/theme/presets` is missing from it, so a new theme cannot be forgotten. A theme with a dark variant belongs in the list twice.
+
+Two cases render one golden instead of the whole set: a `theme:` passed to `runComponentTest` (a test of the tokens of one theme) and `perTheme: false` (a test whose widgets build an `ImpaktfullUiApp` with a theme of their own, like the theme showcase). Both keep the file name they always had.
+
 ### Tests on every platform
 
 `flutter test` runs the tests on the Dart VM. `tool/test_web.sh` runs them in Chrome (`tool/test_web.sh --wasm` for Wasm). It leaves out two kinds of test files, and `test/src/test_platform_test.dart` fails when a test file that needs the VM is not left out:
@@ -174,7 +182,7 @@ CI fails when the line coverage of `lib/` drops below a minimum. Run it locally 
 
 ```bash
 flutter test --coverage
-dart run tool/coverage/bin/coverage_summary.dart --min 87.7
+dart run tool/coverage/bin/coverage_summary.dart --min 89.6
 ```
 
 `tool/coverage/bin/coverage_summary.dart` reads `coverage/lcov.info` (ignored by git), prints the coverage per directory of `lib/src` and exits with an error below `--min`. The minimum is set in the `Coverage` step of `.github/workflows/validate.yml`, about 1% below the measured coverage so small refactors do not fail CI. **The minimum only goes up:** when a pull request raises the coverage, raise the minimum to the new total minus 1% in the same pull request. Never lower it to make CI pass, add tests instead.
