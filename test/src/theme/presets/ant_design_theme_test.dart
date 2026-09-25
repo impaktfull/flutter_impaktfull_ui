@@ -254,6 +254,69 @@ void main() {
     expect(light.components.modal.dimens.barrierBlurSigma, 0);
   });
 
+  group('the rest of the components', () {
+    test('a tooltip is colorBgSpotlight with white text in 6px 8px', () {
+      final tooltip = light.components.tooltip;
+      expect(
+        tooltip.colors.background,
+        ImpaktfullUiAntDesignTheme.colorBgSpotlight,
+      );
+      expect(tooltip.textStyles.text?.color, Colors.white);
+      expect(
+        tooltip.dimens.padding,
+        const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      );
+    });
+
+    test('a dropdown menu is padding 4 at borderRadiusLG, items 5px 12px', () {
+      expect(
+        light.components.dropdown.dimens.borderRadius,
+        BorderRadius.circular(ImpaktfullUiAntDesignTheme.borderRadiusLarge),
+      );
+      expect(light.components.dropdown.dimens.padding, const EdgeInsets.all(4));
+      expect(
+        light.components.simpleListItem.dimens.padding,
+        const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+      );
+    });
+
+    test('a radio button is controlInteractiveSize with a dot of half', () {
+      final dimens = light.components.radioButton.dimens;
+      expect(dimens.size, ImpaktfullUiAntDesignTheme.controlInteractiveSize);
+      expect(dimens.size - 2 * dimens.dotInset, 8);
+    });
+
+    test('a slider is a 4px rail with a 14px handle', () {
+      final dimens = light.components.slider.dimens;
+      expect(dimens.trackHeight, 4);
+      expect(dimens.thumbSize, 14);
+      expect(dimens.thumbBorderWidth, 2);
+    });
+
+    test('a tab is an underline, not a box', () {
+      expect(light.components.tabBarItem.colors.background, Colors.transparent);
+      expect(
+        light.components.tabBarItem.colors.selectedMarker,
+        ImpaktfullUiAntDesignTheme.colorPrimary,
+      );
+      expect(light.components.tabBarItem.dimens.selectedMarkerHeight, 2);
+      expect(
+        light.components.tabBarItem.dimens.selectedMarkerWidth,
+        double.infinity,
+      );
+      expect(
+        light.components.tabBar.colors.divider,
+        ImpaktfullUiAntDesignTheme.colorSplit,
+      );
+    });
+
+    test('a segmented control is controlHeight with padding 2', () {
+      final dimens = light.components.segmentedControl.dimens;
+      expect(dimens.height, ImpaktfullUiAntDesignTheme.controlHeight);
+      expect(dimens.padding, const EdgeInsets.all(2));
+    });
+  });
+
   test('the line box of the text is 22 for a font size of 14', () {
     final style = light.textStyles.onCanvas.text.medium;
     expect(style.fontSize, 14);

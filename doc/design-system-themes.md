@@ -26,6 +26,29 @@ the geometry (a 32px Ant control, a 36px shadcn control, a 16px checkbox, a
 3px focus ring). Together they are the regression test of the theme system: a
 component that starts hardcoding a size, a radius or a state color fails them.
 
+## Which components they cover
+
+Every component that has a counterpart in the design system, which is 30 of
+the 87 component themes:
+
+| | shadcn/ui | Ant Design |
+|---|---|---|
+| button, input field, checkbox, switch, badge, card, modal, table (header, row, cells), focus ring | yes | yes |
+| tooltip, dropdown menu and its items, radio button, slider, tabs, notification, pagination, avatar, bottom sheet, progress indicator, skeleton, divider | yes | yes |
+| segmented control | — (it has none) | yes |
+
+The others keep the geometry of this package, because the design system has
+nothing to say about them: the virtual keyboard, the image cropper, the WYSIWYG
+editor, the chat, the CMS header, the calendar, the colour picker, the
+introduction, the confetti, the master detail layout, and the layout
+primitives (`ImpaktfullUiAutoLayout`, `ImpaktfullUiResponsiveRow`, …).
+
+Where the two systems disagree structurally, the preset follows its own
+system. Tabs are the clearest case: shadcn/ui is a `bg-muted rounded-lg
+p-[3px]` list whose active tab is a filled `bg-background` box with no
+underline, and Ant Design is a transparent row with a `colorSplit` line under
+it and a 2px `colorPrimary` bar under the active tab.
+
 ## What the theme covers
 
 | | shadcn/ui | Ant Design 5 |

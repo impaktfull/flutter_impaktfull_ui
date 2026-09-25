@@ -86,6 +86,19 @@ abstract final class ImpaktfullUiAntDesignTheme {
   /// `colorFillSecondary`, the hover of a text button: `rgba(0, 0, 0, 0.06)`.
   static const colorFillSecondary = Color(0x0F000000);
 
+  /// `colorSplit`, the line between two things: `rgba(5, 5, 5, 0.06)`.
+  static const colorSplit = Color(0x0F050505);
+
+  /// `colorBgSpotlight`, the background of a tooltip:
+  /// `rgba(0, 0, 0, 0.85)`.
+  static const colorBgSpotlight = Color(0xD9000000);
+
+  /// `colorBgSpotlight` of the dark algorithm.
+  static const colorBgSpotlightDark = Color(0xFF424242);
+
+  /// `borderRadiusSM`.
+  static const borderRadiusSmall = 4.0;
+
   /// `controlOutline`: the 2px ring of a focused input,
   /// `rgba(5, 145, 255, 0.1)`.
   static const controlOutline = Color(0x1A0591FF);
@@ -521,6 +534,167 @@ abstract final class ImpaktfullUiAntDesignTheme {
           dimens: components.tableHeaderItem.dimens.copyWith(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           ),
+        ),
+        // A tooltip is `colorBgSpotlight` (`rgba(0, 0, 0, 0.85)`) with white
+        // text in `6px 8px`, at `borderRadius`.
+        tooltip: components.tooltip.copyWith(
+          colors: components.tooltip.colors.copyWith(
+            background: isDark ? colorBgSpotlightDark : colorBgSpotlight,
+          ),
+          textStyles: components.tooltip.textStyles.copyWith(
+            text: const TextStyle(fontSize: 14, color: Colors.white),
+          ),
+          dimens: components.tooltip.dimens.copyWith(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          ),
+        ),
+        // A dropdown menu is `padding: 4px` at `borderRadiusLG`, with items
+        // of `padding: 5px 12px` at `borderRadiusSM`.
+        dropdown: components.dropdown.copyWith(
+          dimens: components.dropdown.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusLarge),
+            padding: const EdgeInsets.all(4),
+            spacing: 4,
+          ),
+        ),
+        simpleListItem: components.simpleListItem.copyWith(
+          dimens: components.simpleListItem.dimens.copyWith(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+            borderRadius: BorderRadius.circular(borderRadiusSmall),
+            spacing: 8,
+          ),
+        ),
+        listItem: components.listItem.copyWith(
+          dimens: components.listItem.dimens.copyWith(leadingSize: 16),
+        ),
+        // A radio button is `controlInteractiveSize` (16) with a dot of half
+        // of it, so the dot is `16 - 2 * 4`.
+        radioButton: components.radioButton.copyWith(
+          dimens: components.radioButton.dimens.copyWith(
+            size: controlInteractiveSize,
+            borderWidth: 1,
+            dotInset: 4,
+          ),
+        ),
+        // A slider is a 4px rail with a 14px handle that has a 2px border.
+        slider: components.slider.copyWith(
+          colors: components.slider.colors.copyWith(
+            track: isDark ? colorFillSecondaryDark : const Color(0xFFF5F5F5),
+            activeTrack: primary,
+            thumb: bgContainer,
+            thumbBorder: primary,
+          ),
+          dimens: components.slider.dimens.copyWith(
+            trackHeight: 4,
+            thumbSize: 14,
+            thumbBorderWidth: 2,
+            height: 24,
+            // Both design systems draw a round thumb on a round track.
+            trackBorderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+            thumbBorderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+          ),
+        ),
+        // Tabs are an underline: no background behind them, a
+        // `colorSplit` line under the bar and a 2px `colorPrimary` bar under
+        // the active tab.
+        tabBar: components.tabBar.copyWith(
+          colors: components.tabBar.colors.copyWith(
+            divider: isDark ? colorBorderSecondaryDark : colorSplit,
+          ),
+          dimens: components.tabBar.dimens.copyWith(
+            height: 46,
+            padding: EdgeInsets.zero,
+            spacing: 32,
+            dividerHeight: 1,
+            borderRadius: BorderRadius.zero,
+          ),
+        ),
+        tabBarItem: components.tabBarItem.copyWith(
+          colors: components.tabBarItem.colors.copyWith(
+            // A tab is text with a bar under it, not a box.
+            background: Colors.transparent,
+            selectedBackground: Colors.transparent,
+            selectedMarker: primary,
+          ),
+          dimens: components.tabBarItem.dimens.copyWith(
+            borderRadius: BorderRadius.zero,
+            // Ant Design draws the bar of the active tab over the bottom edge
+            // of a 46 high tab; this package puts it under the title, so the
+            // padding gives it its 2 pixels back: 10 + 22 + 2 + 2 + 10 = 46.
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            spacing: 2,
+            selectedMarkerHeight: 2,
+            // The bar runs under the whole tab, not under a part of it.
+            selectedMarkerWidth: double.infinity,
+          ),
+        ),
+        // An alert is `8px 12px` at `borderRadiusLG`, with 8 between its icon
+        // and its text.
+        notification: components.notification.copyWith(
+          dimens: components.notification.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusLarge),
+            leadingPadding: const EdgeInsetsDirectional.fromSTEB(12, 8, 0, 8),
+            contentPadding: const EdgeInsets.symmetric(vertical: 8),
+            spacing: 12,
+            titleSpacing: 4,
+          ),
+        ),
+        // The pages of a pagination are 8 apart.
+        pagination: components.pagination.copyWith(
+          dimens: components.pagination.dimens.copyWith(spacing: 8),
+        ),
+        avatar: components.avatar.copyWith(
+          dimens: components.avatar.dimens.copyWith(borderWidth: 0),
+        ),
+        // A drawer has `padding: 24` and the radius of a modal.
+        bottomSheet: components.bottomSheet.copyWith(
+          dimens: components.bottomSheet.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusLarge),
+            padding: const EdgeInsetsDirectional.all(24),
+          ),
+        ),
+        // A segmented control: `controlHeight` with `padding: 2` and items at
+        // `borderRadiusSM`.
+        segmentedControl: components.segmentedControl.copyWith(
+          colors: components.segmentedControl.colors.copyWith(
+            background: isDark ? colorFillSecondaryDark : colorFillAlter,
+            activeBackground: bgContainer,
+          ),
+          dimens: components.segmentedControl.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadius),
+            height: controlHeight,
+            padding: const EdgeInsets.all(2),
+          ),
+        ),
+        // A progress bar is 8 high and fully round.
+        progressIndicator: components.progressIndicator.copyWith(
+          dimens: components.progressIndicator.dimens.copyWith(
+            borderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+            width: 8,
+          ),
+        ),
+        // A skeleton is `colorFillSecondary` at `borderRadiusSM`.
+        skeleton: components.skeleton.copyWith(
+          colors: components.skeleton.colors.copyWith(
+            background: fillSecondary,
+            highlight: isDark ? colorBorderDark : colorBorder,
+          ),
+          dimens: components.skeleton.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusSmall),
+          ),
+        ),
+        // A divider is a 1px `colorSplit` line.
+        divider: components.divider.copyWith(
+          colors: components.divider.colors.copyWith(
+            color: isDark ? colorBorderSecondaryDark : colorSplit,
+          ),
+          dimens: components.divider.dimens.copyWith(thickness: 1),
         ),
       ),
     );

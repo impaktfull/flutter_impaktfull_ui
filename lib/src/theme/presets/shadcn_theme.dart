@@ -444,6 +444,157 @@ abstract final class ImpaktfullUiShadcnTheme {
             border: borderColor,
           ),
         ),
+        // `table.tsx`: `[&_th]:p-2`, `[&_td]:p-2` and a `text-muted-foreground`
+        // header.
+        tableHeader: components.tableHeader.copyWith(
+          colors: components.tableHeader.colors.copyWith(border: borderColor),
+        ),
+        tableHeaderItem: components.tableHeaderItem.copyWith(
+          dimens: components.tableHeaderItem.dimens.copyWith(
+            padding: const EdgeInsets.all(8),
+          ),
+        ),
+        tableRowItem: components.tableRowItem.copyWith(
+          dimens: components.tableRowItem.dimens.copyWith(
+            padding: const EdgeInsets.all(8),
+          ),
+        ),
+        // `tooltip.tsx`: `bg-primary text-primary-foreground rounded-md px-3
+        // py-1.5 text-xs`.
+        tooltip: components.tooltip.copyWith(
+          colors: components.tooltip.colors.copyWith(background: primaryColor),
+          textStyles: components.tooltip.textStyles.copyWith(
+            text: TextStyle(fontSize: 12, color: onPrimary),
+          ),
+          dimens: components.tooltip.dimens.copyWith(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          ),
+        ),
+        // `dropdown-menu.tsx`: `rounded-md border bg-popover p-1 shadow-md`
+        // with `sideOffset={4}`, and `min-w-[8rem]`.
+        dropdown: components.dropdown.copyWith(
+          dimens: components.dropdown.dimens.copyWith(
+            padding: const EdgeInsets.all(4),
+            spacing: 4,
+            minWidth: 128,
+          ),
+        ),
+        // An item of that menu: `rounded-sm px-2 py-1.5 text-sm` with
+        // `gap-2`, which is also what a list of this package looks like in
+        // shadcn/ui.
+        simpleListItem: components.simpleListItem.copyWith(
+          dimens: components.simpleListItem.dimens.copyWith(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            borderRadius: BorderRadius.circular(radiusSmall),
+            spacing: 8,
+          ),
+        ),
+        listItem: components.listItem.copyWith(
+          dimens: components.listItem.dimens.copyWith(leadingSize: 16),
+        ),
+        // `radio-group.tsx`: `size-4 rounded-full border` with a `size-2`
+        // indicator, so the dot is `16 - 2 * 4`.
+        radioButton: components.radioButton.copyWith(
+          dimens: components.radioButton.dimens.copyWith(
+            size: 16,
+            borderWidth: 1,
+            dotInset: 4,
+          ),
+        ),
+        // `slider.tsx`: a `h-1.5` track with a `size-4` thumb.
+        slider: components.slider.copyWith(
+          dimens: components.slider.dimens.copyWith(
+            trackHeight: 6,
+            thumbSize: 16,
+            thumbBorderWidth: 1,
+            height: 24,
+            // Both design systems draw a round thumb on a round track.
+            trackBorderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+            thumbBorderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+          ),
+        ),
+        // `tabs.tsx`: a `bg-muted rounded-lg p-[3px] h-9` list with a
+        // `rounded-md` trigger that gets `bg-background` while it is active.
+        // There is no underline under an active tab.
+        tabBar: components.tabBar.copyWith(
+          colors: components.tabBar.colors.copyWith(background: mutedColor),
+          dimens: components.tabBar.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusLarge),
+            padding: const EdgeInsets.all(3),
+            height: 36,
+            spacing: 4,
+          ),
+        ),
+        tabBarItem: components.tabBarItem.copyWith(
+          colors: components.tabBarItem.colors.copyWith(
+            // Only the active tab has a background of its own; the others let
+            // the `bg-muted` of the list show through.
+            background: Colors.transparent,
+            selectedBackground: isDark ? cardDark : background,
+          ),
+          dimens: components.tabBarItem.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            // An active tab is a filled box, not an underline, so there is no
+            // marker under the title and no space for one either.
+            selectedMarkerHeight: 0,
+            spacing: 0,
+          ),
+        ),
+        // `alert.tsx`: `rounded-lg border px-4 py-3 text-sm` with a `gap-3`
+        // icon and a `gap-1` between the title and the description.
+        notification: components.notification.copyWith(
+          dimens: components.notification.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusLarge),
+            leadingPadding: const EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
+            contentPadding: const EdgeInsets.symmetric(vertical: 12),
+            spacing: 16,
+            titleSpacing: 4,
+          ),
+        ),
+        // `pagination.tsx`: a row with `gap-1`.
+        pagination: components.pagination.copyWith(
+          dimens: components.pagination.dimens.copyWith(spacing: 4),
+        ),
+        // `avatar.tsx` has no border around it.
+        avatar: components.avatar.copyWith(
+          dimens: components.avatar.dimens.copyWith(borderWidth: 0),
+        ),
+        // `sheet.tsx`: `p-6`, with the radius of a dialog.
+        bottomSheet: components.bottomSheet.copyWith(
+          dimens: components.bottomSheet.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusLarge),
+            padding: const EdgeInsetsDirectional.all(24),
+          ),
+        ),
+        // `progress.tsx`: a `h-2 rounded-full` bar.
+        progressIndicator: components.progressIndicator.copyWith(
+          dimens: components.progressIndicator.dimens.copyWith(
+            borderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+            width: 8,
+          ),
+        ),
+        // `skeleton.tsx`: `bg-accent animate-pulse rounded-md`.
+        skeleton: components.skeleton.copyWith(
+          colors: components.skeleton.colors.copyWith(
+            background: mutedColor,
+            highlight: isDark ? mutedForegroundDark : border,
+          ),
+          dimens: components.skeleton.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+          ),
+        ),
+        // `separator.tsx`: a 1px line in `bg-border`.
+        divider: components.divider.copyWith(
+          colors: components.divider.colors.copyWith(color: borderColor),
+          dimens: components.divider.dimens.copyWith(thickness: 1),
+        ),
       ),
     );
   }

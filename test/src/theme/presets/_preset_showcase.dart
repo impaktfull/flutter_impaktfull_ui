@@ -13,6 +13,16 @@ class PresetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = ImpaktfullUiTheme.of(context);
+    // An explicit width: the golden lays its cases out in a `Table`, which
+    // asks for the intrinsic width of its children, and a `LayoutBuilder`
+    // (the slider uses one) cannot answer that.
+    return SizedBox(
+      width: 560,
+      child: _build(context, theme),
+    );
+  }
+
+  Widget _build(BuildContext context, ImpaktfullUiTheme theme) {
     return ImpaktfullUiContainer(
       color: theme.colors.canvas,
       child: Padding(
@@ -22,10 +32,10 @@ class PresetShowcase extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            ImpaktfullUiAutoLayout.horizontal(
+            Wrap(
               spacing: 8,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              runSpacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 for (final size in [
                   ImpaktfullUiButtonSize.extraSmall,
@@ -40,10 +50,10 @@ class PresetShowcase extends StatelessWidget {
                   ),
               ],
             ),
-            ImpaktfullUiAutoLayout.horizontal(
+            Wrap(
               spacing: 8,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              runSpacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 ImpaktfullUiButton(
                   type: ImpaktfullUiButtonType.secondary,
@@ -76,13 +86,21 @@ class PresetShowcase extends StatelessWidget {
                 onChanged: (_) {},
               ),
             ),
-            ImpaktfullUiAutoLayout.horizontal(
+            Wrap(
               spacing: 16,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              runSpacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                ImpaktfullUiCheckbox(value: true, onChanged: (_) {}),
-                ImpaktfullUiCheckbox(value: false, onChanged: (_) {}),
+                // A checkbox centers its box in the space it is given, so it
+                // gets exactly the space of its box here.
+                SizedBox(
+                  width: 24,
+                  child: ImpaktfullUiCheckbox(value: true, onChanged: (_) {}),
+                ),
+                SizedBox(
+                  width: 24,
+                  child: ImpaktfullUiCheckbox(value: false, onChanged: (_) {}),
+                ),
                 ImpaktfullUiSwitch(value: true, onChanged: (_) {}),
                 ImpaktfullUiSwitch(value: false, onChanged: (_) {}),
                 const ImpaktfullUiBadge(
@@ -94,6 +112,70 @@ class PresetShowcase extends StatelessWidget {
                   type: ImpaktfullUiBadgeType.error,
                 ),
               ],
+            ),
+            Wrap(
+              spacing: 16,
+              runSpacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                ImpaktfullUiRadioButton<int>(
+                  value: 0,
+                  groupValue: 0,
+                  onChanged: (_) {},
+                ),
+                ImpaktfullUiRadioButton<int>(
+                  value: 1,
+                  groupValue: 0,
+                  onChanged: (_) {},
+                ),
+                const ImpaktfullUiBadge(
+                  title: 'Success',
+                  type: ImpaktfullUiBadgeType.success,
+                ),
+              ],
+            ),
+            SizedBox(
+              width: 320,
+              child: ImpaktfullUiSlider(
+                value: 0.4,
+                min: 0,
+                max: 1,
+                onChanged: (_) {},
+              ),
+            ),
+            SizedBox(
+              width: 320,
+              child: DefaultTabController(
+                length: 2,
+                child: Builder(
+                  builder: (context) {
+                    final controller = DefaultTabController.of(context);
+                    return ImpaktfullUiTabBar(
+                      controller: controller,
+                      items: [
+                        ImpaktfullUiTabBarItem(
+                          title: 'Tab one',
+                          index: 0,
+                          controller: controller,
+                        ),
+                        ImpaktfullUiTabBarItem(
+                          title: 'Tab two',
+                          index: 1,
+                          controller: controller,
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 320,
+              child: ImpaktfullUiNotification(
+                title: 'A notification',
+                subtitle: 'With a subtitle under it.',
+                type: ImpaktfullUiNotificationType.info,
+              ),
             ),
             SizedBox(
               width: 320,

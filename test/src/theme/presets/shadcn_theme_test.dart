@@ -297,6 +297,84 @@ void main() {
     );
   });
 
+  group('the rest of the components', () {
+    test('a tooltip is bg-primary with text-xs in px-3 py-1.5', () {
+      final tooltip = light.components.tooltip;
+      expect(tooltip.colors.background, ImpaktfullUiShadcnTheme.primary);
+      expect(tooltip.textStyles.text?.fontSize, 12);
+      expect(
+        tooltip.dimens.padding,
+        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      );
+    });
+
+    test('a menu is p-1 with min-w-[8rem] and an item of px-2 py-1.5', () {
+      expect(light.components.dropdown.dimens.padding, const EdgeInsets.all(4));
+      expect(light.components.dropdown.dimens.minWidth, 128);
+      expect(
+        light.components.simpleListItem.dimens.padding,
+        const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+      );
+    });
+
+    test('a radio button is size-4 with a size-2 dot', () {
+      final dimens = light.components.radioButton.dimens;
+      expect(dimens.size, 16);
+      // `size - 2 * dotInset`
+      expect(dimens.size - 2 * dimens.dotInset, 8);
+    });
+
+    test('a slider is a h-1.5 track with a size-4 thumb', () {
+      final dimens = light.components.slider.dimens;
+      expect(dimens.trackHeight, 6);
+      expect(dimens.thumbSize, 16);
+    });
+
+    test('a tab is a box that fills in, not an underline', () {
+      expect(
+        light.components.tabBar.colors.background,
+        ImpaktfullUiShadcnTheme.muted,
+      );
+      expect(light.components.tabBarItem.dimens.selectedMarkerHeight, 0);
+      expect(
+        light.components.tabBarItem.colors.selectedBackground,
+        ImpaktfullUiShadcnTheme.background,
+      );
+    });
+
+    testWidgets('a tab bar is h-9 with a p-[3px] list', (tester) async {
+      await pumpImpaktfullUiApp(
+        tester,
+        Center(
+          child: SizedBox(
+            width: 320,
+            child: DefaultTabController(
+              length: 2,
+              child: Builder(
+                builder: (context) {
+                  final controller = DefaultTabController.of(context);
+                  return ImpaktfullUiTabBar(
+                    controller: controller,
+                    items: [
+                      ImpaktfullUiTabBarItem(
+                        title: 'One',
+                        index: 0,
+                        controller: controller,
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ),
+        ),
+        theme: light,
+      );
+      expect(tester.getSize(find.byType(ImpaktfullUiTabBar)).height, 36);
+      expect(light.components.tabBar.dimens.padding, const EdgeInsets.all(3));
+    });
+  });
+
   test('the fontFamily is the one of the app, or the platform font', () {
     expect(light.textStyles.onCanvas.text.medium.fontFamily, isNull);
     expect(
