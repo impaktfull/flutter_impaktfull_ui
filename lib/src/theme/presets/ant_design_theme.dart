@@ -948,6 +948,15 @@ abstract final class ImpaktfullUiAntDesignTheme {
         ),
         // `Empty`: an illustration of 40 with 8 under it.
         placeholder: components.placeholder.copyWith(
+          // `Empty` writes its description in `colorTextDescription` at
+          // `fontSize`, not in a display style: the display scale has no
+          // seed, so without this the title stays 24 next to the 14 of the
+          // text around it.
+          textStyles: components.placeholder.textStyles.copyWith(
+            title: base.textStyles.onCanvas.text.large
+                .copyWith(fontWeight: FontWeight.w600),
+            subtitle: base.textStyles.onCanvasSecondary.text.medium,
+          ),
           dimens: components.placeholder.dimens.copyWith(
             spacing: 8,
             titleSpacing: 4,

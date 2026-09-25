@@ -842,6 +842,14 @@ abstract final class ImpaktfullUiShadcnTheme {
         // An empty state: `gap-2` between the illustration, the text and the
         // actions.
         placeholder: components.placeholder.copyWith(
+          // The title of an empty state is `text-lg font-semibold`, not a
+          // display style: the display scale has no seed, so without this it
+          // stays 24 next to the 14 of the text around it.
+          textStyles: components.placeholder.textStyles.copyWith(
+            title: base.textStyles.onCanvas.text.large
+                .copyWith(fontWeight: FontWeight.w600),
+            subtitle: base.textStyles.onCanvasSecondary.text.small,
+          ),
           dimens: components.placeholder.dimens.copyWith(
             spacing: 16,
             titleSpacing: 4,
