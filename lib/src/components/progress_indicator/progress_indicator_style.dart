@@ -127,17 +127,24 @@ class ImpaktfullUiProgressIndicatorColorTheme {
 class ImpaktfullUiProgressIndicatorDimensTheme {
   final double width;
   final BorderRadiusGeometry borderRadius;
+
+  /// The space between the line and the label next to it.
+  final double spacing;
+
   const ImpaktfullUiProgressIndicatorDimensTheme({
     required this.width,
     required this.borderRadius,
+    this.spacing = 16,
   });
 
   ImpaktfullUiProgressIndicatorDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? spacing,
     double? width,
   }) =>
       ImpaktfullUiProgressIndicatorDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        spacing: spacing ?? this.spacing,
         width: width ?? this.width,
       );
 
@@ -146,10 +153,11 @@ class ImpaktfullUiProgressIndicatorDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiProgressIndicatorDimensTheme &&
           width == other.width &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          spacing == other.spacing;
 
   @override
-  int get hashCode => Object.hash(width, borderRadius);
+  int get hashCode => Object.hash(width, borderRadius, spacing);
 }
 
 class ImpaktfullUiProgressIndicatorDurationsTheme {

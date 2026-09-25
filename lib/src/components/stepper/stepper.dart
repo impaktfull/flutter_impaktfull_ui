@@ -87,7 +87,7 @@ class ImpaktfullUiStepper extends StatelessWidget {
                     child: ImpaktfullUiAutoLayout.vertical(
                       crossAxisAlignment: crossAxisAlignment,
                       mainAxisSize: MainAxisSize.min,
-                      spacing: 8,
+                      spacing: componentTheme.dimens.titleSpacing,
                       children: [
                         if (item.asset == null) ...[
                           Container(
@@ -107,7 +107,7 @@ class ImpaktfullUiStepper extends StatelessWidget {
                                 color: i < activeSteps
                                     ? componentTheme.colors.assetBorderCompleted
                                     : componentTheme.colors.assetBorder,
-                                width: 1,
+                                width: componentTheme.dimens.lineWidth,
                               ),
                               color: i < activeSteps
                                   ? componentTheme

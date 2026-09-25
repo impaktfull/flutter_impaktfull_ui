@@ -70,7 +70,7 @@ class ImpaktfullUiSimpleListItem extends StatelessWidget {
               if (centerWidgetBuilder == null) ...[
                 Expanded(
                   child: ImpaktfullUiAutoLayout.vertical(
-                    spacing: 2,
+                    spacing: componentTheme.dimens.titleSpacing,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(

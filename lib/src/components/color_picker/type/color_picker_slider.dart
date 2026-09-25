@@ -31,7 +31,7 @@ class _ImpaktfullUiColorPickerSliderState
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
+      height: ImpaktfullUiColorPickerTheme.of(context).dimens.sliderHeight,
       child: Builder(
         builder: (context) => GestureDetector(
           onPanUpdate: (details) {

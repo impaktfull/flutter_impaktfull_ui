@@ -111,16 +111,70 @@ class ImpaktfullUiMetricColorTheme {
 }
 
 class ImpaktfullUiMetricDimensTheme {
-  const ImpaktfullUiMetricDimensTheme();
+  /// The padding between the border of the metric and its content.
+  final EdgeInsetsGeometry padding;
 
-  ImpaktfullUiMetricDimensTheme copyWith() =>
-      const ImpaktfullUiMetricDimensTheme();
+  /// The space between the title, the value and the trend.
+  final double spacing;
+
+  /// The space between the text and the widget next to it.
+  final double contentSpacing;
+
+  /// The space between the trend icon and the trend itself.
+  final double trendSpacing;
+
+  /// The size of the trend icon.
+  final double trendIconSize;
+
+  /// The space between the value and what follows it.
+  final double valueSpacing;
+
+  const ImpaktfullUiMetricDimensTheme({
+    this.padding = const EdgeInsets.all(16),
+    this.spacing = 8,
+    this.contentSpacing = 16,
+    this.trendSpacing = 2,
+    this.trendIconSize = 12,
+    this.valueSpacing = 32,
+  });
+
+  ImpaktfullUiMetricDimensTheme copyWith({
+    double? contentSpacing,
+    EdgeInsetsGeometry? padding,
+    double? spacing,
+    double? trendIconSize,
+    double? trendSpacing,
+    double? valueSpacing,
+  }) =>
+      ImpaktfullUiMetricDimensTheme(
+        contentSpacing: contentSpacing ?? this.contentSpacing,
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
+        trendIconSize: trendIconSize ?? this.trendIconSize,
+        trendSpacing: trendSpacing ?? this.trendSpacing,
+        valueSpacing: valueSpacing ?? this.valueSpacing,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiMetricDimensTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiMetricDimensTheme &&
+          padding == other.padding &&
+          spacing == other.spacing &&
+          contentSpacing == other.contentSpacing &&
+          trendSpacing == other.trendSpacing &&
+          trendIconSize == other.trendIconSize &&
+          valueSpacing == other.valueSpacing;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+        padding,
+        spacing,
+        contentSpacing,
+        trendSpacing,
+        trendIconSize,
+        valueSpacing,
+      );
 }
 
 class ImpaktfullUiMetricTextStyleTheme {

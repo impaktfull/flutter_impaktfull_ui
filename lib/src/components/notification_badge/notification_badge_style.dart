@@ -94,17 +94,23 @@ class ImpaktfullUiNotificationBadgeDimensTheme {
   final BorderRadiusGeometry borderRadius;
   final EdgeInsets textPadding;
 
+  /// The width of the border between the badge and what it is on.
+  final double borderWidth;
+
   const ImpaktfullUiNotificationBadgeDimensTheme({
     required this.borderRadius,
     required this.textPadding,
+    this.borderWidth = 2,
   });
 
   ImpaktfullUiNotificationBadgeDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
     EdgeInsets? textPadding,
   }) =>
       ImpaktfullUiNotificationBadgeDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
         textPadding: textPadding ?? this.textPadding,
       );
 
@@ -113,10 +119,11 @@ class ImpaktfullUiNotificationBadgeDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiNotificationBadgeDimensTheme &&
           borderRadius == other.borderRadius &&
-          textPadding == other.textPadding;
+          textPadding == other.textPadding &&
+          borderWidth == other.borderWidth;
 
   @override
-  int get hashCode => Object.hash(borderRadius, textPadding);
+  int get hashCode => Object.hash(borderRadius, textPadding, borderWidth);
 }
 
 class ImpaktfullUiNotificationBadgeDurationsTheme {

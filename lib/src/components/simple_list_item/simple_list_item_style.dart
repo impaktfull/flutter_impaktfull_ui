@@ -115,11 +115,15 @@ class ImpaktfullUiSimpleListItemDimensTheme {
   final CrossAxisAlignment crossAxisAlignment;
   final double spacing;
 
+  /// The space between the title and the subtitle.
+  final double titleSpacing;
+
   const ImpaktfullUiSimpleListItemDimensTheme({
     required this.padding,
     required this.borderRadius,
     required this.crossAxisAlignment,
     required this.spacing,
+    this.titleSpacing = 2,
   });
 
   ImpaktfullUiSimpleListItemDimensTheme copyWith({
@@ -127,12 +131,14 @@ class ImpaktfullUiSimpleListItemDimensTheme {
     CrossAxisAlignment? crossAxisAlignment,
     EdgeInsetsGeometry? padding,
     double? spacing,
+    double? titleSpacing,
   }) =>
       ImpaktfullUiSimpleListItemDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
         crossAxisAlignment: crossAxisAlignment ?? this.crossAxisAlignment,
         padding: padding ?? this.padding,
         spacing: spacing ?? this.spacing,
+        titleSpacing: titleSpacing ?? this.titleSpacing,
       );
 
   @override
@@ -142,11 +148,12 @@ class ImpaktfullUiSimpleListItemDimensTheme {
           padding == other.padding &&
           borderRadius == other.borderRadius &&
           crossAxisAlignment == other.crossAxisAlignment &&
-          spacing == other.spacing;
+          spacing == other.spacing &&
+          titleSpacing == other.titleSpacing;
 
   @override
-  int get hashCode =>
-      Object.hash(padding, borderRadius, crossAxisAlignment, spacing);
+  int get hashCode => Object.hash(
+      padding, borderRadius, crossAxisAlignment, spacing, titleSpacing);
 }
 
 class ImpaktfullUiSimpleListItemTextStyleTheme {

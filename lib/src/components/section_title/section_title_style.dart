@@ -112,19 +112,26 @@ class ImpaktfullUiSectionTitleColorTheme {
 class ImpaktfullUiSectionTitleDimensTheme {
   final EdgeInsetsGeometry margin;
   final EdgeInsetsGeometry marginWithIconButtonActions;
+
+  /// The space between the title and the actions.
+  final double spacing;
+
   const ImpaktfullUiSectionTitleDimensTheme({
     required this.margin,
     required this.marginWithIconButtonActions,
+    this.spacing = 8,
   });
 
   ImpaktfullUiSectionTitleDimensTheme copyWith({
     EdgeInsetsGeometry? margin,
     EdgeInsetsGeometry? marginWithIconButtonActions,
+    double? spacing,
   }) =>
       ImpaktfullUiSectionTitleDimensTheme(
         margin: margin ?? this.margin,
         marginWithIconButtonActions:
             marginWithIconButtonActions ?? this.marginWithIconButtonActions,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
@@ -132,10 +139,11 @@ class ImpaktfullUiSectionTitleDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiSectionTitleDimensTheme &&
           margin == other.margin &&
-          marginWithIconButtonActions == other.marginWithIconButtonActions;
+          marginWithIconButtonActions == other.marginWithIconButtonActions &&
+          spacing == other.spacing;
 
   @override
-  int get hashCode => Object.hash(margin, marginWithIconButtonActions);
+  int get hashCode => Object.hash(margin, marginWithIconButtonActions, spacing);
 }
 
 class ImpaktfullUiSectionTitleTextStyleTheme {

@@ -126,25 +126,40 @@ class ImpaktfullUiFloatingActionButtonColorTheme {
 
 class ImpaktfullUiFloatingActionButtonDimensTheme {
   final BorderRadiusGeometry borderRadius;
+
+  /// The padding around the icon of a button without a title.
+  final EdgeInsetsGeometry padding;
+
+  /// The size of the icon.
+  final double iconSize;
+
   const ImpaktfullUiFloatingActionButtonDimensTheme({
     required this.borderRadius,
+    this.padding = const EdgeInsets.all(12),
+    this.iconSize = 24,
   });
 
   ImpaktfullUiFloatingActionButtonDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? iconSize,
+    EdgeInsetsGeometry? padding,
   }) =>
       ImpaktfullUiFloatingActionButtonDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        iconSize: iconSize ?? this.iconSize,
+        padding: padding ?? this.padding,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiFloatingActionButtonDimensTheme &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          padding == other.padding &&
+          iconSize == other.iconSize;
 
   @override
-  int get hashCode => borderRadius.hashCode;
+  int get hashCode => Object.hash(borderRadius, padding, iconSize);
 }
 
 class ImpaktfullUiFloatingActionButtonDurationsTheme {

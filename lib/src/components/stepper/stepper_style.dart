@@ -164,24 +164,36 @@ class ImpaktfullUiStepperDimensTheme {
   /// The padding around the asset of a step.
   final EdgeInsetsGeometry padding;
 
+  /// The space between the step and its title.
+  final double titleSpacing;
+
+  /// The thickness of the line between two steps.
+  final double lineWidth;
+
   const ImpaktfullUiStepperDimensTheme({
     required this.spacing,
     required this.height,
     required this.borderRadius,
     this.padding = const EdgeInsets.all(8),
+    this.titleSpacing = 8,
+    this.lineWidth = 1,
   });
 
   ImpaktfullUiStepperDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
     double? height,
+    double? lineWidth,
     EdgeInsetsGeometry? padding,
     double? spacing,
+    double? titleSpacing,
   }) =>
       ImpaktfullUiStepperDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
         height: height ?? this.height,
+        lineWidth: lineWidth ?? this.lineWidth,
         padding: padding ?? this.padding,
         spacing: spacing ?? this.spacing,
+        titleSpacing: titleSpacing ?? this.titleSpacing,
       );
 
   @override
@@ -191,10 +203,13 @@ class ImpaktfullUiStepperDimensTheme {
           spacing == other.spacing &&
           height == other.height &&
           borderRadius == other.borderRadius &&
-          padding == other.padding;
+          padding == other.padding &&
+          titleSpacing == other.titleSpacing &&
+          lineWidth == other.lineWidth;
 
   @override
-  int get hashCode => Object.hash(spacing, height, borderRadius, padding);
+  int get hashCode => Object.hash(
+      spacing, height, borderRadius, padding, titleSpacing, lineWidth);
 }
 
 class ImpaktfullUiStepperTextStyleTheme {

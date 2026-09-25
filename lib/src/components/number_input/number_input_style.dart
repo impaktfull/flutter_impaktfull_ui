@@ -112,24 +112,32 @@ class ImpaktfullUiNumberInputDimensTheme {
   /// as its default. It becomes `required` in 1.0.0.
   final double spacing;
 
+  /// The space between the field and the buttons next to it.
+  final double buttonSpacing;
+
   const ImpaktfullUiNumberInputDimensTheme({
     this.spacing = 8,
+    this.buttonSpacing = 4,
   });
 
   ImpaktfullUiNumberInputDimensTheme copyWith({
+    double? buttonSpacing,
     double? spacing,
   }) =>
       ImpaktfullUiNumberInputDimensTheme(
+        buttonSpacing: buttonSpacing ?? this.buttonSpacing,
         spacing: spacing ?? this.spacing,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ImpaktfullUiNumberInputDimensTheme && spacing == other.spacing;
+      other is ImpaktfullUiNumberInputDimensTheme &&
+          spacing == other.spacing &&
+          buttonSpacing == other.buttonSpacing;
 
   @override
-  int get hashCode => spacing.hashCode;
+  int get hashCode => Object.hash(spacing, buttonSpacing);
 }
 
 class ImpaktfullUiNumberInputTextStyleTheme {

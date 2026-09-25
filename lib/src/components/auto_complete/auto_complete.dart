@@ -125,7 +125,7 @@ class _ImpaktfullUiAutoCompleteState<T>
                       leadingChild == null ? null : (context) => leadingChild,
                   topBuilder: topChildren.isNotEmpty
                       ? (context) => ImpaktfullUiWrap(
-                            spacing: 4,
+                            spacing: componentTheme.dimens.spacing,
                             runSpacing: 4,
                             children: topChildren,
                           )

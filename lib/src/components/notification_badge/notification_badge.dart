@@ -100,7 +100,7 @@ class ImpaktfullUiNotificationBadge extends StatelessWidget {
                             ? null
                             : Border.all(
                                 color: componentTheme.colors.border!,
-                                width: 2,
+                                width: componentTheme.dimens.borderWidth,
                                 strokeAlign: BorderSide.strokeAlignOutside,
                               ),
                       ),

@@ -96,7 +96,7 @@ class _ImpaktfullUiFloatingActionButtonState
             : componentTheme.colors.background,
         borderRadius: componentTheme.dimens.borderRadius,
         child: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: componentTheme.dimens.padding,
           child: ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
@@ -104,7 +104,7 @@ class _ImpaktfullUiFloatingActionButtonState
               ImpaktfullUiAssetWidget(
                 asset: widget.asset,
                 color: componentTheme.colors.icon,
-                size: 24,
+                size: componentTheme.dimens.iconSize,
               ),
               if (widget.title != null) ...[
                 AnimatedBuilder(

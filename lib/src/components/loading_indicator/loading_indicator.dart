@@ -50,8 +50,8 @@ class ImpaktfullUiLoadingIndicator extends StatelessWidget {
     if (lottie != null) {
       final lottieWidget = ImpaktfullUiAssetWidget(
         asset: lottie,
-        width: 48,
-        height: 48,
+        width: componentTheme.dimens.size,
+        height: componentTheme.dimens.size,
       );
       if (color == null) return lottieWidget;
       return ColorFiltered(

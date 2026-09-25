@@ -85,14 +85,20 @@ class ImpaktfullUiLoadingIndicatorColorTheme {
 class ImpaktfullUiLoadingIndicatorDimensTheme {
   final double strokeWidth;
 
+  /// The width and the height of the loading indicator.
+  final double size;
+
   const ImpaktfullUiLoadingIndicatorDimensTheme({
     required this.strokeWidth,
+    this.size = 48,
   });
 
   ImpaktfullUiLoadingIndicatorDimensTheme copyWith({
+    double? size,
     double? strokeWidth,
   }) =>
       ImpaktfullUiLoadingIndicatorDimensTheme(
+        size: size ?? this.size,
         strokeWidth: strokeWidth ?? this.strokeWidth,
       );
 
@@ -100,10 +106,11 @@ class ImpaktfullUiLoadingIndicatorDimensTheme {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiLoadingIndicatorDimensTheme &&
-          strokeWidth == other.strokeWidth;
+          strokeWidth == other.strokeWidth &&
+          size == other.size;
 
   @override
-  int get hashCode => strokeWidth.hashCode;
+  int get hashCode => Object.hash(strokeWidth, size);
 }
 
 class ImpaktfullUiLoadingIndicatorAssetsTheme {

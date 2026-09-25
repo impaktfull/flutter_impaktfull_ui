@@ -91,20 +91,38 @@ class ImpaktfullUiColorPickerDimensTheme {
   final BorderRadiusGeometry simpleColorPickerItemBorderRadius;
   final double simpleColorPickerItemSize;
 
+  /// The height of the slider that picks a color.
+  final double sliderHeight;
+
+  /// The space between the colors.
+  final double spacing;
+
+  /// The space between the colors and what follows them.
+  final double sectionSpacing;
+
   const ImpaktfullUiColorPickerDimensTheme({
     required this.simpleColorPickerItemBorderRadius,
     required this.simpleColorPickerItemSize,
+    this.sliderHeight = 150,
+    this.spacing = 8,
+    this.sectionSpacing = 32,
   });
 
   ImpaktfullUiColorPickerDimensTheme copyWith({
+    double? sectionSpacing,
     BorderRadiusGeometry? simpleColorPickerItemBorderRadius,
     double? simpleColorPickerItemSize,
+    double? sliderHeight,
+    double? spacing,
   }) =>
       ImpaktfullUiColorPickerDimensTheme(
+        sectionSpacing: sectionSpacing ?? this.sectionSpacing,
         simpleColorPickerItemBorderRadius: simpleColorPickerItemBorderRadius ??
             this.simpleColorPickerItemBorderRadius,
         simpleColorPickerItemSize:
             simpleColorPickerItemSize ?? this.simpleColorPickerItemSize,
+        sliderHeight: sliderHeight ?? this.sliderHeight,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
@@ -113,11 +131,19 @@ class ImpaktfullUiColorPickerDimensTheme {
       other is ImpaktfullUiColorPickerDimensTheme &&
           simpleColorPickerItemBorderRadius ==
               other.simpleColorPickerItemBorderRadius &&
-          simpleColorPickerItemSize == other.simpleColorPickerItemSize;
+          simpleColorPickerItemSize == other.simpleColorPickerItemSize &&
+          sliderHeight == other.sliderHeight &&
+          spacing == other.spacing &&
+          sectionSpacing == other.sectionSpacing;
 
   @override
-  int get hashCode =>
-      Object.hash(simpleColorPickerItemBorderRadius, simpleColorPickerItemSize);
+  int get hashCode => Object.hash(
+        simpleColorPickerItemBorderRadius,
+        simpleColorPickerItemSize,
+        sliderHeight,
+        spacing,
+        sectionSpacing,
+      );
 }
 
 class ImpaktfullUiColorPickerTextStyleTheme {

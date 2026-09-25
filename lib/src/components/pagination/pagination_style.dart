@@ -106,16 +106,27 @@ class ImpaktfullUiPaginationColorTheme {
 }
 
 class ImpaktfullUiPaginationDimensTheme {
-  const ImpaktfullUiPaginationDimensTheme();
+  /// The space between the pages.
+  final double spacing;
 
-  ImpaktfullUiPaginationDimensTheme copyWith() =>
-      const ImpaktfullUiPaginationDimensTheme();
+  const ImpaktfullUiPaginationDimensTheme({
+    this.spacing = 8,
+  });
+
+  ImpaktfullUiPaginationDimensTheme copyWith({
+    double? spacing,
+  }) =>
+      ImpaktfullUiPaginationDimensTheme(
+        spacing: spacing ?? this.spacing,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiPaginationDimensTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiPaginationDimensTheme && spacing == other.spacing;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => spacing.hashCode;
 }
 
 class ImpaktfullUiPaginationTextStyleTheme {
