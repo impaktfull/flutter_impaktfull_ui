@@ -161,18 +161,34 @@ class ImpaktfullUiDropdownDimensTheme {
   /// button has no width yet.
   final double overlayWidth;
 
+  /// The padding between the border of the menu and its content.
+  ///
+  /// `EdgeInsets.zero` by default, which is what the menu had before this
+  /// token existed; `p-1` of shadcn/ui and `padding: 4px` of Ant Design are
+  /// both 4.
+  final EdgeInsetsGeometry padding;
+
+  /// The space between the widget the menu belongs to and the menu itself.
+  final double spacing;
+
   const ImpaktfullUiDropdownDimensTheme({
     required this.borderRadius,
     this.overlayWidth = 200,
+    this.padding = EdgeInsets.zero,
+    this.spacing = 4,
   });
 
   ImpaktfullUiDropdownDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
     double? overlayWidth,
+    EdgeInsetsGeometry? padding,
+    double? spacing,
   }) =>
       ImpaktfullUiDropdownDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
         overlayWidth: overlayWidth ?? this.overlayWidth,
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
@@ -180,10 +196,12 @@ class ImpaktfullUiDropdownDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiDropdownDimensTheme &&
           borderRadius == other.borderRadius &&
-          overlayWidth == other.overlayWidth;
+          overlayWidth == other.overlayWidth &&
+          padding == other.padding &&
+          spacing == other.spacing;
 
   @override
-  int get hashCode => Object.hash(borderRadius, overlayWidth);
+  int get hashCode => Object.hash(borderRadius, overlayWidth, padding, spacing);
 }
 
 class ImpaktfullUiDropdownAssetsTheme {

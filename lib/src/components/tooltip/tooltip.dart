@@ -36,6 +36,9 @@ class ImpaktfullUiTooltip extends StatelessWidget {
           waitDuration: componentTheme.durations.wait,
           message: message,
           textAlign: TextAlign.center,
+          textStyle: componentTheme.textStyles.text,
+          padding: componentTheme.dimens.padding,
+          margin: componentTheme.dimens.margin,
           triggerMode: _getTriggerMode(),
           decoration: BoxDecoration(
             color: componentTheme.colors.background,

@@ -25,7 +25,7 @@ class ImpaktfullUiDropdownOverlay extends StatelessWidget {
       height: height,
       shadow: theme.shadows.overlay,
       borderRadius: borderRadius,
-      padding: EdgeInsets.zero,
+      padding: theme.dimens.padding,
       child: ClipRRect(
         borderRadius: borderRadius,
         child: child,

@@ -44,8 +44,8 @@ class ImpaktfullUiRadioButton<T> extends StatelessWidget {
           minSize: componentTheme.dimens.minTapTargetSize,
           onTap: onChanged == null ? null : () => onChanged!(value),
           child: SizedBox(
-            width: 20,
-            height: 20,
+            width: componentTheme.dimens.size,
+            height: componentTheme.dimens.size,
             child: ImpaktfullUiTouchFeedback(
               borderRadius: componentTheme.dimens.borderRadius,
               color: isSelected
@@ -53,11 +53,11 @@ class ImpaktfullUiRadioButton<T> extends StatelessWidget {
                   : componentTheme.colors.unselected,
               border: Border.all(
                 color: componentTheme.colors.border,
-                width: 1,
+                width: componentTheme.dimens.borderWidth,
               ),
               onTap: onChanged == null ? null : () => onChanged!(value),
               child: Padding(
-                padding: const EdgeInsets.all(6),
+                padding: EdgeInsets.all(componentTheme.dimens.dotInset),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: componentTheme.dimens.borderRadius,

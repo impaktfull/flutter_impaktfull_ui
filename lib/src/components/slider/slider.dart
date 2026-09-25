@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/components/slider/model/slider_legend_alignment.dart';
 import 'package:impaktfull_ui/src/components/slider/slider_style.dart';
@@ -71,154 +72,164 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
       overrideComponentTheme: widget.theme,
-      builder: (context, componentTheme) => Semantics(
-        container: true,
-        slider: true,
-        label: widget.semanticLabel,
-        enabled: _isEnabled,
-        value: _formatValue(_currentValue),
-        increasedValue: _formatValue(_steppedValue(1)),
-        decreasedValue: _formatValue(_steppedValue(-1)),
-        onIncrease: _isEnabled ? () => _step(1) : null,
-        onDecrease: _isEnabled ? () => _step(-1) : null,
-        child: Focus(
-          focusNode: _focusNode,
-          canRequestFocus: _isEnabled,
-          onKeyEvent: _onKeyEvent,
-          onFocusChange: (_) => setState(() {}),
-          child: LayoutBuilder(
-            builder: (context, constraints) => GestureDetector(
-              onHorizontalDragUpdate: widget.onChanged == null
-                  ? null
-                  : (details) => _onUpdateThumb(
-                      details.localPosition.dx, constraints.maxWidth),
-              onTapDown: widget.onChanged == null
-                  ? null
-                  : (details) => _onUpdateThumb(
-                      details.localPosition.dx, constraints.maxWidth),
-              child: Stack(
-                children: [
-                  if (widget.legendBuilder != null) ...[
-                    if (widget.legendAlignment ==
-                        ImpaktfullUiSliderLegendAlignment.aboveSlider) ...[
-                      PositionedDirectional(
-                        top: 0,
-                        start: 0,
-                        end: 0,
-                        child: SizedBox(
-                          height: 24,
-                          child: widget.legendBuilder!(context, _currentValue),
-                        ),
-                      ),
-                    ] else if (widget.legendAlignment ==
-                        ImpaktfullUiSliderLegendAlignment.belowSlider) ...[
-                      PositionedDirectional(
-                        bottom: 0,
-                        start: 0,
-                        end: 0,
-                        child: SizedBox(
-                          height: 24,
-                          child: widget.legendBuilder!(context, _currentValue),
-                        ),
-                      ),
-                    ] else if (widget.legendAlignment ==
-                        ImpaktfullUiSliderLegendAlignment.behindSlider) ...[
-                      PositionedDirectional(
-                        top: 0,
-                        bottom: 0,
-                        start: 0,
-                        end: 0,
-                        child: SizedBox(
-                          height: 48,
-                          child: widget.legendBuilder!(context, _currentValue),
-                        ),
-                      ),
-                    ],
-                  ],
-                  Container(
-                    height: 48,
-                    color: Colors.transparent,
-                    // The focus ring, only while navigating with a keyboard.
-                    foregroundDecoration: _showFocus
-                        ? BoxDecoration(
-                            borderRadius:
-                                componentTheme.dimens.trackBorderRadius,
-                            border: Border.all(
-                              color: ImpaktfullUiTheme.of(context)
-                                  .colors
-                                  .accent
-                                  .withOpacityPercentage(0.66),
-                              width: 2,
-                            ),
-                          )
-                        : null,
-                    child: Stack(
-                      clipBehavior: Clip.none,
-                      alignment: AlignmentDirectional.centerStart,
-                      children: [
-                        Container(
-                          height: 4,
-                          decoration: BoxDecoration(
-                            color: componentTheme.colors.track,
-                            borderRadius:
-                                componentTheme.dimens.trackBorderRadius,
-                            border: Border.all(
-                              color: componentTheme.colors.trackBorder,
-                              width: 1,
-                              strokeAlign: BorderSide.strokeAlignOutside,
-                            ),
-                          ),
-                        ),
-                        FractionallySizedBox(
-                          widthFactor: _fraction,
-                          child: Container(
-                            height: 4,
-                            decoration: BoxDecoration(
-                              color: componentTheme.colors.activeTrack,
-                              border: Border.all(
-                                color: componentTheme.colors.activeTrack,
-                                width: 1,
-                                strokeAlign: BorderSide.strokeAlignOutside,
-                              ),
-                              borderRadius:
-                                  componentTheme.dimens.trackBorderRadius,
-                            ),
-                          ),
-                        ),
+      builder: (context, componentTheme) {
+        // The ring the rest of the package uses, so a theme that changes it
+        // changes the ring of the slider too.
+        final focusRing = ImpaktfullUiTouchFeedbackTheme.of(context).focusRing;
+        return Semantics(
+          container: true,
+          slider: true,
+          label: widget.semanticLabel,
+          enabled: _isEnabled,
+          value: _formatValue(_currentValue),
+          increasedValue: _formatValue(_steppedValue(1)),
+          decreasedValue: _formatValue(_steppedValue(-1)),
+          onIncrease: _isEnabled ? () => _step(1) : null,
+          onDecrease: _isEnabled ? () => _step(-1) : null,
+          child: Focus(
+            focusNode: _focusNode,
+            canRequestFocus: _isEnabled,
+            onKeyEvent: _onKeyEvent,
+            onFocusChange: (_) => setState(() {}),
+            child: LayoutBuilder(
+              builder: (context, constraints) => GestureDetector(
+                onHorizontalDragUpdate: widget.onChanged == null
+                    ? null
+                    : (details) => _onUpdateThumb(
+                        details.localPosition.dx, constraints.maxWidth),
+                onTapDown: widget.onChanged == null
+                    ? null
+                    : (details) => _onUpdateThumb(
+                        details.localPosition.dx, constraints.maxWidth),
+                child: Stack(
+                  children: [
+                    if (widget.legendBuilder != null) ...[
+                      if (widget.legendAlignment ==
+                          ImpaktfullUiSliderLegendAlignment.aboveSlider) ...[
                         PositionedDirectional(
-                          start: _fraction * constraints.maxWidth - 8,
-                          child: Container(
-                            width: 16,
-                            height: 16,
-                            decoration: BoxDecoration(
-                              color: componentTheme.colors.thumb,
-                              borderRadius:
-                                  componentTheme.dimens.thumbBorderRadius,
-                              border: Border.all(
-                                color: componentTheme.colors.thumbBorder,
-                                width: 1,
-                                strokeAlign: BorderSide.strokeAlignOutside,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color:
-                                      Colors.black.withOpacityPercentage(0.1),
-                                  blurRadius: 4,
-                                  offset: const Offset(0, 2),
-                                ),
-                              ],
-                            ),
+                          top: 0,
+                          start: 0,
+                          end: 0,
+                          child: SizedBox(
+                            height: componentTheme.dimens.legendHeight,
+                            child:
+                                widget.legendBuilder!(context, _currentValue),
+                          ),
+                        ),
+                      ] else if (widget.legendAlignment ==
+                          ImpaktfullUiSliderLegendAlignment.belowSlider) ...[
+                        PositionedDirectional(
+                          bottom: 0,
+                          start: 0,
+                          end: 0,
+                          child: SizedBox(
+                            height: componentTheme.dimens.legendHeight,
+                            child:
+                                widget.legendBuilder!(context, _currentValue),
+                          ),
+                        ),
+                      ] else if (widget.legendAlignment ==
+                          ImpaktfullUiSliderLegendAlignment.behindSlider) ...[
+                        PositionedDirectional(
+                          top: 0,
+                          bottom: 0,
+                          start: 0,
+                          end: 0,
+                          child: SizedBox(
+                            height: componentTheme.dimens.height,
+                            child:
+                                widget.legendBuilder!(context, _currentValue),
                           ),
                         ),
                       ],
+                    ],
+                    Container(
+                      height: componentTheme.dimens.height,
+                      color: Colors.transparent,
+                      // The focus ring, only while navigating with a keyboard.
+                      foregroundDecoration: _showFocus
+                          ? BoxDecoration(
+                              borderRadius:
+                                  componentTheme.dimens.trackBorderRadius,
+                              border: Border.all(
+                                color: focusRing.color ??
+                                    ImpaktfullUiTheme.of(context)
+                                        .colors
+                                        .accent
+                                        .withOpacityPercentage(0.66),
+                                width: focusRing.width,
+                              ),
+                            )
+                          : null,
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        alignment: AlignmentDirectional.centerStart,
+                        children: [
+                          Container(
+                            height: componentTheme.dimens.trackHeight,
+                            decoration: BoxDecoration(
+                              color: componentTheme.colors.track,
+                              borderRadius:
+                                  componentTheme.dimens.trackBorderRadius,
+                              border: Border.all(
+                                color: componentTheme.colors.trackBorder,
+                                width: componentTheme.dimens.trackBorderWidth,
+                                strokeAlign: BorderSide.strokeAlignOutside,
+                              ),
+                            ),
+                          ),
+                          FractionallySizedBox(
+                            widthFactor: _fraction,
+                            child: Container(
+                              height: componentTheme.dimens.trackHeight,
+                              decoration: BoxDecoration(
+                                color: componentTheme.colors.activeTrack,
+                                border: Border.all(
+                                  color: componentTheme.colors.activeTrack,
+                                  width: componentTheme.dimens.trackBorderWidth,
+                                  strokeAlign: BorderSide.strokeAlignOutside,
+                                ),
+                                borderRadius:
+                                    componentTheme.dimens.trackBorderRadius,
+                              ),
+                            ),
+                          ),
+                          PositionedDirectional(
+                            start: _fraction * constraints.maxWidth -
+                                componentTheme.dimens.thumbSize / 2,
+                            child: Container(
+                              width: componentTheme.dimens.thumbSize,
+                              height: componentTheme.dimens.thumbSize,
+                              decoration: BoxDecoration(
+                                color: componentTheme.colors.thumb,
+                                borderRadius:
+                                    componentTheme.dimens.thumbBorderRadius,
+                                border: Border.all(
+                                  color: componentTheme.colors.thumbBorder,
+                                  width: componentTheme.dimens.thumbBorderWidth,
+                                  strokeAlign: BorderSide.strokeAlignOutside,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color:
+                                        Colors.black.withOpacityPercentage(0.1),
+                                    blurRadius: 4,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

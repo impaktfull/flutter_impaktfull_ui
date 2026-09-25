@@ -203,7 +203,9 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                       // coordinates, the target anchor is already resolved.
                       alignment: Alignment.topLeft,
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 4),
+                        padding: EdgeInsets.only(
+                          top: componentTheme.dimens.spacing,
+                        ),
                         child: _buildOverlaySemantics(
                           ImpaktfullUiDropdownOverlay(
                             width: width,

@@ -95,40 +95,74 @@ class ImpaktfullUiTooltipColorTheme {
 }
 
 class ImpaktfullUiTooltipTextStyleTheme {
-  const ImpaktfullUiTooltipTextStyleTheme();
+  /// The text in the tooltip.
+  ///
+  /// `null` (the default) leaves it to Flutter, which is what the tooltip
+  /// rendered before this token existed. shadcn/ui uses `text-xs` in
+  /// `text-primary-foreground`, Ant Design 14 in white.
+  final TextStyle? text;
 
-  ImpaktfullUiTooltipTextStyleTheme copyWith() =>
-      const ImpaktfullUiTooltipTextStyleTheme();
+  const ImpaktfullUiTooltipTextStyleTheme({
+    this.text,
+  });
+
+  ImpaktfullUiTooltipTextStyleTheme copyWith({
+    TextStyle? text,
+  }) =>
+      ImpaktfullUiTooltipTextStyleTheme(
+        text: text ?? this.text,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiTooltipTextStyleTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiTooltipTextStyleTheme && text == other.text;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => text.hashCode;
 }
 
 class ImpaktfullUiTooltipDimensTheme {
   final BorderRadiusGeometry borderRadius;
 
+  /// The padding between the border of the tooltip and its text.
+  ///
+  /// `null` (the default) leaves it to Flutter. shadcn/ui uses `px-3 py-1.5`,
+  /// Ant Design `6px 8px`.
+  final EdgeInsetsGeometry? padding;
+
+  /// The space between the tooltip and the widget it belongs to.
+  ///
+  /// `null` (the default) leaves it to Flutter.
+  final EdgeInsetsGeometry? margin;
+
   const ImpaktfullUiTooltipDimensTheme({
     required this.borderRadius,
+    this.padding,
+    this.margin,
   });
 
   ImpaktfullUiTooltipDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    EdgeInsetsGeometry? margin,
+    EdgeInsetsGeometry? padding,
   }) =>
       ImpaktfullUiTooltipDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        margin: margin ?? this.margin,
+        padding: padding ?? this.padding,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiTooltipDimensTheme &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          margin == other.margin &&
+          padding == other.padding;
 
   @override
-  int get hashCode => borderRadius.hashCode;
+  int get hashCode => Object.hash(borderRadius, margin, padding);
 }
 
 class ImpaktfullUiTooltipDurationsTheme {

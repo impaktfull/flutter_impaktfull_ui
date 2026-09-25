@@ -129,18 +129,56 @@ class ImpaktfullUiSliderDimensTheme {
   final BorderRadiusGeometry trackBorderRadius;
   final BorderRadiusGeometry thumbBorderRadius;
 
+  /// The height of the slider, the area a pointer can grab it in.
+  final double height;
+
+  /// The height of the row a `legendBuilder` is given.
+  final double legendHeight;
+
+  /// The thickness of the track. `h-1.5` (6) of shadcn/ui, 4 of Ant Design.
+  final double trackHeight;
+
+  /// The width of the border around the track and around the part of it that
+  /// is filled.
+  final double trackBorderWidth;
+
+  /// The width and the height of the thumb. `size-4` (16) of shadcn/ui, 14 of
+  /// Ant Design.
+  final double thumbSize;
+
+  /// The width of the border around the thumb.
+  final double thumbBorderWidth;
+
   const ImpaktfullUiSliderDimensTheme({
     required this.trackBorderRadius,
     required this.thumbBorderRadius,
+    this.height = 48,
+    this.legendHeight = 24,
+    this.trackHeight = 4,
+    this.trackBorderWidth = 1,
+    this.thumbSize = 16,
+    this.thumbBorderWidth = 1,
   });
 
   ImpaktfullUiSliderDimensTheme copyWith({
+    double? height,
+    double? legendHeight,
     BorderRadiusGeometry? thumbBorderRadius,
+    double? thumbBorderWidth,
+    double? thumbSize,
     BorderRadiusGeometry? trackBorderRadius,
+    double? trackBorderWidth,
+    double? trackHeight,
   }) =>
       ImpaktfullUiSliderDimensTheme(
+        height: height ?? this.height,
+        legendHeight: legendHeight ?? this.legendHeight,
         thumbBorderRadius: thumbBorderRadius ?? this.thumbBorderRadius,
+        thumbBorderWidth: thumbBorderWidth ?? this.thumbBorderWidth,
+        thumbSize: thumbSize ?? this.thumbSize,
         trackBorderRadius: trackBorderRadius ?? this.trackBorderRadius,
+        trackBorderWidth: trackBorderWidth ?? this.trackBorderWidth,
+        trackHeight: trackHeight ?? this.trackHeight,
       );
 
   @override
@@ -148,10 +186,25 @@ class ImpaktfullUiSliderDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiSliderDimensTheme &&
           trackBorderRadius == other.trackBorderRadius &&
-          thumbBorderRadius == other.thumbBorderRadius;
+          thumbBorderRadius == other.thumbBorderRadius &&
+          height == other.height &&
+          legendHeight == other.legendHeight &&
+          trackHeight == other.trackHeight &&
+          trackBorderWidth == other.trackBorderWidth &&
+          thumbSize == other.thumbSize &&
+          thumbBorderWidth == other.thumbBorderWidth;
 
   @override
-  int get hashCode => Object.hash(trackBorderRadius, thumbBorderRadius);
+  int get hashCode => Object.hash(
+        trackBorderRadius,
+        thumbBorderRadius,
+        height,
+        legendHeight,
+        trackHeight,
+        trackBorderWidth,
+        thumbSize,
+        thumbBorderWidth,
+      );
 }
 
 class ImpaktfullUiSliderTextStyleTheme {
