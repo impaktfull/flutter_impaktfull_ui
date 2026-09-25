@@ -192,12 +192,16 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
   Widget build(BuildContext context) {
     if (widget.isLoading) {
       if (widget.shrinkWrap) {
-        return Padding(
-          padding: widget.padding,
-          child: SizedBox(
-            height: ImpaktfullUiListViewTheme.of(context).dimens.imageSize,
-            width: ImpaktfullUiListViewTheme.of(context).dimens.imageSize,
-            child: const ImpaktfullUiLoadingIndicator(),
+        return ImpaktfullUiOverridableComponentBuilder(
+          component: widget,
+          overrideComponentTheme: widget.theme,
+          builder: (context, componentTheme) => Padding(
+            padding: widget.padding,
+            child: SizedBox(
+              height: componentTheme.dimens.imageSize,
+              width: componentTheme.dimens.imageSize,
+              child: const ImpaktfullUiLoadingIndicator(),
+            ),
           ),
         );
       }

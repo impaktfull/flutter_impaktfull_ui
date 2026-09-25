@@ -248,6 +248,7 @@ class _ImpaktfullUiVirtualKeyboardState
                               child: Builder(
                                 builder: (context) =>
                                     ImpaktfullUiVirtualKeyboardButton(
+                                  componentTheme: componentTheme,
                                   shift: _shift,
                                   capsLock: _capsLock,
                                   virtualKeyboardKey: key,

@@ -243,6 +243,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
             ),
             if (widget.showPreview) ...[
               ImageCropPreview(
+                componentTheme: componentTheme,
                 size: widget.size,
                 cropInfo: _cropInfo,
                 imageUrl: widget.imageUrl!,

@@ -233,7 +233,10 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
     final context = _key.currentContext;
     if (context == null) return;
     const defaultScrollOffset = 7.75; // 7:45 AM;
-    final theme = ImpaktfullUiCalendarTheme.of(context);
+    // The theme the caller passed, like the build of this widget uses: with
+    // the theme of the app a `weekHourHeight` of the caller would scroll to
+    // another hour than the one it renders.
+    final theme = widget.theme ?? ImpaktfullUiCalendarTheme.of(context);
     if (_scrollController.hasClients) {
       _scrollController.jumpTo(
         defaultScrollOffset * theme.dimens.weekHourHeight,

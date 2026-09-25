@@ -11,10 +11,15 @@ class ImageCropPreview extends StatefulWidget {
   final double size;
   final ImpaktfullUiImageCropInfo cropInfo;
 
+  /// The theme of the cropper this preview belongs to, so a `theme` on the
+  /// cropper reaches it instead of being replaced by the theme of the app.
+  final ImpaktfullUiImageCropTheme componentTheme;
+
   const ImageCropPreview({
     required this.imageUrl,
     required this.cropInfo,
     required this.size,
+    required this.componentTheme,
     super.key,
   });
 
@@ -37,8 +42,7 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _cropDebounce =
-        ImpaktfullUiImageCropTheme.of(context).durations.cropDebounce;
+    _cropDebounce = widget.componentTheme.durations.cropDebounce;
     if (_startedInitialCrop) return;
     _startedInitialCrop = true;
     _debouncedCrop();
@@ -70,7 +74,7 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
       );
     }
     return ImpaktfullUiAutoLayout.vertical(
-      spacing: ImpaktfullUiImageCropTheme.of(context).dimens.previewSpacing,
+      spacing: widget.componentTheme.dimens.previewSpacing,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
