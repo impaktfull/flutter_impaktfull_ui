@@ -15,12 +15,17 @@ class DatePickerLibraryVariant
   List<Widget> build(
       BuildContext context, DatePickerLibraryPrimaryInputs inputs) {
     return [
-      ImpaktfullUiDatePicker(
-        selectedDate: inputs.selectedStartDate.value,
-        onDateChanged: (value) {
-          inputs.selectedStartDate.updateState(value);
-          inputs.selectedEndDate.updateState(null);
-        },
+      ComponentsLibraryVariantDescriptor(
+        // Taller than the card of the component list, like the date time
+        // picker: without this the grid of days overflows in the preview.
+        isScrollable: true,
+        child: ImpaktfullUiDatePicker(
+          selectedDate: inputs.selectedStartDate.value,
+          onDateChanged: (value) {
+            inputs.selectedStartDate.updateState(value);
+            inputs.selectedEndDate.updateState(null);
+          },
+        ),
       ),
       ComponentsLibraryVariantDescriptor(
         wrapWithCard: true,

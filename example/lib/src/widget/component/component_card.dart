@@ -52,18 +52,14 @@ class ComponentCard extends StatelessWidget {
                                 child: correctChild,
                               );
                             }
-                            // A preview is clipped on purpose, so a component
-                            // that is taller than the card (the date picker)
-                            // gets the height it asks for and is cut off,
-                            // instead of overflowing inside the card.
-                            return OverflowBox(
-                              minHeight: 0,
-                              maxHeight: double.infinity,
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: const EdgeInsets.all(16),
-                                child: correctChild,
-                              ),
+                            // A component that is taller than the card asks
+                            // for `isScrollable` on its descriptor: it is the
+                            // only way to hand it more height than the card
+                            // has, and a preview that is a screen of its own
+                            // needs the height of the card to lay out at all.
+                            return Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: correctChild,
                             );
                           }),
                         ),
