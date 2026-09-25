@@ -658,10 +658,12 @@ abstract final class ImpaktfullUiShadcnTheme {
             background: mutedColor,
           ),
           dimens: components.horizontalTabs.dimens.copyWith(
-            // `p-[3px]` of a `TabsList`, with the 16 at the sides that keeps
-            // the first tab off the edge of the screen: the row is as wide as
-            // what it sits under, where a `TabsList` is `w-fit`.
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
+            // A `TabsList` is a `bg-muted rounded-lg p-[3px]` track, not a bar
+            // that runs from edge to edge, so the space at the sides is a
+            // margin around it instead of padding inside it.
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            padding: const EdgeInsets.all(3),
+            borderRadius: BorderRadius.circular(radiusLarge),
             height: 36,
             spacing: 4,
           ),

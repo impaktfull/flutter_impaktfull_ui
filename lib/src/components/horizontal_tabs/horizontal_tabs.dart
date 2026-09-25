@@ -40,6 +40,7 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
+        final dimens = componentTheme.dimens;
         final background = componentTheme.colors.background;
         final row = SizedBox(
           height: componentTheme.dimens.height,
@@ -61,8 +62,18 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
                 SizedBox(width: componentTheme.dimens.spacing),
           ),
         );
-        if (background == null) return row;
-        return ColoredBox(color: background, child: row);
+        Widget content = row;
+        if (background != null) {
+          content = DecoratedBox(
+            decoration: BoxDecoration(
+              color: background,
+              borderRadius: dimens.borderRadius,
+            ),
+            child: content,
+          );
+        }
+        if (dimens.margin == EdgeInsets.zero) return content;
+        return Padding(padding: dimens.margin, child: content);
       },
     );
   }

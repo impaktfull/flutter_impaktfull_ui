@@ -754,10 +754,12 @@ abstract final class ImpaktfullUiAntDesignTheme {
         // The scrolling tabs of this package are the same underline.
         horizontalTabs: components.horizontalTabs.copyWith(
           dimens: components.horizontalTabs.dimens.copyWith(
-            // `horizontalItemGutter: 32` between two tabs, and the padding a
-            // page gives its tab nav at the sides, so the first tab does not
-            // touch the edge of the screen.
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            // `horizontalItemGutter: 32` between two tabs. The tab nav of Ant
+            // Design paints nothing behind its tabs, so the space at the
+            // sides is a margin: the first tab lines up with the content
+            // instead of touching the edge of the screen.
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.zero,
             height: 46,
             spacing: 32,
           ),
