@@ -147,7 +147,7 @@ class _ImpaktfullUiSliderState extends State<ImpaktfullUiSlider> {
                       height: componentTheme.dimens.height,
                       color: Colors.transparent,
                       // The focus ring, only while navigating with a keyboard.
-                      foregroundDecoration: _showFocus
+                      foregroundDecoration: _showFocus && focusRing.enabled
                           ? BoxDecoration(
                               borderRadius:
                                   componentTheme.dimens.trackBorderRadius,

@@ -47,9 +47,8 @@ class ImpaktfullUiSnackyConfigurator extends StatelessWidget {
                 // rtl-ignore: the direction of a left-to-right locale.
                 : TextDirection.ltr;
         final snackyBuilder = this.snackyBuilder ??
-            ImpaktfullUiSnackyBuilder(
-              componentTheme: componentTheme,
-            );
+            componentTheme.snackyBuilder?.call(componentTheme) ??
+            ImpaktfullUiSnackyBuilder(componentTheme: componentTheme);
 
         return SnackyConfiguratorWidget(
           snackyController: snackyController,

@@ -12,6 +12,8 @@ void main() {
   setUp(() => setupComponentTest());
 
   runComponentTest(
+    // One golden: the app builds its own `ImpaktfullUiApp`.
+    perTheme: false,
     fileName: 'impaktfull_app',
     goldenTests: () => [
       GoldenTest(
@@ -35,6 +37,8 @@ void main() {
       );
 
   runComponentTest(
+    // One golden: the app builds its own `ImpaktfullUiApp`.
+    perTheme: false,
     fileName: 'impaktfull_app_banners',
     columns: 3,
     goldenTests: () => [

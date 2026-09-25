@@ -22,11 +22,24 @@ class ComponentsLibraryVariantScreen<T extends ComponentLibraryInputs?>
 
 class _ComponentsLibraryVariantScreenState<T extends ComponentLibraryInputs?>
     extends State<ComponentsLibraryVariantScreen> {
-  late final T inputs;
+  late T inputs;
 
   @override
   void initState() {
     super.initState();
+    inputs = widget.variant.inputs() as T;
+    inputs?.setup(_onUpdate);
+  }
+
+  @override
+  void didUpdateWidget(covariant ComponentsLibraryVariantScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (identical(oldWidget.variant, widget.variant)) return;
+    // The tabs above this screen switch between the variants of one
+    // component, which reuses this state. Every variant has inputs of its own
+    // type, so the ones of the variant that was shown before are of no use to
+    // the new one: `build` would be handed the wrong type.
+    inputs?.dispose(_onUpdate);
     inputs = widget.variant.inputs() as T;
     inputs?.setup(_onUpdate);
   }

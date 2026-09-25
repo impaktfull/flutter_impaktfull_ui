@@ -142,4 +142,75 @@ void main() {
     await tester.pump(const Duration(seconds: 1));
     expect(controller.text.length, length);
   });
+
+  group('the input above the keys', () {
+    /// The box that draws the line of text, and the card it sits in.
+    (Rect text, Rect card) inputRects(WidgetTester tester) {
+      final card = find.byType(ImpaktfullUiCard).first;
+      final richText = find
+          .descendant(of: card, matching: find.byType(RichText))
+          .evaluate()
+          .map((element) => element.widget as RichText)
+          .firstWhere(
+              (widget) => widget.text.toPlainText().contains('\u{fffc}'));
+      return (tester.getRect(find.byWidget(richText)), tester.getRect(card));
+    }
+
+    testWidgets('shows the text it is given', (tester) async {
+      await pumpComponent(
+        tester,
+        ImpaktfullUiVirtualKeyboard(controller: buildController('Hello')),
+      );
+      expect(shownText(tester), 'Hello');
+      final (text, card) = inputRects(tester);
+      expect(
+        card.contains(text.topLeft) && card.contains(text.bottomLeft),
+        isTrue,
+        reason: 'the line fits in the card, so nothing is cut off',
+      );
+    });
+
+    testWidgets('does not take the text style of the app around it',
+        (tester) async {
+      await pumpComponent(
+        tester,
+        DefaultTextStyle(
+          // Taller than what is left of `keyHeight` once the card has its
+          // padding: this used to cut the text in half.
+          style: const TextStyle(fontSize: 48, height: 2),
+          child: ImpaktfullUiVirtualKeyboard(
+            controller: buildController('Hello'),
+          ),
+        ),
+      );
+      final (text, card) = inputRects(tester);
+      expect(text.height, lessThan(card.height));
+      expect(
+        card.contains(text.topLeft) && card.contains(text.bottomLeft),
+        isTrue,
+      );
+    });
+
+    testWidgets('takes the text style of its theme', (tester) async {
+      const style = TextStyle(fontSize: 10, height: 1);
+      final base = ImpaktfullUiTheme.getDefault().components.virtualKeyboard;
+      await pumpComponent(
+        tester,
+        ImpaktfullUiVirtualKeyboard(
+          controller: buildController('Hello'),
+          theme: base.copyWith(
+            textStyles: base.textStyles.copyWith(text: style),
+          ),
+        ),
+      );
+      final richText = tester
+          .widgetList<RichText>(find.descendant(
+            of: find.byType(ImpaktfullUiCard).first,
+            matching: find.byType(RichText),
+          ))
+          .firstWhere(
+              (widget) => widget.text.toPlainText().contains('\u{fffc}'));
+      expect(richText.text.style?.fontSize, 10);
+    });
+  });
 }

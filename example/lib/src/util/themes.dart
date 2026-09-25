@@ -27,6 +27,13 @@ class ExampleThemes {
       package: null,
     ),
     ImpaktfullUiCustomTheme.theme,
+    // The two presets that ship with the package. They are the proof that a
+    // design system can be expressed with the theme, so they are in the theme
+    // picker of this app to look at.
+    ImpaktfullUiShadcnTheme.light(),
+    ImpaktfullUiShadcnTheme.dark(),
+    ImpaktfullUiAntDesignTheme.light(),
+    ImpaktfullUiAntDesignTheme.dark(),
   ];
 
   static ImpaktfullUiTheme getRaisedButtonTheme() {

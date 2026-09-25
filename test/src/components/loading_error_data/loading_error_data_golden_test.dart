@@ -32,7 +32,7 @@ void main() {
         description: 'error',
         child: goldenBox(
           width: 240,
-          height: 240,
+          height: 300,
           child: ImpaktfullUiLoadingErrorData<int>(
             isLoading: false,
             errorTitle: 'Something went wrong',
@@ -52,7 +52,7 @@ void main() {
         description: 'error with asset',
         child: goldenBox(
           width: 240,
-          height: 240,
+          height: 300,
           child: ImpaktfullUiLoadingErrorData<int>(
             isLoading: false,
             errorAsset: testIcon2,
@@ -65,7 +65,7 @@ void main() {
         description: 'no data',
         child: goldenBox(
           width: 240,
-          height: 240,
+          height: 300,
           child: ImpaktfullUiLoadingErrorData<int>(
             isLoading: false,
             items: const [],
@@ -79,7 +79,7 @@ void main() {
         description: 'no data with asset builder',
         child: goldenBox(
           width: 240,
-          height: 240,
+          height: 300,
           child: ImpaktfullUiLoadingErrorData<int>(
             isLoading: false,
             items: const [],
@@ -97,7 +97,7 @@ void main() {
         description: 'data',
         child: goldenBox(
           width: 240,
-          height: 240,
+          height: 300,
           child: ImpaktfullUiLoadingErrorData<int>(
             isLoading: false,
             items: const [1, 2, 3],
@@ -109,8 +109,11 @@ void main() {
       GoldenTest(
         description: 'long error text',
         child: goldenBox(
+          // Tall enough for every shipped theme: the golden is rendered with
+          // each of them, and the blocky font of the CI goldens wraps the
+          // long text over more lines than the real one.
           width: 240,
-          height: 360,
+          height: 760,
           child: ImpaktfullUiLoadingErrorData<int>(
             isLoading: false,
             errorTitle: longText,

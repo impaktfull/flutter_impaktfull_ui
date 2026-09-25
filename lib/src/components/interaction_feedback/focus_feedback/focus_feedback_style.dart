@@ -11,6 +11,14 @@ class ImpaktfullUiFocusRingTheme {
   /// The thickness of the ring, in logical pixels.
   final double width;
 
+  /// Whether a focused component draws a ring at all.
+  ///
+  /// False turns the ring off everywhere at once, for an app that shows the
+  /// focus in its own way. Turning it off takes the focus away from the
+  /// people who navigate with a keyboard or a switch, so it is a decision for
+  /// an app to make on purpose.
+  final bool enabled;
+
   /// The space between the edge of the child and the inner edge of the ring.
   ///
   /// The ring is always drawn outside of that edge, so a bigger [offset]
@@ -20,6 +28,7 @@ class ImpaktfullUiFocusRingTheme {
   final double offset;
 
   const ImpaktfullUiFocusRingTheme({
+    this.enabled = true,
     this.color,
     this.width = 2,
     this.offset = 1,
@@ -27,11 +36,13 @@ class ImpaktfullUiFocusRingTheme {
 
   ImpaktfullUiFocusRingTheme copyWith({
     Color? color,
+    bool? enabled,
     double? offset,
     double? width,
   }) =>
       ImpaktfullUiFocusRingTheme(
         color: color ?? this.color,
+        enabled: enabled ?? this.enabled,
         offset: offset ?? this.offset,
         width: width ?? this.width,
       );
@@ -52,8 +63,9 @@ class ImpaktfullUiFocusRingTheme {
       other is ImpaktfullUiFocusRingTheme &&
           color == other.color &&
           width == other.width &&
-          offset == other.offset;
+          offset == other.offset &&
+          enabled == other.enabled;
 
   @override
-  int get hashCode => Object.hash(color, width, offset);
+  int get hashCode => Object.hash(color, width, offset, enabled);
 }

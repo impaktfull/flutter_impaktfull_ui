@@ -75,7 +75,19 @@ class ImpaktfullUiHorizontalTabsColorTheme {
 }
 
 class ImpaktfullUiHorizontalTabsDimensTheme {
+  /// The space inside the row, between its edge and the first and the last
+  /// tab. It sits inside [ImpaktfullUiHorizontalTabsColorTheme.background],
+  /// like the `p-[3px]` of a shadcn/ui `TabsList`.
   final EdgeInsets padding;
+
+  /// The space around the row, outside its background.
+  ///
+  /// `EdgeInsets.zero` (the default) lets the row run from edge to edge,
+  /// which is what it always did. A design system whose tabs are a track
+  /// instead of a full width bar (a shadcn/ui `TabsList` is `w-fit`) keeps
+  /// the track off the edge of the screen with a margin, so that the space at
+  /// the sides is not painted in the colour of the track.
+  final EdgeInsets margin;
 
   /// The height of the row of tabs.
   final double height;
@@ -83,19 +95,31 @@ class ImpaktfullUiHorizontalTabsDimensTheme {
   /// The space between two tabs.
   final double spacing;
 
+  /// The radius of [ImpaktfullUiHorizontalTabsColorTheme.background].
+  ///
+  /// `null` (the default) draws the background with square corners, as
+  /// before. A shadcn/ui `TabsList` is `rounded-lg`.
+  final BorderRadiusGeometry? borderRadius;
+
   const ImpaktfullUiHorizontalTabsDimensTheme({
     required this.padding,
+    this.margin = EdgeInsets.zero,
     this.height = 48,
     this.spacing = 8,
+    this.borderRadius,
   });
 
   ImpaktfullUiHorizontalTabsDimensTheme copyWith({
+    BorderRadiusGeometry? borderRadius,
     double? height,
+    EdgeInsets? margin,
     EdgeInsets? padding,
     double? spacing,
   }) =>
       ImpaktfullUiHorizontalTabsDimensTheme(
+        borderRadius: borderRadius ?? this.borderRadius,
         height: height ?? this.height,
+        margin: margin ?? this.margin,
         padding: padding ?? this.padding,
         spacing: spacing ?? this.spacing,
       );
@@ -105,9 +129,12 @@ class ImpaktfullUiHorizontalTabsDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiHorizontalTabsDimensTheme &&
           padding == other.padding &&
+          margin == other.margin &&
           height == other.height &&
-          spacing == other.spacing;
+          spacing == other.spacing &&
+          borderRadius == other.borderRadius;
 
   @override
-  int get hashCode => Object.hash(padding, height, spacing);
+  int get hashCode =>
+      Object.hash(padding, margin, height, spacing, borderRadius);
 }

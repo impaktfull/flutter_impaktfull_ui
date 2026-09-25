@@ -35,8 +35,13 @@ class SegmentedControlLibraryVariant
             activeBorder: theme.colors.border,
           ),
           dimens: ImpaktfullUiSegmentedControlDimensTheme(
-            borderRadius: theme.dimens.borderRadius,
-            padding: EdgeInsets.zero,
+            borderRadius: theme.dimens.borderRadiusLarge,
+            // The track keeps a little space around the box of the selected
+            // item, which has a radius of its own inside it.
+            padding: const EdgeInsets.all(4),
+            activeBorderRadius: theme.dimens.borderRadius,
+            activeSpacing: 0,
+            spacing: 0,
           ),
           textStyles: ImpaktfullUiSegmentedControlTextStyleTheme(
             label: theme.textStyles.onPrimary.text.small,

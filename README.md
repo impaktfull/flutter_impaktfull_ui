@@ -334,7 +334,7 @@ every component.
 | colors | `primary`, `accent`, `secondary`, `canvas`, `card`, `border`, `text`, `warning`, ... or a whole `colors:` group | the impaktfull palette per `brightness` |
 | border radius | `radius` (the seed), or a single step: `borderRadius`, `borderRadiusSmall`, `borderRadiusLarge`, ..., `borderRadiusCircle` | `radius: 8` → 4 / 6 / 8 / 12 / 16 |
 | spacing | `spacingUnit`, or a whole `dimens:` group | `4` → 4 / 8 / 12 / 16 / 24 / 32 |
-| typography | `fontFamilyDisplay`, `fontFamilyText`, `heightDisplay`, `heightText`, `letterSpacingDisplay`, `letterSpacingText`, `fontWeightDisplay`, `fontWeightText` | Ubuntu / Geologica, and Flutter's defaults for the rest |
+| typography | `fontSizeText` (the seed of the text scale), `fontFamilyDisplay`, `fontFamilyText`, `heightDisplay`, `heightText`, `letterSpacingDisplay`, `letterSpacingText`, `fontWeightDisplay`, `fontWeightText` | `fontSizeText: 16` → 20 / 18 / 16 / 14 / 12, Ubuntu / Geologica, and Flutter's defaults for the rest |
 | durations | `durations:` | 200 / 350 / 500 ms |
 | shadows | `shadows:` | derived from `colors.shadow` |
 | assets | `package`, `assetSuffix`, or a whole `assets:` group | the assets of this package |
@@ -365,6 +365,59 @@ final theme = ImpaktfullUiDefaultTheme.withMinimalChanges(
 ```
 
 With a `colors:` group, `primary`, `accent` and `secondary` can be left out.
+
+#### The focus ring
+
+Every component that can take the focus draws the same ring, from `ImpaktfullUiTouchFeedbackTheme.focusRing`: its `color` (the accent at 66% without one), `width` and `offset` (the space between the component and the ring). `ImpaktfullUiFocusRingTheme.inset` draws it against the inside edge instead, for a component inside a scroller that would clip it.
+
+An app that shows the focus in its own way turns the ring off everywhere at once:
+
+```dart
+final base = ImpaktfullUiTheme.getDefault();
+final theme = base.copyWith(
+  components: base.components.copyWith(
+    touchFeedback: base.components.touchFeedback.copyWith(
+      focusRing: base.components.touchFeedback.focusRing.copyWith(enabled: false),
+    ),
+  ),
+);
+```
+
+Keyboard and switch users depend on seeing where they are, so turn it off only when something else shows that.
+
+#### A theme that renders its own snack
+
+`ImpaktfullUiSnackyConfigurator` renders a snack as an `ImpaktfullUiNotification` with the tokens of the theme. A theme that needs another layout altogether passes a `SnackyBuilder` of its own:
+
+```dart
+// A top level or a static function: a closure written inline is a new object
+// on every build, which makes the theme unequal to itself.
+SnackyBuilder buildSnacky(ImpaktfullUiSnackyConfiguratorTheme theme) =>
+    MySnackyBuilder(theme: theme);
+
+final theme = base.copyWith(
+  components: base.components.copyWith(
+    snackyConfigurator:
+        base.components.snackyConfigurator.copyWith(snackyBuilder: buildSnacky),
+  ),
+);
+```
+
+A `snackyBuilder` on the `ImpaktfullUiSnackyConfigurator` itself still wins over the one of the theme.
+
+#### Design system themes
+
+Two themes in the style of a well known design system ship with the package, built with the same public API:
+
+```dart
+ImpaktfullUiApp(
+  impaktfullUiTheme: ImpaktfullUiShadcnTheme.light(fontFamily: 'Geist'),
+  // or ImpaktfullUiAntDesignTheme.light(), and `.dark()` for both
+  home: const MyHomeScreen(),
+);
+```
+
+They are not ports and not affiliated with those design systems: what a theme can and cannot reach is in [doc/design-system-themes.md](doc/design-system-themes.md), together with the token tables. Both are in the theme picker of the example app, and each has a golden test, so a component that starts hardcoding a size or a color breaks them.
 
 #### Changing a single token
 

@@ -64,12 +64,19 @@ class _ImpaktfullUiTabBarState extends State<ImpaktfullUiTabBar> {
         padding: dimens.padding,
         child: ImpaktfullUiAutoLayout.horizontal(
           mainAxisSize: MainAxisSize.min,
+          // A bar with a `height` fills it with its tabs, so the box of the
+          // selected one sits inside the padding of the bar instead of
+          // leaving the space under it empty (`flex-1` on a shadcn/ui
+          // `TabsTrigger`). Without a `height` the tallest tab decides how
+          // high the bar is, and stretching to an unbounded height is an
+          // error, so the tabs keep the top of the row as they always did.
+          crossAxisAlignment: dimens.height == null
+              ? CrossAxisAlignment.start
+              : CrossAxisAlignment.stretch,
           spacing: dimens.spacing,
-          children: widget.items
-              .map(
-                (item) => Expanded(child: item),
-              )
-              .toList(),
+          children: dimens.expandItems
+              ? widget.items.map((item) => Expanded(child: item)).toList()
+              : widget.items,
         ),
       ),
     );

@@ -126,6 +126,7 @@ class ImpaktfullUiDefaultTheme {
     double? letterSpacingText,
     FontWeight? fontWeightDisplay,
     FontWeight? fontWeightText,
+    double? fontSizeText,
     String? package,
     String? assetSuffix,
     ImpaktfullUiAssetTheme? assets,
@@ -196,6 +197,7 @@ class ImpaktfullUiDefaultTheme {
           letterSpacingText: letterSpacingText,
           fontWeightDisplay: fontWeightDisplay,
           fontWeightText: fontWeightText,
+          fontSizeText: fontSizeText,
         );
     final resolvedShadows = shadows ??
         ImpaktfullUiShadowsTheme.getDefault(

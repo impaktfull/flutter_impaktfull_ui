@@ -38,7 +38,10 @@ class ImpaktfullUiSectionTitle extends StatelessWidget {
                   ? componentTheme.dimens.marginWithIconButtonActions
                   : componentTheme.dimens.margin),
           child: ImpaktfullUiAutoLayout.horizontal(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            // The actions line up with each other and with the title, instead
+            // of hanging from the bottom of the tallest one (an icon button
+            // next to a button).
+            crossAxisAlignment: CrossAxisAlignment.center,
             spacing: componentTheme.dimens.spacing,
             children: [
               Expanded(

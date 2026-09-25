@@ -52,6 +52,11 @@ class ComponentCard extends StatelessWidget {
                                 child: correctChild,
                               );
                             }
+                            // A component that is taller than the card asks
+                            // for `isScrollable` on its descriptor: it is the
+                            // only way to hand it more height than the card
+                            // has, and a preview that is a screen of its own
+                            // needs the height of the card to lay out at all.
                             return Padding(
                               padding: const EdgeInsets.all(16),
                               child: correctChild,

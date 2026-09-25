@@ -34,6 +34,9 @@ class ImpaktfullUiFocusFeedback extends StatelessWidget {
         ImpaktfullUiTheme.maybeOf(context) ?? _defaultTheme;
     final focusRing =
         theme ?? impaktfullUiTheme.components.touchFeedback.focusRing;
+    // An app that shows the focus in its own way turns the ring off in its
+    // theme, and then nothing draws one.
+    if (!focusRing.enabled) return child;
     final offset = -focusRing.offset;
     return Stack(
       // Keep the constraints of the parent for the child (e.g. full width).

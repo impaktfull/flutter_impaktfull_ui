@@ -49,6 +49,8 @@ void main() {
       );
 
   runComponentTest(
+    // One golden: this golden is about a theme of its own.
+    perTheme: false,
     fileName: 'impaktfull_ui_theme_builder',
     columns: 2,
     goldenTests: () => [

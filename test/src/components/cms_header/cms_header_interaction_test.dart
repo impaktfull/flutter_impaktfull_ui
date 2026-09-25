@@ -111,4 +111,32 @@ void main() {
       greaterThan(tester.getBottomLeft(find.text('Title')).dy),
     );
   });
+
+  testWidgets('the actions are centred on each other and on the title',
+      (tester) async {
+    await pumpAndSettleComponent(
+      tester,
+      ImpaktfullUiCmsHeader(
+        title: 'My custom title',
+        actions: [
+          // A button is taller than an icon button, which is what used to
+          // hang the small one from the top of the row.
+          ImpaktfullUiButton(
+            type: ImpaktfullUiButtonType.secondary,
+            title: 'Refresh',
+            onTap: () {},
+          ),
+          ImpaktfullUiIconButton(
+            asset: ImpaktfullUiAsset.icon(Icons.add),
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
+    final button = tester.getRect(find.byType(ImpaktfullUiButton));
+    final iconButton = tester.getRect(find.byType(ImpaktfullUiIconButton));
+    final title = tester.getRect(find.text('My custom title'));
+    expect(iconButton.center.dy, button.center.dy);
+    expect(iconButton.center.dy, closeTo(title.center.dy, 1));
+  });
 }

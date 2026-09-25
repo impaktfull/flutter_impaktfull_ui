@@ -54,6 +54,81 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
     super.dispose();
   }
 
+  /// Whether the marker takes the whole width of the tab.
+  bool _stretchMarker(ImpaktfullUiTabBarItemDimensTheme dimens) {
+    final width = dimens.selectedMarkerWidth;
+    return width == null || width == double.infinity;
+  }
+
+  /// The title of the tab with its marker under it.
+  ///
+  /// A marker of the width of the tab is painted over the space that is kept
+  /// for it, instead of being a child of the column: a child that asks for
+  /// every pixel is an error in a tab that is as wide as its title
+  /// (`ImpaktfullUiTabBarDimensTheme.expandItems` is false), and a `stretch`
+  /// needs a width to stretch to, which such a tab does not have either.
+  Widget _buildContent(
+    BuildContext context,
+    ImpaktfullUiTabBarItemTheme componentTheme,
+    TextStyle textStyle, {
+    required bool isSelected,
+  }) {
+    final dimens = componentTheme.dimens;
+    final colors = componentTheme.colors;
+    final marker = AnimatedOpacity(
+      opacity: isSelected ? 1 : 0,
+      duration: ImpaktfullUiAnimationUtil.duration(
+          context, componentTheme.durations.selected),
+      curve: Curves.easeInOut,
+      child: Container(
+        height: dimens.selectedMarkerHeight,
+        width: _stretchMarker(dimens) ? null : dimens.selectedMarkerWidth,
+        decoration: BoxDecoration(
+          color: colors.selectedMarker ?? textStyle.color,
+          borderRadius: dimens.selectedMarkerBorderRadius,
+        ),
+      ),
+    );
+    final title = Text(
+      widget.title,
+      style: textStyle,
+      textAlign: TextAlign.center,
+    );
+    if (!_stretchMarker(dimens)) {
+      return ImpaktfullUiAutoLayout.vertical(
+        spacing: dimens.spacing,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // A tab is as tall as the bar it sits in, which can be more than its
+        // title needs (`ImpaktfullUiTabBarDimensTheme.height`). Without a
+        // height on the bar the tab is as tall as its title and this changes
+        // nothing.
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [title, marker],
+      );
+    }
+    return Stack(
+      children: [
+        ImpaktfullUiAutoLayout.vertical(
+          spacing: dimens.spacing,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            title,
+            SizedBox(height: dimens.selectedMarkerHeight),
+          ],
+        ),
+        PositionedDirectional(
+          start: 0,
+          end: 0,
+          bottom: 0,
+          child: marker,
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ImpaktfullUiOverridableComponentBuilder(
@@ -89,30 +164,11 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
                 borderRadius: dimens.borderRadius,
               ),
               padding: dimens.padding,
-              child: ImpaktfullUiAutoLayout.vertical(
-                spacing: dimens.spacing,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    widget.title,
-                    style: textStyle,
-                  ),
-                  AnimatedOpacity(
-                    opacity: isSelected ? 1 : 0,
-                    duration: ImpaktfullUiAnimationUtil.duration(
-                        context, componentTheme.durations.selected),
-                    curve: Curves.easeInOut,
-                    child: Container(
-                      height: dimens.selectedMarkerHeight,
-                      width: dimens.selectedMarkerWidth ?? double.infinity,
-                      decoration: BoxDecoration(
-                        color: colors.selectedMarker ?? textStyle.color,
-                        borderRadius: dimens.selectedMarkerBorderRadius,
-                      ),
-                    ),
-                  ),
-                ],
+              child: _buildContent(
+                context,
+                componentTheme,
+                textStyle,
+                isSelected: isSelected,
               ),
             ),
           ),
