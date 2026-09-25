@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 import '../../../util/golden_test_util.dart';
 import '../../../util/golden_test_variant.dart';
-import '_preset_showcase.dart';
+import '../_theme_showcase.dart';
 
 /// What `ImpaktfullUiShadcnTheme` looks like. This golden is the regression
 /// test of the theme system: a component that starts to hardcode a size, a
@@ -23,7 +23,7 @@ void main() {
             showDebugFlag: false,
             title: 'impaktfull app',
             impaktfullUiTheme: theme,
-            home: const PresetShowcase(),
+            home: const ThemeShowcase(),
           ),
         ),
     ],

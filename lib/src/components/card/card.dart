@@ -14,6 +14,12 @@ class ImpaktfullUiCard extends StatefulWidget {
   final VoidCallback? onTap;
   final MouseCursor cursor;
   final VoidCallback? onFocus;
+
+  /// Whether the card draws a focus ring around itself when it has focus.
+  ///
+  /// False for a card that draws its own, like the card of an
+  /// `ImpaktfullUiInputField`, which would show two rings otherwise.
+  final bool useFocusRing;
   final EdgeInsetsGeometry? padding;
   final BorderRadiusGeometry? borderRadius;
   final List<BoxShadow>? shadow;
@@ -28,6 +34,7 @@ class ImpaktfullUiCard extends StatefulWidget {
     this.cursor = MouseCursor.defer,
     this.onTap,
     this.onFocus,
+    this.useFocusRing = true,
     this.padding,
     this.borderRadius,
     this.shadow,
@@ -57,7 +64,7 @@ class _ImpaktfullUiCardState extends State<ImpaktfullUiCard> {
         shadow: widget.shadow ?? componentTheme.shadows.card,
         child: ImpaktfullUiTouchFeedback(
           canRequestFocus: onTapEnabled,
-          useFocusColor: onTapEnabled,
+          useFocusColor: onTapEnabled && widget.useFocusRing,
           cursor: onTapEnabled && widget.cursor == MouseCursor.defer
               ? SystemMouseCursors.click
               : widget.cursor,

@@ -1,6 +1,12 @@
 import 'package:flutter/widgets.dart';
+import 'package:snacky/snacky.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
+
+/// Renders a snack for a theme, with the theme it belongs to.
+typedef ImpaktfullUiSnackyBuilderBuilder = SnackyBuilder Function(
+  ImpaktfullUiSnackyConfiguratorTheme theme,
+);
 
 class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSnackyConfiguratorColorTheme colors;
@@ -8,7 +14,20 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
   final ImpaktfullUiSnackyConfiguratorDimensTheme dimens;
   final ImpaktfullUiSnackyConfiguratorAssetsTheme assets;
 
+  /// How a snack is rendered, for a theme that draws one its own way.
+  ///
+  /// `null` (the default) renders an `ImpaktfullUiNotification` with the
+  /// tokens of this theme. A `snackyBuilder` on the
+  /// `ImpaktfullUiSnackyConfigurator` itself wins over this one.
+  ///
+  /// It is called with this theme, so a builder can read its tokens. Pass a
+  /// top level or a static function: a closure that is written inline is a
+  /// new object on every build, which makes the theme unequal to itself and
+  /// rebuilds everything that reads it.
+  final ImpaktfullUiSnackyBuilderBuilder? snackyBuilder;
+
   const ImpaktfullUiSnackyConfiguratorTheme({
+    this.snackyBuilder,
     required this.colors,
     required this.dimens,
     required this.textStyles,
@@ -19,12 +38,14 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
     ImpaktfullUiSnackyConfiguratorAssetsTheme? assets,
     ImpaktfullUiSnackyConfiguratorColorTheme? colors,
     ImpaktfullUiSnackyConfiguratorDimensTheme? dimens,
+    ImpaktfullUiSnackyBuilderBuilder? snackyBuilder,
     ImpaktfullUiSnackyConfiguratorTextStyleTheme? textStyles,
   }) =>
       ImpaktfullUiSnackyConfiguratorTheme(
         assets: assets ?? this.assets,
         colors: colors ?? this.colors,
         dimens: dimens ?? this.dimens,
+        snackyBuilder: snackyBuilder ?? this.snackyBuilder,
         textStyles: textStyles ?? this.textStyles,
       );
 
@@ -72,7 +93,8 @@ class ImpaktfullUiSnackyConfiguratorTheme extends ImpaktfullUiComponentTheme {
           colors == other.colors &&
           textStyles == other.textStyles &&
           dimens == other.dimens &&
-          assets == other.assets;
+          assets == other.assets &&
+          snackyBuilder == other.snackyBuilder;
 
   @override
   int get hashCode => Object.hash(colors, textStyles, dimens, assets);
@@ -150,25 +172,32 @@ class ImpaktfullUiSnackyConfiguratorTextStyleTheme {
 class ImpaktfullUiSnackyConfiguratorDimensTheme {
   final BorderRadiusGeometry borderRadius;
 
+  /// The space between a snack and the edge of the window.
+  final EdgeInsets margin;
+
   const ImpaktfullUiSnackyConfiguratorDimensTheme({
     required this.borderRadius,
+    this.margin = const EdgeInsets.all(16),
   });
 
   ImpaktfullUiSnackyConfiguratorDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    EdgeInsets? margin,
   }) =>
       ImpaktfullUiSnackyConfiguratorDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        margin: margin ?? this.margin,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiSnackyConfiguratorDimensTheme &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          margin == other.margin;
 
   @override
-  int get hashCode => borderRadius.hashCode;
+  int get hashCode => Object.hash(borderRadius, margin);
 }
 
 class ImpaktfullUiSnackyConfiguratorAssetsTheme {

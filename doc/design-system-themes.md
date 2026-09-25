@@ -28,20 +28,42 @@ component that starts hardcoding a size, a radius or a state color fails them.
 
 ## Which components they cover
 
-Every component that has a counterpart in the design system, which is 30 of
-the 87 component themes:
+**61 of the 87 component themes** are set by both presets, which is every
+component the design system has something to say about:
 
-| | shadcn/ui | Ant Design |
-|---|---|---|
-| button, input field, checkbox, switch, badge, card, modal, table (header, row, cells), focus ring | yes | yes |
-| tooltip, dropdown menu and its items, radio button, slider, tabs, notification, pagination, avatar, bottom sheet, progress indicator, skeleton, divider | yes | yes |
-| segmented control | — (it has none) | yes |
+the button, the icon button, the floating action button, the input field, the
+date field, the colour field, the number input, the pin code, the checkbox,
+the switch, the radio button, the slider, the badge, the notification badge,
+the card, the modal, the bottom sheet, the dropdown menu, the command menu,
+the auto complete, the option selector, the tooltip, the tabs (both the fixed
+and the scrolling ones), the table with its header, rows and cells, the list
+view, the grid view, the list items, the sidebar navigation and its items, the
+nav bar, the section title, the pagination, the stepper, the progress
+indicator, the loading indicator, the skeleton, the divider, the avatar, the
+carousel, the gallery, the file picker, the colour picker, the date picker,
+the date time picker, the time picker, the calendar, the placeholder, the
+metric, the notification, the snacky configurator, the segmented control (Ant
+Design only, shadcn/ui has none) and the touch feedback with its focus ring.
 
-The others keep the geometry of this package, because the design system has
-nothing to say about them: the virtual keyboard, the image cropper, the WYSIWYG
-editor, the chat, the CMS header, the calendar, the colour picker, the
-introduction, the confetti, the master detail layout, and the layout
-primitives (`ImpaktfullUiAutoLayout`, `ImpaktfullUiResponsiveRow`, …).
+Four more are aligned through another component: `ImpaktfullUiAccordion`,
+`ImpaktfullUiCheckboxListItem`, `ImpaktfullUiSwitchListItem` and
+`ImpaktfullUiRadioButtonListItem` have no geometry of their own — they render
+an `ImpaktfullUiSimpleListItem`, which both presets set.
+
+The remaining 22 have no counterpart in either design system, so they keep the
+geometry of this package:
+
+- the layout primitives: `ImpaktfullUiResponsiveLayout`,
+  `ImpaktfullUiFluidPadding`, `ImpaktfullUiSeparatedColumn`,
+  `ImpaktfullUiScreen`, `ImpaktfullUiUnifiedScreenLayout`,
+  `ImpaktfullUiBottomActions`;
+- the components of an app rather than of a design system: the chat, the CMS
+  header, the virtual keyboard, the WYSIWYG editor, the image cropper, the
+  introduction, the confetti, the markdown, the line chart, the licenses
+  building block, the password strength indicator, the network image, the
+  loading error data and the refresh indicator;
+- the bottom navigation and its items, which is a mobile pattern neither
+  shadcn/ui nor Ant Design (the web library) has.
 
 Where the two systems disagree structurally, the preset follows its own
 system. Tabs are the clearest case: shadcn/ui is a `bg-muted rounded-lg
@@ -82,6 +104,18 @@ reason the presets are "in the style of" instead of a port.
   button has a `hover`, `pressed` and `disabled` color theme; the other
   components have a hover background at most, so Ant's "a hovered row turns
   its text and border blue" is a background change here.
+- **A bar under the selected scrolling tab.** `ImpaktfullUiHorizontalTab`
+  marks the selected tab with its text color and its background, not with a
+  bar, so Ant Design's ink bar is only on `ImpaktfullUiTabBar` (the fixed
+  tabs), which has a `selectedMarker`.
+- **An alert and a notification are one component.**
+  `ImpaktfullUiNotification` is both the inline alert and the snack that the
+  `ImpaktfullUiSnackyConfigurator` shows. shadcn/ui's alert is a bordered box
+  without a shadow and Ant Design's notification is a shadowed card without a
+  border, so each preset picks the one its design system shows in that place:
+  the shadcn preset keeps the border, the Ant preset draws `boxShadowSecondary`
+  and a transparent border. A theme that wants both at once passes its own
+  renderer in `ImpaktfullUiSnackyConfiguratorTheme.snackyBuilder`.
 - **The bottom sheet barrier.** `ImpaktfullUiBottomSheet` uses Flutter's
   `showModalBottomSheet`, which does not read the modal theme, so its barrier
   is the Flutter default instead of the mask of the design system.

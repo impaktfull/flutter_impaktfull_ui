@@ -54,7 +54,10 @@ class ImpaktfullUiNotification extends StatelessWidget {
   final Widget Function(BuildContext, ImpaktfullUiNotificationTypeConfig)?
       bottomWidgetBuilder;
   final ImpaktfullUiNotificationType type;
-  final ImpaktfullUiNotificationAlignment alignment;
+
+  /// Where the icon and the actions sit next to the text, or null to take it
+  /// from `ImpaktfullUiNotificationDimensTheme.alignment`.
+  final ImpaktfullUiNotificationAlignment? alignment;
   final ImpaktfullUiNotificationTheme? theme;
 
   const ImpaktfullUiNotification({
@@ -68,7 +71,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
     this.centerWidgetBuilder,
     this.bottomWidgetBuilder,
     this.type = ImpaktfullUiNotificationType.success,
-    this.alignment = ImpaktfullUiNotificationAlignment.center,
+    this.alignment,
     this.theme,
     super.key,
   });
@@ -156,7 +159,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
-        final crossAxisAlignment = _getAlignment();
+        final crossAxisAlignment = _getAlignment(componentTheme);
         final config = _getNotificationTypeConfig(componentTheme);
         final notification = Container(
           width: width,
@@ -179,7 +182,8 @@ class ImpaktfullUiNotification extends StatelessWidget {
                     ] else ...[
                       Builder(
                         builder: (context) {
-                          final leadinIcon = _getLeaderWidget(config);
+                          final leadinIcon =
+                              _getLeaderWidget(config, componentTheme);
                           if (leadinIcon == null) {
                             return SizedBox(
                               width: componentTheme.dimens.spacing,
@@ -323,17 +327,21 @@ class ImpaktfullUiNotification extends StatelessWidget {
     }
   }
 
-  Widget? _getLeaderWidget(ImpaktfullUiNotificationTypeConfig config) {
+  Widget? _getLeaderWidget(
+    ImpaktfullUiNotificationTypeConfig config,
+    ImpaktfullUiNotificationTheme componentTheme,
+  ) {
     final asset = config.asset;
     if (asset == null) return null;
     return ImpaktfullUiAssetWidget(
       asset: asset,
       color: config.color,
+      size: componentTheme.dimens.iconSize,
     );
   }
 
-  CrossAxisAlignment _getAlignment() {
-    switch (alignment) {
+  CrossAxisAlignment _getAlignment(ImpaktfullUiNotificationTheme theme) {
+    switch (alignment ?? theme.dimens.alignment) {
       case ImpaktfullUiNotificationAlignment.top:
         return CrossAxisAlignment.start;
       case ImpaktfullUiNotificationAlignment.center:

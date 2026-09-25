@@ -161,6 +161,63 @@ void main() {
       expect(configurator.textDirection, TextDirection.rtl);
     });
 
+    testWidgets('renders a snack with the builder of the theme',
+        (tester) async {
+      final base = ImpaktfullUiTheme.getDefault();
+      await tester.pumpWidget(
+        ImpaktfullUiApp(
+          showDebugFlag: false,
+          title: 'test',
+          impaktfullUiTheme: base.copyWith(
+            components: base.components.copyWith(
+              snackyConfigurator: base.components.snackyConfigurator.copyWith(
+                snackyBuilder: buildTestSnacky,
+              ),
+            ),
+          ),
+          home: const SizedBox(),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(
+        tester
+            .widget<SnackyConfiguratorWidget>(
+              find.byType(SnackyConfiguratorWidget),
+            )
+            .snackyBuilder,
+        isA<_TestSnackyBuilder>(),
+      );
+    });
+
+    testWidgets('a builder on the configurator wins over the one of the theme',
+        (tester) async {
+      final base = ImpaktfullUiTheme.getDefault();
+      await tester.pumpWidget(
+        ImpaktfullUiApp(
+          showDebugFlag: false,
+          title: 'test',
+          impaktfullUiTheme: base.copyWith(
+            components: base.components.copyWith(
+              snackyConfigurator: base.components.snackyConfigurator.copyWith(
+                snackyBuilder: buildTestSnacky,
+              ),
+            ),
+          ),
+          snackyBuilder: const _OtherSnackyBuilder(),
+          home: const SizedBox(),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(
+        tester
+            .widget<SnackyConfiguratorWidget>(
+              find.byType(SnackyConfiguratorWidget),
+            )
+            .snackyBuilder,
+        isA<_OtherSnackyBuilder>(),
+      );
+    });
+
     testWidgets('shows on top on mobile and at the top end on tablets',
         (tester) async {
       final configurator = await pumpConfigurator(tester);
@@ -169,4 +226,34 @@ void main() {
       expect(breakpoints.last.snackyLocation, SnackyLocation.topEnd);
     });
   });
+}
+
+/// A theme passes a top level function, so the theme stays equal to itself.
+SnackyBuilder buildTestSnacky(ImpaktfullUiSnackyConfiguratorTheme theme) =>
+    const _TestSnackyBuilder();
+
+class _TestSnackyBuilder extends SnackyBuilder {
+  const _TestSnackyBuilder();
+
+  @override
+  Widget build(
+    BuildContext context,
+    SnackyLayoutConfig layoutConfig,
+    CancelableSnacky cancelableSnacky,
+    SnackyController snackyController,
+  ) =>
+      const SizedBox();
+}
+
+class _OtherSnackyBuilder extends SnackyBuilder {
+  const _OtherSnackyBuilder();
+
+  @override
+  Widget build(
+    BuildContext context,
+    SnackyLayoutConfig layoutConfig,
+    CancelableSnacky cancelableSnacky,
+    SnackyController snackyController,
+  ) =>
+      const SizedBox();
 }

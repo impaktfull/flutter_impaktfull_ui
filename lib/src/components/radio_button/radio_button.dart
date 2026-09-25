@@ -52,7 +52,10 @@ class ImpaktfullUiRadioButton<T> extends StatelessWidget {
                   ? componentTheme.colors.selected
                   : componentTheme.colors.unselected,
               border: Border.all(
-                color: componentTheme.colors.border,
+                color: isSelected
+                    ? componentTheme.colors.borderSelected ??
+                        componentTheme.colors.border
+                    : componentTheme.colors.border,
                 width: componentTheme.dimens.borderWidth,
               ),
               onTap: onChanged == null ? null : () => onChanged!(value),

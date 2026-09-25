@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
-/// The components whose geometry and state colors a design system is
-/// recognized by, in one widget, so the golden of a preset shows what the
-/// theme does to them.
+/// The components whose geometry and state colors a theme is recognized by,
+/// in one widget, so the golden of a theme shows at a glance what it does to
+/// them, and two themes can be compared side by side.
+///
+/// Every theme this package ships has a golden of it:
+/// `theme_showcase_golden_test.dart` for the impaktfull themes and
+/// `presets/*_golden_test.dart` for the design system themes.
 ///
 /// Not a golden helper: it imports no alchemist, so a plain widget test can
 /// pump it too.
-class PresetShowcase extends StatelessWidget {
-  const PresetShowcase({super.key});
+class ThemeShowcase extends StatelessWidget {
+  const ThemeShowcase({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -169,11 +173,27 @@ class PresetShowcase extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              width: 320,
+              child: ImpaktfullUiSegmentedControl<String>(
+                value: 'Segment',
+                items: const ['Segment', 'Control'],
+                onChanged: (_) {},
+              ),
+            ),
             const SizedBox(
               width: 320,
               child: ImpaktfullUiNotification(
-                title: 'A notification',
-                subtitle: 'With a subtitle under it.',
+                title: 'Payment successful',
+                subtitle: 'Your payment has been processed.',
+                type: ImpaktfullUiNotificationType.success,
+              ),
+            ),
+            const SizedBox(
+              width: 320,
+              child: ImpaktfullUiNotification(
+                title: 'New feature available',
+                subtitle: 'We have added dark mode support.',
                 type: ImpaktfullUiNotificationType.info,
               ),
             ),

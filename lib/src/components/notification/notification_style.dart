@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
+import 'package:impaktfull_ui/src/components/notification/notification.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/extension/text_style_extension.dart';
@@ -233,6 +234,21 @@ class ImpaktfullUiNotificationDimensTheme {
   /// The width of the border around the notification.
   final double borderWidth;
 
+  /// Where the icon and the actions sit next to the text.
+  ///
+  /// `center` (the default) puts them in the middle of the notification, which
+  /// is what it always did. Both design systems line the icon up with the
+  /// first line of the title instead, which is `top`.
+  final ImpaktfullUiNotificationAlignment alignment;
+
+  /// The size of the icon that says what kind of notification it is.
+  ///
+  /// `null` (the default) leaves the size to the asset, which is what the
+  /// notification did before this token existed. A shadcn/ui alert draws it
+  /// at `size-4` (16), an Ant Design alert with a description at
+  /// `withDescriptionIconSize` (24).
+  final double? iconSize;
+
   const ImpaktfullUiNotificationDimensTheme({
     required this.borderRadius,
     this.leadingPadding = const EdgeInsets.all(16),
@@ -241,22 +257,28 @@ class ImpaktfullUiNotificationDimensTheme {
     this.titleSpacing = 4,
     this.actionSpacing = 8,
     this.borderWidth = 1,
+    this.alignment = ImpaktfullUiNotificationAlignment.center,
+    this.iconSize,
   });
 
   ImpaktfullUiNotificationDimensTheme copyWith({
     double? actionSpacing,
+    ImpaktfullUiNotificationAlignment? alignment,
     BorderRadiusGeometry? borderRadius,
     double? borderWidth,
     EdgeInsetsGeometry? contentPadding,
+    double? iconSize,
     EdgeInsetsGeometry? leadingPadding,
     double? spacing,
     double? titleSpacing,
   }) =>
       ImpaktfullUiNotificationDimensTheme(
         actionSpacing: actionSpacing ?? this.actionSpacing,
+        alignment: alignment ?? this.alignment,
         borderRadius: borderRadius ?? this.borderRadius,
         borderWidth: borderWidth ?? this.borderWidth,
         contentPadding: contentPadding ?? this.contentPadding,
+        iconSize: iconSize ?? this.iconSize,
         leadingPadding: leadingPadding ?? this.leadingPadding,
         spacing: spacing ?? this.spacing,
         titleSpacing: titleSpacing ?? this.titleSpacing,
@@ -272,7 +294,9 @@ class ImpaktfullUiNotificationDimensTheme {
           spacing == other.spacing &&
           titleSpacing == other.titleSpacing &&
           actionSpacing == other.actionSpacing &&
-          borderWidth == other.borderWidth;
+          borderWidth == other.borderWidth &&
+          iconSize == other.iconSize &&
+          alignment == other.alignment;
 
   @override
   int get hashCode => Object.hash(
@@ -283,6 +307,8 @@ class ImpaktfullUiNotificationDimensTheme {
         titleSpacing,
         actionSpacing,
         borderWidth,
+        iconSize,
+        alignment,
       );
 }
 

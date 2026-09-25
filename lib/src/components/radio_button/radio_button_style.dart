@@ -83,18 +83,27 @@ class ImpaktfullUiRadioButtonColorTheme {
   final Color selected;
   final Color unselected;
   final Color border;
+
+  /// The border of a radio button that is selected.
+  ///
+  /// `null` (the default) keeps [border], which is what the radio button
+  /// always did and what shadcn/ui does (`border-input` in both states). Ant
+  /// Design turns the border of a checked radio button into `colorPrimary`.
+  final Color? borderSelected;
   final Color centerSelectedBackground;
   final Color centerUnSelectedBackground;
   const ImpaktfullUiRadioButtonColorTheme({
     required this.selected,
     required this.unselected,
     required this.border,
+    this.borderSelected,
     required this.centerSelectedBackground,
     required this.centerUnSelectedBackground,
   });
 
   ImpaktfullUiRadioButtonColorTheme copyWith({
     Color? border,
+    Color? borderSelected,
     Color? centerSelectedBackground,
     Color? centerUnSelectedBackground,
     Color? selected,
@@ -102,6 +111,7 @@ class ImpaktfullUiRadioButtonColorTheme {
   }) =>
       ImpaktfullUiRadioButtonColorTheme(
         border: border ?? this.border,
+        borderSelected: borderSelected ?? this.borderSelected,
         centerSelectedBackground:
             centerSelectedBackground ?? this.centerSelectedBackground,
         centerUnSelectedBackground:
@@ -117,12 +127,19 @@ class ImpaktfullUiRadioButtonColorTheme {
           selected == other.selected &&
           unselected == other.unselected &&
           border == other.border &&
+          borderSelected == other.borderSelected &&
           centerSelectedBackground == other.centerSelectedBackground &&
           centerUnSelectedBackground == other.centerUnSelectedBackground;
 
   @override
-  int get hashCode => Object.hash(selected, unselected, border,
-      centerSelectedBackground, centerUnSelectedBackground);
+  int get hashCode => Object.hash(
+        selected,
+        unselected,
+        border,
+        borderSelected,
+        centerSelectedBackground,
+        centerUnSelectedBackground,
+      );
 }
 
 class ImpaktfullUiRadioButtonDimensTheme {

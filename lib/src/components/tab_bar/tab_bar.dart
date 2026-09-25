@@ -65,11 +65,9 @@ class _ImpaktfullUiTabBarState extends State<ImpaktfullUiTabBar> {
         child: ImpaktfullUiAutoLayout.horizontal(
           mainAxisSize: MainAxisSize.min,
           spacing: dimens.spacing,
-          children: widget.items
-              .map(
-                (item) => Expanded(child: item),
-              )
-              .toList(),
+          children: dimens.expandItems
+              ? widget.items.map((item) => Expanded(child: item)).toList()
+              : widget.items,
         ),
       ),
     );

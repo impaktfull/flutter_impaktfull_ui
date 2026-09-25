@@ -4,6 +4,7 @@ import 'package:impaktfull_ui/src/util/accessibility/accessibility.localizations
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/card/card.dart';
+import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback.dart';
 import 'package:impaktfull_ui/src/components/icon_button/icon_button.dart';
 import 'package:impaktfull_ui/src/components/input_field/input_field.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/hover_feedback/hover_feedback.dart';
@@ -145,7 +146,15 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
             .addPostFrameCallback((_) => oldFocusNode.dispose());
       }
     }
-    if (oldWidget.value != widget.value && _controller.text != widget.value) {
+    // Without an `onChanged` the field renders `_controller.text` as a
+    // `Text`, so the value of the app has to reach the controller here. With
+    // one, the `BaseInputField` below owns that: it knows which values this
+    // field reported, so a value that is still catching up does not undo what
+    // was typed in the meantime.
+    final rendersItsOwnText = widget.onChanged == null && !widget.readOnly;
+    if (rendersItsOwnText &&
+        oldWidget.value != widget.value &&
+        _controller.text != widget.value) {
       final text = widget.value ?? '';
       // Setting `text` directly would reset the selection
       final selection = _controller.selection;
@@ -229,6 +238,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                           componentTheme,
                           isHovered: isHovered,
                         ),
+                        // The field draws its own ring, so the card must
+                        // not draw a second one around it.
+                        useFocusRing: componentTheme.colors.focusRing == null,
                         cursor: SystemMouseCursors.text,
                         error: widget.error != null && widget.error!.isNotEmpty,
                         onTap: isDisabled ? null : _onTap,
@@ -457,8 +469,11 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     final colors = componentTheme.colors;
     final dimens = componentTheme.dimens;
     final hasFocus = _focusNode.hasFocus;
-    final borderWidth = dimens.borderWidth ?? cardTheme.dimens.borderWidth;
-    final focusRing = colors.focusRing;
+    // The ring of the field, and only when the rings are on at all.
+    final focusRing =
+        ImpaktfullUiTouchFeedbackTheme.of(context).focusRing.enabled
+            ? colors.focusRing
+            : null;
     return cardTheme.copyWith(
       colors: cardTheme.colors.copyWith(
         background: colors.background,
@@ -478,12 +493,14 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
           : cardTheme.shadows.copyWith(
               card: [
                 ...cardTheme.shadows.card,
-                // A ring, not a shadow: no blur, no offset, and spread out
-                // from behind the border so `focusRingWidth` of it is visible
-                // outside the border of the field.
+                // A ring, not a shadow: no blur and no offset. The border
+                // of a card is painted inside its box, so the ring that
+                // spreads out of that box is `focusRingWidth` thick, and
+                // adding the border to it made it thicker than the theme
+                // asked for.
                 BoxShadow(
                   color: focusRing,
-                  spreadRadius: dimens.focusRingWidth + borderWidth,
+                  spreadRadius: dimens.focusRingWidth,
                 ),
               ],
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 /// An [ImpaktfullUiTheme] in the style of Ant Design 5.
@@ -570,6 +571,11 @@ abstract final class ImpaktfullUiAntDesignTheme {
         // A radio button is `controlInteractiveSize` (16) with a dot of half
         // of it, so the dot is `16 - 2 * 4`.
         radioButton: components.radioButton.copyWith(
+          colors: components.radioButton.colors.copyWith(
+            // A checked radio button has a `colorPrimary` border around its
+            // dot; an unchecked one keeps `colorBorder`.
+            borderSelected: primary,
+          ),
           dimens: components.radioButton.dimens.copyWith(
             size: controlInteractiveSize,
             borderWidth: 1,
@@ -608,6 +614,10 @@ abstract final class ImpaktfullUiAntDesignTheme {
           dimens: components.tabBar.dimens.copyWith(
             height: 46,
             padding: EdgeInsets.zero,
+            // `horizontalItemGutter`: a tab is as wide as its title, with 32
+            // between two of them, instead of every tab taking the same part
+            // of the bar.
+            expandItems: false,
             spacing: 32,
             dividerHeight: 1,
             borderRadius: BorderRadius.zero,
@@ -632,15 +642,40 @@ abstract final class ImpaktfullUiAntDesignTheme {
             selectedMarkerWidth: double.infinity,
           ),
         ),
-        // An alert is `8px 12px` at `borderRadiusLG`, with 8 between its icon
-        // and its text.
+        // An alert with a description: `withDescriptionPadding` is
+        // `20px 24px`, its icon is `withDescriptionIconSize` (24) with 16
+        // after it, and 4 between the message and the description.
         notification: components.notification.copyWith(
+          colors: components.notification.colors.copyWith(
+            // `boxShadowSecondary` and no border: a notification of Ant
+            // Design floats over the page instead of being outlined on it.
+            border: Colors.transparent,
+          ),
+          shadows: components.notification.shadows.copyWith(
+            card: shadowElevated,
+          ),
+          // `CheckCircleFilled`, `InfoCircleFilled`, `CloseCircleFilled` and
+          // `ExclamationCircleFilled`: a notification of Ant Design has a
+          // filled circle in the colour of its type, not an outline.
+          assets: components.notification.assets.copyWith(
+            info: ImpaktfullUiAsset.icon(PhosphorIcons.infoFill),
+            success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircleFill),
+            warning: ImpaktfullUiAsset.icon(PhosphorIcons.warningCircleFill),
+            error: ImpaktfullUiAsset.icon(PhosphorIcons.xCircleFill),
+          ),
+          textStyles: components.notification.textStyles.copyWith(
+            title: base.textStyles.onCard.text.large,
+            subtitle: base.textStyles.onCard.text.medium,
+          ),
           dimens: components.notification.dimens.copyWith(
             borderRadius: BorderRadius.circular(borderRadiusLarge),
-            leadingPadding: const EdgeInsetsDirectional.fromSTEB(12, 8, 0, 8),
-            contentPadding: const EdgeInsets.symmetric(vertical: 8),
-            spacing: 12,
+            alignment: ImpaktfullUiNotificationAlignment.top,
+            leadingPadding:
+                const EdgeInsetsDirectional.fromSTEB(24, 20, 16, 20),
+            contentPadding: const EdgeInsets.symmetric(vertical: 20),
+            spacing: 24,
             titleSpacing: 4,
+            iconSize: 24,
           ),
         ),
         // The pages of a pagination are 8 apart.
@@ -661,7 +696,9 @@ abstract final class ImpaktfullUiAntDesignTheme {
         // `borderRadiusSM`.
         segmentedControl: components.segmentedControl.copyWith(
           colors: components.segmentedControl.colors.copyWith(
-            background: isDark ? colorFillSecondaryDark : colorFillAlter,
+            // `trackBg` is `colorBgLayout`, `itemSelectedBg` is
+            // `colorBgContainer`.
+            background: bgLayout,
             activeBackground: bgContainer,
           ),
           dimens: components.segmentedControl.dimens.copyWith(
@@ -695,6 +732,284 @@ abstract final class ImpaktfullUiAntDesignTheme {
             color: isDark ? colorBorderSecondaryDark : colorSplit,
           ),
           dimens: components.divider.dimens.copyWith(thickness: 1),
+        ),
+        // A table is `colorBorderSecondary` around and between its rows, at
+        // `borderRadiusLG`.
+        table: components.table.copyWith(
+          colors: components.table.colors.copyWith(
+            background: bgContainer,
+            border: borderSecondary,
+            divider: borderSecondary,
+          ),
+          dimens: components.table.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusLarge),
+            borderWidth: 1,
+          ),
+        ),
+        // The scrolling tabs of this package are the same underline.
+        horizontalTabs: components.horizontalTabs.copyWith(
+          dimens: components.horizontalTabs.dimens.copyWith(
+            // `horizontalItemGutter: 32` between two tabs, and the padding a
+            // page gives its tab nav at the sides, so the first tab does not
+            // touch the edge of the screen.
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            height: 46,
+            spacing: 32,
+          ),
+        ),
+        horizontalTab: components.horizontalTab.copyWith(
+          colors: components.horizontalTab.colors.copyWith(
+            backgroundUnSelectedTab: Colors.transparent,
+            backgroundSelectedTab: Colors.transparent,
+          ),
+          dimens: components.horizontalTab.dimens.copyWith(
+            borderRadius: BorderRadius.zero,
+            padding: const EdgeInsets.symmetric(vertical: 12),
+          ),
+        ),
+        // An icon button is a `type="text"` button: `controlHeight` with
+        // `borderRadius` and a 16px icon.
+        iconButton: components.iconButton.copyWith(
+          dimens: components.iconButton.dimens.copyWith(
+            padding: const EdgeInsets.all(8),
+            iconSize: 16,
+            borderRadius: BorderRadius.circular(borderRadius),
+            disabledOpacity: 0.25,
+          ),
+        ),
+        // A command palette is a modal with a list in it.
+        commandMenu: components.commandMenu.copyWith(
+          dimens: components.commandMenu.dimens.copyWith(
+            windowBorderRadius: BorderRadius.circular(borderRadiusLarge),
+            spacing: 8,
+            maxHeight: 300,
+          ),
+        ),
+        // A menu: `itemBorderRadius` 4 with `itemPaddingInline` 16 and 4
+        // between two items, in a menu of `padding: 4`.
+        sidebarNavigation: components.sidebarNavigation.copyWith(
+          dimens: components.sidebarNavigation.dimens.copyWith(
+            padding: const EdgeInsets.all(4),
+            spacing: 4,
+            borderWidth: 1,
+          ),
+        ),
+        sidebarNavigationItem: components.sidebarNavigationItem.copyWith(
+          dimens: components.sidebarNavigationItem.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusSmall),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            contentSpacing: 10,
+            spacing: 4,
+          ),
+        ),
+        // A message: `borderRadiusLG` with `boxShadowSecondary`.
+        snackyConfigurator: components.snackyConfigurator.copyWith(
+          dimens: components.snackyConfigurator.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusLarge),
+          ),
+        ),
+        // Every field is `controlHeight` with `paddingInline: 11`.
+        dateInputField: components.dateInputField.copyWith(
+          dimens: components.dateInputField.dimens.copyWith(
+            minHeight: controlHeight,
+            padding: const EdgeInsetsDirectional.only(start: 11, end: 11),
+            contentPadding: const EdgeInsets.symmetric(vertical: 4),
+            borderWidth: 1,
+            iconSize: 16,
+          ),
+        ),
+        colorInputField: components.colorInputField.copyWith(
+          dimens: components.colorInputField.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadius),
+            swatchSize: controlHeight,
+            borderWidth: 1,
+          ),
+        ),
+        numberInput: components.numberInput.copyWith(
+          dimens: components.numberInput.dimens.copyWith(
+            spacing: 8,
+            buttonSpacing: 4,
+          ),
+        ),
+        // `Input.OTP`: boxes of `controlHeight` with 8 between them.
+        pinCode: components.pinCode.copyWith(
+          dimens: components.pinCode.dimens.copyWith(
+            valueBorderRadius: BorderRadius.circular(borderRadius),
+            fieldSpacing: 8,
+            spacing: 8,
+          ),
+        ),
+        // A date picker: cells at `borderRadiusSM`, a 1px line around the
+        // day of today.
+        datePicker: components.datePicker.copyWith(
+          dimens: components.datePicker.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusSmall),
+            spacing: 8,
+            selectedBorderWidth: 1,
+          ),
+        ),
+        timePicker: components.timePicker.copyWith(
+          dimens: components.timePicker.dimens.copyWith(
+            spacing: 4,
+            fieldSpacing: 8,
+          ),
+        ),
+        // `Steps`: a round dot with the title next to it.
+        stepper: components.stepper.copyWith(
+          colors: components.stepper.colors.copyWith(
+            activeStep: primary,
+            inactiveStep: fillSecondary,
+          ),
+          dimens: components.stepper.dimens.copyWith(
+            borderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+            height: 8,
+            titleSpacing: 8,
+          ),
+        ),
+        // `Badge`: a dot of `colorError` with a 1px ring of the page behind
+        // it.
+        notificationBadge: components.notificationBadge.copyWith(
+          colors: components.notificationBadge.colors.copyWith(
+            background: error,
+            border: bgContainer,
+          ),
+          dimens: components.notificationBadge.dimens.copyWith(
+            borderWidth: 1,
+            textPadding: const EdgeInsets.symmetric(horizontal: 6),
+          ),
+        ),
+        // `Carousel`: the dots under it.
+        carousel: components.carousel.copyWith(
+          dimens: components.carousel.dimens.copyWith(
+            indicatorBorderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+            indicatorSize: 6,
+            indicatorSpacing: const EdgeInsets.symmetric(horizontal: 2),
+            indicatorPadding: const EdgeInsets.all(16),
+          ),
+        ),
+        // `Spin`: 20 by default, with a thin stroke.
+        loadingIndicator: components.loadingIndicator.copyWith(
+          dimens: components.loadingIndicator.dimens.copyWith(
+            size: 20,
+            strokeWidth: 2,
+          ),
+        ),
+        // `List`: items of `paddingContentVertical` 12 by `paddingLG` 24.
+        listView: components.listView.copyWith(
+          dimens: components.listView.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusLarge),
+            padding: const EdgeInsets.all(12),
+          ),
+        ),
+        optionSelector: components.optionSelector.copyWith(
+          dimens: components.optionSelector.dimens.copyWith(maxHeight: 256),
+        ),
+        // `AutoComplete`: the highlighted suggestion is `controlItemBgHover`.
+        autoComplete: components.autoComplete.copyWith(
+          colors: components.autoComplete.colors.copyWith(
+            highlightedItem: fillSecondary,
+          ),
+          dimens: components.autoComplete.dimens.copyWith(spacing: 4),
+        ),
+        // `Empty`: an illustration of 40 with 8 under it.
+        placeholder: components.placeholder.copyWith(
+          dimens: components.placeholder.dimens.copyWith(
+            spacing: 8,
+            titleSpacing: 4,
+            actionSpacing: 8,
+            assetPlaceholderHeight: 40,
+          ),
+        ),
+        // `Statistic`: a title of 14 with 4 under it, in a card of 24.
+        metric: components.metric.copyWith(
+          dimens: components.metric.dimens.copyWith(
+            padding: const EdgeInsets.all(24),
+            spacing: 4,
+            contentSpacing: 8,
+          ),
+        ),
+        // `Upload`: a drag area at `borderRadiusLG` with `padding: 16`.
+        filePicker: components.filePicker.copyWith(
+          dimens: components.filePicker.dimens.copyWith(
+            borderRadius: BorderRadius.circular(borderRadiusLarge),
+            padding: const EdgeInsets.all(16),
+            spacing: 8,
+            contentSpacing: 8,
+            itemPadding: const EdgeInsets.all(8),
+          ),
+        ),
+        // `Image`: a preview at `borderRadiusLG`.
+        gallery: components.gallery.copyWith(
+          dimens: components.gallery.dimens.copyWith(
+            itemBorderRadius: BorderRadius.circular(borderRadiusLarge),
+            padding: const EdgeInsets.all(16),
+          ),
+        ),
+        // `FloatButton`: round, 40 by 40 with a 16 icon.
+        floatingActionButton: components.floatingActionButton.copyWith(
+          dimens: components.floatingActionButton.dimens.copyWith(
+            borderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+            padding: const EdgeInsets.all(12),
+            iconSize: 16,
+          ),
+        ),
+        // The title of a section: `marginXS` between it and its actions.
+        sectionTitle: components.sectionTitle.copyWith(
+          dimens: components.sectionTitle.dimens.copyWith(spacing: 8),
+        ),
+        // `Layout.Header`: 64 high with `padding: 0 50`, here the 24 of a
+        // page of this package.
+        navBar: components.navBar.copyWith(
+          dimens: components.navBar.dimens.copyWith(
+            minHeight: 64,
+            sidePadding: 24,
+            sidePaddingWithActions: 8,
+            spacing: 8,
+            borderWidth: 1,
+            actionSize: controlHeight,
+          ),
+        ),
+        gridView: components.gridView.copyWith(
+          dimens: components.gridView.dimens.copyWith(imageSize: 40),
+        ),
+        // `Calendar`: cells of `padding: 4` with a line between the weeks.
+        calendar: components.calendar.copyWith(
+          dimens: components.calendar.dimens.copyWith(
+            listPadding: const EdgeInsets.all(12),
+            eventPadding: const EdgeInsets.all(4),
+            eventSpacing: 4,
+            eventContentSpacing: 8,
+            listItemSpacing: 8,
+            dividerHeight: 1,
+          ),
+        ),
+        dateTimePicker: components.dateTimePicker.copyWith(
+          dimens: components.dateTimePicker.dimens.copyWith(spacing: 8),
+        ),
+        // `ColorPicker`: swatches of 24 at `borderRadiusSM`.
+        colorPicker: components.colorPicker.copyWith(
+          dimens: components.colorPicker.dimens.copyWith(
+            simpleColorPickerItemBorderRadius:
+                BorderRadius.circular(borderRadiusSmall),
+            simpleColorPickerItemSize: 24,
+            spacing: 8,
+            sectionSpacing: 24,
+          ),
+        ),
+        // The control at the end of a list item is `controlInteractiveSize`.
+        selectableListItem: components.selectableListItem.copyWith(
+          dimens: components.selectableListItem.dimens.copyWith(
+            leadingHeight: controlInteractiveSize,
+            leadingWidth: controlInteractiveSize,
+            trailingHeight: controlInteractiveSize,
+            trailingWidth: controlInteractiveSize,
+          ),
         ),
       ),
     );

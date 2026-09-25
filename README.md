@@ -366,6 +366,45 @@ final theme = ImpaktfullUiDefaultTheme.withMinimalChanges(
 
 With a `colors:` group, `primary`, `accent` and `secondary` can be left out.
 
+#### The focus ring
+
+Every component that can take the focus draws the same ring, from `ImpaktfullUiTouchFeedbackTheme.focusRing`: its `color` (the accent at 66% without one), `width` and `offset` (the space between the component and the ring). `ImpaktfullUiFocusRingTheme.inset` draws it against the inside edge instead, for a component inside a scroller that would clip it.
+
+An app that shows the focus in its own way turns the ring off everywhere at once:
+
+```dart
+final base = ImpaktfullUiTheme.getDefault();
+final theme = base.copyWith(
+  components: base.components.copyWith(
+    touchFeedback: base.components.touchFeedback.copyWith(
+      focusRing: base.components.touchFeedback.focusRing.copyWith(enabled: false),
+    ),
+  ),
+);
+```
+
+Keyboard and switch users depend on seeing where they are, so turn it off only when something else shows that.
+
+#### A theme that renders its own snack
+
+`ImpaktfullUiSnackyConfigurator` renders a snack as an `ImpaktfullUiNotification` with the tokens of the theme. A theme that needs another layout altogether passes a `SnackyBuilder` of its own:
+
+```dart
+// A top level or a static function: a closure written inline is a new object
+// on every build, which makes the theme unequal to itself.
+SnackyBuilder buildSnacky(ImpaktfullUiSnackyConfiguratorTheme theme) =>
+    MySnackyBuilder(theme: theme);
+
+final theme = base.copyWith(
+  components: base.components.copyWith(
+    snackyConfigurator:
+        base.components.snackyConfigurator.copyWith(snackyBuilder: buildSnacky),
+  ),
+);
+```
+
+A `snackyBuilder` on the `ImpaktfullUiSnackyConfigurator` itself still wins over the one of the theme.
+
 #### Design system themes
 
 Two themes in the style of a well known design system ship with the package, built with the same public API:

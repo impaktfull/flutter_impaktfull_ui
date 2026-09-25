@@ -9,17 +9,16 @@ enum ImpaktfullUiSnackyTextType {
   subtitle,
 }
 
+/// The look of a snack of the default theme.
+///
+/// Every value comes from [componentTheme], so an app changes the look through
+/// its theme. A theme that needs another layout altogether passes its own
+/// `SnackyBuilder` in `ImpaktfullUiSnackyConfiguratorTheme.snackyBuilder`.
 class ImpaktfullUiSnackyBuilder extends SnackyBuilder {
-  final EdgeInsets margin;
-  final EdgeInsets padding;
   final ImpaktfullUiSnackyConfiguratorTheme componentTheme;
 
   const ImpaktfullUiSnackyBuilder({
     required this.componentTheme,
-    this.margin = const EdgeInsets.all(16),
-    this.padding = const EdgeInsets.symmetric(
-      vertical: 16,
-    ),
   });
 
   @override
@@ -35,7 +34,7 @@ class ImpaktfullUiSnackyBuilder extends SnackyBuilder {
     return BaseSnackyWidget(
       cancelableSnacky: cancelableSnacky,
       snackyController: snackyController,
-      margin: margin,
+      margin: componentTheme.dimens.margin,
       borderRadius: borderRadius.value, //todo fix in snacky
       layoutConfig: layoutConfig,
       customBuilder: builder ??

@@ -62,6 +62,21 @@ class BaseInputField extends StatefulWidget {
 class _BaseInputFieldState extends State<BaseInputField> {
   Timer? _debounceTimer;
 
+  /// The values this field reported through `onChanged` that have not come
+  /// back as [BaseInputField.value] yet.
+  ///
+  /// Someone who types faster than the widget above rebuilds gets a `value`
+  /// that is behind what the controller already holds. Writing that value
+  /// back would undo the keystrokes in between and leave the cursor in the
+  /// middle of the text, so the next character replaces what is there. The
+  /// queue tells the two apart: a value this field reported itself is an echo
+  /// that is on its way, anything else is a change of the app.
+  final _reportedValues = <String>[];
+
+  /// Enough to cover a burst of typing; a widget above that never sends the
+  /// value back must not grow the queue forever.
+  static const _maxReportedValues = 64;
+
   TextEditingController get _controller => widget.controller;
 
   @override
@@ -82,20 +97,28 @@ class _BaseInputFieldState extends State<BaseInputField> {
       oldWidget.focusNode.removeListener(_onFocusChanged);
       widget.focusNode.addListener(_onFocusChanged);
     }
-    if (oldWidget.value != widget.value && _controller.text != widget.value) {
-      final text = widget.value ?? '';
-      // Keep the selection, clamped to the new text
-      final selection = _controller.selection;
-      _controller.value = TextEditingValue(
-        text: text,
-        selection: selection.isValid
-            ? TextSelection(
-                baseOffset: selection.baseOffset.clamp(0, text.length),
-                extentOffset: selection.extentOffset.clamp(0, text.length),
-              )
-            : TextSelection.collapsed(offset: text.length),
-      );
+    if (oldWidget.value == widget.value) return;
+    final text = widget.value ?? '';
+    final echo = _reportedValues.indexOf(text);
+    if (echo >= 0) {
+      // The value of the widget above is catching up with what this field
+      // reported. What the user typed after it is already in the controller.
+      _reportedValues.removeRange(0, echo + 1);
+      return;
     }
+    _reportedValues.clear();
+    if (_controller.text == text) return;
+    // Keep the selection, clamped to the new text
+    final selection = _controller.selection;
+    _controller.value = TextEditingValue(
+      text: text,
+      selection: selection.isValid
+          ? TextSelection(
+              baseOffset: selection.baseOffset.clamp(0, text.length),
+              extentOffset: selection.extentOffset.clamp(0, text.length),
+            )
+          : TextSelection.collapsed(offset: text.length),
+    );
   }
 
   @override
@@ -167,9 +190,22 @@ class _BaseInputFieldState extends State<BaseInputField> {
 
   void _debouncedOnChanged(String value) {
     _debounceTimer?.cancel();
-    _debounceTimer = Timer(widget.debounceDuration, () {
-      widget.onChanged(value);
-    });
+    if (widget.debounceDuration == Duration.zero) {
+      // A `Timer` of zero still reports in a later turn of the event loop, so
+      // a fast typist gets another character in before the widget above hears
+      // about this one.
+      _report(value);
+      return;
+    }
+    _debounceTimer = Timer(widget.debounceDuration, () => _report(value));
+  }
+
+  void _report(String value) {
+    _reportedValues.add(value);
+    if (_reportedValues.length > _maxReportedValues) {
+      _reportedValues.removeAt(0);
+    }
+    widget.onChanged(value);
   }
 
   void _onFocusChanged() =>

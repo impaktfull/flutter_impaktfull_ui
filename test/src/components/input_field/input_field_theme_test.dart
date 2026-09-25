@@ -387,12 +387,10 @@ void main() {
       expect(shadow.last.color, customTestColor);
       expect(shadow.last.blurRadius, 0);
       expect(shadow.last.offset, Offset.zero);
-      // The border of the card covers the first pixel of the ring, so the ring
-      // reaches `focusRingWidth` beyond it.
-      expect(
-        shadow.last.spreadRadius,
-        3 + defaultComponentsTheme.card.dimens.borderWidth,
-      );
+      // The border of a card is painted inside its box and the shadow spreads
+      // out of that box, so the ring is exactly `focusRingWidth` thick: the
+      // border does not cover any of it.
+      expect(shadow.last.spreadRadius, 3);
     });
 
     testWidgets('a field without a focusRing keeps the shadow of the card',

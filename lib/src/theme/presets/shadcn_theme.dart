@@ -494,10 +494,19 @@ abstract final class ImpaktfullUiShadcnTheme {
         ),
         // `radio-group.tsx`: `size-4 rounded-full border` with a `size-2`
         // indicator, so the dot is `16 - 2 * 4`.
+        // `radio-group.tsx`: a `size-4` circle that keeps `border-input` in
+        // both states and never fills: what marks it as checked is the
+        // `size-2` dot, `fill-primary` in the middle of it.
         radioButton: components.radioButton.copyWith(
+          colors: components.radioButton.colors.copyWith(
+            selected: isDark ? cardDark : card,
+            unselected: isDark ? cardDark : card,
+            centerSelectedBackground: primaryColor,
+          ),
           dimens: components.radioButton.dimens.copyWith(
             size: 16,
             borderWidth: 1,
+            // `size-2` in the middle of a `size-4` circle.
             dotInset: 4,
           ),
         ),
@@ -545,15 +554,39 @@ abstract final class ImpaktfullUiShadcnTheme {
             spacing: 0,
           ),
         ),
-        // `alert.tsx`: `rounded-lg border px-4 py-3 text-sm` with a `gap-3`
-        // icon and a `gap-1` between the title and the description.
+        // `alert.tsx`: `rounded-lg border px-4 py-3 text-sm`, a grid of a
+        // `size-4` icon and the text with `gap-x-3` between them and
+        // `gap-y-0.5` between the title and the description.
         notification: components.notification.copyWith(
+          // `[&>svg]:text-current`: the icon of an alert has the colour of its
+          // text, so a default alert is monochrome and only the destructive
+          // one is red. This package has a type per colour, which is more
+          // than the two variants of shadcn/ui, so every type but the error
+          // one takes the colour of the text.
+          colors: components.notification.colors.copyWith(
+            info: textColor,
+            success: textColor,
+            warning: textColor,
+            branded: textColor,
+            error: destructiveColor,
+          ),
+          textStyles: components.notification.textStyles.copyWith(
+            title: base.textStyles.onCard.text.small
+                .copyWith(fontWeight: FontWeight.w500),
+            subtitle: base.textStyles.onCardSecondary.text.small,
+          ),
           dimens: components.notification.dimens.copyWith(
             borderRadius: BorderRadius.circular(radiusLarge),
-            leadingPadding: const EdgeInsetsDirectional.fromSTEB(16, 12, 0, 12),
+            // `items-start`: the icon sits next to the first line of the
+            // title, nudged down by the `translate-y-0.5` of the svg.
+            alignment: ImpaktfullUiNotificationAlignment.top,
+            // `px-4 py-3` with the `gap-x-3` at the end of the icon.
+            leadingPadding:
+                const EdgeInsetsDirectional.fromSTEB(16, 14, 12, 12),
             contentPadding: const EdgeInsets.symmetric(vertical: 12),
             spacing: 16,
-            titleSpacing: 4,
+            titleSpacing: 2,
+            iconSize: 16,
           ),
         ),
         // `pagination.tsx`: a row with `gap-1`.
@@ -594,6 +627,294 @@ abstract final class ImpaktfullUiShadcnTheme {
         divider: components.divider.copyWith(
           colors: components.divider.colors.copyWith(color: borderColor),
           dimens: components.divider.dimens.copyWith(thickness: 1),
+        ),
+        // `table.tsx`: a `border-b` between the rows, no border around it.
+        table: components.table.copyWith(
+          colors: components.table.colors.copyWith(
+            border: borderColor,
+            divider: borderColor,
+          ),
+          dimens: components.table.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+            borderWidth: 1,
+          ),
+        ),
+        // shadcn/ui has no segmented control: its `TabsList` is the same
+        // thing, so a segmented control looks like the tabs above.
+        segmentedControl: components.segmentedControl.copyWith(
+          colors: components.segmentedControl.colors.copyWith(
+            background: mutedColor,
+            activeBackground: isDark ? cardDark : background,
+          ),
+          dimens: components.segmentedControl.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusLarge),
+            padding: const EdgeInsets.all(3),
+            height: 36,
+          ),
+        ),
+        // `tabs.tsx` again, for the scrolling tabs of this package.
+        horizontalTabs: components.horizontalTabs.copyWith(
+          colors: components.horizontalTabs.colors.copyWith(
+            background: mutedColor,
+          ),
+          dimens: components.horizontalTabs.dimens.copyWith(
+            // `p-[3px]` of a `TabsList`, with the 16 at the sides that keeps
+            // the first tab off the edge of the screen: the row is as wide as
+            // what it sits under, where a `TabsList` is `w-fit`.
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
+            height: 36,
+            spacing: 4,
+          ),
+        ),
+        horizontalTab: components.horizontalTab.copyWith(
+          colors: components.horizontalTab.colors.copyWith(
+            backgroundUnSelectedTab: Colors.transparent,
+            backgroundSelectedTab: isDark ? cardDark : background,
+          ),
+          dimens: components.horizontalTab.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          ),
+        ),
+        // `button.tsx` with `size="icon"`: `size-9` with a `rounded-md`.
+        iconButton: components.iconButton.copyWith(
+          dimens: components.iconButton.dimens.copyWith(
+            padding: const EdgeInsets.all(10),
+            iconSize: 16,
+            borderRadius: BorderRadius.circular(radiusMedium),
+            disabledOpacity: 0.5,
+          ),
+        ),
+        // `command.tsx`: the dialog of a command menu is `rounded-lg`, its
+        // list is `max-h-[300px]` and its items are `gap-2 px-2 py-1.5`.
+        commandMenu: components.commandMenu.copyWith(
+          dimens: components.commandMenu.dimens.copyWith(
+            windowBorderRadius: BorderRadius.circular(radiusLarge),
+            spacing: 8,
+            maxHeight: 300,
+          ),
+        ),
+        // `sidebar.tsx`: a menu button is `rounded-md p-2 text-sm` with
+        // `gap-2`, in a `p-2` group.
+        sidebarNavigation: components.sidebarNavigation.copyWith(
+          dimens: components.sidebarNavigation.dimens.copyWith(
+            padding: const EdgeInsets.all(8),
+            spacing: 4,
+            borderWidth: 1,
+          ),
+        ),
+        sidebarNavigationItem: components.sidebarNavigationItem.copyWith(
+          dimens: components.sidebarNavigationItem.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+            padding: const EdgeInsets.all(8),
+            contentSpacing: 8,
+            spacing: 4,
+          ),
+        ),
+        // `sonner.tsx`, the toaster of shadcn/ui: `rounded-lg border p-4`.
+        snackyConfigurator: components.snackyConfigurator.copyWith(
+          dimens: components.snackyConfigurator.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusLarge),
+          ),
+        ),
+        // `input.tsx` again, for the fields that wrap one.
+        dateInputField: components.dateInputField.copyWith(
+          dimens: components.dateInputField.dimens.copyWith(
+            minHeight: 36,
+            padding: const EdgeInsetsDirectional.only(start: 12, end: 12),
+            contentPadding: const EdgeInsets.symmetric(vertical: 4),
+            borderWidth: 1,
+            iconSize: 16,
+          ),
+        ),
+        colorInputField: components.colorInputField.copyWith(
+          dimens: components.colorInputField.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+            swatchSize: 36,
+            borderWidth: 1,
+          ),
+        ),
+        numberInput: components.numberInput.copyWith(
+          dimens: components.numberInput.dimens.copyWith(
+            spacing: 8,
+            buttonSpacing: 4,
+          ),
+        ),
+        // `input-otp.tsx`: `h-9 w-9` boxes that touch each other, in groups.
+        pinCode: components.pinCode.copyWith(
+          dimens: components.pinCode.dimens.copyWith(
+            valueBorderRadius: BorderRadius.circular(radiusMedium),
+            fieldSpacing: 0,
+            spacing: 8,
+          ),
+        ),
+        // `calendar.tsx`: `size-8` day cells at `rounded-md`, in `p-3`.
+        datePicker: components.datePicker.copyWith(
+          dimens: components.datePicker.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+            spacing: 12,
+            selectedBorderWidth: 1,
+          ),
+        ),
+        timePicker: components.timePicker.copyWith(
+          dimens: components.timePicker.dimens.copyWith(
+            spacing: 4,
+            fieldSpacing: 8,
+          ),
+        ),
+        // `accordion.tsx`: `border-b` with `py-4` on the trigger, and
+        // `progress.tsx`, `avatar.tsx` and the rest of the small ones.
+        stepper: components.stepper.copyWith(
+          dimens: components.stepper.dimens.copyWith(
+            borderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+            height: 8,
+            titleSpacing: 8,
+          ),
+        ),
+        // `badge.tsx` as a dot on something: a 2px ring in the background of
+        // the page, so it reads as a hole.
+        notificationBadge: components.notificationBadge.copyWith(
+          colors: components.notificationBadge.colors.copyWith(
+            background: destructiveColor,
+            border: isDark ? backgroundDark : background,
+          ),
+          dimens: components.notificationBadge.dimens.copyWith(
+            borderWidth: 2,
+            textPadding: const EdgeInsets.symmetric(horizontal: 4),
+          ),
+        ),
+        // `carousel.tsx`: the dots under a carousel.
+        carousel: components.carousel.copyWith(
+          dimens: components.carousel.dimens.copyWith(
+            indicatorBorderRadius: BorderRadius.circular(
+              ImpaktfullUiDimensTheme.borderRadiusCircleMax,
+            ),
+            indicatorSize: 8,
+            indicatorSpacing: const EdgeInsets.symmetric(horizontal: 4),
+            indicatorPadding: const EdgeInsets.all(16),
+          ),
+        ),
+        // `spinner.tsx`: `size-4` with a 2px stroke.
+        loadingIndicator: components.loadingIndicator.copyWith(
+          dimens: components.loadingIndicator.dimens.copyWith(
+            size: 16,
+            strokeWidth: 2,
+          ),
+        ),
+        // A list of items is a menu of items: the same `px-2 py-1.5`.
+        listView: components.listView.copyWith(
+          dimens: components.listView.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+            padding: const EdgeInsets.all(8),
+          ),
+        ),
+        // `popover.tsx` / `select.tsx`: a list in a popover is
+        // `max-h-[300px]`.
+        optionSelector: components.optionSelector.copyWith(
+          dimens: components.optionSelector.dimens.copyWith(maxHeight: 300),
+        ),
+        // `command.tsx` again: the suggestions of a combobox.
+        autoComplete: components.autoComplete.copyWith(
+          colors: components.autoComplete.colors.copyWith(
+            highlightedItem: mutedColor,
+          ),
+          dimens: components.autoComplete.dimens.copyWith(spacing: 4),
+        ),
+        // An empty state: `gap-2` between the illustration, the text and the
+        // actions.
+        placeholder: components.placeholder.copyWith(
+          dimens: components.placeholder.dimens.copyWith(
+            spacing: 16,
+            titleSpacing: 4,
+            actionSpacing: 8,
+          ),
+        ),
+        // `card.tsx` again: a statistic is a card with a `gap-1.5` header.
+        metric: components.metric.copyWith(
+          dimens: components.metric.dimens.copyWith(
+            padding: const EdgeInsets.all(24),
+            spacing: 6,
+            contentSpacing: 8,
+          ),
+        ),
+        // The upload area of a form: `rounded-lg border p-4`.
+        filePicker: components.filePicker.copyWith(
+          dimens: components.filePicker.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusLarge),
+            padding: const EdgeInsets.all(16),
+            spacing: 12,
+            contentSpacing: 8,
+            itemPadding: const EdgeInsets.all(8),
+          ),
+        ),
+        // `dialog.tsx` around an image.
+        gallery: components.gallery.copyWith(
+          dimens: components.gallery.dimens.copyWith(
+            itemBorderRadius: BorderRadius.circular(radiusMedium),
+            padding: const EdgeInsets.all(16),
+          ),
+        ),
+        // The floating button of a page, round like `size="icon"` is square.
+        floatingActionButton: components.floatingActionButton.copyWith(
+          dimens: components.floatingActionButton.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+            padding: const EdgeInsets.all(12),
+            iconSize: 16,
+          ),
+        ),
+        // `label.tsx` above a group: `text-sm font-medium` with `gap-2`.
+        sectionTitle: components.sectionTitle.copyWith(
+          dimens: components.sectionTitle.dimens.copyWith(spacing: 8),
+        ),
+        // A header bar: `h-16` with `px-4` and a `border-b`.
+        navBar: components.navBar.copyWith(
+          dimens: components.navBar.dimens.copyWith(
+            minHeight: 64,
+            sidePadding: 16,
+            sidePaddingWithActions: 8,
+            spacing: 8,
+            borderWidth: 1,
+            actionSize: 36,
+          ),
+        ),
+        gridView: components.gridView.copyWith(
+          dimens: components.gridView.dimens.copyWith(imageSize: 40),
+        ),
+        // `calendar.tsx`: `p-3` around the month, `size-8` day cells.
+        calendar: components.calendar.copyWith(
+          dimens: components.calendar.dimens.copyWith(
+            listPadding: const EdgeInsets.all(12),
+            eventPadding: const EdgeInsets.all(4),
+            eventSpacing: 4,
+            eventContentSpacing: 8,
+            listItemSpacing: 8,
+            dividerHeight: 1,
+          ),
+        ),
+        // The same dialog as a date picker.
+        dateTimePicker: components.dateTimePicker.copyWith(
+          dimens: components.dateTimePicker.dimens.copyWith(spacing: 12),
+        ),
+        // The swatches of a colour field: `size-8 rounded-md`.
+        colorPicker: components.colorPicker.copyWith(
+          dimens: components.colorPicker.dimens.copyWith(
+            simpleColorPickerItemBorderRadius:
+                BorderRadius.circular(radiusMedium),
+            simpleColorPickerItemSize: 32,
+            spacing: 8,
+            sectionSpacing: 24,
+          ),
+        ),
+        // The control at the end of a list item: `size-4`, like a checkbox.
+        selectableListItem: components.selectableListItem.copyWith(
+          dimens: components.selectableListItem.dimens.copyWith(
+            leadingHeight: 16,
+            leadingWidth: 16,
+            trailingHeight: 16,
+            trailingWidth: 16,
+          ),
         ),
       ),
     );

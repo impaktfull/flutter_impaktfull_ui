@@ -128,23 +128,34 @@ class ImpaktfullUiTabBarDimensTheme {
   /// when [ImpaktfullUiTabBarColorTheme.background] is set.
   final BorderRadiusGeometry? borderRadius;
 
+  /// Whether every tab takes the same part of the width of the bar.
+  ///
+  /// True (the default) is what the bar always did, and what a shadcn/ui
+  /// `TabsTrigger` does with its `flex-1`. False sizes a tab to its title and
+  /// puts [spacing] between two of them, which is how the tabs of Ant Design
+  /// are laid out.
+  final bool expandItems;
+
   const ImpaktfullUiTabBarDimensTheme({
     this.padding = EdgeInsets.zero,
     this.height,
     this.spacing = 0,
     this.dividerHeight = 1,
+    this.expandItems = true,
     this.borderRadius,
   });
 
   ImpaktfullUiTabBarDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
     double? dividerHeight,
+    bool? expandItems,
     double? height,
     EdgeInsetsGeometry? padding,
     double? spacing,
   }) =>
       ImpaktfullUiTabBarDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        expandItems: expandItems ?? this.expandItems,
         dividerHeight: dividerHeight ?? this.dividerHeight,
         height: height ?? this.height,
         padding: padding ?? this.padding,
@@ -155,6 +166,7 @@ class ImpaktfullUiTabBarDimensTheme {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiTabBarDimensTheme &&
+          expandItems == other.expandItems &&
           padding == other.padding &&
           height == other.height &&
           spacing == other.spacing &&
@@ -162,8 +174,14 @@ class ImpaktfullUiTabBarDimensTheme {
           borderRadius == other.borderRadius;
 
   @override
-  int get hashCode =>
-      Object.hash(padding, height, spacing, dividerHeight, borderRadius);
+  int get hashCode => Object.hash(
+        padding,
+        height,
+        spacing,
+        dividerHeight,
+        borderRadius,
+        expandItems,
+      );
 }
 
 class ImpaktfullUiTabBarTextStyleTheme {
