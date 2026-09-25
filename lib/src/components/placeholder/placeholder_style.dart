@@ -106,21 +106,46 @@ class ImpaktfullUiPlaceholderDimensTheme {
   final double assetWidth;
   final double assetHeight;
 
+  /// The space between the illustration, the text and the actions.
+  final double spacing;
+
+  /// The space between the title and the subtitle.
+  final double titleSpacing;
+
+  /// The space between the actions.
+  final double actionSpacing;
+
+  /// The space that takes the place of the illustration when there is none and the placeholder has actions.
+  final double assetPlaceholderHeight;
+
   const ImpaktfullUiPlaceholderDimensTheme({
     required this.margin,
     required this.assetWidth,
     required this.assetHeight,
+    this.spacing = 16,
+    this.titleSpacing = 4,
+    this.actionSpacing = 8,
+    this.assetPlaceholderHeight = 40,
   });
 
   ImpaktfullUiPlaceholderDimensTheme copyWith({
+    double? actionSpacing,
     double? assetHeight,
+    double? assetPlaceholderHeight,
     double? assetWidth,
     EdgeInsets? margin,
+    double? spacing,
+    double? titleSpacing,
   }) =>
       ImpaktfullUiPlaceholderDimensTheme(
+        actionSpacing: actionSpacing ?? this.actionSpacing,
         assetHeight: assetHeight ?? this.assetHeight,
+        assetPlaceholderHeight:
+            assetPlaceholderHeight ?? this.assetPlaceholderHeight,
         assetWidth: assetWidth ?? this.assetWidth,
         margin: margin ?? this.margin,
+        spacing: spacing ?? this.spacing,
+        titleSpacing: titleSpacing ?? this.titleSpacing,
       );
 
   @override
@@ -129,10 +154,15 @@ class ImpaktfullUiPlaceholderDimensTheme {
       other is ImpaktfullUiPlaceholderDimensTheme &&
           margin == other.margin &&
           assetWidth == other.assetWidth &&
-          assetHeight == other.assetHeight;
+          assetHeight == other.assetHeight &&
+          spacing == other.spacing &&
+          titleSpacing == other.titleSpacing &&
+          actionSpacing == other.actionSpacing &&
+          assetPlaceholderHeight == other.assetPlaceholderHeight;
 
   @override
-  int get hashCode => Object.hash(margin, assetWidth, assetHeight);
+  int get hashCode => Object.hash(margin, assetWidth, assetHeight, spacing,
+      titleSpacing, actionSpacing, assetPlaceholderHeight);
 }
 
 class ImpaktfullUiPlaceholderTextStyleTheme {

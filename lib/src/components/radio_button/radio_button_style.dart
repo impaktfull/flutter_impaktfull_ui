@@ -128,6 +128,20 @@ class ImpaktfullUiRadioButtonColorTheme {
 class ImpaktfullUiRadioButtonDimensTheme {
   final BorderRadiusGeometry borderRadius;
 
+  /// The width and the height of the radio button. 20 by default, which is
+  /// what it was before this token existed; `size-4` of shadcn/ui and
+  /// `controlInteractiveSize` of Ant Design are 16.
+  final double size;
+
+  /// The width of the border around the radio button.
+  final double borderWidth;
+
+  /// The space between the edge of the radio button and the dot in the middle,
+  /// which gives the dot a size of `size - 2 * dotInset`: 8 with the default
+  /// theme, and 8 again for the 16px radio button of shadcn/ui and Ant Design
+  /// with a `dotInset` of 4.
+  final double dotInset;
+
   /// Opt-in: the minimum size of the tap area, e.g. `Size.square(48)` for
   /// the Android and `Size.square(44)` for the iOS tap target guideline.
   ///
@@ -137,15 +151,24 @@ class ImpaktfullUiRadioButtonDimensTheme {
   const ImpaktfullUiRadioButtonDimensTheme({
     required this.borderRadius,
     this.minTapTargetSize,
+    this.size = 20,
+    this.borderWidth = 1,
+    this.dotInset = 6,
   });
 
   ImpaktfullUiRadioButtonDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
+    double? dotInset,
     Size? minTapTargetSize,
+    double? size,
   }) =>
       ImpaktfullUiRadioButtonDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+        dotInset: dotInset ?? this.dotInset,
         minTapTargetSize: minTapTargetSize ?? this.minTapTargetSize,
+        size: size ?? this.size,
       );
 
   @override
@@ -153,10 +176,14 @@ class ImpaktfullUiRadioButtonDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiRadioButtonDimensTheme &&
           borderRadius == other.borderRadius &&
-          minTapTargetSize == other.minTapTargetSize;
+          borderWidth == other.borderWidth &&
+          dotInset == other.dotInset &&
+          minTapTargetSize == other.minTapTargetSize &&
+          size == other.size;
 
   @override
-  int get hashCode => Object.hash(borderRadius, minTapTargetSize);
+  int get hashCode =>
+      Object.hash(borderRadius, borderWidth, dotInset, minTapTargetSize, size);
 }
 
 class ImpaktfullUiRadioButtonTextStyleTheme {

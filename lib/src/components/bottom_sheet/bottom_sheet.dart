@@ -140,8 +140,8 @@ class ImpaktfullUiBottomSheet extends StatelessWidget {
                                     borderRadius: componentTheme
                                         .dimens.handleBorderRadius,
                                   ),
-                                  height: 4,
-                                  width: 50,
+                                  height: componentTheme.dimens.handleHeight,
+                                  width: componentTheme.dimens.handleWidth,
                                 ),
                               ),
                             ),
@@ -152,12 +152,12 @@ class ImpaktfullUiBottomSheet extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              spacing: 16,
+                              spacing: componentTheme.dimens.spacing,
                               children: [
                                 Expanded(
                                   child: ImpaktfullUiAutoLayout.vertical(
                                     mainAxisSize: MainAxisSize.min,
-                                    spacing: 4,
+                                    spacing: componentTheme.dimens.titleSpacing,
                                     children: [
                                       if (title != null) ...[
                                         Text(
@@ -177,7 +177,10 @@ class ImpaktfullUiBottomSheet extends StatelessWidget {
                                   ),
                                 ),
                                 if (hasClose || onCloseTapped != null) ...[
-                                  const SizedBox(width: 48),
+                                  SizedBox(
+                                    width: componentTheme
+                                        .dimens.closeIconButtonSize,
+                                  ),
                                 ],
                               ],
                             ),
@@ -212,7 +215,7 @@ class ImpaktfullUiBottomSheet extends StatelessWidget {
                         Padding(
                           padding: componentTheme.dimens.padding,
                           child: ImpaktfullUiAutoLayout(
-                            spacing: 8,
+                            spacing: componentTheme.dimens.actionSpacing,
                             orientation: actionsOrientation,
                             crossAxisAlignment: actionsOrientation ==
                                     ImpaktfullUiAutoLayoutOrientation.vertical

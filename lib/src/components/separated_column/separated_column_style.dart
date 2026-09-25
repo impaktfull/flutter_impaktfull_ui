@@ -115,20 +115,33 @@ class ImpaktfullUiSeparatedColumnDimensTheme {
   final BorderRadiusGeometry borderRadius;
   final EdgeInsetsGeometry titleMargin;
   final EdgeInsetsGeometry separatorMargin;
+
+  /// The space between the items.
+  final double spacing;
+
+  /// The thickness of the separator.
+  final double separatorWidth;
+
   const ImpaktfullUiSeparatedColumnDimensTheme({
     required this.borderRadius,
     required this.titleMargin,
     required this.separatorMargin,
+    this.spacing = 8,
+    this.separatorWidth = 1,
   });
 
   ImpaktfullUiSeparatedColumnDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
     EdgeInsetsGeometry? separatorMargin,
+    double? separatorWidth,
+    double? spacing,
     EdgeInsetsGeometry? titleMargin,
   }) =>
       ImpaktfullUiSeparatedColumnDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
         separatorMargin: separatorMargin ?? this.separatorMargin,
+        separatorWidth: separatorWidth ?? this.separatorWidth,
+        spacing: spacing ?? this.spacing,
         titleMargin: titleMargin ?? this.titleMargin,
       );
 
@@ -138,10 +151,13 @@ class ImpaktfullUiSeparatedColumnDimensTheme {
       other is ImpaktfullUiSeparatedColumnDimensTheme &&
           borderRadius == other.borderRadius &&
           titleMargin == other.titleMargin &&
-          separatorMargin == other.separatorMargin;
+          separatorMargin == other.separatorMargin &&
+          spacing == other.spacing &&
+          separatorWidth == other.separatorWidth;
 
   @override
-  int get hashCode => Object.hash(borderRadius, titleMargin, separatorMargin);
+  int get hashCode => Object.hash(
+      borderRadius, titleMargin, separatorMargin, spacing, separatorWidth);
 }
 
 class ImpaktfullUiSeparatedColumnTextStyleTheme {

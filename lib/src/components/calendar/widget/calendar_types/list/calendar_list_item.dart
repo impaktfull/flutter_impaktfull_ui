@@ -38,7 +38,7 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
           children: [
             if (showSectionTitle) ...[
               if (previousSubtitle != subtitle) ...[
-                const SizedBox(height: 8),
+                SizedBox(height: componentTheme.dimens.listItemSpacing),
               ],
               ImpaktfullUiCalendarListSectionTitle(
                 subtitle: previousSubtitle == subtitle ? null : subtitle,
@@ -47,7 +47,7 @@ class ImpaktfullUiCalendarListItem extends StatelessWidget {
               ),
             ],
             if (!showSectionTitle) ...[
-              const SizedBox(height: 8),
+              SizedBox(height: componentTheme.dimens.listItemSpacing),
             ],
             Padding(
               padding: EdgeInsetsDirectional.only(

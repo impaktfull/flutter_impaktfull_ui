@@ -147,11 +147,36 @@ class ImpaktfullUiDatePickerDimensTheme {
   final BorderRadiusGeometry borderRadiusRangeStart;
   final BorderRadiusGeometry borderRadiusRangeEnd;
   final BorderRadiusGeometry borderRadiusRangeBetween;
+
+  /// The width of the date picker.
+  final double width;
+
+  /// The width of the grid of days, inside the margin.
+  final double contentWidth;
+
+  /// The height of the grid of days.
+  final double daysHeight;
+
+  /// The height of the list of months and of the list of years.
+  final double monthsHeight;
+
+  /// The space between the header, the grid and the actions.
+  final double spacing;
+
+  /// The width of the border around the selected day.
+  final double selectedBorderWidth;
+
   const ImpaktfullUiDatePickerDimensTheme({
     required this.borderRadius,
     required this.borderRadiusRangeStart,
     required this.borderRadiusRangeEnd,
     required this.borderRadiusRangeBetween,
+    this.width = 310,
+    this.contentWidth = 280,
+    this.daysHeight = 280,
+    this.monthsHeight = 260,
+    this.spacing = 8,
+    this.selectedBorderWidth = 2,
   });
 
   ImpaktfullUiDatePickerDimensTheme copyWith({
@@ -159,6 +184,12 @@ class ImpaktfullUiDatePickerDimensTheme {
     BorderRadiusGeometry? borderRadiusRangeBetween,
     BorderRadiusGeometry? borderRadiusRangeEnd,
     BorderRadiusGeometry? borderRadiusRangeStart,
+    double? contentWidth,
+    double? daysHeight,
+    double? monthsHeight,
+    double? selectedBorderWidth,
+    double? spacing,
+    double? width,
   }) =>
       ImpaktfullUiDatePickerDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
@@ -167,6 +198,12 @@ class ImpaktfullUiDatePickerDimensTheme {
         borderRadiusRangeEnd: borderRadiusRangeEnd ?? this.borderRadiusRangeEnd,
         borderRadiusRangeStart:
             borderRadiusRangeStart ?? this.borderRadiusRangeStart,
+        contentWidth: contentWidth ?? this.contentWidth,
+        daysHeight: daysHeight ?? this.daysHeight,
+        monthsHeight: monthsHeight ?? this.monthsHeight,
+        selectedBorderWidth: selectedBorderWidth ?? this.selectedBorderWidth,
+        spacing: spacing ?? this.spacing,
+        width: width ?? this.width,
       );
 
   @override
@@ -176,11 +213,26 @@ class ImpaktfullUiDatePickerDimensTheme {
           borderRadius == other.borderRadius &&
           borderRadiusRangeStart == other.borderRadiusRangeStart &&
           borderRadiusRangeEnd == other.borderRadiusRangeEnd &&
-          borderRadiusRangeBetween == other.borderRadiusRangeBetween;
+          borderRadiusRangeBetween == other.borderRadiusRangeBetween &&
+          width == other.width &&
+          contentWidth == other.contentWidth &&
+          daysHeight == other.daysHeight &&
+          monthsHeight == other.monthsHeight &&
+          spacing == other.spacing &&
+          selectedBorderWidth == other.selectedBorderWidth;
 
   @override
-  int get hashCode => Object.hash(borderRadius, borderRadiusRangeStart,
-      borderRadiusRangeEnd, borderRadiusRangeBetween);
+  int get hashCode => Object.hash(
+      borderRadius,
+      borderRadiusRangeStart,
+      borderRadiusRangeEnd,
+      borderRadiusRangeBetween,
+      width,
+      contentWidth,
+      daysHeight,
+      monthsHeight,
+      spacing,
+      selectedBorderWidth);
 }
 
 class ImpaktfullUiDatePickerTextStyleTheme {

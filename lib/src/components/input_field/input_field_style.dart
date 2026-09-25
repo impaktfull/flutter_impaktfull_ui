@@ -265,6 +265,16 @@ class ImpaktfullUiInputFieldDimensTheme {
   // Every parameter below `labelMargin` is optional, with the value the widget
   // hardcoded before it was a token as its default. They become `required` in
   // 1.0.0.
+
+  /// The space between the label, the field and the error under it.
+  final double labelSpacing;
+
+  /// The padding around an action inside the field.
+  final EdgeInsetsGeometry actionPadding;
+
+  /// The minimum height of an action next to the field.
+  final double actionMinHeight;
+
   const ImpaktfullUiInputFieldDimensTheme({
     required this.borderRadius,
     required this.labelMargin,
@@ -279,15 +289,21 @@ class ImpaktfullUiInputFieldDimensTheme {
     this.iconSize = 20,
     this.borderWidth,
     this.focusRingWidth = 2,
+    this.labelSpacing = 4,
+    this.actionPadding = const EdgeInsets.all(8),
+    this.actionMinHeight = 40,
   });
 
   ImpaktfullUiInputFieldDimensTheme copyWith({
+    double? actionMinHeight,
+    EdgeInsetsGeometry? actionPadding,
     BorderRadiusGeometry? borderRadius,
     double? borderWidth,
     EdgeInsets? contentPadding,
     double? focusRingWidth,
     double? iconSize,
     EdgeInsets? labelMargin,
+    double? labelSpacing,
     double? minHeight,
     double? multilineMinHeight,
     EdgeInsetsDirectional? padding,
@@ -296,12 +312,15 @@ class ImpaktfullUiInputFieldDimensTheme {
     double? spacing,
   }) =>
       ImpaktfullUiInputFieldDimensTheme(
+        actionMinHeight: actionMinHeight ?? this.actionMinHeight,
+        actionPadding: actionPadding ?? this.actionPadding,
         borderRadius: borderRadius ?? this.borderRadius,
         borderWidth: borderWidth ?? this.borderWidth,
         contentPadding: contentPadding ?? this.contentPadding,
         focusRingWidth: focusRingWidth ?? this.focusRingWidth,
         iconSize: iconSize ?? this.iconSize,
         labelMargin: labelMargin ?? this.labelMargin,
+        labelSpacing: labelSpacing ?? this.labelSpacing,
         minHeight: minHeight ?? this.minHeight,
         multilineMinHeight: multilineMinHeight ?? this.multilineMinHeight,
         padding: padding ?? this.padding,
@@ -326,23 +345,28 @@ class ImpaktfullUiInputFieldDimensTheme {
           spacing == other.spacing &&
           iconSize == other.iconSize &&
           borderWidth == other.borderWidth &&
-          focusRingWidth == other.focusRingWidth;
+          focusRingWidth == other.focusRingWidth &&
+          labelSpacing == other.labelSpacing &&
+          actionPadding == other.actionPadding &&
+          actionMinHeight == other.actionMinHeight;
 
   @override
   int get hashCode => Object.hash(
-        borderRadius,
-        labelMargin,
-        padding,
-        paddingWithActions,
-        contentPadding,
-        readOnlyContentPadding,
-        minHeight,
-        multilineMinHeight,
-        spacing,
-        iconSize,
-        borderWidth,
-        focusRingWidth,
-      );
+      borderRadius,
+      labelMargin,
+      padding,
+      paddingWithActions,
+      contentPadding,
+      readOnlyContentPadding,
+      minHeight,
+      multilineMinHeight,
+      spacing,
+      iconSize,
+      borderWidth,
+      focusRingWidth,
+      labelSpacing,
+      actionPadding,
+      actionMinHeight);
 }
 
 class ImpaktfullUiInputFieldTextStyleTheme {

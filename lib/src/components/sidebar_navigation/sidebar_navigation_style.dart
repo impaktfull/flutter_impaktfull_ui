@@ -115,21 +115,33 @@ class ImpaktfullUiSidebarNavigationDimensTheme {
   /// The maximum size of the asset (the logo) in the header.
   final BoxConstraints assetConstraints;
 
+  /// The space between the items.
+  final double spacing;
+
+  /// The thickness of the border between the navigation and the content.
+  final double borderWidth;
+
   const ImpaktfullUiSidebarNavigationDimensTheme({
     required this.padding,
     this.secondaryWidth = 300,
     this.assetConstraints = const BoxConstraints(maxWidth: 150, maxHeight: 40),
+    this.spacing = 8,
+    this.borderWidth = 1,
   });
 
   ImpaktfullUiSidebarNavigationDimensTheme copyWith({
     BoxConstraints? assetConstraints,
+    double? borderWidth,
     EdgeInsetsGeometry? padding,
     double? secondaryWidth,
+    double? spacing,
   }) =>
       ImpaktfullUiSidebarNavigationDimensTheme(
         assetConstraints: assetConstraints ?? this.assetConstraints,
+        borderWidth: borderWidth ?? this.borderWidth,
         padding: padding ?? this.padding,
         secondaryWidth: secondaryWidth ?? this.secondaryWidth,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
@@ -138,10 +150,13 @@ class ImpaktfullUiSidebarNavigationDimensTheme {
       other is ImpaktfullUiSidebarNavigationDimensTheme &&
           padding == other.padding &&
           secondaryWidth == other.secondaryWidth &&
-          assetConstraints == other.assetConstraints;
+          assetConstraints == other.assetConstraints &&
+          spacing == other.spacing &&
+          borderWidth == other.borderWidth;
 
   @override
-  int get hashCode => Object.hash(padding, secondaryWidth, assetConstraints);
+  int get hashCode => Object.hash(
+      padding, secondaryWidth, assetConstraints, spacing, borderWidth);
 }
 
 class ImpaktfullUiSidebarNavigationTextStyleTheme {

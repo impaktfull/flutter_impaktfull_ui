@@ -92,7 +92,7 @@ class ImpaktfullUiVirtualKeyboard extends StatefulWidget {
       ),
       builder: (context) => Container(
         color: Colors.white,
-        padding: const EdgeInsets.all(16),
+        padding: ImpaktfullUiVirtualKeyboardTheme.of(context).dimens.padding,
         child: ImpaktfullUiVirtualKeyboard(
           controller: controller,
           onSubmitted: onSubmitted ?? onSubmit,
@@ -183,15 +183,15 @@ class _ImpaktfullUiVirtualKeyboardState
           child: FittedBox(
             fit: BoxFit.contain,
             child: SizedBox(
-              width: 1000,
+              width: componentTheme.dimens.maxWidth,
               height: keys.length * 75,
               child: ImpaktfullUiAutoLayout.vertical(
                 mainAxisSize: MainAxisSize.min,
-                spacing: 8,
+                spacing: componentTheme.dimens.spacing,
                 children: [
                   ImpaktfullUiCard(
                     width: double.infinity,
-                    height: 56,
+                    height: componentTheme.dimens.keyHeight,
                     onTap: _onTapInputField,
                     child: ImpaktfullUiAutoLayout.horizontal(
                       children: [
@@ -207,8 +207,9 @@ class _ImpaktfullUiVirtualKeyboardState
                                   child: FadeTransition(
                                     opacity: _cursorAnimation,
                                     child: Container(
-                                      height: 20,
-                                      width: 2,
+                                      height:
+                                          componentTheme.dimens.cursorHeight,
+                                      width: componentTheme.dimens.cursorWidth,
                                       color: componentTheme.colors.cursor,
                                     ),
                                   ),
@@ -247,6 +248,7 @@ class _ImpaktfullUiVirtualKeyboardState
                               child: Builder(
                                 builder: (context) =>
                                     ImpaktfullUiVirtualKeyboardButton(
+                                  componentTheme: componentTheme,
                                   shift: _shift,
                                   capsLock: _capsLock,
                                   virtualKeyboardKey: key,

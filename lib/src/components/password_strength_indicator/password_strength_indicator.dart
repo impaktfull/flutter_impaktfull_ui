@@ -35,7 +35,7 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
         final color = _getColor(componentTheme, strengthIndicators, index);
         return ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
-          spacing: 12,
+          spacing: componentTheme.dimens.sectionSpacing,
           children: [
             ImpaktfullUiAutoLayout.horizontal(
               spacing: componentTheme.dimens.spacing,
@@ -52,7 +52,7 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
                         borderRadius:
                             componentTheme.dimens.strengthIndicatorBorderRadius,
                       ),
-                      height: 4,
+                      height: componentTheme.dimens.barHeight,
                     ),
                   ),
                 ],
@@ -63,7 +63,7 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
               children: [
                 for (final requirement in requirements) ...[
                   ImpaktfullUiAutoLayout.horizontal(
-                    spacing: 8,
+                    spacing: componentTheme.dimens.ruleSpacing,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       if (componentTheme.assets.leadingRequirementIsMet !=
@@ -73,7 +73,7 @@ class ImpaktfullUiPasswordStrengthIndicator extends StatelessWidget {
                           asset: requirement.isMet
                               ? componentTheme.assets.leadingRequirementIsMet
                               : componentTheme.assets.leadingRequirement,
-                          size: 16,
+                          size: componentTheme.dimens.iconSize,
                           color: requirement.isMet
                               ? componentTheme.colors.requirementAssetIsMet
                               : componentTheme.colors.requirementAsset,

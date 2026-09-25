@@ -123,10 +123,10 @@ class _ImpaktfullUiGridViewState<T> extends State<ImpaktfullUiGridView<T>> {
               if (widget.shrinkWrap) {
                 return Padding(
                   padding: widget.padding,
-                  child: const SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: ImpaktfullUiLoadingIndicator(),
+                  child: SizedBox(
+                    height: componentTheme.dimens.imageSize,
+                    width: componentTheme.dimens.imageSize,
+                    child: const ImpaktfullUiLoadingIndicator(),
                   ),
                 );
               }

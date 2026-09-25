@@ -122,17 +122,70 @@ class ImpaktfullUiVirtualKeyboardColorTheme {
 }
 
 class ImpaktfullUiVirtualKeyboardDimensTheme {
-  const ImpaktfullUiVirtualKeyboardDimensTheme();
+  /// The padding around the keyboard.
+  final EdgeInsetsGeometry padding;
 
-  ImpaktfullUiVirtualKeyboardDimensTheme copyWith() =>
-      const ImpaktfullUiVirtualKeyboardDimensTheme();
+  /// The maximum width of the keyboard.
+  final double maxWidth;
+
+  /// The space between the keys.
+  final double spacing;
+
+  /// The height of a key.
+  final double keyHeight;
+
+  /// The height of the cursor.
+  final double cursorHeight;
+
+  /// The width of the cursor.
+  final double cursorWidth;
+
+  const ImpaktfullUiVirtualKeyboardDimensTheme({
+    this.padding = const EdgeInsets.all(16),
+    this.maxWidth = 1000,
+    this.spacing = 8,
+    this.keyHeight = 56,
+    this.cursorHeight = 20,
+    this.cursorWidth = 2,
+  });
+
+  ImpaktfullUiVirtualKeyboardDimensTheme copyWith({
+    double? cursorHeight,
+    double? cursorWidth,
+    double? keyHeight,
+    double? maxWidth,
+    EdgeInsetsGeometry? padding,
+    double? spacing,
+  }) =>
+      ImpaktfullUiVirtualKeyboardDimensTheme(
+        cursorHeight: cursorHeight ?? this.cursorHeight,
+        cursorWidth: cursorWidth ?? this.cursorWidth,
+        keyHeight: keyHeight ?? this.keyHeight,
+        maxWidth: maxWidth ?? this.maxWidth,
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
+      );
 
   @override
   bool operator ==(Object other) =>
-      other is ImpaktfullUiVirtualKeyboardDimensTheme;
+      identical(this, other) ||
+      other is ImpaktfullUiVirtualKeyboardDimensTheme &&
+          padding == other.padding &&
+          maxWidth == other.maxWidth &&
+          spacing == other.spacing &&
+          keyHeight == other.keyHeight &&
+          cursorHeight == other.cursorHeight &&
+          cursorWidth == other.cursorWidth;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+        padding,
+        maxWidth,
+        spacing,
+        keyHeight,
+        cursorHeight,
+        cursorWidth,
+      );
 }
 
 class ImpaktfullUiVirtualKeyboardDurationsTheme {

@@ -78,17 +78,23 @@ class ImpaktfullUiListViewDimensTheme {
   final BorderRadiusGeometry borderRadius;
   final EdgeInsets padding;
 
+  /// The size of the image of an item.
+  final double imageSize;
+
   const ImpaktfullUiListViewDimensTheme({
     required this.borderRadius,
     required this.padding,
+    this.imageSize = 50,
   });
 
   ImpaktfullUiListViewDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? imageSize,
     EdgeInsets? padding,
   }) =>
       ImpaktfullUiListViewDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        imageSize: imageSize ?? this.imageSize,
         padding: padding ?? this.padding,
       );
 
@@ -97,8 +103,9 @@ class ImpaktfullUiListViewDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiListViewDimensTheme &&
           borderRadius == other.borderRadius &&
-          padding == other.padding;
+          padding == other.padding &&
+          imageSize == other.imageSize;
 
   @override
-  int get hashCode => Object.hash(borderRadius, padding);
+  int get hashCode => Object.hash(borderRadius, padding, imageSize);
 }

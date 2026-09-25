@@ -161,18 +161,52 @@ class ImpaktfullUiDropdownDimensTheme {
   /// button has no width yet.
   final double overlayWidth;
 
+  /// The padding between the border of the menu and its content.
+  ///
+  /// `EdgeInsets.zero` by default, which is what the menu had before this
+  /// token existed; `p-1` of shadcn/ui and `padding: 4px` of Ant Design are
+  /// both 4.
+  final EdgeInsetsGeometry padding;
+
+  /// The space between the widget the menu belongs to and the menu itself.
+  final double spacing;
+
+  /// The space the menu keeps between itself and the edge of the window.
+  final double windowMargin;
+
+  /// The smallest width of a menu that takes the width of its button.
+  ///
+  /// A button with a short title is narrow, and a menu of exactly that width
+  /// gives its items almost no room. shadcn/ui gives a menu `min-w-[8rem]`
+  /// (128) for the same reason; 176 is that number with the padding of an
+  /// `ImpaktfullUiListItem` around it, which is 16 on both sides plus the
+  /// space and the chevron at its end.
+  final double minWidth;
+
   const ImpaktfullUiDropdownDimensTheme({
     required this.borderRadius,
     this.overlayWidth = 200,
+    this.padding = EdgeInsets.zero,
+    this.spacing = 4,
+    this.windowMargin = 8,
+    this.minWidth = 176,
   });
 
   ImpaktfullUiDropdownDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? minWidth,
     double? overlayWidth,
+    EdgeInsetsGeometry? padding,
+    double? spacing,
+    double? windowMargin,
   }) =>
       ImpaktfullUiDropdownDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        minWidth: minWidth ?? this.minWidth,
         overlayWidth: overlayWidth ?? this.overlayWidth,
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
+        windowMargin: windowMargin ?? this.windowMargin,
       );
 
   @override
@@ -180,10 +214,21 @@ class ImpaktfullUiDropdownDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiDropdownDimensTheme &&
           borderRadius == other.borderRadius &&
-          overlayWidth == other.overlayWidth;
+          overlayWidth == other.overlayWidth &&
+          padding == other.padding &&
+          spacing == other.spacing &&
+          windowMargin == other.windowMargin &&
+          minWidth == other.minWidth;
 
   @override
-  int get hashCode => Object.hash(borderRadius, overlayWidth);
+  int get hashCode => Object.hash(
+        borderRadius,
+        overlayWidth,
+        padding,
+        spacing,
+        windowMargin,
+        minWidth,
+      );
 }
 
 class ImpaktfullUiDropdownAssetsTheme {

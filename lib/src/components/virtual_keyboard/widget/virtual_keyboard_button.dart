@@ -17,6 +17,11 @@ class ImpaktfullUiVirtualKeyboardButton extends StatefulWidget {
   final VoidCallback onTapDown;
   final VoidCallback onTapUp;
 
+  /// The theme of the keyboard this key belongs to, so a `theme` on the
+  /// keyboard reaches its keys instead of being replaced by the theme of the
+  /// app.
+  final ImpaktfullUiVirtualKeyboardTheme componentTheme;
+
   const ImpaktfullUiVirtualKeyboardButton({
     required this.shift,
     required this.capsLock,
@@ -24,6 +29,7 @@ class ImpaktfullUiVirtualKeyboardButton extends StatefulWidget {
     required this.onTap,
     required this.onTapDown,
     required this.onTapUp,
+    required this.componentTheme,
     super.key,
   });
 
@@ -61,7 +67,7 @@ class _ImpaktfullUiVirtualKeyboardButtonState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _durations = ImpaktfullUiVirtualKeyboardTheme.of(context).durations;
+    _durations = widget.componentTheme.durations;
     _slideController.duration =
         ImpaktfullUiAnimationUtil.duration(context, _durations.keySlide);
   }

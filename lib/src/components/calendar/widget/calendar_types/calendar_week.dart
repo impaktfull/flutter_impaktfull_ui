@@ -133,9 +133,9 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
               children: [
                 Container(
                   width: componentTheme.dimens.sectionTitleWidth + 32,
-                  padding: const EdgeInsets.all(4),
+                  padding: componentTheme.dimens.eventPadding,
                   child: ImpaktfullUiAutoLayout.vertical(
-                    spacing: 4,
+                    spacing: componentTheme.dimens.eventSpacing,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ImpaktfullUiButton(
@@ -182,7 +182,7 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                     ],
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: componentTheme.dimens.hourSpacing),
               ],
             ),
             const ImpaktfullUiDivider(),
@@ -233,7 +233,10 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
     final context = _key.currentContext;
     if (context == null) return;
     const defaultScrollOffset = 7.75; // 7:45 AM;
-    final theme = ImpaktfullUiCalendarTheme.of(context);
+    // The theme the caller passed, like the build of this widget uses: with
+    // the theme of the app a `weekHourHeight` of the caller would scroll to
+    // another hour than the one it renders.
+    final theme = widget.theme ?? ImpaktfullUiCalendarTheme.of(context);
     if (_scrollController.hasClients) {
       _scrollController.jumpTo(
         defaultScrollOffset * theme.dimens.weekHourHeight,

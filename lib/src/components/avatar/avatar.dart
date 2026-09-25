@@ -56,7 +56,7 @@ class ImpaktfullUiAvatar extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: componentTheme.colors.border,
-                    width: 1,
+                    width: componentTheme.dimens.borderWidth,
                   ),
                   borderRadius: componentTheme.dimens.borderRadius,
                   color: componentTheme.colors.background,
@@ -88,7 +88,7 @@ class ImpaktfullUiAvatar extends StatelessWidget {
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: componentTheme.colors.border,
-                    width: 1,
+                    width: componentTheme.dimens.borderWidth,
                   ),
                   borderRadius: componentTheme.dimens.borderRadius,
                 ),

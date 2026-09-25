@@ -145,14 +145,26 @@ class ImpaktfullUiPinCodeColorTheme {
 class ImpaktfullUiPinCodeDimensTheme {
   final BorderRadiusGeometry valueBorderRadius;
 
+  /// The space between the label and the fields.
+  final double spacing;
+
+  /// The space between the fields.
+  final double fieldSpacing;
+
   const ImpaktfullUiPinCodeDimensTheme({
     required this.valueBorderRadius,
+    this.spacing = 16,
+    this.fieldSpacing = 8,
   });
 
   ImpaktfullUiPinCodeDimensTheme copyWith({
+    double? fieldSpacing,
+    double? spacing,
     BorderRadiusGeometry? valueBorderRadius,
   }) =>
       ImpaktfullUiPinCodeDimensTheme(
+        fieldSpacing: fieldSpacing ?? this.fieldSpacing,
+        spacing: spacing ?? this.spacing,
         valueBorderRadius: valueBorderRadius ?? this.valueBorderRadius,
       );
 
@@ -160,10 +172,12 @@ class ImpaktfullUiPinCodeDimensTheme {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiPinCodeDimensTheme &&
-          valueBorderRadius == other.valueBorderRadius;
+          valueBorderRadius == other.valueBorderRadius &&
+          spacing == other.spacing &&
+          fieldSpacing == other.fieldSpacing;
 
   @override
-  int get hashCode => valueBorderRadius.hashCode;
+  int get hashCode => Object.hash(valueBorderRadius, spacing, fieldSpacing);
 }
 
 class ImpaktfullUiPinCodeDurationsTheme {

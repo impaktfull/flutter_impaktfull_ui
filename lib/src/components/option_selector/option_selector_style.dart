@@ -87,17 +87,28 @@ class ImpaktfullUiOptionSelectorColorTheme {
 }
 
 class ImpaktfullUiOptionSelectorDimensTheme {
-  const ImpaktfullUiOptionSelectorDimensTheme();
+  /// The maximum height of the options.
+  final double maxHeight;
 
-  ImpaktfullUiOptionSelectorDimensTheme copyWith() =>
-      const ImpaktfullUiOptionSelectorDimensTheme();
+  const ImpaktfullUiOptionSelectorDimensTheme({
+    this.maxHeight = 600,
+  });
+
+  ImpaktfullUiOptionSelectorDimensTheme copyWith({
+    double? maxHeight,
+  }) =>
+      ImpaktfullUiOptionSelectorDimensTheme(
+        maxHeight: maxHeight ?? this.maxHeight,
+      );
 
   @override
   bool operator ==(Object other) =>
-      other is ImpaktfullUiOptionSelectorDimensTheme;
+      identical(this, other) ||
+      other is ImpaktfullUiOptionSelectorDimensTheme &&
+          maxHeight == other.maxHeight;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => maxHeight.hashCode;
 }
 
 class ImpaktfullUiOptionSelectorTextStyleTheme {

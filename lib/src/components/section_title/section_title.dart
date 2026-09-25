@@ -39,7 +39,7 @@ class ImpaktfullUiSectionTitle extends StatelessWidget {
                   : componentTheme.dimens.margin),
           child: ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: CrossAxisAlignment.end,
-            spacing: 8,
+            spacing: componentTheme.dimens.spacing,
             children: [
               Expanded(
                 child: Text(

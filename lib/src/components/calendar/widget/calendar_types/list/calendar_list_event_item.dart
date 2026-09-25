@@ -27,7 +27,7 @@ class ImpaktfullUiCalendarListEventItem extends StatelessWidget {
         width: double.infinity,
         onTap: onTap,
         child: ImpaktfullUiAutoLayout.vertical(
-          spacing: 12,
+          spacing: componentTheme.dimens.listEventSpacing,
           children: [
             Text(
               item.title,

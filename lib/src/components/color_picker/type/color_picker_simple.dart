@@ -29,7 +29,7 @@ class ImpaktfullUiColorPickerSimple extends StatelessWidget {
         if (allowedColors.isNotEmpty) ...[
           ImpaktfullUiAutoLayout.horizontal(
             wrap: true,
-            spacing: 8,
+            spacing: componentTheme.dimens.spacing,
             children: [
               for (final allowedColor in allowedColors) ...[
                 ImpaktfullUiTouchFeedback(
@@ -50,7 +50,7 @@ class ImpaktfullUiColorPickerSimple extends StatelessWidget {
           ),
         ],
         if (showActiveColor && selectedColor != null) ...[
-          const SizedBox(height: 32),
+          SizedBox(height: componentTheme.dimens.sectionSpacing),
           Container(
             width: componentTheme.dimens.simpleColorPickerItemSize,
             height: componentTheme.dimens.simpleColorPickerItemSize,

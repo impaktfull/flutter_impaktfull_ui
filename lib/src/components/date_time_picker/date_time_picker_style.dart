@@ -87,17 +87,42 @@ class ImpaktfullUiDateTimePickerColorTheme {
 }
 
 class ImpaktfullUiDateTimePickerDimensTheme {
-  const ImpaktfullUiDateTimePickerDimensTheme();
+  /// The width of the picker.
+  final double width;
 
-  ImpaktfullUiDateTimePickerDimensTheme copyWith() =>
-      const ImpaktfullUiDateTimePickerDimensTheme();
+  /// The width of the content, inside the margin.
+  final double contentWidth;
+
+  /// The space between the date picker and the time picker.
+  final double spacing;
+
+  const ImpaktfullUiDateTimePickerDimensTheme({
+    this.width = 310,
+    this.contentWidth = 280,
+    this.spacing = 8,
+  });
+
+  ImpaktfullUiDateTimePickerDimensTheme copyWith({
+    double? contentWidth,
+    double? spacing,
+    double? width,
+  }) =>
+      ImpaktfullUiDateTimePickerDimensTheme(
+        contentWidth: contentWidth ?? this.contentWidth,
+        spacing: spacing ?? this.spacing,
+        width: width ?? this.width,
+      );
 
   @override
   bool operator ==(Object other) =>
-      other is ImpaktfullUiDateTimePickerDimensTheme;
+      identical(this, other) ||
+      other is ImpaktfullUiDateTimePickerDimensTheme &&
+          width == other.width &&
+          contentWidth == other.contentWidth &&
+          spacing == other.spacing;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(width, contentWidth, spacing);
 }
 
 class ImpaktfullUiDateTimePickerTextStyleTheme {

@@ -125,25 +125,33 @@ class ImpaktfullUiAvatarColorTheme {
 
 class ImpaktfullUiAvatarDimensTheme {
   final BorderRadiusGeometry borderRadius;
+
+  /// The width of the border around the avatar.
+  final double borderWidth;
+
   const ImpaktfullUiAvatarDimensTheme({
     required this.borderRadius,
+    this.borderWidth = 1,
   });
 
   ImpaktfullUiAvatarDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
   }) =>
       ImpaktfullUiAvatarDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiAvatarDimensTheme &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          borderWidth == other.borderWidth;
 
   @override
-  int get hashCode => borderRadius.hashCode;
+  int get hashCode => Object.hash(borderRadius, borderWidth);
 }
 
 class ImpaktfullUiAvatarTextStyleTheme {

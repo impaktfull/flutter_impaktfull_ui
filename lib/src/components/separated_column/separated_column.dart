@@ -33,7 +33,7 @@ class ImpaktfullUiSeparatedColumn extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
-        spacing: 8,
+        spacing: componentTheme.dimens.spacing,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (title != null) ...[
@@ -50,7 +50,7 @@ class ImpaktfullUiSeparatedColumn extends StatelessWidget {
                   ? null
                   : Border.all(
                       color: componentTheme.colors.border!,
-                      width: 1,
+                      width: componentTheme.dimens.separatorWidth,
                       strokeAlign: BorderSide.strokeAlignInside,
                     ),
             ),

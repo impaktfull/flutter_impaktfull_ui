@@ -29,7 +29,7 @@ class ImpaktfullUiDatePickerWeekdays extends StatelessWidget {
             ),
         ];
         return ImpaktfullUiAutoLayout.horizontal(
-          spacing: 8,
+          spacing: componentTheme.dimens.spacing,
           mainAxisSize: MainAxisSize.min,
           children: [
             for (final day in days) ...[

@@ -110,7 +110,7 @@ class _ImpaktfullUiSidebarNavigationItemState
         return ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 8,
+          spacing: componentTheme.dimens.spacing,
           children: [
             Semantics(
               container: true,
@@ -135,7 +135,7 @@ class _ImpaktfullUiSidebarNavigationItemState
                       : componentTheme.dimens.paddingWithSubItems,
                   child: ImpaktfullUiAutoLayout.horizontal(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 12,
+                    spacing: componentTheme.dimens.contentSpacing,
                     children: [
                       if (widget.leading != null) ...[
                         ImpaktfullUiAssetWidget(

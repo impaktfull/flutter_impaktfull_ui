@@ -213,25 +213,77 @@ class ImpaktfullUiNotificationColorTheme {
 class ImpaktfullUiNotificationDimensTheme {
   final BorderRadiusGeometry borderRadius;
 
+  /// The padding around the icon at the start of the notification.
+  final EdgeInsetsGeometry leadingPadding;
+
+  /// The padding above and below the title and the subtitle.
+  final EdgeInsetsGeometry contentPadding;
+
+  /// The space at the start and at the end of the notification, where there is
+  /// no icon and no action. `px-4` of a shadcn/ui alert is 16, the
+  /// `paddingContentHorizontalLG` of an Ant Design alert is 12.
+  final double spacing;
+
+  /// The space between the title and the subtitle.
+  final double titleSpacing;
+
+  /// The space around the close button and the chevron at the end.
+  final double actionSpacing;
+
+  /// The width of the border around the notification.
+  final double borderWidth;
+
   const ImpaktfullUiNotificationDimensTheme({
     required this.borderRadius,
+    this.leadingPadding = const EdgeInsets.all(16),
+    this.contentPadding = const EdgeInsets.symmetric(vertical: 16),
+    this.spacing = 16,
+    this.titleSpacing = 4,
+    this.actionSpacing = 8,
+    this.borderWidth = 1,
   });
 
   ImpaktfullUiNotificationDimensTheme copyWith({
+    double? actionSpacing,
     BorderRadiusGeometry? borderRadius,
+    double? borderWidth,
+    EdgeInsetsGeometry? contentPadding,
+    EdgeInsetsGeometry? leadingPadding,
+    double? spacing,
+    double? titleSpacing,
   }) =>
       ImpaktfullUiNotificationDimensTheme(
+        actionSpacing: actionSpacing ?? this.actionSpacing,
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+        contentPadding: contentPadding ?? this.contentPadding,
+        leadingPadding: leadingPadding ?? this.leadingPadding,
+        spacing: spacing ?? this.spacing,
+        titleSpacing: titleSpacing ?? this.titleSpacing,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiNotificationDimensTheme &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          leadingPadding == other.leadingPadding &&
+          contentPadding == other.contentPadding &&
+          spacing == other.spacing &&
+          titleSpacing == other.titleSpacing &&
+          actionSpacing == other.actionSpacing &&
+          borderWidth == other.borderWidth;
 
   @override
-  int get hashCode => borderRadius.hashCode;
+  int get hashCode => Object.hash(
+        borderRadius,
+        leadingPadding,
+        contentPadding,
+        spacing,
+        titleSpacing,
+        actionSpacing,
+        borderWidth,
+      );
 }
 
 class ImpaktfullUiNotificationShadowsTheme {

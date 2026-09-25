@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:impaktfull_ui/src/components/button/button.dart';
+import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_menu_layout.dart';
 import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_overlay.dart';
 import 'package:impaktfull_ui/src/components/dropdown/dropdown_style.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
@@ -14,6 +15,10 @@ export 'dropdown_style.dart';
 /// Left and right follow the reading direction: in a right-to-left layout
 /// (e.g. Arabic or Hebrew) [bottomLeft] aligns the dropdown to the right edge
 /// of the button, the start of the reading direction.
+///
+/// It is where the menu opens when it fits there. A menu that would hang out
+/// of the window opens above the button instead, and slides along the edge of
+/// the window to stay visible.
 enum ImpaktfullUiDropdownAlignment {
   bottomCenter(AlignmentDirectional.bottomCenter),
   bottomLeft(AlignmentDirectional.bottomStart),
@@ -117,7 +122,8 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
   final OverlayPortalController _tooltipController = OverlayPortalController();
   late AnimationController _animationController;
   late Animation<double> _curvedAnimation;
-  double? _buttonWidth;
+  Size? _buttonSize;
+  Offset? _buttonOffset;
   var _isButtonWidthSyncScheduled = false;
   final _overlayFocusNode = FocusNode(debugLabel: 'ImpaktfullUiDropdown');
   FocusNode? _focusBeforeOpen;
@@ -173,8 +179,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
 
   @override
   Widget build(BuildContext context) {
-    final width = widget.childWidth ?? _buttonWidth ?? 0;
-    final targetAnchor =
+    final alignment =
         widget.alignment._alignment.resolve(Directionality.of(context));
     return ImpaktfullUiOverridableComponentBuilder(
       component: widget,
@@ -194,39 +199,48 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
                 color: Colors.transparent,
                 child: CompositedTransformFollower(
                   link: _link,
-                  targetAnchor: targetAnchor,
-                  offset: _getTranslateOffset(targetAnchor, width),
+                  // The menu is positioned from the top start corner of the
+                  // button by `ImpaktfullUiDropdownMenuLayout`, which knows
+                  // the window and can move it out of the way of its edges.
+                  // rtl-ignore: the follower works in physical coordinates.
+                  targetAnchor: Alignment.topLeft,
                   child: FadeTransition(
                     opacity: _curvedAnimation,
-                    child: Align(
-                      // rtl-ignore: the follower is positioned in physical
-                      // coordinates, the target anchor is already resolved.
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 4),
-                        child: _buildOverlaySemantics(
-                          ImpaktfullUiDropdownOverlay(
-                            width: width,
-                            height: widget.height,
-                            theme: componentTheme,
-                            borderRadius: componentTheme.dimens.borderRadius,
-                            child: Builder(
-                              builder: (context) {
-                                if (widget.child != null) return widget.child!;
-                                return ImpaktfullUiListView<
-                                    ImpaktfullUiDropdownItem<T>>.builder(
-                                  items: widget.items!,
-                                  itemBuilder: (context, item, index) =>
-                                      widget.itemBuilder!(
-                                          context, item, index, _controller),
-                                  placeholderData:
-                                      ImpaktfullUiListViewPlaceholderData(
-                                    title: widget.noDataLabel!,
-                                  ),
-                                  shrinkWrap: true,
-                                );
-                              },
-                            ),
+                    child: CustomSingleChildLayout(
+                      delegate: ImpaktfullUiDropdownMenuLayout(
+                        buttonSize: _buttonSize ?? Size.zero,
+                        buttonOffset: _buttonOffset ?? Offset.zero,
+                        windowSize: MediaQuery.sizeOf(context),
+                        windowPadding: MediaQuery.paddingOf(context) +
+                            MediaQuery.viewInsetsOf(context),
+                        spacing: componentTheme.dimens.spacing,
+                        margin: componentTheme.dimens.windowMargin,
+                        width: widget.childWidth,
+                        minWidth: componentTheme.dimens.minWidth,
+                        fallbackWidth: componentTheme.dimens.overlayWidth,
+                        alignment: alignment,
+                      ),
+                      child: _buildOverlaySemantics(
+                        ImpaktfullUiDropdownOverlay(
+                          height: widget.height,
+                          theme: componentTheme,
+                          borderRadius: componentTheme.dimens.borderRadius,
+                          child: Builder(
+                            builder: (context) {
+                              if (widget.child != null) return widget.child!;
+                              return ImpaktfullUiListView<
+                                  ImpaktfullUiDropdownItem<T>>.builder(
+                                items: widget.items!,
+                                itemBuilder: (context, item, index) =>
+                                    widget.itemBuilder!(
+                                        context, item, index, _controller),
+                                placeholderData:
+                                    ImpaktfullUiListViewPlaceholderData(
+                                  title: widget.noDataLabel!,
+                                ),
+                                shrinkWrap: true,
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -309,7 +323,7 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
 
   Future<void> _open() async {
     if (!mounted) return;
-    _setButtonWidth(context.size!.width);
+    _measureButton();
     // Show the overlay first so the fade in animation is visible.
     _tooltipController.show();
     setState(() {});
@@ -351,27 +365,27 @@ class _ImpaktfullUiDropdownState<T> extends State<ImpaktfullUiDropdown<T>>
 
   /// Moves the dropdown so it ends at the right edge of the button when it is
   /// anchored there, or centers it below the button.
-  Offset _getTranslateOffset(Alignment targetAnchor, double width) {
-    if (targetAnchor.x == 1) return Offset(-width, 0);
-    if (targetAnchor.x == 0) return Offset(-(width / 2), 0);
-    return Offset.zero;
-  }
-
-  void _setButtonWidth(double width) {
-    setState(() => _buttonWidth = width);
-  }
-
   void _scheduleButtonWidthSync() {
     if (_isButtonWidthSyncScheduled) return;
     _isButtonWidthSyncScheduled = true;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _isButtonWidthSyncScheduled = false;
-      if (!mounted) return;
-      final renderObject = context.findRenderObject();
-      if (renderObject is! RenderBox || !renderObject.hasSize) return;
-      final width = renderObject.size.width;
-      if (width == _buttonWidth) return;
-      _setButtonWidth(width);
+      _measureButton();
+    });
+  }
+
+  /// Where the button is and how big it is: the menu is laid out around it,
+  /// and it moves when the window is resized or the page scrolls.
+  void _measureButton() {
+    if (!mounted) return;
+    final renderObject = context.findRenderObject();
+    if (renderObject is! RenderBox || !renderObject.hasSize) return;
+    final size = renderObject.size;
+    final offset = renderObject.localToGlobal(Offset.zero);
+    if (size == _buttonSize && offset == _buttonOffset) return;
+    setState(() {
+      _buttonSize = size;
+      _buttonOffset = offset;
     });
   }
 

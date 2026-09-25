@@ -81,7 +81,7 @@ class ImpaktfullUiPagination extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
-        spacing: 8,
+        spacing: componentTheme.dimens.spacing,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ImpaktfullUiButton(

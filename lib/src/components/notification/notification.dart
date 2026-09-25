@@ -181,10 +181,12 @@ class ImpaktfullUiNotification extends StatelessWidget {
                         builder: (context) {
                           final leadinIcon = _getLeaderWidget(config);
                           if (leadinIcon == null) {
-                            return const SizedBox(width: 16);
+                            return SizedBox(
+                              width: componentTheme.dimens.spacing,
+                            );
                           }
                           return Padding(
-                            padding: const EdgeInsets.all(16),
+                            padding: componentTheme.dimens.leadingPadding,
                             child: leadinIcon,
                           );
                         },
@@ -192,9 +194,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
                     ],
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 16,
-                        ),
+                        padding: componentTheme.dimens.contentPadding,
                         child: ImpaktfullUiAutoLayout.vertical(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
@@ -204,7 +204,9 @@ class ImpaktfullUiNotification extends StatelessWidget {
                               style: componentTheme.textStyles.title,
                             ),
                             if (subtitle != null) ...[
-                              const SizedBox(height: 4),
+                              SizedBox(
+                                height: componentTheme.dimens.titleSpacing,
+                              ),
                               Text(
                                 subtitle!,
                                 style: componentTheme.textStyles.subtitle,
@@ -221,14 +223,14 @@ class ImpaktfullUiNotification extends StatelessWidget {
                       trailingWidgetBuilder!.call(context, config),
                     ],
                     if (onCloseTapped != null) ...[
-                      const SizedBox(width: 8),
+                      SizedBox(width: componentTheme.dimens.actionSpacing),
                       Padding(
                         padding: EdgeInsets.only(
                           top: crossAxisAlignment == CrossAxisAlignment.start
-                              ? 8
+                              ? componentTheme.dimens.actionSpacing
                               : 0,
                           bottom: crossAxisAlignment == CrossAxisAlignment.end
-                              ? 8
+                              ? componentTheme.dimens.actionSpacing
                               : 0,
                         ),
                         child: ImpaktfullUiIconButton(
@@ -237,17 +239,17 @@ class ImpaktfullUiNotification extends StatelessWidget {
                           color: componentTheme.textStyles.title.color,
                         ),
                       ),
-                      const SizedBox(width: 8),
+                      SizedBox(width: componentTheme.dimens.actionSpacing),
                     ] else if (onTap != null) ...[
-                      const SizedBox(width: 8),
+                      SizedBox(width: componentTheme.dimens.actionSpacing),
                       ImpaktfullUiAssetWidget(
                         asset: componentTheme.assets.chevronRight
                             .copyWith(matchTextDirection: true),
                         color: componentTheme.textStyles.title.color,
                       ),
-                      const SizedBox(width: 16),
+                      SizedBox(width: componentTheme.dimens.spacing),
                     ] else ...[
-                      const SizedBox(width: 16),
+                      SizedBox(width: componentTheme.dimens.spacing),
                     ],
                   ],
                 ),
@@ -278,7 +280,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
     if (borderColor == null) return null;
     return Border.all(
       color: borderColor,
-      width: 1,
+      width: theme.dimens.borderWidth,
     );
   }
 

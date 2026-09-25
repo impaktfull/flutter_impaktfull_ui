@@ -70,9 +70,9 @@ class ImpaktfullUiMetric extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: componentTheme.dimens.padding,
                   child: ImpaktfullUiAutoLayout.horizontal(
-                    spacing: 8,
+                    spacing: componentTheme.dimens.spacing,
                     children: [
                       if (leadingBuilder != null) ...[
                         leadingBuilder!(context),
@@ -83,7 +83,7 @@ class ImpaktfullUiMetric extends StatelessWidget {
                       ],
                       Expanded(
                         child: ImpaktfullUiAutoLayout.vertical(
-                          spacing: 16,
+                          spacing: componentTheme.dimens.contentSpacing,
                           children: [
                             Text(
                               title,
@@ -93,7 +93,7 @@ class ImpaktfullUiMetric extends StatelessWidget {
                             ),
                             ImpaktfullUiAutoLayout.horizontal(
                               crossAxisAlignment: CrossAxisAlignment.end,
-                              spacing: 16,
+                              spacing: componentTheme.dimens.contentSpacing,
                               children: [
                                 ConstrainedBox(
                                   constraints: BoxConstraints(
@@ -104,12 +104,12 @@ class ImpaktfullUiMetric extends StatelessWidget {
                                             style:
                                                 componentTheme.textStyles.value,
                                           ) +
-                                          32,
+                                          componentTheme.dimens.valueSpacing,
                                       100,
                                     ),
                                   ),
                                   child: ImpaktfullUiAutoLayout.horizontal(
-                                    spacing: 8,
+                                    spacing: componentTheme.dimens.spacing,
                                     children: [
                                       Text(
                                         value,
@@ -119,7 +119,8 @@ class ImpaktfullUiMetric extends StatelessWidget {
                                         ImpaktfullUiAutoLayout.horizontal(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
-                                          spacing: 2,
+                                          spacing: componentTheme
+                                              .dimens.trendSpacing,
                                           children: [
                                             if (leadingExtraTextValue !=
                                                 null) ...[
@@ -128,7 +129,8 @@ class ImpaktfullUiMetric extends StatelessWidget {
                                                 color: _getValue2Style(
                                                         componentTheme)
                                                     .color,
-                                                size: 12,
+                                                size: componentTheme
+                                                    .dimens.trendIconSize,
                                               ),
                                             ],
                                             Text(
@@ -159,7 +161,7 @@ class ImpaktfullUiMetric extends StatelessWidget {
                         ),
                       ),
                       if (onMoreTapped != null) ...[
-                        const SizedBox(width: 32),
+                        SizedBox(width: componentTheme.dimens.valueSpacing),
                       ]
                     ],
                   ),
@@ -194,7 +196,7 @@ class ImpaktfullUiMetric extends StatelessWidget {
                       child: ImpaktfullUiAutoLayout.horizontal(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        spacing: 8,
+                        spacing: componentTheme.dimens.spacing,
                         children: actions,
                       ),
                     );

@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 // The overlay is built by `ImpaktfullUiDropdown`, which always passes a
 // width: only the widget itself can be built without one.
+import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_menu_layout.dart';
 import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_overlay.dart';
 
 import '../_core_test_helpers.dart';
@@ -684,31 +685,85 @@ void main() {
   });
 
   group('ImpaktfullUiDropdownDimensTheme', () {
-    Widget buildOverlay({double? overlayWidth}) {
+    Widget buildOverlay({EdgeInsetsGeometry? padding}) {
       final base = _components.dropdown;
       return ImpaktfullUiDropdownOverlay(
-        width: null,
         height: null,
         borderRadius: BorderRadius.zero,
         theme: base.copyWith(
-          dimens: base.dimens.copyWith(overlayWidth: overlayWidth),
+          dimens: base.dimens.copyWith(padding: padding),
         ),
         child: const Text('Content'),
       );
     }
 
-    testWidgets('overlayWidth is the width of an overlay without a width',
-        (tester) async {
-      await _pumpLoose(tester, buildOverlay());
+    // The width of a menu comes from `ImpaktfullUiDropdownMenuLayout`, which
+    // knows the button and the window; `dropdown_placement_test.dart` covers
+    // it through a real dropdown.
+    ImpaktfullUiDropdownMenuLayout layout({
+      required Size buttonSize,
+      double? width,
+      double minWidth = 176,
+      double fallbackWidth = 200,
+    }) =>
+        ImpaktfullUiDropdownMenuLayout(
+          buttonSize: buttonSize,
+          buttonOffset: Offset.zero,
+          windowSize: const Size(800, 600),
+          windowPadding: EdgeInsets.zero,
+          spacing: 4,
+          margin: 8,
+          width: width,
+          minWidth: minWidth,
+          fallbackWidth: fallbackWidth,
+          alignment: Alignment.topLeft,
+        );
+
+    test('overlayWidth is the width of a menu of a button without a size yet',
+        () {
       expect(
-        tester.getSize(find.byType(ImpaktfullUiDropdownOverlay)).width,
+        layout(buttonSize: Size.zero)
+            .getConstraintsForChild(const BoxConstraints())
+            .maxWidth,
         200,
       );
-
-      await _pumpLoose(tester, buildOverlay(overlayWidth: 320));
       expect(
-        tester.getSize(find.byType(ImpaktfullUiDropdownOverlay)).width,
+        layout(buttonSize: Size.zero, fallbackWidth: 320)
+            .getConstraintsForChild(const BoxConstraints())
+            .maxWidth,
         320,
+      );
+    });
+
+    test('minWidth is the width of a menu of a narrow button', () {
+      expect(
+        layout(buttonSize: const Size(80, 40))
+            .getConstraintsForChild(const BoxConstraints())
+            .maxWidth,
+        176,
+      );
+      expect(
+        layout(buttonSize: const Size(240, 40))
+            .getConstraintsForChild(const BoxConstraints())
+            .maxWidth,
+        240,
+      );
+    });
+
+    testWidgets('padding is the padding of the menu', (tester) async {
+      await _pumpLoose(tester, buildOverlay());
+      final content = tester.getRect(find.text('Content'));
+      final menu = tester.getRect(find.byType(ImpaktfullUiDropdownOverlay));
+      expect(content.left - menu.left, 0, reason: 'zero by default');
+
+      await _pumpLoose(
+        tester,
+        buildOverlay(padding: const EdgeInsets.all(4)),
+      );
+      expect(
+        tester.getRect(find.text('Content')).left -
+            tester.getRect(find.byType(ImpaktfullUiDropdownOverlay)).left,
+        4,
       );
     });
   });
@@ -745,6 +800,187 @@ void main() {
             .height,
         120,
       );
+    });
+  });
+
+  group('ImpaktfullUiRadioButtonDimensTheme', () {
+    Widget buildRadioButton({
+      double? size,
+      double? borderWidth,
+      double? dotInset,
+    }) {
+      final base = _components.radioButton;
+      return ImpaktfullUiRadioButton<String>(
+        value: 'a',
+        groupValue: 'a',
+        onChanged: (_) {},
+        theme: base.copyWith(
+          dimens: base.dimens.copyWith(
+            size: size,
+            borderWidth: borderWidth,
+            dotInset: dotInset,
+          ),
+        ),
+      );
+    }
+
+    Size boxSize(WidgetTester tester) => tester.getSize(
+          find
+              .descendant(
+                of: find.byType(ImpaktfullUiRadioButton<String>),
+                matching: find.byType(SizedBox),
+              )
+              .first,
+        );
+
+    testWidgets('size is the width and the height of the radio button',
+        (tester) async {
+      await _pumpLoose(tester, buildRadioButton());
+      expect(boxSize(tester), const Size.square(20));
+
+      // `size-4` of shadcn/ui and `controlInteractiveSize` of Ant Design.
+      await _pumpLoose(tester, buildRadioButton(size: 16));
+      expect(boxSize(tester), const Size.square(16));
+    });
+
+    testWidgets('dotInset gives the dot in the middle its size',
+        (tester) async {
+      // The dot is the only box without a border: the box around it draws
+      // the border of the radio button.
+      Size dotSize(WidgetTester tester) => tester.getSize(
+            find
+                .descendant(
+                  of: find.byType(ImpaktfullUiRadioButton<String>),
+                  matching: find.byWidgetPredicate(
+                    (widget) =>
+                        widget is Container &&
+                        widget.decoration is BoxDecoration &&
+                        (widget.decoration! as BoxDecoration).border == null,
+                  ),
+                )
+                .last,
+          );
+
+      await _pumpLoose(tester, buildRadioButton());
+      // 20 - 2 * 6: the border is painted outside the box of the dot.
+      expect(dotSize(tester), const Size.square(8));
+
+      // The 8px dot of a 16px shadcn/ui and Ant Design radio button.
+      await _pumpLoose(tester, buildRadioButton(size: 16, dotInset: 4));
+      expect(dotSize(tester), const Size.square(8));
+    });
+  });
+
+  group('ImpaktfullUiSliderDimensTheme', () {
+    Widget buildSlider({
+      double? height,
+      double? trackHeight,
+      double? thumbSize,
+    }) {
+      final base = _components.slider;
+      return SizedBox(
+        width: 200,
+        child: ImpaktfullUiSlider(
+          value: 0.5,
+          min: 0,
+          max: 1,
+          onChanged: (_) {},
+          theme: base.copyWith(
+            dimens: base.dimens.copyWith(
+              height: height,
+              trackHeight: trackHeight,
+              thumbSize: thumbSize,
+            ),
+          ),
+        ),
+      );
+    }
+
+    testWidgets('height is the height of the slider', (tester) async {
+      await _pumpLoose(tester, buildSlider());
+      expect(tester.getSize(find.byType(ImpaktfullUiSlider)).height, 48);
+
+      await _pumpLoose(tester, buildSlider(height: 24));
+      expect(tester.getSize(find.byType(ImpaktfullUiSlider)).height, 24);
+    });
+
+    testWidgets('trackHeight is the thickness of the track', (tester) async {
+      double trackHeight(WidgetTester tester) => tester
+          .getSize(
+            find
+                .descendant(
+                  of: find.byType(ImpaktfullUiSlider),
+                  matching: find.byType(Container),
+                )
+                .at(1),
+          )
+          .height;
+
+      await _pumpLoose(tester, buildSlider());
+      expect(trackHeight(tester), 4);
+
+      // `h-1.5` of shadcn/ui.
+      await _pumpLoose(tester, buildSlider(trackHeight: 6));
+      expect(trackHeight(tester), 6);
+    });
+
+    testWidgets('thumbSize is the size of the thumb', (tester) async {
+      Size thumbSize(WidgetTester tester) => tester.getSize(
+            find
+                .descendant(
+                  of: find.byType(ImpaktfullUiSlider),
+                  matching: find.byType(Container),
+                )
+                .last,
+          );
+
+      await _pumpLoose(tester, buildSlider());
+      expect(thumbSize(tester), const Size.square(16));
+
+      // The 14px handle of Ant Design.
+      await _pumpLoose(tester, buildSlider(thumbSize: 14));
+      expect(thumbSize(tester), const Size.square(14));
+    });
+  });
+
+  group('ImpaktfullUiTooltipDimensTheme', () {
+    testWidgets('padding and the text style reach the tooltip', (tester) async {
+      final base = _components.tooltip;
+      await _pumpLoose(
+        tester,
+        ImpaktfullUiTooltip(
+          message: 'A tooltip',
+          theme: base.copyWith(
+            dimens: base.dimens.copyWith(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            ),
+            textStyles: base.textStyles.copyWith(
+              text: const TextStyle(fontSize: 12),
+            ),
+          ),
+          child: const Text('Child'),
+        ),
+      );
+      final tooltip = tester.widget<Tooltip>(find.byType(Tooltip));
+      expect(
+        tooltip.padding,
+        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      );
+      expect(tooltip.textStyle?.fontSize, 12);
+    });
+
+    testWidgets('a tooltip without them leaves both to Flutter',
+        (tester) async {
+      await _pumpLoose(
+        tester,
+        const ImpaktfullUiTooltip(
+          message: 'A tooltip',
+          child: Text('Child'),
+        ),
+      );
+      final tooltip = tester.widget<Tooltip>(find.byType(Tooltip));
+      expect(tooltip.padding, isNull);
+      expect(tooltip.textStyle, isNull);
     });
   });
 }

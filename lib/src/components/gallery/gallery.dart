@@ -49,7 +49,7 @@ class ImpaktfullUiGallery extends StatelessWidget {
       builder: (context, componentTheme) => ImpaktfullUiGridView.builder(
         items: items,
         spacing: spacing,
-        padding: const EdgeInsets.all(16),
+        padding: componentTheme.dimens.padding,
         placeholderData: ImpaktfullUiGridViewPlaceholderData(
           title: noDataLabel,
         ),

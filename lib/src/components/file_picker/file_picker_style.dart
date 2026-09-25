@@ -161,25 +161,62 @@ class ImpaktfullUiFilePickerColorTheme {
 
 class ImpaktfullUiFilePickerDimensTheme {
   final BorderRadiusGeometry borderRadius;
+
+  /// The padding between the border of the file picker and its content.
+  final EdgeInsetsGeometry padding;
+
+  /// The space between the parts of a file.
+  final double spacing;
+
+  /// The space between the name of a file and its size.
+  final double contentSpacing;
+
+  /// The space between a file and the button that removes it.
+  final double actionSpacing;
+
+  /// The padding around one file in the list.
+  final EdgeInsetsGeometry itemPadding;
+
   const ImpaktfullUiFilePickerDimensTheme({
     required this.borderRadius,
+    this.padding = const EdgeInsets.all(16),
+    this.spacing = 12,
+    this.contentSpacing = 8,
+    this.actionSpacing = 32,
+    this.itemPadding = const EdgeInsets.all(4),
   });
 
   ImpaktfullUiFilePickerDimensTheme copyWith({
+    double? actionSpacing,
     BorderRadiusGeometry? borderRadius,
+    double? contentSpacing,
+    EdgeInsetsGeometry? itemPadding,
+    EdgeInsetsGeometry? padding,
+    double? spacing,
   }) =>
       ImpaktfullUiFilePickerDimensTheme(
+        actionSpacing: actionSpacing ?? this.actionSpacing,
         borderRadius: borderRadius ?? this.borderRadius,
+        contentSpacing: contentSpacing ?? this.contentSpacing,
+        itemPadding: itemPadding ?? this.itemPadding,
+        padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiFilePickerDimensTheme &&
-          borderRadius == other.borderRadius;
+          borderRadius == other.borderRadius &&
+          padding == other.padding &&
+          spacing == other.spacing &&
+          contentSpacing == other.contentSpacing &&
+          actionSpacing == other.actionSpacing &&
+          itemPadding == other.itemPadding;
 
   @override
-  int get hashCode => borderRadius.hashCode;
+  int get hashCode => Object.hash(borderRadius, padding, spacing,
+      contentSpacing, actionSpacing, itemPadding);
 }
 
 class ImpaktfullUiFilePickerTextStyleTheme {

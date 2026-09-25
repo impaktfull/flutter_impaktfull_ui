@@ -41,7 +41,7 @@ class ImpaktfullUiLineProgressIndicator extends StatelessWidget {
         semanticLabel: semanticLabel,
         child: ImpaktfullUiAutoLayout.horizontal(
           crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 16,
+          spacing: componentTheme.dimens.spacing,
           children: [
             Expanded(
               child: Stack(

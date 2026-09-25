@@ -134,17 +134,27 @@ class ImpaktfullUiAutoCompleteShadowsTheme {
 }
 
 class ImpaktfullUiAutoCompleteDimensTheme {
-  const ImpaktfullUiAutoCompleteDimensTheme();
+  /// The space between the suggestions.
+  final double spacing;
 
-  ImpaktfullUiAutoCompleteDimensTheme copyWith() =>
-      const ImpaktfullUiAutoCompleteDimensTheme();
+  const ImpaktfullUiAutoCompleteDimensTheme({
+    this.spacing = 4,
+  });
+
+  ImpaktfullUiAutoCompleteDimensTheme copyWith({
+    double? spacing,
+  }) =>
+      ImpaktfullUiAutoCompleteDimensTheme(
+        spacing: spacing ?? this.spacing,
+      );
 
   @override
   bool operator ==(Object other) =>
-      other is ImpaktfullUiAutoCompleteDimensTheme;
+      identical(this, other) ||
+      other is ImpaktfullUiAutoCompleteDimensTheme && spacing == other.spacing;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => spacing.hashCode;
 }
 
 class ImpaktfullUiAutoCompleteTextStyleTheme {

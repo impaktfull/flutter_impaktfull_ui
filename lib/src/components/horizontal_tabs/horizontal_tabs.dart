@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tab/horizontal_tab.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';
-import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 
 export 'horizontal_tabs_style.dart';
@@ -55,7 +54,6 @@ class ImpaktfullUiHorizontalTabs<T> extends StatelessWidget {
                 badge: tab.badge,
                 badgeType: tab.badgeType,
                 isSelected: value == tab.value,
-                theme: ImpaktfullUiTheme.of(context).components.horizontalTab,
                 onTap: () => _onTap(tab.value),
               );
             },

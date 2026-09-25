@@ -43,7 +43,7 @@ class ImpaktfullUiCalendarListSectionTitle extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
-                  height: 1,
+                  height: componentTheme.dimens.dividerHeight,
                   width: double.infinity,
                   color: componentTheme.colors.divider,
                 ),

@@ -37,7 +37,7 @@ class ImpaktfullUiChatListItem extends StatelessWidget {
             : AlignmentDirectional.centerStart,
         child: ImpaktfullUiAutoLayout.horizontal(
           mainAxisSize: MainAxisSize.min,
-          spacing: 4,
+          spacing: componentTheme.dimens.contentSpacing,
           children: [
             if (showAvatars) ...[
               ImpaktfullUiChatListItemAvatar(

@@ -163,27 +163,39 @@ class ImpaktfullUiNavBarDimensTheme {
   /// brings its own padding.
   final double sidePaddingWithActions;
 
+  /// The thickness of the border under the nav bar.
+  final double borderWidth;
+
+  /// The space between the parts of the nav bar.
+  final double spacing;
+
   const ImpaktfullUiNavBarDimensTheme({
     this.actionSize = 44,
     this.minHeight = 56,
     this.verticalPadding = 4,
     this.sidePadding = 16,
     this.sidePaddingWithActions = 6,
+    this.borderWidth = 1,
+    this.spacing = 8,
   });
 
   ImpaktfullUiNavBarDimensTheme copyWith({
     double? actionSize,
+    double? borderWidth,
     double? minHeight,
     double? sidePadding,
     double? sidePaddingWithActions,
+    double? spacing,
     double? verticalPadding,
   }) =>
       ImpaktfullUiNavBarDimensTheme(
         actionSize: actionSize ?? this.actionSize,
+        borderWidth: borderWidth ?? this.borderWidth,
         minHeight: minHeight ?? this.minHeight,
         sidePadding: sidePadding ?? this.sidePadding,
         sidePaddingWithActions:
             sidePaddingWithActions ?? this.sidePaddingWithActions,
+        spacing: spacing ?? this.spacing,
         verticalPadding: verticalPadding ?? this.verticalPadding,
       );
 
@@ -195,11 +207,13 @@ class ImpaktfullUiNavBarDimensTheme {
           minHeight == other.minHeight &&
           verticalPadding == other.verticalPadding &&
           sidePadding == other.sidePadding &&
-          sidePaddingWithActions == other.sidePaddingWithActions;
+          sidePaddingWithActions == other.sidePaddingWithActions &&
+          borderWidth == other.borderWidth &&
+          spacing == other.spacing;
 
   @override
   int get hashCode => Object.hash(actionSize, minHeight, verticalPadding,
-      sidePadding, sidePaddingWithActions);
+      sidePadding, sidePaddingWithActions, borderWidth, spacing);
 }
 
 class ImpaktfullUiNavBarShadowsTheme {

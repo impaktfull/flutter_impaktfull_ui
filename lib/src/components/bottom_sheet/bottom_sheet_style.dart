@@ -141,25 +141,61 @@ class ImpaktfullUiBottomSheetDimensTheme {
   final BorderRadiusGeometry borderRadius;
   final BorderRadiusGeometry handleBorderRadius;
 
+  /// The thickness of the drag handle.
+  final double handleHeight;
+
+  /// The width of the drag handle.
+  final double handleWidth;
+
+  /// The space between the title and the close button.
+  final double spacing;
+
+  /// The space between the title and the subtitle.
+  final double titleSpacing;
+
+  /// The space between the actions.
+  final double actionSpacing;
+
+  /// The space the close button takes next to the title.
+  final double closeIconButtonSize;
+
   const ImpaktfullUiBottomSheetDimensTheme({
     required this.closeIconButtonPadding,
     required this.padding,
     required this.borderRadius,
     required this.handleBorderRadius,
+    this.handleHeight = 4,
+    this.handleWidth = 50,
+    this.spacing = 16,
+    this.titleSpacing = 4,
+    this.actionSpacing = 8,
+    this.closeIconButtonSize = 48,
   });
 
   ImpaktfullUiBottomSheetDimensTheme copyWith({
+    double? actionSpacing,
     BorderRadiusGeometry? borderRadius,
     EdgeInsetsDirectional? closeIconButtonPadding,
+    double? closeIconButtonSize,
     BorderRadiusGeometry? handleBorderRadius,
+    double? handleHeight,
+    double? handleWidth,
     EdgeInsetsDirectional? padding,
+    double? spacing,
+    double? titleSpacing,
   }) =>
       ImpaktfullUiBottomSheetDimensTheme(
+        actionSpacing: actionSpacing ?? this.actionSpacing,
         borderRadius: borderRadius ?? this.borderRadius,
         closeIconButtonPadding:
             closeIconButtonPadding ?? this.closeIconButtonPadding,
+        closeIconButtonSize: closeIconButtonSize ?? this.closeIconButtonSize,
         handleBorderRadius: handleBorderRadius ?? this.handleBorderRadius,
+        handleHeight: handleHeight ?? this.handleHeight,
+        handleWidth: handleWidth ?? this.handleWidth,
         padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
+        titleSpacing: titleSpacing ?? this.titleSpacing,
       );
 
   @override
@@ -169,11 +205,26 @@ class ImpaktfullUiBottomSheetDimensTheme {
           closeIconButtonPadding == other.closeIconButtonPadding &&
           padding == other.padding &&
           borderRadius == other.borderRadius &&
-          handleBorderRadius == other.handleBorderRadius;
+          handleBorderRadius == other.handleBorderRadius &&
+          handleHeight == other.handleHeight &&
+          handleWidth == other.handleWidth &&
+          spacing == other.spacing &&
+          titleSpacing == other.titleSpacing &&
+          actionSpacing == other.actionSpacing &&
+          closeIconButtonSize == other.closeIconButtonSize;
 
   @override
   int get hashCode => Object.hash(
-      closeIconButtonPadding, padding, borderRadius, handleBorderRadius);
+      closeIconButtonPadding,
+      padding,
+      borderRadius,
+      handleBorderRadius,
+      handleHeight,
+      handleWidth,
+      spacing,
+      titleSpacing,
+      actionSpacing,
+      closeIconButtonSize);
 }
 
 class ImpaktfullUiBottomSheetTextStyleTheme {

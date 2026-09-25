@@ -143,16 +143,54 @@ class ImpaktfullUiCmsHeaderColorTheme {
 }
 
 class ImpaktfullUiCmsHeaderDimensTheme {
-  const ImpaktfullUiCmsHeaderDimensTheme();
+  /// The thickness of the border.
+  final double borderWidth;
 
-  ImpaktfullUiCmsHeaderDimensTheme copyWith() =>
-      const ImpaktfullUiCmsHeaderDimensTheme();
+  /// The minimum height of the header.
+  final double minHeight;
+
+  /// The space between the parts of the header.
+  final double spacing;
+
+  /// The space between the title and the subtitle.
+  final double titleSpacing;
+
+  const ImpaktfullUiCmsHeaderDimensTheme({
+    this.borderWidth = 1,
+    this.minHeight = 64,
+    this.spacing = 8,
+    this.titleSpacing = 2,
+  });
+
+  ImpaktfullUiCmsHeaderDimensTheme copyWith({
+    double? borderWidth,
+    double? minHeight,
+    double? spacing,
+    double? titleSpacing,
+  }) =>
+      ImpaktfullUiCmsHeaderDimensTheme(
+        borderWidth: borderWidth ?? this.borderWidth,
+        minHeight: minHeight ?? this.minHeight,
+        spacing: spacing ?? this.spacing,
+        titleSpacing: titleSpacing ?? this.titleSpacing,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiCmsHeaderDimensTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiCmsHeaderDimensTheme &&
+          borderWidth == other.borderWidth &&
+          minHeight == other.minHeight &&
+          spacing == other.spacing &&
+          titleSpacing == other.titleSpacing;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+        borderWidth,
+        minHeight,
+        spacing,
+        titleSpacing,
+      );
 }
 
 class ImpaktfullUiCmsHeaderDurationsTheme {

@@ -21,7 +21,7 @@ class ImpaktfullUiPinCodeValue extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.horizontal(
         mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 8,
+        spacing: componentTheme.dimens.fieldSpacing,
         children: List.generate(
           length,
           (index) => Container(

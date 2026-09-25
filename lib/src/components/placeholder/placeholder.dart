@@ -48,10 +48,13 @@ class ImpaktfullUiPlaceholder extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
-            spacing: 16,
+            spacing: componentTheme.dimens.spacing,
             children: [
               if (!showAsset) ...[
-                if (actions.isNotEmpty) const SizedBox(height: 40),
+                if (actions.isNotEmpty)
+                  SizedBox(
+                    height: componentTheme.dimens.assetPlaceholderHeight,
+                  ),
               ] else if (assetBuilder != null) ...[
                 assetBuilder!(context),
               ] else if (asset != null) ...[
@@ -63,13 +66,15 @@ class ImpaktfullUiPlaceholder extends StatelessWidget {
                   excludeFromSemantics: true,
                 ),
               ] else if (actions.isNotEmpty) ...[
-                const SizedBox(height: 40),
+                SizedBox(
+                  height: componentTheme.dimens.assetPlaceholderHeight,
+                ),
               ],
               ImpaktfullUiAutoLayout.vertical(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
-                spacing: 4,
+                spacing: componentTheme.dimens.titleSpacing,
                 children: [
                   if (title != null) ...[
                     Text(
@@ -91,7 +96,7 @@ class ImpaktfullUiPlaceholder extends StatelessWidget {
               ImpaktfullUiAutoLayout.horizontal(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 8,
+                spacing: componentTheme.dimens.actionSpacing,
                 children: actions,
               ),
             ],
