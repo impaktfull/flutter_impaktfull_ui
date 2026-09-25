@@ -135,6 +135,11 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                       ),
                       if (widget.actions.isNotEmpty) ...[
                         ImpaktfullUiAutoLayout.horizontal(
+                          // The actions line up with each other and with the
+                          // title, instead of hanging from the top of the
+                          // tallest one (a button next to an icon button).
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
                           spacing: componentTheme.dimens.spacing,
                           children: widget.actions.overrideColorOnWidgets(
                               componentTheme.colors.icons),

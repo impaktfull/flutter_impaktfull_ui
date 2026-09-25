@@ -98,6 +98,11 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
       return ImpaktfullUiAutoLayout.vertical(
         spacing: dimens.spacing,
         crossAxisAlignment: CrossAxisAlignment.center,
+        // A tab is as tall as the bar it sits in, which can be more than its
+        // title needs (`ImpaktfullUiTabBarDimensTheme.height`). Without a
+        // height on the bar the tab is as tall as its title and this changes
+        // nothing.
+        mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [title, marker],
       );
@@ -107,6 +112,7 @@ class _ImpaktfullUiTabBarItemState extends State<ImpaktfullUiTabBarItem> {
         ImpaktfullUiAutoLayout.vertical(
           spacing: dimens.spacing,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             title,

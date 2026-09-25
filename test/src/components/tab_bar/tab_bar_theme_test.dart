@@ -33,6 +33,15 @@ ImpaktfullUiTabBarTheme _tabBarTheme({
   );
 }
 
+/// A tab that marks itself with its background, not with a bar under its
+/// title: nothing but the title then asks for height.
+ImpaktfullUiTabBarItemTheme _itemWithoutMarker() {
+  final base = ImpaktfullUiTheme.getDefault().components.tabBarItem;
+  return base.copyWith(
+    dimens: base.dimens.copyWith(selectedMarkerHeight: 0, spacing: 0),
+  );
+}
+
 /// The decoration the bar paints behind its items, or null when it paints
 /// none.
 BoxDecoration? _decoration(WidgetTester tester) {
@@ -162,6 +171,83 @@ void main() {
 
       await pumpTabBar(tester, theme: _tabBarTheme(spacing: 20));
       expect(gap(tester), 20);
+    });
+  });
+
+  group('a bar with a height', () {
+    testWidgets('fills it with its tabs, inside its padding', (tester) async {
+      await pumpImpaktfullUiApp(
+        tester,
+        Material(
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: SizedBox(
+              width: 300,
+              child: ImpaktfullUiTabBar(
+                controller: controller,
+                items: [
+                  for (var i = 0; i < 2; i++)
+                    ImpaktfullUiTabBarItem(
+                      title: 'Tab $i',
+                      index: i,
+                      controller: controller,
+                      // A tab that is a filled box instead of an underline,
+                      // so nothing but the title asks for height.
+                      theme: _itemWithoutMarker(),
+                    ),
+                ],
+                theme: _tabBarTheme(
+                  // Taller than the tab needs for its title and its padding,
+                  // which is the case the alignment is about.
+                  height: 64,
+                  padding: const EdgeInsets.all(4),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+      final bar = tester.getRect(find.byType(ImpaktfullUiTabBar));
+      final item = tester.getRect(find.byType(ImpaktfullUiTabBarItem).first);
+      expect(bar.height, 64);
+      expect(item.top, bar.top + 4);
+      expect(item.bottom, bar.bottom - 4);
+
+      final title = tester.getRect(find.text('Tab 0'));
+      expect(
+        title.center.dy,
+        item.center.dy,
+        reason: 'the title is centred in the tab it fills',
+      );
+    });
+
+    testWidgets('a bar without a height is as tall as its tabs',
+        (tester) async {
+      await pumpImpaktfullUiApp(
+        tester,
+        Material(
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: SizedBox(
+              width: 300,
+              child: ImpaktfullUiTabBar(
+                controller: controller,
+                items: [
+                  for (var i = 0; i < 2; i++)
+                    ImpaktfullUiTabBarItem(
+                      title: 'Tab $i',
+                      index: i,
+                      controller: controller,
+                    ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+      final bar = tester.getRect(find.byType(ImpaktfullUiTabBar));
+      final item = tester.getRect(find.byType(ImpaktfullUiTabBarItem).first);
+      expect(item.height, bar.height);
     });
   });
 }
