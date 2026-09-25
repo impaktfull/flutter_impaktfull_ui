@@ -241,6 +241,18 @@ class ImpaktfullUiNotificationDimensTheme {
   /// first line of the title instead, which is `top`.
   final ImpaktfullUiNotificationAlignment alignment;
 
+  /// The padding around the close button at the end of the notification.
+  ///
+  /// `null` (the default) leaves it to `ImpaktfullUiIconButtonTheme`, which
+  /// is what the notification always did. An alert of a design system has a
+  /// close button of its own, smaller than the icon buttons of the app: a
+  /// `size-9` icon button is as tall as a shadcn/ui alert of one line.
+  final EdgeInsetsGeometry? closePadding;
+
+  /// The size of the icon in that close button. `null` (the default) leaves
+  /// it to `ImpaktfullUiIconButtonTheme` as well.
+  final double? closeIconSize;
+
   /// The size of the icon that says what kind of notification it is.
   ///
   /// `null` (the default) leaves the size to the asset, which is what the
@@ -259,6 +271,8 @@ class ImpaktfullUiNotificationDimensTheme {
     this.borderWidth = 1,
     this.alignment = ImpaktfullUiNotificationAlignment.center,
     this.iconSize,
+    this.closePadding,
+    this.closeIconSize,
   });
 
   ImpaktfullUiNotificationDimensTheme copyWith({
@@ -266,6 +280,8 @@ class ImpaktfullUiNotificationDimensTheme {
     ImpaktfullUiNotificationAlignment? alignment,
     BorderRadiusGeometry? borderRadius,
     double? borderWidth,
+    double? closeIconSize,
+    EdgeInsetsGeometry? closePadding,
     EdgeInsetsGeometry? contentPadding,
     double? iconSize,
     EdgeInsetsGeometry? leadingPadding,
@@ -277,6 +293,8 @@ class ImpaktfullUiNotificationDimensTheme {
         alignment: alignment ?? this.alignment,
         borderRadius: borderRadius ?? this.borderRadius,
         borderWidth: borderWidth ?? this.borderWidth,
+        closeIconSize: closeIconSize ?? this.closeIconSize,
+        closePadding: closePadding ?? this.closePadding,
         contentPadding: contentPadding ?? this.contentPadding,
         iconSize: iconSize ?? this.iconSize,
         leadingPadding: leadingPadding ?? this.leadingPadding,
@@ -296,6 +314,8 @@ class ImpaktfullUiNotificationDimensTheme {
           actionSpacing == other.actionSpacing &&
           borderWidth == other.borderWidth &&
           iconSize == other.iconSize &&
+          closePadding == other.closePadding &&
+          closeIconSize == other.closeIconSize &&
           alignment == other.alignment;
 
   @override
@@ -308,6 +328,8 @@ class ImpaktfullUiNotificationDimensTheme {
         actionSpacing,
         borderWidth,
         iconSize,
+        closePadding,
+        closeIconSize,
         alignment,
       );
 }

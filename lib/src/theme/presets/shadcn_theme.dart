@@ -587,6 +587,11 @@ abstract final class ImpaktfullUiShadcnTheme {
             spacing: 16,
             titleSpacing: 2,
             iconSize: 16,
+            // The close of a snack is a `size-4` icon in a small box, not the
+            // `size-9` icon button of the app: that one is as tall as an
+            // alert of a single line.
+            closeIconSize: 16,
+            closePadding: const EdgeInsets.all(4),
           ),
         ),
         // `pagination.tsx`: a row with `gap-1`.

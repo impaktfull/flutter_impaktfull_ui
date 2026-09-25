@@ -681,6 +681,10 @@ abstract final class ImpaktfullUiAntDesignTheme {
             spacing: 24,
             titleSpacing: 4,
             iconSize: 24,
+            // `.ant-notification-notice-close` is a 22px button with a
+            // `fontSizeIcon` (14) close icon in it.
+            closeIconSize: 14,
+            closePadding: const EdgeInsets.all(4),
           ),
         ),
         // The pages of a pagination are 8 apart.

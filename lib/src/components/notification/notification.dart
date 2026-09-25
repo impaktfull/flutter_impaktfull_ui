@@ -241,6 +241,8 @@ class ImpaktfullUiNotification extends StatelessWidget {
                           onTap: onCloseTapped!,
                           asset: componentTheme.assets.close,
                           color: componentTheme.textStyles.title.color,
+                          size: componentTheme.dimens.closeIconSize,
+                          theme: _getCloseButtonTheme(context, componentTheme),
                         ),
                       ),
                       SizedBox(width: componentTheme.dimens.actionSpacing),
@@ -337,6 +339,25 @@ class ImpaktfullUiNotification extends StatelessWidget {
       asset: asset,
       color: config.color,
       size: componentTheme.dimens.iconSize,
+    );
+  }
+
+  /// The theme of the close button, with the padding the notification asks
+  /// for.
+  ///
+  /// It starts from the icon button theme that is already in the tree, so an
+  /// app that themes its icon buttons keeps everything but the padding. It
+  /// returns `null` when the notification has nothing to say, which leaves
+  /// the button exactly as it was.
+  ImpaktfullUiIconButtonTheme? _getCloseButtonTheme(
+    BuildContext context,
+    ImpaktfullUiNotificationTheme componentTheme,
+  ) {
+    final padding = componentTheme.dimens.closePadding;
+    if (padding == null) return null;
+    final iconButtonTheme = ImpaktfullUiIconButtonTheme.of(context);
+    return iconButtonTheme.copyWith(
+      dimens: iconButtonTheme.dimens.copyWith(padding: padding),
     );
   }
 
