@@ -53,7 +53,9 @@ class ImpaktfullUiVirtualKeyboardTheme extends ImpaktfullUiComponentTheme {
         ),
         dimens: const ImpaktfullUiVirtualKeyboardDimensTheme(),
         durations: const ImpaktfullUiVirtualKeyboardDurationsTheme(),
-        textStyles: const ImpaktfullUiVirtualKeyboardTextStyleTheme(),
+        textStyles: ImpaktfullUiVirtualKeyboardTextStyleTheme(
+          text: textStyles.onCard.text.medium,
+        ),
       );
 
   @override
@@ -134,6 +136,14 @@ class ImpaktfullUiVirtualKeyboardDimensTheme {
   /// The height of a key.
   final double keyHeight;
 
+  /// The padding inside the input above the keys.
+  ///
+  /// The card of the input is [keyHeight] high, so the line of text has to
+  /// fit in what is left of it: the default leaves the height to the line
+  /// and only keeps the space at the sides, instead of the padding of an
+  /// `ImpaktfullUiCard` on every side.
+  final EdgeInsetsGeometry inputPadding;
+
   /// The height of the cursor.
   final double cursorHeight;
 
@@ -145,6 +155,7 @@ class ImpaktfullUiVirtualKeyboardDimensTheme {
     this.maxWidth = 1000,
     this.spacing = 8,
     this.keyHeight = 56,
+    this.inputPadding = const EdgeInsets.symmetric(horizontal: 16),
     this.cursorHeight = 20,
     this.cursorWidth = 2,
   });
@@ -152,6 +163,7 @@ class ImpaktfullUiVirtualKeyboardDimensTheme {
   ImpaktfullUiVirtualKeyboardDimensTheme copyWith({
     double? cursorHeight,
     double? cursorWidth,
+    EdgeInsetsGeometry? inputPadding,
     double? keyHeight,
     double? maxWidth,
     EdgeInsetsGeometry? padding,
@@ -160,6 +172,7 @@ class ImpaktfullUiVirtualKeyboardDimensTheme {
       ImpaktfullUiVirtualKeyboardDimensTheme(
         cursorHeight: cursorHeight ?? this.cursorHeight,
         cursorWidth: cursorWidth ?? this.cursorWidth,
+        inputPadding: inputPadding ?? this.inputPadding,
         keyHeight: keyHeight ?? this.keyHeight,
         maxWidth: maxWidth ?? this.maxWidth,
         padding: padding ?? this.padding,
@@ -174,6 +187,7 @@ class ImpaktfullUiVirtualKeyboardDimensTheme {
           maxWidth == other.maxWidth &&
           spacing == other.spacing &&
           keyHeight == other.keyHeight &&
+          inputPadding == other.inputPadding &&
           cursorHeight == other.cursorHeight &&
           cursorWidth == other.cursorWidth;
 
@@ -183,6 +197,7 @@ class ImpaktfullUiVirtualKeyboardDimensTheme {
         maxWidth,
         spacing,
         keyHeight,
+        inputPadding,
         cursorHeight,
         cursorWidth,
       );
@@ -236,15 +251,29 @@ class ImpaktfullUiVirtualKeyboardDurationsTheme {
 }
 
 class ImpaktfullUiVirtualKeyboardTextStyleTheme {
-  const ImpaktfullUiVirtualKeyboardTextStyleTheme();
+  /// The text that is being typed, in the input above the keys.
+  ///
+  /// `null` (the default) takes the text style of the tree around the
+  /// keyboard, which is what it always did: a `DefaultTextStyle` of the app
+  /// then decides how tall the line of the input is.
+  final TextStyle? text;
 
-  ImpaktfullUiVirtualKeyboardTextStyleTheme copyWith() =>
-      const ImpaktfullUiVirtualKeyboardTextStyleTheme();
+  const ImpaktfullUiVirtualKeyboardTextStyleTheme({
+    this.text,
+  });
+
+  ImpaktfullUiVirtualKeyboardTextStyleTheme copyWith({
+    TextStyle? text,
+  }) =>
+      ImpaktfullUiVirtualKeyboardTextStyleTheme(
+        text: text ?? this.text,
+      );
 
   @override
   bool operator ==(Object other) =>
-      other is ImpaktfullUiVirtualKeyboardTextStyleTheme;
+      identical(this, other) ||
+      other is ImpaktfullUiVirtualKeyboardTextStyleTheme && text == other.text;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => text.hashCode;
 }

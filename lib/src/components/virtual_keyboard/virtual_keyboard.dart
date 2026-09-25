@@ -192,11 +192,18 @@ class _ImpaktfullUiVirtualKeyboardState
                   ImpaktfullUiCard(
                     width: double.infinity,
                     height: componentTheme.dimens.keyHeight,
+                    padding: componentTheme.dimens.inputPadding,
                     onTap: _onTapInputField,
                     child: ImpaktfullUiAutoLayout.horizontal(
+                      // The line of text is centred in the input: it is as
+                      // tall as the text style of the theme asks for, which
+                      // can be taller than what is left of `keyHeight`.
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
                           child: Text.rich(
+                            style: componentTheme.textStyles.text,
+                            maxLines: 1,
                             TextSpan(
                               children: [
                                 TextSpan(

@@ -702,12 +702,20 @@ abstract final class ImpaktfullUiAntDesignTheme {
         segmentedControl: components.segmentedControl.copyWith(
           colors: components.segmentedControl.colors.copyWith(
             // `trackBg` is `colorBgLayout`, `itemSelectedBg` is
-            // `colorBgContainer`.
+            // `colorBgContainer`. A Segmented has no border around either.
             background: bgLayout,
+            border: Colors.transparent,
             activeBackground: bgContainer,
+            activeBorder: Colors.transparent,
           ),
           dimens: components.segmentedControl.dimens.copyWith(
+            // `borderRadius` around `trackPadding: 2`, with the selected item
+            // at `borderRadiusSM` inside it. The items sit next to each
+            // other: what separates them is the box of the selected one.
             borderRadius: BorderRadius.circular(borderRadius),
+            activeBorderRadius: BorderRadius.circular(borderRadiusSmall),
+            activeSpacing: 0,
+            spacing: 0,
             height: controlHeight,
             padding: const EdgeInsets.all(2),
           ),

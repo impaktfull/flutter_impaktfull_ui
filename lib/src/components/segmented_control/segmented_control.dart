@@ -66,12 +66,17 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
                   widthFactor: 1 / items.length,
                   child: Container(
                     margin: EdgeInsetsDirectional.only(
-                      start: selectedIndex == 0 ? 0 : 2,
-                      end: selectedIndex == items.length - 1 ? 0 : 2,
+                      start: selectedIndex == 0
+                          ? 0
+                          : componentTheme.dimens.activeSpacing,
+                      end: selectedIndex == items.length - 1
+                          ? 0
+                          : componentTheme.dimens.activeSpacing,
                     ),
                     decoration: BoxDecoration(
                       color: componentTheme.colors.activeBackground,
-                      borderRadius: componentTheme.dimens.borderRadius,
+                      borderRadius: componentTheme.dimens.activeBorderRadius ??
+                          componentTheme.dimens.borderRadius,
                       border:
                           Border.all(color: componentTheme.colors.activeBorder),
                     ),
@@ -81,7 +86,7 @@ class ImpaktfullUiSegmentedControl<T> extends StatelessWidget {
             ],
             // Segments
             ImpaktfullUiAutoLayout.horizontal(
-              spacing: 4,
+              spacing: componentTheme.dimens.spacing,
               children: items.map((item) {
                 final leading = leadingBuilder?.call(context, item);
                 final trailing = trailingBuilder?.call(context, item);

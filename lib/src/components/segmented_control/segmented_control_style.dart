@@ -135,24 +135,47 @@ class ImpaktfullUiSegmentedControlDimensTheme {
   final BorderRadiusGeometry borderRadius;
   final EdgeInsets padding;
 
+  /// The radius of the indicator behind the selected item.
+  ///
+  /// `null` (the default) gives it [borderRadius], which is what the control
+  /// always did. A track and the box inside it have a radius of their own in
+  /// both design systems (`rounded-lg` with a `rounded-md` trigger,
+  /// `borderRadius` inside `borderRadiusLG`).
+  final BorderRadiusGeometry? activeBorderRadius;
+
+  /// The space between the indicator and the item next to it.
+  final double activeSpacing;
+
+  /// The space between two items of the control.
+  final double spacing;
+
   /// The height of the control.
   final double height;
 
   const ImpaktfullUiSegmentedControlDimensTheme({
     required this.borderRadius,
     required this.padding,
+    this.activeBorderRadius,
+    this.activeSpacing = 2,
+    this.spacing = 4,
     this.height = 56,
   });
 
   ImpaktfullUiSegmentedControlDimensTheme copyWith({
+    BorderRadiusGeometry? activeBorderRadius,
+    double? activeSpacing,
     BorderRadiusGeometry? borderRadius,
     double? height,
     EdgeInsets? padding,
+    double? spacing,
   }) =>
       ImpaktfullUiSegmentedControlDimensTheme(
+        activeBorderRadius: activeBorderRadius ?? this.activeBorderRadius,
+        activeSpacing: activeSpacing ?? this.activeSpacing,
         borderRadius: borderRadius ?? this.borderRadius,
         height: height ?? this.height,
         padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
@@ -160,11 +183,21 @@ class ImpaktfullUiSegmentedControlDimensTheme {
       identical(this, other) ||
       other is ImpaktfullUiSegmentedControlDimensTheme &&
           borderRadius == other.borderRadius &&
+          activeBorderRadius == other.activeBorderRadius &&
+          activeSpacing == other.activeSpacing &&
+          spacing == other.spacing &&
           padding == other.padding &&
           height == other.height;
 
   @override
-  int get hashCode => Object.hash(borderRadius, padding, height);
+  int get hashCode => Object.hash(
+        borderRadius,
+        activeBorderRadius,
+        activeSpacing,
+        spacing,
+        padding,
+        height,
+      );
 }
 
 class ImpaktfullUiSegmentedControlDurationsTheme {

@@ -643,11 +643,21 @@ abstract final class ImpaktfullUiShadcnTheme {
         // thing, so a segmented control looks like the tabs above.
         segmentedControl: components.segmentedControl.copyWith(
           colors: components.segmentedControl.colors.copyWith(
+            // `bg-muted` with a `bg-background` box on the active item, and
+            // no border around either of them.
             background: mutedColor,
+            border: Colors.transparent,
             activeBackground: isDark ? cardDark : background,
+            activeBorder: Colors.transparent,
           ),
           dimens: components.segmentedControl.dimens.copyWith(
+            // `rounded-lg p-[3px]` on the list, `rounded-md` on the trigger
+            // that fills its share of it: the triggers of a `TabsList` sit
+            // next to each other, with no gap between them.
             borderRadius: BorderRadius.circular(radiusLarge),
+            activeBorderRadius: BorderRadius.circular(radiusMedium),
+            activeSpacing: 0,
+            spacing: 0,
             padding: const EdgeInsets.all(3),
             height: 36,
           ),
@@ -661,7 +671,7 @@ abstract final class ImpaktfullUiShadcnTheme {
             // A `TabsList` is a `bg-muted rounded-lg p-[3px]` track, not a bar
             // that runs from edge to edge, so the space at the sides is a
             // margin around it instead of padding inside it.
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            margin: const EdgeInsets.symmetric(horizontal: 16),
             padding: const EdgeInsets.all(3),
             borderRadius: BorderRadius.circular(radiusLarge),
             height: 36,
