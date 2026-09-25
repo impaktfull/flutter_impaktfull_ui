@@ -66,20 +66,31 @@ class ImpaktfullUiHorizontalTabColorTheme {
   final Color backgroundUnSelectedTab;
   final Color backgroundSelectedTab;
 
+  /// The bar under the selected tab (the "ink bar" of Ant Design).
+  ///
+  /// `null` (the default) draws none: the tab is marked by its background and
+  /// its text style, which is what it always did and what a shadcn/ui
+  /// `TabsTrigger` does. Ant Design draws a `colorPrimary` bar under the
+  /// active tab and keeps its background transparent.
+  final Color? selectedMarker;
+
   const ImpaktfullUiHorizontalTabColorTheme({
     required this.backgroundUnSelectedTab,
     required this.backgroundSelectedTab,
+    this.selectedMarker,
   });
 
   ImpaktfullUiHorizontalTabColorTheme copyWith({
     Color? backgroundSelectedTab,
     Color? backgroundUnSelectedTab,
+    Color? selectedMarker,
   }) =>
       ImpaktfullUiHorizontalTabColorTheme(
         backgroundSelectedTab:
             backgroundSelectedTab ?? this.backgroundSelectedTab,
         backgroundUnSelectedTab:
             backgroundUnSelectedTab ?? this.backgroundUnSelectedTab,
+        selectedMarker: selectedMarker ?? this.selectedMarker,
       );
 
   @override
@@ -87,11 +98,15 @@ class ImpaktfullUiHorizontalTabColorTheme {
       identical(this, other) ||
       other is ImpaktfullUiHorizontalTabColorTheme &&
           backgroundUnSelectedTab == other.backgroundUnSelectedTab &&
-          backgroundSelectedTab == other.backgroundSelectedTab;
+          backgroundSelectedTab == other.backgroundSelectedTab &&
+          selectedMarker == other.selectedMarker;
 
   @override
-  int get hashCode =>
-      Object.hash(backgroundUnSelectedTab, backgroundSelectedTab);
+  int get hashCode => Object.hash(
+        backgroundUnSelectedTab,
+        backgroundSelectedTab,
+        selectedMarker,
+      );
 }
 
 class ImpaktfullUiHorizontalTabTextStyleTheme {
@@ -132,21 +147,43 @@ class ImpaktfullUiHorizontalTabDimensTheme {
   /// The space between the title of the tab and its badge.
   final double badgeSpacing;
 
+  /// The height of the bar under the selected tab, drawn when
+  /// [ImpaktfullUiHorizontalTabColorTheme.selectedMarker] is set. Ant Design
+  /// draws it 2 high.
+  final double selectedMarkerHeight;
+
+  /// The width of that bar. `null` (the default) runs it under the whole tab,
+  /// like the ink bar of Ant Design.
+  final double? selectedMarkerWidth;
+
+  /// The radius of that bar. `null` (the default) draws it square.
+  final BorderRadiusGeometry? selectedMarkerBorderRadius;
+
   const ImpaktfullUiHorizontalTabDimensTheme({
     required this.borderRadius,
     this.padding = const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
     this.badgeSpacing = 8,
+    this.selectedMarkerHeight = 2,
+    this.selectedMarkerWidth,
+    this.selectedMarkerBorderRadius,
   });
 
   ImpaktfullUiHorizontalTabDimensTheme copyWith({
     double? badgeSpacing,
     BorderRadiusGeometry? borderRadius,
     EdgeInsetsGeometry? padding,
+    BorderRadiusGeometry? selectedMarkerBorderRadius,
+    double? selectedMarkerHeight,
+    double? selectedMarkerWidth,
   }) =>
       ImpaktfullUiHorizontalTabDimensTheme(
         badgeSpacing: badgeSpacing ?? this.badgeSpacing,
         borderRadius: borderRadius ?? this.borderRadius,
         padding: padding ?? this.padding,
+        selectedMarkerBorderRadius:
+            selectedMarkerBorderRadius ?? this.selectedMarkerBorderRadius,
+        selectedMarkerHeight: selectedMarkerHeight ?? this.selectedMarkerHeight,
+        selectedMarkerWidth: selectedMarkerWidth ?? this.selectedMarkerWidth,
       );
 
   @override
@@ -155,8 +192,18 @@ class ImpaktfullUiHorizontalTabDimensTheme {
       other is ImpaktfullUiHorizontalTabDimensTheme &&
           borderRadius == other.borderRadius &&
           padding == other.padding &&
-          badgeSpacing == other.badgeSpacing;
+          badgeSpacing == other.badgeSpacing &&
+          selectedMarkerHeight == other.selectedMarkerHeight &&
+          selectedMarkerWidth == other.selectedMarkerWidth &&
+          selectedMarkerBorderRadius == other.selectedMarkerBorderRadius;
 
   @override
-  int get hashCode => Object.hash(borderRadius, padding, badgeSpacing);
+  int get hashCode => Object.hash(
+        borderRadius,
+        padding,
+        badgeSpacing,
+        selectedMarkerHeight,
+        selectedMarkerWidth,
+        selectedMarkerBorderRadius,
+      );
 }

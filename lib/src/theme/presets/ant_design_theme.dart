@@ -764,14 +764,19 @@ abstract final class ImpaktfullUiAntDesignTheme {
             spacing: 32,
           ),
         ),
+        // `.ant-tabs-tab` is `horizontalItemPadding: 12px 0` with nothing
+        // behind it, and `.ant-tabs-ink-bar` is a 2px `colorPrimary` bar
+        // under the active one.
         horizontalTab: components.horizontalTab.copyWith(
           colors: components.horizontalTab.colors.copyWith(
             backgroundUnSelectedTab: Colors.transparent,
             backgroundSelectedTab: Colors.transparent,
+            selectedMarker: primary,
           ),
           dimens: components.horizontalTab.dimens.copyWith(
             borderRadius: BorderRadius.zero,
             padding: const EdgeInsets.symmetric(vertical: 12),
+            selectedMarkerHeight: 2,
           ),
         ),
         // An icon button is a `type="text"` button: `controlHeight` with

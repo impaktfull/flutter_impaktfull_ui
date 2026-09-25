@@ -78,34 +78,70 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
             color: isSelected
                 ? componentTheme.colors.backgroundSelectedTab
                 : componentTheme.colors.backgroundUnSelectedTab,
-            child: Padding(
-              padding: componentTheme.dimens.padding,
-              child: ImpaktfullUiAutoLayout.horizontal(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    title,
-                    style: isSelected
-                        ? componentTheme.textStyles.selected
-                        : componentTheme.textStyles.unselected,
-                  ),
-                  if (badge != null) ...[
-                    SizedBox(width: componentTheme.dimens.badgeSpacing),
-                    ImpaktfullUiBadge(
-                      type: isSelected
-                          ? ImpaktfullUiBadgeType.primary
-                          : badgeType ?? ImpaktfullUiBadgeType.primary,
-                      size: ImpaktfullUiBadgeSize.small,
-                      title: badge,
-                    ),
-                  ]
-                ],
-              ),
-            ),
+            child: _buildContent(componentTheme),
           ),
         );
       },
+    );
+  }
+
+  /// The title of the tab, with the bar under it when there is one.
+  ///
+  /// The bar is painted over the bottom of the tab instead of taking a place
+  /// of its own, so a theme without one (`selectedMarker` is `null`) renders
+  /// what it always did, down to the pixel.
+  Widget _buildContent(ImpaktfullUiHorizontalTabTheme componentTheme) {
+    final dimens = componentTheme.dimens;
+    final content = Padding(
+      padding: dimens.padding,
+      child: ImpaktfullUiAutoLayout.horizontal(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style: isSelected
+                ? componentTheme.textStyles.selected
+                : componentTheme.textStyles.unselected,
+          ),
+          if (badge != null) ...[
+            SizedBox(width: dimens.badgeSpacing),
+            ImpaktfullUiBadge(
+              type: isSelected
+                  ? ImpaktfullUiBadgeType.primary
+                  : badgeType ?? ImpaktfullUiBadgeType.primary,
+              size: ImpaktfullUiBadgeSize.small,
+              title: badge,
+            ),
+          ]
+        ],
+      ),
+    );
+    final markerColor = componentTheme.colors.selectedMarker;
+    if (markerColor == null || !isSelected) return content;
+    final marker = Container(
+      height: dimens.selectedMarkerHeight,
+      width: dimens.selectedMarkerWidth,
+      decoration: BoxDecoration(
+        color: markerColor,
+        borderRadius: dimens.selectedMarkerBorderRadius,
+      ),
+    );
+    return Stack(
+      children: [
+        content,
+        PositionedDirectional(
+          start: 0,
+          end: 0,
+          bottom: 0,
+          child: dimens.selectedMarkerWidth == null
+              ? marker
+              : Align(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  child: marker,
+                ),
+        ),
+      ],
     );
   }
 }

@@ -27,6 +27,7 @@ Future<void> _pumpTab(
   WidgetTester tester, {
   ImpaktfullUiHorizontalTabTheme? theme,
   String? badge,
+  bool isSelected = false,
 }) =>
     pumpImpaktfullUiApp(
       tester,
@@ -36,12 +37,37 @@ Future<void> _pumpTab(
           child: ImpaktfullUiHorizontalTab(
             title: 'One',
             badge: badge,
+            isSelected: isSelected,
             onTap: () {},
             theme: theme,
           ),
         ),
       ),
     );
+
+/// The bar under the tab: the box that carries `selectedMarker`.
+Finder _marker(Color color) => find.descendant(
+      of: find.byType(ImpaktfullUiHorizontalTab),
+      matching: find.byWidgetPredicate(
+        (widget) =>
+            widget is Container &&
+            (widget.decoration as BoxDecoration?)?.color == color,
+      ),
+    );
+
+ImpaktfullUiHorizontalTabTheme _markerTheme({
+  double? height,
+  double? width,
+}) {
+  final base = _base;
+  return base.copyWith(
+    colors: base.colors.copyWith(selectedMarker: const Color(0xFF1677FF)),
+    dimens: base.dimens.copyWith(
+      selectedMarkerHeight: height,
+      selectedMarkerWidth: width,
+    ),
+  );
+}
 
 void main() {
   group('ImpaktfullUiHorizontalTabDimensTheme', () {
@@ -75,6 +101,63 @@ void main() {
         theme: _tabTheme(badgeSpacing: 24),
       );
       expect(spacing(tester), 24);
+    });
+  });
+
+  group('ImpaktfullUiHorizontalTabColorTheme.selectedMarker', () {
+    const markerColor = Color(0xFF1677FF);
+
+    testWidgets('a theme without one draws no bar', (tester) async {
+      await _pumpTab(tester, isSelected: true);
+      expect(_marker(markerColor), findsNothing);
+    });
+
+    testWidgets('only the selected tab has the bar', (tester) async {
+      await _pumpTab(tester, theme: _markerTheme());
+      expect(_marker(markerColor), findsNothing);
+
+      await _pumpTab(tester, theme: _markerTheme(), isSelected: true);
+      expect(_marker(markerColor), findsOneWidget);
+    });
+
+    testWidgets('the bar runs under the whole tab, at the bottom of it',
+        (tester) async {
+      await _pumpTab(
+        tester,
+        theme: _markerTheme(height: 2),
+        isSelected: true,
+      );
+      final tab = tester.getRect(find.byType(ImpaktfullUiHorizontalTab));
+      final marker = tester.getRect(_marker(markerColor));
+      expect(marker.left, tab.left);
+      expect(marker.right, tab.right);
+      expect(marker.bottom, tab.bottom);
+      expect(marker.height, 2);
+    });
+
+    testWidgets('the bar does not change the size of the tab', (tester) async {
+      await _pumpTab(tester, isSelected: true);
+      final without = tester.getSize(find.byType(ImpaktfullUiHorizontalTab));
+
+      await _pumpTab(
+        tester,
+        theme: _markerTheme(height: 4),
+        isSelected: true,
+      );
+      expect(tester.getSize(find.byType(ImpaktfullUiHorizontalTab)), without);
+    });
+
+    testWidgets('selectedMarkerWidth centers a narrower bar', (tester) async {
+      await _pumpTab(
+        tester,
+        theme: _markerTheme(height: 2, width: 10),
+        isSelected: true,
+      );
+      final tab = tester.getRect(find.byType(ImpaktfullUiHorizontalTab));
+      final marker = tester.getRect(_marker(markerColor));
+      expect(marker.width, 10);
+      expect(marker.center.dx, tab.center.dx);
+      expect(marker.bottom, tab.bottom);
     });
   });
 }

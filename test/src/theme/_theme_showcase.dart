@@ -175,6 +175,23 @@ class ThemeShowcase extends StatelessWidget {
             ),
             SizedBox(
               width: 320,
+              child: ImpaktfullUiHorizontalTabs<String>(
+                value: 'Scrolling',
+                onChanged: (_) {},
+                tabs: [
+                  ImpaktfullUiHorizontalTabConfig(
+                    title: 'Scrolling',
+                    value: 'Scrolling',
+                  ),
+                  ImpaktfullUiHorizontalTabConfig(
+                    title: 'Tabs',
+                    value: 'Tabs',
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 320,
               child: ImpaktfullUiSegmentedControl<String>(
                 value: 'Segment',
                 items: const ['Segment', 'Control'],

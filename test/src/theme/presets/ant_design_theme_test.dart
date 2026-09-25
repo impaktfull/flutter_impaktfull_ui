@@ -294,6 +294,22 @@ void main() {
       expect(colors.centerSelectedBackground, Colors.white);
     });
 
+    test('a scrolling tab is an ink bar under a transparent tab', () {
+      final colors = light.components.horizontalTab.colors;
+      expect(colors.backgroundUnSelectedTab, Colors.transparent);
+      expect(colors.backgroundSelectedTab, Colors.transparent);
+      // `.ant-tabs-ink-bar`, 2px of `colorPrimary` under the active tab.
+      expect(colors.selectedMarker, ImpaktfullUiAntDesignTheme.colorPrimary);
+      expect(light.components.horizontalTab.dimens.selectedMarkerHeight, 2);
+      // `horizontalItemGutter`, and nothing painted behind the row, so the
+      // space at the sides is a margin.
+      final tabs = light.components.horizontalTabs;
+      expect(tabs.colors.background, isNull);
+      expect(tabs.dimens.spacing, 32);
+      expect(tabs.dimens.padding, EdgeInsets.zero);
+      expect(tabs.dimens.margin, const EdgeInsets.symmetric(horizontal: 16));
+    });
+
     test('a slider is a 4px rail with a 14px handle', () {
       final dimens = light.components.slider.dimens;
       expect(dimens.trackHeight, 4);

@@ -69,7 +69,10 @@ Where the two systems disagree structurally, the preset follows its own
 system. Tabs are the clearest case: shadcn/ui is a `bg-muted rounded-lg
 p-[3px]` list whose active tab is a filled `bg-background` box with no
 underline, and Ant Design is a transparent row with a `colorSplit` line under
-it and a 2px `colorPrimary` bar under the active tab.
+it and a 2px `colorPrimary` bar under the active tab. Both shapes are in the
+theme, for the fixed tabs (`ImpaktfullUiTabBar`) and for the scrolling ones
+(`ImpaktfullUiHorizontalTabs`): the row has a `margin` outside its background
+and a `padding` inside it, and the tab has a `selectedMarker`.
 
 ## What the theme covers
 
@@ -104,10 +107,6 @@ reason the presets are "in the style of" instead of a port.
   button has a `hover`, `pressed` and `disabled` color theme; the other
   components have a hover background at most, so Ant's "a hovered row turns
   its text and border blue" is a background change here.
-- **A bar under the selected scrolling tab.** `ImpaktfullUiHorizontalTab`
-  marks the selected tab with its text color and its background, not with a
-  bar, so Ant Design's ink bar is only on `ImpaktfullUiTabBar` (the fixed
-  tabs), which has a `selectedMarker`.
 - **An alert and a notification are one component.**
   `ImpaktfullUiNotification` is both the inline alert and the snack that the
   `ImpaktfullUiSnackyConfigurator` shows. shadcn/ui's alert is a bordered box

@@ -334,6 +334,18 @@ void main() {
       expect(colors.border, ImpaktfullUiShadcnTheme.border);
     });
 
+    test('a scrolling tab row is a w-fit rounded-lg track', () {
+      final tabs = light.components.horizontalTabs;
+      // `bg-muted rounded-lg p-[3px]`, with the space at the sides outside
+      // the track instead of inside it.
+      expect(tabs.colors.background, ImpaktfullUiShadcnTheme.muted);
+      expect(tabs.dimens.padding, const EdgeInsets.all(3));
+      expect(tabs.dimens.margin.horizontal, 32);
+      expect(tabs.dimens.borderRadius, isNotNull);
+      // A `TabsTrigger` fills when it is active, it has no bar under it.
+      expect(light.components.horizontalTab.colors.selectedMarker, isNull);
+    });
+
     test('a slider is a h-1.5 track with a size-4 thumb', () {
       final dimens = light.components.slider.dimens;
       expect(dimens.trackHeight, 6);
