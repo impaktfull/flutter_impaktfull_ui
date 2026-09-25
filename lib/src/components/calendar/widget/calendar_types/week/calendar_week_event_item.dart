@@ -39,11 +39,11 @@ class ImpaktfullUiCalendarWeekEventItem extends StatelessWidget {
           child: LayoutBuilder(builder: (context, constraints) {
             final showTime = constraints.maxWidth > 110;
             return ImpaktfullUiAutoLayout.vertical(
-              spacing: 4,
+              spacing: componentTheme.dimens.eventSpacing,
               children: [
                 if (isSmall) ...[
                   ImpaktfullUiAutoLayout.horizontal(
-                    spacing: 8,
+                    spacing: componentTheme.dimens.eventContentSpacing,
                     children: [
                       Flexible(
                         fit: FlexFit.loose,

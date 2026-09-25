@@ -81,7 +81,7 @@ class ImpaktfullUiDateTimePicker extends StatefulWidget {
       hasClose: false,
       hasBlurredBackground: hasBlurredBackground,
       isDismissible: isDismissible,
-      width: 310,
+      width: ImpaktfullUiDateTimePickerTheme.of(context).dimens.width,
       rootNavigator: rootNavigator,
       showDividers: showDividers,
       childPadding: const EdgeInsets.only(top: 16),
@@ -163,10 +163,10 @@ class _ImpaktfullUiDateTimePickerState
       overrideComponentTheme: widget.theme,
       component: widget,
       builder: (context, componentTheme) => Container(
-        width: 280 + widget.margin.horizontal,
+        width: componentTheme.dimens.contentWidth + widget.margin.horizontal,
         margin: widget.margin,
         child: ImpaktfullUiAutoLayout.vertical(
-          spacing: 8,
+          spacing: componentTheme.dimens.spacing,
           mainAxisSize: MainAxisSize.min,
           children: [
             ImpaktfullUiDatePicker(

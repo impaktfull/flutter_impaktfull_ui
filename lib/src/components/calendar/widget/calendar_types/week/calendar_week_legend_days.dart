@@ -24,7 +24,7 @@ class ImpaktfullUiCalendarWeekLegendDays extends StatelessWidget {
       builder: (context, componentTheme) => Padding(
         padding: const EdgeInsetsDirectional.symmetric(vertical: 16),
         child: ImpaktfullUiAutoLayout.horizontal(
-          spacing: 2,
+          spacing: componentTheme.dimens.legendSpacing,
           children: [
             for (var i = 0; i < amountOfDays; ++i) ...[
               Expanded(

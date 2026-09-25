@@ -153,16 +153,46 @@ class ImpaktfullUiCalendarDimensTheme {
   final double weekEventMinHeightSmall;
   final double weekEventMinHeightExtraSmall;
 
+  /// The padding around a day in the list view.
+  final EdgeInsetsGeometry listPadding;
+
+  /// The padding inside an event in the week view.
+  final EdgeInsetsGeometry eventPadding;
+
+  /// The space between the parts of an event.
+  final double eventSpacing;
+
+  /// The space between the title and the time of an event.
+  final double eventContentSpacing;
+
+  /// The space between the hours and the days next to them.
+  final double hourSpacing;
+
+  /// The space between the day and the date in the legend.
+  final double legendSpacing;
+
   const ImpaktfullUiCalendarDimensTheme({
     required this.dividerHeight,
     required this.sectionTitleWidth,
     required this.weekHourHeight,
     required this.weekEventMinHeightSmall,
     required this.weekEventMinHeightExtraSmall,
+    this.listPadding = const EdgeInsets.all(16),
+    this.eventPadding = const EdgeInsets.all(4),
+    this.eventSpacing = 4,
+    this.eventContentSpacing = 8,
+    this.hourSpacing = 16,
+    this.legendSpacing = 2,
   });
 
   ImpaktfullUiCalendarDimensTheme copyWith({
     double? dividerHeight,
+    double? eventContentSpacing,
+    EdgeInsetsGeometry? eventPadding,
+    double? eventSpacing,
+    double? hourSpacing,
+    double? legendSpacing,
+    EdgeInsetsGeometry? listPadding,
     double? sectionTitleWidth,
     double? weekEventMinHeightExtraSmall,
     double? weekEventMinHeightSmall,
@@ -170,6 +200,12 @@ class ImpaktfullUiCalendarDimensTheme {
   }) =>
       ImpaktfullUiCalendarDimensTheme(
         dividerHeight: dividerHeight ?? this.dividerHeight,
+        eventContentSpacing: eventContentSpacing ?? this.eventContentSpacing,
+        eventPadding: eventPadding ?? this.eventPadding,
+        eventSpacing: eventSpacing ?? this.eventSpacing,
+        hourSpacing: hourSpacing ?? this.hourSpacing,
+        legendSpacing: legendSpacing ?? this.legendSpacing,
+        listPadding: listPadding ?? this.listPadding,
         sectionTitleWidth: sectionTitleWidth ?? this.sectionTitleWidth,
         weekEventMinHeightExtraSmall:
             weekEventMinHeightExtraSmall ?? this.weekEventMinHeightExtraSmall,
@@ -186,11 +222,27 @@ class ImpaktfullUiCalendarDimensTheme {
           sectionTitleWidth == other.sectionTitleWidth &&
           weekHourHeight == other.weekHourHeight &&
           weekEventMinHeightSmall == other.weekEventMinHeightSmall &&
-          weekEventMinHeightExtraSmall == other.weekEventMinHeightExtraSmall;
+          weekEventMinHeightExtraSmall == other.weekEventMinHeightExtraSmall &&
+          listPadding == other.listPadding &&
+          eventPadding == other.eventPadding &&
+          eventSpacing == other.eventSpacing &&
+          eventContentSpacing == other.eventContentSpacing &&
+          hourSpacing == other.hourSpacing &&
+          legendSpacing == other.legendSpacing;
 
   @override
-  int get hashCode => Object.hash(dividerHeight, sectionTitleWidth,
-      weekHourHeight, weekEventMinHeightSmall, weekEventMinHeightExtraSmall);
+  int get hashCode => Object.hash(
+      dividerHeight,
+      sectionTitleWidth,
+      weekHourHeight,
+      weekEventMinHeightSmall,
+      weekEventMinHeightExtraSmall,
+      listPadding,
+      eventPadding,
+      eventSpacing,
+      eventContentSpacing,
+      hourSpacing,
+      legendSpacing);
 }
 
 class ImpaktfullUiCalendarTextStyleTheme {

@@ -68,7 +68,7 @@ class _ImpaktfullUiCalendarListState extends State<ImpaktfullUiCalendarList> {
       component: widget,
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiListView.builder(
-        padding: const EdgeInsets.all(16),
+        padding: componentTheme.dimens.listPadding,
         items: _events,
         itemBuilder: (context, item, index) {
           final previousItem = index > 0 ? _events[index - 1] : null;

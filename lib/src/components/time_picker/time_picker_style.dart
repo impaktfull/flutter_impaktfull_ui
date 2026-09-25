@@ -88,24 +88,40 @@ class ImpaktfullUiTimePickerColorTheme {
 
 class ImpaktfullUiTimePickerDimensTheme {
   final EdgeInsets labelMargin;
+
+  /// The space between the label and the field under it.
+  final double spacing;
+
+  /// The space between the hours, the minutes and the seconds.
+  final double fieldSpacing;
+
   const ImpaktfullUiTimePickerDimensTheme({
     required this.labelMargin,
+    this.spacing = 4,
+    this.fieldSpacing = 8,
   });
 
   ImpaktfullUiTimePickerDimensTheme copyWith({
+    double? fieldSpacing,
     EdgeInsets? labelMargin,
+    double? spacing,
   }) =>
       ImpaktfullUiTimePickerDimensTheme(
-          labelMargin: labelMargin ?? this.labelMargin);
+        fieldSpacing: fieldSpacing ?? this.fieldSpacing,
+        labelMargin: labelMargin ?? this.labelMargin,
+        spacing: spacing ?? this.spacing,
+      );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiTimePickerDimensTheme &&
-          labelMargin == other.labelMargin;
+          labelMargin == other.labelMargin &&
+          spacing == other.spacing &&
+          fieldSpacing == other.fieldSpacing;
 
   @override
-  int get hashCode => labelMargin.hashCode;
+  int get hashCode => Object.hash(labelMargin, spacing, fieldSpacing);
 }
 
 class ImpaktfullUiTimePickerTextStyleTheme {

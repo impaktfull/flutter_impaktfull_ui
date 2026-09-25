@@ -122,7 +122,7 @@ class _ImpaktfullUiTimePickerState extends State<ImpaktfullUiTimePicker> {
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
-        spacing: 4,
+        spacing: componentTheme.dimens.spacing,
         children: [
           if (widget.label != null) ...[
             ImpaktfullUiSectionTitle(
@@ -132,7 +132,7 @@ class _ImpaktfullUiTimePickerState extends State<ImpaktfullUiTimePicker> {
           ],
           ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 8,
+            spacing: componentTheme.dimens.fieldSpacing,
             children: [
               Expanded(
                 child: ImpaktfullUiInputField(

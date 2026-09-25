@@ -106,7 +106,7 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
       hasClose: false,
       hasBlurredBackground: hasBlurredBackground,
       isDismissible: isDismissible,
-      width: 310,
+      width: ImpaktfullUiDatePickerTheme.of(context).dimens.width,
       rootNavigator: rootNavigator,
       showDividers: showDividers,
       childPadding: const EdgeInsets.only(top: 16),
@@ -293,17 +293,17 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
       // (a long month name, a large text scale) makes the picker taller
       // instead of cutting off the last week of the month.
       builder: (context, componentTheme) => SizedBox(
-        width: 280 + widget.margin.horizontal,
+        width: componentTheme.dimens.contentWidth + widget.margin.horizontal,
         child: ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 8,
+          spacing: componentTheme.dimens.spacing,
           children: [
             Padding(
               padding: widget.margin,
               child: ImpaktfullUiAutoLayout.horizontal(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 8,
+                spacing: componentTheme.dimens.spacing,
                 children: [
                   ImpaktfullUiButton(
                     type: ImpaktfullUiButtonType.tertiaryGrey,
@@ -328,7 +328,7 @@ class _ImpaktfullUiDatePickerState extends State<ImpaktfullUiDatePicker> {
               ),
             ),
             SizedBox(
-              height: 260,
+              height: componentTheme.dimens.monthsHeight,
               child: PageView.builder(
                 key: ValueKey(_pageViewGeneration),
                 controller: _pageController,

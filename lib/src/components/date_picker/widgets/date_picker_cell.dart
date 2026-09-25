@@ -97,7 +97,7 @@ class ImpaktfullUiDatePickerCell extends StatelessWidget {
       case ImpaktfullUiDatePickerCellType.today:
         return Border.all(
           color: componentTheme.colors.selected,
-          width: 2,
+          width: componentTheme.dimens.selectedBorderWidth,
         );
       case ImpaktfullUiDatePickerCellType.single:
       case ImpaktfullUiDatePickerCellType.start:

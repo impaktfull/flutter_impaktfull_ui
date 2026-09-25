@@ -133,9 +133,9 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
               children: [
                 Container(
                   width: componentTheme.dimens.sectionTitleWidth + 32,
-                  padding: const EdgeInsets.all(4),
+                  padding: componentTheme.dimens.eventPadding,
                   child: ImpaktfullUiAutoLayout.vertical(
-                    spacing: 4,
+                    spacing: componentTheme.dimens.eventSpacing,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ImpaktfullUiButton(
@@ -182,7 +182,7 @@ class _ImpaktfullUiCalendarWeekState extends State<ImpaktfullUiCalendarWeek> {
                     ],
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: componentTheme.dimens.hourSpacing),
               ],
             ),
             const ImpaktfullUiDivider(),

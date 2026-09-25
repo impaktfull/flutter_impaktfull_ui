@@ -50,7 +50,7 @@ class ImpaktfullUiDatePickerDaysPage extends StatelessWidget {
             flex: 1,
             fit: FlexFit.loose,
             child: SizedBox(
-              height: 280,
+              height: componentTheme.dimens.daysHeight,
               child: ImpaktfullUiGridView.builder(
                 scrollPhysics: const NeverScrollableScrollPhysics(),
                 items: _getItems(context),
