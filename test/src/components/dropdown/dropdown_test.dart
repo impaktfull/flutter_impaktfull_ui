@@ -141,20 +141,14 @@ void main() {
     await tester.tap(find.text('Open'));
     await tester.pumpAndSettle();
     expect(
-      tester
-          .widget<ImpaktfullUiDropdownOverlay>(
-              find.byType(ImpaktfullUiDropdownOverlay))
-          .width,
+      tester.getSize(find.byType(ImpaktfullUiDropdownOverlay)).width,
       200,
     );
 
     width.value = 300;
     await tester.pumpAndSettle();
     expect(
-      tester
-          .widget<ImpaktfullUiDropdownOverlay>(
-              find.byType(ImpaktfullUiDropdownOverlay))
-          .width,
+      tester.getSize(find.byType(ImpaktfullUiDropdownOverlay)).width,
       300,
     );
   });

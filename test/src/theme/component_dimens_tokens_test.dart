@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 // The overlay is built by `ImpaktfullUiDropdown`, which always passes a
 // width: only the widget itself can be built without one.
+import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_menu_layout.dart';
 import 'package:impaktfull_ui/src/components/dropdown/widget/dropdown_overlay.dart';
 
 import '../_core_test_helpers.dart';
@@ -684,34 +685,68 @@ void main() {
   });
 
   group('ImpaktfullUiDropdownDimensTheme', () {
-    Widget buildOverlay({double? overlayWidth, EdgeInsetsGeometry? padding}) {
+    Widget buildOverlay({EdgeInsetsGeometry? padding}) {
       final base = _components.dropdown;
       return ImpaktfullUiDropdownOverlay(
-        width: null,
         height: null,
         borderRadius: BorderRadius.zero,
         theme: base.copyWith(
-          dimens: base.dimens.copyWith(
-            overlayWidth: overlayWidth,
-            padding: padding,
-          ),
+          dimens: base.dimens.copyWith(padding: padding),
         ),
         child: const Text('Content'),
       );
     }
 
-    testWidgets('overlayWidth is the width of an overlay without a width',
-        (tester) async {
-      await _pumpLoose(tester, buildOverlay());
+    // The width of a menu comes from `ImpaktfullUiDropdownMenuLayout`, which
+    // knows the button and the window; `dropdown_placement_test.dart` covers
+    // it through a real dropdown.
+    ImpaktfullUiDropdownMenuLayout layout({
+      required Size buttonSize,
+      double? width,
+      double minWidth = 176,
+      double fallbackWidth = 200,
+    }) =>
+        ImpaktfullUiDropdownMenuLayout(
+          buttonSize: buttonSize,
+          buttonOffset: Offset.zero,
+          windowSize: const Size(800, 600),
+          windowPadding: EdgeInsets.zero,
+          spacing: 4,
+          margin: 8,
+          width: width,
+          minWidth: minWidth,
+          fallbackWidth: fallbackWidth,
+          alignment: Alignment.topLeft,
+        );
+
+    test('overlayWidth is the width of a menu of a button without a size yet',
+        () {
       expect(
-        tester.getSize(find.byType(ImpaktfullUiDropdownOverlay)).width,
+        layout(buttonSize: Size.zero)
+            .getConstraintsForChild(const BoxConstraints())
+            .maxWidth,
         200,
       );
-
-      await _pumpLoose(tester, buildOverlay(overlayWidth: 320));
       expect(
-        tester.getSize(find.byType(ImpaktfullUiDropdownOverlay)).width,
+        layout(buttonSize: Size.zero, fallbackWidth: 320)
+            .getConstraintsForChild(const BoxConstraints())
+            .maxWidth,
         320,
+      );
+    });
+
+    test('minWidth is the width of a menu of a narrow button', () {
+      expect(
+        layout(buttonSize: const Size(80, 40))
+            .getConstraintsForChild(const BoxConstraints())
+            .maxWidth,
+        176,
+      );
+      expect(
+        layout(buttonSize: const Size(240, 40))
+            .getConstraintsForChild(const BoxConstraints())
+            .maxWidth,
+        240,
       );
     });
 
