@@ -149,16 +149,46 @@ class ImpaktfullUiWysiwygColorTheme {
 }
 
 class ImpaktfullUiWysiwygDimensTheme {
-  const ImpaktfullUiWysiwygDimensTheme();
+  /// The space between the parts of the editor.
+  final double spacing;
 
-  ImpaktfullUiWysiwygDimensTheme copyWith() =>
-      const ImpaktfullUiWysiwygDimensTheme();
+  /// The height of the row of actions.
+  final double actionsHeight;
+
+  /// The padding around the actions.
+  final EdgeInsetsGeometry actionsPadding;
+
+  const ImpaktfullUiWysiwygDimensTheme({
+    this.spacing = 4,
+    this.actionsHeight = 48,
+    this.actionsPadding = const EdgeInsets.all(4),
+  });
+
+  ImpaktfullUiWysiwygDimensTheme copyWith({
+    double? actionsHeight,
+    EdgeInsetsGeometry? actionsPadding,
+    double? spacing,
+  }) =>
+      ImpaktfullUiWysiwygDimensTheme(
+        actionsHeight: actionsHeight ?? this.actionsHeight,
+        actionsPadding: actionsPadding ?? this.actionsPadding,
+        spacing: spacing ?? this.spacing,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiWysiwygDimensTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiWysiwygDimensTheme &&
+          spacing == other.spacing &&
+          actionsHeight == other.actionsHeight &&
+          actionsPadding == other.actionsPadding;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+        spacing,
+        actionsHeight,
+        actionsPadding,
+      );
 }
 
 class ImpaktfullUiWysiwygTextStyleTheme {

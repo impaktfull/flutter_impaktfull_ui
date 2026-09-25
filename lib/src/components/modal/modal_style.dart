@@ -196,6 +196,18 @@ class ImpaktfullUiModalDimensTheme {
   /// with `hasBlurredBackground`. 8 by default.
   final double barrierBlurSigma;
 
+  /// The padding around the content of a simple modal.
+  final EdgeInsetsGeometry contentPadding;
+
+  /// The space between the title and the close button.
+  final double spacing;
+
+  /// The space between the title and the subtitle.
+  final double titleSpacing;
+
+  /// The space the close button takes next to the title.
+  final double closeIconButtonSize;
+
   const ImpaktfullUiModalDimensTheme({
     required this.borderRadius,
     required this.borderWidth,
@@ -203,6 +215,10 @@ class ImpaktfullUiModalDimensTheme {
     required this.leadingIconPadding,
     required this.padding,
     this.barrierBlurSigma = 8,
+    this.contentPadding = const EdgeInsets.all(16),
+    this.spacing = 16,
+    this.titleSpacing = 4,
+    this.closeIconButtonSize = 48,
   });
 
   ImpaktfullUiModalDimensTheme copyWith({
@@ -210,8 +226,12 @@ class ImpaktfullUiModalDimensTheme {
     BorderRadiusGeometry? borderRadius,
     double? borderWidth,
     EdgeInsetsGeometry? closeIconButtonPadding,
+    double? closeIconButtonSize,
+    EdgeInsetsGeometry? contentPadding,
     EdgeInsetsGeometry? leadingIconPadding,
     EdgeInsetsGeometry? padding,
+    double? spacing,
+    double? titleSpacing,
   }) =>
       ImpaktfullUiModalDimensTheme(
         barrierBlurSigma: barrierBlurSigma ?? this.barrierBlurSigma,
@@ -219,8 +239,12 @@ class ImpaktfullUiModalDimensTheme {
         borderWidth: borderWidth ?? this.borderWidth,
         closeIconButtonPadding:
             closeIconButtonPadding ?? this.closeIconButtonPadding,
+        closeIconButtonSize: closeIconButtonSize ?? this.closeIconButtonSize,
+        contentPadding: contentPadding ?? this.contentPadding,
         leadingIconPadding: leadingIconPadding ?? this.leadingIconPadding,
         padding: padding ?? this.padding,
+        spacing: spacing ?? this.spacing,
+        titleSpacing: titleSpacing ?? this.titleSpacing,
       );
 
   @override
@@ -232,11 +256,24 @@ class ImpaktfullUiModalDimensTheme {
           closeIconButtonPadding == other.closeIconButtonPadding &&
           leadingIconPadding == other.leadingIconPadding &&
           padding == other.padding &&
-          barrierBlurSigma == other.barrierBlurSigma;
+          barrierBlurSigma == other.barrierBlurSigma &&
+          contentPadding == other.contentPadding &&
+          spacing == other.spacing &&
+          titleSpacing == other.titleSpacing &&
+          closeIconButtonSize == other.closeIconButtonSize;
 
   @override
-  int get hashCode => Object.hash(borderRadius, borderWidth,
-      closeIconButtonPadding, leadingIconPadding, padding, barrierBlurSigma);
+  int get hashCode => Object.hash(
+      borderRadius,
+      borderWidth,
+      closeIconButtonPadding,
+      leadingIconPadding,
+      padding,
+      barrierBlurSigma,
+      contentPadding,
+      spacing,
+      titleSpacing,
+      closeIconButtonSize);
 }
 
 class ImpaktfullUiModalAssetsTheme {

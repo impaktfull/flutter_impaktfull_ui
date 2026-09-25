@@ -99,7 +99,7 @@ class ImpaktfullUiNavBar extends StatelessWidget {
                   : Border(
                       bottom: BorderSide(
                         color: componentTheme.colors.border!,
-                        width: 1,
+                        width: componentTheme.dimens.borderWidth,
                       ),
                     ),
               boxShadow: componentTheme.shadows.shadow,
@@ -125,7 +125,7 @@ class ImpaktfullUiNavBar extends StatelessWidget {
                     ),
                     child: ImpaktfullUiAutoLayout.horizontal(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      spacing: 8,
+                      spacing: componentTheme.dimens.spacing,
                       children: [
                         if (hasCenteredActions) ...[
                           SizedBox(

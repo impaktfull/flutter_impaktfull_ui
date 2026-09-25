@@ -15,7 +15,7 @@ class ImpaktfullUiMarkdownCodeElementBuilder extends MarkdownElementBuilder {
     final isMultiLine = element.textContent.split('\n').length > 1;
     return Container(
       padding: isMultiLine
-          ? const EdgeInsets.all(8)
+          ? theme.dimens.codePadding
           : const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
       decoration: BoxDecoration(
         color: theme.colors.code,

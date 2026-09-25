@@ -54,7 +54,7 @@ class ImpaktfullUiChatListItemBackground extends StatelessWidget {
                   isNotMyOwnMessage || isDifferentSenderThanNext ? 8 : 4),
             ),
           ),
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(componentTheme.dimens.messagePadding),
           child: child,
         );
       },

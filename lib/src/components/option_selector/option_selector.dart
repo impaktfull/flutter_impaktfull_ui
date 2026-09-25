@@ -57,8 +57,9 @@ class ImpaktfullUiOptionSelector<T> extends StatefulWidget {
         showDividers: true,
         childPadding: EdgeInsets.zero,
         child: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxHeight: 600,
+          constraints: BoxConstraints(
+            maxHeight:
+                ImpaktfullUiOptionSelectorTheme.of(context).dimens.maxHeight,
           ),
           child: ImpaktfullUiOptionSelector<T>(
             titleBuilder: titleBuilder,

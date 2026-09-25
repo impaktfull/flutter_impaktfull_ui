@@ -115,7 +115,7 @@ class _ImpaktfullUiWysiwygInputFieldState
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
-          spacing: 4,
+          spacing: componentTheme.dimens.spacing,
           children: [
             ImpaktfullUiCard(
               cursor: SystemMouseCursors.text,

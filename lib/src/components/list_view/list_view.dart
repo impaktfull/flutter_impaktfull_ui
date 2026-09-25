@@ -194,10 +194,10 @@ class _ImpaktfullUiListViewState<T> extends State<ImpaktfullUiListView<T>> {
       if (widget.shrinkWrap) {
         return Padding(
           padding: widget.padding,
-          child: const SizedBox(
-            height: 50,
-            width: 50,
-            child: ImpaktfullUiLoadingIndicator(),
+          child: SizedBox(
+            height: ImpaktfullUiListViewTheme.of(context).dimens.imageSize,
+            width: ImpaktfullUiListViewTheme.of(context).dimens.imageSize,
+            child: const ImpaktfullUiLoadingIndicator(),
           ),
         );
       }

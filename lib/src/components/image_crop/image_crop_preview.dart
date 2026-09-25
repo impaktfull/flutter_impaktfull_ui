@@ -70,7 +70,7 @@ class _ImageCropPreviewState extends State<ImageCropPreview> {
       );
     }
     return ImpaktfullUiAutoLayout.vertical(
-      spacing: 16,
+      spacing: ImpaktfullUiImageCropTheme.of(context).dimens.previewSpacing,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(

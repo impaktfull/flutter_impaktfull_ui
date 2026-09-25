@@ -87,16 +87,27 @@ class ImpaktfullUiGridViewColorTheme {
 }
 
 class ImpaktfullUiGridViewDimensTheme {
-  const ImpaktfullUiGridViewDimensTheme();
+  /// The size of the image of an item.
+  final double imageSize;
 
-  ImpaktfullUiGridViewDimensTheme copyWith() =>
-      const ImpaktfullUiGridViewDimensTheme();
+  const ImpaktfullUiGridViewDimensTheme({
+    this.imageSize = 50,
+  });
+
+  ImpaktfullUiGridViewDimensTheme copyWith({
+    double? imageSize,
+  }) =>
+      ImpaktfullUiGridViewDimensTheme(
+        imageSize: imageSize ?? this.imageSize,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiGridViewDimensTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiGridViewDimensTheme && imageSize == other.imageSize;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => imageSize.hashCode;
 }
 
 class ImpaktfullUiGridViewTextStyleTheme {

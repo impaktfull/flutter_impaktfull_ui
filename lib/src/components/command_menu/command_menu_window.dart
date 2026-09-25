@@ -142,7 +142,7 @@ class _CommandMenuWindowState extends State<ImpaktfullUiCommandMenuWindow> {
                                         .dimens.windowBorderRadius,
                                     child: ImpaktfullUiAutoLayout.vertical(
                                       mainAxisSize: MainAxisSize.min,
-                                      spacing: 8,
+                                      spacing: componentTheme.dimens.spacing,
                                       children: [
                                         Padding(
                                           padding: widget.marginInputField,
@@ -159,7 +159,8 @@ class _CommandMenuWindowState extends State<ImpaktfullUiCommandMenuWindow> {
                                           // is not enough space (small screens).
                                           Flexible(
                                             child: SizedBox(
-                                              height: 200,
+                                              height: componentTheme
+                                                  .dimens.maxHeight,
                                               child: bottomChild,
                                             ),
                                           ),

@@ -50,13 +50,24 @@ class ImpaktfullUiRadioButtonListItem<T> extends StatelessWidget {
                       asset: leading,
                       color: componentTheme.colors.icons,
                     ),
-            trailingWidgetBuilder: (context) => ImpaktfullUiListItemControl(
-              child: ImpaktfullUiRadioButton(
-                value: value,
-                groupValue: groupValue,
-                onChanged: onChanged == null ? null : _onChanged,
-              ),
-            ),
+            trailingWidgetBuilder: (context) {
+              // The radio button of the list item: the item decides its
+              // shape, so `borderRadius` of the list item theme is what it
+              // renders with.
+              final radioButton = ImpaktfullUiRadioButtonTheme.of(context);
+              return ImpaktfullUiListItemControl(
+                child: ImpaktfullUiRadioButton(
+                  value: value,
+                  groupValue: groupValue,
+                  onChanged: onChanged == null ? null : _onChanged,
+                  theme: radioButton.copyWith(
+                    dimens: radioButton.dimens.copyWith(
+                      borderRadius: componentTheme.dimens.borderRadius,
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),

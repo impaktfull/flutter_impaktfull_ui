@@ -103,7 +103,7 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
           return ImpaktfullUiAutoLayout.vertical(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 8,
+            spacing: componentTheme.dimens.spacing,
             children: [
               SizedBox(
                 width: widget.size,
@@ -119,10 +119,10 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
                       Align(
                         alignment: AlignmentDirectional.topEnd,
                         child: Padding(
-                          padding: const EdgeInsets.all(8),
+                          padding: componentTheme.dimens.actionPadding,
                           child: ImpaktfullUiAutoLayout.horizontal(
                             mainAxisAlignment: MainAxisAlignment.end,
-                            spacing: 8,
+                            spacing: componentTheme.dimens.spacing,
                             children: [
                               ImpaktfullUiIconButton(
                                 onTap: _onBackToEditingTapped,
@@ -159,12 +159,12 @@ class _ImpaktfullUiImageCropState extends State<ImpaktfullUiImageCrop> {
           );
         }
         return ImpaktfullUiAutoLayout.horizontal(
-          spacing: 8,
+          spacing: componentTheme.dimens.spacing,
           children: [
             ImpaktfullUiAutoLayout.vertical(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: 8,
+              spacing: componentTheme.dimens.spacing,
               children: [
                 SizedBox(
                   width: widget.size,

@@ -59,7 +59,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
               : Border(
                   bottom: BorderSide(
                     color: componentTheme.colors.border!,
-                    width: 1,
+                    width: componentTheme.dimens.borderWidth,
                   ),
                 ),
           boxShadow: componentTheme.shadows.background,
@@ -68,8 +68,8 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
           bottom: false,
           hasMacOsMenuBar: false,
           child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              minHeight: 64,
+            constraints: BoxConstraints(
+              minHeight: componentTheme.dimens.minHeight,
             ),
             child: ImpaktfullUiAutoLayout.vertical(
               mainAxisSize: MainAxisSize.min,
@@ -82,7 +82,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                   ),
                   child: ImpaktfullUiAutoLayout.horizontal(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 8,
+                    spacing: componentTheme.dimens.spacing,
                     children: [
                       if (widget.onDrawerTapped != null) ...[
                         ImpaktfullUiIconButton(
@@ -104,11 +104,11 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                       ],
                       Expanded(
                         child: ImpaktfullUiAutoLayout.vertical(
-                          spacing: 2,
+                          spacing: componentTheme.dimens.titleSpacing,
                           children: [
                             ImpaktfullUiAutoLayout.horizontal(
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              spacing: 8,
+                              spacing: componentTheme.dimens.spacing,
                               children: [
                                 if (widget.title != null) ...[
                                   Text(
@@ -135,7 +135,7 @@ class _ImpaktfullUiCmsHeaderState extends State<ImpaktfullUiCmsHeader> {
                       ),
                       if (widget.actions.isNotEmpty) ...[
                         ImpaktfullUiAutoLayout.horizontal(
-                          spacing: 8,
+                          spacing: componentTheme.dimens.spacing,
                           children: widget.actions.overrideColorOnWidgets(
                               componentTheme.colors.icons),
                         ),

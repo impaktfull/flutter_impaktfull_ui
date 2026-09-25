@@ -48,7 +48,7 @@ class ImpaktfullUiChatListInternalItem extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
         mainAxisSize: MainAxisSize.min,
-        spacing: 4,
+        spacing: componentTheme.dimens.contentSpacing,
         children: [
           ImpaktfullUiChatListItemDateLabel(
             item: item,

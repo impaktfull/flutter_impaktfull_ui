@@ -180,19 +180,44 @@ class ImpaktfullUiPasswordStrengthIndicatorDimensTheme {
   final double spacing;
   final double requirementSpacing;
   final BorderRadiusGeometry strengthIndicatorBorderRadius;
+
+  /// The space between the bars and the rules under them.
+  final double sectionSpacing;
+
+  /// The thickness of a bar.
+  final double barHeight;
+
+  /// The space between the icon of a rule and its text.
+  final double ruleSpacing;
+
+  /// The size of the icon of a rule.
+  final double iconSize;
+
   const ImpaktfullUiPasswordStrengthIndicatorDimensTheme({
     required this.spacing,
     required this.requirementSpacing,
     required this.strengthIndicatorBorderRadius,
+    this.sectionSpacing = 12,
+    this.barHeight = 4,
+    this.ruleSpacing = 8,
+    this.iconSize = 16,
   });
 
   ImpaktfullUiPasswordStrengthIndicatorDimensTheme copyWith({
+    double? barHeight,
+    double? iconSize,
     double? requirementSpacing,
+    double? ruleSpacing,
+    double? sectionSpacing,
     double? spacing,
     BorderRadiusGeometry? strengthIndicatorBorderRadius,
   }) =>
       ImpaktfullUiPasswordStrengthIndicatorDimensTheme(
+        barHeight: barHeight ?? this.barHeight,
+        iconSize: iconSize ?? this.iconSize,
         requirementSpacing: requirementSpacing ?? this.requirementSpacing,
+        ruleSpacing: ruleSpacing ?? this.ruleSpacing,
+        sectionSpacing: sectionSpacing ?? this.sectionSpacing,
         spacing: spacing ?? this.spacing,
         strengthIndicatorBorderRadius:
             strengthIndicatorBorderRadius ?? this.strengthIndicatorBorderRadius,
@@ -202,13 +227,25 @@ class ImpaktfullUiPasswordStrengthIndicatorDimensTheme {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiPasswordStrengthIndicatorDimensTheme &&
-          spacing == other.spacing &&
           requirementSpacing == other.requirementSpacing &&
-          strengthIndicatorBorderRadius == other.strengthIndicatorBorderRadius;
+          strengthIndicatorBorderRadius ==
+              other.strengthIndicatorBorderRadius &&
+          spacing == other.spacing &&
+          sectionSpacing == other.sectionSpacing &&
+          barHeight == other.barHeight &&
+          ruleSpacing == other.ruleSpacing &&
+          iconSize == other.iconSize;
 
   @override
-  int get hashCode =>
-      Object.hash(spacing, requirementSpacing, strengthIndicatorBorderRadius);
+  int get hashCode => Object.hash(
+        spacing,
+        requirementSpacing,
+        strengthIndicatorBorderRadius,
+        sectionSpacing,
+        barHeight,
+        ruleSpacing,
+        iconSize,
+      );
 }
 
 class ImpaktfullUiPasswordStrengthIndicatorDurationsTheme {

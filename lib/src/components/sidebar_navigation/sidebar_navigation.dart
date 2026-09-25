@@ -63,13 +63,13 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget {
                   width: min(width ?? double.infinity, constraints.maxWidth),
                   child: ImpaktfullUiAutoLayout.vertical(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 8,
+                    spacing: componentTheme.dimens.spacing,
                     children: [
                       if (hasHeader) ...[
                         Padding(
                           padding: componentTheme.dimens.padding,
                           child: ImpaktfullUiAutoLayout.vertical(
-                            spacing: 8,
+                            spacing: componentTheme.dimens.spacing,
                             children: [
                               if (asset != null) ...[
                                 ConstrainedBox(
@@ -93,7 +93,7 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget {
                         if (items.isNotEmpty) ...[
                           Expanded(
                             child: ImpaktfullUiListView(
-                              spacing: 8,
+                              spacing: componentTheme.dimens.spacing,
                               padding: EdgeInsetsDirectional.only(
                                 start: componentTheme.dimens.padding.start,
                                 end: componentTheme.dimens.padding.end,
@@ -118,7 +118,7 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget {
                             bottom: componentTheme.dimens.padding.bottom,
                           ),
                           child: ImpaktfullUiAutoLayout.vertical(
-                            spacing: 8,
+                            spacing: componentTheme.dimens.spacing,
                             children: [
                               ...footerItems,
                               if (footer != null) ...[
@@ -135,7 +135,7 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget {
                 if (secondaryContent != null || secondaryItems.isNotEmpty) ...[
                   Container(
                     color: componentTheme.colors.border,
-                    width: 1,
+                    width: componentTheme.dimens.borderWidth,
                     height: double.infinity,
                   ),
                   if (secondaryContent != null) ...[
@@ -144,7 +144,7 @@ class ImpaktfullUiSidebarNavigation extends StatelessWidget {
                     SizedBox(
                       width: componentTheme.dimens.secondaryWidth,
                       child: ImpaktfullUiListView(
-                        spacing: 8,
+                        spacing: componentTheme.dimens.spacing,
                         padding: componentTheme.dimens.padding,
                         children: secondaryItems,
                       ),

@@ -171,23 +171,35 @@ class ImpaktfullUiChatDimensTheme {
   final BorderRadiusGeometry typingContainerBorderRadius;
   final BorderRadiusGeometry typingDotsBorderRadius;
 
+  /// The space between two messages.
+  final double messageSpacing;
+
+  /// The space between the parts of a message.
+  final double contentSpacing;
+
   const ImpaktfullUiChatDimensTheme({
     required this.messagePadding,
     required this.dateLabelBorderRadius,
     required this.typingContainerBorderRadius,
     required this.typingDotsBorderRadius,
+    this.messageSpacing = 2,
+    this.contentSpacing = 4,
   });
 
   ImpaktfullUiChatDimensTheme copyWith({
+    double? contentSpacing,
     BorderRadiusGeometry? dateLabelBorderRadius,
     double? messagePadding,
+    double? messageSpacing,
     BorderRadiusGeometry? typingContainerBorderRadius,
     BorderRadiusGeometry? typingDotsBorderRadius,
   }) =>
       ImpaktfullUiChatDimensTheme(
+        contentSpacing: contentSpacing ?? this.contentSpacing,
         dateLabelBorderRadius:
             dateLabelBorderRadius ?? this.dateLabelBorderRadius,
         messagePadding: messagePadding ?? this.messagePadding,
+        messageSpacing: messageSpacing ?? this.messageSpacing,
         typingContainerBorderRadius:
             typingContainerBorderRadius ?? this.typingContainerBorderRadius,
         typingDotsBorderRadius:
@@ -198,14 +210,22 @@ class ImpaktfullUiChatDimensTheme {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiChatDimensTheme &&
-          messagePadding == other.messagePadding &&
           dateLabelBorderRadius == other.dateLabelBorderRadius &&
           typingContainerBorderRadius == other.typingContainerBorderRadius &&
-          typingDotsBorderRadius == other.typingDotsBorderRadius;
+          typingDotsBorderRadius == other.typingDotsBorderRadius &&
+          messageSpacing == other.messageSpacing &&
+          contentSpacing == other.contentSpacing &&
+          messagePadding == other.messagePadding;
 
   @override
-  int get hashCode => Object.hash(messagePadding, dateLabelBorderRadius,
-      typingContainerBorderRadius, typingDotsBorderRadius);
+  int get hashCode => Object.hash(
+      messagePadding,
+      dateLabelBorderRadius,
+      typingContainerBorderRadius,
+      typingDotsBorderRadius,
+      messageSpacing,
+      contentSpacing,
+      messagePadding);
 }
 
 class ImpaktfullUiChatDurationsTheme {

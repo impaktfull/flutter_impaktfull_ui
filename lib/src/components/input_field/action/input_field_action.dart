@@ -39,13 +39,13 @@ class ImpaktfullUiInputFieldAction extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Container(
           alignment: Alignment.center,
-          constraints: const BoxConstraints(
-            minHeight: 40,
+          constraints: BoxConstraints(
+            minHeight: componentTheme.dimens.actionMinHeight,
           ),
           child: ImpaktfullUiAutoLayout.horizontal(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 4,
+            spacing: componentTheme.dimens.labelSpacing,
             children: [
               if (asset != null) ...[
                 ImpaktfullUiAssetWidget(

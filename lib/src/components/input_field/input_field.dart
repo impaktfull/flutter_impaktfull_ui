@@ -203,7 +203,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
         ];
         return ImpaktfullUiAutoLayout.vertical(
           mainAxisSize: MainAxisSize.min,
-          spacing: 4,
+          spacing: componentTheme.dimens.labelSpacing,
           children: [
             if (widget.label != null) ...[
               ImpaktfullUiSectionTitle(
@@ -251,7 +251,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                           children: [
                             if (widget.topBuilder != null) ...[
                               Padding(
-                                padding: const EdgeInsets.all(8),
+                                padding: componentTheme.dimens.actionPadding,
                                 child: widget.topBuilder!(context),
                               ),
                             ],

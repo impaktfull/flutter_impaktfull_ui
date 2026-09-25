@@ -85,7 +85,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
         component: widget,
         overrideComponentTheme: widget.theme,
         builder: (context, componentTheme) => ImpaktfullUiAutoLayout.vertical(
-          spacing: 16,
+          spacing: componentTheme.dimens.spacing,
           children: [
             ImpaktfullUiPinCodeValue(
               code: _code,
@@ -94,11 +94,11 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
             ),
             Expanded(
               child: ImpaktfullUiAutoLayout.vertical(
-                spacing: 8,
+                spacing: componentTheme.dimens.fieldSpacing,
                 children: [
                   Expanded(
                     child: ImpaktfullUiAutoLayout.horizontal(
-                      spacing: 8,
+                      spacing: componentTheme.dimens.fieldSpacing,
                       children: [
                         _buildNumberButton('1'),
                         _buildNumberButton('2'),
@@ -108,7 +108,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
                   ),
                   Expanded(
                     child: ImpaktfullUiAutoLayout.horizontal(
-                      spacing: 8,
+                      spacing: componentTheme.dimens.fieldSpacing,
                       children: [
                         _buildNumberButton('4'),
                         _buildNumberButton('5'),
@@ -118,7 +118,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
                   ),
                   Expanded(
                     child: ImpaktfullUiAutoLayout.horizontal(
-                      spacing: 8,
+                      spacing: componentTheme.dimens.fieldSpacing,
                       children: [
                         _buildNumberButton('7'),
                         _buildNumberButton('8'),
@@ -128,7 +128,7 @@ class _ImpaktfullUiPinCodeState extends State<ImpaktfullUiPinCode> {
                   ),
                   Expanded(
                     child: ImpaktfullUiAutoLayout.horizontal(
-                      spacing: 8,
+                      spacing: componentTheme.dimens.fieldSpacing,
                       children: [
                         Expanded(
                           child: AspectRatio(

@@ -89,14 +89,26 @@ class ImpaktfullUiCommandMenuColorTheme {
 class ImpaktfullUiCommandMenuDimensTheme {
   final BorderRadiusGeometry windowBorderRadius;
 
+  /// The space between the parts of a result.
+  final double spacing;
+
+  /// The maximum height of the results.
+  final double maxHeight;
+
   const ImpaktfullUiCommandMenuDimensTheme({
     required this.windowBorderRadius,
+    this.spacing = 8,
+    this.maxHeight = 200,
   });
 
   ImpaktfullUiCommandMenuDimensTheme copyWith({
+    double? maxHeight,
+    double? spacing,
     BorderRadiusGeometry? windowBorderRadius,
   }) =>
       ImpaktfullUiCommandMenuDimensTheme(
+        maxHeight: maxHeight ?? this.maxHeight,
+        spacing: spacing ?? this.spacing,
         windowBorderRadius: windowBorderRadius ?? this.windowBorderRadius,
       );
 
@@ -104,10 +116,12 @@ class ImpaktfullUiCommandMenuDimensTheme {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiCommandMenuDimensTheme &&
-          windowBorderRadius == other.windowBorderRadius;
+          windowBorderRadius == other.windowBorderRadius &&
+          spacing == other.spacing &&
+          maxHeight == other.maxHeight;
 
   @override
-  int get hashCode => windowBorderRadius.hashCode;
+  int get hashCode => Object.hash(windowBorderRadius, spacing, maxHeight);
 }
 
 class ImpaktfullUiCommandMenuTextStyleTheme {

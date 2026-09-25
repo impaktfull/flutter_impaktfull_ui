@@ -152,25 +152,49 @@ class ImpaktfullUiGalleryColorTheme {
 
 class ImpaktfullUiGalleryDimensTheme {
   final BorderRadiusGeometry itemBorderRadius;
+
+  /// The padding around the gallery.
+  final EdgeInsetsGeometry padding;
+
+  /// The padding around an item that is shown full screen.
+  final EdgeInsetsGeometry fullScreenPadding;
+
+  /// The padding around the actions of an item that is shown full screen.
+  final EdgeInsetsGeometry fullScreenActionPadding;
+
   const ImpaktfullUiGalleryDimensTheme({
     required this.itemBorderRadius,
+    this.padding = const EdgeInsets.all(16),
+    this.fullScreenPadding = const EdgeInsets.all(64),
+    this.fullScreenActionPadding = const EdgeInsets.all(16),
   });
 
   ImpaktfullUiGalleryDimensTheme copyWith({
+    EdgeInsetsGeometry? fullScreenActionPadding,
+    EdgeInsetsGeometry? fullScreenPadding,
     BorderRadiusGeometry? itemBorderRadius,
+    EdgeInsetsGeometry? padding,
   }) =>
       ImpaktfullUiGalleryDimensTheme(
+        fullScreenActionPadding:
+            fullScreenActionPadding ?? this.fullScreenActionPadding,
+        fullScreenPadding: fullScreenPadding ?? this.fullScreenPadding,
         itemBorderRadius: itemBorderRadius ?? this.itemBorderRadius,
+        padding: padding ?? this.padding,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ImpaktfullUiGalleryDimensTheme &&
-          itemBorderRadius == other.itemBorderRadius;
+          itemBorderRadius == other.itemBorderRadius &&
+          padding == other.padding &&
+          fullScreenPadding == other.fullScreenPadding &&
+          fullScreenActionPadding == other.fullScreenActionPadding;
 
   @override
-  int get hashCode => itemBorderRadius.hashCode;
+  int get hashCode => Object.hash(
+      itemBorderRadius, padding, fullScreenPadding, fullScreenActionPadding);
 }
 
 class ImpaktfullUiGalleryDurationsTheme {

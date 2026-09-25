@@ -43,8 +43,8 @@ class _WysiwygActionsState extends State<WysiwygActions> {
   Widget build(BuildContext context) {
     final localizations = _getLocalizations(context);
     return Container(
-      height: 48,
-      padding: const EdgeInsets.all(4),
+      height: ImpaktfullUiWysiwygTheme.of(context).dimens.actionsHeight,
+      padding: ImpaktfullUiWysiwygTheme.of(context).dimens.actionsPadding,
       child: ImpaktfullUiListView(
         scrollDirection: Axis.horizontal,
         children: <WysiwygActionItem>[

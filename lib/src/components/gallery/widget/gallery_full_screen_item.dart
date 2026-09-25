@@ -117,7 +117,7 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
                   color: Colors.transparent,
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(64),
+                      padding: componentTheme.dimens.fullScreenPadding,
                       child: GestureDetector(
                         onDoubleTapDown: _handleDoubleTapDown,
                         onDoubleTap: _handleDoubleTap,
@@ -137,7 +137,7 @@ class _ImpaktfullUiGalleryFullScreenItemWidgetState
             Align(
               alignment: AlignmentDirectional.bottomStart,
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: componentTheme.dimens.fullScreenActionPadding,
                 child: ImpaktfullUiAutoLayout.vertical(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [

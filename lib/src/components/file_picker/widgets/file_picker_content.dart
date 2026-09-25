@@ -40,10 +40,10 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.all(16),
+          padding: componentTheme.dimens.padding,
           child: ImpaktfullUiAutoLayout.horizontal(
             crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 12,
+            spacing: componentTheme.dimens.spacing,
             children: [
               if (leadingBuilder != null) ...[
                 leadingBuilder!(context),
@@ -55,7 +55,7 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
               ],
               Expanded(
                 child: ImpaktfullUiAutoLayout.vertical(
-                  spacing: 8,
+                  spacing: componentTheme.dimens.contentSpacing,
                   children: [
                     ImpaktfullUiAutoLayout.horizontal(
                       children: [
@@ -114,7 +114,9 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
                         if (onDeleteTapped != null) ...[
                           // Keep the text out of the delete button that is
                           // positioned in the top end corner.
-                          const SizedBox(width: 32),
+                          SizedBox(
+                            width: componentTheme.dimens.actionSpacing,
+                          ),
                         ],
                       ],
                     ),
@@ -136,7 +138,7 @@ class ImpaktfullUiFilePickerContent extends StatelessWidget {
           Align(
             alignment: AlignmentDirectional.topEnd,
             child: Padding(
-              padding: const EdgeInsets.all(4),
+              padding: componentTheme.dimens.itemPadding,
               child: ImpaktfullUiIconButton(
                 onTap: onDeleteTapped!,
                 tooltip: localizations.deleteFile,

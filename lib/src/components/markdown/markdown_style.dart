@@ -139,24 +139,33 @@ class ImpaktfullUiMarkdownColorTheme {
 
 class ImpaktfullUiMarkdownDimensTheme {
   final BorderRadiusGeometry code;
+
+  /// The padding around a block of code.
+  final EdgeInsetsGeometry codePadding;
+
   const ImpaktfullUiMarkdownDimensTheme({
     required this.code,
+    this.codePadding = const EdgeInsets.all(8),
   });
 
   ImpaktfullUiMarkdownDimensTheme copyWith({
     BorderRadiusGeometry? code,
+    EdgeInsetsGeometry? codePadding,
   }) =>
       ImpaktfullUiMarkdownDimensTheme(
         code: code ?? this.code,
+        codePadding: codePadding ?? this.codePadding,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ImpaktfullUiMarkdownDimensTheme && code == other.code;
+      other is ImpaktfullUiMarkdownDimensTheme &&
+          code == other.code &&
+          codePadding == other.codePadding;
 
   @override
-  int get hashCode => code.hashCode;
+  int get hashCode => Object.hash(code, codePadding);
 }
 
 class ImpaktfullUiMarkdownTextStyleTheme {

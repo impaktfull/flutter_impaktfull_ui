@@ -170,7 +170,7 @@ class ImpaktfullUiDatePicker extends StatefulWidget {
       isDismissible: isDismissible,
       rootNavigator: rootNavigator,
       showDividers: showDividers,
-      width: 310,
+      width: ImpaktfullUiDatePickerTheme.of(context).dimens.width,
       childPadding: const EdgeInsets.only(top: 16),
       actions: [
         Builder(

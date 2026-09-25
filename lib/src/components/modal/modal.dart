@@ -218,7 +218,7 @@ class ImpaktfullUiModal extends StatelessWidget {
         // (barrierDismissible), the modal itself never pops on an outside tap:
         // it can also be used inline in a page.
         return Padding(
-          padding: const EdgeInsets.all(16),
+          padding: componentTheme.dimens.contentPadding,
           child: Center(
             child: LayoutBuilder(
               builder: (context, constraints) {
@@ -307,7 +307,7 @@ class ImpaktfullUiModal extends StatelessWidget {
                                         MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
-                                    spacing: 16,
+                                    spacing: componentTheme.dimens.spacing,
                                     children: [
                                       if (headerChildLocation ==
                                               ImpaktfullUiModalHeaderChildLocation
@@ -318,7 +318,8 @@ class ImpaktfullUiModal extends StatelessWidget {
                                       Expanded(
                                         child: ImpaktfullUiAutoLayout.vertical(
                                           mainAxisSize: MainAxisSize.min,
-                                          spacing: 4,
+                                          spacing: componentTheme
+                                              .dimens.titleSpacing,
                                           children: [
                                             if (headerChildLocation ==
                                                     ImpaktfullUiModalHeaderChildLocation
@@ -345,7 +346,10 @@ class ImpaktfullUiModal extends StatelessWidget {
                                       ),
                                       if (hasClose ||
                                           onCloseTapped != null) ...[
-                                        const SizedBox(width: 48),
+                                        SizedBox(
+                                          width: componentTheme
+                                              .dimens.closeIconButtonSize,
+                                        ),
                                       ],
                                     ],
                                   ),

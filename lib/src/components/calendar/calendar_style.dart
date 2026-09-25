@@ -171,6 +171,12 @@ class ImpaktfullUiCalendarDimensTheme {
   /// The space between the day and the date in the legend.
   final double legendSpacing;
 
+  /// The space between the parts of an event in the list view.
+  final double listEventSpacing;
+
+  /// The space between the items of a day in the list view.
+  final double listItemSpacing;
+
   const ImpaktfullUiCalendarDimensTheme({
     required this.dividerHeight,
     required this.sectionTitleWidth,
@@ -183,6 +189,8 @@ class ImpaktfullUiCalendarDimensTheme {
     this.eventContentSpacing = 8,
     this.hourSpacing = 16,
     this.legendSpacing = 2,
+    this.listEventSpacing = 12,
+    this.listItemSpacing = 8,
   });
 
   ImpaktfullUiCalendarDimensTheme copyWith({
@@ -192,6 +200,8 @@ class ImpaktfullUiCalendarDimensTheme {
     double? eventSpacing,
     double? hourSpacing,
     double? legendSpacing,
+    double? listEventSpacing,
+    double? listItemSpacing,
     EdgeInsetsGeometry? listPadding,
     double? sectionTitleWidth,
     double? weekEventMinHeightExtraSmall,
@@ -205,6 +215,8 @@ class ImpaktfullUiCalendarDimensTheme {
         eventSpacing: eventSpacing ?? this.eventSpacing,
         hourSpacing: hourSpacing ?? this.hourSpacing,
         legendSpacing: legendSpacing ?? this.legendSpacing,
+        listEventSpacing: listEventSpacing ?? this.listEventSpacing,
+        listItemSpacing: listItemSpacing ?? this.listItemSpacing,
         listPadding: listPadding ?? this.listPadding,
         sectionTitleWidth: sectionTitleWidth ?? this.sectionTitleWidth,
         weekEventMinHeightExtraSmall:
@@ -228,7 +240,9 @@ class ImpaktfullUiCalendarDimensTheme {
           eventSpacing == other.eventSpacing &&
           eventContentSpacing == other.eventContentSpacing &&
           hourSpacing == other.hourSpacing &&
-          legendSpacing == other.legendSpacing;
+          legendSpacing == other.legendSpacing &&
+          listEventSpacing == other.listEventSpacing &&
+          listItemSpacing == other.listItemSpacing;
 
   @override
   int get hashCode => Object.hash(
@@ -242,7 +256,9 @@ class ImpaktfullUiCalendarDimensTheme {
       eventSpacing,
       eventContentSpacing,
       hourSpacing,
-      legendSpacing);
+      legendSpacing,
+      listEventSpacing,
+      listItemSpacing);
 }
 
 class ImpaktfullUiCalendarTextStyleTheme {

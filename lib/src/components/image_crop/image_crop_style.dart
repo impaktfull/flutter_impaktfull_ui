@@ -116,16 +116,46 @@ class ImpaktfullUiImageCropColorTheme {
 }
 
 class ImpaktfullUiImageCropDimensTheme {
-  const ImpaktfullUiImageCropDimensTheme();
+  /// The space between the parts of the cropper.
+  final double spacing;
 
-  ImpaktfullUiImageCropDimensTheme copyWith() =>
-      const ImpaktfullUiImageCropDimensTheme();
+  /// The space between the preview and what follows it.
+  final double previewSpacing;
+
+  /// The padding around the actions.
+  final EdgeInsetsGeometry actionPadding;
+
+  const ImpaktfullUiImageCropDimensTheme({
+    this.spacing = 8,
+    this.previewSpacing = 16,
+    this.actionPadding = const EdgeInsets.all(8),
+  });
+
+  ImpaktfullUiImageCropDimensTheme copyWith({
+    EdgeInsetsGeometry? actionPadding,
+    double? previewSpacing,
+    double? spacing,
+  }) =>
+      ImpaktfullUiImageCropDimensTheme(
+        actionPadding: actionPadding ?? this.actionPadding,
+        previewSpacing: previewSpacing ?? this.previewSpacing,
+        spacing: spacing ?? this.spacing,
+      );
 
   @override
-  bool operator ==(Object other) => other is ImpaktfullUiImageCropDimensTheme;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ImpaktfullUiImageCropDimensTheme &&
+          spacing == other.spacing &&
+          previewSpacing == other.previewSpacing &&
+          actionPadding == other.actionPadding;
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+        spacing,
+        previewSpacing,
+        actionPadding,
+      );
 }
 
 class ImpaktfullUiImageCropDurationsTheme {

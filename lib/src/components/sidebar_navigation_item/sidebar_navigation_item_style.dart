@@ -141,21 +141,33 @@ class ImpaktfullUiSidebarNavigationItemDimensTheme {
   final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry paddingWithSubItems;
 
+  /// The space between the item and its children.
+  final double spacing;
+
+  /// The space between the icon and the title of an item.
+  final double contentSpacing;
+
   const ImpaktfullUiSidebarNavigationItemDimensTheme({
     required this.borderRadius,
     required this.padding,
     required this.paddingWithSubItems,
+    this.spacing = 8,
+    this.contentSpacing = 12,
   });
 
   ImpaktfullUiSidebarNavigationItemDimensTheme copyWith({
     BorderRadiusGeometry? borderRadius,
+    double? contentSpacing,
     EdgeInsetsGeometry? padding,
     EdgeInsetsGeometry? paddingWithSubItems,
+    double? spacing,
   }) =>
       ImpaktfullUiSidebarNavigationItemDimensTheme(
         borderRadius: borderRadius ?? this.borderRadius,
+        contentSpacing: contentSpacing ?? this.contentSpacing,
         padding: padding ?? this.padding,
         paddingWithSubItems: paddingWithSubItems ?? this.paddingWithSubItems,
+        spacing: spacing ?? this.spacing,
       );
 
   @override
@@ -164,10 +176,13 @@ class ImpaktfullUiSidebarNavigationItemDimensTheme {
       other is ImpaktfullUiSidebarNavigationItemDimensTheme &&
           borderRadius == other.borderRadius &&
           padding == other.padding &&
-          paddingWithSubItems == other.paddingWithSubItems;
+          paddingWithSubItems == other.paddingWithSubItems &&
+          spacing == other.spacing &&
+          contentSpacing == other.contentSpacing;
 
   @override
-  int get hashCode => Object.hash(borderRadius, padding, paddingWithSubItems);
+  int get hashCode => Object.hash(
+      borderRadius, padding, paddingWithSubItems, spacing, contentSpacing);
 }
 
 class ImpaktfullUiSidebarNavigationItemTextStyleTheme {
