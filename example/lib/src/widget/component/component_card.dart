@@ -52,9 +52,18 @@ class ComponentCard extends StatelessWidget {
                                 child: correctChild,
                               );
                             }
-                            return Padding(
-                              padding: const EdgeInsets.all(16),
-                              child: correctChild,
+                            // A preview is clipped on purpose, so a component
+                            // that is taller than the card (the date picker)
+                            // gets the height it asks for and is cut off,
+                            // instead of overflowing inside the card.
+                            return OverflowBox(
+                              minHeight: 0,
+                              maxHeight: double.infinity,
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding: const EdgeInsets.all(16),
+                                child: correctChild,
+                              ),
                             );
                           }),
                         ),

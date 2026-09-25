@@ -66,6 +66,14 @@ class ImpaktfullUiHorizontalTabColorTheme {
   final Color backgroundUnSelectedTab;
   final Color backgroundSelectedTab;
 
+  /// The background of a tab while the pointer is over it.
+  ///
+  /// `null` (the default) leaves it to the overlay of
+  /// `ImpaktfullUiTouchFeedbackTheme`, which is what the tab always did.
+  /// `Colors.transparent` shows none at all: a tab of Ant Design only changes
+  /// the colour of its title on hover ([ImpaktfullUiHorizontalTabTextStyleTheme.hovered]).
+  final Color? backgroundHoveredTab;
+
   /// The bar under the selected tab (the "ink bar" of Ant Design).
   ///
   /// `null` (the default) draws none: the tab is marked by its background and
@@ -77,15 +85,18 @@ class ImpaktfullUiHorizontalTabColorTheme {
   const ImpaktfullUiHorizontalTabColorTheme({
     required this.backgroundUnSelectedTab,
     required this.backgroundSelectedTab,
+    this.backgroundHoveredTab,
     this.selectedMarker,
   });
 
   ImpaktfullUiHorizontalTabColorTheme copyWith({
+    Color? backgroundHoveredTab,
     Color? backgroundSelectedTab,
     Color? backgroundUnSelectedTab,
     Color? selectedMarker,
   }) =>
       ImpaktfullUiHorizontalTabColorTheme(
+        backgroundHoveredTab: backgroundHoveredTab ?? this.backgroundHoveredTab,
         backgroundSelectedTab:
             backgroundSelectedTab ?? this.backgroundSelectedTab,
         backgroundUnSelectedTab:
@@ -99,12 +110,14 @@ class ImpaktfullUiHorizontalTabColorTheme {
       other is ImpaktfullUiHorizontalTabColorTheme &&
           backgroundUnSelectedTab == other.backgroundUnSelectedTab &&
           backgroundSelectedTab == other.backgroundSelectedTab &&
+          backgroundHoveredTab == other.backgroundHoveredTab &&
           selectedMarker == other.selectedMarker;
 
   @override
   int get hashCode => Object.hash(
         backgroundUnSelectedTab,
         backgroundSelectedTab,
+        backgroundHoveredTab,
         selectedMarker,
       );
 }
@@ -113,16 +126,29 @@ class ImpaktfullUiHorizontalTabTextStyleTheme {
   final TextStyle selected;
   final TextStyle unselected;
 
+  /// The title of a tab that is not selected while the pointer is over it.
+  ///
+  /// `null` (the default) keeps [unselected], which is what the tab always
+  /// did. A tab of Ant Design turns its title `colorPrimaryHover` and changes
+  /// nothing else, so a theme that sets this one usually sets
+  /// [ImpaktfullUiHorizontalTabColorTheme.backgroundHoveredTab] to
+  /// `Colors.transparent` with it. The selected tab keeps [selected]: its
+  /// colour already says that it is the one.
+  final TextStyle? hovered;
+
   const ImpaktfullUiHorizontalTabTextStyleTheme({
     required this.selected,
     required this.unselected,
+    this.hovered,
   });
 
   ImpaktfullUiHorizontalTabTextStyleTheme copyWith({
+    TextStyle? hovered,
     TextStyle? selected,
     TextStyle? unselected,
   }) =>
       ImpaktfullUiHorizontalTabTextStyleTheme(
+        hovered: hovered ?? this.hovered,
         selected: selected ?? this.selected,
         unselected: unselected ?? this.unselected,
       );
@@ -132,10 +158,11 @@ class ImpaktfullUiHorizontalTabTextStyleTheme {
       identical(this, other) ||
       other is ImpaktfullUiHorizontalTabTextStyleTheme &&
           selected == other.selected &&
-          unselected == other.unselected;
+          unselected == other.unselected &&
+          hovered == other.hovered;
 
   @override
-  int get hashCode => Object.hash(selected, unselected);
+  int get hashCode => Object.hash(selected, unselected, hovered);
 }
 
 class ImpaktfullUiHorizontalTabDimensTheme {

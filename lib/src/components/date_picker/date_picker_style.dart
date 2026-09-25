@@ -154,10 +154,16 @@ class ImpaktfullUiDatePickerDimensTheme {
   /// The width of the grid of days, inside the margin.
   final double contentWidth;
 
-  /// The height of the grid of days.
+  /// The height of the grid of days, inside the page.
+  ///
+  /// The page itself is [monthsHeight] high, the same for the days, the
+  /// months and the years, so a value above that leaves the grid at the
+  /// height of the page: the grid shrinks to fit instead of pushing the last
+  /// week out of the picker.
   final double daysHeight;
 
-  /// The height of the list of months and of the list of years.
+  /// The height of a page of the picker: the list of months, the list of
+  /// years and the grid of days with the row of weekdays above it.
   final double monthsHeight;
 
   /// The space between the header, the grid and the actions.

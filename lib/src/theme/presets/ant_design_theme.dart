@@ -771,7 +771,14 @@ abstract final class ImpaktfullUiAntDesignTheme {
           colors: components.horizontalTab.colors.copyWith(
             backgroundUnSelectedTab: Colors.transparent,
             backgroundSelectedTab: Colors.transparent,
+            // `itemHoverColor`: a hovered tab changes the colour of its
+            // title and nothing else, so it paints no background at all.
+            backgroundHoveredTab: Colors.transparent,
             selectedMarker: primary,
+          ),
+          textStyles: components.horizontalTab.textStyles.copyWith(
+            hovered: components.horizontalTab.textStyles.unselected
+                .copyWith(color: primaryHover),
           ),
           dimens: components.horizontalTab.dimens.copyWith(
             borderRadius: BorderRadius.zero,

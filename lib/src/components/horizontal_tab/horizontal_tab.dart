@@ -59,30 +59,56 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
         final touchFeedback = ImpaktfullUiTouchFeedbackTheme.of(context);
+        final hoverBackground = componentTheme.colors.backgroundHoveredTab;
         return Semantics(
           container: true,
           role: SemanticsRole.tab,
           button: true,
           selected: isSelected,
-          child: ImpaktfullUiTouchFeedback(
-            onTap: onTap,
-            // A tab lives in the scrolling strip of
-            // `ImpaktfullUiHorizontalTabs`, which clips to its viewport, so
-            // the focus ring is drawn against the inside of the tab instead
-            // of around it. Around it, only its left and right sides would
-            // survive the clip.
-            theme: touchFeedback.copyWith(
-              focusRing: touchFeedback.focusRing.inset,
+          child: _HoverBuilder(
+            builder: (context, isHovered) => ImpaktfullUiTouchFeedback(
+              onTap: onTap,
+              // A tab lives in the scrolling strip of
+              // `ImpaktfullUiHorizontalTabs`, which clips to its viewport, so
+              // the focus ring is drawn against the inside of the tab instead
+              // of around it. Around it, only its left and right sides would
+              // survive the clip.
+              theme: touchFeedback.copyWith(
+                focusRing: touchFeedback.focusRing.inset,
+                // A tab that says what its hover looks like owns both the
+                // hover and the pressed overlay: a tab of Ant Design shows
+                // neither and changes the colour of its title instead.
+                colors: hoverBackground == null
+                    ? null
+                    : touchFeedback.colors.copyWith(
+                        hover: hoverBackground,
+                        highlight: hoverBackground,
+                      ),
+              ),
+              borderRadius: componentTheme.dimens.borderRadius,
+              color: isSelected
+                  ? componentTheme.colors.backgroundSelectedTab
+                  : componentTheme.colors.backgroundUnSelectedTab,
+              child: _buildContent(componentTheme, isHovered: isHovered),
             ),
-            borderRadius: componentTheme.dimens.borderRadius,
-            color: isSelected
-                ? componentTheme.colors.backgroundSelectedTab
-                : componentTheme.colors.backgroundUnSelectedTab,
-            child: _buildContent(componentTheme),
           ),
         );
       },
     );
+  }
+
+  /// The style of the title.
+  ///
+  /// The selected tab keeps its own style while the pointer is over it: its
+  /// colour already says that it is the selected one.
+  TextStyle _textStyle(
+    ImpaktfullUiHorizontalTabTheme componentTheme, {
+    required bool isHovered,
+  }) {
+    final textStyles = componentTheme.textStyles;
+    if (isSelected) return textStyles.selected;
+    if (isHovered) return textStyles.hovered ?? textStyles.unselected;
+    return textStyles.unselected;
   }
 
   /// The title of the tab, with the bar under it when there is one.
@@ -90,7 +116,10 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
   /// The bar is painted over the bottom of the tab instead of taking a place
   /// of its own, so a theme without one (`selectedMarker` is `null`) renders
   /// what it always did, down to the pixel.
-  Widget _buildContent(ImpaktfullUiHorizontalTabTheme componentTheme) {
+  Widget _buildContent(
+    ImpaktfullUiHorizontalTabTheme componentTheme, {
+    required bool isHovered,
+  }) {
     final dimens = componentTheme.dimens;
     final content = Padding(
       padding: dimens.padding,
@@ -100,9 +129,7 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
         children: [
           Text(
             title,
-            style: isSelected
-                ? componentTheme.textStyles.selected
-                : componentTheme.textStyles.unselected,
+            style: _textStyle(componentTheme, isHovered: isHovered),
           ),
           if (badge != null) ...[
             SizedBox(width: dimens.badgeSpacing),
@@ -144,4 +171,33 @@ class ImpaktfullUiHorizontalTab extends StatelessWidget {
       ],
     );
   }
+}
+
+/// Rebuilds its child while the pointer enters and leaves it.
+///
+/// `ImpaktfullUiHorizontalTab` stays a `StatelessWidget`: only the part that
+/// reads the hover needs the state.
+class _HoverBuilder extends StatefulWidget {
+  final Widget Function(BuildContext context, bool isHovered) builder;
+
+  const _HoverBuilder({required this.builder});
+
+  @override
+  State<_HoverBuilder> createState() => _HoverBuilderState();
+}
+
+class _HoverBuilderState extends State<_HoverBuilder> {
+  var _isHovered = false;
+
+  void _onHoverChanged(bool isHovered) {
+    if (_isHovered == isHovered) return;
+    setState(() => _isHovered = isHovered);
+  }
+
+  @override
+  Widget build(BuildContext context) => MouseRegion(
+        onEnter: (_) => _onHoverChanged(true),
+        onExit: (_) => _onHoverChanged(false),
+        child: widget.builder(context, _isHovered),
+      );
 }

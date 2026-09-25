@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
@@ -68,6 +69,21 @@ ImpaktfullUiHorizontalTabTheme _markerTheme({
     ),
   );
 }
+
+/// Moves a mouse over the tab and leaves it there.
+Future<void> _hover(WidgetTester tester) async {
+  final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+  await gesture.addPointer(location: Offset.zero);
+  addTearDown(gesture.removePointer);
+  await tester.pump();
+  await gesture.moveTo(
+    tester.getCenter(find.byType(ImpaktfullUiHorizontalTab)),
+  );
+  await tester.pumpAndSettle();
+}
+
+Color? _titleColor(WidgetTester tester) =>
+    tester.widget<Text>(find.text('One')).style?.color;
 
 void main() {
   group('ImpaktfullUiHorizontalTabDimensTheme', () {
@@ -147,7 +163,7 @@ void main() {
       expect(tester.getSize(find.byType(ImpaktfullUiHorizontalTab)), without);
     });
 
-    testWidgets('selectedMarkerWidth centers a narrower bar', (tester) async {
+    testWidgets('selectedMarkerWidth centres a narrower bar', (tester) async {
       await _pumpTab(
         tester,
         theme: _markerTheme(height: 2, width: 10),
@@ -158,6 +174,72 @@ void main() {
       expect(marker.width, 10);
       expect(marker.center.dx, tab.center.dx);
       expect(marker.bottom, tab.bottom);
+    });
+  });
+
+  group('a hovered tab', () {
+    const hoverColor = Color(0xFF4096FF);
+
+    ImpaktfullUiHorizontalTabTheme hoverTheme() {
+      final base = _base;
+      return base.copyWith(
+        colors: base.colors.copyWith(
+          backgroundHoveredTab: Colors.transparent,
+        ),
+        textStyles: base.textStyles.copyWith(
+          hovered: base.textStyles.unselected.copyWith(color: hoverColor),
+        ),
+      );
+    }
+
+    testWidgets('takes the hovered title', (tester) async {
+      await _pumpTab(tester, theme: hoverTheme());
+      final unhovered = _titleColor(tester);
+      expect(unhovered, isNot(hoverColor));
+
+      await _hover(tester);
+      expect(_titleColor(tester), hoverColor);
+    });
+
+    testWidgets('keeps the selected title when it is the selected tab',
+        (tester) async {
+      await _pumpTab(tester, theme: hoverTheme(), isSelected: true);
+      final selected = _titleColor(tester);
+      await _hover(tester);
+      expect(_titleColor(tester), selected);
+    });
+
+    testWidgets('a theme without a hovered title keeps the unselected one',
+        (tester) async {
+      await _pumpTab(tester);
+      final unhovered = _titleColor(tester);
+      await _hover(tester);
+      expect(_titleColor(tester), unhovered);
+    });
+
+    testWidgets('backgroundHoveredTab is the overlay of the tab',
+        (tester) async {
+      await _pumpTab(tester);
+      expect(
+        tester
+            .widget<ImpaktfullUiTouchFeedback>(
+              find.byType(ImpaktfullUiTouchFeedback),
+            )
+            .theme
+            ?.colors
+            .hover,
+        ImpaktfullUiTheme.getDefault().components.touchFeedback.colors.hover,
+        reason: 'without the token the tab leaves the overlay to the theme',
+      );
+
+      await _pumpTab(tester, theme: hoverTheme());
+      final theme = tester
+          .widget<ImpaktfullUiTouchFeedback>(
+            find.byType(ImpaktfullUiTouchFeedback),
+          )
+          .theme;
+      expect(theme?.colors.hover, Colors.transparent);
+      expect(theme?.colors.highlight, Colors.transparent);
     });
   });
 }
