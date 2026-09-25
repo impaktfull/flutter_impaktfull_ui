@@ -280,10 +280,18 @@ void main() {
       );
     });
 
-    test('a radio button is controlInteractiveSize with a dot of half', () {
+    test('a radio button is radioSize with a dotSize dot in white on primary',
+        () {
       final dimens = light.components.radioButton.dimens;
       expect(dimens.size, ImpaktfullUiAntDesignTheme.controlInteractiveSize);
-      expect(dimens.size - 2 * dimens.dotInset, 8);
+      // `dotSize` is `radioSize - (dotPadding + lineWidth) * 2`, with a
+      // `dotPadding` of 4 and a `lineWidth` of 1.
+      expect(dimens.size - 2 * dimens.dotInset, 6);
+      final colors = light.components.radioButton.colors;
+      // `radioBgColor` and `radioColor` of a theme that is not `wireframe`.
+      expect(colors.selected, ImpaktfullUiAntDesignTheme.colorPrimary);
+      expect(colors.borderSelected, ImpaktfullUiAntDesignTheme.colorPrimary);
+      expect(colors.centerSelectedBackground, Colors.white);
     });
 
     test('a slider is a 4px rail with a 14px handle', () {

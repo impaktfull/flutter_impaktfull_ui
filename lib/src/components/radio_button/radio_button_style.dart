@@ -87,8 +87,9 @@ class ImpaktfullUiRadioButtonColorTheme {
   /// The border of a radio button that is selected.
   ///
   /// `null` (the default) keeps [border], which is what the radio button
-  /// always did and what shadcn/ui does (`border-input` in both states). Ant
-  /// Design turns the border of a checked radio button into `colorPrimary`.
+  /// always did. Both design systems turn the border of a checked radio
+  /// button into their primary colour (`data-checked:border-primary`,
+  /// `colorPrimary`), so both presets set it.
   final Color? borderSelected;
   final Color centerSelectedBackground;
   final Color centerUnSelectedBackground;

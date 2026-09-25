@@ -317,11 +317,21 @@ void main() {
       );
     });
 
-    test('a radio button is size-4 with a size-2 dot', () {
+    test('a radio button is size-4 that fills with a size-2 dot on it', () {
       final dimens = light.components.radioButton.dimens;
       expect(dimens.size, 16);
       // `size - 2 * dotInset`
       expect(dimens.size - 2 * dimens.dotInset, 8);
+      final colors = light.components.radioButton.colors;
+      // `data-checked:bg-primary data-checked:border-primary` with a
+      // `bg-primary-foreground` dot, `border-input` while it is unchecked.
+      expect(colors.selected, ImpaktfullUiShadcnTheme.primary);
+      expect(colors.borderSelected, ImpaktfullUiShadcnTheme.primary);
+      expect(
+        colors.centerSelectedBackground,
+        ImpaktfullUiShadcnTheme.primaryForeground,
+      );
+      expect(colors.border, ImpaktfullUiShadcnTheme.border);
     });
 
     test('a slider is a h-1.5 track with a size-4 thumb', () {

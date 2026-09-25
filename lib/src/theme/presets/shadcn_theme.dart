@@ -494,14 +494,14 @@ abstract final class ImpaktfullUiShadcnTheme {
         ),
         // `radio-group.tsx`: `size-4 rounded-full border` with a `size-2`
         // indicator, so the dot is `16 - 2 * 4`.
-        // `radio-group.tsx`: a `size-4` circle that keeps `border-input` in
-        // both states and never fills: what marks it as checked is the
-        // `size-2` dot, `fill-primary` in the middle of it.
+        // `.cn-radio-group-item`: a `size-4` circle with `border-input`, that
+        // turns `bg-primary` with `border-primary` when it is checked, and
+        // `.cn-radio-group-indicator-icon`: a `size-2` dot of
+        // `bg-primary-foreground` in the middle of it.
         radioButton: components.radioButton.copyWith(
           colors: components.radioButton.colors.copyWith(
-            selected: isDark ? cardDark : card,
-            unselected: isDark ? cardDark : card,
-            centerSelectedBackground: primaryColor,
+            borderSelected: primaryColor,
+            centerSelectedBackground: onPrimary,
           ),
           dimens: components.radioButton.dimens.copyWith(
             size: 16,

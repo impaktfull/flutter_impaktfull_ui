@@ -572,14 +572,19 @@ abstract final class ImpaktfullUiAntDesignTheme {
         // of it, so the dot is `16 - 2 * 4`.
         radioButton: components.radioButton.copyWith(
           colors: components.radioButton.colors.copyWith(
-            // A checked radio button has a `colorPrimary` border around its
-            // dot; an unchecked one keeps `colorBorder`.
+            // A checked radio button is `radioBgColor` (`colorPrimary`) with a
+            // `colorPrimary` border; an unchecked one is `colorBgContainer`
+            // with `colorBorder`.
             borderSelected: primary,
+            centerSelectedBackground: Colors.white,
           ),
           dimens: components.radioButton.dimens.copyWith(
+            // `radioSize` is `fontSizeLG` (16) and the dot is
+            // `radioSize - (dotPadding + lineWidth) * 2` = 6, so 5 is left
+            // around it.
             size: controlInteractiveSize,
             borderWidth: 1,
-            dotInset: 4,
+            dotInset: 5,
           ),
         ),
         // A slider is a 4px rail with a 14px handle that has a 2px border.
