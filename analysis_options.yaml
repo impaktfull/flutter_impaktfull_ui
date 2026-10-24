@@ -7,6 +7,7 @@ analyzer:
     - "**.g.dart"
     - "**.config.dart"
     - "**.navigator.dart"
+    - build/**
   language:
     strict-casts: true
     strict-raw-types: true
