@@ -1,6 +1,6 @@
 import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class ImpaktfullUiAssetTheme {
   final ImpaktfullUiIconTheme icons;
@@ -34,69 +34,65 @@ class ImpaktfullUiAssetTheme {
       ImpaktfullUiAssetTheme(
         icons: icons ??
             ImpaktfullUiIconTheme(
-              add: ImpaktfullUiAsset.icon(PhosphorIcons.plus()),
-              arrowLeft: ImpaktfullUiAsset.icon(PhosphorIcons.arrowLeft()),
-              arrowRight: ImpaktfullUiAsset.icon(PhosphorIcons.arrowRight()),
-              arrowUp: ImpaktfullUiAsset.icon(PhosphorIcons.arrowUp()),
-              arrowDown: ImpaktfullUiAsset.icon(PhosphorIcons.arrowDown()),
-              backspace: ImpaktfullUiAsset.icon(PhosphorIcons.backspace()),
-              check: ImpaktfullUiAsset.icon(PhosphorIcons.check()),
-              checkCircle: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
-              chevronDown: ImpaktfullUiAsset.icon(PhosphorIcons.caretDown()),
-              chevronLeft: ImpaktfullUiAsset.icon(PhosphorIcons.caretLeft()),
-              chevronRight: ImpaktfullUiAsset.icon(PhosphorIcons.caretRight()),
-              chevronUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp()),
-              circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle()),
-              close: ImpaktfullUiAsset.icon(PhosphorIcons.x()),
-              closeCircle: ImpaktfullUiAsset.icon(PhosphorIcons.xCircle()),
+              add: ImpaktfullUiAsset.icon(PhosphorIcons.plus),
+              arrowLeft: ImpaktfullUiAsset.icon(PhosphorIcons.arrowLeft),
+              arrowRight: ImpaktfullUiAsset.icon(PhosphorIcons.arrowRight),
+              arrowUp: ImpaktfullUiAsset.icon(PhosphorIcons.arrowUp),
+              arrowDown: ImpaktfullUiAsset.icon(PhosphorIcons.arrowDown),
+              backspace: ImpaktfullUiAsset.icon(PhosphorIcons.backspace),
+              check: ImpaktfullUiAsset.icon(PhosphorIcons.check),
+              checkCircle: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle),
+              chevronDown: ImpaktfullUiAsset.icon(PhosphorIcons.caretDown),
+              chevronLeft: ImpaktfullUiAsset.icon(PhosphorIcons.caretLeft),
+              chevronRight: ImpaktfullUiAsset.icon(PhosphorIcons.caretRight),
+              chevronUp: ImpaktfullUiAsset.icon(PhosphorIcons.caretUp),
+              circle: ImpaktfullUiAsset.icon(PhosphorIcons.circle),
+              close: ImpaktfullUiAsset.icon(PhosphorIcons.x),
+              closeCircle: ImpaktfullUiAsset.icon(PhosphorIcons.xCircle),
               cloudDownload:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown()),
-              cloudUpload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowUp()),
-              confetti: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
-              copy: ImpaktfullUiAsset.icon(PhosphorIcons.copy()),
-              delete: ImpaktfullUiAsset.icon(PhosphorIcons.trashSimple()),
-              dot: ImpaktfullUiAsset.icon(
-                  PhosphorIcons.dotOutline(PhosphorIconsStyle.fill)),
-              edit: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple()),
-              error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond()),
-              file: ImpaktfullUiAsset.icon(PhosphorIcons.file()),
-              home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple()),
-              info: ImpaktfullUiAsset.icon(PhosphorIcons.info()),
-              leaf: ImpaktfullUiAsset.icon(
-                  PhosphorIcons.leaf(PhosphorIconsStyle.fill)),
-              lineVertical:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical()),
-              list: ImpaktfullUiAsset.icon(PhosphorIcons.list()),
-              logout: ImpaktfullUiAsset.icon(PhosphorIcons.signOut()),
-              minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus()),
-              moreHorizontal: ImpaktfullUiAsset.icon(PhosphorIcons.dotsThree()),
+                  ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowDown),
+              cloudUpload: ImpaktfullUiAsset.icon(PhosphorIcons.cloudArrowUp),
+              confetti: ImpaktfullUiAsset.icon(PhosphorIcons.confetti),
+              copy: ImpaktfullUiAsset.icon(PhosphorIcons.copy),
+              delete: ImpaktfullUiAsset.icon(PhosphorIcons.trashSimple),
+              dot: ImpaktfullUiAsset.icon(PhosphorIcons.dotOutlineFill),
+              edit: ImpaktfullUiAsset.icon(PhosphorIcons.pencilSimple),
+              error: ImpaktfullUiAsset.icon(PhosphorIcons.warningDiamond),
+              file: ImpaktfullUiAsset.icon(PhosphorIcons.file),
+              home: ImpaktfullUiAsset.icon(PhosphorIcons.houseSimple),
+              info: ImpaktfullUiAsset.icon(PhosphorIcons.info),
+              leaf: ImpaktfullUiAsset.icon(PhosphorIcons.leafFill),
+              lineVertical: ImpaktfullUiAsset.icon(PhosphorIcons.lineVertical),
+              list: ImpaktfullUiAsset.icon(PhosphorIcons.list),
+              logout: ImpaktfullUiAsset.icon(PhosphorIcons.signOut),
+              minus: ImpaktfullUiAsset.icon(PhosphorIcons.minus),
+              moreHorizontal: ImpaktfullUiAsset.icon(PhosphorIcons.dotsThree),
               moreVertical:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.dotsThreeVertical()),
-              passwordHide: ImpaktfullUiAsset.icon(PhosphorIcons.eyeSlash()),
-              passwordShow: ImpaktfullUiAsset.icon(PhosphorIcons.eye()),
-              refresh: ImpaktfullUiAsset.icon(PhosphorIcons.arrowClockwise()),
-              search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass()),
+                  ImpaktfullUiAsset.icon(PhosphorIcons.dotsThreeVertical),
+              passwordHide: ImpaktfullUiAsset.icon(PhosphorIcons.eyeSlash),
+              passwordShow: ImpaktfullUiAsset.icon(PhosphorIcons.eye),
+              refresh: ImpaktfullUiAsset.icon(PhosphorIcons.arrowClockwise),
+              search: ImpaktfullUiAsset.icon(PhosphorIcons.magnifyingGlass),
               share: ImpaktfullUiAsset.icon(DeviceUtil.isAndroid()
-                  ? PhosphorIcons.shareNetwork()
-                  : PhosphorIcons.export()),
-              settings: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix()),
-              success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle()),
-              user: ImpaktfullUiAsset.icon(PhosphorIcons.user()),
-              warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning()),
-              wysiwygBold: ImpaktfullUiAsset.icon(PhosphorIcons.textB()),
-              wysiwygCode: ImpaktfullUiAsset.icon(PhosphorIcons.code()),
-              wysiwygCodeBlock:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.codeBlock()),
-              wysiwygHeader: ImpaktfullUiAsset.icon(PhosphorIcons.textH()),
-              wysiwygItalic: ImpaktfullUiAsset.icon(PhosphorIcons.textItalic()),
-              wysiwygLink: ImpaktfullUiAsset.icon(PhosphorIcons.link()),
+                  ? PhosphorIcons.shareNetwork
+                  : PhosphorIcons.export),
+              settings: ImpaktfullUiAsset.icon(PhosphorIcons.gearSix),
+              success: ImpaktfullUiAsset.icon(PhosphorIcons.checkCircle),
+              user: ImpaktfullUiAsset.icon(PhosphorIcons.user),
+              warning: ImpaktfullUiAsset.icon(PhosphorIcons.warning),
+              wysiwygBold: ImpaktfullUiAsset.icon(PhosphorIcons.textB),
+              wysiwygCode: ImpaktfullUiAsset.icon(PhosphorIcons.code),
+              wysiwygCodeBlock: ImpaktfullUiAsset.icon(PhosphorIcons.codeBlock),
+              wysiwygHeader: ImpaktfullUiAsset.icon(PhosphorIcons.textH),
+              wysiwygItalic: ImpaktfullUiAsset.icon(PhosphorIcons.textItalic),
+              wysiwygLink: ImpaktfullUiAsset.icon(PhosphorIcons.link),
               wysiwygOrderedList:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers()),
-              wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image()),
+                  ImpaktfullUiAsset.icon(PhosphorIcons.listNumbers),
+              wysiwygPhoto: ImpaktfullUiAsset.icon(PhosphorIcons.image),
               wysiwygUnorderedList:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.listBullets()),
+                  ImpaktfullUiAsset.icon(PhosphorIcons.listBullets),
               wysiwygUnorderedListItem:
-                  ImpaktfullUiAsset.icon(PhosphorIcons.dot()),
+                  ImpaktfullUiAsset.icon(PhosphorIcons.dot),
             ),
         images: images ??
             ImpaktfullUiImageTheme(

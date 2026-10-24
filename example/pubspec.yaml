@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
   impaktfull_ui:
     path: ../
-  phosphor_flutter: ^2.1.0
+  phosphoricons_flutter: ^1.1.1
   url_launcher: ^6.1.10
 
 dev_dependencies:

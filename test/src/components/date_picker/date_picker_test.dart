@@ -3,7 +3,7 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';
 import 'package:intl/intl.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 import '../../../util/test_util.dart';
 
@@ -56,7 +56,7 @@ void main() {
         await pumpAndSettleComponent(tester, sut);
 
         expect(find.text('July 2023'), findsOneWidget);
-        await tester.tap(find.byIcon(PhosphorIcons.arrowRight()));
+        await tester.tap(find.byIcon(PhosphorIcons.arrowRight));
         await tester.pumpAndSettle();
 
         expect(find.text('August 2023'), findsOneWidget);
@@ -110,7 +110,7 @@ void main() {
 
         // Tap to go see all the years of the current decade
         expect(find.text('2023'), findsOneWidget);
-        await tester.tap(find.byIcon(PhosphorIcons.arrowRight()));
+        await tester.tap(find.byIcon(PhosphorIcons.arrowRight));
         await tester.pumpAndSettle();
         expect(find.text('2024'), findsOneWidget);
       });
@@ -155,7 +155,7 @@ void main() {
         await tester.tap(find.text('2023'));
         await tester.pumpAndSettle();
         validateYears(2020);
-        await tester.tap(find.byIcon(PhosphorIcons.arrowRight()));
+        await tester.tap(find.byIcon(PhosphorIcons.arrowRight));
         await tester.pumpAndSettle();
         validateYears(2030);
       });
@@ -189,13 +189,13 @@ void main() {
       await tester.tap(find.text('July 2022'));
       await tester.pumpAndSettle();
       expect(find.text('2022'), findsOneWidget);
-      await tester.tap(find.byIcon(PhosphorIcons.arrowLeft()));
+      await tester.tap(find.byIcon(PhosphorIcons.arrowLeft));
       await tester.pumpAndSettle();
       expect(find.text('2010'), findsNothing);
       expect(find.text('2021'), findsOneWidget);
-      await tester.tap(find.byIcon(PhosphorIcons.arrowLeft()));
+      await tester.tap(find.byIcon(PhosphorIcons.arrowLeft));
       await tester.pumpAndSettle();
-      await tester.tap(find.byIcon(PhosphorIcons.arrowLeft()));
+      await tester.tap(find.byIcon(PhosphorIcons.arrowLeft));
       await tester.pumpAndSettle();
       await tester.tap(find.text('2019'));
       await tester.pumpAndSettle();
@@ -211,8 +211,8 @@ Future<void> smokeTest(WidgetTester tester, DateTime? dateTime) async {
     onDateChanged: (date) {},
   );
   await pumpAndSettleComponent(tester, sut);
-  final arrowRight = find.byIcon(PhosphorIcons.arrowRight());
-  final arrowLeft = find.byIcon(PhosphorIcons.arrowLeft());
+  final arrowRight = find.byIcon(PhosphorIcons.arrowRight);
+  final arrowLeft = find.byIcon(PhosphorIcons.arrowLeft);
 
   // Days view
   final daysViewTitle = find.text(DateFormat.yMMMM().format(activeDate));
