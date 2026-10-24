@@ -4,6 +4,10 @@
 
 - Replaced `phosphor_flutter` with `phosphoricons_flutter`, so apps can build on Flutter 3.44 and newer (`IconData` became a `final` class, which `phosphor_flutter` extends)
 
+## Chore
+
+- Exclude build and platform directories in `analysis_options.yaml`, so publishing with Flutter 3.47 starts from a clean git state
+
 # 0.79.0
 
 ## Feature
