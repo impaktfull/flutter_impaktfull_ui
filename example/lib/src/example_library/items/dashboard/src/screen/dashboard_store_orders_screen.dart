@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/example_library/data/model/order.dart';
 import 'package:impaktfull_ui_example/src/example_library/data/test_data.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class DashboardStoreOrdersScreen extends StatefulWidget {
   const DashboardStoreOrdersScreen({
@@ -106,8 +106,8 @@ class _DashboardStoreOrdersScreenState
                                 ImpaktfullUiIconButton(
                                   onTap: () => _onRefundTapped(order),
                                   size: 20,
-                                  asset: ImpaktfullUiAsset.icon(
-                                      PhosphorIcons.handCoins()),
+                                  asset: const ImpaktfullUiAsset.icon(
+                                      PhosphorIcons.handCoins),
                                 ),
                               ],
                             ],

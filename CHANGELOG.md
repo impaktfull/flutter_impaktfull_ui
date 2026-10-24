@@ -1,3 +1,9 @@
+# 0.79.1
+
+## Fix
+
+- Replaced `phosphor_flutter` with `phosphoricons_flutter`, so apps can build on Flutter 3.44 and newer (`IconData` became a `final` class, which `phosphor_flutter` extends)
+
 # 0.79.0
 
 ## Feature

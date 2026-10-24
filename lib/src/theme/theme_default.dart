@@ -87,7 +87,7 @@ import 'package:impaktfull_ui/src/models/asset.dart';
 import 'package:impaktfull_ui/src/theme/theme.dart';
 import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 import 'package:impaktfull_ui/src/util/extension/color_extensions.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:phosphoricons_flutter/phosphoricons_flutter.dart';
 
 class DefaultTheme {
   static ImpaktfullUiTheme<T> withMinimalChanges<T extends Object>({
@@ -796,7 +796,7 @@ class DefaultTheme {
           dimens: dimens,
           durations: durations,
           shadows: shadows,
-          brandedIcon: ImpaktfullUiAsset.icon(PhosphorIcons.confetti()),
+          brandedIcon: ImpaktfullUiAsset.icon(PhosphorIcons.confetti),
         ),
         stepper: ImpaktfullUiStepperTheme.getDefault(
           assets: assets,
