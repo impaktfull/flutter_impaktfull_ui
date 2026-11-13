@@ -17,6 +17,12 @@ class ImpaktfullUiIconButton extends StatelessWidget {
   final double? _size;
   final String? tooltip;
   final Color? backgroundColor;
+
+  /// The color of the border. When null, the `border` of the
+  /// [ImpaktfullUiIconButtonColorTheme] is used, and without one the icon
+  /// button has no border. The border is drawn inside the icon button with
+  /// the `borderWidth` of the theme, so it does not change its size.
+  final Color? borderColor;
   final bool canRequestFocus;
   final bool showNotificationBadge;
   final String? notificationBadgeText;
@@ -32,6 +38,7 @@ class ImpaktfullUiIconButton extends StatelessWidget {
     this.color,
     double? size,
     this.backgroundColor,
+    this.borderColor,
     this.tooltip,
     this.canRequestFocus = true,
     this.showNotificationBadge = false,
@@ -63,11 +70,21 @@ class ImpaktfullUiIconButton extends StatelessWidget {
       component: this,
       overrideComponentTheme: theme,
       builder: (context, componentTheme) {
+        final borderColor = this.borderColor ?? componentTheme.colors.border;
         final touchFeedback = ImpaktfullUiTouchFeedback(
           tooltip: tooltip,
           borderRadius: componentTheme.dimens.borderRadius,
           onTap: _onTap,
           color: backgroundColor ?? componentTheme.colors.background,
+          // Drawn inside the bounds, over the outer edge of the padding: the
+          // icon button keeps the same size with and without a border.
+          border: borderColor == null
+              ? null
+              : Border.all(
+                  color: borderColor,
+                  width: componentTheme.dimens.borderWidth,
+                  strokeAlign: BorderSide.strokeAlignInside,
+                ),
           canRequestFocus: canRequestFocus && !isDisabled,
           child: Padding(
             padding: componentTheme.dimens.padding,
@@ -110,6 +127,7 @@ class ImpaktfullUiIconButton extends StatelessWidget {
       size: _size,
       tooltip: tooltip,
       backgroundColor: backgroundColor,
+      borderColor: borderColor,
       canRequestFocus: canRequestFocus,
       showNotificationBadge: showNotificationBadge,
       notificationBadgeText: notificationBadgeText,

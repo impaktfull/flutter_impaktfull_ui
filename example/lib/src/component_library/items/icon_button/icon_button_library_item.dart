@@ -15,6 +15,7 @@ class IconButtonLibraryItem extends ComponentLibraryItem {
   List<ComponentLibraryVariant> getComponentVariants() {
     return [
       IconButtonTypeLibraryVariant(),
+      IconButtonOutlinedLibraryVariant(),
     ];
   }
 }
