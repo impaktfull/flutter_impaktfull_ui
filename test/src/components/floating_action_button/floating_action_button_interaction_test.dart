@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -106,8 +106,9 @@ void main() {
   group(
     'label width',
     () {
+      setUpAll(() async => loadImpaktfullUiFonts());
+
       testWidgets('a long expanded label is not clipped', (tester) async {
-        await loadImpaktfullUiFonts();
         const label = 'A very long label for a floating action button';
         await pumpAndSettleComponent(
           tester,

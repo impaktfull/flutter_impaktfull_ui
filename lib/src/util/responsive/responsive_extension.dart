@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/responsive_layout/responsive_layout.dart';
 
 // Deprecated: an unprefixed extension on BuildContext of every app that

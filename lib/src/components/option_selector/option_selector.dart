@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui/src/components/modal/modal.dart';
 import 'package:impaktfull_ui/src/components/option_selector/option_selector.dart';

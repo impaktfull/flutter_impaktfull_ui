@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/network_image/network_image_style.dart';
 import 'package:impaktfull_ui/src/components/network_image/widget/network_image_error.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';

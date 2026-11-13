@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker.dart';
 import 'package:impaktfull_ui/src/components/date_picker/date_picker_active_type.dart';
 import 'package:impaktfull_ui/src/components/date_picker/util/date_picker_bounds.dart';

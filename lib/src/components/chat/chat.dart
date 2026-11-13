@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.localizations.dart';
 import 'package:impaktfull_ui/src/components/chat/chat_style.dart';
 import 'package:impaktfull_ui/src/components/chat/model/chat_item.dart';

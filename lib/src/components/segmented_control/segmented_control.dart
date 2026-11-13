@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/segmented_control/segmented_control_style.dart';
 import 'package:impaktfull_ui/src/components/segmented_control/widget/segmented_control_item.dart';

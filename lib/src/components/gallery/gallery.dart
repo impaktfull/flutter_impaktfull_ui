@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/gallery/gallery.localizations.dart';
 import 'package:impaktfull_ui/src/components/gallery/gallery_style.dart';
 import 'package:impaktfull_ui/src/components/gallery/model/gallery_item.dart';

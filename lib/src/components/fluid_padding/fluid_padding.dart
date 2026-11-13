@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/fluid_padding/fluid_padding_breakpoint.dart';
 import 'package:impaktfull_ui/src/components/fluid_padding/fluid_padding_style.dart';
 import 'package:impaktfull_ui/src/util/extension/list_extension.dart';

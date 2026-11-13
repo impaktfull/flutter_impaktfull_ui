@@ -72,6 +72,21 @@ dependencies:
   impaktfull_ui: ^0.80.0
 ```
 
+### Flutter 3.50: `package:material_ui` instead of `package:flutter/material.dart`
+
+Flutter 3.50 deprecates `package:flutter/material.dart` and `package:flutter/cupertino.dart`: Material and Cupertino moved out of the framework into the packages [`material_ui`](https://pub.dev/packages/material_ui) and [`cupertino_ui`](https://pub.dev/packages/cupertino_ui). From 0.80.0 on, impaktfull_ui is built on those packages and needs Flutter 3.47 or newer (3.50 recommended).
+
+`material_ui` is a separate copy of Material, not a new name for the same classes: its `ThemeData`, `Theme` and `MaterialLocalizations` are other types than the ones of `package:flutter/material.dart`. So migrate your app in the same step:
+
+```bash
+# adds material_ui to pubspec.yaml and replaces the imports
+dart fix --apply --code=migrate_design_widgets
+```
+
+- A `ThemeData` you pass to `ImpaktfullUiApp` (`materialLightTheme`, `materialDarkTheme`) comes from `package:material_ui` after the fix. One from `package:flutter/material.dart` no longer compiles there.
+- If you use `GlobalMaterialLocalizations` or `GlobalCupertinoLocalizations` of `flutter_localizations`, use the classes with the same name from `material_ui` and `cupertino_ui` (`GlobalMaterialLocalizations.delegates` covers Flutter, Material and Cupertino).
+- Widgets of `package:flutter/material.dart` inside an `ImpaktfullUiApp` keep working while you (or a package you use) migrate: the app puts Flutter's `MaterialUiCompatibilityBridge` around its pages, which hands them the theme and the localizations of the app.
+
 ### Already on 0.80.0 or newer
 
 Run `dart fix --apply` whenever the analyzer reports a deprecation, and you stay ready for 1.0.0.

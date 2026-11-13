@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/app/debug/app_debug_flag.dart';
 import 'package:impaktfull_ui/src/components/localization/localization_configurator.dart';
 import 'package:impaktfull_ui/src/components/snacky/snacky_configurator.dart';
@@ -195,6 +195,17 @@ class ImpaktfullUiApp extends StatelessWidget {
                       ],
                       ...navigatorObservers,
                     ],
+                    // The pages, and the packages they use, may still be
+                    // built with `package:flutter/material.dart`, whose
+                    // `Theme` and `MaterialLocalizations` are other types than
+                    // the ones of `package:material_ui`. The bridge hands them
+                    // the theme and the localizations of this app, until every
+                    // package has moved to `package:material_ui`.
+                    builder: (context, child) =>
+                        // ignore: deprecated_member_use
+                        MaterialUiCompatibilityBridge(
+                      child: child ?? const SizedBox.shrink(),
+                    ),
                   ),
                 );
                 return builder?.call(context, app) ?? app;

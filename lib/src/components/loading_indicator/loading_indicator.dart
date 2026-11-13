@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/loading_indicator/loading_indicator_style.dart';
 import 'package:impaktfull_ui/src/models/asset.dart';

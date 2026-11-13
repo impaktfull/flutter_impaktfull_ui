@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/image_crop/overlay/image_crop_overlay.dart';
 
 class ImpaktfullUiImageCropSquareOverlay extends ImpaktfullUiImageCropOverlay {

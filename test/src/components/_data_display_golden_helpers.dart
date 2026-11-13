@@ -4,7 +4,8 @@
 // in `_data_display_test_helpers.dart`, which this file exports.
 
 import 'package:alchemist/alchemist.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import '../../util/material_ui_golden_helpers.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
@@ -42,7 +43,7 @@ void runComponentTestWithPump({
         'renders correctly',
         fileName: fileName,
         pumpBeforeTest: pumpBeforeTest,
-        builder: () => GoldenTestGroup(
+        builder: () => withAlchemistMaterialUiTheme(GoldenTestGroup(
           columns: columns,
           children: goldenTests()
               .map(
@@ -56,7 +57,7 @@ void runComponentTestWithPump({
                 ),
               )
               .toList(),
-        ),
+        )),
       );
     },
   );

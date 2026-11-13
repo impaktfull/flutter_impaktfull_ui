@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/color_input_field/color_input_field.localizations.dart';
 import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';

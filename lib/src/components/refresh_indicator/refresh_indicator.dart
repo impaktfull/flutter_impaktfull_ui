@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/refresh_indicator/refresh_indicator_style.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
 

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
@@ -56,6 +56,9 @@ void main() {
   });
 
   group('with data', () {
+    // The real fonts, so a long title is measured like in an app.
+    setUpAll(() async => loadImpaktfullUiFonts());
+
     testWidgets('onTap is not used', (tester) async {
       await pumpAndSettleComponent(
         tester,
@@ -134,7 +137,6 @@ void main() {
         (tester) async {
       const title = 'a_very_long_file_name_that_does_not_fit_on_a_single_line'
           '_of_the_file_picker.pdf';
-      await loadImpaktfullUiFonts();
       await pumpAndSettleComponent(
         tester,
         wrap(ImpaktfullUiFilePicker(

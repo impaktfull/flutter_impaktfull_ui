@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/bottom_actions/bottom_actions_style.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';

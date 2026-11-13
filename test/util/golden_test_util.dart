@@ -1,5 +1,6 @@
 import 'package:alchemist/alchemist.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'material_ui_golden_helpers.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
@@ -84,7 +85,8 @@ void _runComponentTest({
         description,
         fileName: fileName,
         pumpBeforeTest: pumpBeforeTest ?? onlyPumpAndSettle,
-        builder: () => ImpaktfullUiAutoLayout.vertical(
+        builder: () =>
+            withAlchemistMaterialUiTheme(ImpaktfullUiAutoLayout.vertical(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GoldenTestGroup(
@@ -116,7 +118,7 @@ void _runComponentTest({
                   .toList(),
             ),
           ],
-        ),
+        )),
       );
     },
   );

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/auto_layout/auto_layout.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/progress_indicator.dart';
 import 'package:impaktfull_ui/src/components/progress_indicator/widget/progress_indicator_semantics.dart';

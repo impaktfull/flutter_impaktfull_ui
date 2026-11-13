@@ -1,7 +1,7 @@
 // Every deprecated name with a data-driven fix in lib/fix_data.yaml.
 // `dart fix --compare-to-golden` (run from this folder) applies the fixes to
 // this file and compares the result with deprecated_names.dart.expect.
-import 'package:flutter/material.dart' show TabController;
+import 'package:material_ui/material_ui.dart' show TabController;
 import 'package:flutter/widgets.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 

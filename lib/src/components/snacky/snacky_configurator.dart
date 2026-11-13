@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/snacky/snacky_builder.dart';
 import 'package:impaktfull_ui/src/components/snacky/snacky_configurator_style.dart';
 import 'package:impaktfull_ui/src/widget/override_components/overridable_component_builder.dart';
