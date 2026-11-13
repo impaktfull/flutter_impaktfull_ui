@@ -5,11 +5,26 @@ import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 import 'test_file/test_file.dart';
 
+/// Loads the fonts of [theme] (the default theme without one).
+///
+/// Call it from `setUpAll` or `setUp`, never from the body of a `testWidgets`.
+/// A loaded font makes the engine send a `fontsChange` message, which is
+/// handled outside the fake async zone of the test body: only after the body
+/// has finished. Every attached text then schedules a frame callback that no
+/// pump runs anymore, and the test fails with "An animation is still running
+/// even after the widget tree was disposed" (Flutter 3.50 and later).
 Future<void> loadImpaktfullUiFonts({
   ImpaktfullUiTheme? theme,
   ImpaktfullUiTestFontLoader? fontLoader,
 }) async {
-  TestWidgetsFlutterBinding.ensureInitialized();
+  final binding = TestWidgetsFlutterBinding.ensureInitialized();
+  if (binding.inTest) {
+    throw StateError(
+      'loadImpaktfullUiFonts() was called inside a testWidgets body. Call it '
+      'from setUpAll or setUp instead: the fontsChange message of a font that '
+      'is loaded during a widget test only arrives after the test has ended.',
+    );
+  }
   final testFontLoader = fontLoader ?? ImpaktfullUiTestFontLoader();
   final testTheme = theme ?? ImpaktfullUiTheme.getDefault();
   final textStyles = _getTextStyles(testTheme.textStyles.all);

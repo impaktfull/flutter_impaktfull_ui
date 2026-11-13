@@ -106,8 +106,9 @@ void main() {
   group(
     'label width',
     () {
+      setUpAll(() async => loadImpaktfullUiFonts());
+
       testWidgets('a long expanded label is not clipped', (tester) async {
-        await loadImpaktfullUiFonts();
         const label = 'A very long label for a floating action button';
         await pumpAndSettleComponent(
           tester,
