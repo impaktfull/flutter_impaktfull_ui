@@ -86,4 +86,51 @@ void main() {
       ),
     ],
   );
+
+  // A static alert in a page: no close button, no onTap, no shadow, and the
+  // background, the border and the text in the colours of the type. The tints
+  // come from the type colours of each shipped theme, so they also work in
+  // the dark themes.
+  runComponentTest(
+    fileName: 'impaktfull_ui_notification_tinted',
+    goldenTests: () => [
+      for (final type in ImpaktfullUiNotificationType.values)
+        GoldenTest(
+          description: 'Tinted ${type.name}',
+          child: Builder(
+            builder: (context) => ImpaktfullUiNotification(
+              width: _width,
+              type: type,
+              title: 'Title of ${type.name}',
+              subtitle: 'The subtitle of the notification',
+              theme: _tinted(ImpaktfullUiNotificationTheme.of(context)),
+            ),
+          ),
+        ),
+    ],
+  );
+}
+
+/// [theme] with a background tinted with the colour of each type, a border
+/// and a text in that colour, and no shadow.
+ImpaktfullUiNotificationTheme _tinted(ImpaktfullUiNotificationTheme theme) {
+  final colors = theme.colors;
+  Color tint(Color color) =>
+      Color.alphaBlend(color.withValues(alpha: 0.12), colors.background);
+  return theme.copyWith(
+    colors: colors.copyWith(
+      brandedBackground: tint(colors.branded),
+      brandedText: colors.branded,
+      errorBackground: tint(colors.error),
+      errorText: colors.error,
+      infoBackground: tint(colors.info),
+      infoText: colors.info,
+      matchBorderWithType: true,
+      successBackground: tint(colors.success),
+      successText: colors.success,
+      warningBackground: tint(colors.warning),
+      warningText: colors.warning,
+    ),
+    shadows: theme.shadows.copyWith(card: const []),
+  );
 }

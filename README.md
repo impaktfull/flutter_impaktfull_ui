@@ -420,6 +420,29 @@ final theme = base.copyWith(
 
 A `snackyBuilder` on the `ImpaktfullUiSnackyConfigurator` itself still wins over the one of the theme.
 
+#### A notification in the colours of its type
+
+By default every type of `ImpaktfullUiNotification` has the same background and text, and the type only colours the icon (and the border with `matchBorderWithType`). For a tinted alert, set a background and a text colour per type. A type without one keeps the shared `background` and the colours of the text styles. It applies to an inline notification and to a snack of `ImpaktfullUiNotification.show` alike:
+
+```dart
+final notification = base.components.notification;
+final theme = base.copyWith(
+  components: base.components.copyWith(
+    notification: notification.copyWith(
+      colors: notification.colors.copyWith(
+        matchBorderWithType: true,
+        successBackground: const Color(0xFFF6FFED),
+        successText: const Color(0xFF135200),
+        errorBackground: const Color(0xFFFFF2F0),
+        errorText: const Color(0xFF820014),
+      ),
+    ),
+  ),
+);
+```
+
+The text colour is used for the title, the subtitle, the close button and the chevron. The icon keeps the colour of the type (`success`, `error`, ...).
+
 #### Design system themes
 
 Two themes in the style of a well known design system ship with the package, built with the same public API:
