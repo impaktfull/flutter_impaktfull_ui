@@ -432,7 +432,20 @@ ImpaktfullUiApp(
 );
 ```
 
-They are not ports and not affiliated with those design systems: what a theme can and cannot reach is in [doc/design-system-themes.md](doc/design-system-themes.md), together with the token tables. Both are in the theme picker of the example app, and each has a golden test, so a component that starts hardcoding a size or a color breaks them.
+They are not ports and not affiliated with those design systems: what a theme can and cannot reach is in [doc/design-system-themes.md](doc/design-system-themes.md), together with the token tables.
+
+An app whose web app is built on shadcn/ui passes the tokens of its own shadcn/ui theme, the CSS variables of its `globals.css`, and gets the same palette, radius and fonts:
+
+```dart
+ImpaktfullUiShadcnTheme.light(
+  colors: ImpaktfullUiShadcnColors.light.copyWith(
+    primary: const Color(0xFF0E1726), // --primary
+    ring: const Color(0xFF2563EB), // --ring
+  ),
+  radius: 12, // --radius
+  fontFamily: 'Inter',
+);
+``` Both are in the theme picker of the example app, and each has a golden test, so a component that starts hardcoding a size or a color breaks them.
 
 #### Changing a single token
 

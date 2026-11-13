@@ -409,4 +409,263 @@ void main() {
       'Geist',
     );
   });
+  group('the tokens of your own shadcn/ui theme', () {
+    test('the default colors are the default base color', () {
+      expect(
+          ImpaktfullUiShadcnTheme.light(colors: ImpaktfullUiShadcnColors.light),
+          light);
+      expect(
+          ImpaktfullUiShadcnTheme.dark(colors: ImpaktfullUiShadcnColors.dark),
+          dark);
+    });
+
+    const brand = Color(0xFF0E7C66);
+    const onBrand = Color(0xFFFFFFF0);
+    const surface = Color(0xFFF4F1EA);
+    const muted = Color(0xFFEDE8DD);
+    const mutedText = Color(0xFF6B6455);
+    const accent = Color(0xFFE6F2EF);
+    const secondary = Color(0xFFDDEFE9);
+    const onSecondary = Color(0xFF0B3D33);
+    const line = Color(0xFFD9D2C3);
+    const ring = Color(0xFF2E9C83);
+    const red = Color(0xFFC62828);
+    const amber = Color(0xFFB7791F);
+    const green = Color(0xFF2F855A);
+    const blue = Color(0xFF2B6CB0);
+    final colors = ImpaktfullUiShadcnColors.light.copyWith(
+      background: surface,
+      foreground: const Color(0xFF1B1A17),
+      card: const Color(0xFFFFFFFF),
+      primary: brand,
+      primaryForeground: onBrand,
+      secondary: secondary,
+      secondaryForeground: onSecondary,
+      muted: muted,
+      mutedForeground: mutedText,
+      accent: accent,
+      destructive: red,
+      border: line,
+      ring: ring,
+      warning: amber,
+      success: green,
+      info: blue,
+    );
+    final theme = ImpaktfullUiShadcnTheme.light(colors: colors);
+
+    test('reach the base tokens', () {
+      expect(theme.colors.accent, brand);
+      expect(theme.colors.textOnAccent, onBrand);
+      expect(theme.colors.primary, brand);
+      expect(theme.colors.canvas, surface);
+      expect(theme.colors.card, const Color(0xFFFFFFFF));
+      expect(theme.colors.card2, muted);
+      expect(theme.colors.secondary, secondary);
+      expect(theme.colors.textSecondary, mutedText);
+      expect(theme.colors.border, line);
+      expect(theme.colors.text, const Color(0xFF1B1A17));
+      expect(theme.colors.destructive, red);
+      expect(theme.colors.error, red);
+      expect(theme.colors.warning, amber);
+      expect(theme.colors.success, green);
+      expect(theme.colors.info, blue);
+    });
+
+    test('reach the components that shadcn/ui colors itself', () {
+      final components = theme.components;
+      expect(components.button.colors.primaryHover?.background,
+          brand.withValues(alpha: 0.9));
+      expect(components.button.colors.secondaryHover?.background, accent);
+      expect(components.button.colors.tertiaryHover?.background, accent);
+      expect(components.inputField.colors.borderFocused, ring);
+      expect(
+          components.inputField.colors.focusRing, ring.withValues(alpha: 0.5));
+      expect(components.touchFeedback.focusRing.color,
+          ring.withValues(alpha: 0.5));
+      expect(components.switchTheme.colors.activeBackground, brand);
+      expect(components.switchTheme.colors.inactiveBackground, line);
+      expect(components.switchTheme.colors.active, surface);
+      expect(components.badge.colors.primaryBackground, brand);
+      expect(components.badge.colors.primaryText, onBrand);
+      expect(components.badge.colors.secondaryBackground, secondary);
+      expect(components.badge.colors.secondaryText, onSecondary);
+      expect(components.badge.colors.errorBackground, red);
+      expect(components.badge.colors.warningBackground, amber);
+      expect(components.badge.colors.successBackground, green);
+      expect(components.radioButton.colors.borderSelected, brand);
+      expect(components.radioButton.colors.centerSelectedBackground, onBrand);
+      expect(components.tabBar.colors.background, muted);
+      expect(components.tabBarItem.colors.selectedBackground, surface);
+      expect(components.segmentedControl.colors.background, muted);
+      expect(components.tooltip.colors.background, brand);
+      expect(components.skeleton.colors.background, muted);
+      expect(components.skeleton.colors.highlight, line);
+      expect(components.divider.colors.color, line);
+      expect(components.notificationBadge.colors.border, surface);
+      expect(components.autoComplete.colors.highlightedItem, accent);
+      expect(components.notification.colors.error, red);
+    });
+
+    test('in dark, the surfaces of the active items are the card', () {
+      final darkTheme = ImpaktfullUiShadcnTheme.dark(
+        colors: ImpaktfullUiShadcnColors.dark.copyWith(
+          card: const Color(0xFF202020),
+          muted: const Color(0xFF303030),
+          mutedForeground: const Color(0xFF909090),
+        ),
+      );
+      final components = darkTheme.components;
+      expect(darkTheme.brightness, Brightness.dark);
+      expect(components.tabBarItem.colors.selectedBackground,
+          const Color(0xFF202020));
+      expect(components.switchTheme.colors.inactiveBackground,
+          const Color(0xFF303030));
+      expect(components.skeleton.colors.highlight, const Color(0xFF909090));
+    });
+
+    test('--radius grows the whole scale like in shadcn/ui', () {
+      final rounder = ImpaktfullUiShadcnTheme.light(radius: 16);
+      expect(rounder.dimens.borderRadiusSmall, BorderRadius.circular(12));
+      expect(rounder.dimens.borderRadius, BorderRadius.circular(14));
+      expect(rounder.dimens.borderRadiusLarge, BorderRadius.circular(16));
+      expect(rounder.dimens.borderRadiusExtraLarge, BorderRadius.circular(20));
+      expect(rounder.components.card.dimens.borderRadius,
+          BorderRadius.circular(20));
+      expect(rounder.components.modal.dimens.borderRadius,
+          BorderRadius.circular(16));
+      expect(rounder.components.bottomSheet.dimens.borderRadius,
+          BorderRadius.circular(16));
+      expect(rounder.components.iconButton.dimens.borderRadius,
+          BorderRadius.circular(14));
+      expect(rounder.components.simpleListItem.dimens.borderRadius,
+          BorderRadius.circular(12));
+      expect(rounder.components.tabBar.dimens.borderRadius,
+          BorderRadius.circular(16));
+      expect(rounder.components.tabBarItem.dimens.borderRadius,
+          BorderRadius.circular(14));
+    });
+
+    test('a radius of 0 makes everything square, never negative', () {
+      final square = ImpaktfullUiShadcnTheme.light(radius: 0);
+      expect(square.dimens.borderRadiusSmall, BorderRadius.zero);
+      expect(square.dimens.borderRadius, BorderRadius.zero);
+      expect(square.dimens.borderRadiusLarge, BorderRadius.zero);
+      expect(square.dimens.borderRadiusExtraLarge, BorderRadius.circular(4));
+    });
+
+    testWidgets('a control is drawn with the radius of --radius-md',
+        (tester) async {
+      await pumpImpaktfullUiApp(
+        tester,
+        Center(
+          child: ImpaktfullUiIconButton(
+            onTap: () {},
+            asset: ImpaktfullUiAsset.icon(Icons.add),
+          ),
+        ),
+        theme: ImpaktfullUiShadcnTheme.light(radius: 20),
+      );
+      final feedback = tester.widget<ImpaktfullUiTouchFeedback>(
+        find.descendant(
+          of: find.byType(ImpaktfullUiIconButton),
+          matching: find.byType(ImpaktfullUiTouchFeedback),
+        ),
+      );
+      expect(feedback.borderRadius, BorderRadius.circular(18));
+    });
+
+    test('fontFamilyDisplay is the font of the display styles', () {
+      final fonts = ImpaktfullUiShadcnTheme.light(
+        fontFamily: 'Inter',
+        fontFamilyDisplay: 'Plus Jakarta Sans',
+      );
+      expect(fonts.textStyles.onCanvas.text.medium.fontFamily, 'Inter');
+      expect(fonts.textStyles.onCanvas.display.medium.fontFamily,
+          'Plus Jakarta Sans');
+      final one = ImpaktfullUiShadcnTheme.light(fontFamily: 'Geist');
+      expect(one.textStyles.onCanvas.display.medium.fontFamily, 'Geist');
+    });
+
+    test('label names the theme', () {
+      expect(ImpaktfullUiShadcnTheme.light(label: 'Brand').label, 'Brand');
+      expect(ImpaktfullUiShadcnTheme.dark(label: 'Brand dark').label,
+          'Brand dark');
+    });
+
+    test('a customTheme rides along', () {
+      final custom = ImpaktfullUiShadcnTheme.light<String>(
+        colors: colors,
+        customTheme: 'brand',
+      );
+      expect(custom.customTheme, 'brand');
+    });
+  });
+
+  group('ImpaktfullUiShadcnColors', () {
+    test('compares by value', () {
+      expect(
+        ImpaktfullUiShadcnColors.light.copyWith(),
+        ImpaktfullUiShadcnColors.light,
+      );
+      expect(
+        ImpaktfullUiShadcnColors.light.copyWith().hashCode,
+        ImpaktfullUiShadcnColors.light.hashCode,
+      );
+      expect(
+        ImpaktfullUiShadcnColors.light.copyWith(primary: Colors.red),
+        isNot(ImpaktfullUiShadcnColors.light),
+      );
+    });
+
+    test('copyWith changes every field', () {
+      const value = Color(0xFF123456);
+      final all = ImpaktfullUiShadcnColors.light.copyWith(
+        accent: value,
+        background: value,
+        border: value,
+        card: value,
+        destructive: value,
+        foreground: value,
+        info: value,
+        muted: value,
+        mutedForeground: value,
+        primary: value,
+        primaryForeground: value,
+        ring: value,
+        secondary: value,
+        secondaryForeground: value,
+        success: value,
+        warning: value,
+      );
+      expect(all.accent, value);
+      expect(all.background, value);
+      expect(all.border, value);
+      expect(all.card, value);
+      expect(all.destructive, value);
+      expect(all.foreground, value);
+      expect(all.info, value);
+      expect(all.muted, value);
+      expect(all.mutedForeground, value);
+      expect(all.primary, value);
+      expect(all.primaryForeground, value);
+      expect(all.ring, value);
+      expect(all.secondary, value);
+      expect(all.secondaryForeground, value);
+      expect(all.success, value);
+      expect(all.warning, value);
+    });
+
+    test('light and dark are the variables of the default base color', () {
+      expect(ImpaktfullUiShadcnColors.light.primary,
+          ImpaktfullUiShadcnTheme.primary);
+      expect(ImpaktfullUiShadcnColors.light.secondaryForeground,
+          ImpaktfullUiShadcnTheme.primary);
+      expect(ImpaktfullUiShadcnColors.dark.primary,
+          ImpaktfullUiShadcnTheme.primaryDark);
+      expect(ImpaktfullUiShadcnColors.dark.secondaryForeground,
+          ImpaktfullUiShadcnTheme.foregroundDark);
+      expect(ImpaktfullUiShadcnColors.light.warning,
+          ImpaktfullUiShadcnTheme.warning);
+    });
+  });
 }

@@ -1,6 +1,8 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
+export 'shadcn_colors.dart';
+
 /// An [ImpaktfullUiTheme] in the style of shadcn/ui.
 ///
 /// This is not a port of shadcn/ui and it is not affiliated with it: the
@@ -146,49 +148,105 @@ abstract final class ImpaktfullUiShadcnTheme {
     ),
   ];
 
+  /// `--radius: 0.625rem`, the seed of the radius scale of shadcn/ui.
+  static const radius = radiusLarge;
+
   /// The light theme of shadcn/ui: the `:root` block of its `default` base
   /// color.
+  ///
+  /// Pass the tokens of your own shadcn/ui theme to follow it, the same way a
+  /// shadcn/ui project is themed by replacing its CSS variables:
+  ///
+  /// - [colors]: the colour variables of `:root`
+  ///   ([ImpaktfullUiShadcnColors.light] by default).
+  /// - [radius]: `--radius` (10 by default). The steps follow it like in
+  ///   shadcn/ui: `--radius-sm` is `radius - 4`, `--radius-md` (a control)
+  ///   `radius - 2`, `--radius-lg` (a dialog) `radius` and `--radius-xl` (a
+  ///   card) `radius + 4`.
+  /// - [fontFamily]: `--font-sans`, the font of every text, and
+  ///   [fontFamilyDisplay] for the display styles (headings) when they use
+  ///   another family. This package bundles no fonts: declare them in the
+  ///   `pubspec.yaml` of the app.
+  /// - [label]: the name of the theme, `shadcn/ui` by default.
+  ///
+  /// Every component that is not set here keeps the look of
+  /// [ImpaktfullUiDefaultTheme.withMinimalChanges]; change a single
+  /// component afterwards with `copyWith`.
   static ImpaktfullUiTheme<T> light<T extends Object>({
+    ImpaktfullUiShadcnColors colors = ImpaktfullUiShadcnColors.light,
+    double radius = ImpaktfullUiShadcnTheme.radius,
     String? fontFamily,
+    String? fontFamilyDisplay,
+    String? label,
     T? customTheme,
   }) =>
       _build(
         brightness: Brightness.light,
+        colors: colors,
+        radius: radius,
         fontFamily: fontFamily,
+        fontFamilyDisplay: fontFamilyDisplay,
+        label: label ?? 'shadcn/ui',
         customTheme: customTheme,
       );
 
   /// The dark theme of shadcn/ui: the `.dark` block of its `default` base
   /// color.
+  ///
+  /// Takes the same tokens as [light], with the colour variables of `.dark`
+  /// ([ImpaktfullUiShadcnColors.dark] by default).
   static ImpaktfullUiTheme<T> dark<T extends Object>({
+    ImpaktfullUiShadcnColors colors = ImpaktfullUiShadcnColors.dark,
+    double radius = ImpaktfullUiShadcnTheme.radius,
     String? fontFamily,
+    String? fontFamilyDisplay,
+    String? label,
     T? customTheme,
   }) =>
       _build(
         brightness: Brightness.dark,
+        colors: colors,
+        radius: radius,
         fontFamily: fontFamily,
+        fontFamilyDisplay: fontFamilyDisplay,
+        label: label ?? 'shadcn/ui (dark)',
         customTheme: customTheme,
       );
 
+  /// A step of the radius scale: `radius + delta`, never below 0.
+  static double _radiusStep(double radius, double delta) =>
+      (radius + delta).clamp(0, double.infinity).toDouble();
+
   static ImpaktfullUiTheme<T> _build<T extends Object>({
     required Brightness brightness,
+    required ImpaktfullUiShadcnColors colors,
+    required double radius,
+    required String label,
     String? fontFamily,
+    String? fontFamilyDisplay,
     T? customTheme,
   }) {
     final isDark = brightness == Brightness.dark;
-    final primaryColor = isDark ? primaryDark : primary;
-    final onPrimary = isDark ? primaryForegroundDark : primaryForeground;
-    final mutedColor = isDark ? mutedDark : muted;
-    final mutedText = isDark ? mutedForegroundDark : mutedForeground;
-    final borderColor = isDark ? borderDark : border;
-    final textColor = isDark ? foregroundDark : foreground;
-    final destructiveColor = isDark ? destructiveDark : destructive;
-    final ringColor = isDark ? ringDark : ring;
+    final primaryColor = colors.primary;
+    final onPrimary = colors.primaryForeground;
+    final mutedColor = colors.muted;
+    final mutedText = colors.mutedForeground;
+    final accentColor = colors.accent;
+    final borderColor = colors.border;
+    final textColor = colors.foreground;
+    final destructiveColor = colors.destructive;
+    final backgroundColor = colors.background;
+    final cardColor = colors.card;
+    final ringColor = colors.ring;
     // `focus-visible:ring-ring/50`.
     final focusRing = ringColor.withValues(alpha: 0.5);
+    final radiusSmall = _radiusStep(radius, -4);
+    final radiusMedium = _radiusStep(radius, -2);
+    final radiusLarge = radius;
+    final radiusExtraLarge = _radiusStep(radius, 4);
 
     final base = ImpaktfullUiDefaultTheme.withMinimalChanges<T>(
-      label: isDark ? 'shadcn/ui (dark)' : 'shadcn/ui',
+      label: label,
       brightness: brightness,
       // `--primary` is the background of a primary button, which this package
       // takes from `accent`.
@@ -198,21 +256,21 @@ abstract final class ImpaktfullUiShadcnTheme {
       textOnPrimary: onPrimary,
       // `--secondary` is a surface, not a text color, so `textSecondary` has
       // to be passed too: it follows `secondary` otherwise.
-      secondary: mutedColor,
+      secondary: colors.secondary,
       textSecondary: mutedText,
       tertiary: mutedText,
       textTertiary: mutedText,
-      canvas: isDark ? backgroundDark : background,
-      card: isDark ? cardDark : card,
+      canvas: backgroundColor,
+      card: cardColor,
       card2: mutedColor,
       border: borderColor,
       text: textColor,
       shadow: Colors.black,
       destructive: destructiveColor,
       error: destructiveColor,
-      warning: warning,
-      success: success,
-      info: info,
+      warning: colors.warning,
+      success: colors.success,
+      info: colors.info,
       // `rounded-md` is the radius of a control, so it is the seed. The two
       // steps above it are shadcn's own `--radius-lg` and `--radius-xl`
       // instead of the `+ 4` / `+ 8` of the seed.
@@ -228,7 +286,7 @@ abstract final class ImpaktfullUiShadcnTheme {
       // control, so `small` is `text-xs` (12) and `large` `text-base`.
       fontSizeText: 14,
       heightText: 1.5,
-      fontFamilyDisplay: fontFamily,
+      fontFamilyDisplay: fontFamilyDisplay ?? fontFamily,
       fontFamilyText: fontFamily,
       package: null,
       customTheme: customTheme,
@@ -308,11 +366,11 @@ abstract final class ImpaktfullUiShadcnTheme {
               background: destructiveColor.withValues(alpha: 0.9),
             ),
             secondaryHover: ImpaktfullUiButtonStateColorTheme(
-              background: mutedColor,
+              background: accentColor,
               text: textColor,
             ),
             tertiaryHover: ImpaktfullUiButtonStateColorTheme(
-              background: mutedColor,
+              background: accentColor,
               text: textColor,
             ),
           ),
@@ -395,10 +453,10 @@ abstract final class ImpaktfullUiShadcnTheme {
         // the track is the thumb plus 1.2 above and below it.
         switchTheme: components.switchTheme.copyWith(
           colors: components.switchTheme.colors.copyWith(
-            inactiveBackground: isDark ? mutedDark : border,
+            inactiveBackground: isDark ? mutedColor : borderColor,
             activeBackground: primaryColor,
-            active: isDark ? primaryForegroundDark : background,
-            inactive: isDark ? foregroundDark : background,
+            active: isDark ? onPrimary : backgroundColor,
+            inactive: isDark ? textColor : backgroundColor,
           ),
           dimens: components.switchTheme.dimens.copyWith(
             thumbSize: 16,
@@ -418,9 +476,9 @@ abstract final class ImpaktfullUiShadcnTheme {
             primaryText: onPrimary,
             primaryBorder: Colors.transparent,
             primaryBackground: primaryColor,
-            secondaryText: isDark ? foregroundDark : primary,
+            secondaryText: colors.secondaryForeground,
             secondaryBorder: Colors.transparent,
-            secondaryBackground: mutedColor,
+            secondaryBackground: colors.secondary,
             neutralText: textColor,
             neutralBorder: borderColor,
             neutralBackground: Colors.transparent,
@@ -429,10 +487,10 @@ abstract final class ImpaktfullUiShadcnTheme {
             errorBackground: destructiveColor,
             warningText: Colors.white,
             warningBorder: Colors.transparent,
-            warningBackground: warning,
+            warningBackground: colors.warning,
             successText: Colors.white,
             successBorder: Colors.transparent,
-            successBackground: success,
+            successBackground: colors.success,
           ),
         ),
         // `table.tsx`: `hover:bg-muted/50` on a row,
@@ -543,7 +601,7 @@ abstract final class ImpaktfullUiShadcnTheme {
             // Only the active tab has a background of its own; the others let
             // the `bg-muted` of the list show through.
             background: Colors.transparent,
-            selectedBackground: isDark ? cardDark : background,
+            selectedBackground: isDark ? cardColor : backgroundColor,
           ),
           dimens: components.tabBarItem.dimens.copyWith(
             borderRadius: BorderRadius.circular(radiusMedium),
@@ -622,7 +680,7 @@ abstract final class ImpaktfullUiShadcnTheme {
         skeleton: components.skeleton.copyWith(
           colors: components.skeleton.colors.copyWith(
             background: mutedColor,
-            highlight: isDark ? mutedForegroundDark : border,
+            highlight: isDark ? mutedText : borderColor,
           ),
           dimens: components.skeleton.dimens.copyWith(
             borderRadius: BorderRadius.circular(radiusMedium),
@@ -652,7 +710,7 @@ abstract final class ImpaktfullUiShadcnTheme {
             // no border around either of them.
             background: mutedColor,
             border: Colors.transparent,
-            activeBackground: isDark ? cardDark : background,
+            activeBackground: isDark ? cardColor : backgroundColor,
             activeBorder: Colors.transparent,
           ),
           dimens: components.segmentedControl.dimens.copyWith(
@@ -686,7 +744,7 @@ abstract final class ImpaktfullUiShadcnTheme {
         horizontalTab: components.horizontalTab.copyWith(
           colors: components.horizontalTab.colors.copyWith(
             backgroundUnSelectedTab: Colors.transparent,
-            backgroundSelectedTab: isDark ? cardDark : background,
+            backgroundSelectedTab: isDark ? cardColor : backgroundColor,
           ),
           dimens: components.horizontalTab.dimens.copyWith(
             borderRadius: BorderRadius.circular(radiusMedium),
@@ -795,7 +853,7 @@ abstract final class ImpaktfullUiShadcnTheme {
         notificationBadge: components.notificationBadge.copyWith(
           colors: components.notificationBadge.colors.copyWith(
             background: destructiveColor,
-            border: isDark ? backgroundDark : background,
+            border: backgroundColor,
           ),
           dimens: components.notificationBadge.dimens.copyWith(
             borderWidth: 2,
@@ -835,7 +893,7 @@ abstract final class ImpaktfullUiShadcnTheme {
         // `command.tsx` again: the suggestions of a combobox.
         autoComplete: components.autoComplete.copyWith(
           colors: components.autoComplete.colors.copyWith(
-            highlightedItem: mutedColor,
+            highlightedItem: accentColor,
           ),
           dimens: components.autoComplete.dimens.copyWith(spacing: 4),
         ),

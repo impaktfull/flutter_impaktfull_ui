@@ -78,7 +78,7 @@ and a `padding` inside it, and the tab has a `selectedMarker`.
 
 | | shadcn/ui | Ant Design 5 |
 |---|---|---|
-| Palette | the `default` base color (`--background`, `--foreground`, `--primary`, `--muted`, `--destructive`, `--border`, `--ring`), light and dark | the seed and alias tokens of both algorithms (`colorPrimary`, `colorText`, `colorBorder`, `colorBgContainer`, `colorBgLayout`, `colorFillAlter`) |
+| Palette | the `default` base color (`--background`, `--foreground`, `--primary`, `--secondary`, `--muted`, `--accent`, `--destructive`, `--border`, `--ring`), light and dark, or your own (see below) | the seed and alias tokens of both algorithms (`colorPrimary`, `colorText`, `colorBorder`, `colorBgContainer`, `colorBgLayout`, `colorFillAlter`) |
 | Radius | `--radius-sm` 6, `--radius-md` 8 (controls), `--radius-lg` 10 (dialog), `--radius-xl` 14 (card) | `borderRadius` 6 (controls), `borderRadiusLG` 8 (card, modal) |
 | Control height | `h-8` / `h-9` / `h-10` on the button, `h-9` on the input field | `controlHeightSM` 24 / `controlHeight` 32 / `controlHeightLG` 40, on the button and the input field |
 | Typography | `text-sm` (14) with `leading-normal`, `font-medium` on a button | `fontSize` 14 with a line box of 22 |
@@ -123,6 +123,42 @@ reason the presets are "in the style of" instead of a port.
   `fontFamily`. Ant Design's `fontFamily` is a stack that starts at the font
   of the platform, which is what Flutter renders without a family, so the Ant
   preset sets none.
+
+## Your own shadcn/ui theme
+
+A shadcn/ui project is themed by replacing the CSS variables in its
+`globals.css`. `ImpaktfullUiShadcnTheme` takes the same tokens, so an app whose
+web app is built on shadcn/ui renders its components in the same palette,
+radius and fonts:
+
+```dart
+final theme = ImpaktfullUiShadcnTheme.light(
+  colors: ImpaktfullUiShadcnColors.light.copyWith(
+    primary: const Color(0xFF0E1726), // --primary
+    primaryForeground: const Color(0xFFFFFFFF), // --primary-foreground
+    ring: const Color(0xFF2563EB), // --ring
+    border: const Color(0xFFE2E8F0), // --border
+  ),
+  radius: 12, // --radius
+  fontFamily: 'Inter', // --font-sans
+  fontFamilyDisplay: 'Plus Jakarta Sans', // the headings
+  label: 'My brand',
+);
+```
+
+| Parameter | shadcn/ui | Default |
+|---|---|---|
+| `colors` | the colour variables of `:root` (`.dark` for `dark()`): `--background`, `--foreground`, `--card`, `--primary`, `--primary-foreground`, `--secondary`, `--secondary-foreground`, `--muted`, `--muted-foreground`, `--accent`, `--destructive`, `--border`, `--ring`, plus `warning`, `success` and `info`, which shadcn/ui has no variable for | `ImpaktfullUiShadcnColors.light` / `.dark`: the `default` base color |
+| `radius` | `--radius`; `--radius-sm` is `radius - 4`, `--radius-md` (a control) `radius - 2`, `--radius-lg` (a dialog) `radius`, `--radius-xl` (a card) `radius + 4`, never below 0 | 10 (`0.625rem`) |
+| `fontFamily` | `--font-sans`, every text | the platform font |
+| `fontFamilyDisplay` | the font of the headings, when it differs | `fontFamily` |
+| `label` | the name of the theme | `shadcn/ui` / `shadcn/ui (dark)` |
+
+CSS declares the colours as `oklch`: convert them to sRGB for a `Color` (any
+colour converter that takes `oklch` does it). The sizes of the components
+(control heights, paddings, the focus ring width) are shadcn/ui's and do not
+change with the tokens; change a single component afterwards with `copyWith`,
+as described in the README.
 
 ## Building your own
 
