@@ -889,7 +889,9 @@ abstract final class ImpaktfullUiShadcnTheme {
             iconSize: 16,
           ),
         ),
-        // `label.tsx` above a group: `text-sm font-medium` with `gap-2`.
+        // `label.tsx` above a group: `text-sm font-medium` with `gap-2`. The
+        // subtitle keeps its default, `textTertiary`, which is the
+        // `text-muted-foreground` of a `CardDescription` here.
         sectionTitle: components.sectionTitle.copyWith(
           dimens: components.sectionTitle.dimens.copyWith(spacing: 8),
         ),

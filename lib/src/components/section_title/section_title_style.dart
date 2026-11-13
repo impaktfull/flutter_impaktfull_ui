@@ -41,21 +41,19 @@ class ImpaktfullUiSectionTitleTheme extends ImpaktfullUiComponentTheme {
   }) =>
       ImpaktfullUiSectionTitleTheme(
         assets: const ImpaktfullUiSectionTitleAssetsTheme(),
-        colors: ImpaktfullUiSectionTitleColorTheme(
-          icons: colors.text,
-        ),
+        colors: ImpaktfullUiSectionTitleColorTheme(icons: colors.text),
         dimens: const ImpaktfullUiSectionTitleDimensTheme(
-          margin: EdgeInsetsDirectional.only(
-            start: 16,
-            end: 16,
-            top: 16,
-          ),
+          margin: EdgeInsetsDirectional.only(start: 16, end: 16, top: 16),
           marginWithIconButtonActions: EdgeInsetsDirectional.only(
             start: 16,
             end: 4,
           ),
+          overlineSpacing: 4,
+          subtitleSpacing: 4,
         ),
         textStyles: ImpaktfullUiSectionTitleTextStyleTheme(
+          overline: textStyles.onCardAccent.text.extraSmall.semiBold,
+          subtitle: textStyles.onCardTertiary.text.small,
           title: textStyles.onCard.text.small.medium,
         ),
       );
@@ -89,16 +87,10 @@ class ImpaktfullUiSectionTitleAssetsTheme {
 
 class ImpaktfullUiSectionTitleColorTheme {
   final Color icons;
-  const ImpaktfullUiSectionTitleColorTheme({
-    required this.icons,
-  });
+  const ImpaktfullUiSectionTitleColorTheme({required this.icons});
 
-  ImpaktfullUiSectionTitleColorTheme copyWith({
-    Color? icons,
-  }) =>
-      ImpaktfullUiSectionTitleColorTheme(
-        icons: icons ?? this.icons,
-      );
+  ImpaktfullUiSectionTitleColorTheme copyWith({Color? icons}) =>
+      ImpaktfullUiSectionTitleColorTheme(icons: icons ?? this.icons);
 
   @override
   bool operator ==(Object other) =>
@@ -113,25 +105,37 @@ class ImpaktfullUiSectionTitleDimensTheme {
   final EdgeInsetsGeometry margin;
   final EdgeInsetsGeometry marginWithIconButtonActions;
 
+  /// The space between the overline and the title.
+  final double overlineSpacing;
+
   /// The space between the title and the actions.
   final double spacing;
+
+  /// The space between the title and the subtitle.
+  final double subtitleSpacing;
 
   const ImpaktfullUiSectionTitleDimensTheme({
     required this.margin,
     required this.marginWithIconButtonActions,
+    this.overlineSpacing = 4,
     this.spacing = 8,
+    this.subtitleSpacing = 4,
   });
 
   ImpaktfullUiSectionTitleDimensTheme copyWith({
     EdgeInsetsGeometry? margin,
     EdgeInsetsGeometry? marginWithIconButtonActions,
+    double? overlineSpacing,
     double? spacing,
+    double? subtitleSpacing,
   }) =>
       ImpaktfullUiSectionTitleDimensTheme(
         margin: margin ?? this.margin,
         marginWithIconButtonActions:
             marginWithIconButtonActions ?? this.marginWithIconButtonActions,
+        overlineSpacing: overlineSpacing ?? this.overlineSpacing,
         spacing: spacing ?? this.spacing,
+        subtitleSpacing: subtitleSpacing ?? this.subtitleSpacing,
       );
 
   @override
@@ -140,30 +144,58 @@ class ImpaktfullUiSectionTitleDimensTheme {
       other is ImpaktfullUiSectionTitleDimensTheme &&
           margin == other.margin &&
           marginWithIconButtonActions == other.marginWithIconButtonActions &&
-          spacing == other.spacing;
+          overlineSpacing == other.overlineSpacing &&
+          spacing == other.spacing &&
+          subtitleSpacing == other.subtitleSpacing;
 
   @override
-  int get hashCode => Object.hash(margin, marginWithIconButtonActions, spacing);
+  int get hashCode => Object.hash(
+        margin,
+        marginWithIconButtonActions,
+        overlineSpacing,
+        spacing,
+        subtitleSpacing,
+      );
 }
 
 class ImpaktfullUiSectionTitleTextStyleTheme {
+  /// The small line above the title (also called an eyebrow).
+  ///
+  /// `null` uses [title].
+  final TextStyle? overline;
+
+  /// The secondary line under the title.
+  ///
+  /// `null` uses [title].
+  final TextStyle? subtitle;
+
   final TextStyle title;
+
   const ImpaktfullUiSectionTitleTextStyleTheme({
+    this.overline,
+    this.subtitle,
     required this.title,
   });
 
   ImpaktfullUiSectionTitleTextStyleTheme copyWith({
+    TextStyle? overline,
+    TextStyle? subtitle,
     TextStyle? title,
   }) =>
       ImpaktfullUiSectionTitleTextStyleTheme(
+        overline: overline ?? this.overline,
+        subtitle: subtitle ?? this.subtitle,
         title: title ?? this.title,
       );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ImpaktfullUiSectionTitleTextStyleTheme && title == other.title;
+      other is ImpaktfullUiSectionTitleTextStyleTheme &&
+          overline == other.overline &&
+          subtitle == other.subtitle &&
+          title == other.title;
 
   @override
-  int get hashCode => title.hashCode;
+  int get hashCode => Object.hash(overline, subtitle, title);
 }

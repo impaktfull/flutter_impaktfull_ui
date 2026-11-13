@@ -65,6 +65,31 @@ class SectionTitleLibraryVariant
           title: inputs.title.value ?? '',
         ),
       ),
+      ComponentsLibraryVariantDescriptor(
+        wrapWithCard: true,
+        child: ImpaktfullUiSectionTitle(
+          overline: inputs.overline.value,
+          title: inputs.title.value ?? '',
+          subtitle: inputs.subtitle.value,
+          actions: [
+            ImpaktfullUiButton(
+              onTap: () => ImpaktfullUiNotification.show(title: 'See all'),
+              title: 'See all',
+              type: ImpaktfullUiButtonType.tertiary,
+              size: ImpaktfullUiButtonSize.small,
+            ),
+          ],
+        ),
+      ),
+      ComponentsLibraryVariantDescriptor(
+        wrapWithCard: true,
+        child: ImpaktfullUiSectionTitle(
+          overline: inputs.overline.value,
+          title: inputs.title.value ?? '',
+          subtitle: inputs.subtitle.value,
+          textAlign: TextAlign.center,
+        ),
+      ),
     ];
   }
 

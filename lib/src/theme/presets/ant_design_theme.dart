@@ -999,9 +999,14 @@ abstract final class ImpaktfullUiAntDesignTheme {
             iconSize: 16,
           ),
         ),
-        // The title of a section: `marginXS` between it and its actions.
+        // The title of a section: `marginXS` between it and its actions. The
+        // subtitle is a `Typography.Text type="secondary"`
+        // (`colorTextSecondary`), at the size of the title.
         sectionTitle: components.sectionTitle.copyWith(
           dimens: components.sectionTitle.dimens.copyWith(spacing: 8),
+          textStyles: components.sectionTitle.textStyles.copyWith(
+            subtitle: base.textStyles.onCardSecondary.text.small,
+          ),
         ),
         // `Layout.Header`: 64 high with `padding: 0 50`, here the 24 of a
         // page of this package.

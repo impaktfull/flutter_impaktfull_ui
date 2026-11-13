@@ -1,7 +1,7 @@
 // The point of these tests is a page that still uses the deprecated
 // `package:flutter/material.dart`.
 // ignore_for_file: deprecated_member_use
-import 'package:flutter/material.dart' as legacy;
+import 'package:material_ui/material_ui.dart' as legacy;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:material_ui/material_ui.dart';
