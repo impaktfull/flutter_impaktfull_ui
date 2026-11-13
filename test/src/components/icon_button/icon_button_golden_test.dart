@@ -109,4 +109,85 @@ void main() {
       ),
     ],
   );
+
+  // An outlined icon button with the border colour of each shipped theme.
+  ImpaktfullUiIconButtonTheme outlined(
+    BuildContext context, {
+    double borderWidth = 1,
+    BorderRadiusGeometry? borderRadius,
+  }) {
+    final theme = ImpaktfullUiTheme.of(context);
+    final iconButton = theme.components.iconButton;
+    return iconButton.copyWith(
+      colors: iconButton.colors.copyWith(border: theme.colors.border),
+      dimens: iconButton.dimens.copyWith(
+        borderRadius: borderRadius,
+        borderWidth: borderWidth,
+      ),
+    );
+  }
+
+  runComponentTest(
+    fileName: 'impaktfull_ui_icon_button_outlined',
+    columns: 4,
+    goldenTests: () => [
+      GoldenTest(
+        description: 'border in the theme',
+        child: Builder(
+          builder: (context) => ImpaktfullUiIconButton(
+            asset: icons.add,
+            onTap: () {},
+            theme: outlined(context),
+          ),
+        ),
+      ),
+      GoldenTest(
+        description: 'borderColor, size 24',
+        child: ImpaktfullUiIconButton(
+          asset: icons.close,
+          size: 24,
+          borderColor: Colors.deepPurple,
+          color: Colors.deepPurple,
+          onTap: () {},
+        ),
+      ),
+      GoldenTest(
+        description: 'width 2, radius 8, background',
+        child: Builder(
+          builder: (context) => ImpaktfullUiIconButton(
+            asset: icons.edit,
+            backgroundColor: Colors.teal.shade50,
+            color: Colors.teal,
+            onTap: () {},
+            theme: outlined(
+              context,
+              borderWidth: 2,
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
+            ),
+          ),
+        ),
+      ),
+      GoldenTest(
+        description: 'disabled',
+        child: Builder(
+          builder: (context) => ImpaktfullUiIconButton(
+            asset: icons.add,
+            onTap: null,
+            theme: outlined(context),
+          ),
+        ),
+      ),
+      GoldenTest(
+        description: 'with notification badge',
+        child: Builder(
+          builder: (context) => ImpaktfullUiIconButton(
+            asset: icons.search,
+            showNotificationBadge: true,
+            onTap: () {},
+            theme: outlined(context),
+          ),
+        ),
+      ),
+    ],
+  );
 }

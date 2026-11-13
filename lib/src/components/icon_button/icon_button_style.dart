@@ -77,6 +77,12 @@ class ImpaktfullUiIconButtonColorTheme {
   /// The background when the icon button has no `backgroundColor`.
   final Color? background;
 
+  /// The color of the border when the icon button has no `borderColor`. When
+  /// null (the default), the icon button has no border. The border is drawn
+  /// inside the icon button with the `borderWidth` of the dimens theme, so
+  /// it does not change the size of the icon button.
+  final Color? border;
+
   /// The color of the notification badge when the icon button has no
   /// `notificationBadgeColor`. When null, the notification badge theme is
   /// used.
@@ -85,17 +91,20 @@ class ImpaktfullUiIconButtonColorTheme {
   const ImpaktfullUiIconButtonColorTheme({
     this.icon,
     this.background,
+    this.border,
     this.notificationBadge,
   });
 
   ImpaktfullUiIconButtonColorTheme copyWith({
-    Color? icon,
     Color? background,
+    Color? border,
+    Color? icon,
     Color? notificationBadge,
   }) =>
       ImpaktfullUiIconButtonColorTheme(
-        icon: icon ?? this.icon,
         background: background ?? this.background,
+        border: border ?? this.border,
+        icon: icon ?? this.icon,
         notificationBadge: notificationBadge ?? this.notificationBadge,
       );
 
@@ -105,10 +114,11 @@ class ImpaktfullUiIconButtonColorTheme {
       other is ImpaktfullUiIconButtonColorTheme &&
           icon == other.icon &&
           background == other.background &&
+          border == other.border &&
           notificationBadge == other.notificationBadge;
 
   @override
-  int get hashCode => Object.hash(icon, background, notificationBadge);
+  int get hashCode => Object.hash(icon, background, border, notificationBadge);
 }
 
 class ImpaktfullUiIconButtonDimensTheme {
@@ -118,8 +128,13 @@ class ImpaktfullUiIconButtonDimensTheme {
   /// The size of the icon when the icon button has no `size`.
   final double iconSize;
 
-  /// The border radius of the touch feedback.
+  /// The border radius of the touch feedback and the border.
   final BorderRadiusGeometry borderRadius;
+
+  /// The width of the border. Only used when the icon button has a border
+  /// color (`borderColor` or the `border` of the color theme). The border is
+  /// drawn inside the icon button, over the outer edge of the [padding].
+  final double borderWidth;
 
   /// The size of the notification badge.
   final double notificationBadgeSize;
@@ -131,24 +146,27 @@ class ImpaktfullUiIconButtonDimensTheme {
     this.padding = const EdgeInsets.all(12),
     this.iconSize = 16,
     this.borderRadius = const BorderRadius.all(Radius.circular(9999)),
+    this.borderWidth = 1,
     this.notificationBadgeSize = 8,
     this.disabledOpacity = 0.5,
   });
 
   ImpaktfullUiIconButtonDimensTheme copyWith({
-    EdgeInsetsGeometry? padding,
-    double? iconSize,
     BorderRadiusGeometry? borderRadius,
-    double? notificationBadgeSize,
+    double? borderWidth,
     double? disabledOpacity,
+    double? iconSize,
+    double? notificationBadgeSize,
+    EdgeInsetsGeometry? padding,
   }) =>
       ImpaktfullUiIconButtonDimensTheme(
-        padding: padding ?? this.padding,
-        iconSize: iconSize ?? this.iconSize,
         borderRadius: borderRadius ?? this.borderRadius,
+        borderWidth: borderWidth ?? this.borderWidth,
+        disabledOpacity: disabledOpacity ?? this.disabledOpacity,
+        iconSize: iconSize ?? this.iconSize,
         notificationBadgeSize:
             notificationBadgeSize ?? this.notificationBadgeSize,
-        disabledOpacity: disabledOpacity ?? this.disabledOpacity,
+        padding: padding ?? this.padding,
       );
 
   @override
@@ -158,10 +176,11 @@ class ImpaktfullUiIconButtonDimensTheme {
           padding == other.padding &&
           iconSize == other.iconSize &&
           borderRadius == other.borderRadius &&
+          borderWidth == other.borderWidth &&
           notificationBadgeSize == other.notificationBadgeSize &&
           disabledOpacity == other.disabledOpacity;
 
   @override
-  int get hashCode => Object.hash(
-      padding, iconSize, borderRadius, notificationBadgeSize, disabledOpacity);
+  int get hashCode => Object.hash(padding, iconSize, borderRadius, borderWidth,
+      notificationBadgeSize, disabledOpacity);
 }

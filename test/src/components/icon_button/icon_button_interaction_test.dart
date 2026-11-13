@@ -95,6 +95,169 @@ void main() {
     });
   });
 
+  group('border', () {
+    Size sizeOf(WidgetTester tester) =>
+        tester.getSize(find.byType(ImpaktfullUiIconButton));
+
+    // The border is drawn by the Material of the touch feedback as a
+    // rounded rectangle ring (outer minus inner). The focus ring is a
+    // transparent ring while the icon button has no focus.
+    PaintPattern borderPaint({required Color color, required double width}) =>
+        paints
+          ..something((method, arguments) {
+            if (method != #drawDRRect) return false;
+            final outer = arguments[0] as RRect;
+            final inner = arguments[1] as RRect;
+            final paint = arguments[2] as Paint;
+            return paint.color.toARGB32() == color.toARGB32() &&
+                (outer.width - inner.width) / 2 == width &&
+                (outer.height - inner.height) / 2 == width;
+          });
+
+    testWidgets('there is none by default', (tester) async {
+      await pumpAndSettleComponent(
+        tester,
+        Center(
+          child: ImpaktfullUiIconButton(asset: customTestAsset, onTap: () {}),
+        ),
+      );
+      final touchFeedback = tester.widget<ImpaktfullUiTouchFeedback>(
+          find.byType(ImpaktfullUiTouchFeedback));
+      expect(touchFeedback.border, isNull);
+      expect(
+        find.byType(ImpaktfullUiIconButton),
+        isNot(paints
+          ..something((method, arguments) =>
+              method == #drawDRRect && (arguments[2] as Paint).color.a > 0)),
+      );
+      expect(sizeOf(tester), const Size(40, 40));
+    });
+
+    testWidgets('is painted with the color and width of the theme',
+        (tester) async {
+      final theme = ImpaktfullUiIconButtonTheme.fallback.copyWith(
+        colors: const ImpaktfullUiIconButtonColorTheme(border: customTestColor),
+        dimens: ImpaktfullUiIconButtonTheme.fallback.dimens
+            .copyWith(borderWidth: 2),
+      );
+      await pumpAndSettleComponent(
+        tester,
+        Center(
+          child: ImpaktfullUiIconButton(
+            asset: customTestAsset,
+            onTap: () {},
+            theme: theme,
+          ),
+        ),
+      );
+      final touchFeedback = tester.widget<ImpaktfullUiTouchFeedback>(
+          find.byType(ImpaktfullUiTouchFeedback));
+      expect(
+        touchFeedback.border,
+        Border.all(
+          color: customTestColor,
+          width: 2,
+          strokeAlign: BorderSide.strokeAlignInside,
+        ),
+      );
+      expect(
+        find.byType(ImpaktfullUiIconButton),
+        borderPaint(color: customTestColor, width: 2),
+      );
+    });
+
+    testWidgets('has a width of 1 by default', (tester) async {
+      await pumpAndSettleComponent(
+        tester,
+        Center(
+          child: ImpaktfullUiIconButton(
+            asset: customTestAsset,
+            onTap: () {},
+            borderColor: customTestColor,
+          ),
+        ),
+      );
+      expect(
+        find.byType(ImpaktfullUiIconButton),
+        borderPaint(color: customTestColor, width: 1),
+      );
+    });
+
+    testWidgets('does not change the size of the icon button', (tester) async {
+      await pumpAndSettleComponent(
+        tester,
+        Center(
+          child: ImpaktfullUiIconButton(
+            asset: customTestAsset,
+            onTap: () {},
+            borderColor: customTestColor,
+            theme: ImpaktfullUiIconButtonTheme.fallback.copyWith(
+              dimens: ImpaktfullUiIconButtonTheme.fallback.dimens
+                  .copyWith(borderWidth: 4),
+            ),
+          ),
+        ),
+      );
+      expect(sizeOf(tester), const Size(40, 40));
+    });
+
+    testWidgets('the borderColor of the widget wins over the theme',
+        (tester) async {
+      await pumpAndSettleComponent(
+        tester,
+        Center(
+          child: ImpaktfullUiIconButton(
+            asset: customTestAsset,
+            onTap: () {},
+            borderColor: customTestColor,
+            theme: ImpaktfullUiIconButtonTheme.fallback.copyWith(
+              colors: const ImpaktfullUiIconButtonColorTheme(
+                border: Colors.yellow,
+              ),
+            ),
+          ),
+        ),
+      );
+      expect(
+        find.byType(ImpaktfullUiIconButton),
+        borderPaint(color: customTestColor, width: 1),
+      );
+    });
+
+    testWidgets('a disabled icon button keeps its border with the opacity',
+        (tester) async {
+      await pumpAndSettleComponent(
+        tester,
+        Center(
+          child: ImpaktfullUiIconButton(
+            asset: customTestAsset,
+            onTap: null,
+            borderColor: customTestColor,
+          ),
+        ),
+      );
+      final opacity = tester.widget<Opacity>(find.descendant(
+        of: find.byType(ImpaktfullUiIconButton),
+        matching: find.byType(Opacity),
+      ));
+      expect(opacity.opacity, 0.5);
+      final touchFeedback = tester.widget<ImpaktfullUiTouchFeedback>(
+          find.byType(ImpaktfullUiTouchFeedback));
+      expect(touchFeedback.border?.top.color, customTestColor);
+      expect(sizeOf(tester), const Size(40, 40));
+    });
+
+    test('overrideColor keeps the borderColor', () {
+      final button = ImpaktfullUiIconButton(
+        asset: customTestAsset,
+        borderColor: Colors.yellow,
+        onTap: () {},
+      ).overrideColor(customTestColor);
+      expect(button.color, customTestColor);
+      expect(button.borderColor, Colors.yellow);
+    });
+  });
+
   group('overrideColor', () {
     test('sets the color when no color is set', () {
       final button = ImpaktfullUiIconButton(
