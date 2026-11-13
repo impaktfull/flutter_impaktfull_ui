@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
@@ -111,6 +112,61 @@ void main() {
           hint: 'A very long hint that does not fit on a single line of the '
               'input field',
           onChanged: (_) {},
+        )),
+      ),
+    ],
+  );
+
+  // A picker field (`onTap`): it shows its value, or its placeholder, as text
+  // and opens a picker of the app instead of the keyboard.
+  final chevron = Padding(
+    padding: const EdgeInsetsDirectional.only(end: 8),
+    child: ImpaktfullUiAssetWidget(asset: icons.chevronDown, size: 20),
+  );
+  runComponentTest(
+    fileName: 'impaktfull_ui_input_field_picker',
+    columns: 2,
+    goldenTests: () => [
+      GoldenTest(
+        child: goldenSized(ImpaktfullUiInputField(
+          label: 'Country',
+          placeholder: 'Choose a country',
+          value: 'Belgium',
+          trailingInputActions: [chevron],
+          onChanged: null,
+          onTap: () {},
+        )),
+      ),
+      GoldenTest(
+        child: goldenSized(ImpaktfullUiInputField(
+          label: 'Country',
+          placeholder: 'Choose a country',
+          value: null,
+          trailingInputActions: [chevron],
+          onChanged: null,
+          onTap: () {},
+        )),
+      ),
+      GoldenTest(
+        child: goldenSized(ImpaktfullUiInputField(
+          label: 'School year',
+          value: '2026 - 2027',
+          hint: 'The school year of the class',
+          leadingIcon: icons.list,
+          trailingInputActions: [chevron],
+          onChanged: null,
+          onTap: () {},
+        )),
+      ),
+      GoldenTest(
+        child: goldenSized(ImpaktfullUiInputField(
+          label: 'Language',
+          placeholder: 'Choose a language',
+          value: null,
+          error: 'Choose a language',
+          trailingInputActions: [chevron],
+          onChanged: null,
+          onTap: () {},
         )),
       ),
     ],

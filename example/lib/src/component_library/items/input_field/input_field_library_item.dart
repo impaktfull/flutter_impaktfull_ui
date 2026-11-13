@@ -4,6 +4,7 @@ import 'package:impaktfull_ui_example/src/component_library/inputs/component_lib
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_icon_input.dart';
 import 'package:impaktfull_ui_example/src/component_library/inputs/component_library_string_input.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/input_field/input_field_library_variant.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/input_field/input_field_picker_library_variant.dart';
 
 class InputFieldLibraryItem extends ComponentLibraryItem {
   const InputFieldLibraryItem();
@@ -15,6 +16,7 @@ class InputFieldLibraryItem extends ComponentLibraryItem {
   List<ComponentLibraryVariant> getComponentVariants() {
     return [
       InputFieldVariant(),
+      InputFieldPickerVariant(),
     ];
   }
 }

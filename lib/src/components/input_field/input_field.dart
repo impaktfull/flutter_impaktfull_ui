@@ -22,6 +22,12 @@ export 'validator/input_field_validator.dart';
 typedef ImpaktfullUiInputFieldValidator = ImpaktfullUiInputFieldValidatorResult
     Function(String value);
 
+/// A text field with a label, a hint, an error and actions.
+///
+/// - With `onChanged` the field is editable.
+/// - Without `onChanged` it shows its [value] (dimmed, unless [readOnly]).
+/// - With [onTap] it is a picker field: a tap opens a picker of the app
+///   instead of the keyboard. See [onTap].
 class ImpaktfullUiInputField extends StatefulWidget {
   final String? label;
   final List<Widget> labelActions;
@@ -36,6 +42,43 @@ class ImpaktfullUiInputField extends StatefulWidget {
   final String? value;
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onSubmitted;
+
+  /// Turns the field into a picker field: a field that opens a picker (a
+  /// date, a country, an option of a list) instead of the keyboard.
+  ///
+  /// When set, a tap on the field (or enter or space when it has focus) calls
+  /// [onTap] and the field never opens the keyboard: it has no text cursor
+  /// and its text can not be edited. It shows [value] (or the text of
+  /// [controller]), or [placeholder] in the placeholder style when that is
+  /// empty. The app updates [value] after the user picked something.
+  ///
+  /// The field looks enabled and keeps its [label], [hint], [error],
+  /// [leadingIcon], [trailingInputActions] (e.g. a chevron) and the border of
+  /// a hovered or focused field. Screen readers announce it as a button with
+  /// [label] and the current value (or [placeholder] as its hint).
+  ///
+  /// [onTap] wins over `onChanged` and [readOnly]; [obscureText], the
+  /// [validator] and the keyboard parameters are not used.
+  ///
+  /// ```dart
+  /// ImpaktfullUiInputField(
+  ///   label: 'Country',
+  ///   placeholder: 'Choose a country',
+  ///   value: country?.name,
+  ///   onChanged: null,
+  ///   onTap: () => showCountryPicker(context),
+  ///   trailingInputActions: [
+  ///     Padding(
+  ///       padding: const EdgeInsetsDirectional.only(end: 8),
+  ///       child: ImpaktfullUiAssetWidget(
+  ///         asset: theme.assets.icons.chevronDown,
+  ///         size: 20,
+  ///       ),
+  ///     ),
+  ///   ],
+  /// )
+  /// ```
+  final VoidCallback? onTap;
   final TextEditingController? controller;
   final bool autofocus;
   final bool autocorrect;
@@ -76,6 +119,7 @@ class ImpaktfullUiInputField extends StatefulWidget {
     ValueChanged<String>? onSubmitted,
     @Deprecated('Use onSubmitted instead. Will be removed in 1.0.0.')
     ValueChanged<String>? onSubmit,
+    this.onTap,
     this.autofocus = false,
     this.autocorrect = true,
     this.obscureText = false,
@@ -111,6 +155,11 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
 
   String? _validationError;
 
+  /// Whether the picker field had focus the last time its focus changed.
+  var _pickerHasFocus = false;
+
+  bool get _isPicker => widget.onTap != null;
+
   @override
   void initState() {
     super.initState();
@@ -118,6 +167,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     _controller =
         widget.controller ?? TextEditingController(text: widget.value);
     _focusNode = widget.focusNode ?? FocusNode();
+    _focusNode.addListener(_onPickerFocusChanged);
     if (widget.autofocus) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _focusNode.requestFocus();
@@ -140,7 +190,9 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     }
     if (oldWidget.focusNode != widget.focusNode) {
       final oldFocusNode = _focusNode;
+      oldFocusNode.removeListener(_onPickerFocusChanged);
       _focusNode = widget.focusNode ?? FocusNode();
+      _focusNode.addListener(_onPickerFocusChanged);
       if (oldWidget.focusNode == null) {
         WidgetsBinding.instance
             .addPostFrameCallback((_) => oldFocusNode.dispose());
@@ -150,8 +202,10 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
     // `Text`, so the value of the app has to reach the controller here. With
     // one, the `BaseInputField` below owns that: it knows which values this
     // field reported, so a value that is still catching up does not undo what
-    // was typed in the meantime.
-    final rendersItsOwnText = widget.onChanged == null && !widget.readOnly;
+    // was typed in the meantime. A picker field (`onTap`) renders its text
+    // itself as well.
+    final rendersItsOwnText =
+        _isPicker || (widget.onChanged == null && !widget.readOnly);
     if (rendersItsOwnText &&
         oldWidget.value != widget.value &&
         _controller.text != widget.value) {
@@ -175,6 +229,7 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
 
   @override
   void dispose() {
+    _focusNode.removeListener(_onPickerFocusChanged);
     if (widget.controller == null) {
       _controller.dispose();
     }
@@ -191,11 +246,22 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
       overrideComponentTheme: widget.theme,
       builder: (context, componentTheme) {
         final trailingAction = widget.trailingAction;
-        final isDisabled = widget.onChanged == null;
+        final isPicker = _isPicker;
+        final isDisabled = widget.onChanged == null && !isPicker;
         final trailingActionAllowed =
             widget.multiline == false && trailingAction != null;
+        final borderRadius = BorderRadiusDirectional.only(
+          topStart: componentTheme.dimens.borderRadius.topStart,
+          bottomStart: componentTheme.dimens.borderRadius.bottomStart,
+          topEnd: trailingActionAllowed
+              ? Radius.zero
+              : componentTheme.dimens.borderRadius.topEnd,
+          bottomEnd: trailingActionAllowed
+              ? Radius.zero
+              : componentTheme.dimens.borderRadius.bottomEnd,
+        );
         final trailingInputActions = [
-          if (widget.obscureText) ...[
+          if (widget.obscureText && !isPicker) ...[
             ImpaktfullUiIconButton(
               asset: _obscureText
                   ? componentTheme.assets.passwordHide
@@ -243,123 +309,128 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
                         useFocusRing: componentTheme.colors.focusRing == null,
                         cursor: SystemMouseCursors.text,
                         error: widget.error != null && widget.error!.isNotEmpty,
-                        onTap: isDisabled ? null : _onTap,
-                        onFocus: isDisabled ? null : _onFocus,
+                        // A picker field handles its taps and its focus
+                        // below, with the focus node of the field.
+                        onTap: isDisabled || isPicker ? null : _onTap,
+                        onFocus: isDisabled || isPicker ? null : _onFocus,
                         padding: EdgeInsets.zero,
-                        borderRadius: BorderRadiusDirectional.only(
-                          topStart: componentTheme.dimens.borderRadius.topStart,
-                          bottomStart:
-                              componentTheme.dimens.borderRadius.bottomStart,
-                          topEnd: trailingActionAllowed
-                              ? Radius.zero
-                              : componentTheme.dimens.borderRadius.topEnd,
-                          bottomEnd: trailingActionAllowed
-                              ? Radius.zero
-                              : componentTheme.dimens.borderRadius.bottomEnd,
-                        ),
-                        child: ImpaktfullUiAutoLayout.vertical(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            if (widget.topBuilder != null) ...[
-                              Padding(
-                                padding: componentTheme.dimens.actionPadding,
-                                child: widget.topBuilder!(context),
-                              ),
-                            ],
-                            ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minHeight: widget.multiline
-                                    ? componentTheme.dimens.multilineMinHeight
-                                    : componentTheme.dimens.minHeight,
-                              ),
-                              child: Padding(
-                                padding: trailingInputActions.isEmpty
-                                    ? componentTheme.dimens.padding
-                                    : componentTheme.dimens.paddingWithActions,
-                                child: ImpaktfullUiAutoLayout.horizontal(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisSize: MainAxisSize.min,
-                                  spacing: componentTheme.dimens.spacing,
-                                  children: [
-                                    if (widget.leadingIcon != null) ...[
-                                      ImpaktfullUiAssetWidget(
-                                        asset: widget.leadingIcon,
-                                        size: componentTheme.dimens.iconSize,
-                                        color: componentTheme
-                                            .textStyles.text.color,
-                                      ),
-                                    ],
-                                    if (widget.leadingBuilder != null) ...[
-                                      widget.leadingBuilder!(context),
-                                    ],
-                                    if (widget.onChanged == null &&
-                                        !widget.readOnly) ...[
-                                      Expanded(
-                                        // The value is aligned to the top of
-                                        // the field, so it fills the height of
-                                        // the field instead of centering in it.
-                                        child: ConstrainedBox(
-                                          constraints: BoxConstraints(
-                                            minHeight: widget.multiline
-                                                ? componentTheme
-                                                    .dimens.multilineMinHeight
-                                                : componentTheme
-                                                    .dimens.minHeight,
+                        borderRadius: borderRadius,
+                        child: _wrapPicker(
+                          componentTheme,
+                          borderRadius: borderRadius,
+                          child: ImpaktfullUiAutoLayout.vertical(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              if (widget.topBuilder != null) ...[
+                                Padding(
+                                  padding: componentTheme.dimens.actionPadding,
+                                  child: widget.topBuilder!(context),
+                                ),
+                              ],
+                              ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  minHeight: widget.multiline
+                                      ? componentTheme.dimens.multilineMinHeight
+                                      : componentTheme.dimens.minHeight,
+                                ),
+                                child: Padding(
+                                  padding: trailingInputActions.isEmpty
+                                      ? componentTheme.dimens.padding
+                                      : componentTheme
+                                          .dimens.paddingWithActions,
+                                  child: ImpaktfullUiAutoLayout.horizontal(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    spacing: componentTheme.dimens.spacing,
+                                    children: [
+                                      if (widget.leadingIcon != null) ...[
+                                        ImpaktfullUiAssetWidget(
+                                          asset: widget.leadingIcon,
+                                          size: componentTheme.dimens.iconSize,
+                                          color: componentTheme
+                                              .textStyles.text.color,
+                                        ),
+                                      ],
+                                      if (widget.leadingBuilder != null) ...[
+                                        widget.leadingBuilder!(context),
+                                      ],
+                                      if (isPicker) ...[
+                                        Expanded(
+                                          child: _buildPickerValue(
+                                            componentTheme,
                                           ),
-                                          child: Padding(
-                                            padding: componentTheme
-                                                .dimens.readOnlyContentPadding,
-                                            child: Align(
-                                              alignment:
-                                                  AlignmentDirectional.topStart,
-                                              child: Text(
-                                                _controller.text,
-                                                maxLines: widget.multiline
-                                                    ? widget.maxLines
-                                                    : 1,
-                                                style: componentTheme
-                                                    .textStyles.text,
+                                        ),
+                                        ...trailingInputActions,
+                                      ] else if (widget.onChanged == null &&
+                                          !widget.readOnly) ...[
+                                        Expanded(
+                                          // The value is aligned to the top of
+                                          // the field, so it fills the height of
+                                          // the field instead of centering in it.
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              minHeight: widget.multiline
+                                                  ? componentTheme
+                                                      .dimens.multilineMinHeight
+                                                  : componentTheme
+                                                      .dimens.minHeight,
+                                            ),
+                                            child: Padding(
+                                              padding: componentTheme.dimens
+                                                  .readOnlyContentPadding,
+                                              child: Align(
+                                                alignment: AlignmentDirectional
+                                                    .topStart,
+                                                child: Text(
+                                                  _controller.text,
+                                                  maxLines: widget.multiline
+                                                      ? widget.maxLines
+                                                      : 1,
+                                                  style: componentTheme
+                                                      .textStyles.text,
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ] else ...[
-                                      Expanded(
-                                        child: BaseInputField(
-                                          value: widget.value,
-                                          onChanged: _onChanged,
-                                          onSubmit: widget.onSubmitted,
-                                          focusNode: _focusNode,
-                                          controller: _controller,
-                                          autofill: widget.autofill,
-                                          theme: componentTheme,
-                                          maxLines: widget.maxLines,
-                                          textInputAction:
-                                              widget.textInputAction,
-                                          textInputType: widget.textInputType,
-                                          obscureText: _obscureText,
-                                          placeholder: widget.placeholder,
-                                          autofocus: widget.autofocus,
-                                          autocorrect: widget.autocorrect,
-                                          multiline: widget.multiline,
-                                          inputFormatters:
-                                              widget.inputFormatters,
-                                          textCapitalization:
-                                              widget.textCapitalization,
-                                          onFocusChanged: _onFocusChanged,
-                                          readOnly: widget.readOnly,
-                                          textAlign: widget.textAlign,
+                                      ] else ...[
+                                        Expanded(
+                                          child: BaseInputField(
+                                            value: widget.value,
+                                            onChanged: _onChanged,
+                                            onSubmit: widget.onSubmitted,
+                                            focusNode: _focusNode,
+                                            controller: _controller,
+                                            autofill: widget.autofill,
+                                            theme: componentTheme,
+                                            maxLines: widget.maxLines,
+                                            textInputAction:
+                                                widget.textInputAction,
+                                            textInputType: widget.textInputType,
+                                            obscureText: _obscureText,
+                                            placeholder: widget.placeholder,
+                                            autofocus: widget.autofocus,
+                                            autocorrect: widget.autocorrect,
+                                            multiline: widget.multiline,
+                                            inputFormatters:
+                                                widget.inputFormatters,
+                                            textCapitalization:
+                                                widget.textCapitalization,
+                                            onFocusChanged: _onFocusChanged,
+                                            readOnly: widget.readOnly,
+                                            textAlign: widget.textAlign,
+                                          ),
                                         ),
-                                      ),
-                                      ...trailingInputActions,
+                                        ...trailingInputActions,
+                                      ],
                                     ],
-                                  ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -400,6 +471,89 @@ class _ImpaktfullUiInputFieldState extends State<ImpaktfullUiInputField> {
   }
 
   void _onFocus() => _focusNode.requestFocus();
+
+  /// Makes [child] the tap target of a picker field: tappable, focusable with
+  /// the focus node of the field and activatable with enter and space.
+  Widget _wrapPicker(
+    ImpaktfullUiInputFieldTheme componentTheme, {
+    required BorderRadiusGeometry borderRadius,
+    required Widget child,
+  }) {
+    if (!_isPicker) return child;
+    return Semantics(
+      container: true,
+      button: true,
+      enabled: true,
+      child: ImpaktfullUiTouchFeedback(
+        // The touch feedback keeps the focus node it was built with.
+        key: ObjectKey(_focusNode),
+        focusNode: _focusNode,
+        onTap: _onPickerTapped,
+        cursor: SystemMouseCursors.click,
+        borderRadius: borderRadius,
+        // The field draws its own ring, like `useFocusRing` of the card.
+        useFocusColor: componentTheme.colors.focusRing == null,
+        child: child,
+      ),
+    );
+  }
+
+  /// The value of a picker field, or its placeholder when it has no value.
+  Widget _buildPickerValue(ImpaktfullUiInputFieldTheme componentTheme) {
+    return ValueListenableBuilder<TextEditingValue>(
+      valueListenable: _controller,
+      builder: (context, value, child) {
+        final text = value.text;
+        final hasValue = text.isNotEmpty;
+        // The text field of an editable field starts from the input style of
+        // the Material theme (its line height, its letter spacing), so the
+        // value of a picker field does too: it looks like the text of a text
+        // field and the field is as tall as one.
+        final theme = Theme.of(context);
+        final inputStyle = (theme.useMaterial3
+                ? theme.textTheme.bodyLarge
+                : theme.textTheme.titleMedium) ??
+            const TextStyle();
+        final textStyle = inputStyle.merge(componentTheme.textStyles.text);
+        final placeholderStyle =
+            textStyle.merge(componentTheme.textStyles.placeholder);
+        return Semantics(
+          label: widget.label,
+          value: hasValue ? text : null,
+          hint: hasValue ? null : widget.placeholder,
+          child: ExcludeSemantics(
+            child: Padding(
+              padding: componentTheme.dimens.contentPadding,
+              child: Text(
+                hasValue ? text : widget.placeholder ?? '',
+                maxLines: widget.multiline ? widget.maxLines : 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: widget.textAlign,
+                style: hasValue ? textStyle : placeholderStyle,
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _onPickerTapped() {
+    _focusNode.requestFocus();
+    widget.onTap?.call();
+  }
+
+  /// A picker field has no text field that reports its focus, so it listens
+  /// to the focus node of the field itself.
+  void _onPickerFocusChanged() {
+    if (!_isPicker) return;
+    final hasFocus = _focusNode.hasFocus;
+    if (hasFocus == _pickerHasFocus) return;
+    _pickerHasFocus = hasFocus;
+    // The border and the focus ring of the field follow its focus.
+    if (mounted) setState(() {});
+    widget.onFocusChange?.call(hasFocus);
+  }
 
   void _onFocusChanged(bool hasFocus) {
     final hasFocus = _focusNode.hasFocus;
@@ -514,10 +668,7 @@ class _HoverBuilder extends StatelessWidget {
   final bool enabled;
   final Widget Function(BuildContext context, bool isHovered) builder;
 
-  const _HoverBuilder({
-    required this.enabled,
-    required this.builder,
-  });
+  const _HoverBuilder({required this.enabled, required this.builder});
 
   @override
   Widget build(BuildContext context) {
