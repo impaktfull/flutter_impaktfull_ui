@@ -150,46 +150,130 @@ class ImpaktfullUiNotificationColorTheme {
   final Color background;
   final Color? border;
   final Color shadow;
+
+  /// The colour of the icon of a branded notification, and of its border with
+  /// [matchBorderWithType].
   final Color branded;
+
+  /// The background of a branded notification, or null to use [background].
+  final Color? brandedBackground;
+
+  /// The colour of the title, the subtitle, the close button and the chevron
+  /// of a branded notification, or null to keep the colours of the text
+  /// styles.
+  final Color? brandedText;
+
+  /// The colour of the icon of an error notification, and of its border with
+  /// [matchBorderWithType].
   final Color error;
+
+  /// The background of an error notification, or null to use [background].
+  final Color? errorBackground;
+
+  /// The colour of the text of an error notification, or null to keep the
+  /// colours of the text styles. See [brandedText].
+  final Color? errorText;
+
+  /// The colour of the icon of an info notification, and of its border with
+  /// [matchBorderWithType].
   final Color info;
+
+  /// The background of an info notification, or null to use [background].
+  final Color? infoBackground;
+
+  /// The colour of the text of an info notification, or null to keep the
+  /// colours of the text styles. See [brandedText].
+  final Color? infoText;
+
+  /// Whether the border has the colour of the type ([success], [warning],
+  /// [error], [info] or [branded]) instead of [border].
   final bool matchBorderWithType;
+
+  /// The colour of the icon of a success notification, and of its border with
+  /// [matchBorderWithType].
   final Color success;
+
+  /// The background of a success notification, or null to use [background].
+  final Color? successBackground;
+
+  /// The colour of the text of a success notification, or null to keep the
+  /// colours of the text styles. See [brandedText].
+  final Color? successText;
+
+  /// The colour of the icon of a warning notification, and of its border with
+  /// [matchBorderWithType].
   final Color warning;
+
+  /// The background of a warning notification, or null to use [background].
+  final Color? warningBackground;
+
+  /// The colour of the text of a warning notification, or null to keep the
+  /// colours of the text styles. See [brandedText].
+  final Color? warningText;
 
   const ImpaktfullUiNotificationColorTheme({
     required this.background,
     required this.border,
     required this.shadow,
     required this.branded,
+    this.brandedBackground,
+    this.brandedText,
     required this.error,
+    this.errorBackground,
+    this.errorText,
     required this.info,
+    this.infoBackground,
+    this.infoText,
     this.matchBorderWithType = false,
     required this.success,
+    this.successBackground,
+    this.successText,
     required this.warning,
+    this.warningBackground,
+    this.warningText,
   });
 
   ImpaktfullUiNotificationColorTheme copyWith({
     Color? background,
     Color? border,
     Color? branded,
+    Color? brandedBackground,
+    Color? brandedText,
     Color? error,
+    Color? errorBackground,
+    Color? errorText,
     Color? info,
+    Color? infoBackground,
+    Color? infoText,
     bool? matchBorderWithType,
     Color? shadow,
     Color? success,
+    Color? successBackground,
+    Color? successText,
     Color? warning,
+    Color? warningBackground,
+    Color? warningText,
   }) =>
       ImpaktfullUiNotificationColorTheme(
         background: background ?? this.background,
         border: border ?? this.border,
         branded: branded ?? this.branded,
+        brandedBackground: brandedBackground ?? this.brandedBackground,
+        brandedText: brandedText ?? this.brandedText,
         error: error ?? this.error,
+        errorBackground: errorBackground ?? this.errorBackground,
+        errorText: errorText ?? this.errorText,
         info: info ?? this.info,
+        infoBackground: infoBackground ?? this.infoBackground,
+        infoText: infoText ?? this.infoText,
         matchBorderWithType: matchBorderWithType ?? this.matchBorderWithType,
         shadow: shadow ?? this.shadow,
         success: success ?? this.success,
+        successBackground: successBackground ?? this.successBackground,
+        successText: successText ?? this.successText,
         warning: warning ?? this.warning,
+        warningBackground: warningBackground ?? this.warningBackground,
+        warningText: warningText ?? this.warningText,
       );
 
   @override
@@ -200,15 +284,44 @@ class ImpaktfullUiNotificationColorTheme {
           border == other.border &&
           shadow == other.shadow &&
           branded == other.branded &&
+          brandedBackground == other.brandedBackground &&
+          brandedText == other.brandedText &&
           error == other.error &&
+          errorBackground == other.errorBackground &&
+          errorText == other.errorText &&
           info == other.info &&
+          infoBackground == other.infoBackground &&
+          infoText == other.infoText &&
           matchBorderWithType == other.matchBorderWithType &&
           success == other.success &&
-          warning == other.warning;
+          successBackground == other.successBackground &&
+          successText == other.successText &&
+          warning == other.warning &&
+          warningBackground == other.warningBackground &&
+          warningText == other.warningText;
 
   @override
-  int get hashCode => Object.hash(background, border, shadow, branded, error,
-      info, matchBorderWithType, success, warning);
+  int get hashCode => Object.hash(
+        background,
+        border,
+        shadow,
+        branded,
+        brandedBackground,
+        brandedText,
+        error,
+        errorBackground,
+        errorText,
+        info,
+        infoBackground,
+        infoText,
+        matchBorderWithType,
+        success,
+        successBackground,
+        successText,
+        warning,
+        warningBackground,
+        warningText,
+      );
 }
 
 class ImpaktfullUiNotificationDimensTheme {

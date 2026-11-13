@@ -161,10 +161,17 @@ class ImpaktfullUiNotification extends StatelessWidget {
       builder: (context, componentTheme) {
         final crossAxisAlignment = _getAlignment(componentTheme);
         final config = _getNotificationTypeConfig(componentTheme);
+        final textColor = _getTextColor(componentTheme);
+        final titleStyle = textColor == null
+            ? componentTheme.textStyles.title
+            : componentTheme.textStyles.title.copyWith(color: textColor);
+        final subtitleStyle = textColor == null
+            ? componentTheme.textStyles.subtitle
+            : componentTheme.textStyles.subtitle.copyWith(color: textColor);
         final notification = Container(
           width: width,
           decoration: BoxDecoration(
-            color: componentTheme.colors.background,
+            color: _getBackgroundColor(componentTheme),
             border: _getBorder(componentTheme),
             borderRadius: componentTheme.dimens.borderRadius,
             boxShadow: componentTheme.shadows.card,
@@ -205,7 +212,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
                           children: [
                             Text(
                               title,
-                              style: componentTheme.textStyles.title,
+                              style: titleStyle,
                             ),
                             if (subtitle != null) ...[
                               SizedBox(
@@ -213,7 +220,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
                               ),
                               Text(
                                 subtitle!,
-                                style: componentTheme.textStyles.subtitle,
+                                style: subtitleStyle,
                               ),
                             ],
                             if (centerWidgetBuilder != null) ...[
@@ -240,7 +247,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
                         child: ImpaktfullUiIconButton(
                           onTap: onCloseTapped!,
                           asset: componentTheme.assets.close,
-                          color: componentTheme.textStyles.title.color,
+                          color: titleStyle.color,
                           size: componentTheme.dimens.closeIconSize,
                           theme: _getCloseButtonTheme(context, componentTheme),
                         ),
@@ -251,7 +258,7 @@ class ImpaktfullUiNotification extends StatelessWidget {
                       ImpaktfullUiAssetWidget(
                         asset: componentTheme.assets.chevronRight
                             .copyWith(matchTextDirection: true),
-                        color: componentTheme.textStyles.title.color,
+                        color: titleStyle.color,
                       ),
                       SizedBox(width: componentTheme.dimens.spacing),
                     ] else ...[
@@ -288,6 +295,44 @@ class ImpaktfullUiNotification extends StatelessWidget {
       color: borderColor,
       width: theme.dimens.borderWidth,
     );
+  }
+
+  /// The background of [type], or the shared background when the theme has
+  /// none for it.
+  Color _getBackgroundColor(ImpaktfullUiNotificationTheme theme) {
+    final colors = theme.colors;
+    final Color? background;
+    switch (type) {
+      case ImpaktfullUiNotificationType.success:
+        background = colors.successBackground;
+      case ImpaktfullUiNotificationType.error:
+        background = colors.errorBackground;
+      case ImpaktfullUiNotificationType.warning:
+        background = colors.warningBackground;
+      case ImpaktfullUiNotificationType.info:
+        background = colors.infoBackground;
+      case ImpaktfullUiNotificationType.branded:
+        background = colors.brandedBackground;
+    }
+    return background ?? colors.background;
+  }
+
+  /// The colour of the text of [type], or null to keep the colours of the
+  /// text styles.
+  Color? _getTextColor(ImpaktfullUiNotificationTheme theme) {
+    final colors = theme.colors;
+    switch (type) {
+      case ImpaktfullUiNotificationType.success:
+        return colors.successText;
+      case ImpaktfullUiNotificationType.error:
+        return colors.errorText;
+      case ImpaktfullUiNotificationType.warning:
+        return colors.warningText;
+      case ImpaktfullUiNotificationType.info:
+        return colors.infoText;
+      case ImpaktfullUiNotificationType.branded:
+        return colors.brandedText;
+    }
   }
 
   ImpaktfullUiNotificationTypeConfig _getNotificationTypeConfig(
