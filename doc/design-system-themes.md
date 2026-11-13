@@ -28,22 +28,23 @@ component that starts hardcoding a size, a radius or a state color fails them.
 
 ## Which components they cover
 
-**61 of the 87 component themes** are set by both presets, which is every
+**62 of the 88 component themes** are set by both presets, which is every
 component the design system has something to say about:
 
 the button, the icon button, the floating action button, the input field, the
 date field, the colour field, the number input, the pin code, the checkbox,
-the switch, the radio button, the slider, the badge, the notification badge,
-the card, the modal, the bottom sheet, the dropdown menu, the command menu,
-the auto complete, the option selector, the tooltip, the tabs (both the fixed
-and the scrolling ones), the table with its header, rows and cells, the list
-view, the grid view, the list items, the sidebar navigation and its items, the
-nav bar, the section title, the pagination, the stepper, the progress
-indicator, the loading indicator, the skeleton, the divider, the avatar, the
-carousel, the gallery, the file picker, the colour picker, the date picker,
-the date time picker, the time picker, the calendar, the placeholder, the
-metric, the notification, the snacky configurator, the segmented control (Ant
-Design only, shadcn/ui has none) and the touch feedback with its focus ring.
+the chip, the switch, the radio button, the slider, the badge, the
+notification badge, the card, the modal, the bottom sheet, the dropdown menu,
+the command menu, the auto complete, the option selector, the tooltip, the
+tabs (both the fixed and the scrolling ones), the table with its header, rows
+and cells, the list view, the grid view, the list items, the sidebar
+navigation and its items, the nav bar, the section title, the pagination, the
+stepper, the progress indicator, the loading indicator, the skeleton, the
+divider, the avatar, the carousel, the gallery, the file picker, the colour
+picker, the date picker, the date time picker, the time picker, the calendar,
+the placeholder, the metric, the notification, the snacky configurator, the
+segmented control (Ant Design only, shadcn/ui has none) and the touch feedback
+with its focus ring.
 
 Four more are aligned through another component: `ImpaktfullUiAccordion`,
 `ImpaktfullUiCheckboxListItem`, `ImpaktfullUiSwitchListItem` and
@@ -85,6 +86,7 @@ and a `padding` inside it, and the tab has a `selectedMarker`.
 | States | `hover:bg-primary/90`, `hover:bg-accent`, `disabled:opacity-50` | the `colorPrimaryHover` / `colorPrimaryActive` ramp per button type, and explicit disabled colors |
 | Focus | `ring-ring/50` at `ring-[3px]`, no offset | `outline: 4px solid colorPrimaryBorder` with `outline-offset: 1px` |
 | Checkbox / switch | `size-4` box, a `h-[1.15rem] w-8` track with a `size-4` thumb | `controlInteractiveSize` 16, a 44 × 22 track with an 18 thumb |
+| Chip | the outline `Toggle`: `h-9 px-2 rounded-md border`, `bg-accent` when it is on | `Tag.CheckableTag`: 22 high, transparent, `colorPrimary` when it is checked |
 | Surfaces | `shadow-xs` / `shadow-sm` / `shadow-lg`, a `bg-black/50` overlay | `boxShadowTertiary` on a card, a `rgba(0, 0, 0, 0.45)` mask |
 | Table | `hover:bg-muted/50`, `data-[state=selected]:bg-muted` | `headerBg` and `rowHoverBg` of `colorFillAlter`, 16 × 16 cells |
 

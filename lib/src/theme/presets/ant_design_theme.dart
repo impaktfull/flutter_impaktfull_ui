@@ -487,6 +487,27 @@ abstract final class ImpaktfullUiAntDesignTheme {
             activeBorderWidth: 1,
           ),
         ),
+        // `Tag.CheckableTag`: a tag of `fontSizeSM` (12) with a line of 20, a
+        // 1px border, `paddingInline: 7` and `borderRadiusSM: 4`, so 22 high.
+        // It is transparent with a transparent border, and `colorPrimary`
+        // with `colorTextLightSolid` when it is checked.
+        chip: components.chip.copyWith(
+          colors: ImpaktfullUiChipColorTheme(
+            background: Colors.transparent,
+            backgroundSelected: primary,
+            border: Colors.transparent,
+            borderSelected: Colors.transparent,
+            text: text,
+            textSelected: Colors.white,
+          ),
+          dimens: components.chip.dimens.copyWith(
+            borderRadius: BorderRadius.circular(4),
+            minHeight: 22,
+            padding: const EdgeInsets.symmetric(horizontal: 7),
+            spacing: 7,
+            iconSize: 12,
+          ),
+        ),
         // A 44 x 22 track with an 18 thumb and 2 around it.
         switchTheme: components.switchTheme.copyWith(
           colors: components.switchTheme.colors.copyWith(

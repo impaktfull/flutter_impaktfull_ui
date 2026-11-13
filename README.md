@@ -139,6 +139,7 @@ Components are always prefixed with `ImpaktfullUi` to avoid conflicts with other
 - ImpaktfullUiChat
 - ImpaktfullUiCheckbox
 - ImpaktfullUiCheckboxListItem
+- ImpaktfullUiChip
 - ImpaktfullUiClampedFractionallySizedBox
 - ImpaktfullUiCmsHeader
 - ImpaktfullUiColorInputField
@@ -338,7 +339,7 @@ ImpaktfullUiApp(
 
 Everything `withMinimalChanges` builds is a **base token**: the colors, the text
 styles, the border radius and spacing scale, the animation durations, the
-shadows and the assets. It builds the 87 component themes from them with
+shadows and the assets. It builds the 88 component themes from them with
 `ImpaktfullUiComponentsTheme.getDefault`, so a base token you change reaches
 every component.
 
@@ -477,7 +478,7 @@ ImpaktfullUiCard(
 
 #### Changing a base token everywhere: `copyWithBaseTokens`
 
-`copyWith` replaces exactly what you pass it, so `theme.copyWith(colors: ...)` changes `theme.colors` and leaves the 87 component themes alone: they were built from the old colors and keep them. That is on purpose — `copyWith` never throws away a per-component token you layered on top.
+`copyWith` replaces exactly what you pass it, so `theme.copyWith(colors: ...)` changes `theme.colors` and leaves the 88 component themes alone: they were built from the old colors and keep them. That is on purpose — `copyWith` never throws away a per-component token you layered on top.
 
 To change a base token *everywhere*, use `copyWithBaseTokens`. It replaces the base token groups and builds every component theme again from them:
 
@@ -604,7 +605,7 @@ The components work with screen readers (TalkBack, VoiceOver, NVDA, ...), keyboa
 #### Screen readers
 
 - Checkboxes, radio buttons and switches announce their state (`checked`, `mixed`, `toggled`, in a mutually exclusive group), whether they are enabled, and can be activated. In `ImpaktfullUiCheckboxListItem`, `ImpaktfullUiRadioButtonListItem`, `ImpaktfullUiSwitchListItem` and `ImpaktfullUiSelectableListItem` the whole row is one element with the title as label.
-- Buttons, navigation items (bottom navigation, tab bar, horizontal tabs, sidebar), segmented control segments and tappable badges and avatars are buttons with a `selected` state where it applies. Tabs have the tab role. Accordions, sidebar groups and the dropdown button announce whether they are expanded.
+- Buttons, navigation items (bottom navigation, tab bar, horizontal tabs, sidebar), segmented control segments, chips and tappable badges and avatars are buttons with a `selected` state where it applies. Tabs have the tab role. Accordions, sidebar groups and the dropdown button announce whether they are expanded.
 - A stepper announces every step (`Step 2 of 4`) and which step is completed or current, pagination announces the page when it changes, a carousel the current slide, a progress indicator its value as a percentage, a slider its value with increase and decrease actions, a notification badge the amount (`3 notifications`).
 - Loading indicators announce `Loading`, skeletons and illustrations of placeholders are hidden. The error of `ImpaktfullUiLoadingErrorData` is announced when it appears.
 - Modals, bottom sheets and the command menu hide the screen behind them. The command menu and the dropdown can be dismissed by screen readers.
@@ -643,7 +644,7 @@ if (!ImpaktfullUiAnimationUtil.reduceMotion(context)) _controller.repeat();
 
 #### Tap targets
 
-The Android guideline asks for tap targets of at least 48x48, iOS for 44x44. List items, bottom navigation items and large buttons meet both. The standalone checkbox (24x24), radio button (20x20) and switch keep their size by default, to not change the layout of existing apps. Opt in to a bigger tap area with the theme: the control looks the same, but takes (and reacts to taps in) at least this much space.
+The Android guideline asks for tap targets of at least 48x48, iOS for 44x44. List items, bottom navigation items and large buttons meet both. The standalone checkbox (24x24), radio button (20x20), switch and chip (32 high) keep their size by default, to not change the layout of existing apps. Opt in to a bigger tap area with the theme: the control looks the same, but takes (and reacts to taps in) at least this much space.
 
 ```dart
 final theme = ImpaktfullUiTheme.getDefault();

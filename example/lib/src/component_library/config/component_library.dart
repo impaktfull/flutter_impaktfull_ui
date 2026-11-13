@@ -17,6 +17,7 @@ import 'package:impaktfull_ui_example/src/component_library/items/carousel/carou
 import 'package:impaktfull_ui_example/src/component_library/items/chat/chat_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/check_box_list_item/check_box_list_item_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/checkbox/checkbox_library_item.dart';
+import 'package:impaktfull_ui_example/src/component_library/items/chip/chip_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/clamped_fractionally_sized_box/clamped_fractionally_sized_box_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/cms_header/cms_header_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/color_input_field/color_input_field_library_item.dart';
@@ -115,6 +116,7 @@ class ComponentLibrary {
     const ChatLibraryItem(),
     const CheckboxLibraryItem(),
     const CheckBoxListItemLibraryItem(),
+    const ChipLibraryItem(),
     const ClampedFractionallySizedBoxLibraryItem(),
     const CmsHeaderLibraryItem(),
     const ColorPickerLibraryItem(),

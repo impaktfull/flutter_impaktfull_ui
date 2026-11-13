@@ -83,6 +83,22 @@ void main() {
         expect(changedTo, isTrue);
       });
 
+      testWidgets('chip', (tester) async {
+        var taps = 0;
+        await pumpAccessibilityApp(
+          tester,
+          Center(
+            child: ImpaktfullUiChip(
+              title: 'Unread',
+              value: false,
+              onTap: () => taps++,
+            ),
+          ),
+        );
+        await _tabAndPress(tester, key);
+        expect(taps, 1);
+      });
+
       testWidgets('badge with onTap', (tester) async {
         var taps = 0;
         await pumpAccessibilityApp(

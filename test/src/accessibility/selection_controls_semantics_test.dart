@@ -135,6 +135,82 @@ void main() {
     });
   });
 
+  group('chip', () {
+    testWidgets('is a button that announces selected, enabled and its title',
+        (tester) async {
+      final handle = tester.ensureSemantics();
+      var taps = 0;
+      await pumpAccessibilityApp(
+        tester,
+        Center(
+          child: ImpaktfullUiChip(
+            title: 'Unread',
+            value: true,
+            onTap: () => taps++,
+          ),
+        ),
+      );
+      expect(
+        tester.getSemantics(find.text('Unread')),
+        isSemantics(
+          label: 'Unread',
+          isButton: true,
+          hasSelectedState: true,
+          isSelected: true,
+          hasEnabledState: true,
+          isEnabled: true,
+          isFocusable: true,
+          hasTapAction: true,
+        ),
+      );
+      tester.semantics.tap(find.semantics.byLabel('Unread'));
+      expect(taps, 1);
+      handle.dispose();
+    });
+
+    testWidgets('an unselected chip is announced as not selected',
+        (tester) async {
+      final handle = tester.ensureSemantics();
+      await pumpAccessibilityApp(
+        tester,
+        Center(
+          child: ImpaktfullUiChip(title: 'Unread', value: false, onTap: () {}),
+        ),
+      );
+      expect(
+        tester.getSemantics(find.text('Unread')),
+        isSemantics(
+          label: 'Unread',
+          isButton: true,
+          hasSelectedState: true,
+          isSelected: false,
+        ),
+      );
+      handle.dispose();
+    });
+
+    testWidgets('a disabled chip is announced as disabled', (tester) async {
+      final handle = tester.ensureSemantics();
+      await pumpAccessibilityApp(
+        tester,
+        const Center(
+          child: ImpaktfullUiChip(title: 'Unread', value: false, onTap: null),
+        ),
+      );
+      expect(
+        tester.getSemantics(find.text('Unread')),
+        isSemantics(
+          label: 'Unread',
+          isButton: true,
+          hasEnabledState: true,
+          isEnabled: false,
+          hasTapAction: false,
+        ),
+      );
+      handle.dispose();
+    });
+  });
+
   group('list items', () {
     testWidgets('checkbox list item is one checked node with the title',
         (tester) async {

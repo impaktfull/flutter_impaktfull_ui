@@ -136,6 +136,38 @@ void main() {
     expect(_startInset(badge, icon, textDirection), lessThan(endInset));
   });
 
+  _testBothDirections('chip: the leading asset is at the start',
+      (tester, textDirection) async {
+    await _pump(
+      tester,
+      textDirection,
+      Center(
+        child: ImpaktfullUiChip(
+          title: 'Label',
+          value: true,
+          leading: _icon,
+          onTap: () {},
+        ),
+      ),
+    );
+    final chip = tester.getRect(find.byType(ImpaktfullUiChip));
+    final icon = tester.getRect(find.byIcon(Icons.star));
+    final label = tester.getCenter(find.text('Label'));
+    expect(icon.center.dx < label.dx, !_isRtl(textDirection));
+    final padding = ImpaktfullUiTheme.getDefault()
+        .components
+        .chip
+        .dimens
+        .padding
+        .resolve(textDirection);
+    final borderWidth =
+        ImpaktfullUiTheme.getDefault().components.chip.dimens.borderWidth;
+    expect(
+      _startInset(chip, icon, textDirection),
+      closeTo(padding.left + borderWidth, 1),
+    );
+  });
+
   _testBothDirections('slider: the minimum is at the start',
       (tester, textDirection) async {
     final values = <double>[];

@@ -28,6 +28,7 @@ export 'src/components/carousel/carousel.dart';
 export 'src/components/chat/chat.dart';
 export 'src/components/checkbox/checkbox.dart';
 export 'src/components/checkbox_list_item/checkbox_list_item.dart';
+export 'src/components/chip/chip.dart';
 export 'src/components/clamped_fractionally_sized_box/clamped_fractionally_sized_box.dart';
 export 'src/components/cms_header/cms_header.dart';
 export 'src/components/color_input_field/color_input_field.dart';
