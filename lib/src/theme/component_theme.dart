@@ -14,6 +14,7 @@ import 'package:impaktfull_ui/src/components/carousel/carousel.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/components/checkbox_list_item/checkbox_list_item.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';
+import 'package:impaktfull_ui/src/components/chip/chip.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui/src/components/color_input_field/color_input_field_style.dart';
 import 'package:impaktfull_ui/src/components/color_picker/color_picker.dart';
@@ -112,6 +113,7 @@ class ImpaktfullUiComponentsTheme {
   final ImpaktfullUiChatTheme chat;
   final ImpaktfullUiCheckboxTheme checkbox;
   final ImpaktfullUiCheckboxListItemTheme checkboxListItem;
+  final ImpaktfullUiChipTheme chip;
   final ImpaktfullUiCmsHeaderTheme cmsHeader;
   final ImpaktfullUiColorPickerTheme colorPicker;
   final ImpaktfullUiColorInputFieldTheme colorInputField;
@@ -208,6 +210,9 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCheckboxListItemTheme? checkboxListItem,
     @Deprecated('Use checkboxListItem instead. Will be removed in 1.0.0.')
     ImpaktfullUiCheckboxListItemTheme? checkBoxListItem,
+    // Optional, so adding it does not break code that creates this class.
+    // Defaults to ImpaktfullUiChipTheme.fallback.
+    ImpaktfullUiChipTheme? chip,
     required this.cmsHeader,
     required this.colorPicker,
     required this.colorInputField,
@@ -288,6 +293,7 @@ class ImpaktfullUiComponentsTheme {
         assert(checkboxListItem != null || checkBoxListItem != null,
             'checkboxListItem is required'),
         checkboxListItem = (checkboxListItem ?? checkBoxListItem)!,
+        chip = chip ?? ImpaktfullUiChipTheme.fallback,
         iconButton = iconButton ?? ImpaktfullUiIconButtonTheme.fallback,
         touchFeedback =
             touchFeedback ?? ImpaktfullUiTouchFeedbackTheme.fallback;
@@ -452,6 +458,14 @@ class ImpaktfullUiComponentsTheme {
           shadows: shadows,
         ),
         checkboxListItem: ImpaktfullUiCheckboxListItemTheme.getDefault(
+          assets: assets,
+          colors: colors,
+          textStyles: textStyles,
+          dimens: dimens,
+          durations: durations,
+          shadows: shadows,
+        ),
+        chip: ImpaktfullUiChipTheme.getDefault(
           assets: assets,
           colors: colors,
           textStyles: textStyles,
@@ -1054,6 +1068,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiCheckboxListItemTheme? checkboxListItem,
     @Deprecated('Use checkboxListItem instead. Will be removed in 1.0.0.')
     ImpaktfullUiCheckboxListItemTheme? checkBoxListItem,
+    ImpaktfullUiChipTheme? chip,
     ImpaktfullUiCmsHeaderTheme? cmsHeader,
     ImpaktfullUiColorPickerTheme? colorPicker,
     ImpaktfullUiColorInputFieldTheme? colorInputField,
@@ -1144,6 +1159,7 @@ class ImpaktfullUiComponentsTheme {
         checkbox: checkbox ?? this.checkbox,
         checkboxListItem:
             checkboxListItem ?? checkBoxListItem ?? this.checkboxListItem,
+        chip: chip ?? this.chip,
         cmsHeader: cmsHeader ?? this.cmsHeader,
         colorPicker: colorPicker ?? this.colorPicker,
         colorInputField: colorInputField ?? this.colorInputField,
@@ -1241,6 +1257,7 @@ class ImpaktfullUiComponentsTheme {
     ImpaktfullUiChatTheme: chat,
     ImpaktfullUiCheckboxTheme: checkbox,
     ImpaktfullUiCheckboxListItemTheme: checkboxListItem,
+    ImpaktfullUiChipTheme: chip,
     ImpaktfullUiCmsHeaderTheme: cmsHeader,
     ImpaktfullUiColorPickerTheme: colorPicker,
     ImpaktfullUiColorInputFieldTheme: colorInputField,
@@ -1354,6 +1371,7 @@ class ImpaktfullUiComponentsTheme {
           chat == other.chat &&
           checkbox == other.checkbox &&
           checkboxListItem == other.checkboxListItem &&
+          chip == other.chip &&
           cmsHeader == other.cmsHeader &&
           colorPicker == other.colorPicker &&
           colorInputField == other.colorInputField &&
@@ -1444,6 +1462,7 @@ class ImpaktfullUiComponentsTheme {
         chat,
         checkbox,
         checkboxListItem,
+        chip,
         cmsHeader,
         colorPicker,
         colorInputField,

@@ -28,7 +28,7 @@ ImpaktfullUiTheme (root)
 | File | Purpose |
 |------|---------|
 | `lib/src/theme/theme.dart` | Main `ImpaktfullUiTheme` class, `copyWith` and `copyWithBaseTokens` |
-| `lib/src/theme/component_theme.dart` | Component themes container, and `ImpaktfullUiComponentsTheme.getDefault` (the 87 component themes) |
+| `lib/src/theme/component_theme.dart` | Component themes container, and `ImpaktfullUiComponentsTheme.getDefault` (the 88 component themes) |
 | `lib/src/theme/theme_default.dart` | `ImpaktfullUiDefaultTheme.withMinimalChanges`: the base tokens |
 | `lib/src/theme/color_theme.dart` | Color definitions |
 | `lib/src/theme/textstyle_theme.dart` | Typography definitions |
@@ -69,7 +69,7 @@ final theme = ImpaktfullUiDefaultTheme.withMinimalChanges<MyCustomTheme>(
 
 ### Base tokens
 
-Everything `withMinimalChanges` builds is a base token, and it builds the 87
+Everything `withMinimalChanges` builds is a base token, and it builds the 88
 component themes from them with `ImpaktfullUiComponentsTheme.getDefault`. A base
 token that no component theme reads is not a token: **thread a new base token
 through `ImpaktfullUiComponentsTheme.getDefault` into the `*_style.dart` of the

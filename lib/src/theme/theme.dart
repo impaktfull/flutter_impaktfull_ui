@@ -245,7 +245,7 @@ class ImpaktfullUiTheme<T extends Object> {
   /// This theme with the given values replaced, and nothing else.
   ///
   /// It replaces exactly what it is given, so `copyWith(colors: ...)` changes
-  /// `theme.colors` and leaves [components] alone: the 87 component themes
+  /// `theme.colors` and leaves [components] alone: the 88 component themes
   /// were built from the old base tokens and keep them. That is on purpose —
   /// `copyWith` never throws away a per-component customisation that was
   /// layered on top.
@@ -281,7 +281,7 @@ class ImpaktfullUiTheme<T extends Object> {
   /// component theme built again from them.
   ///
   /// This is the difference with [copyWith]: `copyWith(colors: ...)` replaces
-  /// `theme.colors` and leaves the 87 component themes as they were, so
+  /// `theme.colors` and leaves the 88 component themes as they were, so
   /// `theme.components.button.colors.primary` still holds the old accent.
   /// `copyWithBaseTokens(colors: ...)` rebuilds them with
   /// [ImpaktfullUiComponentsTheme.getDefault], so the new token reaches every

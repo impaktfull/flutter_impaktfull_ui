@@ -391,6 +391,33 @@ abstract final class ImpaktfullUiShadcnTheme {
             activeBorderWidth: 1,
           ),
         ),
+        // `toggle.tsx` with `variant="outline"`: `h-9 px-2 rounded-md border
+        // border-input bg-transparent text-sm font-medium` with `gap-2` and
+        // `size-4` icons. When it is on it is `bg-accent
+        // text-accent-foreground`, and the border stays `border-input`.
+        chip: components.chip.copyWith(
+          colors: ImpaktfullUiChipColorTheme(
+            background: Colors.transparent,
+            backgroundSelected: mutedColor,
+            border: borderColor,
+            borderSelected: borderColor,
+            text: textColor,
+            textSelected: isDark ? foregroundDark : primary,
+          ),
+          dimens: components.chip.dimens.copyWith(
+            borderRadius: BorderRadius.circular(radiusMedium),
+            minHeight: 36,
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            spacing: 8,
+            iconSize: 16,
+          ),
+          textStyles: ImpaktfullUiChipTextStyleTheme(
+            title: base.textStyles.onCard.text.medium
+                .copyWith(fontWeight: FontWeight.w500),
+            titleSelected: base.textStyles.onCard.text.medium
+                .copyWith(fontWeight: FontWeight.w500),
+          ),
+        ),
         // `switch.tsx`: a `h-[1.15rem] w-8` track with a `size-4` thumb, so
         // the track is the thumb plus 1.2 above and below it.
         switchTheme: components.switchTheme.copyWith(
