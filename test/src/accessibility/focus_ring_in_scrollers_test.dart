@@ -4,7 +4,7 @@
 // of the design system presets, so a keyboard user sees the whole ring
 // instead of the two sides that survived the clip.
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';

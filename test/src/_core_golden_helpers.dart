@@ -4,7 +4,8 @@
 // in `_core_test_helpers.dart`, which this file exports.
 
 import 'package:alchemist/alchemist.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import '../util/material_ui_golden_helpers.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
 import '_core_test_helpers.dart';
@@ -45,7 +46,7 @@ void runScreenGoldenTest({
         'renders correctly',
         fileName: fileName,
         pumpBeforeTest: pumpBeforeTest ?? onlyPumpAndSettle,
-        builder: () => GoldenTestGroup(
+        builder: () => withAlchemistMaterialUiTheme(GoldenTestGroup(
           columns: 2,
           children: [
             for (final entry in {
@@ -69,7 +70,7 @@ void runScreenGoldenTest({
                 ),
               ),
           ],
-        ),
+        )),
       );
     },
   );

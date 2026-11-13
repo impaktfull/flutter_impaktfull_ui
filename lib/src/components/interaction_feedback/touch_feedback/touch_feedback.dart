@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/container/container.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/focus_feedback/focus_feedback.dart';
 import 'package:impaktfull_ui/src/components/interaction_feedback/touch_feedback/touch_feedback_style.dart';

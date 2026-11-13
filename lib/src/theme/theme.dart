@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_configurator.dart';
 import 'package:impaktfull_ui/src/theme/asset_theme.dart';
 import 'package:impaktfull_ui/src/theme/color_theme.dart';

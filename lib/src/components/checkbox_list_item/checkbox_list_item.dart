@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';
 import 'package:impaktfull_ui/src/components/checkbox_list_item/checkbox_list_item.dart';
 import 'package:impaktfull_ui/src/components/checkbox/checkbox.dart';

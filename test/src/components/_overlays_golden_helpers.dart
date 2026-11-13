@@ -4,7 +4,8 @@
 // in `_overlays_test_helpers.dart`, which this file exports.
 
 import 'package:alchemist/alchemist.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import '../../util/material_ui_golden_helpers.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
@@ -64,8 +65,10 @@ void runOverlayGoldenTest({
                     child: child,
                   ),
                 );
-          if (size == null) return app;
-          return SizedBox.fromSize(size: size, child: app);
+          if (size == null) return withAlchemistMaterialUiTheme(app);
+          return withAlchemistMaterialUiTheme(
+            SizedBox.fromSize(size: size, child: app),
+          );
         },
       );
     },

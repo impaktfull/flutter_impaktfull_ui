@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/tab_bar/widget/tab_bar_controller_configurator.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/tab_bar_item/tab_bar_item_library_item.dart';

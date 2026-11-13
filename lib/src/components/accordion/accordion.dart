@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/accordion/model/accordion_reveal_type.dart';
 import 'package:impaktfull_ui/src/components/accordion/accordion_style.dart';
 import 'package:impaktfull_ui/src/components/asset/asset_widget.dart';

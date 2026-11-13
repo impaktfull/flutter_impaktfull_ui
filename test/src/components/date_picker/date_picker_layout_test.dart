@@ -2,7 +2,7 @@
 // a bit wider than the VM: the title of the header wrapped and the weekdays
 // wrapped, which cut off the last week of the month.
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui/src/components/date_picker/widgets/date_picker_cell.dart';

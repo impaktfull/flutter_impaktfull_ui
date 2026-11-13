@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:impaktfull_ui/src/components/asset/rive_asset.dart';
 import 'package:impaktfull_ui/src/components/network_image/network_image.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/color_picker/color_picker_style.dart';
 import 'package:impaktfull_ui/src/components/color_picker/type/color_picker_simple.dart';
 import 'package:impaktfull_ui/src/components/color_picker/type/color_picker_slider.dart';

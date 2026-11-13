@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class TabBarControllerConfigurator extends StatefulWidget {
   final Widget Function(BuildContext, TabController, Function() setState)

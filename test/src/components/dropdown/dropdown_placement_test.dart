@@ -2,7 +2,7 @@
 // there is no room under it, it slides away from the edges instead of hanging
 // out of them, and it is never taller than the space it has.
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 // The overlay of the menu is internal: only the dropdown builds one.

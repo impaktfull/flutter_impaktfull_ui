@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/util/device_util/device_util.dart';
 
 class ImpaktfullUiAdaptiveSafeArea extends StatelessWidget {

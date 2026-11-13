@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
 
 class ImpaktfullUiDesktopPageRoute<T> extends PageRouteBuilder<T> {
   final Widget Function(BuildContext context) builder;

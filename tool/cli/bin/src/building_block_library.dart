@@ -32,7 +32,7 @@ Future<void> _createBuildingBlock({
   // Component file
   final componentFile = File(join(dir.path, '$snakeCaseComponentName.dart'));
 
-  final componentFileContent = """import 'package:flutter/material.dart';
+  final componentFileContent = """import 'package:material_ui/material_ui.dart';
 
 class $className extends StatelessWidget {
 

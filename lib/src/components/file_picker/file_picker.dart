@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/file_picker/file_picker.localizations.dart';
 import 'package:impaktfull_ui/src/components/file_picker/file_picker_style.dart';
 import 'package:impaktfull_ui/src/components/file_picker/model/file_picker_data.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/list_view/list_view.dart';
 import 'package:impaktfull_ui/src/components/notification/notification.dart';
 import 'package:impaktfull_ui/src/components/wysiwyg/formatter/wysiwyg_bold_formatter.dart';

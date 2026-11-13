@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/adaptive_nav_bar/model/adaptive_nav_bar_action.dart';
 import 'package:impaktfull_ui/src/components/cms_header/cms_header.dart';
 import 'package:impaktfull_ui/src/components/horizontal_tabs/horizontal_tabs.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/calendar/calendar.dart';
 import 'package:impaktfull_ui/src/components/calendar/model/calendar_list_item.dart';
 import 'package:impaktfull_ui/src/components/calendar/widget/calendar_locale_scope.dart';

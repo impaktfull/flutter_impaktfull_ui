@@ -91,7 +91,7 @@ class ${className}TextStyleTheme {
   // Component file
   final componentFile = File(join(dir.path, '$snakeCaseComponentName.dart'));
 
-  final componentFileContent = """import 'package:flutter/material.dart';
+  final componentFileContent = """import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/$snakeCaseComponentName/${snakeCaseComponentName}_style.dart';
 import 'package:impaktfull_ui/src/components/theme/theme_component_builder.dart';
 
@@ -166,7 +166,7 @@ class ${componentName}LibraryInputs extends ComponentLibraryInputs {
   final libraryVariantFile =
       File(join(dir.path, '${snakeCaseComponentName}_library_variant.dart'));
 
-  final componentFileContent = """import 'package:flutter/material.dart';
+  final componentFileContent = """import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/component_library/items/$snakeCaseComponentName/${snakeCaseComponentName}_library_item.dart';
 import 'package:impaktfull_ui_example/src/component_library/config/component_library_item.dart';

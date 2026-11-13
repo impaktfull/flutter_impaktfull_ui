@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/confetti/confetti.dart';
 import 'package:impaktfull_ui/src/components/confetti/model/confetti_particle.dart';
 import 'package:impaktfull_ui/src/components/confetti/painter/asset_painter.dart';

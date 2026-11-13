@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/chat/chat.dart';
 import 'package:impaktfull_ui/src/util/extension/datetime_extensions.dart';
 import 'package:impaktfull_ui/src/util/locale/locale_util.dart';

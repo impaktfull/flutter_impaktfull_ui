@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 import 'package:impaktfull_ui_example/src/example_library/config/example_library.dart';
 import 'package:impaktfull_ui_example/src/example_library/config/example_library_item.dart';

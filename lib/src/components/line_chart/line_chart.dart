@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:impaktfull_ui/src/components/line_chart/line_chart_style.dart';
 import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_data.dart';
 import 'package:impaktfull_ui/src/components/line_chart/model/line_chart_item_style.dart';

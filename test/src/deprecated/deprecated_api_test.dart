@@ -5,8 +5,8 @@
 // See doc/migrations/1.0.0.md.
 // ignore_for_file: deprecated_member_use_from_same_package
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:impaktfull_ui/impaktfull_ui.dart';
 
