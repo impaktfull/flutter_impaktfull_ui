@@ -22,8 +22,18 @@ class SectionTitleLibraryInputs extends ComponentLibraryInputs {
     'Title',
     initialValue: 'My custom title',
   );
+  final overline = ComponentLibraryStringInput(
+    'Overline',
+    initialValue: 'STEP 2 OF 3',
+  );
+  final subtitle = ComponentLibraryStringInput(
+    'Subtitle',
+    initialValue: 'Only classes you teach are shown',
+  );
   @override
   List<ComponentLibraryInputItem> buildInputItems() => [
+        overline,
         title,
+        subtitle,
       ];
 }

@@ -78,4 +78,40 @@ void main() {
       ),
     ],
   );
+
+  runComponentTest(
+    fileName: 'impaktfull_ui_section_title_overline_subtitle',
+    columns: 2,
+    goldenTests: () => [
+      GoldenTest(
+        description: 'overline, subtitle and action',
+        child: goldenBox(
+          child: ImpaktfullUiSectionTitle(
+            overline: 'STEP 2 OF 3',
+            title: 'Choose a class',
+            subtitle: 'Only classes you teach are shown',
+            actions: [
+              ImpaktfullUiButton(
+                type: ImpaktfullUiButtonType.tertiary,
+                size: ImpaktfullUiButtonSize.large,
+                title: 'See all',
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+      GoldenTest(
+        description: 'centered with a long subtitle',
+        child: goldenBox(
+          child: const ImpaktfullUiSectionTitle(
+            overline: 'STEP 2 OF 3',
+            title: 'Choose a class',
+            subtitle: longText,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    ],
+  );
 }
